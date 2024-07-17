@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="mdd_ps|Win32">
+      <Configuration>mdd_ps</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="md_perf_hud|Win32">
+      <Configuration>md_perf_hud</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="md_ps|Win32">
+      <Configuration>md_ps</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="mt_perf_hud|Win32">
+      <Configuration>mt_perf_hud</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0C5043E1-5162-4998-A22D-D879CFC9CBB2}</ProjectGuid>
+    <RootNamespace>login_server</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(ProjectDir)../bin/</OutDir>
+    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(ProjectDir)../bin/</OutDir>
+    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'">
+    <OutDir>$(ProjectDir)../bin/</OutDir>
+    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'">
+    <OutDir>$(ProjectDir)../bin/</OutDir>
+    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'">
+    <OutDir>$(ProjectDir)../bin/</OutDir>
+    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'">
+    <OutDir>$(ProjectDir)../bin/</OutDir>
+    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\shared;$(ProjectDir)wsdl;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;LOGIN_SERVER;CURL_STATICLIB;ENABLE_OPERATOR_NEW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libmysql.lib;core_mtd.lib;libcurl_mtd.lib;Ws2_32.lib;Wldap32.lib;net_mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)_d.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\shared;$(ProjectDir)wsdl;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;LOGIN_SERVER;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libmysql.lib;core_mt.lib;libcurl_mt.lib;Ws2_32.lib;Wldap32.lib;net_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\shared;$(ProjectDir)wsdl;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;LOGIN_SERVER;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libmysql.lib;core_mt.lib;libcurl_mt.lib;Ws2_32.lib;Wldap32.lib;net_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\shared;$(ProjectDir)wsdl;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;LOGIN_SERVER;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libmysql.lib;core_mt.lib;libcurl_mt.lib;Ws2_32.lib;Wldap32.lib;net_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\shared;$(ProjectDir)wsdl;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;LOGIN_SERVER;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libmysql.lib;core_mt.lib;libcurl_mt.lib;Ws2_32.lib;Wldap32.lib;net_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\shared;$(ProjectDir)wsdl;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;LOGIN_SERVER;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libmysql.lib;core_mt.lib;libcurl_mt.lib;Ws2_32.lib;Wldap32.lib;net_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>LIBCMTD.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\shared\license_check.cpp" />
+    <ClCompile Include="..\shared\linux_util.cpp" />
+    <ClCompile Include="..\shared\profile.cpp" />
+    <ClCompile Include="..\shared\profile_result.cpp" />
+    <ClCompile Include="..\shared\rt1tort2.cpp" />
+    <ClCompile Include="..\shared\server_config.cpp" />
+    <ClCompile Include="charge_session.cpp" />
+    <ClCompile Include="dbmysql.cpp" />
+    <ClCompile Include="gameworldstub.cpp" />
+    <ClCompile Include="gamigo_adb_session.cpp" />
+    <ClCompile Include="guide_server.cpp" />
+    <ClCompile Include="lgsthread.cpp" />
+    <ClCompile Include="LoginLogicExt.cpp" />
+    <ClCompile Include="loginserver.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="wsdl\CBlowFishSimple.cpp" />
+    <ClCompile Include="wsdl\schemaparser\ComplexType.cpp" />
+    <ClCompile Include="wsdl\schemaparser\ContentModel.cpp" />
+    <ClCompile Include="wsdl\schemaparser\Group.cpp" />
+    <ClCompile Include="wsdl\schemaparser\SchemaDebug.cpp" />
+    <ClCompile Include="wsdl\schemaparser\SchemaParser.cpp" />
+    <ClCompile Include="wsdl\schemaparser\SchemaValidator.cpp" />
+    <ClCompile Include="wsdl\schemaparser\SimpleType.cpp" />
+    <ClCompile Include="wsdl\schemaparser\TypeContainer.cpp" />
+    <ClCompile Include="wsdl\schemaparser\TypesTable.cpp" />
+    <ClCompile Include="wsdl\wsdlparser\Message.cpp" />
+    <ClCompile Include="wsdl\wsdlparser\Soap.cpp" />
+    <ClCompile Include="wsdl\wsdlparser\WsdlDebug.cpp" />
+    <ClCompile Include="wsdl\wsdlparser\WsdlElement.cpp" />
+    <ClCompile Include="wsdl\wsdlparser\WsdlInvoker.cpp" />
+    <ClCompile Include="wsdl\wsdlparser\WsdlParser.cpp" />
+    <ClCompile Include="wsdl\WsdlWrapper.cpp" />
+    <ClCompile Include="wsdl\xmlpull\ConfigFile.cpp" />
+    <ClCompile Include="wsdl\xmlpull\w3c.cpp" />
+    <ClCompile Include="wsdl\xmlpull\XmlPullParser.cpp" />
+    <ClCompile Include="wsdl\xmlpull\XmlSerializer.cpp" />
+    <ClCompile Include="wsdl\xmlpull\XmlUtils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\engine\head\core\rt2_core.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_build_option.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_database.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_debug.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_encrypt.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_engine_sys.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_file.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_lock.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_log.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_math.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_memory.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_object.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_platform.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_platform_unix.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_platform_win32.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_process.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_smartptr.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_string.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_system_info.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_text.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_text_ini.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_text_table.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_text_util.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_text_xml.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_thread.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_thread_event.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_time.h" />
+    <ClInclude Include="..\engine\head\core\rtc2_util.h" />
+    <ClInclude Include="..\engine\head\core\zconf.h" />
+    <ClInclude Include="..\engine\head\core\zlib.h" />
+    <ClInclude Include="..\engine\head\core\zstream.h" />
+    <ClInclude Include="..\engine\head\net\g_cmdpacket.h" />
+    <ClInclude Include="..\engine\head\net\g_netpacket.h" />
+    <ClInclude Include="..\engine\head\net\g_netsocket.h" />
+    <ClInclude Include="..\engine\head\net\g_tcplistener.h" />
+    <ClInclude Include="..\engine\head\net\g_tcpsession.h" />
+    <ClInclude Include="..\engine\head\net\g_udpsession.h" />
+    <ClInclude Include="..\engine\head\net\rt_net.h" />
+    <ClInclude Include="..\shared\gs_protocol.h" />
+    <ClInclude Include="..\shared\lgs_gws.h" />
+    <ClInclude Include="..\shared\license_check.h" />
+    <ClInclude Include="..\shared\linux_util.h" />
+    <ClInclude Include="..\shared\ls_protocol.h" />
+    <ClInclude Include="..\shared\profile.h" />
+    <ClInclude Include="..\shared\profile_result.h" />
+    <ClInclude Include="..\shared\server_config.h" />
+    <ClInclude Include="charge_session.h" />
+    <ClInclude Include="dbmysql.h" />
+    <ClInclude Include="gameworldstub.h" />
+    <ClInclude Include="gamigo_adb_session.h" />
+    <ClInclude Include="guide_server.h" />
+    <ClInclude Include="lgsthread.h" />
+    <ClInclude Include="login.h" />
+    <ClInclude Include="LoginLogicExt.h" />
+    <ClInclude Include="loginserver.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="threadsafelist.h" />
+    <ClInclude Include="wsdl\CBlowFishSimple.h" />
+    <ClInclude Include="wsdl\schemaparser\Annotation.h" />
+    <ClInclude Include="wsdl\schemaparser\Attribute.h" />
+    <ClInclude Include="wsdl\schemaparser\AttributeGroup.h" />
+    <ClInclude Include="wsdl\schemaparser\ComplexType.h" />
+    <ClInclude Include="wsdl\schemaparser\Constraint.h" />
+    <ClInclude Include="wsdl\schemaparser\ContentModel.h" />
+    <ClInclude Include="wsdl\schemaparser\Element.h" />
+    <ClInclude Include="wsdl\schemaparser\Group.h" />
+    <ClInclude Include="wsdl\schemaparser\Schema.h" />
+    <ClInclude Include="wsdl\schemaparser\SchemaParser.h" />
+    <ClInclude Include="wsdl\schemaparser\SchemaParserException.h" />
+    <ClInclude Include="wsdl\schemaparser\SchemaValidator.h" />
+    <ClInclude Include="wsdl\schemaparser\SimpleType.h" />
+    <ClInclude Include="wsdl\schemaparser\TypeContainer.h" />
+    <ClInclude Include="wsdl\schemaparser\TypesTable.h" />
+    <ClInclude Include="wsdl\schemaparser\XSDType.h" />
+    <ClInclude Include="wsdl\wsdl-config.h" />
+    <ClInclude Include="wsdl\wsdlparser\Binding.h" />
+    <ClInclude Include="wsdl\wsdlparser\Message.h" />
+    <ClInclude Include="wsdl\wsdlparser\Operation.h" />
+    <ClInclude Include="wsdl\wsdlparser\PortType.h" />
+    <ClInclude Include="wsdl\wsdlparser\Service.h" />
+    <ClInclude Include="wsdl\wsdlparser\Soap.h" />
+    <ClInclude Include="wsdl\wsdlparser\WsdlElement.h" />
+    <ClInclude Include="wsdl\wsdlparser\WsdlException.h" />
+    <ClInclude Include="wsdl\wsdlparser\WsdlExtension.h" />
+    <ClInclude Include="wsdl\wsdlparser\WsdlInvoker.h" />
+    <ClInclude Include="wsdl\wsdlparser\WsdlParser.h" />
+    <ClInclude Include="wsdl\WsdlWrapper.h" />
+    <ClInclude Include="wsdl\xmlpull\ConfigFile.h" />
+    <ClInclude Include="wsdl\xmlpull\osdir.h" />
+    <ClInclude Include="wsdl\xmlpull\Qname.h" />
+    <ClInclude Include="wsdl\xmlpull\w3c.h" />
+    <ClInclude Include="wsdl\xmlpull\wsdlpull_export.h" />
+    <ClInclude Include="wsdl\xmlpull\XmlPullParser.h" />
+    <ClInclude Include="wsdl\xmlpull\XmlPullParserException.h" />
+    <ClInclude Include="wsdl\xmlpull\XmlSerializer.h" />
+    <ClInclude Include="wsdl\xmlpull\XmlUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\engine\head\core\rtc2_thread.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon_login.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="login_server.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

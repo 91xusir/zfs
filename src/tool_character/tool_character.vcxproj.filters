@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="engine">
+      <UniqueIdentifier>{834ef426-1bc8-4ce4-84e6-47bdbf863b0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\core">
+      <UniqueIdentifier>{348c888b-2b66-4e04-81c5-4ffbbbb2f48a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\graph">
+      <UniqueIdentifier>{ebb8e11d-8631-4f49-970b-a63854171703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\character">
+      <UniqueIdentifier>{a9010ee6-bee4-48af-961b-3832d937c0b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\audio">
+      <UniqueIdentifier>{89decc02-b6f3-4f29-a4e7-64c82d2d12ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\share">
+      <UniqueIdentifier>{bd2bd96c-9a61-4ef9-b457-ca02d9e0c26d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tool">
+      <UniqueIdentifier>{71e4a206-36d9-4389-8898-a92bc48cd929}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{c317daa2-8332-4d27-8cfe-6a613c6b2b2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="UI\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\engine\head\scene\rts_scene_util.h">
+      <Filter>engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\character\actor.h">
+      <Filter>engine\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\character\cha_anim.h">
+      <Filter>engine\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\character\cha_basic.h">
+      <Filter>engine\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\character\cha_effect.h">
+      <Filter>engine\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\character\cha_mtl.h">
+      <Filter>engine\character</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\audio\rt_audio.h">
+      <Filter>engine\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\audio\rta_back_music.h">
+      <Filter>engine\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\audio\rta_sound.h">
+      <Filter>engine\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\audio\rta_sound_mgr.h">
+      <Filter>engine\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorFrame.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="rt_build_count.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomItems.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgChannelInfo.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCreateEffect.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgCreateForceField.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgGetBone.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgKeyInfo.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgLink.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgMergeActor.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgNewShader.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgPose.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgPoseConn.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgRelatedActor.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgSliderView.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgVerFix.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mergeactordlg.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeView.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tool_character.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tool_characterDoc.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tool_characterView.h">
+      <Filter>UI\Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\engine\head\character\cha_anim.cpp">
+      <Filter>engine\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\character\cha_basic.cpp">
+      <Filter>engine\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\character\cha_effect.cpp">
+      <Filter>engine\character</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\character\cha_mtl.cpp">
+      <Filter>engine\character</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorFrame.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="rt_build_count.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomItems.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgChannelInfo.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCreateEffect.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgCreateForceField.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgGetBone.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgKeyInfo.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgLink.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgMergeActor.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgNewShader.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgPose.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgPoseConn.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgRelatedActor.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgSliderView.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgVerFix.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mergeactordlg.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeView.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tool_character.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tool_characterDoc.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tool_characterView.cpp">
+      <Filter>UI\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="iob_func.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\img_treeview_obj.bmp">
+      <Filter>UI\Resource Files</Filter>
+    </Image>
+    <Image Include="res\tool_character.ico">
+      <Filter>UI\Resource Files</Filter>
+    </Image>
+    <Image Include="res\tool_characterDoc.ico">
+      <Filter>UI\Resource Files</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>UI\Resource Files</Filter>
+    </Image>
+    <Image Include="res\toolbar_tools.bmp">
+      <Filter>UI\Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="tool_character.rc">
+      <Filter>UI\Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\tool_character.rc2">
+      <Filter>UI\Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

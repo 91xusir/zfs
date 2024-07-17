@@ -1,0 +1,7 @@
+**/bin/
+**/.*/
+*.exe
+**/temp/
+/src/engine/libs
+*.sdf
+*.chm

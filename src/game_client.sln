@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CAE5D0F2-4B2D-4A45-A2B6-DA7570C61987}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game_client", "game_client\game_client.vcxproj", "{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		DebugTest|Win32 = DebugTest|Win32
+		editor|Win32 = editor|Win32
+		editord|Win32 = editord|Win32
+		GameRelease|Win32 = GameRelease|Win32
+		md_perf_hud|Win32 = md_perf_hud|Win32
+		md_ps|Win32 = md_ps|Win32
+		md|Win32 = md|Win32
+		mdd_ps|Win32 = mdd_ps|Win32
+		mdd|Win32 = mdd|Win32
+		mt_perf_hud|Win32 = mt_perf_hud|Win32
+		mt|Win32 = mt|Win32
+		mtd|Win32 = mtd|Win32
+		Release|Win32 = Release|Win32
+		scene_eidtor_d|Win32 = scene_eidtor_d|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.Debug|Win32.Build.0 = Debug|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.DebugTest|Win32.ActiveCfg = DebugTest|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.DebugTest|Win32.Build.0 = DebugTest|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.editor|Win32.ActiveCfg = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.editor|Win32.Build.0 = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.editord|Win32.ActiveCfg = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.editord|Win32.Build.0 = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.GameRelease|Win32.ActiveCfg = GameRelease|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.GameRelease|Win32.Build.0 = GameRelease|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.md_perf_hud|Win32.ActiveCfg = md_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.md_perf_hud|Win32.Build.0 = md_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.md_ps|Win32.ActiveCfg = md_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.md_ps|Win32.Build.0 = md_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.md|Win32.ActiveCfg = md_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.md|Win32.Build.0 = md_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mdd_ps|Win32.ActiveCfg = md_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mdd_ps|Win32.Build.0 = md_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mdd|Win32.ActiveCfg = md_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mdd|Win32.Build.0 = md_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mt_perf_hud|Win32.ActiveCfg = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mt_perf_hud|Win32.Build.0 = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mt|Win32.ActiveCfg = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mt|Win32.Build.0 = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mtd|Win32.ActiveCfg = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mtd|Win32.Build.0 = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.Release|Win32.ActiveCfg = Release|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.Release|Win32.Build.0 = Release|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.scene_eidtor_d|Win32.ActiveCfg = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.scene_eidtor_d|Win32.Build.0 = mt_perf_hud|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

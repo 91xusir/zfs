@@ -1,0 +1,292 @@
+// SyntaxEdit resource file
+//
+// (c)1998-2018 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "SyntaxEdit/Resource.h"
+#include "SyntaxEdit/res/Resource-Neutral.rc"
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_TRK)
+#ifdef _WIN32
+LANGUAGE LANG_TURKISH, SUBLANG_DEFAULT
+#pragma code_page(1254)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+XTP_IDD_EDIT_PAGEEDITOR DIALOGEX DISCARDABLE  0, 0, 260, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Editör"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Pencere Ayarlarý",IDC_STATIC,7,7,246,76
+    CONTROL         "Dikey kaydýrma çubuðu",XTP_IDC_EDIT_CHK_VERT_SCROLLBAR,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,21,105,10
+    CONTROL         "Yatay kaydýrma çubuðu",XTP_IDC_EDIT_CHK_HORZ_SCROLLBAR,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,32,105,10
+    CONTROL         "Satýr numarasý",XTP_IDC_EDIT_CHK_LINE_NUMBERS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,15,43,105,10
+    CONTROL         "Seçim marjý",XTP_IDC_EDIT_CHK_SELMARGIN,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,15,54,105,10
+    CONTROL         "Daraltýlabilir düðümleri",XTP_IDC_EDIT_CHK_COLLAPSIBLE_NODES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,15,65,105,10
+    CONTROL         "Otomatik girinti",XTP_IDC_EDIT_CHK_AUTO_INDENT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,130,20,115,10
+    CONTROL         "Sanal adres alaný",XTP_IDC_EDIT_CHK_VIRTUAL_SPACE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,130,35,115,10
+    CONTROL         "Sözdizimi renklendirme",XTP_IDC_EDIT_CHK_SYNTAX_COLOR,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,130,50,115,10
+    GROUPBOX        "Sekmeler",IDC_STATIC,7,88,132,48
+    LTEXT           "Sekme Boyutu:",IDC_STATIC,15,98,60,8
+    EDITTEXT        XTP_IDC_EDIT_TABS_SIZE,75,95,46,14,ES_AUTOHSCROLL
+    CONTROL         "Ekle alanlarda",XTP_IDC_EDIT_RAD_TABS_SPACES,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,15,110,58,10
+    CONTROL         "Sekmeler tutun",XTP_IDC_EDIT_RAD_TABS_TAB,"Button",
+                    BS_AUTORADIOBUTTON,15,121,61,10
+    GROUPBOX        "Düzeltme iþareti üzerine",XTP_IDC_EDIT_GBOX_CARET,145,88,108,48,
+                    WS_GROUP
+    CONTROL         "Ýnce",XTP_IDC_EDIT_RAD_CARET_THIN,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,151,102,31,10
+    CONTROL         "Kalýn",XTP_IDC_EDIT_RAD_CARET_THICK,"Button",
+                    BS_AUTORADIOBUTTON,151,113,36,10
+    GROUPBOX        "Kaydetme Seçenekleri",IDC_STATIC,7,140,246,32
+    CONTROL         "Dýþarýdan deðiþtirilmiþ dosyalarýn otomatik yeniden yükle",
+                    XTP_IDC_EDIT_CHK_AUTO_RELOAD,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,15,154,232,10
+END
+XTP_IDD_EDIT_PAGEFONT DIALOGEX 0, 0, 260, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Düzenleyicisi yazý tipi"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Yazý tipi:",XTP_IDC_EDIT_TXT_FONTNAMES,7,7,40,9
+    COMBOBOX        XTP_IDC_EDIT_COMB_NAMES,7,18,119,55,CBS_SIMPLE | 
+                    CBS_AUTOHSCROLL | CBS_SORT | CBS_DISABLENOSCROLL | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Yazý stili",XTP_IDC_EDIT_TXT_FONTSTYLES,134,7,45,9
+    COMBOBOX        XTP_IDC_EDIT_COMB_STYLES,134,18,75,55,CBS_SIMPLE | 
+                    CBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Boyut",XTP_IDC_EDIT_TXT_FONTSIZES,217,7,30,9
+    COMBOBOX        XTP_IDC_EDIT_COMB_SIZES,217,18,36,55,CBS_SIMPLE | 
+                    CBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Normal Metin",IDC_STATIC,7,68,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_TEXT,7,78,103,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_TEXT,113,78,13,12
+    LTEXT           "Normal Arkaplan",IDC_STATIC,7,95,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_BACK,7,105,103,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_BACK,113,105,13,12
+    LTEXT           "Seçilen Metin",IDC_STATIC,7,122,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_TEXTSEL,7,132,103,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_TEXTSEL,113,132,13,12
+    LTEXT           "Seçilen Arkaplan",IDC_STATIC,7,149,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_BACKSEL,7,159,103,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_BACKSEL,113,159,13,12
+    LTEXT           "Komut dosyasý:",XTP_IDC_EDIT_TXT_FONTSCRIPT,135,69,100,9
+    COMBOBOX        XTP_IDC_EDIT_COMB_SCRIPT,134,78,119,115,CBS_DROPDOWNLIST | 
+                    CBS_AUTOHSCROLL | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Örnek Normal / seçilen:",XTP_IDC_EDIT_GRP_SAMPLE,135,128,
+                    118,44,WS_GROUP
+    CTEXT           "AaBbCc",XTP_IDC_EDIT_TXT_SAMPLE,143,140,49,26,
+                    SS_CENTERIMAGE,WS_EX_CLIENTEDGE
+    CTEXT           "XxYyZz",XTP_IDC_EDIT_TXT_SAMPLESEL,196,140,49,26,
+                    SS_CENTERIMAGE,WS_EX_CLIENTEDGE
+END
+
+XTP_IDD_EDIT_PAGECOLOR DIALOGEX 0, 0, 260, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Sözdizimi rengi"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Dosya tipi",XTP_IDC_EDIT_TXT_SCHEMANAMES,7,7,123,9
+    LISTBOX         XTP_IDC_EDIT_LBOX_SCHEMANAMES,7,17,123,64,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Nitelikler",XTP_IDC_EDIT_TXT_SCHEMAPROP,7,85,123,9
+    LISTBOX         XTP_IDC_EDIT_LBOX_SCHEMAPROP,7,95,123,77,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Normal Metin",IDC_STATIC,135,7,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_TEXT,135,17,100,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_TEXT,238,17,13,12
+    LTEXT           "Normal Arkaplan",IDC_STATIC,135,33,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_BACK,135,43,100,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_BACK,238,43,13,12
+    LTEXT           "Seçilen Metin",IDC_STATIC,135,59,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_TEXTSEL,135,69,100,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_TEXTSEL,238,69,13,12
+    LTEXT           "Seçilen Arkaplan",IDC_STATIC,135,85,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_BACKSEL,135,95,100,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_BACKSEL,238,95,13,12
+    CONTROL         "Kalýn",XTP_IDC_EDIT_CHK_BOLD,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,135,114,30,10
+    CONTROL         "Ýtalik",XTP_IDC_EDIT_CHK_ITALIC,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,170,114,31,10
+    CONTROL         "Altýný çizmek",XTP_IDC_EDIT_CHK_UNDERLINE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,206,114,46,10
+    GROUPBOX        "Örnek Normal / seçilen:",XTP_IDC_EDIT_GRP_SAMPLE,135,128,
+                    118,44,WS_GROUP
+    CTEXT           "AaBbCc",XTP_IDC_EDIT_TXT_SAMPLE,143,140,49,26,
+                    SS_CENTERIMAGE,WS_EX_CLIENTEDGE
+    CTEXT           "XxYyZz",XTP_IDC_EDIT_TXT_SAMPLESEL,196,140,49,26,
+                    SS_CENTERIMAGE,WS_EX_CLIENTEDGE
+END
+
+XTP_IDD_EDIT_SEARCH_FIND DIALOGEX DISCARDABLE  0, 0, 281, 82
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bulmak"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Ne buldun",IDC_STATIC,7,9,43,8,NOT WS_GROUP
+    COMBOBOX        XTP_IDC_EDIT_COMBO_FIND,51,6,164,153,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Seçenekler",IDC_STATIC,7,30,123,45 
+    CONTROL         "Sadece tam sözcükleri eþleþtir",XTP_IDC_EDIT_CHK_MATCH_WHOLE_WORD,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,43,115,10
+    CONTROL         "Maç durumda",XTP_IDC_EDIT_CHK_MATCH_CASE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,58,100,10
+    GROUPBOX        "Yön",IDC_STATIC,136,30,80,45
+    CONTROL         "Yukarý arama",XTP_IDC_EDIT_RADIO_UP,"Button",
+                    BS_AUTORADIOBUTTON,144,43,55,10
+    CONTROL         "Aþaðý ara",XTP_IDC_EDIT_RADIO_DOWN,"Button",
+                    BS_AUTORADIOBUTTON,144,58,55,10
+    PUSHBUTTON      "Sonrakini Bul",XTP_IDC_EDIT_BTN_FIND_NEXT,224,7,50,14,
+                    WS_DISABLED | WS_TABSTOP
+    PUSHBUTTON      "Kapat",IDCANCEL,224,26,50,14, WS_TABSTOP
+END
+
+XTP_IDD_EDIT_SEARCH_REPLACE DIALOGEX DISCARDABLE  0, 0, 281, 86
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Deðiþtir bul"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Metin Bul",IDC_STATIC,7,9,50,8,NOT WS_GROUP
+    COMBOBOX        XTP_IDC_EDIT_COMBO_FIND,61,6,143,154,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Eski yerine koymak ile",IDC_STATIC,7,25,50,8,NOT WS_GROUP
+    COMBOBOX        XTP_IDC_EDIT_COMBO_REPLACE,61,23,143,135,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Seçenekler",IDC_STATIC,7,38,123,41
+    CONTROL         "Sadece tam sözcükleri eþleþtir",XTP_IDC_EDIT_CHK_MATCH_WHOLE_WORD,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,51,115,10
+    CONTROL         "Maç durumda",XTP_IDC_EDIT_CHK_MATCH_CASE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,64,100,10
+    GROUPBOX        "Yön",IDC_STATIC,136,38,70,41
+    CONTROL         "Yukarý arama",XTP_IDC_EDIT_RADIO_UP,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,144,51,55,10
+    CONTROL         "Aþaðý ara",XTP_IDC_EDIT_RADIO_DOWN,"Button",
+                    BS_AUTORADIOBUTTON,144,64,55,10
+    PUSHBUTTON      "Sonrakini Bul",XTP_IDC_EDIT_BTN_FIND_NEXT,214,7,60,14,
+                    WS_DISABLED | WS_TABSTOP
+    PUSHBUTTON      "Deðiþtir",XTP_IDC_EDIT_BTN_REPLACE,214,23,60,14,
+                    WS_DISABLED | WS_TABSTOP
+    PUSHBUTTON      "Hepsini deðiþtir",XTP_IDC_EDIT_BTN_REPLACE_ALL,214,39,60,14,
+                    WS_DISABLED | WS_TABSTOP
+    PUSHBUTTON      "Kapat",IDCANCEL,214,65,60,14, WS_TABSTOP
+END
+
+XTP_IDD_EDIT_GOTOLINE DIALOGEX DISCARDABLE  0, 0, 165, 55
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Satýra gitme"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Satýr numarasý",XTP_IDC_EDIT_TXT_LINENO,5,5,155,8
+    EDITTEXT        XTP_IDC_EDIT_LINENO,5,17,155,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "Git",XTP_IDC_EDIT_BTN_GOTO,56,36,50,14
+    PUSHBUTTON      "Ýptal",IDCANCEL,110,36,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_EDIT_UNDEFINED     "Tanýmsýz komutu"
+    XTP_IDS_EDIT_MULTIPLE      "Çoklu operasyonlar"
+    XTP_IDS_EDIT_DELETE        "Silmek"
+    XTP_IDS_EDIT_INSERT        "Ekle"
+    XTP_IDS_EDIT_TYPING        "Yazarak"
+    XTP_IDS_EDIT_PASTE         "Yapýþtýr"
+    XTP_IDS_EDIT_MOVE          "Hareket"
+    XTP_IDS_EDIT_COPY          "Kopya"
+    XTP_IDS_EDIT_INDENTATION   "Indent"
+    XTP_IDS_EDIT_INDENT_DECREASE "Girintiyi Azalt"
+    XTP_IDS_EDIT_FORMAT        "Biçim"
+    XTP_IDS_EDIT_TABIFY        "Sekme yapmak"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_EDIT_UNTABIFY      "Sekmeyi kaldýrma"
+    XTP_IDS_EDIT_REPLACE_ALL   "Hepsini deðiþtir"
+    XTP_IDS_EDIT_CASE          "Deðiþim seçimi durumda"
+    XTP_IDS_EDIT_DELETE_TEXT_BLOCK "Metin bloðunu silmek"
+    XTP_IDS_EDIT_MOVE_HERE     "Buraya Taþý"
+    XTP_IDS_EDIT_COPY_HERE     "Ýþte kopyala"
+    XTP_IDS_EDIT_CANCEL        "Ýptal"
+    XTP_IDS_EDIT_MSG_WARN_RELOAD 
+                            "Dosya '%s' dýþ kaynak tarafýndan deðiþtirilmiþ! \nBu yeniden ister misin?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_EDIT_CUSTOM        "Görenek"
+    XTP_IDS_EDIT_REGULAR       "Düzenli"
+    XTP_IDS_EDIT_BOLD          "Düzenli"
+    XTP_IDS_EDIT_ITALIC        "Ýtalik"
+    XTP_IDS_EDIT_BOLDITALIC    "Kalýn italik"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDD_EDIT_OPTIONS       "Seçenekleri Düzenle"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_EDIT_MSG_FREPLACED "%d eþleþme bulundu ve yerine!"
+    XTP_IDS_EDIT_MSG_FSEARCH   "Arama bitirdi!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_EDIT_LINENO        "Satýr sayýsý (1 - %d)"
+    XTP_IDS_EDIT_OPENSCHEMACMD "Açýk þema dosyasý"
+    XTP_IDS_EDIT_OPENSCHEMAMSG "Eðer editör penceresinde '%s%s'  Seçenekler Dialog 'kapatýn ve þema dosyasýný açmak istiyor musunuz?"
+END
+
+#endif // !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_TRK)

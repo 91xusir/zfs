@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="scene" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="mdd_ps Win32">
+				<Option output="scene" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_LIB" />
+					<Add option="-DUSE_D3D9" />
+					<Add option="-DSCENE_EDITOR" />
+					<Add option="-D_TICK_PROCESS_" />
+					<Add directory="C:/workspace/src/src/scene/../../../../sdk/include/dxsdk" />
+					<Add directory="C:/workspace/src/src/scene/../../head" />
+				</Compiler>
+			</Target>
+			<Target title="md_perf_hud Win32">
+				<Option output="scene" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_LIB" />
+					<Add option="-DSCENE_EDITOR" />
+					<Add directory="C:/workspace/src/src/scene/../../../../sdk/include/dxsdk" />
+					<Add directory="C:/workspace/src/src/scene/../../head" />
+				</Compiler>
+			</Target>
+			<Target title="editor Win32">
+				<Option output="scene" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_LIB" />
+					<Add option="-DUSE_D3D9" />
+					<Add option="-DSCENE_EDITOR" />
+					<Add directory="C:/workspace/src/src/scene/../../head" />
+				</Compiler>
+			</Target>
+			<Target title="mt Win32">
+				<Option output="scene" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_LIB" />
+					<Add option="-DUSE_D3D8" />
+					<Add directory="C:/workspace/src/src/scene/../../../../sdk/include/dxsdk" />
+					<Add directory="C:/workspace/src/src/scene/../../head" />
+				</Compiler>
+			</Target>
+			<Target title="mdd Win32">
+				<Option output="scene" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_LIB" />
+					<Add option="-DUSE_D3D9" />
+					<Add option="-DSCENE_EDITOR" />
+					<Add option="-DRTS_DRAW_HELPER" />
+					<Add directory="C:/workspace/src/src/scene/../../../../sdk/include/dxsdk" />
+					<Add directory="C:/workspace/src/src/scene/../../head" />
+				</Compiler>
+			</Target>
+			<Target title="mt_perf_hud Win32">
+				<Option output="scene" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_LIB" />
+					<Add option="-DUSE_D3D8" />
+					<Add directory="C:/workspace/src/src/scene/../../../../sdk/include/dxsdk" />
+					<Add directory="C:/workspace/src/src/scene/../../head" />
+				</Compiler>
+			</Target>
+			<Target title="scene_eidtor_d Win32">
+				<Option output="scene" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_LIB" />
+					<Add option="-DUSE_D3D8" />
+					<Add directory="C:/workspace/src/src/scene/../../head" />
+				</Compiler>
+			</Target>
+			<Target title="mtd Win32">
+				<Option output="scene" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_LIB" />
+					<Add option="-DUSE_D3D9" />
+					<Add option="-DENABLE_OPERATOR_NEW" />
+					<Add directory="C:/workspace/src/src/scene/../../../../sdk/include/dxsdk" />
+					<Add directory="C:/workspace/src/src/scene/../../head" />
+				</Compiler>
+			</Target>
+			<Target title="md Win32">
+				<Option output="scene" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_LIB" />
+					<Add option="-DSCENE_EDITOR" />
+					<Add option="-DRTS_DRAW_HELPER" />
+					<Add directory="C:/workspace/src/src/scene/../../sdk/include/dxsdk" />
+					<Add directory="C:/workspace/src/src/scene/../../head" />
+					<Add directory="$(DXSDK_DIR)/Include" />
+					<Add directory="C:/Program Files (x86)/Windows Kits/8.1/Include/um" />
+					<Add directory="C:/Program Files (x86)/Windows Kits/8.1/Include/shared" />
+				</Compiler>
+			</Target>
+			<Target title="editord Win32">
+				<Option output="scene" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_LIB" />
+					<Add option="-DUSE_D3D9" />
+					<Add option="-DSCENE_EDITOR" />
+					<Add directory="C:/workspace/src/src/scene/../../head" />
+				</Compiler>
+			</Target>
+			<Target title="md_ps Win32">
+				<Option output="scene" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_LIB" />
+					<Add option="-DSCENE_EDITOR" />
+					<Add option="-D_TICK_PROCESS_" />
+					<Add directory="C:/workspace/src/src/scene/../../../../sdk/include/dxsdk" />
+					<Add directory="C:/workspace/src/src/scene/../../head" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="../../head/scene/rt_scene.h" />
+		<Unit filename="../../head/scene/rts_SceneManager.h" />
+		<Unit filename="../../head/scene/rts_audio_3d.h" />
+		<Unit filename="../../head/scene/rts_d_light.h" />
+		<Unit filename="../../head/scene/rts_footprint.h" />
+		<Unit filename="../../head/scene/rts_grass_render.cpp" />
+		<Unit filename="../../head/scene/rts_grass_render.h" />
+		<Unit filename="../../head/scene/rts_innerve.h" />
+		<Unit filename="../../head/scene/rts_light.h" />
+		<Unit filename="../../head/scene/rts_model.h" />
+		<Unit filename="../../head/scene/rts_obj_render_agent.h" />
+		<Unit filename="../../head/scene/rts_object.h" />
+		<Unit filename="../../head/scene/rts_object_manger.h" />
+		<Unit filename="../../head/scene/rts_object_render.cpp" />
+		<Unit filename="../../head/scene/rts_object_render.h" />
+		<Unit filename="../../head/scene/rts_path_find.cpp" />
+		<Unit filename="../../head/scene/rts_path_find.h" />
+		<Unit filename="../../head/scene/rts_path_point.cpp" />
+		<Unit filename="../../head/scene/rts_path_point.h" />
+		<Unit filename="../../head/scene/rts_scene.h" />
+		<Unit filename="../../head/scene/rts_scene_area.cpp" />
+		<Unit filename="../../head/scene/rts_scene_area.h" />
+		<Unit filename="../../head/scene/rts_scene_block.h" />
+		<Unit filename="../../head/scene/rts_scene_block_manager.cpp" />
+		<Unit filename="../../head/scene/rts_scene_block_manager.h" />
+		<Unit filename="../../head/scene/rts_scene_doc.cpp" />
+		<Unit filename="../../head/scene/rts_scene_doc.h" />
+		<Unit filename="../../head/scene/rts_scene_render.cpp" />
+		<Unit filename="../../head/scene/rts_scene_render.h" />
+		<Unit filename="../../head/scene/rts_scene_terrain.cpp" />
+		<Unit filename="../../head/scene/rts_scene_terrain.h" />
+		<Unit filename="../../head/scene/rts_scene_type.h" />
+		<Unit filename="../../head/scene/rts_scene_util.h" />
+		<Unit filename="../../head/scene/rts_sv_scene.h" />
+		<Unit filename="rt_scene.cpp" />
+		<Unit filename="rts_SceneManager.cpp" />
+		<Unit filename="rts_audio_3d.cpp" />
+		<Unit filename="rts_d_light.cpp" />
+		<Unit filename="rts_footprint.cpp" />
+		<Unit filename="rts_innerve.cpp" />
+		<Unit filename="rts_light.cpp" />
+		<Unit filename="rts_model.cpp" />
+		<Unit filename="rts_obj_render_agent.cpp" />
+		<Unit filename="rts_object.cpp" />
+		<Unit filename="rts_object_manger.cpp" />
+		<Unit filename="rts_scene.cpp" />
+		<Unit filename="rts_scene_block.cpp" />
+		<Unit filename="rts_scene_loader.cpp" />
+		<Unit filename="rts_scene_xml_loader.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

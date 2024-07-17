@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="sdk">
+      <UniqueIdentifier>{c32e63c4-04b5-496a-bb93-d16c7c398a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{8995c661-97a4-4c34-8af8-56a57c9372df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\hashing">
+      <UniqueIdentifier>{11913dd1-8dee-4be0-a60f-cf64eeb9b7a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\zlib">
+      <UniqueIdentifier>{ae4db60e-169e-4a9f-849f-c85b639cdee9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="rtc2_archive_ansi.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="rtc2_core_inter.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="rtc2_filemgr_generic.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="rtc2_ini_i.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="rtc2_memory_instance.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="rtc2_script_comm.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="rtc2_xml_i.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="zconf.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="zstream.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="hashing\rt_md5.h">
+      <Filter>src\hashing</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\crc32.h">
+      <Filter>src\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\deflate.h">
+      <Filter>src\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\inffast.h">
+      <Filter>src\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\inffixed.h">
+      <Filter>src\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\inflate.h">
+      <Filter>src\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\inftrees.h">
+      <Filter>src\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\trees.h">
+      <Filter>src\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\zconf.in.h">
+      <Filter>src\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="zlib\zutil.h">
+      <Filter>src\zlib</Filter>
+    </ClInclude>
+    <ClInclude Include="rt2_resource_alloc.h" />
+    <ClInclude Include="..\..\engine\head\core\rtc2_text_table.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_text_util.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_text_xml.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_thread.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_thread_event.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_time.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_util.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\RtPool.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\zconf.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\zlib.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\zstream.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rt2_core.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rt2_farray.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_build_option.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_database.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_debug.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_encrypt.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_engine_sys.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_file.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_lock.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_log.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_math.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_memory.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_object.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_platform.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_platform_unixx.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_platform_win32.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_process.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_safestr.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_smartptr.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_string.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_system_info.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_text.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_text_ini.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="rtc2_core.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_debug.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_encrypt.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_file.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_ini.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_ini_parser.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_ini_scanner.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_log.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_math.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_memory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_object.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_platform.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_platform_unix.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_platform_win32.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_process.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_safestr.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_script_comm.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_script_table.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_string.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_system_info_posix.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_system_info_win32.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_text_util.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_thread.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_thread_posix.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_thread_win32.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_time.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_util.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_xml.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_xml_parser.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="rtc2_xml_scanner.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="hashing\rt_crc16.cpp">
+      <Filter>src\hashing</Filter>
+    </ClCompile>
+    <ClCompile Include="hashing\rt_crc32.cpp">
+      <Filter>src\hashing</Filter>
+    </ClCompile>
+    <ClCompile Include="hashing\rt_crc8.cpp">
+      <Filter>src\hashing</Filter>
+    </ClCompile>
+    <ClCompile Include="hashing\rt_md5.cpp">
+      <Filter>src\hashing</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\adler32.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\compress.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\crc32.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\deflate.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\gzio.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\infback.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\inffast.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\inflate.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\inftrees.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\trees.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\uncompr.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+    <ClCompile Include="zlib\zutil.c">
+      <Filter>src\zlib</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\engine\head\core\rtc2_thread.inl">
+      <Filter>sdk</Filter>
+    </None>
+  </ItemGroup>
+</Project>

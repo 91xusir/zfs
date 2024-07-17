@@ -1,0 +1,292 @@
+// SyntaxEdit resource file
+//
+// (c)1998-2018 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "SyntaxEdit/Resource.h"
+#include "SyntaxEdit/res/Resource-Neutral.rc"
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_HRV)
+#ifdef _WIN32
+LANGUAGE LANG_CROATIAN, SUBLANG_DEFAULT
+#pragma code_page(1250)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+XTP_IDD_EDIT_PAGEEDITOR DIALOGEX DISCARDABLE  0, 0, 260, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Urednik"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Prozor Postavke",IDC_STATIC,7,7,246,76
+    CONTROL         "Okomiti klizaè",XTP_IDC_EDIT_CHK_VERT_SCROLLBAR,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,21,105,10
+    CONTROL         "Horizontalni pomicanje",XTP_IDC_EDIT_CHK_HORZ_SCROLLBAR,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,32,105,10
+    CONTROL         "Linija broj",XTP_IDC_EDIT_CHK_LINE_NUMBERS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,15,43,105,10
+    CONTROL         "Izbor marža",XTP_IDC_EDIT_CHK_SELMARGIN,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,15,54,105,10
+    CONTROL         "Sklopivi èvorova",XTP_IDC_EDIT_CHK_COLLAPSIBLE_NODES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,15,65,105,10
+    CONTROL         "Automatsko uvlaèenje",XTP_IDC_EDIT_CHK_AUTO_INDENT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,130,20,115,10
+    CONTROL         "Virtualni prostor",XTP_IDC_EDIT_CHK_VIRTUAL_SPACE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,130,35,115,10
+    CONTROL         "Sintaksa colorization",XTP_IDC_EDIT_CHK_SYNTAX_COLOR,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,130,50,115,10
+    GROUPBOX        "Kartica",IDC_STATIC,7,88,142,48
+    LTEXT           "Velièina Tab",IDC_STATIC,15,98,40,8
+    EDITTEXT        XTP_IDC_EDIT_TABS_SIZE,65,95,46,14,ES_AUTOHSCROLL
+    CONTROL         "Umetanje razmaka",XTP_IDC_EDIT_RAD_TABS_SPACES,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,15,110,88,10
+    CONTROL         "Držati tabulatori",XTP_IDC_EDIT_RAD_TABS_TAB,"Button",
+                    BS_AUTORADIOBUTTON,15,121,91,10
+    GROUPBOX        "Prepiši znak za umetanje",XTP_IDC_EDIT_GBOX_CARET,155,88,98,48,
+                    WS_GROUP
+    CONTROL         "Tanka",XTP_IDC_EDIT_RAD_CARET_THIN,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,161,102,31,10
+    CONTROL         "Debeli",XTP_IDC_EDIT_RAD_CARET_THICK,"Button",
+                    BS_AUTORADIOBUTTON,161,113,36,10
+    GROUPBOX        "Spremi Moguænosti",IDC_STATIC,7,140,246,32
+    CONTROL         "Automatsko punjenje izvana modificirane datoteke",
+                    XTP_IDC_EDIT_CHK_AUTO_RELOAD,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,15,154,232,10
+END
+XTP_IDD_EDIT_PAGEFONT DIALOGEX 0, 0, 260, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Urednik Font"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Fonta:",XTP_IDC_EDIT_TXT_FONTNAMES,7,7,40,9
+    COMBOBOX        XTP_IDC_EDIT_COMB_NAMES,7,18,119,55,CBS_SIMPLE | 
+                    CBS_AUTOHSCROLL | CBS_SORT | CBS_DISABLENOSCROLL | 
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Stil fonta:",XTP_IDC_EDIT_TXT_FONTSTYLES,134,7,45,9
+    COMBOBOX        XTP_IDC_EDIT_COMB_STYLES,134,18,75,55,CBS_SIMPLE | 
+                    CBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Velièina",XTP_IDC_EDIT_TXT_FONTSIZES,217,7,30,9
+    COMBOBOX        XTP_IDC_EDIT_COMB_SIZES,217,18,36,55,CBS_SIMPLE | 
+                    CBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Normalno Tekst",IDC_STATIC,7,68,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_TEXT,7,78,103,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_TEXT,113,78,13,12
+    LTEXT           "Normalan pozadinu:",IDC_STATIC,7,95,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_BACK,7,105,103,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_BACK,113,105,13,12
+    LTEXT           "Odabrani tekst",IDC_STATIC,7,122,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_TEXTSEL,7,132,103,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_TEXTSEL,113,132,13,12
+    LTEXT           "Odabrani Pozadina",IDC_STATIC,7,149,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_BACKSEL,7,159,103,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_BACKSEL,113,159,13,12
+    LTEXT           "Skripta:",XTP_IDC_EDIT_TXT_FONTSCRIPT,135,69,100,9
+    COMBOBOX        XTP_IDC_EDIT_COMB_SCRIPT,134,78,119,115,CBS_DROPDOWNLIST | 
+                    CBS_AUTOHSCROLL | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Uzorak Normalno / Odabrani",XTP_IDC_EDIT_GRP_SAMPLE,135,128,
+                    118,44,WS_GROUP
+    CTEXT           "AaBbCc",XTP_IDC_EDIT_TXT_SAMPLE,143,140,49,26,
+                    SS_CENTERIMAGE,WS_EX_CLIENTEDGE
+    CTEXT           "XxYyZz",XTP_IDC_EDIT_TXT_SAMPLESEL,196,140,49,26,
+                    SS_CENTERIMAGE,WS_EX_CLIENTEDGE
+END
+
+XTP_IDD_EDIT_PAGECOLOR DIALOGEX 0, 0, 260, 180
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Sintaksa boji"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Vrsta datoteke",XTP_IDC_EDIT_TXT_SCHEMANAMES,7,7,123,9
+    LISTBOX         XTP_IDC_EDIT_LBOX_SCHEMANAMES,7,17,123,64,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Atributi:",XTP_IDC_EDIT_TXT_SCHEMAPROP,7,85,123,9
+    LISTBOX         XTP_IDC_EDIT_LBOX_SCHEMAPROP,7,95,123,77,LBS_SORT | 
+                    LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Normalno Tekst",IDC_STATIC,135,7,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_TEXT,135,17,100,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_TEXT,238,17,13,12
+    LTEXT           "Normalan pozadinu:",IDC_STATIC,135,33,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_BACK,135,43,100,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_BACK,238,43,13,12
+    LTEXT           "Odabrani tekst",IDC_STATIC,135,59,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_TEXTSEL,135,69,100,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_TEXTSEL,238,69,13,12
+    LTEXT           "Odabrani Pozadina",IDC_STATIC,135,85,100,8
+    COMBOBOX        XTP_IDC_EDIT_COMB_BACKSEL,135,95,100,100,CBS_DROPDOWNLIST | 
+                    CBS_OWNERDRAWVARIABLE | CBS_HASSTRINGS | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "...",XTP_IDC_EDIT_BTN_CUSTOM_BACKSEL,238,95,13,12
+    CONTROL         "Podebljano",XTP_IDC_EDIT_CHK_BOLD,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,135,114,30,10
+    CONTROL         "Kurziv",XTP_IDC_EDIT_CHK_ITALIC,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,170,114,31,10
+    CONTROL         "Podcrtano",XTP_IDC_EDIT_CHK_UNDERLINE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,206,114,46,10
+    GROUPBOX        "Uzorak Normalno / Odabrani",XTP_IDC_EDIT_GRP_SAMPLE,135,128,
+                    118,44,WS_GROUP
+    CTEXT           "AaBbCc",XTP_IDC_EDIT_TXT_SAMPLE,143,140,49,26,
+                    SS_CENTERIMAGE,WS_EX_CLIENTEDGE
+    CTEXT           "XxYyZz",XTP_IDC_EDIT_TXT_SAMPLESEL,196,140,49,26,
+                    SS_CENTERIMAGE,WS_EX_CLIENTEDGE
+END
+
+XTP_IDD_EDIT_SEARCH_FIND DIALOGEX DISCARDABLE  0, 0, 301, 82
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Pronaæi"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Pronaðite ono što",IDC_STATIC,7,9,43,8,NOT WS_GROUP
+    COMBOBOX        XTP_IDC_EDIT_COMBO_FIND,51,6,184,153,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Opcije",IDC_STATIC,7,30,113,45 
+    CONTROL         "Klaðenje samo cijele rijeèi",XTP_IDC_EDIT_CHK_MATCH_WHOLE_WORD,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,43,100,10
+    CONTROL         "Usporedi sluèaj",XTP_IDC_EDIT_CHK_MATCH_CASE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,58,100,10
+    GROUPBOX        "Smjer",IDC_STATIC,126,30,110,45
+    CONTROL         "Pretraživanje prema gore",XTP_IDC_EDIT_RADIO_UP,"Button",
+                    BS_AUTORADIOBUTTON,134,43,95,10
+    CONTROL         "Pretraživanje prema dolje",XTP_IDC_EDIT_RADIO_DOWN,"Button",
+                    BS_AUTORADIOBUTTON,134,58,95,10
+    PUSHBUTTON      "Traži sljedeæe",XTP_IDC_EDIT_BTN_FIND_NEXT,244,7,50,14,
+                    WS_DISABLED | WS_TABSTOP
+    PUSHBUTTON      "Zatvoriti",IDCANCEL,244,26,50,14, WS_TABSTOP
+END
+
+XTP_IDD_EDIT_SEARCH_REPLACE DIALOGEX DISCARDABLE  0, 0, 301, 86
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Naæi zamjena"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Naði tekst",IDC_STATIC,7,9,50,8,NOT WS_GROUP
+    COMBOBOX        XTP_IDC_EDIT_COMBO_FIND,51,6,185,154,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Zamijeniti s",IDC_STATIC,7,25,50,8,NOT WS_GROUP
+    COMBOBOX        XTP_IDC_EDIT_COMBO_REPLACE,51,23,185,135,CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Opcije",IDC_STATIC,7,38,113,41
+    CONTROL         "Klaðenje samo cijele rijeèi",XTP_IDC_EDIT_CHK_MATCH_WHOLE_WORD,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,51,100,10
+    CONTROL         "Usporedi sluèaj",XTP_IDC_EDIT_CHK_MATCH_CASE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,64,100,10
+    GROUPBOX        "Smjer",IDC_STATIC,126,38,110,41
+    CONTROL         "Pretraživanje prema gore",XTP_IDC_EDIT_RADIO_UP,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP,134,51,95,10
+    CONTROL         "Pretraživanje prema dolje",XTP_IDC_EDIT_RADIO_DOWN,"Button",
+                    BS_AUTORADIOBUTTON,134,64,95,10
+    PUSHBUTTON      "Traži sljedeæe",XTP_IDC_EDIT_BTN_FIND_NEXT,244,7,50,14,
+                    WS_DISABLED | WS_TABSTOP
+    PUSHBUTTON      "Zamijeniti",XTP_IDC_EDIT_BTN_REPLACE,244,23,50,14,
+                    WS_DISABLED | WS_TABSTOP
+    PUSHBUTTON      "Zamijeni sve",XTP_IDC_EDIT_BTN_REPLACE_ALL,244,39,50,14,
+                    WS_DISABLED | WS_TABSTOP
+    PUSHBUTTON      "Zatvoriti",IDCANCEL,244,65,50,14, WS_TABSTOP
+END
+
+XTP_IDD_EDIT_GOTOLINE DIALOGEX DISCARDABLE  0, 0, 165, 55
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Idi na Line"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Broj:",XTP_IDC_EDIT_TXT_LINENO,5,5,155,8
+    EDITTEXT        XTP_IDC_EDIT_LINENO,5,17,155,14,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    PUSHBUTTON      "odi u",XTP_IDC_EDIT_BTN_GOTO,56,36,50,14
+    PUSHBUTTON      "Otkazati",IDCANCEL,110,36,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_EDIT_UNDEFINED     "Undefined naredba"
+    XTP_IDS_EDIT_MULTIPLE      "Više operacija"
+    XTP_IDS_EDIT_DELETE        "Izbrisati"
+    XTP_IDS_EDIT_INSERT        "Umetnuti"
+    XTP_IDS_EDIT_TYPING        "Tipkanje"
+    XTP_IDS_EDIT_PASTE         "Zalijepiti"
+    XTP_IDS_EDIT_MOVE          "Potez"
+    XTP_IDS_EDIT_COPY          "Kopiraj"
+    XTP_IDS_EDIT_INDENTATION   "Uvlaèenje"
+    XTP_IDS_EDIT_INDENT_DECREASE "Smanji uvlaku"
+    XTP_IDS_EDIT_FORMAT        "Oblik"
+    XTP_IDS_EDIT_TABIFY        "napraviti karticu"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_EDIT_UNTABIFY      "uklanjanje kartica"
+    XTP_IDS_EDIT_REPLACE_ALL   "Zamijenite sve"
+    XTP_IDS_EDIT_CASE          "Promjena odabira sluèaj"
+    XTP_IDS_EDIT_DELETE_TEXT_BLOCK "Brisanje blok teksta"
+    XTP_IDS_EDIT_MOVE_HERE     "Premjesti ovdje"
+    XTP_IDS_EDIT_COPY_HERE     "Kopiraj ovdje"
+    XTP_IDS_EDIT_CANCEL        "Odustani"
+    XTP_IDS_EDIT_MSG_WARN_RELOAD 
+                            "Datoteka '%s' je izmijenjen vanjski izvor! \nŽelite li ponovno uèitati?"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_EDIT_CUSTOM        "Obièaj"
+    XTP_IDS_EDIT_REGULAR       "Regular"
+    XTP_IDS_EDIT_BOLD          "Bold"
+    XTP_IDS_EDIT_ITALIC        "Kurziv"
+    XTP_IDS_EDIT_BOLDITALIC    "Podebljano Kurziv"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDD_EDIT_OPTIONS       "Ureðivanje opcije"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_EDIT_MSG_FREPLACED "%d utakmicu pronaðen i zamijenjen."
+    XTP_IDS_EDIT_MSG_FSEARCH   "Završeno pretraživanje!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_EDIT_LINENO        "Broj retka (1 - %d)"
+    XTP_IDS_EDIT_OPENSCHEMACMD "Datoteke otvorene sheme"
+    XTP_IDS_EDIT_OPENSCHEMAMSG "Do you wish to close the ""Options Dialog"" and open the schema file ""%s%s"" in the editor window?"
+END
+
+#endif // !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_HRV)

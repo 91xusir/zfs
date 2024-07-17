@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="GameRobot_d|Win32">
+      <Configuration>GameRobot_d</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="mdd_ps|Win32">
+      <Configuration>mdd_ps</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="mdd|Win32">
+      <Configuration>mdd</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="md_perf_hud|Win32">
+      <Configuration>md_perf_hud</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="md_ps|Win32">
+      <Configuration>md_ps</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="md|Win32">
+      <Configuration>md</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="mt_perf_hud|Win32">
+      <Configuration>mt_perf_hud</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="scene_eidtor_d|Win32">
+      <Configuration>scene_eidtor_d</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E902DB08-7786-411E-B876-E94C51B048B1}</ProjectGuid>
+    <RootNamespace>tool_scene</RootNamespace>
+    <Keyword>MFCProj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GameRobot_d|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='scene_eidtor_d|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>Dynamic</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='GameRobot_d|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='md|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='scene_eidtor_d|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='scene_eidtor_d|Win32'">
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md|Win32'">
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'">
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'">
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'">
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'">
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='GameRobot_d|Win32'">
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(DXSDK_DIR)\Include;$(ProjectDir)..\sdk\include;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\dxsdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;USE_D3D9;SCENE_EDITOR;RTS_DRAW_HELPER;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>d3dx9.lib;d3d9.lib;audio_mdd.lib;character_mdd.lib;core_mdd.lib;filepack_mdd.lib;graph_mdd.lib;scene_mdd.lib;net_mdd.lib;libjpeg_MDD.lib;XTP8700LibStaticMdd.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_mdd.lib;mikmod_mdd.lib;native_midi_mdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)_d.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci.lib;libc.lib LIBCMT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\dxsdk</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_D3D9;SCENE_EDITOR;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>d3dx9.lib;d3d9.lib;audio_md.lib;character_md.lib;scene_md.lib;filepack_md.lib;graph_md.lib;net_md.lib;ToolkitProS.lib;libjpeg_MD.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_md.lib;mikmod_md.lib;native_midi_md.lib;Version.lib;Imm32.lib;Setupapi.lib;core_md.lib;sdl_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci.lib;libc.lib;LIBCMT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ForceFileOutput>
+      </ForceFileOutput>
+    </Link>
+    <PostBuildEvent>
+      <Command />
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='scene_eidtor_d|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)../sdk/include;$(ProjectDir)/../engine/head;$(ProjectDir)../sdk/include/dxsdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_D3D9;SCENE_EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>d3dx9.lib;d3d9.lib;audio_mdd.lib;character_mdd.lib;core_mdd.lib;filepack_mdd.lib;graph_mdd.lib;scene_mdd.lib;net_mdd.lib;libjpeg_MDD.lib;XTP8700LibStaticMdd.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_mdd.lib;mikmod_mdd.lib;native_midi_mdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci.lib;libc.lib LIBCMT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='md|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)/../../../sdk/include/dxsdk;$(ProjectDir)/../../../sdk/include;$(ProjectDir)/../../engine/head;$(ProjectDir)/../engine/head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_D3D9;SCENE_EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>d3dx9.lib;d3d9.lib;audio_md.lib;character_md.lib;core_md.lib;scene_md.lib;filepack_md.lib;graph_md.lib;net_md.lib;libjpeg_MD.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_md.lib;mikmod_md.lib;native_midi_md.lib;ToolkitProS.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci.lib;libc.lib LIBCMT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <Profile>true</Profile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)/../../../sdk/include/dxsdk;$(ProjectDir)/../../../sdk/include;$(ProjectDir)/../../engine/head;$(ProjectDir)/../engine/head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;USE_D3D9;SCENE_EDITOR;RTS_DRAW_HELPER;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>d3dx9.lib;d3d9.lib;audio_mdd.lib;character_mdd.lib;core_mdd.lib;filepack_mdd.lib;graph_mdd.lib;scene_mdd.lib;net_mdd.lib;libjpeg_MDD.lib;XTP8700LibStaticMdd.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_mdd.lib;mikmod_mdd.lib;native_midi_mdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName)_d.exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci.lib;libc.lib LIBCMT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)/../../../sdk/include/dxsdk;$(ProjectDir)/../../../sdk/include;$(ProjectDir)/../../engine/head;$(ProjectDir)/../engine/head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;USE_D3D9;SCENE_EDITOR;RTS_DRAW_HELPER;_TICK_PROCESS_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>d3dx9.lib;d3d9.lib;audio_mdd_ps.lib;character_mdd_ps.lib;core_mdd_ps.lib;filepack_mdd_ps.lib;graph_mdd_ps.lib;scene_mdd_ps.lib;net_mdd_ps.lib;libjpeg_MDD.lib;XTP8700LibStaticMdd.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_mdd.lib;mikmod_mdd.lib;native_midi_mdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci.lib;libc.lib LIBCMT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)/../../../sdk/include/dxsdk;$(ProjectDir)/../../../sdk/include;$(ProjectDir)/../../engine/head;$(ProjectDir)/../engine/head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_D3D9;SCENE_EDITOR;_TICK_PROCESS_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat />
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>d3dx9.lib;d3d9.lib;audio_md_ps.lib;character_md_ps.lib;core_md_ps.lib;scene_md_ps.lib;filepack_md_ps.lib;graph_md_ps.lib;net_md_ps.lib;libjpeg_MD.lib;XTP8700LibStaticMd.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_md.lib;mikmod_md.lib;native_midi_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci.lib;libc.lib LIBCMT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)/../../../sdk/include/dxsdk;$(ProjectDir)/../../../sdk/include;$(ProjectDir)/../../engine/head;$(ProjectDir)/../engine/head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_D3D9;SCENE_EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>d3dx9.lib;d3d9.lib;audio_md.lib;character_md.lib;core_md.lib;scene_md.lib;filepack_md.lib;graph_md.lib;net_md.lib;libjpeg_MD.lib;XTP8700LibStaticMd.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_md.lib;mikmod_md.lib;native_midi_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci.lib;libc.lib LIBCMT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'">
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>false</MkTypLibCompatible>
+    </Midl>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)/../../../sdk/include/dxsdk;$(ProjectDir)/../../../sdk/include;$(ProjectDir)/../../engine/head;$(ProjectDir)/../engine/head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;USE_D3D9;SCENE_EDITOR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <PrecompiledHeader />
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0804</Culture>
+      <AdditionalIncludeDirectories>$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Link>
+      <AdditionalDependencies>d3dx9.lib;d3d9.lib;audio_md.lib;character_md.lib;core_md.lib;scene_md.lib;filepack_md.lib;graph_md.lib;net_md.lib;libjpeg_MD.lib;XTP8700LibStaticMd.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_md.lib;mikmod_md.lib;native_midi_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libci.lib;libc.lib LIBCMT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='GameRobot_d|Win32'">
+    <Link>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Image Include="res\img_brush_obj.bmp" />
+    <Image Include="res\PaneIcons.bmp" />
+    <Image Include="res\Toolbar.bmp" />
+    <Image Include="res\toolbar1.bmp" />
+    <Image Include="res\ToolbarBrushMap.bmp" />
+    <Image Include="res\toolbar_arealist.bmp" />
+    <Image Include="res\toolbar_brushs.bmp" />
+    <Image Include="res\toolbar_map.bmp" />
+    <Image Include="res\toolbar_pathpointlist.bmp" />
+    <Image Include="res\toolbar_terrain_flag.bmp" />
+    <Image Include="res\tool_scene.ico" />
+    <Image Include="res\tool_sceneDoc.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="area_list_view.cpp" />
+    <ClCompile Include="BrushColorView.cpp" />
+    <ClCompile Include="BrushGrassForm.cpp" />
+    <ClCompile Include="BrushMapView.cpp" />
+    <ClCompile Include="BrushVertexView.cpp" />
+    <ClCompile Include="brush_tool.cpp" />
+    <ClCompile Include="brush_tool_grass.cpp" />
+    <ClCompile Include="brush_tool_multiobject.cpp" />
+    <ClCompile Include="brush_tool_object.cpp" />
+    <ClCompile Include="brush_tool_single_vertex.cpp" />
+    <ClCompile Include="brush_tool_tile.cpp" />
+    <ClCompile Include="brush_tool_vertex.cpp" />
+    <ClCompile Include="brush_tool_water.cpp" />
+    <ClCompile Include="DlgBlockInfo.cpp" />
+    <ClCompile Include="DlgHeightMap.cpp" />
+    <ClCompile Include="DlgNewBlock.cpp" />
+    <ClCompile Include="DlgNewScene.cpp" />
+    <ClCompile Include="DlgNpc.cpp" />
+    <ClCompile Include="EditorFrame.cpp" />
+    <ClCompile Include="GrassTextWnd.cpp" />
+    <ClCompile Include="GridItems.cpp" />
+    <ClCompile Include="HelpDialogUse.cpp" />
+    <ClCompile Include="iob_func.cpp" />
+    <ClCompile Include="ListCtrlEx.cpp" />
+    <ClCompile Include="MainFrame.cpp" />
+    <ClCompile Include="pathpoint_list_view.cpp" />
+    <ClCompile Include="rts_scene_tool.cpp" />
+    <ClCompile Include="SceneEditorDoc.cpp" />
+    <ClCompile Include="SceneEditorView.cpp" />
+    <ClCompile Include="StdAfx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='md|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='scene_eidtor_d|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="tool_scene.cpp" />
+    <ClCompile Include="view_MapListCtrl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="area_list_view.h" />
+    <ClInclude Include="BrushColorView.h" />
+    <ClInclude Include="BrushGrassForm.h" />
+    <ClInclude Include="BrushMapView.h" />
+    <ClInclude Include="BrushVertexView.h" />
+    <ClInclude Include="brush_tool.h" />
+    <ClInclude Include="brush_tool_grass.h" />
+    <ClInclude Include="brush_tool_multobject.h" />
+    <ClInclude Include="brush_tool_object.h" />
+    <ClInclude Include="brush_tool_single_vertex.h" />
+    <ClInclude Include="brush_tool_tile.h" />
+    <ClInclude Include="brush_tool_vertex.h" />
+    <ClInclude Include="brush_tool_water.h" />
+    <ClInclude Include="DlgBlockInfo.h" />
+    <ClInclude Include="DlgHeightMap.h" />
+    <ClInclude Include="DlgNewBlock.h" />
+    <ClInclude Include="DlgNewScene.h" />
+    <ClInclude Include="DlgNpc.h" />
+    <ClInclude Include="EditorFrame.h" />
+    <ClInclude Include="GrassTextWnd.h" />
+    <ClInclude Include="GridItems.h" />
+    <ClInclude Include="HelpDialogUse.h" />
+    <ClInclude Include="ListCtrlEx.h" />
+    <ClInclude Include="MainFrame.h" />
+    <ClInclude Include="NoFlickerWnd.h" />
+    <ClInclude Include="pathpoint_list_view.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="rts_scene_tool.h" />
+    <ClInclude Include="SceneEditorDoc.h" />
+    <ClInclude Include="SceneEditorView.h" />
+    <ClInclude Include="StdAfx.h" />
+    <ClInclude Include="tool_scene.h" />
+    <ClInclude Include="view_MapListCtrl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DlgNewScene.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="HelpDialogUse.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="res\tool_scene.rc2" />
+    <None Include="tool_scene.reg" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\tool_scene.manifest">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='md|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='scene_eidtor_d|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="tool_scene.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="tool_scene.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

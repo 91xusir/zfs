@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{a9016e58-ebb6-4d4a-878e-8729db0363bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sdk">
+      <UniqueIdentifier>{f45d6fde-7e8f-4bd9-b0cb-d9f9cfaed375}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\engine\head\character\cha_mtl.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\character\cha_effect.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\character\cha_basic.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\character\cha_anim.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\character\actor.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\character\rtc_mesh.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\character\rtc_actor_manager.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\character\rtc_actor_command.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\engine\head\character\cha_mtl.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\head\character\cha_effect.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\head\character\cha_basic.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\head\character\cha_anim.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\head\character\rtc_mesh.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\engine\head\character\rtc_actor_manager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

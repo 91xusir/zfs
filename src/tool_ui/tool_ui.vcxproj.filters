@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="assistant">
+      <UniqueIdentifier>{e23e44f0-c07a-408c-94fc-287ea8543528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="device_system">
+      <UniqueIdentifier>{a59121b1-2ebb-4412-b860-71f3d33d93b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{20f5a5c4-aed8-4a0d-90ac-1d47b6d8eceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="log">
+      <UniqueIdentifier>{2f482549-5ae9-415f-a288-7be924521fe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="undo/redo">
+      <UniqueIdentifier>{c113fb96-207d-4ed5-b85e-08b406c84267}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{21e36345-e924-4ffb-958f-3e3de6a678e8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main\main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\main_frame.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\studio_process.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\studio_xmlwriter.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\uiform_attributes.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\uiform_mainmenu.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\uiform_toolbar.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\uiform_widget_hint.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\uiform_widgettree.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\uilayer_studio.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="main\uimain.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="device_system\driver_system.cpp">
+      <Filter>device_system</Filter>
+    </ClCompile>
+    <ClCompile Include="device_system\gdi_plus_font_imp.cpp">
+      <Filter>device_system</Filter>
+    </ClCompile>
+    <ClCompile Include="device_system\gdi_plus_image_factory_imp.cpp">
+      <Filter>device_system</Filter>
+    </ClCompile>
+    <ClCompile Include="device_system\gdi_plus_render_imp.cpp">
+      <Filter>device_system</Filter>
+    </ClCompile>
+    <ClCompile Include="device_system\render_container_imp.cpp">
+      <Filter>device_system</Filter>
+    </ClCompile>
+    <ClCompile Include="LOG\cmylog.cpp">
+      <Filter>log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_animation.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_base.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_button.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_chatbox.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_chatinputbox.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_clipboard.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_combobox.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_device2d.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_document.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_event.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_font.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_form.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_hint.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_htmlelement.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_htmlloader.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_htmlreflow.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_htmltags.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_htmlview.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_hud.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_hyperlink.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_iconlist.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_image.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_label.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_layer.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_listbox.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_mailbox.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_mediaframe.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_panel.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_popup_menu.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_progressbar.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_richtext.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_scrollable.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_scrollbar.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_sound.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_tab.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_template.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_textbox.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_theme.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_tree.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_widget.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_workspace.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\ui\rtw_xml.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main\main_frame.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\studio.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\studio_process.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\studio_xmlwriter.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\uiform_attributes.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\uiform_mainmenu.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\uiform_toolbar.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\uiform_widget_hint.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\uiform_widgettree.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\uilayer_studio.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="main\uimain.h">
+      <Filter>main</Filter>
+    </ClInclude>
+    <ClInclude Include="assistant\gb_to_unicode_windows.h">
+      <Filter>assistant</Filter>
+    </ClInclude>
+    <ClInclude Include="assistant\linearity_buffer.h">
+      <Filter>assistant</Filter>
+    </ClInclude>
+    <ClInclude Include="assistant\ref_pointer.h">
+      <Filter>assistant</Filter>
+    </ClInclude>
+    <ClInclude Include="assistant\share_pointer.h">
+      <Filter>assistant</Filter>
+    </ClInclude>
+    <ClInclude Include="assistant\weak_pointer.h">
+      <Filter>assistant</Filter>
+    </ClInclude>
+    <ClInclude Include="device_system\driver_system.h">
+      <Filter>device_system</Filter>
+    </ClInclude>
+    <ClInclude Include="device_system\font_container_imp.h">
+      <Filter>device_system</Filter>
+    </ClInclude>
+    <ClInclude Include="device_system\font_manager_container_imp.h">
+      <Filter>device_system</Filter>
+    </ClInclude>
+    <ClInclude Include="device_system\gdi_plus_font_imp.h">
+      <Filter>device_system</Filter>
+    </ClInclude>
+    <ClInclude Include="device_system\gdi_plus_font_manager_imp.h">
+      <Filter>device_system</Filter>
+    </ClInclude>
+    <ClInclude Include="device_system\gdi_plus_image_factory_imp.h">
+      <Filter>device_system</Filter>
+    </ClInclude>
+    <ClInclude Include="device_system\gdi_plus_image_imp.h">
+      <Filter>device_system</Filter>
+    </ClInclude>
+    <ClInclude Include="device_system\gdi_plus_render_imp.h">
+      <Filter>device_system</Filter>
+    </ClInclude>
+    <ClInclude Include="device_system\image_container_imp.h">
+      <Filter>device_system</Filter>
+    </ClInclude>
+    <ClInclude Include="device_system\image_factory_container_imp.h">
+      <Filter>device_system</Filter>
+    </ClInclude>
+    <ClInclude Include="device_system\render_container_imp.h">
+      <Filter>device_system</Filter>
+    </ClInclude>
+    <ClInclude Include="res\Resource.h">
+      <Filter>res</Filter>
+    </ClInclude>
+    <ClInclude Include="LOG\cmylog.h">
+      <Filter>log</Filter>
+    </ClInclude>
+    <ClInclude Include="command\CURDoInterface.h">
+      <Filter>undo/redo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_animation.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_base.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_button.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_chatbox.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_chatinputbox.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_clipboard.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_combobox.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_config.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_delegate.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_device2d.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_document.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_event.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_font.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_form.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_hint.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_htmlelement.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_htmllayout.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_htmlloader.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_htmlparser.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_htmlreflow.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_htmltaglist.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_htmltags.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_htmlview.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_hud.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_hyperlink.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_iconlist.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_image.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_label.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_layer.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_listbox.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_mailbox.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_mediaframe.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_panel.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_popup_menu.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_progressbar.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_ptr.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_python.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_richtext.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_scrollable.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_scrollbar.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_sound.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_tab.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_template.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_textbox.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_theme.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_timer.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_tree.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_ui.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_widget.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_workspace.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\ui\rtw_xml.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\small.ico">
+      <Filter>res</Filter>
+    </Image>
+    <Image Include="res\UiStudio.ico">
+      <Filter>res</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res\UiStudio.rc">
+      <Filter>res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

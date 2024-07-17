@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "game_client", "game_client\game_client.vcproj", "{F37690E0-4B23-4B37-9B5B-88433CA017BE}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CAE5D0F2-4B2D-4A45-A2B6-DA7570C61987}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		DebugTest|Win32 = DebugTest|Win32
+		editor|Win32 = editor|Win32
+		editord|Win32 = editord|Win32
+		GameRelease|Win32 = GameRelease|Win32
+		md_perf_hud|Win32 = md_perf_hud|Win32
+		md_ps|Win32 = md_ps|Win32
+		md|Win32 = md|Win32
+		mdd_ps|Win32 = mdd_ps|Win32
+		mdd|Win32 = mdd|Win32
+		mt_perf_hud|Win32 = mt_perf_hud|Win32
+		mt|Win32 = mt|Win32
+		mtd|Win32 = mtd|Win32
+		Release|Win32 = Release|Win32
+		scene_eidtor_d|Win32 = scene_eidtor_d|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.Debug|Win32.Build.0 = Debug|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.DebugTest|Win32.ActiveCfg = DebugTest|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.DebugTest|Win32.Build.0 = DebugTest|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.editor|Win32.ActiveCfg = mt_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.editor|Win32.Build.0 = mt_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.editord|Win32.ActiveCfg = mt_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.editord|Win32.Build.0 = mt_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.GameRelease|Win32.ActiveCfg = GameRelease|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.GameRelease|Win32.Build.0 = GameRelease|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.md_perf_hud|Win32.ActiveCfg = md_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.md_perf_hud|Win32.Build.0 = md_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.md_ps|Win32.ActiveCfg = md_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.md_ps|Win32.Build.0 = md_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.md|Win32.ActiveCfg = md_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.md|Win32.Build.0 = md_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.mdd_ps|Win32.ActiveCfg = md_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.mdd_ps|Win32.Build.0 = md_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.mdd|Win32.ActiveCfg = md_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.mdd|Win32.Build.0 = md_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.mt_perf_hud|Win32.ActiveCfg = mt_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.mt_perf_hud|Win32.Build.0 = mt_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.mt|Win32.ActiveCfg = mt_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.mt|Win32.Build.0 = mt_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.mtd|Win32.ActiveCfg = mt_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.mtd|Win32.Build.0 = mt_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.Release|Win32.ActiveCfg = Release|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.Release|Win32.Build.0 = Release|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.scene_eidtor_d|Win32.ActiveCfg = mt_perf_hud|Win32
+		{F37690E0-4B23-4B37-9B5B-88433CA017BE}.scene_eidtor_d|Win32.Build.0 = mt_perf_hud|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal
