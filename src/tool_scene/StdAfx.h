@@ -44,7 +44,7 @@
 #define _XTP_STATICLINK
 #define _XTP_INCLUDE_DEPRECATED
 
-//#include <XTP/XTToolkitPro.h>
+#include <XTP/XTToolkitPro.h>
 #include "graph/rt_graph.h"
 #include <afxdhtml.h>
 #include "tool_scene.h"
