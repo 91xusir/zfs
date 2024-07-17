@@ -13,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (P.R.C.) resources
+// 中文(简体，中国) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
-#ifdef _WIN32
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 #pragma code_page(936)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -65,7 +63,9 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\tool_scene.ico"
+
 IDR_RTEngineSceneTYPE   ICON                    "res\\tool_sceneDoc.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -73,22 +73,32 @@ IDR_RTEngineSceneTYPE   ICON                    "res\\tool_sceneDoc.ico"
 //
 
 IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
 IDB_BITMAP_BRUSH_ICONS  BITMAP                  "res\\PaneIcons.bmp"
+
 IDB_BITMAP_BRUSH_OBJECT BITMAP                  "res\\img_brush_obj.bmp"
+
 IDR_TOOLBAR_BRUSH_MAP   BITMAP                  "res\\ToolbarBrushMap.bmp"
+
 IDR_TOOLBAR_BRUSHS      BITMAP                  "res\\toolbar_brushs.bmp"
+
 IDR_TOOLBAR_SHOW        BITMAP                  "res\\toolbar1.bmp"
+
 IDR_TOOLBAR_MAP         BITMAP                  "res\\toolbar_map.bmp"
+
 IDR_TOOLBAR_TERRAIN_FLAG BITMAP                  "res\\toolbar_terrain_flag.bmp"
+
 IDR_TOOLBAR_AREALIST    BITMAP                  "res\\toolbar_arealist.bmp"
+
 IDR_TOOLBAR_PATHPOINTLIST BITMAP                  "res\\toolbar_pathpointlist.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Toolbar
 //
 
-IDR_MAINFRAME TOOLBAR  16, 15
+IDR_MAINFRAME TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_FILE_NEW
     BUTTON      ID_NEW_BLOCK
@@ -116,7 +126,7 @@ BEGIN
     BUTTON      ID_SHOWNORMAL
 END
 
-IDR_TOOLBAR_BRUSH_MAP TOOLBAR  16, 15
+IDR_TOOLBAR_BRUSH_MAP TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_BRUSHMAP_OPTION
     BUTTON      ID_BRUSHMAP_2
@@ -124,7 +134,7 @@ BEGIN
     BUTTON      ID_BRUSHMAP_4
 END
 
-IDR_TOOLBAR_BRUSHS TOOLBAR  16, 15
+IDR_TOOLBAR_BRUSHS TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_VIEW_BRUSH_MAP
     BUTTON      ID_VIEW_BRUSH_OBJECT
@@ -137,7 +147,7 @@ BEGIN
     BUTTON      ID_VIEW_PATHPOINT_LIST
 END
 
-IDR_TOOLBAR_SHOW TOOLBAR  16, 15
+IDR_TOOLBAR_SHOW TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_BTN_SHOW_LINE
     BUTTON      ID_BTN_SHOW_NORMAL
@@ -149,18 +159,18 @@ BEGIN
     BUTTON      ID_BTN_SHOW_MINIMAP
 END
 
-IDR_TOOLBAR_MAP TOOLBAR  16, 15
+IDR_TOOLBAR_MAP TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_BTN_MAP_SLIDER
 END
 
-IDR_TOOLBAR_TERRAIN_FLAG TOOLBAR  16, 15
+IDR_TOOLBAR_TERRAIN_FLAG TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_BTN_EDIT_TERRAIN_SHOW
     BUTTON      ID_BTN_EDIT_TERRAIN_WALK
 END
 
-IDR_TOOLBAR_AREALIST TOOLBAR  16, 15
+IDR_TOOLBAR_AREALIST TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_TOOLBAR_AREA_ENABLE
     BUTTON      ID_TOOLBAR_AREA_OPEN_FILE
@@ -169,7 +179,7 @@ BEGIN
     BUTTON      ID_TOOLBAR_AREA_SHOW_ALL
 END
 
-IDR_TOOLBAR_PATHPOINTLIST TOOLBAR  16, 15
+IDR_TOOLBAR_PATHPOINTLIST TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_TOOLBAR_PATHPOINT_ENABLE
     BUTTON      ID_TOOLBAR_PATHPOINT_OPEN_FILE
@@ -182,7 +192,7 @@ END
 // Menu
 //
 
-IDR_MAINFRAME MENU 
+IDR_MAINFRAME MENU
 BEGIN
     POPUP "文件(&F)"
     BEGIN
@@ -246,7 +256,7 @@ BEGIN
     END
 END
 
-ID_BRUSHMAP_OPTION MENU 
+ID_BRUSHMAP_OPTION MENU
 BEGIN
     POPUP "Map"
     BEGIN
@@ -254,7 +264,7 @@ BEGIN
     END
 END
 
-IDR_MENU_MULTIOBJ MENU 
+IDR_MENU_MULTIOBJ MENU
 BEGIN
     POPUP "MultiObject"
     BEGIN
@@ -262,7 +272,7 @@ BEGIN
     END
 END
 
-IDR_MENU_BLOCK_OP MENU 
+IDR_MENU_BLOCK_OP MENU
 BEGIN
     POPUP "BlockOperator"
     BEGIN
@@ -281,7 +291,7 @@ END
 // Accelerator
 //
 
-IDR_MAINFRAME ACCELERATORS 
+IDR_MAINFRAME ACCELERATORS
 BEGIN
     VK_F3,          ID_BTN_SHOW_LINE,       VIRTKEY, NOINVERT
     "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
@@ -302,10 +312,12 @@ STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "关于 Scene Editor"
 FONT 9, "宋体", 400, 0, 0x0
 BEGIN
-    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,21,21
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
     LTEXT           "Scene Editor Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
     LTEXT           "Copyright (C) 2004",IDC_STATIC,40,25,119,8
     DEFPUSHBUTTON   "确定",IDOK,178,7,50,16,WS_GROUP
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,0,0,20,20
+    SCROLLBAR       IDC_SCROLLBAR1,0,0,10,40,SBS_VERT
 END
 
 IDD_DLG_BRUSH_COLOR DIALOGEX 0, 0, 126, 157
@@ -316,12 +328,12 @@ BEGIN
     GROUPBOX        "选择颜色",IDC_STATIC,2,19,120,62
 END
 
-IDD_DLG_BRUSH_VERTEX DIALOGEX 0, 0, 132, 286
+IDD_DLG_BRUSH_VERTEX DIALOGEX 0, 0, 220, 286
 STYLE DS_SETFONT | WS_CHILD
 EXSTYLE WS_EX_STATICEDGE
 FONT 9, "宋体", 400, 0, 0x86
 BEGIN
-    CONTROL         "",IDC_SLIDER_MIN,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,22,7,106,11
+    CONTROL         "",IDC_SLIDER_MIN,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,23,8,106,11
     CONTROL         "拉地形 [方刷子]",IDC_RADIO_BRUSH_VERTEX_DRAG,"Button",BS_AUTORADIOBUTTON,10,47,76,10
     CONTROL         "刷平",IDC_RADIO_BRUSH_VERTEX_BRUSH,"Button",BS_AUTORADIOBUTTON,10,68,32,10
     CONTROL         "崎岖地形",IDC_RADIO_BRUSH_VERTEX_NOISE,"Button",BS_AUTORADIOBUTTON,10,78,48,10
@@ -330,7 +342,7 @@ BEGIN
     CONTROL         "行走阻挡 (不可见)",IDC_RADIO_BRUSH_TERRAIN_WALK,"Button",BS_AUTORADIOBUTTON,10,168,84,10
     CONTROL         "飞行阻挡 (不可见)",IDC_RADIO_BRUSH_TERRAIN_FLY,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,2,269,84,10
     CONTROL         "钻地阻挡 (不可见)",IDC_RADIO_BRUSH_TERRAIN_DIG,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,2,269,84,10
-    CONTROL         "物件网格对齐(网格大小为40)",IDC_CHECK_SNAP_TO_GRID,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,189,120,10
+    CONTROL         "物件网格对齐(网格大小为40)",IDC_CHECK_SNAP_TO_GRID,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,188,120,10
     CONTROL         "水面",IDC_RADIO_BRUSH_TERRAIN_WATER,"Button",BS_AUTORADIOBUTTON,10,156,32,10
     CONTROL         "编辑顶点(仅一个顶点)",IDC_RADIO_BRUSH_POINT_TILE,"Button",BS_AUTORADIOBUTTON,10,98,96,10
     CONTROL         "编辑显示网格",IDC_CHECK_TILE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,121,64,10
@@ -338,14 +350,14 @@ BEGIN
     CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,11,114,105,1
     COMBOBOX        IDC_COMBO_WATER,43,154,73,106,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
     CONTROL         "编辑网格顶点",IDC_RADIO_BRUSH_TILE_VERTEX,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,2,269,64,10
-    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,2,41,126,1
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,2,41,214,1
     LTEXT           "地形刷子",IDC_STATIC,10,37,33,8,NOT WS_GROUP
     LTEXT           "选项",IDC_STATIC,19,110,17,8,NOT WS_GROUP
     CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,3,149,126,1
     LTEXT           "属性刷子",IDC_STATIC,10,145,33,8,NOT WS_GROUP
-    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,2,183,126,1
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,2,183,214,1
     LTEXT           "对齐",IDC_STATIC,10,180,17,8,NOT WS_GROUP
-    CONTROL         "",IDC_SLIDER_MAX,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,21,19,107,11
+    CONTROL         "",IDC_SLIDER_MAX,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,23,18,107,11
     CONTROL         "拉地形 [圆刷子]",IDC_RADIO_BRUSH_VERTEX_DRAG2,"Button",BS_AUTORADIOBUTTON,10,57,76,10
     LTEXT           "最小",IDC_STATIC,2,10,19,8,NOT WS_GROUP
     LTEXT           "最大",IDC_STATIC,2,19,19,8,NOT WS_GROUP
@@ -508,7 +520,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
@@ -529,7 +541,7 @@ BEGIN
     IDD_DLG_BRUSH_VERTEX, DIALOG
     BEGIN
         LEFTMARGIN, 2
-        RIGHTMARGIN, 128
+        RIGHTMARGIN, 216
         VERTGUIDE, 10
         VERTGUIDE, 116
         TOPMARGIN, 7
@@ -599,14 +611,32 @@ END
 //
 
 IDR_HTML_HELPDIALOGUSE  HTML                    "HelpDialogUse.htm"
+
 IDR_HTML_DLGNEWSCENE    HTML                    "DlgNewScene.htm"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_BRUSH_VERTEX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDR_MAINFRAME           "ZFS RTEngine Scene Editor\n\nRTEngineScene\nRTEngine Scene Files (*.rts)\n.rts\nRTEngineScene.Document\nRTEngineScene.Document"
     IDC_LISTBOX_AREA        "区域列表"
@@ -623,7 +653,7 @@ BEGIN
     ID_VIEW_BRUSH_GRASS     "花草\n花草"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_VIEW_BRUSH_PROPERTY  "属性\n属性"
     ID_VIEW_BRUSH_VERTEX    "地形\n地形"
@@ -633,7 +663,7 @@ BEGIN
     ID_GRIDITEM_ENVIRONMENT "环境光\n这里设置环境光."
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_GRIDITEM_FULL_MODE   "线框模式\n是否使用线框模式"
     ID_GRIDITEM_DRAW_NORMAL "画出法线\n是否画出顶点的法向量."
@@ -644,7 +674,7 @@ BEGIN
     ID_GRIDITEM_LIGHT_RANGE "灯光距离\n这里可以设置当前灯光的范围"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_GRIDITEM_LIGHT_ATT_C "衰减常数\n这里可以设置当前灯光的衰减常数"
     ID_GRIDITEM_LIGHT_ATT_L "线性衰减系数\n这里可以设置当前灯光的线性衰减系数"
@@ -655,13 +685,13 @@ BEGIN
     ID_PATHPOINT_LIST_VIEW  """路点列表"""
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "tool_scene"
     AFX_IDS_IDLEMESSAGE     "就绪"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_INDICATOR_EXT        "EXT"
     ID_INDICATOR_CAPS       "CAP"
@@ -671,7 +701,7 @@ BEGIN
     ID_INDICATOR_REC        "REC"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_NEW             "创建新文档\n新建"
     ID_FILE_OPEN            "打开现有文档\n打开"
@@ -680,13 +710,13 @@ BEGIN
     ID_FILE_SAVE_AS         "用新名称保存活动文档\n另存为"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_APP_ABOUT            "显示程序信息、版本号和版权\n关于"
     ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_MRU_FILE1       "打开此文档"
     ID_FILE_MRU_FILE2       "打开此文档"
@@ -706,18 +736,18 @@ BEGIN
     ID_FILE_MRU_FILE16      "打开此文档"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
     ID_PREV_PANE            "切换回上一个窗格\n上一窗格"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_WINDOW_SPLIT         "将活动窗口拆分为多个窗格\n拆分"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_CLEAR           "清除选定内容\n清除"
     ID_EDIT_CLEAR_ALL       "清除全部内容\n全部清除"
@@ -732,13 +762,13 @@ BEGIN
     ID_EDIT_REDO            "恢复上次撤消的操作\n重做"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n切换工具栏"
     ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n切换状态栏"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCSIZE          "更改窗口大小"
     AFX_IDS_SCMOVE          "更改窗口位置"
@@ -749,20 +779,20 @@ BEGIN
     AFX_IDS_SCCLOSE         "关闭活动窗口并提示保存文档"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCRESTORE       "将窗口恢复到正常大小"
     AFX_IDS_SCTASKLIST      "激活任务列表"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_GAME_HEIGHTMAP       "显示高度图\n高度图"
     ID_GAME_SNAPSHOT        "屏幕截图\n快照"
     ID_HELP_USE             "软件使用帮助"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_TOOLBAR_PATHPOINT_ENABLE "打开/关闭 路点工具"
     ID_TOOLBAR_PATHPOINT_OPEN_FILE "打开路点描述文件"
@@ -775,7 +805,7 @@ BEGIN
     ID_GRIDITEM_FOG_ENABLE  "是否开雾\n这里可以设置是否打开雾"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_GRIDITEM_FOG_COLOR   "雾的颜色\n这里设置雾的颜色"
     ID_GRIDITEM_FOG_MIN     "雾的最近距离\n这里设置雾的最近距离"
@@ -784,7 +814,7 @@ BEGIN
     ID_GRIDITEM_ENV_SUN_SPECULAR "太阳反射\n太阳光的镜面反射系数"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_GRIDITEM_ENV_TERRAIN_AMBIENT "地表环境光\n地表的最后环境光是当前的环境光加上地表环境光的结果"
     ID_GRIDITEM_ENV_SUN_INCLINATION "太阳光倾斜\n太阳光的倾斜角度"
@@ -794,19 +824,19 @@ BEGIN
     ID_GRIDITEM_OPTION_POSTPROCESS_INTENSITY "后期处理强度\n后期处理强度"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_GAME_MOVEOBJECT      "移动物件\n移动物件"
     ID_GAME_ADJUSTOBJECT    "物件微调\n微调"
     ID_GAME_NORMALIZABLE    "默认物件大小\n默认大小"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDS_MULTIOBJECT_NEAR    "最近的一个物件"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_BTN_SHOW_LINE        "填充/线框模式 (F3)"
     ID_BTN_SHOW_NORMAL      "是否显示法线"
@@ -818,7 +848,7 @@ BEGIN
     ID_BTN_SHOW_MINIMAP     "显示小地图"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_BTN_TERRAIN_SHOW     "编辑显示网格"
     ID_BTN_TERRAIN_WALK     "编辑行走网格"
@@ -826,7 +856,7 @@ BEGIN
     ID_BTN_EDIT_TERRAIN_SHOW "编辑显示网格"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_GRIDITEM_BACKMUSIC   "背景音乐"
     ID_GRIDITEM_BACKMUSIC_START_TIME "播放延迟"
@@ -837,7 +867,7 @@ BEGIN
     ID_GRIDITEM_BLOCK_REGION_ID "场景块REGION编号"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_TOOLBAR_AREA_SHOW_ALL "显示全部区域信息"
     ID_TOOLBAR_AREA_ENABLE  "打开/关闭 区域工具"
@@ -846,19 +876,19 @@ BEGIN
     ID_ENABLE_POSEEFFECT    "泛光\n泛光"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_BUILD_SM             "生成光照图\n光照图"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_SHOWNORMAL           "显示法线/n法线"
     ID_SAVEALL              "保存所有\n保存所有"
     ID_SAVECURRBLOCK        "保存当前block\n保存当前block"
 END
 
-#endif    // Chinese (P.R.C.) resources
+#endif    // 中文(简体，中国) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

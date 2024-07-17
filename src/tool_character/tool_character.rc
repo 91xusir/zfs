@@ -13,13 +13,11 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (P.R.C.) resources
+// 中文(简体，中国) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
-#ifdef _WIN32
 LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 #pragma code_page(936)
-#endif //_WIN32
 
 #ifdef APSTUDIO_INVOKED
 /////////////////////////////////////////////////////////////////////////////
@@ -65,7 +63,9 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\tool_character.ico"
+
 IDR_tool_characterTYPE  ICON                    "res\\tool_characterDoc.ico"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -73,15 +73,18 @@ IDR_tool_characterTYPE  ICON                    "res\\tool_characterDoc.ico"
 //
 
 IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
 IDR_TOOLBAR_TOOLS       BITMAP                  "res\\toolbar_tools.bmp"
+
 IDB_TREE_VIEW_OBJECT    BITMAP                  "res\\img_treeview_obj.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
 // Toolbar
 //
 
-IDR_MAINFRAME TOOLBAR  16, 15
+IDR_MAINFRAME TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_OPEN_ACTOR
     BUTTON      ID_SAVE_ALL
@@ -104,7 +107,7 @@ BEGIN
     BUTTON      IDC_SHOWLINK
 END
 
-IDR_TOOLBAR_TOOLS TOOLBAR  16, 15
+IDR_TOOLBAR_TOOLS TOOLBAR 16, 15
 BEGIN
     BUTTON      ID_VIEW_BRUSH_MAP
     BUTTON      ID_VIEW_BRUSH_OBJECT
@@ -121,7 +124,7 @@ END
 // Menu
 //
 
-IDR_MAINFRAME MENUEX 
+IDR_MAINFRAME MENUEX
 BEGIN
     POPUP "文件(&F)",                         65535,MFT_STRING,MFS_ENABLED
     BEGIN
@@ -171,7 +174,7 @@ BEGIN
     END
 END
 
-IDR_MENU_POP MENU 
+IDR_MENU_POP MENU
 BEGIN
     POPUP "test1"
     BEGIN
@@ -182,7 +185,7 @@ BEGIN
         MENUITEM "网格尺寸",                        ID_CHANGE_GRIDSIZE
     END
     MENUITEM "test2",                       ID_TEST2
-    MENUITEM "test3",                       0
+    MENUITEM "test3",                       ID_TEST3
 END
 
 
@@ -191,7 +194,7 @@ END
 // Accelerator
 //
 
-IDR_MAINFRAME ACCELERATORS 
+IDR_MAINFRAME ACCELERATORS
 BEGIN
     "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
     "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
@@ -391,7 +394,7 @@ BEGIN
     LISTBOX         IDC_LIST_ACTOR,15,56,242,196,LBS_NOINTEGRALHEIGHT | LBS_NOSEL | WS_VSCROLL | WS_TABSTOP
     PUSHBUTTON      "添加",IDC_BUTTON_ADD,207,256,50,14
     PUSHBUTTON      "清空",IDC_BUTTON_CLR,153,256,50,14
-    CONTROL         "",IDC_PROGRESS,"msctls_progress32",0x1,17,260,131,7
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",PBS_SMOOTH,17,260,131,7
     EDITTEXT        IDC_ACTOR1,15,20,208,14,ES_AUTOHSCROLL
     PUSHBUTTON      "...",IDC_ACTOR_DST,230,20,27,14
     GROUPBOX        "目标Actor",IDC_STATIC,7,7,258,35
@@ -457,7 +460,7 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO 
+GUIDELINES DESIGNINFO
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
@@ -595,7 +598,7 @@ END
 // String Table
 //
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDR_MAINFRAME           "tool_character\n\ntool_character\n\n\ntoolcharacter.Document\ntool_character.Document"
     ID_VIEW_TREE_VIEW       "树\n树"
@@ -615,13 +618,13 @@ BEGIN
     ID_ADD_EFFECT_SHADER    "添加EffectShader"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_APP_TITLE       "tool_character"
     AFX_IDS_IDLEMESSAGE     "就绪"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_INDICATOR_EXT        "EXT"
     ID_INDICATOR_CAPS       "CAP"
@@ -631,7 +634,7 @@ BEGIN
     ID_INDICATOR_REC        "REC"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_NEW             "创建新文档\n新建"
     ID_FILE_OPEN            "打开现有文档\n打开"
@@ -640,13 +643,13 @@ BEGIN
     ID_FILE_SAVE_AS         "用新名称保存活动文档\n另存为"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_APP_ABOUT            "显示程序信息、版本号和版权\n关于"
     ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_FILE_MRU_FILE1       "打开此文档"
     ID_FILE_MRU_FILE2       "打开此文档"
@@ -666,18 +669,18 @@ BEGIN
     ID_FILE_MRU_FILE16      "打开此文档"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
     ID_PREV_PANE            "切换回上一个窗格\n上一窗格"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_WINDOW_SPLIT         "将活动窗口拆分为多个窗格\n拆分"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_EDIT_CLEAR           "清除选定内容\n清除"
     ID_EDIT_CLEAR_ALL       "清除全部内容\n全部清除"
@@ -692,13 +695,13 @@ BEGIN
     ID_EDIT_REDO            "恢复上次撤消的操作\n重做"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n切换工具栏"
     ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n切换状态栏"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCSIZE          "更改窗口大小"
     AFX_IDS_SCMOVE          "更改窗口位置"
@@ -709,13 +712,13 @@ BEGIN
     AFX_IDS_SCCLOSE         "关闭活动窗口并提示保存文档"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     AFX_IDS_SCRESTORE       "将窗口恢复到正常大小"
     AFX_IDS_SCTASKLIST      "激活任务列表"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_GRID_SHADER          "Shader属性"
     ID_GRID_SHADER_KEY      "Shader关键帧属性"
@@ -735,7 +738,7 @@ BEGIN
     ID_KEY_INFO             "关键帧信息"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_VIEW_KEY             "动画信息"
     ID_GRID_CHANNEL_PROP    "属性"
@@ -743,31 +746,31 @@ BEGIN
     ID_GRID_LINKBOX         "LINK点"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDC_POSE_CONN           "连接动作\n连接两个动作"
     IDC_ANIM_LOOP           "循环播放\n循环播放动画"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDC_ANIM_PLAY           "单次播放\n单次播放动画"
     IDC_ANIM_STOP           "停止播放\n停止播放动画"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     IDC_POSE_LIST           "动作列表"
     IDC_MESH_VIEW           "线框模式\n线框模式"
 END
 
-STRINGTABLE 
+STRINGTABLE
 BEGIN
     ID_SHOWLINK             "显示挂接点"
     IDC_SHOWLINK            "显示挂接点\n显示挂接点"
 END
 
-#endif    // Chinese (P.R.C.) resources
+#endif    // 中文(简体，中国) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

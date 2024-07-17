@@ -5,3 +5,4 @@
 /src/engine/libs
 *.sdf
 *.chm
+**/ipch/

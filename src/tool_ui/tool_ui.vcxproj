@@ -30,6 +30,7 @@
     <ProjectGuid>{C8F363E8-9794-4A7B-9084-9214F9DA73F4}</ProjectGuid>
     <RootNamespace>tool_ui</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'" Label="Configuration">
@@ -98,35 +99,41 @@
     <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)../bin</OutDir>
-    <IntDir>$(ProjectDir)../temp/tool_ui/debug\</IntDir>
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(ProjectDir)../bin/</OutDir>
-    <IntDir>$(ProjectDir)../temp/tool_ui/debug/</IntDir>
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'">
-    <OutDir>$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(ConfigurationName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'">
-    <OutDir>$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(ConfigurationName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'">
-    <OutDir>$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(ConfigurationName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'">
-    <OutDir>$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(ConfigurationName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <BuildLog>
@@ -135,7 +142,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include/dxsdk;$(ProjectDir)..\sdk\include;$(ProjectDir)../engine/head;./res;./device_system;./assistant;./log;./command;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\dxsdk;./res;./device_system;./assistant;./log;./command;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;USE_D3D9;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -148,8 +155,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>libxml2.lib;libxml++.lib;d3dx9.lib;d3d9.lib;libjpeg_MDd.lib;dsound.lib;dxguid.lib;libxml++_d.lib;DxErr9.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(ProjectDir)../bin/tool_ui_d.exe</OutputFile>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)../engine/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
       <ManifestFile>$(IntDir)$(TargetFileName).intermediate.manifest</ManifestFile>
       <IgnoreSpecificDefaultLibraries>libci.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -167,7 +174,7 @@
       <Path>../temp/tool_ui/release\BuildLog.htm</Path>
     </BuildLog>
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include/dxsdk;$(ProjectDir)..\sdk\include;$(ProjectDir)../engine/head;./res;./device_system;./assistant;./log;./command;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\dxsdk;./res;./device_system;./assistant;./log;./command;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;USE_D3D9;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <PrecompiledHeader />
@@ -178,8 +185,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>libxml2.lib;d3dx9.lib;d3d9.lib;dxerr9.lib;libjpeg_MD.lib;core_md.lib;dsound.lib;audio_md.lib;libxml++.lib;dxguid.lib;graph_md.lib;character_md.lib;ui_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(ProjectDir)../bin/$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)../engine/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libci.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -207,8 +214,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>libxml2.lib;d3dx9.lib;d3d9.lib;libjpeg_MD.lib;core_md.lib;dsound.lib;audio_md.lib;libxml++.lib;dxguid.lib;graph_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>../../../bin/tool_ui.exe</OutputFile>
-      <AdditionalLibraryDirectories>../../../sdk/libs;../../engine/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libci.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -233,8 +240,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>libxml2.lib;d3dx9.lib;d3d9.lib;libjpeg_MD.lib;core_md.lib;dsound.lib;audio_md.lib;libxml++.lib;dxguid.lib;graph_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>../../../bin/tool_ui.exe</OutputFile>
-      <AdditionalLibraryDirectories>../../../sdk/libs;../../engine/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libci.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -259,8 +266,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>libxml2.lib;d3dx9.lib;d3d9.lib;libjpeg_MD.lib;core_md.lib;dsound.lib;audio_md.lib;libxml++.lib;dxguid.lib;graph_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>../../../bin/tool_ui.exe</OutputFile>
-      <AdditionalLibraryDirectories>../../../sdk/libs;../../engine/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libci.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -285,8 +292,8 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>libxml2.lib;d3dx9.lib;d3d9.lib;libjpeg_MD.lib;core_md.lib;dsound.lib;audio_md.lib;libxml++.lib;dxguid.lib;graph_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>../../../bin/tool_ui.exe</OutputFile>
-      <AdditionalLibraryDirectories>../../../sdk/libs;../../engine/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <OutputFile>$(TargetName)$(TargetExt)</OutputFile>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libci.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>

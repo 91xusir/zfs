@@ -272,6 +272,7 @@
     <None Include="res\tool_scene.rc2">
       <Filter>UI\ui_resource\ui_resource_files</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="tool_scene.rc">

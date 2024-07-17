@@ -121,9 +121,10 @@
     <_ProjectFileVersion>12.0.30501.0</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)../bin/</OutDir>
-    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir>$(ProjectDir)..\bin</OutDir>
+    <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)..\bin</OutDir>
@@ -131,38 +132,45 @@
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
     <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(ProjectDir)../sdk/include</LibraryPath>
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MDD|Win32'">
     <OutDir>$(ProjectDir)../../../bin/\</OutDir>
     <IntDir>$(ProjectDir)../../../temp/$(ProjectName)/$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(ConfigurationName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MT|Win32'">
     <OutDir>$(ProjectDir)../../../bin/\</OutDir>
     <IntDir>$(ProjectDir)../../../temp/$(ProjectName)/$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(ConfigurationName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mdd_ps|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(ConfigurationName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_ps|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
+    <TargetName>$(ProjectName)_$(ConfigurationName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md_perf_hud|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
+    <TargetName>$(ProjectName)_$(ConfigurationName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mt_perf_hud|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
     <IntDir>$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)_$(ConfigurationName)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -191,7 +199,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>d3d9.lib;d3dx9.lib;graph_mdd.lib;net_mdd.lib;core_mdd.lib;audio_mdd.lib;libjpeg_MDD.lib;XTP8700LibStaticMdd.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_mdd.lib;mikmod_mdd.lib;native_midi_mdd.lib;character_mdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(ProjectName)_d.exe</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\shared\trunk\sdk\libs;$(ProjectDir)../engine/libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreSpecificDefaultLibraries>libcd.lib;libci.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -228,9 +236,9 @@
       <AdditionalIncludeDirectories>$(IntDir);$(ProjectDir)..\sdk\include;$(ProjectDir)..\sdk\include\xtp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>d3dx9.lib;d3d9.lib;graph_md.lib;net_md.lib;audio_md.lib;libjpeg_MD.lib;ToolkitPro.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_md.lib;mikmod_md.lib;native_midi_md.lib;character_md.lib;core_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3dx9.lib;d3d9.lib;graph_md.lib;net_md.lib;audio_md.lib;libjpeg_MD.lib;ToolkitProS.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_md.lib;mikmod_md.lib;native_midi_md.lib;character_md.lib;core_md.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ShowProgress>NotSet</ShowProgress>
-      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>$(ProjectDir)..\sdk\libs;$(ProjectDir)..\engine\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>nafxcw.lib;libcmt.lib;libc.lib;libci.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -239,6 +247,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <PostBuildEvent>
       <Command />

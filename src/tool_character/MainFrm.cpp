@@ -871,6 +871,7 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	m_paneManager.AttachPane(paneActor, paneEnv);
 	m_paneManager.AttachPane(paneMtlLib, paneActor);
 	m_paneManager.AttachPane(panePose, paneActor);
+	// 把关联框放到这里
 	m_paneManager.AttachPane(paneLinkBox, paneEnv);
 	// m_paneManager.DockPane(paneProp,xtpPaneDockBottom,paneEnv);
 	m_paneManager.ClosePane(paneProp);

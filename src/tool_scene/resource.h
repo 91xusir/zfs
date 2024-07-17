@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Visual C++ generated include file.
-// Used by tool_scene.rc
+// Microsoft Visual C++ 生成的包含文件。
+// 供 tool_scene.rc 使用
 //
 #define IDR_TOOLBAR_BRUSH_MAP           4
 #define IDD_ABOUTBOX                    100
@@ -141,6 +141,7 @@
 #define IDC_SLIDER1                     1069
 #define IDC_COMBO1                      1070
 #define IDC_TEXT_WND                    1071
+#define IDC_SCROLLBAR1                  1072
 #define IDS_MULTIOBJECT_NEAR            32000
 #define ID_BRUSH_MAP_FILTER_ALL         32772
 #define ID_BRUSHMAP_2                   32774
@@ -213,9 +214,9 @@
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        156
+#define _APS_NEXT_RESOURCE_VALUE        157
 #define _APS_NEXT_COMMAND_VALUE         32908
-#define _APS_NEXT_CONTROL_VALUE         1072
+#define _APS_NEXT_CONTROL_VALUE         1073
 #define _APS_NEXT_SYMED_VALUE           105
 #endif
 #endif
