@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Layer Name="layDemo" Show="false">
+    <Label Location="2,2,50,18" Name="FPS" Show="false"/>
+    <Form Inherit="TitleBarForm" Location="200,200,300,300" Move="false" Name="DlgDesc" Show="false">
+      <Button Inherit="PushButton" Location="15,20,45,40" Name="OK" Text="确定"/>
+      <Button Inherit="PushButton" Location="55,20,85,40" Name="Cancel" Text="取消"/>
+    </Form>
+    <Form Inherit="NoTitleBarForm" Location="100,55,700,550" Name="Demo">
+      <Label Location="60,2,300,18" Name="Description" Text="RtUi Demo 2006 Copyright"/>
+      <TabCtrl Location="2,20,700,550" Name="Tab1">
+        <TabItem>
+          <CheckButton Inherit="" Location="0,0,80,30" Name="TabButton1" Text="EditBox">
+            <NormalImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <HighlightImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <PushedImage File="ui/textures/tmp.bmp" Source="37,118,67,168"/>
+            <CheckedImage File="ui/textures/tmp.bmp" Source="137,118,167,168"/>
+            <Hint Text="this is tab button 1"/>
+          </CheckButton>
+          <Form Inherit="TitleBarForm" Location="-5,39,700,480" Name="TabForm_EditBox">
+            <TitleBar Text="TabForm -- EditBox"/>
+            <Button Inherit="PushButton" Location="2,384,38,16" Name="btnChatChannel" Show="true" Text="频道"/>
+            <Form Inherit="NoTitleBarForm" Location="2,300,60,80" Move="false" Name="frmChatChannel" Show="true">
+              <Button Inherit="PushButton" Location="0,10,60,20" Name="btnPublic" Text="公开"/>
+              <Button Inherit="PushButton" Location="0,30,60,20" Name="btnPrivate" Text="私聊"/>
+            </Form>
+            <EditBox AutoScrollV="true" BackgroundColor="#ff557799" Enable="true" EnableInput="false" Inherit="" Location="4,27,200,360" MultiLine="true" Name="ChatHistory" WordWrap="true"/>
+            <EditBox AutoScrollV="false" Inherit="" Location="82,384,80,18" MultiLine="false" Name="ChatInput" WordWrap="false">
+              <Border color="#ffffffff" size="2"/>
+            </EditBox>
+            <EditBox AutoScrollV="true" Enable="true" Inherit="" Location="202,22,107,100" MultiLine="true" Name="ChatHistory1" WordWrap="true"/>
+            <EditBox AutoScrollV="true" Enable="true" Inherit="" Location="202,364,200,40" MultiLine="true" Name="ChatInput1" WordWrap="true"/>
+            <Label Location="300,350,50,14" Name="lblLine" Text="行 *"/>
+            <Label Location="360,350,50,14" Name="lblColumn" Text="列 *"/>
+          </Form>
+        </TabItem>
+        <TabItem>
+          <CheckButton Inherit="" Location="80,0,80,30" Name="TabButton2" Text="Button">
+            <NormalImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <HighlightImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <PushedImage File="ui/textures/tmp.bmp" Source="37,118,67,168"/>
+            <CheckedImage File="ui/textures/tmp.bmp" Source="137,118,167,168"/>
+            <Hint Form="frmWidgetHint" Text="this is tab button 2"/>
+          </CheckButton>
+          <Form Inherit="NoTitleBarForm" Location="0,40,700,410" Name="TabForm_Button">
+            <BackgroundImage File="ui/textures/tmp.bmp" Source="130,120,230,150"/>
+            <Button DragOut="true" Inherit="PushButton" Location="0,0,50,50" Name="TabFormBtn1" Text="普通button"/>
+            <CheckButton Inherit="DefaultChkBtn" Location="60,0,180,20" Name="TabFormChkBtn1" Text="CheckButton"/>
+          </Form>
+        </TabItem>
+        <TabItem>
+          <CheckButton Inherit="" Location="160,0,80,30" Name="TabButton3" Text="ScrollBar">
+            <NormalImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <HighlightImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <PushedImage File="ui/textures/tmp.bmp" Source="37,118,67,168"/>
+            <CheckedImage File="ui/textures/tmp.bmp" Source="137,118,167,168"/>
+            <Hint Text="this is tab button 3"/>
+          </CheckButton>
+          <Form Inherit="NoTitleBarForm" Location="0,40,700,410" Name="TabForm_ScrollBar">
+            <ScrollBarV Inherit="DefaultSbv" Location="10,100,26,300" Name="Sbv1" Text=""/>
+            <ScrollBarH Inherit="DefaultSbh" Location="40,100,180,116" Name="Sbh1" Text=""/>
+          </Form>
+        </TabItem>
+        <TabItem>
+          <CheckButton Inherit="" Location="240,0,80,30" Name="TabButton4" Text="ListBox">
+            <NormalImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <HighlightImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <PushedImage File="ui/textures/tmp.bmp" Source="37,118,67,168"/>
+            <CheckedImage File="ui/textures/tmp.bmp" Source="137,118,167,168"/>
+            <Hint Text="this is tab button 4"/>
+          </CheckButton>
+          <Form Inherit="NoTitleBarForm" Location="0,40,700,410" Name="TabForm_ListBox">
+            <ListBox Location="20,10,240,160" Name="ListBox1"/>
+          </Form>
+        </TabItem>
+        <TabItem>
+          <CheckButton Inherit="" Location="320,0,80,30" Name="TabButton5" Text="ProgressBar">
+            <NormalImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <HighlightImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <PushedImage File="ui/textures/tmp.bmp" Source="37,118,67,168"/>
+            <CheckedImage File="ui/textures/tmp.bmp" Source="137,118,167,168"/>
+            <Hint Text="this is tab button 5"/>
+          </CheckButton>
+          <Form Inherit="NoTitleBarForm" Location="0,40,700,410" Name="TabForm_ProgressBar"/>
+        </TabItem>
+        <TabItem>
+          <CheckButton Inherit="" Location="400,0,80,30" Name="TabButton6" Text="ComboBox">
+            <NormalImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <HighlightImage File="ui/textures/tmp.bmp" Source="40,120,70,170"/>
+            <PushedImage File="ui/textures/tmp.bmp" Source="37,118,67,168"/>
+            <CheckedImage File="ui/textures/tmp.bmp" Source="137,118,167,168"/>
+            <Hint Text="this is tab button 6"/>
+          </CheckButton>
+          <Form Inherit="NoTitleBarForm" Location="0,40,700,410" Name="TabForm_ComboBox">
+            <ComboBox EnableInput="true" Location="2,2,70,18" Name="Cmb1" Text="Cmb1Text"/>
+          </Form>
+        </TabItem>
+      </TabCtrl>
+    </Form>
+  </Layer>
+</Ui>

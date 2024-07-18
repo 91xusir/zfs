@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="" Location="233,157,428,490" Name="fmserver" Show="true"   EscapeHide="false">
+      <Form Inherit="" Location="0,0,428,490" Name="fmxmm" Show="true"   EscapeHide="false">
+        <Button Inherit="" Location="305,422,62,26" Name="btnok" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\10.tga" Source="3,266,63,26"/>
+          <PushedImage Blend="true" File="ui\textures\10.tga" Source="3,324,63,26"/>
+          <HighlightImage Blend="true" File="ui\textures\10.tga" Source="3,295,63,26"/>
+        </Button>
+        <ListBox Inherit="" Location="15,42,384,365" Name="lbxlogin" Show="true">
+          <Column Inherit="Column1" Width="128"/>
+          <Column Inherit="Column3" Width="128"/>
+          <Column Inherit="Column2" Width="128"/>
+          <Label Inherit="" Location="2,21,128,335" Name="lbtext1" Show="true"/>
+          <Label Inherit="" Location="131,21,128,335" Name="lbtext2" Show="true"/>
+          <Label Inherit="" Location="260,21,128,335" Name="lbtext3" Show="true"/>
+        </ListBox>
+        <Label FontSize="12" Inherit="" Location="173,425,100,18" Name="lbtext" Show="true" Text="" TextFont="ËÎÌו"/>
+        <Label Inherit="" Location="168,422,6,25" Name="lbxmm1" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\10.tga" Source="91,216,8,25"/>
+        </Label>
+        <Label Inherit="" Location="273,422,6,25" Name="lbxmm2" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\10.tga" Source="103,216,6,25"/>
+        </Label>
+        <Label Inherit="" Location="175,422,97,25" Name="lbxmm3" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\10.tga" Source="98,216,3,25"/>
+        </Label>
+      </Form>
+      <Label Inherit="" Location="0,-1,428,73" Name="lbxmm1" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\10.tga" Source="3,6,428,70"/>
+      </Label>
+      <Label Inherit="" Location="0,73,428,352" Name="lbxmm2" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\10.tga" Source="3,77,428,33"/>
+      </Label>
+      <Label Inherit="" Location="0,424,428,65" Name="lbxmm3" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\10.tga" Source="3,111,428,73"/>
+      </Label>
+      <Anchors>
+        <Anchor offset="" point="CENTERV"/>
+        <Anchor point="CENTERH"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>

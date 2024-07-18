@@ -6,3 +6,6 @@
 *.sdf
 *.chm
 **/ipch/
+*.log
+*.aps
+*.cd

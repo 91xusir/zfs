@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <ListBox Anchor="left,bottom" Inherit="ListBox" Location="28,678,82,25" Name="listchater" Show="false" BackgroundColor="#e5194126">
+      <Anchors>
+        <Anchor offset="0,-90" point="BOTTOM"/>
+        <Anchor offset="50,0" point="LEFT"/>
+      </Anchors>
+    </ListBox>
+    <FaceImage>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(口水)" Source="0,0,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(生气)" Source="20,0,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(犯困)" Source="40,0,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(得意)" Source="60,0,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(惊讶)" Source="80,0,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(闭嘴)" Source="100,0,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(傻笑)" Source="120,0,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(色)" Source="0,20,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(恐惧)" Source="20,20,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(汗)" Source="40,20,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(调皮)" Source="80,20,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(装酷)" Source="100,20,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(晕)" Source="120,20,20,20"/>
+      <Icon File="ui/textures/faces.tga" ID="(吐)" Source="0,40,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(白眼)" Source="20,40,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(大笑)" Source="40,40,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(抓狂)" Source="60,40,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(流泪)" Source="80,40,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(害羞)" Source="100,40,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(偷笑)" Source="120,40,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(傻笑)" Source="140,40,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(睡着)" Source="0,60,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(可爱)" Source="20,60,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(鄙视)" Source="40,60,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(衰)" Source="60,60,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(疑问)" Source="80,60,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(逃跑)" Source="100,60,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(骷髅)" Source="120,60,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(赞同)" Source="0,80,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(反对)" Source="20,80,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(握手)" Source="40,80,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(小样)" Source="60,80,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(剪刀)" Source="80,80,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(石头)" Source="100,80,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(布)" Source="120,80,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(中指)" Source="140,80,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(猪头)" Source="0,100,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(奋斗)" Source="20,100,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(狗屎)" Source="40,100,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(练功)" Source="80,100,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(路过)" Source="100,100,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(kiss)" Source="0,120,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(爱心)" Source="20,120,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(心碎)" Source="40,120,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(礼物)" Source="60,120,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(玫瑰)" Source="80,120,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(钻戒)" Source="100,120,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(老鼠)" Source="140,120,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(金钱)" Source="20,140,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(蛋糕)" Source="80,140,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(冰淇淋)" Source="120,140,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(招财猫)" Source="140,140,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(吃饭)" Source="0,160,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(咖啡)" Source="20,160,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(飘过)" Source="40,160,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(电话)" Source="20,180,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(天使)" Source="60,180,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(南瓜人)" Source="80,180,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(兔子)" Source="100,180,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(爱爱)" Source="0,200,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(榔头)" Source="60,200,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(看书)" Source="80,200,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(匕首)" Source="100,200,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(吃药)" Source="140,200,20,20"/>
+      <Icon ColorKey="true" File="ui/textures/faces.tga" ID="(干杯)" Source="120,220,20,20"/>
+      <Image ID="hudbk" Image="$mi" Source="50,5,1,1" Transparent="0.2"/>
+    </FaceImage>
+  </Layer>
+</Ui>

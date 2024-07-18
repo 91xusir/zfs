@@ -21,25 +21,25 @@ HWND g_hWndRenderWindow = 0;
 
 CEventFrame* getMainFrame()
 {/*LOG("");*/
-    return g_pEventFrame;
+	return g_pEventFrame;
 }
 
 class CCcxyCoreFactory : public RtCoreFactory
 {
 public:
 	RT_DECLARE_DYNCREATE(CCcxyCoreFactory, RtCoreFactory, 0, "RtCore")
-	virtual void InitLogRoot(RtLogType rootLog)
+		virtual void InitLogRoot(RtLogType rootLog)
 	{/*LOG("");*/
 	}
 };
 RT_IMPLEMENT_DYNCREATE(CCcxyCoreFactory, RtCoreFactory, 0, "RtCore")
 
 int APIENTRY _tWinMain(HINSTANCE hInstance,
-                     HINSTANCE hPrevInstance,
-                     LPTSTR    lpCmdLine,
-                     int       nCmdShow)
+	HINSTANCE hPrevInstance,
+	LPTSTR    lpCmdLine,
+	int       nCmdShow)
 {
-	if (!InitInstance(hInstance, nCmdShow)) 
+	if (!InitInstance(hInstance, nCmdShow))
 	{
 		return FALSE;
 	}
@@ -48,77 +48,71 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 	//RtGetRender()->m_dwClearColor = 0xff000000;
 
 	//rtDevice主循环
- 	RtGetRender()->Run();
+	RtGetRender()->Run();
 
-    ExitInstance(hInstance, 0);
-    return 0;
+	ExitInstance(hInstance, 0);
+	return 0;
 }
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
 	/*LOG("");*/
-   hInst = hInstance; 
-// #ifdef _DEBUG
-   if (!rtCoreInit("uistudio_core.ini"))
-   {
-	   MessageBox(NULL, "uistudio_core.ini not exsit!", NULL, NULL);
-	   return false;
-   }
-// #else
-//    // Core初始化
-//    if (!rtCoreInit("uistudio_core.ini", RT_RUNTIME_CLASS(CCcxyCoreFactory)))
-//    {
-// 	   return false;
-//    }
-// #endif
-	//图形引擎初始化
-   if (!rtGraphInit())
-   {
-       MessageBox(NULL, "初始化图形引擎失败", "错误", MB_OK);
-       return FALSE;
-   }
-// 
-// //	//使用D3D9初始化device
-// 	if (!rtCreateDeviceD3D9())
-// 	{
-// 		return false;
-// 	}
-// 
+	hInst = hInstance;
+	// #ifdef _DEBUG
+	if (!rtCoreInit("uistudio_core.ini"))
+	{
+		MessageBox(NULL, "uistudio_core.ini not exsit!", NULL, NULL);
+		return false;
+	}
+	// #else
+	//    // Core初始化
+	//    if (!rtCoreInit("uistudio_core.ini", RT_RUNTIME_CLASS(CCcxyCoreFactory)))
+	//    {
+	// 	   return false;
+	//    }
+	// #endif
+		//图形引擎初始化
+	if (!rtGraphInit())
+	{
+		RtCoreLog().Error("rtGraphInit fail :(\n");
+		return 0;
+	}
 
-   if(!RtGetRender()->Init(
-						hInstance, 
-						RT_RUNTIME_CLASS(CEventFrame), 
-						RT_RUNTIME_CLASS(CUiStudioCamera), 
-						"uistudio_graph.ini", 
-						"uistudio_user.ini"
-					)
-	)
-   {
-       return false;
-   }
-//    pDevice->LockFps(30);
-   if (!rtSoundInit("RT3D-Audio", (HWND)RtGetRender()->GetWndHandle()))
-   {
-	   return FALSE;
-   }
-   //g_pSoundMgr->SetAudioPath("audio");
+	// 
+	// //	//使用D3D9初始化device
+	// 	if (!rtCreateDeviceD3D9())
+	// 	{
+	// 		return false;
+	// 	}
+	// 
 
-   g_pEventFrame = ((CEventFrame*)RtGetRender()->GetEvent());
-   g_pEventFrame->m_bNotifyOnMouseMove = true;
-   g_pEventFrame->EnableConsole(true);
+	if (!RtGetRender()->Init(hInstance, RT_RUNTIME_CLASS(CEventFrame), RT_RUNTIME_CLASS(CUiStudioCamera),"uistudio_graph.ini","uistudio_user.ini"))
+	{
+		return false;
+	}
+	//    pDevice->LockFps(30);
+	if (!rtSoundInit("RT3D-Audio", (HWND)RtGetRender()->GetWndHandle()))
+	{
+		return FALSE;
+	}
+	//g_pSoundMgr->SetAudioPath("audio");
 
-   return TRUE;
+	g_pEventFrame = ((CEventFrame*)RtGetRender()->GetEvent());
+	g_pEventFrame->m_bNotifyOnMouseMove = true;
+	g_pEventFrame->EnableConsole(true);
+
+	return TRUE;
 }
 
 BOOL ExitInstance(HINSTANCE hInstance, int nCmdShow)
 {
 	/*LOG("");*/
-    rtDestroyDevice();
-    rtGraphExit();
+	rtDestroyDevice();
+	rtGraphExit();
 	rtAudioExit();
-    rtCoreExit();
+	rtCoreExit();
 
-    return TRUE;
+	return TRUE;
 }
 
 LRESULT CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
@@ -130,7 +124,7 @@ LRESULT CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 		return TRUE;
 
 	case WM_COMMAND:
-		if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL) 
+		if (LOWORD(wParam) == IDOK || LOWORD(wParam) == IDCANCEL)
 		{
 			EndDialog(hDlg, LOWORD(wParam));
 			return TRUE;

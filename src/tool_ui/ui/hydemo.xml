@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Layer Name="423" Show="true">
+    <Form Name="449" Location="10,10,300,500" Inherit="" Show="true">
+      <Label Name="478" Location="71,161,130,116" Inherit="" Show="true" Text="dsafdas" HyperLink="client:help/chatbox1.html">
+        <HyperLink Link="temp/js.html" Name="dsfdsa" Location="0,2,130,16" Text="°𐗺"/>
+      </Label>
+    </Form>
+  </Layer>
+</Ui>

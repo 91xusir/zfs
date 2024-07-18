@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Alignment="center" Inherit="TitleBarForm" Location="266,166,332,242" Name="fmfabao" Show="false">
+      <Form Dock="top" DockMargin="" Inherit="" Location="8,5,320,42" Name="panfabao">
+        <Button DragServer="false" Inherit="" Location="22,6,34,34" Name="btnfabao"/>
+        <Label Location="72,16,156,20" Name="lbfabaoname" Text="法宝名称" TextMagin="4,0,0,0"/>
+        <Label Location="130,16,156,20" Name="lbfabaolev" Text="LV5" TextMagin="4,0,0,0"/>
+        <Label Location="154,16,60,20" Name="lbmp" Text="法力" TextMagin="4,0,0,0"/>
+        <Label Location="186,16,130,20" Name="lbfabaomp" Text="5 / 5000" TextMagin="4,0,0,0"/>
+      </Form>
+      <Button Inherit="PushButton" Location="240,50,64,20" Name="btnwater" Text="修炼"/>
+      <Label Location="20,50,40,98" Name="lbwaternow" Text="水属性" TextColor="ffcccccc"/>
+      <Label Location="60,50,80,98" Name="lbwaternownum" Text="68" TextColor="ffcccccc"/>
+      <Label Location="80,50,40,98" Name="lbsucwater" Text="成功率" TextColor="ffcccccc"/>
+      <Label Location="120,50,40,98" Name="lbsucwaternum" Text="61%" TextColor="ffcccccc"/>
+      <Label Location="150,50,40,98" Name="lbwaterneed" Text="消耗MP" TextColor="ffcccccc"/>
+      <Label Location="190,50,40,98" Name="lbwaterneednum" Text="4999" TextColor="ffcccccc"/>
+      <ProgressBar Inherit="MPBar" Location="18,150,250,14" Name="barwater" Show=""/>
+      <Button Inherit="PushButton" Location="240,83,64,20" Name="btnfire" Text="修炼"/>
+      <Label Location="20,84,40,92" Name="lbfirenow" Text="火属性" TextColor="ffcccccc"/>
+      <Label Location="60,84,80,94" Name="lbfirenownum" Text="67" TextColor="ffcccccc"/>
+      <Label Location="80,84,40,104" Name="lbsucfire" Text="成功率" TextColor="ffcccccc"/>
+      <Label Location="120,84,40,124" Name="lbsucfirenum" Text="62%" TextColor="ffcccccc"/>
+      <Label Location="150,84,40,98" Name="lbfireneed" Text="消耗MP" TextColor="ffcccccc"/>
+      <Label Location="190,84,40,98" Name="lbfireneednum" Text="5000" TextColor="ffcccccc"/>
+      <ProgressBar Inherit="HPBar" Location="18,150,250,14" Name="barfire" Show=""/>
+      <Button Inherit="PushButton" Location="240,118,64,20" Name="btnposion" Text="修炼"/>
+      <Label Location="20,120,40,92" Name="lbposionnow" Text="毒属性" TextColor="ffcccccc"/>
+      <Label Location="60,120,80,94" Name="lbposionnownum" Text="67" TextColor="ffcccccc"/>
+      <Label Location="80,120,40,104" Name="lbsucposion" Text="成功率" TextColor="ffcccccc"/>
+      <Label Location="120,120,40,124" Name="lbsucposionnum" Text="60%" TextColor="ffcccccc"/>
+      <Label Location="150,120,40,98" Name="lbposionneed" Text="消耗MP" TextColor="ffcccccc"/>
+      <Label Location="190,120,40,98" Name="lbposionneednum" Text="5001" TextColor="ffcccccc"/>
+      <ProgressBar Inherit="EXPBar" Location="18,150,250,14" Name="barposion" Show=""/>
+    </Form>
+  </Layer>
+</Ui>

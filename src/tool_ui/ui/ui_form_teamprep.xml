@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="" Location="59,148,310,454" Movable="true" Name="fmteamprep" Show="false">
+      <CloseButton Location="284,14,20,20" Name="btnswitch" padding="0,22,5,0">
+        <NormalImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="359,83,20,20"/>
+      </CloseButton>
+      <Label Alignment="center" FontSize="18" Location="71,3,169,18" Name="lbtitle" Show="true" Text="附近玩家" TextColor="#ffdfde9b" TextFont="隶书"/>
+      <Form Inherit="" Location="6,49,299,386" Name="fmprep" Show="true">
+        <Button FontSize="12" Inherit="NewButton1" Location="123,360,60,21" Name="btnclose" Show="true" Text="关闭" TextColor="#fffbff66" TextFont="宋体"/>
+        <ListBox Inherit="" Location="0,0,296,352" Name="lbxmembers" Show="true">
+          <Column Inherit="Column" Name="clname" Text="玩家名称" TextColor="#fffcffc6" Width="97"/>
+          <Column Inherit="Column" Name="clrank" Text="等级" TextColor="#fffcffc6" Width="32"/>
+          <Column Inherit="Column" Name="clmenpai" Text="门派" TextColor="#fffcffc6" Width="49"/>
+          <Column Inherit="Column" Name="clanimal" Text="生肖" TextColor="#fffcffc6" Width="32"/>
+          <Column Inherit="Column" Name="clbattle" Text="战斗力" TextColor="#fffcffc6" Width="84"/>
+        </ListBox>
+        <Label Inherit="" Location="2,19,297,335" Name="lbborder" Show="true">
+          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="469,83,18,20"/>
+        </Label>
+        <Label BackgroundColor="#ff153723" Inherit="" Location="4,20,94,332" Name="lbhemline1" Show="true"/>
+        <Label BackgroundColor="#ff153723" Inherit="" Location="100,20,31,332" Name="lbhemline2" Show="true"/>
+        <Label BackgroundColor="#ff153723" Inherit="" Location="133,20,48,332" Name="lbhemline3" Show="true"/>
+        <Label BackgroundColor="#ff153723" Inherit="" Location="183,20,31,332" Name="lbhemline4" Show="true"/>
+        <Label Name="lbhemline5" Location="216,20,82,332" Inherit="" Show="true" BackgroundColor="#ff153723"/>
+      </Form>
+      <Label Inherit="" Location="0,-1,310,50" Name="lbborder1" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,1,310,50"/>
+      </Label>
+      <Label BackgroundColor="#A016712C" Inherit="" Location="0,50,310,381" Name="lbborder2" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,53,310,10"/>
+      </Label>
+      <Label Inherit="" Location="0,432,310,23" Name="lbborder3" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,65,310,23"/>
+      </Label>
+	  <Anchors>
+        <Anchor offset="-295,0" point="CENTERV"/>
+        <Anchor offset="0,-10" point="CENTERH"/>
+      </Anchors>
+    </Form>
+    <PopupMenu BackgroundColor="#ff165c38" FadeIn="true" FadeOut="true" Inherit="" ItemHeight="13" Margin="4,1" Name="RDMenu">
+      <BackgroundImage Blend="true" Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+      <Item Text="组队"/>
+      <Item Text="交易"/>
+      <Item Text="密语"/>
+      <Item Text="好友"/>
+    </PopupMenu>
+  </Layer>
+</Ui>

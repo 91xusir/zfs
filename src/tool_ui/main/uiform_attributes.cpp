@@ -1,4 +1,5 @@
 #include "studio.h"
+using namespace tinyxml2;
 
 
 #define   BUTTON_OFFSET_CUSTOM   ( 100 )
@@ -114,7 +115,7 @@ void UiForm_Attributes::Refresh()
         return;
     }
 
-    xmlpp::Element* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(xmlpp::Element*)pSelectTreeItem->Param2;
+    XMLElement* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(XMLElement*)pSelectTreeItem->Param2;
     if (!pElement)
     {
         for (int i = 0; i < m_AttribCountPerPage; i++)
@@ -126,31 +127,43 @@ void UiForm_Attributes::Refresh()
         }
         return;
     }    	
-    const xmlpp::Element::AttributeList AttribList = pElement->get_attributes();
     int i = 0;
-    ///!it's look ugly , but it works,let it go now.
-	for (xmlpp::Element::AttributeList::const_iterator iterAttrib = AttribList.begin(); iterAttrib != AttribList.end(); iterAttrib++)
-	{
-		xmlpp::Attribute* pAttrib = *iterAttrib;
-		m_pCmb_AttName[i]->Enable();
-		m_pCmb_AttName[i]->SetText(pAttrib->get_name());
-		if( pAttrib->get_name() == "Location" )
-		{
-			gspkLocationOwner = pSelectTreeItem;
-		}
-		m_pEdt_AttValue[i]->Enable();
-		m_pEdt_AttValue[i]->SetText(pAttrib->get_value());
-		i++;
-	}
+    for (const tinyxml2::XMLAttribute* pAttrib = pElement->FirstAttribute(); pAttrib; pAttrib = pAttrib->Next())
+    {
+        m_pCmb_AttName[i]->Enable();
+        m_pCmb_AttName[i]->SetText(pAttrib->Name());
+
+        // 如果属性名为 "Location"，执行特定操作
+        if (std::string(pAttrib->Name()) == "Location")
+        {
+            gspkLocationOwner = pSelectTreeItem;
+        }
+
+        m_pEdt_AttValue[i]->Enable();
+        m_pEdt_AttValue[i]->SetText(pAttrib->Value());
+
+        i++;
+    }
+
 	i = 0;
 	_updateTextureSelect();
-    for (xmlpp::Element::AttributeList::const_iterator iterAttrib = AttribList.begin(); iterAttrib != AttribList.end(); iterAttrib++)
+ /*   for (xmlpp::Element::AttributeList::const_iterator iterAttrib = AttribList.begin(); iterAttrib != AttribList.end(); iterAttrib++)
     {
         xmlpp::Attribute* pAttrib = *iterAttrib;
         m_pCmb_AttName[i]->Enable();
         m_pCmb_AttName[i]->SetText(pAttrib->get_name());
         m_pEdt_AttValue[i]->Enable();
         m_pEdt_AttValue[i]->SetText(pAttrib->get_value());
+        i++;
+    }*/
+    for (const tinyxml2::XMLAttribute* pAttrib = pElement->FirstAttribute(); pAttrib; pAttrib = pAttrib->Next())
+    {
+        m_pCmb_AttName[i]->Enable();  // 启用控件
+        m_pCmb_AttName[i]->SetText(pAttrib->Name());  // 设置属性名到 ComboBox 或类似控件
+
+        m_pEdt_AttValue[i]->Enable();  // 启用控件
+        m_pEdt_AttValue[i]->SetText(pAttrib->Value());  // 设置属性值到 Edit 控件或类似控件
+
         i++;
     }
 	
@@ -202,7 +215,7 @@ void UiForm_Attributes::OnUpdate_AttribValue(RtwWidget* pWidget, RtwEventDelegat
 	/*LOG("");*/
     RtwTree::Item* pSelectTreeItem = g_pUiMain->m_pFrm_WidgetTree->getSelectItem();
     UI_ENSURE(pSelectTreeItem);
-    xmlpp::Element* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem);
+    XMLElement* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem);
     UI_ENSURE(pElement);
     RtwWidget* pOperateWidget = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Widget(pSelectTreeItem); //(RtwWidget*)pSelectTreeItem->Param1;
 	int i=0;
@@ -229,7 +242,7 @@ void UiForm_Attributes::OnDropDown_AttribName(RtwWidget* pWidget, RtwEventDelega
 	/*LOG("");*/
     RtwTree::Item* pSelectTreeItem = g_pUiMain->m_pFrm_WidgetTree->getSelectItem();
     UI_ENSURE(pSelectTreeItem);
-    xmlpp::Element* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(xmlpp::Element*)pSelectTreeItem->Param2;
+    XMLElement* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(XMLElement*)pSelectTreeItem->Param2;
     UI_ENSURE(pElement);
 
     std::vector<std::string> arrAttribs;
@@ -247,7 +260,7 @@ void UiForm_Attributes::OnUpdate_AttribName(RtwWidget* pWidget, RtwEventDelegate
 {	/*LOG("");*/
     RtwTree::Item* pSelectTreeItem = g_pUiMain->m_pFrm_WidgetTree->getSelectItem();
     UI_ENSURE(pSelectTreeItem);
-    xmlpp::Element* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(xmlpp::Element*)pSelectTreeItem->Param2;
+    XMLElement* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(XMLElement*)pSelectTreeItem->Param2;
     UI_ENSURE(pElement);
     RtwWidget* pOperateWidget = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Widget(pSelectTreeItem); //(RtwWidget*)pSelectTreeItem->Param1;
 
@@ -259,7 +272,7 @@ void UiForm_Attributes::OnUpdate_AttribName(RtwWidget* pWidget, RtwEventDelegate
     }
     UI_ENSURE(i < m_AttribCountPerPage);
 
-    if (!g_pUiMain->m_pLay_Studio->m_UiDocument.FindInSupportAttribs(pElement->get_name(), pWidget->getText()))
+    if (!g_pUiMain->m_pLay_Studio->m_UiDocument.FindInSupportAttribs(pElement->Name(), pWidget->getText()))
     {
         pWidget->SetText(m_OperateAttName);
         Refresh();
@@ -283,7 +296,7 @@ void UiForm_Attributes::OnUnFocus_AttribValue(RtwWidget* pWidget, RtwEventDelega
 {/*LOG("");*/
     RtwTree::Item* pSelectTreeItem = g_pUiMain->m_pFrm_WidgetTree->getSelectItem();
     UI_ENSURE(pSelectTreeItem);
-    xmlpp::Element* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(xmlpp::Element*)pSelectTreeItem->Param2;
+    XMLElement* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(XMLElement*)pSelectTreeItem->Param2;
     UI_ENSURE(pElement);
 	int i=0;
     for (; i < m_AttribCountPerPage; i++)
@@ -293,10 +306,10 @@ void UiForm_Attributes::OnUnFocus_AttribValue(RtwWidget* pWidget, RtwEventDelega
     }
     UI_ENSURE(i < m_AttribCountPerPage);
 
-    xmlpp::Attribute* pAttrib = pElement->get_attribute(m_pCmb_AttName[i]->getText());
+   const char * pAttrib = pElement->Attribute((m_pCmb_AttName[i]->getText()).c_str());
     if (pAttrib)
     {
-        m_pEdt_AttValue[i]->SetText(pAttrib->get_value());
+        m_pEdt_AttValue[i]->SetText(std::string(pAttrib));
     }	
 }
 
@@ -309,7 +322,7 @@ void UiForm_Attributes::OnUnFocus_AttribNameEdit(RtwWidget* pWidget, RtwEventDel
 {/*LOG("");*/
     RtwTree::Item* pSelectTreeItem = g_pUiMain->m_pFrm_WidgetTree->getSelectItem();
     UI_ENSURE(pSelectTreeItem);
-    xmlpp::Element* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(xmlpp::Element*)pSelectTreeItem->Param2;
+    XMLElement* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(XMLElement*)pSelectTreeItem->Param2;
     UI_ENSURE(pElement);
 	int i = 0;
     for (; i < m_AttribCountPerPage; i++)
@@ -319,7 +332,7 @@ void UiForm_Attributes::OnUnFocus_AttribNameEdit(RtwWidget* pWidget, RtwEventDel
     }
     UI_ENSURE(i < m_AttribCountPerPage);	
 
-    if (!g_pUiMain->m_pLay_Studio->m_UiDocument.FindInSupportAttribs(pElement->get_name(), pWidget->getText()))
+    if (!g_pUiMain->m_pLay_Studio->m_UiDocument.FindInSupportAttribs(pElement->Name(), pWidget->getText()))
     {
         pWidget->SetText(m_OperateAttName);
         Refresh();
@@ -331,7 +344,7 @@ void UiForm_Attributes::OnLClick_DelBtn(RtwWidget* pWidget, RtwEventDelegate* pE
 {/*LOG("");*/
     RtwTree::Item* pSelectTreeItem = g_pUiMain->m_pFrm_WidgetTree->getSelectItem();
     UI_ENSURE(pSelectTreeItem);
-    xmlpp::Element* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(xmlpp::Element*)pSelectTreeItem->Param2;
+    XMLElement* pElement = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Element(pSelectTreeItem); //(XMLElement*)pSelectTreeItem->Param2;
     UI_ENSURE(pElement);
     RtwWidget* pOperateWidget = g_pUiMain->m_pFrm_WidgetTree->getTreeParam_Widget(pSelectTreeItem); //(RtwWidget*)pSelectTreeItem->Param1;
 	int i = 0;

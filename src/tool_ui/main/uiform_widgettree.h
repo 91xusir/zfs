@@ -14,14 +14,14 @@ public:
     virtual void Hide();
     virtual bool IsVisible();
 
-    RtwTree::Item* InsertToTree_Element(RtwTree::Item* pParentItem, const xmlpp::Element* pElement);
+    RtwTree::Item* InsertToTree_Element(RtwTree::Item* pParentItem, const tinyxml2::XMLElement* pElement);
     bool SelectItemByWidget(RtwWidget* pWidget);
 
     void SetTreeParam_Widget(RtwTree::Item* pTreeItem, RtwWidget* pWidget);
-    void SetTreeParam_Element(RtwTree::Item* pTreeItem, const xmlpp::Element* pElement);
+    void SetTreeParam_Element(RtwTree::Item* pTreeItem, const tinyxml2::XMLElement* pElement);
 
     RtwWidget* getTreeParam_Widget(RtwTree::Item* pTreeItem) {/*LOG("");*/ return (RtwWidget*)pTreeItem->Param1; }
-    xmlpp::Element* getTreeParam_Element(RtwTree::Item* pTreeItem) {/*LOG("");*/ return (xmlpp::Element*)pTreeItem->Param2; }
+    tinyxml2::XMLElement* getTreeParam_Element(RtwTree::Item* pTreeItem) {/*LOG("");*/ return (tinyxml2::XMLElement*)pTreeItem->Param2; }
 
     RtwTree::Item* getSelectItem() {/*LOG("");*/ return m_pTre_Widgets->getSelectItem(); }
     RtwTree::Item* getElementTopItem();
@@ -30,7 +30,7 @@ public:
 		return getTreeParam_Widget(getSelectItem());
 	}
 
-    std::string GetTreeItemTextFromElement(const xmlpp::Element* pElement);
+    std::string GetTreeItemTextFromElement(const tinyxml2::XMLElement* pElement);
     std::string GetWidgetTypeNameFromTreeItemText(const std::string& Text);
 
 public:

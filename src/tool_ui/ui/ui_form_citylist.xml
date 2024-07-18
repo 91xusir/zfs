@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Ui>
+    <Layer Name="layworld" Show="true">
+        <Form Name="fmcitylist"  Inherit="TitleBarForm"  Location="300,120,240,312" Show="false">
+            <Label Name="lbcitymoney"  Location="14,2,60,18"  Text="采邑财政" />
+            <Label Name="lbtotadygold"  Location="16,30,60,18"  Text="今日税收" />
+            <Label Name="lbtotadygoldnum"  Location="106,30,60,18"  Text="10,000" />
+            <Label Name="lbtax"  Location="16,58,60,18"  Text="当前税率" />
+            <Label Name="lbtaxcount"  Location="130,58,20,18"  Text="%" />
+            <Label Name="lbtaxnum"  Location="106,58,20,18"  Text="10" />
+            <Label Name="lbcitygold"  Location="16,86,60,18"  Text="国库节余" />
+            <Label Name="lbcitygoldnum"  Location="106,86,60,18"  Text="500,000" />
+            <Button Name="btnok"  Inherit="PushButton"  Location="90,228,64,20"  Text="确认" />
+            <Button Name="btncancel"  Inherit="PushButton"  Location="160,228,64,20"  Text="取消" />
+        </Form>
+    </Layer>
+</Ui>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="TitleBarForm" Location="300,120,240,312" Name="fmclearsp" Show="false">
+      <Label Alignment="center" Location="15,20,210,18" Name="lbtitle" Text="还原技能点"/>
+      <Label Location="15,80,192,48" Multiline="true" Name="lbinfo" Text="人物等级每提升10级可以获得一次技能点还原机会"/>
+      <Label Location="15,137,80,18" Name="lbtimes" Text="可还原次数"/>
+      <Label Location="95,137,140,18" Name="lbtimenum" Text="50"/>
+      <Label Location="15,159,80,18" Name="lbchanged" Text="已还原次数"/>
+      <Label Location="95,159,140,18" Multiline="" Name="lbchangednum" Text="10"/>
+      <Label Location="15,182,80,18" Name="lbmoney" Text="所需金钱"/>
+      <Label Location="95,182,80,18" Multiline="" Name="lbmoneynum" Text="100000000"/>
+      <Button Inherit="PushButton" Location="82,227,64,20" Name="btnok" Text="确认"/>
+      <Button Inherit="PushButton" Location="154,226,64,20" Name="btncancel" Text="取消"/>
+    </Form>
+  </Layer>
+</Ui>

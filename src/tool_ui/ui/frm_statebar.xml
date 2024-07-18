@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+	<Layer Name="layStudio" >
+		<Form Name="frmStatebar" Inherit="TitleBarForm" Size="400,20" Show="false" Move="true" EscapeHide="false">
+			<Anchors>
+				<Anchor point="BOTTOM" offset="0,-20" />
+			</Anchors>
+			<Label Name="FPS" Location="0,22,60,16" />
+			<Label Name="MousePosX" Text="MouseX:" Location="60,22,90,16" />
+			<Label Name="MousePosY" Text="MouseY:" Location="150,22,90,16" />
+			<Label Name="State" Text="State" Location="240,22,500,16" />
+		</Form>
+	</Layer>
+</Ui>

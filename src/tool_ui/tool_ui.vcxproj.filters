@@ -23,6 +23,9 @@
     <Filter Include="ui">
       <UniqueIdentifier>{21e36345-e924-4ffb-958f-3e3de6a678e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tinyxml2">
+      <UniqueIdentifier>{ae945b7f-05f6-4687-9954-ad14a92740e3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main\main.cpp">
@@ -202,6 +205,10 @@
     <ClCompile Include="..\engine\head\ui\rtw_xml.cpp">
       <Filter>ui</Filter>
     </ClCompile>
+    <ClCompile Include="main\tinyxml2.cpp">
+      <Filter>tinyxml2</Filter>
+    </ClCompile>
+    <ClCompile Include="iob_func.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main\main_frame.h">
@@ -446,6 +453,9 @@
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_xml.h">
       <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="main\tinyxml2.h">
+      <Filter>tinyxml2</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

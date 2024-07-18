@@ -1,4 +1,5 @@
 #include "studio.h"
+using namespace tinyxml2;
 
 UiForm_WidgetTree::UiForm_WidgetTree()
 {/*LOG("");*/
@@ -51,7 +52,7 @@ void UiForm_WidgetTree::Refresh()
 
     m_pTre_Widgets->DeleteAllItems();
     m_pTre_Widgets->getRootItem();
-    InsertToTree_Element(m_pTre_Widgets->getRootItem(), g_pUiMain->m_pLay_Studio->m_UiDocument.getXmlDocument()->get_root_node());
+    InsertToTree_Element(m_pTre_Widgets->getRootItem(), g_pUiMain->m_pLay_Studio->m_UiDocument.getXmlDocument()->RootElement());
 
     m_pTre_Widgets->Refresh();
 }
@@ -127,32 +128,37 @@ void UiForm_WidgetTree::OnSelect_Tree(RtwWidget* pWidget, RtwEventDelegate* pEve
 	g_pUiMain->m_pFrm_Attributes->Refresh();
 }
 
-RtwTree::Item* UiForm_WidgetTree::InsertToTree_Element(RtwTree::Item* pParentItem, const xmlpp::Element* pElement)
-{/*LOG("");*/
+
+RtwTree::Item* UiForm_WidgetTree::InsertToTree_Element(RtwTree::Item* pParentItem, const XMLElement* pElement)
+{
 	UI_ENSURE_P(pParentItem && pElement);
 
-	//RtwTree::Item* pNewItem = m_pTre_Widgets->InsertItem(GetTreeItemTextFromElement(pElement),"", pParentItem, 0, -1, 0, true, "完成", RtwPixel(0xff00ff00));
-	RtwTree::Item* pNewItem = m_pTre_Widgets->InsertItem(GetTreeItemTextFromElement(pElement),"", 0, pParentItem, 0, -1, 0, true, "完成", RtwPixel(0xff00ff00));
+	// 插入新的树节点
+	RtwTree::Item* pNewItem = m_pTre_Widgets->InsertItem(GetTreeItemTextFromElement(pElement), "", 0, pParentItem, 0, -1, 0, true, "完成", RtwPixel(0xff00ff00));
 	UI_ENSURE_P(pNewItem);
+
+	// 设置树节点的参数为元素指针
 	SetTreeParam_Element(pNewItem, pElement);
-	//pNewItem->Param2 = (void*)pElement;
-	RtwWidget* pWidget = NULL;
-	if (pElement->get_attribute("Name"))
+
+	RtwWidget* pWidget = nullptr;
+	// 如果元素有 "Name" 属性，则尝试获取相关的 Widget 名称
+	const char* nameAttribute = pElement->Attribute("Name");
+	if (nameAttribute)
 	{
 		std::string strWidgetFullName = g_pUiMain->m_pLay_Studio->m_UiDocument.getWidgetNameFromElement(pElement);
 		if (!strWidgetFullName.empty() && g_workspace.FindWidget(strWidgetFullName, &pWidget))
 		{
 			g_pUiMain->m_pFrm_WidgetTree->SetTreeParam_Widget(pNewItem, pWidget);
-			pWidget->drop();
+			pWidget->drop(); // 减少 Widget 的引用计数
 		}
 	}
 
-	const xmlpp::Node::NodeList& nodeList = pElement->get_children();
-	xmlpp::Node::NodeList::const_iterator iter = nodeList.begin();
-	for (; iter != nodeList.end(); iter++)
+	// 遍历元素的子节点
+	const XMLElement* pNode = pElement->FirstChildElement();
+	while (pNode)
 	{
-		xmlpp::Element* pNode = (xmlpp::Element*)(*iter);
-		InsertToTree_Element(pNewItem, pNode);
+		InsertToTree_Element(pNewItem, pNode); // 递归插入子节点
+		pNode = pNode->NextSiblingElement();
 	}
 
 	return pNewItem;
@@ -203,8 +209,10 @@ void UiForm_WidgetTree::OnLClick_Refresh(RtwWidget* pWidget, RtwEventDelegate* p
 void UiForm_WidgetTree::OnMsgBoxOk_Delete(RtwWidget* pWidget, RtwEventDelegate* pEvent)
 {/*LOG("");*/
 	RtwTree::Item* pSelectItem = getSelectItem();
-	xmlpp::Element* pElement = getTreeParam_Element(pSelectItem);
-	if (pSelectItem && pElement && pElement->get_name() != "Ui")
+	//xmlpp::Element* pElement = getTreeParam_Element(pSelectItem);
+	XMLElement* pElement = getTreeParam_Element(pSelectItem);
+
+	if (pSelectItem && pElement && std::string(pElement->Name()) != "Ui")
 	{
 		// 找到父亲Widget的TreeItem
 		RtwTree::Item* pTreeItemWithWidget = pSelectItem->pParent;
@@ -240,9 +248,15 @@ void UiForm_WidgetTree::SetTreeParam_Widget(RtwTree::Item* pTreeItem, RtwWidget*
 	}
 }
 
-void UiForm_WidgetTree::SetTreeParam_Element(RtwTree::Item* pTreeItem, const xmlpp::Element* pElement)
-{/*LOG("");*/
-	CHECK(pTreeItem);
+//void UiForm_WidgetTree::SetTreeParam_Element(RtwTree::Item* pTreeItem, const xmlpp::Element* pElement)
+//{/*LOG("");*/
+//	CHECK(pTreeItem);
+//
+//	pTreeItem->Param2 = (void*)pElement;
+//}
+void UiForm_WidgetTree::SetTreeParam_Element(RtwTree::Item* pTreeItem, const XMLElement* pElement)
+{
+	assert(pTreeItem);
 
 	pTreeItem->Param2 = (void*)pElement;
 }
@@ -252,8 +266,9 @@ RtwTree::Item* UiForm_WidgetTree::getElementTopItem()
 	RtwTree::Item* pItem = m_pTre_Widgets->getRootItem();
 	while (pItem)
 	{
-		xmlpp::Element* pElement = getTreeParam_Element(pItem);
-		if (pElement && pElement->get_name() == "Ui")
+		XMLElement* pElement = getTreeParam_Element(pItem);
+
+		if (pElement && std::string(pElement->Name()) == "Ui")
 			break;
 
 		pItem = pItem->pFirstChild;
@@ -274,17 +289,34 @@ std::string UiForm_WidgetTree::GetWidgetTypeNameFromTreeItemText(const std::stri
 		return Text.substr(0, pos);
 }
 
-std::string UiForm_WidgetTree::GetTreeItemTextFromElement(const xmlpp::Element* pElement)
-{/*LOG("");*/
+//std::string UiForm_WidgetTree::GetTreeItemTextFromElement(const xmlpp::Element* pElement)
+//{/*LOG("");*/
+//	if (!pElement)
+//		return "";
+//
+//	std::string Text = pElement->get_name();
+//	xmlpp::Attribute* pAtt = pElement->get_attribute("Name");
+//	if (pAtt)
+//	{
+//		Text += "(";
+//		Text += pAtt->get_value();
+//		Text += ")";
+//	}
+//
+//	return Text;
+//}
+std::string UiForm_WidgetTree::GetTreeItemTextFromElement(const XMLElement* pElement)
+{
 	if (!pElement)
 		return "";
 
-	std::string Text = pElement->get_name();
-	xmlpp::Attribute* pAtt = pElement->get_attribute("Name");
-	if (pAtt)
+	std::string Text = pElement->Name();
+
+	const char* nameAttribute = pElement->Attribute("Name");
+	if (nameAttribute)
 	{
 		Text += "(";
-		Text += pAtt->get_value();
+		Text += nameAttribute;
 		Text += ")";
 	}
 

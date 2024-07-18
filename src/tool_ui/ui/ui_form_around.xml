@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="TitleBarForm" Location="228,98,240,300" Name="fmaround" Show="false">
+      <Label Location="14,4,60,18" Name="lbaround" Text="周围玩家" TextColor="ffffffff"/>
+      <Form FadeIn="true" Location="14,26,212,234" Name="fmplayerlist">
+        <ListBox Inherit="ListBox" ItemHeight="13" Location="0,0,210,232" Name="listplayer">
+          <Column Inherit="Column" Text="名字" Width="105"/>
+          <Column Inherit="Column" Text="职业" Width="100"/>
+        </ListBox>
+      </Form>
+     <!-- <Button Inherit="PushButton" Location="14,266,64,20" Name="btnsay" Text="密语"/>
+      <Button Inherit="PushButton" Location="86,266,64,20" Name="btninvite" Text="组队"/>
+      <Button Inherit="PushButton" Location="158,266,64,20" Name="btntrade" Text="交易"/>
+      <Button Inherit="PushButton" Location="14,290,64,20" Name="btnfriend" Text="好友"/>
+      <Button Inherit="PushButton" Location="86,290,64,20" Name="btnguild" Text="诸侯"/> -->
+    </Form>
+  </Layer>
+</Ui>

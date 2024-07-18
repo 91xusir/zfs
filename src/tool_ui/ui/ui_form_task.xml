@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form EscapeHide="true" Inherit="" Location="101,170,635,454" Name="fmmaintask" Show="false">
+      <Label Alignment="center" FontSize="18" Inherit="" Location="70,2,495,18" Name="lbname" Show="true" Text="任务日志" TextColor="#ffdfde9b" TextFont="隶书"/>
+      <Form BackgroundColor="#A50E593A" Inherit="" Location="10,47,614,369" Name="fmtask" Show="true">
+        <TabCtrl Inherit="" Location="0,0,614,400" Name="tabitem" Show="true">
+          <TabItem>
+            <CheckButton AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="NewCheckButton2" Location="7,6,67,17" Name="ckcurrenttask" Show="true" Sound="ui_changepg.wav" Text="当前任务" TextColor="#fffbff66" TextFont="宋体"/>
+            <Form Inherit="" Location="0,28,614,351" Name="fmcurrenttask" Show="true">
+              <Label BackgroundColor="#ff153723" Inherit="" Location="4,3,168,5" Name="lbxmm" Show="true"/>
+              <Tree AutoScrollH="false" AutoScrollV="true" BackgroundColor="#ff153723" Inherit="" Location="4,8,168,329" Name="treetask" Show="true">
+                <BackgroundImage BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="468,83,20,20"/>
+              </Tree>
+              <Form Inherit="" Location="176,3,432,334" Name="fmtask1" Show="true">
+                <BackgroundImage Blend="true" File="ui/textures/12.tga" Source=""/>
+                <Form Inherit="" Location="1,1,420,330" Name="fmhtmldesc" Show="true">
+                  <HtmlView Inherit="" Location="1,0,420,169" Name="htmldesc" Show="true"/>
+                </Form>
+                <Label Inherit="" Location="6,171,420,18" Name="lbprizetext" Show="true">
+                  <BackgroundImage Blend="true" File="ui/textures/28_c.tga" Source=""/>
+                </Label>
+                <Form Inherit="" Location="2,191,420,140" Name="fmfixreward" Show="false1">
+                  <Label Inherit="" Location="10,5,195,22" Name="lbreward1" Show="false">
+                    <Label Inherit="" Location="1,4,16,16" Name="lbicon1" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/10.tga" Source="112,286,22,22"/>
+                    </Label>
+                    <Label Inherit="" Location="23,0,5,22" Name="lbleft" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="359,124,5,22"/>
+                    </Label>
+                    <Label Inherit="" Location="28,0,162,22" Name="lbcenter" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="366,124,6,22"/>
+                      <Label AlignLine="CENTER" Alignment="center" Inherit="" Location="0,2,162,18" Name="lbtext1" Show="true" Text=""/>
+                    </Label>
+                    <Label Inherit="" Location="190,0,5,22" Name="lbright" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="375,124,5,22"/>
+                    </Label>
+                  </Label>
+                  <Label Inherit="" Location="220,5,195,22" Name="lbreward2" Show="false">
+                    <Label Inherit="" Location="1,4,16,16" Name="lbicon2" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/10.tga" Source="112,286,22,22"/>
+                    </Label>
+                    <Label Inherit="" Location="23,0,5,22" Name="lbleft" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="359,124,5,22"/>
+                    </Label>
+                    <Label Inherit="" Location="28,0,162,22" Name="lbcenter" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="366,124,6,22"/>
+                      <Label AlignLine="CENTER" Alignment="center" Inherit="" Location="0,2,162,18" Name="lbtext2" Show="true" Text=""/>
+                    </Label>
+                    <Label Inherit="" Location="190,0,5,22" Name="lbright" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="375,124,5,22"/>
+                    </Label>
+                  </Label>
+                  <Label Inherit="" Location="10,30,195,22" Name="lbreward3" Show="false">
+                    <Label Inherit="" Location="1,4,16,16" Name="lbicon3" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/10.tga" Source="112,286,22,22"/>
+                    </Label>
+                    <Label Inherit="" Location="23,0,5,22" Name="lbleft" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="359,124,5,22"/>
+                    </Label>
+                    <Label Inherit="" Location="28,0,162,22" Name="lbcenter" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="366,124,6,22"/>
+                      <Label AlignLine="CENTER" Alignment="center" Inherit="" Location="0,2,162,18" Name="lbtext3" Show="true" Text=""/>
+                    </Label>
+                    <Label Inherit="" Location="190,0,5,22" Name="lbright" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="375,124,5,22"/>
+                    </Label>
+                  </Label>
+                  <Label Inherit="" Location="220,30,195,22" Name="lbreward4" Show="false">
+                    <Label Inherit="" Location="1,4,16,16" Name="lbicon4" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/10.tga" Source="112,286,22,22"/>
+                    </Label>
+                    <Label Inherit="" Location="23,0,5,22" Name="lbleft" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="359,124,5,22"/>
+                    </Label>
+                    <Label Inherit="" Location="28,0,162,22" Name="lbcenter" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="366,124,6,22"/>
+                      <Label AlignLine="CENTER" Alignment="center" Inherit="" Location="0,2,162,18" Name="lbtext4" Show="true" Text=""/>
+                    </Label>
+                    <Label Inherit="" Location="190,0,5,22" Name="lbright" Show="true">
+                      <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="375,124,5,22"/>
+                    </Label>
+                  </Label>
+                  <Form Inherit="" Location="5,37,420,100" Name="fmitemall" Show="false">
+                    <Form BackgroundColor="#A50E593A" Inherit="" Location="4,5,203,40" Name="fmitem1" Show="false">
+                      <Form Inherit="" Location="1,1,38,38" Name="fmicon" Show="true">
+                        <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                        <Button Inherit="" Location="3,3,32,32" Name="btnicon" Show="true"/>
+                      </Form>
+                      <Label AlignLine="CENTER" BackgroundColor="#ff153723" Inherit="" Location="40,1,162,38" Name="lbtext" Show="true" Text=""/>
+                    </Form>
+                    <Form BackgroundColor="#A50E593A" Inherit="" Location="212,5,203,40" Name="fmitem2" Show="false">
+                      <Form Inherit="" Location="1,1,38,38" Name="fmicon" Show="true">
+                        <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                        <Button Inherit="" Location="3,3,32,32" Name="btnicon" Show="true"/>
+                      </Form>
+                      <Label AlignLine="CENTER" BackgroundColor="#ff153723" Inherit="" Location="40,1,162,38" Name="lbtext" Show="true" Text=""/>
+                    </Form>
+                    <Form BackgroundColor="#A50E593A" Inherit="" Location="4,55,203,40" Name="fmitem3" Show="false">
+                      <Form Inherit="" Location="1,1,38,38" Name="fmicon" Show="true">
+                        <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                        <Button Inherit="" Location="3,3,32,32" Name="btnicon" Show="true"/>
+                      </Form>
+                      <Label AlignLine="CENTER" BackgroundColor="#ff153723" Inherit="" Location="40,1,162,38" Name="lbtext" Show="true" Text=""/>
+                    </Form>
+                    <Form BackgroundColor="#A50E593A" Inherit="" Location="212,55,203,40" Name="fmitem4" Show="false">
+                      <Form Inherit="" Location="1,1,38,38" Name="fmicon" Show="true">
+                        <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                        <Button Inherit="" Location="3,3,32,32" Name="btnicon" Show="true"/>
+                      </Form>
+                      <Label AlignLine="CENTER" BackgroundColor="#ff153723" Inherit="" Location="40,1,162,38" Name="lbtext" Show="true" Text=""/>
+                    </Form>
+                  </Form>
+                </Form>
+                <Form Inherit="" Location="3,228,420,106" Name="fmrandomreward" Show="false">
+                  <Label FontSize="12" Inherit="" Location="2,0,180,18" Name="lbtask3prize2" Show="true" Text="下列奖励中可任意选取一种：" TextColor="#fffcffc6" TextFont="宋体"/>
+                  <Form BackgroundColor="#A50E593A" Inherit="" Location="8,19,203,40" Name="fmitem1" Show="false">
+                    <Form Inherit="" Location="1,1,38,38" Name="fmicon" Show="true">
+                      <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                      <Button Inherit="" Location="3,3,32,32" Name="btnicon" Show="true"/>
+                    </Form>
+                    <Label AlignLine="CENTER" BackgroundColor="#ff153723" Inherit="" Location="40,1,162,38" Name="lbtext" Show="true" Text=""/>
+                  </Form>
+                  <Form BackgroundColor="#A50E593A" Inherit="" Location="217,19,203,40" Name="fmitem2" Show="false">
+                    <Form Inherit="" Location="1,1,38,38" Name="fmicon" Show="true">
+                      <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                      <Button Inherit="" Location="3,3,32,32" Name="btnicon" Show="true"/>
+                    </Form>
+                    <Label AlignLine="CENTER" BackgroundColor="#ff153723" Inherit="" Location="40,1,162,38" Name="lbtext" Show="true" Text=""/>
+                  </Form>
+                  <Form BackgroundColor="#A50E593A" Inherit="" Location="8,62,203,40" Name="fmitem3" Show="false">
+                    <Form Inherit="" Location="1,1,38,38" Name="fmicon" Show="true">
+                      <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                      <Button Inherit="" Location="3,3,32,32" Name="btnicon" Show="true"/>
+                    </Form>
+                    <Label AlignLine="CENTER" BackgroundColor="#ff153723" Inherit="" Location="40,1,162,38" Name="lbtext" Show="true" Text=""/>
+                  </Form>
+                  <Form BackgroundColor="#A50E593A" Inherit="" Location="217,62,203,40" Name="fmitem4" Show="false">
+                    <Form Inherit="" Location="1,1,38,38" Name="fmicon" Show="true">
+                      <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                      <Button Inherit="" Location="3,3,32,32" Name="btnicon" Show="true"/>
+                    </Form>
+                    <Label AlignLine="CENTER" BackgroundColor="#ff153723" Inherit="" Location="40,1,162,38" Name="lbtext" Show="true" Text=""/>
+                  </Form>
+                </Form>
+              </Form>
+            </Form>
+          </TabItem>
+          <TabItem>
+            <CheckButton AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="NewCheckButton2" Location="76,6,67,17" Name="ckcantask" Show="true" Sound="ui_changepg.wav" Text="可接任务" TextColor="#fffbff66" TextFont="宋体"/>
+            <Form Inherit="" Location="0,28,614,351" Name="fmaccepttask" Show="true">
+              <Label BackgroundColor="#ff153723" Inherit="" Location="4,3,168,5" Name="lbxmm" Show="true"/>
+              <Tree AutoScrollH="false" AutoScrollV="true" BackgroundColor="#ff153723" Inherit="" Location="4,8,168,329" Name="treetask" Show="true">
+                <BackgroundImage BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="468,83,20,20"/>
+              </Tree>
+              <Form Inherit="" Location="176,0,432,334" Name="fmtask2" Show="true">
+                <Form BackgroundColor="#ff153723" Inherit="" Location="2,3,428,335" Name="fmhtmlaccept" Show="true">
+                  <BackgroundImage BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="468,83,20,20"/>
+                  <HtmlView Inherit="" Location="0,0,428,335" Name="htmlaccept" Show="true"/>
+                  <BackgroundImage Blend="true" File="ui/textures/12.tga" Source=""/>
+                </Form>
+                <Form Inherit="" Location="2,200,432,150" Name="fmtask3prize" Show="true">
+                  <Form Inherit="" Location="10,0,432,60" Name="fmtask3prize1" Show="true">
+                    <Label FontSize="12" Inherit="" Location="2,0,145,18" Name="lbtask3prize1" Show="true" Text="经验、灵力、修为、门贡奖励（程序上字）" TextColor="#fffcffc6" TextFont="宋体"/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="10,20,34,34" Name="lbhotkey1" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="55,20,34,34" Name="lbhotkey2" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="100,20,34,34" Name="lbhotkey3" Text=""/>
+                    <Label Inherit="" Location="10,20,35,35" Name="lbf1" Show="true"/>
+                    <Label Inherit="" Location="55,20,35,35" Name="lbf2" Show="true"/>
+                    <Label Inherit="" Location="100,20,35,35" Name="lbf3" Show="true"/>
+                  </Form>
+                  <Form Inherit="" Location="10,60,432,60" Name="fmtask3prize2" Show="true">
+                    <Label FontSize="12" Inherit="" Location="2,0,145,18" Name="lbtask3prize2" Show="true" Text="固定道具奖励（程序上字）" TextColor="#fffcffc6" TextFont="宋体"/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="10,20,34,34" Name="lbhotkey1" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="55,20,34,34" Name="lbhotkey2" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="100,20,34,34" Name="lbhotkey3" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="145,20,34,34" Name="lbhotkey4" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="190,20,34,34" Name="lbhotkey5" Text=""/>
+                    <Label Inherit="" Location="10,20,35,35" Name="lbf1" Show="true"/>
+                    <Label Inherit="" Location="55,20,35,35" Name="lbf2" Show="true"/>
+                    <Label Inherit="" Location="100,20,35,35" Name="lbf3" Show="true"/>
+                    <Label Inherit="" Location="145,20,35,35" Name="lbf2" Show="true"/>
+                    <Label Inherit="" Location="190,20,35,35" Name="lbf3" Show="true"/>
+                  </Form>
+                  <Form Inherit="" Location="10,120,432,100" Name="fmtask3prize3" Show="true">
+                    <Label FontSize="12" Inherit="" Location="2,0,145,18" Name="lbtask3prize3" Show="true" Text="可选道具奖励（程序上字）" TextColor="#fffcffc6" TextFont="宋体"/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="10,20,34,34" Name="lbhotkey1" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="55,20,34,34" Name="lbhotkey2" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="100,20,34,34" Name="lbhotkey3" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="145,20,34,34" Name="lbhotkey4" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="190,20,34,34" Name="lbhotkey5" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="235,20,34,34" Name="lbhotkey6" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="280,20,34,34" Name="lbhotkey7" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="325,20,34,34" Name="lbhotkey8" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="10,60,34,34" Name="lbhotkey9" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="55,60,34,34" Name="lbhotkey10" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="100,60,34,34" Name="lbhotkey11" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="145,60,34,34" Name="lbhotkey12" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="190,60,34,34" Name="lbhotkey13" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="235,60,34,34" Name="lbhotkey14" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="280,60,34,34" Name="lbhotkey15" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="325,60,34,34" Name="lbhotkey16" Text=""/>
+                    <Label Inherit="" Location="10,20,35,35" Name="lbf1" Show="true"/>
+                    <Label Inherit="" Location="55,20,35,35" Name="lbf2" Show="true"/>
+                    <Label Inherit="" Location="100,20,35,35" Name="lbf3" Show="true"/>
+                    <Label Inherit="" Location="145,20,35,35" Name="lbf4" Show="true"/>
+                    <Label Inherit="" Location="190,20,35,35" Name="lbf5" Show="true"/>
+                    <Label Inherit="" Location="235,20,35,35" Name="lbf6" Show="true"/>
+                    <Label Inherit="" Location="280,20,35,35" Name="lbf7" Show="true"/>
+                    <Label Inherit="" Location="325,20,35,35" Name="lbf8" Show="true"/>
+                    <Label Inherit="" Location="10,60,35,35" Name="lbf9" Show="true"/>
+                    <Label Inherit="" Location="55,60,35,35" Name="lbf10" Show="true"/>
+                    <Label Inherit="" Location="100,60,35,35" Name="lbf11" Show="true"/>
+                    <Label Inherit="" Location="145,60,35,35" Name="lbf12" Show="true"/>
+                    <Label Inherit="" Location="190,60,35,35" Name="lbf13" Show="true"/>
+                    <Label Inherit="" Location="235,60,35,35" Name="lbf14" Show="true"/>
+                    <Label Inherit="" Location="280,60,35,35" Name="lbf15" Show="true"/>
+                    <Label Inherit="" Location="325,60,35,35" Name="lbf16" Show="true"/>
+                  </Form>
+                </Form>
+              </Form>
+            </Form>
+          </TabItem>
+          <TabItem>
+            <CheckButton AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="NewCheckButton2" Location="145,6,67,17" Name="cksharetask" Show="true" Sound="ui_changepg.wav" Text="任务共享" TextColor="#fffbff66" TextFont="宋体"/>
+            <Form Inherit="" Location="0,28,614,351" Name="fmsharetask" Show="true">
+              <Label BackgroundColor="#ff153723" Inherit="" Location="4,3,168,5" Name="lbxmm" Show="true"/>
+              <Tree AutoScrollH="false" AutoScrollV="true" BackgroundColor="#ff153723" Inherit="" Location="4,8,168,329" Name="treetask" Show="true">
+                <BackgroundImage BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="468,83,20,20"/>
+              </Tree>
+              <Form Inherit="" Location="176,0,432,334" Name="fmtask3" Show="true">
+                <Form BackgroundColor="#ff153723" Inherit="" Location="2,3,428,335" Name="fmhtmlshare" Show="true">
+                  <BackgroundImage BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="468,83,20,20"/>
+                  <HtmlView Inherit="" Location="1,-2,428,335" Name="htmlshare" Show="true"/>
+                  <BackgroundImage Blend="true" File="ui/textures/12.tga" Source=""/>
+                </Form>
+                <Form Inherit="" Location="2,200,432,150" Name="fmtask3prize" Show="true">
+                  <Form Inherit="" Location="10,0,432,60" Name="fmtask3prize1" Show="true">
+                    <Label FontSize="12" Inherit="" Location="2,0,145,18" Name="lbtask3prize1" Show="true" Text="经验、灵力、修为、门贡奖励（程序上字）" TextColor="#fffcffc6" TextFont="宋体"/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="10,20,34,34" Name="lbhotkey1" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="55,20,34,34" Name="lbhotkey2" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="100,20,34,34" Name="lbhotkey3" Text=""/>
+                    <Label Inherit="" Location="10,20,35,35" Name="lbf1" Show="true"/>
+                    <Label Inherit="" Location="55,20,35,35" Name="lbf2" Show="true"/>
+                    <Label Inherit="" Location="100,20,35,35" Name="lbf3" Show="true"/>
+                  </Form>
+                  <Form Inherit="" Location="10,60,432,60" Name="fmtask3prize2" Show="true">
+                    <Label FontSize="12" Inherit="" Location="2,0,145,18" Name="lbtask3prize2" Show="true" Text="固定道具奖励（程序上字）" TextColor="#fffcffc6" TextFont="宋体"/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="10,20,34,34" Name="lbhotkey1" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="55,20,34,34" Name="lbhotkey2" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="100,20,34,34" Name="lbhotkey3" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="145,20,34,34" Name="lbhotkey4" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="190,20,34,34" Name="lbhotkey5" Text=""/>
+                    <Label Inherit="" Location="10,20,35,35" Name="lbf1" Show="true"/>
+                    <Label Inherit="" Location="55,20,35,35" Name="lbf2" Show="true"/>
+                    <Label Inherit="" Location="100,20,35,35" Name="lbf3" Show="true"/>
+                    <Label Inherit="" Location="145,20,35,35" Name="lbf2" Show="true"/>
+                    <Label Inherit="" Location="190,20,35,35" Name="lbf3" Show="true"/>
+                  </Form>
+                  <Form Inherit="" Location="10,120,432,100" Name="fmtask3prize3" Show="true">
+                    <Label FontSize="12" Inherit="" Location="2,0,145,18" Name="lbtask3prize3" Show="true" Text="可选道具奖励（程序上字）" TextColor="#fffcffc6" TextFont="宋体"/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="10,20,34,34" Name="lbhotkey1" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="55,20,34,34" Name="lbhotkey2" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="100,20,34,34" Name="lbhotkey3" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="145,20,34,34" Name="lbhotkey4" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="190,20,34,34" Name="lbhotkey5" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="235,20,34,34" Name="lbhotkey6" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="280,20,34,34" Name="lbhotkey7" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="325,20,34,34" Name="lbhotkey8" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="10,60,34,34" Name="lbhotkey9" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="55,60,34,34" Name="lbhotkey10" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="100,60,34,34" Name="lbhotkey11" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="145,60,34,34" Name="lbhotkey12" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="190,60,34,34" Name="lbhotkey13" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="235,60,34,34" Name="lbhotkey14" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="280,60,34,34" Name="lbhotkey15" Text=""/>
+                    <Button Alignment="center" BorderSize="2" Inherit="" Location="325,60,34,34" Name="lbhotkey16" Text=""/>
+                    <Label Inherit="" Location="10,20,35,35" Name="lbf1" Show="true"/>
+                    <Label Inherit="" Location="55,20,35,35" Name="lbf2" Show="true"/>
+                    <Label Inherit="" Location="100,20,35,35" Name="lbf3" Show="true"/>
+                    <Label Inherit="" Location="145,20,35,35" Name="lbf4" Show="true"/>
+                    <Label Inherit="" Location="190,20,35,35" Name="lbf5" Show="true"/>
+                    <Label Inherit="" Location="235,20,35,35" Name="lbf6" Show="true"/>
+                    <Label Inherit="" Location="280,20,35,35" Name="lbf7" Show="true"/>
+                    <Label Inherit="" Location="325,20,35,35" Name="lbf8" Show="true"/>
+                    <Label Inherit="" Location="10,60,35,35" Name="lbf9" Show="true"/>
+                    <Label Inherit="" Location="55,60,35,35" Name="lbf10" Show="true"/>
+                    <Label Inherit="" Location="100,60,35,35" Name="lbf11" Show="true"/>
+                    <Label Inherit="" Location="145,60,35,35" Name="lbf12" Show="true"/>
+                    <Label Inherit="" Location="190,60,35,35" Name="lbf13" Show="true"/>
+                    <Label Inherit="" Location="235,60,35,35" Name="lbf14" Show="true"/>
+                    <Label Inherit="" Location="280,60,35,35" Name="lbf15" Show="true"/>
+                    <Label Inherit="" Location="325,60,35,35" Name="lbf16" Show="true"/>
+                  </Form>
+                </Form>
+              </Form>
+            </Form>
+          </TabItem>
+        </TabCtrl>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="381,109,20,20"/>
+      </Form>
+      <CloseButton Blend="true" Location="20,20,20,20" Name="$hide" Show="true" Text="" padding="0,25,5,0">
+        <NormalImage Blend="true" File="ui/textures/5.tga" Source="360,65,18,17"/>
+        <PushedImage Blend="true" File="ui/textures/5.tga" Source="360,103,18,17"/>
+        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="360,84,18,17"/>
+      </CloseButton>
+      <Label BackgroundColor="#A016712C" Location="6,50,623,380" Name="b"/>
+      <Label Location="0,-1,317,50" Name="tl">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="1,92,318,51"/>
+      </Label>
+      <Label Location="318,-1,317,50" Name="tr">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="2,147,318,51"/>
+      </Label>
+      <Label Inherit="" Location="0,431,318,23" Name="bl" Show="true">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="0,199,319,25"/>
+      </Label>
+      <Label Inherit="" Location="316,430,319,23" MouseEvent="false" Name="br" Show="true">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="1,224,319,23"/>
+      </Label>
+      <Label Inherit="" Location="1,50,4,382" Name="cl" Show="true">
+        <BackgroundImage File="ui/textures/5.tga" Source="2,54,6,9"/>
+      </Label>
+      <Label Inherit="" Location="630,50,4,380" Name="cr" Show="true">
+        <BackgroundImage File="ui/textures/5.tga" Source="306,53,7,9"/>
+      </Label>
+      <Label BackgroundColor="#a31e6946" Inherit="" Location="6,431,311,1" Name="bt" Show="true"/>
+      <Form Inherit="" Location="10,416,614,32" Name="fmtaskbtn1" Show="false">
+        <Button AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="NewButton2" Location="457,6,67,20" Name="btncanceltask" Show="true" Sound="ui_normalbt.wav" Text="取消任务" TextColor="#fffbff66" TextFont="宋体"/>
+        <Button AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="NewButton2" Location="385,6,67,20" Name="btnsharetask" Show="true" Sound="ui_normalbt.wav" Text="任务共享" TextColor="#fffbff66" TextFont="宋体"/>
+        <Button AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="NewButton2" Location="292,6,67,20" Name="btntasktrack" Show="true" Sound="ui_normalbt.wav" Text="任务追踪" TextColor="#fffbff66" TextFont="宋体"/>
+        <Button AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="NewButton2" Location="529,6,67,20" Name="btnclose" Show="true" Sound="ui_normalbt.wav" Text="关闭" TextColor="#fffbff66" TextFont="宋体"/>
+        <CheckButton Inherit="NewCheckButton5" Location="266,8,15,15" Name="cktasktrack" Show="true" Sound="ui_normalbt.wav"/>
+      </Form>
+      <Form Inherit="" Location="10,416,614,32" Name="fmtaskbtn2" Show="false">
+        <Button AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="NewButton2" Location="529,6,67,20" Name="btnclose" Show="true" Sound="ui_normalbt.wav" Text="关闭" TextColor="#fffbff66" TextFont="宋体"/>
+      </Form>
+      <Form Inherit="" Location="10,416,614,32" Name="fmtaskbtn3" Show="false">
+        <Button AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="NewButton2" Location="457,6,67,20" Name="btncancel" Show="true" Sound="ui_normalbt.wav" Text="取消" TextColor="#fffbff66" TextFont="宋体"/>
+        <Button AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="NewButton2" Location="385,6,67,20" Name="btnaccept" Show="true" Sound="ui_normalbt.wav" Text="接受" TextColor="#fffbff66" TextFont="宋体"/>
+        <Button AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="NewButton2" Location="529,6,67,20" Name="btnclose" Show="true" Sound="ui_normalbt.wav" Text="关闭" TextColor="#fffbff66" TextFont="宋体"/>
+      </Form>
+      <Anchors>
+        <Anchor offset="-150,0" point="CENTERV"/>
+        <Anchor offset="0,-50" point="CENTERH"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>
