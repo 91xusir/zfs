@@ -15,142 +15,155 @@
     一个很疯狂也持续了很久的计划！！
     <br />
 </p>
+------
 
 
+[TOC]
 
-## 目录
+------
 
-- [上手指南](#上手指南)
-  - [开发前的配置要求](#开发前的配置要求)
-  - [安装步骤](#安装步骤)
-- [文件目录说明](#文件目录说明)
-- [开发的架构](#开发的架构)
-- [部署](#部署)
-- [使用到的框架](#使用到的框架)
-- [贡献者](#贡献者)
-  - [如何参与开源项目](#如何参与开源项目)
-- [版本控制](#版本控制)
-- [作者](#作者)
-- [鸣谢](#鸣谢)
+### 1.上手指南
 
-### 上手指南
+开发环境：visual studio 2022
 
-等待mr补充
+#### 1.1 Clone
 
-
-
-###### 开发前的配置要求
-
-1. xxxxx x.x.x
-2. xxxxx x.x.x
-
-###### **安装步骤**
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-
-```sh
-git clone https://github.com/shaojintian/Best_README_template.git
+```
+git clone https://github.com/reniao69/zfs.git
 ```
 
-### 文件目录说明
+#### 1.2 编译
+
 ```
-├─Backup					vs2022解决方案备份文件
-├─bin    					编译生成的二进制文件
-├─docs						旧docs文档，将采用md重构
-├─engine 					放引擎头文件和编译生成的lib
-├─gameworld_server 			游戏世界服务器源目录
-├─game_client 				客户端源目录
-├─login_server 				游戏登录服务器源目录
-├─region_server 			游戏逻辑服务器源目录
-├─runtime					游戏运行时需要的dll等
-├─sdk						外部库
-├─shared					服务端和客户端公用代码
-├─SQL						数据库文件
-├─src
+打开各个vs解决方案，编译game_engine—>编译其他
+//TODO 后续将将写编译脚本一键编译
+```
+
+- [ ] 编写cmake编译脚本
+
+#### 1.3 项目说明
+
+##### 1.3.1 目录结构
+
+```
+├─Backup					vs旧版解决方案备份文件
+├─bin    					编译生成的二进制文件 可以将客户端内容放在这里，方便调试gc
 ├─temp						编译生成的临时文件
-├─tool_character			act工具源目录
-├─tool_crashreport			崩溃日志工具src
-├─tool_files_packet			pak打包解包工具
+├─docs						旧docs文档，将采用md重构
+├─runtime					游戏运行时需要的dll等
+├─SQL						游戏数据库文件
+-------------------------
+├─engine 					引擎头文件.h和编译生成的lib静态库，供客户端和服务端使用
+├─sdk						服务端和客户端依赖的外部库
+├─shared					服务端和客户端公用代码
+├─game_engine				游戏引擎
+├─game_client 				客户端gc
+├─gameworld_server 			游戏世界服务器W
+├─login_server 				游戏登录服务器L  
+├─region_server 			游戏逻辑服务器R  
+├─tool_character			模型编辑
+├─tool_crashreport			崩溃日志工具
+├─tool_files_packet			PAK打包解包工具
 ├─tool_max9_utility			3dmax9插件
 ├─tool_max_utility			3dmax插件
-├─tool_scene				地图工具src
-└─tool_ui					ui工具src
-
+├─tool_scene				地图工具
+└─tool_ui					ui工具
+-------------------------
+客户端 服务端 工具  
+│      │      │  
+└─── 引擎 ────┘
 ```
 
+##### 1.3.2 命名方式
 
+lib库的命名方式，根据不同的运行库命名，
 
+![image-20240719174731386](README/image-20240719174731386.png) 
 
+![image-20240719172836181](README/image-20240719172836181.png) 
 
-### 开发的架构 
+exe命名方式：
 
-请阅读[ARCHITECTURE.md](https://github.com/shaojintian/Best_README_template/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
+xxx_Release.exe 
 
-### 部署
+xxx_Debug.exe 
 
-暂无
+##### 1.3.3 引擎工程
 
-### 使用到的框架
+```
+Engine共分为8大模块：
 
-- [xxxxxxx](https://getbootstrap.com)
-- [xxxxxxx](https://jquery.com)
-- [xxxxxxx](https://laravel.com)
+Core是最基本的模块,为其他模块提供与操作系统相关的操作,以及一些最基本的公用函数；
 
-### 贡献者
+Audio是音频模块；
 
-请阅读**CONTRIBUTING.md** 查阅为该项目做出贡献的开发者。
+FilePack是文件打包模块；
 
-#### 如何参与开源项目
+Graph是图形模块,封装了DX的一些操作；
 
-贡献使开源社区成为一个学习、激励和创造的绝佳场所。你所作的任何贡献都是**非常感谢**的。
+Net是网络模块,封装着基本的Socket等操作；
 
+UI模块提供大量与用户界面相关的控件；
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Scene模块处理地形,场景物件,事件触发,环境因素等内容；
 
+Character是角色模块,封装与角色相关的动画,材质,特效,骨骼,皮肤等等内容；
+-------------------------------------------------------------------
 
+Engine项目需要生成四种版本的库文件
+Multi-Threaded 				*_mt.lib
+Multi-Threaded Debug		*_mtd.lib
+Multi-Threaded DLL 			*_md.lib
+Multi-Threaded DLL Debug	*_mdd.lib
+工具使用md版本
+客户端和服务器端使用mt版本
+```
 
-### 版本控制
+##### 1.3.4 客户端工程
 
-该项目使用Git进行版本管理。您可以在repository参看当前可用版本。
+```
+游戏客户端工程由于历史原因,存在多种配置,但目前只需要Debug和Release版本配置,其它配置无效。
+生成采用Multi-Threaded的运行库方式,故Debug和Release版本均依赖于相应MT的运行库方式的engine库。
+```
 
-### 作者
+##### 1.3.5 服务端工程
 
-xxx@xxxx
+```
+生成采用Multi-Threaded的运行库方式,
+故Debug和Release版本均依赖于相应Multi-Threaded的运行库方式的net库（是engine库的一个组件）。
+```
 
-知乎:xxxx  &ensp; qq:xxxxxx    
+##### 1.3.6 工具工程
 
- *您也可以在贡献者名单中参看所有参与该项目的开发者。*
+```
+tool_character			目录下存放着角色编辑器的源文件
+tool_max_utility		目录下存放着max导出插件的源文件
+tool_scene				目录下存放着场景编辑器的源文件
+tool_ui					目录下存放着UI编辑器的源文件
 
-### 版权说明
+由于历史原因,存在多种配置,但目前只需要Debug和Release版本配置,其它配置无效。
+生成采用Multi-Threaded DLL的运行库方式
+故Debug和Release版本均依赖于相应Multi-Threaded DLL的运行库方式的engine库。
+```
 
-该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](https://github.com/shaojintian/Best_README_template/blob/master/LICENSE.txt)
+------
 
-### 鸣谢
+### 2.详细开发文档
 
+[1.引擎](./doc/engine.md)
 
-- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Img Shields](https://shields.io)
-- [Choose an Open Source License](https://choosealicense.com)
-- [GitHub Pages](https://pages.github.com)
-- [Animate.css](https://daneden.github.io/animate.css)
-- [xxxxxxxxxxxxxx](https://connoratherton.com/loaders)
+2.客户端
 
-<!-- links -->
-[your-project-path]:shaojintian/Best_README_template
-[contributors-shield]: https://img.shields.io/github/contributors/shaojintian/Best_README_template.svg?style=flat-square
-[contributors-url]: https://github.com/shaojintian/Best_README_template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/shaojintian/Best_README_template.svg?style=flat-square
-[forks-url]: https://github.com/shaojintian/Best_README_template/network/members
-[stars-shield]: https://img.shields.io/github/stars/shaojintian/Best_README_template.svg?style=flat-square
-[stars-url]: https://github.com/shaojintian/Best_README_template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/shaojintian/Best_README_template.svg?style=flat-square
-[issues-url]: https://img.shields.io/github/issues/shaojintian/Best_README_template.svg
-[license-shield]: https://img.shields.io/github/license/shaojintian/Best_README_template.svg?style=flat-square
-[license-url]: https://github.com/shaojintian/Best_README_template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/shaojintian
+3.服务端
+
+...
+
+------
+
+### 3.开发计划与进度
+
+- [x] 项目迁移至vs2022环境，更新相关依赖
+
+- [ ] 阅读引擎源代码，重写md文档
+- [ ] 阅读客户端代码，重写md文档
+- [ ] ...
