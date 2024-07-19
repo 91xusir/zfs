@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Ui>
+    <Layer Name="layworld" Show="true">
+        <Form Name="fmtaskitem"  Inherit="TitleBarForm"  Location="266,226,260,242"  StartPosition="centerParent"  Show="false"  Anchor="none" >
+            <Label Name="lbinfo"  Inherit=""  Location="24,14,200,16"  Text="奖励选择"  Alignment="center" />
+            <CheckButton Name="aliasComb1"  Inherit="Border"  Location="40,60,34,34"  Text="奖励1"  BorderSize="1"  Alignment="center" />
+            <CheckButton Name="aliasComb2"  Inherit="CKBorder"  Location="88,60,34,34"  Text="奖励2"  BorderSize="1"  Alignment="center" />
+            <CheckButton Name="aliasComb3"  Inherit="CKBorder"  Location="134,60,34,34"  Text="奖励3"  BorderSize="1"  Alignment="center" />
+            <CheckButton Name="aliasComb4"  Inherit="CKBorder"  Location="180,60,34,34"  Text="奖励4"  BorderSize="1"  Alignment="center" />
+            <CheckButton Name="aliasComb5"  Inherit="CKBorder"  Location="40,100,34,34"  Text="奖励5"  BorderSize="1"  Alignment="center" />
+            <CheckButton Name="aliasComb6"  Inherit="CKBorder"  Location="88,100,34,34"  Text="奖励6"  BorderSize="1"  Alignment="center" />
+            <CheckButton Name="aliasComb7"  Inherit="CKBorder"  Location="134,100,34,34"  Text="奖励7"  BorderSize="1"  Alignment="center" />
+            <CheckButton Name="aliasComb8"  Inherit="CKBorder"  Location="180,100,34,34"  Text="奖励8"  BorderSize="1"  Alignment="center" />
+            <Button Name="btnok"  Inherit="PushButton"  Text="确认"  Location="54,156,64,20"  Anchor="right,bottom" />
+            <Button Name="btncancel"  Inherit="PushButton"  Text="取消"  Location="134,156,64,20"  Anchor="right,bottom" />
+            <Form Name="panComb"  Inherit="FBorder"  Text=""  BorderSize="0,1,0,0"  Location="0,50,258,54" >
+				<BackgroundImage  Border="0,2,0,0"/>
+			</Form>
+            <Form Name="panChange"  Inherit="FBorder"  Text=""  BorderSize="0,1,0,0"  Location="0,142,258,68" >
+				<BackgroundImage  Border="0,2,0,0"/>
+			</Form>
+        </Form>
+    </Layer>
+</Ui>

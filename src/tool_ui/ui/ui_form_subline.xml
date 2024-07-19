@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form EscapeHide="true" Inherit="VoidTitleBarForm1" Location="408,187,250,150" Movable="true" Name="fmsubline" Show="false">
+      <Button FontSize="12" Inherit="NewButton1" Location="57,109,60,21" Name="btninto" Show="true" Sound="ui_normalbt.wav" Text="进入" TextColor="#fffbff66" TextFont="宋体"/>
+      <Button FontSize="12" Inherit="NewButton1" Location="138,109,60,21" Name="btncancel" Show="true" Sound="ui_normalbt.wav" Text="取消" TextColor="#fffbff66" TextFont="宋体"/>
+      <ListBox Inherit="" Location="3,4,243,100" Name="ltbservers" Show="true">
+        <Column Inherit="Column" Text="服务器名称" TextColor="#fffcffc6" Width="119"/>
+        <Column Inherit="Column" Text="服务器承载" TextColor="#fffcffc6" Width="119"/>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="469,83,18,20"/>
+      </ListBox>
+      <Label BackgroundColor="#ff153723" Inherit="" Location="5,24,118,77" Name="lbhemline1" Show="true"/>
+      <Label BackgroundColor="#ff153723" Inherit="" Location="125,24,118,77" Name="lbhemline2" Show="true"/>
+      <Anchors>
+        <Anchor offset="0,0" point="CENTERV"/>
+        <Anchor offset="0,-120" point="CENTERH"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>

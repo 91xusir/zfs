@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="UI">
+      <UniqueIdentifier>{70e14874-38d9-48ff-992f-4a11e00efd6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\ui_frame_source">
+      <UniqueIdentifier>{ce9dd4f2-1ee9-4db0-9707-630f7987d77d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\ui_resource">
+      <UniqueIdentifier>{ba78f81e-f126-40a4-ad78-ea85a58eebfc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\ui_resource\ui_resource_files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="UI\ui_views">
+      <UniqueIdentifier>{1f90e394-3f95-41de-ae10-3b11d6e276c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tool">
+      <UniqueIdentifier>{f2c8e4dc-68f8-41d9-929d-1da0001e86bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tool\brush">
+      <UniqueIdentifier>{cf7d7361-7cf9-441e-8730-c1b825c92aba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\toolbar_pathpointlist.bmp">
+      <Filter>UI</Filter>
+    </Image>
+    <Image Include="res\img_brush_obj.bmp">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </Image>
+    <Image Include="res\PaneIcons.bmp">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </Image>
+    <Image Include="res\tool_scene.ico">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </Image>
+    <Image Include="res\tool_sceneDoc.ico">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </Image>
+    <Image Include="res\Toolbar.bmp">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </Image>
+    <Image Include="res\toolbar1.bmp">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </Image>
+    <Image Include="res\toolbar_arealist.bmp">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </Image>
+    <Image Include="res\toolbar_brushs.bmp">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </Image>
+    <Image Include="res\toolbar_map.bmp">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </Image>
+    <Image Include="res\toolbar_terrain_flag.bmp">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </Image>
+    <Image Include="res\ToolbarBrushMap.bmp">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DlgHeightMap.cpp">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgNewBlock.cpp">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgNewScene.cpp">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgNpc.cpp">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClCompile>
+    <ClCompile Include="GridItems.cpp">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpDialogUse.cpp">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEditorDoc.cpp">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEditorView.cpp">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClCompile>
+    <ClCompile Include="tool_scene.cpp">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClCompile>
+    <ClCompile Include="area_list_view.cpp">
+      <Filter>UI\ui_views</Filter>
+    </ClCompile>
+    <ClCompile Include="BrushColorView.cpp">
+      <Filter>UI\ui_views</Filter>
+    </ClCompile>
+    <ClCompile Include="BrushGrassForm.cpp">
+      <Filter>UI\ui_views</Filter>
+    </ClCompile>
+    <ClCompile Include="BrushMapView.cpp">
+      <Filter>UI\ui_views</Filter>
+    </ClCompile>
+    <ClCompile Include="BrushVertexView.cpp">
+      <Filter>UI\ui_views</Filter>
+    </ClCompile>
+    <ClCompile Include="DlgBlockInfo.cpp">
+      <Filter>UI\ui_views</Filter>
+    </ClCompile>
+    <ClCompile Include="GrassTextWnd.cpp">
+      <Filter>UI\ui_views</Filter>
+    </ClCompile>
+    <ClCompile Include="ListCtrlEx.cpp">
+      <Filter>UI\ui_views</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrame.cpp">
+      <Filter>UI\ui_views</Filter>
+    </ClCompile>
+    <ClCompile Include="pathpoint_list_view.cpp">
+      <Filter>UI\ui_views</Filter>
+    </ClCompile>
+    <ClCompile Include="view_MapListCtrl.cpp">
+      <Filter>UI\ui_views</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorFrame.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="rts_scene_tool.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="brush_tool.cpp">
+      <Filter>tool\brush</Filter>
+    </ClCompile>
+    <ClCompile Include="brush_tool_grass.cpp">
+      <Filter>tool\brush</Filter>
+    </ClCompile>
+    <ClCompile Include="brush_tool_multiobject.cpp">
+      <Filter>tool\brush</Filter>
+    </ClCompile>
+    <ClCompile Include="brush_tool_object.cpp">
+      <Filter>tool\brush</Filter>
+    </ClCompile>
+    <ClCompile Include="brush_tool_single_vertex.cpp">
+      <Filter>tool\brush</Filter>
+    </ClCompile>
+    <ClCompile Include="brush_tool_tile.cpp">
+      <Filter>tool\brush</Filter>
+    </ClCompile>
+    <ClCompile Include="brush_tool_vertex.cpp">
+      <Filter>tool\brush</Filter>
+    </ClCompile>
+    <ClCompile Include="brush_tool_water.cpp">
+      <Filter>tool\brush</Filter>
+    </ClCompile>
+    <ClCompile Include="iob_func.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DlgHeightMap.h">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgNewBlock.h">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgNewScene.h">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgNpc.h">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClInclude>
+    <ClInclude Include="GridItems.h">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpDialogUse.h">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneEditorDoc.h">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneEditorView.h">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClInclude>
+    <ClInclude Include="tool_scene.h">
+      <Filter>UI\ui_frame_source</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>UI\ui_resource</Filter>
+    </ClInclude>
+    <ClInclude Include="area_list_view.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="BrushColorView.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="BrushGrassForm.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="BrushMapView.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="BrushVertexView.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="DlgBlockInfo.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="GrassTextWnd.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="ListCtrlEx.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrame.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="NoFlickerWnd.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="pathpoint_list_view.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="view_MapListCtrl.h">
+      <Filter>UI\ui_views</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorFrame.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="rts_scene_tool.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="brush_tool.h">
+      <Filter>tool\brush</Filter>
+    </ClInclude>
+    <ClInclude Include="brush_tool_grass.h">
+      <Filter>tool\brush</Filter>
+    </ClInclude>
+    <ClInclude Include="brush_tool_multobject.h">
+      <Filter>tool\brush</Filter>
+    </ClInclude>
+    <ClInclude Include="brush_tool_object.h">
+      <Filter>tool\brush</Filter>
+    </ClInclude>
+    <ClInclude Include="brush_tool_single_vertex.h">
+      <Filter>tool\brush</Filter>
+    </ClInclude>
+    <ClInclude Include="brush_tool_tile.h">
+      <Filter>tool\brush</Filter>
+    </ClInclude>
+    <ClInclude Include="brush_tool_vertex.h">
+      <Filter>tool\brush</Filter>
+    </ClInclude>
+    <ClInclude Include="brush_tool_water.h">
+      <Filter>tool\brush</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DlgNewScene.htm">
+      <Filter>UI\ui_resource</Filter>
+    </None>
+    <None Include="HelpDialogUse.htm">
+      <Filter>UI\ui_resource</Filter>
+    </None>
+    <None Include="tool_scene.reg">
+      <Filter>UI\ui_resource</Filter>
+    </None>
+    <None Include="res\tool_scene.rc2">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </None>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="tool_scene.rc">
+      <Filter>UI\ui_resource\ui_resource_files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="res\tool_scene.manifest">
+      <Filter>UI\ui_resource</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,215 @@
+// Ribbon resource file
+//
+// (c)1998-2018 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "Ribbon/Resource.h"
+#include "Ribbon/res/Resource-Neutral.rc"
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_LTH)
+#ifdef _WIN32
+LANGUAGE LANG_LITHUANIAN, SUBLANG_LITHUANIAN
+#pragma code_page(1257)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+XTP_IDR_RIBBONCUSTOMIZEMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "Greitai pasiekti"
+    BEGIN
+        MENUITEM "Paðalinti ið sparèiosios prieigos árankiø juostà",               XTP_ID_RIBBONCUSTOMIZE_REMOVE
+        MENUITEM "Pridëti á sparèiosios prieigos árankiø juostà",                    XTP_ID_RIBBONCUSTOMIZE_ADD
+        MENUITEM SEPARATOR
+        MENUITEM "Tinkinti sparèiosios prieigos árankiø juostà...",              XTP_ID_RIBBONCUSTOMIZE
+        MENUITEM "Rodyti sparèiosios prieigos árankiø juostà po juostele",     XTP_ID_RIBBONCUSTOMIZE_QUICKACCESSBELOW
+        MENUITEM "Rodyti sparèiosios prieigos árankiø juostà virð juostelës",     XTP_ID_RIBBONCUSTOMIZE_QUICKACCESSABOVE
+        MENUITEM SEPARATOR
+        MENUITEM "Sumaþinti juostelës",              XTP_ID_RIBBONCUSTOMIZE_MINIMIZE
+    END
+END
+
+XTP_IDR_RIBBONCUSTOMIZEMENUMORE MENU DISCARDABLE 
+BEGIN
+    POPUP "Greitai pasiekti"
+    BEGIN
+        MENUITEM "Tinkinti sparèiosios prieigos árankiø juostà",                 XTP_ID_RIBBONCUSTOMIZE_LABEL
+        MENUITEM "[Komandos]",                                      XTP_ID_RIBBONCUSTOMIZE_COMMANDS
+        MENUITEM SEPARATOR
+        MENUITEM "Daugiau komandos...",                               XTP_ID_RIBBONCUSTOMIZE_MORE
+        MENUITEM "Rodyti Þemiau juostelës",                          XTP_ID_RIBBONCUSTOMIZE_QUICKACCESSBELOW_MORE
+        MENUITEM "Rodyti virð juostelës",                          XTP_ID_RIBBONCUSTOMIZE_QUICKACCESSABOVE_MORE
+        MENUITEM SEPARATOR
+        MENUITEM "Sumaþinti juostelës",                            XTP_ID_RIBBONCUSTOMIZE_MINIMIZE
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+XTP_IDD_RIBBONBACKSTAGEPAGE_PRINT DIALOGEX DISCARDABLE  0, 0, 497, 258
+STYLE WS_CHILD
+FONT 9, "Segoe UI"
+BEGIN
+    CONTROL         "",XTP_IDC_RIBBONBACKSTAGE_SEPARATOR_4,"Static",SS_BLACKRECT,182,13,1,238
+    CONTROL         "",XTP_IDC_RIBBONBACKSTAGE_STATIC_PAGE,"Static",SS_BLACKRECT | NOT WS_VISIBLE,191,7,299,244
+    PUSHBUTTON      "Spausdinti",XTP_IDC_RIBBONBACKSTAGE_BUTTON_PRINT,22,22,49,44,BS_MULTILINE
+    LTEXT           "Spausdinti",XTP_IDC_RIBBONBACKSTAGE_CAPTION,78,23,84,12,SS_NOPREFIX
+    CONTROL         "",XTP_IDC_RIBBONBACKSTAGE_SEPARATOR_1,"Static",SS_BLACKRECT,78,36,96,1
+    LTEXT           "Kopijos:",IDC_STATIC,79,47,29,7
+    EDITTEXT        XTP_IDC_RIBBONBACKSTAGE_EDIT_COPIES,111,44,61,14,ES_AUTOHSCROLL
+END
+
+XTP_IDD_RIBBONBACKSTAGEPAGE_RECENT DIALOGEX DISCARDABLE  0, 0, 497, 258
+STYLE WS_CHILD
+FONT 9, "Segoe UI"
+BEGIN
+    LTEXT           "Naujausi dokumentai",XTP_IDC_RIBBONBACKSTAGE_CAPTION,22,17,148,12,SS_NOPREFIX
+    CONTROL         "",XTP_IDC_RIBBONBACKSTAGE_SEPARATOR_1,"Static",SS_BLACKRECT,22,30,468,1
+    LTEXT           "Naujausi Failø Sàraðas",XTP_IDC_RIBBONBACKSTAGE_RECENTFILELIST,22,35,468,216,SS_NOTIFY | WS_TABSTOP
+END
+
+XTP_IDD_RIBBONCUSTOMIZE_QUICKACCESS DIALOGEX DISCARDABLE  0, 0, 230, 150
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_CAPTION
+CAPTION "Sparèiosios prieigos"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Pasirinkti komandas ið:",IDC_STATIC,4,5,106,8
+    COMBOBOX        XTP_IDC_RIBBONCOMBO_CATEGORIES,4,15,91,85,CBS_DROPDOWNLIST | 
+                    WS_VSCROLL | WS_TABSTOP
+    LISTBOX         XTP_IDC_RIBBONLIST_COMMANDS,4,32,91,101,LBS_SORT | 
+                    LBS_OWNERDRAWFIXED | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "&>>",XTP_IDC_RIBBONBUTTON_ADD,99,61,31,14
+    PUSHBUTTON      "&<<",XTP_IDC_RIBBONBUTTON_REMOVE,99,78,31,14
+    LISTBOX         XTP_IDC_RIBBONLIST_QUICKACCESS,134,32,91,84,LBS_SORT | 
+                    LBS_OWNERDRAWFIXED | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Atstatyti",XTP_IDC_RIBBONBUTTON_RESET,134,119,52,14
+    CONTROL         "Rodyti sparèiosios prieigos árankiø juostà þemiau juostelës",
+                    XTP_IDC_RIBBONCHECK_SHOWQUICKACCESSBELOW,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,4,136,221,12
+END
+
+XTP_IDD_RIBBONCUSTOMIZE_QUICKACCESS_LARGE DIALOGEX DISCARDABLE  0, 0, 452, 227
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_CAPTION
+CAPTION "Sparèiosios prieigos árankiø juosta"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Tinkinti sparèiosios prieigos árankiø juostà.",
+                    XTP_IDC_RIBBONPAGE_TITLE,14,7,284,22
+    LTEXT           "Pasirinkti komandas ið:",IDC_STATIC,18,34,106,8
+    COMBOBOX        XTP_IDC_RIBBONCOMBO_CATEGORIES,18,45,164,85,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         XTP_IDC_RIBBONLIST_COMMANDS,18,65,164,119,LBS_SORT | 
+                    LBS_OWNERDRAWFIXED | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Pridëti >>",XTP_IDC_RIBBONBUTTON_ADD,190,109,52,14
+    PUSHBUTTON      "<< Paðalinti",XTP_IDC_RIBBONBUTTON_REMOVE,190,126,52,14
+    LISTBOX         XTP_IDC_RIBBONLIST_QUICKACCESS,249,65,164,119,LBS_SORT | 
+                    LBS_OWNERDRAWFIXED | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "Atstatyti",XTP_IDC_RIBBONBUTTON_RESET,249,189,52,14
+    CONTROL         "Rodyti sparèiosios prieigos árankiø juostà þemiau juostelës",
+                    XTP_IDC_RIBBONCHECK_SHOWQUICKACCESSBELOW,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,18,190,161,14
+END
+
+XTP_IDD_RIBBONCUSTOMIZE_RIBBON DIALOGEX DISCARDABLE 0, 0, 452, 227
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_CAPTION
+CAPTION "Tinkinti juostelæ"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Tinkinti juostelæ",XTP_IDC_RIBBONPAGE_TITLE,14,7,284,
+                    22
+    LTEXT           "Pasirinkti komandas ið:",IDC_STATIC,18,34,106,8
+    COMBOBOX        XTP_IDC_RIBBONCOMBO_CATEGORIES,18,45,164,85,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",XTP_IDC_RIBBONLIST_COMMANDS,"XTPCoreTree",WS_TABSTOP,
+                    18,65,164,145,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Pridëti >>",XTP_IDC_RIBBONBUTTON_ADD,190,109,52,14
+    PUSHBUTTON      "<< Paðalinti",XTP_IDC_RIBBONBUTTON_REMOVE,190,126,52,14
+    LTEXT           "Tinkinti juostelæ:",XTP_IDC_RIBBONSTATIC_CUSTOMIZE,
+                    249,34,106,8
+    COMBOBOX        XTP_IDC_RIBBONCOMBO_TABGROUP,248,45,164,85,
+                    CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",XTP_IDC_RIBBONLIST_QUICKACCESS,"XTPCoreTree",
+                    WS_TABSTOP,249,65,164,98,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Naujas skirtukas",XTP_IDC_RIBBONBUTTON_NEWTAB,249,168,52,14
+    PUSHBUTTON      "Nauja grupë",XTP_IDC_RIBBONBUTTON_NEWGROUP,305,168,52,14
+    PUSHBUTTON      "Pervadinti",XTP_IDC_RIBBONBUTTON_RENAME,361,168,52,14
+    PUSHBUTTON      "",XTP_IDC_RIBBONBUTTON_UP,422,109,21,14
+    PUSHBUTTON      "",XTP_IDC_RIBBONBUTTON_DOWN,422,126,21,14
+    LTEXT           "Nustatymø:",XTP_IDC_RIBBONSTATIC_CUSTOMIZATIONS,
+                    251,188,50,8
+    PUSHBUTTON      "Atstatyti",XTP_IDC_RIBBONBUTTON_RESET,305,186,52,14
+    PUSHBUTTON      "Importo / Eksporto",XTP_IDC_RIBBONBUTTON_IMPORT,305,203,77,
+                    14
+END
+
+XTP_IDD_RIBBONCUSTOMIZE_RENAME  DIALOGEX DISCARDABLE 0, 0, 238, 56
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Pervardyti"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Rodomasis vardas:",IDC_STATIC,7,8,66,8
+    EDITTEXT        XTP_IDC_RIBBONEDIT_RENAME,71,7,160,14,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "Gerai",IDOK,127,35,50,14
+    PUSHBUTTON      "Atðaukti",IDCANCEL,181,35,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+
+XTP_IDM_RIBBONCUSTOMIZE_IMPORT MENU DISCARDABLE 
+BEGIN
+    POPUP "Importas ir eksportas"
+    BEGIN
+        MENUITEM "Importo tinkinimo failas",                XTP_ID_RIBBONCUSTOMIZE_IMPORT
+        MENUITEM "Eksportuoti visus tinkinimo",                XTP_ID_RIBBONCUSTOMIZE_EXPORT
+    END
+END
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_ID_RIBBONCONTROLQUICKACCESS     "\nTinkinti sparèiosios prieigos árankiø juostà"
+    XTP_ID_RIBBONCONTROLQUICKACCESSMORE "\nDaugiau valdikliai"
+    XTP_IDS_RIBBONCUSTOMIZE_CONFIRMRESET "Ar tikrai norite atkurti sparèiosios prieigos árankiø numatytàjá turiná?"
+
+    XTP_IDS_RIBBONCUSTOMIZE_MAINTABS   "Pagrindiniai skirtukai"
+    XTP_IDS_RIBBONCUSTOMIZE_NEWTAB     "Naujas skirtukas (Pasirinktinis)"
+    XTP_IDS_RIBBONCUSTOMIZE_NEWGROUP   "Nauja grupë (Pasirinktinis)"
+    XTP_IDS_RIBBONCUSTOMIZE_CONFIRMRIBBONRESET "Naikinti visus juostelës ir sparèiosios prieigos árankiø juostos tinkinimo ðiai programai?"
+END
+
+#endif // !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_LTH)

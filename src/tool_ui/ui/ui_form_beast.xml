@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Anchor="none" Inherit="TitleBarForm" Location="266,226,260,202" Name="fmbeast" Show="false" StartPosition="centerParent">
+      <Label Alignment="center" Inherit="" Location="24,5,200,16" Name="lbinfo" Text="麒麟融合"/>
+      <Label Alignment="left" Inherit="" Location="15,25,230,16" Multiline="true" Name="lbtxt" Text="将麒麟与需要吞噬的宠物令牌放置在下面格子中，完成后麒麟将获得吞噬的宠物的等级"/>
+      <Button Alignment="center" BorderSize="1" Inherit="Border" Location="70,60,34,34" Name="aliasBeast1" Text="麒麟"/>
+      <Button Alignment="center" BorderSize="1" Inherit="Border" Location="150,60,34,34" Name="aliasBeast2" Text="其他"/>
+      <Button Anchor="right,bottom" Inherit="PushButton" Location="54,126,64,20" Name="btnok" Text="确认"/>
+      <Button Anchor="right,bottom" Inherit="PushButton" Location="134,126,64,20" Name="btncancel" Text="取消"/>
+    </Form>
+  </Layer>
+</Ui>

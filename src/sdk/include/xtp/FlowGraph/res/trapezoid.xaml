@@ -1,0 +1,7 @@
+<Canvas xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'
+	x:Name='nodeCanvas' Width='100' Height='100'>
+    <Path x:Name="nodePath" Width="100" Height="100" Stretch="Fill" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 0,672L 99.9999,672L 74.9999,722L 24.9999,722L 0,672 Z "/>
+<TextBlock x:Name='nodeCaption'/>
+</Canvas>
+
+

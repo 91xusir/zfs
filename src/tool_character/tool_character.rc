@@ -1,0 +1,796 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\tool_character.rc2""  // 非 Microsoft Visual C++ 编辑资源\r\n"
+    "#include ""afxres.rc""         // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\tool_character.ico"
+
+IDR_tool_characterTYPE  ICON                    "res\\tool_characterDoc.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+IDR_TOOLBAR_TOOLS       BITMAP                  "res\\toolbar_tools.bmp"
+
+IDB_TREE_VIEW_OBJECT    BITMAP                  "res\\img_treeview_obj.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_OPEN_ACTOR
+    BUTTON      ID_SAVE_ALL
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_FILE_PRINT
+    BUTTON      ID_APP_ABOUT
+    SEPARATOR
+    BUTTON      IDC_ANIM_LOOP
+    BUTTON      IDC_ANIM_PLAY
+    BUTTON      IDC_ANIM_STOP
+    BUTTON      IDC_POSE_CONN
+    BUTTON      IDC_POSE_LIST
+    BUTTON      IDC_MESH_VIEW
+    BUTTON      IDC_PARAMETER
+    SEPARATOR
+    BUTTON      IDC_SHOWLINK
+END
+
+IDR_TOOLBAR_TOOLS TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_VIEW_BRUSH_MAP
+    BUTTON      ID_VIEW_BRUSH_OBJECT
+    BUTTON      ID_VIEW_BRUSH_PROPERTY
+    BUTTON      ID_VIEW_BRUSH_VERTEX
+    BUTTON      ID_VIEW_BRUSH_COLOR
+    BUTTON      ID_BUTTON32783
+    BUTTON      ID_BUTTON32784
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENUEX
+BEGIN
+    POPUP "文件(&F)",                         65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        POPUP "打开...\tCtrl+O(&O)",              65535,MFT_STRING,MFS_ENABLED
+        BEGIN
+            MENUITEM "Actor",                       32803,MFT_STRING,MFS_ENABLED
+        END
+        MENUITEM "New Shader",                  ID_NEW_SHADER,MFT_STRING,MFS_GRAYED
+        MENUITEM "打开(关联文件)",                    32836,MFT_STRING,MFS_GRAYED
+        MENUITEM "保存\tCtrl+S(&S)",              32807,MFT_STRING,MFS_ENABLED
+        POPUP "另存为(&A)...",                     65535,MFT_STRING,MFS_ENABLED
+        BEGIN
+            MENUITEM "Actor",                       32800,MFT_STRING,MFS_ENABLED
+            MENUITEM "Skin",                        32806,MFT_STRING,MFS_ENABLED
+            MENUITEM "MtlLib",                      32829,MFT_STRING,MFS_ENABLED
+            MENUITEM "Effect",                      32830,MFT_STRING,MFS_ENABLED
+        END
+        MENUITEM "关联文件",                        32839,MFT_STRING,MFS_GRAYED
+        MENUITEM "合并",                          32809,MFT_STRING,MFS_ENABLED
+        MENUITEM "载入子物件",                       32799,MFT_STRING | MFT_RIGHTJUSTIFY,MFS_ENABLED
+        MENUITEM "提取资源",                        162,MFT_STRING,MFS_GRAYED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "最近的文件",                       57616,MFT_STRING,MFS_GRAYED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "退出(&X)",                      57665,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "编辑(&E)",                         65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "撤消\tCtrl+Z(&U)",              57643,MFT_STRING,MFS_ENABLED
+        MENUITEM MFT_SEPARATOR
+        MENUITEM "剪切\tCtrl+X(&T)",              57635,MFT_STRING,MFS_ENABLED
+        MENUITEM "复制\tCtrl+C(&C)",              57634,MFT_STRING,MFS_ENABLED
+        MENUITEM "粘贴\tCtrl+V(&P)",              57637,MFT_STRING,MFS_ENABLED
+        MENUITEM "复制特效",                        32843,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "视图(&V)",                         65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "工具栏(&T)",                     59392,MFT_STRING,MFS_ENABLED
+        MENUITEM "状态栏(&S)",                     59393,MFT_STRING,MFS_ENABLED
+        MENUITEM "树",                           129,MFT_STRING,MFS_ENABLED
+        MENUITEM "属性",                          131,MFT_STRING,MFS_ENABLED
+        MENUITEM "帧",                           132,MFT_STRING,MFS_ENABLED
+    END
+    POPUP "帮助(&H)",                         65535,MFT_STRING,MFS_ENABLED
+    BEGIN
+        MENUITEM "关于Actor Tool(&A)...",         57664,MFT_STRING,MFS_ENABLED
+    END
+END
+
+IDR_MENU_POP MENU
+BEGIN
+    POPUP "test1"
+    BEGIN
+        MENUITEM "编辑属性",                        ID_MODIFY_CHANNEL
+        MENUITEM "添加关键帧",                       ID_ADD_KEY
+        MENUITEM "编辑关键帧",                       ID_MODIFY_KEY
+        MENUITEM "删除关键帧",                       ID_DEL_KEY
+        MENUITEM "网格尺寸",                        ID_CHANGE_GRIDSIZE
+    END
+    MENUITEM "test2",                       ID_TEST2
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY 
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 Actor Editor"
+FONT 9, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Actor Editor",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2004",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_DLG_SLIDER_VIEW DIALOGEX 0, 0, 483, 49
+STYLE DS_SETFONT | WS_POPUP | WS_SYSMENU
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    PUSHBUTTON      "＞",IDC_ANIM_PLAY,441,6,15,13
+    PUSHBUTTON      "■",IDC_ANIM_STOP,456,6,15,13
+    SCROLLBAR       IDC_ANIM_SLIDER,7,6,418,13
+    EDITTEXT        IDC_FRAME_INFO,168,23,132,14,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "<>",IDC_ANIM_LOOP,426,6,15,13
+    PUSHBUTTON      "PoseConn",IDC_POSE_CONN,426,20,45,13
+END
+
+IDD_DIALOG_NEW_SHADER DIALOGEX 0, 0, 219, 73
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Create New Material"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_PATH,46,15,164,14,ES_AUTOHSCROLL
+    LTEXT           "名字",IDC_STATIC,21,19,24,8
+    COMBOBOX        IDC_COMBO1,46,30,164,64,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "创建",IDC_CREATE,147,46,62,15
+    LTEXT           "类型",IDC_STATIC,21,31,24,14
+END
+
+IDD_LINK DIALOGEX 0, 0, 294, 262
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "子物件管理"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LISTBOX         IDC_WEAPON_SLOT,140,18,145,117,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Link点",IDC_STATIC,145,7,34,11
+    PUSHBUTTON      "载入",IDC_LOAD_WEAPON,226,240,61,15
+    PUSHBUTTON      "删除",IDC_DEL_WEAPON,160,240,61,15
+    LISTBOX         IDC_POSE,142,148,145,88,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "旋转",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | NOT WS_VISIBLE | WS_TABSTOP,78,243,49,11
+    LTEXT           "动画",IDC_STATIC,143,138,73,10
+    LISTBOX         IDC_LIST,7,18,129,218,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "已导入子物件",IDC_STATIC,7,7,65,11
+    LTEXT           "已导入子物件",IDC_STATIC,7,7,65,11
+END
+
+IDD_MERGE_ACTOR DIALOGEX 0, 0, 255, 114
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Merge Actor"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "合并",IDOK,102,84,50,14
+    EDITTEXT        IDC_ACTOR1,15,16,186,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "Actor1",IDC_GET_ACTOR1,202,16,34,15
+    EDITTEXT        IDC_ACTOR2,15,36,186,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "Actor2",IDC_GET_ACTOR2,200,38,34,15
+    CONTROL         "只合并关键帧信息",IDC_REPLACE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,58,99,15
+END
+
+IDD_DIALOG_POSE DIALOGEX 0, 0, 253, 218
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "标签编辑器>_<"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LISTBOX         IDC_LIST_EVENT,5,10,105,183,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "添加事件",IDC_BUTTON_ADD_EVENT,5,196,51,14
+    PUSHBUTTON      "删除事件",IDC_BUTTON_DEL_EVENT,60,196,51,14
+    EDITTEXT        IDC_EDIT_EVENT_PARAM,158,40,74,12,ES_AUTOHSCROLL | ES_READONLY
+    PUSHBUTTON      "保存修改",IDC_BUTTON_UPDATE,195,133,51,14
+    EDITTEXT        IDC_EDIT_KEY_FRAME,158,11,88,12,ES_AUTOHSCROLL
+    LTEXT           "关键帧",IDC_STATIC,124,13,32,10
+    LTEXT           "类    型",IDC_STATIC,124,28,32,9
+    LTEXT           "参数_0",IDC_STATIC_0,124,43,32,10
+    GROUPBOX        "事件信息",IDC_STATIC,117,0,134,150
+    GROUPBOX        "事件列表",IDC_STATIC,2,0,113,214
+    LTEXT           "参数_1",IDC_STATIC_1,124,57,32,10
+    LTEXT           "参数_2",IDC_STATIC_2,124,70,32,10
+    COMBOBOX        IDC_EDIT_EVENT_PARAM_1,158,54,88,117,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_EDIT_EVENT_PARAM_2,158,68,88,109,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "...",IDC_BUTTON_F0,234,39,12,12
+    COMBOBOX        IDC_EDIT_EVENT_ACTION,158,25,88,117,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "确定",IDOK,195,198,51,14
+END
+
+IDD_DIALOG_POSE_CONN DIALOGEX 0, 0, 208, 95
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog Pose Conn"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,151,7,50,14
+    PUSHBUTTON      "取消",IDCANCEL,151,23,50,14
+    LISTBOX         IDC_LIST_POSE1,7,23,68,65,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_LIST_POSE2,76,23,68,65,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Pose1",IDC_STATIC,10,10,48,12
+    LTEXT           "Pose2",IDC_STATIC,76,11,48,9
+END
+
+IDD_DIALOG_NEW_EFFECT DIALOGEX 0, 0, 215, 73
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog New Effect"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_COMBO1,41,28,164,64,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "创建",IDC_CREATE,142,44,62,15
+    LTEXT           "类型",IDC_STATIC,16,30,24,14
+    EDITTEXT        IDC_NAME,41,13,164,14,ES_AUTOHSCROLL
+    LTEXT           "名字",IDC_STATIC,15,17,24,8
+END
+
+IDD_DIALOG_VER_FIX DIALOGEX 0, 0, 236, 54
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Ver Fix"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Start",IDC_START,7,7,61,17
+    EDITTEXT        IDC_MSG,7,30,222,17,ES_AUTOHSCROLL
+END
+
+IDD_DLG_CHANNEL_INFO DIALOGEX 0, 0, 186, 230
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_DLG_KEY_INFO DIALOGEX 0, 0, 186, 238
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_DLG_GET_BONE DIALOGEX 0, 0, 186, 157
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Get Bone"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,129,7,50,14
+    PUSHBUTTON      "取消",IDCANCEL,129,24,50,14
+    LISTBOX         IDC_BONE_LIST,7,7,120,143,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_DIALOG_CREATE_FF DIALOGEX 0, 0, 236, 66
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog Create Force Field"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "Create",IDC_CREATE,175,42,50,13
+    EDITTEXT        IDC_NAME,42,10,183,14,ES_AUTOHSCROLL
+    COMBOBOX        IDC_LIST,42,24,183,34,CBS_DROPDOWN | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "名字：",IDC_STATIC,14,14,24,12
+    LTEXT           "类型：",IDC_STATIC,14,26,27,13
+END
+
+IDD_DIALOG_RELATED_ACTOR DIALOGEX 0, 0, 223, 234
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LISTBOX         IDC_LIST,7,7,151,220,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "重新添加",IDC_BUTTON_READD,163,7,50,15
+END
+
+IDD_MERGE_ACTOR_NEW DIALOGEX 0, 0, 272, 301
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Merge Actor"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "合并",IDOK,207,280,50,14
+    CONTROL         "只合并关键帧信息",IDC_REPLACE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,279,99,15
+    LISTBOX         IDC_LIST_ACTOR,15,56,242,196,LBS_NOINTEGRALHEIGHT | LBS_NOSEL | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "添加",IDC_BUTTON_ADD,207,256,50,14
+    PUSHBUTTON      "清空",IDC_BUTTON_CLR,153,256,50,14
+    CONTROL         "",IDC_PROGRESS,"msctls_progress32",PBS_SMOOTH,17,260,131,7
+    EDITTEXT        IDC_ACTOR1,15,20,208,14,ES_AUTOHSCROLL
+    PUSHBUTTON      "...",IDC_ACTOR_DST,230,20,27,14
+    GROUPBOX        "目标Actor",IDC_STATIC,7,7,258,35
+    GROUPBOX        "源Actor",IDC_STATIC,7,46,258,230
+END
+
+IDD_MERGE_ACTOR1 DIALOGEX 0, 0, 255, 114
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Merge Actor"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "合并",IDOK,102,84,50,14
+    EDITTEXT        IDC_ACTOR1,15,16,186,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "Actor1",IDC_GET_ACTOR1,202,16,34,15
+    EDITTEXT        IDC_ACTOR2,15,36,186,16,ES_AUTOHSCROLL
+    PUSHBUTTON      "Actor2",IDC_GET_ACTOR2,200,38,34,15
+    CONTROL         "只合并关键帧信息",IDC_REPLACE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,58,99,15
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "tool_character.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "tool_character.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_DLG_SLIDER_VIEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 476
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 42
+    END
+
+    IDD_DIALOG_NEW_SHADER, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 212
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 66
+    END
+
+    IDD_LINK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 287
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 255
+    END
+
+    IDD_MERGE_ACTOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 248
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 107
+    END
+
+    IDD_DIALOG_POSE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 246
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 211
+    END
+
+    IDD_DIALOG_POSE_CONN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 201
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 88
+    END
+
+    IDD_DIALOG_NEW_EFFECT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 208
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 66
+    END
+
+    IDD_DIALOG_VER_FIX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 229
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 47
+    END
+
+    IDD_DLG_CHANNEL_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 223
+    END
+
+    IDD_DLG_KEY_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 231
+    END
+
+    IDD_DLG_GET_BONE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 150
+    END
+
+    IDD_DIALOG_CREATE_FF, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 229
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+
+    IDD_DIALOG_RELATED_ACTOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 216
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 227
+    END
+
+    IDD_MERGE_ACTOR_NEW, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 265
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 294
+    END
+
+    IDD_MERGE_ACTOR1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 248
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 107
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "tool_character\n\ntool_character\n\n\ntoolcharacter.Document\ntool_character.Document"
+    ID_VIEW_TREE_VIEW       "树\n树"
+    ID_TREE_OBJ_VIEW        "树控件"
+    ID_VIEW_PROPERTY_VIEW   "环境属性"
+    ID_VIEW_SLIDER_VIEW     "帧\n帧"
+    IDS_GRID_DIR_LIGHT      "平行光颜色"
+    IDS_GRID_SHADER_NAME    "名字"
+    ID_VIEW_PROPERTY_SHADER "Shader属性"
+    ID_SHADER_VIEW          "Shader属性"
+    ID_BASE_SHADER_LIST     "BaseShader列表"
+    ID_VIEW_PROPERTY_SHADER_KEY "Shader关键帧"
+    ID_ADD_SHADER_KEYFRAME  "添加关键帧"
+    ID_DEL_KEYFRAME         "帧数"
+    ID_VIEW_PROPERTY_POSE   "Pose属性"
+    ID_EFFECT_SHADER_LIST   "EffectShader列表"
+    ID_ADD_EFFECT_SHADER    "添加EffectShader"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "tool_character"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "创建新文档\n新建"
+    ID_FILE_OPEN            "打开现有文档\n打开"
+    ID_FILE_CLOSE           "关闭活动文档\n关闭"
+    ID_FILE_SAVE            "保存活动文档\n保存"
+    ID_FILE_SAVE_AS         "用新名称保存活动文档\n另存为"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "显示程序信息、版本号和版权\n关于"
+    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "打开此文档"
+    ID_FILE_MRU_FILE2       "打开此文档"
+    ID_FILE_MRU_FILE3       "打开此文档"
+    ID_FILE_MRU_FILE4       "打开此文档"
+    ID_FILE_MRU_FILE5       "打开此文档"
+    ID_FILE_MRU_FILE6       "打开此文档"
+    ID_FILE_MRU_FILE7       "打开此文档"
+    ID_FILE_MRU_FILE8       "打开此文档"
+    ID_FILE_MRU_FILE9       "打开此文档"
+    ID_FILE_MRU_FILE10      "打开此文档"
+    ID_FILE_MRU_FILE11      "打开此文档"
+    ID_FILE_MRU_FILE12      "打开此文档"
+    ID_FILE_MRU_FILE13      "打开此文档"
+    ID_FILE_MRU_FILE14      "打开此文档"
+    ID_FILE_MRU_FILE15      "打开此文档"
+    ID_FILE_MRU_FILE16      "打开此文档"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
+    ID_PREV_PANE            "切换回上一个窗格\n上一窗格"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "将活动窗口拆分为多个窗格\n拆分"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "清除选定内容\n清除"
+    ID_EDIT_CLEAR_ALL       "清除全部内容\n全部清除"
+    ID_EDIT_COPY            "复制选定内容并将其放到剪贴板上\n复制"
+    ID_EDIT_CUT             "剪切选定内容并将其放到剪贴板上\n剪切"
+    ID_EDIT_FIND            "查找指定的文本\n查找"
+    ID_EDIT_PASTE           "插入剪贴板内容\n粘贴"
+    ID_EDIT_REPEAT          "重复上一操作\n重复"
+    ID_EDIT_REPLACE         "用其他文本替换特定的文本\n替换"
+    ID_EDIT_SELECT_ALL      "选定整个文档\n全选"
+    ID_EDIT_UNDO            "撤消上一操作\n撤消"
+    ID_EDIT_REDO            "恢复上次撤消的操作\n重做"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n切换工具栏"
+    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n切换状态栏"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "更改窗口大小"
+    AFX_IDS_SCMOVE          "更改窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小为图标"
+    AFX_IDS_SCMAXIMIZE      "使窗口最大化显示"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到前一个文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动窗口并提示保存文档"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "将窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务列表"
+END
+
+STRINGTABLE
+BEGIN
+    ID_GRID_SHADER          "Shader属性"
+    ID_GRID_SHADER_KEY      "Shader关键帧属性"
+    ID_SHADER_LIST          "Shader列表"
+    ID_GRID_OBJECT          "物体属性"
+    ID_GRID_POSE            "动作"
+    ID_SKIN_LIST            "Skin列表"
+    ID_GRID_EFFECT          "效果"
+    ID_VIEW_PROPERTY_EFFECT "效果"
+    ID_VIEW_TIME            "时间"
+    ID_GRID_ENV             "环境"
+    ID_GRID_ACTOR           "物体"
+    ID_GRID_MTLLIB          "材质库"
+    ID_VIEW_MTL             "材质"
+    ID_VIEW_EFT             "效果"
+    ID_CHANNEL_INFO         "通道信息"
+    ID_KEY_INFO             "关键帧信息"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_KEY             "动画信息"
+    ID_GRID_CHANNEL_PROP    "属性"
+    ID_GET_RELATED_RES      "提取资源"
+    ID_GRID_LINKBOX         "LINK点"
+END
+
+STRINGTABLE
+BEGIN
+    IDC_POSE_CONN           "连接动作\n连接两个动作"
+    IDC_ANIM_LOOP           "循环播放\n循环播放动画"
+END
+
+STRINGTABLE
+BEGIN
+    IDC_ANIM_PLAY           "单次播放\n单次播放动画"
+    IDC_ANIM_STOP           "停止播放\n停止播放动画"
+END
+
+STRINGTABLE
+BEGIN
+    IDC_POSE_LIST           "动作列表"
+    IDC_MESH_VIEW           "线框模式\n线框模式"
+END
+
+STRINGTABLE
+BEGIN
+    ID_SHOWLINK             "显示挂接点"
+    IDC_SHOWLINK            "显示挂接点\n显示挂接点"
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\tool_character.rc2"  // 非 Microsoft Visual C++ 编辑资源
+#include "afxres.rc"         // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

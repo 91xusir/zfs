@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="TitleBarForm" Location="300,120,262,312" Name="fmcitytime" Show="false">
+      <Label Location="20,2,80,18" Name="lbtitle" Text="攻城时间调整"/>
+      <Label Location="20,30,80,18" Name="lbtime" Text="下次攻城时间"/>
+      <Label Location="100,30,140,18" Name="lbdate" Text="2005-12-10 星期六 20:00"/>
+      <Label Location="20,58,80,18" Name="lbtimechange" Text="修改攻城时间"/>
+      <Label Location="20,86,192,48" Multiline="true" Name="lbinfo" Text="诸侯每周只能选择1次攻城时间，选定后就无法修改"/>
+      <ComboBox Inherit="ComboBox" Location="100,58,100,18" Name="cbtime">
+        <List>
+          <Item Text="星期一"/>
+          <Item Text="星期二"/>
+          <Item Text="星期三"/>
+          <Item Text="星期四"/>
+          <Item Text="星期五"/>
+          <Item Text="星期六"/>
+          <Item Text="星期日"/>
+        </List>
+      </ComboBox>
+      <Button Inherit="PushButton" Location="90,228,64,20" Name="btnok" Text="确认"/>
+      <Button Inherit="PushButton" Location="160,228,64,20" Name="btncancel" Text="取消"/>
+    </Form>
+  </Layer>
+</Ui>

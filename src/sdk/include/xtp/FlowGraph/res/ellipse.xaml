@@ -1,0 +1,5 @@
+<Canvas xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'
+	x:Name='nodeCanvas' Height="100" Width="100" ConnectionPointsIn='Rhombus'>
+<Ellipse x:Name='nodePath' Stroke="Black" Width="100" Height="100"/>
+<TextBlock x:Name='nodeCaption'/>
+</Canvas>

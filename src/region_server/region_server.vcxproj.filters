@@ -1,0 +1,795 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="cmds">
+      <UniqueIdentifier>{5ce3270e-47a5-4fb3-86b4-4a9b1869c1fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shared">
+      <UniqueIdentifier>{f8428a00-accd-44f6-a2e9-bb0744390972}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shared\profile">
+      <UniqueIdentifier>{31741c31-7920-4042-b0a5-a907d55073da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine">
+      <UniqueIdentifier>{d89b1db8-0475-47a2-9073-f742d48d0440}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\core">
+      <UniqueIdentifier>{af958420-b6ea-4c2f-88f8-f66e4dec864e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\net">
+      <UniqueIdentifier>{e74b19c2-ebc7-47c4-91e6-335c0203345e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\terrain">
+      <UniqueIdentifier>{b350711a-dba7-4c6a-a22c-90cc39b53eee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\pack">
+      <UniqueIdentifier>{96702392-fb45-42fe-9a6a-1b3c0f8c0935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="skill">
+      <UniqueIdentifier>{a7f6a1a1-3a12-4982-a99c-1204f19ed0f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{1c74ba94-3b50-4780-a319-fcb4b25ea1b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dungeon">
+      <UniqueIdentifier>{07d3b01a-9526-476c-b067-d565611f1d7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Business">
+      <UniqueIdentifier>{eae8fc86-83bc-49d1-bb10-31d553441882}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="master_list">
+      <UniqueIdentifier>{c017b09d-c82a-45e9-8d53-62a4b0f3e319}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NWar">
+      <UniqueIdentifier>{595d70cd-8957-44f5-b4c6-20c4e2f33d04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="wg">
+      <UniqueIdentifier>{b8aa852f-a679-4b0a-b6f9-d77845f8f5db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="script">
+      <UniqueIdentifier>{15fcb2a6-fea0-47fc-ac21-ba57e96b2b60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LineSys">
+      <UniqueIdentifier>{1ddcf4eb-a6c3-4017-8914-6f7943f93433}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Activity">
+      <UniqueIdentifier>{979f953d-a66c-4d82-8800-45428b0f8497}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="nes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerLogic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_ai.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_anti_robot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_auction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_castlewar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_creature.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_deduct.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_friend.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_gift.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_guarder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_gwsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_item.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_mail.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_MonCastle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_npc_shop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_prentice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_spawn.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_state_snapshot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_team.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_union.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="region_util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="rs_war_zhulu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd.cpp">
+      <Filter>cmds</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd_auction.cpp">
+      <Filter>cmds</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd_castlewar.cpp">
+      <Filter>cmds</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd_channel.cpp">
+      <Filter>cmds</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd_feod.cpp">
+      <Filter>cmds</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd_item.cpp">
+      <Filter>cmds</Filter>
+    </ClCompile>
+    <ClCompile Include="cmd_union.cpp">
+      <Filter>cmds</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\auction_base.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\castlewar_base.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\game_string_assistant.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\GloableBuffer.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\gwt.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\herolist_base.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\item_bank.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\item_base.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\item_npc_shop.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\item_pshop.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\item_trade.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\linux_util.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\pet_base.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\pk.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\region_client.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\rt1tort2.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\server_config.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\string_mapping.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\team_data.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\union_base.cpp">
+      <Filter>shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\profile.cpp">
+      <Filter>shared\profile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\profile_result.cpp">
+      <Filter>shared\profile</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\scene\rts_path_find.cpp">
+      <Filter>engine\terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\scene\rts_path_point.cpp">
+      <Filter>engine\terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\scene\rts_scene_area.cpp">
+      <Filter>engine\terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\scene\rts_scene_doc.cpp">
+      <Filter>engine\terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\scene\rts_scene_terrain.cpp">
+      <Filter>engine\terrain</Filter>
+    </ClCompile>
+    <ClCompile Include="region_skill.cpp">
+      <Filter>skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\skill_base.cpp">
+      <Filter>skill</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\skill_manage.cpp">
+      <Filter>skill</Filter>
+    </ClCompile>
+    <ClCompile Include="rt_randomimage.cpp">
+      <Filter>resource</Filter>
+    </ClCompile>
+    <ClCompile Include="rs_dungeon.cpp">
+      <Filter>dungeon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\business.cpp">
+      <Filter>Business</Filter>
+    </ClCompile>
+    <ClCompile Include="rs_auction.cpp">
+      <Filter>Business</Filter>
+    </ClCompile>
+    <ClCompile Include="rs_card_trade.cpp">
+      <Filter>Business</Filter>
+    </ClCompile>
+    <ClCompile Include="region_master_list.cpp">
+      <Filter>master_list</Filter>
+    </ClCompile>
+    <ClCompile Include="rs_national_war.cpp">
+      <Filter>NWar</Filter>
+    </ClCompile>
+    <ClCompile Include="jhwg_session.cpp">
+      <Filter>wg</Filter>
+    </ClCompile>
+    <ClCompile Include="region_activity_py.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="region_creature_py.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="region_item_py.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="region_object_py.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="region_scene_py.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="region_server_py.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="script_engine_py.cpp">
+      <Filter>script</Filter>
+    </ClCompile>
+    <ClCompile Include="rs_cmd_LineSys.cpp">
+      <Filter>LineSys</Filter>
+    </ClCompile>
+    <ClCompile Include="rs_LineGroup.cpp">
+      <Filter>LineSys</Filter>
+    </ClCompile>
+    <ClCompile Include="rs_LineMan.cpp">
+      <Filter>LineSys</Filter>
+    </ClCompile>
+    <ClCompile Include="RegionActManager.cpp">
+      <Filter>Activity</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PlayerLogic.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_ai.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_anti_robot.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_auction.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_castlewar.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_config.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_creature.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_deduct.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_friend.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_gift.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_guarder.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_gwsession.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_item.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_mail.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_MonCastle.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_npc_shop.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_object.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_prentice.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_scene.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_server.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_spawn.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_state.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_state_snapshot.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_team.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_union.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="region_util.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="rs_war_zhulu.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd.h">
+      <Filter>cmds</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd_auction.h">
+      <Filter>cmds</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd_castlewar.h">
+      <Filter>cmds</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd_channel.h">
+      <Filter>cmds</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd_feod.h">
+      <Filter>cmds</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd_item.h">
+      <Filter>cmds</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd_union.h">
+      <Filter>cmds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\ActivityInfo.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\auction_base.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\auction_net_base.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\castlewar_base.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\castlewar_net_define.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\game_mail_shared_const.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\game_string_assistant.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\game_team_share_const.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\gw_protocol.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\gwt.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\herolist_base.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\item_bank.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\item_base.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\item_net_define.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\item_npc_shop.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\item_pshop.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\item_trade.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\linesys_net_define.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\linux_util.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\master_list_const.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\master_prentice_base.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\pet_base.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\pk.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\region_client.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\server_config.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\server_if.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\string_mapping.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\sym_imp.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\team_data.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\union_base.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\union_net_define.h">
+      <Filter>shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\profile.h">
+      <Filter>shared\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\profile_result.h">
+      <Filter>shared\profile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rt2_core.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_build_option.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_database.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_debug.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_encrypt.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_engine_sys.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_file.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_lock.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_log.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_math.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_memory.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_object.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_platform.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_platform_unix.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_platform_win32.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_process.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_smartptr.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_string.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_system_info.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_text.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_text_ini.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_text_table.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_text_util.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_text_xml.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_thread.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_thread_event.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_time.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_util.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\zconf.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\zlib.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\zstream.h">
+      <Filter>engine\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_cmdpacket.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_netpacket.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_netsocket.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_tcplistener.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_tcpsession.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_udpsession.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\rt_net.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\scene\rts_path_find.h">
+      <Filter>engine\terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\scene\rts_path_point.h">
+      <Filter>engine\terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\scene\rts_scene_area.h">
+      <Filter>engine\terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\scene\rts_scene_doc.h">
+      <Filter>engine\terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\scene\rts_scene_terrain.h">
+      <Filter>engine\terrain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\ansi_file.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\compress_mode.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\file_error.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\game_filter.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\game_pack.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\memory_buffer.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\memory_file.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\normal_pack.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\pack_error.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\pack_factory.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\pack_file.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\pack_manager.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\profile.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\profile_result.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\rt_async_file.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\unpack_file.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="region_skill.h">
+      <Filter>skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\skill_base.h">
+      <Filter>skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\skill_dummy.h">
+      <Filter>skill</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\skill_manage.h">
+      <Filter>skill</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="rt_randomimage.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="rs_dungeon.h">
+      <Filter>dungeon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\auction_common.h">
+      <Filter>Business</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\business.h">
+      <Filter>Business</Filter>
+    </ClInclude>
+    <ClInclude Include="rs_auction.h">
+      <Filter>Business</Filter>
+    </ClInclude>
+    <ClInclude Include="rs_card_trade.h">
+      <Filter>Business</Filter>
+    </ClInclude>
+    <ClInclude Include="region_master_list.h">
+      <Filter>master_list</Filter>
+    </ClInclude>
+    <ClInclude Include="rs_national_war.h">
+      <Filter>NWar</Filter>
+    </ClInclude>
+    <ClInclude Include="jhwg_session.h">
+      <Filter>wg</Filter>
+    </ClInclude>
+    <ClInclude Include="region_activity_py.h">
+      <Filter>script</Filter>
+    </ClInclude>
+    <ClInclude Include="region_creature_py.h">
+      <Filter>script</Filter>
+    </ClInclude>
+    <ClInclude Include="region_item_py.h">
+      <Filter>script</Filter>
+    </ClInclude>
+    <ClInclude Include="region_object_py.h">
+      <Filter>script</Filter>
+    </ClInclude>
+    <ClInclude Include="region_scene_py.h">
+      <Filter>script</Filter>
+    </ClInclude>
+    <ClInclude Include="region_server_py.h">
+      <Filter>script</Filter>
+    </ClInclude>
+    <ClInclude Include="script_engine_py.h">
+      <Filter>script</Filter>
+    </ClInclude>
+    <ClInclude Include="rs_cmd_LineSys.h">
+      <Filter>LineSys</Filter>
+    </ClInclude>
+    <ClInclude Include="rs_LineGroup.h">
+      <Filter>LineSys</Filter>
+    </ClInclude>
+    <ClInclude Include="rs_LineMan.h">
+      <Filter>LineSys</Filter>
+    </ClInclude>
+    <ClInclude Include="RegionActManager.h">
+      <Filter>Activity</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\engine\head\core\rtc2_thread.inl">
+      <Filter>engine\core</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon_region.ico">
+      <Filter>resource</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>resource</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="region_server.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

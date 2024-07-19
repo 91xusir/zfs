@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Anchor="center" Inherit="TitleBarForm" Location="278,96,234,362" Name="fmsellcard" Show="false" StartPosition1="centerParent">
+      <Label Location="20,4,180,16" Name="lbinfo" Text="点卡寄售"/>
+      <Label Location="20,26,200,40" Multiline="true" Name="lbrule1" Text="1.寄售需要支付20000封神币的手续费，无论交易是否成功都不退回"/>
+      <Label Location="20,58,200,58" Multiline="true" Name="lbrule2" Text="2.如果寄售的点卡在6小时内无人购买，将发信退回给寄售方。退回的点卡可以再次寄售或充值。点卡在寄售期间如果被用来在主页充值，游戏内将会自动取消寄售"/>
+      <Label Location="20,130,200,16" Multiline="true" Name="lbrule3" Text="3.寄售价格只能在20万～1000万的范围之内"/>
+      <Label Location="20,160,200,46" Multiline="true" Name="lbrule4" Text="4.请输入卡号，密码和寄售价格(请注意点卡不一定有人买，所以千万记得继续保存好卡号和密码)"/>
+      <Label Location="32,206,48,16" Name="lbcardno" Text="卡号"/>
+      <EditBox Inherit="EditBox" Location="64,206,126,16" Name="txtcard" Text="1234567890123456"/>
+      <Label Location="32,226,48,16" Name="lbcardpass" Show="true" Text="密码"/>
+      <EditBox Inherit="EditBox" Location="64,228,126,16" Name="txtpass" Show="true" Text="BBBWAA333UI"/>
+      <Label Location="32,248,48,16" Name="lbprice" Show="true" Text="寄售价格"/>
+      <EditBox Inherit="EditBox" Location="84,250,106,16" Name="txtprice" Show="true" Text="1000000"/>
+      <Button GrabKeyboard="true" Inherit="PushButton" Location="40,272,64,20" Name="btnok" Text="确认"/>
+      <Button GrabKeyboard="true" Inherit="PushButton" Location="126,272,64,20" Name="btncancel" Text="取消"/>
+    </Form>
+  </Layer>
+</Ui>
