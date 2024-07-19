@@ -1,0 +1,915 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(简体，中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#include ""res\\tool_scene.rc2""  // 非 Microsoft Visual C++ 编辑资源\r\n"
+    "#include ""afxres.rc""         // 标准组件\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\tool_scene.ico"
+
+IDR_RTEngineSceneTYPE   ICON                    "res\\tool_sceneDoc.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+IDB_BITMAP_BRUSH_ICONS  BITMAP                  "res\\PaneIcons.bmp"
+
+IDB_BITMAP_BRUSH_OBJECT BITMAP                  "res\\img_brush_obj.bmp"
+
+IDR_TOOLBAR_BRUSH_MAP   BITMAP                  "res\\ToolbarBrushMap.bmp"
+
+IDR_TOOLBAR_BRUSHS      BITMAP                  "res\\toolbar_brushs.bmp"
+
+IDR_TOOLBAR_SHOW        BITMAP                  "res\\toolbar1.bmp"
+
+IDR_TOOLBAR_MAP         BITMAP                  "res\\toolbar_map.bmp"
+
+IDR_TOOLBAR_TERRAIN_FLAG BITMAP                  "res\\toolbar_terrain_flag.bmp"
+
+IDR_TOOLBAR_AREALIST    BITMAP                  "res\\toolbar_arealist.bmp"
+
+IDR_TOOLBAR_PATHPOINTLIST BITMAP                  "res\\toolbar_pathpointlist.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_NEW_BLOCK
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    BUTTON      ID_SAVEALL
+    BUTTON      ID_SAVECURRBLOCK
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    SEPARATOR
+    BUTTON      ID_GAME_PLAY
+    BUTTON      ID_GAME_HEIGHTMAP
+    BUTTON      ID_GAME_SNAPSHOT
+    BUTTON      ID_GAME_ADJUSTOBJECT
+    BUTTON      ID_GAME_MOVEOBJECT
+    BUTTON      ID_GAME_NORMALIZABLE
+    SEPARATOR
+    BUTTON      ID_HELP_USE
+    BUTTON      ID_ENABLE_POSEEFFECT
+    BUTTON      ID_BUILD_SM
+    BUTTON      ID_BUILD_SM2
+    BUTTON      ID_PMODE
+    BUTTON      ID_SHOWNORMAL
+END
+
+IDR_TOOLBAR_BRUSH_MAP TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_BRUSHMAP_OPTION
+    BUTTON      ID_BRUSHMAP_2
+    BUTTON      ID_BRUSHMAP_3
+    BUTTON      ID_BRUSHMAP_4
+END
+
+IDR_TOOLBAR_BRUSHS TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_VIEW_BRUSH_MAP
+    BUTTON      ID_VIEW_BRUSH_OBJECT
+    BUTTON      ID_VIEW_BRUSH_GRASS
+    BUTTON      ID_VIEW_BRUSH_PROPERTY
+    BUTTON      ID_VIEW_BRUSH_VERTEX
+    BUTTON      ID_VIEW_BRUSH_COLOR
+    BUTTON      ID_BUTTON32783
+    BUTTON      ID_VIEW_AREA_LIST
+    BUTTON      ID_VIEW_PATHPOINT_LIST
+END
+
+IDR_TOOLBAR_SHOW TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_BTN_SHOW_LINE
+    BUTTON      ID_BTN_SHOW_NORMAL
+    BUTTON      ID_BTN_SHOW_MASK_WALK
+    BUTTON      ID_BTN_SHOW_MASK_FLY
+    BUTTON      ID_BTN_SHOW_MASK_DIG
+    BUTTON      ID_BTN_SHOW_HELPER
+    BUTTON      ID_BTN_SHOW_FOG
+    BUTTON      ID_BTN_SHOW_MINIMAP
+END
+
+IDR_TOOLBAR_MAP TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_BTN_MAP_SLIDER
+END
+
+IDR_TOOLBAR_TERRAIN_FLAG TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_BTN_EDIT_TERRAIN_SHOW
+    BUTTON      ID_BTN_EDIT_TERRAIN_WALK
+END
+
+IDR_TOOLBAR_AREALIST TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_TOOLBAR_AREA_ENABLE
+    BUTTON      ID_TOOLBAR_AREA_OPEN_FILE
+    BUTTON      ID_TOOLBAR_AREA_SAVE_FILE
+    SEPARATOR
+    BUTTON      ID_TOOLBAR_AREA_SHOW_ALL
+END
+
+IDR_TOOLBAR_PATHPOINTLIST TOOLBAR 16, 15
+BEGIN
+    BUTTON      ID_TOOLBAR_PATHPOINT_ENABLE
+    BUTTON      ID_TOOLBAR_PATHPOINT_OPEN_FILE
+    BUTTON      ID_TOOLBAR_PATHPOINT_SAVE_FILE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "新建\tCtrl+N(&N)",              ID_FILE_NEW
+        MENUITEM "打开...\tCtrl+O(&O)",           ID_FILE_OPEN
+        MENUITEM "保存\tCtrl+S(&S)",              ID_FILE_SAVE
+        MENUITEM "另存为(&A)...",                  ID_FILE_SAVE_AS
+        MENUITEM SEPARATOR
+        MENUITEM "最近的文件",                       ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                      ID_APP_EXIT
+    END
+    POPUP "视图(&V)"
+    BEGIN
+        POPUP "工具栏"
+        BEGIN
+            MENUITEM "工具栏(&T)",                     ID_VIEW_TOOLBAR
+            MENUITEM "状态栏(&S)",                     ID_VIEW_STATUS_BAR
+        END
+        POPUP "界面样式"
+        BEGIN
+            MENUITEM "Office 2000",                 32785
+            MENUITEM "Office XP",                   32786
+            MENUITEM "Office 2003",                 32787
+            MENUITEM "Office Visio",                32788
+            MENUITEM "Native Office",               ID_MENU_THEMES_NATIVEOFFICE
+        END
+        MENUITEM SEPARATOR
+        POPUP "刷子"
+        BEGIN
+            MENUITEM "地表",                          ID_VIEW_BRUSH_MAP
+            MENUITEM "物件",                          ID_VIEW_BRUSH_OBJECT
+            MENUITEM "花草",                          ID_VIEW_BRUSH_GRASS
+            MENUITEM "属性",                          ID_VIEW_BRUSH_PROPERTY
+            MENUITEM "地形",                          ID_VIEW_BRUSH_VERTEX
+            MENUITEM "区域列表",                        ID_VIEW_AREA_LIST
+            MENUITEM "路点列表",                        ID_VIEW_PATHPOINT_LIST
+        END
+    END
+    POPUP "工具"
+    BEGIN
+        MENUITEM "TGA Alpha反算",                 ID_TOOL_TGA_REVERSE
+        MENUITEM "重新计算所有的物件灯光",                 ID_TOOL_RECOMPUTE_OBJECT_LIGHT
+        MENUITEM "重新计算所有的物件从属关系",               ID_TOOL_RECOMPUTE_OBJECT_BELONG
+        MENUITEM "检查是否有完全重叠的物件",                ID_TOOL_CHECK_SAME_OBJECT
+        MENUITEM "删除完全重叠的物件",                   ID_TOOL_DELETE_SAME_OBJECT
+        MENUITEM SEPARATOR
+        MENUITEM "保存环境信息",                      ID_TOOL_SAVE_ENV
+        MENUITEM "载入环境信息",                      ID_TOOL_LOAD_ENV
+        MENUITEM SEPARATOR
+        MENUITEM "从文件添加区域信息",                   ID_TOOL_ADD_AREA_FROM_FILE
+        MENUITEM "输出NPC信息",                     ID_OUTPUT_NPC_INFO, CHECKED
+        MENUITEM "生成地形光照图",                     ID_COMPUTER_SM
+        MENUITEM SEPARATOR
+        MENUITEM "View Center",                 ID_VIEW_CENTER
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "使用帮助",                        ID_HELP_USE
+        MENUITEM "关于 tool_scene(&A)...",        ID_APP_ABOUT
+    END
+END
+
+ID_BRUSHMAP_OPTION MENU
+BEGIN
+    POPUP "Map"
+    BEGIN
+        MENUITEM "All Map",                     ID_BRUSH_MAP_FILTER_ALL
+    END
+END
+
+IDR_MENU_MULTIOBJ MENU
+BEGIN
+    POPUP "MultiObject"
+    BEGIN
+        MENUITEM "最近一个物件",                      IDS_MULTIOBJECT_NEAR
+    END
+END
+
+IDR_MENU_BLOCK_OP MENU
+BEGIN
+    POPUP "BlockOperator"
+    BEGIN
+        MENUITEM "移动到这里",                       ID_MENU_BO_MOVETO
+        MENUITEM "块属性",                         ID_MENU_BO_PROPERTY
+        MENUITEM "生成小地图",                       ID_MENU_BO_MINIMAP
+        MENUITEM "删除块",                         ID_MENU_BO_DELETE
+        MENUITEM "复制",                          ID_MENU_BO_COPY
+        MENUITEM "粘贴",                          ID_MENU_BO_POST
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS
+BEGIN
+    VK_F3,          ID_BTN_SHOW_LINE,       VIRTKEY, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 Scene Editor"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "Scene Editor Version 1.0",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "Copyright (C) 2004",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,16,WS_GROUP
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,0,0,20,20
+    SCROLLBAR       IDC_SCROLLBAR1,0,0,10,40,SBS_VERT
+END
+
+IDD_DLG_BRUSH_COLOR DIALOGEX 0, 0, 126, 157
+STYLE DS_SETFONT | WS_CHILD
+EXSTYLE WS_EX_STATICEDGE
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+    GROUPBOX        "选择颜色",IDC_STATIC,2,19,120,62
+END
+
+IDD_DLG_BRUSH_VERTEX DIALOGEX 0, 0, 220, 286
+STYLE DS_SETFONT | WS_CHILD
+EXSTYLE WS_EX_STATICEDGE
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    CONTROL         "",IDC_SLIDER_MIN,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,23,8,106,11
+    CONTROL         "拉地形 [方刷子]",IDC_RADIO_BRUSH_VERTEX_DRAG,"Button",BS_AUTORADIOBUTTON,10,47,76,10
+    CONTROL         "刷平",IDC_RADIO_BRUSH_VERTEX_BRUSH,"Button",BS_AUTORADIOBUTTON,10,68,32,10
+    CONTROL         "崎岖地形",IDC_RADIO_BRUSH_VERTEX_NOISE,"Button",BS_AUTORADIOBUTTON,10,78,48,10
+    CONTROL         "抚平地形",IDC_RADIO_BRUSH_VERTEX_SMOOTH,"Button",BS_AUTORADIOBUTTON,10,88,48,10
+    CONTROL         "行走顶点 (不可见)",IDC_RADIO_BRUSH_TERRAIN_VERTEX,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,2,269,84,10
+    CONTROL         "行走阻挡 (不可见)",IDC_RADIO_BRUSH_TERRAIN_WALK,"Button",BS_AUTORADIOBUTTON,10,168,84,10
+    CONTROL         "飞行阻挡 (不可见)",IDC_RADIO_BRUSH_TERRAIN_FLY,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,2,269,84,10
+    CONTROL         "钻地阻挡 (不可见)",IDC_RADIO_BRUSH_TERRAIN_DIG,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,2,269,84,10
+    CONTROL         "物件网格对齐(网格大小为40)",IDC_CHECK_SNAP_TO_GRID,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,188,120,10
+    CONTROL         "水面",IDC_RADIO_BRUSH_TERRAIN_WATER,"Button",BS_AUTORADIOBUTTON,10,156,32,10
+    CONTROL         "编辑顶点(仅一个顶点)",IDC_RADIO_BRUSH_POINT_TILE,"Button",BS_AUTORADIOBUTTON,10,98,96,10
+    CONTROL         "编辑显示网格",IDC_CHECK_TILE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,121,64,10
+    CONTROL         "编辑行走网格",IDC_CHECK_TERRAIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,131,64,10
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,11,114,105,1
+    COMBOBOX        IDC_COMBO_WATER,43,154,73,106,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "编辑网格顶点",IDC_RADIO_BRUSH_TILE_VERTEX,"Button",BS_AUTORADIOBUTTON | NOT WS_VISIBLE,2,269,64,10
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,2,41,214,1
+    LTEXT           "地形刷子",IDC_STATIC,10,37,33,8,NOT WS_GROUP
+    LTEXT           "选项",IDC_STATIC,19,110,17,8,NOT WS_GROUP
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,3,149,126,1
+    LTEXT           "属性刷子",IDC_STATIC,10,145,33,8,NOT WS_GROUP
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,2,183,214,1
+    LTEXT           "对齐",IDC_STATIC,10,180,17,8,NOT WS_GROUP
+    CONTROL         "",IDC_SLIDER_MAX,"msctls_trackbar32",TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,23,18,107,11
+    CONTROL         "拉地形 [圆刷子]",IDC_RADIO_BRUSH_VERTEX_DRAG2,"Button",BS_AUTORADIOBUTTON,10,57,76,10
+    LTEXT           "最小",IDC_STATIC,2,10,19,8,NOT WS_GROUP
+    LTEXT           "最大",IDC_STATIC,2,19,19,8,NOT WS_GROUP
+    GROUPBOX        "物件属性",IDC_STATIC,10,201,106,64
+    CONTROL         "物件淡入淡出",IDC_CHECK_FADEOUTIN,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,213,65,10
+END
+
+IDD_DIALOG_HEIGHTMAP DIALOGEX 0, 0, 325, 252
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "高度图编辑器"
+FONT 9, "新宋体", 400, 0, 0x86
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,268,7,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,268,24,50,14
+    LTEXT           "Image",IDC_HEIGHTMAP_IMG_RECT,7,7,254,218,0,WS_EX_STATICEDGE
+END
+
+IDD_HELP_DIALOG_USE DIALOGEX 0, 0, 458, 319
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "使用帮助"
+FONT 9, "宋体", 400, 0, 0x0
+BEGIN
+END
+
+IDD_DIALOG_NEW_SCENE DIALOGEX 0, 0, 271, 110
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "新建场景"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_DLG_NEW_BLOCK DIALOGEX 0, 0, 581, 417
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "创建新的场景块"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,524,7,50,14
+    LTEXT           "在下面创建出新的块",IDC_BLOCK_DRAW_TEXT,7,12,73,8
+    CONTROL         "",IDC_BLOCK_DRAW,"Static",SS_BLACKRECT | SS_REALSIZEIMAGE,27,57,508,314,WS_EX_CLIENTEDGE | WS_EX_STATICEDGE
+    LTEXT           "属性：",IDC_STATIC,29,24,25,9
+    LTEXT           "没有选择任何场景块",IDC_NEW_BLOCK_ATTRIB,165,22,409,11,0,WS_EX_STATICEDGE
+    PUSHBUTTON      "生成全部小地图",IDC_BUTTON_GENERATE_ALL_MINIMAP,436,7,75,14
+    PUSHBUTTON      "导入合成场景",IDC_BUTTON1,165,7,61,14
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,331,180,20,20
+    CONTROL         "",IDC_STATIC,"Static",SS_BLACKFRAME,340,95,20,20
+    SCROLLBAR       IDC_SCROLLBAR3,541,58,10,313,SBS_VERT
+    SCROLLBAR       IDC_SCROLLBAR4,28,43,505,11
+    PUSHBUTTON      "显示主场景",IDC_BUTTON2,243,7,60,14
+    PUSHBUTTON      "显示合成场景",IDC_BUTTON3,315,7,61,14
+END
+
+IDD_DLG_BLOCK_INFO DIALOGEX 0, 0, 238, 265
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "场景块信息"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,128,244,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,181,244,50,14
+    PUSHBUTTON      "生成小地图",IDC_BUTTON2,7,244,54,14
+END
+
+IDD_DIALOG_NPC DIALOGEX 0, 0, 360, 315
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "NPC对话框"
+FONT 9, "Microsoft Sans Serif", 400, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,302,294,50,14
+    LTEXT           "序号:",IDC_STATIC,19,18,21,10
+    LTEXT           "NPC名称:",IDC_STATIC,20,36,36,10
+    LTEXT           "NPC功能名称:",IDC_STATIC,20,53,50,10
+    LTEXT           "模型编号:",IDC_STATIC,20,73,42,14
+    LTEXT           "坐标:",IDC_STATIC,21,90,22,11
+    LTEXT           "朝向:",IDC_STATIC,21,103,24,11
+    LTEXT           "脚本:",IDC_STATIC,22,121,21,9
+    LTEXT           "对话:",IDC_STATIC,22,174,22,10
+    LTEXT           "备注:",IDC_STATIC,23,230,21,11
+    LTEXT           "版本:",IDC_STATIC,26,276,22,9
+    EDITTEXT        IDC_EDIT1,82,15,51,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT2,82,31,78,15,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,82,49,79,16,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT4,82,71,47,13,ES_AUTOHSCROLL
+    LTEXT           "X:",IDC_STATIC,74,88,8,8
+    EDITTEXT        IDC_EDIT6,91,87,41,12,ES_AUTOHSCROLL
+    LTEXT           "Y:",IDC_STATIC,146,88,9,8
+    EDITTEXT        IDC_EDIT7,159,87,39,12,ES_AUTOHSCROLL
+    LTEXT           "X:",IDC_STATIC,74,102,8,8
+    EDITTEXT        IDC_EDIT9,90,101,41,12,ES_AUTOHSCROLL
+    LTEXT           "Y:",IDC_STATIC,146,103,9,8
+    EDITTEXT        IDC_EDIT10,158,102,39,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT12,79,119,130,45,ES_MULTILINE | WS_VSCROLL
+    EDITTEXT        IDC_EDIT13,80,169,128,49,ES_MULTILINE | WS_VSCROLL
+    EDITTEXT        IDC_EDIT14,79,226,127,41,ES_MULTILINE | WS_VSCROLL
+    EDITTEXT        IDC_EDIT15,80,273,41,16,ES_AUTOHSCROLL
+END
+
+IDD_DLG_GRASS DIALOGEX 0, 0, 132, 377
+STYLE DS_SETFONT | WS_CHILD
+EXSTYLE WS_EX_STATICEDGE
+FONT 9, "宋体", 400, 0, 0x86
+BEGIN
+    EDITTEXT        IDC_EDIT,55,206,54,14,ES_AUTOHSCROLL
+    LTEXT           "密度(0-1024)",IDC_STATIC,3,209,49,8
+    EDITTEXT        IDC_EDIT2,27,222,36,14,ES_AUTOHSCROLL
+    LTEXT           "高度",IDC_STATIC,3,224,17,8
+    EDITTEXT        IDC_EDIT3,27,238,36,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "宽度",IDC_STATIC,3,240,17,8
+    CONTROL         "",IDC_SLIDER1,"msctls_trackbar32",WS_TABSTOP,2,153,128,13
+    CONTROL         "",IDC_TEXT_WND,"Static",SS_BLACKFRAME | SS_NOTIFY,2,1,128,131
+    COMBOBOX        IDC_COMBO1,2,135,128,122,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_EDIT4,73,222,36,14,ES_AUTOHSCROLL
+    LTEXT           "~",IDC_STATIC,65,227,8,8
+    EDITTEXT        IDC_EDIT5,73,238,36,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "~",IDC_STATIC,65,244,8,8
+    CONTROL         "Brush",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | BS_PUSHLIKE | NOT WS_VISIBLE | WS_TABSTOP,45,171,40,16
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080403a8"
+        BEGIN
+            VALUE "CompanyName", "TODO: <公司名>"
+            VALUE "FileDescription", "TODO: <文件说明>"
+            VALUE "FileVersion", "1.0.0.1"
+            VALUE "InternalName", "tool_scene.exe"
+            VALUE "LegalCopyright", "TODO: (C) <公司名>。保留所有权利。"
+            VALUE "OriginalFilename", "tool_scene.exe"
+            VALUE "ProductName", "TODO: <产品名>"
+            VALUE "ProductVersion", "1.0.0.1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "翻译", 0x804, 936
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_DLG_BRUSH_COLOR, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 122
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 150
+    END
+
+    IDD_DLG_BRUSH_VERTEX, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        RIGHTMARGIN, 216
+        VERTGUIDE, 10
+        VERTGUIDE, 116
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 279
+    END
+
+    IDD_DIALOG_HEIGHTMAP, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 318
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 245
+    END
+
+    IDD_HELP_DIALOG_USE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 451
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 312
+    END
+
+    IDD_DIALOG_NEW_SCENE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 264
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 103
+    END
+
+    IDD_DLG_NEW_BLOCK, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 574
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 410
+    END
+
+    IDD_DLG_BLOCK_INFO, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 231
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 258
+    END
+
+    IDD_DIALOG_NPC, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 352
+        TOPMARGIN, 6
+        BOTTOMMARGIN, 308
+    END
+
+    IDD_DLG_GRASS, DIALOG
+    BEGIN
+        LEFTMARGIN, 2
+        BOTTOMMARGIN, 375
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// HTML
+//
+
+IDR_HTML_HELPDIALOGUSE  HTML                    "HelpDialogUse.htm"
+
+IDR_HTML_DLGNEWSCENE    HTML                    "DlgNewScene.htm"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DLG_BRUSH_VERTEX AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    IDR_MAINFRAME           "ZFS RTEngine Scene Editor\n\nRTEngineScene\nRTEngine Scene Files (*.rts)\n.rts\nRTEngineScene.Document\nRTEngineScene.Document"
+    IDC_LISTBOX_AREA        "区域列表"
+    IDC_EDIT_AREA_NAME      "区域名字"
+    IDC_EDIT_AREA_DATA      "区域数字"
+    ID_GRIDITEM_OPTION_OBJHEIGHTLIGHT "后期加强\n是否使用后期加强效果"
+    ID_GRIDITEM_OPTION_OBJHEIGHTLIGHT_COLOR_SPE "后期加强高光"
+    ID_GRIDITEM_OPTION_OBJHEIGHTLIGHT_SCALE "后期加强缩放"
+    ID_GRIDITEM_OPTION_OBJHEIGHTLIGHT_COLOR_EMI "后期加强自发光"
+    ID_GRIDITEM_OPTION_OBJHEIGHTLIGHT_COLOR_DIF "后期加强漫反射"
+    ID_GRIDITEM_OPTION_OBJHEIGHTLIGHT_SPE_POWER "后期加强高光强度"
+    ID_VIEW_BRUSH_MAP       "地表\n地表"
+    ID_VIEW_BRUSH_OBJECT    "物件\n物件"
+    ID_VIEW_BRUSH_GRASS     "花草\n花草"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_BRUSH_PROPERTY  "属性\n属性"
+    ID_VIEW_BRUSH_VERTEX    "地形\n地形"
+    ID_VIEW_BRUSH_COLOR     "颜色\n颜色"
+    ID_VIEW_AREA_LIST       "区域列表\n区域列表"
+    ID_AREA_LIST_VIEW       "区域列表"
+    ID_GRIDITEM_ENVIRONMENT "环境光\n这里设置环境光."
+END
+
+STRINGTABLE
+BEGIN
+    ID_GRIDITEM_FULL_MODE   "线框模式\n是否使用线框模式"
+    ID_GRIDITEM_DRAW_NORMAL "画出法线\n是否画出顶点的法向量."
+    ID_GAME_PLAY            "锁定为游戏视角\n游戏视角"
+    ID_TREE_OBJ_VIEW        "物件树"
+    ID_GRIDITEM_LIGHTCOLOR  "灯光颜色\n这里可以设置当前灯光的颜色"
+    ID_GRIDITEM_CLEAR_COLOR "背景颜色\n这里设置窗口的背景颜色."
+    ID_GRIDITEM_LIGHT_RANGE "灯光距离\n这里可以设置当前灯光的范围"
+END
+
+STRINGTABLE
+BEGIN
+    ID_GRIDITEM_LIGHT_ATT_C "衰减常数\n这里可以设置当前灯光的衰减常数"
+    ID_GRIDITEM_LIGHT_ATT_L "线性衰减系数\n这里可以设置当前灯光的线性衰减系数"
+    ID_GRIDITEM_LIGHT_ATT_Q "二次衰减系数\n这里可以设置当前灯光的二次衰减系数"
+    ID_MAPLIST_OBJ_VIEW     "贴图列表"
+    ID_GRIDITEM_DRAW_ATTR_WALK "画行走阻挡\n是否画出行走阻挡信息."
+    ID_VIEW_PATHPOINT_LIST  "路点列表\n路点列表"
+    ID_PATHPOINT_LIST_VIEW  """路点列表"""
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_APP_TITLE       "tool_scene"
+    AFX_IDS_IDLEMESSAGE     "就绪"
+END
+
+STRINGTABLE
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_NEW             "创建新文档\n新建"
+    ID_FILE_OPEN            "打开现有文档\n打开"
+    ID_FILE_CLOSE           "关闭活动文档\n关闭"
+    ID_FILE_SAVE            "保存活动文档\n保存"
+    ID_FILE_SAVE_AS         "用新名称保存活动文档\n另存为"
+END
+
+STRINGTABLE
+BEGIN
+    ID_APP_ABOUT            "显示程序信息、版本号和版权\n关于"
+    ID_APP_EXIT             "退出应用程序；提示保存文档\n退出"
+END
+
+STRINGTABLE
+BEGIN
+    ID_FILE_MRU_FILE1       "打开此文档"
+    ID_FILE_MRU_FILE2       "打开此文档"
+    ID_FILE_MRU_FILE3       "打开此文档"
+    ID_FILE_MRU_FILE4       "打开此文档"
+    ID_FILE_MRU_FILE5       "打开此文档"
+    ID_FILE_MRU_FILE6       "打开此文档"
+    ID_FILE_MRU_FILE7       "打开此文档"
+    ID_FILE_MRU_FILE8       "打开此文档"
+    ID_FILE_MRU_FILE9       "打开此文档"
+    ID_FILE_MRU_FILE10      "打开此文档"
+    ID_FILE_MRU_FILE11      "打开此文档"
+    ID_FILE_MRU_FILE12      "打开此文档"
+    ID_FILE_MRU_FILE13      "打开此文档"
+    ID_FILE_MRU_FILE14      "打开此文档"
+    ID_FILE_MRU_FILE15      "打开此文档"
+    ID_FILE_MRU_FILE16      "打开此文档"
+END
+
+STRINGTABLE
+BEGIN
+    ID_NEXT_PANE            "切换到下一个窗格\n下一窗格"
+    ID_PREV_PANE            "切换回上一个窗格\n上一窗格"
+END
+
+STRINGTABLE
+BEGIN
+    ID_WINDOW_SPLIT         "将活动窗口拆分为多个窗格\n拆分"
+END
+
+STRINGTABLE
+BEGIN
+    ID_EDIT_CLEAR           "清除选定内容\n清除"
+    ID_EDIT_CLEAR_ALL       "清除全部内容\n全部清除"
+    ID_EDIT_COPY            "复制选定内容并将其放到剪贴板上\n复制"
+    ID_EDIT_CUT             "剪切选定内容并将其放到剪贴板上\n剪切"
+    ID_EDIT_FIND            "查找指定的文本\n查找"
+    ID_EDIT_PASTE           "插入剪贴板内容\n粘贴"
+    ID_EDIT_REPEAT          "重复上一操作\n重复"
+    ID_EDIT_REPLACE         "用其他文本替换特定的文本\n替换"
+    ID_EDIT_SELECT_ALL      "选定整个文档\n全选"
+    ID_EDIT_UNDO            "撤消上一操作\n撤消"
+    ID_EDIT_REDO            "恢复上次撤消的操作\n重做"
+END
+
+STRINGTABLE
+BEGIN
+    ID_VIEW_TOOLBAR         "显示或隐藏工具栏\n切换工具栏"
+    ID_VIEW_STATUS_BAR      "显示或隐藏状态栏\n切换状态栏"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCSIZE          "更改窗口大小"
+    AFX_IDS_SCMOVE          "更改窗口位置"
+    AFX_IDS_SCMINIMIZE      "将窗口缩小为图标"
+    AFX_IDS_SCMAXIMIZE      "使窗口最大化显示"
+    AFX_IDS_SCNEXTWINDOW    "切换到下一个文档窗口"
+    AFX_IDS_SCPREVWINDOW    "切换到前一个文档窗口"
+    AFX_IDS_SCCLOSE         "关闭活动窗口并提示保存文档"
+END
+
+STRINGTABLE
+BEGIN
+    AFX_IDS_SCRESTORE       "将窗口恢复到正常大小"
+    AFX_IDS_SCTASKLIST      "激活任务列表"
+END
+
+STRINGTABLE
+BEGIN
+    ID_GAME_HEIGHTMAP       "显示高度图\n高度图"
+    ID_GAME_SNAPSHOT        "屏幕截图\n快照"
+    ID_HELP_USE             "软件使用帮助"
+END
+
+STRINGTABLE
+BEGIN
+    ID_TOOLBAR_PATHPOINT_ENABLE "打开/关闭 路点工具"
+    ID_TOOLBAR_PATHPOINT_OPEN_FILE "打开路点描述文件"
+    ID_TOOLBAR_PATHPOINT_SAVE_FILE "保存路点描述文件"
+    IDC_LISTBOX_PATHPOINT   "路点列表"
+    ID_GRIDITEM_DRAW_ATTR_FLY "画飞行阻挡\n是否画出飞行阻挡信息."
+    ID_GRIDITEM_DRAW_ATTR_DIG "画钻地阻挡\n是否画出钻地阻挡信息."
+    ID_GRIDITEM_DRAW_HELPER "画辅助模型\n是否画出辅助模型，比如灯光的图表，声音的图标等."
+    ID_GRIDITEM_OPTION_WATERCATOPTRICSKY "水面反射\n使水面有反射天空的效果，是一张天空的贴图，并不是真的反射"
+    ID_GRIDITEM_FOG_ENABLE  "是否开雾\n这里可以设置是否打开雾"
+END
+
+STRINGTABLE
+BEGIN
+    ID_GRIDITEM_FOG_COLOR   "雾的颜色\n这里设置雾的颜色"
+    ID_GRIDITEM_FOG_MIN     "雾的最近距离\n这里设置雾的最近距离"
+    ID_GRIDITEM_FOG_MAX     "雾的最远距离\n这里设置雾的最远距离"
+    ID_GRIDITEM_ENV_SUN_COLOR "太阳光\n太阳光就是平行光"
+    ID_GRIDITEM_ENV_SUN_SPECULAR "太阳反射\n太阳光的镜面反射系数"
+END
+
+STRINGTABLE
+BEGIN
+    ID_GRIDITEM_ENV_TERRAIN_AMBIENT "地表环境光\n地表的最后环境光是当前的环境光加上地表环境光的结果"
+    ID_GRIDITEM_ENV_SUN_INCLINATION "太阳光倾斜\n太阳光的倾斜角度"
+    ID_GRIDITEM_ENV_SUN_ROTATION "太阳光旋转\n太阳光的旋转角度"
+    ID_GRIDITEM_OPTION_POSTPROCESS "后期处理\n是否使用后期处理效果"
+    ID_GRIDITEM_OPTION_POSTPROCESS_CONTRAST "后期处理对比度\n后期处理对比度"
+    ID_GRIDITEM_OPTION_POSTPROCESS_INTENSITY "后期处理强度\n后期处理强度"
+END
+
+STRINGTABLE
+BEGIN
+    ID_GAME_MOVEOBJECT      "移动物件\n移动物件"
+    ID_GAME_ADJUSTOBJECT    "物件微调\n微调"
+    ID_GAME_NORMALIZABLE    "默认物件大小\n默认大小"
+END
+
+STRINGTABLE
+BEGIN
+    IDS_MULTIOBJECT_NEAR    "最近的一个物件"
+END
+
+STRINGTABLE
+BEGIN
+    ID_BTN_SHOW_LINE        "填充/线框模式 (F3)"
+    ID_BTN_SHOW_NORMAL      "是否显示法线"
+    ID_BTN_SHOW_MASK_WALK   "是否显示行走阻挡"
+    ID_BTN_SHOW_MASK_FLY    "是否显示飞行阻挡"
+    ID_BTN_SHOW_MASK_DIG    "是否显示钻地阻挡"
+    ID_BTN_SHOW_HELPER      "是否显示辅助模型"
+    ID_BTN_SHOW_FOG         "是否开雾"
+    ID_BTN_SHOW_MINIMAP     "显示小地图"
+END
+
+STRINGTABLE
+BEGIN
+    ID_BTN_TERRAIN_SHOW     "编辑显示网格"
+    ID_BTN_TERRAIN_WALK     "编辑行走网格"
+    ID_BTN_EDIT_TERRAIN_WALK "编辑行走网格"
+    ID_BTN_EDIT_TERRAIN_SHOW "编辑显示网格"
+END
+
+STRINGTABLE
+BEGIN
+    ID_GRIDITEM_BACKMUSIC   "背景音乐"
+    ID_GRIDITEM_BACKMUSIC_START_TIME "播放延迟"
+    ID_GRIDITEM_BACKMUSIC_DIFF_TIME "播放间隔"
+    ID_GRIDITEM_BLOCK_FLAG_TEXTURE "标志贴图"
+    ID_GRIDITEM_BLOCK_NAME  "场景块名字"
+    ID_GRIDITEM_BLOCK_FILENAME "场景块文件"
+    ID_GRIDITEM_BLOCK_REGION_ID "场景块REGION编号"
+END
+
+STRINGTABLE
+BEGIN
+    ID_TOOLBAR_AREA_SHOW_ALL "显示全部区域信息"
+    ID_TOOLBAR_AREA_ENABLE  "打开/关闭 区域工具"
+    ID_TOOLBAR_AREA_SAVE_FILE "保存区域描述文件"
+    ID_TOOLBAR_AREA_OPEN_FILE "打开区域描述文件"
+    ID_ENABLE_POSEEFFECT    "泛光\n泛光"
+END
+
+STRINGTABLE
+BEGIN
+    ID_BUILD_SM             "生成光照图\n光照图"
+END
+
+STRINGTABLE
+BEGIN
+    ID_SHOWNORMAL           "显示法线/n法线"
+    ID_SAVEALL              "保存所有\n保存所有"
+    ID_SAVECURRBLOCK        "保存当前block\n保存当前block"
+END
+
+#endif    // 中文(简体，中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE 4, 2
+#pragma code_page(936)
+#include "res\tool_scene.rc2"  // 非 Microsoft Visual C++ 编辑资源
+#include "afxres.rc"         // 标准组件
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

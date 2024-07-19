@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{e1da62b7-679b-473a-8ffc-49651ba43e58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="graph">
+      <UniqueIdentifier>{4ee6b793-db67-439f-95ff-615bf1d8983d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="char">
+      <UniqueIdentifier>{85b71eaa-c8d2-4082-aa30-688fb1c698b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="audio">
+      <UniqueIdentifier>{e84ab68d-459c-40b2-80d4-6f0ae6c17474}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CharUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DllEntry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="meshlod.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MsgWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Quadric.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\character\cha_anim.cpp">
+      <Filter>char</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\character\cha_basic.cpp">
+      <Filter>char</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\character\cha_effect.cpp">
+      <Filter>char</Filter>
+    </ClCompile>
+    <ClCompile Include="..\engine\head\character\cha_mtl.cpp">
+      <Filter>char</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="max_plugin.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\engine\core\core_lib.htm">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="..\engine\head\core\rtc2_thread.inl">
+      <Filter>core</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="rt1tort2.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CharUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="meshlod.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MsgWnd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Quadric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rt2_core.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_build_option.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_database.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_debug.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_encrypt.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_engine_sys.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_file.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_lock.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_log.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_math.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_memory.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_object.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_platform.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_platform_unix.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_platform_win32.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_process.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_smartptr.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_string.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_system_info.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_text.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_text_ini.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_text_table.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_text_util.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_text_xml.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_thread.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_thread_event.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_time.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\rtc2_util.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\zconf.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\zlib.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\core\zstream.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rt_graph.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_buffer.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_buffer_manager.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_buffer_manager_util.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_camera.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_collision.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_config.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_device.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_device_2d.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_device_event.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_enum.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_frame.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_frustum.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_geometry.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_graph.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_image.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_ligth.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_math.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_matrix.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_node.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_plane.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_refreshrate.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_shader.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_texture.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_triangle.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_type.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_util.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\graph\rtg_vertex.h">
+      <Filter>graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\character\actor.h">
+      <Filter>char</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\character\cha_anim.h">
+      <Filter>char</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\character\cha_basic.h">
+      <Filter>char</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\character\cha_effect.h">
+      <Filter>char</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\character\cha_mtl.h">
+      <Filter>char</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bitmap1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="max_plugin.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

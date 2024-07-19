@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Form Name="TestHint" Location="618,73,200,300" Inherit="" Show="false">
+    <Button Name="456" Location="10,10,100,24" Inherit="" Show="true" Text="asdfasdf"/>
+  </Form>
+</Ui>

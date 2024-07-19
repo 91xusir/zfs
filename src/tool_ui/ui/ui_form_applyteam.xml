@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="TitleBarForm" Location="159,126,251,369" Name="applyteam" Show="false">
+      <Button Name="btnaround" Location="170,8,65,20" Inherit="PushButton" Text="周围玩家"/>
+      <TabCtrl Inherit="" Location="2,3,250,335" Name="tabteam" Show="true">
+        <TabItem>
+          <CheckButton Inherit="SelectButton" Location="20,7,65,20" Name="btnnow" Show="true" TargetID="frmnow" Text="当前队伍"/>
+          <Form Inherit="" Location="1,29,247,300" Name="frmnow" Show="true">
+            <ListBox Inherit="ListBox" ItemHeight="15" Location="19,0,214,250" Name="list">
+              <Column Inherit="Column" Text="名称" Width="72"/>
+              <Column Inherit="Column" Text="等级" Width="30"/>
+              <Column Inherit="Column" Text="门派" Width="41"/>
+              <Column Inherit="Column" Text="帮派" Width="63"/>
+            </ListBox>
+            <Button Inherit="PushButton" Location="19,264,65,20" Name="btntransfer" Text="转让队长"/>
+            <Button Inherit="PushButton" Location="93,264,65,20" Name="btnkick" Text="踢出队伍"/>
+            <Button Inherit="PushButton" Location="167,264,65,20" Name="btngetaway" Text="离开队伍"/>
+          </Form>
+        </TabItem>
+        <TabItem>
+          <CheckButton Inherit="SelectButton" Location="84,7,65,20" Name="btnapply" Show="true" Text="申请列表" TargetID="frmapply"/>
+          <Form Inherit="" Location="1,29,247,300" Name="frmapply" Show="true">
+            <ListBox Inherit="ListBox" ItemHeight="15" Location="19,0,214,250" Name="list">
+              <Column Inherit="Column" Text="名称" Width="72"/>
+              <Column Inherit="Column" Text="等级" Width="30"/>
+              <Column Inherit="Column" Text="门派" Width="41"/>
+              <Column Inherit="Column" Text="帮派" Width="63"/>
+            </ListBox>
+            <Button Inherit="PushButton" Location="19,264,65,20" Name="btnagree" Text="同意申请"/>
+            <Button Inherit="PushButton" Location="93,264,65,20" Name="btndisagree" Text="拒绝申请"/>
+            <Button Inherit="PushButton" Location="167,264,65,20" Name="btnclear" Text="清空列表"/>
+          </Form>
+        </TabItem>
+      </TabCtrl>
+    </Form>
+    <PopupMenu BackgroundColor="#b5000000" FadeIn="true" FadeOut="true" Inherit="Border" ItemHeight="13" Margin="4,1" Name="RDMenu">
+      <BackgroundImage Blend="true" Border="2,2,2,2" BorderBlend="true" BorderFile="" BorderSource="10,40,6,6" File="" Source="0,52,24,23"/>
+      <Item Text="组队"/>
+      <Item Text="交易"/>
+      <Item Text="密语"/>
+      <Item Text="好友"/>
+    </PopupMenu>
+    <Button Disable="" Inherit="" Location="130,94,60,60" Name="btnteam" Show="true" Text="">
+      <Hint Text="入队申请人员列表"/>
+      <NormalImage Blend="true" File="" Source="18,152,20,20"/>
+      <HighlightImage Blend="true" File="" Source="48,152,20,20"/>
+      <PushedImage Blend="true" File="" Source="78,152,20,20"/>
+      <Anchors>
+        <Anchor point="RIGHT"/>
+        <Anchor offset="0,-320" point="BOTTOM"/>
+      </Anchors>
+    </Button>
+    <Button Disable="" Inherit="" Location="130,94,60,60" Name="btnteamoff" Show="true" Text="">
+      <Hint Text="入队申请人员列表"/>
+      <NormalImage Blend="true" File="" Source="18,152,20,20"/>
+      <HighlightImage Blend="true" File="" Source="48,152,20,20"/>
+      <PushedImage Blend="true" File="" Source="78,152,20,20"/>
+      <Anchors>
+        <Anchor point="RIGHT"/>
+        <Anchor offset="0,-250" point="BOTTOM"/>
+      </Anchors>
+    </Button>
+  </Layer>
+</Ui>

@@ -1,0 +1,276 @@
+// Controls resource file
+//
+// (c)1998-2018 Codejock Software, All Rights Reserved.
+//
+// THIS SOURCE FILE IS THE PROPERTY OF CODEJOCK SOFTWARE AND IS NOT TO BE
+// RE-DISTRIBUTED BY ANY MEANS WHATSOEVER WITHOUT THE EXPRESSED WRITTEN
+// CONSENT OF CODEJOCK SOFTWARE.
+//
+// THIS SOURCE CODE CAN ONLY BE USED UNDER THE TERMS AND CONDITIONS OUTLINED
+// IN THE XTREME TOOLKIT PRO LICENSE AGREEMENT. CODEJOCK SOFTWARE GRANTS TO
+// YOU (ONE SOFTWARE DEVELOPER) THE LIMITED RIGHT TO USE THIS SOFTWARE ON A
+// SINGLE COMPUTER.
+//
+// CONTACT INFORMATION:
+// support@codejock.com
+// http://www.codejock.com
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "Controls/Resource.h"
+#include "Controls/res/Resource-Neutral.rc"
+
+#if !defined(_XTP_NO_STANDARDCONTROLS_RES) && ( !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_SRL))
+#ifdef _WIN32
+LANGUAGE LANG_SERBIAN, SUBLANG_SERBIAN_LATIN
+#pragma code_page(1250)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+XTP_IDD_TIPOFTHEDAY DIALOGEX 0, 0, 279, 127
+STYLE DS_SETFONT | DS_FIXEDSYS | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Savjet dana"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "&Zatvoriti",IDOK,224,108,50,14
+    CONTROL         "&Prikažite savjete pri pokretanju",XTP_IDC_CHK_DAYTIP_SHOW,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,110,140,10
+    PUSHBUTTON      "&Sljedeæi savjet",XTP_IDC_BTN_DAYTIP_NEXT,160,108,60,14
+    CONTROL         "",XTP_IDC_BTN_DAYTIP_BORDER,"Static",SS_GRAYFRAME | NOT WS_VISIBLE,0,0,279,103
+END
+
+XTP_IDD_COLORCUSTOM DIALOGEX DISCARDABLE  0, 0, 147, 161
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | 
+    WS_CAPTION
+CAPTION "Prilagoðen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Boje:",XTP_IDC_TXT_COLORS,2,4,43,10
+    CONTROL         "",XTP_IDC_CLR_WND,"Static",SS_BLACKFRAME | WS_TABSTOP,3,
+                    15,119,86
+    CONTROL         "",XTP_IDC_CLR_LUM,"Static",SS_BLACKFRAME | WS_TABSTOP,
+                    126,15,20,86
+    LTEXT           "&Hue:",XTP_IDC_TXT_HUE,7,108,18,8
+    EDITTEXT        XTP_IDC_EDIT_HUE,25,106,33,13,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin1",XTP_IDC_SPIN_HUE,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_ARROWKEYS,49,105,
+                    10,14
+    LTEXT           "&Sat:",XTP_IDC_TXT_SAT,7,125,18,8
+    EDITTEXT        XTP_IDC_EDIT_SAT,25,122,33,13,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin2",XTP_IDC_SPIN_SAT,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_ARROWKEYS,49,122,
+                    10,14
+    LTEXT           "&Lum:",XTP_IDC_TXT_LUM,7,140,18,8
+    EDITTEXT        XTP_IDC_EDIT_LUM,25,138,33,13,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin3",XTP_IDC_SPIN_LUM,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_ARROWKEYS,49,137,
+                    10,14
+    LTEXT           "Crvena:",XTP_IDC_TXT_RED,65,108,23,8
+    EDITTEXT        XTP_IDC_EDIT_RED,89,106,33,13,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin1",XTP_IDC_SPIN_RED,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_ARROWKEYS,113,105,
+                    11,14
+    LTEXT           "Zelena:",XTP_IDC_TXT_GREEN,65,125,23,8
+    EDITTEXT        XTP_IDC_EDIT_GREEN,89,122,33,13,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    CONTROL         "Spin2",XTP_IDC_SPIN_GREEN,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_ARROWKEYS,113,122,
+                    11,14
+    LTEXT           "Plava:",XTP_IDC_TXT_BLUE,65,140,23,8
+    EDITTEXT        XTP_IDC_EDIT_BLUE,89,138,33,13,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin3",XTP_IDC_SPIN_BLUE,"msctls_updown32",
+                    UDS_SETBUDDYINT | UDS_ALIGNRIGHT | UDS_ARROWKEYS,113,137,
+                    11,14
+END
+
+XTP_IDD_COLORSTANDARD DIALOGEX DISCARDABLE  0, 0, 147, 161
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_DISABLED | WS_CLIPSIBLINGS | WS_CLIPCHILDREN | 
+    WS_CAPTION
+CAPTION "Standard"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Boje",XTP_IDC_TXT_COLORS,2,4,43,10
+    CONTROL         "",XTP_IDC_CLR_HEX,"Static",SS_BLACKFRAME | WS_TABSTOP,0,
+                    15,147,145
+END
+
+XTP_IDD_WINDOWLIST DIALOGEX DISCARDABLE  0, 0, 301, 164
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Aranžirati prozora"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Prozor za izbor:",IDC_STATIC,7,7,147,8
+    LISTBOX         XTP_IDC_LBOX_WINDOWS,7,17,216,140,LBS_SORT | 
+                    LBS_OWNERDRAWFIXED | LBS_HASSTRINGS | 
+                    LBS_NOINTEGRALHEIGHT | LBS_EXTENDEDSEL | WS_VSCROLL | 
+                    WS_HSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Aktiviranje",XTP_IDC_BTN_ACTIVATE,228,7,67,14
+    PUSHBUTTON      "&OK",IDOK,228,24,67,14
+    PUSHBUTTON      "Uštedjeti",XTP_IDC_BTN_SAVE,228,41,67,14
+    PUSHBUTTON      "Zatvori prozor",XTP_IDC_BTN_CLOSEWINDOWS,228,58,67,14
+    PUSHBUTTON      "Kaskadno",XTP_IDC_BTN_CASCADE,228,75,67,14
+    PUSHBUTTON      "Složi horizontalno",XTP_IDC_BTN_TILEHORZ,228,92,67,14
+    PUSHBUTTON      "Složi vertikalno",XTP_IDC_BTN_TILEVERT,228,109,67,14
+    PUSHBUTTON      "Umanjivanje",XTP_IDC_BTN_MINIMIZE,228,126,67,14
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+XTP_IDM_POPUP MENU DISCARDABLE 
+BEGIN
+    POPUP "RClickOutlookBar"
+    BEGIN
+        MENUITEM "Male ikone",                XTP_IDC_SMALLICON
+        MENUITEM "Velike ikone",                XTP_IDC_LARGEICON
+    END
+    POPUP "RClickHexEdit"
+    BEGIN
+        MENUITEM "Opozovi radnju",                       ID_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Rez",                        ID_EDIT_CUT
+        MENUITEM "Kopiraj",                       ID_EDIT_COPY
+        MENUITEM "Lepljenje",                      ID_EDIT_PASTE
+        MENUITEM "Izbrisati",                     ID_EDIT_CLEAR
+        MENUITEM SEPARATOR
+        MENUITEM "Izaberi sve",                 ID_EDIT_SELECT_ALL
+    END
+    POPUP "RClickHeader"
+    BEGIN
+        MENUITEM "Sortiraj uzlazno",              XTP_IDC_SORTASC
+        MENUITEM "Sortiraj silazno",             XTP_IDC_SORTDSC
+        MENUITEM SEPARATOR
+        POPUP "Poravnavanje"
+        BEGIN
+            MENUITEM "Poravnaj levo",                  XTP_IDC_ALIGNLEFT
+            MENUITEM "Poravnaj u centru",                XTP_IDC_ALIGNCENTER
+            MENUITEM "Poravnaj desno",                 XTP_IDC_ALIGNRIGHT
+        END
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDC_BTN_NEW          "Novi"
+    XTP_IDC_BTN_DELETE       "Izbrisati"
+    XTP_IDC_BTN_UP           "Pomakni gore"
+    XTP_IDC_BTN_DOWN         "Pomicati prema dolje"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_NAME             "Ime"
+    XTP_IDS_SIZE             "Velieina"
+    XTP_IDS_TYPE             "Tip"
+    XTP_IDS_MODIFIED         "Izmenio"
+    XTP_IDS_COLOR_AUTO       "Automatsko"
+    XTP_IDS_COLOR_CUST       "Prilagodi"
+    XTP_IDS_SELDIR           "Izaberite direktorijum:"
+    XTP_IDS_DOT              "..."
+    XTP_IDS_DEFEXT           "*.*"
+    XTP_IDS_DEFFILT          "Sve datoteke (*. *) | *. * ||"
+    XTP_IDS_DEFTITLE         "Ime direktorijuma:"
+    XTP_IDS_CLICKKEEPOPEN    "Kliknite na eiodu da zadržite otvoreno"
+    XTP_IDS_SE_0             "Operativni sistem je više memorije ili resursa."
+    XTP_IDS_SE_ERR_FNF       "Navedena datoteka nije prona?ena."
+    XTP_IDS_SE_ERR_PNF       "Navedena putanja nije prona?ena."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_SE_ERR_ACCESSDENIED 
+                            "Operativni sistem je zabranio pristup navedenoj datoteci."
+    XTP_IDS_SE_ERR_OOM       "Nije bilo dovoljno memorije za greške operacije."
+    XTP_IDS_SE_ERR_BAD_FORMAT 
+                            ".Exe datoteke je nevažeae (Win32 Â® .exe ili greške u sliku .exe)."
+    XTP_IDS_SE_ERR_SHARE     "Došlo je do kršenja pravila dijeljenja."
+    XTP_IDS_SE_ERR_ASSOCINCOMPLETE 
+                            "Udruženje ime datoteke su nepotpune ili nevažeae."
+    XTP_IDS_SE_ERR_DDETIMEOUT 
+                            "DDE transakcija nije mogla biti dovršena jer zahtjev je isteklo."
+    XTP_IDS_SE_ERR_DDEFAIL   "DDE transakcija nije uspela."
+    XTP_IDS_SE_ERR_DDEBUSY   "DDE transakcija nije mogla biti dovršena jer druge DDE transakcije su trenutno obraÃ°uju."
+    XTP_IDS_SE_ERR_NOASSOC   "Ne postoji nijedna aplikacija povezana sa datom oznaku."
+    XTP_IDS_SE_ERR_DLLNOTFOUND 
+                            "Navedena biblioteka dinamiènih veza nije pronaðena."
+    XTP_IDS_SE_ERR_UNKOWN    "Došlo je do nepoznate pogrešan broj %d."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDC_SORTASC          "Sortiraj uzlazno\nSortiraj uzlazno"
+    XTP_IDC_SORTDSC          "Sortiraj silazno\nSortiraj silazno"
+    XTP_IDC_ALIGNLEFT        "Poravnava pasus na lijevoj margini\nLijevo"
+    XTP_IDC_ALIGNCENTER      "Centrira pasus izmeÃ°u na margins\nCentar"
+    XTP_IDC_ALIGNRIGHT       "Poravnava pasus u pravu margin\nPravo"
+    XTP_IDC_LARGEICON        "Pokažite velike icons\nVeliki ikone"
+    XTP_IDC_SMALLICON        "Pokažite male ikone\nMali ikone"
+    XTP_IDC_REMOVEITEM       "Ukloni iz trake Outlooka"
+    XTP_IDC_RENAMEITEM       "Preimenuj preÃ¨icu"
+    XTP_IDC_REMOVEGROUP      "Ukloni grupu"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDC_RENAMEGROUP      "Preimenuj grupu"
+    XTP_IDS_HEX              "Heks"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_STD_COLORS       "Standardne boje"
+	XTP_IDS_RECENT_COLORS    "Nesen krasas"
+	XTP_IDS_THEME_COLORS     "Boje teme"
+	XTP_IDS_TAGCLOUD_TIP     "Onaèiti: %s, Postiæi:%d"
+    XTP_IDS_TIPTEXT          "Tekst saveta"
+    XTP_IDS_DIDYOUKNOW       "Da li znate..."
+    XTP_IDS_FILE_ABSENT      "Navedena datoteka ne postoji."
+    XTP_IDS_FILE_CORRUPT     "Pogreška pri èitanju datoteke."
+    XTP_IDS_COLOR_CAPTION    "Boje"
+    XTP_IDS_NEW              "Novi"
+    XTP_IDS_CURRENT          "Sadašnji"
+    XTP_IDS_DIRECTORIES      "Imenici"
+    XTP_IDS_FILES            "Datoteka"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_TASK_OK           "OK"
+    XTP_IDS_TASK_YES          "Da"
+    XTP_IDS_TASK_NO           "Ne"
+    XTP_IDS_TASK_RETRY        "Pokušaj opet"
+    XTP_IDS_TASK_CANCEL       "Otkazivanje"
+    XTP_IDS_TASK_CLOSE        "Zatvori"
+    XTP_IDS_TASK_APPLY        "Primena"
+    XTP_IDS_TASK_HELP         "Pomozite"
+    XTP_IDS_TASK_SEE_DETAILS  "Pokaži detalje"
+    XTP_IDS_TASK_HIDE_DETAILS "Sakri detalje"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    XTP_IDS_BACKGROUND1        "Pozadina 1"
+    XTP_IDS_BACKGROUND2        "Pozadina 2"
+    XTP_IDS_TEXT1              "Tekst 1"
+    XTP_IDS_TEXT2              "Tekst 2"
+    XTP_IDS_ACCENT1            "Naglasak 1"
+    XTP_IDS_ACCENT2            "Naglasak 2"
+    XTP_IDS_ACCENT3            "Naglasak 3"
+    XTP_IDS_ACCENT4            "Naglasak 4"
+    XTP_IDS_ACCENT5            "Naglasak 5"
+    XTP_IDS_ACCENT6            "Naglasak 6"
+    XTP_IDS_LIGHTER            "UpaljaÐ¸"
+    XTP_IDS_DARKER             "Tamnije"
+END
+
+#endif // !defined(_XTP_NO_STANDARDCONTROLS_RES) && ( !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_SRL))

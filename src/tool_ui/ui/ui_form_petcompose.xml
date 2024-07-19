@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form EscapeHide="true" Inherit="" Location="59,148,310,454" Movable="true" Name="fmpetcompose" Show="false">
+      <Form BackgroundColor="" Inherit="" Location="9,44,294,155" Name="fmtext" Show="true">
+        <ScrollBarV Inherit="Scroll1" Location="283,-1,11,155" Name="sbvmm" Show="true"/>
+        <Form Inherit="" Location="287,0,2,145" Name="fmmm" Show="true">
+          <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="486,148,2,24"/>
+        </Form>
+        <Label Inherit="" Location="5,3,278,18" Name="1563" Show="true" Text="帮助说明：" TextColor="#FFD700"/>
+        <Label Inherit="" Location="5,19,278,18" Name="1643" Show="true" Text="融合  ：将两只普通类型的宠物一起融合，增强主"/>
+        <Label Inherit="" Location="53,34,220,18" Name="1689" Show="true" Text="宠的成长。"/>
+        <Label Inherit="" Location="5,49,278,18" Name="1794" Show="true" Text="限制  ：主宠和副宠等级都等级30以及以上。"/>
+        <Label Inherit="" Location="53,65,220,18" Name="1838" Show="true" Text="主宠融合等级=副宠物融合等级。"/>
+        <Label Inherit="" Location="5,80,278,18" Name="1883" Show="true" Text="融合石：宠物融合必须的物品。"/>
+        <Label Inherit="" Location="5,95,278,18" Name="1929" Show="true" Text="小提示：融合成功副宠物消失，失败则不消失。" TextColor="#FF0000"/>
+        <Label Inherit="" Location="53,111,220,18" Name="1976" Show="true" Text="宠物等级越高，融合成功率越高。" TextColor="#FF0000"/>
+        <Label Inherit="" Location="53,127,220,18" Name="2526" Show="true" Text="宠物融合有可能会合成新的珍稀魔兽。" TextColor="#FF0000"/>
+        <Label BackgroundColor="#A50E593A" Inherit="" Location="0,-1,290,155" Name="lbtext" Show="true">
+          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="469,83,18,20"/>
+        </Label>
+      </Form>
+      <Label Inherit="" Location="0,-1,310,50" Name="lbborder1" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,1,310,50"/>
+        <Label Alignment="center" FontSize="18" Location="69,4,175,18" Name="lbxmm" Show="true" Text="宠物融合" TextColor="#ffdfde9b" TextFont="隶书"/>
+      </Label>
+      <CloseButton Location="284,14,20,20" Move="btnswitch" padding="0,22,5,0">
+        <NormalImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="359,83,20,20"/>
+      </CloseButton>
+      <Label Inherit="" Location="0,432,310,23" Name="lbborder3" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,65,310,23"/>
+      </Label>
+      <Form BackgroundColor="#A50E593A" Inherit="" Location="10,202,290,240" Name="fmbaby" Show="true">
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+        <Label FontSize="12" Inherit="" Location="14,209,40,18" Name="1085" Show="true" Text="成功率" TextFont="宋体"/>
+        <Label FontSize="12" Inherit="" Location="126,174,44,18" Name="lbtext1" Show="true" Text="融合石" TextColor="#fffcffc6" TextFont="宋体"/>
+        <Button DragSewer="true" Inherit="" Location="128,134,32,32" Name="aliasCombweapon" Show="true"/>
+        <Label Inherit="" Location="122,173,44,18" Name="lbtbc1" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="421,64,62,18"/>
+        </Label>
+        <Label DragSewer="true" Inherit="" Location="125,130,38,38" Name="lbmm1" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+        </Label>
+        <Button FontSize="12" Inherit="NewButton1" Location="124,99,40,20" Name="btncompose" Show="true" Sound="ui_normalbt.wav" Text="融合" TextColor="#fffbff66" TextFont="宋体"/>
+        <Label Inherit="" Location="12,208,46,18" Name="754" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,64,60,18"/>
+        </Label>
+        <Label Inherit="" Location="62,209,30,18" Name="lbmoney" Show="true" Text="100"/>
+        <Label Inherit="" Location="16,206,82,22" Name="lbwlk2" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="99,206,6,22" Name="lbwlk3" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Inherit="" Location="9,206,6,22" Name="lbwlk1" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <ComboBox Inherit="ComboBox" Location="7,21,110,18" Name="cbtlist1" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,64,60,18"/>
+        </ComboBox>
+        <ComboBox Inherit="ComboBox" Location="171,21,110,18" Name="cbtlist2" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,64,60,18"/>
+        </ComboBox>
+        <D3DView Inherit="" Location="0,59,124,140" Name="fmmianpet" Show="true">
+          <Label Inherit="" Location="7,5,110,130" Name="lbpet" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\9_a.tga" Source="1,132,163,166"/>
+          </Label>
+        </D3DView>
+        <D3DView Inherit="" Location="164,59,123,140" Name="fmotherpet" Show="true">
+          <Label Inherit="" Location="7,5,110,130" Name="lbpet" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\9_a.tga" Source="1,132,163,166"/>
+          </Label>
+        </D3DView>
+        <Label FontSize="12" Inherit="" Location="17,42,40,18" Name="1057" Show="true" Text="主宠" TextFont="宋体"/>
+        <Label FontSize="12" Inherit="" Location="179,42,40,18" Name="1126" Show="true" Text="副宠" TextFont="宋体"/>
+        <Label Inherit="" Location="6,41,48,18" Name="922" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="421,64,62,18"/>
+        </Label>
+        <Label Inherit="" Location="170,41,46,18" Name="989" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="421,64,62,18"/>
+        </Label>
+      </Form>
+      <Label BackgroundColor="#A016712C" Inherit="" Location="0,50,310,381" Name="lbborder2" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,53,310,10"/>
+      </Label>
+      <Anchors>
+        <Anchor offset="-295,0" point="CENTERV"/>
+        <Anchor offset="0,-10" point="CENTERH"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>

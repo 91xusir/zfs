@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
+    </Filter>
+    <Filter Include="engine">
+      <UniqueIdentifier>{b86af381-8697-4019-9d8f-40cfdb4ad922}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\net">
+      <UniqueIdentifier>{d7859fcb-6352-4910-8afd-d9e812469fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\pack">
+      <UniqueIdentifier>{a5cb1b6c-1ef7-43e4-9408-cdd00cb3d5f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine\core">
+      <UniqueIdentifier>{5eb8dfb9-50c7-4e1b-b19a-7dcca657adb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared Files">
+      <UniqueIdentifier>{e31adbc4-e9b3-4f03-acee-978806b18927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Union">
+      <UniqueIdentifier>{fa75b38c-7970-48f5-8aff-2655cf8aa3ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{695d8d76-e796-4b4f-9896-ae1a7dc5b598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Feod">
+      <UniqueIdentifier>{a85fe6c4-52b5-4ccf-8431-1b66cce87a8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeroList">
+      <UniqueIdentifier>{1164a59b-cb5b-42ee-a439-a5085afd5e58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="team">
+      <UniqueIdentifier>{cd6628bf-ebf5-4eff-854f-074efd68344e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CastleWar">
+      <UniqueIdentifier>{b9dbd3b2-678e-4707-a1a4-a1f55f0ddc54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Business">
+      <UniqueIdentifier>{b7a29233-95f5-460a-be23-df1e8486db3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MasterList">
+      <UniqueIdentifier>{be8bd467-1ea2-4d49-b2df-7c1429244a9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LineSys">
+      <UniqueIdentifier>{acdcb983-9134-49ad-aed1-f4551f9dfcb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Activity">
+      <UniqueIdentifier>{6f668c6a-fdd9-4eb6-b140-a72a7a196963}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="gw_chattransmittal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_clientchannel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_database.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_dungeon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_gift.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_gmchannel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_logdb.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_loginchannel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_loginsession.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_mailmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_nwar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_prentice.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_regionchannel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_sessionmanager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_thread_posix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LogicExt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\game_string_assistant.cpp">
+      <Filter>engine\pack</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\auction_base.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\GloableBuffer.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\gwt.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\linux_util.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\pet_base.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\region_client.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\rt1tort2.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\server_config.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\string_mapping.cpp">
+      <Filter>Shared Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_cmd_union.cpp">
+      <Filter>Union</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_union.cpp">
+      <Filter>Union</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\union_base.cpp">
+      <Filter>Union</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_item.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\item_base.cpp">
+      <Filter>Item</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_cmd_feod.cpp">
+      <Filter>Feod</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_feod.cpp">
+      <Filter>Feod</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_herolist.cpp">
+      <Filter>HeroList</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_unionlist.cpp">
+      <Filter>HeroList</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\herolist_base.cpp">
+      <Filter>HeroList</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_team.cpp">
+      <Filter>team</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\team_data.cpp">
+      <Filter>team</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\castlewar_base.cpp">
+      <Filter>CastleWar</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_castlewar.cpp">
+      <Filter>CastleWar</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_cmd_castlewar.cpp">
+      <Filter>CastleWar</Filter>
+    </ClCompile>
+    <ClCompile Include="auction.cpp">
+      <Filter>Business</Filter>
+    </ClCompile>
+    <ClCompile Include="..\shared\business.cpp">
+      <Filter>Business</Filter>
+    </ClCompile>
+    <ClCompile Include="cardtrade.cpp">
+      <Filter>Business</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_cmd_auction.cpp">
+      <Filter>Business</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_master_list.cpp">
+      <Filter>MasterList</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_cmd_LineSys.cpp">
+      <Filter>LineSys</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_LineGroup.cpp">
+      <Filter>LineSys</Filter>
+    </ClCompile>
+    <ClCompile Include="gw_LineMan.cpp">
+      <Filter>LineSys</Filter>
+    </ClCompile>
+    <ClCompile Include="GW_ActDB.cpp">
+      <Filter>Activity</Filter>
+    </ClCompile>
+    <ClCompile Include="GW_ActivityManager.cpp">
+      <Filter>Activity</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="gw_chattransmittal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_commandchannel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_database.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_dbasyncqueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_dungeon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_event.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_gift.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_lock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_logdb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_loginsession.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_mailmanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_nwar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_prentice.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_server.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_sessionmanager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_threading.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LogicExt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>resource</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_cmdpacket.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_netpacket.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_netsocket.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_tcplistener.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_tcpsession.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\g_udpsession.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\net\rt_net.h">
+      <Filter>engine\net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\ansi_file.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\file_error.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\game_pack.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\game_string_assistant.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\memory_buffer.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\memory_file.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\normal_pack.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\pack_error.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\pack_factory.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\pack_file.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\pack_manager.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\engine\head\filepack\unpack_file.h">
+      <Filter>engine\pack</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\ActivityInfo.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\auction_base.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\auction_net_base.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\game_mail_shared_const.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\gw_protocol.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\gwt.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\lgs_gws.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\linux_util.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\master_list_const.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\master_prentice_base.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\pet_base.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\region_client.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\rt1tort2.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\server_config.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\string_mapping.h">
+      <Filter>Shared Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_cmd_union.h">
+      <Filter>Union</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_union.h">
+      <Filter>Union</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\union_base.h">
+      <Filter>Union</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\union_net_define.h">
+      <Filter>Union</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_item.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\item_base.h">
+      <Filter>Item</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_cmd_feod.h">
+      <Filter>Feod</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_feod.h">
+      <Filter>Feod</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_herolist.h">
+      <Filter>HeroList</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_unionlist.h">
+      <Filter>HeroList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\herolist_base.h">
+      <Filter>HeroList</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\game_team_share_const.h">
+      <Filter>team</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_team.h">
+      <Filter>team</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\team_data.h">
+      <Filter>team</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\castlewar_base.h">
+      <Filter>CastleWar</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\castlewar_net_define.h">
+      <Filter>CastleWar</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_castlewar.h">
+      <Filter>CastleWar</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_cmd_castlewar.h">
+      <Filter>CastleWar</Filter>
+    </ClInclude>
+    <ClInclude Include="auction.h">
+      <Filter>Business</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\auction_common.h">
+      <Filter>Business</Filter>
+    </ClInclude>
+    <ClInclude Include="..\shared\business.h">
+      <Filter>Business</Filter>
+    </ClInclude>
+    <ClInclude Include="cardtrade.h">
+      <Filter>Business</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_cmd_auction.h">
+      <Filter>Business</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_master_list.h">
+      <Filter>MasterList</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_cmd_LineSys.h">
+      <Filter>LineSys</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_LineGroup.h">
+      <Filter>LineSys</Filter>
+    </ClInclude>
+    <ClInclude Include="gw_LineMan.h">
+      <Filter>LineSys</Filter>
+    </ClInclude>
+    <ClInclude Include="GW_ActDB.h">
+      <Filter>Activity</Filter>
+    </ClInclude>
+    <ClInclude Include="GW_ActivityManager.h">
+      <Filter>Activity</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gw_thread.inl">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="gameworld_server.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon_gameworld.ico">
+      <Filter>resource</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

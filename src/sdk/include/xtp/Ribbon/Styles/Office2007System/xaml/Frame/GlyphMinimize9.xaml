@@ -1,0 +1,3 @@
+<Canvas xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml'>
+	<Line X1 ='0' X2='7' Y1='8' Y2='8' StrokeThickness='2' Stroke='{x:Static SystemColors.ActiveCaptionTextBrush}'/>
+</Canvas>

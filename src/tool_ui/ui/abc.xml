@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ui>
+  <Layer Name="layWorld" Show="true">
+    <Form Location="10,10,300,500" Inherit="" Show="true" Name="׷´°ͥ">
+      <Button Location="10,10,100,24" Inherit="" Show="true" Text="ϒҪ΋³�
+        <NormalImage File="E:\sx\tool\bin\fssj_texture\MapButton.tga"/>
+        <HighlightImage File="E:\sx\tool\bin\fssj_texture\BattleButton.tga"/>
+      </Button>
+    </Form>
+  </Layer>
+</Ui>

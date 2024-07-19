@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form EscapeHide="true" Inherit="" Location="6,130,705,454" Movable="true" Name="fmsysmap" Show="false">
+      <Label Inherit="" Location="265,37,6,22" Name="mapxright" Show="true">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="374,124,6,22"/>
+      </Label>
+      <Label Inherit="" Location="219,37,6,22" Name="mapxleft" Show="true">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="359,124,6,22"/>
+      </Label>
+      <Label Inherit="" Location="225,37,40,22" Name="mapxcenter" Show="true">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="374,124,2,22"/>
+      </Label>
+      <Label Inherit="" Location="278,37,40,22" Name="mapycenter" Show="true">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="374,124,2,22"/>
+      </Label>
+      <Label Inherit="" Location="272,37,6,22" Name="mapyleft" Show="true">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="359,124,6,22"/>
+      </Label>
+      <Label Inherit="" Location="318,37,6,22" Name="mapyright" Show="true">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="374,124,6,22"/>
+      </Label>
+      <CloseButton Blend="true" Location="20,20,20,20" Name="$hide" Show="true" Text="" padding="0,25,5,0">
+        <NormalImage Blend="true" File="ui/textures/5.tga" Source="360,65,18,17"/>
+        <PushedImage Blend="true" File="ui/textures/5.tga" Source="360,103,18,17"/>
+        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="360,84,18,17"/>
+      </CloseButton>
+      <Label Inherit="" Location="532,368,96,71" Name="lbwjs" Show="false"/>
+      <Form Inherit="" Location="13,64,515,375" Name="fmborder" Show="true">
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="381,109,19,20"/>
+        <Form Inherit="" Location="2,3,510,369" Name="Areamap" Show="true"/>
+      </Form>
+      <Label BackgroundColor="" Inherit="" Location="532,368,96,71" Name="lbmap2" Show="false"/>
+      <Button FontSize="12" Inherit="" Location="545,397,60,21" Name="search1" Show="true" Sound="ui_changepg.wav" Text="自动移动" TextColor="#fffbff66" TextFont="宋体">
+        <NormalImage Blend="true" File="ui\textures\5.tga" Source="266,320,84,21"/>
+        <PushedImage Blend="true" File="ui\textures\5.tga" Source="266,374,84,21"/>
+        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="266,347,84,21"/>
+        <CheckedImage Blend="true" File="ui\textures\5.tga" Source="4,327,84,21"/>
+      </Button>
+      <Button FontSize="12" Inherit="" Location="621,397,60,21" Name="search2" Show="true" Sound="ui_changepg.wav" Text="任务简介" TextColor="#fffbff66" TextFont="宋体">
+        <NormalImage Blend="true" File="ui\textures\5.tga" Source="266,320,84,21"/>
+        <PushedImage Blend="true" File="ui\textures\5.tga" Source="266,374,84,21"/>
+        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="266,347,84,21"/>
+        <CheckedImage Blend="true" File="ui\textures\5.tga" Source="4,327,84,21"/>
+      </Button>
+      <Button FontSize="12" Inherit="" Location="328,38,45,21" Name="movtoxy" Show="true" Sound="ui_changepg.wav" Text="移动" TextColor="#fffbff66" TextFont="宋体">
+        <NormalImage Blend="true" File="ui\textures\5.tga" Source="266,320,84,21"/>
+        <PushedImage Blend="true" File="ui\textures\5.tga" Source="266,374,84,21"/>
+        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="266,347,84,21"/>
+        <CheckedImage Blend="true" File="ui\textures\5.tga" Source="4,327,84,21"/>
+      </Button>
+      <TabCtrl Inherit="" Location="532,63,166,320" Name="tbcchoose" Show="true">
+        <TabItem>
+          <CheckButton FontSize="12" Inherit="" Location="12,0,60,21" Name="btntask" Show="true" Sound="ui_changepg.wav" Text="区域任务" TextColor="#fffbff66" TextFont="宋体">
+            <NormalImage Blend="true" File="ui\textures\5.tga" Source="266,320,84,21"/>
+            <PushedImage Blend="true" File="ui\textures\5.tga" Source="266,374,84,21"/>
+            <HighlightImage Blend="true" File="ui\textures\5.tga" Source="266,347,84,21"/>
+            <CheckedImage Blend="true" File="ui\textures\5.tga" Source="4,327,84,21"/>
+          </CheckButton>
+          <Form BackgroundColor="#ff153723" Inherit="" Location="0,29,166,282" Name="fmAaea1" Show="true">
+            <ListBox Inherit="" Location="2,1,166,283" Name="lbx1" Show="true"/>
+            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="469,83,18,20"/>
+          </Form>
+        </TabItem>
+        <TabItem>
+          <CheckButton FontSize="12" Inherit="" Location="90,-1,60,21" Name="btnnpc" Show="true" Sound="ui_changepg.wav" Text="区域NPC" TextColor="#fffbff66" TextFont="宋体">
+            <NormalImage Blend="true" File="ui\textures\5.tga" Source="266,320,84,21"/>
+            <PushedImage Blend="true" File="ui\textures\5.tga" Source="266,374,84,21"/>
+            <HighlightImage Blend="true" File="ui\textures\5.tga" Source="266,347,84,21"/>
+            <CheckedImage Blend="true" File="ui\textures\5.tga" Source="4,327,84,21"/>
+          </CheckButton>
+          <Form BackgroundColor="#ff153723" Inherit="" Location="0,29,166,283" Name="fmAaea2" Show="true">
+            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="469,83,18,20"/>
+            <Tree AutoScrollV="true" Inherit="" Location="1,2,166,280" Name="trnpclist" Show="true"/>
+          </Form>
+        </TabItem>
+      </TabCtrl>
+      <Label Alignment="center" FontSize="18" Inherit="" Location="83,2,495,18" Name="lbname" Show="true" Text="区域地图" TextColor="#ffdfde9b" TextFont="隶书"/>
+      <EditBox FontSize="12" Inherit="" Location="219,39,50,18" Name="mapxtext" Show="true" Text="" TextColor="#fffffec8" TextFont="宋体"/>
+      <EditBox FontSize="12" Inherit="" Location="274,39,50,18" Name="mapytext" Show="true" Text="" TextColor="#fffffec8" TextFont="宋体"/>
+      <Form Inherit="" Location="32,37,163,22" Name="fmchoose" Show="true">
+        <ComboBox Inherit="ComboBox" Location="63,2,100,18" Name="cbtbc" Show="true">
+          <List>
+            <Item Text="荆棘谷"/>
+            <Item Text="埋骨之地"/>
+            <Item Text="灰谷"/>
+            <Item Text="影月谷"/>
+            <Item Text="淡水河谷"/>
+            <Item Text="幽暗城"/>
+            <Item Text="奥格瑞玛"/>
+            <Item Text="银月城"/>
+            <Item Text="雷霆崖"/>
+            <Item Text="战歌峡谷"/>
+            <Item Text="阿拉希盆地"/>
+            <Item Text="海加尔山"/>
+          </List>
+        </ComboBox>
+        <Label Inherit="" Location="2,2,60,18" Name="lbmap3" Show="true">
+          <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+          <Label FontSize="12" Inherit="" Location="4,0,60,17" Name="lbmap4" Show="true" Text="当前区域" TextColor="#fffffec8" TextFont="宋体"/>
+        </Label>
+        <Label Inherit="" Location="0,0,6,22" Name="lbwlk1" Show="true">
+          <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="6,0,151,22" Name="lbwlk2" Show="true">
+          <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="157,0,6,22" Name="lbwlk3" Show="true">
+          <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="374,124,6,22"/>
+        </Label>
+      </Form>
+      <Label Inherit="" Location="405,37,80,21" Name="npcshowback" Show="true">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+        <Label FontSize="12" Inherit="" Location="4,3,70,17" Name="npcsbtext" Show="true" Text="显示NPC信息" TextColor="#fffffec8" TextFont="宋体"/>
+      </Label>
+      <CheckButton Inherit="NewCheckButton5" Location="493,40,15,15" Name="showchoose" Show="true" Sound="ui_normalbt.wav"/>
+      <Label BackgroundColor="#A016712C" Location="6,50,693,380" Name="b"/>
+      <Label Location="0,-1,327,50" Name="tl">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="1,92,318,51"/>
+      </Label>
+      <Label Location="328,-1,378,50" Name="tr">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="2,147,318,51"/>
+      </Label>
+      <Label Inherit="" Location="0,429,330,25" Name="bl" Show="true">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="0,199,319,25"/>
+      </Label>
+      <Label Inherit="" Location="328,430,378,23" Name="br" Show="true">
+        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="1,224,319,23"/>
+      </Label>
+      <Label Inherit="" Location="2,50,4,383" Name="cl" Show="true">
+        <BackgroundImage File="ui/textures/5.tga" Source="2,54,6,9"/>
+      </Label>
+      <Label Inherit="" Location="700,50,4,380" Name="cr" Show="true">
+        <BackgroundImage File="ui/textures/5.tga" Source="306,53,7,9"/>
+      </Label>
+      <Anchors>
+        <Anchor offset="-152,0" point="CENTERV"/>
+        <Anchor offset="0,-25" point="CENTERH"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Anchor="left,bottom" BackgroundColor="#e5194126" Location="24,430,100,116" Name="fmchannel" Show="false" TitleSize="0" EscapeHide="true">
+      <CheckButton ActivateParent="true" Inherit="CheckButton1" Location="6,10,12,12" Name="cknormalcl" PushLike="true" Sound="ui_normalbt.wav"/>
+      <Label Alignment="center" Inherit="" Location="20,7,60,16" Name="lbnormalcl" Text="附近频道"/>
+      <CheckButton ActivateParent="true" Inherit="CheckButton1" Location="6,26,12,12" Name="ckallcl" PushLike="true" Sound="ui_normalbt.wav"/>
+      <Label Alignment="center" Inherit="" Location="20,23,60,16" Name="lballcl" Text="世界频道"/>
+      <CheckButton ActivateParent="true" Inherit="CheckButton1" Location="6,42,12,12" Name="ckpersoncl" PushLike="true" Sound="ui_normalbt.wav"/>
+      <Label Alignment="center" Inherit="" Location="20,39,60,16" Name="lbpersoncl" Text="密语频道"/>
+      <CheckButton ActivateParent="true" Inherit="CheckButton1" Location="6,58,12,12" Name="ckgroupcl" PushLike="true" Sound="ui_normalbt.wav"/>
+      <Label Alignment="center" Inherit="" Location="20,55,60,16" Name="lbgroupcl" Text="队伍频道"/>
+      <CheckButton ActivateParent="true" Inherit="CheckButton1" Location="6,74,12,12" Name="ckguildcl" PushLike="true" Sound="ui_normalbt.wav"/>
+      <Label Alignment="center" Inherit="" Location="20,71,60,16" Name="lbguildcl" Text="帮派频道"/>
+      <CheckButton ActivateParent="true" Inherit="CheckButton1" Location="6,90,12,12" Name="ckcountrycl" PushLike="true" Sound="ui_normalbt.wav"/>
+      <Label Alignment="center" Inherit="" Location="20,87,60,16" Name="lbcountrycl" Text="战场频道"/>
+      <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\1.tga" BorderSource="358,71,20,20"/>
+      <Anchors>
+        <Anchor offset="0,-105" point="BOTTOM"/>
+        <Anchor offset="18,0" point="LEFT"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Ui>
+	<Layer Name="layStudio" >
+		<Form Name="frmToolbar" Inherit="" Size="65,350" Show="true" Movable="true" BackgroundColor="#bb333333" EscapeHide="false" >
+			<TitleBar Text="工具" />
+			<CloseButton Show="false" />
+			<Anchors>
+				<Anchor point="RIGHT" relativeTo="layStudio.frmWidgetTree" relativePoint="LEFT" offset="-5,0" />
+				<Anchor point="TOP" relativeTo="layStudio.frmWidgetTree" relativePoint="TOP"/>
+			</Anchors>
+			<Button Name="btnCut" Inherit="PushButton" Text="剪切" Location="3,30,60,25" />
+			<Button Name="btnCopy" Inherit="PushButton" Text="复制" Location="3,57,60,25" />
+			<Button Name="btnPaste" Inherit="PushButton" Text="粘贴" Location="3,84,60,25" />
+			<Button Name="btnMoveUp" Inherit="PushButton" Text="上移" Location="3,111,60,25" />
+			<Button Name="btnMoveDown" Inherit="PushButton" Text="下移" Location="3,138,60,25" />
+			<Button Name="btnTop" Inherit="PushButton" Text="顶对齐" Location="3,165,60,25" />
+			<Button Name="btnLeft" Inherit="PushButton" Text="左对齐" Location="3,192,60,25" />
+			<Button Name="btnBottom" Inherit="PushButton" Text="底对齐" Location="3,219,60,25" />
+			<Button Name="btnRight" Inherit="PushButton" Text="右对齐" Location="3,246,60,25" />
+			<Button Name="btnWidthSame" Inherit="PushButton" Text="宽度相同" Location="3,273,60,25" />
+			<Button Name="btnHeightSame" Inherit="PushButton" Text="高度相同" Location="3,300,60,25" />
+			<Button Name="btnAllSame" Inherit="PushButton" Text="长宽相同" Location="3,327,60,25" />
+		</Form>
+	</Layer>
+</Ui>

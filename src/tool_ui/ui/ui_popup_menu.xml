@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Ui>
+    <Layer Name="layworld" Show="true">
+        <PopupMenu Name="UserMenu"  ItemHeight="13"    Margin="4,1"  FadeIn="true"  FadeOut="true" Inherit="Border" BackgroundColor="#b5000000">
+		    <BackgroundImage Border="2,2,2,2" BorderFile="" BorderBlend="true" BorderSource="10,40,6,6" Blend="true" File="" Source="0,52,24,23" />
+            <Item  Text="组队" />
+            <Item  Text="交易" />
+            <Item  Text="密语" />
+            <Item  Text="好友" />
+        </PopupMenu>
+        <PopupMenu Name="UserMenuByname"  ItemHeight="13"  Margin="4,1"  FadeIn="true"  FadeOut="true" Inherit="Border">
+            <Item  Text="组队" />
+            <Item  Text="交易" />
+            <Item  Text="密语" />
+            <Item  Text="好友" />
+        </PopupMenu>
+        <PopupMenu Name="MonsterMenu"  ItemHeight="13"  Inherit="Border"  Margin="4,1"  FadeIn="true"  FadeOut="true" Inherit="Border">
+            <Item  Text="普通攻击" />
+        </PopupMenu>
+        <PopupMenu Name="PlayerMenu"  ItemHeight="13"  Inherit="Border"  Margin="4,1"  FadeIn="true"  FadeOut="true" Inherit="Border">
+            <Item  Text="属性" />
+            <Item  Text="道具" />
+            <Item  Text="技能" />
+        </PopupMenu>
+        <PopupMenu Name="PetMenu"  ItemHeight="13"  Inherit="Border"  Margin="4,1"  FadeIn="true"  FadeOut="true" Inherit="Border">
+            <Item  Text="收回" />
+        </PopupMenu>
+        <PopupMenu Name="NpcMenu"  ItemHeight="13"  Inherit="Border"  Margin="4,1"  FadeIn="true"  FadeOut="true" Inherit="Border">
+            <Item  Text="对话" />
+        </PopupMenu>
+        <PopupMenu Name="SystemMenu"  ItemHeight="13"  Inherit="Border"  Margin="4,1"  FadeIn="true"  FadeOut="true" Inherit="Border">
+            <Item  Text="对话" />
+        </PopupMenu>
+    </Layer>
+</Ui>

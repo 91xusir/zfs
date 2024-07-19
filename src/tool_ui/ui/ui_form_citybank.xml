@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="gb2312"?>
+<Ui>
+    <Layer Name="layworld" Show="true">
+        <Form Name="fmcitybank"  Inherit="TitleBarForm"  Location="300,120,240,312" Show="false">
+            <Label Name="lbcitybank"  Location="14,4,60,18"  Text="采邑国库" />
+            <Label Name="lbbankgold"  Location="16,30,60,18"  Text="国库节余" />
+            <Label Name="lbbankgoldnum"  Location="106,30,60,18"  Text="500,000" />
+            <Label Name="lbbank"  Location="16,58,60,18"  Text="提取资金" />
+            <EditBox Name="txtgold"  Inherit="EditBox"  Location="106,58,60,18"  Text="10000"  NumberOnly="true" />
+            <Button Name="btnok"  Inherit="PushButton"  Location="90,228,64,20"  Text="确认" />
+            <Button Name="btncancel"  Inherit="PushButton"  Location="160,228,64,20"  Text="取消" />
+        </Form>
+    </Layer>
+</Ui>
