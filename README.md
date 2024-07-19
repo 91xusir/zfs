@@ -164,6 +164,42 @@ tool_ui					目录下存放着UI编辑器的源文件
 
 - [x] 项目迁移至vs2022环境，更新相关依赖
 
+  ```c++
+  迁移说明：
+  1. game_tool 引用的libxml++过于旧，改为tinyxml2,需要修复兼容性问题
+  2. "error LNK2001: 无法解析的外部符号 _sscanf " 
+     "error LNK2001: 无法解析的外部符号 __iob_func " 
+  部分第三方库内使用了printf和scanf等较老的接口,需要添加legacy_stdio_definitions.lib
+  对于vs2013及更早版本编译的静态库，在vs及之后版本中提供了库 legacy_stdio_definitions.lib，该库提供了符号兼容性。
+      
+  但是，对于某些从通用 CRT 删除的符号，则无法提供兼容性符号。 
+  这些符号包括一些函数（例如，__iob_func）和数据导出（例如，__imp___iob、__imp___pctype、__imp___mb_cur_max）。
+  因此需要手动添加转换符号，这也可能会存在一些问题。
+      
+  例如 将__iob_func和_iob转为__acrt_iob_func
+  // iob_func.cpp
+  #include <stdio.h>
+  // Define __iob_func to use __acrt_iob_func
+  extern "C" FILE* __cdecl __iob_func(unsigned i) {
+      // This assumes __acrt_iob_func is defined somewhere in the project or library
+      return __acrt_iob_func(i);
+  }
+  extern "C" FILE* __cdecl _iob(unsigned i) {
+      // This assumes __acrt_iob_func is defined somewhere in the project or library
+      return __acrt_iob_func(i);
+  }
+  ```
+
+  
+
 - [ ] 阅读引擎源代码，重写md文档
+
+  ```
+  
+  ```
+
+  
+
 - [ ] 阅读客户端代码，重写md文档
+
 - [ ] ...
