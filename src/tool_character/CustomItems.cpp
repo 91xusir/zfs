@@ -163,8 +163,8 @@ void CCustomItemBool::_Init()
     SetBool(*m_bool);
 
 	m_nFlags = xtpGridItemHasComboButton; // | xtpGridItemHasEdit;
-	//m_pContraints->AddConstraint(m_strTrueText);
-	//m_pContraints->AddConstraint(m_strFalseText);
+	m_pConstraints->AddConstraint(m_strTrueText);
+	m_pConstraints->AddConstraint(m_strFalseText);
 	SetConstraintEdit(TRUE);
 }
 

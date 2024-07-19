@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{CAE5D0F2-4B2D-4A45-A2B6-DA7570C61987}"
 EndProject
@@ -22,6 +22,7 @@ Global
 		mt_perf_hud|Win32 = mt_perf_hud|Win32
 		mt|Win32 = mt|Win32
 		mtd|Win32 = mtd|Win32
+		pre|Win32 = pre|Win32
 		Release|Win32 = Release|Win32
 		scene_eidtor_d|Win32 = scene_eidtor_d|Win32
 	EndGlobalSection
@@ -52,6 +53,8 @@ Global
 		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mt|Win32.Build.0 = mt_perf_hud|Win32
 		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mtd|Win32.ActiveCfg = mt_perf_hud|Win32
 		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.mtd|Win32.Build.0 = mt_perf_hud|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.pre|Win32.ActiveCfg = pre|Win32
+		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.pre|Win32.Build.0 = pre|Win32
 		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.Release|Win32.ActiveCfg = Release|Win32
 		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.Release|Win32.Build.0 = Release|Win32
 		{5189D5F5-73BF-48B5-AA40-A8A2FB7CFCF6}.scene_eidtor_d|Win32.ActiveCfg = mt_perf_hud|Win32

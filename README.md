@@ -17,7 +17,7 @@
 </p>
 
 
- 
+
 ## 目录
 
 - [上手指南](#上手指南)
@@ -54,25 +54,28 @@ git clone https://github.com/shaojintian/Best_README_template.git
 ```
 
 ### 文件目录说明
-eg:
-
 ```
-filetree 
-├── ARCHITECTURE.md
-├── LICENSE.txt
-├── README.md
-├── /account/
-├── /bbs/
-├── /docs/
-│  ├── /rules/
-│  │  ├── backend.txt
-│  │  └── frontend.txt
-├── manage.py
-├── /oa/
-├── /static/
-├── /templates/
-├── useless.md
-└── /util/
+├─Backup					vs2022解决方案备份文件
+├─bin    					编译生成的二进制文件
+├─docs						旧docs文档，将采用md重构
+├─engine 					放引擎头文件和编译生成的lib
+├─gameworld_server 			游戏世界服务器源目录
+├─game_client 				客户端源目录
+├─login_server 				游戏登录服务器源目录
+├─region_server 			游戏逻辑服务器源目录
+├─runtime					游戏运行时需要的dll等
+├─sdk						外部库
+├─shared					服务端和客户端公用代码
+├─SQL						数据库文件
+├─src
+├─temp						编译生成的临时文件
+├─tool_character			act工具源目录
+├─tool_crashreport			崩溃日志工具src
+├─tool_files_packet			pak打包解包工具
+├─tool_max9_utility			3dmax9插件
+├─tool_max_utility			3dmax插件
+├─tool_scene				地图工具src
+└─tool_ui					ui工具src
 
 ```
 

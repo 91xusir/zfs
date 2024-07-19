@@ -195,7 +195,7 @@
     <ResourceCompile>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture>0x0804</Culture>
-      <AdditionalIncludeDirectories>$(IntDir);$(ProjectDir)..\..\..\shared\trunk\sdk\include;$(ProjectDir)..\..\..\shared\trunk\sdk\include/xtp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(IntDir);$(ProjectDir)..\sdk\include;$(ProjectDir)..\sdk\include\xtp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>d3d9.lib;d3dx9.lib;graph_mdd.lib;net_mdd.lib;core_mdd.lib;audio_mdd.lib;libjpeg_MDD.lib;XTP8700LibStaticMdd.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_mdd.lib;mikmod_mdd.lib;native_midi_mdd.lib;character_mdd.lib;%(AdditionalDependencies)</AdditionalDependencies>

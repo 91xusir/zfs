@@ -191,6 +191,7 @@ private:
 
 public:
 	void UpdateCameraPos();
+	void UpdateCameraAt(std::string  at);
 	void OnLoading();
 	void OnRenderMask(RTGRenderMask mask, float fSecond);
 	void UpdateGraphConfig(const char* szName);

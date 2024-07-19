@@ -11,7 +11,7 @@
 #include "CustomItems.h"
 #include "MainFrm.h"
 // #define CFrameWnd CFrameWnd
-
+constexpr auto PGI_EXPAND_BORDER = 10;
 
 void DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 {
@@ -29,8 +29,10 @@ void DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 	CRect rc = lpDrawItemStruct->rcItem;
 
 	CXTPBufferDC dc(lpDrawItemStruct->hDC, rc);
-	//CXTPFontDC font(&dc, &pGrid->m_fontNormal);
-	CXTPFontDC font(&dc, XTPPaintManager()->GetRegularFont());
+	CFont defaultFont;
+	defaultFont.Attach((HFONT)GetStockObject(DEFAULT_GUI_FONT));
+	CXTPFontDC font(&dc, &defaultFont);
+	//CXTPFontDC font(&dc, XTPPaintManager()->GetRegularFont());
 
 	dc.FillSolidRect(rc, clrWindow);
 	dc.SetBkMode(TRANSPARENT);
@@ -43,24 +45,23 @@ void DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 	if (pItem->IsCategory())
 	{
 		dc.FillSolidRect(rc, clrLine);
-		//CXTPFontDC font(&dc, &pGrid->m_fontBold);
-		CXTPFontDC font(&dc, XTPPaintManager()->GetRegularBoldFont());
-
+		CXTPFontDC font(&dc, &defaultFont);
+		//CXTPFontDC font(&dc, XTPPaintManager()->GetRegularBoldFont());
 
 		if ((lpDrawItemStruct->itemAction | ODA_FOCUS) && (lpDrawItemStruct->itemState & ODS_FOCUS))
-		{
+		{		
 			dc.SetTextColor(::GetSysColor(COLOR_HIGHLIGHTTEXT));
-			dc.FillSolidRect(CRect(rc.Width(), rc.top, rc.right, rc.bottom), ::GetSysColor(COLOR_HIGHLIGHT));
-		}
+			dc.FillSolidRect(CRect(PGI_EXPAND_BORDER, rc.top , rc.right, rc.bottom), ::GetSysColor(COLOR_HIGHLIGHT));
+		}		
 
-		CRect rcText(rc.Width() + 3, rc.top, rc.right, rc.bottom);
-		dc.DrawText(pItem->GetCaption(), rcText, DT_SINGLELINE | DT_VCENTER);
+		CRect rcText(PGI_EXPAND_BORDER + 3, rc.top , rc.right, rc.bottom);		
+		dc.DrawText( pItem->GetCaption(),   rcText,  DT_SINGLELINE|DT_VCENTER);		
 
-		dc.FillSolidRect(rc.Width() - 1, rc.bottom - 1, rc.Width(), 1, clrShadow);
-	}
+		dc.FillSolidRect(PGI_EXPAND_BORDER - 1, rc.bottom - 1, rc.Width(), 1, clrShadow);
+	} 
 	else
 	{
-		dc.SetTextColor(pItem->GetReadOnly() ? GetSysColor(COLOR_GRAYTEXT) : clrFore);
+		dc.SetTextColor(pItem->GetReadOnly()? GetSysColor(COLOR_GRAYTEXT): clrFore);
 
 		CRect rcValue(rc);
 		rcValue.left = rcCaption.right + 4;
@@ -73,25 +74,25 @@ void DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 		{
 			dc.SetTextColor(::GetSysColor(COLOR_HIGHLIGHTTEXT));
 			dc.FillSolidRect(rcCaption, ::GetSysColor(COLOR_HIGHLIGHT));
-		}
+		} 
 		else if (bSelected)
 		{
 			dc.FillSolidRect(rcCaption, clrLine);
 			// dc.FillSolidRect(rcValue, RGB(0xff,0x00,0x00));
-		}
-		dc.FillSolidRect(rc.left, rc.top, rc.Width(), rc.Height(), clrLine);
+		}	
+		dc.FillSolidRect(rc.left, rc.top, PGI_EXPAND_BORDER, rc.Height(), clrLine);
 
 		CXTPPenDC pen(dc, clrLine);
 		dc.MoveTo(0, rc.bottom - 1); dc.LineTo(rc.right, rc.bottom - 1);
 		dc.MoveTo(rcCaption.right, rc.top); dc.LineTo(rcCaption.right, rc.bottom - 1);
 
-
-		dc.FillSolidRect(rc.Width() - 1, rc.top, 1, rc.Width(), clrShadow);
+		
+		dc.FillSolidRect(PGI_EXPAND_BORDER - 1, rc.top, 1, rc.Width(), clrShadow);
 		CRect rcText(rc);
-		rcText.left = pItem->GetIndent() * rc.Width() + 3;
+		rcText.left = pItem->GetIndent() * PGI_EXPAND_BORDER + 3;
 		rcText.right = rcCaption.right - 1;
 		rcText.bottom -= 1;
-		dc.DrawText(pItem->GetCaption(), rcText, DT_SINGLELINE | DT_VCENTER);
+		dc.DrawText( pItem->GetCaption(),   rcText,  DT_SINGLELINE|DT_VCENTER);
 
 		if (!pItem->OnDrawItemValue(dc, rcValue))
 		{
@@ -117,13 +118,13 @@ void DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 		rgn.CreateRectRgnIndirect(&rcCaption);
 		dc.SelectClipRgn(&rgn);
 
-		CRect rcSign(CPoint(rc.Width() / 2 - 5, rc.CenterPoint().y - 4), CSize(9, 9));
+		CRect rcSign(CPoint(PGI_EXPAND_BORDER / 2 - 5, rc.CenterPoint().y - 4), CSize(9, 9));
 		if (pItem->GetIndent() > 1)
-			rcSign.OffsetRect((pItem->GetIndent() - 1) * rc.Width(), 0);
+			rcSign.OffsetRect((pItem->GetIndent() - 1) * PGI_EXPAND_BORDER, 0);
 
 		CPoint pt = rcSign.CenterPoint();
-		CXTPBrushDC brush(dc, pItem->IsCategory() ? clrLine : clrWindow);
-		CXTPPenDC pen(dc, clrFore);
+		CXTPBrushDC brush (dc,  pItem->IsCategory()? clrLine: clrWindow);
+		CXTPPenDC pen (dc,  clrFore);
 		dc.Rectangle(rcSign);
 
 		dc.MoveTo(pt.x - 2, pt.y);
@@ -1301,67 +1302,67 @@ LRESULT CMainFrame::OnGridNotify(WPARAM wParam, LPARAM lParam)
 		}
 	}
 
-	CXTPPropertyGridItem* find = pItem;
-	while (find->GetParentItem())
-		find = find->GetParentItem();
+	//CXTPPropertyGridItem* find = pItem;
+	//while (find->GetParentItem())
+	//	find = find->GetParentItem();
 
-	switch (find->GetID())
-	{
-	case ID_GRID_MTLLIB:
-		if (GetSelectedMtlLib())
-			m_bRebuildGridMtlLib = GetSelectedMtlLib()->OnGridNotify(wParam, lParam);
-		break;
+	//switch (find->GetID())
+	//{
+	//case ID_GRID_MTLLIB:
+	//	if (GetSelectedMtlLib())
+	//		m_bRebuildGridMtlLib = GetSelectedMtlLib()->OnGridNotify(wParam, lParam);
+	//	break;
 
-	case ID_GRID_ACTOR:
-		if (!g_activeActor) break;
-		if (g_activeActor->OnGridNotify(wParam, lParam))
-		{
-			m_bRebuildGridActor = true;
-			m_bRebuildGridPose = true;
-			m_bRebuildGridLinkBox = true;
-		}
-		break;
+	//case ID_GRID_ACTOR:
+	//	if (!g_activeActor) break;
+	//	if (g_activeActor->OnGridNotify(wParam, lParam))
+	//	{
+	//		m_bRebuildGridActor = true;
+	//		m_bRebuildGridPose = true;
+	//		m_bRebuildGridLinkBox = true;
+	//	}
+	//	break;
 
-	case ID_GRID_POSE:
-		if (!g_activeActor) break;
-		if (g_activeActor->OnPoseGridNotify(wParam, lParam))
-			m_bRebuildGridPose = true;
-		break;
+	//case ID_GRID_POSE:
+	//	if (!g_activeActor) break;
+	//	if (g_activeActor->OnPoseGridNotify(wParam, lParam))
+	//		m_bRebuildGridPose = true;
+	//	break;
 
-	case ID_GRID_LINKBOX:
-		if (!g_activeActor) break;
-		if (g_activeActor->OnLinkBoxGridNotify(wParam, lParam))
-			m_bRebuildGridLinkBox = true;
-		break;
+	//case ID_GRID_LINKBOX:
+	//	if (!g_activeActor) break;
+	//	if (g_activeActor->OnLinkBoxGridNotify(wParam, lParam))
+	//		m_bRebuildGridLinkBox = true;
+	//	break;
 
-	case ID_GRID_CHANNEL_PROP:
-		if (m_selectedChannel == 0) break;
-		RtObject* ob = (RtObject*)m_selectedChannel;
-		if (ob->IsKindOf(RT_RUNTIME_CLASS(CRT_Material)))
-		{
-			CRT_Material* mtl = (CRT_Material*)ob;
-			if (mtl->OnPropGridNotify(wParam, lParam))
-			{
-				m_bRebuildGridProp = true;
-			}
-		}
-		else if (ob->IsKindOf(RT_RUNTIME_CLASS(CRT_Effect)))
-		{
-			CRT_Effect* eft = (CRT_Effect*)ob;
-			if (eft->OnPropGridNotify(wParam, lParam))
-			{
-				m_bRebuildGridProp = true;
-			}
-		}
-		break;
+	//case ID_GRID_CHANNEL_PROP:
+	//	if (m_selectedChannel == 0) break;
+	//	RtObject* ob = (RtObject*)m_selectedChannel;
+	//	if (ob->IsKindOf(RT_RUNTIME_CLASS(CRT_Material)))
+	//	{
+	//		CRT_Material* mtl = (CRT_Material*)ob;
+	//		if (mtl->OnPropGridNotify(wParam, lParam))
+	//		{
+	//			m_bRebuildGridProp = true;
+	//		}
+	//	}
+	//	else if (ob->IsKindOf(RT_RUNTIME_CLASS(CRT_Effect)))
+	//	{
+	//		CRT_Effect* eft = (CRT_Effect*)ob;
+	//		if (eft->OnPropGridNotify(wParam, lParam))
+	//		{
+	//			m_bRebuildGridProp = true;
+	//		}
+	//	}
+	//	break;
 
-		/*
-		case ID_GRID_EFFECT:
-			if(GetSelectedEffect())
-				m_bRebuildGridEft = GetSelectedEffect()->OnGridNotify(wParam,lParam));
-			break;
-		*/
-	}
+	//	/*
+	//	case ID_GRID_EFFECT:
+	//		if(GetSelectedEffect())
+	//			m_bRebuildGridEft = GetSelectedEffect()->OnGridNotify(wParam,lParam));
+	//		break;
+	//	*/
+	//}
 	return 0;
 }
 

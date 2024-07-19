@@ -35,6 +35,7 @@ BEGIN_MESSAGE_MAP(CDlgNewShader, CDialog)
 	ON_BN_CLICKED(IDC_CREATE, OnBnClickedCreate)
 	ON_WM_CREATE()
 	ON_WM_ACTIVATE()
+	ON_CBN_SELCHANGE(IDC_COMBO1, &CDlgNewShader::OnCbnSelchangeCombo1)
 END_MESSAGE_MAP()
 // CDlgNewShader message handlers
 
@@ -97,4 +98,10 @@ void CDlgNewShader::OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized)
 		m_comboCon.InsertString(idx++,"Blend");
 		m_firstActive = false;
 	}
+}
+
+
+void CDlgNewShader::OnCbnSelchangeCombo1()
+{
+	// TODO: 在此添加控件通知处理程序代码
 }

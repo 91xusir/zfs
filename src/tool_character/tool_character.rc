@@ -185,7 +185,6 @@ BEGIN
         MENUITEM "Íø¸ñ³ß´ç",                        ID_CHANGE_GRIDSIZE
     END
     MENUITEM "test2",                       ID_TEST2
-    MENUITEM "test3",                       ID_TEST3
 END
 
 
