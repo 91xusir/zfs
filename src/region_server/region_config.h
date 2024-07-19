@@ -1,9 +1,0 @@
-#ifndef _INC_REGION_CONFIG_H_
-#define _INC_REGION_CONFIG_H_
-
-#define RS_REMOVE_USER_DELAY			(1000*5)
-#define RS_AI_UPDATE_STATE_DURATION		500
-
-const long	DEFAULT_RANGE = 800;
-
-#endif // _INC_REGION_CONFIG_H_
