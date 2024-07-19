@@ -370,8 +370,15 @@ namespace {
 		matOut->SetRow(3, (float*)&matIn->_30);
 	}
 }
+// 更新相机位置
 void GcLogin::UpdateCameraPos()
 {
+
+	/** by：luyoyu
+	由于骨骼矩阵是 3x4 矩阵（RtgMatrix12），
+	而相机矩阵是 4x4 矩阵（RtgMatrix16），
+	需要一个转换函数 _AdjustCameraMatrix。
+	*/
 	guard;
 	RtgMatrix16 mCamera;
 
@@ -391,6 +398,27 @@ void GcLogin::UpdateCameraPos()
 	}
 	unguard;
 }
+void  GcLogin::UpdateCameraAt(std::string at)
+{
+	guard;
+	RtgMatrix16 mCamera;
+
+	CRT_ActorInstance* pCamera;
+	m_pBody = FindModel("Body");
+	pCamera = m_pBody;
+
+	if (pCamera)
+	{
+		RtgMatrix12 _mat;
+
+		if (m_pBody->GetBoneMat(&_mat, at.c_str()))
+		{
+			_AdjustCameraMatrix(&mCamera, &_mat);
+			GetDevice()->m_pCamera->SetMatrix(mCamera);
+		}
+	}
+	unguard;
+}
 
 void GcLogin::EnterSelectGameWorldServer()
 {
@@ -399,20 +427,14 @@ void GcLogin::EnterSelectGameWorldServer()
 	{
 		UILayer::EnterLogin(); // 打开登陆界面
 	}
-
-	UpdateGraphConfig("Graph_Login");
-	UpdateCameraPos();
 	if (m_pCamera)
 	{
 		m_pCamera = NULL;
 	}
 
-	if (m_pCamera = FindModel("Camera"))
-	{
-		m_pCamera->RegisterNotify(this);
-		if (!m_pCamera->PlayPose("idle", true))
-			m_pCamera->RegisterNotify(NULL);
-	}
+	UpdateGraphConfig("Graph_Login");
+
+	UpdateCameraPos();
 
 	StartGetGameWorldServer();
 
@@ -451,19 +473,15 @@ void GcLogin::EnterLogin()
 	{
 		UILayer::EnterLogin(); // 打开登陆界面
 	}
-
-	UpdateGraphConfig("Graph_Login");
-	UpdateCameraPos();
 	if (m_pCamera)
 	{
 		m_pCamera = NULL;
 	}
-	if (m_pCamera = FindModel("Camera"))
-	{
-		m_pCamera->RegisterNotify(this);
-		if (!m_pCamera->PlayPose("idle", true))
-			m_pCamera->RegisterNotify(NULL);
-	}
+
+	UpdateGraphConfig("Graph_Login");
+
+	UpdateCameraPos();
+
 
 	LOAD_UI("btnback")->Show();
 	LOAD_UI("btnexit")->Show();

@@ -180,14 +180,13 @@
 #define ID_TEST2                        32846
 #define ID_SHOWLINK                     32849
 #define IDC_SHOWLINK                    32850
-#define ID_TEST3                        32851
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        144
-#define _APS_NEXT_COMMAND_VALUE         32852
+#define _APS_NEXT_COMMAND_VALUE         32851
 #define _APS_NEXT_CONTROL_VALUE         1036
 #define _APS_NEXT_SYMED_VALUE           104
 #endif

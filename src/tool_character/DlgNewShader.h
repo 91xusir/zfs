@@ -28,4 +28,5 @@ public:
 	bool    m_firstActive;
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 	afx_msg void OnActivate(UINT nState, CWnd* pWndOther, BOOL bMinimized);
+	afx_msg void OnCbnSelchangeCombo1();
 };
