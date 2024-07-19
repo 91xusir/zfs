@@ -23,6 +23,7 @@
     <ProjectGuid>{5C6E0F3A-C595-49B2-8CEF-A67EFD012178}</ProjectGuid>
     <RootNamespace>character2</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'" Label="Configuration">
@@ -63,14 +64,14 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">$(ProjectDir)../../engine/libs/</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">$(ProjectDir)../../temp/$(ProjectName)/$(Configuration)\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='mtd|Win32'">$(ProjectDir)../../engine/libs/</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='mtd|Win32'">$(ProjectDir)../../temp/$(ProjectName)/$(Configuration)\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='md|Win32'">$(ProjectDir)../../engine/libs/</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='md|Win32'">$(ProjectDir)../../temp/$(ProjectName)/$(Configuration)\</IntDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">$(ProjectDir)../../engine/libs/</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">$(ProjectDir)../../temp/$(ProjectName)/$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">$(ProjectDir)..\..\engine\libs\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">$(ProjectDir)..\..\temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='mtd|Win32'">$(ProjectDir)..\..\engine\libs\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='mtd|Win32'">$(ProjectDir)..\..\temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='md|Win32'">$(ProjectDir)..\..\engine\libs\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='md|Win32'">$(ProjectDir)..\..\temp\$(ProjectName)\$(Configuration)\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">$(ProjectDir)..\..\engine\libs\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">$(ProjectDir)..\..\temp\$(ProjectName)\$(Configuration)\</IntDir>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'" />
@@ -83,6 +84,18 @@
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='mt|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='mt|Win32'" />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='md|Win32'">
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='mtd|Win32'">
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">
     <ClCompile>
@@ -98,7 +111,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Lib>
-      <OutputFile>$(OutDir)$(ProjectName)_$(Configuration).lib</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Lib>
     <PostBuildEvent>
       <Command>
@@ -120,7 +133,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Lib>
-      <OutputFile>$(OutDir)$(ProjectName)_$(Configuration).lib</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Lib>
     <PostBuildEvent>
       <Command>
@@ -141,7 +154,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Lib>
-      <OutputFile>$(OutDir)$(ProjectName)_$(Configuration).lib</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Lib>
     <PostBuildEvent>
       <Command>
@@ -163,7 +176,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Lib>
-      <OutputFile>$(OutDir)$(ProjectName)_$(Configuration).lib</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Lib>
     <PostBuildEvent>
       <Command>
