@@ -240,7 +240,7 @@ void CUIFormPlayerShop::InitFromCSV()
 
 					k = strtok(NULL, sep);
 				}
-				DEL_ARRAY(pStrItems)
+				DEL_ARRAY(pStrItems);
 			}
 		}
 	}
@@ -250,8 +250,8 @@ void CUIFormPlayerShop::InitFromCSV()
 CUIFormPlayerShop::~CUIFormPlayerShop()
 {
 	guard;
-	for(int i= 0;i< m_vectorSItemBase.size();i++)
-		DEL_ONE(m_vectorSItemBase[i])
+	for (int i = 0; i < m_vectorSItemBase.size(); i++)
+		DEL_ONE(m_vectorSItemBase[i]);
 	unguard;
 }
 

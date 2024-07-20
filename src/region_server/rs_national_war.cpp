@@ -1348,7 +1348,7 @@ void CRsNwarMgr::AddTmpExploit(DWORD dwUnionID, char faction, DWORD lExploit)
 		//LOG("Invalid UnionID\n");
 		return;
 	}
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 	iter_union = g_region->m_unionMap.find(dwUnionID);
 	if(iter_union == g_region->m_unionMap.end())
 	{
@@ -1387,7 +1387,7 @@ void CRsNwarMgr::AddExploit(DWORD dwUnionID, char faction, long lExploit)
 		//LOG("Invalid UnionID\n");
 		return;
 	}
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 	iter_union = g_region->m_unionMap.find(dwUnionID);
 	if(iter_union == g_region->m_unionMap.end())
 	{
@@ -1465,7 +1465,7 @@ void CRsNwarMgr::OnRecvUpdateData(long lRemain, long numZhou, std::list<DWORD>* 
 //		LOG("Invalid UnionID or faction\n");
 //		return;
 //	}
-//	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+//	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 //	iter_union = g_region->m_unionMap.find(dwUnionID);
 //	if(iter_union == g_region->m_unionMap.end())
 //	{

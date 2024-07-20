@@ -52,8 +52,8 @@ private:
     float           m_lastTwoBianRate_Attack_Wea2;
 
 public:
-	EXT_SPACE::hash_map<DWORD, BYTE> m_ReleaseEffectsToEnemy;	// skillID, skillRate
-	EXT_SPACE::hash_map<DWORD, BYTE> m_ReleaseEffectsToSelf;	// skillID, skillRate
+	EXT_SPACE::unordered_map<DWORD, BYTE> m_ReleaseEffectsToEnemy;	// skillID, skillRate
+	EXT_SPACE::unordered_map<DWORD, BYTE> m_ReleaseEffectsToSelf;	// skillID, skillRate
 };
 
 
@@ -99,7 +99,7 @@ public:
 	void LogToDb(DWORD ItemIdx, const std::string& ItemName, int Count, DWORD IntervalInMinites);
 
 public:
-	EXT_SPACE::hash_map<DWORD, SItemSaleStat> m_Stat; // 道具类型对统计结构的映射
+	EXT_SPACE::unordered_map<DWORD, SItemSaleStat> m_Stat; // 道具类型对统计结构的映射
 };
 
 extern CRegionItemSaleStat g_ItemSaleStat;

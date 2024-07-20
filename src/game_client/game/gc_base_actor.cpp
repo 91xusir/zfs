@@ -690,24 +690,24 @@ bool GcBaseActor::DestroyGraphData()
 
 	if(m_pTrump)
 	{
-		DEL_ONE(m_pTrump)
+		DEL_ONE(m_pTrump);
 		m_pTrump = NULL;
 	}
 	if(m_pWeapon)
 	{
-		DEL_ONE(m_pWeapon)
+		DEL_ONE(m_pWeapon);
 		m_pWeapon = NULL;
 	}
 	if (m_pStateOverHead)
 	{
 		m_pStateOverHead->Clear();
-		DEL_ONE(m_pStateOverHead)
+		DEL_ONE(m_pStateOverHead);
 		m_pStateOverHead = NULL;
 	}
 	if (m_pActorOverHead)
 	{
 		m_pActorOverHead->Clear();
-		DEL_ONE(m_pActorOverHead)
+		DEL_ONE(m_pActorOverHead);
 		m_pActorOverHead = NULL;
 	}
 

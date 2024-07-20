@@ -329,8 +329,8 @@ public:
 	CUnionIconMgr() {}
 	~CUnionIconMgr()
 	{
-		for (int i=0; i<m_arrIcon.size(); i++)
-			DEL_ARRAY(m_arrIcon[i].data)
+		for (int i = 0; i < m_arrIcon.size(); i++)
+			DEL_ARRAY(m_arrIcon[i].data);
 	}
 	SUnionIconData *Find(string fileName);
 };

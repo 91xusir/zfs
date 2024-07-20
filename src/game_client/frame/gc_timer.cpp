@@ -13,7 +13,7 @@ GcTimer::GcTimer()
 
 GcTimer::~GcTimer()
 {
-    DEL_ARRAY(m_pCode)
+    DEL_ARRAY(m_pCode);
 }
 
 int GcTimer::Run(float fSecond)
@@ -56,7 +56,7 @@ DWORD GcTimer::AddTimer(GcTimerListener *pListener, float fDelay, DWORD dwPreSen
         SGcTimer* pData = RT_NEW SGcTimer[this->m_dwMax];
         memset(pData, 0, sizeof(SGcTimer)*this->m_dwMax);
         memcpy(pData, m_pCode, sizeof(SGcTimer)*this->m_dwCount);
-        DEL_ARRAY(m_pCode)
+        DEL_ARRAY(m_pCode);
         m_pCode = pData;
         LOG("Timer:Add Timer Error (Count>=32), Grow 10");
     }
@@ -87,7 +87,7 @@ DWORD GcTimer::AddTimer(gccbTimerListener cbListener, float fDelay, DWORD dwPreS
         SGcTimer* pData = RT_NEW SGcTimer[this->m_dwMax];
         memset(pData, 0, sizeof(SGcTimer)*this->m_dwMax);
         memcpy(pData, m_pCode, sizeof(SGcTimer)*this->m_dwCount);
-        DEL_ARRAY(m_pCode)
+        DEL_ARRAY(m_pCode);
         m_pCode = pData;
         LOG("Timer:Add Timer Error (Count>=32), Grow 10");
     }

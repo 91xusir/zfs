@@ -209,17 +209,17 @@ void UILayer::Reset()
 
 	if (g_layerLogin)
 	{
-		DEL_ONE(g_layerLogin)
+		DEL_ONE(g_layerLogin);
 	}
 
 	if (g_layerSelectChar)
 	{
-		DEL_ONE(g_layerSelectChar)
+		DEL_ONE(g_layerSelectChar);
 	}
 
 	if (g_layerMain)
 	{
-		DEL_ONE(g_layerMain)
+		DEL_ONE(g_layerMain);
 	}
 
 	//<add by fox>

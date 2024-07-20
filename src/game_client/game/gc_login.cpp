@@ -241,7 +241,7 @@ bool GcLogin::ClearOnce()
 		std::map<DWORD, GcActor*>::iterator itActor;
 		for (itActor = m_mapSelectActor.begin(); itActor != m_mapSelectActor.end(); itActor++)
 		{
-			DEL_ONE((*itActor).second)
+			DEL_ONE((*itActor).second);
 		}
 	}
 
@@ -427,14 +427,19 @@ void GcLogin::EnterSelectGameWorldServer()
 	{
 		UILayer::EnterLogin(); // 打开登陆界面
 	}
+
+	UpdateGraphConfig("Graph_Login");
+
 	if (m_pCamera)
 	{
 		m_pCamera = NULL;
 	}
-
-	UpdateGraphConfig("Graph_Login");
-
-	UpdateCameraPos();
+	if (m_pCamera = FindModel("Camera"))
+	{
+		m_pCamera->RegisterNotify(this);
+		if (!m_pCamera->PlayPose("idle", true))
+			m_pCamera->RegisterNotify(NULL);
+	}
 
 	StartGetGameWorldServer();
 
@@ -473,15 +478,18 @@ void GcLogin::EnterLogin()
 	{
 		UILayer::EnterLogin(); // 打开登陆界面
 	}
+
+	UpdateGraphConfig("Graph_Login");
 	if (m_pCamera)
 	{
 		m_pCamera = NULL;
 	}
-
-	UpdateGraphConfig("Graph_Login");
-
-	UpdateCameraPos();
-
+	if (m_pCamera = FindModel("Camera"))
+	{
+		m_pCamera->RegisterNotify(this);
+		if (!m_pCamera->PlayPose("idle", true))
+			m_pCamera->RegisterNotify(NULL);
+	}
 
 	LOAD_UI("btnback")->Show();
 	LOAD_UI("btnexit")->Show();
@@ -1727,7 +1735,7 @@ void GcLogin::OnNetDeleteUser(long id, char hasDel)
 		std::map<DWORD, GcActor*>::iterator it = m_mapSelectActor.find(id);
 		if (it != m_mapSelectActor.end())
 		{
-			DEL_ONE((*it).second)
+			DEL_ONE((*it).second);
 				m_mapSelectActor.erase(it);
 		}
 	}

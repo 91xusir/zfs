@@ -44,7 +44,7 @@ class CRegionActivityBase;	//LeiJun »î¶¯ÊµÀý
 struct SMonsterLair;
 typedef int (*TCmdFunction)(CG_CmdPacket *cmd);
 typedef std::list<CRegionObject*> TObjectList;
-typedef EXT_SPACE::hash_map<ULONG,CRegionObject*> TObjectHash;
+typedef EXT_SPACE::unordered_map<ULONG,CRegionObject*> TObjectHash;
 
 #define OB_TYPE(ob) ((ob)->m_type)
 

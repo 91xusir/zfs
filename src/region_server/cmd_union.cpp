@@ -1,14 +1,14 @@
 #include "region.h"
 
 // 诸侯国操作的锁定
-EXT_SPACE::hash_map<DWORD, DWORD> g_UnionLockTick;
+EXT_SPACE::unordered_map<DWORD, DWORD> g_UnionLockTick;
 
 void LockUnionOperate(DWORD unionID, bool bLock)
 {
 	if (g_UnionLockTick.size() > 100000)
 		CHECK(0);
 
-	EXT_SPACE::hash_map<DWORD, DWORD>::iterator iter = g_UnionLockTick.find(unionID);
+	EXT_SPACE::unordered_map<DWORD, DWORD>::iterator iter = g_UnionLockTick.find(unionID);
 	if (bLock)
 	{
 		DWORD tick = rtGetMilliseconds();
@@ -39,7 +39,7 @@ bool IsUnionOperateLocked(DWORD unionID)
 	if (g_UnionLockTick.size() > 100000)
 		CHECK(0);
 
-	EXT_SPACE::hash_map<DWORD, DWORD>::iterator iter = g_UnionLockTick.find(unionID);
+	EXT_SPACE::unordered_map<DWORD, DWORD>::iterator iter = g_UnionLockTick.find(unionID);
 	if (iter==g_UnionLockTick.end())
 	{
 		return false;
@@ -866,13 +866,13 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_score_change)
 	SAFE_READ(cmd->ReadLong(&score) )
 
 	// 更新Region数据
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(unionID);
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(unionID);
 	if (iterUnion==g_region->m_unionMap.end())
 		return CMD_ERROR_UNKNOWN;
  	iterUnion->second.m_nFighting = score;
 
 	// 更新Client数据
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
 	for (; iterUser!=g_region->m_userMap.end(); iterUser++)
 	{
 		CRegionUser* user = (*iterUser).second;
@@ -900,7 +900,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_levelup)
 // 	SAFE_READ(cmd->ReadLong(&unionLev) )
 // 
 // 	// 更新Region
-// 	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(unionID);
+// 	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(unionID);
 // 	if (iterUnion==g_region->m_unionMap.end())
 // 	{
 // 		ERR("Recv cmd_r2c_union_levelup, But region have no this union!\n");
@@ -913,7 +913,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_levelup)
 // 	}
 // 
 // 	// 更新Client
-// 	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
+// 	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
 // 	for (; iterUser!=g_region->m_userMap.end(); iterUser++)
 // 	{
 // 		CRegionUser* user = (*iterUser).second;
@@ -943,7 +943,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_player_levelup)
 	SAFE_READ(cmd->ReadShort(&playerLevel) )
 
 	// 更新Region
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(unionID);
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(unionID);
 	if (iterUnion==g_region->m_unionMap.end())
 	{
 		ERR1("Recv cmd_r2c_union_player_levelup, But region have no this union!(UnionID=%d)\n", unionID);
@@ -962,7 +962,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_player_levelup)
 	}
 
 	// 更新Client
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
 	for (; iterUser!=g_region->m_userMap.end(); iterUser++)
 	{
 		CRegionUser* user = (*iterUser).second;
@@ -1224,7 +1224,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_data_refresh)
 	SAFE_READ(cmd->ReadLong(&playerSendToDBID) )
 	SAFE_ASSERT( unionData.Serialize(cmd) )
 
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter = g_region->m_unionMap.find(unionData.m_nID);
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter = g_region->m_unionMap.find(unionData.m_nID);
 	if (iter!=g_region->m_unionMap.end())
 	{
 		SUnionData &u = iter->second;
@@ -1265,7 +1265,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_citizen_join)
 	SAFE_ASSERT(citizen.Serialize(cmd) )
 
 	// 发送给所有诸侯国成员
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator it;
 	for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	{
 		CRegionUser* user = (*it).second;
@@ -1294,7 +1294,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_citizen_leave)
 	SAFE_READ(cmd->ReadLong(&playerDBID) )
 
 	// 发送给所有诸侯国成员
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator it;
 	for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	{
 		CRegionUser* user = (*it).second;
@@ -1329,7 +1329,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_citizen_online)
 //-------------add start by tony 05.06.15---------------------------------//
 
 	// 发送给所有诸侯国成员
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator it;
 	for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	{
 		CRegionUser* user = (*it).second;
@@ -1358,7 +1358,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_citizen_offline)
 	SAFE_READ(cmd->ReadLong(&playerDBID) )
 
 	// 发送给所有诸侯国成员
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator it;
 	for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	{
 		CRegionUser* user = (*it).second;
@@ -1389,7 +1389,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_citizen_official_change)
 	SAFE_READ(cmd->ReadByte(&official) )
 
 	// 发送给所有诸侯国成员
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator it;
 	for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	{
 		CRegionUser* user = (*it).second;
@@ -1421,14 +1421,14 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_disband)
 
 	g_RegionCastleWarMgr.OnUnionDisband(unionID);
 
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter = g_region->m_unionMap.find(unionID);
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter = g_region->m_unionMap.find(unionID);
 	if (iter!=g_region->m_unionMap.end())
 	{
 		g_region->m_unionMap.erase(iter);
 	}
 
 	// 发送给所有诸侯国成员
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator it;
 	for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	{
 		CRegionUser* user = (*it).second;
@@ -1463,7 +1463,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_new_bulletin)
 	SAFE_READ(cmd->ReadString(&newBulletin) )
 
 	// 发送给所有诸侯国成员
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator it;
 	for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	{
 		CRegionUser* user = (*it).second;
@@ -1494,7 +1494,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_citizen_nickname_change)
 	SAFE_READ(cmd->ReadString(&nickname) )
 
 	// 发送给所有诸侯国成员
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator it;
 	for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	{
 		CRegionUser* user = (*it).second;
@@ -1551,7 +1551,7 @@ UNION_CMD_FUNCTION_FROM_GW(cmd_r2c_union_logo_data)
 	}
 
 	// 发送给所有诸侯国成员
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator it;
 	for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	{
 		CRegionUser* user = (*it).second;

@@ -72,8 +72,8 @@ CProfileNode::CProfileNode( const char * name, CProfileNode * parent ) :
 
 CProfileNode::~CProfileNode( void )
 {
-	DEL_ONE(Child)
-	DEL_ONE(Sibling)
+	DEL_ONE(Child);
+	DEL_ONE(Sibling);
 }
 
 

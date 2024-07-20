@@ -444,7 +444,7 @@ void CUIForm_Trump::ReceiveCmd( int rifine, int succeed, int vigour,  int soul)
 			rt2_sprintf(str,R(MSG_FABAO_SPECIALLEVELUP),rifineName,tmp);
 			if (rifineName)
 			{
-				DEL_ARRAY(rifineName)
+				DEL_ARRAY(rifineName);
 				rifineName = 0;
 			}
 			PlayerFailOperate(str);
@@ -468,7 +468,7 @@ void CUIForm_Trump::ReceiveCmd( int rifine, int succeed, int vigour,  int soul)
 			rt2_sprintf(str,R(MSG_FABAO_SPECIALFAIL),rifineName);
 			if (rifineName)
 			{
-				DEL_ARRAY(rifineName)
+				DEL_ARRAY(rifineName);
 				rifineName = 0;
 			}
 			PlayerFailOperate(str);

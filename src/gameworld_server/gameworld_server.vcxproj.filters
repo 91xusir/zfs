@@ -219,6 +219,7 @@
     <ClCompile Include="GW_ActivityManager.cpp">
       <Filter>Activity</Filter>
     </ClCompile>
+    <ClCompile Include="..\login_server\iob_func.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gw_chattransmittal.h">

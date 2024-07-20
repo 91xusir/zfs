@@ -13,6 +13,15 @@
     <Filter Include="src\zlib">
       <UniqueIdentifier>{ae4db60e-169e-4a9f-849f-c85b639cdee9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sjdl">
+      <UniqueIdentifier>{601f03b9-4a70-46f9-a0ff-9de786d118a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sjdl\head">
+      <UniqueIdentifier>{39542863-1cd2-4d22-85ce-9d822c76c5ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sjdl\src">
+      <UniqueIdentifier>{6ffb32e3-e53a-429b-926f-7f925d42241c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rtc2_archive_ansi.h">
@@ -142,9 +151,6 @@
     <ClInclude Include="..\..\engine\head\core\rtc2_math.h">
       <Filter>sdk</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\engine\head\core\rtc2_memory.h">
-      <Filter>sdk</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\engine\head\core\rtc2_object.h">
       <Filter>sdk</Filter>
     </ClInclude>
@@ -176,6 +182,9 @@
       <Filter>sdk</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\core\rtc2_text_ini.h">
+      <Filter>sdk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\engine\head\core\rtc2_memory.h">
       <Filter>sdk</Filter>
     </ClInclude>
   </ItemGroup>
@@ -323,5 +332,6 @@
     <None Include="..\..\engine\head\core\rtc2_thread.inl">
       <Filter>sdk</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

@@ -323,7 +323,7 @@ bool CGameRegistry::Init()
 
 	::RegCloseKey(hKEY);
 
-	DEL_ARRAY(strData)
+	DEL_ARRAY(strData);
 
 	return true;
 

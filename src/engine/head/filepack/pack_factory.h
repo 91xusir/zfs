@@ -15,7 +15,7 @@ public:
 		typename std::list<TBaseProduct*>::iterator It;
 		for(It=mList.begin();It!=mList.end();It++)
 		{
-			DEL_ONE((*It))
+			DEL_ONE((*It));
 			(*It)=NULL;
 		}
 	}

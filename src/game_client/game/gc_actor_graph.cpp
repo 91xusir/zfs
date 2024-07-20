@@ -37,7 +37,7 @@ void GcActorGraph::ClearActor()
     std::map<std::string, GcActorGraph*>::iterator it = m_mapChildren.begin();
     for (; it!=m_mapChildren.end(); it++)
     {
-        DEL_ONE((*it).second)
+		DEL_ONE((*it).second);
     }
     m_mapChildren.clear();
     unguard;

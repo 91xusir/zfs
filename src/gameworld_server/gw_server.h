@@ -152,9 +152,9 @@ public:
 
 	CG_TCPListener                                      m_clientListen;
 	list<GWUnloginClient*>								m_unloginClient;
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>			m_loginClient;      // idx by account id
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>			m_loginClient;      // idx by account id
 	HASH_STR(std::string, GWLoginClient*)	            m_tableByActorName; // idx by actor name    
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>			m_tableByActorId;   // idx by actor id
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>			m_tableByActorId;   // idx by actor id
 
 	GWUnloginClient *m_curUnloginClient;
 	GWLoginClient   *m_curLoginClient;

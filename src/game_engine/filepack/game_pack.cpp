@@ -29,7 +29,7 @@ bool CPack::Init(CPackFile* vpPackFile,
 
 CPack::~CPack()
 {
-	DEL_ONE(mpPackFile)
+	DEL_ONE(mpPackFile);
 	mpPackFile=NULL;
 }
 /*

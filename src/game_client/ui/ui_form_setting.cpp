@@ -882,7 +882,7 @@ void UIFormSetting::InitResolution()
 				}
 			}
 		}
-		DEL_ONE(dm)
+		DEL_ONE(dm);
 
 	}
 	unguard;

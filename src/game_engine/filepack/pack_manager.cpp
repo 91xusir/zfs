@@ -27,7 +27,7 @@ CPackManager::~CPackManager()
 	list<CPack*>::iterator It;
 	for(It=mPackList.begin();It!=mPackList.end();It++)
 	{
-		DEL_ONE((*It))
+		DEL_ONE((*It));
 	}
 }
 
@@ -180,7 +180,7 @@ bool CPackManager::OpenPatchPack(const string& vrPackName)   //´ò¿ªÒ»¸ö²¹¶¡°ü
 
 	if(!pFile->Open(vrPackName,"rb"))
 	{
-		DEL_ONE(pFile)
+		DEL_ONE(pFile);
 		return false;
 	}
 
@@ -193,7 +193,7 @@ bool CPackManager::OpenPatchPack(const string& vrPackName)   //´ò¿ªÒ»¸ö²¹¶¡°ü
 	
 	if(!OpenPack(*pFile,READ_PACK))
 	{
-		DEL_ONE(pFile)
+		DEL_ONE(pFile);
 		return false;
 	}
 
@@ -276,21 +276,21 @@ bool CPackManager::OpenPack(const string& vrPackName,const EPackFlag vOpenFlag ,
 			if(!pFile->Open(vrPackName,vMode))
 			{//»¹´ò²»¿ª
                 mErr<<"Cannot open package ["<<vrPackName<<"]\n";
-				DEL_ONE(pFile)
+				DEL_ONE(pFile);
 				return false;
 			}
 		}
 		else
 		{//´ò²»¿ª
 			mErr<<"Cannot open package ["<<vrPackName<<"]\n";
-			DEL_ONE(pFile)
+			DEL_ONE(pFile);
 			return false;
 		}
 	}
 
 	if(!OpenPack(*pFile,vOpenFlag))
 	{
-		DEL_ONE(pFile)
+		DEL_ONE(pFile);
 		return false;
 	}
 
@@ -365,7 +365,7 @@ bool CPackManager::ClosePack(CPack* vpPack)					//¹Ø±ÕÒ»¸ö°ü
 	{
 		if((*It)==vpPack)
 		{
-			DEL_ONE((*It))
+			DEL_ONE((*It));
 			mPackList.erase(It);
 			return true;
 		}
@@ -380,7 +380,7 @@ bool CPackManager::ClosePack(const string& vrPackName)//¹Ø±ÕÒ»¸ö°ü
 	{
 		if((*It)->Name()==vrPackName)
 		{
-			DEL_ONE((*It))
+			DEL_ONE((*It));
 			mPackList.erase(It);
 			return true;
 		}
@@ -438,7 +438,7 @@ bool CPackManager::UnpackAllFile(const string& vrPackName)
         UnpackFile(vrPackName,ppTemp[i]->mName);
     }
 
-	DEL_ARRAY(ppTemp)
+	DEL_ARRAY(ppTemp);
 	*/
     return true;
 
@@ -520,7 +520,7 @@ bool CPackManager::UnpackFile(CPack* vpPack,const string& vrFile)
 		Temp.PutBuffer(pTemp,pFileInfo->mOriginSize);
 		Temp.Close();
 	}
-	DEL_ONE(pTemp)
+	DEL_ONE(pTemp);
 	return true;
 }
 
@@ -560,7 +560,7 @@ bool CPackManager::CreatePack(const string& vrPackName,bool vInMemory)//bool vIn
 		{
 			if(!pTemp->Resize(DEFAULT_MEMORY_PACK_SIZE))
 			{//Èç¹ûÎÞ·¨µÃµ½ÒªµÄÄÚ´æ
-				DEL_ONE(pFile)
+				DEL_ONE(pFile);
 				return false;
 			}
 		}
@@ -577,7 +577,7 @@ bool CPackManager::CreatePack(const string& vrPackName,bool vInMemory)//bool vIn
 	}
 	if(!pFile->Create(vrPackName))
 	{
-		DEL_ONE(pFile)
+		DEL_ONE(pFile);
 		return false;
 	}
 
@@ -589,14 +589,14 @@ bool CPackManager::CreatePack(const string& vrPackName,bool vInMemory)//bool vIn
 	CPack* pPack =RT_NEW CNormalPack;//mPackFactory.GetPack<CNormalPack>();
 	if(pPack==NULL)
 	{
-		DEL_ONE(pFile)
+		DEL_ONE(pFile);
 		return false;
 	}
 
 	//°üµÄ³õÊ¼»¯
 	if(!pPack->Init(pFile,&mCompressFactory))
 	{
-		DEL_ONE(pFile)
+		DEL_ONE(pFile);
 		return false;
 	}
 	pPack->Create();
@@ -644,7 +644,7 @@ bool CPackManager::ReplacePack(CPack* vpMainPack,CPack* vpAssistPack)//½«¸¨Öú°üµ
 		if(pUnpackFile!=NULL)
 		{
 			vpMainPack->AddFile(pFile->mName,*pUnpackFile,pCompress);
-			DEL_ONE(pUnpackFile)
+			DEL_ONE(pUnpackFile);
 		}
 	}
 
@@ -856,7 +856,7 @@ bool CPackManager::DifferPack(CPack* vpMainPack,CPack* vpAssistPack,CPack* vpDif
 		if(pUnpackFile!=NULL)
 		{
 			vpDifferPack->AddFile(pFile->mName,*pUnpackFile,pCompress,true);
-			DEL_ONE(pUnpackFile)
+			DEL_ONE(pUnpackFile);
 		}
 	}
 
@@ -936,7 +936,7 @@ bool CPackManager::AddPack(CPack* vpMainPack,CPack* vpAssistPack,bool vReplace,b
 		if(pUnpackFile!=NULL)
 		{
 			vpMainPack->AddFile(pFile->mName,*pUnpackFile,pCompress,vReplace);
-			DEL_ONE(pUnpackFile)
+			DEL_ONE(pUnpackFile);
 		}
 	}
 

@@ -87,13 +87,13 @@ public:
 				}
 			}
 
-			DEL_ONE(mpRefOfstream)
+			DEL_ONE(mpRefOfstream);
 		}
 
 		mInitCount--;
 		if(mInitCount==0)
 		{
-			DEL_ONE(mpFiles)
+			DEL_ONE(mpFiles);
 			mpFiles=NULL;
 		}
 	};
@@ -247,7 +247,7 @@ public:
 		{//容器仅包含一个//那就不用返回容器//只返回包含的那个CCoutput
 			COutput* pOutput= (*pTempContainer)[0];
 			pTempContainer->Clear();
-			DEL_ONE(pTempContainer)
+			DEL_ONE(pTempContainer);
 			return pOutput;
 		}
 		else

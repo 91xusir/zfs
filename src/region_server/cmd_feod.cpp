@@ -248,7 +248,7 @@ FEOD_CMD_FUNCTION_FROM_GW(cmd_g2r_feod_data)
 	}
 
 	// ·¢ËÍ¸øClient
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator it;
 	for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	{
 		CRegionUser* user = (*it).second;

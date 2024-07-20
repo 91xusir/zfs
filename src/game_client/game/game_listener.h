@@ -49,7 +49,7 @@ public:
 		std::list<CGameListener*>::iterator It;
 		for(It=mpListenerList.begin();It!=mpListenerList.end();It++)
 		{
-			DEL_ONE(*It)
+			DEL_ONE(*It);
 		}
 	};
 	
@@ -72,7 +72,7 @@ public:
 		{
 			if((*It)==vrT)
 			{
-				DEL_ONE(*It)
+				DEL_ONE(*It);
 				mpListenerList.erase(It);
 				break;
 			}
@@ -151,7 +151,7 @@ namespace fox
 			std::list<CListener*>::iterator It;
 			for(It=mpListenerList.begin();It!=mpListenerList.end();++It)
 			{
-				DEL_ONE(*It)
+				DEL_ONE(*It);
 			}
 		};
 
@@ -174,7 +174,7 @@ namespace fox
 			{
 				if( (*(*It)) == (&vrT) )
 				{
-					DEL_ONE(*It)
+					DEL_ONE(*It);
 					mpListenerList.erase(It);
 					break;
 				}

@@ -1597,7 +1597,7 @@ CUnion* CUnionMgr::FindUnion(DWORD unionID)
 
 //DWORD CUnionMgr::GetUnionID(DWORD userID)
 //{
-//	hash_map<DWORD, DWORD>::iterator iter = m_mapUserToUnion.find(userID);
+//	unordered_map<DWORD, DWORD>::iterator iter = m_mapUserToUnion.find(userID);
 //
 //	if (iter == m_mapUserToUnion.end())
 //		return NULL;
@@ -2397,7 +2397,7 @@ int CVoteMgr::DelVote(CVote* pVote)
 		is.erase(pVote);
 		rs.erase(pVote);
 		us.erase(pVote);
-		DEL_ONE(pVote)
+		DEL_ONE(pVote);
 		nRet = 0;
 	} while (false);
 	return nRet;

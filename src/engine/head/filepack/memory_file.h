@@ -22,7 +22,7 @@ public:
 
 	virtual ~CUnpackFileReader()
 	{
-		DEL_ONE(mpUnpackFile)
+		DEL_ONE(mpUnpackFile);
 		DEL_ARRAY( mpcDiskBuffer );
 	}
 
@@ -56,7 +56,7 @@ public:
 
 	virtual BOOL Close()
 	{
-		DEL_ONE(mpUnpackFile)
+		DEL_ONE(mpUnpackFile);
 		mpUnpackFile=NULL;
 		return !m_bIsError;
 	};
@@ -207,7 +207,7 @@ public:
 			//mpError->Logf("MemoryPackFileWriter: close failed, pack add file failed!");
 		}
 
-		DEL_ONE(mpBuffer)
+		DEL_ONE(mpBuffer);
 		mpBuffer=NULL;
 
 		return !m_bIsError;
@@ -294,7 +294,7 @@ protected:
 		else
 		{
 			memcpy(mpBuffer,pOldBuffer,OldSize);
-			DEL_ONE(pOldBuffer)
+			DEL_ONE(pOldBuffer);
 		}
 
 		return true;
@@ -321,7 +321,7 @@ public:
 	CRtPackManager():mpPackManager(NULL){};
 	~CRtPackManager()
 	{
-		DEL_ONE(mpPackManager)
+		DEL_ONE(mpPackManager);
 		mpPackManager=NULL;
 	};
 
@@ -537,7 +537,7 @@ public:
 			CLinearityBuffer Buffer;
             pFile->GetBuffer(Buffer);
 			int Size=(int)pFile->OriginSize();
-			DEL_ONE(pFile)
+			DEL_ONE(pFile);
 			MemoryPackFileWriter* pWrite=RT_NEW MemoryPackFileWriter(pPack,pCompress,FileName/*,pError*/);
 			pWrite->Serialize(Buffer.Ptr(),Size);
 			return pWrite;
@@ -737,8 +737,8 @@ public:
 	}
 	~CRtPackAndAnsiManager()
 	{
-		DEL_ONE(mpPackManager)
-		DEL_ONE(mpAnsiManager)
+		DEL_ONE(mpPackManager);
+		DEL_ONE(mpAnsiManager);
 	};
 
 
@@ -1248,7 +1248,7 @@ return mpBuffer;
 
 virtual BOOL Close()
 {
-DEL_ONE(mpBuffer)
+DEL_ONE(mpBuffer);
 mpBuffer=NULL;
 mCurrent=0;
 return !m_bIsError;

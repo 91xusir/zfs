@@ -648,7 +648,7 @@ bool CSkillManage::LoadMutex(const char* szMutexFile)
         m_pPoolEffect[i].mutex.listDecline = pBuf;
         pBuf = pNext;
     }
-    DEL_ARRAY(pCntBuf)
+    DEL_ARRAY(pCntBuf);
 
     j = iIdxMutex;
     i = j+iTotalMutex;

@@ -98,7 +98,7 @@ public:
 	typedef std::vector<SSceneNpc> NPCLIST;
 
 protected:
-	static EXT_SPACE::hash_map< int, NPCLIST > ms_npcLists;
+	static EXT_SPACE::unordered_map< int, NPCLIST > ms_npcLists;
 
 	short	m_nSceneID;		// 主场景为0，其他场景为fblist中的id列
 
@@ -213,7 +213,7 @@ public:
 	int m_curUserLV;
 	long m_lExitPos[3];
 	SFuBen *m_info;
-	EXT_SPACE::hash_map<int,int> m_hash_team;
+	EXT_SPACE::unordered_map<int,int> m_hash_team;
 };
 
 class CRsSceneWarfield : public CRegionScene

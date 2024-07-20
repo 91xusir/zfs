@@ -313,6 +313,7 @@
     <ClCompile Include="RegionActManager.cpp">
       <Filter>Activity</Filter>
     </ClCompile>
+    <ClCompile Include="..\login_server\iob_func.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayerLogic.h">

@@ -38,7 +38,7 @@ protected:
 protected:
 	CG_CmdPacket					m_SendPacket;   // 要发送的消息
 	CG_CmdPacket					m_RecvPacket;   // 要接受的消息
-	EXT_SPACE::hash_map<short, NetCmdCB>  m_Bind;         // 绑定命令
+	EXT_SPACE::unordered_map<short, NetCmdCB>  m_Bind;         // 绑定命令
 	CG_NetAddress					m_ToAddr;
 	CG_NetAddress					m_ListenAddr;
 	CG_NetAddress					m_FromAddr;

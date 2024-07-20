@@ -47,7 +47,7 @@ public:
 	char m_ZhuluWinFaction;
 	vector<string> m_ZhuluMap;
 	//std::list<ULONG> m_ZhuluActiveUser;
-	EXT_SPACE::hash_map<ULONG,SZhuluUserInfo> m_ZhuluActiveUser;
+	EXT_SPACE::unordered_map<ULONG,SZhuluUserInfo> m_ZhuluActiveUser;
 
 
 };

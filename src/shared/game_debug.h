@@ -47,14 +47,14 @@ public:
 		mOn=vrMessage.mOn;
 		mLevel=vrMessage.mLevel;
 		mColor=vrMessage.mColor;
-		DEL_ONE(mpOutput)
+		DEL_ONE(mpOutput);
 		mpOutput=vrMessage.mpOutput->Clone();
 		mFrom=vrMessage.mFrom;
 	}
 	
 	virtual ~CMessenger()
 	{
-		DEL_ONE(mpOutput)
+		DEL_ONE(mpOutput);
 		mpOutput=NULL;
 	};
 

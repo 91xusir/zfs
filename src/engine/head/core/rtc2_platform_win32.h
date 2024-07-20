@@ -81,7 +81,7 @@ typedef HANDLE              RtThreadHandle;
 //#define     EXT_SPACE               std
 //#endif
 
-// 移除对旧版编译器的支持，直接使用现代C++标准库中的std命名空间
+// 移除对旧版vs编译器的支持，直接使用现代C++标准库中的std命名空间
 #define EXT_SPACE std
 
 /*-----------------------------------------------------------------------------

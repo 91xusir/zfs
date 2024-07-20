@@ -230,7 +230,7 @@ bool GWServer::MoveUserToWarfield(int userID, int x, int y, bool bBron,char fact
 void GWServer::SaveUserData()
 {
 	int now = time(NULL);
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>::iterator it;
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>::iterator it;
 	for(it=m_tableByActorId.begin(); it!=m_tableByActorId.end(); it++)
 	{
 		GWLoginClient *lc = it->second;
@@ -270,7 +270,7 @@ void GWServer::SendKickAllUser(long lDelayTime)
     }
 
     // 断开所有在选人界面的玩家
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>::iterator itLC;
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>::iterator itLC;
 	for(itLC=m_loginClient.begin(); itLC!=m_loginClient.end(); itLC++)
 	{
 		GWLoginClient *lc = itLC->second;
@@ -907,7 +907,7 @@ void GWServer::Exit()
 	int succeeded = 0;
 	int failed = 0;
 	
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>::iterator it;
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>::iterator it;
 	for(it=m_loginClient.begin(); it!=m_loginClient.end(); it++)
 	{
 		GWLoginClient *lc = it->second;
@@ -1076,7 +1076,7 @@ void GWServer::UpdateUserState()
 {
 	int now = time(NULL);
 	
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>::iterator it;
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>::iterator it;
 	for(it=m_loginClient.begin(); it!=m_loginClient.end(); it++)
 	{
 		GWLoginClient *lc = it->second;
@@ -1318,7 +1318,7 @@ bool GWServer::LoadSceneTable()
 
 void GWServer::LogoutUserByRegion(int regionID)
 {
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>::iterator it;
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>::iterator it;
 	for(it=m_tableByActorId.begin(); it!=m_tableByActorId.end(); it++)
 	{
 		GWLoginClient *lc = it->second;
@@ -1675,7 +1675,7 @@ GWUnloginClient *GWServer::FindUnloginClientBySeed(int seed)
 
 GWLoginClient *GWServer::FindLoginClientByAccountId(int accountId)
 {
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>::iterator it;
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>::iterator it;
 	it = m_loginClient.find(accountId);
 	if(it != m_loginClient.end())
 	{
@@ -1686,7 +1686,7 @@ GWLoginClient *GWServer::FindLoginClientByAccountId(int accountId)
 
 GWLoginClient *GWServer::FindLoginClientByActorId(int actorId)
 {
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>::iterator it;
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>::iterator it;
 	it = m_tableByActorId.find(actorId);
 	if(it != m_tableByActorId.end())
 	{
@@ -1697,7 +1697,7 @@ GWLoginClient *GWServer::FindLoginClientByActorId(int actorId)
 /*
 GWUser* GWServer::FindActorByIdWithoutSwitchRegion(int actorId)
 {
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>::iterator it;
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>::iterator it;
 	it = m_tableByActorId.find(actorId);
 	if(it != m_tableByActorId.end())
 	{
@@ -1713,7 +1713,7 @@ GWUser* GWServer::FindActorByIdWithoutSwitchRegion(int actorId)
 */
 GWUser *GWServer::FindActorById(int actorId)
 {
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>::iterator it;
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>::iterator it;
 	it = m_tableByActorId.find(actorId);
 	if(it != m_tableByActorId.end())
 	{
@@ -1828,7 +1828,7 @@ void GWServer::RunClient()
 	// process login client
 	//
 	vector<GWLoginClient*> delList;
-	EXT_SPACE::hash_map<DWORD, GWLoginClient*>::iterator itl;
+	EXT_SPACE::unordered_map<DWORD, GWLoginClient*>::iterator itl;
 	for(itl=m_loginClient.begin(); itl!=m_loginClient.end(); itl++)
 	{
 		lc = itl->second;

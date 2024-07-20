@@ -230,7 +230,7 @@ void CPackFile::Close()
 		mpFile=NULL;
 	}
 
-	DEL_ONE(mpBuffer)
+	DEL_ONE(mpBuffer);
 	mpBuffer=NULL;
 
 	return;
@@ -255,7 +255,7 @@ bool CPackFile::ReSizeBuffer(const int vSize)
 		mBufferSize+=DEFAULT_BUFFER_SIZE;
 	}
 
-	DEL_ONE(mpBuffer)
+	DEL_ONE(mpBuffer);
 	mpBuffer=RT_NEW char[mBufferSize];
 	if(mpBuffer==NULL)
 	{

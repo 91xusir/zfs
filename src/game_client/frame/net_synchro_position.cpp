@@ -75,7 +75,7 @@ void NetSynchroPosition::DownloadNetSnapshot(CG_CmdPacket *pPacket,bool event)
     if(!p->CloneFrom(pPacket))
     {
         CHECKEX("´íÎó: Clone Packet Error.");
-		DEL_ONE(p)
+        DEL_ONE(p);
 	}
 	else
 	{
@@ -265,7 +265,7 @@ bool NetSynchroPosition::RenderNetSnapshot()
         OnDownloadEvent(pPacket);
     }
 	// m_dwClientTime = m_dwLastServerTime;
-	DEL_ONE(pPacket)
+    DEL_ONE(pPacket);
 
 
 

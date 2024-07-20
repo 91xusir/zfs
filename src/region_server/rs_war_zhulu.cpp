@@ -23,7 +23,7 @@ CWarZhulu::~CWarZhulu() {};
 void CWarZhulu::OnTimer(ULONG id, DWORD dwParam[])
 {
 	//std::list<ULONG>::iterator it;
-	EXT_SPACE::hash_map<ULONG,SZhuluUserInfo>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,SZhuluUserInfo>::iterator it;
 	switch(id)
 	{
 	case ZHULU_TIMER_TO_END:
@@ -96,7 +96,7 @@ void CWarZhulu::StartZhulu(bool fix)
 void CWarZhulu::OnEnterZhulu(CRegionUser *user)
 {
 	//std::list<ULONG>::iterator it = find(m_ZhuluActiveUser.begin(),m_ZhuluActiveUser.end(),user->m_userId);
-	//EXT_SPACE::hash_map<ULONG,SZhuluUserInfo>::iterator it = 
+	//EXT_SPACE::unordered_map<ULONG,SZhuluUserInfo>::iterator it = 
 	if(m_ZhuluActiveUser.find(user->m_userId) == m_ZhuluActiveUser.end())
 	{
 		SZhuluUserInfo sUserInfo(user->m_userId);
@@ -112,7 +112,7 @@ void CWarZhulu::OnZhuluWin(char faction)
 
 	CRegionUser *pUser;
 	//std::list<ULONG>::iterator it = m_ZhuluActiveUser.begin();
-	EXT_SPACE::hash_map<ULONG,SZhuluUserInfo>::iterator it = m_ZhuluActiveUser.begin();
+	EXT_SPACE::unordered_map<ULONG,SZhuluUserInfo>::iterator it = m_ZhuluActiveUser.begin();
 
 	for(; it!=m_ZhuluActiveUser.end(); ++it)
 	{
@@ -155,7 +155,7 @@ void CWarZhulu::EndZhulu()
 	SetTimer(ZHULU_TIMER_TO_END, 10*1000); 
 	
 	//取出杀人数最多的人并给予奖励
-	EXT_SPACE::hash_map<ULONG,SZhuluUserInfo>::iterator it = m_ZhuluActiveUser.begin();
+	EXT_SPACE::unordered_map<ULONG,SZhuluUserInfo>::iterator it = m_ZhuluActiveUser.begin();
 	if (it != m_ZhuluActiveUser.end())
 	{
 		int iMaxNum = it->second.killNum;

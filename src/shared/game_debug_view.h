@@ -79,7 +79,7 @@ public:
 		InitCount--;
 		if(InitCount==0)
 		{
-			DEL_ONE(mpView)
+			DEL_ONE(mpView);
 		}
 	}
 

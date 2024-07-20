@@ -34,11 +34,13 @@
 #endif
 
 
+//单个对象安全释放
 #ifndef DEL_ONE
-#   define DEL_ONE(x)        if (x) { delete (x); (x)=0;}
+#   define DEL_ONE(x)        do { if (x) { delete (x); (x)=nullptr; } } while(0)
 #endif
+//对象数组的分配和释放安全释放
 #ifndef DEL_ARRAY
-#   define DEL_ARRAY(x)      if (x) { delete[] (x); (x)=0;}
+#   define DEL_ARRAY(x)      do { if (x) { delete[] (x); (x)=nullptr; } } while(0)
 #endif
 
 
@@ -137,7 +139,7 @@ public:
     static	float				Get_Time_Since_Reset( void );
     
     static	CProfileIterator *	Get_Iterator( void )	{ return RT_NEW CProfileIterator( &Root ); }
-    static	void				Release_Iterator( CProfileIterator * iterator ) { DEL_ONE(iterator) }
+    static	void				Release_Iterator(CProfileIterator* iterator) { DEL_ONE(iterator); }
     
 private:
     static	CProfileNode		Root;

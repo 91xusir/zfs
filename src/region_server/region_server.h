@@ -216,15 +216,15 @@ public:
 	SHeroList			m_HeroList;
 	CRegionMasterListManager   m_MasterList;
     long                m_lCurRegionID;
-	EXT_SPACE::hash_map<ULONG, SUnionData>		m_unionMap;
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>    m_userMap;      // login user
-	EXT_SPACE::hash_map<ULONG, long>            m_regionMap;    // EXT_SPACE::hash_map<RtsSceneBlockMap*, long>
+	EXT_SPACE::unordered_map<ULONG, SUnionData>		m_unionMap;
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>    m_userMap;      // login user
+	EXT_SPACE::unordered_map<ULONG, long>            m_regionMap;    // EXT_SPACE::unordered_map<RtsSceneBlockMap*, long>
 	float GetExpRate() { return m_expRate; }
 
 	int  m_yDay;
 	void OnDayChange();
 	void AddCheater(CRegionUser *user);
-	EXT_SPACE::hash_map<ULONG, ULONG> m_cheaterMap;
+	EXT_SPACE::unordered_map<ULONG, ULONG> m_cheaterMap;
 	bool m_bKickCheater;
     int  m_iCheaterValve;
     int  m_iCheaterCnt;

@@ -65,7 +65,7 @@ struct SExploit
 
 	bool SerializeToGC(CG_CmdPacket *cmd)
 	{
-		EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+		EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 		iter_union = g_region->m_unionMap.find(dwUnionID);
 		if(iter_union == g_region->m_unionMap.end())
 		{

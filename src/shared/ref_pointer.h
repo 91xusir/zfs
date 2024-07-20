@@ -22,7 +22,7 @@ public:
 	{
 		if(mCount.Only())
 		{
-			DEL_ONE(mpT)
+			DEL_ONE(mpT);
 		}
 	}
 
@@ -35,7 +35,7 @@ public:
 	{
 		if(mCount.ReAttach(vrPtr.mCount))
 		{
-			DEL_ONE(mpT)
+			DEL_ONE(mpT);
 		}
 
 		mpT=vrPtr.mpT;
@@ -49,7 +49,7 @@ public:
 	{
 		if(mCount.Detach())
 		{
-			DEL_ONE(mpT)
+			DEL_ONE(mpT);
 		}
 
 		mpT=vpT;

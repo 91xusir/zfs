@@ -126,10 +126,10 @@ CUIForm_MiddleMap::~CUIForm_MiddleMap(void)
 	for(it = m_mapMiddleMapImageinfo.begin();it != m_mapMiddleMapImageinfo.end(); ++it)
 		DEL_ONE((*it).second);
 	// 因为存储的指针是原有全局变量，所以不必进行释放内存
-	for(int i= 0;i< m_vectorSNpc.size();i++)
-		DEL_ONE(m_vectorSNpc[i])
-	for(int i= 0;i< m_vectorTaskDesc.size();i++)
-		DEL_ONE(m_vectorTaskDesc[i])
+	for (int i = 0; i < m_vectorSNpc.size(); i++)
+		DEL_ONE(m_vectorSNpc[i]);
+	for (int i = 0; i < m_vectorTaskDesc.size(); i++)
+		DEL_ONE(m_vectorTaskDesc[i]);
 	//if (m_ImageAutoFlag)//释放序列帧 add by 李泽华 2010.05.18
 	//{
 	//	delete m_ImageAutoFlag;

@@ -66,7 +66,7 @@ UILayerLogin::~UILayerLogin()
 	guard;
 	if(m_formServer)
 	{
-		DEL_ONE(m_formServer)
+		DEL_ONE(m_formServer);
 	}
 
 	unguard;

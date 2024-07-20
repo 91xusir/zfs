@@ -1719,7 +1719,7 @@ void CRegionAIMgr::CloseAI(CRegionAI* ai)
 void CRegionAIMgr::OnTimer(ULONG id, DWORD dwParam[])
 {
 //	long t1 = rtGetMilliseconds();
-	for(EXT_SPACE::hash_map<int, int>::iterator ai = m_ai.begin(); ai != m_ai.end(); ai++)
+	for(EXT_SPACE::unordered_map<int, int>::iterator ai = m_ai.begin(); ai != m_ai.end(); ai++)
 	{
 		ULONG lTest = (ULONG)(ai->first);
 		if( ((CRegionAI*)(ai->first))->IsValid() )

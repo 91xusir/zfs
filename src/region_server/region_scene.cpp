@@ -93,7 +93,7 @@ bool CRegionItem::GetNextDropPos(long* posCenter, long* pos, int& counter)
 // ---------------------------------------------------------------------
 
 
-EXT_SPACE::hash_map< int, CRegionScene::NPCLIST > CRegionScene::ms_npcLists;
+EXT_SPACE::unordered_map< int, CRegionScene::NPCLIST > CRegionScene::ms_npcLists;
 
 bool CRegionScene::LoadNpcList(const char* file)
 {
@@ -132,7 +132,7 @@ bool CRegionScene::LoadNpcList(const char* file)
 			return false;
 		}
 		
-		EXT_SPACE::hash_map< int, NPCLIST >::iterator it = ms_npcLists.find(tmp.sSceneID);
+		EXT_SPACE::unordered_map< int, NPCLIST >::iterator it = ms_npcLists.find(tmp.sSceneID);
 		if (it == ms_npcLists.end())
 			ms_npcLists[tmp.sSceneID] = NPCLIST();
 		NPCLIST& npcList = ms_npcLists[tmp.sSceneID];
@@ -180,7 +180,7 @@ bool CRegionScene::Exit()
 
 void CRegionScene::CreateAllNpc()
 {
-	EXT_SPACE::hash_map< int, NPCLIST >::iterator allit = ms_npcLists.find(m_nSceneID);
+	EXT_SPACE::unordered_map< int, NPCLIST >::iterator allit = ms_npcLists.find(m_nSceneID);
 	if (allit == ms_npcLists.end())
 	{
 		ERR("Create all npc on scene error!!! No npc in table for %d scene\n", m_nSceneID);

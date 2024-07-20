@@ -159,7 +159,7 @@ bool CRegionSpawnMgr::LoadSpawnTable(const char* filename)
 
         bool bIntersect = false;
         RtsSceneBlockMap* pMap;
-		EXT_SPACE::hash_map<ULONG, long>::iterator it;
+		EXT_SPACE::unordered_map<ULONG, long>::iterator it;
         for (it=g_region->m_regionMap.begin(); it!=g_region->m_regionMap.end(); it++)
         {
             if ((*it).second==g_region->m_lCurRegionID)

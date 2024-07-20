@@ -40,7 +40,7 @@ void CAntiRobot::Run()
 
 	std::vector<DWORD> kickList;
 	CRegionUser *pUser = NULL;
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
 	for (; iter!=g_region->m_userMap.end(); iter++)
 	{
 		pUser = (*iter).second;
@@ -168,7 +168,7 @@ void CAntiRobot::DumpData()
 	LOG1("NowTick=%d\n", dwNowTick);
 	LOG("UserName\tStatus\tResendCount\tErrorCount\n");
 	CRegionUser *pUser = NULL;
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
 	for (; iter!=g_region->m_userMap.end(); iter++)
 	{
 		pUser = (*iter).second;

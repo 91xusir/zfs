@@ -2877,7 +2877,7 @@ void UIFormPlayerItems::DeleteQuickStartUserData(RtwWidget* sender, void*)
 	DWORD *pData = (DWORD*)sender->GetUserData();
 	if (pData)
 	{
-		DEL_ARRAY(pData)
+		DEL_ARRAY(pData);
 	}
 	unguard;
 }

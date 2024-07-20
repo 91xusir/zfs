@@ -5,7 +5,7 @@ class CRegionCreature;
 class CUnion;
 
 // 诸侯国操作的锁定
-extern EXT_SPACE::hash_map<DWORD, DWORD> g_UnionLockTick;
+extern EXT_SPACE::unordered_map<DWORD, DWORD> g_UnionLockTick;
 void LockUnionOperate(DWORD unionID, bool bLock);
 bool IsUnionOperateLocked(DWORD unionID);
 

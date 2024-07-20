@@ -394,7 +394,7 @@ GcWorld::~GcWorld()
     DELETE_CS(&m_csCheckProcess);
     m_bInit = false;
     m_bRun = false;
-    if (m_pTmpPacketData) DEL_ARRAY(m_pTmpPacketData)
+	if (m_pTmpPacketData) DEL_ARRAY(m_pTmpPacketData);
     m_pTmpPacketData = 0;
     m_iTmpPacketSize = 0;
 }
@@ -574,7 +574,7 @@ bool GcWorld::LeaveGame()
 	m_Mail.Clear();
 	m_Chat.Clear();
 	//发射物体管理类
-	DEL_ONE(m_pMissileManager)
+	DEL_ONE(m_pMissileManager);
 	m_pMissileManager=NULL;
 
 	m_pPlayer->mBaseActor.RemoveSelf();
@@ -592,8 +592,8 @@ bool GcWorld::LeaveGame()
 	for(int i=0; i<ActorCacheList.size(); ++i)
 		Safe_ReleaseActor(ActorCacheList[i]);
 	ActorCacheList.clear();
-	for(int i=0; i<SkinCacheList.size(); ++i)
-		DEL_ONE(SkinCacheList[i])
+	for (int i = 0; i < SkinCacheList.size(); ++i)
+		DEL_ONE(SkinCacheList[i]);
 	SkinCacheList.clear();
 
 	LOAD_UI("fmhp")->Hide();
@@ -3958,7 +3958,7 @@ void GcWorld::OnNetDownloadSnapshot(CG_CmdPacket *pvPacket, DWORD dwServerTime, 
     //lPacketSize = lDataSize-10;
     if (lDataSize>m_iTmpPacketSize)
     {
-        DEL_ARRAY(m_pTmpPacketData)
+		DEL_ARRAY(m_pTmpPacketData);
         m_pTmpPacketData = RT_NEW char[lDataSize*2+100];
         m_iTmpPacketSize = lDataSize;
     }
@@ -7960,8 +7960,8 @@ bool   LuaInit()
 	
 	for(int i=0; i<total; ++i)
 		tmpBuf[i] = 0;
-	DEL_ONE(tmpBuf)
-	DEL_ONE(ar)
+	DEL_ONE(tmpBuf);
+	DEL_ONE(ar);
 
     /*
     void** pStackBase;
@@ -8038,7 +8038,7 @@ bool   LuaInit()
 
 bool   LuaExit()
 {
-	DEL_ONE(g_lua)
+	DEL_ONE(g_lua);
 	return true;
 }
 

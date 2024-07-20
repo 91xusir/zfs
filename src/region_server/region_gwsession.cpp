@@ -275,7 +275,7 @@ CMD_FUNCTION(cmd_g2r_broadcast_to_region)
 
             long lNowTime = (long)time(NULL)+100; // 100秒超时
 	        CRegionUser *user;
-	        EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	        EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	        for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	        {
 		        user = (*it).second;
@@ -907,7 +907,7 @@ CMD_FUNCTION(cmd_g2r_reboot_region)
 {
 	LOG("g2r_reboot command from gws\n");
 
-	for (EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator user = g_region->m_userMap.begin();
+	for (EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator user = g_region->m_userMap.begin();
 		user != g_region->m_userMap.end(); user++)
 	{
 		if (user->second->m_dummy)
@@ -1065,7 +1065,7 @@ CMD_FUNCTION(cmd_g2r_init_region)
 		}
 
 		g_region->m_regionMap[(ULONG)bmap] = regionID;
-        g_region->m_regionMap.insert(EXT_SPACE::hash_map<ULONG, long>::value_type((ULONG)bmap, regionID));
+        g_region->m_regionMap.insert(EXT_SPACE::unordered_map<ULONG, long>::value_type((ULONG)bmap, regionID));
 
         // for 成战
         if (g_region->m_lCurRegionID==regionID) // 如果这个场景块是当前场景块
@@ -1253,7 +1253,7 @@ CMD_FUNCTION(cmd_g2r_public_chat)
 	}
 
 	CRegionUser *pUser;
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
 	for (; iter!=g_region->m_userMap.end(); iter++)
 	{
 		pUser = (*iter).second;
@@ -2403,7 +2403,7 @@ CMD_FUNCTION(cmd_g2r_gm_bulletin)
 		return CMD_ERROR_READ_DATA;
 
 	CRegionUser *pUser;
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
 	for (; iter!=g_region->m_userMap.end(); iter++)
 	{
 		pUser = (*iter).second;
@@ -2663,7 +2663,7 @@ void CRegionGWSession::Process()
 		{
 			m_lastProcessTime = time(NULL);
 			int gate = now - g_cfg.gws.update_user_interval;			
-			for (EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator user = g_region->m_userMap.begin();
+			for (EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator user = g_region->m_userMap.begin();
 				user != g_region->m_userMap.end(); user++)
 			{
 				if (user->second->m_updateTimeStamp < gate)

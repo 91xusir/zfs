@@ -80,7 +80,7 @@ UIFormBuyCard::UIFormBuyCard()
 UIFormBuyCard::~UIFormBuyCard()
 {
 	guard;
-    DEL_ONE(m_pList)
+    DEL_ONE(m_pList);
 	unguard;
 }
 

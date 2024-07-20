@@ -134,7 +134,7 @@ bool check_is_vassal(CRegionCreature* cre)
 	{
 		return false;
 	}
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 	iter_union = g_region->m_unionMap.find(cre->m_unionID);
 	if(iter_union == g_region->m_unionMap.end())
 	{
@@ -150,7 +150,7 @@ bool check_is_vassal(CRegionCreature* cre)
 
 CRegionCreature* find_vassal_by_union_id(DWORD union_id)
 {
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 	iter_union = g_region->m_unionMap.find(union_id);
 
 	if(iter_union == g_region->m_unionMap.end())
@@ -317,7 +317,7 @@ int	cmd_c2r_castlewar_reg_attack(CRegionCreature* CmdGiver,  CG_CmdPacket *cmd)
 	}
 
 	//诸侯国等级限制
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 	iter_union = g_region->m_unionMap.find(CmdGiver->m_unionID);
 
 	if(iter_union == g_region->m_unionMap.end())
@@ -607,7 +607,7 @@ int	cmd_c2r_castlewar_reg_defend(CRegionCreature* CmdGiver, CG_CmdPacket *cmd)
 	}
 
 	//诸侯国等级限制
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 	iter_union = g_region->m_unionMap.find(CmdGiver->m_unionID);
 
 	if(iter_union == g_region->m_unionMap.end())
