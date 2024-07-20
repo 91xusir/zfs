@@ -49,7 +49,7 @@ struct CRegionPendingUser
 };
 */
 
-typedef EXT_SPACE::hash_map<int, SUserData>	CRegionUnloginUserTable;
+typedef EXT_SPACE::unordered_map<int, SUserData>	CRegionUnloginUserTable;
 typedef list<SUserData>						CRegionPendingUserList;
 
 class CRegionGWSession : public CG_TCPSession

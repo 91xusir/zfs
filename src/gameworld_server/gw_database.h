@@ -271,7 +271,7 @@ class GWDatabase : public RtThread
 	friend class GWServer;
 
 public:
-	typedef EXT_SPACE::hash_map<int, GWUser>	GWUserTable;
+	typedef EXT_SPACE::unordered_map<int, GWUser>	GWUserTable;
 	typedef vector<GWActor>						GWActorTable;
 
 	bool			Initalize();

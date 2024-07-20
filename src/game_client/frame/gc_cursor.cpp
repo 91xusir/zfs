@@ -28,7 +28,7 @@ void GetCursorFileFromPackage(int id, std::string FileName)
 	readfile->Serialize(pBuf, readfile->TotalSize());
 	pBuf[nBufSize-1]='\0';
 	readfile->Close();
-	DEL_ONE(readfile)
+	DEL_ONE(readfile);
 
 	FILE *fp = fopen(strName.c_str(), "wb");
 	if (!fp)

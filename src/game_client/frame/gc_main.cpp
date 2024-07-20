@@ -540,7 +540,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		if (std::string::npos == ((std::string)lpCmdLine).find("tooth.updaterun"))
 		{
 			MessageBox(NULL, R(MSG_RUNEXE_FSO), R(G_INFO), MB_OK | MB_ICONINFORMATION);
-			DEL_ARRAY(szMemoffset)
+			DEL_ARRAY(szMemoffset);
 				return 0;
 		}
 #endif
@@ -904,7 +904,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		ActorExit();
 
 		g_pMusicThread->Terminate(0);
-		DEL_ONE(g_pMusicThread)
+		DEL_ONE(g_pMusicThread);
 			g_pMusicThread = NULL;
 
 		// ÉùÒôÏµÍ³ÍË³ö
@@ -938,7 +938,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	}
 #endif
 
-	DEL_ARRAY(szMemoffset)
+	DEL_ARRAY(szMemoffset);
 		switch (iResult)
 		{
 		case 22:

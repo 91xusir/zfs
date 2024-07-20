@@ -1454,7 +1454,7 @@ void UIFormSkill::OnSkillItemButtonClose(RtwWidget* sender, void*)
         if (pSkill)
         {
             pSkill->SetUIButton(NULL);
-			DEL_ARRAY(pDWord)
+			DEL_ARRAY(pDWord);
         }
     }
 #ifdef _DEBUG

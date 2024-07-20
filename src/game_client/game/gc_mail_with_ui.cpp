@@ -1182,7 +1182,7 @@ void CMailWithUI::OnClearMailList()
 	list<SMailData*>::iterator It;
 	for(It=mReceiveBox.begin();It!=mReceiveBox.end();It++)
 	{
-		DEL_ONE(*It)
+		DEL_ONE(*It);
 	}
 	mReceiveBox.clear();
 	mTitleMap.clear();

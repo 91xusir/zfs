@@ -16,7 +16,7 @@ m_eInputType(AllInput)
 
 CProject::~CProject()
 {
-	DEL_ONE(mpInputProject)
+	DEL_ONE(mpInputProject);
 	mpInputProject=NULL;
 };
 

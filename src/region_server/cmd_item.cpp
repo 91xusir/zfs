@@ -2332,8 +2332,8 @@ ITEM_CMD_FUNCTION(cmd_c2r_shop_buy)
 	float fPriceRate = itemshop_buy_pricerate;
 
 	// 用于统计卖掉多少道具
-	EXT_SPACE::hash_map<DWORD, int> hmItemSaleStat;
-	EXT_SPACE::hash_map<DWORD, int>::iterator iterSaleStat;
+	EXT_SPACE::unordered_map<DWORD, int> hmItemSaleStat;
+	EXT_SPACE::unordered_map<DWORD, int>::iterator iterSaleStat;
 	
 	SItemID item;
 	CRegionCreature *pNpc = cre->m_scene->FindCreature(NpcID);
@@ -2988,7 +2988,7 @@ ITEM_CMD_FUNCTION(cmd_c2r_pshop_buy)
 		cre->RecvCmd(g_sendCmd);
 
 		pPlayer->m_pPShop->Stop();
-		DEL_ONE( pPlayer->m_pPShop )
+		DEL_ONE(pPlayer->m_pPShop);
 		pPlayer->m_bPShop = 0;
 		pPlayer->m_modelRef ++;
 		CItemCmdBuilder_Svr::Build_r2c_pshop_stop_response(1);

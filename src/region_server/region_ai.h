@@ -811,7 +811,7 @@ protected:
 	virtual void	OnTimer(ULONG id, DWORD dwParam[]);
 
 private:
-	EXT_SPACE::hash_map<int, int> m_ai;
+	EXT_SPACE::unordered_map<int, int> m_ai;
 };
 
 extern CRegionAIMgr g_aiMgr;

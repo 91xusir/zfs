@@ -39,6 +39,11 @@ inline void rtDebugBreak()
 }
 #endif
 
+/*
+#ifdef _DEBUG 检查是否定义了 _DEBUG 宏。这个宏通常在调试构建中定义，但在发布构建中未定义。
+如果 _DEBUG 被定义，RTASSERT(exp) 会被定义为 assert(exp)。assert 是 C++ 标准库中的一个宏，用于在调试时验证表达式 exp 的正确性。如果表达式为 false，程序会中断并打印错误信息。
+如果 _DEBUG 没有定义，则 RTASSERT(exp) 为空宏，这意味着断言不会在发布版本中检查，从而避免了运行时开销。
+*/
 #ifdef _DEBUG
 #define RTASSERT(exp) assert(exp)
 #else

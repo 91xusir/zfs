@@ -268,7 +268,7 @@ bool CRegionCastleWarMgr::KillAnimalNpc(CRegionCreature* p_killer, CRegionCreatu
 		return false;
 	}
 	
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 	iter_union = g_region->m_unionMap.find(p_killer->m_unionID);
 	if(iter_union == g_region->m_unionMap.end())
 	{
@@ -863,7 +863,7 @@ void CRegionCastleWarMgr::EndWar(string feod_name, DWORD winner_id)
 	{
 		UpdateCreWarInfo(feod_name, winner_id, (BYTE)0);
 
-		EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+		EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 		iter_union = g_region->m_unionMap.find(winner_id);
 		if(iter_union == g_region->m_unionMap.end())
 		{
@@ -976,7 +976,7 @@ void CRegionCastleWarMgr::PauseWar(string feod_name, DWORD winner_id)
 		
 	}else
 	{
-		EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+		EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 		iter_union = g_region->m_unionMap.find(winner_id);
 		if(iter_union == g_region->m_unionMap.end())
 		{
@@ -1463,7 +1463,7 @@ bool CRegionCastleWarMgr::UpdateMasterInfo(string name, DWORD union_id)
 	}else
 	{
 
-		EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union; 
+		EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union; 
 		iter_union = g_region->m_unionMap.find(union_id);
 
 		if(iter_union == g_region->m_unionMap.end())
@@ -1519,7 +1519,7 @@ bool CRegionCastleWarMgr::UpdateCreWarInfo(string name, DWORD union_id, BYTE is_
 	
 	if(union_id == 0) return false;
 
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union; 
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union; 
 	iter_union = g_region->m_unionMap.find(union_id);
 
 	if(iter_union == g_region->m_unionMap.end())
@@ -1527,7 +1527,7 @@ bool CRegionCastleWarMgr::UpdateCreWarInfo(string name, DWORD union_id, BYTE is_
 		return false;
 	}
 
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
 	for (; iterUser!=g_region->m_userMap.end(); iterUser++)
 	{
 		CRegionUser* user = (*iterUser).second;
@@ -1598,7 +1598,7 @@ bool CRegionCastleWarMgr::UpdateAttackerInfo(string name, DWORD union_id, BYTE o
 		}
 
 		//诸侯国相关信息查询
-		EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union; 
+		EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union; 
 		iter_union = g_region->m_unionMap.find(union_id);
 
 		if(iter_union == g_region->m_unionMap.end())
@@ -1727,7 +1727,7 @@ bool CRegionCastleWarMgr::UpdateDefenderInfo(string name, DWORD union_id, BYTE o
 			}
 
 			//诸侯国相关信息查询
-			EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union; 
+			EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union; 
 			iter_union = g_region->m_unionMap.find(union_id);
 
 			if(iter_union == g_region->m_unionMap.end())
@@ -1912,7 +1912,7 @@ void CRegionCastleWarMgr::OnUnionLeave(DWORD union_id)
 		return;
 	}
 
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union; 
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union; 
 	iter_union = g_region->m_unionMap.find(union_id);
 
 	if(iter_union == g_region->m_unionMap.end())
@@ -1979,7 +1979,7 @@ bool CRegionCastleWarMgr::FindHaveFlagAround(CRegionCreature* p_sender_cre)
 	{
 		return false;
 	}
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union;
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union;
 	iter_union = g_region->m_unionMap.find(p_sender_cre->m_unionID);
 	if(iter_union == g_region->m_unionMap.end())
 	{
@@ -2288,7 +2288,7 @@ void CRegionCastleWarMgr::OnUnionDisband(DWORD union_id)
 	CCastleWarCmdSend_R2G::Send_r2g_castlewar_update_data(p_war_info);
 
 	//删除令旗道具
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union; 
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union; 
 	iter_union = g_region->m_unionMap.find(union_id);
 
 	if(iter_union == g_region->m_unionMap.end())
@@ -2521,7 +2521,7 @@ bool CRegionCastleWarMgr::SetStartTime(string name, short week_day)
 //	
 //	if(m_war_list[index].master_union_id != 0)
 //	{
-//		EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union; 
+//		EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union; 
 //		iter_union = g_region->m_unionMap.find(m_war_list[index].master_union_id);
 //
 //		if(iter_union == g_region->m_unionMap.end())
@@ -2529,7 +2529,7 @@ bool CRegionCastleWarMgr::SetStartTime(string name, short week_day)
 //			return;
 //		}
 //
-//		EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
+//		EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
 //		for (; iterUser!=g_region->m_userMap.end(); iterUser++)
 //		{
 //			CRegionUser* user = (*iterUser).second;
@@ -2550,7 +2550,7 @@ bool CRegionCastleWarMgr::SetStartTime(string name, short week_day)
 //	{
 //		DWORD	union_id = m_war_list[index].v_attacker_union_info[cnt].union_id;
 //
-//		EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union; 
+//		EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union; 
 //		iter_union = g_region->m_unionMap.find(union_id);
 //
 //		if(iter_union == g_region->m_unionMap.end())
@@ -2558,7 +2558,7 @@ bool CRegionCastleWarMgr::SetStartTime(string name, short week_day)
 //			return;
 //		}
 //
-//		EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
+//		EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
 //		for (; iterUser!=g_region->m_userMap.end(); iterUser++)
 //		{
 //			CRegionUser* user = (*iterUser).second;
@@ -2579,7 +2579,7 @@ bool CRegionCastleWarMgr::SetStartTime(string name, short week_day)
 //	{
 //		DWORD	union_id = m_war_list[index].v_defender_union_info[cnt].union_id;
 //
-//		EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union; 
+//		EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union; 
 //		iter_union = g_region->m_unionMap.find(union_id);
 //
 //		if(iter_union == g_region->m_unionMap.end())
@@ -2587,7 +2587,7 @@ bool CRegionCastleWarMgr::SetStartTime(string name, short week_day)
 //			return;
 //		}
 //
-//		EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
+//		EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator iterUser = g_region->m_userMap.begin();
 //		for (; iterUser!=g_region->m_userMap.end(); iterUser++)
 //		{
 //			CRegionUser* user = (*iterUser).second;

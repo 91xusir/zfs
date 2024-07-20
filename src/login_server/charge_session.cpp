@@ -691,7 +691,7 @@ int CChargeSession::CardCanTrade(long lSalesmanAccountID, const char* szSalesman
 
 const char* CChargeSession::Message(long lMsgID)
 {
-    EXT_SPACE::hash_map<long, std::string>::iterator it = m_mapMsgTable.find(lMsgID);
+    EXT_SPACE::unordered_map<long, std::string>::iterator it = m_mapMsgTable.find(lMsgID);
     if (it!=m_mapMsgTable.end())
     {
         return (*it).second.c_str();

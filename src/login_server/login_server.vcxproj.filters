@@ -151,6 +151,7 @@
       <Filter>wsdl\xmlpull</Filter>
     </ClCompile>
     <ClCompile Include="LoginLogicExt.cpp" />
+    <ClCompile Include="iob_func.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="charge_session.h">

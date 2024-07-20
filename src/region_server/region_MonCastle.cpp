@@ -368,7 +368,7 @@ void CMonCastle::CalMonsterNum()
 void CMonCastle::SystemBroad(int state,byte country/* =-1 */,int monsterDeadNum/* =0 */,int targetHp /* = 0 */, int monsterGroup /* = 0 */)
 {
 	CRegionUser *pUser;
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
 	for (; iter!=g_region->m_userMap.end(); iter++)
 	{
 		pUser = (*iter).second;
@@ -454,7 +454,7 @@ void CMonCastle::SystemBroad(int state,byte country/* =-1 */,int monsterDeadNum/
 void CMonCastle::AddMCTask()
 {
 	CRegionUser *pUser;
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
 	for (; iter!=g_region->m_userMap.end(); iter++)
 	{
 		pUser = (*iter).second;
@@ -479,7 +479,7 @@ void CMonCastle::AddMCTask()
 void CMonCastle::RemoveMCTaskAllUsers(byte country)
 {
 	CRegionUser *pUser;
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
 	for (; iter!=g_region->m_userMap.end(); iter++)
 	{
 		pUser = (*iter).second;
@@ -605,7 +605,7 @@ void CMonCastle::MCTaskRealSpawnMonster(SCountyAtrr* county,int monsterId,int mo
 void CMonCastle::FinshMCTask(byte country)
 {
 	CRegionUser *pUser;
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator iter = g_region->m_userMap.begin();
 	for (; iter!=g_region->m_userMap.end(); iter++)
 	{
 		pUser = (*iter).second;

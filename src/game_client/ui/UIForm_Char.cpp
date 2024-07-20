@@ -1162,7 +1162,7 @@ void CUIForm_Char::ReceiveTrumpCmd(char rifine,long succeed,long temp/* = 0*/)
 				rt2_sprintf(str,R(MSG_FABAO_SPECIALFAIL),rifineName);
 				if (rifineName)
 				{
-					DEL_ARRAY(rifineName)
+					DEL_ARRAY(rifineName);
 				}
 				PlayerFailOperate(str);
 			}
@@ -1190,7 +1190,7 @@ void CUIForm_Char::ReceiveTrumpCmd(char rifine,long succeed,long temp/* = 0*/)
 				rt2_snprintf(str,64,R(MSG_FABAO_SPECIALLEVELUP),rifineName,temp);
 				if (rifineName)
 				{
-					DEL_ARRAY(rifineName)
+					DEL_ARRAY(rifineName);
 				}
 				PlayerFailOperate(str);
 				OnFinishRifineTrump(true);

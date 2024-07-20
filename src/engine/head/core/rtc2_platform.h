@@ -45,7 +45,7 @@
 -----------------------------------------------------------------------------*/
 inline std::size_t rtHashString(const char* __s) // take from sgi stl
 {
-	unsigned long __h = 0;
+	unsigned long __h = 0; 
 	for ( ; *__s; ++__s)
 		__h = 5*__h + *__s;
 	return std::size_t(__h);

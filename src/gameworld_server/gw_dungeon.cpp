@@ -109,7 +109,7 @@ CGwDungeonMgr::SGwDungeon* CGwDungeonMgr::EnterDungeon(DWORD dwUserID, long lDun
     SGwDungeon* pDungeon;
 
     // 如果找不到玩家，说明这个玩家要创建一个新的副本
-    EXT_SPACE::hash_map<DWORD, SGwDungeon*>::iterator itUser = m_mapUser.find(dwUserID);
+    EXT_SPACE::unordered_map<DWORD, SGwDungeon*>::iterator itUser = m_mapUser.find(dwUserID);
     if (itUser==m_mapUser.end())
 	{
 		// 玩家自身条件的判断
@@ -323,7 +323,7 @@ CGwDungeonMgr::SGwDungeon* CGwDungeonMgr::EnterDungeon(DWORD dwUserID, long lDun
 bool CGwDungeonMgr::LeaveDungeon(DWORD dwUserID)
 {
     SGwDungeon* pDungeon;
-    EXT_SPACE::hash_map<DWORD, SGwDungeon*>::iterator itUser = m_mapUser.find(dwUserID);
+    EXT_SPACE::unordered_map<DWORD, SGwDungeon*>::iterator itUser = m_mapUser.find(dwUserID);
     if (itUser!=m_mapUser.end())
     {
         // 如果能找到这个玩家，说明玩家在副本之中
@@ -432,7 +432,7 @@ void CGwDungeonMgr::OnCreateDungeonRet(long lDungeonIdx, bool bResult)
 void CGwDungeonMgr::_DestroyDungeon(SGwDungeon* pDungeon)
 {
     std::list<SUser>::iterator itUser;
-    EXT_SPACE::hash_map<long, SGwDungeon*>::iterator itmapDungeon;
+    EXT_SPACE::unordered_map<long, SGwDungeon*>::iterator itmapDungeon;
     std::list<SGwDungeon>::iterator itDungeon;
 
     for (itUser=pDungeon->listUser.begin(); itUser!=pDungeon->listUser.end(); itUser++)
@@ -456,7 +456,7 @@ void CGwDungeonMgr::_DestroyDungeon(SGwDungeon* pDungeon)
 
 CGwDungeonMgr::SGwDungeon* CGwDungeonMgr::FindGwDungeon(long lDungeonIdx)
 {
-    EXT_SPACE::hash_map<long, SGwDungeon*>::iterator it = m_mapDungeon.find(lDungeonIdx);
+    EXT_SPACE::unordered_map<long, SGwDungeon*>::iterator it = m_mapDungeon.find(lDungeonIdx);
     if (it!=m_mapDungeon.end())
     {
         return it->second;
@@ -476,7 +476,7 @@ void CGwDungeonMgr::OnRegionDisconnected(int iRegionID)
 {
     SGwDungeon* pDungeon;
     std::list<long> listRegionDungeon;
-    EXT_SPACE::hash_map<long, SGwDungeon*>::iterator itM;
+    EXT_SPACE::unordered_map<long, SGwDungeon*>::iterator itM;
     for (itM=m_mapDungeon.begin(); itM!=m_mapDungeon.end(); itM++)
     {
         pDungeon = itM->second;

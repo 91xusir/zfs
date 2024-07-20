@@ -110,7 +110,7 @@ private:
     //char                                m_szMsg[256];
 	CM_MEMDEF(m_szMsg, 256)
 	std::list<RunTrigger>					m_listRunTrigger;	// 准备改变状态的机关
-	// EXT_SPACE::hash_map<DWORD, SRsDungeon*> m_mapUser;   // 用户索引副本<玩家ID, 所在副本>
+	// EXT_SPACE::unordered_map<DWORD, SRsDungeon*> m_mapUser;   // 用户索引副本<玩家ID, 所在副本>
 };
 
 struct RunTrigger

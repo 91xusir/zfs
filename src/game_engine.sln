@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{952E48D5-BA04-4EB0-9C81-C0B34FD2B41D}"
 	ProjectSection(SolutionItems) = preProject
@@ -164,8 +164,8 @@ Global
 		{6FB9D3DF-7B77-4026-ABAF-04AB2E44CE6C}.mt|Win32.Build.0 = mt|Win32
 		{6FB9D3DF-7B77-4026-ABAF-04AB2E44CE6C}.mtd|Win32.ActiveCfg = mtd|Win32
 		{6FB9D3DF-7B77-4026-ABAF-04AB2E44CE6C}.mtd|Win32.Build.0 = mtd|Win32
-		{548D58FD-8086-4A97-9BE6-DC3520D36CA7}.md|Win32.ActiveCfg = md|Win32
-		{548D58FD-8086-4A97-9BE6-DC3520D36CA7}.md|Win32.Build.0 = md|Win32
+		{548D58FD-8086-4A97-9BE6-DC3520D36CA7}.md|Win32.ActiveCfg = md|x64
+		{548D58FD-8086-4A97-9BE6-DC3520D36CA7}.md|Win32.Build.0 = md|x64
 		{548D58FD-8086-4A97-9BE6-DC3520D36CA7}.mdd|Win32.ActiveCfg = mdd|Win32
 		{548D58FD-8086-4A97-9BE6-DC3520D36CA7}.mdd|Win32.Build.0 = mdd|Win32
 		{548D58FD-8086-4A97-9BE6-DC3520D36CA7}.mt|Win32.ActiveCfg = mt|Win32
@@ -204,5 +204,6 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {F8E52D35-3856-406B-B348-8D4EBCC749A8}
 	EndGlobalSection
 EndGlobal

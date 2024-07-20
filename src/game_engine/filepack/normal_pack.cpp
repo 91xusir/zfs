@@ -45,7 +45,7 @@ void* ThreadFunc(void* vpParameter)
 	if(!Temp.mBuffer.Resize(p->mpFileInfo->mOriginSize))
 	{
 		gDebugInfoThreadCount--;
-		DEL_ONE(p)
+		DEL_ONE(p);
 			return 0;
 	}
 
@@ -88,7 +88,7 @@ void* ThreadFunc(void* vpParameter)
 	gDebugInfoThreadCount--;
 	//	game_client::Debug<<"线程结束["<<rtMilliseconds()<<"][" << gDebugInfoThreadCount <<"]\n";
 
-	DEL_ONE(p)
+	DEL_ONE(p);
 		return 0;
 }
 
@@ -116,7 +116,7 @@ CNormalPack::~CNormalPack()
 	map<string,SNormalFileInfo*>::iterator It;
 	for(It=mFileTable.begin();It!=mFileTable.end();++It)
 	{
-		DEL_ONE((It->second))
+		DEL_ONE((It->second));
 	}
 
 	RT_DELETE_CS(&mCriticalSection);
@@ -266,7 +266,7 @@ bool CNormalPack::Repair()//修复包//true表示有变化，false表示没有变化
 			ReadSize=pFile->GetBuffer(DEFAULT_BUFFER_SIZE_4K,Temp);//继续读出数据
 		}
 
-		DEL_ONE(pFile)
+		DEL_ONE(pFile);
 			pFile=NULL;
 
 		NewMD5.GetMD5( (unsigned char*)(It->second->mMD5));
@@ -611,7 +611,7 @@ bool CNormalPack::DelFile(const string& vrNameInPack)								//删除包中文件
 	//释放该文件的文件空间
 	FreeBlock(p->mOffset,p->mSizeInPack);
 	//释放该文件信息内存
-	DEL_ONE(p)
+	DEL_ONE(p);
 		//从文件表中移除
 		mFileTable.erase(It);
 	return true;
@@ -643,7 +643,7 @@ bool CNormalPack::AddFile(const string& vrNameInPack,CUnpackFile& vrUnpackFile,
 
 	if(!vpCompress->Compress(*this,vrUnpackFile,pFileInfo))//将内容压缩好，并填充相应信息
 	{
-		DEL_ONE(pFileInfo)
+		DEL_ONE(pFileInfo);
 			return false;
 	}
 
@@ -685,7 +685,7 @@ bool CNormalPack::AddFile(const string& vrFileName,const string& vrNameInPack,
 
 
 	AddFile(vrNameInPack,pTempBuffer,FileSize,vpCompress,TempFile.WriteTime(),vReplace);
-	DEL_ONE(pTempBuffer)
+	DEL_ONE(pTempBuffer);
 		return true;
 }
 
@@ -726,7 +726,7 @@ bool CNormalPack::AddFile(const string& vrNameInPack,CMemoryBuffer& vrBuffer,CCo
 
 	if(!vpCompress->Compress(*this,vrBuffer,pFileInfo))//将内容压缩好，并填充相应信息
 	{
-		DEL_ONE(pFileInfo)
+		DEL_ONE(pFileInfo);
 			return false;
 	}
 
@@ -773,7 +773,7 @@ bool CNormalPack::AddFile(const string& vrNameInPack,	void* vpBuffer,				int vBu
 
 	if(!vpCompress->Compress(*this,vpBuffer,vBufferSize,pFileInfo))//将内容压缩好，并填充相应信息
 	{
-		DEL_ONE(pFileInfo)
+		DEL_ONE(pFileInfo);
 			return false;
 	}
 

@@ -338,7 +338,7 @@ private:
     std::string     m_szPassword;
     bool            m_bLogined;
 
-    EXT_SPACE::hash_map<long, std::string> m_mapMsgTable;
+    EXT_SPACE::unordered_map<long, std::string> m_mapMsgTable;
 
     time_t          m_tDisconnect;
     int             m_iCurSn;

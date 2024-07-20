@@ -4826,7 +4826,7 @@ void GcActor::EquipWeapon(bool Active,const char *Model, SWeapon *weapon, SItemI
 				}
 			}
 
-			DEL_ONE(mBaseActor.m_pWeapon)
+			DEL_ONE(mBaseActor.m_pWeapon);
 			mBaseActor.m_pWeapon = NULL;
 		}
 		return;
@@ -4851,7 +4851,7 @@ void GcActor::EquipWeapon(bool Active,const char *Model, SWeapon *weapon, SItemI
 
 		if(mBaseActor.m_pWeapon)
 		{
-			DEL_ONE(mBaseActor.m_pWeapon)
+			DEL_ONE(mBaseActor.m_pWeapon);
 			mBaseActor.m_pWeapon = NULL;
 		}
 		mBaseActor.m_pWeapon = RT_NEW CWeaponShow;
@@ -4867,7 +4867,7 @@ void GcActor::EquipTrump(bool Active,const char *Model, SItemID &item, STrump *p
 	{
 		if(mBaseActor.m_pTrump)
 		{
-			DEL_ONE(mBaseActor.m_pTrump)
+			DEL_ONE(mBaseActor.m_pTrump);
 			mBaseActor.m_pTrump = NULL;
 		}
 		return;
@@ -4876,7 +4876,7 @@ void GcActor::EquipTrump(bool Active,const char *Model, SItemID &item, STrump *p
 	{
 		if(mBaseActor.m_pTrump)
 		{
-			DEL_ONE(mBaseActor.m_pTrump)
+			DEL_ONE(mBaseActor.m_pTrump);
 			mBaseActor.m_pTrump = NULL;
 		}
 		mBaseActor.m_pTrump = RT_NEW CTrumpShow;

@@ -97,7 +97,7 @@ CClientMail::~CClientMail()
 	list<SMailData*>::iterator It;
 	for(It=mReceiveBox.begin();It!=mReceiveBox.end();It++)
 	{
-		DEL_ONE(*It)
+		DEL_ONE(*It);
 	}
 	unguard;
 }
@@ -115,7 +115,7 @@ void CClientMail::Delete(SMailData* vpMail)//É¾³ý±¾µØÓÊ¼þ
 	{
 		if(*It==vpMail)
 		{
-			DEL_ONE(*It)
+			DEL_ONE(*It);
 			mReceiveBox.erase(It);
 			OnDelete(vpMail);
 			return;

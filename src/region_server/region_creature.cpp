@@ -24,72 +24,77 @@ extern CRS_Problem g_TableProblem;
 
 bool SAttackParam::Serialize(CG_CmdPacket& Cmd)
 {
-    if (Cmd.IsReading())
-    {
-        if (!Cmd.ReadShort(&Seed)) return false;
-        if (!Cmd.ReadShort((short*)(&crcCheck))) return false;
+	if (Cmd.IsReading())
+	{
+		if (!Cmd.ReadShort(&Seed)) return false;
+		if (!Cmd.ReadShort((short*)(&crcCheck))) return false;
 		if (!Cmd.ReadShort(&Skill)) return false;
-        if (!Cmd.ReadByte(&TargetType)) return false;
+		if (!Cmd.ReadByte(&TargetType)) return false;
 		if (!Cmd.ReadLong(&LuaCheck)) return false;
 
-        if(TargetType == SKILL_TARGET_TYPE_POSITION)
-        {
-            if (!Cmd.ReadLong(&Pos[0])) return false;
-            if (!Cmd.ReadLong(&Pos[1])) return false;
-            if (!Cmd.ReadLong(&Pos[2])) return false;
-        }else if(TargetType == SKILL_TARGET_TYPE_ACTOR)
-        {
-            if (!Cmd.ReadLong((long*)&EnemyId)) return false;
-        }else if (TargetType==SKILL_TARGET_TYPE_NONE)
-        {
-        }/*PZH*/else if (SKILL_TARGET_TYPE_BREAK == TargetType)
+		if (TargetType == SKILL_TARGET_TYPE_POSITION)
+		{
+			if (!Cmd.ReadLong(&Pos[0])) return false;
+			if (!Cmd.ReadLong(&Pos[1])) return false;
+			if (!Cmd.ReadLong(&Pos[2])) return false;
+		}
+		else if (TargetType == SKILL_TARGET_TYPE_ACTOR)
+		{
+			if (!Cmd.ReadLong((long*)&EnemyId)) return false;
+		}
+		else if (TargetType == SKILL_TARGET_TYPE_NONE)
+		{
+		}/*PZH*/else if (SKILL_TARGET_TYPE_BREAK == TargetType)
 		{
 		}//
 		else
-        {
-            return false;
-        }
-    }else
-    {
-        if (!Cmd.WriteShort(Seed)) return false;
+		{
+			return false;
+		}
+	}
+	else
+	{
+		if (!Cmd.WriteShort(Seed)) return false;
 		if (!Cmd.WriteShort(crcCheck)) return false;
-        if (!Cmd.WriteShort(Skill)) return false;
-        if (!Cmd.WriteByte(TargetType)) return false;
+		if (!Cmd.WriteShort(Skill)) return false;
+		if (!Cmd.WriteByte(TargetType)) return false;
 		if (!Cmd.WriteLong(LuaCheck)) return false;
 
-        if(TargetType == SKILL_TARGET_TYPE_POSITION)
-        {
-            if (!Cmd.WriteLong(Pos[0])) return false;
-            if (!Cmd.WriteLong(Pos[1])) return false;
-            if (!Cmd.WriteLong(Pos[2])) return false;
-        }else if(TargetType == SKILL_TARGET_TYPE_ACTOR)
-        {
-            if (!Cmd.WriteLong((long)EnemyId)) return false;
-        }else if (TargetType==SKILL_TARGET_TYPE_NONE)
-        {
-        }/*PZH*/else if (SKILL_TARGET_TYPE_BREAK == TargetType)
+		if (TargetType == SKILL_TARGET_TYPE_POSITION)
+		{
+			if (!Cmd.WriteLong(Pos[0])) return false;
+			if (!Cmd.WriteLong(Pos[1])) return false;
+			if (!Cmd.WriteLong(Pos[2])) return false;
+		}
+		else if (TargetType == SKILL_TARGET_TYPE_ACTOR)
+		{
+			if (!Cmd.WriteLong((long)EnemyId)) return false;
+		}
+		else if (TargetType == SKILL_TARGET_TYPE_NONE)
+		{
+		}/*PZH*/else if (SKILL_TARGET_TYPE_BREAK == TargetType)
 		{
 		}//
 		else
-        {
-            return false;
-        }
-    }
-    return true;
+		{
+			return false;
+		}
+	}
+	return true;
 }
 
 /*
 CG_CmdPacket& operator<<(CG_CmdPacket& Cmd, SAttackParam &p)
 {
 	Cmd << p.crcCheck << p.Seed << p.Skill << p.TargetType;
-    if(p.TargetType == SKILL_TARGET_TYPE_POSITION)
-    {
-        Cmd << p.Pos[0] << p.Pos[1] << p.Pos[2];
-    }
+	if(p.TargetType == SKILL_TARGET_TYPE_POSITION)
+	{
+		Cmd << p.Pos[0] << p.Pos[1] << p.Pos[2];
+	}
 	else if(p.TargetType == SKILL_TARGET_TYPE_ACTOR)
-    {
-        Cmd << p.EnemyId;
-    }
+	{
+		Cmd << p.EnemyId;
+	}
 
 	//Cmd << p.Damage;
 	//for(int i=0; i<MAX_ELEMENT_ATTR; i++)
@@ -104,7 +109,7 @@ CG_CmdPacket& operator<<(CG_CmdPacket& Cmd, SAttackParam &p)
 
 //-----------------add start by tony 05.07.15---------------------//
 #define NUM(array)			(sizeof(array) / sizeof((array[0])))
-const std::string SceneNameZhou[] = 
+const std::string SceneNameZhou[] =
 {
 	"scene01_002.rtb",
 	"scene01_003.rtb",
@@ -120,7 +125,7 @@ const std::string SceneNameZhou[] =
 	"scene01_046.rtb"
 };
 
-const std::string SceneNameShang[] = 
+const std::string SceneNameShang[] =
 {
 	"scene01_025.rtb",
 	"scene01_026.rtb",
@@ -137,11 +142,11 @@ const std::string SceneNameShang[] =
 };
 //-----------------add end   by tony 05.07.15---------------------//
 
-CRegionCreature::CRegionCreature():/*PZH*/m_pPlayerLogic(NULL)
+CRegionCreature::CRegionCreature() :/*PZH*/m_pPlayerLogic(NULL)
 {
 	CM_MEMPROTECTOR(m_skillAttackRate, NPC_MAX_SKILL)
 
-	m_core= SCreature();
+		m_core = SCreature();
 
 	time_t tmpTime = time(NULL);
 	tm now = *(localtime(&tmpTime));
@@ -154,7 +159,7 @@ CRegionCreature::CRegionCreature():/*PZH*/m_pPlayerLogic(NULL)
 	m_IsInvincible = 0;
 	m_IsFirstLogin = 0;
 	m_modelRef = 1;
-    //m_bStarted = false;
+	//m_bStarted = false;
 	m_iGuardID = 0;
 	m_WardNPC = NULL;
 	m_master = NULL;
@@ -172,14 +177,14 @@ CRegionCreature::CRegionCreature():/*PZH*/m_pPlayerLogic(NULL)
 	m_enemy = 0;
 	m_spawn = NULL;
 
-	m_pTeam=NULL;//¶ÓÎé
-	m_pMail=NULL;//ÓÊ¼þ
-	m_pFriend=NULL;//ºÃÓÑÁÐ±í
+	m_pTeam = NULL;//¶ÓÎé
+	m_pMail = NULL;//ÓÊ¼þ
+	m_pFriend = NULL;//ºÃÓÑÁÐ±í
 
 	m_assistRange = 0;
 	m_faction = 0;
 
-    m_iCurrentBlockX = m_iCurrentBlockY = -1;
+	m_iCurrentBlockX = m_iCurrentBlockY = -1;
 
 	m_pItemContainer = NULL;
 	m_pBank = NULL;
@@ -227,18 +232,18 @@ CRegionCreature::CRegionCreature():/*PZH*/m_pPlayerLogic(NULL)
 	m_unionName = "";
 	m_unionNickName = "";
 	m_unionIcon = UNION_DEFAULT_ICON_NAME;
-//-------------add start by tony 05.06.13--------------------------------//
+	//-------------add start by tony 05.06.13--------------------------------//
 	m_feod_name = "";
 	m_is_attacker = (BYTE)0;
-//-------------add end   by tony 05.06.13--------------------------------//
+	//-------------add end   by tony 05.06.13--------------------------------//
 
 	m_pSellBag = NULL;
 
-    // m_iPKStateChangeTime = 0;
-    m_eCurPosPKAttr = PKA_NONE;
-    m_eBlockPosPKAttr = PKA_NONE;
+	// m_iPKStateChangeTime = 0;
+	m_eCurPosPKAttr = PKA_NONE;
+	m_eBlockPosPKAttr = PKA_NONE;
 
-    m_Skill.Init(this);
+	m_Skill.Init(this);
 	m_lockTarget = false;
 
 	m_dwPetItemOID = 0;
@@ -258,7 +263,7 @@ CRegionCreature::CRegionCreature():/*PZH*/m_pPlayerLogic(NULL)
 	m_nGetItemCount = 0;
 	m_nGetExp = 0;
 	m_nMonsterCount = 0;
-    m_MonitorLastTime = time(NULL);
+	m_MonitorLastTime = time(NULL);
 	m_lastEmoteTime = 0;
 
 	m_petExpRate = 20;
@@ -267,23 +272,23 @@ CRegionCreature::CRegionCreature():/*PZH*/m_pPlayerLogic(NULL)
 	m_dwState = 0xffffffff;
 	m_bFunKick = false;
 
-    m_dungeonUID = 0;
-    m_dungeonTID = 0;
-    m_dungeonLastQuit = 0;
-    m_crcCheckFlag = 0;
-    m_wgChecked = 0;
-    m_wgCheckedTime = 0;
-    m_wgMaybeChecked = 0;
-    m_wgMaybeCheckedTime = 0;
-    m_tNextCheckProcess = 0;
-    m_lAbsClientTime = 0;
-    m_lPosCmdCnt = 0;
-    m_lFirstPosCmdTime = 0;
-    m_dwLastPickItemTime = 0;
+	m_dungeonUID = 0;
+	m_dungeonTID = 0;
+	m_dungeonLastQuit = 0;
+	m_crcCheckFlag = 0;
+	m_wgChecked = 0;
+	m_wgCheckedTime = 0;
+	m_wgMaybeChecked = 0;
+	m_wgMaybeCheckedTime = 0;
+	m_tNextCheckProcess = 0;
+	m_lAbsClientTime = 0;
+	m_lPosCmdCnt = 0;
+	m_lFirstPosCmdTime = 0;
+	m_dwLastPickItemTime = 0;
 
-    m_iUserMoveFailedCnt = 0;
-    m_lLastCheckProcessTime = 0;
-	
+	m_iUserMoveFailedCnt = 0;
+	m_lLastCheckProcessTime = 0;
+
 	m_cheatKick = 0;
 	m_cheatDummy = false;
 
@@ -299,7 +304,7 @@ CRegionCreature::CRegionCreature():/*PZH*/m_pPlayerLogic(NULL)
 
 	m_ChangeModelID = 0;  //±£´æ±äÉíºóµÄÄ£ÐÍID
 
-	for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+	for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 	{
 		TemporaryElementArmor[i] = 0.00f;
 		TemporaryElementArmor1[i] = 0.00f;
@@ -337,8 +342,8 @@ CRegionCreature::CRegionCreature():/*PZH*/m_pPlayerLogic(NULL)
 	m_bIsInWarfield = false;
 	m_lWarfieldLastQuit = 0;
 
-    m_bNpcSellRareItemStart = false;
-    m_bScapegoatRemovedDuringDead = false;
+	m_bNpcSellRareItemStart = false;
+	m_bScapegoatRemovedDuringDead = false;
 	m_valid = true;
 
 	m_tmpcurrCircle = 0;
@@ -355,7 +360,7 @@ CRegionCreature::CRegionCreature():/*PZH*/m_pPlayerLogic(NULL)
 	//m_isHuiYuan = false;
 
 	//ÉñµÆ
-	memset(m_GodLightMonster,0,sizeof(m_GodLightMonster));
+	memset(m_GodLightMonster, 0, sizeof(m_GodLightMonster));
 	m_IsAddMonster = 0;
 	m_monsterCount = 0;
 	m_bIsDead = 0;
@@ -428,7 +433,7 @@ CRegionCreature::CRegionCreature():/*PZH*/m_pPlayerLogic(NULL)
 	m_SkilldamageR = 0;       //ÒªÔö¼ÓÉËº¦
 	m_UltimateChange = 0;
 	ReboundHurtR = 0;
-	ReboundHurtRType =0;
+	ReboundHurtRType = 0;
 	IsDoTeleport = false;
 
 	m_bRefuseTeam = 0;
@@ -446,14 +451,14 @@ CRegionCreature::~CRegionCreature()
 {
 	CM_MEMUNPROTECTOR(m_skillAttackRate)
 
-	if (m_pathNode)
-    {
-        if (m_scene && m_scene->m_pPathFind)
-        {
-            m_scene->m_pPathFind->RemoveActor(m_pathNode);
-            LOG("CRegionCreature::~CRegionCreature ÔÚÍË³öµÄÊ±ºò²Å½øÐÐÒÆ³ýÂ·¾¶µã²Ù×÷\n");
-        }
-    }
+		if (m_pathNode)
+		{
+			if (m_scene && m_scene->m_pPathFind)
+			{
+				m_scene->m_pPathFind->RemoveActor(m_pathNode);
+				LOG("CRegionCreature::~CRegionCreature ÔÚÍË³öµÄÊ±ºò²Å½øÐÐÒÆ³ýÂ·¾¶µã²Ù×÷\n");
+			}
+		}
 	if (m_ai)
 		g_aiMgr.CloseAI(m_ai);
 	if (m_pItemContainer)
@@ -464,11 +469,11 @@ CRegionCreature::~CRegionCreature()
 		DEL_ONE(m_pPShop);
 	if (m_pBank)
 		DEL_ONE(m_pBank);
-	if(IsUser() && m_IsAddMonster)//tim.yang
+	if (IsUser() && m_IsAddMonster)//tim.yang
 	{
 		m_bIsOutOfLine = true;
 		GodLightCreateMonster_DelAllMonster();//tim.yang ÉñµÆ   Íæ¼ÒËÀÍöÇå³ýµôÉñµÆÕÙ»½³öÀ´µÄmonster
-	}	
+	}
 	if (IsMonster() && this->m_npcId == 1960)
 	{
 		this->m_npcId = 0;
@@ -493,14 +498,14 @@ CRegionCreature::~CRegionCreature()
 		m_mc->EraseMonsterFromList(this);
 	}
 	//PZH
-	DEL_ONE(m_pPlayerLogic)
+	DEL_ONE(m_pPlayerLogic);
 	//
 }
 
 //PZH
 CPlayerLogic* CRegionCreature::GetPlayerLogic()
 {
-	if(NULL == m_pPlayerLogic)
+	if (NULL == m_pPlayerLogic)
 	{
 		m_pPlayerLogic = RT_NEW CPlayerLogic(*this);
 	}
@@ -513,7 +518,7 @@ bool CRegionCreature::isSameDay(long nowtime, long lastTime)
 	RtLocateTime time1(nowtime);
 	RtLocateTime time2(lastTime);
 
-	if((time1.iYear != time2.iYear)
+	if ((time1.iYear != time2.iYear)
 		|| (time1.iYear == time2.iYear && time1.iMonth != time2.iMonth)
 		|| (time1.iYear == time2.iYear && time1.iMonth == time2.iMonth && time1.iDay != time2.iDay))
 	{
@@ -589,7 +594,7 @@ bool CRegionCreature::IsUseCardMinBottleOverday()
 	long lastTime = m_lastuseCardMinuteBottleTime;
 	//RtLocateTime last(lastTime);
 
-	if(isSameDay(tmpTime, lastTime))
+	if (isSameDay(tmpTime, lastTime))
 	{
 		return false;
 	}
@@ -601,15 +606,15 @@ bool CRegionCreature::IsUseCardMinBottleOverday()
 
 bool CRegionCreature::CanUseCardMinBottle()
 {
-	if(!g_region)
+	if (!g_region)
 		return false;
-	if (m_useCardMinuteBottleNum<g_region->GetUseCardMinBottleMaxNum())
+	if (m_useCardMinuteBottleNum < g_region->GetUseCardMinBottleMaxNum())
 	{
 		return true;
 	}
 	else
 	{
-		rt2_sprintf(g_strStaticBuffer,R(MSG_USE_CARDMINBOTTLE_IS_MAX_NUM),g_region->GetUseCardMinBottleMaxNum());
+		rt2_sprintf(g_strStaticBuffer, R(MSG_USE_CARDMINBOTTLE_IS_MAX_NUM), g_region->GetUseCardMinBottleMaxNum());
 		SendSystemMessage(g_strStaticBuffer);
 		return false;
 	}
@@ -626,11 +631,11 @@ void CRegionCreature::InitCardMinBottleParam()
 }
 //end
 
-void CRegionCreature::AddHp(int add,int IsFullHpShow,bool Hit)
+void CRegionCreature::AddHp(int add, int IsFullHpShow, bool Hit)
 {
 	m_core.AddHp(add);
 
-	if (add>0)
+	if (add > 0)
 	{
 		if (IsFullHpShow)
 		{
@@ -642,7 +647,7 @@ void CRegionCreature::AddHp(int add,int IsFullHpShow,bool Hit)
 			g_sendCmd->WriteByte(Hit);
 			if (m_scene && 1 == IsFullHpShow)
 			{
-				m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+				m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 			}
 			else
 			{
@@ -659,7 +664,7 @@ void CRegionCreature::BackHome()
 		return;
 	}
 	// ¸±±¾ÄÚ»Ø³Ç
-	if(OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_FB)
+	if (OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_FB)
 	{
 		rt2_sprintf(g_strStaticBuffer, R("¸±±¾ÄÚ²»ÄÜÊ¹ÓÃ»Ø³Ì"));
 		SendSystemMessage(g_strStaticBuffer);
@@ -676,48 +681,48 @@ void CRegionCreature::BackHome()
 
 	float fRebirthX, fRebirthY;
 	int lineGroup = 0;
-	switch(m_core.RelivePostion)
+	switch (m_core.RelivePostion)
 	{
 	case 1:
-		{
-			lineGroup = 1;
-			fRebirthX = RELIVEPOSTIONX1;
-			fRebirthY = RELIVEPOSTIONY1;
-		}
-		break;
+	{
+		lineGroup = 1;
+		fRebirthX = RELIVEPOSTIONX1;
+		fRebirthY = RELIVEPOSTIONY1;
+	}
+	break;
 	case 2:
-		{
-			fRebirthX = RELIVEPOSTIONX2;
-			fRebirthY = RELIVEPOSTIONY2;
-		}
-		break;
+	{
+		fRebirthX = RELIVEPOSTIONX2;
+		fRebirthY = RELIVEPOSTIONY2;
+	}
+	break;
 	case 3:
-		{
-			fRebirthX = RELIVEPOSTIONX3;
-			fRebirthY = RELIVEPOSTIONY3;
-		}
-		break;
+	{
+		fRebirthX = RELIVEPOSTIONX3;
+		fRebirthY = RELIVEPOSTIONY3;
+	}
+	break;
 	case 4:
-		{
-			fRebirthX = RELIVEPOSTIONX4;
-			fRebirthY = RELIVEPOSTIONY4;
-		}
-		break;
+	{
+		fRebirthX = RELIVEPOSTIONX4;
+		fRebirthY = RELIVEPOSTIONY4;
+	}
+	break;
 	case 5:
-		{
-			lineGroup = 1;
-			fRebirthX = RELIVEPOSTIONX5;
-			fRebirthY = RELIVEPOSTIONY5;
-		}
-		break;
+	{
+		lineGroup = 1;
+		fRebirthX = RELIVEPOSTIONX5;
+		fRebirthY = RELIVEPOSTIONY5;
+	}
+	break;
 	default:
-		{
-			m_core.RelivePostion = 1;
-			lineGroup = 1;
-			fRebirthX = RELIVEPOSTIONXOTHER;
-			fRebirthY = RELIVEPOSTIONYOTHER;
-		}
-		break;
+	{
+		m_core.RelivePostion = 1;
+		lineGroup = 1;
+		fRebirthX = RELIVEPOSTIONXOTHER;
+		fRebirthY = RELIVEPOSTIONYOTHER;
+	}
+	break;
 	}
 
 	bool switchScene = true;
@@ -735,22 +740,25 @@ void CRegionCreature::BackHome()
 	if (lineGroup)
 	{
 		MSG3("Íæ¼Ò[%s], ·ÖÏß¸´»î[%.0f,%.0f]\n", m_userInfo->m_username.c_str(), fRebirthX, fRebirthY);
-		if ( m_dwGroupID && m_dwLineID )
+		if (m_dwGroupID && m_dwLineID)
 		{
 			switchScene = false;
-		}else
+		}
+		else
 			CLineSysCmdSend_R2G::Send_r2g_linesys_EnterLineReq(lineGroup, m_userInfo->m_userId, pos);
-	}else
+	}
+	else
 	{
 		MSG3("Íæ¼Ò[%s], ´óµØÍ¼¸´»î[%.0f,%.0f]\n", m_userInfo->m_username.c_str(), fRebirthX, fRebirthY);
-		if ( m_dwGroupID && m_dwLineID )
+		if (m_dwGroupID && m_dwLineID)
 		{
 			CLineSysCmdSend_R2G::Send_r2g_linesys_LeaveLineReq(m_dwGroupID, m_dwLineID, m_userInfo->m_userId, "DefMap", pos);
-		}else
+		}
+		else
 			switchScene = false;
 	}
 
-	if ( !switchScene )
+	if (!switchScene)
 	{
 		CG_CmdPacket& packet = g_region->m_gws.BeginSend();
 		packet.WriteShort(r2g_move_to);
@@ -768,15 +776,15 @@ void CRegionCreature::AddPlayerOnlineTime(long add)//Tianh   ÓÃÀ´¼ÆËãÔÚÏßÀÛ»ýÊ±¼
 	//È¡µÃµ±Ç°Ê±¼ä£ºÄêÔÂÈÕ·ÖÃë
 	time_t tmpTime = time(NULL);
 	tm now = *(localtime(&tmpTime));
-	int ilocalTome = now.tm_mday;	
+	int ilocalTome = now.tm_mday;
 
 	m_core.PlayerOnlineTime += add;
-	
+
 	//Ã¿Ð¡Ê±½±ÀøÒ»´ÎÐÞÎª£¬Ã¿Ìì×î¶à½±Àø5´Î
-	if (m_core.PlayerOnlineTime >= 60 && CulAwardCount <= 5 && ilocalTome == localTime) 
+	if (m_core.PlayerOnlineTime >= 60 && CulAwardCount <= 5 && ilocalTome == localTime)
 	{
 		//Ã¿Ð¡Ê±½±ÀøµÄÐÞÎªÖµ   18/6
-		RewardCul = 6*(20+5*(m_core.GradeLev -1)*(1+0.05*(m_core.GradeLev -1)))*6*0.4;
+		RewardCul = 6 * (20 + 5 * (m_core.GradeLev - 1) * (1 + 0.05 * (m_core.GradeLev - 1))) * 6 * 0.4;
 		AddCulExp(RewardCul);
 
 		////·¢ËÍÏµÍ³ÏûÏ¢
@@ -787,9 +795,9 @@ void CRegionCreature::AddPlayerOnlineTime(long add)//Tianh   ÓÃÀ´¼ÆËãÔÚÏßÀÛ»ýÊ±¼
 		//}	
 		m_core.PlayerOnlineTime = 0;
 
-		CulAwardCount ++;
+		CulAwardCount++;
 	}
-	else if(m_core.PlayerOnlineTime < 0)
+	else if (m_core.PlayerOnlineTime < 0)
 	{
 		m_core.PlayerOnlineTime = 0;
 	}
@@ -803,44 +811,45 @@ void CRegionCreature::AddPlayerOnlineTime(long add)//Tianh   ÓÃÀ´¼ÆËãÔÚÏßÀÛ»ýÊ±¼
 
 }
 
-void CRegionCreature::RecvCmd(CG_CmdPacket *cmd)
+void CRegionCreature::RecvCmd(CG_CmdPacket* cmd)
 {
-	if(m_userInfo)
+	if (m_userInfo)
 		return m_userInfo->RecvCmd(cmd);
 }
 
 // update data to client
 void CRegionCreature::UpdateToClient(char type)
 {
-    if(m_userInfo || m_master)
-    {
-        g_sendCmd->BeginWrite();
-        g_sendCmd->WriteShort(r2c_update_creature);
-        g_sendCmd->WriteLong(m_oId);
-        g_sendCmd->WriteByte(type);
-        Serialize(type,g_sendCmd);
+	if (m_userInfo || m_master)
+	{
+		g_sendCmd->BeginWrite();
+		g_sendCmd->WriteShort(r2c_update_creature);
+		g_sendCmd->WriteLong(m_oId);
+		g_sendCmd->WriteByte(type);
+		Serialize(type, g_sendCmd);
 
 		// LOG1("update full,size = %d\n",g_sendCmd->GetByteDataSize() + 
 		//	BitToByte(g_sendCmd->GetBitDataSize()));
-        if(m_master)
-        {
-            m_master->RecvCmd(g_sendCmd);
-        }else
-        {
-            RecvCmd(g_sendCmd);
-        }
-    }
+		if (m_master)
+		{
+			m_master->RecvCmd(g_sendCmd);
+		}
+		else
+		{
+			RecvCmd(g_sendCmd);
+		}
+	}
 }
 
 // update delta data to client 
 void CRegionCreature::UpdateToClientDelta()
 {
-	if(m_userInfo/* || m_master*/)
+	if (m_userInfo/* || m_master*/)
 	{
 		g_sendCmd->BeginWrite();
 		g_sendCmd->WriteShort(r2c_update_cre_delta);
 		g_sendCmd->WriteLong(m_oId);
-		m_core.SerializeDelta(*g_sendCmd,m_oldCore);
+		m_core.SerializeDelta(*g_sendCmd, m_oldCore);
 		// LOG2("update_delta: %d,%d\n",g_sendCmd->GetByteDataSize(),g_sendCmd->GetBitDataSize());
 
 		// suppose client was updated imm
@@ -850,12 +859,12 @@ void CRegionCreature::UpdateToClientDelta()
 		{
 			long temp;
 			memcpy(&temp,g_sendCmd->GetBitData(),sizeof(long));
-			LOG3("update delta,size = %d,bit = %d,data = %d\n",g_sendCmd->GetByteDataSize() + 
+			LOG3("update delta,size = %d,bit = %d,data = %d\n",g_sendCmd->GetByteDataSize() +
 				BitToByte(g_sendCmd->GetBitDataSize()),g_sendCmd->GetBitDataSize(),temp);
 		}
 		*/
-		
-		if(m_master)
+
+		if (m_master)
 			m_master->RecvCmd(g_sendCmd);
 		else
 			RecvCmd(g_sendCmd);
@@ -864,10 +873,10 @@ void CRegionCreature::UpdateToClientDelta()
 
 void CRegionCreature::SendProblemToClient(long lProblemID)
 {
-	if(lProblemID <= 0 || (!IsUser()))
+	if (lProblemID <= 0 || (!IsUser()))
 		return;
-	ProblemData *pProblem = g_TableProblem.FindProblemByID(lProblemID);
-	if(pProblem)
+	ProblemData* pProblem = g_TableProblem.FindProblemByID(lProblemID);
+	if (pProblem)
 	{
 		std::string sHtmlText("<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=gb2312\"/></head><body>");
 		sHtmlText += pProblem->sTitle;
@@ -875,9 +884,9 @@ void CRegionCreature::SendProblemToClient(long lProblemID)
 		sHtmlText += pProblem->sDescription;
 		sHtmlText += "<p>&nbsp;</p>";
 		sHtmlText += "<p>&nbsp;</p>";
-		for(int ii=0; ii<ProblemData::OPTION_COUNT; ii++)
+		for (int ii = 0; ii < ProblemData::OPTION_COUNT; ii++)
 		{
-			if(pProblem->sOption[ii].empty())
+			if (pProblem->sOption[ii].empty())
 				break;
 			sHtmlText += pProblem->sOption[ii];
 		}
@@ -888,55 +897,55 @@ void CRegionCreature::SendProblemToClient(long lProblemID)
 	}
 }
 
-void CRegionCreature::Serialize(char type,CG_CmdPacket *cmd)
+void CRegionCreature::Serialize(char type, CG_CmdPacket* cmd)
 {
-	m_core.Serialize(type,cmd);
-	switch(type)
+	m_core.Serialize(type, cmd);
+	switch (type)
 	{
-		case NET_UPDATE_ALL:
-            if (m_pItemContainer)
-			    m_pItemContainer->Serialize(type,cmd);
-			// m_task.SerializeTask(cmd);
-			// m_task.SerializeFbTask(cmd);
-			break;
+	case NET_UPDATE_ALL:
+		if (m_pItemContainer)
+			m_pItemContainer->Serialize(type, cmd);
+		// m_task.SerializeTask(cmd);
+		// m_task.SerializeFbTask(cmd);
+		break;
 
-		case NET_CRE_UPDATE_MODEL:
-			break;
+	case NET_CRE_UPDATE_MODEL:
+		break;
 
-		case NET_CRE_UPDATE_ATTR_SIMPLE:
-			break;
+	case NET_CRE_UPDATE_ATTR_SIMPLE:
+		break;
 
-		case NET_CRE_UPDATE_ATTR_BASE:
-			break;
+	case NET_CRE_UPDATE_ATTR_BASE:
+		break;
 
-		case NET_CRE_UPDATE_ATTR_ALL:
-			break;
+	case NET_CRE_UPDATE_ATTR_ALL:
+		break;
 
-		case NET_CRE_UPDATE_TASK:
-			m_task.SerializeTask(cmd);
-			break;
+	case NET_CRE_UPDATE_TASK:
+		m_task.SerializeTask(cmd);
+		break;
 
-		case NET_CRE_UPDATE_FB_TASK:
-			m_task.SerializeFbTask(cmd);
-			break;
+	case NET_CRE_UPDATE_FB_TASK:
+		m_task.SerializeFbTask(cmd);
+		break;
 	}
 }
 
-bool CRegionCreature::WriteSnapshot(CG_CmdPacket *cmd,CRegionCreature *target)
+bool CRegionCreature::WriteSnapshot(CG_CmdPacket* cmd, CRegionCreature* target)
 {
-	long flag = 0,newFlag = 0;
+	long flag = 0, newFlag = 0;
 	cmd->WriteLong(m_oId);
 	cmd->WriteByte(m_type);
 
-    long IsFlagNpc = 0;
-	if(m_npcInfo && g_RegionCastleWarMgr.IsFlagNpc(m_npcInfo->Id))
+	long IsFlagNpc = 0;
+	if (m_npcInfo && g_RegionCastleWarMgr.IsFlagNpc(m_npcInfo->Id))
 	{
-        flag |= SYNC_FLAG_WAR;
+		flag |= SYNC_FLAG_WAR;
 	}
 
-	if (m_npcInfo && m_npcInfo->Boss!=0)
+	if (m_npcInfo && m_npcInfo->Boss != 0)
 	{
-        flag |= SYNC_FLAG_BOSS;
+		flag |= SYNC_FLAG_BOSS;
 	}
 
 	if (m_npcInfo && (m_npcInfo->Type == 6 || m_npcInfo->Type == 7 || m_npcInfo->Type == 8))
@@ -952,22 +961,22 @@ bool CRegionCreature::WriteSnapshot(CG_CmdPacket *cmd,CRegionCreature *target)
 	}
 	*/
 
-    BYTE cNameColor = 0;
+	BYTE cNameColor = 0;
 
-	if(IsUser())
-    {
-        flag |= SYNC_FLAG_USER;
-		if (m_core.Metier==METIER_TAOIST) 
+	if (IsUser())
+	{
+		flag |= SYNC_FLAG_USER;
+		if (m_core.Metier == METIER_TAOIST)
 			flag |= SYNC_FLAG_METIER_TAOIST;
 		//const char METIER_WARRIOR = 1;  //Õ½Ê¿ -> Ã÷Íõ ->ÎäÌ¨
 		//const char METIER_HUNTER  = 2;  //·çÎèÕß -> »¨¼ä
 		//const char METIER_WIZARD  = 3;  //Ð°¶ñSS -> ÊñÉ½ 
 		//const char METIER_TAOIST  = 4;  //µÀÊ¿ -> Ê¥Î× ->Ãç½®
-    }
-	else if(IsUserPet())
-    {
-        flag |= SYNC_FLAG_PET;
-    }
+	}
+	else if (IsUserPet())
+	{
+		flag |= SYNC_FLAG_PET;
+	}
 	else if (IsCallNpc())
 	{
 		flag |= SYNC_FLAG_CALL;
@@ -979,13 +988,13 @@ bool CRegionCreature::WriteSnapshot(CG_CmdPacket *cmd,CRegionCreature *target)
 
 	flag |= SYNC_FLAG_POSITION;
 	flag |= SYNC_FLAG_DIRECTION;
-	
-	if(m_core.ComplexModel) 
+
+	if (m_core.ComplexModel)
 		flag |= SYNC_FLAG_COMPLEX_MODEL;
 
 	// write info base on flag
 	cmd->WriteLong(flag);
-	
+
 	// PZH
 	long cDead = this->GetPlayerLogic()->GetLiveType();
 
@@ -1002,13 +1011,13 @@ bool CRegionCreature::WriteSnapshot(CG_CmdPacket *cmd,CRegionCreature *target)
 
 	//cmd->WriteByte(m_UltimateChange);
 
-	cmd->SerializeBit(cDead,2);
+	cmd->SerializeBit(cDead, 2);
 	long cMakeTemp = 0;
-	if(NULL != m_pTeam)
+	if (NULL != m_pTeam)
 	{
-		if(!m_pTeam->mData.Empty())
+		if (!m_pTeam->mData.Empty())
 		{
-			if(m_pTeam->mData.GetCaptain() == m_oId)
+			if (m_pTeam->mData.GetCaptain() == m_oId)
 			{
 				cMakeTemp = 2;
 			}
@@ -1018,60 +1027,61 @@ bool CRegionCreature::WriteSnapshot(CG_CmdPacket *cmd,CRegionCreature *target)
 			}
 		}
 	}
-	cmd->SerializeBit(cMakeTemp,2);
-	cmd->SerializeBit(m_lIsCombat,1);
+	cmd->SerializeBit(cMakeTemp, 2);
+	cmd->SerializeBit(m_lIsCombat, 1);
 
-	if (flag&SYNC_FLAG_TRIGGER)
+	if (flag & SYNC_FLAG_TRIGGER)
 	{
-		cmd->SerializeBit(triggerIsClose,1);
+		cmd->SerializeBit(triggerIsClose, 1);
 		cmd->WriteLong(triggerID);
 	}
 
 	//
 	//
 	//-----------add start by tony 05.06.29------------------//
-	if (flag&SYNC_FLAG_WAR)
+	if (flag & SYNC_FLAG_WAR)
 	{
 		cmd->WriteString((char*)m_unionName.c_str());
 	}
 	//-----------add end   by tony 05.06.29------------------//
 
-    if (flag&SYNC_FLAG_BOSS)
+	if (flag & SYNC_FLAG_BOSS)
 	{
 		cmd->WriteLong(m_core.GetMaxHp());
 		cmd->WriteLong(m_core.GetHp());
 		cmd->WriteLong(m_core.Lev);
-	}else
+	}
+	else
 	{
-		char cHPRate  = (((float)m_core.GetHp())/m_core.GetMaxHp())*100;
-		char cMPRate  = (((float)m_core.GetMp())/m_core.GetMaxMp())*100;
+		char cHPRate = (((float)m_core.GetHp()) / m_core.GetMaxHp()) * 100;
+		char cMPRate = (((float)m_core.GetMp()) / m_core.GetMaxMp()) * 100;
 		char cActorID = m_core.actorID;
-		long lLev     = m_core.Lev;
+		long lLev = m_core.Lev;
 		long lHeadImageID = m_core.HeadImageID;
 
-		if (m_core.Metier  == METIER_TAOIST)	
+		if (m_core.Metier == METIER_TAOIST)
 		{
 			if (m_core.GetMp() <= 0)
 			{
 				m_core.SetShieldHp(0);
 				m_Skill.ClearEffByClass(18); //È¥µôÄ§·¨¶ÜÐ§¹û(Ê¥Î×))
-			}		
+			}
 		}
 
-		if (cHPRate<0) cHPRate = 0;
-		else if (cHPRate>100) cHPRate = 100;
+		if (cHPRate < 0) cHPRate = 0;
+		else if (cHPRate > 100) cHPRate = 100;
 
-		if (cMPRate<0) cMPRate = 0;
-		else if (cMPRate>100) cMPRate = 100;
-	
+		if (cMPRate < 0) cMPRate = 0;
+		else if (cMPRate > 100) cMPRate = 100;
+
 		cmd->WriteByte(cHPRate);
 		cmd->WriteByte(cMPRate);
 		cmd->WriteByte(cActorID);
 		cmd->WriteLong(lLev);
 		cmd->WriteLong(lHeadImageID);
 	}
-	
-    if(flag & SYNC_FLAG_POSITION)
+
+	if (flag & SYNC_FLAG_POSITION)
 	{
 		short dx = m_pos[0] - target->m_pos[0];
 		short dy = m_pos[1] - target->m_pos[1];
@@ -1080,16 +1090,17 @@ bool CRegionCreature::WriteSnapshot(CG_CmdPacket *cmd,CRegionCreature *target)
 		if (m_ai)
 		{
 			cmd->WriteByte(m_ai->m_bTrace ? 1 : 0);
-		}else{
+		}
+		else {
 			cmd->WriteByte(0);
 		}
 
 	}
-	if(flag & SYNC_FLAG_DIRECTION)
+	if (flag & SYNC_FLAG_DIRECTION)
 	{
 		cmd->WriteByte(m_dir);
 	}
-	if(flag & SYNC_FLAG_COMPLEX_MODEL)
+	if (flag & SYNC_FLAG_COMPLEX_MODEL)
 	{
 		cmd->WriteByte(m_modelRef);
 	}
@@ -1097,94 +1108,95 @@ bool CRegionCreature::WriteSnapshot(CG_CmdPacket *cmd,CRegionCreature *target)
 	{
 		cmd->WriteShort(m_core.ModelId);
 	}
-	if(!(flag & SYNC_FLAG_USER))
+	if (!(flag & SYNC_FLAG_USER))
 	{
 		cmd->WriteShort(m_npcId);
 	}
 	else if (flag & SYNC_FLAG_METIER_TAOIST)
 	{
 		long lShapeshift = m_ChangeModelID == 0 ? 0 : 1;
-		cmd->SerializeBit(lShapeshift,1);
+		cmd->SerializeBit(lShapeshift, 1);
 	}
 
 	/*Tianh 09.12.25*/
 	char cFaction = -1;
-	if(m_core.Faction == FACTION_ZHOU) 
-		cFaction=0;
-	else if(m_core.Faction == FACTION_SHANG)
-		cFaction=1;
-	else if(m_core.Faction == FACTION_NEUTRAL) 
-		cFaction=3;
+	if (m_core.Faction == FACTION_ZHOU)
+		cFaction = 0;
+	else if (m_core.Faction == FACTION_SHANG)
+		cFaction = 1;
+	else if (m_core.Faction == FACTION_NEUTRAL)
+		cFaction = 3;
 	cmd->WriteByte(cFaction);
 
-    switch (GetPKState())
-    {
-		case PK_STATE_YELLOW_NAME:  cNameColor |= PK_STATE_YELLOW_NAME; break;
-		case PK_STATE_RED_NAME:     cNameColor |= PK_STATE_RED_NAME;    break;
-    }
-    if(m_bStatic)
+	switch (GetPKState())
 	{
-		cmd->WriteByte(MOVE_STATE_STATIC|cNameColor);
+	case PK_STATE_YELLOW_NAME:  cNameColor |= PK_STATE_YELLOW_NAME; break;
+	case PK_STATE_RED_NAME:     cNameColor |= PK_STATE_RED_NAME;    break;
 	}
-	else if(IsRidePet())
+	if (m_bStatic)
 	{
-		cmd->WriteByte(MOVE_STATE_WALK|MOVE_STATE_RIDE|cNameColor);
+		cmd->WriteByte(MOVE_STATE_STATIC | cNameColor);
+	}
+	else if (IsRidePet())
+	{
+		cmd->WriteByte(MOVE_STATE_WALK | MOVE_STATE_RIDE | cNameColor);
 		cmd->WriteLong(m_pet->m_oId);
 	}
 
 	else
 	{
-		cmd->WriteByte(MOVE_STATE_WALK|cNameColor);
+		cmd->WriteByte(MOVE_STATE_WALK | cNameColor);
 	}
-   
+
 	this->m_Skill.NetWriteEffect(cmd);
 	return true;
 }
 
-void CRegionCreature::WgChecked(int iBaseTime, int iRandTime, char *szCheckInfo)
+void CRegionCreature::WgChecked(int iBaseTime, int iRandTime, char* szCheckInfo)
 {
-    if(m_master)
-    {
-        m_master->WgChecked(iBaseTime, iRandTime);
-        return;
-    }
-    if (m_wgChecked==0)
-    {
+	if (m_master)
+	{
+		m_master->WgChecked(iBaseTime, iRandTime);
+		return;
+	}
+	if (m_wgChecked == 0)
+	{
 		ERR("WgChecked:,UserName: %s, IP: %s, CheckInfo: %s\n",
-			m_userInfo->m_username.c_str(),m_userInfo->m_userIpAddress.c_str(),szCheckInfo);
+			m_userInfo->m_username.c_str(), m_userInfo->m_userIpAddress.c_str(), szCheckInfo);
 
 		m_wgChecked = 1;
-        if (g_region) g_region->m_iWgCheckedTotal ++;
-        m_wgCheckedTime = (long)time(NULL)+iBaseTime+rand()%iRandTime; // ¼ì²éµ½Íâ¹Ò£¬¼ÓÉÏ120µ½600ÃëµÄÑÓÊ±ÍË³ö
+		if (g_region) g_region->m_iWgCheckedTotal++;
+		m_wgCheckedTime = (long)time(NULL) + iBaseTime + rand() % iRandTime; // ¼ì²éµ½Íâ¹Ò£¬¼ÓÉÏ120µ½600ÃëµÄÑÓÊ±ÍË³ö
 #ifdef WIN32
-        LOG1("CRegionCreature::WgChecked %d\n", m_wgCheckedTime-(long)time(NULL));
+		LOG1("CRegionCreature::WgChecked %d\n", m_wgCheckedTime - (long)time(NULL));
 #endif
-    }
+	}
 }
 
 void CRegionCreature::PossiblyUsingWG(int iCnt, int iBaseTime, int iRandTime)
 {
-    if(m_master)
-    {
+	if (m_master)
+	{
 		m_master->PossiblyUsingWG(iCnt, iBaseTime, iRandTime);
-        return;
-    }
-    long lNow = (long)time(NULL);
-    // ¿Í»§¶Ë»Ø´ðÎÊÌâÊÇ50ÃëËø¶¨£¬Õâ±ßÉèÖÃ³É70ÃëÊÇ×îÉÙ20ÃëÃ»ÓÐÎÊÌâµÄÊ±¼ä
-    //     Èç¹û m_wgMaybeChecked Îª0£¬¾ÍÊÇ»¹Ã»ÓÐ¿ªÊ¼¼ì²é¿ÉÄÜµÄÍâ¹Ò£¬ÕâÊ±ºòÒ»¶¨Òªµ½ÉÏ´Î¼ì²éºóµÄ70Ãë²ÅÄÜ¿ªÊ¼¼ì²é
-    //     ·ñÔò£¬¾Í¿ÉÒÔ¼ì²é
-    if (m_wgMaybeChecked!=0 || (lNow>m_wgMaybeCheckedTime+70-iBaseTime))
-    {
-        if (m_wgMaybeChecked<5)
-        {
-            m_wgMaybeChecked += iCnt;
-            m_wgMaybeCheckedTime = lNow+iBaseTime+rand()%iRandTime;
+		return;
+	}
+	long lNow = (long)time(NULL);
+	// ¿Í»§¶Ë»Ø´ðÎÊÌâÊÇ50ÃëËø¶¨£¬Õâ±ßÉèÖÃ³É70ÃëÊÇ×îÉÙ20ÃëÃ»ÓÐÎÊÌâµÄÊ±¼ä
+	//     Èç¹û m_wgMaybeChecked Îª0£¬¾ÍÊÇ»¹Ã»ÓÐ¿ªÊ¼¼ì²é¿ÉÄÜµÄÍâ¹Ò£¬ÕâÊ±ºòÒ»¶¨Òªµ½ÉÏ´Î¼ì²éºóµÄ70Ãë²ÅÄÜ¿ªÊ¼¼ì²é
+	//     ·ñÔò£¬¾Í¿ÉÒÔ¼ì²é
+	if (m_wgMaybeChecked != 0 || (lNow > m_wgMaybeCheckedTime + 70 - iBaseTime))
+	{
+		if (m_wgMaybeChecked < 5)
+		{
+			m_wgMaybeChecked += iCnt;
+			m_wgMaybeCheckedTime = lNow + iBaseTime + rand() % iRandTime;
 #ifdef WIN32
-            LOG2("CRegionCreature::PossiblyUsingWG %d %d\n", m_wgMaybeChecked, m_wgMaybeCheckedTime-lNow);
+			LOG2("CRegionCreature::PossiblyUsingWG %d %d\n", m_wgMaybeChecked, m_wgMaybeCheckedTime - lNow);
 #endif
-        }else
-        {
-        }
+		}
+		else
+		{
+		}
 	}
 
 	//if (m_userInfo)
@@ -1205,28 +1217,28 @@ void CRegionCreature::PossiblyUsingWG(int iCnt, int iBaseTime, int iRandTime)
 
 void CRegionCreature::SendWgCheckedToClient()
 {
-    if(m_master)
-    {
-        m_master->SendWgCheckedToClient();
-        return;
-    }
+	if (m_master)
+	{
+		m_master->SendWgCheckedToClient();
+		return;
+	}
 	//if (m_userInfo)
 	//	NOTICE("find WG kick user %s \n",m_userInfo->m_username);
-    g_sendCmd->BeginWrite();
-    g_sendCmd->WriteShort(r2c_wg_checked);
-    RecvCmd(g_sendCmd);
+	g_sendCmd->BeginWrite();
+	g_sendCmd->WriteShort(r2c_wg_checked);
+	RecvCmd(g_sendCmd);
 }
 
 bool CRegionCreature::CanMove()
 {
 	if (!m_core.IsAbiMove()) return false;
 	if (IsMonster())
-    {
-		if(m_combatBusy && rtGetMilliseconds() < m_combatBusy) return false;
-    }
+	{
+		if (m_combatBusy && rtGetMilliseconds() < m_combatBusy) return false;
+	}
 	int x = m_stateList.size();
 	if (/*PZH*//*m_bDead*/!this->GetPlayerLogic()->IsLive()) return false;
-	if (!m_stateList.empty()) 
+	if (!m_stateList.empty())
 	{
 		if (FindStateCannotMove())
 			return false;
@@ -1234,36 +1246,36 @@ bool CRegionCreature::CanMove()
 
 	if (!State_CanMove()) return false;
 
-    if (m_master)
-    {
-        if (!m_master->m_core.IsAbiMove()) return false;
+	if (m_master)
+	{
+		if (!m_master->m_core.IsAbiMove()) return false;
 		if (/*PZH*//*m_master->m_bDead*/!m_master->GetPlayerLogic()->IsLive()) return false;
-	    if (!m_master->State_CanMove()) return false;
-    }
+		if (!m_master->State_CanMove()) return false;
+	}
 	return true;
 }
 
 long CRegionCreature::GetAttackBusy()
 {
-	if(m_core.AttSpeed.GetValue() == 0) return 1000;
+	if (m_core.AttSpeed.GetValue() == 0) return 1000;
 
-	return (1.0f/m_core.AttSpeed.GetValue())*1000;
+	return (1.0f / m_core.AttSpeed.GetValue()) * 1000;
 }
 
 void CRegionCreature::AddInvincibility()
 {
-    m_core.AddMove();
-    m_core.AddUseSkill();
-    m_core.AddNormalAttack();
-    //m_core.AddAbiBeAttack(1); // ÒòÎªÎÒÃÇ²»Ï£ÍûËø¶¨µÄÊ±ºòÎÞµÐ£¬¾ÍÔÝÊ±È¥µôÕâ¸öº¯Êý
+	m_core.AddMove();
+	m_core.AddUseSkill();
+	m_core.AddNormalAttack();
+	//m_core.AddAbiBeAttack(1); // ÒòÎªÎÒÃÇ²»Ï£ÍûËø¶¨µÄÊ±ºòÎÞµÐ£¬¾ÍÔÝÊ±È¥µôÕâ¸öº¯Êý
 }
 
 void CRegionCreature::RemoveInvincibility()
 {
-    m_core.SubMove();
-    m_core.SubUseSkill();
-    m_core.SubNormalAttack();
-    //m_core.RemoveAbiBeAttack(1); // ÒòÎªÎÒÃÇ²»Ï£ÍûËø¶¨µÄÊ±ºòÎÞµÐ£¬¾ÍÔÝÊ±È¥µôÕâ¸öº¯Êý
+	m_core.SubMove();
+	m_core.SubUseSkill();
+	m_core.SubNormalAttack();
+	//m_core.RemoveAbiBeAttack(1); // ÒòÎªÎÒÃÇ²»Ï£ÍûËø¶¨µÄÊ±ºòÎÞµÐ£¬¾ÍÔÝÊ±È¥µôÕâ¸öº¯Êý
 }
 
 bool CRegionCreature::HaveEffectByID(unsigned short wID)
@@ -1272,7 +1284,7 @@ bool CRegionCreature::HaveEffectByID(unsigned short wID)
 	if (!pActorSkill)
 		return false;
 
-	if(pActorSkill->FindEffect(wID))
+	if (pActorSkill->FindEffect(wID))
 		return true;
 	return false;
 }
@@ -1283,21 +1295,21 @@ bool CRegionCreature::HaveEffectByClass(unsigned char cID)
 	if (!pActorSkill)
 		return false;
 
-	if(pActorSkill->FindEffectByClassID(cID))
+	if (pActorSkill->FindEffectByClassID(cID))
 		return true;
 	return false;
 }
 
-CRegionCreature *CRegionCreature::GetEntity()
+CRegionCreature* CRegionCreature::GetEntity()
 {
-	if(IsRidePet())
+	if (IsRidePet())
 		return m_pet;
 	return this;
 }
 
-CRegionCreature *CRegionCreature::GetControl()
+CRegionCreature* CRegionCreature::GetControl()
 {
-	if(IsRided())
+	if (IsRided())
 		return m_master;
 	return this;
 }
@@ -1312,14 +1324,14 @@ bool CRegionCreature::IsInSafeArea()
 bool CRegionCreature::CheckUseExpItem()
 {
 	size_t listsize = 10;
-	switch(m_core.Metier)
+	switch (m_core.Metier)
 	{
 	case METIER_WARRIOR:
 		if (g_region->m_HeroList.m_warriorList.size() <= listsize)
 		{
 			listsize = g_region->m_HeroList.m_warriorList.size();
 		}
-		for(size_t i=0; i<listsize; ++i)
+		for (size_t i = 0; i < listsize; ++i)
 		{
 			if (m_core.Name == g_region->m_HeroList.m_warriorList[i].name)
 			{
@@ -1332,7 +1344,7 @@ bool CRegionCreature::CheckUseExpItem()
 		{
 			listsize = g_region->m_HeroList.m_warriorList.size();
 		}
-		for(size_t i=0; i<listsize; ++i)
+		for (size_t i = 0; i < listsize; ++i)
 		{
 			if (m_core.Name == g_region->m_HeroList.m_hunterList[i].name)
 			{
@@ -1345,7 +1357,7 @@ bool CRegionCreature::CheckUseExpItem()
 		{
 			listsize = g_region->m_HeroList.m_warriorList.size();
 		}
-		for(size_t i=0; i<listsize; ++i)
+		for (size_t i = 0; i < listsize; ++i)
 		{
 			if (m_core.Name == g_region->m_HeroList.m_wizardList[i].name)
 			{
@@ -1358,7 +1370,7 @@ bool CRegionCreature::CheckUseExpItem()
 		{
 			listsize = g_region->m_HeroList.m_warriorList.size();
 		}
-		for(size_t i=0; i<listsize; ++i)
+		for (size_t i = 0; i < listsize; ++i)
 		{
 			if (m_core.Name == g_region->m_HeroList.m_taolistList[i].name)
 			{
@@ -1370,9 +1382,9 @@ bool CRegionCreature::CheckUseExpItem()
 	return true;
 }
 
-bool CRegionCreature::CheckAttackSpeed(long interval,bool test)
+bool CRegionCreature::CheckAttackSpeed(long interval, bool test)
 {
-	if(m_combatBusy && rtGetMilliseconds() < m_combatBusy) 
+	if (m_combatBusy && rtGetMilliseconds() < m_combatBusy)
 	{
 		//CRegionCreature* pRecv = this;
 		//if(m_master)
@@ -1383,57 +1395,57 @@ bool CRegionCreature::CheckAttackSpeed(long interval,bool test)
 		//DWORD inter = m_combatBusy - rtGetMilliseconds();
 		//pRecv->SendSystemMessage(rtFormatNumber(inter));
 		//LOG4("@@@@@@ %d %d %d %d\n", m_combatBusy, rtGetMilliseconds(), m_combatBusy - rtGetMilliseconds(), interval);
-		if(!m_atChk.Valid(m_combatBusy - rtGetMilliseconds()))
+		if (!m_atChk.Valid(m_combatBusy - rtGetMilliseconds()))
 		{
 			// LOG1("[%s] attack speed error,ignore\n",m_core.Name.c_str());
 			// LOG4("###### %d %d %d %d\n", m_combatBusy, rtGetMilliseconds(), m_combatBusy - rtGetMilliseconds(), interval);
-            this->PossiblyUsingWG();
+			this->PossiblyUsingWG();
 			return false;
-		
+
 			//RtCoreLog().Debug("¹¥»÷ËÙ¶È³ö´í interval = %d m_combatBusy=%d",interval,m_combatBusy);
-		
+
 		}
 	}
 
-	if(!test)
+	if (!test)
 		m_combatBusy = rtGetMilliseconds() + interval; //Tianh ÁÙÊ±ÐÞ¸Ä
 	return true;
 }
 
-bool CRegionCreature::CheckCommonAttackSpeed(long interval,bool test)
+bool CRegionCreature::CheckCommonAttackSpeed(long interval, bool test)
 {
 	DWORD dwNowTime = rtGetMilliseconds();
-	if(m_CcombatBusy && dwNowTime < m_CcombatBusy) 
+	if (m_CcombatBusy && dwNowTime < m_CcombatBusy)
 	{
 		//NOTICE("AttackSpeed check error: interval %d ms\n", 
 		//	m_CcombatBusy - dwNowTime);
 		//NOTICE("m_atChk.cur:%d, m_atChk.cur:%d \n", 
 		//	m_atChk.cur,m_atChk.max);
 
-		if(!m_atChk.Valid(m_CcombatBusy - dwNowTime))
+		if (!m_atChk.Valid(m_CcombatBusy - dwNowTime))
 		{
 			this->PossiblyUsingWG();
 			return false;
-			
+
 		}
 	}
 
 	//if(!test)
-		m_CcombatBusy = dwNowTime + interval; //Tianh ÁÙÊ±ÐÞ¸Ä
+	m_CcombatBusy = dwNowTime + interval; //Tianh ÁÙÊ±ÐÞ¸Ä
 
 	return true;
 }
 
 // check if A can attack B
-bool CRegionCreature::TryNormalAttack(CRegionCreature *target,int attRange)
+bool CRegionCreature::TryNormalAttack(CRegionCreature* target, int attRange)
 {
-	if(!m_core.IsAbiNormalAttack())
+	if (!m_core.IsAbiNormalAttack())
 		return false;
 
 	// ×Ô¼ºÏà¹ØÊôÐÔÅÐ¶Ï£¬¹¥»÷ËÙ¶ÈµÈ
-	
+
 	//Tianh ÕâÀï¼¼ÄÜÊ±¼ä·ÀÍâ¹Ò¼ì²é  ÔÝÊ±È¥µô
-	if(!CheckCommonAttackSpeed(m_core.GetAttackInterval(),false))
+	if (!CheckCommonAttackSpeed(m_core.GetAttackInterval(), false))
 	{
 		//LOG("normal attack speed error\n");
 		return false;
@@ -1443,15 +1455,16 @@ bool CRegionCreature::TryNormalAttack(CRegionCreature *target,int attRange)
 	//-ÕâÊÇÎªÁË¸ÄÕýÆïÊÞ¹¥»÷Ê±»»×°±¸¹¥»÷ËÙ¶È¹ý¿ìÎÊÌâ£¬µ¼ÖÂÎÊÌâµÄÕæÕýÔ­Òò
 	//-²»ÔÚÕâÀï
 	DWORD last = 0;
-	if(IsUserPet() || IsCallNpc())
+	if (IsUserPet() || IsCallNpc())
 	{
 		last = m_master->m_lastEquipItemTime;
-	}else if(IsUser())
+	}
+	else if (IsUser())
 	{
 		last = m_lastEquipItemTime;
 	}
-	DWORD now=time(NULL);
-	if(now-last<1)
+	DWORD now = time(NULL);
+	if (now - last < 1)
 	{
 		return false;
 	}
@@ -1464,7 +1477,7 @@ bool CRegionCreature::TryNormalAttack(CRegionCreature *target,int attRange)
 	//		return false;
 	//	}
 	//}
-	if((m_core.AttackRange.GetValue() + target->m_model->ModelRadius + 60) < Distance(target->m_pos))
+	if ((m_core.AttackRange.GetValue() + target->m_model->ModelRadius + 60) < Distance(target->m_pos))
 	{
 		// too far away
 		return false;
@@ -1474,7 +1487,7 @@ bool CRegionCreature::TryNormalAttack(CRegionCreature *target,int attRange)
 	return true;
 }
 
-bool CRegionCreature::TryStateHit(int param,CRegionCreature *target,SSkill* pSkillAttr)
+bool CRegionCreature::TryStateHit(int param, CRegionCreature* target, SSkill* pSkillAttr)
 {
 	float rate;
 	int delta = target->m_core.Lev - m_core.Lev;
@@ -1509,36 +1522,36 @@ bool CRegionCreature::TryStateHit(int param,CRegionCreature *target,SSkill* pSki
 	//	while(delta-- >0)
 	//		rate *= 0.97;
 	//}
-	
-	if(rate < 0) return false;
-	
-	return GetProb(rate/100.0f);
+
+	if (rate < 0) return false;
+
+	return GetProb(rate / 100.0f);
 }
 
-bool CRegionCreature::IsSkillCritical(int param, CRegionCreature *target)
+bool CRegionCreature::IsSkillCritical(int param, CRegionCreature* target)
 {
 	// if(!IsUser()) return false;
-	float rate = m_core.GetSkillCriRate(target->m_core.Lev,target->m_core.ReSkillCritical.GetValue()) + param/100.0;
-	if( (IsUser()||IsUserPet()||IsCallNpc()) && (target->IsUser()||target->IsUserPet()||target->IsCallNpc()) )
+	float rate = m_core.GetSkillCriRate(target->m_core.Lev, target->m_core.ReSkillCritical.GetValue()) + param / 100.0;
+	if ((IsUser() || IsUserPet() || IsCallNpc()) && (target->IsUser() || target->IsUserPet() || target->IsCallNpc()))
 		rate /= 2;
-    
+
 	return GetProb(rate);
 }
 
-void CRegionCreature::GetSkillCriDamage(int &phyDmg,int eleDmg[MAX_ELEMENT_ATTR],CRegionCreature *target)
+void CRegionCreature::GetSkillCriDamage(int& phyDmg, int eleDmg[MAX_ELEMENT_ATTR], CRegionCreature* target)
 {
 	phyDmg = 0;
-	for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+	for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 		eleDmg[i] = 0;
 
-	if(IsUser())
+	if (IsUser())
 	{
 		SItemID item = m_pItemContainer->GetEquipItem(CItemContainerBase::WEAPON_1, true);
-		if(ItemID_IsValid(item))
+		if (ItemID_IsValid(item))
 		{
 			SItemBase* pClass = g_region->m_pItemManager->GetItem(item.type);
-			if(!pClass) return;
-			
+			if (!pClass) return;
+
 			//if(ItemID_IsValid(item) && ItemIsTrump(item.type))
 			//{
 			//	MW_GetEleValue(item,eleDmg);
@@ -1558,11 +1571,11 @@ void CRegionCreature::GetSkillCriDamage(int &phyDmg,int eleDmg[MAX_ELEMENT_ATTR]
 
 				//2009.4.20 Cheney, Ìá¸ßÊôÐÔÓ°ÏìµÄ±©»÷
 			phyDmg = (m_core.GetDamageMax() + m_core.GetDamageMin()) / 2;
-			phyDmg *= (1+m_core.SkillCriDamageRate/100.f);
+			phyDmg *= (1 + m_core.SkillCriDamageRate / 100.f);
 
 			if (IsUser())
 			{
-				for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+				for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 				{
 					eleDmg[i] = m_core.ElementDamage[i].GetValue();
 				}
@@ -1571,122 +1584,122 @@ void CRegionCreature::GetSkillCriDamage(int &phyDmg,int eleDmg[MAX_ELEMENT_ATTR]
 			{
 				if (m_npcInfo)
 				{
-					for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+					for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 					{
 						eleDmg[i] = m_npcInfo->ElementDamage[i] + m_core.ElementDamage[i].GetValue();
 					}
-				} 
+				}
 				else
 				{
 					LOG("m_npcInfo is Null , GetSkillCriDamage function");
-				}		
+				}
 			}
 
 			/*Tianh  ÔªËØ¹¥»÷µÄ¸¡¶¯Öµ*/
-			for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+			for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 			{
-				if(eleDmg[i] >= 5)
-					eleDmg[i] = GetRand(eleDmg[i]*1.1,eleDmg[i]*0.9);
+				if (eleDmg[i] >= 5)
+					eleDmg[i] = GetRand(eleDmg[i] * 1.1, eleDmg[i] * 0.9);
 			}
-			
-			for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+
+			for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 			{
-				eleDmg[i] *= (1+m_core.SkillCriDamageRate/100.f);
+				eleDmg[i] *= (1 + m_core.SkillCriDamageRate / 100.f);
 			}
-			
+
 			//}
 		}
 	}
 	else
 	{
-		GetDamage(phyDmg,eleDmg);
+		GetDamage(phyDmg, eleDmg);
 		phyDmg *= 2;
-		for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+		for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 			eleDmg[i] *= 2;
 	}
-	target->ApplyDamage(this,phyDmg,eleDmg,true);
+	target->ApplyDamage(this, phyDmg, eleDmg, true);
 }
 
 // check if A can hit B
-bool CRegionCreature::TryHit(CRegionCreature *target)
+bool CRegionCreature::TryHit(CRegionCreature* target)
 {
 	// pk self def check
 	// check pk state,check user pet also...
 //-----------------------chg start by tony 05.05.20--------------------------//
-	if((target->IsUser() || target->IsUserPet() ||target->IsCallNpc()) && (IsUser()||IsUserPet()||IsCallNpc()) &&
+	if ((target->IsUser() || target->IsUserPet() || target->IsCallNpc()) && (IsUser() || IsUserPet() || IsCallNpc()) &&
 		(!g_RegionCastleWarMgr.IsCastleWarTime(target) || !g_RegionCastleWarMgr.IsCastleWarTime(this)))
-//-----------------------chg end   by tony 05.05.20--------------------------//
+		//-----------------------chg end   by tony 05.05.20--------------------------//
 	{
-		CRegionCreature *src,*tar;
+		CRegionCreature* src, * tar;
 		src = this;
-		if(IsUserPet()||IsCallNpc())
+		if (IsUserPet() || IsCallNpc())
 			src = m_master;
 		tar = target;
-		if(target->IsUserPet()||target->IsCallNpc())
+		if (target->IsUserPet() || target->IsCallNpc())
 			tar = target->m_master;
-		if( tar->GetPKState()==PK_STATE_NORMAL && (!src->IsSelfDef(tar)) )
+		if (tar->GetPKState() == PK_STATE_NORMAL && (!src->IsSelfDef(tar)))
 			tar->AddSelfDef(src);
 	}
 
-	if(!target->m_core.IsAbiDodge())
+	if (!target->m_core.IsAbiDodge())
 		return true;
 
 	int myAtt = 0;
 	if (IsRided())
 	{
-		myAtt  = m_core.GetAttack()*2;
+		myAtt = m_core.GetAttack() * 2;
 	}
 	else
 	{
-		myAtt  = m_core.GetAttack();
-	}	
+		myAtt = m_core.GetAttack();
+	}
 	int tarDog = target->m_core.GetDodge();
 	/*int attachAtt = m_core.GetAbiStateHit();*/
-	float rate =0.f;
+	float rate = 0.f;
 	/*Tianh Õ½¶·¹«Ê½  ÆÕÍ¨¹¥»÷ÃüÖÐ*/
 	if (IsUser() && target->IsMonster())
 	{
 		if (target->IsUserPet() || target->IsCallNpc())
 		{
-			rate  = (((float)myAtt+500)/(tarDog+1200));
+			rate = (((float)myAtt + 500) / (tarDog + 1200));
 		}
 		else if (target->IsUser())
 		{
-			rate  = (((float)myAtt+500)/(tarDog+1200));
+			rate = (((float)myAtt + 500) / (tarDog + 1200));
 		}
 		else
 		{
-			rate  = (((float)myAtt+500)/(tarDog+1200))+0.50;
-		}	
+			rate = (((float)myAtt + 500) / (tarDog + 1200)) + 0.50;
+		}
 	}
 	else if (IsUserPet() && target->IsMonster())
 	{
 		if (target->IsUserPet() || target->IsCallNpc())
 		{
-			rate  = (((float)myAtt+500)/(tarDog+1200));
+			rate = (((float)myAtt + 500) / (tarDog + 1200));
 		}
 		else if (target->IsUser())
 		{
-			rate  = (((float)myAtt+500)/(tarDog+1200));
+			rate = (((float)myAtt + 500) / (tarDog + 1200));
 		}
 		else
 		{
-			rate  = (((float)myAtt+500)/(tarDog+1200))+0.50;
+			rate = (((float)myAtt + 500) / (tarDog + 1200)) + 0.50;
 		}
 	}
 	else  //¹Ö´òÈÎºÎ¶¼+0.5
 	{
-		rate  = (((float)myAtt+500)/(tarDog+1200))+0.50;
+		rate = (((float)myAtt + 500) / (tarDog + 1200)) + 0.50;
 	}
-	
 
-	if (0 == rate )
+
+	if (0 == rate)
 	{
 		return true;
 	}
 
-	if(rate  >= 1) rate = 0.9999;
-	if(rate  <= 0.01) rate = 0.0001;
+	if (rate >= 1) rate = 0.9999;
+	if (rate <= 0.01) rate = 0.0001;
 
 	return GetProb(rate);
 }
@@ -1706,59 +1719,60 @@ bool CRegionCreature::TryHit(CRegionCreature *target)
 //  Èç¹û×Ô¼ºÔÚ¾ø¶Ô°²È«Çø£¬¾Í²»ÔÊÐí¹¥»÷
 //  Èç¹û¶Ô·½ÔÚ¾ø¶Ô°²È«Çø£¬¾Í²»ÔÊÐí¹¥»÷
 //
-bool CRegionCreature::CanAttack(CRegionCreature *enemy, SSkill* pSkill)
+bool CRegionCreature::CanAttack(CRegionCreature* enemy, SSkill* pSkill)
 {
 
-    // Èç¹û´¦ÔÚÄ³ÖÖ×´Ì¬¾Í²»ÄÜ¹¥»÷£¬Èç×¢·¨±¦µÈ
+	// Èç¹û´¦ÔÚÄ³ÖÖ×´Ì¬¾Í²»ÄÜ¹¥»÷£¬Èç×¢·¨±¦µÈ
 	if (!m_stateList.empty()) return false;
 
 	if (IsUser() && IsInProtect() && enemy && enemy->IsUser())
 	{
 		SendSystemMessage(R(MSG_SELF_PROTECTED));
 		return false;
-	}else if (enemy && enemy->IsInProtect() && IsUser())
+	}
+	else if (enemy && enemy->IsInProtect() && IsUser())
 	{
 		SendSystemMessage(R(MSG_ENEMY_PROTECTED));
 		return false;
 	}
 
-    bool bSelfIsUserOrPet = (IsUser() || IsUserPet() || IsCallNpc());
-    CRegionCreature *pSelf = IsUser()?this:m_master;
+	bool bSelfIsUserOrPet = (IsUser() || IsUserPet() || IsCallNpc());
+	CRegionCreature* pSelf = IsUser() ? this : m_master;
 
-    EPKAttr ePKAttr;
-    if (enemy)
+	EPKAttr ePKAttr;
+	if (enemy)
 	{
 		//LeiJun Èç¹ûµÐÈËµÄËùÊôÓÃ»§ÊÇ×Ô¼º¾Í²»ÄÜ¹¥»÷
-		if(enemy->m_master == this)
+		if (enemy->m_master == this)
 			return false;
 
-        // Èç¹ûÊÇ¼ì²éÊÇ·ñ¿ÉÒÔ¹¥»÷µÐÈË
-        bool bEnemyIsUserOrPet = (enemy->IsUser() || enemy->IsUserPet() ||  enemy->IsCallNpc());
-        CRegionCreature *pEnemy = enemy->IsUser()?enemy:enemy->m_master;
+		// Èç¹ûÊÇ¼ì²éÊÇ·ñ¿ÉÒÔ¹¥»÷µÐÈË
+		bool bEnemyIsUserOrPet = (enemy->IsUser() || enemy->IsUserPet() || enemy->IsCallNpc());
+		CRegionCreature* pEnemy = enemy->IsUser() ? enemy : enemy->m_master;
 
-        // Èç¹ûÊÇ×Ô¼ºµÄ³èÎï£¬¾Í²»ÄÜ¹¥»÷
-        if (m_pet==enemy)
-        {
-            return false;
-        }
+		// Èç¹ûÊÇ×Ô¼ºµÄ³èÎï£¬¾Í²»ÄÜ¹¥»÷
+		if (m_pet == enemy)
+		{
+			return false;
+		}
 
 		// ·þÎñNPC²»ÄÜ¹¥»÷
-        if (OB_TYPE(enemy)==OBJECT_TYPE_NPC_SERVICE)
-        {
-            return false;
-        }
+		if (OB_TYPE(enemy) == OBJECT_TYPE_NPC_SERVICE)
+		{
+			return false;
+		}
 
-        // Èç¹ûPKÎª0 ²¢ÇÒ ´¦ÓÚ²»ÄÜ¹¥»÷×´Ì¬µÄ»° ¾Í²»ÄÜ¹¥»÷
-        if (bEnemyIsUserOrPet && pEnemy->m_core.Pk==0 && pEnemy->m_core.IsAbiBeAttack()!=0)
-        {
-            return false;
-        }
+		// Èç¹ûPKÎª0 ²¢ÇÒ ´¦ÓÚ²»ÄÜ¹¥»÷×´Ì¬µÄ»° ¾Í²»ÄÜ¹¥»÷
+		if (bEnemyIsUserOrPet && pEnemy->m_core.Pk == 0 && pEnemy->m_core.IsAbiBeAttack() != 0)
+		{
+			return false;
+		}
 
 		//-----------------------add start by tony 05.06.07--------------------------//
-		if(enemy->m_npcInfo != NULL && m_mc && !m_mc->m_bstartTask)//tim.yang  MC  ÔÚÃ»ÓÐ½øÐÐ¹ÖÎï¹¥³ÇµÄÊ±ºò²ÅÔÊÐí³ÇÕ½
+		if (enemy->m_npcInfo != NULL && m_mc && !m_mc->m_bstartTask)//tim.yang  MC  ÔÚÃ»ÓÐ½øÐÐ¹ÖÎï¹¥³ÇµÄÊ±ºò²ÅÔÊÐí³ÇÕ½
 		{
-            // Èç¹ûÊÇ³ÇÕ½Ïà¹ØµÄNPC£¬¾ÍÈÃ³ÇÕ½ÏµÍ³½øÐÐÅÐ¶Ï
-			if(g_RegionCastleWarMgr.IsFlagNpc(enemy->m_npcInfo->Id) ||
+			// Èç¹ûÊÇ³ÇÕ½Ïà¹ØµÄNPC£¬¾ÍÈÃ³ÇÕ½ÏµÍ³½øÐÐÅÐ¶Ï
+			if (g_RegionCastleWarMgr.IsFlagNpc(enemy->m_npcInfo->Id) ||
 				g_RegionCastleWarMgr.IsGuardAnimal(enemy->m_npcInfo->Id))
 			{
 				return g_RegionCastleWarMgr.CanAttack(enemy->m_npcInfo->Id, this, enemy->m_oId);
@@ -1768,35 +1782,35 @@ bool CRegionCreature::CanAttack(CRegionCreature *enemy, SSkill* pSkill)
 
 		//-----------------------add start by tony 05.05.20--------------------------//
 		//²»ÄÜ¹¥»÷×Ô¼ºÕóÓªµÄÊØÎÀ(³ÇÕ½ÆÚ¼äÊØ³Çnpc³ýÍâ)
-		if(enemy->IsGuarder())
+		if (enemy->IsGuarder())
 		{
-			if(    bSelfIsUserOrPet
-                && (pSelf->m_core.Faction == enemy->m_core.Faction)
-                && (enemy->m_npcInfo!= NULL)
-                && !g_RegionCastleWarMgr.IsCastleWarTime(enemy->m_npcInfo->Home))
+			if (bSelfIsUserOrPet
+				&& (pSelf->m_core.Faction == enemy->m_core.Faction)
+				&& (enemy->m_npcInfo != NULL)
+				&& !g_RegionCastleWarMgr.IsCastleWarTime(enemy->m_npcInfo->Home))
 				return false;
 		}
 		//-----------------------add end   by tony 05.05.20--------------------------//
 
-        // Èç¹û×Ô¼ºÔÙ½»Ò×»òÕß°ÚÌ¯¾Í²»ÄÜ¹¥»÷
-        if (m_pTrade || m_pPShop)
-        {
-            // MSG("CRegionCreature::CanAttack ×Ô¼ºÔÚ½»Ò×»òÕß°ÚÌ¯£¬²»ÄÜ¹¥»÷\n");
-            return false;
-        }
+		// Èç¹û×Ô¼ºÔÙ½»Ò×»òÕß°ÚÌ¯¾Í²»ÄÜ¹¥»÷
+		if (m_pTrade || m_pPShop)
+		{
+			// MSG("CRegionCreature::CanAttack ×Ô¼ºÔÚ½»Ò×»òÕß°ÚÌ¯£¬²»ÄÜ¹¥»÷\n");
+			return false;
+		}
 
 		if (IsUser() && enemy->IsUser())
 		{
-			if(pSkill)
+			if (pSkill)
 			{
 				if (pSkill->IsAddHpSkill)
 				{
 					return true;
 				}
-				
+
 			}
 			if (!pSkill || pSkill->bABad != 0)
-				if( m_pTeam->mData.Size() && enemy->m_pTeam->mData.Size() )
+				if (m_pTeam->mData.Size() && enemy->m_pTeam->mData.Size())
 				{
 					if (m_pTeam->mData.GetCaptain() == enemy->m_pTeam->mData.GetCaptain())
 						return false;
@@ -1804,7 +1818,7 @@ bool CRegionCreature::CanAttack(CRegionCreature *enemy, SSkill* pSkill)
 		}
 
 		//tim.yang MC
-		if (IsUser() && 0 == m_core.Faction && 723 == enemy->m_npcId )
+		if (IsUser() && 0 == m_core.Faction && 723 == enemy->m_npcId)
 		{
 			return false;
 		}
@@ -1812,7 +1826,7 @@ bool CRegionCreature::CanAttack(CRegionCreature *enemy, SSkill* pSkill)
 		{
 			return false;
 		}
-		if (IsMonster() && 0 == m_core.Faction && 723 == enemy->m_npcId )
+		if (IsMonster() && 0 == m_core.Faction && 723 == enemy->m_npcId)
 		{
 			return true;
 		}
@@ -1821,136 +1835,141 @@ bool CRegionCreature::CanAttack(CRegionCreature *enemy, SSkill* pSkill)
 			return true;
 		}
 		//end
-        // ÈË¿ÉÒÔ¹¥»÷ÈÎºÎ¹Ö£¬¹ÖÒ²¿ÉÒÔ¹¥»÷ÈÎºÎÈË
-        if (bSelfIsUserOrPet != bEnemyIsUserOrPet)
-        {
-            if (!bEnemyIsUserOrPet && enemy->m_npcInfo) // Èç¹ûµÐÈËÊÇ¹Ö
-            {
-                if (enemy->m_npcInfo->Type==4 || enemy->m_npcInfo->Type==5) // Ò©²Ä»òÕß¿óÎï
-                {
-                    if (pSkill==NULL)
-                    {
-                        return false; // Ò©²Ä»òÕß¿óÎïÊÇ²»ÄÜÆÕ¹¥µÄ
-                    }else
-                    {
-                        if ((pSkill->dwRTarget&SKILL_TARGET_HERB) && (enemy->m_npcInfo->Type==4)) // Ò©²Ä
-                        {
-                            if (pSkill->iLevel<enemy->m_npcInfo->Level)
-                            {
-                                return false; // µÈ¼¶²»¹»
-                            }
-                        }else if ((pSkill->dwRTarget&SKILL_TARGET_MINE) && (enemy->m_npcInfo->Type==5)) // ¿óÎï
-                        {
-                            if (pSkill->iLevel<enemy->m_npcInfo->Level)
-                            {
-                                return false; // µÈ¼¶²»¹»
-                            }
-                        }else
-                        {
-                            return false; // ÆäËû¼¼ÄÜ²»ÄÜ¹¥»÷ Ò©²Ä ºÍ ¿óÎï
-                        }
-                    }
+		// ÈË¿ÉÒÔ¹¥»÷ÈÎºÎ¹Ö£¬¹ÖÒ²¿ÉÒÔ¹¥»÷ÈÎºÎÈË
+		if (bSelfIsUserOrPet != bEnemyIsUserOrPet)
+		{
+			if (!bEnemyIsUserOrPet && enemy->m_npcInfo) // Èç¹ûµÐÈËÊÇ¹Ö
+			{
+				if (enemy->m_npcInfo->Type == 4 || enemy->m_npcInfo->Type == 5) // Ò©²Ä»òÕß¿óÎï
+				{
+					if (pSkill == NULL)
+					{
+						return false; // Ò©²Ä»òÕß¿óÎïÊÇ²»ÄÜÆÕ¹¥µÄ
+					}
+					else
+					{
+						if ((pSkill->dwRTarget & SKILL_TARGET_HERB) && (enemy->m_npcInfo->Type == 4)) // Ò©²Ä
+						{
+							if (pSkill->iLevel < enemy->m_npcInfo->Level)
+							{
+								return false; // µÈ¼¶²»¹»
+							}
+						}
+						else if ((pSkill->dwRTarget & SKILL_TARGET_MINE) && (enemy->m_npcInfo->Type == 5)) // ¿óÎï
+						{
+							if (pSkill->iLevel < enemy->m_npcInfo->Level)
+							{
+								return false; // µÈ¼¶²»¹»
+							}
+						}
+						else
+						{
+							return false; // ÆäËû¼¼ÄÜ²»ÄÜ¹¥»÷ Ò©²Ä ºÍ ¿óÎï
+						}
+					}
 				}
 				if (enemy->m_ai && CRegionAI::STATE_RETURN == enemy->m_ai->m_state)
 				{
 					return false;
 				}
 				//Íæ¼Ò²»µÃ¹¥»÷ÂÃÐÐNPC
-				if(enemy->m_ai && enemy->m_ai->GetType() == CRegionAI::TYPE_TOUR)
+				if (enemy->m_ai && enemy->m_ai->GetType() == CRegionAI::TYPE_TOUR)
 					return false;
-            }
-            return true;
-        }
+			}
+			return true;
+		}
 
-        // ÏÂÃæµÄÅÐ¶ÏËµÃ÷»òÕß¶¼ÊÇ¹Ö£¬»òÕß¶¼ÊÇÈË
+		// ÏÂÃæµÄÅÐ¶ÏËµÃ÷»òÕß¶¼ÊÇ¹Ö£¬»òÕß¶¼ÊÇÈË
 
 		//Èç¹û¶¼ÊÇ¹ÖÎï
-		if( !bEnemyIsUserOrPet && !bSelfIsUserOrPet )
+		if (!bEnemyIsUserOrPet && !bSelfIsUserOrPet)
 		{
-			if(m_ai && enemy->m_ai)
+			if (m_ai && enemy->m_ai)
 			{
 				CRegionAI::Type eSelfAIType = m_ai->GetType();
 				CRegionAI::Type eEnemyAIType = enemy->m_ai->GetType();
-				if(eSelfAIType == CRegionAI::TYPE_MONSTER && eEnemyAIType == CRegionAI::TYPE_TOUR)
+				if (eSelfAIType == CRegionAI::TYPE_MONSTER && eEnemyAIType == CRegionAI::TYPE_TOUR)
 					return true;
-				if(eSelfAIType == CRegionAI::TYPE_TOUR && eEnemyAIType == CRegionAI::TYPE_MONSTER)
+				if (eSelfAIType == CRegionAI::TYPE_TOUR && eEnemyAIType == CRegionAI::TYPE_MONSTER)
 					return true;
 			}
 		}
 
-        // Èç¹ûÊÇÍæ¼Ò¶ÔÍæ¼Ò
-		if( bEnemyIsUserOrPet && bSelfIsUserOrPet )
+		// Èç¹ûÊÇÍæ¼Ò¶ÔÍæ¼Ò
+		if (bEnemyIsUserOrPet && bSelfIsUserOrPet)
 		{
 			bool prevent = true;
 			if (pSelf->m_core.Faction == FACTION_ZHOU)
 			{
-				if(g_RegionCastleWarMgr.IsInTimeZone("XiQi") && g_RegionCastleWarMgr.InCastleWarArea(this))
+				if (g_RegionCastleWarMgr.IsInTimeZone("XiQi") && g_RegionCastleWarMgr.InCastleWarArea(this))
 					prevent = false;
 			}
-			else if(pSelf->m_core.Faction == FACTION_SHANG)
+			else if (pSelf->m_core.Faction == FACTION_SHANG)
 			{
-				if(g_RegionCastleWarMgr.IsInTimeZone("ZhaoGe") && g_RegionCastleWarMgr.InCastleWarArea(this))
+				if (g_RegionCastleWarMgr.IsInTimeZone("ZhaoGe") && g_RegionCastleWarMgr.InCastleWarArea(this))
 					prevent = false;
 			}
 
-			if(prevent)
+			if (prevent)
 			{
-                // ²»ÄÜPKÐÂÊÖ
+				// ²»ÄÜPKÐÂÊÖ
 				//if(bEnemyIsUserOrPet && pEnemy->m_core.Lev <= 10)
-    //            {
+	//            {
 				//	SendSystemMessage(R(MSG_CANT_PK_NEWBIE));
 				//	return false;
 				//}
-    //            // ÐÂÊÖ²»ÄÜPK
+	//            // ÐÂÊÖ²»ÄÜPK
 				//if(pSelf->m_core.Lev <= 10)
-    //            {
+	//            {
 				//	SendSystemMessage(R(MSG_NEWBIE_CANT_PK));
 				//	return false;
 				//}
 			}
 		}
 
-        // Èç¹û×Ô¼ºÔÚ¾ø¶Ô°²È«Çø£¬¾Í²»ÔÊÐí¹¥»÷
-        ePKAttr = m_eCurPosPKAttr;
-        if (ePKAttr==PKA_SAFE)
-        {
-//------------------chg start by tony 05.06.09-----------------------------------------//
+		// Èç¹û×Ô¼ºÔÚ¾ø¶Ô°²È«Çø£¬¾Í²»ÔÊÐí¹¥»÷
+		ePKAttr = m_eCurPosPKAttr;
+		if (ePKAttr == PKA_SAFE)
+		{
+			//------------------chg start by tony 05.06.09-----------------------------------------//
 			if (g_RegionCastleWarMgr.IsCastleWarTime(this)) // ³ÇÕ½
-//------------------chg end   by tony 05.06.09-----------------------------------------//
-            {
-                ePKAttr = PKA_NORMAL;
-            }else
-            {
-                ePKAttr = PKA_SAFEST;
-            }
-        }
-        if (ePKAttr==PKA_SAFEST || ePKAttr==PKA_PKUNABLE)
-        {
-            // MSG("CRegionCreature::CanAttack ×Ô¼ºÔÚ°²È«Çø£¬²»ÄÜ¹¥»÷\n");
-            return false;
-        }
+				//------------------chg end   by tony 05.06.09-----------------------------------------//
+			{
+				ePKAttr = PKA_NORMAL;
+			}
+			else
+			{
+				ePKAttr = PKA_SAFEST;
+			}
+		}
+		if (ePKAttr == PKA_SAFEST || ePKAttr == PKA_PKUNABLE)
+		{
+			// MSG("CRegionCreature::CanAttack ×Ô¼ºÔÚ°²È«Çø£¬²»ÄÜ¹¥»÷\n");
+			return false;
+		}
 
-        // Èç¹û¶Ô·½ÔÚ¾ø¶Ô°²È«Çø£¬¾Í²»ÔÊÐí¹¥»÷
-        ePKAttr = enemy->m_eCurPosPKAttr;
-        if (ePKAttr==PKA_SAFE)
-        {
-//------------------chg start by tony 05.06.09-----------------------------------------//
+		// Èç¹û¶Ô·½ÔÚ¾ø¶Ô°²È«Çø£¬¾Í²»ÔÊÐí¹¥»÷
+		ePKAttr = enemy->m_eCurPosPKAttr;
+		if (ePKAttr == PKA_SAFE)
+		{
+			//------------------chg start by tony 05.06.09-----------------------------------------//
 			if (g_RegionCastleWarMgr.IsCastleWarTime(this)) // ³ÇÕ½
-//------------------chg end   by tony 05.06.09-----------------------------------------//
-            {
-                ePKAttr = PKA_NORMAL;
-            }else
-            {
-                ePKAttr = PKA_SAFEST;
-            }
-        }
-        if (ePKAttr==PKA_SAFEST || ePKAttr==PKA_PKUNABLE)
-        {
-            // MSG("CRegionCreature::CanAttack ¶Ô·½ÔÚ°²È«Çø£¬²»ÄÜ¹¥»÷\n");
-            return false;
-        }
+				//------------------chg end   by tony 05.06.09-----------------------------------------//
+			{
+				ePKAttr = PKA_NORMAL;
+			}
+			else
+			{
+				ePKAttr = PKA_SAFEST;
+			}
+		}
+		if (ePKAttr == PKA_SAFEST || ePKAttr == PKA_PKUNABLE)
+		{
+			// MSG("CRegionCreature::CanAttack ¶Ô·½ÔÚ°²È«Çø£¬²»ÄÜ¹¥»÷\n");
+			return false;
+		}
 	}
-	else if ( pSkill->dwRTarget&SKILL_TARGET_POSITION )
+	else if (pSkill->dwRTarget & SKILL_TARGET_POSITION)
 	{
 		// Èç¹û×Ô¼ºÔÙ½»Ò×»òÕß°ÚÌ¯¾Í²»ÄÜ¹¥»÷
 		if (m_pTrade || m_pPShop)
@@ -1961,56 +1980,57 @@ bool CRegionCreature::CanAttack(CRegionCreature *enemy, SSkill* pSkill)
 		return true;
 	}
 	else // if (enemy) else ...
-    {
-        // ×Ô¼ºÔÚ°²È«Çø£¬²»ÄÜ¹¥»÷
-        ePKAttr = m_eCurPosPKAttr;
-        if (ePKAttr==PKA_SAFE)
-        {
-//------------------chg start by tony 05.06.09-----------------------------------------//
+	{
+		// ×Ô¼ºÔÚ°²È«Çø£¬²»ÄÜ¹¥»÷
+		ePKAttr = m_eCurPosPKAttr;
+		if (ePKAttr == PKA_SAFE)
+		{
+			//------------------chg start by tony 05.06.09-----------------------------------------//
 			if (g_RegionCastleWarMgr.IsCastleWarTime(this)) // ³ÇÕ½
-//------------------chg end   by tony 05.06.09-----------------------------------------//
-            {
-                ePKAttr = PKA_NORMAL;
-            }else
-            {
-                ePKAttr = PKA_SAFEST;
-            }
-        }
-        if (ePKAttr==PKA_SAFEST)
-        {
-            // MSG("CRegionCreature::CanAttack ×Ô¼ºÔÚ°²È«Çø£¬²»ÄÜ¹¥»÷\n");
-            return false;
-        }
+				//------------------chg end   by tony 05.06.09-----------------------------------------//
+			{
+				ePKAttr = PKA_NORMAL;
+			}
+			else
+			{
+				ePKAttr = PKA_SAFEST;
+			}
+		}
+		if (ePKAttr == PKA_SAFEST)
+		{
+			// MSG("CRegionCreature::CanAttack ×Ô¼ºÔÚ°²È«Çø£¬²»ÄÜ¹¥»÷\n");
+			return false;
+		}
 	}// if (enemy) else endif
-    return true;
+	return true;
 }
 
-void CRegionCreature::DoAttack(long enemyId,long seed)
+void CRegionCreature::DoAttack(long enemyId, long seed)
 {
 	int phyDmg = 0;
 	int eleDmg[MAX_ELEMENT_ATTR];
 
-    CRegionCreature *enemy = m_scene->FindCreature(enemyId);
-	if(!enemy) return;
+	CRegionCreature* enemy = m_scene->FindCreature(enemyId);
+	if (!enemy) return;
 
-    if (!CanAttack(enemy, NULL))
-        return;
+	if (!CanAttack(enemy, NULL))
+		return;
 
-	DoAttack(enemy,seed);
+	DoAttack(enemy, seed);
 }
 
-void CRegionCreature::DoAttack(CRegionCreature *enemy,long seed)
+void CRegionCreature::DoAttack(CRegionCreature* enemy, long seed)
 {
 	int phyDmg = 0;
-	int eleDmg[MAX_ELEMENT_ATTR] = {0,0,0};
+	int eleDmg[MAX_ELEMENT_ATTR] = { 0,0,0 };
 	char eleSpec = 0;
-	if(!enemy) 
+	if (!enemy)
 		return;
 
 	// let pet know event
-	if(m_pet && m_pet->m_ai)
+	if (m_pet && m_pet->m_ai)
 	{
-		CRegionPetAI *petAI = (CRegionPetAI*)m_pet->m_ai;
+		CRegionPetAI* petAI = (CRegionPetAI*)m_pet->m_ai;
 		if (petAI && (petAI->m_eAS == CRegionPetAI::AS_ATTACK || petAI->m_eAS == CRegionPetAI::AS_SYNERGY))
 		{
 			petAI->OnAttack(enemy);
@@ -2021,11 +2041,11 @@ void CRegionCreature::DoAttack(CRegionCreature *enemy,long seed)
 	if (CallNpc.size() != 0)
 	{
 		std::vector<CRegionCreature*>::iterator vit = CallNpc.begin();
-		for (;vit != CallNpc.end();vit++)
+		for (; vit != CallNpc.end(); vit++)
 		{
 			if ((*vit)->m_ai)
 			{
-				CRegionCallNpc *CallNpcAI = NULL;
+				CRegionCallNpc* CallNpcAI = NULL;
 				CallNpcAI = (CRegionCallNpc*)(*vit)->m_ai;
 				if (CallNpcAI && (CallNpcAI->m_eAS == CRegionCallNpc::AS_ATTACK || CallNpcAI->m_eAS == CRegionCallNpc::AS_SYNERGY))
 				{
@@ -2037,14 +2057,14 @@ void CRegionCreature::DoAttack(CRegionCreature *enemy,long seed)
 
 	if (m_EffectProbability)
 	{
-		if (GetProb(m_EffectProbability/100))
+		if (GetProb(m_EffectProbability / 100))
 		{
 			if (&(enemy->m_Skill))
 			{
 				(&(enemy->m_Skill))->SetbRun(true);
 				(&(enemy->m_Skill))->AddEffect(m_PTEffectID, 0, true);
 				/*(&(enemy->m_Skill))->SetbRun(false);*/
-			}	
+			}
 		}
 	}
 
@@ -2060,10 +2080,10 @@ void CRegionCreature::DoAttack(CRegionCreature *enemy,long seed)
 		bool bCondition = (!((enemy->IsUser()) || (enemy->IsUserPet()) || (enemy->IsCallNpc())));
 		iCnt = enemy->m_scene->GetAroundCreatureByTile(pFindCreature, pPos, 100, NULL, PT_PATH, false);
 		CRegionCreature* pTargetCreature;
-		
-		for (int i=0; i<iCnt; i++)
+
+		for (int i = 0; i < iCnt; i++)
 		{
-			if(pFindCreature[i]->m_type==OBJECT_TYPE_CREATURE || pFindCreature[i]->m_type==OBJECT_TYPE_NPC_COMBATIVE)
+			if (pFindCreature[i]->m_type == OBJECT_TYPE_CREATURE || pFindCreature[i]->m_type == OBJECT_TYPE_NPC_COMBATIVE)
 			{
 				pTargetCreature = (CRegionCreature*)(pFindCreature[i]);
 				if (pTargetCreature == this)
@@ -2080,28 +2100,28 @@ void CRegionCreature::DoAttack(CRegionCreature *enemy,long seed)
 				}
 				else
 				{
-					ScopeoDinaryInjury = ((float)m_ScopeoDinaryInjury)/100;
+					ScopeoDinaryInjury = ((float)m_ScopeoDinaryInjury) / 100;
 				}
-				
-				if ( (enemy->IsUser() || enemy->IsUserPet() || enemy->IsCallNpc()) && 
-					(pTargetCreature->IsUser() || pTargetCreature->IsUserPet() ||pTargetCreature->IsCallNpc()))
+
+				if ((enemy->IsUser() || enemy->IsUserPet() || enemy->IsCallNpc()) &&
+					(pTargetCreature->IsUser() || pTargetCreature->IsUserPet() || pTargetCreature->IsCallNpc()))
 				{
-					CRegionCreature *pSource = NULL;
-					CRegionCreature *pTarget = NULL;
-					if ( enemy->IsUser() )
+					CRegionCreature* pSource = NULL;
+					CRegionCreature* pTarget = NULL;
+					if (enemy->IsUser())
 					{
 						pSource = enemy;
 					}
-					else if (enemy->IsUserPet() ||enemy->IsCallNpc() )
+					else if (enemy->IsUserPet() || enemy->IsCallNpc())
 					{
 						pSource = enemy->m_master;
 					}
 
-					if ( pTargetCreature->IsUser() )
+					if (pTargetCreature->IsUser())
 					{
 						pTarget = pTargetCreature;
 					}
-					else if ( pTargetCreature->IsUserPet() || pTargetCreature->IsCallNpc())
+					else if (pTargetCreature->IsUserPet() || pTargetCreature->IsCallNpc())
 					{
 						pTarget = pTargetCreature->m_master;
 					}
@@ -2119,7 +2139,7 @@ void CRegionCreature::DoAttack(CRegionCreature *enemy,long seed)
 						case PKA_UNSAFE:
 							if (pSource->IsSelfDef(pTarget))
 							{
-								GetEntity()->RealAttack(pTargetCreature->GetEntity(),phyDmg,eleDmg,seed,ScopeoDinaryInjury);
+								GetEntity()->RealAttack(pTargetCreature->GetEntity(), phyDmg, eleDmg, seed, ScopeoDinaryInjury);
 								break;
 							}
 							if (pSource->m_ePkMode == PK_Monster)
@@ -2128,16 +2148,16 @@ void CRegionCreature::DoAttack(CRegionCreature *enemy,long seed)
 							}
 							else if (pSource->m_ePkMode == PK_Goodevil)
 							{
-								if(pTargetCreature->GetPKState() == PK_STATE_RED_NAME)
+								if (pTargetCreature->GetPKState() == PK_STATE_RED_NAME)
 								{
-									GetEntity()->RealAttack(pTargetCreature->GetEntity(),phyDmg,eleDmg,seed,ScopeoDinaryInjury); 
+									GetEntity()->RealAttack(pTargetCreature->GetEntity(), phyDmg, eleDmg, seed, ScopeoDinaryInjury);
 								}
 								break;
 							}
 							else if (pSource->m_ePkMode == PK_Free)
 							{
-                                 GetEntity()->RealAttack(pTargetCreature->GetEntity(),phyDmg,eleDmg,seed,ScopeoDinaryInjury);
-								 break;
+								GetEntity()->RealAttack(pTargetCreature->GetEntity(), phyDmg, eleDmg, seed, ScopeoDinaryInjury);
+								break;
 							}
 							break;
 						default:
@@ -2147,31 +2167,31 @@ void CRegionCreature::DoAttack(CRegionCreature *enemy,long seed)
 						}
 					}
 				}
-				else if(!(pTargetCreature->IsUser() || pTargetCreature->IsUserPet() || pTargetCreature->IsCallNpc())) 
+				else if (!(pTargetCreature->IsUser() || pTargetCreature->IsUserPet() || pTargetCreature->IsCallNpc()))
 				{
-					if(pTargetCreature->m_cheatDummy) continue;
-					GetEntity()->RealAttack(pTargetCreature->GetEntity(),phyDmg,eleDmg,seed,ScopeoDinaryInjury);
+					if (pTargetCreature->m_cheatDummy) continue;
+					GetEntity()->RealAttack(pTargetCreature->GetEntity(), phyDmg, eleDmg, seed, ScopeoDinaryInjury);
 				}
 			}
 		}
 	}
 	else
 	{
-		GetEntity()->RealAttack(enemy->GetEntity(),phyDmg,eleDmg,seed);
+		GetEntity()->RealAttack(enemy->GetEntity(), phyDmg, eleDmg, seed);
 	}
-}	
+}
 
-void CRegionCreature::GetDamage(int &phyDmg,int eleDmg[MAX_ELEMENT_ATTR],float ScopeoDinaryInjuryR)
+void CRegionCreature::GetDamage(int& phyDmg, int eleDmg[MAX_ELEMENT_ATTR], float ScopeoDinaryInjuryR)
 {
 	/*RecomputeAttr();*/
-	
+
 	// compute damage
 
-	long IsRidedMax,IsRidedMin = 0;
+	long IsRidedMax, IsRidedMin = 0;
 	long IsRidedElementDamage[MAX_ELEMENT_ATTR];
-	for(int i = 0; i <MAX_ELEMENT_ATTR ;i++)
+	for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 	{
-		IsRidedElementDamage[i]=0;
+		IsRidedElementDamage[i] = 0;
 	}
 
 	//if(IsRided())
@@ -2187,8 +2207,8 @@ void CRegionCreature::GetDamage(int &phyDmg,int eleDmg[MAX_ELEMENT_ATTR],float S
 	int delta = 0;
 	if (IsRided())
 	{
-		IsRidedMax = (m_core.DamageMin.Base)*2.5;
-		IsRidedMin = (m_core.DamageMax.Base)*2.5;
+		IsRidedMax = (m_core.DamageMin.Base) * 2.5;
+		IsRidedMin = (m_core.DamageMax.Base) * 2.5;
 		delta = IsRidedMax - IsRidedMin;
 		if (delta)
 			phyDmg = IsRidedMin;
@@ -2198,73 +2218,73 @@ void CRegionCreature::GetDamage(int &phyDmg,int eleDmg[MAX_ELEMENT_ATTR],float S
 	else
 	{
 		delta = (m_core.GetDamageMax()) - (m_core.GetDamageMin());
-		if(delta == 0)
+		if (delta == 0)
 			phyDmg = m_core.GetDamageMin();
 		else
 			phyDmg = m_core.GetDamageMin() + GetRand(delta);
 	}
 
 
-	
+
 	if (IsUser())
 	{
-		for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+		for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 		{
 			eleDmg[i] = m_core.ElementDamage[i].GetValue();
 		}
 	}
 	if (IsRided())
 	{
-		for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+		for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 		{
 			IsRidedElementDamage[i] = m_core.ElementDamage[i].GetValue() * 2.5;
 		}
-		for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+		for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 		{
 			eleDmg[i] = m_npcInfo->ElementDamage[i] + IsRidedElementDamage[i];
 		}
 	}
 	else
 	{
-	/*	if(IsRided())
-		{
-			for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+		/*	if(IsRided())
 			{
-				eleDmg[i] = m_npcInfo->ElementDamage[i] + m_core.ElementDamage[i].GetValue();
-			}
-		}*/
+				for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+				{
+					eleDmg[i] = m_npcInfo->ElementDamage[i] + m_core.ElementDamage[i].GetValue();
+				}
+			}*/
 		if (IsUserPet())
 		{
-			for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+			for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 			{
 				eleDmg[i] = m_npcInfo->ElementDamage[i] + m_core.ElementDamage[i].GetValue();
 			}
 		}
 		if (IsMonster())
 		{
-			for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+			for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 			{
 				eleDmg[i] = m_npcInfo->ElementDamage[i] + m_core.ElementDamage[i].GetValue();
 			}
-		} 
+		}
 		else
 		{
 			LOG("m_npcInfo is Null , GetDamage function");
-		}		
+		}
 	}
 
 	/*Tianh  ÔªËØ¹¥»÷µÄ¸¡¶¯Öµ*/
-	for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+	for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 	{
-		if(eleDmg[i] >= 5)
-			eleDmg[i] = GetRand(eleDmg[i]*1.1,eleDmg[i]*0.9);
+		if (eleDmg[i] >= 5)
+			eleDmg[i] = GetRand(eleDmg[i] * 1.1, eleDmg[i] * 0.9);
 	}
 
 
-	phyDmg = phyDmg*ScopeoDinaryInjuryR;
-	for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+	phyDmg = phyDmg * ScopeoDinaryInjuryR;
+	for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 	{
-			eleDmg[i] = eleDmg[i]*ScopeoDinaryInjuryR;
+		eleDmg[i] = eleDmg[i] * ScopeoDinaryInjuryR;
 	}
 
 
@@ -2288,26 +2308,26 @@ void CRegionCreature::GetDamage(int &phyDmg,int eleDmg[MAX_ELEMENT_ATTR],float S
 	//}
 }
 
-void CRegionCreature::RealAttack(CRegionCreature *enemy,int phyDmg,int eleDmg[MAX_ELEMENT_ATTR],long seed,float ScopeoDinaryInjuryR)
+void CRegionCreature::RealAttack(CRegionCreature* enemy, int phyDmg, int eleDmg[MAX_ELEMENT_ATTR], long seed, float ScopeoDinaryInjuryR)
 {
 	int ret = 0;
 	EnterCombat();
-	if(!TryNormalAttack(enemy,m_core.AttackRange.GetValue()))
+	if (!TryNormalAttack(enemy, m_core.AttackRange.GetValue()))
 	{
 		// can't do attack
-		ret =  USE_SKILL_FAILED;	
+		ret = USE_SKILL_FAILED;
 	}
 
-	if(!TryHit(enemy))
+	if (!TryHit(enemy))
 	{
 		// miss
 
-		ret =  USE_SKILL_MISS;
+		ret = USE_SKILL_MISS;
 	}
-	
+
 	// compute damage
-	GetDamage(phyDmg,eleDmg,ScopeoDinaryInjuryR);
-	
+	GetDamage(phyDmg, eleDmg, ScopeoDinaryInjuryR);
+
 
 	/*ret =  USE_SKILL_OK;*/
 
@@ -2319,101 +2339,101 @@ void CRegionCreature::RealAttack(CRegionCreature *enemy,int phyDmg,int eleDmg[MA
 		//ÅÐ¶Ï¶ÓµÄÈËÊÇ·ñ»¹ÓÐ1¸öÒÔÉÏµÄ¶ÓÓÑ»¹ÓÐÏàÍ¬µÄBUF×´Ì¬£¬·ñÔò²»·Öµ£ÉËº¦
 		//ÉúÃüËøÁ´Ö»¶Ô¶ÓÎéÀïÓÐÏàÍ¬BUFµÄÈËÓÐÐ§¹û
 		short ID = 0;
-		CActorSkill *pReleaser = FindActorSkill(enemy,enemy->m_oId);
+		CActorSkill* pReleaser = FindActorSkill(enemy, enemy->m_oId);
 		if (pReleaser)
 		{
 			ID = pReleaser->FindEffectbyClass(LIFE_CHAINS);
 		}
-		
+
 		if (enemy->m_pTeam)
 		{
-			for (int i = 0 ;i<MAX_TEAM_MENBER_COUNT;i++)
+			for (int i = 0; i < MAX_TEAM_MENBER_COUNT; i++)
 			{
 
-				CRegionUser *pRegionUser = g_region->FindUser(enemy->m_pTeam->mData.mMember[i].mDBID);
+				CRegionUser* pRegionUser = g_region->FindUser(enemy->m_pTeam->mData.mMember[i].mDBID);
 				if (pRegionUser)
 				{
 					if (pRegionUser->m_dummy)
-					{	
+					{
 						if (pRegionUser->m_dummy->m_oId == enemy->m_oId)
 						{
 							//Èç¹ûÊÇ×Ô¼º
 							continue;
 						}
 
-						CActorSkill *pActorSkill = FindActorSkill(pRegionUser->m_dummy,pRegionUser->m_dummy->m_oId);
+						CActorSkill* pActorSkill = FindActorSkill(pRegionUser->m_dummy, pRegionUser->m_dummy->m_oId);
 						if (pActorSkill)
 						{
 							if (pActorSkill->FindEffectbyId(ID))
 							{
 								RegionCreature.push_back(pRegionUser->m_dummy);
-							}	
+							}
 						}
-					}			
+					}
 				}
 			}
 		}
 
-		if (RegionCreature.size()<1) 
+		if (RegionCreature.size() < 1)
 		{
 			//Ã»ÓÐ¶ÓÓÑÓÐBUF×´Ì¬   ²»·Öµ£
-			RealAttackcalculating(enemy,phyDmg,eleDmg,ret,seed);
+			RealAttackcalculating(enemy, phyDmg, eleDmg, ret, seed);
 		}
 		else
 		{
-			int viDmgElement[MAX_ELEMENT_ATTR] = {0,0,0};
-			int kiDmgElement[MAX_ELEMENT_ATTR] = {0,0,0};
+			int viDmgElement[MAX_ELEMENT_ATTR] = { 0,0,0 };
+			int kiDmgElement[MAX_ELEMENT_ATTR] = { 0,0,0 };
 			//¿ªÊ¼·Öµ£ÉËº¦
-			int viDmgPhy = 	phyDmg * enemy->m_TeamShareDamage/100;
-			viDmgElement[ELEMENT_WATER] = eleDmg[ELEMENT_WATER] * enemy->m_TeamShareDamage/100;
-			viDmgElement[ELEMENT_FIRE] = eleDmg[ELEMENT_FIRE] * enemy->m_TeamShareDamage/100;
-			viDmgElement[ELEMENT_POISON] = eleDmg[ELEMENT_POISON] * enemy->m_TeamShareDamage/100;
+			int viDmgPhy = phyDmg * enemy->m_TeamShareDamage / 100;
+			viDmgElement[ELEMENT_WATER] = eleDmg[ELEMENT_WATER] * enemy->m_TeamShareDamage / 100;
+			viDmgElement[ELEMENT_FIRE] = eleDmg[ELEMENT_FIRE] * enemy->m_TeamShareDamage / 100;
+			viDmgElement[ELEMENT_POISON] = eleDmg[ELEMENT_POISON] * enemy->m_TeamShareDamage / 100;
 			//ÓÐk-1¸ö¶ÓÓÑÀ´·Öµ£ÉËº¦
 			int conut = RegionCreature.size();
-			int kiDmgPhy = viDmgPhy/conut;
-			kiDmgElement[ELEMENT_WATER] = viDmgElement[ELEMENT_WATER]/conut;
-			kiDmgElement[ELEMENT_FIRE] = viDmgElement[ELEMENT_FIRE]/conut;
-			kiDmgElement[ELEMENT_POISON] = viDmgElement[ELEMENT_POISON]/conut;
+			int kiDmgPhy = viDmgPhy / conut;
+			kiDmgElement[ELEMENT_WATER] = viDmgElement[ELEMENT_WATER] / conut;
+			kiDmgElement[ELEMENT_FIRE] = viDmgElement[ELEMENT_FIRE] / conut;
+			kiDmgElement[ELEMENT_POISON] = viDmgElement[ELEMENT_POISON] / conut;
 
 
 			std::vector<CRegionCreature*> ::iterator itArea = RegionCreature.begin();
-			for(; itArea != RegionCreature.end(); itArea++)
+			for (; itArea != RegionCreature.end(); itArea++)
 			{
-				RealAttackcalculating(*itArea,kiDmgPhy,kiDmgElement,ret,seed);
+				RealAttackcalculating(*itArea, kiDmgPhy, kiDmgElement, ret, seed);
 			}
 
 			//»¹ÊôÓÚ×Ô¼º±¾ÉíµÄÉËº¦
-			float phyDmgR = 1.0f - ((enemy->m_TeamShareDamage)/100.0f);
+			float phyDmgR = 1.0f - ((enemy->m_TeamShareDamage) / 100.0f);
 			phyDmg = phyDmg * phyDmgR;
 			eleDmg[ELEMENT_WATER] = eleDmg[ELEMENT_WATER] * phyDmgR;
 			eleDmg[ELEMENT_FIRE] = eleDmg[ELEMENT_FIRE] * phyDmgR;
 			eleDmg[ELEMENT_POISON] = eleDmg[ELEMENT_POISON] * phyDmgR;
 
-			RealAttackcalculating(enemy,phyDmg,eleDmg,ret,seed);
+			RealAttackcalculating(enemy, phyDmg, eleDmg, ret, seed);
 
 
 		}
 	}
 	else
 	{
-		RealAttackcalculating(enemy,phyDmg,eleDmg,ret,seed);
+		RealAttackcalculating(enemy, phyDmg, eleDmg, ret, seed);
 	}
 
-	
+
 }
 
-void  CRegionCreature::RealAttackcalculating(CRegionCreature *enemy,int phyDmg,int eleDmg[MAX_ELEMENT_ATTR],int ret,long seed)
+void  CRegionCreature::RealAttackcalculating(CRegionCreature* enemy, int phyDmg, int eleDmg[MAX_ELEMENT_ATTR], int ret, long seed)
 {
 	char eleSpec = -1;
 	bool critical = false;
 	long enemyId = enemy->m_oId;
-	enemy->ApplyDamage(this,phyDmg,eleDmg,false);
-	if((m_core.CriticalHit.GetValue()-enemy->m_core.ReCriticalHit.GetValue())>0)//Ôö¼Ó¿¹±ØÉ±ÊôÐÔ²îÊýÔËËã
+	enemy->ApplyDamage(this, phyDmg, eleDmg, false);
+	if ((m_core.CriticalHit.GetValue() - enemy->m_core.ReCriticalHit.GetValue()) > 0)//Ôö¼Ó¿¹±ØÉ±ÊôÐÔ²îÊýÔËËã
 	{
-		if(phyDmg >0 && GetProb((m_core.CriticalHit.GetValue()-enemy->m_core.ReCriticalHit.GetValue())/100.0f))
+		if (phyDmg > 0 && GetProb((m_core.CriticalHit.GetValue() - enemy->m_core.ReCriticalHit.GetValue()) / 100.0f))
 		{
 			//Tian Ôö¼Ó±¬»÷ÉËº¦
-			phyDmg =phyDmg * (2 + m_core.CriticalDamageR/100.0) + m_core.CriticalDamage; 
+			phyDmg = phyDmg * (2 + m_core.CriticalDamageR / 100.0) + m_core.CriticalDamage;
 			critical = true;
 		}
 		else
@@ -2424,22 +2444,22 @@ void  CRegionCreature::RealAttackcalculating(CRegionCreature *enemy,int phyDmg,i
 	else
 	{
 		critical = false;
-	}     
+	}
 
 
 	//¸ñµ²²Î¼ÓÔËËã
-	if(enemy->m_core.ReParry.GetValue()>0)
+	if (enemy->m_core.ReParry.GetValue() > 0)
 	{
-		if(phyDmg >0 && GetProb(enemy->m_core.ReParry.GetValue()/100.0f))
+		if (phyDmg > 0 && GetProb(enemy->m_core.ReParry.GetValue() / 100.0f))
 		{
-			phyDmg=0;
+			phyDmg = 0;
 
 			g_sendCmd->BeginWrite();
 			g_sendCmd->WriteShort(r2c_display);
 			g_sendCmd->WriteShort(GEDANG);
 			g_sendCmd->WriteLong(GetObjectId());
-			if(m_scene)//tim.yang
-				m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+			if (m_scene)//tim.yang
+				m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 		}
 	}
 
@@ -2521,17 +2541,17 @@ void  CRegionCreature::RealAttackcalculating(CRegionCreature *enemy,int phyDmg,i
 		eleDmg[2] = 0;
 	}
 
-	if(ret != USE_SKILL_OK && ret != USE_SKILL_MISS) return;
+	if (ret != USE_SKILL_OK && ret != USE_SKILL_MISS) return;
 
-	long dead = enemy->RecvDamage(GetControl(),phyDmg,eleDmg,false);
+	long dead = enemy->RecvDamage(GetControl(), phyDmg, eleDmg, false);
 
 
 	long criHit = 0;
 
-	if(critical)
+	if (critical)
 		criHit = 1;
 	else
-		criHit = 0;	
+		criHit = 0;
 
 	//AddBattleState(enemy);
 	// eleDmg[0] = rtRandom(100,0);
@@ -2566,16 +2586,16 @@ void  CRegionCreature::RealAttackcalculating(CRegionCreature *enemy,int phyDmg,i
 	//PZH
 	g_sendCmd->WriteByte(0);//ÆÕÍ¨¹¥»÷ÓÀÔ¶·¢0
 	//
-	if(ret == USE_SKILL_OK)
+	if (ret == USE_SKILL_OK)
 	{
 		g_sendCmd->SerializeBit(dead, 3);
-		g_sendCmd->SerializeBit(criHit,1);	
+		g_sendCmd->SerializeBit(criHit, 1);
 		g_sendCmd->WriteShort(phyDmg);
-		for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+		for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 			g_sendCmd->WriteShort(eleDmg[i]);
 	}
-	if(m_scene)//tim.yang
-		m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+	if (m_scene)//tim.yang
+		m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 
 	ClearHidingAndTopo(); //È¡ÏûÒþÉí»òÕß¶ÝµØ×´Ì¬
 	// LOG1("attack packet size = %d",g_sendCmd->GetByteDataSize());
@@ -2588,46 +2608,46 @@ void CRegionCreature::DoAttack(SAttackParam &param)
 	// fix later
 	// ...
 	if(m_combatBusy && rtGetMilliseconds() < m_combatBusy) return;
-	
-    CRegionCreature *t=NULL;
-    if (param.Skill==0 || (param.Skill!=0 && param.TargetType==SKILL_TARGET_TYPE_ACTOR))
-    {
-        t = m_scene->FindCreature(param.EnemyId);
-        if (!t) return;
-    }
+
+	CRegionCreature *t=NULL;
+	if (param.Skill==0 || (param.Skill!=0 && param.TargetType==SKILL_TARGET_TYPE_ACTOR))
+	{
+		t = m_scene->FindCreature(param.EnemyId);
+		if (!t) return;
+	}
 	if(IsUser())
-    {
+	{
 		m_combatBusy = rtGetMilliseconds() + 500;
 
-        // ²é¿´ÊÇ·ñÔÊÐí¹¥»÷(PK)
-        if (t && t->IsUser())
-        {
-	        EPKAttr ePKAttr = m_eCurPosPKAttr;
-            if (0) // ¹úÕ½µÄÊ±ºò°²È«Çø»á±ä³ÉÆÕÍ¨Çø
-            {
-                if (ePKAttr==PKA_SAFE)
-                {
-                    ePKAttr = PKA_NORMAL;
-                }
-            }
-            switch (ePKAttr)
-            {
-            case PKA_NORMAL:     // ÆÕÍ¨ÇøÓò(ÓÐºìÃû³Í·£)
-                // ÈÎºÎÊ±ºò¶¼¿ÉÒÔ¹¥»÷(ÏàÍ¬ÕóÓªÖ®¼ä»á±»ÈÏÎªÊÇÇ¿ÖÆ¹¥»÷)
-                break;
-            case PKA_UNSAFE:     // ²»°²È«ÇøÓò(ÎÞºìÃû³Í·£)
-                // ¿ÉÒÔ¹¥»÷
-                break;
-            case PKA_SAFE:       // °²È«Çø(³ýÁË¹úÕ½×´Ì¬¶¼ÊÇ²»ÔÊÐíPKµÄ)
-            case PKA_SAFEST:     // ¾ø¶Ô°²È«Çø(ÐÂÊÖÇø)
-                // °²È«Çø²»ÔÊÐí¹¥»÷
-                return;
-            }
-        }
-    }else
-    {
-        m_combatBusy = rtGetMilliseconds() + 3000;
-    }
+		// ²é¿´ÊÇ·ñÔÊÐí¹¥»÷(PK)
+		if (t && t->IsUser())
+		{
+			EPKAttr ePKAttr = m_eCurPosPKAttr;
+			if (0) // ¹úÕ½µÄÊ±ºò°²È«Çø»á±ä³ÉÆÕÍ¨Çø
+			{
+				if (ePKAttr==PKA_SAFE)
+				{
+					ePKAttr = PKA_NORMAL;
+				}
+			}
+			switch (ePKAttr)
+			{
+			case PKA_NORMAL:     // ÆÕÍ¨ÇøÓò(ÓÐºìÃû³Í·£)
+				// ÈÎºÎÊ±ºò¶¼¿ÉÒÔ¹¥»÷(ÏàÍ¬ÕóÓªÖ®¼ä»á±»ÈÏÎªÊÇÇ¿ÖÆ¹¥»÷)
+				break;
+			case PKA_UNSAFE:     // ²»°²È«ÇøÓò(ÎÞºìÃû³Í·£)
+				// ¿ÉÒÔ¹¥»÷
+				break;
+			case PKA_SAFE:       // °²È«Çø(³ýÁË¹úÕ½×´Ì¬¶¼ÊÇ²»ÔÊÐíPKµÄ)
+			case PKA_SAFEST:     // ¾ø¶Ô°²È«Çø(ÐÂÊÖÇø)
+				// °²È«Çø²»ÔÊÐí¹¥»÷
+				return;
+			}
+		}
+	}else
+	{
+		m_combatBusy = rtGetMilliseconds() + 3000;
+	}
 
 	// if ride on pet,pet do attack (±ØÐëÊÇÆÕÍ¨¹¥»÷)
 	if(IsRidePet() && param.Skill==0)
@@ -2636,55 +2656,55 @@ void CRegionCreature::DoAttack(SAttackParam &param)
 		return;
 	}
 
-    short damage = 0;
-    float att = m_core.Attack.GetValue();
-    int delta = m_core.GetDamageMax() - m_core.GetDamageMin();
-    if(delta == 0)
-        damage = m_core.GetDamageMin();
-    else
-        damage = m_core.GetDamageMin() + GetRand(delta);
-    if(param.Skill == 0)
-    {
-	    // don't attack pet
-	    if(t == m_pet) return;
-	    if(t && t->IsRidePet())
-	    {
-		    t = t->m_pet;
-	    }
-    }else
-    {
-        SSkill* pSkill = Skill()->FindSkill(param.Skill);
-        if (pSkill==NULL) return;
+	short damage = 0;
+	float att = m_core.Attack.GetValue();
+	int delta = m_core.GetDamageMax() - m_core.GetDamageMin();
+	if(delta == 0)
+		damage = m_core.GetDamageMin();
+	else
+		damage = m_core.GetDamageMin() + GetRand(delta);
+	if(param.Skill == 0)
+	{
+		// don't attack pet
+		if(t == m_pet) return;
+		if(t && t->IsRidePet())
+		{
+			t = t->m_pet;
+		}
+	}else
+	{
+		SSkill* pSkill = Skill()->FindSkill(param.Skill);
+		if (pSkill==NULL) return;
 
-        if (param.TargetType==SKILL_TARGET_TYPE_ACTOR)
-        {
-	        // don't attack pet
-	        if(t==NULL || t == m_pet) return;
-	        if(t->IsRidePet())
-	        {
-		        t = t->m_pet;
-	        }
+		if (param.TargetType==SKILL_TARGET_TYPE_ACTOR)
+		{
+			// don't attack pet
+			if(t==NULL || t == m_pet) return;
+			if(t->IsRidePet())
+			{
+				t = t->m_pet;
+			}
 
-            UseSkill(pSkill, param);
-            short sLastDamage = t->m_core.GetLastDamage();
-            if (sLastDamage)
-            {
-                damage += sLastDamage;
-            }else
-            {
-                damage = 0; // Èç¹ûÉËº¦Îª0¾ÍÈÏÎªÊÇÒ»¸öÃ»ÓÐÉËº¦µÄ¼¼ÄÜ
-            }
-            if (damage==0) return;
-        }
+			UseSkill(pSkill, param);
+			short sLastDamage = t->m_core.GetLastDamage();
+			if (sLastDamage)
+			{
+				damage += sLastDamage;
+			}else
+			{
+				damage = 0; // Èç¹ûÉËº¦Îª0¾ÍÈÏÎªÊÇÒ»¸öÃ»ÓÐÉËº¦µÄ¼¼ÄÜ
+			}
+			if (damage==0) return;
+		}
 		else
-        {
-            UseSkill(pSkill, param);
-            return;
-        }
-    }
+		{
+			UseSkill(pSkill, param);
+			return;
+		}
+	}
 
-    // set pet ai target
-    if(m_enemy==0 || m_enemy!=param.EnemyId)
+	// set pet ai target
+	if(m_enemy==0 || m_enemy!=param.EnemyId)
 		m_enemy = param.EnemyId;
 
 	if(m_pet && m_pet->m_ai)
@@ -2692,52 +2712,52 @@ void CRegionCreature::DoAttack(SAttackParam &param)
 
 	// check attack speed and range
 	// ...
-    ApplyDamage(damage, att, t);
-    // RecvDamage(damage,)
+	ApplyDamage(damage, att, t);
+	// RecvDamage(damage,)
 
 	// build event
 	g_sendCmd->BeginWrite();
-    g_sendCmd->WriteShort(r2c_event);
+	g_sendCmd->WriteShort(r2c_event);
 	g_sendCmd->WriteLong(g_region->m_time);
 	g_sendCmd->WriteShort(EVENT_ATTACK);
 	g_sendCmd->WriteLong(m_oId);
 	*g_sendCmd << param;
-    if (t==NULL)
-    {
-        g_sendCmd->WriteByte(0);
-    }else
-    {
-        g_sendCmd->WriteByte(1);				// only one target
-        g_sendCmd->WriteLong(t->m_oId);
-        g_sendCmd->WriteShort(damage);
-    }
-    m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+	if (t==NULL)
+	{
+		g_sendCmd->WriteByte(0);
+	}else
+	{
+		g_sendCmd->WriteByte(1);				// only one target
+		g_sendCmd->WriteLong(t->m_oId);
+		g_sendCmd->WriteShort(damage);
+	}
+	m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
 }
 */
 
 /*
 void CRegionCreature::ApplyDamage(short& sDamage, float fAtt, CRegionCreature* pTarget)
 {
-    // careful,object may be destory in recv damage
-    // sDamage -= pTarget->m_core.Armor.GetValue();
-    sDamage /= (1+pTarget->m_core.Armor.GetValue()/65.0);
+	// careful,object may be destory in recv damage
+	// sDamage -= pTarget->m_core.Armor.GetValue();
+	sDamage /= (1+pTarget->m_core.Armor.GetValue()/65.0);
 	if(sDamage < 0) sDamage = 1;
 
-    // check if miss
-    // float dog = pTarget->m_core.Dodge.GetValue();
-    // float rate = 2*fAtt/(fAtt+dog);
-    // if(rate > 1) rate = 1;
-    // if(rate < 0.05) rate = 0.05;
-    // if(!GetProb(rate)) sDamage = 0;
-    	
+	// check if miss
+	// float dog = pTarget->m_core.Dodge.GetValue();
+	// float rate = 2*fAtt/(fAtt+dog);
+	// if(rate > 1) rate = 1;
+	// if(rate < 0.05) rate = 0.05;
+	// if(!GetProb(rate)) sDamage = 0;
+
 	pTarget->OnBeAttacked(this, sDamage);
-    pTarget->RecvDamage(this,sDamage);
+	pTarget->RecvDamage(this,sDamage);
 }
 */
 
 bool CRegionCreature::CanUseSkill(short sSkillID)
 {
-    return m_Skill.CanUseSkill((unsigned short)sSkillID);
+	return m_Skill.CanUseSkill((unsigned short)sSkillID);
 }
 
 bool CRegionCreature::UseSkill(SAttackParam& param)
@@ -2749,7 +2769,7 @@ bool CRegionCreature::UseSkill(SAttackParam& param)
 		bool bRealUse = false;
 		char cIntonate = 0;
 		SSkill* pSkill = Skill()->FindSkill(param.Skill);
-		if(NULL == pSkill)
+		if (NULL == pSkill)
 		{
 			break;
 		}
@@ -2758,16 +2778,16 @@ bool CRegionCreature::UseSkill(SAttackParam& param)
 		{
 			m_Skill.TopoClearUseful();
 		}
-		
+
 		if (pSkill->wClass == 13 && IsChengBody()) // ±äÉí×´Ì¬ÏÂ²»ÄÜÊ¹ÓÃ·¨±¦¼¼ÄÜ
 		{
 			break;
 		}
 
 		bool bIsIntonatint = this->GetPlayerLogic()->IsIntonating();
-		if(0 == pSkill->iIsIntonate)
+		if (0 == pSkill->iIsIntonate)
 		{
-			if(bIsIntonatint)
+			if (bIsIntonatint)
 			{
 				GetPlayerLogic()->StopIntonate();
 				break;
@@ -2776,23 +2796,23 @@ bool CRegionCreature::UseSkill(SAttackParam& param)
 		}
 		else
 		{
-			if(!bIsIntonatint)
+			if (!bIsIntonatint)
 			{
-				if(0 != GetPlayerLogic()->StartIntonate(param))
+				if (0 != GetPlayerLogic()->StartIntonate(param))
 				{
 					break;
 				}
 			}
 			else
 			{
-				if(GetPlayerLogic()->GetSAttackParam().Skill != param.Skill)
+				if (GetPlayerLogic()->GetSAttackParam().Skill != param.Skill)
 				{
 					GetPlayerLogic()->StopIntonate();
 					break;
 				}
 				unsigned long dwT1 = rtGetMilliseconds();
 				unsigned long dwT2 = GetPlayerLogic()->GetFireTime();
-				if(dwT1 < dwT2 )
+				if (dwT1 < dwT2)
 				{
 					GetPlayerLogic()->SetMiss(true);
 					//GetPlayerLogic()->StopIntonate();
@@ -2802,9 +2822,9 @@ bool CRegionCreature::UseSkill(SAttackParam& param)
 			}
 		}
 		bool bSend = true;
-		if(bRealUse)
+		if (bRealUse)
 		{
-			if(bIsIntonatint)
+			if (bIsIntonatint)
 			{
 				GetPlayerLogic()->StopIntonate();
 			}
@@ -2828,109 +2848,109 @@ bool CRegionCreature::UseSkill(SAttackParam& param)
 		{
 			cIntonate = 1;
 		}
-		if(!bSend)
+		if (!bSend)
 		{
 			break;
 		}
 		g_sendCmd->BeginWrite();
-        g_sendCmd->WriteShort(r2c_event);
-        g_sendCmd->WriteLong(g_region->m_time);
-        g_sendCmd->WriteShort(EVENT_ATTACK);
-        g_sendCmd->WriteLong(m_oId);
-	
-        g_sendCmd->WriteShort(param.Seed);
-        g_sendCmd->WriteShort(param.Skill); // skill attack
-        g_sendCmd->WriteByte(param.TargetType);
+		g_sendCmd->WriteShort(r2c_event);
+		g_sendCmd->WriteLong(g_region->m_time);
+		g_sendCmd->WriteShort(EVENT_ATTACK);
+		g_sendCmd->WriteLong(m_oId);
+
+		g_sendCmd->WriteShort(param.Seed);
+		g_sendCmd->WriteShort(param.Skill); // skill attack
+		g_sendCmd->WriteByte(param.TargetType);
 		g_sendCmd->WriteByte(cIntonate);//ÊÇ·ñÊÇÒ÷³ª(Õæ´òÎª0 Ò÷³ªÎª1)
-        switch (param.TargetType)
-        {
-        case SKILL_TARGET_TYPE_NONE:
-            break;
-        case SKILL_TARGET_TYPE_ACTOR:		
-            g_sendCmd->WriteLong(param.EnemyId);
-            break;
-        case SKILL_TARGET_TYPE_POSITION:
-            g_sendCmd->WriteLong(param.Pos[0]);
-            g_sendCmd->WriteLong(param.Pos[1]);
-            g_sendCmd->WriteLong(param.Pos[2]);
-            break;
-        }
-		if(0 == cIntonate)
+		switch (param.TargetType)
+		{
+		case SKILL_TARGET_TYPE_NONE:
+			break;
+		case SKILL_TARGET_TYPE_ACTOR:
+			g_sendCmd->WriteLong(param.EnemyId);
+			break;
+		case SKILL_TARGET_TYPE_POSITION:
+			g_sendCmd->WriteLong(param.Pos[0]);
+			g_sendCmd->WriteLong(param.Pos[1]);
+			g_sendCmd->WriteLong(param.Pos[2]);
+			break;
+		}
+		if (0 == cIntonate)
 		{
 			GetPlayerLogic()->SetCurUseSkill(pSkill);
 			m_Skill.SkillWriteDamageBuffer(g_sendCmd);
 			GetPlayerLogic()->SetCurUseSkill(NULL);
 		}
 
-		if (!m_scene) 
+		if (!m_scene)
 		{
 			//MSG4("m_sceneÎª¿Õ!\n");
 			break;
 		}
-        m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
+		m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 		bRet = bSend;
-	}while(false);
+	} while (false);
 	return bRet;
- //   SSkill* pSkill = Skill()->FindSkill(param.Skill);
- //   if (pSkill)
- //   {
- //       m_Skill.m_bSkillWriteDamage = TRUE;
- //       m_Skill.m_listSkillDamage.clear();
- //       if (UseSkill(pSkill, param))
- //       {
- //           m_Skill.m_bSkillWriteDamage = FALSE;
- //           if (m_Skill.m_listSkillDamage.size()>0)
- //           {
- //               g_sendCmd->BeginWrite();
- //               g_sendCmd->WriteShort(r2c_event);
- //               g_sendCmd->WriteLong(g_region->m_time);
- //               g_sendCmd->WriteShort(EVENT_ATTACK);
- //               g_sendCmd->WriteLong(m_oId);
+	//   SSkill* pSkill = Skill()->FindSkill(param.Skill);
+	//   if (pSkill)
+	//   {
+	//       m_Skill.m_bSkillWriteDamage = TRUE;
+	//       m_Skill.m_listSkillDamage.clear();
+	//       if (UseSkill(pSkill, param))
+	//       {
+	//           m_Skill.m_bSkillWriteDamage = FALSE;
+	//           if (m_Skill.m_listSkillDamage.size()>0)
+	//           {
+	//               g_sendCmd->BeginWrite();
+	//               g_sendCmd->WriteShort(r2c_event);
+	//               g_sendCmd->WriteLong(g_region->m_time);
+	//               g_sendCmd->WriteShort(EVENT_ATTACK);
+	//               g_sendCmd->WriteLong(m_oId);
 
- //               g_sendCmd->WriteShort(param.Seed);
- //               g_sendCmd->WriteShort(param.Skill); // skill attack
- //               g_sendCmd->WriteByte(param.TargetType);
- //               switch (param.TargetType)
- //               {
- //               case SKILL_TARGET_TYPE_NONE:
- //                   break;
- //               case SKILL_TARGET_TYPE_ACTOR:		
- //                   g_sendCmd->WriteLong(param.EnemyId);
- //                   break;
- //               case SKILL_TARGET_TYPE_POSITION:
- //                   g_sendCmd->WriteLong(param.Pos[0]);
- //                   g_sendCmd->WriteLong(param.Pos[1]);
- //                   g_sendCmd->WriteLong(param.Pos[2]);
- //                   break;
- //               }
+	//               g_sendCmd->WriteShort(param.Seed);
+	//               g_sendCmd->WriteShort(param.Skill); // skill attack
+	//               g_sendCmd->WriteByte(param.TargetType);
+	//               switch (param.TargetType)
+	//               {
+	//               case SKILL_TARGET_TYPE_NONE:
+	//                   break;
+	//               case SKILL_TARGET_TYPE_ACTOR:		
+	//                   g_sendCmd->WriteLong(param.EnemyId);
+	//                   break;
+	//               case SKILL_TARGET_TYPE_POSITION:
+	//                   g_sendCmd->WriteLong(param.Pos[0]);
+	//                   g_sendCmd->WriteLong(param.Pos[1]);
+	//                   g_sendCmd->WriteLong(param.Pos[2]);
+	//                   break;
+	//               }
 
- //               m_Skill.SkillWriteDamageBuffer(g_sendCmd);
+	//               m_Skill.SkillWriteDamageBuffer(g_sendCmd);
 
-	//			if (!m_scene) 
-	//			{
-	//				//MSG4("m_sceneÎª¿Õ!\n");
-	//				return false;
-	//			}
- //               m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
- //           }
- //           return true;
- //       }
- //       m_Skill.m_bSkillWriteDamage = FALSE;
- //   }
-	////MSG4("Ã»ÓÐ·¢ÏÖIDÎª£º%d µÄ¼¼ÄÜ\n", param.Skill);
- //   return false;
-	//
+	   //			if (!m_scene) 
+	   //			{
+	   //				//MSG4("m_sceneÎª¿Õ!\n");
+	   //				return false;
+	   //			}
+	//               m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
+	//           }
+	//           return true;
+	//       }
+	//       m_Skill.m_bSkillWriteDamage = FALSE;
+	//   }
+	   ////MSG4("Ã»ÓÐ·¢ÏÖIDÎª£º%d µÄ¼¼ÄÜ\n", param.Skill);
+	//   return false;
+	   //
 }
 
 //Tianh É¾³ýÌ××°¼¼ÄÜÐ§¹û
-void CRegionCreature::DeleteSkill(unsigned short wID)  
+void CRegionCreature::DeleteSkill(unsigned short wID)
 {
 	m_Skill.DeleteSkill(wID, true);
 }
 
-void CRegionCreature::UseSkill(unsigned short wID)  
+void CRegionCreature::UseSkill(unsigned short wID)
 {
-	m_Skill.AddSkill(wID, 100,true);
+	m_Skill.AddSkill(wID, 100, true);
 }
 
 bool CRegionCreature::UseSkill(SSkill* pSkill, SAttackParam& param)
@@ -2942,47 +2962,47 @@ bool CRegionCreature::UseSkill(SSkill* pSkill, SAttackParam& param)
 	//	param.TargetType = SKILL_TARGET_PET;
 	//	param.EnemyId = m_pet->m_oId;
 	//}
-    if (pSkill->dwRTarget==0) // ¶Ô×Ô¼ºÊ¹ÓÃ¼¼ÄÜ
-    {
+	if (pSkill->dwRTarget == 0) // ¶Ô×Ô¼ºÊ¹ÓÃ¼¼ÄÜ
+	{
 		bUseFinish = m_Skill.UseSkill(param.Skill);
-        return bUseFinish;
-    }
-	else if (pSkill->dwRTarget&SKILL_TARGET_POSITION) // ¶ÔµØÊ¹ÓÃµÄ¼¼ÄÜ
-    {
-        if (pSkill->bABad)
-        {
-            if (!CanAttack(NULL, pSkill))
-                return false;
-        }
-        float fPos[3];
-        fPos[0] = param.Pos[0];
-        fPos[1] = param.Pos[1];
-        fPos[2] = param.Pos[2];
+		return bUseFinish;
+	}
+	else if (pSkill->dwRTarget & SKILL_TARGET_POSITION) // ¶ÔµØÊ¹ÓÃµÄ¼¼ÄÜ
+	{
+		if (pSkill->bABad)
+		{
+			if (!CanAttack(NULL, pSkill))
+				return false;
+		}
+		float fPos[3];
+		fPos[0] = param.Pos[0];
+		fPos[1] = param.Pos[1];
+		fPos[2] = param.Pos[2];
 		bUseFinish = m_Skill.UseSkill(param.Skill, fPos);
 		//if(bUseFinish && pSkill->bABad)
 		//	AddBattleState(m_scene->FindCreature(param.EnemyId));
-       return bUseFinish;
-    }
+		return bUseFinish;
+	}
 	else // ¶ÔµÐÈËÊ¹ÓÃµÄ¼¼ÄÜ
-    {
-        CRegionCreature* pActor = m_scene->FindCreature(param.EnemyId);
-        if (pActor==NULL) return false;
-		CRegionCreature *pEnemy = pActor;
+	{
+		CRegionCreature* pActor = m_scene->FindCreature(param.EnemyId);
+		if (pActor == NULL) return false;
+		CRegionCreature* pEnemy = pActor;
 		if (pSkill->wID != PET_SKILL_RIDE)
 		{
 			pActor = pActor->GetEntity();
 		}
 		if (pSkill->bABad)
-        {
-            if (!CanAttack(pActor, pSkill))
-                return false;
+		{
+			if (!CanAttack(pActor, pSkill))
+				return false;
 
 			if (!pSkill->IsAddHpSkill)
 			{
 				// Èç¹ûÊÇÓÐº¦¼¼ÄÜ£¬¾ÍÍ¨ÖªÊÞÎÒÔÚ´òËû
-				if(m_pet && m_pet->m_ai)
+				if (m_pet && m_pet->m_ai)
 				{
-					CRegionPetAI *petAI = (CRegionPetAI*)m_pet->m_ai;
+					CRegionPetAI* petAI = (CRegionPetAI*)m_pet->m_ai;
 					if (petAI && (petAI->m_eAS == CRegionPetAI::AS_ATTACK || petAI->m_eAS == CRegionPetAI::AS_SYNERGY))
 					{
 						petAI->OnAttack(pActor);
@@ -2993,11 +3013,11 @@ bool CRegionCreature::UseSkill(SSkill* pSkill, SAttackParam& param)
 				if (CallNpc.size() != 0)
 				{
 					std::vector<CRegionCreature*>::iterator vit = CallNpc.begin();
-					for (;vit != CallNpc.end();vit++)
+					for (; vit != CallNpc.end(); vit++)
 					{
 						if ((*vit)->m_ai)
 						{
-							CRegionCallNpc *CallNpcAI = NULL;
+							CRegionCallNpc* CallNpcAI = NULL;
 							CallNpcAI = (CRegionCallNpc*)(*vit)->m_ai;
 							if (CallNpcAI && (CallNpcAI->m_eAS == CRegionCallNpc::AS_ATTACK || CallNpcAI->m_eAS == CRegionCallNpc::AS_SYNERGY))
 							{
@@ -3007,9 +3027,9 @@ bool CRegionCreature::UseSkill(SSkill* pSkill, SAttackParam& param)
 					}
 				}
 			}
-        }
+		}
 		bUseFinish = m_Skill.UseSkill(param.Skill, pActor->m_oId);
-		if(bUseFinish)
+		if (bUseFinish)
 		{
 			//ÊÇÓÐº¦¼¼ÄÜÊ±£¬½øÈëÕ½¶·
 			//·ÇÓÐº¦¼¼ÄÜÊ±£¬Ä¿±êÊÇÕ½¶·×´Ì¬Ê±Ò²½øÈëÕ½¶·
@@ -3018,33 +3038,33 @@ bool CRegionCreature::UseSkill(SSkill* pSkill, SAttackParam& param)
 			//else if(pEnemy && pEnemy->HaveBattleState())
 			//	AddBattleState(pEnemy);
 		}
-        return bUseFinish;
-    }
+		return bUseFinish;
+	}
 }
 
-void CRegionCreature::ApplyDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[MAX_ELEMENT_ATTR],bool isSkill,SSkill* pSkillAttr)
+void CRegionCreature::ApplyDamage(CRegionCreature* enemy, int& phyDmg, int eleDmg[MAX_ELEMENT_ATTR], bool isSkill, SSkill* pSkillAttr)
 {
 	/*Tianh ¼ÆËãÎïÀíÎüÊÕ*/
 	//Min(0.90,(·ÀÓù)/((·ÀÓù)+3000))
 	float PhysicalAbsorption, PhysicalAbsorption1 = 0.0f;
 
 	float Armor = m_core.GetArmor();
-	PhysicalAbsorption1 = (Armor/(Armor+3000));
-	
-	PhysicalAbsorption = Min(0.9f,PhysicalAbsorption1);
+	PhysicalAbsorption1 = (Armor / (Armor + 3000));
+
+	PhysicalAbsorption = Min(0.9f, PhysicalAbsorption1);
 
 	/*Tianh ÉËº¦¼ÆËã*/
 	//ÎïÀíÉËº¦(1)*Min(1,Max(0.2,(1+(ÎÒ·½µÈ¼¶-¶Ô·½µÈ¼¶)/20)))*(1-ÎïÀíÉËº¦ÎüÊÕ)
 	float factor = 0.0f;
 	float factor1 = 0.0f;
 	float factor2 = 0.0f;
-	
-	factor2 = 1+(enemy->m_core.Lev - m_core.Lev)/30;
-	
-	factor1 = Max(0.2f,factor2);
-	factor = Min(2.0f,factor1);
 
-	phyDmg *= factor*(1-PhysicalAbsorption);
+	factor2 = 1 + (enemy->m_core.Lev - m_core.Lev) / 30;
+
+	factor1 = Max(0.2f, factor2);
+	factor = Min(2.0f, factor1);
+
+	phyDmg *= factor * (1 - PhysicalAbsorption);
 
 	//if(IsUser())
 	//{
@@ -3078,9 +3098,9 @@ void CRegionCreature::ApplyDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[
 
 
 	//ÎïÀíÉËº¦(2)*(1-¸½¼ÓÎïÀíÉËº¦ÎüÊÕÖµ)
-	phyDmg *= 1 - m_core.PhyDmgAbsorbRate/100;
+	phyDmg *= 1 - m_core.PhyDmgAbsorbRate / 100;
 
-	if(phyDmg < 0) phyDmg = 1;
+	if (phyDmg < 0) phyDmg = 1;
 
 	//if( (enemy->IsUser()||enemy->IsUserPet()) && IsMonster() )
 	//{
@@ -3111,13 +3131,13 @@ void CRegionCreature::ApplyDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[
 	if (IsRided())
 	{
 		long IsRidedElementArmor[MAX_ELEMENT_ATTR];
-		for (int i=0; i<MAX_ELEMENT_ATTR; i++)
+		for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 		{
 			IsRidedElementArmor[i] = m_core.ElementArmor[i].GetValue() * 2.5;
 		}
-		for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+		for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 		{
-			TemporaryElementArmor1[i] = (float)(IsRidedElementArmor[i])/(IsRidedElementArmor[i]+3000);
+			TemporaryElementArmor1[i] = (float)(IsRidedElementArmor[i]) / (IsRidedElementArmor[i] + 3000);
 
 			if (TemporaryElementArmor1[i] >= 0.75)
 			{
@@ -3131,9 +3151,9 @@ void CRegionCreature::ApplyDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[
 	}
 	else
 	{
-		for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+		for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 		{
-			TemporaryElementArmor1[i] = (float)(m_core.ElementArmor[i].GetValue())/(m_core.ElementArmor[i].GetValue()+3000);
+			TemporaryElementArmor1[i] = (float)(m_core.ElementArmor[i].GetValue()) / (m_core.ElementArmor[i].GetValue() + 3000);
 
 			if (TemporaryElementArmor1[i] >= 0.75)
 			{
@@ -3145,7 +3165,7 @@ void CRegionCreature::ApplyDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[
 			}
 		}
 	}
-	
+
 
 	//}
 	//else
@@ -3173,36 +3193,36 @@ void CRegionCreature::ApplyDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[
 
 	/*}*/
 
-	if ((1+(enemy->m_core.Lev - m_core.Lev)/30) > 0.2)
+	if ((1 + (enemy->m_core.Lev - m_core.Lev) / 30) > 0.2)
 	{
-		for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+		for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 		{
-           ElementFactor1[i] = (float)(1+(enemy->m_core.Lev - m_core.Lev )/50);
-		}	
+			ElementFactor1[i] = (float)(1 + (enemy->m_core.Lev - m_core.Lev) / 50);
+		}
 	}
 	else
 	{
-		for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+		for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 		{
 			ElementFactor1[i] = 0.2;
-		}	
-	}
-	
-	for(int i=0; i<MAX_ELEMENT_ATTR; i++)
-	{
-	   if (ElementFactor1[i] < 2.0)
-	   {
-		   ElementFactor[i] = ElementFactor1[i];  
-	   }
-	   else if (ElementFactor1[i] >= 2.0)
-	   {
-		   ElementFactor[i] = 2.0;
-	   }
+		}
 	}
 
-	for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+	for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 	{
-	    eleDmg[i] *= ElementFactor[i]*(1-TemporaryElementArmor[i]);
+		if (ElementFactor1[i] < 2.0)
+		{
+			ElementFactor[i] = ElementFactor1[i];
+		}
+		else if (ElementFactor1[i] >= 2.0)
+		{
+			ElementFactor[i] = 2.0;
+		}
+	}
+
+	for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
+	{
+		eleDmg[i] *= ElementFactor[i] * (1 - TemporaryElementArmor[i]);
 		eleDmg[i] *= (1 - m_core.ElementAbsorb[i].GetValue());
 
 		//<add by Tianh> Èç¹ûÊÇÆÕÍ¨¹¥»÷   ÔòÔªËØÉËº¦*1/4
@@ -3211,7 +3231,7 @@ void CRegionCreature::ApplyDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[
 			eleDmg[i] *= 0.25;
 		}
 	}
-	
+
 	//for(int i=0; i<MAX_ELEMENT_ATTR; i++)
 	//{
 	//	eleDmg[i] /= (1 + m_core.ElementArmor[i].GetValue()/ELE_ARMOR_SCALE);
@@ -3220,18 +3240,18 @@ void CRegionCreature::ApplyDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[
 	//}
 
 	// pvpµÄÉËº¦Ë¥¼õ
-	if(enemy)
+	if (enemy)
 	{
-		if( (IsUser()||IsUserPet()||IsCallNpc()) && (enemy->IsUser()||enemy->IsUserPet()||enemy->IsCallNpc()) )
+		if ((IsUser() || IsUserPet() || IsCallNpc()) && (enemy->IsUser() || enemy->IsUserPet() || enemy->IsCallNpc()))
 		{
-			phyDmg *=0.25;
-			for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+			phyDmg *= 0.25;
+			for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 				//eleDmg[i] *= 0.5;
 				eleDmg[i] *= 0.25; //½µµÍÔªËØÊôÐÔµÄPvPË¥¼õ
 		}
 		else
 		{
-			phyDmg *= (100.0f-m_core.PhyDmgAbsorbRate)/100.0f;
+			phyDmg *= (100.0f - m_core.PhyDmgAbsorbRate) / 100.0f;
 		}
 	}
 
@@ -3253,8 +3273,8 @@ void CRegionCreature::ApplyDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[
 //	}
 }
 
-long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[MAX_ELEMENT_ATTR],int AttackType)
-{	
+long CRegionCreature::RecvDamage(CRegionCreature* enemy, int& phyDmg, int eleDmg[MAX_ELEMENT_ATTR], int AttackType)
+{
 	if (enemy)
 	{
 		if (enemy == this)  //×Ô¼º²»ÄÜ°Ñ×Ô¼ºÉ±ËÀ 
@@ -3281,12 +3301,12 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 		StopCatchSpirit(PET_CATCH_ERROR_BEATTACKED);
 
 	long nRet = CPlayerLogic::eLive;
-	
+
 	if (AttackType)  //Èç¹û½ÓÊÕµÄÊÇ·¶Î§¹¥»÷
 	{
-        ClearHidingAndTopo(); //È¡ÏûÒþÉí»òÕß¶ÝµØ×´Ì¬
+		ClearHidingAndTopo(); //È¡ÏûÒþÉí»òÕß¶ÝµØ×´Ì¬
 	}
-	if(m_flag & OBJECT_FLAG_DESTROY) 
+	if (m_flag & OBJECT_FLAG_DESTROY)
 	{
 		if (m_scene)
 		{
@@ -3294,20 +3314,20 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 		}
 		return CPlayerLogic::eDead;
 	}
-	if(/*PZH*//*m_bDead*/!this->GetPlayerLogic()->IsLive()) 
+	if (/*PZH*//*m_bDead*/!this->GetPlayerLogic()->IsLive())
 	{
 		return GetPlayerLogic()->GetLiveType();
 		//return CPlayerLogic::eDead;
 	}
 
 	//------------add start by tony 05.07.26-------------------------//
-	if(m_npcInfo != NULL)
+	if (m_npcInfo != NULL)
 	{
-		if(g_RegionCastleWarMgr.IsGuardAnimal(m_npcInfo->Id) == true && m_mc && !m_mc->m_bstartTask)//tim.yang  MC  ÔÚÃ»ÓÐ½øÐÐ¹ÖÎï¹¥³ÇµÄÊ±ºò²ÅÔÊÐí³ÇÕ½
+		if (g_RegionCastleWarMgr.IsGuardAnimal(m_npcInfo->Id) == true && m_mc && !m_mc->m_bstartTask)//tim.yang  MC  ÔÚÃ»ÓÐ½øÐÐ¹ÖÎï¹¥³ÇµÄÊ±ºò²ÅÔÊÐí³ÇÕ½
 		{
-			if(enemy != NULL)
+			if (enemy != NULL)
 			{
-				if(g_RegionCastleWarMgr.CanAttack(m_npcInfo->Id, enemy, m_oId) == false)
+				if (g_RegionCastleWarMgr.CanAttack(m_npcInfo->Id, enemy, m_oId) == false)
 				{
 					return 0;
 				}
@@ -3320,7 +3340,7 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 	int finalDmg;
 	finalDmg = phyDmg;
 
-	for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+	for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 	{
 		finalDmg += eleDmg[i];
 	}
@@ -3331,7 +3351,7 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 	{
 		if (enemy->IsUser())
 		{
-			if (enemy->m_pItemContainer->LoseEquip(CItemContainerBase::WEAPON_1,1))
+			if (enemy->m_pItemContainer->LoseEquip(CItemContainerBase::WEAPON_1, 1))
 				enemy->RefreshEquipWear();
 		}
 	}
@@ -3340,17 +3360,17 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 	if (IsUser())
 	{
 		vector<CItemContainerBase::EEquipParts> part;
-		for (int i = CItemContainerBase::NECKLACE;i <= CItemContainerBase::KITS;i++)
+		for (int i = CItemContainerBase::NECKLACE; i <= CItemContainerBase::KITS; i++)
 		{
-			SItemID item = m_pItemContainer->GetEquipItem((CItemContainerBase::EEquipParts)i,true);
-			if ( ItemID_IsValid(item) )
+			SItemID item = m_pItemContainer->GetEquipItem((CItemContainerBase::EEquipParts)i, true);
+			if (ItemID_IsValid(item))
 			{
 				part.push_back((CItemContainerBase::EEquipParts)i);
 			}
 		}
 		if (part.size())
 		{
-			if (m_pItemContainer->LoseEquip(part[GetRand(part.size()-1)],1))
+			if (m_pItemContainer->LoseEquip(part[GetRand(part.size() - 1)], 1))
 				RefreshEquipWear();
 		}
 	}
@@ -3358,45 +3378,45 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 	//Tian ÕâÀïÔö¼ÓÁËÑª¶ÜµÄÓ°Ïì(Ë×³ÆÄ§·¨¶Ü) 10.01.29
 	if (0 == m_core.GetShieldHp() && 0 == m_core.GetShieldMpR())
 	{
-		if(m_core.GetHp() < realDamage)
+		if (m_core.GetHp() < realDamage)
 			realDamage = m_core.GetHp();
-		
-		
+
+
 		AddHp(-finalDmg);
-	
+
 		//ÓÃÉËº¦ÂÊ°ÑÊÜµ½µÄÉËº¦×ª»¯³ÉHP
 		if (m_core.AbsorptionHpR)
 		{
-			AddHp(finalDmg*(m_core.AbsorptionHpR/100.0));
+			AddHp(finalDmg * (m_core.AbsorptionHpR / 100.0));
 		}
 
-		if(enemy)
+		if (enemy)
 		{
 			//Tianh ·´µ¯ÉËº¦
 			if (ReboundHurtR != 0)
 			{
 				int ReboundHurtDamage = 0;
-				int vele[MAX_ELEMENT_ATTR] = {0,0,0};
+				int vele[MAX_ELEMENT_ATTR] = { 0,0,0 };
 				if (ReboundHurtRType == 1)
 				{
-					ReboundHurtDamage = phyDmg*(ReboundHurtR/100.0);
-					for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+					ReboundHurtDamage = phyDmg * (ReboundHurtR / 100.0);
+					for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 					{
-						vele[i] += eleDmg[i]*(ReboundHurtR/100.0);
+						vele[i] += eleDmg[i] * (ReboundHurtR / 100.0);
 					}
 				}
 				else if (ReboundHurtRType == 2)
 				{
-					ReboundHurtDamage = phyDmg*(ReboundHurtR/100.0);
+					ReboundHurtDamage = phyDmg * (ReboundHurtR / 100.0);
 				}
 				else if (ReboundHurtRType == 3)
 				{
-					for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+					for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 					{
-						vele[i] += eleDmg[i]*(ReboundHurtR/100.0);
+						vele[i] += eleDmg[i] * (ReboundHurtR / 100.0);
 					}
 				}
-				long dead = enemy->RecvDamage(this,ReboundHurtDamage,vele);
+				long dead = enemy->RecvDamage(this, ReboundHurtDamage, vele);
 				/*m_Skill.SkillWriteDamage(enemy->m_oId, 0, ReboundHurtDamage, vele,dead,0);	*/
 
 				long enemyId = enemy->m_oId;
@@ -3417,33 +3437,33 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 
 
 				g_sendCmd->SerializeBit(dead, 3);
-				g_sendCmd->SerializeBit(criHit,1);	
+				g_sendCmd->SerializeBit(criHit, 1);
 				g_sendCmd->WriteShort(ReboundHurtDamage);
-				for(int i=0; i<MAX_ELEMENT_ATTR; i++)
+				for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 					g_sendCmd->WriteShort(vele[i]);
 
-				if(m_scene)
-					m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
-				
+				if (m_scene)
+					m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
+
 			}
-			
+
 			if (enemy->m_core.AbsorbHp.GetValue())
 			{
-				enemy->AddHp((enemy->m_core.AbsorbHp.GetValue()/100.0f)*realDamage,1);
+				enemy->AddHp((enemy->m_core.AbsorbHp.GetValue() / 100.0f) * realDamage, 1);
 			}
-			
+
 			if (enemy->m_core.AbsorbHpByRate.GetValue() != 0)
 			{
 				if (GetProb(0.05))
-					enemy->m_core.AddHp(enemy->m_core.AbsorbHpByRate.GetValue()/100.0f*realDamage);
+					enemy->m_core.AddHp(enemy->m_core.AbsorbHpByRate.GetValue() / 100.0f * realDamage);
 			}
-			
+
 			if (enemy->m_core.AbsorbMp.GetValue())
 			{
-				float absorbMpR = enemy->m_core.AbsorbMp.GetValue()/100.f;
-				float Damage = realDamage*absorbMpR;
+				float absorbMpR = enemy->m_core.AbsorbMp.GetValue() / 100.f;
+				float Damage = realDamage * absorbMpR;
 				if (m_core.GetMp() > 0)  //ÓÐÀ¶ÎüÀ¶  
-				{		
+				{
 					if (m_core.GetMp() < Damage)
 					{
 						Damage = m_core.GetMp();
@@ -3466,32 +3486,32 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 			if (absorbMpRate > 0)
 			{
 				float mpRate = absorbMpRate / 100.0f;
-				enemy->m_core.AddMp(mpRate*realDamage);
+				enemy->m_core.AddMp(mpRate * realDamage);
 			}
 
-			if(enemy->IsUserPet() || enemy->IsCallNpc())
+			if (enemy->IsUserPet() || enemy->IsCallNpc())
 			{
-				if(GetProb(enemy->m_petAbsorbMp/100.0f))
+				if (GetProb(enemy->m_petAbsorbMp / 100.0f))
 				{
 					enemy->m_core.AddMp(1);
 				}
-				if(enemy->m_petAbsorbHp>0)
+				if (enemy->m_petAbsorbHp > 0)
 				{
-					enemy->m_master->AddHp(realDamage*enemy->m_petAbsorbHp/100.0);
+					enemy->m_master->AddHp(realDamage * enemy->m_petAbsorbHp / 100.0);
 				}
 			}
 		}
 
-		if(m_core.GetHp() <= 0)
+		if (m_core.GetHp() <= 0)
 		{
 			m_core.SetHp(0);
 			//dead = 1;
 		}
 
-		OnBeAttacked(enemy,realDamage);
-		if(m_core.GetHp() == 0)
+		OnBeAttacked(enemy, realDamage);
+		if (m_core.GetHp() == 0)
 		{
-			if(IsUserPet() || IsCallNpc())
+			if (IsUserPet() || IsCallNpc())
 			{
 				/* m_pMaster->CallbackPet();*/
 				// m_core.SetHp(m_core.MaxHp.GetValue());
@@ -3506,12 +3526,12 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 	else if (m_core.GetShieldMpR() && m_core.GetShieldHp())
 	{
 		//Tianh  Ê¥Î×µÄ¶ÜÊÇµôÀ¶µÄ  À¶µô¹âÁË  Ôò¶ÜÏûÊ§  Ê±¼äµ½ÁËÒ²»áÏûÊ§
-		if (m_core.Metier  == METIER_TAOIST) //Ê¥Î×
+		if (m_core.Metier == METIER_TAOIST) //Ê¥Î×
 		{
-			if(m_core.GetMp() < realDamage)
+			if (m_core.GetMp() < realDamage)
 				realDamage = m_core.GetMp();
 
-			long Dmg = finalDmg * m_core.GetShieldMpR()/100.0;
+			long Dmg = finalDmg * m_core.GetShieldMpR() / 100.0;
 
 			m_core.AddMp(-Dmg);
 
@@ -3522,10 +3542,10 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 			g_sendCmd->WriteLong(finalDmg);
 			if (m_scene)
 			{
-				m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+				m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 			}
 
-			OnBeAttacked(enemy,realDamage);
+			OnBeAttacked(enemy, realDamage);
 
 			if (m_core.GetMp() == 0)
 			{
@@ -3536,9 +3556,9 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 			}
 		}
 	}
-	else 
+	else
 	{
-		if(m_core.GetShieldHp() < realDamage)
+		if (m_core.GetShieldHp() < realDamage)
 			realDamage = m_core.GetShieldHp();
 
 		m_core.AddShieldHp(-finalDmg);
@@ -3550,14 +3570,14 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 		g_sendCmd->WriteLong(finalDmg);
 		if (m_scene)
 		{
-			m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+			m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 		}
-		OnBeAttacked(enemy,realDamage);
+		OnBeAttacked(enemy, realDamage);
 
 		if (m_core.GetShieldHp() == 0)
 		{
-			 m_Skill.ClearEffByClass(12);//Tianh ÕâÀïÒªÇå³ýµôÄ§·¨¶ÜÌØÐ§
-		}	
+			m_Skill.ClearEffByClass(12);//Tianh ÕâÀïÒªÇå³ýµôÄ§·¨¶ÜÌØÐ§
+		}
 	}
 
 	return nRet;
@@ -3565,27 +3585,27 @@ long CRegionCreature::RecvDamage(CRegionCreature *enemy,int &phyDmg,int eleDmg[M
 
 char CRegionCreature::GetPKState()
 {
-    if (m_core.Pk == 0) 
+	if (m_core.Pk == 0)
 		return PK_STATE_NORMAL;
 
-    if (m_core.Pk >= g_pkConfig->iStateChangeTimeRedName * 60 * 1000) 
+	if (m_core.Pk >= g_pkConfig->iStateChangeTimeRedName * 60 * 1000)
 		return PK_STATE_RED_NAME;
-	else if(m_core.Pk >= g_pkConfig->iStateChangeTimeYellowName * 60 * 1000)
-    	return PK_STATE_YELLOW_NAME;
-	
+	else if (m_core.Pk >= g_pkConfig->iStateChangeTimeYellowName * 60 * 1000)
+		return PK_STATE_YELLOW_NAME;
+
 	return PK_STATE_NORMAL;
 }
 
 //ÅÐ¶ÏÊÇ·ñÔÚ²ÎÊýÖ¸¶¨Ãû×ÖµÄÇøÓòÀï
-bool CRegionCreature::AtAreaByName(const char *sAreaName)
+bool CRegionCreature::AtAreaByName(const char* sAreaName)
 {
-	if(!sAreaName)
+	if (!sAreaName)
 		return false;
 
 	std::list<RtsSceneBlockMap::SArea*>::iterator itArea = m_listArea.begin();
-	for(; itArea != m_listArea.end(); itArea++)
+	for (; itArea != m_listArea.end(); itArea++)
 	{
-		if(strcmp((*itArea)->szName, sAreaName) == 0)
+		if (strcmp((*itArea)->szName, sAreaName) == 0)
 			return true;
 	}
 
@@ -3593,31 +3613,31 @@ bool CRegionCreature::AtAreaByName(const char *sAreaName)
 }
 
 // ÒÑ¾­×ª»»ÎªÖ÷ÈË
-void CRegionCreature::OnPkOther(CRegionCreature *other)
+void CRegionCreature::OnPkOther(CRegionCreature* other)
 {
-//------------------chg start by tony 05.06.09-----------------------------------------//
-	//if (g_RegionCastleWarMgr.IsCastleWarTime(this)) // ³ÇÕ½
-	if( ((m_core.Faction == FACTION_ZHOU) && (g_RegionCastleWarMgr.IsInTimeZone("XiQi"))) ||
+	//------------------chg start by tony 05.06.09-----------------------------------------//
+		//if (g_RegionCastleWarMgr.IsCastleWarTime(this)) // ³ÇÕ½
+	if (((m_core.Faction == FACTION_ZHOU) && (g_RegionCastleWarMgr.IsInTimeZone("XiQi"))) ||
 		((m_core.Faction == FACTION_SHANG) && (g_RegionCastleWarMgr.IsInTimeZone("ZhaoGe"))))
 	{
-		if(g_RegionCastleWarMgr.InCastleWarArea(this))
+		if (g_RegionCastleWarMgr.InCastleWarArea(this))
 		{
 			return;
 		}
 	}
-//------------------chg end   by tony 05.06.09-----------------------------------------//
+	//------------------chg end   by tony 05.06.09-----------------------------------------//
 
-	if(g_WarfieldMgr.IsInWarfield(this)) return;
+	if (g_WarfieldMgr.IsInWarfield(this)) return;
 
 	char ePKState = GetPKState();
-	if(other->GetPKState() != PK_STATE_RED_NAME)
+	if (other->GetPKState() != PK_STATE_RED_NAME)
 	{
 		EPKAttr ePKAttr = m_eCurPosPKAttr;
-//------------------chg start by tony 05.06.09-----------------------------------------//
+		//------------------chg start by tony 05.06.09-----------------------------------------//
 		if (g_RegionCastleWarMgr.IsCastleWarTime(this)) // ³ÇÕ½
-//------------------chg end   by tony 05.06.09-----------------------------------------//
+			//------------------chg end   by tony 05.06.09-----------------------------------------//
 		{
-			if (ePKAttr==PKA_SAFE)
+			if (ePKAttr == PKA_SAFE)
 			{
 				ePKAttr = PKA_NORMAL;
 			}
@@ -3625,34 +3645,34 @@ void CRegionCreature::OnPkOther(CRegionCreature *other)
 
 		switch (ePKAttr)
 		{
-			case PKA_NORMAL:     // ÆÕÍ¨ÇøÓò(ÓÐºìÃû³Í·£)
+		case PKA_NORMAL:     // ÆÕÍ¨ÇøÓò(ÓÐºìÃû³Í·£)
+		{
+			int pkFact = 1;
+			//¼¶±ð²î´óÓÚ30¼¶£¬PKÖµ·­±¶
+			if (m_core.Lev > (other->m_core.Lev + 30))
 			{
-				int pkFact = 1;
-				//¼¶±ð²î´óÓÚ30¼¶£¬PKÖµ·­±¶
-				if(m_core.Lev > (other->m_core.Lev + 30)) 
-				{
-					pkFact *= 2;
-				}
-				//ÏàÍ¬ÕóÓª£¬PKÖµ·­±¶
-				if(m_core.Faction == other->m_core.Faction)
-				{
-					pkFact *= 2;
-				}
-				// ¼ì²éÕýµ±·ÀÎÀ£¬·ÀÖ¹ÊýÖµÒç³ö
-				if(!IsSelfDef(other) && m_core.Pk <= 200000000)
-				{
-					m_core.Pk += g_pkConfig->iStateChangeTimeIncrease * 30 * 1000 * pkFact;
-				}
-				UpdateToClient(NET_CRE_UPDATE_ATTR_SIMPLE);
-
-				break;
+				pkFact *= 2;
 			}
-// 			case PKA_UNSAFE:     // ²»°²È«ÇøÓò(ÎÞºìÃû³Í·£)
-// 			case PKA_SAFE:       // °²È«Çø(³ýÁË¹úÕ½×´Ì¬¶¼ÊÇ²»ÔÊÐíPKµÄ)
-// 			case PKA_SAFEST:     // ¾ø¶Ô°²È«Çø(ÐÂÊÖÇø)
-//             case PKA_PKUNABLE:
-// 			// Ã»ÓÐºìÃû¼ÆËã
-// 			return;
+			//ÏàÍ¬ÕóÓª£¬PKÖµ·­±¶
+			if (m_core.Faction == other->m_core.Faction)
+			{
+				pkFact *= 2;
+			}
+			// ¼ì²éÕýµ±·ÀÎÀ£¬·ÀÖ¹ÊýÖµÒç³ö
+			if (!IsSelfDef(other) && m_core.Pk <= 200000000)
+			{
+				m_core.Pk += g_pkConfig->iStateChangeTimeIncrease * 30 * 1000 * pkFact;
+			}
+			UpdateToClient(NET_CRE_UPDATE_ATTR_SIMPLE);
+
+			break;
+		}
+		// 			case PKA_UNSAFE:     // ²»°²È«ÇøÓò(ÎÞºìÃû³Í·£)
+		// 			case PKA_SAFE:       // °²È«Çø(³ýÁË¹úÕ½×´Ì¬¶¼ÊÇ²»ÔÊÐíPKµÄ)
+		// 			case PKA_SAFEST:     // ¾ø¶Ô°²È«Çø(ÐÂÊÖÇø)
+		//             case PKA_PKUNABLE:
+		// 			// Ã»ÓÐºìÃû¼ÆËã
+		// 			return;
 		}
 		//É±ÈëÌìÀÎ.. ÕâÀï»¹ÐèÒªÅÐ¶ÏÊÇ·ñÒÑ¾­×øÀÎ.. ´ý²¹³ä
 	}
@@ -3660,22 +3680,22 @@ void CRegionCreature::OnPkOther(CRegionCreature *other)
 	//Õ½¹¦
 	if (g_region->m_pWarZhulu->IsInZhuluMap(this->m_userInfo) && (g_region->m_pWarZhulu->IsZhuluActive(true) || g_region->m_pWarZhulu->IsZhuluActive(false)))
 	{
-		if(m_core.Faction != other->m_core.Faction)
+		if (m_core.Faction != other->m_core.Faction)
 		{
 			AddExploit(1);
 			g_region->m_pWarZhulu->OnZhuluPKOther(this->m_userInfo);
 		}
-		if(m_core.Faction == other->m_core.Faction)
+		if (m_core.Faction == other->m_core.Faction)
 			m_core.Pk += g_pkConfig->iStateChangeTimeIncrease * 60 * 1000;
 	}
 	else if (other->m_core.Lev > 30 && m_core.Faction != other->m_core.Faction && g_pkConfig->exploitManager.iOn_Off != 0)
 	{
 		time_t tmpTime = time(NULL);
 		tm now = *(localtime(&tmpTime));
-		tm *last = localtime((time_t*)(&(other->m_LastDieTime)));
+		tm* last = localtime((time_t*)(&(other->m_LastDieTime)));
 		if (other->m_LastDieTime == 0 || last->tm_yday - now.tm_yday >= g_pkConfig->exploitManager.iDie_Interval)
 		{
-			if(now.tm_hour <= g_pkConfig->exploitManager.iEndTime && now.tm_hour >= g_pkConfig->exploitManager.iBeginTime)
+			if (now.tm_hour <= g_pkConfig->exploitManager.iEndTime && now.tm_hour >= g_pkConfig->exploitManager.iBeginTime)
 			{
 				other->m_LastDieTime = tmpTime;
 				CalcExploit(other);
@@ -3713,54 +3733,56 @@ void CRegionCreature::OnPkOther(CRegionCreature *other)
 }
 
 // ÒÑ¾­×ª»»ÎªÖ÷ÈË
-void CRegionCreature::OnBePked(CRegionCreature *killer)
+void CRegionCreature::OnBePked(CRegionCreature* killer)
 {
 	// ...
 
 	//if (g_RegionCastleWarMgr.IsCastleWarTime(this)) // ³ÇÕ½
-	if( ((m_core.Faction == FACTION_ZHOU) && (g_RegionCastleWarMgr.IsInTimeZone("XiQi"))) ||
+	if (((m_core.Faction == FACTION_ZHOU) && (g_RegionCastleWarMgr.IsInTimeZone("XiQi"))) ||
 		((m_core.Faction == FACTION_SHANG) && (g_RegionCastleWarMgr.IsInTimeZone("ZhaoGe"))))
 	{
-		if(g_RegionCastleWarMgr.InCastleWarArea(this))
+		if (g_RegionCastleWarMgr.InCastleWarArea(this))
 		{
 			return;
 		}
 	}
 
-	if(killer->IsUser())
+	if (killer->IsUser())
 	{
-		if(g_WarfieldMgr.IsInWarfield(this)) return;
+		if (g_WarfieldMgr.IsInWarfield(this)) return;
 		/*m_pFriend->AddEnmity(killer->m_userInfo->m_userId,killer->m_core.Name,1);*/
 		// LOG2("add black list: %s[%d]\n",killer->m_core.Name.c_str(),killer->m_userInfo->m_userId);
-	
+
 		char ePKState = GetPKState();
 		float expLost = 0;
 
 		bool pkPunish = true;
-		if( ((m_core.Faction == FACTION_ZHOU) && (g_RegionCastleWarMgr.IsInTimeZone("XiQi")))
-			|| ((m_core.Faction == FACTION_SHANG) && (g_RegionCastleWarMgr.IsInTimeZone("ZhaoGe"))) )
+		if (((m_core.Faction == FACTION_ZHOU) && (g_RegionCastleWarMgr.IsInTimeZone("XiQi")))
+			|| ((m_core.Faction == FACTION_SHANG) && (g_RegionCastleWarMgr.IsInTimeZone("ZhaoGe"))))
 		{
-			if(g_RegionCastleWarMgr.InCastleWarArea(this))
+			if (g_RegionCastleWarMgr.InCastleWarArea(this))
 				pkPunish = false;
 		}
 
-		if(pkPunish)
-		{						
+		if (pkPunish)
+		{
 			SPKLost* pLostRule;
-			if (ePKState==PK_STATE_RED_NAME)
+			if (ePKState == PK_STATE_RED_NAME)
 			{
 				pLostRule = &(g_pkConfig->lostRed);
 				//Cheney EXPÈ«²¿É¾µô,3/30
 				//static float RED_NAME_DIE_LOST_EXP=0.0f;
 				//static CIniVariable Temp(GetGameRule(),"GameExpRule","RedNameDieLostExp",RED_NAME_DIE_LOST_EXP);
 				//expLost = RED_NAME_DIE_LOST_EXP;
-			}else if(ePKState == PK_STATE_YELLOW_NAME)
+			}
+			else if (ePKState == PK_STATE_YELLOW_NAME)
 			{
 				pLostRule = &(g_pkConfig->lostYellow);
 				//static float YELLOW_NAME_DIE_LOST_EXP=0.0f;
 				//static CIniVariable Temp(GetGameRule(),"GameExpRule","YellowNameDieLostExp",YELLOW_NAME_DIE_LOST_EXP);
 				//expLost = YELLOW_NAME_DIE_LOST_EXP;
-			}else
+			}
+			else
 			{
 				pLostRule = &(g_pkConfig->lostWhite);
 			}
@@ -3771,18 +3793,18 @@ void CRegionCreature::OnBePked(CRegionCreature *killer)
 
 			int iRate;
 			// money
-			if (rtRandom(100, 0)<pLostRule->iMoney)
+			if (rtRandom(100, 0) < pLostRule->iMoney)
 			{
 				iRate = rtRandom(pLostRule->iMoneyMaxRate, pLostRule->iMoneyMinRate);
 				// µôiRate%µÄÇ®
 				if (ePKState != PK_STATE_NORMAL)// White name not drop money Louis @ Sat 28 Feb 2009
 					if (m_pItemContainer)
 					{
-						dropMoney = m_pItemContainer->DropMoney(this, iRate/100.f);
+						dropMoney = m_pItemContainer->DropMoney(this, iRate / 100.f);
 						killer->AddGold(dropMoney);
 					}
 			}
-			
+
 
 			//´ó·ù¸Ä±äPKµôÂä¹æÔò£¬Cheney 3/30
 
@@ -3792,43 +3814,43 @@ void CRegionCreature::OnBePked(CRegionCreature *killer)
 			iBagDropRate = (0.05 + (fPK * 0.987 / 1020) * 4) * 100;
 
 			char eKillerPKState = killer->GetPKState();
-			if(eKillerPKState == PK_STATE_RED_NAME)
+			if (eKillerPKState == PK_STATE_RED_NAME)
 			{
 				iEquipDropRate += 10;
 				iBagDropRate += 10;
 			}
-			else if(eKillerPKState == PK_STATE_YELLOW_NAME)
+			else if (eKillerPKState == PK_STATE_YELLOW_NAME)
 			{
-				iEquipDropRate +=1;
-				iBagDropRate +=5;
+				iEquipDropRate += 1;
+				iBagDropRate += 5;
 			}
 
-			if(iEquipDropRate >= 400) iEquipDropRate = 400;
-			if(iBagDropRate >= 400) iBagDropRate = 400;
-	
+			if (iEquipDropRate >= 400) iEquipDropRate = 400;
+			if (iBagDropRate >= 400) iBagDropRate = 400;
+
 			//´¦Àí°ü¹ü
 			iRate = 0;
-			while(iBagDropRate>=100)
+			while (iBagDropRate >= 100)
 			{
 				iRate += 1;
 				iBagDropRate -= 100;
 			}
-			if(rtRandom(100,0)<iBagDropRate) iRate += 1;
-			if(m_pItemContainer) m_pItemContainer->DropBagItem(this,iRate,dropBagItems);
+			if (rtRandom(100, 0) < iBagDropRate) iRate += 1;
+			if (m_pItemContainer) m_pItemContainer->DropBagItem(this, iRate, dropBagItems);
 
 			// ´¦Àí×°±¸
 			iRate = 0;
-			while(iEquipDropRate>=100)
+			while (iEquipDropRate >= 100)
 			{
 				iRate += 1;
 				iEquipDropRate -= 100;
 			}
-			if(rtRandom(100,0)<iEquipDropRate) iRate += 1;
-			if(m_pItemContainer) m_pItemContainer->DropEquipItem(this,iRate,dropEquipItems);
+			if (rtRandom(100, 0) < iEquipDropRate) iRate += 1;
+			if (m_pItemContainer) m_pItemContainer->DropEquipItem(this, iRate, dropEquipItems);
 
 			char dropcount = dropBagItems.size() + dropEquipItems.size();
 
-			if ( dropcount )
+			if (dropcount)
 			{
 				vector<SItemID> listDropItem;
 
@@ -3839,7 +3861,7 @@ void CRegionCreature::OnBePked(CRegionCreature *killer)
 				if (dropEquipItems.size())
 				{
 					vector<SItemID>::iterator it = dropEquipItems.begin();
-					for (;it!=dropEquipItems.end();++it)
+					for (; it != dropEquipItems.end(); ++it)
 					{
 						listDropItem.push_back((*it));
 					}
@@ -3851,13 +3873,13 @@ void CRegionCreature::OnBePked(CRegionCreature *killer)
 			string strBag;
 			strBag += rtFormatNumber(GetItemSerializeVersion());
 			strBag += ",";
-			strBag += rtFormatNumber((int)(dropEquipItems.size()+dropBagItems.size()));
+			strBag += rtFormatNumber((int)(dropEquipItems.size() + dropBagItems.size()));
 			strBag += ",";
-			for (int i=0; i<(int)dropEquipItems.size(); i++)
+			for (int i = 0; i < (int)dropEquipItems.size(); i++)
 			{
 				strBag += dropEquipItems[i].SaveToString(g_region->m_pItemManager);
 			}
-			for (int j=0; j<(int)dropBagItems.size(); j++)
+			for (int j = 0; j < (int)dropBagItems.size(); j++)
 			{
 				strBag += dropBagItems[j].SaveToString(g_region->m_pItemManager);
 			}
@@ -3874,14 +3896,15 @@ void CRegionCreature::OnBePked(CRegionCreature *killer)
 			// ¸üÐÂµÀ¾ßÐÅÏ¢µ½¿Í»§¶Ë
 			UpdateToClient(NET_UPDATE_ALL);
 		}
-		
+
 		std::string ignoreMapName = "scene01_019.rtb";
 		std::string map;
 		RtsSceneBlockMap* bmap = g_region->m_defScene->FindBlockByPos(m_pos);
-		if(bmap)
+		if (bmap)
 		{
 			map = bmap->m_szFileName;
-		}else
+		}
+		else
 		{
 			map = "scene01_001.rtb";
 		}
@@ -3899,28 +3922,28 @@ void CRegionCreature::Rebirth()
 {
 	//PZH
 	//if(!m_bDead) return;
-	if(GetPlayerLogic()->IsLive()) return;
+	if (GetPlayerLogic()->IsLive()) return;
 
 	//m_bDead = false;
 	GetPlayerLogic()->ReLive();
 	//
 	m_hpRecover = 0;
-	m_hpRemain  = 0;
+	m_hpRemain = 0;
 
 	// ¸±±¾ÄÚËÀÍö
-	if(OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_FB)
+	if (OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_FB)
 	{
 		m_core.SetHp(1);
 		m_core.SetMp(1);
 		// ForceSetPosition(m_scene->m_defPos[0],m_scene->m_defPos[1],m_scene->m_defPos[2]);
-		int tx,ty;
-		float fx=m_scene->m_defPos[0],fy=m_scene->m_defPos[1];
+		int tx, ty;
+		float fx = m_scene->m_defPos[0], fy = m_scene->m_defPos[1];
 		CG_CmdPacket& packet = g_region->m_gws.BeginSend();
 		packet.WriteShort(r2g_move_to);
 		packet.WriteLong(m_userInfo->m_userId);
 		m_scene->m_pTerrain->GetTerrainByPosFast(fx, fy, tx, ty);
-		packet.WriteLong((long)tx+rand()%10-5); // ¸±±¾Ëæ»ú5µÄÎ»ÖÃ
-		packet.WriteLong((long)ty+rand()%10-5);
+		packet.WriteLong((long)tx + rand() % 10 - 5); // ¸±±¾Ëæ»ú5µÄÎ»ÖÃ
+		packet.WriteLong((long)ty + rand() % 10 - 5);
 		g_region->m_gws.EndSend();
 		return;
 	}
@@ -3928,7 +3951,7 @@ void CRegionCreature::Rebirth()
 	// rebirth ÖØÉú
 	char ePKState = GetPKState();
 	float fRebirthX, fRebirthY;
-	RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX<0)?(NULL):(m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX-m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY-m_scene->m_pTerrain->GetCenterY()));
+	RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX < 0) ? (NULL) : (m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY - m_scene->m_pTerrain->GetCenterY()));
 	// Èç¹ûÔÚµØÍ¼ÖÐ£¬¾Í¶ªµ½Ö¸¶¨µÄÎ»ÖÃ
 	if (pBlockMap)
 	{
@@ -3937,9 +3960,9 @@ void CRegionCreature::Rebirth()
 		if (pSceneInfo)
 		{
 			// ÔÚ×Ô¼ºµÄµØÅÌ»òÕß¹«¹²µÄµØÅÌËÀÍöµÄ
-			if (pSceneInfo->sceneFaction==m_core.Faction || (pSceneInfo->sceneFaction!=FACTION_ZHOU && pSceneInfo->sceneFaction!=FACTION_SHANG))
+			if (pSceneInfo->sceneFaction == m_core.Faction || (pSceneInfo->sceneFaction != FACTION_ZHOU && pSceneInfo->sceneFaction != FACTION_SHANG))
 			{
-				if (ePKState==PK_STATE_RED_NAME)
+				if (ePKState == PK_STATE_RED_NAME)
 				{
 					switch (rtRandom(5, 0))
 					{
@@ -3988,9 +4011,9 @@ void CRegionCreature::Rebirth()
 			}
 			else // ÔÚ¶Ô·½µÄµØÅÌËÀÍöµÄ
 			{
-				if (ePKState==PK_STATE_RED_NAME)
+				if (ePKState == PK_STATE_RED_NAME)
 				{
-					if (pSceneInfo->sceneFaction==FACTION_SHANG)
+					if (pSceneInfo->sceneFaction == FACTION_SHANG)
 					{
 						fRebirthX = g_pkConfig->fSafeRebirthShangOtherX;
 						fRebirthY = g_pkConfig->fSafeRebirthShangOtherY;
@@ -4028,13 +4051,14 @@ void CRegionCreature::Rebirth()
 		}
 	}
 	// ·ñÔò¶ªµ½³öÉúÎ»ÖÃ
-	if (pBlockMap==NULL)
+	if (pBlockMap == NULL)
 	{
-		if (m_core.Faction==FACTION_ZHOU) // ÖÜ
+		if (m_core.Faction == FACTION_ZHOU) // ÖÜ
 		{
 			fRebirthX = g_pkConfig->fSafeRebirthZouX;
 			fRebirthY = g_pkConfig->fSafeRebirthZouY;
-		}else // if (m_core.Faction==FACTION_SHANG) // ÉÌ
+		}
+		else // if (m_core.Faction==FACTION_SHANG) // ÉÌ
 		{
 			fRebirthX = g_pkConfig->fSafeRebirthShangX;
 			fRebirthY = g_pkConfig->fSafeRebirthShangY;
@@ -4048,10 +4072,10 @@ void CRegionCreature::Rebirth()
 	packet.WriteShort(r2g_move_to);
 	packet.WriteLong(m_userInfo->m_userId);
 	m_scene->m_pTerrain->GetTerrainByPosFast(fRebirthX, fRebirthY, iRx, iRy);
-	
+
 	iRx += rand() % 40 - 20;
 	iRy += rand() % 40 - 20;
-		
+
 	packet.WriteLong((long)iRx);
 	packet.WriteLong((long)iRy);
 	g_region->m_gws.EndSend();
@@ -4062,7 +4086,7 @@ void CRegionCreature::Rebirth()
 // add Popularity to user   
 // Tianh   Ôö¼ÓÉùÍû
 //
-bool CRegionCreature::AddPopularity(long sV,int Popularity)
+bool CRegionCreature::AddPopularity(long sV, int Popularity)
 {
 	bool LevUp = false;
 	bool isAdd = true;
@@ -4073,67 +4097,67 @@ bool CRegionCreature::AddPopularity(long sV,int Popularity)
 			if (m_core.XianyuLev >= 6)
 			{
 				return false;
-			}	
+			}
 			m_core.Xianyu += sV;
-		    while(m_core.Xianyu >= g_TablePopularity.GetNextXainyuExp(m_core.XianyuLev + 1))
+			while (m_core.Xianyu >= g_TablePopularity.GetNextXainyuExp(m_core.XianyuLev + 1))
 			{
-				if(m_core.XianyuLev >= 6) break;
+				if (m_core.XianyuLev >= 6) break;
 				// Cullevel up
 				LevUp = true;
 				m_core.Xianyu -= g_TablePopularity.GetNextXainyuExp(m_core.XianyuLev + 1);
 				m_core.XianyuLev++;
 			}
-			if(LevUp)
+			if (LevUp)
 			{
 				/*g_region->BuildEventCulLevelUp(g_sendCmd,this);*/
-				m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL); //¹ã²¥
+				m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL); //¹ã²¥
 			}
 			ToPopularity(XIANYU);
-		}	
+		}
 		if (Popularity == GUANFU)
 		{
 			if (m_core.GuanfuLev >= 6)
 			{
 				return false;
-			}	
+			}
 			m_core.Guanfu += sV;
-			while(m_core.Guanfu >= g_TablePopularity.GetNextGuanfuExp(m_core.GuanfuLev + 1))
+			while (m_core.Guanfu >= g_TablePopularity.GetNextGuanfuExp(m_core.GuanfuLev + 1))
 			{
-				if(m_core.GuanfuLev >= 6) break;
+				if (m_core.GuanfuLev >= 6) break;
 				// Cullevel up
 				LevUp = true;
 				m_core.Guanfu -= g_TablePopularity.GetNextGuanfuExp(m_core.GuanfuLev + 1);
 				m_core.GuanfuLev++;
 			}
-			if(LevUp)
+			if (LevUp)
 			{
 				/*g_region->BuildEventCulLevelUp(g_sendCmd,this);*/
-				m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL); //¹ã²¥
+				m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL); //¹ã²¥
 			}
 			ToPopularity(GUANFU);
-		}	
+		}
 		if (Popularity == MANZU)
 		{
 			if (m_core.ManzuLev >= 6)
 			{
 				return false;
-			}	
+			}
 			m_core.Manzu += sV;
-			while(m_core.Manzu >= g_TablePopularity.GetNextManzuExp(m_core.ManzuLev + 1))
+			while (m_core.Manzu >= g_TablePopularity.GetNextManzuExp(m_core.ManzuLev + 1))
 			{
-				if(m_core.ManzuLev >= 6) break;
+				if (m_core.ManzuLev >= 6) break;
 				// Cullevel up
 				LevUp = true;
-				m_core.	Manzu -= g_TablePopularity.GetNextManzuExp(m_core.ManzuLev + 1);
+				m_core.Manzu -= g_TablePopularity.GetNextManzuExp(m_core.ManzuLev + 1);
 				m_core.ManzuLev++;
 			}
-			if(LevUp)
+			if (LevUp)
 			{
 				/*g_region->BuildEventCulLevelUp(g_sendCmd,this);*/
-				m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL); //¹ã²¥
+				m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL); //¹ã²¥
 			}
 			ToPopularity(MANZU);
-		}	
+		}
 		if (Popularity == YISHI)
 		{
 			if (m_core.YishiLev >= 6)
@@ -4141,23 +4165,23 @@ bool CRegionCreature::AddPopularity(long sV,int Popularity)
 				return false;
 			}
 			m_core.Yishi += sV;
-			while(m_core.Yishi >= g_TablePopularity.GetNextYiShiExp(m_core.YishiLev + 1))
+			while (m_core.Yishi >= g_TablePopularity.GetNextYiShiExp(m_core.YishiLev + 1))
 			{
-				if(m_core.YishiLev >= 6) break;
+				if (m_core.YishiLev >= 6) break;
 				// Cullevel up
 				LevUp = true;
 				m_core.Yishi -= g_TablePopularity.GetNextYiShiExp(m_core.YishiLev + 1);
 				/*Íæ¼ÒÉý¼¶Ç°µÈ¼¶*/
 				m_core.YishiLev++;
 			}
-			if(LevUp)
+			if (LevUp)
 			{
 				/*g_region->BuildEventCulLevelUp(g_sendCmd,this);*/
-				m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL); //¹ã²¥
+				m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL); //¹ã²¥
 			}
 
 			ToPopularity(YISHI);
-		}	
+		}
 		if (Popularity == YIJUN)
 		{
 			if (m_core.YijunLev >= 6)
@@ -4165,22 +4189,22 @@ bool CRegionCreature::AddPopularity(long sV,int Popularity)
 				return false;
 			}
 			m_core.Yijun += sV;
-			while(m_core.Yijun >= g_TablePopularity.GetNextYijunExp(m_core.YijunLev + 1))
+			while (m_core.Yijun >= g_TablePopularity.GetNextYijunExp(m_core.YijunLev + 1))
 			{
-				if(m_core.YijunLev >= 6) break;
+				if (m_core.YijunLev >= 6) break;
 				// Cullevel up
 				LevUp = true;
-				m_core.	Yijun -= g_TablePopularity.GetNextYijunExp(m_core.YijunLev + 1);
+				m_core.Yijun -= g_TablePopularity.GetNextYijunExp(m_core.YijunLev + 1);
 				/*Íæ¼ÒÉý¼¶Ç°µÈ¼¶*/
 				m_core.YijunLev++;
 			}
-			if(LevUp)
+			if (LevUp)
 			{
 				/*g_region->BuildEventCulLevelUp(g_sendCmd,this);*/
-				m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL); //¹ã²¥
+				m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL); //¹ã²¥
 			}
 			ToPopularity(YIJUN);
-		}	
+		}
 		if (Popularity == LIANMENG)
 		{
 			if (m_core.Lianmeng >= 6)
@@ -4188,22 +4212,22 @@ bool CRegionCreature::AddPopularity(long sV,int Popularity)
 				return false;
 			}
 			m_core.Lianmeng += sV;
-			while(m_core.Lianmeng >= g_TablePopularity.GetNextLianmengExp(m_core.LianmengLev + 1))
+			while (m_core.Lianmeng >= g_TablePopularity.GetNextLianmengExp(m_core.LianmengLev + 1))
 			{
-				if(m_core.LianmengLev >= 6) break;
+				if (m_core.LianmengLev >= 6) break;
 				// Cullevel up
 				LevUp = true;
 				m_core.Lianmeng -= g_TablePopularity.GetNextLianmengExp(m_core.LianmengLev + 1);
 				/*Íæ¼ÒÉý¼¶Ç°µÈ¼¶*/
 				m_core.LianmengLev++;
 			}
-			if(LevUp)
+			if (LevUp)
 			{
 				/*g_region->BuildEventCulLevelUp(g_sendCmd,this);*/
-				m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL); //¹ã²¥
+				m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL); //¹ã²¥
 			}
 			ToPopularity(LIANMENG);
-		}	
+		}
 	}
 
 	return true;
@@ -4222,8 +4246,8 @@ bool CRegionCreature::ToPopularity(int Popularity)
 	}
 
 	string str = "";
-	long a,b,c,d,e,f = 0;
-	long a1,b1,c1,d1,e1,f1 = 0;
+	long a, b, c, d, e, f = 0;
+	long a1, b1, c1, d1, e1, f1 = 0;
 	if (Popularity == XIANYU)
 	{
 		a = m_core.Xianyu;
@@ -4256,7 +4280,7 @@ bool CRegionCreature::ToPopularity(int Popularity)
 	}
 
 	char Cstr[1024];
-	rt2_sprintf(Cstr, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d",a,a1,b,b1,c,c1,d,d1,e,e1,f,f1);
+	rt2_sprintf(Cstr, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d", a, a1, b, b1, c, c1, d, d1, e, e1, f, f1);
 	m_popularity = Cstr;
 
 	return true;
@@ -4286,21 +4310,21 @@ bool CRegionCreature::LoadToPopularity(const char* szString)
 			vPopularity.push_back(atoi(newTemp.c_str()));
 
 
-			nStart = nPos+1;
+			nStart = nPos + 1;
 			nPos = Str.find(",", nStart);
 
 			if (nPos > Str.length())
 			{
-				string newTemp = Str.substr(nStart,Str.length() - Pos);
+				string newTemp = Str.substr(nStart, Str.length() - Pos);
 				vPopularity.push_back(atoi(newTemp.c_str()));
 			}
 			else
 			{
-				Pos = nPos - Pos +1;
-			}	
+				Pos = nPos - Pos + 1;
+			}
 		}
 	}
-	if(!vPopularity.empty())
+	if (!vPopularity.empty())
 	{
 		m_core.Xianyu = vPopularity[0];
 		m_core.XianyuLev = vPopularity[1];
@@ -4340,28 +4364,28 @@ bool CRegionCreature::LoadToPopularity(const char* szString)
 
 // add by zzh
 void CRegionCreature::Rebirth(char type, int iHPrate, int iMPrate)
-{ 
+{
 	//PZH
 	//if(!m_bDead) return;
-	if(GetPlayerLogic()->IsLive()) return;
+	if (GetPlayerLogic()->IsLive()) return;
 
 	m_hpRecover = 0;
-	m_hpRemain  = 0;
+	m_hpRemain = 0;
 
 	// ¸±±¾ÄÚËÀÍö
-	if(OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_FB)
+	if (OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_FB)
 	{
 		m_core.SetHp(1);
 		m_core.SetMp(1);
 		// ForceSetPosition(m_scene->m_defPos[0],m_scene->m_defPos[1],m_scene->m_defPos[2]);
-		int tx,ty;
-		float fx=m_scene->m_defPos[0],fy=m_scene->m_defPos[1];
+		int tx, ty;
+		float fx = m_scene->m_defPos[0], fy = m_scene->m_defPos[1];
 		CG_CmdPacket& packet = g_region->m_gws.BeginSend();
 		packet.WriteShort(r2g_move_to);
 		packet.WriteLong(m_userInfo->m_userId);
 		m_scene->m_pTerrain->GetTerrainByPosFast(fx, fy, tx, ty);
-		packet.WriteLong((long)tx+rand()%10-5); // ¸±±¾Ëæ»ú5µÄÎ»ÖÃ
-		packet.WriteLong((long)ty+rand()%10-5);
+		packet.WriteLong((long)tx + rand() % 10 - 5); // ¸±±¾Ëæ»ú5µÄÎ»ÖÃ
+		packet.WriteLong((long)ty + rand() % 10 - 5);
 		g_region->m_gws.EndSend();
 		GetPlayerLogic()->ReLive();
 		SetProtectTime(REBIRTH_PROTECT_MILLSECONDS);
@@ -4372,131 +4396,134 @@ void CRegionCreature::Rebirth(char type, int iHPrate, int iMPrate)
 	// rebirth ÖØÉú
 	char ePKState = GetPKState();
 	float fRebirthX, fRebirthY;
-	RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX<0)?(NULL):(m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX-m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY-m_scene->m_pTerrain->GetCenterY()));
+	RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX < 0) ? (NULL) : (m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY - m_scene->m_pTerrain->GetCenterY()));
 
 	switch (type)
 	{
 	case 1:
-		{
-			if (!GetItemNum(PERFECT_REBIRTH_ITEM) > 0 || !RemoveItem(PERFECT_REBIRTH_ITEM, 1))
-				return;
-			m_core.SetHp(m_core.GetMaxHp());
-			m_core.SetMp(m_core.GetMaxMp());
-		}
-		break;
+	{
+		if (!GetItemNum(PERFECT_REBIRTH_ITEM) > 0 || !RemoveItem(PERFECT_REBIRTH_ITEM, 1))
+			return;
+		m_core.SetHp(m_core.GetMaxHp());
+		m_core.SetMp(m_core.GetMaxMp());
+	}
+	break;
 	case 2:
-		{
-			static float DIE_BY_MONSTER_ADDED_LOST_EXP=0.01f;
-			static CIniVariable Temp(GetGameRule(),"GameExpRule","DieByMonsterAddkedLostExp",DIE_BY_MONSTER_ADDED_LOST_EXP);
-			ULONG iLostExp = g_TableExp.GetNextLevExp(m_core.Lev)*DIE_BY_MONSTER_ADDED_LOST_EXP;
-			if (m_core.Exp>iLostExp)    m_core.Exp -= iLostExp;
-			else                        m_core.Exp = 0;
+	{
+		static float DIE_BY_MONSTER_ADDED_LOST_EXP = 0.01f;
+		static CIniVariable Temp(GetGameRule(), "GameExpRule", "DieByMonsterAddkedLostExp", DIE_BY_MONSTER_ADDED_LOST_EXP);
+		ULONG iLostExp = g_TableExp.GetNextLevExp(m_core.Lev) * DIE_BY_MONSTER_ADDED_LOST_EXP;
+		if (m_core.Exp > iLostExp)    m_core.Exp -= iLostExp;
+		else                        m_core.Exp = 0;
 
-			ULONG iLostMoney = m_pItemContainer->GetMoney() / 10;
+		ULONG iLostMoney = m_pItemContainer->GetMoney() / 10;
 
-			if ( !RemoveGold(iLostMoney) )
-				return;
+		if (!RemoveGold(iLostMoney))
+			return;
 
-			m_core.SetHp(m_core.GetMaxHp() / 10);
-			m_core.SetMp(m_core.GetMaxMp() / 10);
-		}
-		break;
+		m_core.SetHp(m_core.GetMaxHp() / 10);
+		m_core.SetMp(m_core.GetMaxMp() / 10);
+	}
+	break;
 	case 3:
+	{
+		int lineGroup = 0;
+		switch (m_core.RelivePostion)
 		{
-			int lineGroup = 0;
-			switch(m_core.RelivePostion)
-			{
-			case 1:
-				{
-					lineGroup = 1;
-					fRebirthX = RELIVEPOSTIONX1;
-					fRebirthY = RELIVEPOSTIONY1;
-				}
-				break;
-			case 2:
-				{
-					fRebirthX = RELIVEPOSTIONX2;
-					fRebirthY = RELIVEPOSTIONY2;
-				}
-				break;
-			case 3:
-				{
-					fRebirthX = RELIVEPOSTIONX3;
-					fRebirthY = RELIVEPOSTIONY3;
-				}
-				break;
-			case 4:
-				{
-					fRebirthX = RELIVEPOSTIONX4;
-					fRebirthY = RELIVEPOSTIONY4;
-				}
-				break;
-			case 5:
-				{
-					lineGroup = 1;
-					fRebirthX = RELIVEPOSTIONX5;
-					fRebirthY = RELIVEPOSTIONY5;
-				}
-				break;
-			default:
-				{
-					m_core.RelivePostion = 1;
-					lineGroup = 1;
-					fRebirthX = RELIVEPOSTIONXOTHER;
-					fRebirthY = RELIVEPOSTIONYOTHER;
-				}
-				break;
-			}
-
-			bool switchScene = true;
-			int iRx, iRy;
-			iRx = fRebirthX;
-			iRy = fRebirthY;
-			m_scene->m_pTerrain->GetTerrainByPosFast(fRebirthX, fRebirthY, iRx, iRy);
-			iRx += rand() % 10 - 5;
-			iRy += rand() % 10 - 5;
-
-			long pos[2];
-			pos[0] = fRebirthX + rand() % 200 - 100;
-			pos[1] = fRebirthY + rand() % 200 - 100;
-
-			if (lineGroup)
-			{
-				MSG3("Íæ¼Ò[%s], ·ÖÏß¸´»î[%.0f,%.0f]\n", m_userInfo->m_username.c_str(), fRebirthX, fRebirthY);
-				if ( m_dwGroupID && m_dwLineID )
-				{
-					switchScene = false;
-				}else
-					CLineSysCmdSend_R2G::Send_r2g_linesys_EnterLineReq(lineGroup, m_userInfo->m_userId, pos);
-			}else
-			{
-				MSG3("Íæ¼Ò[%s], ´óµØÍ¼¸´»î[%.0f,%.0f]\n", m_userInfo->m_username.c_str(), fRebirthX, fRebirthY);
-				if ( m_dwGroupID && m_dwLineID )
-				{
-					CLineSysCmdSend_R2G::Send_r2g_linesys_LeaveLineReq(m_dwGroupID, m_dwLineID, m_userInfo->m_userId, "DefMap", pos);
-				}else
-					switchScene = false;
-			}
-
-			if ( !switchScene )
-			{
-				CG_CmdPacket& packet = g_region->m_gws.BeginSend();
-				packet.WriteShort(r2g_move_to);
-				packet.WriteLong(m_userInfo->m_userId);
-				packet.WriteLong((long)iRx);
-				packet.WriteLong((long)iRy);
-				g_region->m_gws.EndSend();
-			}
-			m_core.SetHp(m_core.GetMaxHp() / 10);
-			m_core.SetMp(m_core.GetMaxMp() / 10);
+		case 1:
+		{
+			lineGroup = 1;
+			fRebirthX = RELIVEPOSTIONX1;
+			fRebirthY = RELIVEPOSTIONY1;
 		}
 		break;
-	case 4: 
+		case 2:
 		{
-			m_core.SetHp(m_core.GetMaxHp() * iHPrate / 100);
-			m_core.SetMp(m_core.GetMaxMp() * iMPrate / 100);
+			fRebirthX = RELIVEPOSTIONX2;
+			fRebirthY = RELIVEPOSTIONY2;
 		}
 		break;
+		case 3:
+		{
+			fRebirthX = RELIVEPOSTIONX3;
+			fRebirthY = RELIVEPOSTIONY3;
+		}
+		break;
+		case 4:
+		{
+			fRebirthX = RELIVEPOSTIONX4;
+			fRebirthY = RELIVEPOSTIONY4;
+		}
+		break;
+		case 5:
+		{
+			lineGroup = 1;
+			fRebirthX = RELIVEPOSTIONX5;
+			fRebirthY = RELIVEPOSTIONY5;
+		}
+		break;
+		default:
+		{
+			m_core.RelivePostion = 1;
+			lineGroup = 1;
+			fRebirthX = RELIVEPOSTIONXOTHER;
+			fRebirthY = RELIVEPOSTIONYOTHER;
+		}
+		break;
+		}
+
+		bool switchScene = true;
+		int iRx, iRy;
+		iRx = fRebirthX;
+		iRy = fRebirthY;
+		m_scene->m_pTerrain->GetTerrainByPosFast(fRebirthX, fRebirthY, iRx, iRy);
+		iRx += rand() % 10 - 5;
+		iRy += rand() % 10 - 5;
+
+		long pos[2];
+		pos[0] = fRebirthX + rand() % 200 - 100;
+		pos[1] = fRebirthY + rand() % 200 - 100;
+
+		if (lineGroup)
+		{
+			MSG3("Íæ¼Ò[%s], ·ÖÏß¸´»î[%.0f,%.0f]\n", m_userInfo->m_username.c_str(), fRebirthX, fRebirthY);
+			if (m_dwGroupID && m_dwLineID)
+			{
+				switchScene = false;
+			}
+			else
+				CLineSysCmdSend_R2G::Send_r2g_linesys_EnterLineReq(lineGroup, m_userInfo->m_userId, pos);
+		}
+		else
+		{
+			MSG3("Íæ¼Ò[%s], ´óµØÍ¼¸´»î[%.0f,%.0f]\n", m_userInfo->m_username.c_str(), fRebirthX, fRebirthY);
+			if (m_dwGroupID && m_dwLineID)
+			{
+				CLineSysCmdSend_R2G::Send_r2g_linesys_LeaveLineReq(m_dwGroupID, m_dwLineID, m_userInfo->m_userId, "DefMap", pos);
+			}
+			else
+				switchScene = false;
+		}
+
+		if (!switchScene)
+		{
+			CG_CmdPacket& packet = g_region->m_gws.BeginSend();
+			packet.WriteShort(r2g_move_to);
+			packet.WriteLong(m_userInfo->m_userId);
+			packet.WriteLong((long)iRx);
+			packet.WriteLong((long)iRy);
+			g_region->m_gws.EndSend();
+		}
+		m_core.SetHp(m_core.GetMaxHp() / 10);
+		m_core.SetMp(m_core.GetMaxMp() / 10);
+	}
+	break;
+	case 4:
+	{
+		m_core.SetHp(m_core.GetMaxHp() * iHPrate / 100);
+		m_core.SetMp(m_core.GetMaxMp() * iMPrate / 100);
+	}
+	break;
 	default:
 		return;
 		break;
@@ -4514,9 +4541,9 @@ void CRegionCreature::Rebirth(char type, int iHPrate, int iMPrate)
 		g_sendCmd->WriteShort(r2c_user_rebirth);
 		g_sendCmd->WriteLong(this->GetObjectId());
 		g_sendCmd->WriteByte(type);
-		if(NULL != m_scene)
+		if (NULL != m_scene)
 		{
-			m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+			m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 		}
 	}
 }
@@ -4534,17 +4561,17 @@ void CRegionCreature::UltimateChange(int sV)
 		m_UltimateChange = 0;
 	}
 	//Ôö¼Ó¹¥»÷Á¦
-	m_core.DamageMin.Temp  += sV;
-	m_core.DamageMax.Temp  += sV;
+	m_core.DamageMin.Temp += sV;
+	m_core.DamageMax.Temp += sV;
 
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_Ultimate_Change);
 	g_sendCmd->WriteLong(this->GetObjectId());
-	g_sendCmd->SerializeBit(m_UltimateChange,1);
+	g_sendCmd->SerializeBit(m_UltimateChange, 1);
 
-	if(NULL != m_scene)
+	if (NULL != m_scene)
 	{
-		m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+		m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 	}
 }
 
@@ -4565,11 +4592,11 @@ void CRegionCreature::Hiding(int sV)
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_Hiding);
 	g_sendCmd->WriteLong(this->GetObjectId());
-	g_sendCmd->SerializeBit(m_IsHiding,1);
+	g_sendCmd->SerializeBit(m_IsHiding, 1);
 
-	if(NULL != m_scene)
+	if (NULL != m_scene)
 	{
-		m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+		m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 	}
 }
 
@@ -4589,11 +4616,11 @@ void CRegionCreature::PlayerLurk(int sV)
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_Lurk);
 	g_sendCmd->WriteLong(this->GetObjectId());
-	g_sendCmd->SerializeBit(m_IsHiding,1);
+	g_sendCmd->SerializeBit(m_IsHiding, 1);
 
-	if(NULL != m_scene)
+	if (NULL != m_scene)
 	{
-		m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+		m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 	}
 }
 
@@ -4611,30 +4638,30 @@ void CRegionCreature::AddSoul(int MonsterLev)
 	else
 	{
 		//ÎÞË¥¼õ
-		float NoCollapseSoul = 1+0.25*(MonsterLev-1)*(1+0.05*(MonsterLev-1));
+		float NoCollapseSoul = 1 + 0.25 * (MonsterLev - 1) * (1 + 0.05 * (MonsterLev - 1));
 		//ÓÐË¥¼õ
-		float CollapseSoul = (1-Abs(m_core.Lev-MonsterLev)*0.1)*NoCollapseSoul;
+		float CollapseSoul = (1 - Abs(m_core.Lev - MonsterLev) * 0.1) * NoCollapseSoul;
 		//×îÖÕÁéÁ¦»ñµÃ
-		float WinSoul = Max(0.0f,(CollapseSoul)*(1+(m_core.GradeLev/20+1)/3));
+		float WinSoul = Max(0.0f, (CollapseSoul) * (1 + (m_core.GradeLev / 20 + 1) / 3));
 
 		////
 		//Ìí¼ÓRMBµÀ¾ßµÄ×÷ÓÃ  Î´ÊµÏÖ
 		////
 		long vSoul = 0;
-		
-		if (0 != (long)(WinSoul+0.50))//ÕâÀï¼Ó0.50 ÊµÏÖÒ»¸ö4Éá5ÈëµÄÐ§¹û
+
+		if (0 != (long)(WinSoul + 0.50))//ÕâÀï¼Ó0.50 ÊµÏÖÒ»¸ö4Éá5ÈëµÄÐ§¹û
 		{
 			//·¢ËÍÏµÍ³ÏûÏ¢
 			rt2_sprintf(g_strStaticBuffer, R(MSG_ADD_SOUL), (long)WinSoul);
 			SendBattleInfoMessage(g_strStaticBuffer);
 
-			vSoul = (long)(WinSoul+0.50);
+			vSoul = (long)(WinSoul + 0.50);
 
 			if ((m_core.Soul + vSoul) > MaxSoul)
 			{
 				vSoul = MaxSoul - m_core.Soul;
 			}
-			
+
 			{
 				if (vSoul > 0)
 				{
@@ -4660,10 +4687,10 @@ void CRegionCreature::AddSoul(int MonsterLev)
 //
 // ÎïÌåËÀÍö£¬Ö»µ÷ÓÃ×Ô¼ºµÄËÀÍö£¬killer¿ÉÒÔÊÇ¿Õ
 //
-long CRegionCreature::Die(CRegionCreature *killer)
+long CRegionCreature::Die(CRegionCreature* killer)
 {
 	long nRet;
-	if(IsMonster())
+	if (IsMonster())
 	{
 		if (killer && killer->IsUserPet())
 		{
@@ -4671,7 +4698,7 @@ long CRegionCreature::Die(CRegionCreature *killer)
 			if (killer->m_master)
 			{
 				killer->m_master->AddSoul(m_core.Lev);
-			}			
+			}
 		}
 		//Èç¹ûÉ±ËÀ¹ÖÎïµÄÊÇÍæ¼Ò
 		if (killer && killer->IsUser())
@@ -4679,7 +4706,7 @@ long CRegionCreature::Die(CRegionCreature *killer)
 			//É±ËÀ¹ÖÎï»ñµÃÁéÁ¦Öµ
 			killer->AddSoul(m_core.Lev);
 
-            //-----------·¢ËÍÏµÍ³ÐÂÎÅ ------------------  Tianh  
+			//-----------·¢ËÍÏµÍ³ÐÂÎÅ ------------------  Tianh  
 			if (true == m_npcInfo->isPrompt)
 			{
 				RtsSceneBlockMap* pMap = m_scene->FindBlockByPos(m_pos);
@@ -4689,20 +4716,20 @@ long CRegionCreature::Die(CRegionCreature *killer)
 				SItemID ItemID;
 
 				const char* playername = str1.c_str();
-				const char *Name = "";
-				const char *BossName = str.c_str();
-				const char *SceneName = strone.c_str();
-				const char *ItemName = "";
-				this->Systembroadcast(playername,Name,BossName,SceneName,BRATBOSS,ItemName);
+				const char* Name = "";
+				const char* BossName = str.c_str();
+				const char* SceneName = strone.c_str();
+				const char* ItemName = "";
+				this->Systembroadcast(playername, Name, BossName, SceneName, BRATBOSS, ItemName);
 
-			}	
+			}
 		}
 
 		nRet = CPlayerLogic::eDead;
 
 		//²»ÊÇÂÃÐÐÕßÊ±£¬ÓÐ1/3¼¸ÂÊËµ³öÒÅÑÔ£¬Èç¹ûÓÐ¶¨ÒåÒÅÑÔ
-		if( m_ai && m_ai->GetType() != CRegionAI::TYPE_TOUR &&
-			rand() % 5 < 1 )
+		if (m_ai && m_ai->GetType() != CRegionAI::TYPE_TOUR &&
+			rand() % 5 < 1)
 			m_ai->TalkOver();
 	}
 	else
@@ -4711,7 +4738,7 @@ long CRegionCreature::Die(CRegionCreature *killer)
 	}
 	do
 	{
-		if(m_flag & OBJECT_FLAG_DESTROY) 
+		if (m_flag & OBJECT_FLAG_DESTROY)
 		{
 			break;
 		}
@@ -4719,7 +4746,7 @@ long CRegionCreature::Die(CRegionCreature *killer)
 		//if(m_bDead) return;
 
 		//m_bDead = true;
-		if(!GetPlayerLogic()->IsLive())
+		if (!GetPlayerLogic()->IsLive())
 		{
 			break;
 		}
@@ -4727,13 +4754,13 @@ long CRegionCreature::Die(CRegionCreature *killer)
 		//
 
 		m_bScapegoatRemovedDuringDead = false;
-		
-		if(killer)
+
+		if (killer)
 		{
-			m_scene->OnCreatureDead(this,killer);
+			m_scene->OnCreatureDead(this, killer);
 			nRet = OnDead(killer);
 		}
-		if(IsUser())
+		if (IsUser())
 		{
 			//
 			//-----------·¢ËÍÏµÍ³ÐÂÎÅ ------------------  Tianh  
@@ -4745,22 +4772,22 @@ long CRegionCreature::Die(CRegionCreature *killer)
 				string strone = pMap->m_szBlockName;
 
 				string str = killer->m_core.Name.c_str();
-				string str1= m_core.Name.c_str();
-				
+				string str1 = m_core.Name.c_str();
+
 				const char* playername = killer->m_core.Name.c_str();
-				const char *Name = str1.c_str();
-				const char *BossName = "";
-				const char *SceneName = strone.c_str();
+				const char* Name = str1.c_str();
+				const char* BossName = "";
+				const char* SceneName = strone.c_str();
 				SItemID ItemID;
-				const char *ItemName = "";
-				this->Systembroadcast(playername,Name,BossName,SceneName,FIELDKILLPERSON,ItemName);
-			}	
+				const char* ItemName = "";
+				this->Systembroadcast(playername, Name, BossName, SceneName, FIELDKILLPERSON, ItemName);
+			}
 			//-----------·¢ËÍÏµÍ³ÐÂÎÅ ------------------  Tianh  
 
 			int mt = m_task.IsDoingMoneyTask();
-			if(mt)
+			if (mt)
 			{
-				CancelTask(mt,false);
+				CancelTask(mt, false);
 			}
 
 			// exp lost //Cheney,ÕâÀïÈ«²¿É¾µô¡£
@@ -4784,10 +4811,11 @@ long CRegionCreature::Die(CRegionCreature *killer)
 			// ¸æËßÍæ¼ÒËµËûÒÑ¾­ËÀÁË
 			g_sendCmd->BeginWrite();
 			g_sendCmd->WriteShort(r2c_you_are_dead);
-			if (killer==0)
+			if (killer == 0)
 			{
 				g_sendCmd->WriteByte(0);
-			}else
+			}
+			else
 			{
 				if (killer->IsUser())   g_sendCmd->WriteByte(1);
 				else                    g_sendCmd->WriteByte(2);
@@ -4803,20 +4831,20 @@ long CRegionCreature::Die(CRegionCreature *killer)
 			delete state;
 			}
 			*/
-	//-------------------------------add start by tony 05.06.09------------------//
-			if( (g_RegionCastleWarMgr.IsCastleWarTime("XiQi") && (m_core.Faction == FACTION_ZHOU)) ||
+			//-------------------------------add start by tony 05.06.09------------------//
+			if ((g_RegionCastleWarMgr.IsCastleWarTime("XiQi") && (m_core.Faction == FACTION_ZHOU)) ||
 				(g_RegionCastleWarMgr.IsCastleWarTime("ZhaoGe") && (m_core.Faction == FACTION_SHANG)))
 			{
 				//if(g_RegionCastleWarMgr.FindByUnionID(m_unionID) != NULL)
-				if(g_RegionCastleWarMgr.InCastleWarArea(this))
+				if (g_RegionCastleWarMgr.InCastleWarArea(this))
 				{
 					g_RegionCastleWarMgr.Rebirth(this);
 					break;
 				}
 			}
-	//-------------------------------add end   by tony 05.06.09------------------//
-			//Õ½³¡ÄÚ»Ø³Ç
-			if(OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_WARFIELD)
+			//-------------------------------add end   by tony 05.06.09------------------//
+					//Õ½³¡ÄÚ»Ø³Ç
+			if (OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_WARFIELD)
 			{
 				g_WarfieldMgr.OnUserDead(this);
 				break;
@@ -4824,48 +4852,48 @@ long CRegionCreature::Die(CRegionCreature *killer)
 
 			//Rebirth();
 		}
-		else if(IsUserPet())
+		else if (IsUserPet())
 		{
 			// ÔÚÖ÷ÈË¶¨Ê±Æ÷ÖÐ´¦Àí£¬²»ÒªÔÚÕâÀï´¦Àí
 
 		}
-		else if(IsMonster())
+		else if (IsMonster())
 		{
 			//³ÇÕ½Ïà¹Ø
-			if(m_npcInfo != NULL)
+			if (m_npcInfo != NULL)
 			{
-				if(g_RegionCastleWarMgr.IsGuardAnimal(m_npcInfo->Id))
+				if (g_RegionCastleWarMgr.IsGuardAnimal(m_npcInfo->Id))
 				{
 					g_RegionCastleWarMgr.KillAnimalNpc(killer, this);
 					break;
 				}
 
-				if(g_RegionCastleWarMgr.IsFlagNpc(m_npcInfo->Id))
+				if (g_RegionCastleWarMgr.IsFlagNpc(m_npcInfo->Id))
 				{
-					g_RegionCastleWarMgr.KillFlagNpc(this,true);
+					g_RegionCastleWarMgr.KillFlagNpc(this, true);
 					break;
 				}
 			}
 			CallSpirit();
-			
+
 			// ¹ÖÎï»ònpc
-			if(m_master) 
+			if (m_master)
 			{
 				m_master->SetWarder(NULL);
-				if(m_master->IsUser() && m_master->IsScriptLoaded() && m_npcInfo)
+				if (m_master->IsUser() && m_master->IsScriptLoaded() && m_npcInfo)
 				{
-					char sFuncName[20] = {0};
+					char sFuncName[20] = { 0 };
 					rt2_snprintf(sFuncName, 20, "WardNPCDie%d", m_npcInfo->Id);
 					m_master->CallScript(sFuncName, false);
 					m_master = NULL;
 				}
 				//---------add start by tony 05.08.09 ai modify---------------//
-				if(m_master->m_ai)
+				if (m_master->m_ai)
 				{
 					m_master->m_ai->OnUnderlingDead(this);
 				}
 				//---------add end   by tony 05.08.09 ai modify---------------//
-				
+
 				m_master->m_pet = NULL;
 				m_master->m_bRidePet = false;
 				//m_scene->RemoveCreature(m_oId); //PZH ¹ÖÎïËÀºóÊÇ±ä³ÉÊ¬Ìå×´£¬¶ø²»ÊÇÂíÉÏÏûÊ§
@@ -4873,59 +4901,59 @@ long CRegionCreature::Die(CRegionCreature *killer)
 
 				//¹ÖÎïËÀÍöÔö¼ÓÁéÁ¦
 			}
-			else 
+			else
 			{
-				if(m_pet)
+				if (m_pet)
 				{
-					m_scene->RemoveCreature(m_pet->m_oId);	
+					m_scene->RemoveCreature(m_pet->m_oId);
 					m_dwPetSave = 0;
 				}
 				//m_scene->RemoveCreature(m_oId); //PZH ¹ÖÎïËÀºóÊÇ±ä³ÉÊ¬Ìå×´£¬¶ø²»ÊÇÂíÉÏÏûÊ§
 
 				// notify monster lair
-				if(m_lair) {
+				if (m_lair) {
 					m_lair->LastSpawnTime = rtGetMilliseconds();
 					m_lair->Monster = NULL;
 					m_lair = NULL;
 				}
-				
+
 				// destroy 
 				//g_factory->DestroyObject(this); //PZH ¹ÖÎïËÀºóÊÇ±ä³ÉÊ¬Ìå×´£¬¶ø²»ÊÇÂíÉÏÏûÊ§
-				if(m_pet) {
+				if (m_pet) {
 					g_factory->DestroyObject(m_pet);
 					m_pet = NULL;
 				}
 			}
 		}
-	//-------------------------------add start by tony 05.05.18------------------//
-		else if(IsGuarder())
+		//-------------------------------add start by tony 05.05.18------------------//
+		else if (IsGuarder())
 		{
-			if(m_npcInfo && g_WarfieldMgr.IsRebirthNpc(m_npcInfo->Id))
+			if (m_npcInfo && g_WarfieldMgr.IsRebirthNpc(m_npcInfo->Id))
 			{
 				g_WarfieldMgr.OnRebirthPosKilled(this, killer);
 				break;
 			}
 
-			if(m_npcInfo && g_WarfieldMgr.IsFlagNpc(m_npcInfo->Id))
+			if (m_npcInfo && g_WarfieldMgr.IsFlagNpc(m_npcInfo->Id))
 			{
 				g_WarfieldMgr.OnFlagIsDestroy(m_npcInfo->Id);
 				break;
 			}
 			//modify later
 			//...
-	#ifdef _DEBUG
+#ifdef _DEBUG
 			LOG1("The guarder [%s] is dead.\n", m_core.Name.c_str());
-	#endif //_DEBUG
+#endif //_DEBUG
 			// destroy 
 			m_scene->RemoveCreature(m_oId);
 			g_factory->DestroyObject(this);
 		}
-		if(IsUser() && m_IsAddMonster)//tim.yang  GD
+		if (IsUser() && m_IsAddMonster)//tim.yang  GD
 			m_bIsDead = true;
-	//-------------------------------add end   by tony 05.05.18------------------//
-	}while(false);
+		//-------------------------------add end   by tony 05.05.18------------------//
+	} while (false);
 
-	if ( killer && killer->m_targets.empty() && killer->m_enemyList.empty() )
+	if (killer && killer->m_targets.empty() && killer->m_enemyList.empty())
 		killer->LeaveCombat();
 	return nRet;
 }
@@ -4936,9 +4964,9 @@ long CRegionCreature::Die(CRegionCreature *killer)
 // 	return m_scene->TestAddCreature(x,y,z);
 // }
 
-void CRegionCreature::MeDie(CRegionCreature *killer)
+void CRegionCreature::MeDie(CRegionCreature* killer)
 {
-	if(killer && killer != this && m_pPlayerLogic)
+	if (killer && killer != this && m_pPlayerLogic)
 	{
 		SetTarget(killer);
 		m_core.SetHp(0);
@@ -4948,10 +4976,10 @@ void CRegionCreature::MeDie(CRegionCreature *killer)
 	}
 }
 
-int CRegionCreature::CheckCanMove(int page, int gridI, int gridJ,SItemID item)
+int CRegionCreature::CheckCanMove(int page, int gridI, int gridJ, SItemID item)
 {
 	// ´ßÁ¸ÈÎÎñÆÚ¼äÎÞ·¨Ê¹ÓÃ»Ø³Ç
-	if(IsDoingMoneyTask())
+	if (IsDoingMoneyTask())
 	{
 		SendSystemMessage(R(MSG_TASK_CANNOT_USE_SCROLL));
 		return 1;
@@ -4962,11 +4990,11 @@ int CRegionCreature::CheckCanMove(int page, int gridI, int gridJ,SItemID item)
 	int bx, by;
 	m_scene->m_pTerrain->GetBlockByPos((float)m_pos[0], (float)m_pos[1], bx, by);
 	RtsSceneBlockMap* pBlockMap = 0;
-	if (bx>=0 && bx<m_scene->m_pTerrain->GetBlockCntX() && by>=0 && by<m_scene->m_pTerrain->GetBlockCntY())
+	if (bx >= 0 && bx < m_scene->m_pTerrain->GetBlockCntX() && by >= 0 && by < m_scene->m_pTerrain->GetBlockCntY())
 	{
-		pBlockMap = m_scene->m_pTerrain->GetBlockMap(bx-m_scene->m_pTerrain->GetCenterX(), by-m_scene->m_pTerrain->GetCenterY());
+		pBlockMap = m_scene->m_pTerrain->GetBlockMap(bx - m_scene->m_pTerrain->GetCenterX(), by - m_scene->m_pTerrain->GetCenterY());
 	}
-	if (pBlockMap && !strcmp(pBlockMap->m_szFileName,"scene01_117.rtb"))
+	if (pBlockMap && !strcmp(pBlockMap->m_szFileName, "scene01_117.rtb"))
 	{
 		SendSystemMessage(R(MSG_INTIANLAO_CANNOT_USE_TELEPORT));
 		return 1;
@@ -4975,7 +5003,7 @@ int CRegionCreature::CheckCanMove(int page, int gridI, int gridJ,SItemID item)
 	// É¾³ýµÀ¾ß
 	if (ItemCanPile(item.type))
 	{
-		if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+		if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 			return 1;
 		CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 		RecvCmd(g_sendCmd);
@@ -4988,7 +5016,7 @@ int CRegionCreature::CheckCanMove(int page, int gridI, int gridJ,SItemID item)
 	}
 
 	// ¸±±¾ÄÚ»Ø³Ç
-	if(OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_FB)
+	if (OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_FB)
 	{
 		if (!m_userInfo)
 			return 1;
@@ -4998,7 +5026,7 @@ int CRegionCreature::CheckCanMove(int page, int gridI, int gridJ,SItemID item)
 	}
 
 	//Õ½³¡ÄÚ»Ø³Ç
-	if(OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_WARFIELD)
+	if (OB_TYPE(m_scene) == OBJECT_TYPE_SCENE_WARFIELD)
 	{
 		if (!m_userInfo) return 1;
 		g_WarfieldMgr.RequestLeave(m_userInfo);
@@ -5006,17 +5034,17 @@ int CRegionCreature::CheckCanMove(int page, int gridI, int gridJ,SItemID item)
 	}
 	return 0;
 }
-bool CRegionCreature::SetPosition(long x,long y,long z)
+bool CRegionCreature::SetPosition(long x, long y, long z)
 {
 	// ÏÈ¿´¿´tileÓÐÃ»ÓÐ±ä»¯
 	int tx, ty;
 	int txCurr, tyCurr;
 
 	if (!m_scene || !m_scene->m_pTerrain) return false;
-	
+
 	m_scene->m_pTerrain->GetTerrainTile(x, y, tx, ty);
 	m_scene->m_pTerrain->GetTerrainTile(m_pos[0], m_pos[1], txCurr, tyCurr);
-	if (tx!=txCurr || ty!=tyCurr)
+	if (tx != txCurr || ty != tyCurr)
 	{
 		//tim.yang  »áÔ±¹¦ÄÜ
 		//if(m_pHuiYuanHoptoad)
@@ -5024,7 +5052,7 @@ bool CRegionCreature::SetPosition(long x,long y,long z)
 		//	RemoveHuiYuanHoptoad();
 		//}
 		//end
-		if(!m_scene->MoveCreature(this,x,y,z)) return false;
+		if (!m_scene->MoveCreature(this, x, y, z)) return false;
 		//PZH
 		//if(GetPlayerLogic()->IsGetingSkin())//Èç¹ûÕýÔÚ°þÆ¤£¬ÒÆ¶¯ÁË¾ÍÊÇÈ¡Ïû°þÆ¤
 		//{
@@ -5038,28 +5066,28 @@ bool CRegionCreature::SetPosition(long x,long y,long z)
 	m_pos[1] = y;
 	m_pos[2] = z;
 
-	if(IsRidePet())
+	if (IsRidePet())
 	{
-		m_scene->MoveCreature(m_pet,x,y,z);
+		m_scene->MoveCreature(m_pet, x, y, z);
 		m_pet->m_pos[0] = x;
 		m_pet->m_pos[1] = y;
 		m_pet->m_pos[2] = z;
 	}
-	
+
 	int bx, by;
-	
+
 	m_scene->m_pTerrain->GetBlockByPos((float)x, (float)y, bx, by);
-	if (bx>=0 && bx<m_scene->m_pTerrain->GetBlockCntX() && by>=0 && by<m_scene->m_pTerrain->GetBlockCntY())
+	if (bx >= 0 && bx < m_scene->m_pTerrain->GetBlockCntX() && by >= 0 && by < m_scene->m_pTerrain->GetBlockCntY())
 	{
-		if (bx!=m_iCurrentBlockX || by!=m_iCurrentBlockY)
+		if (bx != m_iCurrentBlockX || by != m_iCurrentBlockY)
 		{
-			RtsSceneBlockMap* pBlockMap = m_scene->m_pTerrain->GetBlockMap(bx-m_scene->m_pTerrain->GetCenterX(), by-m_scene->m_pTerrain->GetCenterY());
-			RtsSceneBlockMap* pOldBlockMap = (m_iCurrentBlockX<0)?(NULL):(m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX-m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY-m_scene->m_pTerrain->GetCenterY()));
+			RtsSceneBlockMap* pBlockMap = m_scene->m_pTerrain->GetBlockMap(bx - m_scene->m_pTerrain->GetCenterX(), by - m_scene->m_pTerrain->GetCenterY());
+			RtsSceneBlockMap* pOldBlockMap = (m_iCurrentBlockX < 0) ? (NULL) : (m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY - m_scene->m_pTerrain->GetCenterY()));
 			m_iCurrentBlockX = bx;
 			m_iCurrentBlockY = by;
 			OnBlockChanged(pBlockMap, pOldBlockMap);
 		}
-        OnPositionChanged((float)x, (float)y);
+		OnPositionChanged((float)x, (float)y);
 	}
 
 	// set titl
@@ -5067,7 +5095,7 @@ bool CRegionCreature::SetPosition(long x,long y,long z)
 	return true;
 }
 
-bool CRegionCreature::ForceSetPosition(long x,long y,long z,bool bBroadcast/* = false*/)
+bool CRegionCreature::ForceSetPosition(long x, long y, long z, bool bBroadcast/* = false*/)
 {
 	/*
 	long finX,finY,finZ;
@@ -5088,20 +5116,20 @@ bool CRegionCreature::ForceSetPosition(long x,long y,long z,bool bBroadcast/* = 
 	{
 		long lBroadcast = m_bBroadcastTele;	// ÓÃÀ´¿ØÖÆ¿Í»§¶Ë¶¯×÷´¥·¢Ë²ÒÆ
 		m_posFlag++;
-        g_sendCmd->BeginWrite();
-        g_sendCmd->WriteShort(r2c_force_position);
+		g_sendCmd->BeginWrite();
+		g_sendCmd->WriteShort(r2c_force_position);
 		g_sendCmd->WriteLong(m_oId);
-        g_sendCmd->WriteByte(m_posFlag);
+		g_sendCmd->WriteByte(m_posFlag);
 		// for fb system
 		// ...
 		g_sendCmd->WriteString((char*)m_scene->m_sceneName.c_str());
 		g_sendCmd->WriteLong(x);
-        g_sendCmd->WriteLong(y);
-		g_sendCmd->SerializeBit(lBroadcast,1);
+		g_sendCmd->WriteLong(y);
+		g_sendCmd->SerializeBit(lBroadcast, 1);
 
 		if (bBroadcast)
 		{
-			if(m_master)
+			if (m_master)
 			{
 				if (m_master->m_scene)
 				{
@@ -5112,7 +5140,7 @@ bool CRegionCreature::ForceSetPosition(long x,long y,long z,bool bBroadcast/* = 
 					m_master->RecvCmd(g_sendCmd);
 				}
 			}
-			else 
+			else
 			{
 				if (m_scene)
 				{
@@ -5126,23 +5154,23 @@ bool CRegionCreature::ForceSetPosition(long x,long y,long z,bool bBroadcast/* = 
 		}
 		else
 		{
-			if(m_master)
+			if (m_master)
 				m_master->RecvCmd(g_sendCmd);
-			else 
+			else
 				RecvCmd(g_sendCmd);
 		}
 
 		//--------debug-----------//	
 		int tx, ty;
 		m_scene->m_pTerrain->GetTerrainTile(m_pos[0], m_pos[1], tx, ty);
-		if((m_userInfo != NULL))
-		{			
+		if ((m_userInfo != NULL))
+		{
 			float fX2, fY2;
-			fX2 = m_pos[0]-x;
-			fY2 = m_pos[1]-y;
-			float fD = sqrt(fX2*fX2+fY2*fY2);
-			
-			if((long)fD > 100)
+			fX2 = m_pos[0] - x;
+			fY2 = m_pos[1] - y;
+			float fD = sqrt(fX2 * fX2 + fY2 * fY2);
+
+			if ((long)fD > 100)
 			{
 				/*
 				LOG1("-UserName: [%s]\n", (char*)m_userInfo->m_username.c_str());
@@ -5151,121 +5179,121 @@ bool CRegionCreature::ForceSetPosition(long x,long y,long z,bool bBroadcast/* = 
 				LOG("-ForceSetPosition Failed, but return true\n\n");
 				*/
 			}
-		}	
+		}
 		//--------debug-----------//
 
-        return true;
-    }
-    return false;
+		return true;
+	}
+	return false;
 }
 
 void CRegionCreature::OnPositionChanged(float fX, float fY)
 {
-    // ÇøÓò½øÈëºÍÀë¿ªÊÂ¼þ
-    int i, iCnt;
-    static RtsSceneBlockMap::SArea* s_pArea[10]; // Ò»´Î×î¶à10¸ö¿é
-    RtsSceneBlockMap::SArea* pArea = m_scene->m_pTerrain->FindFirstArea(fX, fY);
-    for (i=0; i<9 && pArea; i++)
-    {
-        s_pArea[i] = pArea;
-        pArea = m_scene->m_pTerrain->FindNextArea();
-    }
-    std::list<RtsSceneBlockMap::SArea*>::iterator it, itNext;
-    iCnt = i;
-    for (it=m_listArea.begin(); it!=m_listArea.end(); it=itNext)
-    {
-        itNext = it;
-        itNext ++;
-        for (i=0; i<iCnt; i++)
-        {
-            if (s_pArea[i] && (*it)==s_pArea[i])
-            {
-                s_pArea[i] = NULL;
-                break;
-            }
-        }
-        if (i==iCnt)
-        {
-            OnAreaExit((*it), NULL);
-            m_listArea.erase(it);
-        }
-    }
-    for (i=0; i<iCnt; i++)
-    {
-        if (s_pArea[i])
-        {
-            m_listArea.push_back(s_pArea[i]);
-            OnAreaEnter(s_pArea[i], NULL);
-        }
-    }
-    UpdateAreaPKAttr();
-	
+	// ÇøÓò½øÈëºÍÀë¿ªÊÂ¼þ
+	int i, iCnt;
+	static RtsSceneBlockMap::SArea* s_pArea[10]; // Ò»´Î×î¶à10¸ö¿é
+	RtsSceneBlockMap::SArea* pArea = m_scene->m_pTerrain->FindFirstArea(fX, fY);
+	for (i = 0; i < 9 && pArea; i++)
+	{
+		s_pArea[i] = pArea;
+		pArea = m_scene->m_pTerrain->FindNextArea();
+	}
+	std::list<RtsSceneBlockMap::SArea*>::iterator it, itNext;
+	iCnt = i;
+	for (it = m_listArea.begin(); it != m_listArea.end(); it = itNext)
+	{
+		itNext = it;
+		itNext++;
+		for (i = 0; i < iCnt; i++)
+		{
+			if (s_pArea[i] && (*it) == s_pArea[i])
+			{
+				s_pArea[i] = NULL;
+				break;
+			}
+		}
+		if (i == iCnt)
+		{
+			OnAreaExit((*it), NULL);
+			m_listArea.erase(it);
+		}
+	}
+	for (i = 0; i < iCnt; i++)
+	{
+		if (s_pArea[i])
+		{
+			m_listArea.push_back(s_pArea[i]);
+			OnAreaEnter(s_pArea[i], NULL);
+		}
+	}
+	UpdateAreaPKAttr();
+
 }
 
 void CRegionCreature::OnRemoveCreature()
 {
-    if (m_pathNode)
-    {
-        if (m_scene && m_scene->m_pPathFind)
-        {
-            m_scene->m_pPathFind->RemoveActor(m_pathNode);
-        }
-    }
+	if (m_pathNode)
+	{
+		if (m_scene && m_scene->m_pPathFind)
+		{
+			m_scene->m_pPathFind->RemoveActor(m_pathNode);
+		}
+	}
 
-    RtsSceneBlockMap* pBlockMap = m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX-m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY-m_scene->m_pTerrain->GetCenterY());
-    OnBlockChanged(NULL, pBlockMap);
+	RtsSceneBlockMap* pBlockMap = m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY - m_scene->m_pTerrain->GetCenterY());
+	OnBlockChanged(NULL, pBlockMap);
 
-    m_iCurrentBlockX = -1;
-    m_iCurrentBlockY = -1;
+	m_iCurrentBlockX = -1;
+	m_iCurrentBlockY = -1;
 
-    std::list<RtsSceneBlockMap::SArea*>::iterator it, itNext;
-    for (it=m_listArea.begin(); it!=m_listArea.end(); it=itNext)
-    {
-        itNext = it;
-        itNext ++;
-        OnAreaExit((*it), NULL);
-        m_listArea.erase(it);
-    }
-    m_listArea.clear();
+	std::list<RtsSceneBlockMap::SArea*>::iterator it, itNext;
+	for (it = m_listArea.begin(); it != m_listArea.end(); it = itNext)
+	{
+		itNext = it;
+		itNext++;
+		OnAreaExit((*it), NULL);
+		m_listArea.erase(it);
+	}
+	m_listArea.clear();
 
-    if (IsUser() && time(NULL) - m_MonitorLastTime > 60)
-    {
-        // ¼ÇÂ¼µ½Êý¾Ý¿â
-        CG_CmdPacket& packet = g_region->m_gws.BeginSend();
-        packet.WriteShort(r2g_log_event);
-        packet.WriteByte(PLT_Monitor);
-        char cTmp1024[1024];
-        rt2_snprintf(cTmp1024, 1023, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d", m_nGetExp, m_nGetItemCount, m_nGetMoneyFromMonster, m_nGetMoneyFromTask, m_nMonsterCount, \
-            m_core.AttSpeed.GetValue(), m_core.AttackRange.GetValue(), \
-            m_core.DamageMin.GetValue(), m_core.DamageMax.GetValue(), \
-            m_core.Attack.GetValue(), m_core.Dodge.GetValue(), m_core.Armor.GetValue(), \
-            m_pItemContainer->GetMoney(), m_pBank->GetMoney(), m_core.Lev, m_core.Exp, m_core.Credit);
-        cTmp1024[1023] = 0;
-        packet.WriteLong(m_userInfo->m_userId);
-        packet.WriteString((char*)m_userInfo->m_userIpAddress.c_str()); // userIP
-        packet.WriteString(cTmp1024);						// money
-        packet.WriteLong(time(NULL) - m_MonitorLastTime);	// usetime
-        g_region->m_gws.EndSend();
+	if (IsUser() && time(NULL) - m_MonitorLastTime > 60)
+	{
+		// ¼ÇÂ¼µ½Êý¾Ý¿â
+		CG_CmdPacket& packet = g_region->m_gws.BeginSend();
+		packet.WriteShort(r2g_log_event);
+		packet.WriteByte(PLT_Monitor);
+		char cTmp1024[1024];
+		rt2_snprintf(cTmp1024, 1023, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d", m_nGetExp, m_nGetItemCount, m_nGetMoneyFromMonster, m_nGetMoneyFromTask, m_nMonsterCount, \
+			m_core.AttSpeed.GetValue(), m_core.AttackRange.GetValue(), \
+			m_core.DamageMin.GetValue(), m_core.DamageMax.GetValue(), \
+			m_core.Attack.GetValue(), m_core.Dodge.GetValue(), m_core.Armor.GetValue(), \
+			m_pItemContainer->GetMoney(), m_pBank->GetMoney(), m_core.Lev, m_core.Exp, m_core.Credit);
+		cTmp1024[1023] = 0;
+		packet.WriteLong(m_userInfo->m_userId);
+		packet.WriteString((char*)m_userInfo->m_userIpAddress.c_str()); // userIP
+		packet.WriteString(cTmp1024);						// money
+		packet.WriteLong(time(NULL) - m_MonitorLastTime);	// usetime
+		g_region->m_gws.EndSend();
 
-        m_nGetMoneyFromTask = 0;
-        m_nGetMoneyFromMonster = 0;
-        m_nGetExp = 0;
-        m_nGetItemCount = 0;
-        m_nMonsterCount = 0;
-        m_MonitorLastTime = time(NULL);
-    }
+		m_nGetMoneyFromTask = 0;
+		m_nGetMoneyFromMonster = 0;
+		m_nGetExp = 0;
+		m_nGetItemCount = 0;
+		m_nMonsterCount = 0;
+		m_MonitorLastTime = time(NULL);
+	}
 }
 
 bool CRegionCreature::SetModel(short Id)
 {
- 	SCreModel *model = g_TableCreModel.FindCreModel(Id);
-	if(!model) return NULL;
+	SCreModel* model = g_TableCreModel.FindCreModel(Id);
+	if (!model) return NULL;
 
 	m_model = model;
 	if (!IsMonster())
 	{
 		m_moveSpeed = model->MoveSpeed;
-		m_attackRange  = model->AttackRange;
+		m_attackRange = model->AttackRange;
 	}
 	m_core.ModelId = model->Id;
 	m_core.ComplexModel = model->bComplex;
@@ -5282,15 +5310,15 @@ bool CRegionCreature::AddWeapon(short Id)
 
 	//	m_core.Weapon = Id;
 
-    if (m_pItemContainer)
-    {
-        SItemID item = ItemID_CreateInvalid();
-        m_pItemContainer->Equip(item, CItemContainerBase::WEAPON_1);
-    }
+	if (m_pItemContainer)
+	{
+		SItemID item = ItemID_CreateInvalid();
+		m_pItemContainer->Equip(item, CItemContainerBase::WEAPON_1);
+	}
 	return true;
 }
 
-bool CRegionCreature::WriteCreateInfo(CG_CmdPacket *cmd)
+bool CRegionCreature::WriteCreateInfo(CG_CmdPacket* cmd)
 {
 	cmd->WriteLong(m_oId);
 	cmd->WriteShort(m_core.ModelId);
@@ -5302,7 +5330,7 @@ bool CRegionCreature::WriteCreateInfo(CG_CmdPacket *cmd)
 	cmd->WriteLong(m_pos[0]);
 	cmd->WriteLong(m_pos[1]);
 	cmd->WriteLong(m_pos[2]);
-	
+
 	// write item
 
 	// write union
@@ -5312,12 +5340,12 @@ bool CRegionCreature::WriteCreateInfo(CG_CmdPacket *cmd)
 	cmd->WriteString((char*)m_unionIcon.c_str());
 
 	// write skill info
-    m_Skill.NetWriteSkill(g_sendCmd);
+	m_Skill.NetWriteSkill(g_sendCmd);
 
-    cmd->WriteByte(m_core.Faction);
+	cmd->WriteByte(m_core.Faction);
 	//PZH
 	long ln;
-	if(GetPlayerLogic()->IsTeamFree())
+	if (GetPlayerLogic()->IsTeamFree())
 	{
 		ln = 1;
 	}
@@ -5327,7 +5355,7 @@ bool CRegionCreature::WriteCreateInfo(CG_CmdPacket *cmd)
 	}
 	cmd->SerializeBit(ln, 1);
 	//
-	if(m_pet)
+	if (m_pet)
 	{
 		cmd->WriteLong(m_pet->m_oId);
 		cmd->WriteShort(m_pet->m_core.ModelId);
@@ -5335,7 +5363,7 @@ bool CRegionCreature::WriteCreateInfo(CG_CmdPacket *cmd)
 		cmd->WriteLong(m_pet->m_pos[1]);
 		cmd->WriteLong(m_pet->m_pos[2]);
 		// write skill info
-        m_pet->m_Skill.NetWriteSkill(g_sendCmd);
+		m_pet->m_Skill.NetWriteSkill(g_sendCmd);
 	}
 	else
 	{
@@ -5350,7 +5378,7 @@ bool CRegionCreature::WriteCreateInfo(CG_CmdPacket *cmd)
 	return true;
 }
 
-bool CRegionCreature::WriteModelInfo(CG_CmdPacket *cmd)
+bool CRegionCreature::WriteModelInfo(CG_CmdPacket* cmd)
 {
 	SItemID item;
 
@@ -5360,15 +5388,15 @@ bool CRegionCreature::WriteModelInfo(CG_CmdPacket *cmd)
 	cmd->WriteShort(m_core.HeadModelId);
 	cmd->WriteByte(m_modelRef);
 	long lShapeshift = m_ChangeModelID == 0 ? 0 : 1;
-	cmd->SerializeBit(lShapeshift,1);
-    if (m_pItemContainer)
-        m_pItemContainer->Serialize(NET_UPDATE_ITEM_SHOW, cmd);
+	cmd->SerializeBit(lShapeshift, 1);
+	if (m_pItemContainer)
+		m_pItemContainer->Serialize(NET_UPDATE_ITEM_SHOW, cmd);
 	cmd->WriteByte(m_core.Metier);
 	cmd->WriteByte(m_core.Sex);
 	cmd->WriteByte(m_bPShop);
 	if (m_pPShop)
-        cmd->WriteString((char*)m_pPShop->GetName().c_str());
-	else 
+		cmd->WriteString((char*)m_pPShop->GetName().c_str());
+	else
 		cmd->WriteString("");
 	cmd->WriteLong(m_unionID);
 	cmd->WriteString((char*)m_unionName.c_str());
@@ -5377,7 +5405,7 @@ bool CRegionCreature::WriteModelInfo(CG_CmdPacket *cmd)
 	cmd->WriteString((char*)m_feod_name.c_str());
 	cmd->WriteByte(m_is_attacker);
 	cmd->WriteLong(m_dwState);
-	
+
 	return true;
 }
 
@@ -5388,12 +5416,12 @@ void CRegionCreature::ResetCheaterCheck()
 	//<add by fox>
 	static int PLAYER_CHECK_INTERVAL = 10;//¼ì²éµÄÊ±¼ä¼ä¸ô[µ¥Î»£ºÃë]
 	static float PLAYER_SPEED_CHECK_RANGE = 1.4;//ËÙ¶È¼ì²éµÄÈÝ´í·¶Î§     
-	static CIniVariable SpeedCheckInterval(GetGameRule(),"GameCheck","PlayerCheckInterval",PLAYER_CHECK_INTERVAL );
-	static CIniVariable PlayerSpeedCheckRange(GetGameRule(),"GameCheck","PlayerSpeedCheckRange",PLAYER_SPEED_CHECK_RANGE);
+	static CIniVariable SpeedCheckInterval(GetGameRule(), "GameCheck", "PlayerCheckInterval", PLAYER_CHECK_INTERVAL);
+	static CIniVariable PlayerSpeedCheckRange(GetGameRule(), "GameCheck", "PlayerSpeedCheckRange", PLAYER_SPEED_CHECK_RANGE);
 	//</add by fox>
 
-	m_mvChk.Init(m_core.MovSpeed.GetValue()*PLAYER_CHECK_INTERVAL * PLAYER_SPEED_CHECK_RANGE ,m_core.MovSpeed.GetValue());
-	m_atChk.Init(PLAYER_CHECK_INTERVAL *0.15);
+	m_mvChk.Init(m_core.MovSpeed.GetValue() * PLAYER_CHECK_INTERVAL * PLAYER_SPEED_CHECK_RANGE, m_core.MovSpeed.GetValue());
+	m_atChk.Init(PLAYER_CHECK_INTERVAL * 0.15);
 }
 
 void CRegionCreature::OnTimer(DWORD id, DWORD dwParam[])
@@ -5406,358 +5434,359 @@ void CRegionCreature::OnTimer(DWORD id, DWORD dwParam[])
 	long RestoreHp = m_core.RestoreHp.Base;
 	long RestoreMp = m_core.RestoreMp.Base;
 	long RestoreEnp = m_core.RestoreEnP.Base;
-	
-    switch(id)
-	{
-		case CRE_TIMER_MONITOR:
-			if(IsUser() && m_userInfo->m_active && m_userInfo->Session())
-			{
-				// ¼ÇÂ¼µ½Êý¾Ý¿â
-				CG_CmdPacket& packet = g_region->m_gws.BeginSend();
-				packet.WriteShort(r2g_log_event);
-				packet.WriteByte(PLT_Monitor);
-				char cTmp1024[1024];
-				rt2_snprintf(cTmp1024, 1023, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d", m_nGetExp, m_nGetItemCount, m_nGetMoneyFromMonster, m_nGetMoneyFromTask, m_nMonsterCount, \
-					m_core.AttSpeed.GetValue(), m_core.AttackRange.GetValue(), \
-					m_core.DamageMin.GetValue(), m_core.DamageMax.GetValue(), \
-					m_core.Attack.GetValue(), m_core.Dodge.GetValue(), m_core.Armor.GetValue(), \
-					m_pItemContainer->GetMoney(), m_pBank->GetMoney(), m_core.Lev, m_core.Exp, m_core.Credit);
-                cTmp1024[1023] = 0;
-				packet.WriteLong(m_userInfo->m_userId);
-				packet.WriteString((char*)m_userInfo->m_userIpAddress.c_str()); // userIP
-				packet.WriteString(cTmp1024);						// money
-				packet.WriteLong(PLAYER_MONITOR_CYCLE);				// usetime
-				g_region->m_gws.EndSend();
 
-				m_nGetMoneyFromTask = 0;
-				m_nGetMoneyFromMonster = 0;
-				m_nGetExp = 0;
-				m_nGetItemCount = 0;
-				m_nMonsterCount = 0;
-                m_MonitorLastTime = time(NULL);
-			}
-			break;
-		case CRE_TIMER_HPANDMP:
-			if (IsUser() && /*PZH*//*!m_bDead*/GetPlayerLogic()->IsLive())
+	switch (id)
+	{
+	case CRE_TIMER_MONITOR:
+		if (IsUser() && m_userInfo->m_active && m_userInfo->Session())
+		{
+			// ¼ÇÂ¼µ½Êý¾Ý¿â
+			CG_CmdPacket& packet = g_region->m_gws.BeginSend();
+			packet.WriteShort(r2g_log_event);
+			packet.WriteByte(PLT_Monitor);
+			char cTmp1024[1024];
+			rt2_snprintf(cTmp1024, 1023, "%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d", m_nGetExp, m_nGetItemCount, m_nGetMoneyFromMonster, m_nGetMoneyFromTask, m_nMonsterCount, \
+				m_core.AttSpeed.GetValue(), m_core.AttackRange.GetValue(), \
+				m_core.DamageMin.GetValue(), m_core.DamageMax.GetValue(), \
+				m_core.Attack.GetValue(), m_core.Dodge.GetValue(), m_core.Armor.GetValue(), \
+				m_pItemContainer->GetMoney(), m_pBank->GetMoney(), m_core.Lev, m_core.Exp, m_core.Credit);
+			cTmp1024[1023] = 0;
+			packet.WriteLong(m_userInfo->m_userId);
+			packet.WriteString((char*)m_userInfo->m_userIpAddress.c_str()); // userIP
+			packet.WriteString(cTmp1024);						// money
+			packet.WriteLong(PLAYER_MONITOR_CYCLE);				// usetime
+			g_region->m_gws.EndSend();
+
+			m_nGetMoneyFromTask = 0;
+			m_nGetMoneyFromMonster = 0;
+			m_nGetExp = 0;
+			m_nGetItemCount = 0;
+			m_nMonsterCount = 0;
+			m_MonitorLastTime = time(NULL);
+		}
+		break;
+	case CRE_TIMER_HPANDMP:
+		if (IsUser() && /*PZH*//*!m_bDead*/GetPlayerLogic()->IsLive())
+		{
+			AddHp(RestoreHp);
+			m_core.AddMp(RestoreMp);
+			if (m_pet)
 			{
-				AddHp(RestoreHp);
-				m_core.AddMp(RestoreMp);
-				if (m_pet)
+				int RestorPetHP = int(m_pet->m_core.Lev / 10 + 1) * 5;
+				int RestorPetMP = 3;
+				m_pet->AddHp(RestorPetHP);
+				m_pet->m_core.AddMp(RestorPetMP);
+			}
+		}
+		break;
+	case CRE_TIMER_TIME:
+	{
+		if (IsUser())
+		{
+			AddPlayerOnlineTime(5); //·ÖÖÓ
+		}
+	}
+	break;
+	case CRE_TIMER_ENP:
+		if (IsUser() && GetPlayerLogic()->IsLive())
+		{
+			m_core.AddEnp(RestoreEnp);
+		}
+		break;
+	case CRE_TIMER_TIME2:
+	{
+		m_core.nLoginNowTime += 1; //1·ÖÖÓ 
+		if (m_core.nLoginNowTime > 1)   //Tianh ÉÏÏß±£»¤Îª1·ÖÖÓ
+		{
+			m_bTime = false;
+			m_core.nLoginNowTime = 0;
+		}
+	}
+	break;
+	case CRE_TIMER_CHECK_CARD:
+		if (IsUser())
+		{
+			if (m_usingCard)
+			{
+				m_cardTime -= (CHECK_CARD_INTERVAL / 1000);
+				if (m_cardTime <= 0)
 				{
-					int RestorPetHP = int(m_pet->m_core.Lev/10+1)*5;
-					int RestorPetMP = 3;
-					m_pet->AddHp(RestorPetHP);
-					m_pet->m_core.AddMp(RestorPetMP);
+					m_cardTime = 0;
+					EndUseCard();
 				}
 			}
-			break;
-		case CRE_TIMER_TIME:
+			else
 			{
-				if (IsUser())
+				/*
+				m_cardTime += CHECK_CARD_INTERVAL/1000/24;
+				if(m_cardTime < 0) m_cardTime = 0;
+				if(m_cardTime > 7*3600) m_cardTime = 7*3600;
+				*/
+			}
+		}
+		break;
+
+	case CRE_TIMER_PRENTICE:
+		if (IsUser())
+		{
+			g_PrenticeMgr.QueryPrenticesOnlineTime(m_userInfo);
+		}
+		break;
+
+	case CRE_TIMER_CHEATER_CHECK:
+		if (IsUser())
+		{
+			//static int i=0;
+			//rt2_sprintf(g_strStaticBuffer, "µÚ%d´Î¼ì²é", i++);
+			//this->SendSystemMessage(g_strStaticBuffer);
+
+			// ±ÜÃâÆïÊÞÊ±Ê¹ÓÃ¼ÓËÙÈí¼þ
+			if (m_pet) m_pet->ResetCheaterCheck();
+
+			ResetCheaterCheck();
+			TickTask(0);
+			// 				if(!m_bFunKick && !g_region->IsFunActive(true) && !g_region->IsFunActive(false)
+			// 					&& g_region->IsInFunMap(m_userInfo))
+			// 				{
+			// 					g_region->KickFunUser(m_userInfo);
+			// 					m_bFunKick = true;
+			// 				}
+			if (ShouldKickCheat())
+				g_region->KickUser(m_userInfo->m_userId, 0, true, true, WG_INFO_SHOULD_KICK_CHEATER);
+		}
+		RemoveTimeoutSelfDef();
+		// LOG2("user att speed = %d, mov speed = %d",m_core.AttSpeed.GetValue(),m_core.MovSpeed.GetValue());
+		break;
+
+	case CRE_TIMER_KILL_SELF:
+		if (m_npcInfo)
+		{
+			if (IsSpirit())
+			{
+				if (m_dwCatchMe)
 				{
-					AddPlayerOnlineTime(5); //·ÖÖÓ
+					CRegionCreature* cre = m_scene->FindCreature(m_dwCatchMe);
+					if (cre)
+						cre->StopCatchSpirit(PET_CATCH_ERROR_LIFETIME);
+				}
+				GetPlayerLogic()->SetLiveType(CPlayerLogic::eDead);
+				g_region->BuildEventDead(g_sendCmd, this);
+			}
+			DeleteAI();
+			m_scene->RemoveCreature(m_oId);
+			g_factory->DestroyObject(this);
+		}
+		StopTimer(CRE_TIMER_KILL_SELF);
+		break;
+
+	case CRE_TIMER_DIE_SELF:
+		if (m_npcInfo && dwParam)
+			MeDie(m_scene->FindCreature(dwParam[0]));
+		StopTimer(CRE_TIMER_DIE_SELF);
+		break;
+
+	case CRE_TIMER_CHECK_ITEM_VALID:
+		if (m_pItemContainer)
+		{
+			m_pItemContainer->OnCreatureAttribChanged();
+		}
+		break;
+	case CRE_TIMER_STGTTIME:
+	{
+		if (m_SkillhpRecover != 0)
+		{
+			AddHp(m_SkillhpRecover);
+		}
+		if (m_SkillmpRecover != 0)
+		{
+			m_core.AddMp(m_SkillmpRecover);
+		}
+	}
+	break;
+	case CRE_TIMER_HEARTBEAT:
+		if (m_hpRemain > 0 && /*PZH*//*!m_bDead*/GetPlayerLogic()->IsLive()) {
+			AddHp(m_hpRecover);
+			m_hpRemain--;
+		}
+		if (m_mpRemain > 0) {
+			m_core.AddMp(m_mpRecover);
+			m_mpRemain--;
+		}
+		if (m_EnpRemain > 0)
+		{
+			m_core.AddEnp(m_EnpRecover);
+			m_EnpRemain--;
+		}
+		if (IsScriptLoaded())
+			CallScript("OnHeartbeat", true);
+
+		m_hpAutoRecover += m_hpAutoRecoverRate * HEARTBEAT_INTERVAL / 1000;
+		m_mpAutoRecover += m_mpAutoRecoverRate * HEARTBEAT_INTERVAL / 1000;
+
+		if (/*PZH*//*!m_bDead*/GetPlayerLogic()->IsLive())
+		{
+			int add;
+			add = m_hpAutoRecover;
+			m_hpAutoRecover -= add;
+			AddHp(add);
+
+			add = m_mpAutoRecover;
+			m_mpAutoRecover -= add;
+			m_core.AddMp(add);
+		}
+
+		//ÓÃ»§¡¢NPC¶¼ÐèÒª¸üÐÂ×´Ì¬
+		TickState(HEARTBEAT_INTERVAL);
+		if (IsUser())
+		{
+			// UpdateToClient(NET_CRE_UPDATE_ATTR_ALL);
+			UpdateToClientDelta();
+			if (m_pTeam != NULL)
+			{
+				m_pTeam->DateChangeAffectTeam();
+			}
+			// ÊÕ»Ø³èÎï£¬²»ÒªÔÚ³èÎïËÀÍöº¯ÊýÀïµ÷ÓÃ»ØÊÕ´úÂë£¬ÒòÎªÕû¸öµ÷ÓÃÁ÷³Ì±È½Ï¸´ÔÓ
+			if (m_pet)
+			{
+				if (m_pet->m_core.GetHp() <= 0 || /*PZH*//*m_pet->m_bDead*/!m_pet->GetPlayerLogic()->IsLive())
+				{
+					m_pet->m_core.SetHp(1);
+					if (IsRidePet()) RideOffPet();
+					CallbackPet(false);
+
+					//·¢ËÍÏµÍ³ÏûÏ¢ 
+					rt2_sprintf(g_strStaticBuffer, R(MSG_PET_DIE));
+					SendSystemMessage(g_strStaticBuffer);
 				}
 			}
-			break;
-		case CRE_TIMER_ENP:
-			if (IsUser() && GetPlayerLogic()->IsLive())
+			if (CallNpc.size() != 0)
 			{
-				m_core.AddEnp(RestoreEnp);
-			}
-			break;
-		case CRE_TIMER_TIME2:
-			{
-				m_core.nLoginNowTime += 1; //1·ÖÖÓ 
-				if (m_core.nLoginNowTime > 1)   //Tianh ÉÏÏß±£»¤Îª1·ÖÖÓ
+				std::vector<CRegionCreature*>::iterator it = CallNpc.begin();
+				for (; it != CallNpc.end();)
 				{
-					m_bTime = false;
-					m_core.nLoginNowTime = 0;
-				}
-			}
-			break;
-		case CRE_TIMER_CHECK_CARD:
-			if(IsUser())
-			{
-				if(m_usingCard)
-				{
-					m_cardTime -= (CHECK_CARD_INTERVAL/1000);
-					if(m_cardTime <= 0)
+					if ((*it)->m_core.GetHp() <= 0 || !(*it)->GetPlayerLogic()->IsLive())
 					{
-						m_cardTime = 0;
-						EndUseCard();
+						(*it)->DeleteAI();
+						m_scene->RemoveCreature((*it)->m_oId);
+						g_factory->DestroyObject((*it));
+						(*it) = NULL;
+						it = CallNpc.erase(it);
+
+						SendMagCallNpc();
+					}
+					else
+					{
+						++it;
+					}
+				}
+			}
+		};
+
+		if (IsUserPet())
+		{
+			UpdateToClient(NET_CRE_UPDATE_PET_INFO);
+		}
+		else if (IsCallNpc())
+		{
+			UpdateToClient(NET_CRE_UPDATE_ATTR_SIMPLE);
+		}
+
+
+		{
+			unsigned long dwNow = rtGetMilliseconds();
+			unsigned long dwDiff;
+			if (m_Skill.m_dwLastRunSkill == 0)
+			{
+				dwDiff = 0;
+			}
+			else
+			{
+				dwDiff = dwNow - m_Skill.m_dwLastRunSkill;
+			}
+			m_Skill.m_dwLastRunSkill = dwNow;
+			m_Skill.m_bSkillWriteDamage = TRUE;
+			m_Skill.m_listSkillDamage.clear();
+			//if (m_core.GetHp() <= 0)  //ËÀÍö×´Ì¬ÏÂBUF²»¸üÐÂ
+			//{
+			//	m_Skill.SetbRun(false);
+			//}
+			this->m_Skill.Run(dwDiff); // Run Skill
+			m_Skill.m_bSkillWriteDamage = FALSE;
+			if (m_Skill.m_listSkillDamage.size() > 0 && m_scene)
+			{
+				g_sendCmd->BeginWrite();
+				g_sendCmd->WriteShort(r2c_event);
+				g_sendCmd->WriteLong(g_region->m_time);
+				g_sendCmd->WriteShort(EVENT_ATTACK);
+				g_sendCmd->WriteLong(m_oId);
+				g_sendCmd->WriteShort(0);
+				g_sendCmd->WriteShort(0); // skill attack
+				g_sendCmd->WriteByte(SKILL_TARGET_TYPE_NONE);
+				g_sendCmd->WriteByte(0);//ÊÇ·ñÊÇÒ÷³ª(Õæ´òÎª0 Ò÷³ªÎª1)
+				m_Skill.SkillWriteDamageBuffer(g_sendCmd);
+				m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
+			}
+		}
+
+		if (m_core.Pk > 0)
+		{
+			char cOldPKState = GetPKState();
+			m_core.Pk -= HEARTBEAT_INTERVAL;
+			if (m_core.Pk < 0) m_core.Pk = 0;
+			if (cOldPKState != GetPKState())
+			{
+				// ·¢ËÍµ½¿Í»§¶Ë, ¸æËß×Ô¼ºÃû×Ö×´Ì¬¸Ä±ä
+				g_sendCmd->BeginWrite();
+				g_sendCmd->WriteShort(r2c_name_state);
+				g_sendCmd->WriteByte(GetPKState());
+				g_sendCmd->WriteLong(m_core.Pk);
+				RecvCmd(g_sendCmd);
+			}
+		}
+		else
+		{
+			m_core.Pk = 0;
+		}
+
+		// npc··ÂôµÀ¾ß
+		if (m_bNpcSellRareItemStart && !m_NpcSellRareItem.empty())
+		{
+			time_t nowTime = time(NULL);
+			stlforeach(std::vector<SNpcSellRareItem>, iterSell, m_NpcSellRareItem)
+			{
+				SNpcSellRareItem& sri = *iterSell;
+				if (sri.nextSpawnTime == 0)
+				{
+					if (sri.count != sri.maxCount)
+						sri.nextSpawnTime = nowTime + sri.interval;
+				}
+				else if (nowTime >= sri.nextSpawnTime)
+				{
+					sri.count++;
+					if (sri.count < sri.maxCount)
+					{
+						sri.nextSpawnTime = nowTime + sri.interval;
+					}
+					else
+					{
+						sri.nextSpawnTime = 0;
 					}
 				}
 				else
 				{
-					/*
-					m_cardTime += CHECK_CARD_INTERVAL/1000/24;
-					if(m_cardTime < 0) m_cardTime = 0;
-					if(m_cardTime > 7*3600) m_cardTime = 7*3600;
-					*/
 				}
 			}
-			break;
-
-		case CRE_TIMER_PRENTICE:
-			if (IsUser())
-			{
-				g_PrenticeMgr.QueryPrenticesOnlineTime(m_userInfo);
-			}
-			break;
-
-		case CRE_TIMER_CHEATER_CHECK:
-			if(IsUser())
-			{
-				//static int i=0;
-				//rt2_sprintf(g_strStaticBuffer, "µÚ%d´Î¼ì²é", i++);
-				//this->SendSystemMessage(g_strStaticBuffer);
-
-				// ±ÜÃâÆïÊÞÊ±Ê¹ÓÃ¼ÓËÙÈí¼þ
-				if(m_pet) m_pet->ResetCheaterCheck();
-
-				ResetCheaterCheck();
-				TickTask(0);
-// 				if(!m_bFunKick && !g_region->IsFunActive(true) && !g_region->IsFunActive(false)
-// 					&& g_region->IsInFunMap(m_userInfo))
-// 				{
-// 					g_region->KickFunUser(m_userInfo);
-// 					m_bFunKick = true;
-// 				}
-				if(ShouldKickCheat())
-					g_region->KickUser(m_userInfo->m_userId, 0, true, true,WG_INFO_SHOULD_KICK_CHEATER);
-			}
-			RemoveTimeoutSelfDef();
-			// LOG2("user att speed = %d, mov speed = %d",m_core.AttSpeed.GetValue(),m_core.MovSpeed.GetValue());
-			break;
-
-		case CRE_TIMER_KILL_SELF:
-			if(m_npcInfo)
-			{
-				if (IsSpirit())
-				{
-					if (m_dwCatchMe)
-					{
-						CRegionCreature *cre = m_scene->FindCreature(m_dwCatchMe);
-						if (cre)
-							cre->StopCatchSpirit(PET_CATCH_ERROR_LIFETIME);
-					}
-					GetPlayerLogic()->SetLiveType(CPlayerLogic::eDead);
-					g_region->BuildEventDead(g_sendCmd, this);
-				}
-				DeleteAI();
-				m_scene->RemoveCreature(m_oId);
-				g_factory->DestroyObject(this);
-			}
-			StopTimer(CRE_TIMER_KILL_SELF);
-			break;
-
-		case CRE_TIMER_DIE_SELF:
-			if(m_npcInfo && dwParam)
-				MeDie(m_scene->FindCreature(dwParam[0]));
-			StopTimer(CRE_TIMER_DIE_SELF);
-			break;
-
-        case CRE_TIMER_CHECK_ITEM_VALID:
-            if (m_pItemContainer)
-            {
-                m_pItemContainer->OnCreatureAttribChanged();
-            }
-			break;
-		case CRE_TIMER_STGTTIME:
-			{
-				if (m_SkillhpRecover != 0)
-				{
-					AddHp(m_SkillhpRecover);
-				}
-				if (m_SkillmpRecover != 0)
-				{
-					m_core.AddMp(m_SkillmpRecover);
-				}
-			}
-			break;
-		case CRE_TIMER_HEARTBEAT:
-			if(m_hpRemain > 0 && /*PZH*//*!m_bDead*/GetPlayerLogic()->IsLive()) {
-				AddHp(m_hpRecover);
-				m_hpRemain--;
-			}
-			if(m_mpRemain > 0) {
-				m_core.AddMp(m_mpRecover);
-				m_mpRemain--;
-			}
-			if(m_EnpRemain > 0)
-			{
-				m_core.AddEnp(m_EnpRecover);
-				m_EnpRemain--;
-			}
-			if(IsScriptLoaded())
-				CallScript("OnHeartbeat", true);
-			
-			m_hpAutoRecover += m_hpAutoRecoverRate * HEARTBEAT_INTERVAL/1000;
-			m_mpAutoRecover += m_mpAutoRecoverRate * HEARTBEAT_INTERVAL/1000;
-			
-			if (/*PZH*//*!m_bDead*/GetPlayerLogic()->IsLive())
-			{
-				int add;
-				add = m_hpAutoRecover;
-				m_hpAutoRecover -= add;
-				AddHp(add);
-
-				add = m_mpAutoRecover;
-				m_mpAutoRecover -= add;
-				m_core.AddMp(add);
-			}
-
-			//ÓÃ»§¡¢NPC¶¼ÐèÒª¸üÐÂ×´Ì¬
-			TickState(HEARTBEAT_INTERVAL);
-			if(IsUser())
-			{
-				// UpdateToClient(NET_CRE_UPDATE_ATTR_ALL);
-				UpdateToClientDelta();
-				if(m_pTeam!=NULL)
-				{
-					m_pTeam->DateChangeAffectTeam();
-				}
-				// ÊÕ»Ø³èÎï£¬²»ÒªÔÚ³èÎïËÀÍöº¯ÊýÀïµ÷ÓÃ»ØÊÕ´úÂë£¬ÒòÎªÕû¸öµ÷ÓÃÁ÷³Ì±È½Ï¸´ÔÓ
-				if(m_pet)
-				{
-					if(m_pet->m_core.GetHp() <= 0 || /*PZH*//*m_pet->m_bDead*/!m_pet->GetPlayerLogic()->IsLive())
-					{
-						m_pet->m_core.SetHp(1);
-						if(IsRidePet()) RideOffPet();
-						CallbackPet(false);
-
-						//·¢ËÍÏµÍ³ÏûÏ¢ 
-						rt2_sprintf(g_strStaticBuffer, R(MSG_PET_DIE));
-						SendSystemMessage(g_strStaticBuffer);
-					}
-				}
-				if (CallNpc.size() != 0)
-				{
-					std::vector<CRegionCreature*>::iterator it = CallNpc.begin();
-					for (;it != CallNpc.end();)
-					{
-						if ((*it)->m_core.GetHp() <= 0 || !(*it)->GetPlayerLogic()->IsLive())
-						{
-							(*it)->DeleteAI();
-							m_scene->RemoveCreature((*it)->m_oId);
-							g_factory->DestroyObject((*it));
-							(*it) = NULL;
-							it = CallNpc.erase(it);
-
-							SendMagCallNpc();
-						}
-						else
-						{
-							++it;
-						}
-					}
-				}
-			};
-
-			if (IsUserPet())
-			{
-				UpdateToClient(NET_CRE_UPDATE_PET_INFO);
-			}
-			else if(IsCallNpc())
-			{
-				UpdateToClient(NET_CRE_UPDATE_ATTR_SIMPLE);
-			}
-			
-
-            {
-                unsigned long dwNow = rtGetMilliseconds();
-                unsigned long dwDiff;
-                if (m_Skill.m_dwLastRunSkill==0)
-                {
-                    dwDiff = 0;
-                }else
-                {
-                    dwDiff = dwNow - m_Skill.m_dwLastRunSkill;
-                }
-                m_Skill.m_dwLastRunSkill = dwNow;
-                m_Skill.m_bSkillWriteDamage = TRUE;
-                m_Skill.m_listSkillDamage.clear();
-				//if (m_core.GetHp() <= 0)  //ËÀÍö×´Ì¬ÏÂBUF²»¸üÐÂ
-				//{
-				//	m_Skill.SetbRun(false);
-				//}
-                this->m_Skill.Run(dwDiff); // Run Skill
-                m_Skill.m_bSkillWriteDamage = FALSE;
-                if (m_Skill.m_listSkillDamage.size()>0 && m_scene)
-                {
-                    g_sendCmd->BeginWrite();
-                    g_sendCmd->WriteShort(r2c_event);
-                    g_sendCmd->WriteLong(g_region->m_time);
-                    g_sendCmd->WriteShort(EVENT_ATTACK);
-                    g_sendCmd->WriteLong(m_oId);
-                    g_sendCmd->WriteShort(0);
-                    g_sendCmd->WriteShort(0); // skill attack
-                    g_sendCmd->WriteByte(SKILL_TARGET_TYPE_NONE);
-					g_sendCmd->WriteByte(0);//ÊÇ·ñÊÇÒ÷³ª(Õæ´òÎª0 Ò÷³ªÎª1)
-                    m_Skill.SkillWriteDamageBuffer(g_sendCmd);
-                    m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
-                }
-            }
-
-            if (m_core.Pk > 0)
-            {
-                char cOldPKState = GetPKState();
-                m_core.Pk -= HEARTBEAT_INTERVAL;
-                if (m_core.Pk < 0) m_core.Pk = 0;
-                if (cOldPKState!=GetPKState())
-                {
-                    // ·¢ËÍµ½¿Í»§¶Ë, ¸æËß×Ô¼ºÃû×Ö×´Ì¬¸Ä±ä
-                    g_sendCmd->BeginWrite();
-                    g_sendCmd->WriteShort(r2c_name_state);
-                    g_sendCmd->WriteByte(GetPKState());
-                    g_sendCmd->WriteLong(m_core.Pk);
-                    RecvCmd(g_sendCmd);
-                }
-            }
-			else
-			{
-				m_core.Pk = 0;
-			}
-
-            // npc··ÂôµÀ¾ß
-            if (m_bNpcSellRareItemStart && !m_NpcSellRareItem.empty())
-            {
-                time_t nowTime = time(NULL);
-                stlforeach(std::vector<SNpcSellRareItem>, iterSell, m_NpcSellRareItem)
-                {
-                    SNpcSellRareItem& sri = *iterSell;
-                    if (sri.nextSpawnTime == 0)
-                    {
-                        if (sri.count!=sri.maxCount)
-                            sri.nextSpawnTime = nowTime + sri.interval;
-                    }
-                    else if (nowTime >= sri.nextSpawnTime)
-                    {
-                        sri.count ++;
-                        if (sri.count < sri.maxCount)
-                        {
-                            sri.nextSpawnTime = nowTime + sri.interval;
-                        }
-                        else
-                        {
-                            sri.nextSpawnTime = 0;
-                        }
-                    }
-                    else 
-                    {
-                    }
-                }
-            }
-			break;
-        default:
-                break;
+		}
+		break;
+	default:
+		break;
 	}
 	GodLightCreateMonster_DelAllMonster();//tim.yang ÉñµÆ   Íæ¼ÒËÀÍöÇå³ýµôÉñµÆÕÙ»½³öÀ´µÄmonster
-	if(IsUser() && m_IsAddMonster)//Íæ¼ÒÉñµÆÕÙ»½³öÀ´µÄmonster±»´òËÀ£¬½«¸ÃÍæ¼ÒÉíÉÏµÄËùÓÐÏà¹ØÊôÐÔÇå³ý
+	if (IsUser() && m_IsAddMonster)//Íæ¼ÒÉñµÆÕÙ»½³öÀ´µÄmonster±»´òËÀ£¬½«¸ÃÍæ¼ÒÉíÉÏµÄËùÓÐÏà¹ØÊôÐÔÇå³ý
 	{
-		for(int i=0;i<GODLIGHT_MONSTER_COUNT;++i)
+		for (int i = 0; i < GODLIGHT_MONSTER_COUNT; ++i)
 		{
-			if(m_GodLightMonster[i] && m_GodLightMonster[i]->m_npcId != 1960)
+			if (m_GodLightMonster[i] && m_GodLightMonster[i]->m_npcId != 1960)
 			{
 				m_GodLightMonster[i] = 0;
 				m_monsterCount--;
@@ -5782,24 +5811,24 @@ void CRegionCreature::OnTimer(DWORD id, DWORD dwParam[])
 	//	SetIncomeState(m_playerNowLoginTime);		//ac.ma
 }
 
-void CRegionCreature::RecvMsg(const char *msg,const char *param)
+void CRegionCreature::RecvMsg(const char* msg, const char* param)
 {
-	if(IsScriptLoaded())
+	if (IsScriptLoaded())
 		CallScript("OnRecvMsg", false, msg, param);
 }
 
-long CRegionCreature::Distance(long *pos)
+long CRegionCreature::Distance(long* pos)
 {
-    float fX2, fY2;
-    fX2 = m_pos[0]-pos[0];
-    fY2 = m_pos[1]-pos[1];
-    float fD = sqrt(fX2*fX2+fY2*fY2);
+	float fX2, fY2;
+	fX2 = m_pos[0] - pos[0];
+	fY2 = m_pos[1] - pos[1];
+	float fD = sqrt(fX2 * fX2 + fY2 * fY2);
 	return (long)fD;
 }
 
 void CRegionCreature::ActiveAI()
 {
-	if(m_ai && !m_ai->IsValid())
+	if (m_ai && !m_ai->IsValid())
 	{
 		m_ai->OnBorn(this);
 	}
@@ -5807,7 +5836,7 @@ void CRegionCreature::ActiveAI()
 
 void CRegionCreature::DeleteAI()
 {
-	if(m_ai)
+	if (m_ai)
 	{
 		m_ai->OnDead();
 		g_aiMgr.CloseAI(m_ai);
@@ -5821,7 +5850,7 @@ void CRegionCreature::DeleteAI()
 //Tianh  ÏµÍ³¹ã²¥½Ó¿Ú 
 //////////////////////////////////////////////////////////////////////////
 //Íæ¼ÒÃû£¬±»É±Íæ¼ÒÃû£¬BOSSÃû×Ö£¬µØµã£¬×°±¸ID
-void CRegionCreature::Systembroadcast(const char *Playername,const char *Name,const char *BossName,const char *SceneName,long type,const char *ItemName)
+void CRegionCreature::Systembroadcast(const char* Playername, const char* Name, const char* BossName, const char* SceneName, long type, const char* ItemName)
 {
 	/*string smsg = "";*/
 
@@ -5855,22 +5884,22 @@ void CRegionCreature::Systembroadcast(const char *Playername,const char *Name,co
 
 	/*long iItemID = ItemID.id;*/
 	/*rt2_strcat(message,msg);*/
-	g_region->m_gws.SendSystemNews(Playername,Name,BossName,SceneName,type,CHAT_CHANNEL_NEWS,ItemName);//heten
+	g_region->m_gws.SendSystemNews(Playername, Name, BossName, SceneName, type, CHAT_CHANNEL_NEWS, ItemName);//heten
 	/*delete message;*/
 	return;
 }
 
 
-void CRegionCreature::SetAI(const char *ai)
+void CRegionCreature::SetAI(const char* ai)
 {
-    if(m_ai)
+	if (m_ai)
 	{
 		g_aiMgr.CloseAI(m_ai);
 		m_ai = NULL;
 	}
 
 	//----------add start by tony 05.08.09 ai modify--------------------//
-	switch(m_npcInfo->AILevel)
+	switch (m_npcInfo->AILevel)
 	{
 	case 0:
 		m_ai_level = AI_FIXED;
@@ -5879,7 +5908,7 @@ void CRegionCreature::SetAI(const char *ai)
 		m_ai_level = AI_FIXED | AI_CONJURE;
 		break;
 	case 2:
-		m_ai_level = AI_IDLE;			
+		m_ai_level = AI_IDLE;
 		break;
 	case 3:
 		m_ai_level = AI_IDLE | AI_PROTECT;
@@ -5908,7 +5937,7 @@ void CRegionCreature::SetAI(const char *ai)
 	}
 	//----------add end   by tony 05.08.09 ai modify--------------------//
 
-	if(strcmp(ai, "pet") == 0)
+	if (strcmp(ai, "pet") == 0)
 		m_ai = g_aiMgr.CreateAI("pet", m_ai_level);
 	else if (strcmp(ai, "callnpc") == 0)
 		m_ai = g_aiMgr.CreateAI("callnpc", m_ai_level);
@@ -5920,7 +5949,7 @@ void CRegionCreature::SetAI(const char *ai)
 		m_ai = g_aiMgr.CreateAI("monster", m_ai_level);
 	else if (strcmp(ai, "hero") == 0)
 		m_ai = g_aiMgr.CreateAI("hero", m_ai_level);
-	else if(strcmp(ai, "g_monster") == 0)
+	else if (strcmp(ai, "g_monster") == 0)
 		m_ai = g_aiMgr.CreateAI("g_monster", m_ai_level);//tim.yang
 	else if (strcmp(ai, "mc_monster") == 0)
 	{
@@ -5928,18 +5957,18 @@ void CRegionCreature::SetAI(const char *ai)
 	}
 	else if (strcmp(ai, "tour") == 0)
 		m_ai = g_aiMgr.CreateAI("tour", m_ai_level);
-	else 
+	else
 		m_ai = NULL;
 }
 
-void CRegionCreature::AddSelfDef(CRegionCreature *enemy)
+void CRegionCreature::AddSelfDef(CRegionCreature* enemy)
 {
-	if(g_WarfieldMgr.IsInWarfield(this)) return;
+	if (g_WarfieldMgr.IsInWarfield(this)) return;
 
 	list<SSelfDef>::iterator it;
-	for(it=m_selfDef.begin(); it!=m_selfDef.end(); it++)
+	for (it = m_selfDef.begin(); it != m_selfDef.end(); it++)
 	{
-		if(it->enemyId == enemy->m_oId)
+		if (it->enemyId == enemy->m_oId)
 		{
 			it->beginTime = rtGetMilliseconds();
 			return;
@@ -5957,14 +5986,14 @@ void CRegionCreature::AddSelfDef(CRegionCreature *enemy)
 	return;
 }
 
-bool CRegionCreature::IsSelfDef(CRegionCreature *enemy)
+bool CRegionCreature::IsSelfDef(CRegionCreature* enemy)
 {
 	list<SSelfDef>::iterator it;
-	for(it=m_selfDef.begin(); it!=m_selfDef.end(); it++)
+	for (it = m_selfDef.begin(); it != m_selfDef.end(); it++)
 	{
 		if (enemy)
 		{
-			if(it->enemyId == enemy->m_oId)
+			if (it->enemyId == enemy->m_oId)
 			{
 				return true;
 			}
@@ -5976,37 +6005,37 @@ bool CRegionCreature::IsSelfDef(CRegionCreature *enemy)
 ///add by Tianh
 void CRegionCreature::DeleteLifeSkill(unsigned short wID)
 {
-	CActorSkill* pActorSkill = FindActorSkill(this,m_oId);
+	CActorSkill* pActorSkill = FindActorSkill(this, m_oId);
 	int wSID = 0;
 	if (pActorSkill)
 	{
 		wSID = pActorSkill->GetSkillwSubID(wID);
-	}	
+	}
 	//ÒÅÍüÅä·½
 	if (wSID == ITEMCOMPOSE_WEAPON_SKILL)//Öý±øÊõ
 	{
 		std::list<short>::iterator iterCompose = m_listMatchID.begin();
-		for (; iterCompose!=m_listMatchID.end();)
+		for (; iterCompose != m_listMatchID.end();)
 		{
-            SItemCompose* pComposeClass = g_region->m_pItemManager->m_pComposeMgr->FindComposing(*iterCompose);
+			SItemCompose* pComposeClass = g_region->m_pItemManager->m_pComposeMgr->FindComposing(*iterCompose);
 			if (pComposeClass)
 			{
 				if (pComposeClass->ComposeType == 1)
 				{
 					/*m_listMatchID.remove(*iterCompose);*/
 					iterCompose = m_listMatchID.erase(iterCompose);
-					continue;	
-				}	
+					continue;
+				}
 			}
 
 			++iterCompose;
-		}	
-		pActorSkill->DeleteSkill(wID,true);
+		}
+		pActorSkill->DeleteSkill(wID, true);
 	}
 	else if (wSID == ITEMCOMPOSE_EQUIP_SKILL)// Öý¼×Êõ
 	{
 		std::list<short>::iterator iterCompose = m_listMatchID.begin();
-		for (; iterCompose!=m_listMatchID.end(); )
+		for (; iterCompose != m_listMatchID.end(); )
 		{
 			SItemCompose* pComposeClass = g_region->m_pItemManager->m_pComposeMgr->FindComposing(*iterCompose);
 			if (pComposeClass)
@@ -6020,12 +6049,12 @@ void CRegionCreature::DeleteLifeSkill(unsigned short wID)
 			}
 			++iterCompose;
 		}
-		pActorSkill->DeleteSkill(wID,true);
+		pActorSkill->DeleteSkill(wID, true);
 	}
-	else if (wSID ==ITEMCOMPOSE_YAOPING_SKILL)// Á¶µ¤Êõ
+	else if (wSID == ITEMCOMPOSE_YAOPING_SKILL)// Á¶µ¤Êõ
 	{
 		std::list<short>::iterator iterCompose = m_listMatchID.begin();
-		for (; iterCompose!=m_listMatchID.end();)
+		for (; iterCompose != m_listMatchID.end();)
 		{
 			SItemCompose* pComposeClass = g_region->m_pItemManager->m_pComposeMgr->FindComposing(*iterCompose);
 			if (pComposeClass)
@@ -6038,12 +6067,12 @@ void CRegionCreature::DeleteLifeSkill(unsigned short wID)
 			}
 			++iterCompose;
 		}
-		pActorSkill->DeleteSkill(wID,true);
+		pActorSkill->DeleteSkill(wID, true);
 	}
 	else if (wSID == ITEMCOMPOSE_ENCHANT_SKILL)// ÖÆ·ûÊõ
 	{
 		std::list<short>::iterator iterCompose = m_listMatchID.begin();
-		for (; iterCompose!=m_listMatchID.end();)
+		for (; iterCompose != m_listMatchID.end();)
 		{
 			SItemCompose* pComposeClass = g_region->m_pItemManager->m_pComposeMgr->FindComposing(*iterCompose);
 			if (pComposeClass)
@@ -6056,13 +6085,13 @@ void CRegionCreature::DeleteLifeSkill(unsigned short wID)
 			}
 			++iterCompose;
 		}
-		pActorSkill->DeleteSkill(wID,true);
+		pActorSkill->DeleteSkill(wID, true);
 	}
 	else
 	{
 		if (pActorSkill)
 		{
-			pActorSkill->DeleteSkill(wID,true);
+			pActorSkill->DeleteSkill(wID, true);
 		}
 	}
 	UpdateMatchToClient();
@@ -6071,12 +6100,12 @@ void CRegionCreature::DeleteLifeSkill(unsigned short wID)
 
 void CRegionCreature::RemoveTimeoutSelfDef()
 {
-	if(m_selfDef.empty()) return;
+	if (m_selfDef.empty()) return;
 
 	list<SSelfDef>::iterator it;
-	for(it=m_selfDef.begin(); it!=m_selfDef.end();)
+	for (it = m_selfDef.begin(); it != m_selfDef.end();)
 	{
-		if(rtGetMilliseconds() - it->beginTime > 60 * 1000)
+		if (rtGetMilliseconds() - it->beginTime > 60 * 1000)
 		{
 			rt2_sprintf(g_strStaticBuffer, R(MSG_SELF_DEF_END), it->enemyName.c_str());
 			SendSystemMessage(g_strStaticBuffer);
@@ -6088,17 +6117,17 @@ void CRegionCreature::RemoveTimeoutSelfDef()
 	}
 }
 
-void CRegionCreature::Interactive(CRegionCreature *target,CG_CmdPacket *cmd)
+void CRegionCreature::Interactive(CRegionCreature* target, CG_CmdPacket* cmd)
 {
-	char *str;
-	if(!cmd->ReadString(&str))
+	char* str;
+	if (!cmd->ReadString(&str))
 		return;
 
 	//Ä¿Ç°Ö»ÓÐ´ðÌâ·µ»ØÊ±²Å»áµ÷ÓÃÕâÀï
-	if(strncmp(str, "Script_", 7)==0 && IsScriptLoaded())
+	if (strncmp(str, "Script_", 7) == 0 && IsScriptLoaded())
 	{
-		const char *sScriptStr = str + 7;
-		if(sScriptStr[0] != '\0')
+		const char* sScriptStr = str + 7;
+		if (sScriptStr[0] != '\0')
 			CallScript(sScriptStr, false);
 		return;
 	}
@@ -6107,18 +6136,18 @@ void CRegionCreature::Interactive(CRegionCreature *target,CG_CmdPacket *cmd)
 //
 // OnBeAttacked ÖÐ²»ÄÜÔÙµ÷ÓÃ¹¥»÷¡¢¼¼ÄÜ¡¢³¡¾°µÄfindcreatureº¯Êý£¬·ñÔò»áÒýÆðµÝ¹éµ÷ÓÃ
 //
-void CRegionCreature::OnBeAttacked(CRegionCreature *enemy, int damage)
+void CRegionCreature::OnBeAttacked(CRegionCreature* enemy, int damage)
 {
 	// if(enemy == m_master) return;
-	if(IsScriptLoaded() && !IsUser() && !IsUserPet() && !IsCallNpc())
+	if (IsScriptLoaded() && !IsUser() && !IsUserPet() && !IsCallNpc())
 	{
 		if (enemy)
 		{
 			CallScript("OnBeAttacked", false, enemy);
 		}
 	}
-		
-		
+
+
 
 	/*
 	// ±ÜÃâ³èÎïÖ÷¶¯¹¥»÷µ¼ÖÂºìÃû
@@ -6126,19 +6155,19 @@ void CRegionCreature::OnBeAttacked(CRegionCreature *enemy, int damage)
 		return;
 	*/
 
-	if(enemy)
+	if (enemy)
 	{
-		int hate = enemy->m_core.Hate + (enemy->m_core.HateRate/100.0f)*damage;
-		AddEnemy(enemy,damage);
+		int hate = enemy->m_core.Hate + (enemy->m_core.HateRate / 100.0f) * damage;
+		AddEnemy(enemy, damage);
 		if (!m_lockTarget)
 			AddTarget(enemy, hate, damage);
 
 		if (m_ai)
 			m_ai->OnBeAttacked(enemy, damage);
-		
+
 		if ((IsUserPet() && m_ai) || (m_pet && m_pet->m_ai))
 		{
-			CRegionPetAI *petAI = NULL;
+			CRegionPetAI* petAI = NULL;
 			if (IsUserPet())
 				petAI = (CRegionPetAI*)m_ai;
 			else
@@ -6148,16 +6177,16 @@ void CRegionCreature::OnBeAttacked(CRegionCreature *enemy, int damage)
 				petAI->OnAttack(enemy);
 			}
 		}
-		
+
 		//Tianh   ÕÙ»½µÄ×÷Õ½NPC  ÕâÀïÖ»ÓÐUSER²Å¿ÉÒÔÓÐ
 		if (CallNpc.size() != 0)
 		{
 			std::vector<CRegionCreature*>::iterator vit = CallNpc.begin();
-			for (;vit != CallNpc.end();vit++)
+			for (; vit != CallNpc.end(); vit++)
 			{
 				if ((*vit)->m_ai)
 				{
-					CRegionCallNpc *CallNpcAI = NULL;
+					CRegionCallNpc* CallNpcAI = NULL;
 					CallNpcAI = (CRegionCallNpc*)(*vit)->m_ai;
 					if (CallNpcAI && (CallNpcAI->m_eAS == CRegionCallNpc::AS_SYNERGY || CallNpcAI->m_eAS == CRegionCallNpc::AS_PASSIVE))
 					{
@@ -6168,12 +6197,12 @@ void CRegionCreature::OnBeAttacked(CRegionCreature *enemy, int damage)
 		}
 
 
-		if(m_npcInfo && g_WarfieldMgr.IsRebirthNpc(m_npcInfo->Id))
+		if (m_npcInfo && g_WarfieldMgr.IsRebirthNpc(m_npcInfo->Id))
 		{
 			g_WarfieldMgr.OnRebirthPosBeAttacked(this);
 		}
 
-		if(m_npcInfo && g_WarfieldMgr.IsFlagNpc(m_npcInfo->Id))
+		if (m_npcInfo && g_WarfieldMgr.IsFlagNpc(m_npcInfo->Id))
 		{
 			g_WarfieldMgr.OnFlagBeAttacked(m_npcInfo->Id, this);
 		}
@@ -6182,9 +6211,9 @@ void CRegionCreature::OnBeAttacked(CRegionCreature *enemy, int damage)
 
 void CRegionCreature::AddProtector()
 {
-	if(m_npcInfo != NULL)
+	if (m_npcInfo != NULL)
 	{
-		if(m_npcInfo->ProtecterID == 0)
+		if (m_npcInfo->ProtecterID == 0)
 			return;
 	}
 
@@ -6192,12 +6221,12 @@ void CRegionCreature::AddProtector()
 
 	std::vector<CRegionCreature*> creList;
 
-	m_scene->GetAroundCreatureByGrid( m_pos, 
-								/*m_viewRange*/m_assistRange,
-								creList,
-								this);
+	m_scene->GetAroundCreatureByGrid(m_pos,
+		/*m_viewRange*/m_assistRange,
+		creList,
+		this);
 
-	if(creList.empty())
+	if (creList.empty())
 	{
 		return;
 	}
@@ -6205,10 +6234,10 @@ void CRegionCreature::AddProtector()
 	std::vector<CRegionCreature*>::iterator iter = creList.begin();
 
 	for (; iter != creList.end(); iter++)
-	{		
-		if((*iter)->m_npcInfo && m_npcInfo)
+	{
+		if ((*iter)->m_npcInfo && m_npcInfo)
 		{
-			if((*iter)->m_npcInfo->Id != m_npcInfo->ProtecterID)
+			if ((*iter)->m_npcInfo->Id != m_npcInfo->ProtecterID)
 				continue;
 			if (*iter == this)
 				continue;
@@ -6218,11 +6247,11 @@ void CRegionCreature::AddProtector()
 	}
 }
 
-bool CRegionCreature::CreateAllUnderlingNpc(short npc_id,char Type,int num,long* pos)
+bool CRegionCreature::CreateAllUnderlingNpc(short npc_id, char Type, int num, long* pos)
 {
 	short id = npc_id;	//npc_id unused	
 
-	if(num <= 0)
+	if (num <= 0)
 	{
 		return false;
 	}
@@ -6230,7 +6259,7 @@ bool CRegionCreature::CreateAllUnderlingNpc(short npc_id,char Type,int num,long*
 
 	//ÕÙ»½ÐÂµÄNPCÊ±°ÑÔ­À´µÄÇå³þ  
 	std::vector<CRegionCreature*>::iterator it = CallNpc.begin();
-	for (;it != CallNpc.end();it++)
+	for (; it != CallNpc.end(); it++)
 	{
 		if (*it)
 		{
@@ -6245,20 +6274,20 @@ bool CRegionCreature::CreateAllUnderlingNpc(short npc_id,char Type,int num,long*
 	//ÒÔÍæ¼ÒÎªÖÐÐÄ»­Ô² µÃµ½Ô²ÉÏÆ½¾ù¾àÀëµÄ8¸öµã
 	//Ò»¸öÔ²¿ÉÒÔÓÐ8¸öµã Ã¿¸öµãÏà²î360/8¶È
 	int  Radius = 25; //°ë¾¶Îª10
-	double vPov = 45 ;
+	double vPov = 45;
 	for (int i = 0; i < 8; i++)
 	{
 		float vpos[3];
-		
+
 		//¹ýÁË180¶È¾Í±äÁË  ÓÐÊ±¼ä¸ÄÕý
 		double Pov = 45 * i;
-		float x = Radius/sin(Pov);
-		float y = Radius/cos(Pov);
+		float x = Radius / sin(Pov);
+		float y = Radius / cos(Pov);
 		vpos[0] = m_pos[0] + x;
 		vpos[1] = m_pos[1] + y;
 		vpos[2] = m_pos[2];
 
-		if (i>num)
+		if (i > num)
 		{
 			break;
 		}
@@ -6270,7 +6299,7 @@ bool CRegionCreature::CreateAllUnderlingNpc(short npc_id,char Type,int num,long*
 		{
 			CreateUnderlingNpcByBoss(id, vpos);
 		}
-	
+
 	}
 
 	SendMagCallNpc();
@@ -6281,7 +6310,7 @@ bool CRegionCreature::CreateAllUnderlingNpc(short npc_id,char Type,int num,long*
 bool CRegionCreature::CreateUnderlingNpc(short npc_id, float pos[3])
 {
 	CRegionCreature* p_cre = g_region->CreateNpc(npc_id);
-	if(!p_cre)
+	if (!p_cre)
 	{
 		return false;
 	}
@@ -6290,7 +6319,7 @@ bool CRegionCreature::CreateUnderlingNpc(short npc_id, float pos[3])
 	vpos[0] = (long)pos[0];
 	vpos[1] = (long)pos[1];
 	vpos[2] = (long)pos[2];
-	if(!m_scene->AddCreature(p_cre,vpos,0))
+	if (!m_scene->AddCreature(p_cre, vpos, 0))
 	{
 		g_factory->DestroyObject(p_cre);
 		return false;
@@ -6302,7 +6331,7 @@ bool CRegionCreature::CreateUnderlingNpc(short npc_id, float pos[3])
 	p_cre->SetAI("callnpc");
 	p_cre->ActiveAI();
 	p_cre->m_ai->OnFollow(this);
-	p_cre->SetTimer(CRE_TIMER_HEARTBEAT,HEARTBEAT_INTERVAL);
+	p_cre->SetTimer(CRE_TIMER_HEARTBEAT, HEARTBEAT_INTERVAL);
 	p_cre->ResetCheaterCheck();
 
 	p_cre->m_core.Lev = m_core.Lev;
@@ -6314,7 +6343,7 @@ bool CRegionCreature::CreateUnderlingNpc(short npc_id, float pos[3])
 bool CRegionCreature::CreateUnderlingNpcByBoss(short npc_id, float pos[3])
 {
 	CRegionCreature* p_cre = g_region->CreateNpc(npc_id);
-	if(!p_cre)
+	if (!p_cre)
 	{
 		return false;
 	}
@@ -6324,7 +6353,7 @@ bool CRegionCreature::CreateUnderlingNpcByBoss(short npc_id, float pos[3])
 	vpos[1] = (long)pos[1];
 	vpos[2] = (long)pos[2];
 
-	if(!m_scene->AddCreature(p_cre,vpos,0))
+	if (!m_scene->AddCreature(p_cre, vpos, 0))
 	{
 		g_factory->DestroyObject(p_cre);
 		return false;
@@ -6347,7 +6376,7 @@ void CRegionCreature::DeleteAddUnderlingNpc()
 	}
 
 	std::vector<CRegionCreature*>::iterator it = CallNpc.begin();
-	for (;it != CallNpc.end();it++)
+	for (; it != CallNpc.end(); it++)
 	{
 		if (*it)
 		{
@@ -6371,9 +6400,9 @@ void CRegionCreature::DeleteCallNpc(int sV)
 	}
 	if (CallNpc.size())
 	{
-		for(int  i = 0; i< sV;i++)
+		for (int i = 0; i < sV; i++)
 		{
-			std::vector<CRegionCreature*>::iterator it = CallNpc.begin();		
+			std::vector<CRegionCreature*>::iterator it = CallNpc.begin();
 
 			if (*it)
 			{
@@ -6385,7 +6414,7 @@ void CRegionCreature::DeleteCallNpc(int sV)
 				it = CallNpc.erase(it);
 
 				/*it++;*/
-			}	
+			}
 
 			SendMagCallNpc();
 
@@ -6395,7 +6424,7 @@ void CRegionCreature::DeleteCallNpc(int sV)
 			}
 		}
 	}
-	
+
 }
 
 void CRegionCreature::SendMagCallNpc()
@@ -6421,43 +6450,43 @@ void CRegionCreature::CalcExploit(CRegionCreature* other)
 		minItemId = 5027;
 		maxItemId = 5030;
 	}
-	else if(other->m_core.Lev >= 60 && other->m_core.Lev <= 69)
+	else if (other->m_core.Lev >= 60 && other->m_core.Lev <= 69)
 	{
 		addExploit = 2;
 		minItemId = 5031;
 		maxItemId = 5034;
 	}
-	else if(other->m_core.Lev >= 70 && other->m_core.Lev <= 79)
+	else if (other->m_core.Lev >= 70 && other->m_core.Lev <= 79)
 	{
 		addExploit = 4;
 		minItemId = 5035;
 		maxItemId = 5038;
 	}
-	else if(other->m_core.Lev >= 80 && other->m_core.Lev <= 89)
+	else if (other->m_core.Lev >= 80 && other->m_core.Lev <= 89)
 	{
 		addExploit = 8;
 		minItemId = 5039;
 		maxItemId = 5042;
 	}
-	else if(other->m_core.Lev >= 90 && other->m_core.Lev <= 99)
+	else if (other->m_core.Lev >= 90 && other->m_core.Lev <= 99)
 	{
 		addExploit = 16;
 		minItemId = 5043;
 		maxItemId = 5046;
 	}
-	else if(other->m_core.Lev >= 100 && other->m_core.Lev <= 109)
+	else if (other->m_core.Lev >= 100 && other->m_core.Lev <= 109)
 	{
 		addExploit = 32;
 		minItemId = 5047;
 		maxItemId = 5050;
 	}
-	else if(other->m_core.Lev >= 110 && other->m_core.Lev <= 119)
+	else if (other->m_core.Lev >= 110 && other->m_core.Lev <= 119)
 	{
 		addExploit = 64;
 		minItemId = 5051;
 		maxItemId = 5054;
 	}
-	else if(other->m_core.Lev >= 120)
+	else if (other->m_core.Lev >= 120)
 	{
 		addExploit = 128;
 		minItemId = 5055;
@@ -6465,7 +6494,7 @@ void CRegionCreature::CalcExploit(CRegionCreature* other)
 	}
 	if (m_core.Lev > other->m_core.Lev)
 	{
-		switch(m_core.Lev - other->m_core.Lev)
+		switch (m_core.Lev - other->m_core.Lev)
 		{
 		case 1:
 			addExploit = addExploit * 0.8;
@@ -6484,17 +6513,17 @@ void CRegionCreature::CalcExploit(CRegionCreature* other)
 	}
 
 	AddExploit(addExploit);
-	int iRateRt = rtRandom(g_pkConfig->exploitManager.iRandom + 1,1);//1 is ¿ñÕ½Ê¿
-	if(iRateRt == 1)
+	int iRateRt = rtRandom(g_pkConfig->exploitManager.iRandom + 1, 1);//1 is ¿ñÕ½Ê¿
+	if (iRateRt == 1)
 	{
-		int iRate = rtRandom(maxItemId + 1,minItemId);//1 is ¿ñÕ½Ê¿
-		CreateDropItem(iRate,ItemDrop_Descend);
+		int iRate = rtRandom(maxItemId + 1, minItemId);//1 is ¿ñÕ½Ê¿
+		CreateDropItem(iRate, ItemDrop_Descend);
 		rt2_sprintf(g_strStaticBuffer, R(MSG_GET_ROLE_APPARATUS), other->m_core.Name.c_str());
 		SendSystemMessage(g_strStaticBuffer);
 	}
 }
 
-void CRegionCreature::CreateDropItem(const DWORD itemId,EItemDropStyle dropStyle)
+void CRegionCreature::CreateDropItem(const DWORD itemId, EItemDropStyle dropStyle)
 {
 	//SItemID item = g_region->m_pItemManager->CreateItem(itemId);
 	//if(ItemID_IsValid(item))
@@ -6509,7 +6538,7 @@ void CRegionCreature::CreateDropItem(const DWORD itemId,EItemDropStyle dropStyle
 //
 // killer ²»¿ÉÒÔÊÇ¿Õ
 //
-long CRegionCreature::OnDead(CRegionCreature *killer)
+long CRegionCreature::OnDead(CRegionCreature* killer)
 {
 	long nRet = CPlayerLogic::eHaveItem;
 
@@ -6519,18 +6548,18 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 	stlforeach(STargetList, iter, m_targets)
 	{
 		CRegionCreature* c = m_scene->FindCreature((*iter).Id);
-		if(c)
+		if (c)
 			c->RemoveTargetByCreature(this);
 	}
 
-	if( (IsUser()/*||IsUserPet()*/) && (killer->IsUser()||killer->IsUserPet()||killer->IsCallNpc()) )
+	if ((IsUser()/*||IsUserPet()*/) && (killer->IsUser() || killer->IsUserPet() || killer->IsCallNpc()))
 	{
 		// È«²¿×ª»»³ÉÍæ¼Ò¼ÆËã
-		CRegionCreature *me,*enemy;
+		CRegionCreature* me, * enemy;
 		me = this;
-		if(IsUserPet()) me = m_master;
+		if (IsUserPet()) me = m_master;
 		enemy = killer;
-		if(killer->IsUserPet() || killer->IsCallNpc()) enemy = killer->m_master;
+		if (killer->IsUserPet() || killer->IsCallNpc()) enemy = killer->m_master;
 		enemy->OnPkOther(me);
 		me->OnBePked(enemy);
 	}
@@ -6540,7 +6569,7 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 	if (m_pTrade)
 		StopPlayerTrade();
 
-	if(IsScriptLoaded())
+	if (IsScriptLoaded())
 		CallScript("OnDead", false, killer);
 
 	// °Ñ²»ÊÇÓÉ±»¶¯¼¼ÄÜÌí¼ÓµÄÐ§¹û¶¼É¾³ý
@@ -6548,10 +6577,10 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 	{
 		m_Skill.DeleteUIDEffect(0, true);
 	}
-	
+
 
 	//-------------------------------add start by tony 05.05.18------------------//
-	if(IsGuarder())
+	if (IsGuarder())
 	{
 		//modify later
 		//...
@@ -6559,14 +6588,14 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 	}
 	//-------------------------------add end   by tony 05.05.18------------------//
 
-	CRegionCreature *maxDamageCre = NULL;
-	if((IsGuarder() || IsMonster()) /*&& OB_TYPE(m_scene) != OBJECT_TYPE_SCENE_FB */&& !m_cheatDummy)
+	CRegionCreature* maxDamageCre = NULL;
+	if ((IsGuarder() || IsMonster()) /*&& OB_TYPE(m_scene) != OBJECT_TYPE_SCENE_FB */ && !m_cheatDummy)
 	{
-		if(g_region->m_pWarZhulu->IsZhuluActive(true))
+		if (g_region->m_pWarZhulu->IsZhuluActive(true))
 		{
-			if(m_npcInfo->Id == 1997)
+			if (m_npcInfo->Id == 1997)
 				g_region->m_pWarZhulu->OnZhuluWin(FACTION_ZHOU);
-			if(m_npcInfo->Id == 2000)
+			if (m_npcInfo->Id == 2000)
 				g_region->m_pWarZhulu->OnZhuluWin(FACTION_SHANG);
 		}
 
@@ -6576,19 +6605,19 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 
 		int maxDamage = 0;
 
-		CRegionCreature *maxDamageCreSingle = NULL;
+		CRegionCreature* maxDamageCreSingle = NULL;
 		int maxDamageSingle = -1;
 
 		// ·ÖÅä¾­Ñé,°´Ôì³ÉÉËº¦µÄ°Ù·Ö±È·ÖÅä
-		map<CRegionCreature*,int> kpMap;
-		map<CRegionCreature*,int>::iterator kpIt;
+		map<CRegionCreature*, int> kpMap;
+		map<CRegionCreature*, int>::iterator kpIt;
 
 		STargetList::iterator it;
-		for(it = m_enemyList.begin(); it != m_enemyList.end(); it++)
+		for (it = m_enemyList.begin(); it != m_enemyList.end(); it++)
 		{
-			CRegionCreature *cur = m_scene->FindCreature(it->Id);
-			if(!cur) continue;
-			if(!cur->IsUser() && !cur->IsUserPet()) continue;
+			CRegionCreature* cur = m_scene->FindCreature(it->Id);
+			if (!cur) continue;
+			if (!cur->IsUser() && !cur->IsUserPet()) continue;
 
 			CPlayerLogic::LiveType type = cur->GetPlayerLogic()->GetLiveType();
 			if (CPlayerLogic::eLive != type)
@@ -6597,49 +6626,49 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 			}
 
 			int exp = 0;
-			exp = totalExp * ComputeExpRate(cur->m_core.Lev,m_core.Lev) * it->Damage / m_core.MaxHp.GetValue();
-			if(exp == 0) exp++;
+			exp = totalExp * ComputeExpRate(cur->m_core.Lev, m_core.Lev) * it->Damage / m_core.MaxHp.GetValue();
+			if (exp == 0) exp++;
 
-			if(it->Damage > maxDamageSingle)
+			if (it->Damage > maxDamageSingle)
 			{
-				maxDamageCreSingle	= cur;
-				maxDamageSingle		= it->Damage;
+				maxDamageCreSingle = cur;
+				maxDamageSingle = it->Damage;
 			}
 
 			// ×é¶Ó¾­ÑéÀÛ¼Ó¸ø¶Ó³¤
-			if(!cur->m_pTeam->mData.Empty())
+			if (!cur->m_pTeam->mData.Empty())
 			{
-				CRegionUser *user = g_region->FindUser(cur->m_pTeam->mData.GetCaptain());
-				if(user) cur = user->m_dummy;
+				CRegionUser* user = g_region->FindUser(cur->m_pTeam->mData.GetCaptain());
+				if (user) cur = user->m_dummy;
 			}
-			if(!cur) continue;
+			if (!cur) continue;
 
 			kpIt = kpMap.find(cur);
-			if(kpIt == kpMap.end())
+			if (kpIt == kpMap.end())
 				kpMap[cur] = exp;
 			else
 				kpMap[cur] += exp;
 
 			int tmp = kpMap[cur];
-			if(tmp > maxDamage)
+			if (tmp > maxDamage)
 			{
 				maxDamageCre = cur;
 				maxDamage = tmp;
 			}
-		}	
+		}
 
-		for(kpIt=kpMap.begin(); kpIt!=kpMap.end(); kpIt++)
+		for (kpIt = kpMap.begin(); kpIt != kpMap.end(); kpIt++)
 		{
-			CRegionCreature *cur = kpIt->first;
+			CRegionCreature* cur = kpIt->first;
 			cur->LeaveCombat();	// Çå¿ÕÕ½¶·×´Ì¬
-			if(cur->m_pTeam->mData.Empty())
+			if (cur->m_pTeam->mData.Empty())
 			{
 				cur->m_nMonsterCount++;
 				// ´ò¿¨
-				cur->AddExp(kpIt->second*cur->GetExpRate(),0);
-				if (cur == maxDamageCre && GetProb(m_killReward.GoldRate * ComputeGoldRate(cur->m_core.Lev,m_core.Lev)) )
+				cur->AddExp(kpIt->second * cur->GetExpRate(), 0);
+				if (cur == maxDamageCre && GetProb(m_killReward.GoldRate * ComputeGoldRate(cur->m_core.Lev, m_core.Lev)))
 				{
-					int goldNum = g_cfg.game.gold_rate * GetRand( rtFloor(m_killReward.Gold*1.1 + 1.0f), m_killReward.Gold*0.9);
+					int goldNum = g_cfg.game.gold_rate * GetRand(rtFloor(m_killReward.Gold * 1.1 + 1.0f), m_killReward.Gold * 0.9);
 					cur->AddGold(goldNum);
 					cur->m_nGetMoneyFromMonster += goldNum;
 				}
@@ -6651,10 +6680,10 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 				int totalLev = 0;
 				int validNum = 0;
 				int num = cur->m_pTeam->mData.Size();
-				for(int i=0; i<num; i++)
+				for (int i = 0; i < num; i++)
 				{
-					CRegionUser *user = g_region->FindUser(cur->m_pTeam->mData[i].mDBID);
-					if(!user) continue;
+					CRegionUser* user = g_region->FindUser(cur->m_pTeam->mData[i].mDBID);
+					if (!user) continue;
 					CPlayerLogic::LiveType type = user->m_dummy->GetPlayerLogic()->GetLiveType();
 					if (CPlayerLogic::eLive != type)
 					{
@@ -6662,7 +6691,7 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 					}
 
 					// ¾àÀëÏÞÖÆ
-					if(user->m_dummy->Distance(m_pos) <= 800)
+					if (user->m_dummy->Distance(m_pos) <= 800)
 					{
 						totalLev += user->m_dummy->m_core.Lev;
 						validNum++;
@@ -6672,23 +6701,23 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 				int addExp = 0;
 				/*if(validNum == 1)
 				addExp = kpIt->second;
-				else 
+				else
 				addExp = kpIt->second * (1.0+(validNum)*0.1);*/
 				addExp = kpIt->second;
 
-				if(addExp < 0) addExp = 0;
+				if (addExp < 0) addExp = 0;
 				// LOG2("team get exp,src = %d,final = %d\n",m_killReward.Exp, totalExp);
 
 				int addGold = 0;
-				if(cur == maxDamageCre && GetProb(m_killReward.GoldRate * ComputeGoldRate(killer->m_core.Lev,m_core.Lev)))
+				if (cur == maxDamageCre && GetProb(m_killReward.GoldRate * ComputeGoldRate(killer->m_core.Lev, m_core.Lev)))
 				{
-					addGold = g_cfg.game.gold_rate * GetRand( rtFloor(m_killReward.Gold*1.1 + 1.0f), m_killReward.Gold*0.9);
+					addGold = g_cfg.game.gold_rate * GetRand(rtFloor(m_killReward.Gold * 1.1 + 1.0f), m_killReward.Gold * 0.9);
 				}
 
-				for(int i=0; i<num; i++)
+				for (int i = 0; i < num; i++)
 				{
-					CRegionUser *user = g_region->FindUser(cur->m_pTeam->mData[i].mDBID);
-					if(!user) continue;
+					CRegionUser* user = g_region->FindUser(cur->m_pTeam->mData[i].mDBID);
+					if (!user) continue;
 					CPlayerLogic::LiveType type = user->m_dummy->GetPlayerLogic()->GetLiveType();
 					if (CPlayerLogic::eLive != type)
 					{
@@ -6715,7 +6744,7 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 						//(¹ÖÎï¾­Ñé*(1+(0.2+0.02*¶ÓÎéÈËÊý)*¶ÓÎéÈËÊý))*ÈËÎïµÈ¼¶/¶ÓÎéµÈ¼¶×ÜºÏ
 						if (0 != totalLev)
 						{
-							exp = addExp*(1+(0.2+0.02*validNum)*validNum) * user->m_dummy->m_core.Lev / totalLev;
+							exp = addExp * (1 + (0.2 + 0.02 * validNum) * validNum) * user->m_dummy->m_core.Lev / totalLev;
 						}
 						// ´ò¿¨
 						exp *= user->m_dummy->GetExpRate();
@@ -6725,11 +6754,11 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 
 					user->m_dummy->AddExp(exp, 0);
 					// LOG2("	team member get exp %d, sp %d\n",exp, sp);
-					if(addGold > 0)
+					if (addGold > 0)
 					{
 						// user->m_dummy->AddGold( addGold * user->m_dummy->m_core.Lev/totalLev );
-						user->m_dummy->AddGold( addGold/validNum );
-						user->m_dummy->m_nGetMoneyFromMonster += addGold/validNum;
+						user->m_dummy->AddGold(addGold / validNum);
+						user->m_dummy->m_nGetMoneyFromMonster += addGold / validNum;
 					}
 					//}
 				}
@@ -6816,7 +6845,7 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 		//	}
 		//}
 
-		if(maxDamageCreSingle && (maxDamageCreSingle->IsUser() || maxDamageCreSingle->IsUserPet()) && m_npcInfo)
+		if (maxDamageCreSingle && (maxDamageCreSingle->IsUser() || maxDamageCreSingle->IsUserPet()) && m_npcInfo)
 		{
 			//PZH
 			if (maxDamageCreSingle->IsUserPet())
@@ -6824,21 +6853,21 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 				maxDamageCreSingle = maxDamageCreSingle->m_master;
 			}
 			int kk = 0;
-			for(kk = 0; kk < m_npcInfo->nTaskNum; kk++)
+			for (kk = 0; kk < m_npcInfo->nTaskNum; kk++)
 			{
-				if(!GetProb(m_npcInfo->TaskItemDropRate[kk]))
+				if (!GetProb(m_npcInfo->TaskItemDropRate[kk]))
 				{
 					continue;
 				}
 				int nRet = maxDamageCreSingle->GetPlayerLogic()->AllMyTeamAddTaskItem(this, kk);
 				//
 				// check task item
-				if(/*PZH*/0 != nRet && /**/m_npcInfo->FbTask==0 && m_npcInfo->TaskId[kk] && maxDamageCreSingle->m_task.IsTaskAccept(m_npcInfo->TaskId[kk]))
+				if (/*PZH*/0 != nRet && /**/m_npcInfo->FbTask == 0 && m_npcInfo->TaskId[kk] && maxDamageCreSingle->m_task.IsTaskAccept(m_npcInfo->TaskId[kk]))
 				{
-					if(/*GetProb(m_npcInfo->TaskItemDropRate) && */
+					if (/*GetProb(m_npcInfo->TaskItemDropRate) && */
 						maxDamageCreSingle->GetItemNum(m_npcInfo->TaskItemId[kk], ItemColor_White) < m_npcInfo->TaskItemLimit[kk])
 					{
-						maxDamageCreSingle->AddItem(m_npcInfo->TaskItemId[kk],ItemColor_White);
+						maxDamageCreSingle->AddItem(m_npcInfo->TaskItemId[kk], ItemColor_White);
 						STaskInfo* info = maxDamageCreSingle->m_task.FindTask(m_npcInfo->TaskId[kk]);
 						if (NULL != info)
 						{
@@ -6851,7 +6880,7 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 						maxDamageCreSingle->UpdateToClient(NET_CRE_UPDATE_TASK);
 					}
 					//ÍÚ±¦ÈÎÎñËæ»úÊÂ¼þ
-					if(m_npcInfo->TaskId[kk] >= 1628 && m_npcInfo->TaskId[kk] <= 1641 )
+					if (m_npcInfo->TaskId[kk] >= 1628 && m_npcInfo->TaskId[kk] <= 1641)
 					{
 						OnTreasureDiscover(killer);
 					}
@@ -6859,12 +6888,12 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 					//---------add start by tony 06.05.10---------------------------------------//
 					//-reason: ÅÜ»·ÈÎÎñÉ±¹Ö
 					STaskInfo* info = maxDamageCreSingle->m_task.FindTask(m_npcInfo->TaskId[kk]);
-					if(info && info->Desc && info->Desc->circleTask==TASK_CIRCLE_BATTLE)
-					{					
+					if (info && info->Desc && info->Desc->circleTask == TASK_CIRCLE_BATTLE)
+					{
 						SNpc* pMonster = g_TableNpc.FindNpc(info->m_killmonsterID);
-						if(m_npcInfo && pMonster && info->m_killmonsterID==m_npcInfo->Id)
-						{						
-							if(info->m_currMonsterNum < atol(info->Desc->taskReq[0].param[1].c_str()))
+						if (m_npcInfo && pMonster && info->m_killmonsterID == m_npcInfo->Id)
+						{
+							if (info->m_currMonsterNum < atol(info->Desc->taskReq[0].param[1].c_str()))
 							{
 								info->m_currMonsterNum += 1;
 								std::string monster = "ÒÑÉ±ËÀ" + pMonster->Name + ":" + std::string(rtFormatNumber(info->m_currMonsterNum));
@@ -6875,20 +6904,20 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 						}
 						maxDamageCreSingle->CanFinishTask(info->Desc, 0, NULL);
 					}
-					
+
 					//---------add end   by tony 06.05.10---------------------------------------//
 				}
 			}
 		}
 
-		if(IsGuarder() || IsMonster()) 
+		if (IsGuarder() || IsMonster())
 		{
 			//PZH
 			nRet = GetPlayerLogic()->GetMonsterLogicExt()->DropItemS(maxDamageCreSingle ? maxDamageCreSingle : killer);
 		}
 	}
 
-	if(!IsGuarder() && !IsMonster())
+	if (!IsGuarder() && !IsMonster())
 	{
 		if (m_spawn)
 			m_spawn->KillNpc(this);
@@ -6900,11 +6929,11 @@ long CRegionCreature::OnDead(CRegionCreature *killer)
 }
 
 
-void CRegionCreature::OnTreasureDiscover(CRegionCreature *discover)
+void CRegionCreature::OnTreasureDiscover(CRegionCreature* discover)
 {
 	char cTmp512[512];
-	double boss_rate = 1/500;
-	if(GetProb(boss_rate)) //Ë¢Boss
+	double boss_rate = 1 / 500;
+	if (GetProb(boss_rate)) //Ë¢Boss
 	{
 		//Ë¢ÐÂBoss
 		std::string npc_name = "";
@@ -6914,7 +6943,7 @@ void CRegionCreature::OnTreasureDiscover(CRegionCreature *discover)
 		static int Default_bravePoint = 1;
 		static int Default_angryPointLevel1 = 30;
 		static int Default_angryPointLevel2 = 70;
-		CRegionCreature *cre;
+		CRegionCreature* cre;
 
 		//if(GetProb(0.3))
 		//{
@@ -6939,16 +6968,16 @@ void CRegionCreature::OnTreasureDiscover(CRegionCreature *discover)
 		cre->m_angryPointLevel2 = Default_angryPointLevel2;
 
 
-		if(g_region->m_defScene->AddCreature(cre, m_pos, m_dir))
+		if (g_region->m_defScene->AddCreature(cre, m_pos, m_dir))
 		{
-			if(cre->IsScriptLoaded())
+			if (cre->IsScriptLoaded())
 				cre->CallScript("OnCreate", false);
 
 			//discover->SendSystemMessage(R(MSG_TREASURE_BOSS));
 
 			//rt2_sprintf(cTmp512, "Íæ¼Ò%sÍÚ±¦¾ª¶¯ÁË¡°%s¡±£¬×ø±êÔÚ(%d,%d)!!! µôÂä·¨±¦Á¶»¯·û¼°¸÷Àà±¦Ê¯£¬¼«µÍ¸ÅÂÊµôÂä½ðÉ«ºÚ÷ë¡£",discover->m_core.Name.c_str(), npc_name.c_str(), m_pos[0]/20,m_pos[1]/20);
 			//g_region->m_gws.BroadcastBulletin(cTmp512);
-	
+
 		}
 		else
 		{
@@ -6959,23 +6988,23 @@ void CRegionCreature::OnTreasureDiscover(CRegionCreature *discover)
 		//È«·þ¹«¸æ
 
 		if (true == m_npcInfo->isPrompt)
-		{	
+		{
 			RtsSceneBlockMap* pMap = m_scene->FindBlockByPos(m_pos);
 			string strone = "";
 			if (pMap)
 			{
 				strone = pMap->m_szBlockName;
 			}
-			
+
 			string str1 = m_npcInfo->Name;
 
 			string str = cre->m_core.Name;
 			const char* playername = str.c_str();
-			const char *Name = "";
-			const char *BossName = str1.c_str();
-			const char *SceneName = strone.c_str();
-			const char *ItemName = "";
-			cre->Systembroadcast(playername,Name,BossName,SceneName,RENOVATEBOSS,ItemName);
+			const char* Name = "";
+			const char* BossName = str1.c_str();
+			const char* SceneName = strone.c_str();
+			const char* ItemName = "";
+			cre->Systembroadcast(playername, Name, BossName, SceneName, RENOVATEBOSS, ItemName);
 
 			/*ÔÚ[µØµã]¹ÎÆðÒ»ÕóÑý·ç£¬·ç´µÉ³×ß£¬»èÌì°µµØ£¬Ò»¸öÐ°¶ñµÄÉíÓ°´ÓµØµ×Ã°³ö£¬[BOSS]ÓÖ»Øµ½ÈË¼äÁË¡£*/
 		}
@@ -7037,11 +7066,11 @@ void CRegionCreature::OnTreasureDiscover(CRegionCreature *discover)
 void CRegionCreature::Quit()
 {
 	DeleteAddUnderlingNpc();
-		
+
 	if (m_pTrade)
 	{
 		DWORD dwTradeWith = m_pTrade->GetOtherPlayer(m_oId);
-		CRegionCreature *pPlayerTo = m_scene->FindCreature(dwTradeWith);
+		CRegionCreature* pPlayerTo = m_scene->FindCreature(dwTradeWith);
 		if (pPlayerTo)
 		{
 			CItemCmdBuilder_Svr::Build_r2c_trade_cancel(m_oId);
@@ -7051,45 +7080,45 @@ void CRegionCreature::Quit()
 		DEL_ONE(m_pTrade);
 	}
 
-	if(m_scene)
+	if (m_scene)
 		m_scene->RemoveCreature(m_oId);
 
 	g_factory->DestroyObject(this);
 	if (m_ai)//tim.yang
 		DeleteAI();
-	if(m_pet)
+	if (m_pet)
 	{
 		m_pet->DeleteAI();
 		g_factory->DestroyObject(m_pet);
 	}
 
 	//one region//only!
-	if(m_pTeam!=NULL)
+	if (m_pTeam != NULL)
 	{
 		//m_pTeam->OnOffline();//ÏÂÏß
 		//m_pTeam->SelfLeave();
 		DEL_ONE(m_pTeam);
-		m_pTeam=NULL;
+		m_pTeam = NULL;
 	}
 
-	if(m_pMail!=NULL)
+	if (m_pMail != NULL)
 	{
 		DEL_ONE(m_pMail);
-		m_pMail=NULL;
+		m_pMail = NULL;
 	}
 
-	if(m_pFriend!=NULL)
+	if (m_pFriend != NULL)
 	{
 		m_pFriend->OnOffline();//ÏÂÏß
 		DEL_ONE(m_pFriend);
-		m_pFriend=NULL;
+		m_pFriend = NULL;
 	}
 }
 
-void CRegionCreature::PetSetInfo(int rate,bool counterAttack)
+void CRegionCreature::PetSetInfo(int rate, bool counterAttack)
 {
 	// check is valid rate 20,35,50
-	if(rate!=20 && rate!=35 && rate!=50)
+	if (rate != 20 && rate != 35 && rate != 50)
 	{
 		return;
 	}
@@ -7100,38 +7129,38 @@ void CRegionCreature::PetSetInfo(int rate,bool counterAttack)
 
 bool CRegionCreature::RidePet()
 {
-	if(IsRidePet()) return false;
-	if(!m_pet || !m_pet->m_ai) return false;
-	
+	if (IsRidePet()) return false;
+	if (!m_pet || !m_pet->m_ai) return false;
+
 	if (GetPlayerLogic()->IsInPShop())
 	{
-		 return false;//°ÚÌ¯×´Ì¬²»ÄÜÆï
+		return false;//°ÚÌ¯×´Ì¬²»ÄÜÆï
 	}
 	//<add by Tian>
-	SPet * info = g_TablePet.FindPet(m_pet->m_npcId);
-	if(!info)
+	SPet* info = g_TablePet.FindPet(m_pet->m_npcId);
+	if (!info)
 	{
 		g_factory->DestroyObject(m_pet);
 		return false;
 	}
-	if(m_pet->m_core.Lev < 35) return false;
-	if(!info->isride) return false;
+	if (m_pet->m_core.Lev < 35) return false;
+	if (!info->isride) return false;
 
-	if(m_flag & OBJECT_FLAG_DESTROY) return false;
-	if(/*PZH*//*m_bDead*/!GetPlayerLogic()->IsLive()) return false;
+	if (m_flag & OBJECT_FLAG_DESTROY) return false;
+	if (/*PZH*//*m_bDead*/!GetPlayerLogic()->IsLive()) return false;
 
-	if(m_pet->m_flag & OBJECT_FLAG_DESTROY) return false;
-	if(/*PZH*//*m_pet->m_bDead*/!m_pet->GetPlayerLogic()->IsLive()) return false;
+	if (m_pet->m_flag & OBJECT_FLAG_DESTROY) return false;
+	if (/*PZH*//*m_pet->m_bDead*/!m_pet->GetPlayerLogic()->IsLive()) return false;
 
 	m_bRidePet = true;
 
-	m_pet->ForceSetPosition(m_pos[0],m_pos[1],m_pos[2]);
+	m_pet->ForceSetPosition(m_pos[0], m_pos[1], m_pos[2]);
 
 	// Æï³Ë¼¼ÄÜµÄÊôÐÔ¼Ó³É
 	// ...
-	SSkill *skill;
+	SSkill* skill;
 	skill = m_Skill.FindSkillBySubID(17);
-	if(skill)
+	if (skill)
 	{
 		// ±ØÐëºÍrideoffÖÐÍ¬²½
 		// m_pet->m_core.MovSpeed.Temp += (skill->iLevel-1) * 10;
@@ -7144,32 +7173,32 @@ bool CRegionCreature::RidePet()
 	}
 
 	//ÈËÎïÒÆ¶¯ËÙ¶È=³èÎïµÄÒÆ¶¯ËÙ¶È
-	m_core.DamageMin.Rate	*= 1.2f; 
-	m_core.DamageMax.Rate	*= 1.2f; 
-	m_core.Armor.Rate		*= 1.5f; 
-	m_core.MaxHp.Rate		*= 1.2f; 
-	m_core.MaxMp.Rate		*= 1.2f; 
-	m_core.Attack.Rate		*= 1.2f; 
-	m_core.Dodge.Rate		*= 1.2f; 
-	m_core.ElementArmor[ELEMENT_WATER].Rate		*= 1.5f; 
-	m_core.ElementArmor[ELEMENT_FIRE].Rate		*= 1.5f; 
-	m_core.ElementArmor[ELEMENT_POISON].Rate	*= 1.5f; 
-	m_core.ElementDamage[ELEMENT_WATER].Rate	*= 1.5f; 
-	m_core.ElementDamage[ELEMENT_FIRE].Rate		*= 1.5f; 
-	m_core.ElementDamage[ELEMENT_POISON].Rate	*= 1.5f;
+	m_core.DamageMin.Rate *= 1.2f;
+	m_core.DamageMax.Rate *= 1.2f;
+	m_core.Armor.Rate *= 1.5f;
+	m_core.MaxHp.Rate *= 1.2f;
+	m_core.MaxMp.Rate *= 1.2f;
+	m_core.Attack.Rate *= 1.2f;
+	m_core.Dodge.Rate *= 1.2f;
+	m_core.ElementArmor[ELEMENT_WATER].Rate *= 1.5f;
+	m_core.ElementArmor[ELEMENT_FIRE].Rate *= 1.5f;
+	m_core.ElementArmor[ELEMENT_POISON].Rate *= 1.5f;
+	m_core.ElementDamage[ELEMENT_WATER].Rate *= 1.5f;
+	m_core.ElementDamage[ELEMENT_FIRE].Rate *= 1.5f;
+	m_core.ElementDamage[ELEMENT_POISON].Rate *= 1.5f;
 	RecomputeAttr();
 
-	int page,i,j;
-	SItemID pet = ((CRegionPetAI *)m_pet->m_ai)->m_pItemPet;
+	int page, i, j;
+	SItemID pet = ((CRegionPetAI*)m_pet->m_ai)->m_pItemPet;
 	if (!pet.params[PET_PARAM_STATE])
 	{
-		CBag *pPetBag = &m_pItemContainer->m_PetBag;
-		if (pPetBag->Find(pet,&page,&i,&j))
+		CBag* pPetBag = &m_pItemContainer->m_PetBag;
+		if (pPetBag->Find(pet, &page, &i, &j))
 		{
 			pet.params[PET_PARAM_STATE] = 1;
-			if (pPetBag->SetItem(page,i,j,pet))
+			if (pPetBag->SetItem(page, i, j, pet))
 			{
-				((CRegionPetAI *)m_pet->m_ai)->m_pItemPet = pet;
+				((CRegionPetAI*)m_pet->m_ai)->m_pItemPet = pet;
 				CItemCmdBuilder_Svr::Build_r2c_refresh_single_item(ITEM_CONTAINER_PLAYER_PET_BAG, page, i, j, pet);
 				RecvCmd(g_sendCmd);
 			}
@@ -7177,7 +7206,7 @@ bool CRegionCreature::RidePet()
 	}
 	//m_pet->DeleteAI();
 	m_pet->m_ai->SetActive(false);
-	
+
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_ride_ret);
 	g_sendCmd->WriteByte(RIDE_ON);
@@ -7186,15 +7215,15 @@ bool CRegionCreature::RidePet()
 
 	//const int AFTER_RIDE_PET_IGNORE_SPEED_CHECK_TIME = 2;
 	//m_mvChk.Ignore(AFTER_RIDE_PET_IGNORE_SPEED_CHECK_TIME);
-	
+
 	return true;
 }
 
 bool CRegionCreature::RideOffPet(bool bResetState/* = true*/)
 {
-	if(!IsRidePet()) return false;
-	if(!m_pet) return false;
-	
+	if (!IsRidePet()) return false;
+	if (!m_pet) return false;
+
 	m_bRidePet = false;
 	//m_pet->SetAI("pet");
 	//m_pet->ActiveAI();
@@ -7203,28 +7232,28 @@ bool CRegionCreature::RideOffPet(bool bResetState/* = true*/)
 		m_pet->m_ai->SetActive(true);
 		m_pet->m_ai->OnFollow(this);
 	}
-	
-	int page,i,j;
-	SItemID pet = ((CRegionPetAI *)m_pet->m_ai)->m_pItemPet;
+
+	int page, i, j;
+	SItemID pet = ((CRegionPetAI*)m_pet->m_ai)->m_pItemPet;
 	if (pet.params[PET_PARAM_STATE])
 	{
-		CBag *pPetBag = &m_pItemContainer->m_PetBag;
-		if (pPetBag->Find(pet,&page,&i,&j))
+		CBag* pPetBag = &m_pItemContainer->m_PetBag;
+		if (pPetBag->Find(pet, &page, &i, &j))
 		{
 			if (bResetState)
 				pet.params[PET_PARAM_STATE] = 0;
-			if (pPetBag->SetItem(page,i,j,pet))
+			if (pPetBag->SetItem(page, i, j, pet))
 			{
-				((CRegionPetAI *)m_pet->m_ai)->m_pItemPet = pet;
+				((CRegionPetAI*)m_pet->m_ai)->m_pItemPet = pet;
 				CItemCmdBuilder_Svr::Build_r2c_refresh_single_item(ITEM_CONTAINER_PLAYER_PET_BAG, page, i, j, pet);
 				RecvCmd(g_sendCmd);
 			}
 		}
 	}
 
-	SSkill *skill;
+	SSkill* skill;
 	skill = m_Skill.FindSkillBySubID(17);
-	if(skill)
+	if (skill)
 	{
 		// ±ØÐëºÍrideonÖÐÍ¬²½
 		// m_pet->m_core.MovSpeed.Temp -= (skill->iLevel-1) * 10;
@@ -7236,19 +7265,19 @@ bool CRegionCreature::RideOffPet(bool bResetState/* = true*/)
 		m_pet->m_core.ElementArmor[ELEMENT_POISON].Rate -= skill->iLevel * 0.15;
 	}
 	//ÈËÎïÒÆ¶¯ËÙ¶È=³èÎïµÄÒÆ¶¯ËÙ¶È
-	m_core.DamageMin.Rate	/= 1.2f; 
-	m_core.DamageMax.Rate	/= 1.2f; 
-	m_core.Armor.Rate		/= 1.5f; 
-	m_core.MaxHp.Rate		/= 1.2f; 
-	m_core.MaxMp.Rate		/= 1.2f; 
-	m_core.Attack.Rate		/= 1.2f; 
-	m_core.Dodge.Rate		/= 1.2f; 
-	m_core.ElementArmor[ELEMENT_WATER].Rate		/= 1.5f; 
-	m_core.ElementArmor[ELEMENT_FIRE].Rate		/= 1.5f; 
-	m_core.ElementArmor[ELEMENT_POISON].Rate	/= 1.5f; 
-	m_core.ElementDamage[ELEMENT_WATER].Rate	/= 1.5f; 
-	m_core.ElementDamage[ELEMENT_FIRE].Rate		/= 1.5f; 
-	m_core.ElementDamage[ELEMENT_POISON].Rate	/= 1.5f;
+	m_core.DamageMin.Rate /= 1.2f;
+	m_core.DamageMax.Rate /= 1.2f;
+	m_core.Armor.Rate /= 1.5f;
+	m_core.MaxHp.Rate /= 1.2f;
+	m_core.MaxMp.Rate /= 1.2f;
+	m_core.Attack.Rate /= 1.2f;
+	m_core.Dodge.Rate /= 1.2f;
+	m_core.ElementArmor[ELEMENT_WATER].Rate /= 1.5f;
+	m_core.ElementArmor[ELEMENT_FIRE].Rate /= 1.5f;
+	m_core.ElementArmor[ELEMENT_POISON].Rate /= 1.5f;
+	m_core.ElementDamage[ELEMENT_WATER].Rate /= 1.5f;
+	m_core.ElementDamage[ELEMENT_FIRE].Rate /= 1.5f;
+	m_core.ElementDamage[ELEMENT_POISON].Rate /= 1.5f;
 	RecomputeAttr();
 
 	g_sendCmd->BeginWrite();
@@ -7256,7 +7285,7 @@ bool CRegionCreature::RideOffPet(bool bResetState/* = true*/)
 	g_sendCmd->WriteByte(RIDE_OFF);
 	g_sendCmd->WriteLong(m_pet->m_oId);
 	RecvCmd(g_sendCmd);
-	
+
 	return true;
 }
 //  
@@ -7271,7 +7300,7 @@ bool CRegionCreature::RideOffPet(bool bResetState/* = true*/)
 //
 void CRegionCreature::AddCulExp(int Cul)
 {
-	static int PLAYER_CULMAX_LEVEL=0;
+	static int PLAYER_CULMAX_LEVEL = 0;
 
 	if (m_core.MetierLev == 0)
 	{
@@ -7288,8 +7317,8 @@ void CRegionCreature::AddCulExp(int Cul)
 		}
 	}
 
-	if(Cul == 0)	return;
-	if(m_core.CulExp < 0) m_core.CulExp = 0;
+	if (Cul == 0)	return;
+	if (m_core.CulExp < 0) m_core.CulExp = 0;
 
 	bool CulLevUp = false, CulLevDown = false;
 
@@ -7298,12 +7327,12 @@ void CRegionCreature::AddCulExp(int Cul)
 	{
 		Cul = 0;
 	}
-	if(Cul > 0)
+	if (Cul > 0)
 	{
 		m_core.CulExp += Cul;
 		m_core.Cul += Cul;
 		OriginalCulLevel = m_core.GradeLev;
-		while(m_core.CulExp >= g_TableExp.GetNextLevCulExp(m_core.GradeLev - 1))
+		while (m_core.CulExp >= g_TableExp.GetNextLevCulExp(m_core.GradeLev - 1))
 		{
 			if (m_core.MetierLev == 0)
 			{
@@ -7320,20 +7349,20 @@ void CRegionCreature::AddCulExp(int Cul)
 				}
 			}
 
-			if(m_core.GradeLev > m_core.GetGradeMaxLev()) break;
+			if (m_core.GradeLev > m_core.GetGradeMaxLev()) break;
 			// Cullevel up
 			CulLevUp = true;
-			m_core.	CulExp -= g_TableExp.GetNextLevCulExp(m_core.GradeLev - 1);
+			m_core.CulExp -= g_TableExp.GetNextLevCulExp(m_core.GradeLev - 1);
 			/*Íæ¼ÒÉý¼¶Ç°µÈ¼¶*/
 			m_core.GradeLev++;
 			ReComputePetBagSize();
 		}
-		if(CulLevUp)
+		if (CulLevUp)
 		{
-			if(IsScriptLoaded())
+			if (IsScriptLoaded())
 				CallScript("CulLevelUp", false, m_core.GradeLev - OriginalCulLevel);
-			g_region->BuildEventCulLevelUp(g_sendCmd,this);
-			m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL); //¹ã²¥
+			g_region->BuildEventCulLevelUp(g_sendCmd, this);
+			m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL); //¹ã²¥
 		}
 
 		{
@@ -7342,25 +7371,25 @@ void CRegionCreature::AddCulExp(int Cul)
 			g_sendCmd->WriteShort(XIUWEI);
 			g_sendCmd->WriteLong(GetObjectId());
 			g_sendCmd->WriteLong(Cul);
-	        RecvCmd(g_sendCmd);
+			RecvCmd(g_sendCmd);
 		}
 
 	}
 	//4.8 LeiJun ¼õÐÞÎªÊµÏÖ
-	else if(Cul < 0)
+	else if (Cul < 0)
 	{
 		OriginalCulLevel = m_core.GradeLev;
 		m_core.GradeLev = 1;
 		ReComputePetBagSize();
 		m_core.CulExp += Cul;
-		if(m_core.CulExp < 0)
+		if (m_core.CulExp < 0)
 			m_core.CulExp = 0;
 		m_core.Cul += Cul;
-		if(m_core.Cul < 0)
+		if (m_core.Cul < 0)
 			m_core.Cul = 0;
-		while(m_core.CulExp >= g_TableExp.GetNextLevCulExp(m_core.GradeLev + 1))
+		while (m_core.CulExp >= g_TableExp.GetNextLevCulExp(m_core.GradeLev + 1))
 		{
-			if(m_core.GradeLev > m_core.GetGradeMaxLev()) break;
+			if (m_core.GradeLev > m_core.GetGradeMaxLev()) break;
 			m_core.CulExp -= g_TableExp.GetNextLevCulExp(m_core.GradeLev + 1);
 			++m_core.GradeLev;
 			ReComputePetBagSize();
@@ -7390,16 +7419,16 @@ void CRegionCreature::AddExp(int Exp, int SP)
 	//}
 
 	//<add by fox>
-	static int PLAYER_MAX_LEVEL=0;
-	static int PET_MAX_LEVEL=0;
-	static CIniVariable PlayerMaxLevel(GetGameRule(),"GameLevelRule","PlayerMaxLevel",PLAYER_MAX_LEVEL);
-	static CIniVariable PetMaxLevel(GetGameRule(),"GameLevelRule","PetMaxLevel",PET_MAX_LEVEL);
+	static int PLAYER_MAX_LEVEL = 0;
+	static int PET_MAX_LEVEL = 0;
+	static CIniVariable PlayerMaxLevel(GetGameRule(), "GameLevelRule", "PlayerMaxLevel", PLAYER_MAX_LEVEL);
+	static CIniVariable PetMaxLevel(GetGameRule(), "GameLevelRule", "PetMaxLevel", PET_MAX_LEVEL);
 	//</add by fox>
 
 	SP = 0;
-	if (Exp==0 && SP==0)
-    {
-        return;
+	if (Exp == 0 && SP == 0)
+	{
+		return;
 	}
 
 	//·¢ËÍÏµÍ³ÏûÏ¢
@@ -7411,7 +7440,7 @@ void CRegionCreature::AddExp(int Exp, int SP)
 	else if (Exp < 0)
 	{
 		rt2_sprintf(g_strStaticBuffer, R(MSG_REMOVE_EXP), -Exp);
-		SendBattleInfoMessage(g_strStaticBuffer);		
+		SendBattleInfoMessage(g_strStaticBuffer);
 	}
 
 	if (m_pItemContainer)//µ±Íæ¼Ò×°±¸¾­ÑéÆ¿Ê±£¬Ö»¸ø¾­ÑéÆ¿¼Ó¾­Ñé£¬ÆäËû²»¼Ó
@@ -7419,35 +7448,35 @@ void CRegionCreature::AddExp(int Exp, int SP)
 		SItemID neckItem = m_pItemContainer->GetEquipItem(CItemContainerBase::CHARM, true);
 		SShiPin* pShi = (SShiPin*)g_region->m_pItemManager->GetItem(neckItem.type);
 		int neckId = g_region->m_pItemManager->GetIndexFromType(neckItem.type);
-		if(pShi && (neckId == 4306 || neckId == 4515))
+		if (pShi && (neckId == 4306 || neckId == 4515))
 		{
 			neckItem.params[MW_PARAM_EXP] += Exp;
-			int createid,maxExp;
+			int createid, maxExp;
 			char createname[20];
 			switch (neckId)
 			{
 			case 4306:
-				createid	= 4307;
-				maxExp		= BOTTLE_EXP_MAX;
-				rt2_strcpy(createname,"Âú¾­ÑéÆ¿");
+				createid = 4307;
+				maxExp = BOTTLE_EXP_MAX;
+				rt2_strcpy(createname, "Âú¾­ÑéÆ¿");
 				break;
 			case 4515:
-				createid	= 4516;
-				maxExp		= TIANYANCHUXING;
-				rt2_strcpy(createname,"³äÂúÄÜÁ¿µÄÌìÑÛ³ûÐÎ");
+				createid = 4516;
+				maxExp = TIANYANCHUXING;
+				rt2_strcpy(createname, "³äÂúÄÜÁ¿µÄÌìÑÛ³ûÐÎ");
 				break;
 			}
 			if (neckItem.params[MW_PARAM_EXP] >= maxExp)
 			{
 				Exp = neckItem.params[MW_PARAM_EXP] - maxExp;
 				int page, i, j;
-				
+
 				SItemID bottle = g_region->m_pItemManager->CreateItem(createid);
-				if(ItemID_IsValid(bottle))
+				if (ItemID_IsValid(bottle))
 				{
 					if (AddItem(bottle))
 					{
-						rt2_sprintf(g_strStaticBuffer, R(MSG_AUCTION_GET_ITEM),createname);
+						rt2_sprintf(g_strStaticBuffer, R(MSG_AUCTION_GET_ITEM), createname);
 						SendBattleInfoMessage(g_strStaticBuffer);
 					}
 					else
@@ -7457,7 +7486,7 @@ void CRegionCreature::AddExp(int Exp, int SP)
 						return;
 					}
 				}
-				if (!m_pItemContainer->UnEquip(CItemContainerBase::CHARM,false))
+				if (!m_pItemContainer->UnEquip(CItemContainerBase::CHARM, false))
 				{
 					ERR1("unequip bottle exp error~!!~!!!");
 					return;
@@ -7481,24 +7510,24 @@ void CRegionCreature::AddExp(int Exp, int SP)
 
 	// pet gain exp
 	//(0 - PET_MAX_LEVEL)¿ªÇø¼äÄÜ»ñµÃ¾­Ñé
-	if(m_pet && m_pet->m_ai && m_pet->m_core.Lev < PET_MAX_LEVEL)//change by fox 
+	if (m_pet && m_pet->m_ai && m_pet->m_core.Lev < PET_MAX_LEVEL)//change by fox 
 	{
-		SItemID &petItem = ((CRegionPetAI*)(m_pet->m_ai))->m_pItemPet;
+		SItemID& petItem = ((CRegionPetAI*)(m_pet->m_ai))->m_pItemPet;
 		if ((ItemIsPetSpectre(petItem) && petItem.params[PET_PARAM_STATE]))
 		{
 			// ÓÄ¹í¸½Ìå×´Ì¬²»¼Ó¾­Ñé
 		}
 		else
 		{
-			float rate = ((float)GetRealLevel(m_pet->m_core.Lev)) / 
+			float rate = ((float)GetRealLevel(m_pet->m_core.Lev)) /
 				((float)GetRealLevel(m_core.Lev));
 
-			if(rate*100 > 100)
+			if (rate * 100 > 100)
 			{
-				rate = 100/100.f;
+				rate = 100 / 100.f;
 			}
 
-			int add = GetRand(rate*Exp*1.1,rate*Exp*0.9);
+			int add = GetRand(rate * Exp * 1.1, rate * Exp * 0.9);
 			m_pet->AddExp(add, SP);
 
 			if (add != 0)
@@ -7512,14 +7541,14 @@ void CRegionCreature::AddExp(int Exp, int SP)
 	}
 
 	//(0 - PLAYER_MAX_LEVEL)¿ªÇø¼äÄÜ»ñµÃ¾­Ñé
-	if(m_core.Lev >= PLAYER_MAX_LEVEL && Exp >= 0) return ;//add by fox
-	
+	if (m_core.Lev >= PLAYER_MAX_LEVEL && Exp >= 0) return;//add by fox
+
 	m_nGetExp += Exp;
 
 	// magic weapon
 	// add here
-    //if (m_pItemContainer)
-    //{
+	//if (m_pItemContainer)
+	//{
 	   // SItemID item = m_pItemContainer->GetEquipItem(CItemContainerBase::WEAPON_1, true);
 	   // SWeapon* pWea = (SWeapon*)g_region->m_pItemManager->GetItem(item.type);
 	   // if(ItemIsWeapon_MagicWeapon(item.type) && pWea)
@@ -7538,13 +7567,13 @@ void CRegionCreature::AddExp(int Exp, int SP)
 			 //   item.params[MW_PARAM_EXP] -= g_TableExp.GetNextLevExp(item.params[MW_PARAM_LEV]);
 			 //   item.params[MW_PARAM_LEV]++;
 		  //  }
-    //		
+	//		
 		  //  SWeapon *pItemClass = (SWeapon *)g_region->m_pItemManager->GetItem(item.type);
 		  //  int begin = pItemClass->requirement[ItemRequirement_Level];
 		  //  int end = pWea->nMwMaxLevel;
 		  //  if(end - begin != 0)
 		  //  {
-    //            item.level = ((float)item.params[MW_PARAM_LEV] - begin)/(end - begin)*10.0f;
+	//            item.level = ((float)item.params[MW_PARAM_LEV] - begin)/(end - begin)*10.0f;
 			 //   if(item.level < 0 )
 				//    item.level = 0;	
 			 //   if(item.level > ITEM_MAX_ITEM_LEVEL)
@@ -7562,10 +7591,10 @@ void CRegionCreature::AddExp(int Exp, int SP)
 		  //  }
 		  //  UpdateMagicWeapon(item);
 	   // }
-    //}
+	//}
 
 	// send client msg
-	if(Exp != 0)
+	if (Exp != 0)
 	{
 		if (Exp > 0)						//ac.ma  for·À³ÁÃÔ
 			Exp *= m_iIncomeState * 0.01;
@@ -7573,14 +7602,14 @@ void CRegionCreature::AddExp(int Exp, int SP)
 		//SendSystemMessage(g_strStaticBuffer);
 	}
 
- 	if(m_core.Exp < 0) m_core.Exp = 0;
-  
-    bool LevUp = false;
+	if (m_core.Exp < 0) m_core.Exp = 0;
+
+	bool LevUp = false;
 	bool LevDown = false;
 	int nLevelupCount = 0;
 	int nLevelDownCount = 0;
 
-	if(Exp > 0)
+	if (Exp > 0)
 	{
 		g_sendCmd->BeginWrite();
 		g_sendCmd->WriteShort(r2c_display);
@@ -7594,27 +7623,27 @@ void CRegionCreature::AddExp(int Exp, int SP)
 		long NeedExpLev = 0;
 		if (IsUserPet())
 		{
-			NeedExpLev = g_TableExp.GetNextLevExp(m_core.Lev)/3;
+			NeedExpLev = g_TableExp.GetNextLevExp(m_core.Lev) / 3;
 		}
 		else
 		{
 			NeedExpLev = g_TableExp.GetNextLevExp(m_core.Lev);
 		}
-		while(m_core.Exp >= NeedExpLev)
+		while (m_core.Exp >= NeedExpLev)
 		{
-			if(m_core.Lev > MAX_LEVEL) break;
+			if (m_core.Lev > MAX_LEVEL) break;
 			// level up
 			LevUp = true;
 			m_core.Exp -= NeedExpLev;
-			
 
-            /*Íæ¼ÒÉý¼¶Ç°µÈ¼¶*/
+
+			/*Íæ¼ÒÉý¼¶Ç°µÈ¼¶*/
 			m_core.Lev++;
 			nLevelupCount++;
 
 			if (IsUser())
 			{
-				AddCulExp(g_TableExp.GetLevCulTable(m_core.Lev-1));
+				AddCulExp(g_TableExp.GetLevCulTable(m_core.Lev - 1));
 
 				rt2_sprintf(g_strStaticBuffer, R(MSG_CHARACTER_LEVELUP), m_core.Lev);
 				SendBattleInfoMessage(g_strStaticBuffer);
@@ -7622,7 +7651,7 @@ void CRegionCreature::AddExp(int Exp, int SP)
 
 			if (IsUserPet())
 			{
-				NeedExpLev = g_TableExp.GetNextLevExp(m_core.Lev)/3;
+				NeedExpLev = g_TableExp.GetNextLevExp(m_core.Lev) / 3;
 
 				rt2_sprintf(g_strStaticBuffer, R(MSG_PET_LEVELUP), m_core.Lev);
 				SendBattleInfoMessage(g_strStaticBuffer);
@@ -7632,31 +7661,31 @@ void CRegionCreature::AddExp(int Exp, int SP)
 				NeedExpLev = g_TableExp.GetNextLevExp(m_core.Lev);
 			}
 		}
-		if(LevUp)
+		if (LevUp)
 		{
 			Levelup(nLevelupCount);
 			if (IsUser())
 			{
 				m_pFriend->SelfDataChangeAffectOther();
-			}		
+			}
 		}
 		else
 		{
 			// UpdateToClient(NET_CRE_UPDATE_ATTR_SIMPLE);
 		}
 	}
-	if(Exp < 0)
+	if (Exp < 0)
 	{
 		m_core.Exp -= Exp;
-		while(m_core.Exp >= g_TableExp.GetNextLevExp(m_core.Lev - 1))
+		while (m_core.Exp >= g_TableExp.GetNextLevExp(m_core.Lev - 1))
 		{
-			if(m_core.Lev < 1) break;
+			if (m_core.Lev < 1) break;
 			LevDown = true;
 			m_core.Exp = 0;
 			m_core.Lev--;
 			nLevelDownCount++;
 		}
-		if(LevDown)
+		if (LevDown)
 		{
 			LevelDown(nLevelDownCount);
 		}
@@ -7666,25 +7695,25 @@ void CRegionCreature::AddExp(int Exp, int SP)
 
 void CRegionCreature::Levelup(int iUpCount)
 {
-	if(iUpCount <= 0)
+	if (iUpCount <= 0)
 		return;
 
 	//Tianh ÕâÀïÈËÎïÉý¼¶¼ÓÒ»¶¨ÐÞÎª
-	if(IsUser() || IsUserPet())
+	if (IsUser() || IsUserPet())
 	{
-		for(int ii=0; ii<iUpCount; ii++)
+		for (int ii = 0; ii < iUpCount; ii++)
 			OnLevelUp();
-		if(IsScriptLoaded())
+		if (IsScriptLoaded())
 			CallScript("OnLevelup", false, iUpCount);
 	}
 
-	g_region->BuildEventLevelUp(g_sendCmd,this);
-	m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+	g_region->BuildEventLevelUp(g_sendCmd, this);
+	m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 
 	g_PrenticeMgr.OnAfterUserLevelup(this, iUpCount);
 
 	// Í¨ÖªÖîºî¹úÄÚ³ÉÔ±
-	if (m_userInfo && m_unionID!=0)
+	if (m_userInfo && m_unionID != 0)
 	{
 		CG_CmdPacket& packet = g_region->m_gws.BeginSend();
 		packet.WriteShort(r2g_union);
@@ -7695,7 +7724,7 @@ void CRegionCreature::Levelup(int iUpCount)
 	}
 
 	long NowLevel = m_core.Lev;
-	if (m_userInfo && m_unionID!=0)
+	if (m_userInfo && m_unionID != 0)
 	{
 		/*Tianh Éý¼¶ºóÍ³¼Æµ½LOG*/
 		CG_CmdPacket& packet = g_region->m_gws.BeginSend();
@@ -7715,24 +7744,24 @@ void CRegionCreature::Levelup(int iUpCount)
 
 void CRegionCreature::LevelDown(int iDownCount)
 {
-	if(iDownCount >= 0)
+	if (iDownCount >= 0)
 		return;
 
-	if(IsUser() || IsUserPet())
+	if (IsUser() || IsUserPet())
 	{
-		for(int ii=0; ii<iDownCount; ii++)
+		for (int ii = 0; ii < iDownCount; ii++)
 			OnLevelDown();
-		if(IsScriptLoaded())
+		if (IsScriptLoaded())
 			CallScript("OnLevelDown", false, iDownCount);
 	}
 
-	g_region->BuildEventLevelUp(g_sendCmd,this);
-	m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+	g_region->BuildEventLevelUp(g_sendCmd, this);
+	m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 
 	g_PrenticeMgr.OnAfterUserLevelDown(this, iDownCount);
 
 	// Í¨ÖªÖîºî¹úÄÚ³ÉÔ±
-	if (m_userInfo && m_unionID!=0)
+	if (m_userInfo && m_unionID != 0)
 	{
 		CG_CmdPacket& packet = g_region->m_gws.BeginSend();
 		packet.WriteShort(r2g_union);
@@ -7746,10 +7775,10 @@ void CRegionCreature::LevelDown(int iDownCount)
 void CRegionCreature::AddGold(int Gold)
 {
 	//Ôö¼Ó½ð±Ò»ñµÃÂÊ
-	Gold = Gold + Gold*(m_core.RateGold.GetValue()/100);
+	Gold = Gold + Gold * (m_core.RateGold.GetValue() / 100);
 	if (Gold == 0)
 	{
-		return ;
+		return;
 	}
 	if (Gold > 0)
 	{
@@ -7760,7 +7789,7 @@ void CRegionCreature::AddGold(int Gold)
 			RecvCmd(g_sendCmd);
 		}
 	}
-	else 
+	else
 	{
 		if (m_pItemContainer && m_pItemContainer->RemoveMoney(-Gold))
 		{
@@ -7772,15 +7801,15 @@ void CRegionCreature::AddGold(int Gold)
 
 long CRegionCreature::GetGold()
 {
-    if (!m_pItemContainer)
-        return 0;
+	if (!m_pItemContainer)
+		return 0;
 	return m_pItemContainer->GetMoney();
 }
 
 bool CRegionCreature::RemoveGold(int remove)
 {
-    if (!m_pItemContainer)
-        return false;
+	if (!m_pItemContainer)
+		return false;
 
 	if (m_pItemContainer->GetMoney() < remove)
 		return false;
@@ -7791,7 +7820,7 @@ bool CRegionCreature::RemoveGold(int remove)
 		RecvCmd(g_sendCmd);
 		return true;
 	}
-	else 
+	else
 		return false;
 }
 
@@ -7807,42 +7836,42 @@ void CRegionCreature::AddCredit(int add)
 
 void CRegionCreature::AddExploit(int add)
 {
-    m_core.Exploit += add;
-    if (m_core.Exploit < 0)
-        m_core.Exploit = 0;
+	m_core.Exploit += add;
+	if (m_core.Exploit < 0)
+		m_core.Exploit = 0;
 
-    if (add > 0)
-    {
-        rt2_sprintf(g_strStaticBuffer, R(Äú»ñµÃ%dÕ½¹¦), add);
-        SendBattleInfoMessage(g_strStaticBuffer);
-    }
+	if (add > 0)
+	{
+		rt2_sprintf(g_strStaticBuffer, R(Äú»ñµÃ % dÕ½¹¦), add);
+		SendBattleInfoMessage(g_strStaticBuffer);
+	}
 }
 //tim.yang  ÉñµÆ
-bool CRegionCreature::GodLightCreateMonster_AddMonster(CRegionCreature *target,byte monsterCount)
+bool CRegionCreature::GodLightCreateMonster_AddMonster(CRegionCreature* target, byte monsterCount)
 {
-	if(monsterCount>GODLIGHT_MONSTER_COUNT)
+	if (monsterCount > GODLIGHT_MONSTER_COUNT)
 		monsterCount = GODLIGHT_MONSTER_COUNT;
 	int count = 0;
-	for(int i=0;i<monsterCount;++i)
+	for (int i = 0; i < monsterCount; ++i)
 	{
 		m_GodLightMonster[i] = g_region->CreateNpc(1960);
-		if(!m_GodLightMonster[i])
+		if (!m_GodLightMonster[i])
 		{
 			return false;
 		}
 		char dir = rand() % 255;
 		long pos[3];
-		memcpy(pos,m_pos,sizeof(pos));
-		if(!g_region->m_defScene->AddCreature(m_GodLightMonster[i], pos, dir))
-		{		
+		memcpy(pos, m_pos, sizeof(pos));
+		if (!g_region->m_defScene->AddCreature(m_GodLightMonster[i], pos, dir))
+		{
 			g_factory->DestroyObject(m_GodLightMonster[i]);
 			m_GodLightMonster[i] = 0;
 			return false;
 		}
 		m_GodLightMonster[i]->m_ai->OnBeAttacked(target, 10000);
 		count++;
-	}		
-	if(count == monsterCount)
+	}
+	if (count == monsterCount)
 		m_monsterCount = monsterCount;
 	else
 		m_monsterCount = count;
@@ -7852,19 +7881,19 @@ bool CRegionCreature::GodLightCreateMonster_AddMonster(CRegionCreature *target,b
 }
 void CRegionCreature::GodLightCreateMonster_DelAllMonster()
 {
-	if(m_bIsDead || m_bIsOutOfLine)
+	if (m_bIsDead || m_bIsOutOfLine)
 	{
-		for(int i=0;i<GODLIGHT_MONSTER_COUNT;++i)
+		for (int i = 0; i < GODLIGHT_MONSTER_COUNT; ++i)
 		{
-			if(m_GodLightMonster[i] && m_GodLightMonster[i]->m_scene)
+			if (m_GodLightMonster[i] && m_GodLightMonster[i]->m_scene)
 			{
 				m_GodLightMonster[i]->Quit();
 				m_GodLightMonster[i] = 0;
-				if(m_monsterCount)
+				if (m_monsterCount)
 					m_monsterCount--;
 			}
-		}	
-		if(m_monsterCount == 0)
+		}
+		if (m_monsterCount == 0)
 		{
 			m_IsAddMonster = 0;
 			m_bIsDead = 0;
@@ -7874,9 +7903,9 @@ void CRegionCreature::GodLightCreateMonster_DelAllMonster()
 		}
 	}
 }
-void CRegionCreature::GodLightCreateMonster(CRegionCreature *target)
+void CRegionCreature::GodLightCreateMonster(CRegionCreature* target)
 {
-	if(!GodLightCreateMonster_AddMonster(target,2))
+	if (!GodLightCreateMonster_AddMonster(target, 2))
 		return;
 }
 void CRegionCreature::GodLightDropItem()
@@ -7940,7 +7969,7 @@ void CRegionCreature::FinishMCTask()
 	}
 	//int hortationItemId = rtRandom(4410,4406);
 	SItemID item = g_region->m_pItemManager->CreateItem(hortationItemId);//MCÈÎÎñ½±Àø
-	if(ItemID_IsValid(item))
+	if (ItemID_IsValid(item))
 	{
 		AddItem(item);
 	}
@@ -7948,29 +7977,29 @@ void CRegionCreature::FinishMCTask()
 
 SItemID CRegionCreature::CheckEquipment(DWORD typeId, EItemColor color, CItemContainerBase::EEquipParts* part)
 {
-	for(DWORD i = CItemContainerBase::WEAPON_1; i < CItemContainerBase::MAX_EQUIP_PARTS; i ++)
+	for (DWORD i = CItemContainerBase::WEAPON_1; i < CItemContainerBase::MAX_EQUIP_PARTS; i++)
 	{
 		SItemID ret = m_pItemContainer->GetEquipItem((CItemContainerBase::EEquipParts)i, true);
-		if(ItemID_IsValid(ret) && CItemManager::GetIndexFromType(ret.type)==typeId && (color==ret.color || color==ItemColor_All))
+		if (ItemID_IsValid(ret) && CItemManager::GetIndexFromType(ret.type) == typeId && (color == ret.color || color == ItemColor_All))
 		{
-			if(part)
+			if (part)
 				*part = (CItemContainerBase::EEquipParts)i;
 
 			return ret;
 		}
 	}
-	
+
 	return SItemID();
 }
 
 SItemID CRegionCreature::CheckEquipment(DWORD Id, CItemContainerBase::EEquipParts* part)
 {
-	for(DWORD i = CItemContainerBase::WEAPON_1; i < CItemContainerBase::MAX_EQUIP_PARTS; i ++)
+	for (DWORD i = CItemContainerBase::WEAPON_1; i < CItemContainerBase::MAX_EQUIP_PARTS; i++)
 	{
 		SItemID ret = m_pItemContainer->GetEquipItem((CItemContainerBase::EEquipParts)i, true);
-		if(ItemID_IsValid(ret) && ret.id == Id)
+		if (ItemID_IsValid(ret) && ret.id == Id)
 		{
-			if(part)
+			if (part)
 				*part = (CItemContainerBase::EEquipParts)i;
 
 			return ret;
@@ -7982,19 +8011,19 @@ SItemID CRegionCreature::CheckEquipment(DWORD Id, CItemContainerBase::EEquipPart
 
 bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase::EEquipParts part/* = CItemContainerBase::EQUIP_DEFAULT_PART*/, bool bBagItem/* = true*/)
 {
-    if (!m_pItemContainer)
-        return false;
+	if (!m_pItemContainer)
+		return false;
 
 	SItemID item;
 	if (bBagItem)
 		item = m_pItemContainer->m_Bag.GetItem(page, gridI, gridJ);
-	else 
+	else
 		item = m_pItemContainer->GetEquipItem(part, true);
 
 	if (m_pTrade || m_pPShop)		// ½»Ò×ºÍ°ÚÌ¯×´Ì¬ÏÂ²»ÄÜÊ¹ÓÃµÀ¾ß
 		return false;
 
-	if ( GetPlayerLogic()->GetLiveType() != CPlayerLogic::eLive )
+	if (GetPlayerLogic()->GetLiveType() != CPlayerLogic::eLive)
 		return false;
 
 	if (0 == this->GetPlayerLogic()->UseTaskItem(page, gridI, gridJ))
@@ -8003,7 +8032,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 	}
 
 	// ¼ì²éµÀ¾ßµÄÊ¹ÓÃÐèÇóÊÇ·ñÂú×ã
-	if ( !(ItemIsWeapon(item) || ItemIsArmor(item) || ItemIsShipin(item)/*PZH*/|| ItemIsTrump(item) || ItemIsFashion(item) || ItemIsGem(item)/**/) )
+	if (!(ItemIsWeapon(item) || ItemIsArmor(item) || ItemIsShipin(item)/*PZH*/ || ItemIsTrump(item) || ItemIsFashion(item) || ItemIsGem(item)/**/))
 	{
 		if (!m_pItemContainer->CheckUse(item, m_core))
 			return false;
@@ -8038,7 +8067,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 	//}
 	//else
 	// ¿É×°±¸µÀ¾ß(²»¿ÉÖØµþ°Ú·ÅµÀ¾ß)
-	if ( ItemIsWeapon(item) || ItemIsArmor(item) || ItemIsShipin(item) /*PZH*/|| ItemIsTrump(item) || ItemIsFashion(item) || ItemIsGem(item)/**/)	
+	if (ItemIsWeapon(item) || ItemIsArmor(item) || ItemIsShipin(item) /*PZH*/ || ItemIsTrump(item) || ItemIsFashion(item) || ItemIsGem(item)/**/)
 	{
 		if (bBagItem) // Equip
 		{
@@ -8049,40 +8078,40 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			DWORD dwTime = rtGetMilliseconds();
 
 			// ÌØÊâÇé¿ö£º
-			if (part==CItemContainerBase::WEAPON_2)
+			if (part == CItemContainerBase::WEAPON_2)
 			{
 				SItemID item1 = m_pItemContainer->GetEquipItem(CItemContainerBase::WEAPON_1, true);
 				if (ItemID_IsValid(item1))
 				{
-					SWeapon *pWeaClass1 = (SWeapon *)g_region->m_pItemManager->GetItem(item1.type);
+					SWeapon* pWeaClass1 = (SWeapon*)g_region->m_pItemManager->GetItem(item1.type);
 					if (pWeaClass1 && pWeaClass1->bBothHands)
 						part = CItemContainerBase::WEAPON_1;
 				}
-				else 
+				else
 				{
 					part = CItemContainerBase::WEAPON_1;
 				}
 			}
 
-			if (part==CItemContainerBase::EQUIP_DEFAULT_PART)
+			if (part == CItemContainerBase::EQUIP_DEFAULT_PART)
 				part = m_pItemContainer->GetDefaultEquipPart(item);
 
 			if (!m_pItemContainer->CheckEquip(part, item, m_core))
 				return false;
 
 			int nUnEquipCount = m_pItemContainer->GetUnEquipItemCount(item, part);
-			if (nUnEquipCount==2)
+			if (nUnEquipCount == 2)
 			{
 				if (m_pItemContainer->m_Bag.IsFull())
 					return false;
 			}
 
-			if (item.cBind==IB_BindWhenPick || item.cBind==IB_BindWhenEquip)
+			if (item.cBind == IB_BindWhenPick || item.cBind == IB_BindWhenEquip)
 				item.cBind = IB_Binded;
 
 			SItemID itemUnEquip1, itemUnEquip2;
 			CItemContainerBase::EEquipParts partUnEquip1, partUnEquip2;
-			if ( !m_pItemContainer->Equip(item, part, false, &itemUnEquip1, &partUnEquip1, &itemUnEquip2, &partUnEquip2) )
+			if (!m_pItemContainer->Equip(item, part, false, &itemUnEquip1, &partUnEquip1, &itemUnEquip2, &partUnEquip2))
 			{
 				//SItemID itemTmp = m_pItemContainer->GetEquipItem(part, true);
 				//bool bValidTmp = m_pItemContainer->GetEquipValid(part);
@@ -8091,19 +8120,19 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 				//ERR("×°±¸Ê§°Ü\n");
 				return false;
 			}
-			if ( !m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ) )
+			if (!m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ))
 			{
 				ERR("[cmd_c2r_player_equipitem] error 1\n");
 				return false;
 			}
 			int pageUnEquip1, iUnEquip1, jUnEquip1;
-			if ( ItemID_IsValid(itemUnEquip1) && !m_pItemContainer->m_Bag.AddItem(itemUnEquip1, &pageUnEquip1, &iUnEquip1, &jUnEquip1) )
+			if (ItemID_IsValid(itemUnEquip1) && !m_pItemContainer->m_Bag.AddItem(itemUnEquip1, &pageUnEquip1, &iUnEquip1, &jUnEquip1))
 			{
 				ERR("[cmd_c2r_player_equipitem] error 2\n");
 				return false;
 			}
 			int pageUnEquip2, iUnEquip2, jUnEquip2;
-			if ( ItemID_IsValid(itemUnEquip2) && !m_pItemContainer->m_Bag.AddItem(itemUnEquip2, &pageUnEquip2, &iUnEquip2, &jUnEquip2) )
+			if (ItemID_IsValid(itemUnEquip2) && !m_pItemContainer->m_Bag.AddItem(itemUnEquip2, &pageUnEquip2, &iUnEquip2, &jUnEquip2))
 			{
 				ERR("[cmd_c2r_player_equipitem] error 3\n");
 				return false;
@@ -8116,21 +8145,21 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			}
 			m_Skill.OnAttributeChanged();
 
-			if ( ItemID_IsValid(itemUnEquip1) && ItemIsTrump(itemUnEquip1) )
+			if (ItemID_IsValid(itemUnEquip1) && ItemIsTrump(itemUnEquip1))
 			{
-				for (int i=TRUMP_SKILL_1;i<TRUMP_SKILL_MAX;i++)
+				for (int i = TRUMP_SKILL_1; i < TRUMP_SKILL_MAX; i++)
 				{
 					SSkill* pSkill = Skill()->FindSkill(itemUnEquip1.params[i]);
 					if (pSkill)
 					{
-						m_Skill.DeleteSkill(itemUnEquip1.params[i],true);
+						m_Skill.DeleteSkill(itemUnEquip1.params[i], true);
 					}
 				}
 			}
 
-			if ( ItemIsTrump(item) )
+			if (ItemIsTrump(item))
 			{	// ¼ÓÈë·¨±¦¼¼ÄÜ
-				for (int i=TRUMP_SKILL_1;i<TRUMP_SKILL_MAX;i++)
+				for (int i = TRUMP_SKILL_1; i < TRUMP_SKILL_MAX; i++)
 				{
 					SSkill* pSkill = Skill()->FindSkill(item.params[i]);
 					if (pSkill)
@@ -8144,33 +8173,33 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_EQUIP);
 			RecvCmd(g_sendCmd);
 
-			if ( ItemID_IsValid(itemUnEquip1) )
+			if (ItemID_IsValid(itemUnEquip1))
 			{
 				// Í¨ÖªPlayer£¬Ôö¼Ó»»µôµÄ×°±¸
 				CItemCmdBuilder_Svr::Build_r2c_bag_additem(itemUnEquip1, ITEM_CONTAINER_PLAYER_COMMON_BAG, pageUnEquip1, iUnEquip1, jUnEquip1, ITEM_REASON_UNEQUIP);
 				RecvCmd(g_sendCmd);
 			}
-			if ( ItemID_IsValid(itemUnEquip2) )
+			if (ItemID_IsValid(itemUnEquip2))
 			{
 				// Í¨ÖªPlayer£¬Ôö¼Ó»»µôµÄ×°±¸
 				CItemCmdBuilder_Svr::Build_r2c_bag_additem(itemUnEquip2, ITEM_CONTAINER_PLAYER_COMMON_BAG, pageUnEquip2, iUnEquip2, jUnEquip2, ITEM_REASON_UNEQUIP);
 				RecvCmd(g_sendCmd);
 			}
 
-//			LOG1("Equip use time: %d\n", rtGetMilliseconds()-dwTime);
+			//			LOG1("Equip use time: %d\n", rtGetMilliseconds()-dwTime);
 		}
 		else // UnEquip
 		{
-			if (m_pItemContainer->m_Bag.FreeSpace()==0)
+			if (m_pItemContainer->m_Bag.FreeSpace() == 0)
 				return false;
 
 			if (m_pItemContainer->UnEquip(part))
 			{
 				int p, i, j;
-				if ( !m_pItemContainer->m_Bag.AddItem(item, &p, &i, &j) )
+				if (!m_pItemContainer->m_Bag.AddItem(item, &p, &i, &j))
 				{
 					ERR("UnEquip success, but can NOT put the item into bag\n");
-					m_pItemContainer->Equip(item, part );
+					m_pItemContainer->Equip(item, part);
 					return false;
 				}
 
@@ -8181,14 +8210,14 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 				}
 				m_Skill.OnAttributeChanged();
 
-				if ( ItemIsTrump(item) )
+				if (ItemIsTrump(item))
 				{
-					for (int i=TRUMP_SKILL_1;i<TRUMP_SKILL_MAX;i++)
+					for (int i = TRUMP_SKILL_1; i < TRUMP_SKILL_MAX; i++)
 					{
 						SSkill* pSkill = Skill()->FindSkill(item.params[i]);
 						if (pSkill)
 						{
-							m_Skill.DeleteSkill(item.params[i],true);
+							m_Skill.DeleteSkill(item.params[i], true);
 						}
 					}
 				}
@@ -8200,14 +8229,14 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 
 	}
 	// Ò©Æ¿    Tianh 10.06.19  ÖØÐ´
-	else if ( ItemIsYaoPing(item) )
+	else if (ItemIsYaoPing(item))
 	{
-		CRegionCreature *entity = GetEntity();
-		if(ItemIsHPBottle(item) && entity->m_core.GetHp()==entity->m_core.GetMaxHp() )
+		CRegionCreature* entity = GetEntity();
+		if (ItemIsHPBottle(item) && entity->m_core.GetHp() == entity->m_core.GetMaxHp())
 			return false;
-		if(ItemIsMPBottle(item) && (m_mpRemain>0 || m_core.GetMp()==m_core.GetMaxMp() || IsRidePet()) )
+		if (ItemIsMPBottle(item) && (m_mpRemain > 0 || m_core.GetMp() == m_core.GetMaxMp() || IsRidePet()))
 			return false;
-		if(ItemIsPetHpBottle(item))
+		if (ItemIsPetHpBottle(item))
 		{
 			if (!m_pet)
 			{
@@ -8218,10 +8247,10 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 				if (m_pet->m_core.GetHp() == m_pet->m_core.GetMaxHp())
 				{
 					return false;
-				}	
+				}
 			}
 		}
-		if(ItemIsPetMpBottle(item))
+		if (ItemIsPetMpBottle(item))
 		{
 			if (!m_pet)
 			{
@@ -8232,26 +8261,26 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 				if (m_pet->m_core.GetMp() == m_pet->m_core.GetMaxMp())
 				{
 					return false;
-				}	
+				}
 			}
 		}
-		if(ItemIsEnergyBottle(item) && entity->m_core.GetEnP()==entity->m_core.GetMaxEnP())
+		if (ItemIsEnergyBottle(item) && entity->m_core.GetEnP() == entity->m_core.GetMaxEnP())
 			return false;
 
-		SItem *pItem = g_region->m_pItemManager->GetItem(item);
+		SItem* pItem = g_region->m_pItemManager->GetItem(item);
 		if (!pItem)
 			return false;
 
 		unsigned long dwTime = rtGetMilliseconds();
 
-		if(ItemIsHPBottle(item))  //ÑªÆ¿
+		if (ItemIsHPBottle(item))  //ÑªÆ¿
 		{
 			if (dwTime < GetPlayerLogic()->GetCanUseYaoPingHpTime())
 			{
 				return false;
 			}
 		}
-		if(ItemIsMPBottle(item)) //À¶Æ¿
+		if (ItemIsMPBottle(item)) //À¶Æ¿
 		{
 			if (dwTime < GetPlayerLogic()->GetCanUseYaoPingMpTime())
 			{
@@ -8288,7 +8317,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			}
 			if (CanUseCardMinBottle())
 			{
-				if(!AddCardMinute(((SYaoPing*)pItem->pItemBase)->nCardMinute))
+				if (!AddCardMinute(((SYaoPing*)pItem->pItemBase)->nCardMinute))
 				{
 					return false;
 				}
@@ -8303,32 +8332,32 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			}
 		}
 
-		if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+		if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 			return false;
 
-		if(ItemIsHPBottle(item))
+		if (ItemIsHPBottle(item))
 		{
-			if(IsRidePet())
+			if (IsRidePet())
 			{
-				if (pItem->pYaoPing->nHPRate!=0)
+				if (pItem->pYaoPing->nHPRate != 0)
 				{
 					entity->m_hpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
 					entity->m_hpRecover = pItem->pYaoPing->nHPRate / 3.0f / 100.0f * entity->m_core.GetMaxHp() / entity->m_hpRemain;
 				}
-				else 
+				else
 				{
 					entity->m_hpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
-					entity->m_hpRecover = pItem->pYaoPing->nHP*1.5 / entity->m_hpRemain;
+					entity->m_hpRecover = pItem->pYaoPing->nHP * 1.5 / entity->m_hpRemain;
 				}
 			}
 			else
 			{
-				if (pItem->pYaoPing->nHPRate!=0)
+				if (pItem->pYaoPing->nHPRate != 0)
 				{
 					entity->m_hpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
 					entity->m_hpRecover = pItem->pYaoPing->nHPRate / 100.0f * entity->m_core.GetMaxHp() / entity->m_hpRemain;
 				}
-				else 
+				else
 				{
 					entity->m_hpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
 					entity->m_hpRecover = pItem->pYaoPing->nHP / entity->m_hpRemain;
@@ -8338,18 +8367,18 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		}
 		else if (ItemIsMPBottle(item))
 		{
-			if(!IsRidePet())
+			if (!IsRidePet())
 			{
-				if (pItem->pYaoPing->nMPRate!=0)
+				if (pItem->pYaoPing->nMPRate != 0)
 				{
-					m_mpRemain  = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
+					m_mpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
 					m_mpRecover = pItem->pYaoPing->nMPRate / 100.0f * m_core.GetMaxMp() / m_mpRemain;
 					m_mpRemain--;
 					m_core.AddMp(m_mpRecover);
 				}
-				else 
+				else
 				{
-					m_mpRemain  = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
+					m_mpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
 					m_mpRecover = pItem->pYaoPing->nMP / m_mpRemain;
 					m_mpRemain--;
 					m_core.AddMp(m_mpRecover);
@@ -8359,49 +8388,49 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		}
 		else if (ItemIsEXPBottle(item))
 		{
-			AddExp(((SYaoPing*)pItem->pItemBase)->nExp,0);
+			AddExp(((SYaoPing*)pItem->pItemBase)->nExp, 0);
 		}
 		else if (ItemIsPetHpBottle(item) && m_pet)
 		{
 
-			if (pItem->pYaoPing->nHPRate!=0)
+			if (pItem->pYaoPing->nHPRate != 0)
 			{
 				m_pet->m_hpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
 				m_pet->m_hpRecover = pItem->pYaoPing->nHPRate / 3.0f / 100.0f * m_pet->m_core.GetMaxHp() / m_pet->m_hpRemain;
 			}
-			else 
+			else
 			{
 				m_pet->m_hpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
-				m_pet->m_hpRecover = pItem->pYaoPing->nHP*1.5 / m_pet->m_hpRemain;
+				m_pet->m_hpRecover = pItem->pYaoPing->nHP * 1.5 / m_pet->m_hpRemain;
 			}
 			GetPlayerLogic()->SetCanUseYaoPingPetHpTime(rtGetMilliseconds() + 10000);
 		}
 		else if (ItemIsPetMpBottle(item) && m_pet)
 		{
 
-			if (pItem->pYaoPing->nMPRate!=0)
+			if (pItem->pYaoPing->nMPRate != 0)
 			{
 				m_pet->m_mpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
 				m_pet->m_mpRecover = pItem->pYaoPing->nMPRate / 3.0f / 100.0f * m_pet->m_core.GetMaxMp() / m_pet->m_mpRemain;
 			}
-			else 
+			else
 			{
 				m_pet->m_mpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
-				m_pet->m_mpRecover = pItem->pYaoPing->nMP*1.5 / m_pet->m_mpRemain;
+				m_pet->m_mpRecover = pItem->pYaoPing->nMP * 1.5 / m_pet->m_mpRemain;
 			}
 			GetPlayerLogic()->SetCanUseYaoPingPetMpTime(rtGetMilliseconds() + 10000);
 		}
 		else if (ItemIsEnergyBottle(item))
 		{
-			if (pItem->pYaoPing->nEnpRate!=0)
+			if (pItem->pYaoPing->nEnpRate != 0)
 			{
 				this->m_EnpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
 				this->m_EnpRecover = pItem->pYaoPing->nEnpRate / 3.0f / 100.0f * this->m_core.GetMaxEnP() / this->m_EnpRemain;
 			}
-			else 
+			else
 			{
 				this->m_EnpRemain = pItem->pYaoPing->nTime / HEARTBEAT_INTERVAL;
-				this->m_EnpRecover = pItem->pYaoPing->nEnp*1.5 / this->m_EnpRemain;
+				this->m_EnpRecover = pItem->pYaoPing->nEnp * 1.5 / this->m_EnpRemain;
 			}
 			GetPlayerLogic()->SetCanUseYaoPingEnergyTime(rtGetMilliseconds() + 10000);
 		}
@@ -8410,11 +8439,11 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		RecvCmd(g_sendCmd);
 	}
 	// ³èÎï(²»¿ÉÖØµþ°Ú·ÅµÀ¾ß)
-	else if(ItemIsPet(item))
+	else if (ItemIsPet(item))
 	{
 		// if(m_hero) return false;
 
-		if(m_pet)
+		if (m_pet)
 		{
 			bool releasePet = false;
 			if (m_pet->m_dwPetItemOID != item.id)
@@ -8434,10 +8463,10 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		RecvCmd(g_sendCmd);
 	}
 	// ÉñÏÉ(²»¿ÉÖØµþ°Ú·ÅµÀ¾ß)
-	else if(ItemIsOther_Hero(item.type))
+	else if (ItemIsOther_Hero(item.type))
 	{
 		DWORD tTime = time(NULL);
-		if (item.params[ITEMHERO_PARAM_LIFE]!=0 && item.params[ITEMHERO_PARAM_LIFE] < tTime)
+		if (item.params[ITEMHERO_PARAM_LIFE] != 0 && item.params[ITEMHERO_PARAM_LIFE] < tTime)
 		{
 			return false;
 		}
@@ -8448,10 +8477,11 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			// return false;
 		// }
 
-		if(m_hero)
+		if (m_hero)
 		{
 			CallbackHero();
-		}else
+		}
+		else
 		{
 			ReleaseHero(item);
 		}
@@ -8459,7 +8489,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 	// ¼¼ÄÜÁîÅÆ
 	else if (ItemIsSkill(item))
 	{
-		SItemSkill *pItemSkill = g_region->m_pItemManager->GetItem(item)->pSkill;
+		SItemSkill* pItemSkill = g_region->m_pItemManager->GetItem(item)->pSkill;
 		if (!pItemSkill)
 			return false;
 		DWORD skillID = pItemSkill->skillID;
@@ -8475,7 +8505,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		}
 		std::list<CActorSkill::SActorEffect>::iterator itEffect;
 
-		for (itEffect = pActorSkill->m_listEffect.begin();itEffect != pActorSkill->m_listEffect.end();itEffect++)
+		for (itEffect = pActorSkill->m_listEffect.begin(); itEffect != pActorSkill->m_listEffect.end(); itEffect++)
 		{
 			if ((&(*itEffect))->pAttr->wID == pSkill->effectID)//Èç¹û»¹ÓÐ´Ë¼¼ÄÜµÄ³ÖÐøÐ§¹û  Ôò²»ÄÜÔÙÊ¹ÓÃ
 			{
@@ -8525,7 +8555,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		// É¾³ýµÀ¾ß
 		if (ItemCanPile(item.type))
 		{
-			if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+			if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 				return false;
 			CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 			RecvCmd(g_sendCmd);
@@ -8540,11 +8570,11 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 	// »Ø³Ç¾íÖá
 	else if (ItemIsScrollHome(item.type))
 	{
-		int iCanMove = CheckCanMove(page,gridI,gridJ,item);
+		int iCanMove = CheckCanMove(page, gridI, gridJ, item);
 		if (iCanMove > 0) return false;
 		char ePKState = GetPKState();
 		float fRebirthX, fRebirthY;
-		SScroll *pItem = g_region->m_pItemManager->GetItem(item)->pScroll;
+		SScroll* pItem = g_region->m_pItemManager->GetItem(item)->pScroll;
 		if (pItem->MovePosX != 0 && pItem->MovePosY != 0)
 		{
 			LOG3("Íæ¼Ò[%s], ´«ËÍµ½µã[%.0f,%.0f]\n", m_userInfo->m_username.c_str(), pItem->MovePosX, pItem->MovePosY);
@@ -8552,10 +8582,10 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			CG_CmdPacket& packet = g_region->m_gws.BeginSend();
 			packet.WriteShort(r2g_move_to);
 			packet.WriteLong(m_userInfo->m_userId);
-// 			m_scene->m_pTerrain->GetTerrainByPosFast(pItem->MovePosX, pItem->MovePosY, iRx, iRy);
-// 
-// 			iRx += rand() % 40 - 20;
-// 			iRy += rand() % 40 - 20;
+			// 			m_scene->m_pTerrain->GetTerrainByPosFast(pItem->MovePosX, pItem->MovePosY, iRx, iRy);
+			// 
+			// 			iRx += rand() % 40 - 20;
+			// 			iRy += rand() % 40 - 20;
 
 			packet.WriteLong((long)pItem->MovePosX);
 			packet.WriteLong((long)pItem->MovePosY);
@@ -8564,7 +8594,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		else
 		{
 			// ²Î¿¼Dead()º¯ÊýÖÐµÄ´úÂë£º
-			RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX<0)?(NULL):(m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX-m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY-m_scene->m_pTerrain->GetCenterY()));
+			RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX < 0) ? (NULL) : (m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY - m_scene->m_pTerrain->GetCenterY()));
 			// Èç¹ûÔÚµØÍ¼ÖÐ£¬¾Í¶ªµ½Ö¸¶¨µÄÎ»ÖÃ
 			if (pBlockMap)
 			{
@@ -8573,26 +8603,26 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 				if (pSceneInfo)
 				{
 					// ÔÚ×Ô¼ºµÄµØÅÌ»òÕß¹«¹²µÄµØÅÌËÀÍöµÄ
-					if (pSceneInfo->sceneFaction==m_core.Faction || (pSceneInfo->sceneFaction!=FACTION_ZHOU && pSceneInfo->sceneFaction!=FACTION_SHANG))
+					if (pSceneInfo->sceneFaction == m_core.Faction || (pSceneInfo->sceneFaction != FACTION_ZHOU && pSceneInfo->sceneFaction != FACTION_SHANG))
 					{
-						if (ePKState==PK_STATE_RED_NAME)
+						if (ePKState == PK_STATE_RED_NAME)
 						{
 							switch (rtRandom(5, 0)) {
-								case 0: fRebirthX = pSceneInfo->fRebirthRedX1; fRebirthY = pSceneInfo->fRebirthRedY1; break;
-								case 1: fRebirthX = pSceneInfo->fRebirthRedX2; fRebirthY = pSceneInfo->fRebirthRedY2; break;
-								case 2: fRebirthX = pSceneInfo->fRebirthRedX3; fRebirthY = pSceneInfo->fRebirthRedY3; break;
-								case 3: fRebirthX = pSceneInfo->fRebirthRedX4; fRebirthY = pSceneInfo->fRebirthRedY4; break;
-								default: 
-								case 4: fRebirthX = pSceneInfo->fRebirthRedX5; fRebirthY = pSceneInfo->fRebirthRedY5; break;
+							case 0: fRebirthX = pSceneInfo->fRebirthRedX1; fRebirthY = pSceneInfo->fRebirthRedY1; break;
+							case 1: fRebirthX = pSceneInfo->fRebirthRedX2; fRebirthY = pSceneInfo->fRebirthRedY2; break;
+							case 2: fRebirthX = pSceneInfo->fRebirthRedX3; fRebirthY = pSceneInfo->fRebirthRedY3; break;
+							case 3: fRebirthX = pSceneInfo->fRebirthRedX4; fRebirthY = pSceneInfo->fRebirthRedY4; break;
+							default:
+							case 4: fRebirthX = pSceneInfo->fRebirthRedX5; fRebirthY = pSceneInfo->fRebirthRedY5; break;
 							}
 						}
 						else
 						{
 							switch (rtRandom(3, 0)) {
-								case 0: fRebirthX = pSceneInfo->fRebirth1X; fRebirthY = pSceneInfo->fRebirth1Y; break;
-								case 1: fRebirthX = pSceneInfo->fRebirth2X; fRebirthY = pSceneInfo->fRebirth2Y; break;
-								default: 
-								case 2: fRebirthX = pSceneInfo->fRebirth3X; fRebirthY = pSceneInfo->fRebirth3Y; break;
+							case 0: fRebirthX = pSceneInfo->fRebirth1X; fRebirthY = pSceneInfo->fRebirth1Y; break;
+							case 1: fRebirthX = pSceneInfo->fRebirth2X; fRebirthY = pSceneInfo->fRebirth2Y; break;
+							default:
+							case 2: fRebirthX = pSceneInfo->fRebirth3X; fRebirthY = pSceneInfo->fRebirth3Y; break;
 							}
 							if (g_RegionCastleWarMgr.IsCastleWarTime("XiQi") && (m_core.Faction == FACTION_ZHOU))
 								return false;
@@ -8603,9 +8633,9 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 					}
 					else // ÔÚ¶Ô·½µÄµØÅÌËÀÍöµÄ
 					{
-						if (ePKState==PK_STATE_RED_NAME)
+						if (ePKState == PK_STATE_RED_NAME)
 						{
-							if (pSceneInfo->sceneFaction==FACTION_SHANG)
+							if (pSceneInfo->sceneFaction == FACTION_SHANG)
 							{
 								fRebirthX = g_pkConfig->fSafeRebirthShangOtherX;
 								fRebirthY = g_pkConfig->fSafeRebirthShangOtherY;
@@ -8619,10 +8649,10 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 						else
 						{
 							switch (rtRandom(3, 0)) {
-								case 0: fRebirthX = pSceneInfo->fX_Oppose1; fRebirthY = pSceneInfo->fY_Oppose1; break;
-								case 1: fRebirthX = pSceneInfo->fX_Oppose2; fRebirthY = pSceneInfo->fY_Oppose2; break;
-								default:
-								case 2: fRebirthX = pSceneInfo->fX_Oppose3; fRebirthY = pSceneInfo->fY_Oppose3; break;
+							case 0: fRebirthX = pSceneInfo->fX_Oppose1; fRebirthY = pSceneInfo->fY_Oppose1; break;
+							case 1: fRebirthX = pSceneInfo->fX_Oppose2; fRebirthY = pSceneInfo->fY_Oppose2; break;
+							default:
+							case 2: fRebirthX = pSceneInfo->fX_Oppose3; fRebirthY = pSceneInfo->fY_Oppose3; break;
 							}
 						}
 					}
@@ -8633,13 +8663,14 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 				}
 			}
 			// ·ñÔò¶ªµ½³öÉúÎ»ÖÃ
-			if (pBlockMap==NULL)
+			if (pBlockMap == NULL)
 			{
-				if (m_core.Faction==FACTION_ZHOU) // ÖÜ
+				if (m_core.Faction == FACTION_ZHOU) // ÖÜ
 				{
 					fRebirthX = g_pkConfig->fSafeRebirthZouX;
 					fRebirthY = g_pkConfig->fSafeRebirthZouY;
-				}else // if (m_core.Faction==FACTION_SHANG) // ÉÌ
+				}
+				else // if (m_core.Faction==FACTION_SHANG) // ÉÌ
 				{
 					fRebirthX = g_pkConfig->fSafeRebirthShangX;
 					fRebirthY = g_pkConfig->fSafeRebirthShangY;
@@ -8653,36 +8684,36 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			packet.WriteShort(r2g_move_to);
 			packet.WriteLong(m_userInfo->m_userId);
 			m_scene->m_pTerrain->GetTerrainByPosFast(fRebirthX, fRebirthY, iRx, iRy);
-			
+
 			iRx += rand() % 40 - 20;
 			iRy += rand() % 40 - 20;
-			
+
 			packet.WriteLong((long)iRx);
 			packet.WriteLong((long)iRy);
 			g_region->m_gws.EndSend();
 
 		}
 	}
-	else if(ItemIsOther(item.type))
+	else if (ItemIsOther(item.type))
 	{
-		if ((m_UseItemEggTime + 5*1000) <= rtGetMilliseconds())
+		if ((m_UseItemEggTime + 5 * 1000) <= rtGetMilliseconds())
 		{
 			m_UseItemEggTime = rtGetMilliseconds();
 		}
 		else
 		{
-			long Time = ((m_UseItemEggTime + 5*1000) -  rtGetMilliseconds())/1000;
+			long Time = ((m_UseItemEggTime + 5 * 1000) - rtGetMilliseconds()) / 1000;
 			rt2_sprintf(g_strStaticBuffer, R(MSG_ITEM_AFTERSECONDUSE), Time);
 			SendSystemMessage(g_strStaticBuffer);
 
 			return false;
 		}
 
-		SOtherItem *pItem = g_region->m_pItemManager->GetItem(item)->pOtherItem;
-		if(!pItem) return false;
+		SOtherItem* pItem = g_region->m_pItemManager->GetItem(item)->pOtherItem;
+		if (!pItem) return false;
 
-        if (ItemIsOther_Magic(item.type))
-        {
+		if (ItemIsOther_Magic(item.type))
+		{
 			SItemID newItem;
 			int nMoney = 0;
 			int nExp = 0;
@@ -8690,11 +8721,11 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			EMagicItemResult miResult = MI_Null;
 
 			// Ëæ»úÑ¡Ôñ³ö½±Àø
-            SMagicItemReward* pReward = NULL;
-            if ( (pReward = g_region->m_pItemManager->m_pMagicEggRewardMgr->FindReward(atoi(pItem->param1.c_str()))) == NULL)
-            {
-                return false;
-            }
+			SMagicItemReward* pReward = NULL;
+			if ((pReward = g_region->m_pItemManager->m_pMagicEggRewardMgr->FindReward(atoi(pItem->param1.c_str()))) == NULL)
+			{
+				return false;
+			}
 
 			double RandHit = (rand() % 10000) / 100.0;
 			int nSelectIndex = 0;
@@ -8714,7 +8745,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			{
 				int FreeBag = m_pItemContainer->m_Bag.FreeSpace();
 				int ItemCount = pReward->vMaxCount[nSelectIndex];
-				if(ItemCount>FreeBag)
+				if (ItemCount > FreeBag)
 				{
 					rt2_sprintf(g_strStaticBuffer, R(MSG_CLEAR_BAG_ITEM));
 					SendSystemMessage(g_strStaticBuffer);
@@ -8727,7 +8758,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 						if (pReward->HitNum[nSelectIndex] != 100)
 						{
 							continue;
-						}					
+						}
 					}
 					miResult = MI_ALL;
 					DWORD RewardItemID = pReward->RewardParam[nSelectIndex];
@@ -8739,11 +8770,11 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 						if (GetProb(pReward->GoldenRate[nSelectIndex]))
 						{
 							RewardItemColor = ItemColor_Golden;
-						}							
+						}
 					}
-							
+
 					//Ôö¼Ó¿ª³ö½±ÀøÎª°ó¶¨  Tianh IB_NotBind
-					newItem = g_region->m_pItemManager->CreateItem(RewardItemID, RewardItemColor,0,IB_Binded);
+					newItem = g_region->m_pItemManager->CreateItem(RewardItemID, RewardItemColor, 0, IB_Binded);
 					if (ItemID_IsValid(newItem))
 					{
 						if (!AddItem(newItem))
@@ -8757,7 +8788,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 					nSelectIndex = 0;
 				}
 			}
-			else if (nSelectIndex>=0 && nSelectIndex<(int)pReward->HitNum.size())
+			else if (nSelectIndex >= 0 && nSelectIndex < (int)pReward->HitNum.size())
 			{
 				if (pReward->RewardType[nSelectIndex] == MI_Money)
 				{
@@ -8787,7 +8818,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 					miResult = MI_Item;
 					int FreeBag = m_pItemContainer->m_Bag.FreeSpace();
 					int ItemCount = pReward->vMaxCount[nSelectIndex];
-					if(ItemCount>FreeBag)
+					if (ItemCount > FreeBag)
 					{
 						rt2_sprintf(g_strStaticBuffer, R(MSG_CLEAR_BAG_ITEM));
 						SendSystemMessage(g_strStaticBuffer);
@@ -8803,7 +8834,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 						RewardItemColor = ItemColor_Golden;
 
 					//Ôö¼Ó¿ª³ö½±ÀøÎª°ó¶¨						
-					newItem = g_region->m_pItemManager->CreateItem(RewardItemID, RewardItemColor,0,IB_Binded);
+					newItem = g_region->m_pItemManager->CreateItem(RewardItemID, RewardItemColor, 0, IB_Binded);
 					if (ItemID_IsValid(newItem))
 					{
 						if (!AddItem(newItem))
@@ -8812,7 +8843,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 						}
 					}
 				}
-				else 
+				else
 				{
 					ERR1("Magic Item Reward Null(User=%s)!\n", m_userInfo->m_username.c_str());
 				}
@@ -8821,7 +8852,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			// É¾³ýµÀ¾ß
 			if (ItemCanPile(item.type))
 			{
-				if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 					return false;
 				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 				RecvCmd(g_sendCmd);
@@ -8838,17 +8869,17 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			strEgg = rtFormatNumber(GetItemSerializeVersion());
 			strEgg += ",";
 			strEgg += item.SaveToString(g_region->m_pItemManager);
-			if (miResult==MI_Money)
+			if (miResult == MI_Money)
 			{
 				strObject = rtFormatNumber(nMoney);
 			}
-			else if (miResult==MI_Item)
+			else if (miResult == MI_Item)
 			{
 				strObject = rtFormatNumber(GetItemSerializeVersion());
 				strObject += ",";
 				strObject += newItem.SaveToString(g_region->m_pItemManager);
 			}
-			else if (miResult==MI_Exp)
+			else if (miResult == MI_Exp)
 			{
 				strObject = rtFormatNumber(nExp);
 			}
@@ -8864,16 +8895,16 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			packet.WriteString((char*)strObject.c_str());
 			packet.WriteString((char*)strEgg.c_str());
 			g_region->m_gws.EndSend();
-        }
-        else if (ItemIsOther_Task(item.type))
-        {
-            if(CanAcceptTask(pItem->taskID))
-            {
-                AcceptTask(pItem->taskID);
+		}
+		else if (ItemIsOther_Task(item.type))
+		{
+			if (CanAcceptTask(pItem->taskID))
+			{
+				AcceptTask(pItem->taskID);
 				// É¾³ýµÀ¾ß
 				if (ItemCanPile(item.type))
 				{
-					if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+					if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 						return false;
 					CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 					RecvCmd(g_sendCmd);
@@ -8884,29 +8915,29 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 					CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
 					RecvCmd(g_sendCmd);
 				}
-            }
-        }
+			}
+		}
 		else if (ItemIsOther_Flag(item.type))
 		{
-//--------------------add start by tony 05.06.07--------------------------------------------//
-			// ²åÁîÆì
-			// ÅÐ¶Ï
-			//ÊÇ·ñ¿É²åÁîÆì
-			if(!g_RegionCastleWarMgr.CanInsertFlag(this))
+			//--------------------add start by tony 05.06.07--------------------------------------------//
+						// ²åÁîÆì
+						// ÅÐ¶Ï
+						//ÊÇ·ñ¿É²åÁîÆì
+			if (!g_RegionCastleWarMgr.CanInsertFlag(this))
 			{
 				return false;
 			}
-			
+
 			// Éú³ÉNPC
-			if(!g_RegionCastleWarMgr.CreateFlagNpc(this))
+			if (!g_RegionCastleWarMgr.CreateFlagNpc(this))
 			{
 				return false;
 			}
-					
+
 			// É¾³ýµÀ¾ß
 			if (ItemCanPile(item.type))
 			{
-				if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 					return false;
 				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 				RecvCmd(g_sendCmd);
@@ -8917,7 +8948,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 				CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
 				RecvCmd(g_sendCmd);
 			}
-//--------------------add start by tony 05.06.07--------------------------------------------//
+			//--------------------add start by tony 05.06.07--------------------------------------------//
 		}
 		else if (ItemIsOther_Effect(item.type))
 		{
@@ -8925,7 +8956,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			char Style;
 			DWORD ActorID;
 			// long PosX, PosY;
-			if (pItem->effect[0]!='\0')
+			if (pItem->effect[0] != '\0')
 			{
 				EffectName = pItem->effect[0];
 				Style = 1;
@@ -8942,7 +8973,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			// É¾³ýµÀ¾ß
 			if (ItemCanPile(item.type))
 			{
-				if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 					return false;
 				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 				RecvCmd(g_sendCmd);
@@ -8956,9 +8987,9 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		}
 		else if (ItemIsOther_ClearStr(item.type))
 		{
-			SUserActor *actor = g_TableUserActor.FindUserActor(m_core.Metier,0);
-			if(!actor) return false;
-            if(m_core.Str.Base <= actor->BaseStr)
+			SUserActor* actor = g_TableUserActor.FindUserActor(m_core.Metier, 0);
+			if (!actor) return false;
+			if (m_core.Str.Base <= actor->BaseStr)
 			{
 				SendSystemMessage(R(MSG_CLEARPOINT_MIN));
 				return false;
@@ -8971,7 +9002,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			// É¾³ýµÀ¾ß
 			if (ItemCanPile(item.type))
 			{
-				if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 					return false;
 				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 				RecvCmd(g_sendCmd);
@@ -8985,12 +9016,12 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		}
 		else if (ItemIsOther_ClearDex(item.type))
 		{
-			SUserActor *actor = g_TableUserActor.FindUserActor(m_core.Metier,0);
-			if(!actor) return false;
-			if(m_core.Dex.Base <= actor->BaseDex)
+			SUserActor* actor = g_TableUserActor.FindUserActor(m_core.Metier, 0);
+			if (!actor) return false;
+			if (m_core.Dex.Base <= actor->BaseDex)
 			{
 				SendSystemMessage(R(MSG_CLEARPOINT_MIN));
-				return false;	
+				return false;
 			}
 			m_core.Dex.Base--;
 			m_core.AttrPoint++;
@@ -9000,7 +9031,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			// É¾³ýµÀ¾ß
 			if (ItemCanPile(item.type))
 			{
-				if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 					return false;
 				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 				RecvCmd(g_sendCmd);
@@ -9014,12 +9045,12 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		}
 		else if (ItemIsOther_ClearHit(item.type))
 		{
-			SUserActor *actor = g_TableUserActor.FindUserActor(m_core.Metier,0);
-			if(!actor) return false;
-			if(m_core.Hit.Base <= actor->BaseHit)
+			SUserActor* actor = g_TableUserActor.FindUserActor(m_core.Metier, 0);
+			if (!actor) return false;
+			if (m_core.Hit.Base <= actor->BaseHit)
 			{
 				SendSystemMessage(R(MSG_CLEARPOINT_MIN));
-				return false;	
+				return false;
 			}
 			m_core.Hit.Base--;
 			m_core.AttrPoint++;
@@ -9029,7 +9060,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			// É¾³ýµÀ¾ß
 			if (ItemCanPile(item.type))
 			{
-				if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 					return false;
 				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 				RecvCmd(g_sendCmd);
@@ -9043,12 +9074,12 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		}
 		else if (ItemIsOther_ClearCon(item.type))
 		{
-			SUserActor *actor = g_TableUserActor.FindUserActor(m_core.Metier,0);
-			if(!actor) return false;
-			if(m_core.Con.Base <= actor->BaseCon)
+			SUserActor* actor = g_TableUserActor.FindUserActor(m_core.Metier, 0);
+			if (!actor) return false;
+			if (m_core.Con.Base <= actor->BaseCon)
 			{
 				SendSystemMessage(R(MSG_CLEARPOINT_MIN));
-				return false;	
+				return false;
 			}
 			m_core.Con.Base--;
 			m_core.AttrPoint++;
@@ -9058,7 +9089,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			// É¾³ýµÀ¾ß
 			if (ItemCanPile(item.type))
 			{
-				if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 					return false;
 				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 				RecvCmd(g_sendCmd);
@@ -9072,12 +9103,12 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		}
 		else if (ItemIsOther_ClearInt(item.type))
 		{
-			SUserActor *actor = g_TableUserActor.FindUserActor(m_core.Metier,0);
-			if(!actor) return false;
-			if(m_core.Int.Base <= actor->BaseInt)
+			SUserActor* actor = g_TableUserActor.FindUserActor(m_core.Metier, 0);
+			if (!actor) return false;
+			if (m_core.Int.Base <= actor->BaseInt)
 			{
 				SendSystemMessage(R(MSG_CLEARPOINT_MIN));
-				return false;	
+				return false;
 			}
 			m_core.Int.Base--;
 			m_core.AttrPoint++;
@@ -9087,7 +9118,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			// É¾³ýµÀ¾ß
 			if (ItemCanPile(item.type))
 			{
-				if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 					return false;
 				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 				RecvCmd(g_sendCmd);
@@ -9116,7 +9147,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			// É¾³ýµÀ¾ß
 			if (ItemCanPile(item.type))
 			{
-				if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 					return false;
 				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 				RecvCmd(g_sendCmd);
@@ -9128,54 +9159,54 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 				RecvCmd(g_sendCmd);
 			}
 		}
-        else if (ItemIsOther_Spawn(item.type)) // ÓÃÀ´ÕÙ»½ÉúÎïµÄÁîÅÆ
-        {
-            // É¾³ýµÀ¾ß
-            if (ItemCanPile(item.type))
-            {
-                if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
-                    return false;
-                CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
-                RecvCmd(g_sendCmd);
-            }
-            else
-            {
-                m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ);
-                CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
-                RecvCmd(g_sendCmd);
-            }
+		else if (ItemIsOther_Spawn(item.type)) // ÓÃÀ´ÕÙ»½ÉúÎïµÄÁîÅÆ
+		{
+			// É¾³ýµÀ¾ß
+			if (ItemCanPile(item.type))
+			{
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
+					return false;
+				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
+				RecvCmd(g_sendCmd);
+			}
+			else
+			{
+				m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ);
+				CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
+				RecvCmd(g_sendCmd);
+			}
 
-            // Ìí¼ÓNPC
-            DWORD npc_id = atoi(pItem->param1.c_str());
-            std::string npc_name = "";
-            static int Default_Faction = 0;
-            static int Default_unitedPoint = 1;
-            static int Default_loyalPoint = 1;
-            static int Default_bravePoint = 1;
-            static int Default_angryPointLevel1 = 30;
-            static int Default_angryPointLevel2 = 70;
+			// Ìí¼ÓNPC
+			DWORD npc_id = atoi(pItem->param1.c_str());
+			std::string npc_name = "";
+			static int Default_Faction = 0;
+			static int Default_unitedPoint = 1;
+			static int Default_loyalPoint = 1;
+			static int Default_bravePoint = 1;
+			static int Default_angryPointLevel1 = 30;
+			static int Default_angryPointLevel2 = 70;
 
-            CRegionCreature *cre = g_region->CreateNpc(npc_id);
-            cre->m_faction = Default_Faction;
-            cre->m_unitedPoint = Default_unitedPoint;
-            cre->m_loyalPoint = Default_loyalPoint;
-            cre->m_bravePoint = Default_bravePoint;
-            cre->m_angryPointLevel1 = Default_angryPointLevel1;
-            cre->m_angryPointLevel2 = Default_angryPointLevel2;
+			CRegionCreature* cre = g_region->CreateNpc(npc_id);
+			cre->m_faction = Default_Faction;
+			cre->m_unitedPoint = Default_unitedPoint;
+			cre->m_loyalPoint = Default_loyalPoint;
+			cre->m_bravePoint = Default_bravePoint;
+			cre->m_angryPointLevel1 = Default_angryPointLevel1;
+			cre->m_angryPointLevel2 = Default_angryPointLevel2;
 
-            if(m_scene->AddCreature(cre, m_pos, m_dir))
-            {
-				if(cre->IsScriptLoaded())
+			if (m_scene->AddCreature(cre, m_pos, m_dir))
+			{
+				if (cre->IsScriptLoaded())
 					cre->CallScript("OnCreate", false);
-            }
-            else
-            {
-                g_factory->DestroyObject(cre);
-                cre = NULL;
-            }
+			}
+			else
+			{
+				g_factory->DestroyObject(cre);
+				cre = NULL;
+			}
 
 			EArmsKind eType = g_WarfieldMgr.IsArmsNpc(npc_id);
-			if(eType != eNone)
+			if (eType != eNone)
 			{
 				//CG_CmdPacket &cmd = g_region->m_gws.BeginSend();
 				//cmd.WriteShort(r2g_warfield_create_arms);
@@ -9184,219 +9215,219 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 				//cmd.WriteLong((long)eType);
 				//g_region->m_gws.EndSend();
 
-				int iExploit[3] = {2, 5, 30};
+				int iExploit[3] = { 2, 5, 30 };
 				g_WarfieldMgr.AddPerTmpExploit(m_userInfo->m_userId, iExploit[(long)eType]);
-			}			
-        }
-        else if (ItemIsOther_NwTeleport(item.type)) // £¨¹úÕ½£©Ëæ»ú´«ËÍ
-        {
-            // ¼ÆËãÎ»ÖÃ
-            const char* NwTeleportPos_Zhou[4] = { "zhou_sys_1_1", "zhou_sys_1_2", "zhou_sys_1_3", "zhou_sys_1_4" };
-            const char* NwTeleportPos_Shang[4] = { "shang_sys_1_1", "shang_sys_1_2", "shang_sys_1_3", "shang_sys_1_4" };
-            int PosIndex = rand() % 4;
-            RtsAreaHelper* pAreaHelper = NULL;
-            if (m_core.Faction == FACTION_ZHOU)
-                pAreaHelper = m_scene->m_pArea->FindArea(NwTeleportPos_Shang[PosIndex]);
-            else if (m_core.Faction == FACTION_SHANG)
-                pAreaHelper = m_scene->m_pArea->FindArea(NwTeleportPos_Zhou[PosIndex]);
-            else
-                return false;
+			}
+		}
+		else if (ItemIsOther_NwTeleport(item.type)) // £¨¹úÕ½£©Ëæ»ú´«ËÍ
+		{
+			// ¼ÆËãÎ»ÖÃ
+			const char* NwTeleportPos_Zhou[4] = { "zhou_sys_1_1", "zhou_sys_1_2", "zhou_sys_1_3", "zhou_sys_1_4" };
+			const char* NwTeleportPos_Shang[4] = { "shang_sys_1_1", "shang_sys_1_2", "shang_sys_1_3", "shang_sys_1_4" };
+			int PosIndex = rand() % 4;
+			RtsAreaHelper* pAreaHelper = NULL;
+			if (m_core.Faction == FACTION_ZHOU)
+				pAreaHelper = m_scene->m_pArea->FindArea(NwTeleportPos_Shang[PosIndex]);
+			else if (m_core.Faction == FACTION_SHANG)
+				pAreaHelper = m_scene->m_pArea->FindArea(NwTeleportPos_Zhou[PosIndex]);
+			else
+				return false;
 
-            if (!pAreaHelper)
-                return false;
-            int TelX = (pAreaHelper->lMaxX+pAreaHelper->lMinX)/2;
-            int TelY = (pAreaHelper->lMaxY+pAreaHelper->lMinY)/2;
+			if (!pAreaHelper)
+				return false;
+			int TelX = (pAreaHelper->lMaxX + pAreaHelper->lMinX) / 2;
+			int TelY = (pAreaHelper->lMaxY + pAreaHelper->lMinY) / 2;
 
-            // É¾³ýµÀ¾ß
-            if (ItemCanPile(item.type))
-            {
-                if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
-                    return false;
-                CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
-                RecvCmd(g_sendCmd);
-            }
-            else
-            {
-                m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ);
-                CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
-                RecvCmd(g_sendCmd);
-            }
+			// É¾³ýµÀ¾ß
+			if (ItemCanPile(item.type))
+			{
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
+					return false;
+				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
+				RecvCmd(g_sendCmd);
+			}
+			else
+			{
+				m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ);
+				CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
+				RecvCmd(g_sendCmd);
+			}
 
-            // ´«ËÍ
-            if (m_pTeam && m_pTeam->mData.Size()>0)
-            {
-                std::vector<CRegionCreature*> Creatures;
-                m_scene->GetAroundCreatureByGrid(m_pos, 200, Creatures, this);
-                std::vector<CRegionCreature*>::iterator iterCre = Creatures.begin();
-                for (; iterCre!=Creatures.end(); iterCre++)
-                {
-                    CRegionCreature* pCreTemp = *iterCre;
-                    //if (pCreTemp == this)   continue;
-                    if (!pCreTemp->m_userInfo)  continue;
-                    if (pCreTemp->m_core.Faction != m_core.Faction)     continue;
+			// ´«ËÍ
+			if (m_pTeam && m_pTeam->mData.Size() > 0)
+			{
+				std::vector<CRegionCreature*> Creatures;
+				m_scene->GetAroundCreatureByGrid(m_pos, 200, Creatures, this);
+				std::vector<CRegionCreature*>::iterator iterCre = Creatures.begin();
+				for (; iterCre != Creatures.end(); iterCre++)
+				{
+					CRegionCreature* pCreTemp = *iterCre;
+					//if (pCreTemp == this)   continue;
+					if (!pCreTemp->m_userInfo)  continue;
+					if (pCreTemp->m_core.Faction != m_core.Faction)     continue;
 
-                    if (m_pTeam->mData.Find(pCreTemp->m_userInfo->m_userId))
-                    {
-                        pCreTemp->ForceSetPosition(TelX, TelY, 0);
-                    }
-                }
-            }
-            else 
-            {
-                ForceSetPosition(TelX, TelY, 0);
-            }
-        }
-        else if (ItemIsOther_NwSkill(item.type)) // £¨¹úÕ½£©¼ÓËÙ¾íÖá
-        {
-            if (IsRidePet())
-            {
-                SendSystemMessage(R(Æï³èÎï×´Ì¬ÏÂ²»ÄÜÊ¹ÓÃ));
-                return false;
-            }
+					if (m_pTeam->mData.Find(pCreTemp->m_userInfo->m_userId))
+					{
+						pCreTemp->ForceSetPosition(TelX, TelY, 0);
+					}
+				}
+			}
+			else
+			{
+				ForceSetPosition(TelX, TelY, 0);
+			}
+		}
+		else if (ItemIsOther_NwSkill(item.type)) // £¨¹úÕ½£©¼ÓËÙ¾íÖá
+		{
+			if (IsRidePet())
+			{
+				SendSystemMessage(R(Æï³èÎï×´Ì¬ÏÂ²»ÄÜÊ¹ÓÃ));
+				return false;
+			}
 
-            // É¾³ýµÀ¾ß
-            if (ItemCanPile(item.type))
-            {
-                if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
-                    return false;
-                CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
-                RecvCmd(g_sendCmd);
-            }
-            else
-            {
-                m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ);
-                CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
-                RecvCmd(g_sendCmd);
-            }
+			// É¾³ýµÀ¾ß
+			if (ItemCanPile(item.type))
+			{
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
+					return false;
+				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
+				RecvCmd(g_sendCmd);
+			}
+			else
+			{
+				m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ);
+				CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
+				RecvCmd(g_sendCmd);
+			}
 
-            // È«¶ÓÌáËÙ50%£¬³ÖÐø60Ãë£¬²»ÄÜºÍ¼ÓËÙÒ©Ë®Ò»ÆðÊ¹ÓÃ£¬²»ÄÜÔÚÆïÊÞÊ±Ê¹ÓÃ
-            const WORD SkillID = atoi(pItem->param1.c_str());
-            
-            // ÊÍ·Å¼¼ÄÜµ½Íæ¼ÒÉíÉÏ
-            SSkill* pSkill = Skill()->FindSkill(SkillID);
-            if (!pSkill)		return false;
+			// È«¶ÓÌáËÙ50%£¬³ÖÐø60Ãë£¬²»ÄÜºÍ¼ÓËÙÒ©Ë®Ò»ÆðÊ¹ÓÃ£¬²»ÄÜÔÚÆïÊÞÊ±Ê¹ÓÃ
+			const WORD SkillID = atoi(pItem->param1.c_str());
 
-            SAttackParam param;
-            param.TargetType = SKILL_TARGET_TYPE_ACTOR;
-            param.Skill = SkillID;
+			// ÊÍ·Å¼¼ÄÜµ½Íæ¼ÒÉíÉÏ
+			SSkill* pSkill = Skill()->FindSkill(SkillID);
+			if (!pSkill)		return false;
 
-            std::vector<CRegionCreature*> creatures;
-            if (m_pTeam && m_pTeam->mData.Size()>0)
-            {
-                int teamIdx = m_pTeam->mData.Begin();
-                for (; teamIdx<m_pTeam->mData.End(); teamIdx++)
-                {
-                    CRegionUser* pUserTeam = g_region->FindUser(m_pTeam->mData[teamIdx].mDBID);
-                    if (pUserTeam && pUserTeam->m_dummy)
-                        creatures.push_back(pUserTeam->m_dummy);
-                }
-            }
-            else 
-            {
-                creatures.push_back(this);
-            }
+			SAttackParam param;
+			param.TargetType = SKILL_TARGET_TYPE_ACTOR;
+			param.Skill = SkillID;
 
-            stlforeach(std::vector<CRegionCreature*>, iterCre, creatures)
-            {
-                CRegionCreature* pCre = *iterCre;
-                if (pCre->IsRidePet())
-                    continue;
-                if (Distance(pCre->m_pos) > 200)
-                    continue;
+			std::vector<CRegionCreature*> creatures;
+			if (m_pTeam && m_pTeam->mData.Size() > 0)
+			{
+				int teamIdx = m_pTeam->mData.Begin();
+				for (; teamIdx < m_pTeam->mData.End(); teamIdx++)
+				{
+					CRegionUser* pUserTeam = g_region->FindUser(m_pTeam->mData[teamIdx].mDBID);
+					if (pUserTeam && pUserTeam->m_dummy)
+						creatures.push_back(pUserTeam->m_dummy);
+				}
+			}
+			else
+			{
+				creatures.push_back(this);
+			}
 
-                bool bIsAdded = false;
-                if (!pCre->m_Skill.FindSkillBySubID(pSkill->wSubID))
-                {
-                    bIsAdded = true;
-                    if (!pCre->m_Skill.AddSkill(SkillID, 0, false))
-                        return false;
-                }
+			stlforeach(std::vector<CRegionCreature*>, iterCre, creatures)
+			{
+				CRegionCreature* pCre = *iterCre;
+				if (pCre->IsRidePet())
+					continue;
+				if (Distance(pCre->m_pos) > 200)
+					continue;
 
-                param.EnemyId = pCre->m_oId;
-                pCre->UseSkill(pSkill, param);
+				bool bIsAdded = false;
+				if (!pCre->m_Skill.FindSkillBySubID(pSkill->wSubID))
+				{
+					bIsAdded = true;
+					if (!pCre->m_Skill.AddSkill(SkillID, 0, false))
+						return false;
+				}
 
-                if (bIsAdded)
-                {
-                    pCre->m_Skill.DeleteSkill(SkillID, false);
-                }
-            }
-        }
-        else if (ItemIsOther_NwCallTeam(item.type)) // £¨¹úÕ½£©½«×é¶Ó³ÉÔ±´«ËÍÖÁÊ¹ÓÃÕßÉí±ß
-        {
-            // É¾³ýµÀ¾ß
-            if (ItemCanPile(item.type))
-            {
-                if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
-                    return false;
-                CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
-                RecvCmd(g_sendCmd);
-            }
-            else
-            {
-                m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ);
-                CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
-                RecvCmd(g_sendCmd);
-            }
+				param.EnemyId = pCre->m_oId;
+				pCre->UseSkill(pSkill, param);
 
-            // ½«×é¶Ó³ÉÔ±´«ËÍÖÁÊ¹ÓÃÕßÉí±ß
-            if (m_pTeam && m_pTeam->mData.Size()>0)
-            {
-                int teamIdx = m_pTeam->mData.Begin();
-                for (; teamIdx<m_pTeam->mData.End(); teamIdx++)
-                {
-                    if (m_pTeam->mData[teamIdx].mDBID == m_userInfo->m_userId)
-                        continue;
+				if (bIsAdded)
+				{
+					pCre->m_Skill.DeleteSkill(SkillID, false);
+				}
+			}
+		}
+		else if (ItemIsOther_NwCallTeam(item.type)) // £¨¹úÕ½£©½«×é¶Ó³ÉÔ±´«ËÍÖÁÊ¹ÓÃÕßÉí±ß
+		{
+			// É¾³ýµÀ¾ß
+			if (ItemCanPile(item.type))
+			{
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
+					return false;
+				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
+				RecvCmd(g_sendCmd);
+			}
+			else
+			{
+				m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ);
+				CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
+				RecvCmd(g_sendCmd);
+			}
 
-                    CRegionUser* pUserTeam = g_region->FindUser(m_pTeam->mData[teamIdx].mDBID);
-                    if (m_core.Faction != pUserTeam->m_dummy->m_core.Faction)
-                        continue;
+			// ½«×é¶Ó³ÉÔ±´«ËÍÖÁÊ¹ÓÃÕßÉí±ß
+			if (m_pTeam && m_pTeam->mData.Size() > 0)
+			{
+				int teamIdx = m_pTeam->mData.Begin();
+				for (; teamIdx < m_pTeam->mData.End(); teamIdx++)
+				{
+					if (m_pTeam->mData[teamIdx].mDBID == m_userInfo->m_userId)
+						continue;
 
-                    if (pUserTeam && pUserTeam->m_dummy)
-                    {
-                        pUserTeam->m_dummy->ForceSetPosition(m_pos[0], m_pos[1], m_pos[2]);
-                    }
-                }
-            }
-        }
-        else if (ItemIsOther_BankExtend(item.type))
-        {
-            if (!m_pBank)       return false;
-            if (m_pBank->GetLineCount() >= g_region->m_pItemManager->GetBankMaxLineCount())
-            {
-                SendSystemMessage(R(²Ù×÷Ê§°Ü£¬²Ö¿âÒÑ¾­´ïµ½×î´óÈÝÁ¿));
-                return false;
-            }
+					CRegionUser* pUserTeam = g_region->FindUser(m_pTeam->mData[teamIdx].mDBID);
+					if (m_core.Faction != pUserTeam->m_dummy->m_core.Faction)
+						continue;
 
-            int line = m_pBank->GetLineCount() + 1;
-            if (!m_pBank->Resize(m_pBank->GetPageCount(), line, m_pBank->GetColCount()))
-            {
-                SendSystemMessage(R(²Ö¿âÀ©ÈÝ²Ù×÷Ê§°Ü));
-                return false;
-            }
-            else 
-            {
-                SendSystemMessage(R(²Ö¿âÀ©ÈÝ²Ù×÷³É¹¦));
-            }
+					if (pUserTeam && pUserTeam->m_dummy)
+					{
+						pUserTeam->m_dummy->ForceSetPosition(m_pos[0], m_pos[1], m_pos[2]);
+					}
+				}
+			}
+		}
+		else if (ItemIsOther_BankExtend(item.type))
+		{
+			if (!m_pBank)       return false;
+			if (m_pBank->GetLineCount() >= g_region->m_pItemManager->GetBankMaxLineCount())
+			{
+				SendSystemMessage(R(²Ù×÷Ê§°Ü£¬²Ö¿âÒÑ¾­´ïµ½×î´óÈÝÁ¿));
+				return false;
+			}
 
-            // É¾³ýµÀ¾ß
-            if (ItemCanPile(item.type))
-            {
-                if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
-                    return false;
-                CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
-                RecvCmd(g_sendCmd);
-            }
-            else
-            {
-                m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ);
-                CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
-                RecvCmd(g_sendCmd);
-            }
-        }
-		else 
-        {
-            //ERR1("Invalid Item Operate! type=0x%x\n", item.type);
-        }
+			int line = m_pBank->GetLineCount() + 1;
+			if (!m_pBank->Resize(m_pBank->GetPageCount(), line, m_pBank->GetColCount()))
+			{
+				SendSystemMessage(R(²Ö¿âÀ©ÈÝ²Ù×÷Ê§°Ü));
+				return false;
+			}
+			else
+			{
+				SendSystemMessage(R(²Ö¿âÀ©ÈÝ²Ù×÷³É¹¦));
+			}
+
+			// É¾³ýµÀ¾ß
+			if (ItemCanPile(item.type))
+			{
+				if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
+					return false;
+				CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
+				RecvCmd(g_sendCmd);
+			}
+			else
+			{
+				m_pItemContainer->m_Bag.RemoveItem(page, gridI, gridJ);
+				CItemCmdBuilder_Svr::Build_r2c_bag_removeitem(ITEM_CONTAINER_PLAYER_COMMON_BAG, page, gridI, gridJ, ITEM_REASON_DELETE);
+				RecvCmd(g_sendCmd);
+			}
+		}
+		else
+		{
+			//ERR1("Invalid Item Operate! type=0x%x\n", item.type);
+		}
 	}
 	else if (ItemIsScrollCompose(item.type))
 	{
@@ -9427,7 +9458,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			break;
 		}
 		pSkill = m_Skill.FindSkillBySubID(CheckSkillID);
-		if (!pSkill || (pSkill->iLevel < pComposeClass->SkillLevel) )
+		if (!pSkill || (pSkill->iLevel < pComposeClass->SkillLevel))
 			bCanStudy = false;
 		else
 			bCanStudy = true;
@@ -9440,9 +9471,9 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		// ¼ì²éÍæ¼ÒÊÇ·ñÒÑ¾­Ñ§»áÁË¸ÃÅä·½
 		bool bStudied = false;
 		std::list<short>::iterator iterCompose = m_listMatchID.begin();
-		for (; iterCompose!=m_listMatchID.end(); iterCompose++)
+		for (; iterCompose != m_listMatchID.end(); iterCompose++)
 		{
-			if (pComposeClass->Idx == (*iterCompose))	
+			if (pComposeClass->Idx == (*iterCompose))
 			{
 				bStudied = true;
 				break;
@@ -9464,7 +9495,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 		// É¾³ýµÀ¾ß
 		if (ItemCanPile(item.type))
 		{
-			if(!m_pItemContainer->UsePileItem(page, gridI, gridJ))	
+			if (!m_pItemContainer->UsePileItem(page, gridI, gridJ))
 				return false;
 			CItemCmdBuilder_Svr::Build_r2c_player_usepileitem(item.id, page, gridI, gridJ);
 			RecvCmd(g_sendCmd);
@@ -9476,7 +9507,7 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 			RecvCmd(g_sendCmd);
 		}
 	}
-	else 
+	else
 	{
 
 
@@ -9484,9 +9515,9 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 
 	//4.2 LeiJun
 	int iItemID = g_region->m_pItemManager->GetIndexFromType(item.type);
-	if(IsScriptLoaded() && iItemID > 0)
+	if (IsScriptLoaded() && iItemID > 0)
 	{
-		char sFuncName[40] = {0};
+		char sFuncName[40] = { 0 };
 		rt2_snprintf(sFuncName, 40, "OnUseItem%d", iItemID);
 		CallScript(sFuncName, false, item.id);
 	}
@@ -9495,11 +9526,11 @@ bool CRegionCreature::UseItem(int page, int gridI, int gridJ, CItemContainerBase
 
 bool CRegionCreature::UseItem(DWORD Id)
 {
-    if (!m_pItemContainer)
-        return false;
+	if (!m_pItemContainer)
+		return false;
 
 	int page, i, j;
-	if ( m_pItemContainer->m_Bag.Find(Id, &page, &i, &j) )
+	if (m_pItemContainer->m_Bag.Find(Id, &page, &i, &j))
 	{
 		return UseItem(page, i, j);
 	}
@@ -9517,7 +9548,7 @@ bool CRegionCreature::UseItem(DWORD typeId, EItemColor color)
 		return false;
 
 	int page, i, j, count;
-	if ( m_pItemContainer->m_Bag.FindType(typeId, color, &count, &page, &i, &j) )
+	if (m_pItemContainer->m_Bag.FindType(typeId, color, &count, &page, &i, &j))
 	{
 		return UseItem(page, i, j);
 	}
@@ -9531,24 +9562,24 @@ bool CRegionCreature::UseItem(DWORD typeId, EItemColor color)
 
 bool CRegionCreature::AddItem(SItemID item)
 {
-    if (!m_pItemContainer)
-        return false;
+	if (!m_pItemContainer)
+		return false;
 
 	bool ret;
-	int page,i,j;
-	if ( ItemIsMissionItem(item.type) )
-		ret = m_pItemContainer->m_MissionBag.AddItem(item,&page,&i,&j);
-	else if ( ItemIsPet(item.type))
+	int page, i, j;
+	if (ItemIsMissionItem(item.type))
+		ret = m_pItemContainer->m_MissionBag.AddItem(item, &page, &i, &j);
+	else if (ItemIsPet(item.type))
 		return AddPetByItem(item);
 	else
-        ret = m_pItemContainer->m_Bag.AddItem(item,&page,&i,&j);
+		ret = m_pItemContainer->m_Bag.AddItem(item, &page, &i, &j);
 
-	if(ret)
+	if (ret)
 	{
-		if ( ItemIsMissionItem(item) )
-			CItemCmdBuilder_Svr::Build_r2c_bag_additem(item, ITEM_CONTAINER_PLAYER_MISSION_BAG, page,i,j, ITEM_REASON_PICK);
+		if (ItemIsMissionItem(item))
+			CItemCmdBuilder_Svr::Build_r2c_bag_additem(item, ITEM_CONTAINER_PLAYER_MISSION_BAG, page, i, j, ITEM_REASON_PICK);
 		else
-			CItemCmdBuilder_Svr::Build_r2c_bag_additem(item, ITEM_CONTAINER_PLAYER_COMMON_BAG, page,i,j, ITEM_REASON_PICK);
+			CItemCmdBuilder_Svr::Build_r2c_bag_additem(item, ITEM_CONTAINER_PLAYER_COMMON_BAG, page, i, j, ITEM_REASON_PICK);
 		RecvCmd(g_sendCmd);
 		return true;
 	}
@@ -9590,30 +9621,30 @@ bool CRegionCreature::AddCardMinute(int minute)
 	int maxCardTime = 200 * 3600;
 	if (m_cardTime + minute * 60 > maxCardTime)
 	{
-		rt2_sprintf(g_strStaticBuffer, R(MSG_ECARD_TIME_WILL_ENOUGH), m_cardTime/3600, (m_cardTime%3600)/60);
+		rt2_sprintf(g_strStaticBuffer, R(MSG_ECARD_TIME_WILL_ENOUGH), m_cardTime / 3600, (m_cardTime % 3600) / 60);
 		SendSystemMessage(g_strStaticBuffer);
 		return false;
 	}
 	m_cardTime += minute * 60;
-	rt2_sprintf(g_strStaticBuffer, R(MSG_ECARD_ADD_TIME),minute, m_cardTime/3600, (m_cardTime%3600)/60);
+	rt2_sprintf(g_strStaticBuffer, R(MSG_ECARD_ADD_TIME), minute, m_cardTime / 3600, (m_cardTime % 3600) / 60);
 	SendSystemMessage(g_strStaticBuffer);
 	return true;
 }
 
-bool CRegionCreature::AddItem(DWORD typeId,EItemColor color)
+bool CRegionCreature::AddItem(DWORD typeId, EItemColor color)
 {
-    if (!m_pItemContainer)
-        return false;
+	if (!m_pItemContainer)
+		return false;
 
 	SItemID item;
-	item = g_region->m_pItemManager->CreateItem(typeId,color);
-	if(!ItemID_IsValid(item))
+	item = g_region->m_pItemManager->CreateItem(typeId, color);
+	if (!ItemID_IsValid(item))
 	{
 		g_region->m_pItemManager->DeleteItem(item);
 		return false;
 	}
 
-	if(!AddItem(item))
+	if (!AddItem(item))
 	{
 		g_region->m_pItemManager->DeleteItem(item);
 		return false;
@@ -9624,52 +9655,52 @@ bool CRegionCreature::AddItem(DWORD typeId,EItemColor color)
 
 int CRegionCreature::GetItemNum(DWORD typeId, EItemColor color/* = ItemColor_All*/)
 {
-    if (!m_pItemContainer)
-        return 0;
+	if (!m_pItemContainer)
+		return 0;
 
-	SItemBase *pItemClass = g_region->m_pItemManager->GetItemFromIndex(typeId);
+	SItemBase* pItemClass = g_region->m_pItemManager->GetItemFromIndex(typeId);
 	if (!pItemClass)		return 0;
-	
+
 	int count = 0;
-	if (ItemIsMissionItem(pItemClass->type) )
+	if (ItemIsMissionItem(pItemClass->type))
 	{
-		if ( m_pItemContainer->m_MissionBag.FindType(typeId, color, &count) )
+		if (m_pItemContainer->m_MissionBag.FindType(typeId, color, &count))
 			return count;
 	}
 	else if (ItemIsPet(pItemClass->type))
 	{
-		if ( m_pItemContainer->m_PetBag.FindType(typeId, color, &count) )
+		if (m_pItemContainer->m_PetBag.FindType(typeId, color, &count))
 			return count;
 	}
 	else
 	{
-		if ( m_pItemContainer->m_Bag.FindType(typeId, color, &count) )
+		if (m_pItemContainer->m_Bag.FindType(typeId, color, &count))
 			return count;
 	}
 	return 0;
 }
 
-bool CRegionCreature::RemoveItem(DWORD typeId,int num, EItemColor color/* = ItemColor_All*/)
+bool CRegionCreature::RemoveItem(DWORD typeId, int num, EItemColor color/* = ItemColor_All*/)
 {
-    if (!m_pItemContainer)
-        return false;
+	if (!m_pItemContainer)
+		return false;
 
-	SItemBase *pItemClass = g_region->m_pItemManager->GetItemFromIndex(typeId);
+	SItemBase* pItemClass = g_region->m_pItemManager->GetItemFromIndex(typeId);
 	if (!pItemClass)		return 0;
 
 	bool ret;
-	if (ItemIsMissionItem(pItemClass->type) )
+	if (ItemIsMissionItem(pItemClass->type))
 		ret = m_pItemContainer->m_MissionBag.RemoveItem(typeId, color, num);
-	else if (ItemIsPet(pItemClass->type) )
+	else if (ItemIsPet(pItemClass->type))
 		ret = m_pItemContainer->m_PetBag.RemoveItem(typeId, color, num);
 	else
 		ret = m_pItemContainer->m_Bag.RemoveItem(typeId, color, num);
 
-	if(ret)
+	if (ret)
 	{
-		if (ItemIsMissionItem(pItemClass->type) )
+		if (ItemIsMissionItem(pItemClass->type))
 			CItemCmdBuilder_Svr::Build_r2c_bag_refresh(ITEM_CONTAINER_PLAYER_MISSION_BAG, &(m_pItemContainer->m_MissionBag));
-		else if (ItemIsPet(pItemClass->type) )
+		else if (ItemIsPet(pItemClass->type))
 			CItemCmdBuilder_Svr::Build_r2c_bag_refresh(ITEM_CONTAINER_PLAYER_PET_BAG, &(m_pItemContainer->m_PetBag));
 		else
 			CItemCmdBuilder_Svr::Build_r2c_bag_refresh(ITEM_CONTAINER_PLAYER_COMMON_BAG, &(m_pItemContainer->m_Bag));
@@ -9680,8 +9711,8 @@ bool CRegionCreature::RemoveItem(DWORD typeId,int num, EItemColor color/* = Item
 
 bool CRegionCreature::RemoveItem(DWORD Id, char bMissionBag/* = 0*/, int reason/* = 0*/)
 {
-    if (!m_pItemContainer)
-        return false;
+	if (!m_pItemContainer)
+		return false;
 
 	CBag* pBag = NULL;
 	EItemContainer ECon = ITEM_CONTAINER_PLAYER_COMMON_BAG;
@@ -9717,8 +9748,8 @@ bool CRegionCreature::RemoveItem(DWORD Id, char bMissionBag/* = 0*/, int reason/
 
 int CRegionCreature::GetDungeonMissionItemNum(DWORD typeId, int difficulty)
 {
-    if (!m_pItemContainer)
-        return 0;
+	if (!m_pItemContainer)
+		return 0;
 
 	SItemBase* pItemClass = g_region->m_pItemManager->GetItemFromIndex(typeId);
 	if (!pItemClass)		return 0;
@@ -9755,8 +9786,8 @@ int CRegionCreature::GetDungeonMissionItemNum(DWORD typeId, int difficulty)
 bool CRegionCreature::AddDungeonMissionItem(DWORD typeId, int difficulty)
 {
 	SItemID item;
-	item = g_region->m_pItemManager->CreateItem(typeId,ItemColor_White);
-	if(!ItemID_IsValid(item))
+	item = g_region->m_pItemManager->CreateItem(typeId, ItemColor_White);
+	if (!ItemID_IsValid(item))
 	{
 		g_region->m_pItemManager->DeleteItem(item);
 		return false;
@@ -9765,7 +9796,7 @@ bool CRegionCreature::AddDungeonMissionItem(DWORD typeId, int difficulty)
 	item.params[0] = difficulty;
 	item.paramCount = 1;
 
-	if(!AddItem(item))
+	if (!AddItem(item))
 	{
 		g_region->m_pItemManager->DeleteItem(item);
 		return false;
@@ -9776,10 +9807,10 @@ bool CRegionCreature::AddDungeonMissionItem(DWORD typeId, int difficulty)
 
 bool CRegionCreature::RemoveDungeonMissionItem(DWORD typeId, int num, int difficulty)
 {
-    if (!m_pItemContainer)
-        return false;
+	if (!m_pItemContainer)
+		return false;
 
-	SItemBase *pItemClass = g_region->m_pItemManager->GetItemFromIndex(typeId);
+	SItemBase* pItemClass = g_region->m_pItemManager->GetItemFromIndex(typeId);
 	if (!pItemClass)		return false;
 	if (!ItemIsOther_Dungeon(pItemClass->type))
 	{
@@ -9794,18 +9825,18 @@ bool CRegionCreature::RemoveDungeonMissionItem(DWORD typeId, int num, int diffic
 	// MAKE SURE (paramIndices.size()==paramParams.size())
 
 	bool ret;
-	if (ItemIsMissionItem(pItemClass->type) )
+	if (ItemIsMissionItem(pItemClass->type))
 		ret = m_pItemContainer->m_MissionBag.RemoveItemWithParams(typeId, arrParamIndices, arrParams, ItemColor_All, num);
-	else if (ItemIsPet(pItemClass->type) )
+	else if (ItemIsPet(pItemClass->type))
 		ret = m_pItemContainer->m_PetBag.RemoveItemWithParams(typeId, arrParamIndices, arrParams, ItemColor_All, num);
 	else
 		ret = m_pItemContainer->m_Bag.RemoveItemWithParams(typeId, arrParamIndices, arrParams, ItemColor_All, num);
 
-	if(ret)
+	if (ret)
 	{
-		if (ItemIsMissionItem(pItemClass->type) )
+		if (ItemIsMissionItem(pItemClass->type))
 			CItemCmdBuilder_Svr::Build_r2c_bag_refresh(ITEM_CONTAINER_PLAYER_MISSION_BAG, &(m_pItemContainer->m_MissionBag));
-		else if (ItemIsMissionItem(pItemClass->type) )
+		else if (ItemIsMissionItem(pItemClass->type))
 			CItemCmdBuilder_Svr::Build_r2c_bag_refresh(ITEM_CONTAINER_PLAYER_PET_BAG, &(m_pItemContainer->m_PetBag));
 		else
 			CItemCmdBuilder_Svr::Build_r2c_bag_refresh(ITEM_CONTAINER_PLAYER_COMMON_BAG, &(m_pItemContainer->m_Bag));
@@ -9816,10 +9847,10 @@ bool CRegionCreature::RemoveDungeonMissionItem(DWORD typeId, int num, int diffic
 
 bool CRegionCreature::StopPShop()
 {
-	BOOL_ENSURE( m_pPShop && m_pPShop->Stop() )
-	DEL_ONE(m_pPShop)
+	BOOL_ENSURE(m_pPShop && m_pPShop->Stop());
+	DEL_ONE(m_pPShop);
 	m_bPShop = 0;
-	m_modelRef ++;
+	m_modelRef++;
 	CItemCmdBuilder_Svr::Build_r2c_pshop_stop_response(1);
 	RecvCmd(g_sendCmd);
 	return true;
@@ -9830,7 +9861,7 @@ bool CRegionCreature::StopPlayerTrade()
 	if (!m_pTrade)		return true;
 
 	DWORD dwTradeWith = m_pTrade->GetOtherPlayer(m_oId);
-	CRegionCreature *pTradeWith = m_scene->FindCreature(dwTradeWith);
+	CRegionCreature* pTradeWith = m_scene->FindCreature(dwTradeWith);
 
 	if (!pTradeWith)		// Èç¹û½»Ò×¶ÔÏóÒÑ¾­¶ÏÏß»òÀë¿ªÁË
 	{
@@ -9840,7 +9871,7 @@ bool CRegionCreature::StopPlayerTrade()
 		DEL_ONE(m_pTrade);
 		return true;
 	}
-	else 
+	else
 	{
 		DWORD dwForCheck = m_pTrade->GetOtherPlayer(pTradeWith->m_oId);
 		if (dwForCheck != m_oId)
@@ -9863,27 +9894,27 @@ bool CRegionCreature::StopPlayerTrade()
 
 void CRegionCreature::QueryAccountPoing()
 {
-    if (m_userInfo)
-    {
-	    CG_CmdPacket& packet = g_region->m_gws.BeginSend();
-	    packet.WriteShort(r2g_query_poing);
-	    packet.WriteLong(m_userInfo->m_userId);
-        packet.WriteByte(1); // ÐèÒªÏÔÊ¾ÍøÒ³
-	    g_region->m_gws.EndSend();
+	if (m_userInfo)
+	{
+		CG_CmdPacket& packet = g_region->m_gws.BeginSend();
+		packet.WriteShort(r2g_query_poing);
+		packet.WriteLong(m_userInfo->m_userId);
+		packet.WriteByte(1); // ÐèÒªÏÔÊ¾ÍøÒ³
+		g_region->m_gws.EndSend();
 
-		g_region->ShowHtmlDialog(NULL, this, R(QUERY_POINT_HTML), "POINT",R(MSG_QUERY_ACCOUNT_POINT));
-    }
+		g_region->ShowHtmlDialog(NULL, this, R(QUERY_POINT_HTML), "POINT", R(MSG_QUERY_ACCOUNT_POINT));
+	}
 }
 
 PetType CRegionCreature::GetPetType()
 {
 	if ((IsUserPet() && m_ai) || (m_pet && m_pet->m_ai))
 	{
-		CRegionPetAI *petAI = NULL;
+		CRegionPetAI* petAI = NULL;
 		if (IsUserPet())
-			petAI = (CRegionPetAI *)m_ai;
+			petAI = (CRegionPetAI*)m_ai;
 		else
-			petAI = (CRegionPetAI *)m_pet->m_ai;
+			petAI = (CRegionPetAI*)m_pet->m_ai;
 		if (petAI)
 		{
 			return petAI->GetPetType();
@@ -9892,51 +9923,51 @@ PetType CRegionCreature::GetPetType()
 	return PET_TYPE_NULL;
 }
 
-bool CRegionCreature::ReleasePet(SItemID &item)
+bool CRegionCreature::ReleasePet(SItemID& item)
 {
-	if(m_usePetBusy && rtGetMilliseconds() < m_usePetBusy) 
+	if (m_usePetBusy && rtGetMilliseconds() < m_usePetBusy)
 		return false;
 	m_usePetBusy = rtGetMilliseconds() + USE_PET_BUSY;
 
-	if(m_pet) CallbackPet();
-	if(m_hero) return false;
+	if (m_pet) CallbackPet();
+	if (m_hero) return false;
 
-	SItemPet *pPetClass = (SItemPet *)g_region->m_pItemManager->GetItem(item.type);
+	SItemPet* pPetClass = (SItemPet*)g_region->m_pItemManager->GetItem(item.type);
 	if (!pPetClass)		return false;
 
 	//<add by Tianh> ÊÍ·Å³èÎïÔö¼ÓÐÞÎªµÈ¼¶ÏÞÖÆ
 	if (m_core.GradeLev < pPetClass->NeedCulLev)
 	{
-		rt2_sprintf(g_strStaticBuffer, R(MSG_PET_CALLFITLEVEL),pPetClass->NeedCulLev);
+		rt2_sprintf(g_strStaticBuffer, R(MSG_PET_CALLFITLEVEL), pPetClass->NeedCulLev);
 		SendSystemMessage(g_strStaticBuffer);
 
 		return false;
 	}
-	 
+
 	// if pet is die
-	if(item.params[PET_PARAM_HP] <= 0)
+	if (item.params[PET_PARAM_HP] <= 0)
 	{
 		item.params[PET_PARAM_HP] = 1;
 	}
 
-	if(item.params[PET_PARAM_LEV] > DWORD(m_core.Lev + 5))
+	if (item.params[PET_PARAM_LEV] > DWORD(m_core.Lev + 5))
 	{
 		rt2_sprintf(g_strStaticBuffer, R(MSG_PET_CALLFAILCAUSELEVEL));
 		SendSystemMessage(g_strStaticBuffer);
 		return false;
-	}	
-	CRegionCreature *cre = g_region->CreateNpc(pPetClass->petID);
-	if(!cre) return false;
-	
+	}
+	CRegionCreature* cre = g_region->CreateNpc(pPetClass->petID);
+	if (!cre) return false;
+
 	// set pet info
-	SPet * info = g_TablePet.FindPet(cre->m_npcId);
-	if(!info)
+	SPet* info = g_TablePet.FindPet(cre->m_npcId);
+	if (!info)
 	{
 		g_factory->DestroyObject(cre);
 		return false;
 	}
-	
-	if(!m_scene->AddCreature(cre,m_pos,0))
+
+	if (!m_scene->AddCreature(cre, m_pos, 0))
 	{
 		g_factory->DestroyObject(cre);
 		return false;
@@ -9948,7 +9979,7 @@ bool CRegionCreature::ReleasePet(SItemID &item)
 	cre->SetAI("pet");
 	cre->ActiveAI();
 	cre->m_ai->OnFollow(this);
-	cre->SetTimer(CRE_TIMER_HEARTBEAT,HEARTBEAT_INTERVAL);
+	cre->SetTimer(CRE_TIMER_HEARTBEAT, HEARTBEAT_INTERVAL);
 	cre->ResetCheaterCheck();
 	UpdatePetDataByItem(item);
 
@@ -9963,7 +9994,7 @@ bool CRegionCreature::ReleasePet(SItemID &item)
 			RidePet();
 		}
 	}
-	
+
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_active_pet);
 	g_sendCmd->WriteLong(cre->m_oId);
@@ -9974,22 +10005,22 @@ bool CRegionCreature::ReleasePet(SItemID &item)
 	return true;
 }
 
-bool CRegionCreature::CallbackPet(bool bSaveCallPet/* = false*/,bool bResetState/* = true*/)
+bool CRegionCreature::CallbackPet(bool bSaveCallPet/* = false*/, bool bResetState/* = true*/)
 {
-	if(IsRidePet())
+	if (IsRidePet())
 	{
 		RideOffPet(bResetState);
 	}
 	else if (IsLinkUpWithPet())
 	{
-		LinkUpWithPet(0,bResetState);
+		LinkUpWithPet(0, bResetState);
 	}
-		
-    // if(m_usePetBusy && rtGetMilliseconds() < m_usePetBusy) 
+
+	// if(m_usePetBusy && rtGetMilliseconds() < m_usePetBusy) 
 	//	return false;
 	m_usePetBusy = rtGetMilliseconds() + 1000;
 
-	if(!m_pet)
+	if (!m_pet)
 		return false;
 
 	if (!bSaveCallPet)
@@ -10015,27 +10046,27 @@ bool CRegionCreature::CallbackPet(bool bSaveCallPet/* = false*/,bool bResetState
 	return true;
 }
 
-bool CRegionCreature::ReleaseHero(SItemID &item)
+bool CRegionCreature::ReleaseHero(SItemID& item)
 {
-	if(m_usePetBusy && rtGetMilliseconds() < m_usePetBusy) 
+	if (m_usePetBusy && rtGetMilliseconds() < m_usePetBusy)
 		return false;
 	m_usePetBusy = rtGetMilliseconds() + USE_PET_BUSY;
 
 	// if(m_pet) return false; //É¾³ý³èÎïÊÍ·ÅºóÎÞ·¨ÊÍ·ÅÉñÏÉ¡£(ÐèÒªÑÐ¾¿)
-	if(m_hero) return false;
+	if (m_hero) return false;
 
-	SOtherItem *pItem = g_region->m_pItemManager->GetItem(item)->pOtherItem;
-	if(!pItem) return false;
+	SOtherItem* pItem = g_region->m_pItemManager->GetItem(item)->pOtherItem;
+	if (!pItem) return false;
 
 	DWORD npc_id = atoi(pItem->param1.c_str());
-	CRegionCreature *cre = g_region->CreateNpc(npc_id);
-	if(!cre) return false;
+	CRegionCreature* cre = g_region->CreateNpc(npc_id);
+	if (!cre) return false;
 
 	AddHero(cre);
 	m_curHuiYuanHoptoadOid = cre->GetObjectId();
-	if(m_scene->AddCreature(cre, m_pos, m_dir))
+	if (m_scene->AddCreature(cre, m_pos, m_dir))
 	{
-		if(cre->IsScriptLoaded())
+		if (cre->IsScriptLoaded())
 			cre->CallScript("OnCreate", false);
 	}
 	else
@@ -10048,8 +10079,8 @@ bool CRegionCreature::ReleaseHero(SItemID &item)
 	cre->SetAI("hero");
 	cre->ActiveAI();
 	cre->m_ai->OnFollow(this);
-	cre->SetTimer(CRE_TIMER_HEARTBEAT,HEARTBEAT_INTERVAL);
-	
+	cre->SetTimer(CRE_TIMER_HEARTBEAT, HEARTBEAT_INTERVAL);
+
 	return true;
 }
 
@@ -10061,7 +10092,7 @@ bool CRegionCreature::CallbackHero()
 
 	m_usePetBusy = rtGetMilliseconds() + 1000;
 
-	if(!m_hero) return false;
+	if (!m_hero) return false;
 	m_hero->DeleteAI();
 	m_scene->RemoveCreature(m_hero->m_oId);
 	g_factory->DestroyObject(m_hero);
@@ -10072,15 +10103,15 @@ bool CRegionCreature::CallbackHero()
 
 void CRegionCreature::RecomputeAttr()
 {
-	if(m_master)
+	if (m_master)
 	{
-		SPet * info = g_TablePet.FindPet(m_npcId);
-		if(!info) return;
-		
-		SBaseValue *base = g_TableBaseValue.Find(GetRealLevel(m_core.Lev));
-		if(!base) return;
+		SPet* info = g_TablePet.FindPet(m_npcId);
+		if (!info) return;
 
-		CRegionPetAI *petAI = (CRegionPetAI*)m_ai;
+		SBaseValue* base = g_TableBaseValue.Find(GetRealLevel(m_core.Lev));
+		if (!base) return;
+
+		CRegionPetAI* petAI = (CRegionPetAI*)m_ai;
 		if (!petAI || !petAI->m_pItemPet.id)
 			return;
 
@@ -10097,21 +10128,21 @@ void CRegionCreature::RecomputeAttr()
 		float ElementArmorRate[3];
 		float ElementAttackRate[3];
 
-		if (!GetPetInfoFromItem(item,FHp,FMp,FAttack,FDamage,FDodge,FArmor,ElementArmorRate,ElementAttackRate))
+		if (!GetPetInfoFromItem(item, FHp, FMp, FAttack, FDamage, FDodge, FArmor, ElementArmorRate, ElementAttackRate))
 			return;
 
-		m_core.DamageMin.Base = (base->FDamage * FDamage + info->AddedDamage) * (1-info->DamageFloat);
-		m_core.DamageMax.Base = (base->FDamage * FDamage + info->AddedDamage) * (1+info->DamageFloat);
-		m_core.Attack.Base    = base->FAttack * FAttack + info->AddedAttack;
-		m_core.Armor.Base     = base->FArmor * FArmor + info->AddedArmor;
-		m_core.Dodge.Base     = base->FDodge * FDodge + info->AddedDodge;
-		m_core.MaxHp.Base     = base->FHp * FHp + info->AddedHp;
-		m_core.MaxMp.Base     = base->FMp * FMp + info->AddedMp;
-		m_core.AttSpeed.Base  = info->AttackSpeed * ATT_SPEED_SCALE;
+		m_core.DamageMin.Base = (base->FDamage * FDamage + info->AddedDamage) * (1 - info->DamageFloat);
+		m_core.DamageMax.Base = (base->FDamage * FDamage + info->AddedDamage) * (1 + info->DamageFloat);
+		m_core.Attack.Base = base->FAttack * FAttack + info->AddedAttack;
+		m_core.Armor.Base = base->FArmor * FArmor + info->AddedArmor;
+		m_core.Dodge.Base = base->FDodge * FDodge + info->AddedDodge;
+		m_core.MaxHp.Base = base->FHp * FHp + info->AddedHp;
+		m_core.MaxMp.Base = base->FMp * FMp + info->AddedMp;
+		m_core.AttSpeed.Base = info->AttackSpeed * ATT_SPEED_SCALE;
 
-		for(int i=0; i<MAX_PET_MODEL_CHANGE; i++)
+		for (int i = 0; i < MAX_PET_MODEL_CHANGE; i++)
 		{
-			if(m_core.Lev <= info->ModelLevel[i])
+			if (m_core.Lev <= info->ModelLevel[i])
 			{
 				m_core.ModelId = info->ModelChange[i];
 				m_attackRange = info->AttackRangeChange[i];
@@ -10120,10 +10151,10 @@ void CRegionCreature::RecomputeAttr()
 			}
 		}
 
-		for(int i = 0; i <MAX_ELEMENT_ATTR ;i++)
+		for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 		{
-			m_core.ElementArmor[i].Base  = ((m_core.Lev-1)*1+10)*2*(ElementArmorRate[i]);
-			m_core.ElementDamage[i].Base = (m_core.Lev-1+10)*2*(ElementAttackRate[i]);
+			m_core.ElementArmor[i].Base = ((m_core.Lev - 1) * 1 + 10) * 2 * (ElementArmorRate[i]);
+			m_core.ElementDamage[i].Base = (m_core.Lev - 1 + 10) * 2 * (ElementAttackRate[i]);
 		}
 	}
 	else
@@ -10134,39 +10165,39 @@ void CRegionCreature::RecomputeAttr()
 
 bool CRegionCreature::SetLev(int lev)
 {
-	if(lev < 1 || lev > MAX_LEVEL)
+	if (lev < 1 || lev > MAX_LEVEL)
 		return false;
 
 	ULONG setexp = 0;
-	if(lev >= m_core.Lev)
+	if (lev >= m_core.Lev)
 	{
 		lev = lev - m_core.Lev;
-		for(int i=0; i<lev; ++i)
+		for (int i = 0; i < lev; ++i)
 		{
 			setexp = g_TableExp.GetNextLevExp(m_core.Lev + 1);
-			while(setexp > 1312200000)
+			while (setexp > 1312200000)
 			{
-				AddExp(1312200000,0);
+				AddExp(1312200000, 0);
 				setexp -= 1312200000;
 			}
-			AddExp(setexp,0);
+			AddExp(setexp, 0);
 		}
 	}
 	else
 	{
 		lev = m_core.Lev - lev;
-		for(int i=0; i<lev; ++i)
+		for (int i = 0; i < lev; ++i)
 		{
 			setexp = g_TableExp.GetNextLevExp(m_core.Lev);
 			while (setexp > 1312200000)
 			{
-				AddExp(-1312200000,0);
+				AddExp(-1312200000, 0);
 				setexp -= 1312200000;
 			}
-			AddExp(-setexp,0);
+			AddExp(-setexp, 0);
 		}
 	}
-	
+
 	return true;
 }
 
@@ -10174,16 +10205,16 @@ void CRegionCreature::OnLevelUp()
 {
 	if (IsUserPet() && m_ai)
 	{
-		((CRegionPetAI *)m_ai)->PetLevUp();
+		((CRegionPetAI*)m_ai)->PetLevUp();
 	}
 	RecomputeAttr();
-	if(IsUser())
+	if (IsUser())
 	{
 		/*if(m_core.Lev >= 5)*/  //Tianh È¥µô5¼¶ºó¿ªÊ¼¼Ó¼¼ÄÜSPµÄÏÞÖÆ
-		m_core.SkillPoint ++;
+		m_core.SkillPoint++;
 		/*Tianh**09.12.14--Ã¿ÉýÒ»¼¶AP+5¸÷ÊôÐÔ+1*/
-		m_core.AttrPoint  += 5;
-	
+		m_core.AttrPoint += 5;
+
 		m_core.Str.Base++;
 		m_core.Con.Base++;
 		m_core.Dex.Base++;
@@ -10202,12 +10233,12 @@ void CRegionCreature::OnLevelUp()
 void CRegionCreature::OnLevelDown()
 {
 	RecomputeAttr();
-	if(IsUser())
+	if (IsUser())
 	{
-	//Tianh ½µ¼¶²»ÐèÒª´¦ÀíSPºÍAP
-    // 	if(m_core.Lev >= 5)
-    // 		m_core.SkillPoint -= 1;
-    // 	m_core.AttrPoint -= 5;
+		//Tianh ½µ¼¶²»ÐèÒª´¦ÀíSPºÍAP
+		// 	if(m_core.Lev >= 5)
+		// 		m_core.SkillPoint -= 1;
+		// 	m_core.AttrPoint -= 5;
 		FbCheckTask(false);
 	}
 	m_core.SetHp(m_core.GetMaxHp());
@@ -10217,12 +10248,12 @@ void CRegionCreature::OnLevelDown()
 void CRegionCreature::FbCheckTask(bool notifyClient)
 {
 	vector<long> fblist;
-	g_TableFB.GetByLevel(m_core.Lev,m_core.Faction,fblist);
-	if(fblist.size() > 0)
+	g_TableFB.GetByLevel(m_core.Lev, m_core.Faction, fblist);
+	if (fblist.size() > 0)
 	{
-		for(int i=0; i<(int)fblist.size(); i++)
+		for (int i = 0; i < (int)fblist.size(); i++)
 			m_task.AddFb(fblist[i]);
-		if(notifyClient)
+		if (notifyClient)
 			UpdateToClient(NET_CRE_UPDATE_FB_TASK);
 	}
 }
@@ -10230,15 +10261,15 @@ void CRegionCreature::FbCheckTask(bool notifyClient)
 void CRegionCreature::FbCheckAllTask(bool notifyClient)
 {
 	vector<long> fblist;
-	g_TableFB.GetByLevelBelow(m_core.Lev,m_core.Faction,fblist);
-	if(fblist.size() > 0)
+	g_TableFB.GetByLevelBelow(m_core.Lev, m_core.Faction, fblist);
+	if (fblist.size() > 0)
 	{
-		for(int i=0; i<(int)fblist.size(); i++)
+		for (int i = 0; i < (int)fblist.size(); i++)
 			m_task.AddFb(fblist[i]);
 	}
 
 	m_task.CheckAllFbTask();
-	if(notifyClient)
+	if (notifyClient)
 		UpdateToClient(NET_CRE_UPDATE_FB_TASK);
 }
 
@@ -10257,13 +10288,13 @@ void CRegionCreature::UpdatePetDataByItem(SItemID& item)
 	if (m_pet->m_core.Lev < 1)
 		m_pet->m_core.Lev = 1;
 	m_pet->m_core.Exp = item.params[PET_PARAM_EXP];
-	
+
 	// get model and attr
 	m_pet->RecomputeAttr();
-	
+
 	//Tianh
 	CActorSkill* petActorSkill = FindActorSkill(m_pet, m_pet->m_oId);
-	
+
 
 	if (petActorSkill && petActorSkill->FindPassive(SUPER_TREATMAEN_HP))
 	{
@@ -10298,13 +10329,13 @@ void CRegionCreature::UpdatePetDataByItem(SItemID& item)
 void CRegionCreature::SavePetDataToItem(CRegionCreature* pMaster)
 {
 	int page, i, j;
-	if (m_dwPetItemOID==0)
+	if (m_dwPetItemOID == 0)
 	{
 		ERR("[SavePetDataToItem]: m_dwPetItemOID==0\n");
 		return;
 	}
 	if (!pMaster)				return;
-	CRegionItemContainer *pCon = pMaster->m_pItemContainer;
+	CRegionItemContainer* pCon = pMaster->m_pItemContainer;
 	if (!pCon)					return;
 	if (!pCon->m_PetBag.Find(m_dwPetItemOID, &page, &i, &j))
 	{
@@ -10335,8 +10366,8 @@ void CRegionCreature::SavePetDataToItem(CRegionCreature* pMaster)
 
 void CRegionCreature::UpdateEquipTrump(SItemID& newItem)
 {
-    if (!m_pItemContainer)
-        return;
+	if (!m_pItemContainer)
+		return;
 
 	SItemID item = m_pItemContainer->GetEquipItem(CItemContainerBase::TRUMP, true);
 	if (!ItemIsTrump(item.type))
@@ -10350,26 +10381,26 @@ void CRegionCreature::UpdateEquipTrump(SItemID& newItem)
 	}
 	m_pItemContainer->UpdateItemToClient(CItemContainerBase::TRUMP);
 
-    m_pItemContainer->OnCreatureAttribChanged(CItemContainerBase::TRUMP);
+	m_pItemContainer->OnCreatureAttribChanged(CItemContainerBase::TRUMP);
 }
 
-bool CRegionCreature::SetWarder(CRegionCreature *pWarder)
+bool CRegionCreature::SetWarder(CRegionCreature* pWarder)
 {
-	if(IsUser() || IsUserPet() || IsCallNpc())
+	if (IsUser() || IsUserPet() || IsCallNpc())
 		return false;
-	if(pWarder && !pWarder->IsUser())
+	if (pWarder && !pWarder->IsUser())
 		return false;
 
-	if(pWarder)
+	if (pWarder)
 		pWarder->m_WardNPC = this;
-	if(m_master)
+	if (m_master)
 		m_master->m_WardNPC = NULL;
 	m_master = pWarder;
 	return true;
 }
 bool CRegionCreature::RemoveWardNPC(void)
 {
-	if(!m_WardNPC)
+	if (!m_WardNPC)
 		return false;
 	m_WardNPC->DeleteAI();
 	m_scene->RemoveCreature(m_WardNPC->m_oId);
@@ -10378,7 +10409,7 @@ bool CRegionCreature::RemoveWardNPC(void)
 	return true;
 }
 
-void CRegionCreature::Chat(char channel,const char *msg,const int Range, const char faction)
+void CRegionCreature::Chat(char channel, const char* msg, const int Range, const char faction)
 {
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_chat);
@@ -10387,7 +10418,7 @@ void CRegionCreature::Chat(char channel,const char *msg,const int Range, const c
 	g_sendCmd->WriteString((char*)m_core.Name.c_str());
 	g_sendCmd->WriteString((char*)msg);
 	if (faction == FACTION_UNKNOWN)
-		m_scene->BroadcastCmd(m_pos,Range,g_sendCmd,NULL);
+		m_scene->BroadcastCmd(m_pos, Range, g_sendCmd, NULL);
 	else
 		g_region->BroadcastCmd(g_sendCmd, NULL, faction);
 }
@@ -10396,14 +10427,14 @@ void CRegionCreature::Chat(char channel,const char *msg,const int Range, const c
 // gao 2010.3.19
 // Ìí¼ÓÒ»¸öÐÂµÄ²ÎÊý£¬Ä¿µÄÊÇÅÐ¶ÏÊÇ·ñÊÇ·¢¸ø×Ô¼ºµÄ
 // µ±ÊÇ·¢¸ø×Ô¼ºµÄÊ±ºò£¬ÕâÀïÒª¸ÄID£¬ÕâÑùÔÚ¿Í»§¶ËÔÚÁÄÌì¿òÌí¼Ó¿ÉÒÔÍ¨¹ýIDÌí¼ÓºÃÓÑ£¬²»»áÅÐ¶Ï³ö´í
-void CRegionCreature::Chat(char channel,const char *msg,CRegionCreature *receive_cre,CRegionCreature *from_cre,bool self)
+void CRegionCreature::Chat(char channel, const char* msg, CRegionCreature* receive_cre, CRegionCreature* from_cre, bool self)
 {
 	//Tianh Èç¹û½ÓÊÜÕßµÄºÚÃûµ¥ÀïÓÐ·¢ËÍÕß   Ôò²»½ÓÊÕ
 	if (receive_cre && from_cre)
 	{
 		if (receive_cre->m_pFriend && from_cre->m_userInfo)
 		{
-			if(receive_cre->m_pFriend->mConnection.Exist(SConnection::BLACKLIST,from_cre->m_userInfo->m_userId))
+			if (receive_cre->m_pFriend->mConnection.Exist(SConnection::BLACKLIST, from_cre->m_userInfo->m_userId))
 			{
 				return;
 			}
@@ -10413,7 +10444,7 @@ void CRegionCreature::Chat(char channel,const char *msg,CRegionCreature *receive
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_chat);
 	g_sendCmd->WriteByte(channel);
-	if(from_cre==NULL)
+	if (from_cre == NULL)
 	{
 		g_sendCmd->WriteLong(0);
 		g_sendCmd->WriteString((char*)"");
@@ -10421,7 +10452,7 @@ void CRegionCreature::Chat(char channel,const char *msg,CRegionCreature *receive
 	else
 	{
 		g_sendCmd->WriteLong(from_cre->m_oId);
-		if(self)
+		if (self)
 			g_sendCmd->WriteString((char*)receive_cre->m_core.Name.c_str());
 		else
 			g_sendCmd->WriteString((char*)from_cre->m_core.Name.c_str());
@@ -10431,7 +10462,7 @@ void CRegionCreature::Chat(char channel,const char *msg,CRegionCreature *receive
 	receive_cre->RecvCmd(g_sendCmd);
 }
 
-void CRegionCreature::ChatNewS(const char *fromName,const char *Name,const char *BossName,const char *SceneName,long type,const char *ItemName)
+void CRegionCreature::ChatNewS(const char* fromName, const char* Name, const char* BossName, const char* SceneName, long type, const char* ItemName)
 {
 
 	g_sendCmd->BeginWrite();
@@ -10450,7 +10481,7 @@ void CRegionCreature::ChatNewS(const char *fromName,const char *Name,const char 
 	return;
 }
 
-void CRegionCreature::Chat(char channel,const char *msg,CRegionCreature *receive_cre,ULONG from_region_id,const char * from_name)
+void CRegionCreature::Chat(char channel, const char* msg, CRegionCreature* receive_cre, ULONG from_region_id, const char* from_name)
 {
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_chat);
@@ -10512,14 +10543,14 @@ bool  CRegionCreature::ResolvingLinkChat(const char* msg)
 {
 	gChatString = "";
 	const string strBegin = "item[";
-	const string strEnd   = "]meti";
+	const string strEnd = "]meti";
 
 	const string test = msg;
 
 	size_t nPos = 0;
 	int nCurPos = 0;
 	int nEnd = 0;
-	string AllStr= "";
+	string AllStr = "";
 	string Link = "";
 	string newTemp = "";
 	string newTemp1 = "";
@@ -10529,7 +10560,7 @@ bool  CRegionCreature::ResolvingLinkChat(const char* msg)
 	long Type = 0;
 	SItemID rItem;
 	long lcolor = 0;
-	string ItemName = "" ;
+	string ItemName = "";
 	string StrItem;
 
 	while (nPos != string::npos)
@@ -10537,39 +10568,39 @@ bool  CRegionCreature::ResolvingLinkChat(const char* msg)
 		nPos = test.find(strBegin, nCurPos);
 		if (nPos != string::npos)
 		{
-			string str = test.substr(nCurPos, nPos-nCurPos);
+			string str = test.substr(nCurPos, nPos - nCurPos);
 			/*cout<<"ÆÕÍ¨ÎÄ±¾:\t"<<str<<endl;*/
 			AllStr += str;
 
-			nCurPos = nPos+5;
+			nCurPos = nPos + 5;
 			nPos = test.find(strEnd, nCurPos);
 			if (nPos != string::npos)
 			{
 				/*cout<<"³¬Á´½Ó:\t"<<test.substr(nCurPos, nPos-nCurPos)<<endl;*/
 
-				Link = test.substr(nCurPos, nPos-nCurPos) ;
+				Link = test.substr(nCurPos, nPos - nCurPos);
 
 				size_t nPos = Link.find(",");
 				newTemp = Link.substr(0, nPos);
 				Type = atol(newTemp.c_str());
 
-				size_t nPos1 = nPos+1;
+				size_t nPos1 = nPos + 1;
 				nPos = Link.find(",", nPos1);
-				newTemp1 = Link.substr(nPos1,nPos);
+				newTemp1 = Link.substr(nPos1, nPos);
 				ItemID = atol(newTemp1.c_str());
 
-				size_t nPos2 = nPos+1;
+				size_t nPos2 = nPos + 1;
 				nPos = Link.find(",", nPos2);
-				newTemp2 = Link.substr(nPos2,Link.length()-nPos);
+				newTemp2 = Link.substr(nPos2, Link.length() - nPos);
 				PlayerID = atol(newTemp2.c_str());
-				
-				if (PlayerID <0 || ItemID <=0 || Type <0)
+
+				if (PlayerID < 0 || ItemID <= 0 || Type < 0)
 				{
 					break;
 				}
-				if(PlayerID > 0)
+				if (PlayerID > 0)
 				{
-					CRegionCreature *pCreature = m_scene->FindCreature(PlayerID);
+					CRegionCreature* pCreature = m_scene->FindCreature(PlayerID);
 					ItemName = "";
 
 					if (pCreature)
@@ -10579,39 +10610,39 @@ bool  CRegionCreature::ResolvingLinkChat(const char* msg)
 							break;
 						}
 						if (Type == 0)  //±³°üÎïÆ·
-						{		
+						{
 							if (pCreature->m_pItemContainer)
 							{
 								rItem = pCreature->m_pItemContainer->m_Bag.GetItemFromID(ItemID);
 								lcolor = rItem.color;
 
-								CItemManager*  m_pItemManager = pCreature->m_pItemContainer->GetItemManager();
+								CItemManager* m_pItemManager = pCreature->m_pItemContainer->GetItemManager();
 								if (m_pItemManager)
 								{
 									StrItem = rItem.SaveToString(m_pItemManager);
-									SItemBase*	pItemBase = m_pItemManager->GetItem(rItem.type);
+									SItemBase* pItemBase = m_pItemManager->GetItem(rItem.type);
 									if (pItemBase)
-									{	
+									{
 										ItemName = pItemBase->name;
 									}
-								}		
+								}
 							}
 						}
 						else if (Type == 1) //ÉíÉÏÎïÆ·
 						{
-							for(DWORD i = CItemContainerBase::WEAPON_1; i < CItemContainerBase::MAX_EQUIP_PARTS;i ++)
+							for (DWORD i = CItemContainerBase::WEAPON_1; i < CItemContainerBase::MAX_EQUIP_PARTS; i++)
 							{
 								if (m_pItemContainer)
 								{
 									SItemID ret = pCreature->m_pItemContainer->GetEquipItem((CItemContainerBase::EEquipParts)i, true);
 									if (ret.id == ItemID)
 									{
-										CItemManager*  m_pItemManager = pCreature->m_pItemContainer->GetItemManager();
+										CItemManager* m_pItemManager = pCreature->m_pItemContainer->GetItemManager();
 										lcolor = ret.color;
 										StrItem = ret.SaveToString(m_pItemManager);
-										SItemBase*	pItemBase = m_pItemManager->GetItem(ret.type);
+										SItemBase* pItemBase = m_pItemManager->GetItem(ret.type);
 										if (pItemBase)
-										{	
+										{
 											ItemName = pItemBase->name;
 										}
 									}
@@ -10623,11 +10654,11 @@ bool  CRegionCreature::ResolvingLinkChat(const char* msg)
 				else if (PlayerID == 0)
 				{
 				}
-			
+
 				//item[color, Ãû×Ö,StringItem]item   
 				char Cstr[10240];
 				AllStr += "item[";
-				rt2_sprintf(Cstr, "%d^)!%s^)!%s",lcolor,ItemName.c_str(),StrItem.c_str());
+				rt2_sprintf(Cstr, "%d^)!%s^)!%s", lcolor, ItemName.c_str(), StrItem.c_str());
 
 				AllStr += Cstr;
 				nPos += 5;
@@ -10636,7 +10667,7 @@ bool  CRegionCreature::ResolvingLinkChat(const char* msg)
 			{
 				if (nPos != test.size())
 				{
-					cout<<"·Ç·¨:\t"<<test.substr(nCurPos, test.size()-nCurPos)<<endl;
+					cout << "·Ç·¨:\t" << test.substr(nCurPos, test.size() - nCurPos) << endl;
 					break;
 				}
 			}
@@ -10645,11 +10676,11 @@ bool  CRegionCreature::ResolvingLinkChat(const char* msg)
 		else if (nCurPos != test.size())
 		{
 			//Ã»ÓÐÕÒµ½¿ªÊ¼token,ÔòÕý³£Óï¾ä
-			AllStr += test.substr(nCurPos, test.size()-nCurPos);
+			AllStr += test.substr(nCurPos, test.size() - nCurPos);
 			break;
 		}
 	}
-	
+
 	gChatString = AllStr;
 
 	if (gChatString.empty() || gChatString == "")
@@ -10657,19 +10688,19 @@ bool  CRegionCreature::ResolvingLinkChat(const char* msg)
 		return false;
 	}
 
-    return true;
+	return true;
 }
 
-void CRegionCreature::SendSystemMessage(const char* szSysMsg, CRegionCreature *pFromCre)
+void CRegionCreature::SendSystemMessage(const char* szSysMsg, CRegionCreature* pFromCre)
 {
-	if (szSysMsg==NULL || szSysMsg[0] == 0)
+	if (szSysMsg == NULL || szSysMsg[0] == 0)
 		return;
-    Chat(CHAT_CHANNEL_SYSTEM, szSysMsg, this, pFromCre);
+	Chat(CHAT_CHANNEL_SYSTEM, szSysMsg, this, pFromCre);
 }
 
-void CRegionCreature::SendBattleInfoMessage(const char* szSysMsg, CRegionCreature *pFromCre)
+void CRegionCreature::SendBattleInfoMessage(const char* szSysMsg, CRegionCreature* pFromCre)
 {
-	if (szSysMsg==NULL) return;
+	if (szSysMsg == NULL) return;
 	Chat(CHAT_CHANNEL_BATTLEINFO, szSysMsg, this, pFromCre);
 }
 
@@ -10679,18 +10710,18 @@ void CRegionCreature::CommonChat(char channel, char const* msg, char const* targ
 	{
 		return;
 	}
-	
-	const char *Cmag = gChatString.c_str();
-// 	const char* Cmag = ResolvingLinkChat(msg);
-	if(channel == CHAT_CHANNEL_PRIVATE)
+
+	const char* Cmag = gChatString.c_str();
+	// 	const char* Cmag = ResolvingLinkChat(msg);
+	if (channel == CHAT_CHANNEL_PRIVATE)
 	{//Ë½ÈËÆµµÀ
-		PrivateChat(target,Cmag);
+		PrivateChat(target, Cmag);
 	}
-	else if(channel == CHAT_CHANNEL_TEAM)
+	else if (channel == CHAT_CHANNEL_TEAM)
 	{//¶ÓÎéÆµµÀ
 		TeamChat(Cmag);
 	}
-	else if(channel == CHAT_CHANNEL_PARTY)
+	else if (channel == CHAT_CHANNEL_PARTY)
 	{//Í¬ÃËÆµµÀ
 		PartyChat(Cmag);
 	}
@@ -10702,10 +10733,10 @@ void CRegionCreature::CommonChat(char channel, char const* msg, char const* targ
 	{//GMÆµµÀ
 		if (title && *title)
 			GmChat(Cmag, title);
-		else 
+		else
 			GmChat(Cmag);
 	}
-	else if(channel == CHAT_CHANNEL_PUBLIC)
+	else if (channel == CHAT_CHANNEL_PUBLIC)
 	{//¹«¹²ÆµµÀ
 		//¹«¹²ÁÄÌì[!]
 		// Chagne public chat to world chat bu louis
@@ -10714,21 +10745,21 @@ void CRegionCreature::CommonChat(char channel, char const* msg, char const* targ
 	}
 	else
 	{//Ò»°ãÆµµÀ
-		Chat(channel,Cmag);
+		Chat(channel, Cmag);
 	}
 }
 
-const int MAX_COUNTRY_CHAT_LEVEL=80;
-const int MAX_LEUD_COUNTRY_CHAT_UNION_LEVEL=60;
+const int MAX_COUNTRY_CHAT_LEVEL = 80;
+const int MAX_LEUD_COUNTRY_CHAT_UNION_LEVEL = 60;
 
 void CRegionCreature::ClearResideForNameColor(void)
 {
-	for(std::list<ULONG>::iterator itReside = m_vResideObjectID.begin();
+	for (std::list<ULONG>::iterator itReside = m_vResideObjectID.begin();
 		itReside != m_vResideObjectID.end();
 		++itReside)
 	{
-		CRegionCreature *pCreature = m_scene->FindCreature(*itReside);
-		if(pCreature && pCreature->IsUser())
+		CRegionCreature* pCreature = m_scene->FindCreature(*itReside);
+		if (pCreature && pCreature->IsUser())
 		{
 			g_sendCmd->BeginWrite();
 			g_sendCmd->WriteShort(r2c_updata_npc_color);
@@ -10744,17 +10775,17 @@ void CRegionCreature::ClearResideForNameColor(void)
 
 void CRegionCreature::DeleteResideForNameColor(ULONG lObjectID)
 {
-	if(lObjectID <= 0 || IsUser() || IsUserPet() || IsCallNpc())
+	if (lObjectID <= 0 || IsUser() || IsUserPet() || IsCallNpc())
 		return;
 
-	for(std::list<ULONG>::iterator itReside = m_vResideObjectID.begin();
+	for (std::list<ULONG>::iterator itReside = m_vResideObjectID.begin();
 		itReside != m_vResideObjectID.end();
 		++itReside)
 	{
-		if( (*itReside) == lObjectID )
+		if ((*itReside) == lObjectID)
 		{
-			CRegionCreature *pCreature = m_scene->FindCreature(lObjectID);
-			if(pCreature && pCreature->IsUser())
+			CRegionCreature* pCreature = m_scene->FindCreature(lObjectID);
+			if (pCreature && pCreature->IsUser())
 			{
 				g_sendCmd->BeginWrite();
 				g_sendCmd->WriteShort(r2c_updata_npc_color);
@@ -10770,48 +10801,48 @@ void CRegionCreature::DeleteResideForNameColor(ULONG lObjectID)
 
 void CRegionCreature::AddResideForNameColor(ULONG lObjectID)
 {
-	if(lObjectID <= 0 || IsUser() || IsUserPet() || IsCallNpc())
+	if (lObjectID <= 0 || IsUser() || IsUserPet() || IsCallNpc())
 		return;
 
-	for(std::list<ULONG>::iterator itReside = m_vResideObjectID.begin();
+	for (std::list<ULONG>::iterator itReside = m_vResideObjectID.begin();
 		itReside != m_vResideObjectID.end();
 		++itReside)
 	{
-		if( (*itReside) == lObjectID )
+		if ((*itReside) == lObjectID)
 			return;
 	}
 
-	if(m_scene->FindCreature(lObjectID))
+	if (m_scene->FindCreature(lObjectID))
 		m_vResideObjectID.push_back(lObjectID);
 }
 
 void CRegionCreature::SetColorToNPCName(DWORD dwColor)
 {
-	if(IsUser() || IsUserPet() || IsCallNpc())
+	if (IsUser() || IsUserPet() || IsCallNpc())
 		return;
 	m_NameColor = dwColor;
-	if(!m_vResideObjectID.empty())
+	if (!m_vResideObjectID.empty())
 		UpdataNPCNameColorToClient();
 }
 
 void CRegionCreature::UpdataNPCNameColorToClient(void)
 {
-	if(IsUser() || IsUserPet() || m_NameColor == -1 || IsCallNpc())
+	if (IsUser() || IsUserPet() || m_NameColor == -1 || IsCallNpc())
 	{
 		ClearResideForNameColor();
 		m_NameColor = -1;
 		return;
 	}
 
-	for(std::list<ULONG>::iterator itReside = m_vResideObjectID.begin();
+	for (std::list<ULONG>::iterator itReside = m_vResideObjectID.begin();
 		itReside != m_vResideObjectID.end();
 		itReside++)
 	{
-		CRegionCreature *pCreature = m_scene->FindCreature(*itReside);
-		if(!pCreature || !pCreature->IsUser())
+		CRegionCreature* pCreature = m_scene->FindCreature(*itReside);
+		if (!pCreature || !pCreature->IsUser())
 		{
 			itReside = m_vResideObjectID.erase(itReside);
-			if(itReside == m_vResideObjectID.end())
+			if (itReside == m_vResideObjectID.end())
 				break;
 			continue;
 		}
@@ -10826,22 +10857,22 @@ void CRegionCreature::UpdataNPCNameColorToClient(void)
 
 void CRegionCreature::UpdataNPCNameColorToClient(ULONG lObjectID)
 {
-	if(IsUser() || IsUserPet() || m_NameColor == -1 || IsCallNpc())
+	if (IsUser() || IsUserPet() || m_NameColor == -1 || IsCallNpc())
 	{
 		ClearResideForNameColor();
 		m_NameColor = -1;
 		return;
 	}
 
-	for(std::list<ULONG>::iterator itReside = m_vResideObjectID.begin();
+	for (std::list<ULONG>::iterator itReside = m_vResideObjectID.begin();
 		itReside != m_vResideObjectID.end();
 		itReside++)
 	{
-		if(lObjectID != (*itReside))
+		if (lObjectID != (*itReside))
 			continue;
 
-		CRegionCreature *pCreature = m_scene->FindCreature(lObjectID);
-		if(!pCreature || !pCreature->IsUser())
+		CRegionCreature* pCreature = m_scene->FindCreature(lObjectID);
+		if (!pCreature || !pCreature->IsUser())
 		{
 			itReside = m_vResideObjectID.erase(itReside);
 			return;
@@ -10856,9 +10887,9 @@ void CRegionCreature::UpdataNPCNameColorToClient(ULONG lObjectID)
 	}
 }
 
-void CRegionCreature::UpdataAnimationToClient(const char *sAnimName)
+void CRegionCreature::UpdataAnimationToClient(const char* sAnimName)
 {
-	if(IsUser() || !sAnimName || sAnimName[0] == 0 || !m_scene)
+	if (IsUser() || !sAnimName || sAnimName[0] == 0 || !m_scene)
 		return;
 
 	g_sendCmd->BeginWrite();
@@ -10866,49 +10897,49 @@ void CRegionCreature::UpdataAnimationToClient(const char *sAnimName)
 	g_sendCmd->WriteLong(GetObjectId());	//NPCµÄID
 	g_sendCmd->WriteString(sAnimName);
 
-	CRegionObject* pFindCreature[SCENE_MAX_FIND_OBJECT] = {0};
+	CRegionObject* pFindCreature[SCENE_MAX_FIND_OBJECT] = { 0 };
 	int ObjectNum = m_scene->GetAroundObjectByGrid(pFindCreature, m_pos, DEFAULT_RANGE, SCENE_MAX_FIND_OBJECT);
-	for(int i=0; i<ObjectNum; i++)
+	for (int i = 0; i < ObjectNum; i++)
 	{
-		CRegionCreature *pUser = dynamic_cast<CRegionCreature*>(pFindCreature[i]);
-		if(pUser && pUser->IsUser())
+		CRegionCreature* pUser = dynamic_cast<CRegionCreature*>(pFindCreature[i]);
+		if (pUser && pUser->IsUser())
 			pUser->RecvCmd(g_sendCmd);
 	}
 }
 
-void CRegionCreature::CountryChat(const char *msg)//¹ú¼ÒÁÄÌì
+void CRegionCreature::CountryChat(const char* msg)//¹ú¼ÒÁÄÌì
 {
 	char Temp[100];
-	
+
 
 	//ÄãµÄµÈ¼¶²»¹»
-	if(m_core.Lev <= MAX_COUNTRY_CHAT_LEVEL && !IsUnionCaption())
+	if (m_core.Lev <= MAX_COUNTRY_CHAT_LEVEL && !IsUnionCaption())
 	{
-		rt2_sprintf(Temp,R(MSG_CHAT_LEVEL_LOW),MAX_COUNTRY_CHAT_LEVEL);
+		rt2_sprintf(Temp, R(MSG_CHAT_LEVEL_LOW), MAX_COUNTRY_CHAT_LEVEL);
 		SendSystemMessage(Temp);
-		return ;
+		return;
 	}
-	
+
 	//ÊÇÖîºî£¬µ«µÈ¼¶²»¹»
-	if(m_core.Lev <= MAX_LEUD_COUNTRY_CHAT_UNION_LEVEL && IsUnionCaption())
+	if (m_core.Lev <= MAX_LEUD_COUNTRY_CHAT_UNION_LEVEL && IsUnionCaption())
 	{
-		rt2_sprintf(Temp,R(MSG_CHAT_IS_UNION_BUT_LEVEL_LOW),MAX_LEUD_COUNTRY_CHAT_UNION_LEVEL );
+		rt2_sprintf(Temp, R(MSG_CHAT_IS_UNION_BUT_LEVEL_LOW), MAX_LEUD_COUNTRY_CHAT_UNION_LEVEL);
 		SendSystemMessage(Temp);
-		return ;
+		return;
 	}
 
 	//²»ÔÚ¹úÕ½³¡¾°ÖÐ
-	if(!g_WarfieldMgr.IsInWarfield(this))
+	if (!g_WarfieldMgr.IsInWarfield(this))
 	{
 		SendSystemMessage(R(MSG_CHAT_NOT_IN_NATIONAL_WAR));
-		return ;
+		return;
 	}
 
 	//¸øËùÓÐÍ¬ÕóÓªµÄÍæ¼Ò·¢ÏûÏ¢
-	g_WarfieldMgr.BroadcastMessage((char*)msg,CHAT_CHANNEL_COUNTRY,m_oId,m_core.Name.c_str(),m_core.Faction);
+	g_WarfieldMgr.BroadcastMessage((char*)msg, CHAT_CHANNEL_COUNTRY, m_oId, m_core.Name.c_str(), m_core.Faction);
 }
 
-void CRegionCreature::PublicChat(const char *msg)
+void CRegionCreature::PublicChat(const char* msg)
 {
 	//²»µ½10¼¶  ²»¿ÉÒÔÁÄÌì
 	if (m_core.Lev < 10)
@@ -10916,19 +10947,19 @@ void CRegionCreature::PublicChat(const char *msg)
 		return;
 	}
 
-	if ((m_WorldChatTime + 20*1000) <= rtGetMilliseconds())
+	if ((m_WorldChatTime + 20 * 1000) <= rtGetMilliseconds())
 	{
-		g_region->m_gws.SendChat(FACTION_ALL,m_core.Name.c_str(),CHAT_CHANNEL_PUBLIC,msg,"",m_oId);
+		g_region->m_gws.SendChat(FACTION_ALL, m_core.Name.c_str(), CHAT_CHANNEL_PUBLIC, msg, "", m_oId);
 		m_WorldChatTime = rtGetMilliseconds();
 	}
 	else
 	{
-		long Time = ((m_WorldChatTime + 20*1000) -  rtGetMilliseconds())/1000;
+		long Time = ((m_WorldChatTime + 20 * 1000) - rtGetMilliseconds()) / 1000;
 		rt2_sprintf(g_strStaticBuffer, R(MSG_CHAT_NEEDDELAY), Time);
 		SendSystemMessage(g_strStaticBuffer);
 	}
 
-	
+
 
 	return;
 	//string smsg = msg;
@@ -10968,90 +10999,90 @@ void CRegionCreature::PublicChat(const char *msg)
 		//}
 		/*else
 			SendSystemMessage(R(MSG_CHAT_PUBLIC_NOT_LABA));*/
-		   //return;
-	//}
-	//else
-	//{
-	//	if (IsHuiYuan())
-			
-	//	else if (m_pItemContainer->m_Bag.GetMoney() >= 1000)
-	//	{
-	//		AddGold(-1000);
-	//		g_region->m_gws.SendChat(m_core.Faction,m_core.Name.c_str(),CHAT_CHANNEL_PUBLIC,msg);
-	//		SendSystemMessage(R(MSG_CHAT_PUBLIC_USE_MONEY));
-	//	}
-	//	else
-	//		SendSystemMessage(R(MSG_CHAT_PUBLIC_NOT_MEMBER));
-	//}
+			//return;
+	 //}
+	 //else
+	 //{
+	 //	if (IsHuiYuan())
+
+	 //	else if (m_pItemContainer->m_Bag.GetMoney() >= 1000)
+	 //	{
+	 //		AddGold(-1000);
+	 //		g_region->m_gws.SendChat(m_core.Faction,m_core.Name.c_str(),CHAT_CHANNEL_PUBLIC,msg);
+	 //		SendSystemMessage(R(MSG_CHAT_PUBLIC_USE_MONEY));
+	 //	}
+	 //	else
+	 //		SendSystemMessage(R(MSG_CHAT_PUBLIC_NOT_MEMBER));
+	 //}
 
 }
 
-void CRegionCreature::PartyChat(const char *msg)
+void CRegionCreature::PartyChat(const char* msg)
 {
-	if(m_unionID==0)
+	if (m_unionID == 0)
 	{
 		SendSystemMessage(R(MSG_CHAT_NOT_UNION));//ÏµÍ³ÏûÏ¢
 		return;
 	}
-	g_region->m_gws.SendChat(m_unionID,m_core.Name.c_str(),CHAT_CHANNEL_PARTY,msg);
+	g_region->m_gws.SendChat(m_unionID, m_core.Name.c_str(), CHAT_CHANNEL_PARTY, msg);
 	return;
 }
 
-void CRegionCreature::TeamChat(const char *msg)
+void CRegionCreature::TeamChat(const char* msg)
 {
-	if(m_pTeam->mData.Size()==0)
+	if (m_pTeam->mData.Size() == 0)
 	{
 		SendSystemMessage(R(MSG_CHAT_NOT_TEAM));//ÏµÍ³ÏûÏ¢
 		return;
 	}
 
-	CRegionUser *user ;
-	CRegionCreature *cre ;
-	for(int i=m_pTeam->mData.Begin();i!=m_pTeam->mData.End();i++)
+	CRegionUser* user;
+	CRegionCreature* cre;
+	for (int i = m_pTeam->mData.Begin(); i != m_pTeam->mData.End(); i++)
 	{
-		user=g_region->FindUser( m_pTeam->mData[i].mDBID);
-		if(user==NULL)
+		user = g_region->FindUser(m_pTeam->mData[i].mDBID);
+		if (user == NULL)
 		{//¸ÃÍæ¼ÒÔÚregionÉÏÕÒ²»µ½£¬ÏòÉÏ·¢
-			g_region->m_gws.SendChat(m_pTeam->mData[i].mDBID,m_core.Name.c_str(),CHAT_CHANNEL_TEAM,msg);
+			g_region->m_gws.SendChat(m_pTeam->mData[i].mDBID, m_core.Name.c_str(), CHAT_CHANNEL_TEAM, msg);
 		}
 		else
 		{
-			cre= user->m_dummy;
-			Chat(CHAT_CHANNEL_TEAM,msg,cre,this);//·¢¸ø¶ÓÓÑºÍ×Ô¼º
+			cre = user->m_dummy;
+			Chat(CHAT_CHANNEL_TEAM, msg, cre, this);//·¢¸ø¶ÓÓÑºÍ×Ô¼º
 		}
 	}
 }
 
-const int CHAT_NAME_LIMIT_COUNT=32;
-void CRegionCreature::PrivateChat(const char *target,const char *msg)
+const int CHAT_NAME_LIMIT_COUNT = 32;
+void CRegionCreature::PrivateChat(const char* target, const char* msg)
 {
 	string TargetName(target);
-	
-	if(TargetName.size()>CHAT_NAME_LIMIT_COUNT)
+
+	if (TargetName.size() > CHAT_NAME_LIMIT_COUNT)
 	{
-		TargetName=TargetName.substr(0,CHAT_NAME_LIMIT_COUNT);
+		TargetName = TargetName.substr(0, CHAT_NAME_LIMIT_COUNT);
 	}
 
-	CRegionUser *user = g_region->FindUser(TargetName.c_str());
-	
-	if(user==NULL)
+	CRegionUser* user = g_region->FindUser(TargetName.c_str());
+
+	if (user == NULL)
 	{//¸ÃÍæ¼ÒÔÚregionÉÏÕÒ²»µ½£¬ÏòÉÏ·¢
-		g_region->m_gws.SendChat(TargetName.c_str(),m_core.Name.c_str(),CHAT_CHANNEL_PRIVATE,msg);
+		g_region->m_gws.SendChat(TargetName.c_str(), m_core.Name.c_str(), CHAT_CHANNEL_PRIVATE, msg);
 	}
 	else
 	{
-		CRegionCreature *cre = user->m_dummy;
+		CRegionCreature* cre = user->m_dummy;
 
-		if(cre!=this)
+		if (cre != this)
 		{
-			Chat(CHAT_CHANNEL_PRIVATE,msg,cre,this);//·¢¸øÃÜÁÄÕß
+			Chat(CHAT_CHANNEL_PRIVATE, msg, cre, this);//·¢¸øÃÜÁÄÕß
 		}
-		Chat(CHAT_CHANNEL_PRIVATE,msg,this,cre,true);//·¢¸ø×Ô¼º
+		Chat(CHAT_CHANNEL_PRIVATE, msg, this, cre, true);//·¢¸ø×Ô¼º
 	}
 	return;
 }
 
-void CRegionCreature::GmChat(const char *msg, const char *title/*=""*/)
+void CRegionCreature::GmChat(const char* msg, const char* title/*=""*/)
 {
 	guard;
 
@@ -11075,41 +11106,42 @@ void CRegionCreature::OnBlockChanged(RtsSceneBlockMap* pNewBlock, RtsSceneBlockM
 	if (pNewBlock == NULL || pNewBlock->m_pBlock == NULL)
 		return;
 
-    // pk attribure.
-    std::string szBlockName(pNewBlock->m_szFileName);
-    SSceneInfo* pSceneInfo = g_TableScene.FindScene(szBlockName);
-    if (pSceneInfo)
-    {
-        switch (pSceneInfo->iPKAttr)
-        {
-        case 0: m_eBlockPosPKAttr = PKA_UNSAFE; break;
-        default:
-        case 1: m_eBlockPosPKAttr = PKA_NORMAL; break;
-        case 2: m_eBlockPosPKAttr = PKA_SAFE;   break;
-        case 3: m_eBlockPosPKAttr = PKA_SAFEST; break;
-        case 4: m_eBlockPosPKAttr = PKA_PKUNABLE; break;
-        }
-    }else
-    {
-        m_eBlockPosPKAttr = PKA_NORMAL;
-    }
+	// pk attribure.
+	std::string szBlockName(pNewBlock->m_szFileName);
+	SSceneInfo* pSceneInfo = g_TableScene.FindScene(szBlockName);
+	if (pSceneInfo)
+	{
+		switch (pSceneInfo->iPKAttr)
+		{
+		case 0: m_eBlockPosPKAttr = PKA_UNSAFE; break;
+		default:
+		case 1: m_eBlockPosPKAttr = PKA_NORMAL; break;
+		case 2: m_eBlockPosPKAttr = PKA_SAFE;   break;
+		case 3: m_eBlockPosPKAttr = PKA_SAFEST; break;
+		case 4: m_eBlockPosPKAttr = PKA_PKUNABLE; break;
+		}
+	}
+	else
+	{
+		m_eBlockPosPKAttr = PKA_NORMAL;
+	}
 	//Tianh
 	m_pFriend->SelfDataChangeAffectOther();
 
 	//-------------add start by tony 06.05.30-----------------------------//
 	//- Íæ¼ÒÇÐ»»³¡¾°¿é´¦Àí
-	CG_CmdPacket &cmd = g_region->m_gws.BeginSend();
+	CG_CmdPacket& cmd = g_region->m_gws.BeginSend();
 	cmd.WriteShort(r2g_user_change_block);
 	cmd.WriteLong(m_userInfo->m_userId);
-	if(pOldBlock && pOldBlock->m_pBlock)	cmd.WriteString((char*)pOldBlock->GetFileName());
+	if (pOldBlock && pOldBlock->m_pBlock)	cmd.WriteString((char*)pOldBlock->GetFileName());
 	else									cmd.WriteString("");
 	cmd.WriteString((char*)pNewBlock->GetFileName());
 	g_region->m_gws.EndSend();
 	//-------------add end   by tony 06.05.30-----------------------------//
 
-    // switch region
+	// switch region
 
-	EXT_SPACE::hash_map<ULONG, long>::iterator iter = g_region->m_regionMap.find((ULONG)pNewBlock);
+	EXT_SPACE::unordered_map<ULONG, long>::iterator iter = g_region->m_regionMap.find((ULONG)pNewBlock);
 
 	if (iter == g_region->m_regionMap.end()) // Ã»ÓÐÕÒµ½ÐÂµÄ¿é
 		return;
@@ -11125,47 +11157,50 @@ const char* s_szPKArea = "PK:";
 
 void CRegionCreature::UpdateAreaPKAttr()
 {
-    int iLen;
-    char *pStr, *pValue;
-    RtsSceneBlockMap::SArea* pArea;
-    std::list<RtsSceneBlockMap::SArea*>::iterator it;
-    m_eCurPosPKAttr = m_eBlockPosPKAttr;
-    for (it=m_listArea.begin(); it!=m_listArea.end(); it++)
-    {
-        pArea = (*it);
-        pStr = strstr((char*)pArea->szData, (char*)s_szPKArea);
-        if (pStr)
-        {
-            pStr += strlen(s_szPKArea);
-            pValue = strchr(pStr, ';');
-            if (pValue==NULL) pValue = pStr+strlen(pStr);
-            iLen = pValue-pStr;
-            if (pValue && iLen>0)
-            {
-                if (strncmp(pStr, "Unsafe", strlen("Unsafe"))==0)
-                {
-                    m_eCurPosPKAttr = PKA_UNSAFE;
-                    return;
-                }else if (strncmp(pStr, "Safest", strlen("Safest"))==0)
-                {
-                    m_eCurPosPKAttr = PKA_SAFEST;
-                    return;
-                }else if (strncmp(pStr, "Safe", strlen("Safe"))==0)
-                {
-                    m_eCurPosPKAttr = PKA_SAFE;
-                    return;
-                }else if (strncmp(pStr, "pkunable", strlen("pkunable"))==0)
-                {
-                    m_eCurPosPKAttr = PKA_PKUNABLE;
-                    return;
-                }
-            }
-        }
-    }
-    if (IsRidePet())
-    {
-        m_pet->m_eCurPosPKAttr = m_eCurPosPKAttr;
-    }
+	int iLen;
+	char* pStr, * pValue;
+	RtsSceneBlockMap::SArea* pArea;
+	std::list<RtsSceneBlockMap::SArea*>::iterator it;
+	m_eCurPosPKAttr = m_eBlockPosPKAttr;
+	for (it = m_listArea.begin(); it != m_listArea.end(); it++)
+	{
+		pArea = (*it);
+		pStr = strstr((char*)pArea->szData, (char*)s_szPKArea);
+		if (pStr)
+		{
+			pStr += strlen(s_szPKArea);
+			pValue = strchr(pStr, ';');
+			if (pValue == NULL) pValue = pStr + strlen(pStr);
+			iLen = pValue - pStr;
+			if (pValue && iLen > 0)
+			{
+				if (strncmp(pStr, "Unsafe", strlen("Unsafe")) == 0)
+				{
+					m_eCurPosPKAttr = PKA_UNSAFE;
+					return;
+				}
+				else if (strncmp(pStr, "Safest", strlen("Safest")) == 0)
+				{
+					m_eCurPosPKAttr = PKA_SAFEST;
+					return;
+				}
+				else if (strncmp(pStr, "Safe", strlen("Safe")) == 0)
+				{
+					m_eCurPosPKAttr = PKA_SAFE;
+					return;
+				}
+				else if (strncmp(pStr, "pkunable", strlen("pkunable")) == 0)
+				{
+					m_eCurPosPKAttr = PKA_PKUNABLE;
+					return;
+				}
+			}
+		}
+	}
+	if (IsRidePet())
+	{
+		m_pet->m_eCurPosPKAttr = m_eCurPosPKAttr;
+	}
 }
 
 void CRegionCreature::OnAreaEnter(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock)
@@ -11175,8 +11210,8 @@ void CRegionCreature::OnAreaEnter(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockM
 		return;
 	}
 	GetPlayerLogic()->OnAreaEnter(pArea->szName);
-	char functionName[1024] = {0};
-	rt2_snprintf(functionName, sizeof(functionName) / sizeof(functionName[0]) - 1, "OnEnterArea_%s", pArea->szName);	
+	char functionName[1024] = { 0 };
+	rt2_snprintf(functionName, sizeof(functionName) / sizeof(functionName[0]) - 1, "OnEnterArea_%s", pArea->szName);
 	m_scene->CallScript(functionName, true, this);
 }
 
@@ -11186,31 +11221,31 @@ void CRegionCreature::OnAreaExit(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMa
 	{
 		return;
 	}
-	
-	char functionName[1024] = {0};
+
+	char functionName[1024] = { 0 };
 	rt2_snprintf(functionName, sizeof(functionName) / sizeof(functionName[0]) - 1, "OnExitArea_%s", pArea->szName);
 	m_scene->CallScript(functionName, true, this);
 }
 
 bool CRegionCreature::CanAcceptTask(int TaskId, CRegionCreature* npc)
 {
-	STaskDesc *desc = g_TableTask.FindTask(TaskId);
-	if(!desc) return false;
+	STaskDesc* desc = g_TableTask.FindTask(TaskId);
+	if (!desc) return false;
 
-	return CanAcceptTask(desc,false, npc);
+	return CanAcceptTask(desc, false, npc);
 }
 
-bool CRegionCreature::CanAcceptTask(STaskDesc *task,bool showErr, CRegionCreature* npc)
+bool CRegionCreature::CanAcceptTask(STaskDesc* task, bool showErr, CRegionCreature* npc)
 {
-	if(task->moneyTask)
+	if (task->moneyTask)
 	{
-		if(m_task.IsDoingMoneyTask()) return false;
-		if(m_mtFinish[task->moneyTask-1] >= 50*2)
+		if (m_task.IsDoingMoneyTask()) return false;
+		if (m_mtFinish[task->moneyTask - 1] >= 50 * 2)
 		{
 			// if(showErr) SendSystemMessage(R(MSG_TASK_CANCEL_BUSY));
 			return false;
 		}
-		if(m_mtBusy > time(NULL))
+		if (m_mtBusy > time(NULL))
 		{
 			// if(showErr) SendSystemMessage(R(MSG_TASK_MAX_LIMIT));
 			return false;
@@ -11218,14 +11253,14 @@ bool CRegionCreature::CanAcceptTask(STaskDesc *task,bool showErr, CRegionCreatur
 	}
 
 	//PZH
-	if(task->IsWenTask()/*wenTask*/)
+	if (task->IsWenTask()/*wenTask*/)
 	{
-		if(m_task.IsDoingWenTask())
+		if (m_task.IsDoingWenTask())
 		{
 			//SendSystemMessage("ÄãÕýÔÚ×öÄ³¸öÃÅÅÉÐÞÁ¶ÈÎÎñ£¬²»ÄÜÔÙ½ÓÆäËûÃÅÅÉÐÞÁ¶ÈÎÎñ");
 			return false;
 		}
-		if(m_wenTaskAccept >= 20)
+		if (m_wenTaskAccept >= 20)
 		{
 			//SendSystemMessage("Ã¿Ìì×î¶àÖ»ÄÜ½Ó20´ÎÃÅÅÉÐÞÁ¶ÈÎÎñ");
 			return false;
@@ -11238,26 +11273,26 @@ bool CRegionCreature::CanAcceptTask(STaskDesc *task,bool showErr, CRegionCreatur
 	}
 	if (task->IsUnionTask())
 	{
-		if(m_UnionTask >= 20 || 0 == m_unionID)
+		if (m_UnionTask >= 20 || 0 == m_unionID)
 		{
 			return false;
 		}
 	}
 	if (task->IsMouTask())
 	{
-		if(m_MouTaskAccept >= 20)
+		if (m_MouTaskAccept >= 20)
 		{
 			return false;
 		}
 	}
 	//
-	if(m_task.GetTaskAcceptNum() >= MAX_TASK_SELECT_NUM)
+	if (m_task.GetTaskAcceptNum() >= MAX_TASK_SELECT_NUM)
 		return false;
 
-	if(task->access == false)
+	if (task->access == false)
 		return false;
 
-	if(m_core.Lev<task->reqMinLev || m_core.Lev>task->reqMaxLev) 
+	if (m_core.Lev<task->reqMinLev || m_core.Lev>task->reqMaxLev)
 		return false;
 
 	if (task->m_TaskGroupID < 40)
@@ -11274,30 +11309,30 @@ bool CRegionCreature::CanAcceptTask(STaskDesc *task,bool showErr, CRegionCreatur
 		}
 	}
 
-	if(task->countryLimit != FACTION_ALL)
+	if (task->countryLimit != FACTION_ALL)
 	{
-		if(task->countryLimit != m_core.Faction) return false;
+		if (task->countryLimit != m_core.Faction) return false;
 	}
-	if(task->metierLimit != METIER_ALL)
+	if (task->metierLimit != METIER_ALL)
 	{
-		if(m_core.Metier != task->metierLimit) return false;
+		if (m_core.Metier != task->metierLimit) return false;
 	}
 
 	// ·Ö×éÈÎÎñ
-	if(task->group != 0 && task->group != -1)//tim.yang  ÈÕ³£ÈÎÎñ
+	if (task->group != 0 && task->group != -1)//tim.yang  ÈÕ³£ÈÎÎñ
 	{
-		if(m_task.IsTaskGroupAccept(task->group)) return false;
+		if (m_task.IsTaskGroupAccept(task->group)) return false;
 	}
 
-	STaskInfo *info = m_task.FindTask(task->id);
-	if(info)
+	STaskInfo* info = m_task.FindTask(task->id);
+	if (info)
 	{
-		if(/*PZH*//*info->IsDoing*/info->FIsDoing()) return false;
-		if(info->LastFinishTime + task->getTimeLimit > (DWORD)time(NULL))
+		if (/*PZH*//*info->IsDoing*/info->FIsDoing()) return false;
+		if (info->LastFinishTime + task->getTimeLimit > (DWORD)time(NULL))
 			return false;
 	}
 
-	if(task->repeat == 0 /*&& info*/)
+	if (task->repeat == 0 /*&& info*/)
 	{
 		if (m_task.IsDoneTask(task->id))
 		{
@@ -11306,7 +11341,7 @@ bool CRegionCreature::CanAcceptTask(STaskDesc *task,bool showErr, CRegionCreatur
 		//if(info->FinishNum > 0) return false;
 	}
 
-	if(task->reqUnion == 1 && !IsUnionCaption())
+	if (task->reqUnion == 1 && !IsUnionCaption())
 	{
 		return false;
 	}
@@ -11314,7 +11349,7 @@ bool CRegionCreature::CanAcceptTask(STaskDesc *task,bool showErr, CRegionCreatur
 	//----------add start by tony 06.05.09---------------------------//
 	int npcID = 0;
 	std::vector<long> param;
-	if(npc && npc->m_npcInfo)
+	if (npc && npc->m_npcInfo)
 	{
 		npcID = npc->m_npcInfo->Id;
 		param.push_back(npcID);
@@ -11322,10 +11357,10 @@ bool CRegionCreature::CanAcceptTask(STaskDesc *task,bool showErr, CRegionCreatur
 	//----------add end   by tony 06.05.09---------------------------//
 	//---------chg start by tony 06.05.09-------------------------------------------//
 #if 0
-@	if(!ProcessTaskKeyList(task->acceptReq,TYPE_CHECK,NULL))
-@		return false;
+	@	if (!ProcessTaskKeyList(task->acceptReq, TYPE_CHECK, NULL))
+		@		return false;
 #else
-	if(!ProcessTaskKeyList(task->acceptReq,TYPE_CHECK,&param))
+	if (!ProcessTaskKeyList(task->acceptReq, TYPE_CHECK, &param))
 		return false;
 #endif
 	//---------chg end   by tony 06.05.09-------------------------------------------//
@@ -11335,42 +11370,42 @@ bool CRegionCreature::CanAcceptTask(STaskDesc *task,bool showErr, CRegionCreatur
 
 //---------chg start by tony 06.05.09-------------------------------------------//
 #if 0
-@ bool CRegionCreature::CanFinishTask(STaskDesc *task,int idx)
+@ bool CRegionCreature::CanFinishTask(STaskDesc* task, int idx)
 #else
-bool CRegionCreature::CanFinishTask(STaskDesc *task,int idx, CRegionCreature* npc)
+bool CRegionCreature::CanFinishTask(STaskDesc* task, int idx, CRegionCreature* npc)
 #endif
 //---------chg end  by tony 06.05.09--------------------------------------------//
 {
 	int nRet = 1;
-	STaskInfo *info = m_task.FindTask(task->id);
-	do 
+	STaskInfo* info = m_task.FindTask(task->id);
+	do
 	{
-		if(NULL == info)
+		if (NULL == info)
 		{
 			break;
 		}
 		//---------add start by tony 06.05.09-------------------------------------------//
 		int npcID = 0;
 		std::vector<long> param;
-		if(npc && npc->m_npcInfo)
+		if (npc && npc->m_npcInfo)
 		{
 			npcID = npc->m_npcInfo->Id;
 			param.push_back(npcID);
 		}
 		bool bB = false;
-		if(info->Desc && info->Desc->circleTask)
+		if (info->Desc && info->Desc->circleTask)
 		{
-			switch(info->Desc->circleTask) 
+			switch (info->Desc->circleTask)
 			{
 			case TASK_CIRCLE_FINDNPC:
-				if(info->m_findnpcID != npcID)
+				if (info->m_findnpcID != npcID)
 				{
 					bB = true;
 				}
 				break;
 			case TASK_CIRCLE_ITEM:
 			case TASK_CIRCLE_BATTLE:
-				if(info->m_srcNpcID != npcID)
+				if (info->m_srcNpcID != npcID)
 				{
 					bB = true;
 				}
@@ -11385,13 +11420,13 @@ bool CRegionCreature::CanFinishTask(STaskDesc *task,int idx, CRegionCreature* np
 		}
 		//---------chg end   by tony 06.05.09-------------------------------------------//
 
-		if(/*PZH*//*!info->IsDoing*/!info->FIsDoing())
+		if (/*PZH*//*!info->IsDoing*/!info->FIsDoing())
 		{
 			break;
 		}
-		if(task->finishType == TASK_FINISH_TYPE_SELECT) 
+		if (task->finishType == TASK_FINISH_TYPE_SELECT)
 		{
-			if(!ProcessTaskKeyList(task->specReq[idx],TYPE_CHECK,NULL))
+			if (!ProcessTaskKeyList(task->specReq[idx], TYPE_CHECK, NULL))
 			{
 				nRet = 2;
 				break;
@@ -11401,10 +11436,10 @@ bool CRegionCreature::CanFinishTask(STaskDesc *task,int idx, CRegionCreature* np
 		{
 			//--------------------------chg start by tony 06.05.09-------------------------------------------//
 #if 0
-			@ 		if(!ProcessTaskKeyList(task->taskReq,TYPE_CHECK,0))
+			@ 		if (!ProcessTaskKeyList(task->taskReq, TYPE_CHECK, 0))
 				@			return false;
 #else
-			if(!ProcessTaskKeyList(task->taskReq,TYPE_CHECK,&param, task))
+			if (!ProcessTaskKeyList(task->taskReq, TYPE_CHECK, &param, task))
 			{
 				nRet = 2;
 				break;
@@ -11441,35 +11476,35 @@ bool CRegionCreature::CanFinishTask(STaskDesc *task,int idx, CRegionCreature* np
 
 //--------------------------chg start by tony 06.05.09-------------------------------------------//
 #if 0
-@bool CRegionCreature::IsDoingTask(STaskDesc *task)
+@bool CRegionCreature::IsDoingTask(STaskDesc* task)
 @{
-@	STaskInfo *info = m_task.FindTask(task->id);
-@	if(!info) return false;
-@
-@	return info->IsDoing != 0;
-@}
+	@	STaskInfo* info = m_task.FindTask(task->id);
+	@	if (!info) return false;
+	@
+		@	return info->IsDoing != 0;
+	@}
 #else
-bool CRegionCreature::IsDoingTask(STaskDesc *task, CRegionCreature* npc)
+bool CRegionCreature::IsDoingTask(STaskDesc* task, CRegionCreature* npc)
 {
-	STaskInfo *info = m_task.FindTask(task->id);
-	if(!info) return false;
+	STaskInfo* info = m_task.FindTask(task->id);
+	if (!info) return false;
 
-	if(npc && npc->m_npcInfo && info->Desc && info->Desc->circleTask)
+	if (npc && npc->m_npcInfo && info->Desc && info->Desc->circleTask)
 	{
-		switch(info->Desc->circleTask) {
+		switch (info->Desc->circleTask) {
 		case TASK_CIRCLE_FINDNPC:
-			{
-				if(info->m_findnpcID!=npc->m_npcInfo->Id)
-					return false;
-			}
-			break;
+		{
+			if (info->m_findnpcID != npc->m_npcInfo->Id)
+				return false;
+		}
+		break;
 		case TASK_CIRCLE_ITEM:
 		case TASK_CIRCLE_BATTLE:
-			{
-				if(info->m_srcNpcID!=npc->m_npcInfo->Id)
-					return false;
-			}
-			break;
+		{
+			if (info->m_srcNpcID != npc->m_npcInfo->Id)
+				return false;
+		}
+		break;
 		default:
 			return false;
 			break;
@@ -11489,16 +11524,16 @@ bool CRegionCreature::AcceptTask(int TaskId, CRegionCreature* npc)
 #endif
 //----------chg end   by tony 06.05.09------------------------------------------------//
 {
-	STaskDesc *desc = g_TableTask.FindTask(TaskId);
-	if(desc)
-	{	
-//----------chg start by tony 06.05.09------------------------------------------------//
+	STaskDesc* desc = g_TableTask.FindTask(TaskId);
+	if (desc)
+	{
+		//----------chg start by tony 06.05.09------------------------------------------------//
 #if 0
-@		return AcceptTask(desc);
+		@		return AcceptTask(desc);
 #else
 		return AcceptTask(desc, npc);
 #endif
-//----------chg end   by tony 06.05.09------------------------------------------------//
+		//----------chg end   by tony 06.05.09------------------------------------------------//
 	}
 	else
 	{
@@ -11508,17 +11543,17 @@ bool CRegionCreature::AcceptTask(int TaskId, CRegionCreature* npc)
 
 //----------chg start by tony 06.05.09------------------------------------------------//
 #if 0
-@ bool CRegionCreature::AcceptTask(STaskDesc *task)
+@ bool CRegionCreature::AcceptTask(STaskDesc* task)
 #else
-bool CRegionCreature::AcceptTask(STaskDesc *task, CRegionCreature* npc)
+bool CRegionCreature::AcceptTask(STaskDesc* task, CRegionCreature* npc)
 #endif
 //----------chg end   by tony 06.05.09------------------------------------------------//
 {
 	//-----add start by tony 06.05.09------------------------//
-	if(task->circleTask!=0 && npc && npc->m_npcInfo)
+	if (task->circleTask != 0 && npc && npc->m_npcInfo)
 	{
 		//STaskInfo* info = m_task.FindTask(task->id);
-		if(m_task.m_currCircle >= g_tcTotalCircle)
+		if (m_task.m_currCircle >= g_tcTotalCircle)
 		{
 			m_task.m_currCircle = 0;
 			m_task.m_isActive = 1;
@@ -11536,9 +11571,9 @@ bool CRegionCreature::AcceptTask(STaskDesc *task, CRegionCreature* npc)
 	}
 	//-----add end   by tony 06.05.09------------------------//
 
-	if(m_task.AcceptTask(task->id))
+	if (m_task.AcceptTask(task->id))
 	{
-		if(task->IsWenTask()) 
+		if (task->IsWenTask())
 		{
 			m_wenTaskAccept++;
 		}
@@ -11550,16 +11585,16 @@ bool CRegionCreature::AcceptTask(STaskDesc *task, CRegionCreature* npc)
 		{
 			m_MouTaskAccept++;
 		}
-		ProcessTaskKeyList(task->flagItem,TYPE_ADD,0);
+		ProcessTaskKeyList(task->flagItem, TYPE_ADD, 0);
 		//-----add start by tony 06.05.09------------------------//
-		if(task->circleTask!=0 && npc && npc->m_npcInfo)
+		if (task->circleTask != 0 && npc && npc->m_npcInfo)
 		{
 			STaskInfo* info = m_task.FindTask(task->id);
-			if(info)
+			if (info)
 			{
 				m_task.m_currCircle++;
 				info->m_srcNpcID = npc->m_npcInfo->Id;
-				switch(task->circleTask) {
+				switch (task->circleTask) {
 				case TASK_CIRCLE_ITEM:
 					info->m_finditemID = m_tmpfinditemID;
 					break;
@@ -11580,11 +11615,11 @@ bool CRegionCreature::AcceptTask(STaskDesc *task, CRegionCreature* npc)
 		UpdateToClient(NET_CRE_UPDATE_TASK);
 		NetSend_r2c_task_event(2);
 
-		if(IsScriptLoaded())
+		if (IsScriptLoaded())
 		{
-			char sFuncName[50] = {0};
+			char sFuncName[50] = { 0 };
 			rt2_snprintf(sFuncName, 50, "OnAcceptTask%d", task->id);
-			if(npc)
+			if (npc)
 				CallScript(sFuncName, false, npc);
 			else
 				CallScript(sFuncName, false, 0);
@@ -11604,9 +11639,9 @@ bool CRegionCreature::AcceptTask(STaskDesc *task, CRegionCreature* npc)
 void CRegionCreature::TickTask(unsigned long delta)
 {
 	int id = m_task.FindTimeoutTask();
-	if(id)
+	if (id)
 	{
-		CancelTask(id,true);
+		CancelTask(id, true);
 	}
 }
 
@@ -11616,25 +11651,25 @@ void CRegionCreature::RemoveMCTask()//tim.yang  MC
 	UpdateToClient(NET_CRE_UPDATE_TASK);
 	NetSend_r2c_task_event(0);
 }
-bool CRegionCreature::CancelTask(DWORD TaskId,bool busy)
+bool CRegionCreature::CancelTask(DWORD TaskId, bool busy)
 {
-	if(m_task.CancelTask(TaskId))
+	if (m_task.CancelTask(TaskId))
 	{
-		STaskDesc *desc = g_TableTask.FindTask(TaskId);
-		if(desc)
+		STaskDesc* desc = g_TableTask.FindTask(TaskId);
+		if (desc)
 		{
 			RemoveTaskItem(desc);
 			// ProcessTaskKeyList(desc->flagItem,TYPE_REMOVE);
-			if(desc->moneyTask && busy)
+			if (desc->moneyTask && busy)
 			{
-				m_mtBusy = time(NULL) + (desc->moneyTask+2)*2*60;
+				m_mtBusy = time(NULL) + (desc->moneyTask + 2) * 2 * 60;
 			}
- 			if(desc->IsWenTask()/*wenTask*/)
- 			{
- 				m_wenTaskFinish = 0;
- 			}
+			if (desc->IsWenTask()/*wenTask*/)
+			{
+				m_wenTaskFinish = 0;
+			}
 			//----------add start by tony 06.05.11-----------------//
-			if(desc->circleTask)
+			if (desc->circleTask)
 			{
 				m_task.m_currCircle = 0;
 				m_tmpcurrCircle = 0;
@@ -11644,9 +11679,9 @@ bool CRegionCreature::CancelTask(DWORD TaskId,bool busy)
 				m_tmpkillmonsterID = 0;
 			}
 			//----------add end   by tony 06.05.11-----------------//
-			vector<STaskKey> *req = NULL;
+			vector<STaskKey>* req = NULL;
 
-			if(desc->finishType == TASK_FINISH_TYPE_NORMAL)
+			if (desc->finishType == TASK_FINISH_TYPE_NORMAL)
 			{
 				req = &desc->taskReq;
 			}
@@ -11656,21 +11691,21 @@ bool CRegionCreature::CancelTask(DWORD TaskId,bool busy)
 				vl.push_back(1);
 				ProcessTaskKeyList(*req, TYPE_REMOVE, &vl);
 			}
-			if(desc->IsGongTask())
+			if (desc->IsGongTask())
 			{
 				GetPlayerLogic()->SetNextGongTaskTime(time(NULL) + 600);
 			}
 		}
 
-		if(IsScriptLoaded())
+		if (IsScriptLoaded())
 		{
-			char sFuncName[50] = {0};
+			char sFuncName[50] = { 0 };
 			rt2_snprintf(sFuncName, 50, "OnCancelTask%d", TaskId);
 			CallScript(sFuncName, false);
 		}
 
 		UpdateToClient(NET_CRE_UPDATE_TASK);
-		std::string msg = R(MSG_TASK_CANCELTASK) + desc->name;	
+		std::string msg = R(MSG_TASK_CANCELTASK) + desc->name;
 		SendSystemMessage(msg.c_str());
 		NetSend_r2c_task_event(0);
 	}
@@ -11679,61 +11714,61 @@ bool CRegionCreature::CancelTask(DWORD TaskId,bool busy)
 
 bool CRegionCreature::AddReward(int rewardId)
 {
-	SFBReward *rw = g_TableFBReword.Find(rewardId);
-	if(!rw) return false;
+	SFBReward* rw = g_TableFBReword.Find(rewardId);
+	if (!rw) return false;
 
-	if(rw->exp != 0)
+	if (rw->exp != 0)
 	{
-		AddExp(rw->exp,0);
+		AddExp(rw->exp, 0);
 		return true;
 	}
-	else if(rw->gold != 0)
+	else if (rw->gold != 0)
 	{
 		AddGold(rw->gold);
 		return true;
 	}
-	else if(rw->itemId != 0)
+	else if (rw->itemId != 0)
 	{
 		EItemColor color = ItemColor_White;
-		if(rw->color=="green")
+		if (rw->color == "green")
 			color = ItemColor_Green;
-		else if(rw->color=="blue")
+		else if (rw->color == "blue")
 			color = ItemColor_Blue;
 
 		EItemBind tmpBind = IB_NotBind;
-		if(rw->bindType == 1)
+		if (rw->bindType == 1)
 		{
 			tmpBind = IB_Binded;
 		}
-		else if(rw->bindType == 2)
+		else if (rw->bindType == 2)
 		{
 			tmpBind = IB_BindWhenEquip;
 		}
-		
-		SItemID item = g_region->m_pItemManager->CreateItem(rw->itemId,color,0,tmpBind,
-			rw->colorParam1,rw->colorRate,rw->colorParam2,rw->colorRate);
-		
+
+		SItemID item = g_region->m_pItemManager->CreateItem(rw->itemId, color, 0, tmpBind,
+			rw->colorParam1, rw->colorRate, rw->colorParam2, rw->colorRate);
+
 		//if(!ItemCanNpcTrade(item.type)) return false;
-		if(!ItemID_IsValid(item)) return false;
+		if (!ItemID_IsValid(item)) return false;
 		return AddItem(item);
 	}
 	return false;
 }
 
-bool CRegionCreature::ProcessTaskKeyList(vector<STaskKey> &table,int op,vector<long> *param, STaskDesc *pDesc)
+bool CRegionCreature::ProcessTaskKeyList(vector<STaskKey>& table, int op, vector<long>* param, STaskDesc* pDesc)
 {
 	bool failed = false;
-	for(size_t i=0; i<table.size(); i++)
+	for (size_t i = 0; i < table.size(); i++)
 	{
-  		if(!ProcessTaskKey(table[i],op,param, pDesc))
+		if (!ProcessTaskKey(table[i], op, param, pDesc))
 			failed = true;
-		if(failed && op == TYPE_CHECK)
+		if (failed && op == TYPE_CHECK)
 			return false;
 	}
 	return !failed;
 }
 
-bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, STaskDesc *pDesc)
+bool CRegionCreature::ProcessTaskKey(STaskKey& key, int op, vector<long>* param, STaskDesc* pDesc)
 {
 	/*Tianh  Ôö¼ÓGMÃüÁîÔö¼ÓÁéÁ¦Öµ*/
 	//if (key.key == "add soul")
@@ -11743,115 +11778,115 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 	//	
 	//	return true;
 	//}
-	if(key.key == "fbprocess")
+	if (key.key == "fbprocess")
 	{
 		int process = atoi(key.param[0].c_str());
-		if(process > m_nFBprocess)
+		if (process > m_nFBprocess)
 			return false;
 		return true;
 	}
 
-	if(key.key == "addteam")
+	if (key.key == "addteam")
 	{
 		int teamId = atoi(key.param[0].c_str());
 		int monsterNum = atoi(key.param[1].c_str());
-		m_scene->AddTeam(teamId,monsterNum);
+		m_scene->AddTeam(teamId, monsterNum);
 		return true;
 	}
 
-	if(key.key == "removeteam")
+	if (key.key == "removeteam")
 	{
 		int teamId = atoi(key.param[0].c_str());
 		int monsterNum = atoi(key.param[1].c_str());
-		m_scene->RemoveTeam(teamId,monsterNum);
+		m_scene->RemoveTeam(teamId, monsterNum);
 		return true;
 	}
-	
-	if(key.key == "item")
+
+	if (key.key == "item")
 	{
 		long itemId;
 		itemId = atol(key.param[0].c_str());
-		if(itemId == 0) return true;
+		if (itemId == 0) return true;
 
 		long itemNum;
 		itemNum = atol(key.param[1].c_str());
-		if(itemNum == 0) return true;
+		if (itemNum == 0) return true;
 
 		EItemColor color = ItemColor_White;
-		if(key.param[2] == "all")
+		if (key.param[2] == "all")
 			color = ItemColor_All;
-		else if(key.param[2] == "white")
+		else if (key.param[2] == "white")
 			color = ItemColor_White;
-		else if(key.param[2] == "green")
+		else if (key.param[2] == "green")
 			color = ItemColor_Green;
-		else if(key.param[2] == "blue")
+		else if (key.param[2] == "blue")
 			color = ItemColor_Blue;
 
-		switch(op)
-		{
-			case TYPE_CHECK:
-				if(GetItemNum(itemId,color) < itemNum)
-					return false;
-				else 
-					return true;
-				break;
-
-			case TYPE_ADD:
-				for(int i=0; i<itemNum; i++)
-					AddItem(itemId,color);
-				return true;
-				break;
-
-			case TYPE_REMOVE:
-				if (NULL != param)
-				{
-					if (param->size() > 0)
-					{
-						if (1 == (*param)[0])
-						{
-							SItemBase *pItemClass = g_region->m_pItemManager->GetItemFromIndex(itemId);
-							if (NULL != pItemClass)
-							{
-								//if (ItemIsMissionItem(pItemClass->type))
-								{
-									return RemoveItem(itemId, -itemNum, color);
-								}
-							}
-						}
-					}
-				}
-				SItemBase *pItemClass = g_region->m_pItemManager->GetItemFromIndex(itemId);
-				if (NULL != pItemClass)
-				{
-					//if (ItemIsMissionItem(pItemClass->type))
-					{
-						return RemoveItem(itemId,itemNum,color);
-					}
-				}
-				break;
-		}
-	}
-	if(key.key == "pet")
-	{
-		long petId;
-		petId = atol(key.param[0].c_str());
-		if(petId == 0) return true;
-
-		long petNum;
-		petNum = atol(key.param[1].c_str());
-		if(petNum == 0) return true;
-
-		switch(op)
+		switch (op)
 		{
 		case TYPE_CHECK:
-			if(GetPetNum(petId) < petNum)
+			if (GetItemNum(itemId, color) < itemNum)
 				return false;
-			else 
+			else
 				return true;
 			break;
 
 		case TYPE_ADD:
-			for(int i=0; i<petNum; i++)
+			for (int i = 0; i < itemNum; i++)
+				AddItem(itemId, color);
+			return true;
+			break;
+
+		case TYPE_REMOVE:
+			if (NULL != param)
+			{
+				if (param->size() > 0)
+				{
+					if (1 == (*param)[0])
+					{
+						SItemBase* pItemClass = g_region->m_pItemManager->GetItemFromIndex(itemId);
+						if (NULL != pItemClass)
+						{
+							//if (ItemIsMissionItem(pItemClass->type))
+							{
+								return RemoveItem(itemId, -itemNum, color);
+							}
+						}
+					}
+				}
+			}
+			SItemBase* pItemClass = g_region->m_pItemManager->GetItemFromIndex(itemId);
+			if (NULL != pItemClass)
+			{
+				//if (ItemIsMissionItem(pItemClass->type))
+				{
+					return RemoveItem(itemId, itemNum, color);
+				}
+			}
+			break;
+		}
+	}
+	if (key.key == "pet")
+	{
+		long petId;
+		petId = atol(key.param[0].c_str());
+		if (petId == 0) return true;
+
+		long petNum;
+		petNum = atol(key.param[1].c_str());
+		if (petNum == 0) return true;
+
+		switch (op)
+		{
+		case TYPE_CHECK:
+			if (GetPetNum(petId) < petNum)
+				return false;
+			else
+				return true;
+			break;
+
+		case TYPE_ADD:
+			for (int i = 0; i < petNum; i++)
 				AddPetToBag(petId);
 			return true;
 			break;
@@ -11867,36 +11902,36 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 					}
 				}
 			}
-			return RemovePetFromBag(petId,petNum);
+			return RemovePetFromBag(petId, petNum);
 			break;
 		}
 	}
-	if(key.key == "sreward")
+	if (key.key == "sreward")
 	{
-		if(!param || param->size() < 2) return false;
+		if (!param || param->size() < 2) return false;
 		long sreward = (*param)[1];
 		bool valid = false;
 
-		for(int k=0; k<MAX_TASK_PARAM_SIZE; k++)
+		for (int k = 0; k < MAX_TASK_PARAM_SIZE; k++)
 		{
-            long rId;
+			long rId;
 			rId = atol(key.param[k].c_str());
-			if(rId==sreward && sreward>0) valid=true;
+			if (rId == sreward && sreward > 0) valid = true;
 		}
-		switch(op)
+		switch (op)
 		{
-			case TYPE_CHECK: 
-				return valid; 
-				break;
+		case TYPE_CHECK:
+			return valid;
+			break;
 
-			case TYPE_ADD:
-				if(!valid) return false;
-				return AddReward(sreward);
-				break;
+		case TYPE_ADD:
+			if (!valid) return false;
+			return AddReward(sreward);
+			break;
 
-			case TYPE_REMOVE:
-				return valid;
-				break;
+		case TYPE_REMOVE:
+			return valid;
+			break;
 		}
 	}
 	/*else if(key.key == "credit")
@@ -11908,7 +11943,7 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 		case TYPE_CHECK:
 			if(GetCredit() < num)
 				return false;
-			else 
+			else
 				return true;
 			break;
 
@@ -11923,49 +11958,49 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 			break;
 		}
 	}*/
-	else if(key.key == "beginmove")
+	else if (key.key == "beginmove")
 	{
 		m_ai->SetLvFlag(AI_PATROL);
 	}
-	else if(key.key == "killself")
+	else if (key.key == "killself")
 	{
 		long lTime = atol(key.param[0].c_str());
 		SetTimer(CRE_TIMER_KILL_SELF, lTime > 0 ? lTime : 1000);
 		m_valid = false;
 		return true;
 	}
-	else if(key.key == "allcredit")
+	else if (key.key == "allcredit")
 	{
 		int num;
 		num = atol(key.param[0].c_str());
 		TObjectHash::iterator it;
-		for(it=m_scene->m_userHash.begin(); it!=m_scene->m_userHash.end(); it++)
+		for (it = m_scene->m_userHash.begin(); it != m_scene->m_userHash.end(); it++)
 		{
-			CRegionCreature *cre = (CRegionCreature*)(it->second);
+			CRegionCreature* cre = (CRegionCreature*)(it->second);
 			cre->AddCredit(num);
 		}
 		return true;
 	}
-	else if(key.key == "summon")
+	else if (key.key == "summon")
 	{
-		if(!m_valid) return false;
+		if (!m_valid) return false;
 		int npcId = atol(key.param[0].c_str());
 		int cnt = atol(key.param[1].c_str());
-		for(int i=0; i<cnt; i++)
+		for (int i = 0; i < cnt; i++)
 		{
-			CRegionCreature *cre = g_region->CreateNpc(npcId);
-			if(cre)
+			CRegionCreature* cre = g_region->CreateNpc(npcId);
+			if (cre)
 			{
 				long pos[3];
 				pos[0] = atol(key.param[2].c_str());
 				pos[1] = atol(key.param[3].c_str());
-				if(!m_scene->AddCreature(cre,pos,0))
+				if (!m_scene->AddCreature(cre, pos, 0))
 				{
 					g_factory->DestroyObject(cre);
 				}
 				else
 				{
-					if(cre->IsScriptLoaded())
+					if (cre->IsScriptLoaded())
 						cre->CallScript("OnCreate", false);
 
 					cre->m_ai->SetLvFlag(AI_PATROL);
@@ -11973,16 +12008,16 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 			}
 		}
 	}
-	else if(key.key == "gold")
+	else if (key.key == "gold")
 	{
 		int num;
 		num = atol(key.param[0].c_str());
-		switch(op)
+		switch (op)
 		{
 		case TYPE_CHECK:
-			if(GetGold() < num)
+			if (GetGold() < num)
 				return false;
-			else 
+			else
 				return true;
 			break;
 
@@ -11998,18 +12033,19 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 			return true;
 			break;
 		}
-	}else if(key.key == "idle")
+	}
+	else if (key.key == "idle")
 	{
-		if(m_ai)
+		if (m_ai)
 		{
 			m_ai->SetLvFlag(AI_IDLE);
 			m_ai->SetState(CRegionAI::STATE_MOVE);
 			m_ai->SetStartNode(m_pos);
 		}
 	}
-	else if(key.key == "team")
+	else if (key.key == "team")
 	{
-		if(m_pTeam->mData.Empty())
+		if (m_pTeam->mData.Empty())
 		{
 			return false;
 		}
@@ -12023,7 +12059,7 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 		case TYPE_CHECK:
 			if(GetGold() < num)
 				return false;
-			else 
+			else
 				return true;
 			break;
 
@@ -12040,129 +12076,129 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 		}
 		*/
 	}
-	else if(key.key == "setlev")
+	else if (key.key == "setlev")
 	{
 		int lev;
 		lev = atol(key.param[0].c_str());
 		SetLev(lev);
 	}
-	else if(key.key == "exp")
+	else if (key.key == "exp")
 	{
 		int num;
 		num = atol(key.param[0].c_str());
-		switch(op)
+		switch (op)
 		{
 		case TYPE_ADD:
-			AddExp(num,0);
+			AddExp(num, 0);
 			return true;
 			break;
 		}
 	}
-	else if(key.key == "task")
+	else if (key.key == "task")
 	{
 		int num;
 		num = atol(key.param[0].c_str());
-		
+
 		//Cheney.2009.8.11 Ôö¼ÓÖ°ÒµÇø·ÖÔùËÍÈÎÎñ
 		int AwardClass = 0;
-		if(!key.param[1].empty())
+		if (!key.param[1].empty())
 			AwardClass = atol(key.param[1].c_str());
-				
-		switch(op)
+
+		switch (op)
 		{
 		case TYPE_CHECK:
 			return m_task.IsTaskAccept(num);
 
 		case TYPE_ADD:
-			if(AwardClass != 0 && AwardClass != m_core.Metier) return false;
+			if (AwardClass != 0 && AwardClass != m_core.Metier) return false;
 			return AcceptTask(num);
-			
+
 			break;
 		}
 	}
-	else if(key.key == "lvlexp")
+	else if (key.key == "lvlexp")
 	{
 		int lev;
 		lev = atol(key.param[0].c_str());
-		if(lev == 0)
+		if (lev == 0)
 			lev = m_core.Lev;
 
 		int add;
 		DWORD next = g_TableExp.GetNextLevExp(lev);
-        switch(op)
+		switch (op)
 		{
 		case TYPE_ADD:
-			add = next*atof(key.param[1].c_str());
+			add = next * atof(key.param[1].c_str());
 			// if(add > next - m_core.Exp)
 			//	add = next - m_core.Exp;
-			AddExp(add,0);
+			AddExp(add, 0);
 			return true;
 		}
 	}
-	else if(key.key == "lvlexpsm")
+	else if (key.key == "lvlexpsm")
 	{
 		int lev;
 		lev = atol(key.param[0].c_str());
-		if(lev == 0)
+		if (lev == 0)
 			lev = m_core.Lev;
 
-		int add=0,tmp=0,cnt=0;
+		int add = 0, tmp = 0, cnt = 0;
 		DWORD next = g_TableExp.GetNextLevExp(lev);
-		add = next*atof(key.param[1].c_str());
+		add = next * atof(key.param[1].c_str());
 		tmp = add;
-		while(tmp >= 10)
+		while (tmp >= 10)
 		{
-			tmp/=10;
+			tmp /= 10;
 			cnt++;
 		}
 		tmp = 1;
 		cnt--;
-		while(cnt-->0)
+		while (cnt-- > 0)
 		{
-			tmp*=10;
+			tmp *= 10;
 		}
-		add = (add/tmp)*tmp;
-		switch(op)
+		add = (add / tmp) * tmp;
+		switch (op)
 		{
 		case TYPE_ADD:
-			AddExp(add,0);
+			AddExp(add, 0);
 			return true;
 		}
 	}
-	else if(key.key == "ritem")
+	else if (key.key == "ritem")
 	{
 		int id[3];
-		for(int i=0; i<3; i++)
-            id[i] = atol(key.param[2+i].c_str());
+		for (int i = 0; i < 3; i++)
+			id[i] = atol(key.param[2 + i].c_str());
 
 		int num;
 		num = atol(key.param[0].c_str());
 
 		EItemColor color = ItemColor_All;
-		if(key.param[1] == "all")
+		if (key.param[1] == "all")
 			color = ItemColor_All;
-		else if(key.param[1] == "white")
+		else if (key.param[1] == "white")
 			color = ItemColor_White;
-		else if(key.param[1] == "green")
+		else if (key.param[1] == "green")
 			color = ItemColor_Green;
-		else if(key.param[1] == "blue")
+		else if (key.param[1] == "blue")
 			color = ItemColor_Blue;
 
-		switch(op)
+		switch (op)
 		{
 		case TYPE_CHECK:
-			for(int i=0; i<3; i++)
+			for (int i = 0; i < 3; i++)
 			{
-				if(GetItemNum(id[i],color) >= num)
+				if (GetItemNum(id[i], color) >= num)
 					return true;
 			}
 			return false;
 			break;
 
 		case TYPE_REMOVE:
-			for(int i=0; i<3; i++)
+			for (int i = 0; i < 3; i++)
 			{
-				if(RemoveItem(id[i],num,color))
+				if (RemoveItem(id[i], num, color))
 					return true;
 			}
 			return false;
@@ -12170,22 +12206,22 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 
 		case TYPE_ADD:
 			int ret;
-			ret = GetRand(2,0);
-			while(num--)
-				AddItem(id[ret],color);
+			ret = GetRand(2, 0);
+			while (num--)
+				AddItem(id[ret], color);
 			return true;
 			break;
 		}
 	}
-	else if(key.key == "mlev")
+	else if (key.key == "mlev")
 	{
 		int lev;
 		lev = atol(key.param[0].c_str());
-		switch(op)
+		switch (op)
 		{
 		case TYPE_CHECK:
-			if(lev == -1) return true;
-			if(m_core.MetierLev == lev) return true;
+			if (lev == -1) return true;
+			if (m_core.MetierLev == lev) return true;
 			return false;
 			break;
 
@@ -12193,23 +12229,23 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 			break;
 
 		case TYPE_ADD:
-			if(lev < 0 || lev > 4) return false;
+			if (lev < 0 || lev > 4) return false;
 			m_core.MetierLev = lev;
-			
-			SUserActor *actor;
-			actor = g_TableUserActor.FindUserActor(m_core.Metier,m_core.MetierLev);
-			if(actor) 
+
+			SUserActor* actor;
+			actor = g_TableUserActor.FindUserActor(m_core.Metier, m_core.MetierLev);
+			if (actor)
 			{
-				SCreModel *model = g_TableCreModel.FindCreModel(actor->ModelId);
-				if(!model) return NULL;
-				
+				SCreModel* model = g_TableCreModel.FindCreModel(actor->ModelId);
+				if (!model) return NULL;
+
 				m_model = model;
 				m_core.ModelId = model->Id;
 				m_core.ComplexModel = model->bComplex;
 				g_sendCmd->BeginWrite();
 				g_sendCmd->WriteShort(r2c_change_model);
 				g_sendCmd->WriteShort(m_core.ModelId);
-				RecvCmd(g_sendCmd);	
+				RecvCmd(g_sendCmd);
 			}
 			return true;
 			break;
@@ -12218,241 +12254,241 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 	else if (key.key == "unionscore") // Öîºî¹ú»ý·Ö
 	{
 		int num = atol(key.param[0].c_str());
-		switch(op)
+		switch (op)
 		{
 		case TYPE_CHECK:
-			{
-				if (m_unionID==0)
-					return false;
-				EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(m_unionID);
-				if (iterUnion==g_region->m_unionMap.end())
-					return false;
-//ÊÇ·ñÐÞ¸Ä³É°ïÅÉ×Ê½ð
-// 				SUnionData& unionData = iterUnion->second;
-// 				if (unionData.score >= num)
-// 					return true;
-// 				else 
-// 					return false;
-			}
-			break;
+		{
+			if (m_unionID == 0)
+				return false;
+			EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(m_unionID);
+			if (iterUnion == g_region->m_unionMap.end())
+				return false;
+			//ÊÇ·ñÐÞ¸Ä³É°ïÅÉ×Ê½ð
+			// 				SUnionData& unionData = iterUnion->second;
+			// 				if (unionData.score >= num)
+			// 					return true;
+			// 				else 
+			// 					return false;
+		}
+		break;
 		case TYPE_ADD:
-			{
-				if (m_unionID==0)
-					return false;
-				EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(m_unionID);
-				if (iterUnion==g_region->m_unionMap.end())
-					return false;
+		{
+			if (m_unionID == 0)
+				return false;
+			EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(m_unionID);
+			if (iterUnion == g_region->m_unionMap.end())
+				return false;
 
-				CG_CmdPacket& packet = g_region->m_gws.BeginSend();
-				packet.WriteShort(r2g_union);
-				packet.WriteShort(r2g_union_add_score);
-				packet.WriteLong(m_userInfo->m_userId);
-				packet.WriteLong(m_unionID);
-				packet.WriteLong(num);
-				g_region->m_gws.EndSend();
+			CG_CmdPacket& packet = g_region->m_gws.BeginSend();
+			packet.WriteShort(r2g_union);
+			packet.WriteShort(r2g_union_add_score);
+			packet.WriteLong(m_userInfo->m_userId);
+			packet.WriteLong(m_unionID);
+			packet.WriteLong(num);
+			g_region->m_gws.EndSend();
 
-				return true;
-			}
+			return true;
+		}
 		default:
 			break;
 		}
 	}
 	else if (key.key == "unionlev") // Öîºî¹úµÈ¼¶
 	{
-// 		int num = atol(key.param[0].c_str());
-// 		switch(op)
-// 		{
-// 		case TYPE_CHECK:
-// 			{
-// 				if (m_unionID==0)
-// 					return false;
-// 				if (IsUnionOperateLocked(m_unionID))
-// 					return false;
-// 				EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(m_unionID);
-// 				if (iterUnion==g_region->m_unionMap.end())
-// 					return false;
-// 				SUnionData& unionData = iterUnion->second;
-// 				if (unionData.level == num)
-// 					return true;
-// 				else 
-// 					return false;
-// 			}
-// 			break;
-// 		case TYPE_ADD:
-// 			{
-// 				if (m_unionID==0)
-// 					return false;
-// 				EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(m_unionID);
-// 				if (iterUnion==g_region->m_unionMap.end())
-// 					return false;
-// 
-// 				CG_CmdPacket& packet = g_region->m_gws.BeginSend();
-// 				packet.WriteShort(r2g_union);
-// 				packet.WriteShort(c2r_union_update_level);
-// 				packet.WriteLong(m_userInfo->m_userId);
-// 				g_region->m_gws.EndSend();
-// 
-// 				LockUnionOperate(m_unionID, true);
-// 
-// 				return true;
-// 			}
-// 		default:
-// 			break;
-// 		}
+		// 		int num = atol(key.param[0].c_str());
+		// 		switch(op)
+		// 		{
+		// 		case TYPE_CHECK:
+		// 			{
+		// 				if (m_unionID==0)
+		// 					return false;
+		// 				if (IsUnionOperateLocked(m_unionID))
+		// 					return false;
+		// 				EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(m_unionID);
+		// 				if (iterUnion==g_region->m_unionMap.end())
+		// 					return false;
+		// 				SUnionData& unionData = iterUnion->second;
+		// 				if (unionData.level == num)
+		// 					return true;
+		// 				else 
+		// 					return false;
+		// 			}
+		// 			break;
+		// 		case TYPE_ADD:
+		// 			{
+		// 				if (m_unionID==0)
+		// 					return false;
+		// 				EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iterUnion = g_region->m_unionMap.find(m_unionID);
+		// 				if (iterUnion==g_region->m_unionMap.end())
+		// 					return false;
+		// 
+		// 				CG_CmdPacket& packet = g_region->m_gws.BeginSend();
+		// 				packet.WriteShort(r2g_union);
+		// 				packet.WriteShort(c2r_union_update_level);
+		// 				packet.WriteLong(m_userInfo->m_userId);
+		// 				g_region->m_gws.EndSend();
+		// 
+		// 				LockUnionOperate(m_unionID, true);
+		// 
+		// 				return true;
+		// 			}
+		// 		default:
+		// 			break;
+		// 		}
 	}
-	else if(key.key == "ifree")
+	else if (key.key == "ifree")
 	{
 		long num;
 		num = atol(key.param[0].c_str());
-		if(num == 0) return true;
+		if (num == 0) return true;
 
-        if (!m_pItemContainer)
-            return 0;
+		if (!m_pItemContainer)
+			return 0;
 		return (m_pItemContainer->m_Bag.FreeSpace() >= num);
 	}
-	else if(key.key == "fbitem")
+	else if (key.key == "fbitem")
 	{
 		long itemId;
 		itemId = atol(key.param[0].c_str());
-		if(itemId == 0) return true;
+		if (itemId == 0) return true;
 
 		long itemNum;
 		itemNum = atol(key.param[1].c_str());
-		if(itemNum == 0) return true;
+		if (itemNum == 0) return true;
 
-		if(!param || param->size() < 1) return false;
+		if (!param || param->size() < 1) return false;
 		int dif = (*param)[0];
-		switch(op)
+		switch (op)
 		{
 		case TYPE_CHECK:
-			if(GetDungeonMissionItemNum(itemId,dif) < itemNum)
+			if (GetDungeonMissionItemNum(itemId, dif) < itemNum)
 				return false;
-			else 
+			else
 				return true;
 			break;
 
 		case TYPE_ADD:
-			for(int i=0; i<itemNum; i++)
-				AddDungeonMissionItem(itemId,dif);
+			for (int i = 0; i < itemNum; i++)
+				AddDungeonMissionItem(itemId, dif);
 			return true;
 			break;
 
 		case TYPE_REMOVE:
-			return RemoveDungeonMissionItem(itemId,itemNum,dif);
+			return RemoveDungeonMissionItem(itemId, itemNum, dif);
 			break;
 		}
 	}
-    else if (key.key == "itemex")
-    {
-        long itemId;
-        itemId = atol(key.param[0].c_str());
-        if(itemId == 0) return true;
+	else if (key.key == "itemex")
+	{
+		long itemId;
+		itemId = atol(key.param[0].c_str());
+		if (itemId == 0) return true;
 
-        long itemNum;
-        itemNum = atol(key.param[1].c_str());
-        if(itemNum == 0) return true;
+		long itemNum;
+		itemNum = atol(key.param[1].c_str());
+		if (itemNum == 0) return true;
 
-        EItemColor color = ItemColor_White;
-        if(key.param[2] == "white")
-            color = ItemColor_White;
-        else if(key.param[2] == "green")
-            color = ItemColor_Green;
-        else if(key.param[2] == "blue")
-            color = ItemColor_Blue;
-        else if (key.param[2] == "golden")
-            color = ItemColor_Golden;
+		EItemColor color = ItemColor_White;
+		if (key.param[2] == "white")
+			color = ItemColor_White;
+		else if (key.param[2] == "green")
+			color = ItemColor_Green;
+		else if (key.param[2] == "blue")
+			color = ItemColor_Blue;
+		else if (key.param[2] == "golden")
+			color = ItemColor_Golden;
 
-        long nMinites = atol(key.param[3].c_str());
-       // if(nMinites == 0) return true;
+		long nMinites = atol(key.param[3].c_str());
+		// if(nMinites == 0) return true;
 
-        short Att1 = 0;
-        if (!key.param[4].empty())
-            Att1 = atol(key.param[4].c_str());
-        
-        short Att2 = 0;
-        if (!key.param[5].empty())
-            Att2 = atol(key.param[5].c_str());
+		short Att1 = 0;
+		if (!key.param[4].empty())
+			Att1 = atol(key.param[4].c_str());
 
-        unsigned char AttRate = 0;
-        if (!key.param[6].empty())
-            AttRate = atol(key.param[6].c_str());
+		short Att2 = 0;
+		if (!key.param[5].empty())
+			Att2 = atol(key.param[5].c_str());
+
+		unsigned char AttRate = 0;
+		if (!key.param[6].empty())
+			AttRate = atol(key.param[6].c_str());
 
 		int EquipLevel = 0;
-		if(!key.param[7].empty())
+		if (!key.param[7].empty())
 			EquipLevel = atol(key.param[7].c_str());
-		if(EquipLevel < 0 || EquipLevel >10)
+		if (EquipLevel < 0 || EquipLevel >10)
 			EquipLevel = 0;
-			
+
 		//Cheney.2009.8.11 Ôö¼ÓÖ°ÒµÇø·ÖÔùËÍ×°±¸
 		int AwardClass = 0;
-		if(!key.param[8].empty())
+		if (!key.param[8].empty())
 			AwardClass = atol(key.param[8].c_str());
 
-        switch(op)
-        {
-        case TYPE_CHECK:
-            break;
+		switch (op)
+		{
+		case TYPE_CHECK:
+			break;
 
-        case TYPE_ADD:
-            {
-                //Cheney.2009.8.11 Ôö¼ÓÖ°ÒµÇø·ÖÔùËÍ×°±¸
-				if(AwardClass != 0 && AwardClass != m_core.Metier) return false;
-				
-				DWORD limitTime = 0;
-                if (nMinites)
-                    limitTime = time(NULL) + nMinites * 60;
-                for(int i=0; i<itemNum; i++)
-                {
-                    SItemID item = g_region->m_pItemManager->CreateItem(itemId, color, EquipLevel, IB_NotBind, Att1, AttRate, Att2, AttRate, limitTime);
-                    if(!ItemID_IsValid(item))
-                        return false;
-                    AddItem(item);
-                }
-                return true;
-            }
-            break;
+		case TYPE_ADD:
+		{
+			//Cheney.2009.8.11 Ôö¼ÓÖ°ÒµÇø·ÖÔùËÍ×°±¸
+			if (AwardClass != 0 && AwardClass != m_core.Metier) return false;
 
-        case TYPE_REMOVE:
-            break;
-        }
-    }
-	else if(key.key == "skill")
+			DWORD limitTime = 0;
+			if (nMinites)
+				limitTime = time(NULL) + nMinites * 60;
+			for (int i = 0; i < itemNum; i++)
+			{
+				SItemID item = g_region->m_pItemManager->CreateItem(itemId, color, EquipLevel, IB_NotBind, Att1, AttRate, Att2, AttRate, limitTime);
+				if (!ItemID_IsValid(item))
+					return false;
+				AddItem(item);
+			}
+			return true;
+		}
+		break;
+
+		case TYPE_REMOVE:
+			break;
+		}
+	}
+	else if (key.key == "skill")
 	{
 		long skillID;
 		skillID = atol(key.param[0].c_str());
-		if(skillID==0) return false;
-		switch(op)
+		if (skillID == 0) return false;
+		switch (op)
 		{
 		case TYPE_CHECK:
-			return (Skill()->FindSkill(skillID)!=NULL);
+			return (Skill()->FindSkill(skillID) != NULL);
 
 		case TYPE_ADD:
+		{
+			SSkill* pS = Skill()->FindSkill(skillID);
+			if (NULL != pS)
 			{
-				SSkill* pS = Skill()->FindSkill(skillID);
-				if (NULL != pS)
+				if (m_Skill.AddSkill(skillID, 0, true))
 				{
-					if (m_Skill.AddSkill(skillID, 0, true))
+					//std::string skillMsg = "";
+					//skillMsg = R(MSG_SKILL_LEARNNEWSKILL) + std::string(pS->szName);
+
+					const int c_nBuffSize = 128;
+					char szBuff[c_nBuffSize];
+					try
 					{
-						//std::string skillMsg = "";
-						//skillMsg = R(MSG_SKILL_LEARNNEWSKILL) + std::string(pS->szName);
-
-						const int c_nBuffSize = 128;
-						char szBuff[c_nBuffSize];
-						try
-						{
-							rt2_sprintf(szBuff, R(MSG_SKILL_LEARNNEWSKILL), pS->szName);
-							SendSystemMessage(szBuff);
-						}
-						catch (...)
-						{
-							return false;
-						}
-
-						return true;
+						rt2_sprintf(szBuff, R(MSG_SKILL_LEARNNEWSKILL), pS->szName);
+						SendSystemMessage(szBuff);
 					}
+					catch (...)
+					{
+						return false;
+					}
+
+					return true;
 				}
-				return false;
 			}
+			return false;
+		}
 
 		case TYPE_REMOVE:
 			if (Skill()->FindSkill(skillID))
@@ -12465,34 +12501,34 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 			break;
 		}
 	}
-	else if(key.key == "effect")
+	else if (key.key == "effect")
 	{
 		long effectID;
 		effectID = atol(key.param[0].c_str());
-		if(effectID==0) return false;
-		switch(op)
+		if (effectID == 0) return false;
+		switch (op)
 		{
 		case TYPE_CHECK:
-            return (Skill()->FindEffect(effectID)!=NULL);
+			return (Skill()->FindEffect(effectID) != NULL);
 
 		case TYPE_ADD:
-            if (Skill()->FindEffect(effectID))
-            {
-                if (m_Skill.AddEffect(effectID, 0, true))
-                {
-                    return true;
-                }
-            }
+			if (Skill()->FindEffect(effectID))
+			{
+				if (m_Skill.AddEffect(effectID, 0, true))
+				{
+					return true;
+				}
+			}
 			return false;
 
 		case TYPE_REMOVE:
-            if (Skill()->FindEffect(effectID))
-            {
-                if (m_Skill.DeleteEffect(effectID, true))
-                {
-                    return true;
-                }
-            }
+			if (Skill()->FindEffect(effectID))
+			{
+				if (m_Skill.DeleteEffect(effectID, true))
+				{
+					return true;
+				}
+			}
 			break;
 		}
 	}
@@ -12506,10 +12542,10 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 		}
 	}
 	*/
-	else if(key.key == "wenreward")
+	else if (key.key == "wenreward")
 	{
 		//int exp = 0;
-		int vc = m_wenTaskFinish%10;
+		int vc = m_wenTaskFinish % 10;
 
 		float fR = 1.1f + (vc - 6) / 10.0f;
 		int nBase = 0;
@@ -12529,9 +12565,9 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 		{
 			nBase = 2993;
 		}
-		
+
 		int nCul = (int)(nBase * fR);
-		if(vc == 9)
+		if (vc == 9)
 		{
 			nCul = nCul + nBase / 2;
 			//fR = fR * 1.5f;
@@ -12541,10 +12577,10 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 		{
 			AddItem(6229, ItemColor_White);
 		}
-		/*int reward[5][10] = { 
+		/*int reward[5][10] = {
 			{4594,	5011,	5429,	5847,	6264,	6682,	7100,	7517,	7935,	8353},
 			{7744,	8448,	9152,	9856,	10560,	11264,	11968,	12672,	13376,	14080},
-			{16542,	18046,	19550,	21054,	22558,	24062,	25566,	27070,	28574,	30078},                                                                                                                         
+			{16542,	18046,	19550,	21054,	22558,	24062,	25566,	27070,	28574,	30078},
 			{24012,	26195,	28378,	30561,	32744,	34927,	37110,	39293,	41476,	43659},
 			{31775,	34664,	37553,	40441,	43330,	46219,	49107,	51996,	54885,	57774},
 		};
@@ -12570,14 +12606,14 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 		}*/
 
 		/*
-		int reward[5][10] = { 
+		int reward[5][10] = {
 			{6891,	7518,	8114,	8771,	9397,	10024,	10650,	11277,	11903,	12530},
 			{11616,	12672,	13728,	14784,	15840,	16896,	17952,	19008,	20064,	21120},
-			{24814,	27070,	29326,	31582,	33838,	36094,	38350,	40605,	42861,	45117},                                                                                                                         
+			{24814,	27070,	29326,	31582,	33838,	36094,	38350,	40605,	42861,	45117},
 			{36019,	39293,	42568,	45842,	49116,	52391,	55665,	58940,	62214,	65489},
 			{47664,	51997,	56330,	60663,	64996,	69329,	73662,	77995,	82328,	86661},
 		};
-		
+
 		if(m_core.Lev < 20)
 		{
 			exp = reward[0][vc];
@@ -12634,40 +12670,40 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 			}
 		}
 		*/
-		
-//		exp *= 30;
-//		if(exp < 0) exp = 0;
-//		if(exp > 1000000) exp = 1000000;
-//		AddExp(exp,0);
-//
-//        if (vc == 9)
-//        {
-//            if(GetProb(0.15))
-//            {
-//                AddItem(430,ItemColor_White);
-//            }
-//			else if(GetProb(0.15))
-//			{
-//				AddItem(431,ItemColor_White);
-//			}
-////             if(GetProb(0.5))
-////             {
-////                 SItemID item = g_region->m_pItemManager->CreateItem(1112, ItemColor_Blue, 0, IB_NotBind, 8047, 100);
-////                 if(ItemID_IsValid(item))
-////                 {
-////                     DWORD now = time(NULL);
-////                     DWORD tLife = now + 2*3600;
-////                     item.paramCount = ITEMSHIPIN_PARAM_SIZE;
-////                     item.params[ITEMSHIPIN_PARAM_LIFE] = tLife;
-////                     AddItem(item);
-////                 }
-////             }
-//        }
-		// AddGold(exp/10);
+
+		//		exp *= 30;
+		//		if(exp < 0) exp = 0;
+		//		if(exp > 1000000) exp = 1000000;
+		//		AddExp(exp,0);
+		//
+		//        if (vc == 9)
+		//        {
+		//            if(GetProb(0.15))
+		//            {
+		//                AddItem(430,ItemColor_White);
+		//            }
+		//			else if(GetProb(0.15))
+		//			{
+		//				AddItem(431,ItemColor_White);
+		//			}
+		////             if(GetProb(0.5))
+		////             {
+		////                 SItemID item = g_region->m_pItemManager->CreateItem(1112, ItemColor_Blue, 0, IB_NotBind, 8047, 100);
+		////                 if(ItemID_IsValid(item))
+		////                 {
+		////                     DWORD now = time(NULL);
+		////                     DWORD tLife = now + 2*3600;
+		////                     item.paramCount = ITEMSHIPIN_PARAM_SIZE;
+		////                     item.params[ITEMSHIPIN_PARAM_LIFE] = tLife;
+		////                     AddItem(item);
+		////                 }
+		////             }
+		//        }
+				// AddGold(exp/10);
 		m_wenTaskFinish++;
 		return true;
 	}
-	else if(key.key == "gzaddzg")
+	else if (key.key == "gzaddzg")
 	{
 		//int num;
 		//num = atol(key.param[0].c_str());
@@ -12678,31 +12714,31 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 		//		return true;
 		//}
 	}
-	else if(key.key == "gzaddjf")
+	else if (key.key == "gzaddjf")
 	{
 		int num;
 		num = atol(key.param[0].c_str());
-		switch(op)
+		switch (op)
 		{
-			case TYPE_ADD:
-				g_WarfieldMgr.AddUserScore(m_userInfo->m_userId,num);
-				return true;
+		case TYPE_ADD:
+			g_WarfieldMgr.AddUserScore(m_userInfo->m_userId, num);
+			return true;
 		}
 	}
-	else if(key.key == "gzaddgod")
+	else if (key.key == "gzaddgod")
 	{
-		int num,idx;
+		int num, idx;
 		idx = atol(key.param[0].c_str());
 		num = atol(key.param[1].c_str());
-		switch(op)
+		switch (op)
 		{
-			case TYPE_CHECK:
-				return g_WarfieldMgr.CanConjureHero(m_core.Faction,idx);
+		case TYPE_CHECK:
+			return g_WarfieldMgr.CanConjureHero(m_core.Faction, idx);
 
-			case TYPE_ADD:
-				//g_WarfieldMgr.ConjureHero(m_core.Faction,num,idx);
-				g_WarfieldMgr.ConjureHero((long)m_userInfo->m_userId,num,idx);
-				return true;
+		case TYPE_ADD:
+			//g_WarfieldMgr.ConjureHero(m_core.Faction,num,idx);
+			g_WarfieldMgr.ConjureHero((long)m_userInfo->m_userId, num, idx);
+			return true;
 		}
 	}
 	//---------add start by tony 06.05.09-------------------------------//
@@ -12713,130 +12749,136 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 	//- circle: ½öÓÃÓÚ¼ì²éÊÇ·ñÄÜ½ÓÊÜÈÎÎñ 
 	//- circle_exp: ½öÓÃÓÚÅÜ»·ÈÎÎñ½±Àø 
 	//- circle_task: ½öÓÃÓÚÅÜ»·ÈÎÎñ½±Àø
-	else if(key.key == "circle_item")
+	else if (key.key == "circle_item")
 	{
 		int id = atol(key.param[0].c_str());
 		int num = atol(key.param[1].c_str());
 		STaskInfo* info = m_task.FindTask(id);
-		switch(op)
+		switch (op)
 		{
 		case TYPE_CHECK:
-			{				
-				if(info && info->Desc && info->Desc->circleTask!=0)
-				{
-					if(GetItemNum(info->m_finditemID,ItemColor_White) < num)
-							return false;
-
-					m_tmpfinditemID = info->m_finditemID;
-					
-					/* return true; */ // ¸Ä¶¯£ºÌí¼Ó¹ÒÆð¹¦ÄÜ
-					return (m_task.m_isActive==1);
-				}else
-				{
-					LOG1("Task Error: Cannot find task [%d]\n", id);
+		{
+			if (info && info->Desc && info->Desc->circleTask != 0)
+			{
+				if (GetItemNum(info->m_finditemID, ItemColor_White) < num)
 					return false;
-				}
+
+				m_tmpfinditemID = info->m_finditemID;
+
+				/* return true; */ // ¸Ä¶¯£ºÌí¼Ó¹ÒÆð¹¦ÄÜ
+				return (m_task.m_isActive == 1);
 			}
-            
+			else
+			{
+				LOG1("Task Error: Cannot find task [%d]\n", id);
+				return false;
+			}
+		}
+
 		case TYPE_ADD:
 			LOG("Task Error: unexpected keyword: [circle_item]\n");
 			//CHECK(0);
 			return true;
 		case TYPE_REMOVE:
 			//return RemoveItem(info->m_finditemID,num,ItemColor_White);
-			if(RemoveItem(m_tmpfinditemID,num,ItemColor_White))
+			if (RemoveItem(m_tmpfinditemID, num, ItemColor_White))
 			{
 				LOG1("RemoveItem id[%d]\n", m_tmpfinditemID);
 				return true;
-			}else
+			}
+			else
 			{
-				LOG2("RemoveItem Error para[%d, %d]\n", m_tmpfinditemID,num);
+				LOG2("RemoveItem Error para[%d, %d]\n", m_tmpfinditemID, num);
 				return false;
-			}			
+			}
 			break;
 		}
 	}
-	else if(key.key == "circle_hold")
+	else if (key.key == "circle_hold")
 	{
 		int id = atol(key.param[0].c_str());
 		STaskInfo* info = m_task.FindTask(id);
-		if(!info) return false;
-		switch(op)
+		if (!info) return false;
+		switch (op)
 		{
-			case TYPE_CHECK:
-				{
-					if(param && !param->empty())
-					{
-						 // ¸Ä¶¯£ºÌí¼Ó¹ÒÆð¹¦ÄÜ
-						if( (m_task.IsTaskAccept(id) && info->m_findnpcID==param->front()) )
-						{
-							return (m_task.m_isActive==1);
-						}else
-						{
-							return false;
-						}
-					}else
-					{
-						return false;
-					}
-				}
-
-			case TYPE_ADD:
-				LOG("Task Error: unexpected keyword: [circle_hold]\n");
-				CHECK(0);
-				return true;
-		}
-	}
-	else if(key.key == "circle_monster")
-	{
-		int id=0, num=0;
-		id = atol(key.param[0].c_str());
-		num = atol(key.param[1].c_str());
-		switch(op)
+		case TYPE_CHECK:
 		{
-			case TYPE_CHECK:
+			if (param && !param->empty())
 			{
-				STaskInfo* info = m_task.FindTask(id);
-				if(info && info->Desc && info->Desc->circleTask!=0)
+				// ¸Ä¶¯£ºÌí¼Ó¹ÒÆð¹¦ÄÜ
+				if ((m_task.IsTaskAccept(id) && info->m_findnpcID == param->front()))
 				{
-					 // ¸Ä¶¯£ºÌí¼Ó¹ÒÆð¹¦ÄÜ
-					if( (info->m_currMonsterNum >= num) )
-					{
-						return (m_task.m_isActive==1);
-					}else
-					{
-						return false;
-					}
-				}else
+					return (m_task.m_isActive == 1);
+				}
+				else
 				{
-					LOG1("Task Error: Cannot find task [%d]\n", id);
 					return false;
 				}
 			}
+			else
+			{
+				return false;
+			}
+		}
 
-			case TYPE_ADD:
-				LOG("Task Error: unexpected keyword: [circle_monster]\n");
-				CHECK(0);
-				return true;
+		case TYPE_ADD:
+			LOG("Task Error: unexpected keyword: [circle_hold]\n");
+			CHECK(0);
+			return true;
 		}
 	}
-	else if(key.key == "circle")
+	else if (key.key == "circle_monster")
 	{
-		int id=0;
-		id = atol(key.param[0].c_str());		
-		switch(op)
+		int id = 0, num = 0;
+		id = atol(key.param[0].c_str());
+		num = atol(key.param[1].c_str());
+		switch (op)
 		{
 		case TYPE_CHECK:
+		{
+			STaskInfo* info = m_task.FindTask(id);
+			if (info && info->Desc && info->Desc->circleTask != 0)
 			{
-				return (m_task.m_currCircle==0);
+				// ¸Ä¶¯£ºÌí¼Ó¹ÒÆð¹¦ÄÜ
+				if ((info->m_currMonsterNum >= num))
+				{
+					return (m_task.m_isActive == 1);
+				}
+				else
+				{
+					return false;
+				}
 			}
+			else
+			{
+				LOG1("Task Error: Cannot find task [%d]\n", id);
+				return false;
+			}
+		}
+
+		case TYPE_ADD:
+			LOG("Task Error: unexpected keyword: [circle_monster]\n");
+			CHECK(0);
+			return true;
+		}
+	}
+	else if (key.key == "circle")
+	{
+		int id = 0;
+		id = atol(key.param[0].c_str());
+		switch (op)
+		{
+		case TYPE_CHECK:
+		{
+			return (m_task.m_currCircle == 0);
+		}
 
 		case TYPE_ADD:
 			LOG("Task Error: unexpected keyword: [circle]\n");
 			return true;
 		}
 	}
-	else if(key.key == "circle_exp")
+	else if (key.key == "circle_exp")
 	{
 		//const int expRate[50] = {
 		//	1, 2, 3, 4, 5, 6, 8, 8, 9, 10,
@@ -12848,172 +12890,177 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 
 		int id = atol(key.param[0].c_str());
 		DWORD next = g_TableExp.GetNextLevExp(m_core.Lev);
-		switch(op)
+		switch (op)
 		{
 		case TYPE_CHECK:
 			LOG("Task Error: unexpected task keyword: [circle_exp]\n");
 			return true;
 
 		case TYPE_ADD:
+		{
+			//STaskInfo* info = m_task.FindTask(id);
+			//if(info && info->Desc)
+			//{
+			if (m_task.m_currCircle > 0 && m_task.m_currCircle <= g_tcTotalCircle)
 			{
-				//STaskInfo* info = m_task.FindTask(id);
-				//if(info && info->Desc)
-				//{
-					if(m_task.m_currCircle>0 && m_task.m_currCircle<=g_tcTotalCircle)
+				if (m_task.m_currCircle <= (int)g_tcexpRate.size())
+				{
+					int addexp = next * ((float)g_tcexpRate[m_task.m_currCircle - 1] / 10000);
+					if (m_core.Lev >= 80 && m_core.Lev < 84)
 					{
-						if(m_task.m_currCircle <= (int)g_tcexpRate.size())
-						{
-							int addexp = next * ((float)g_tcexpRate[m_task.m_currCircle-1]/10000);
-							if(m_core.Lev>=80 && m_core.Lev<84)
-							{
-								addexp /=2;
-							}else if(m_core.Lev>=85 && m_core.Lev<=90)
-							{
-								addexp /= 4;
-							}
-							AddExp(addexp, 0);
-						}else
-						{
-							LOG("Task Error: expRate error\n");
-						}
-						return true;
-					}else
-					{
-						LOG1("Task Error: invalid currCircle [%d]\n", m_task.m_currCircle);
-						return true;
+						addexp /= 2;
 					}
-				//}else
-				//{
-				//	LOG1("Task Error: Cannot find task [%d]\n", id);
-				//	return false;
-				//}
+					else if (m_core.Lev >= 85 && m_core.Lev <= 90)
+					{
+						addexp /= 4;
+					}
+					AddExp(addexp, 0);
+				}
+				else
+				{
+					LOG("Task Error: expRate error\n");
+				}
 				return true;
 			}
+			else
+			{
+				LOG1("Task Error: invalid currCircle [%d]\n", m_task.m_currCircle);
+				return true;
+			}
+			//}else
+			//{
+			//	LOG1("Task Error: Cannot find task [%d]\n", id);
+			//	return false;
+			//}
+			return true;
+		}
 		}
 	}
-	else if(key.key == "circle_task")
+	else if (key.key == "circle_task")
 	{
 		//const int itemID[] = {71, 72, 13, 14, 46, 47};
 		//const int npcID[] = {1287,1288,1289,1290,1291};
 		//const int monsterID[]={1,2,3};
 		int id = atol(key.param[0].c_str());
 		int npcoID = 0;
-		if(param && !param->empty())
+		if (param && !param->empty())
 		{
 			npcoID = param->front();
 		}
 		CRegionCreature* pNpc = g_region->m_defScene->FindCreature(npcoID);
-		if(!pNpc)
+		if (!pNpc)
 		{
 			LOG("Finish Task Error: cannot find srcnpc\n");
 			return false;
 		}
-		switch(op)
+		switch (op)
 		{
 		case TYPE_CHECK:
 			return m_task.IsTaskAccept(id);
 
 		case TYPE_ADD:
+		{
+			if (m_task.m_currCircle >= g_tcTotalCircle)
 			{
-				if(m_task.m_currCircle>=g_tcTotalCircle)
-				{
-					m_task.m_currCircle = 0;
-					m_task.m_isActive = 1;
-					m_tmpcurrCircle = 0;
-					m_tmpcurrMonsterNum = 0;
-					m_tmpfinditemID = 0;
-					m_tmpfindnpcID = 0;
-					m_tmpkillmonsterID = 0;
-					return true;
-				}					
-
-				long ret = TASK_STATE_CAN_ACCEPT;
-				
-				int rnum = rand()%100;
-				int rnd = 0;
-
-				if(rnum<50)
-				{
-					rnd = TASK_CIRCLE_ITEM-1;
-				}else if(rnum>=50 && rnum<75)
-				{
-					rnd = TASK_CIRCLE_FINDNPC-1;
-				}else
-				{
-					rnd = TASK_CIRCLE_BATTLE-1;
-				}
-
-				STaskDesc *desc = g_TableTask.FindTask(pNpc->m_acceptTask[rnd]->id);
-				if(NULL == desc)
-				{
-					return false;
-				}
-				if (m_core.Lev < desc->reqMinLev || m_core.Lev > desc->reqMaxLev)
-				{
-					//CancelTask(pNpc->m_acceptTask[rnd-1]->id,true);
-					m_task.m_currCircle = 0;
-					m_tmpcurrCircle = 0;
-					m_tmpcurrMonsterNum = 0;
-					m_tmpfinditemID = 0;
-					m_tmpfindnpcID = 0;
-					m_tmpkillmonsterID = 0;
-					return false;
-				}
-
-				switch(rnd+1)
-				{
-				case TASK_CIRCLE_ITEM:
-					{
-						int size = (int)g_tcrndItemID.size();
-						int r = rand()%size;
-
-						m_tmpfinditemID = g_tcrndItemID[r];
-						SItemBase* pBase= g_region->m_pItemManager->GetItemFromIndex(m_tmpfinditemID);
-						if(NULL == pBase)
-						{
-							return false;
-						}
-						g_region->ShowHtmlDialog(pNpc,this,pNpc->m_acceptTask[rnd]->npc1PreAcceptTalk.c_str(), "FIND_ITEM", (char*)pBase->name);
-					}
-					break;
-				case TASK_CIRCLE_FINDNPC:
-					{
-						int size = (int)g_tcrndNpcID.size();
-						int r = rand()%size;
-
-						while(g_tcrndNpcID[r]==pNpc->m_npcInfo->Id) r = rand()%size;
-						m_tmpfindnpcID = g_tcrndNpcID[r];
-
-						SNpc* pTaskNpc = g_TableNpc.FindNpc(m_tmpfindnpcID);
-						if(NULL == pTaskNpc)
-						{
-							return false;
-						}
-						g_region->ShowHtmlDialog(pNpc,this,pNpc->m_acceptTask[rnd]->npc1PreAcceptTalk.c_str(), "FIND_NPC", (char*)pTaskNpc->Name.c_str());
-					}
-					break;
-				case TASK_CIRCLE_BATTLE:
-					{
-						int size = (int)g_tcrndMonsterID.size();
-						int r = rand()%size;
-
-						m_tmpkillmonsterID = g_tcrndMonsterID[r];
-						SNpc* pMonster = g_TableNpc.FindNpc(m_tmpkillmonsterID);
-						g_region->ShowHtmlDialog(pNpc,this,pNpc->m_acceptTask[rnd]->npc1PreAcceptTalk.c_str(), "KILL_MONSTER", (char*)pMonster->Name.c_str());
-					}
-					break;
-				}
-
-				return AcceptTask(pNpc->m_acceptTask[rnd]->id, pNpc);
+				m_task.m_currCircle = 0;
+				m_task.m_isActive = 1;
+				m_tmpcurrCircle = 0;
+				m_tmpcurrMonsterNum = 0;
+				m_tmpfinditemID = 0;
+				m_tmpfindnpcID = 0;
+				m_tmpkillmonsterID = 0;
+				return true;
 			}
+
+			long ret = TASK_STATE_CAN_ACCEPT;
+
+			int rnum = rand() % 100;
+			int rnd = 0;
+
+			if (rnum < 50)
+			{
+				rnd = TASK_CIRCLE_ITEM - 1;
+			}
+			else if (rnum >= 50 && rnum < 75)
+			{
+				rnd = TASK_CIRCLE_FINDNPC - 1;
+			}
+			else
+			{
+				rnd = TASK_CIRCLE_BATTLE - 1;
+			}
+
+			STaskDesc* desc = g_TableTask.FindTask(pNpc->m_acceptTask[rnd]->id);
+			if (NULL == desc)
+			{
+				return false;
+			}
+			if (m_core.Lev < desc->reqMinLev || m_core.Lev > desc->reqMaxLev)
+			{
+				//CancelTask(pNpc->m_acceptTask[rnd-1]->id,true);
+				m_task.m_currCircle = 0;
+				m_tmpcurrCircle = 0;
+				m_tmpcurrMonsterNum = 0;
+				m_tmpfinditemID = 0;
+				m_tmpfindnpcID = 0;
+				m_tmpkillmonsterID = 0;
+				return false;
+			}
+
+			switch (rnd + 1)
+			{
+			case TASK_CIRCLE_ITEM:
+			{
+				int size = (int)g_tcrndItemID.size();
+				int r = rand() % size;
+
+				m_tmpfinditemID = g_tcrndItemID[r];
+				SItemBase* pBase = g_region->m_pItemManager->GetItemFromIndex(m_tmpfinditemID);
+				if (NULL == pBase)
+				{
+					return false;
+				}
+				g_region->ShowHtmlDialog(pNpc, this, pNpc->m_acceptTask[rnd]->npc1PreAcceptTalk.c_str(), "FIND_ITEM", (char*)pBase->name);
+			}
+			break;
+			case TASK_CIRCLE_FINDNPC:
+			{
+				int size = (int)g_tcrndNpcID.size();
+				int r = rand() % size;
+
+				while (g_tcrndNpcID[r] == pNpc->m_npcInfo->Id) r = rand() % size;
+				m_tmpfindnpcID = g_tcrndNpcID[r];
+
+				SNpc* pTaskNpc = g_TableNpc.FindNpc(m_tmpfindnpcID);
+				if (NULL == pTaskNpc)
+				{
+					return false;
+				}
+				g_region->ShowHtmlDialog(pNpc, this, pNpc->m_acceptTask[rnd]->npc1PreAcceptTalk.c_str(), "FIND_NPC", (char*)pTaskNpc->Name.c_str());
+			}
+			break;
+			case TASK_CIRCLE_BATTLE:
+			{
+				int size = (int)g_tcrndMonsterID.size();
+				int r = rand() % size;
+
+				m_tmpkillmonsterID = g_tcrndMonsterID[r];
+				SNpc* pMonster = g_TableNpc.FindNpc(m_tmpkillmonsterID);
+				g_region->ShowHtmlDialog(pNpc, this, pNpc->m_acceptTask[rnd]->npc1PreAcceptTalk.c_str(), "KILL_MONSTER", (char*)pMonster->Name.c_str());
+			}
+			break;
+			}
+
+			return AcceptTask(pNpc->m_acceptTask[rnd]->id, pNpc);
+		}
 		}
 	}
-	else if(key.key == "on_arrive")
+	else if (key.key == "on_arrive")
 	{
-		switch(m_ai->GetType())
+		switch (m_ai->GetType())
 		{
 		case CRegionAI::TYPE_TOUR:
-			if(IsScriptLoaded() && !IsUser() && !IsUserPet())
+			if (IsScriptLoaded() && !IsUser() && !IsUserPet())
 			{
 				CallScript("OnArrive", false);
 			}
@@ -13024,7 +13071,7 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 	//---------add end   by tony 06.05.09-------------------------------//
 	//PZH
 	int nT = GetPlayerLogic()->ProcessTaskKey(key, op, param, pDesc);
-	switch(nT)
+	switch (nT)
 	{
 	case 0:
 		return true;
@@ -13035,70 +13082,70 @@ bool CRegionCreature::ProcessTaskKey(STaskKey &key,int op,vector<long> *param, S
 		break;
 	}
 	//
-	
-	ERR1("unknow key %s",key.key.c_str());
-		
+
+	ERR1("unknow key %s", key.key.c_str());
+
 	return false;
 }
 
 //---------chg start by tony 06.05.10--------------------------------------------//
 #if 0
-@ bool CRegionCreature::FinishTask(STaskDesc *task,int idx)
+@ bool CRegionCreature::FinishTask(STaskDesc* task, int idx)
 #else
-bool CRegionCreature::FinishTask(STaskDesc *task,int idx, CRegionCreature* npc)
+bool CRegionCreature::FinishTask(STaskDesc* task, int idx, CRegionCreature* npc)
 #endif
 //---------chg end   by tony 06.05.10--------------------------------------------//
 {
-	vector<STaskKey> *req = NULL,*addReward = NULL;
+	vector<STaskKey>* req = NULL, * addReward = NULL;
 
-	if(task->finishType == TASK_FINISH_TYPE_NORMAL)
+	if (task->finishType == TASK_FINISH_TYPE_NORMAL)
 	{
 		req = &task->taskReq;
 	}
-	else if(task->finishType == TASK_FINISH_TYPE_SELECT)
+	else if (task->finishType == TASK_FINISH_TYPE_SELECT)
 	{
 		req = &task->specReq[idx];
 		addReward = &task->specReward[idx];
 	}
-	else 
+	else
 	{
 		return false;
 	}
-	
-	if(m_task.FinishTask(task))
+
+	if (m_task.FinishTask(task))
 	{
-		if(IsScriptLoaded())
+		if (IsScriptLoaded())
 		{
-			char sFuncName[50] = {0};
+			char sFuncName[50] = { 0 };
 			rt2_snprintf(sFuncName, 50, "OnFinishTask%d", task->id);
-			if(npc)
+			if (npc)
 				CallScript(sFuncName, false, npc);
 			else
 				CallScript(sFuncName, false, 0);
 		}
 
 		// remove task request item
-		ProcessTaskKeyList(*req,TYPE_REMOVE,0);
-			
+		ProcessTaskKeyList(*req, TYPE_REMOVE, 0);
+
 		// remove task flag item
 		RemoveTaskItem(task);
-        // ProcessTaskKeyList(task->flagItem,TYPE_REMOVE);
-	
+		// ProcessTaskKeyList(task->flagItem,TYPE_REMOVE);
+
 		// give reward
 		//---------chg start by tony 06.05.10--------------------------------------------//
 #if 0
-@		ProcessTaskKeyList(task->fixReward,TYPE_ADD,0);
+		@		ProcessTaskKeyList(task->fixReward, TYPE_ADD, 0);
 #else
 		std::vector<long> param;
-		if(npc && npc->m_npcInfo)
+		if (npc && npc->m_npcInfo)
 		{
 			param.push_back(npc->m_oId);
 		}
 		std::string msg = R(MSG_TASK_FINISHTASK) + task->name;
 		SendSystemMessage(msg.c_str());
 
-		ProcessTaskKeyList(task->fixReward,TYPE_ADD,&param);
-	
+		ProcessTaskKeyList(task->fixReward, TYPE_ADD, &param);
+
 		if (0 < idx && idx <= task->selectReward.size())
 		{
 			ProcessTaskKey(task->selectReward[idx - 1], TYPE_ADD, NULL, task);
@@ -13112,16 +13159,16 @@ bool CRegionCreature::FinishTask(STaskDesc *task,int idx, CRegionCreature* npc)
 #endif
 		//---------chg end   by tony 06.05.10--------------------------------------------//
 
-		if(GetProb(task->randomRewardRate) && !task->randomReward.empty())
+		if (GetProb(task->randomRewardRate) && !task->randomReward.empty())
 		{
-			ProcessTaskKey(task->randomReward[GetRand((int)task->randomReward.size()-1,0)],TYPE_ADD,0);
+			ProcessTaskKey(task->randomReward[GetRand((int)task->randomReward.size() - 1, 0)], TYPE_ADD, 0);
 		}
-		if(addReward && GetProb(task->specRewardRate))
-			ProcessTaskKeyList(*addReward,TYPE_ADD,0);
-		
-		if(task->moneyTask)
+		if (addReward && GetProb(task->specRewardRate))
+			ProcessTaskKeyList(*addReward, TYPE_ADD, 0);
+
+		if (task->moneyTask)
 		{
-			m_mtFinish[task->moneyTask-1]++;
+			m_mtFinish[task->moneyTask - 1]++;
 		}
 		GetPlayerLogic()->AfterFinishTask(task);
 		UpdateToClient(NET_CRE_UPDATE_TASK);
@@ -13134,59 +13181,59 @@ bool CRegionCreature::FinishTask(STaskDesc *task,int idx, CRegionCreature* npc)
 
 //-----------chg start by tony 06.05.09--------------------------------------------------------------//
 #if 0
-@ bool CRegionCreature::TaskProcess(STaskDesc *task,const char *str,char **link)
+@ bool CRegionCreature::TaskProcess(STaskDesc* task, const char* str, char** link)
 #else
-bool CRegionCreature::TaskProcess(STaskDesc *task,const char *str,char **link, CRegionCreature* npc)
+bool CRegionCreature::TaskProcess(STaskDesc* task, const char* str, char** link, CRegionCreature* npc)
 #endif
 //-----------chg end   by tony 06.05.09--------------------------------------------------------------//
 {
-    if(task->acceptFlag == str)
+	if (task->acceptFlag == str)
 	{
-//-----------chg start by tony 06.05.09--------------------------------------------------------------//
+		//-----------chg start by tony 06.05.09--------------------------------------------------------------//
 #if 0
-@		if(CanAcceptTask(task,true))
-@		{
-@			AcceptTask(task);
-@			*link = (char*)task->npc1AfterAcceptTalk.c_str();
-@			return true;
-@		}
+		@		if (CanAcceptTask(task, true))
+			@		{
+			@			AcceptTask(task);
+			@* link = (char*)task->npc1AfterAcceptTalk.c_str();
+			@			return true;
+			@		}
 #else
-		if(CanAcceptTask(task,true,npc))
+		if (CanAcceptTask(task, true, npc))
 		{
-			AcceptTask(task,npc);
+			AcceptTask(task, npc);
 			*link = (char*)task->npc1AfterAcceptTalk.c_str();
 			return true;
 		}
 #endif
-//-----------chg end   by tony 06.05.09--------------------------------------------------------------//
+		//-----------chg end   by tony 06.05.09--------------------------------------------------------------//
 	}
-	
-	if(task->finishType == TASK_FINISH_TYPE_NORMAL)
+
+	if (task->finishType == TASK_FINISH_TYPE_NORMAL)
 	{
 
 	}
-	else if(task->finishType == TASK_FINISH_TYPE_SELECT)
+	else if (task->finishType == TASK_FINISH_TYPE_SELECT)
 	{
-		for(int i=0; i<MAX_TASK_SELECT_NUM; i++)
+		for (int i = 0; i < MAX_TASK_SELECT_NUM; i++)
 		{
-			if(task->specFlag[i] != str) continue;
-//-----------chg start by tony 06.05.09--------------------------------------------------------------//
+			if (task->specFlag[i] != str) continue;
+			//-----------chg start by tony 06.05.09--------------------------------------------------------------//
 #if 0
-@			if(CanFinishTask(task,i))
-@			{
-@				FinishTask(task,i);
-@				*link = (char*)task->npc2AfterFinishTalk.c_str();
-@				return true;
-@			}
+			@			if (CanFinishTask(task, i))
+				@			{
+				@				FinishTask(task, i);
+				@* link = (char*)task->npc2AfterFinishTalk.c_str();
+				@				return true;
+				@			}
 #else
-			if(CanFinishTask(task,i,npc))
+			if (CanFinishTask(task, i, npc))
 			{
-				FinishTask(task,i,npc);
+				FinishTask(task, i, npc);
 				*link = (char*)task->npc2AfterFinishTalk.c_str();
 				return true;
 			}
 #endif
-//-----------chg end   by tony 06.05.09--------------------------------------------------------------//
+			//-----------chg end   by tony 06.05.09--------------------------------------------------------------//
 			else
 			{
 				*link = (char*)task->npc2SelectFailedTalk.c_str();
@@ -13197,32 +13244,32 @@ bool CRegionCreature::TaskProcess(STaskDesc *task,const char *str,char **link, C
 	return false;
 }
 
-void CRegionCreature::RemoveTaskItem(STaskDesc *desc)
+void CRegionCreature::RemoveTaskItem(STaskDesc* desc)
 {
-	ProcessTaskKeyList(desc->flagItem,TYPE_REMOVE,0);
+	ProcessTaskKeyList(desc->flagItem, TYPE_REMOVE, 0);
 }
 
 //---------chg start by tony 06.05.09---------------------------------------//
 #if 0
-@ long CRegionCreature::CheckTaskAcceptState(STaskDesc *task)
+@ long CRegionCreature::CheckTaskAcceptState(STaskDesc* task)
 @{
-@	if(IsDoingTask(task))
-@		return TASK_STATE_DOING;
-@
-@	// check if can accept task
-@	if(CanAcceptTask(task,true, npc))
-@		return TASK_STATE_CAN_ACCEPT;
-@
-@	return TASK_STATE_NONE;
-@}
+	@	if (IsDoingTask(task))
+		@		return TASK_STATE_DOING;
+	@
+		@	// check if can accept task
+		@	if (CanAcceptTask(task, true, npc))
+		@		return TASK_STATE_CAN_ACCEPT;
+	@
+		@	return TASK_STATE_NONE;
+	@}
 #else
-long CRegionCreature::CheckTaskAcceptState(STaskDesc *task, CRegionCreature* npc)
+long CRegionCreature::CheckTaskAcceptState(STaskDesc* task, CRegionCreature* npc)
 {
-	if(IsDoingTask(task, npc))
+	if (IsDoingTask(task, npc))
 		return TASK_STATE_DOING;
 
 	// check if can accept task
-	if(CanAcceptTask(task,true, npc))
+	if (CanAcceptTask(task, true, npc))
 		return TASK_STATE_CAN_ACCEPT;
 
 	return TASK_STATE_NONE;
@@ -13232,35 +13279,35 @@ long CRegionCreature::CheckTaskAcceptState(STaskDesc *task, CRegionCreature* npc
 
 //---------chg start by tony 06.05.09---------------------------------------//
 #if 0
-@ long CRegionCreature::CheckTaskFinishState(STaskDesc *task)
+@ long CRegionCreature::CheckTaskFinishState(STaskDesc* task)
 @{
-@	// check if doing task
-@	if(IsDoingTask(task))
-@	{
-@		// check if can auto finish task
-@		if(task->finishType == TASK_FINISH_TYPE_NORMAL)
-@		{
-@			if(CanFinishTask(task,0))
-@			{
-@				FinishTask(task,0);
-@				return TASK_STATE_CAN_FINISH;
-@			}
-@		}
-@		return TASK_STATE_DOING; 
-@	}
-@
-@	return TASK_STATE_NONE;
-@}
+	@	// check if doing task
+		@	if (IsDoingTask(task))
+		@	{
+		@		// check if can auto finish task
+			@		if (task->finishType == TASK_FINISH_TYPE_NORMAL)
+			@		{
+			@			if (CanFinishTask(task, 0))
+				@			{
+				@				FinishTask(task, 0);
+				@				return TASK_STATE_CAN_FINISH;
+				@			}
+			@		}
+		@		return TASK_STATE_DOING;
+		@	}
+	@
+		@	return TASK_STATE_NONE;
+	@}
 #else
-long CRegionCreature::CheckTaskFinishState(STaskDesc *task, CRegionCreature* npc, bool bFinish, long nIndex)
+long CRegionCreature::CheckTaskFinishState(STaskDesc* task, CRegionCreature* npc, bool bFinish, long nIndex)
 {
 	// check if doing task
-	if(IsDoingTask(task, npc))
+	if (IsDoingTask(task, npc))
 	{
 		// check if can auto finish task
-		if(task->finishType == TASK_FINISH_TYPE_NORMAL)
+		if (task->finishType == TASK_FINISH_TYPE_NORMAL)
 		{
-			if(CanFinishTask(task,0, npc))
+			if (CanFinishTask(task, 0, npc))
 			{
 				if (bFinish)
 				{
@@ -13269,7 +13316,7 @@ long CRegionCreature::CheckTaskFinishState(STaskDesc *task, CRegionCreature* npc
 				return TASK_STATE_CAN_FINISH;
 			}
 		}
-		return TASK_STATE_DOING; 
+		return TASK_STATE_DOING;
 	}
 
 	return TASK_STATE_NONE;
@@ -13287,10 +13334,10 @@ void CRegionCreature::NetSend_r2c_task_event(char result)
 
 ETaskOverHead CRegionCreature::GetTaskOverHead(DWORD npcOID)
 {
-	CRegionCreature *pNPC = m_scene->FindCreature(npcOID);
+	CRegionCreature* pNPC = m_scene->FindCreature(npcOID);
 	if (!pNPC || !pNPC->m_npcInfo)
 		return TOH_Unknown;
-	CRegionNpcTask *pReNPC = (CRegionNpcTask*)(pNPC);
+	CRegionNpcTask* pReNPC = (CRegionNpcTask*)(pNPC);
 
 	ETaskOverHead ret = TOH_Unknown;
 	int  nFinish = 0, nDoing = 0, nAccept = 0;
@@ -13299,7 +13346,7 @@ ETaskOverHead CRegionCreature::GetTaskOverHead(DWORD npcOID)
 	std::ostrstream os;
 
 	CPlayerLogic::ForTaskType enType = pReNPC->GetPlayerLogic()->GetForTaskType();
-	switch(enType)
+	switch (enType)
 	{
 	case CPlayerLogic::eRand:
 		nT = pReNPC->GetCNpcTaskLogicExt()->DefTalkRand(os, this, nFinish, nDoing, nAccept, false);
@@ -13448,17 +13495,17 @@ ETaskOverHead CRegionCreature::GetTaskOverHead(DWORD npcOID)
 // ---------------------------------------------------------------------------
 // fb task system
 // ---------------------------------------------------------------------------
-bool CRegionCreature::FbCanFinishTask(int taskId,int sreward)
+bool CRegionCreature::FbCanFinishTask(int taskId, int sreward)
 {
-	SFbTask *task = g_TableTask.FindFbTask(taskId);
-	if(!task) return false;
+	SFbTask* task = g_TableTask.FindFbTask(taskId);
+	if (!task) return false;
 
-	SFbTaskInfo *info = m_task.GetFbTaskInfo(task->fbId);
-	if(!info) return false;
+	SFbTaskInfo* info = m_task.GetFbTaskInfo(task->fbId);
+	if (!info) return false;
 
-	if(task->visDif > info->curDif) return false;
+	if (task->visDif > info->curDif) return false;
 
-	if(info->IsTaskFinished(taskId))
+	if (info->IsTaskFinished(taskId))
 		return false;
 
 	vector<long> param;
@@ -13466,7 +13513,7 @@ bool CRegionCreature::FbCanFinishTask(int taskId,int sreward)
 	param.push_back(sreward);
 
 	// process key
-	if(!ProcessTaskKeyList(task->taskFinReq[info->curDif],TYPE_CHECK,&param))
+	if (!ProcessTaskKeyList(task->taskFinReq[info->curDif], TYPE_CHECK, &param))
 	{
 		return false;
 	}
@@ -13474,47 +13521,47 @@ bool CRegionCreature::FbCanFinishTask(int taskId,int sreward)
 	return true;
 }
 
-bool CRegionCreature::FbFinishTask(int taskId,int sreward)
+bool CRegionCreature::FbFinishTask(int taskId, int sreward)
 {
-	SFbTask *task = g_TableTask.FindFbTask(taskId);
-	if(!task) return false;
+	SFbTask* task = g_TableTask.FindFbTask(taskId);
+	if (!task) return false;
 
-	SFbTaskInfo *info = m_task.GetFbTaskInfo(task->fbId);
-	if(!info) return false;
+	SFbTaskInfo* info = m_task.GetFbTaskInfo(task->fbId);
+	if (!info) return false;
 
-	return FbFinishTask(task,info,sreward);
+	return FbFinishTask(task, info, sreward);
 }
 
-bool CRegionCreature::FbFinishTask(SFbTask *task,SFbTaskInfo *info,int sreward)
+bool CRegionCreature::FbFinishTask(SFbTask* task, SFbTaskInfo* info, int sreward)
 {
 	vector<long> param;
 	param.push_back(info->curDif);
 	param.push_back(sreward);
 
 	// process key
-    //if (info->curDif>=(int)task->taskFinReq.size())
-    //{
-    //    LOG1("FbFinishTask process key error 1\n");
-    //    return false;
-    //}
-	if(!ProcessTaskKeyList(task->taskFinReq[info->curDif],TYPE_REMOVE,&param))
+	//if (info->curDif>=(int)task->taskFinReq.size())
+	//{
+	//    LOG1("FbFinishTask process key error 1\n");
+	//    return false;
+	//}
+	if (!ProcessTaskKeyList(task->taskFinReq[info->curDif], TYPE_REMOVE, &param))
 	{
 		// return false;
 	}
 
-    //if (info->curDif>=(int)task->taskReward.size())
-    //{
-    //    LOG1("FbFinishTask process key error 2\n");
-    //    return false;
-    //}
-	if(!ProcessTaskKeyList(task->taskReward[info->curDif],TYPE_ADD,&param))
+	//if (info->curDif>=(int)task->taskReward.size())
+	//{
+	//    LOG1("FbFinishTask process key error 2\n");
+	//    return false;
+	//}
+	if (!ProcessTaskKeyList(task->taskReward[info->curDif], TYPE_ADD, &param))
 	{
 	}
 
-    SFbTaskInfo* pTaskInfo = m_task.GetFbTaskInfo(task->fbId);
-    if (!pTaskInfo)
-        return false;
-    pTaskInfo->FinishTask(task->id);
+	SFbTaskInfo* pTaskInfo = m_task.GetFbTaskInfo(task->fbId);
+	if (!pTaskInfo)
+		return false;
+	pTaskInfo->FinishTask(task->id);
 	//info->FinishTask(task->id);
 	UpdateToClient(NET_CRE_UPDATE_FB_TASK);
 
@@ -13522,20 +13569,20 @@ bool CRegionCreature::FbFinishTask(SFbTask *task,SFbTaskInfo *info,int sreward)
 	g_sendCmd->WriteShort(r2c_finish_fb_task);
 	g_sendCmd->WriteLong(task->id);
 	RecvCmd(g_sendCmd);
-    return true;
+	return true;
 }
 
 void CRegionCreature::AddEnemy(CRegionCreature* enemy, int damage)
 {
-    STargetList::iterator it;
-	if(!enemy->IsUser() && !enemy->IsUserPet() && !enemy->IsCallNpc()) return;
-	
-	if(enemy->IsUserPet() || enemy->IsCallNpc())
+	STargetList::iterator it;
+	if (!enemy->IsUser() && !enemy->IsUserPet() && !enemy->IsCallNpc()) return;
+
+	if (enemy->IsUserPet() || enemy->IsCallNpc())
 		enemy = enemy->m_master;
 
-	for(it=m_enemyList.begin(); it!=m_enemyList.end(); it++)
+	for (it = m_enemyList.begin(); it != m_enemyList.end(); it++)
 	{
-		if(it->Id == enemy->m_oId)
+		if (it->Id == enemy->m_oId)
 		{
 			it->Damage += damage;
 			return;
@@ -13557,7 +13604,7 @@ void CRegionCreature::SetTarget(CRegionCreature* target)
 	}
 
 	//LeiJun ÊÇËùÊôÓÃ»§Ôò²»+ÎªÄ¿±ê
-	if(m_master && m_master == target && target->m_WardNPC == this)
+	if (m_master && m_master == target && target->m_WardNPC == this)
 		return;
 
 	m_targets.clear();
@@ -13576,7 +13623,7 @@ void CRegionCreature::AddTarget(CRegionCreature* target, int hate, int damage)
 	}
 
 	//LeiJun ÊÇËùÊôÓÃ»§Ôò²»+ÎªÄ¿±ê
-	if(m_master && m_master == target && target->m_WardNPC == this)
+	if (m_master && m_master == target && target->m_WardNPC == this)
 		return;
 
 	if (m_targets.empty())
@@ -13600,7 +13647,7 @@ void CRegionCreature::AddTarget(CRegionCreature* target, int hate, int damage)
 		}
 		if (h == m_targets.end())
 		{
-			m_targets.push_back(STarget());			
+			m_targets.push_back(STarget());
 			m_targets.back().Id = target->GetObjectId();
 			m_targets.back().Hate = hate;
 			m_targets.back().Damage = damage;
@@ -13612,7 +13659,7 @@ void CRegionCreature::AddTarget(CRegionCreature* target, int hate, int damage)
 
 			if (h->Hate > m_targets.front().Hate)
 			{
-				m_targets.push_front(STarget());			
+				m_targets.push_front(STarget());
 				m_targets.front().Id = h->Id;
 				m_targets.front().Hate = h->Hate;
 				m_targets.front().Damage = h->Damage;
@@ -13626,7 +13673,7 @@ void CRegionCreature::AddTarget(CRegionCreature* target, int hate, int damage)
 CRegionCreature* CRegionCreature::GetCurrentTarget()
 {
 	if (m_targets.empty())
-		return NULL;	
+		return NULL;
 
 	CRegionCreature* target = m_scene->FindCreature(m_targets.front().Id);
 
@@ -13676,18 +13723,18 @@ STargetList::iterator CRegionCreature::FindTargetByCreature(CRegionCreature* cre
 }
 */
 
-void CRegionCreature::RemoveTargetByCreature(CRegionCreature* cre) 
+void CRegionCreature::RemoveTargetByCreature(CRegionCreature* cre)
 {
-	if(!cre)
+	if (!cre)
 	{
 		ERR("RemoveTargetByCreature NULL param\n");
 		return;
 	}
 
 	STargetList::iterator it;
-	for(it=m_targets.begin(); it!= m_targets.end(); it++)
+	for (it = m_targets.begin(); it != m_targets.end(); it++)
 	{
-		if((*it).Id == cre->GetObjectId())
+		if ((*it).Id == cre->GetObjectId())
 		{
 			if (cre->IsInCombat())
 			{
@@ -13710,47 +13757,47 @@ bool CRegionCreature::IsOutOfRange(const long* pos, int range)
 void CRegionCreature::EquipCuff()
 {
 	int realLev = GetRealLevel(m_core.Lev);
-	switch(m_core.Metier)
+	switch (m_core.Metier)
 	{
 	case METIER_WARRIOR:   //Ã÷Íõ
-		m_cuffDamageMin		 = 0;
-		m_cuffDamageMax      = 0;
-		m_cuffAttSpeed       = 0.8 * ATT_SPEED_SCALE;
-		m_cuffAttRange       = 40;
+		m_cuffDamageMin = 0;
+		m_cuffDamageMax = 0;
+		m_cuffAttSpeed = 0.8 * ATT_SPEED_SCALE;
+		m_cuffAttRange = 40;
 		break;
 
 	case METIER_HUNTER:    //»¨¼ä
-		m_cuffDamageMin		= 0;
-		m_cuffDamageMax		= 0;
-		m_cuffAttSpeed		= 0.8 * ATT_SPEED_SCALE;
-		m_cuffAttRange      = 40;
+		m_cuffDamageMin = 0;
+		m_cuffDamageMax = 0;
+		m_cuffAttSpeed = 0.8 * ATT_SPEED_SCALE;
+		m_cuffAttRange = 40;
 		break;
 
 	case METIER_WIZARD:    //Ê¥Î×
-		m_cuffDamageMin		= 0;
-		m_cuffDamageMax		= 0;
-		m_cuffAttSpeed		= 0.8 * ATT_SPEED_SCALE;
-		m_cuffAttRange      = 40;
+		m_cuffDamageMin = 0;
+		m_cuffDamageMax = 0;
+		m_cuffAttSpeed = 0.8 * ATT_SPEED_SCALE;
+		m_cuffAttRange = 40;
 		break;
 
 	case METIER_TAOIST:    //ÊñÉ½
-		m_cuffDamageMin		= 0;
-		m_cuffDamageMax		= 0;
-		m_cuffAttSpeed		= 0.8 * ATT_SPEED_SCALE;
-		m_cuffAttRange      = 40;
+		m_cuffDamageMin = 0;
+		m_cuffDamageMax = 0;
+		m_cuffAttSpeed = 0.8 * ATT_SPEED_SCALE;
+		m_cuffAttRange = 40;
 		break;
 	}
-	m_core.DamageMin.Temp	+= m_cuffDamageMin;
-	m_core.DamageMax.Temp	+= m_cuffDamageMax;
-	m_core.AttSpeed.Temp	+= m_cuffAttSpeed;
+	m_core.DamageMin.Temp += m_cuffDamageMin;
+	m_core.DamageMax.Temp += m_cuffDamageMax;
+	m_core.AttSpeed.Temp += m_cuffAttSpeed;
 	m_core.AttackRange.Temp += m_cuffAttRange;
 }
 
 void CRegionCreature::UnEquipCuff()
 {
-	m_core.DamageMin.Temp	-= m_cuffDamageMin;
-	m_core.DamageMax.Temp	-= m_cuffDamageMax;	
-	m_core.AttSpeed.Temp	-= m_cuffAttSpeed;
+	m_core.DamageMin.Temp -= m_cuffDamageMin;
+	m_core.DamageMax.Temp -= m_cuffDamageMax;
+	m_core.AttSpeed.Temp -= m_cuffAttSpeed;
 	m_core.AttackRange.Temp -= m_cuffAttRange;
 }
 //Tianh  //ÊÇ·ñÔÚ±äÉí×´Ì¬
@@ -13774,7 +13821,7 @@ bool  CRegionCreature::IsChengBody()
 			if (m_master->m_ChangeModelID)
 			{
 				return true;
-			} 
+			}
 			else
 			{
 				return false;
@@ -13786,8 +13833,8 @@ bool  CRegionCreature::IsChengBody()
 //Tianh //±äÉí
 void CRegionCreature::ChangeBoby(int ModelID)
 {
-	SCreModel *model = g_TableCreModel.FindCreModel(ModelID);
-	if(!model) return ;
+	SCreModel* model = g_TableCreModel.FindCreModel(ModelID);
+	if (!model) return;
 	m_ChangeModelID = ModelID;  //±£´æ±äÉíºóµÄÄ£ÐÍID+
 	m_model = model;
 	if (m_dwLastModelID == ModelID)
@@ -13810,25 +13857,25 @@ void CRegionCreature::SendChangeBosyToC(int ChangeModelID)
 	g_sendCmd->WriteLong((long)ChangeModelID);
 	g_sendCmd->WriteByte(m_core.HeadModelId);
 	long lShapeshift = m_ChangeModelID;
-	g_sendCmd->SerializeBit(lShapeshift,1);
-	if(NULL != m_scene)
+	g_sendCmd->SerializeBit(lShapeshift, 1);
+	if (NULL != m_scene)
 	{
-		m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+		m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 	}
 }
 
 //Tianh ÇÐ»»ÎäÆ÷
 bool CRegionCreature::ChangeWeapon()
 {
-	if (m_pTrade ||m_pPShop)
+	if (m_pTrade || m_pPShop)
 		return false;
 
 	SItemID item1 = m_pItemContainer->GetEquipItem(CItemContainerBase::WEAPON_1, true);
 	SItemID item3 = m_pItemContainer->GetEquipItem(CItemContainerBase::WEAPON_3, true);
 	m_pItemContainer->UnEquip(CItemContainerBase::WEAPON_1);
 	m_pItemContainer->UnEquip(CItemContainerBase::WEAPON_3);
-	m_pItemContainer->Equip(item3,CItemContainerBase::WEAPON_1);
-	m_pItemContainer->Equip(item1,CItemContainerBase::WEAPON_3);
+	m_pItemContainer->Equip(item3, CItemContainerBase::WEAPON_1);
+	m_pItemContainer->Equip(item1, CItemContainerBase::WEAPON_3);
 
 	m_pItemContainer->UpdateItemToClient(CItemContainerBase::WEAPON_1);
 	m_pItemContainer->UpdateItemToClient(CItemContainerBase::WEAPON_3);
@@ -13839,7 +13886,7 @@ bool CRegionCreature::ChangeWeapon()
 }
 
 
-void CRegionCreature::CMoveParent(float *npos)
+void CRegionCreature::CMoveParent(float* npos)
 {
 
 	float vpos[3];
@@ -13852,7 +13899,7 @@ void CRegionCreature::CMoveParent(float *npos)
 
 	//iRx += rand() % 10 - 2;
 	//iRy += rand() % 10 - 2;
-     ForceSetPosition(x,y,0,true);
+	ForceSetPosition(x, y, 0, true);
 	/*ForceSetPosition(x / 20,y / 20,0,true);*/
 
 }
@@ -13863,20 +13910,20 @@ void CRegionCreature::CMoveParent(float *npos)
 //
 void CRegionCreature::ClearHidingAndTopo()
 {
-	if(m_core.Metier == METIER_HUNTER && m_IsHiding != 0)
-	{	
+	if (m_core.Metier == METIER_HUNTER && m_IsHiding != 0)
+	{
 		if (m_IsHiding == 1)
 		{
 			m_Skill.ClearEffByClass(14);//ÒþÉí
 			m_Skill.ClearEffByClass(20);
-			
+
 			/*Hiding(0);*/
 		}
 		else if (m_IsHiding == 2)
 		{
 			m_Skill.ClearEffByClass(11); //¶ÝµØ
 			/*PlayerLurk(0);*/
-		}	
+		}
 	}
 
 	UpdateToClientDelta();
@@ -13888,20 +13935,20 @@ void CRegionCreature::ClearHidingAndTopo()
 //
 void CRegionCreature::MagicWeaponBeginAddMp()
 {
-	if(MagicWeaponEndAddMp()) return;
+	if (MagicWeaponEndAddMp()) return;
 
-	CCreatureState *state = RT_NEW CCreState_MagWeaAddMp;
-	if(!AddState(state,NULL))
+	CCreatureState* state = RT_NEW CCreState_MagWeaAddMp;
+	if (!AddState(state, NULL))
 	{
-        DEL_ONE(state);
+		DEL_ONE(state);
 		return;
 	}
 }
 
 bool CRegionCreature::MagicWeaponEndAddMp()
 {
-	CCreatureState *state = FindStateByType(CRE_STATE_MAGIC_WEAPON_ADD_MP);
-	if(!state) return false;
+	CCreatureState* state = FindStateByType(CRE_STATE_MAGIC_WEAPON_ADD_MP);
+	if (!state) return false;
 
 	state->End();
 	return true;
@@ -13910,13 +13957,13 @@ bool CRegionCreature::MagicWeaponEndAddMp()
 void CRegionCreature::MagicWeaponBeginAddEle(int type)
 {
 	// if(MagicWeaponEndAddEle()) return;
-	CCreatureState *state = FindStateByType(CRE_STATE_MAGIC_WEAPON_ADD_ELE);
-	if(state) return;
+	CCreatureState* state = FindStateByType(CRE_STATE_MAGIC_WEAPON_ADD_ELE);
+	if (state) return;
 
 	state = RT_NEW CCreState_MagWeaAddEle;
 	SCreStateParam param;
 	param.p1 = type;
-	if(!AddState(state,&param))
+	if (!AddState(state, &param))
 	{
 		DEL_ONE(state);
 		return;
@@ -13927,8 +13974,8 @@ bool CRegionCreature::MagicWeaponEndAddEle()
 {
 	ItemID_SetInvalid(m_RifineTrump);
 	m_bIsRining = false;
-	CCreatureState *state = FindStateByType(CRE_STATE_MAGIC_WEAPON_ADD_ELE);
-	if(!state) return false;
+	CCreatureState* state = FindStateByType(CRE_STATE_MAGIC_WEAPON_ADD_ELE);
+	if (!state) return false;
 
 	state->End();
 	return true;
@@ -13936,16 +13983,16 @@ bool CRegionCreature::MagicWeaponEndAddEle()
 
 void CRegionCreature::TickState(unsigned long delta)
 {
-	if(m_stateList.empty()) return;
-	
+	if (m_stateList.empty()) return;
+
 	bool ret;
 	list<CCreatureState*>::iterator it;
-	CCreatureState *state;
-	for(it=m_stateList.begin(); it!=m_stateList.end();)
+	CCreatureState* state;
+	for (it = m_stateList.begin(); it != m_stateList.end();)
 	{
 		state = *it;
 		ret = state->Tick(delta);
-		if(!ret) 
+		if (!ret)
 		{
 			it = m_stateList.erase(it);
 			DEL_ONE(state);
@@ -13955,12 +14002,12 @@ void CRegionCreature::TickState(unsigned long delta)
 	}
 }
 
-bool CRegionCreature::AddState(CCreatureState *state,SCreStateParam *param)
+bool CRegionCreature::AddState(CCreatureState* state, SCreStateParam* param)
 {
-	if(state->GetType() == CRE_STATE_PROCESS_BATTLE)
+	if (state->GetType() == CRE_STATE_PROCESS_BATTLE)
 	{
-		CCreatureState *pOldState = FindStateByType(CRE_STATE_PROCESS_BATTLE);
-		if(pOldState)
+		CCreatureState* pOldState = FindStateByType(CRE_STATE_PROCESS_BATTLE);
+		if (pOldState)
 		{
 			DEL_ONE(state);
 			pOldState->Begin(this, param);
@@ -13968,19 +14015,19 @@ bool CRegionCreature::AddState(CCreatureState *state,SCreStateParam *param)
 		}
 		else	BeginBattleState();
 	}
-	if(!state->Begin(this,param))
+	if (!state->Begin(this, param))
 		return false;
-	
-    m_stateList.push_back(state);
+
+	m_stateList.push_back(state);
 	return true;
 }
 
 bool CRegionCreature::FindStateCannotMove()
 {
 	list<CCreatureState*>::iterator it;
-	for(it=m_stateList.begin(); it!=m_stateList.end(); it++)
+	for (it = m_stateList.begin(); it != m_stateList.end(); it++)
 	{
-		if((*it)->GetCanMove())
+		if ((*it)->GetCanMove())
 		{
 			return false;
 		}
@@ -13991,9 +14038,9 @@ bool CRegionCreature::FindStateCannotMove()
 CCreatureState* CRegionCreature::FindStateByType(ECreatureStateType type)
 {
 	list<CCreatureState*>::iterator it;
-	for(it=m_stateList.begin(); it!=m_stateList.end(); it++)
+	for (it = m_stateList.begin(); it != m_stateList.end(); it++)
 	{
-		if((*it)->GetType() == type)
+		if ((*it)->GetType() == type)
 		{
 			return *it;
 		}
@@ -14001,24 +14048,24 @@ CCreatureState* CRegionCreature::FindStateByType(ECreatureStateType type)
 	return NULL;
 }
 
-void CRegionCreature::AddBattleState(CRegionCreature *pEnemy)
+void CRegionCreature::AddBattleState(CRegionCreature* pEnemy)
 {
-	if(!pEnemy)
+	if (!pEnemy)
 		return;
 
 	SCreStateParam params;
 	params.p1 = pEnemy->GetObjectId();
-	CCreatureState *pState = RT_NEW CCreState_Battle;
-	if(!AddState(pState, &params))
+	CCreatureState* pState = RT_NEW CCreState_Battle;
+	if (!AddState(pState, &params))
 	{
 		DEL_ONE(pState);
 		return;
 	}
-	CRegionCreature *pPet = GetEntity();
-	if(pPet && pPet != this)
+	CRegionCreature* pPet = GetEntity();
+	if (pPet && pPet != this)
 	{
 		pState = RT_NEW CCreState_Battle;
-		if(!pPet->AddState(pState, &params))
+		if (!pPet->AddState(pState, &params))
 		{
 			DEL_ONE(pState);
 			return;
@@ -14027,16 +14074,16 @@ void CRegionCreature::AddBattleState(CRegionCreature *pEnemy)
 
 	params.p1 = GetObjectId();
 	pState = RT_NEW CCreState_Battle;
-	if(!pEnemy->AddState(pState, &params))
+	if (!pEnemy->AddState(pState, &params))
 	{
 		DEL_ONE(pState);
 		return;
 	}
-	CRegionCreature *pEnemyPet = pEnemy->GetEntity();
-	if(pEnemyPet && pEnemyPet != pEnemy)
+	CRegionCreature* pEnemyPet = pEnemy->GetEntity();
+	if (pEnemyPet && pEnemyPet != pEnemy)
 	{
 		pState = RT_NEW CCreState_Battle;
-		if(!pEnemyPet->AddState(pState, &params))
+		if (!pEnemyPet->AddState(pState, &params))
 		{
 			DEL_ONE(pState);
 			return;
@@ -14046,13 +14093,13 @@ void CRegionCreature::AddBattleState(CRegionCreature *pEnemy)
 
 bool CRegionCreature::OnlyBattleState(void)
 {
-	if(m_stateList.empty())
+	if (m_stateList.empty())
 		return true;
 
 	list<CCreatureState*>::iterator it;
-	for(it=m_stateList.begin(); it!=m_stateList.end(); it++)
+	for (it = m_stateList.begin(); it != m_stateList.end(); it++)
 	{
-		if( (*it)->GetType() == CRE_STATE_PROCESS_BATTLE )
+		if ((*it)->GetType() == CRE_STATE_PROCESS_BATTLE)
 			return false;
 	}
 
@@ -14061,7 +14108,7 @@ bool CRegionCreature::OnlyBattleState(void)
 
 bool CRegionCreature::HaveBattleState(void)
 {
-	if(FindStateByType(CRE_STATE_PROCESS_BATTLE))
+	if (FindStateByType(CRE_STATE_PROCESS_BATTLE))
 		return true;
 	return false;
 }
@@ -14078,16 +14125,16 @@ void CRegionCreature::EndBattleState(void)
 	//printf("End battle state %d\n", GetObjectId());
 }
 
-void CRegionCreature::AttChangeMessageToClient(const char *sMessageType, int iAttValue)
+void CRegionCreature::AttChangeMessageToClient(const char* sMessageType, int iAttValue)
 {
-	if(!sMessageType || iAttValue == 0)
+	if (!sMessageType || iAttValue == 0)
 		return;
-	if(iAttValue < 0)
+	if (iAttValue < 0)
 		iAttValue *= -1;
 
 	//Í¨Öª¿Í»§¶ËÊôÐÔÖµÔö¼Ó
-	const char *sTargetMsg = Rs(sMessageType);
-	if(sTargetMsg != sMessageType)
+	const char* sTargetMsg = Rs(sMessageType);
+	if (sTargetMsg != sMessageType)
 	{
 		rt2_sprintf(g_strStaticBuffer, sTargetMsg, iAttValue);
 		SendBattleInfoMessage(g_strStaticBuffer);
@@ -14096,98 +14143,98 @@ void CRegionCreature::AttChangeMessageToClient(const char *sMessageType, int iAt
 
 DWORD CRegionCreature::GetTargetParty(CRegionCreature* pTarget) // È¡µÃµÐÈËµÄÀàÐÍ£¬¿ÉÄÜÊÇÓÑ¾ü£¬µÐ¾ü£¬ºêÔÚskill_base.hÖÐ
 {
-    /*
+	/*
 	if(pTarget == NULL)
 	{
 		return SKILL_TARGET_TYPE_NONE;
 	}
 	if (IsMonster())
-    {
-        // ×Ô¼ºÊÇ¹ÖÎï
-        if (pTarget->IsMonster())
-        {
-            return SKILL_TARGET_FRIEND_ACTOR; // ¹ÖÎï¶Ô¹ÖÎï¶¼ÊÇÓÑ¾ü
-        }else if (pTarget->IsUserPet())
-        {
-            return SKILL_TARGET_ENEMY_PET;
-        }else
-        {
-            return SKILL_TARGET_ENEMY_ACTOR;
-        }
-    }else if(IsUser() || IsUserPet())// ×Ô¼ºÊÇÈË
-    {
-        // ×Ô¼ºÊÇÈË
-        CRegionCreature* pMaster, *pTMaster;
-        if (pTarget->IsMonster())
-        {
-            // ¶Ô·½ÊÇ¹ÖÎï£¬¶ø×Ô¼ºÊÇÈË
-            return SKILL_TARGET_ENEMY_ACTOR; // ¶Ô¹ÖÎïÌìÉúµÐ¶Ô
-        }else if(pTarget->IsUser() || pTarget->IsUserPet())
-        {
-            // Èç¹û¶Ô·½Ò²ÊÇÈË»òÕßÊÞ
-            if (this==pTarget)
-            {
-                // Èç¹ûÄ¿±ê¾ÍÊÇ×Ô¼º
-                if (IsUserPet())
-                {
-                    return SKILL_TARGET_PET;
-                }else
-                {
-                    return SKILL_TARGET_PLAYER;
-                }
-            }else
-            {
-                if (IsUserPet())
-                {
-                    if (m_master==pTarget)
-                    {
-                        return SKILL_TARGET_PLAYER;
-                    }else
-                    {
-                        pMaster = m_master;
-                    }
-                }else
-                {
-                    if (m_pet==pTarget)
-                    {
-                        return SKILL_TARGET_PET;
-                    }else
-                    {
-                        pMaster = this;
-                    }
-                }
-            }
+	{
+		// ×Ô¼ºÊÇ¹ÖÎï
+		if (pTarget->IsMonster())
+		{
+			return SKILL_TARGET_FRIEND_ACTOR; // ¹ÖÎï¶Ô¹ÖÎï¶¼ÊÇÓÑ¾ü
+		}else if (pTarget->IsUserPet())
+		{
+			return SKILL_TARGET_ENEMY_PET;
+		}else
+		{
+			return SKILL_TARGET_ENEMY_ACTOR;
+		}
+	}else if(IsUser() || IsUserPet())// ×Ô¼ºÊÇÈË
+	{
+		// ×Ô¼ºÊÇÈË
+		CRegionCreature* pMaster, *pTMaster;
+		if (pTarget->IsMonster())
+		{
+			// ¶Ô·½ÊÇ¹ÖÎï£¬¶ø×Ô¼ºÊÇÈË
+			return SKILL_TARGET_ENEMY_ACTOR; // ¶Ô¹ÖÎïÌìÉúµÐ¶Ô
+		}else if(pTarget->IsUser() || pTarget->IsUserPet())
+		{
+			// Èç¹û¶Ô·½Ò²ÊÇÈË»òÕßÊÞ
+			if (this==pTarget)
+			{
+				// Èç¹ûÄ¿±ê¾ÍÊÇ×Ô¼º
+				if (IsUserPet())
+				{
+					return SKILL_TARGET_PET;
+				}else
+				{
+					return SKILL_TARGET_PLAYER;
+				}
+			}else
+			{
+				if (IsUserPet())
+				{
+					if (m_master==pTarget)
+					{
+						return SKILL_TARGET_PLAYER;
+					}else
+					{
+						pMaster = m_master;
+					}
+				}else
+				{
+					if (m_pet==pTarget)
+					{
+						return SKILL_TARGET_PET;
+					}else
+					{
+						pMaster = this;
+					}
+				}
+			}
 
-            if (pTarget->IsUserPet())
-            {
-                pTMaster = pTarget->m_master;
-            }else
-            {
-                pTMaster = pTarget;
-            }
+			if (pTarget->IsUserPet())
+			{
+				pTMaster = pTarget->m_master;
+			}else
+			{
+				pTMaster = pTarget;
+			}
 
-            if (m_pTeam)
-            {
-                if (pMaster->m_pTeam->mData.Exist(pTMaster->m_userInfo->m_userId))
-                {
-                    if (pTMaster==pTarget)
-                    {
-                        return SKILL_TARGET_FRIEND_ACTOR | SKILL_TARGET_TEAM_MEMBER;
-                    }else
-                    {
-                        return SKILL_TARGET_FRIEND_PET;
-                    }
-                }
-            }
+			if (m_pTeam)
+			{
+				if (pMaster->m_pTeam->mData.Exist(pTMaster->m_userInfo->m_userId))
+				{
+					if (pTMaster==pTarget)
+					{
+						return SKILL_TARGET_FRIEND_ACTOR | SKILL_TARGET_TEAM_MEMBER;
+					}else
+					{
+						return SKILL_TARGET_FRIEND_PET;
+					}
+				}
+			}
 
-            if (pTMaster==pTarget)
-            {
-                return SKILL_TARGET_NEUTRAL_ACTOR;
-            }else
-            {
-                return SKILL_TARGET_NEUTRAL_PET;
-            }
-        }
+			if (pTMaster==pTarget)
+			{
+				return SKILL_TARGET_NEUTRAL_ACTOR;
+			}else
+			{
+				return SKILL_TARGET_NEUTRAL_PET;
+			}
+		}
 //--------------------add start by tony 05.05.19-----------------------------//
 		else if(pTarget->IsGuarder())
 		{
@@ -14220,20 +14267,20 @@ DWORD CRegionCreature::GetTargetParty(CRegionCreature* pTarget) // È¡µÃµÐÈËµÄÀàÐ
 		{
 			return SKILL_TARGET_NEUTRAL_ACTOR;
 		}
-    }
+	}
 //--------------------add start by tony 05.05.19-----------------------------//
 	else if(IsGuarder())
 	{
-        if (pTarget->IsGuarder())
-        {
-            return SKILL_TARGET_FRIEND_ACTOR; // ¹ÖÎï¶Ô¹ÖÎï¶¼ÊÇÓÑ¾ü
-        }else if (pTarget->IsUserPet())
-        {
-            return SKILL_TARGET_ENEMY_PET;
-        }else
-        {
-            return SKILL_TARGET_ENEMY_ACTOR;
-        }
+		if (pTarget->IsGuarder())
+		{
+			return SKILL_TARGET_FRIEND_ACTOR; // ¹ÖÎï¶Ô¹ÖÎï¶¼ÊÇÓÑ¾ü
+		}else if (pTarget->IsUserPet())
+		{
+			return SKILL_TARGET_ENEMY_PET;
+		}else
+		{
+			return SKILL_TARGET_ENEMY_ACTOR;
+		}
 	}else //´¦ÀíËÎÒìÈËµÈµÄÇé¿ö
 	{
 		if (pTarget->IsMonster())
@@ -14248,12 +14295,12 @@ DWORD CRegionCreature::GetTargetParty(CRegionCreature* pTarget) // È¡µÃµÐÈËµÄÀàÐ
 		}
 	}
 //--------------------add start by tony 05.05.19-----------------------------//
-    */
-    bool bMe, bTarget;
-    if(pTarget == NULL)
-    {
-        return SKILL_TARGET_TYPE_NONE;
-    }
+	*/
+	bool bMe, bTarget;
+	if (pTarget == NULL)
+	{
+		return SKILL_TARGET_TYPE_NONE;
+	}
 
 	if (IsUserPet() && pTarget == m_master)
 	{
@@ -14269,164 +14316,183 @@ DWORD CRegionCreature::GetTargetParty(CRegionCreature* pTarget) // È¡µÃµÐÈËµÄÀàÐ
 	{
 		return SKILL_TARGET_PETSELF;
 	}
-	
+
 	//if(IsUserPet() && (pTarget == m_master || pTarget == this))
 	//{
 	//	return SKILL_TARGET_MASTERANDPETSELF
 	//}
 
-    // Èç¹ûË«·½ÓÐÒ»·½ÊÇ¹ÖÎï
-    bMe = IsMonster();
-    bTarget = pTarget->IsMonster();
+	// Èç¹ûË«·½ÓÐÒ»·½ÊÇ¹ÖÎï
+	bMe = IsMonster();
+	bTarget = pTarget->IsMonster();
 	if (bMe || bTarget)
-    {
-        if (bMe && bTarget)
-        {
-            return SKILL_TARGET_FRIEND_ACTOR; // ¹ÖÎï¶Ô¹ÖÎï¶¼ÊÇÓÑ¾ü
-        }
-        if (pTarget->IsUserPet())
-        {
-            return SKILL_TARGET_ENEMY_PET;
-        }else
-        {
-            return SKILL_TARGET_ENEMY_ACTOR;
-        }
-    }
-
-    // Èç¹ûË«·½ÓÐÒ»¸öÊÇ Õ½¶·NPC
-    bMe = IsGuarder();
-    bTarget = pTarget->IsGuarder();
-    if (bMe || bTarget)
-    {
-        CRegionCreature *pGuarder, *pGuarder2;
-        if (bMe)
-        {
-            pGuarder = this;
-            pGuarder2 = pTarget;
-        }else
-        {
-            pGuarder = pTarget;
-            pGuarder2 = this;
-        }
-
-        if (pGuarder2->IsGuarder()) // Èç¹ûË«·½¶¼ÊÇÕ½¶·NPC£¬ÄÇ²»Í¬ÕóÓª¼ä¾ÍÊÇµÐÈË£¬·ñÔò¾ÍÊÇÅóÓÑ
-        {
-            if (pGuarder->m_npcInfo->Faction==FACTION_UNKNOWN || pGuarder2->m_npcInfo->Faction==FACTION_UNKNOWN)
-            { // Èç¹ûÆäÖÐÒ»¸öÕóÓª²»Ã÷È·£¬ÄÇ¾ÍÊÇÖÐÁ¢¹ØÏµ
-                return SKILL_TARGET_NEUTRAL_ACTOR;
-            }else if (pGuarder->m_npcInfo->Faction==pGuarder2->m_npcInfo->Faction)
-            { // Èç¹ûÕóÓªÏàÍ¬¾ÍÊÇÅóÓÑ£¬·ñÔò¾ÍÊÇµÐÈË
-                return SKILL_TARGET_FACTION | SKILL_TARGET_FRIEND_ACTOR;
-            }else
-            {
-                return SKILL_TARGET_FACTION_x | SKILL_TARGET_ENEMY_ACTOR;
-            }
-        }else if (pGuarder2->IsUser()) // ÆäÖÐÒ»¸öÊÇÍæ¼Ò
-        {
-            if (pGuarder->m_npcInfo->Faction==FACTION_UNKNOWN)
-            {
-                return SKILL_TARGET_NEUTRAL_ACTOR;
-            }else if (pGuarder->m_npcInfo->Faction==pGuarder2->m_core.Faction)
-            {
-                return SKILL_TARGET_FACTION | SKILL_TARGET_FRIEND_ACTOR;
-            }else
-            {
-                return SKILL_TARGET_FACTION_x | SKILL_TARGET_ENEMY_ACTOR;
-            }
-        }else if (pGuarder2->IsUserPet() || pGuarder2->IsCallNpc()) // ÆäÖÐÒ»¸öÊÇÍæ¼ÒµÄÊÞ
-        {
-            if (pGuarder->m_npcInfo->Faction==FACTION_UNKNOWN)
-            {
-                return SKILL_TARGET_NEUTRAL_ACTOR;
-            }else if (pGuarder->m_npcInfo->Faction==pGuarder2->m_master->m_core.Faction)
-            {
-                return SKILL_TARGET_FACTION | SKILL_TARGET_FRIEND_ACTOR;
-            }else
-            {
-                return SKILL_TARGET_FACTION_x | SKILL_TARGET_ENEMY_ACTOR;
-            }
-        }else
+	{
+		if (bMe && bTarget)
 		{
-            return SKILL_TARGET_NEUTRAL_ACTOR;
+			return SKILL_TARGET_FRIEND_ACTOR; // ¹ÖÎï¶Ô¹ÖÎï¶¼ÊÇÓÑ¾ü
 		}
-    }
+		if (pTarget->IsUserPet())
+		{
+			return SKILL_TARGET_ENEMY_PET;
+		}
+		else
+		{
+			return SKILL_TARGET_ENEMY_ACTOR;
+		}
+	}
 
-    bMe = (IsUser() || IsUserPet() || IsCallNpc());
-    bTarget = (pTarget->IsUser() || pTarget->IsUserPet() || pTarget->IsCallNpc());
-    if (bMe && bTarget)
-    {
-        CRegionCreature* pMaster, *pTMaster;
-        DWORD dwParty = 0;
-        if (IsUserPet()||IsCallNpc())
-        {
-            pMaster = m_master;
-        }else
-        {
-            pMaster = this;
-        }
-        if (pTarget->IsUserPet() || pTarget->IsCallNpc())
-        {
-            pTMaster = pTarget->m_master;
-        }else
-        {
-            pTMaster = pTarget;
-        }
+	// Èç¹ûË«·½ÓÐÒ»¸öÊÇ Õ½¶·NPC
+	bMe = IsGuarder();
+	bTarget = pTarget->IsGuarder();
+	if (bMe || bTarget)
+	{
+		CRegionCreature* pGuarder, * pGuarder2;
+		if (bMe)
+		{
+			pGuarder = this;
+			pGuarder2 = pTarget;
+		}
+		else
+		{
+			pGuarder = pTarget;
+			pGuarder2 = this;
+		}
 
-        if (pMaster==pTMaster) // Èç¹ûÖ÷ÈË¾ÍÊÇ×Ô¼ºµÄÖ÷ÈË
-        {
-            if (pTMaster!=pTarget) // Èç¹û¶Ô·½ÊÇÊÞ
-            {
-                return SKILL_TARGET_PET | SKILL_TARGET_TEAM_MEMBER | SKILL_TARGET_FACTION | SKILL_TARGET_UNION;
-            }else // Èç¹û¶Ô·½ÊÇÈË
-            {
-                return SKILL_TARGET_PLAYER | SKILL_TARGET_TEAM_MEMBER | SKILL_TARGET_FACTION | SKILL_TARGET_UNION;
-            }
-        }
+		if (pGuarder2->IsGuarder()) // Èç¹ûË«·½¶¼ÊÇÕ½¶·NPC£¬ÄÇ²»Í¬ÕóÓª¼ä¾ÍÊÇµÐÈË£¬·ñÔò¾ÍÊÇÅóÓÑ
+		{
+			if (pGuarder->m_npcInfo->Faction == FACTION_UNKNOWN || pGuarder2->m_npcInfo->Faction == FACTION_UNKNOWN)
+			{ // Èç¹ûÆäÖÐÒ»¸öÕóÓª²»Ã÷È·£¬ÄÇ¾ÍÊÇÖÐÁ¢¹ØÏµ
+				return SKILL_TARGET_NEUTRAL_ACTOR;
+			}
+			else if (pGuarder->m_npcInfo->Faction == pGuarder2->m_npcInfo->Faction)
+			{ // Èç¹ûÕóÓªÏàÍ¬¾ÍÊÇÅóÓÑ£¬·ñÔò¾ÍÊÇµÐÈË
+				return SKILL_TARGET_FACTION | SKILL_TARGET_FRIEND_ACTOR;
+			}
+			else
+			{
+				return SKILL_TARGET_FACTION_x | SKILL_TARGET_ENEMY_ACTOR;
+			}
+		}
+		else if (pGuarder2->IsUser()) // ÆäÖÐÒ»¸öÊÇÍæ¼Ò
+		{
+			if (pGuarder->m_npcInfo->Faction == FACTION_UNKNOWN)
+			{
+				return SKILL_TARGET_NEUTRAL_ACTOR;
+			}
+			else if (pGuarder->m_npcInfo->Faction == pGuarder2->m_core.Faction)
+			{
+				return SKILL_TARGET_FACTION | SKILL_TARGET_FRIEND_ACTOR;
+			}
+			else
+			{
+				return SKILL_TARGET_FACTION_x | SKILL_TARGET_ENEMY_ACTOR;
+			}
+		}
+		else if (pGuarder2->IsUserPet() || pGuarder2->IsCallNpc()) // ÆäÖÐÒ»¸öÊÇÍæ¼ÒµÄÊÞ
+		{
+			if (pGuarder->m_npcInfo->Faction == FACTION_UNKNOWN)
+			{
+				return SKILL_TARGET_NEUTRAL_ACTOR;
+			}
+			else if (pGuarder->m_npcInfo->Faction == pGuarder2->m_master->m_core.Faction)
+			{
+				return SKILL_TARGET_FACTION | SKILL_TARGET_FRIEND_ACTOR;
+			}
+			else
+			{
+				return SKILL_TARGET_FACTION_x | SKILL_TARGET_ENEMY_ACTOR;
+			}
+		}
+		else
+		{
+			return SKILL_TARGET_NEUTRAL_ACTOR;
+		}
+	}
 
-        if (pMaster->m_unionID!=0)
-        {
-            if (pMaster->m_unionID==pTMaster->m_unionID)
-            {
-                dwParty |= SKILL_TARGET_UNION;
-            }else
-            {
-                dwParty |= SKILL_TARGET_UNION_x;
-            }
-        }
+	bMe = (IsUser() || IsUserPet() || IsCallNpc());
+	bTarget = (pTarget->IsUser() || pTarget->IsUserPet() || pTarget->IsCallNpc());
+	if (bMe && bTarget)
+	{
+		CRegionCreature* pMaster, * pTMaster;
+		DWORD dwParty = 0;
+		if (IsUserPet() || IsCallNpc())
+		{
+			pMaster = m_master;
+		}
+		else
+		{
+			pMaster = this;
+		}
+		if (pTarget->IsUserPet() || pTarget->IsCallNpc())
+		{
+			pTMaster = pTarget->m_master;
+		}
+		else
+		{
+			pTMaster = pTarget;
+		}
 
-        if (pMaster->m_core.Faction==pTMaster->m_core.Faction)
-        {
-            dwParty |= SKILL_TARGET_FACTION;
-        }else
-        {
-            dwParty |= SKILL_TARGET_FACTION_x;
-        }
+		if (pMaster == pTMaster) // Èç¹ûÖ÷ÈË¾ÍÊÇ×Ô¼ºµÄÖ÷ÈË
+		{
+			if (pTMaster != pTarget) // Èç¹û¶Ô·½ÊÇÊÞ
+			{
+				return SKILL_TARGET_PET | SKILL_TARGET_TEAM_MEMBER | SKILL_TARGET_FACTION | SKILL_TARGET_UNION;
+			}
+			else // Èç¹û¶Ô·½ÊÇÈË
+			{
+				return SKILL_TARGET_PLAYER | SKILL_TARGET_TEAM_MEMBER | SKILL_TARGET_FACTION | SKILL_TARGET_UNION;
+			}
+		}
 
-        if (pMaster->m_pTeam->mData.Exist(pTMaster->m_userInfo->m_userId))
-        {
-            dwParty |= SKILL_TARGET_TEAM_MEMBER;
-            if (pTMaster==pTarget)
-            {
-                dwParty |= SKILL_TARGET_FRIEND_ACTOR;
-            }else
-            {
-                dwParty |= SKILL_TARGET_FRIEND_PET;
-            }
-        }else
-        {
-            if (pTMaster==pTarget)
-            {
-                dwParty |= SKILL_TARGET_ENEMY_ACTOR;
-                //dwParty |= SKILL_TARGET_NEUTRAL_ACTOR;
-            }else
-            {
-                dwParty |= SKILL_TARGET_ENEMY_PET;
-                //dwParty |= SKILL_TARGET_NEUTRAL_PET;
-            }
-        }
-        return dwParty;
-    }
-    return SKILL_TARGET_NEUTRAL_ACTOR;
+		if (pMaster->m_unionID != 0)
+		{
+			if (pMaster->m_unionID == pTMaster->m_unionID)
+			{
+				dwParty |= SKILL_TARGET_UNION;
+			}
+			else
+			{
+				dwParty |= SKILL_TARGET_UNION_x;
+			}
+		}
+
+		if (pMaster->m_core.Faction == pTMaster->m_core.Faction)
+		{
+			dwParty |= SKILL_TARGET_FACTION;
+		}
+		else
+		{
+			dwParty |= SKILL_TARGET_FACTION_x;
+		}
+
+		if (pMaster->m_pTeam->mData.Exist(pTMaster->m_userInfo->m_userId))
+		{
+			dwParty |= SKILL_TARGET_TEAM_MEMBER;
+			if (pTMaster == pTarget)
+			{
+				dwParty |= SKILL_TARGET_FRIEND_ACTOR;
+			}
+			else
+			{
+				dwParty |= SKILL_TARGET_FRIEND_PET;
+			}
+		}
+		else
+		{
+			if (pTMaster == pTarget)
+			{
+				dwParty |= SKILL_TARGET_ENEMY_ACTOR;
+				//dwParty |= SKILL_TARGET_NEUTRAL_ACTOR;
+			}
+			else
+			{
+				dwParty |= SKILL_TARGET_ENEMY_PET;
+				//dwParty |= SKILL_TARGET_NEUTRAL_PET;
+			}
+		}
+		return dwParty;
+	}
+	return SKILL_TARGET_NEUTRAL_ACTOR;
 }
 
 void CRegionCreature::ToCreatureInfo(SCreatureInfo* pInfo)
@@ -14435,7 +14501,7 @@ void CRegionCreature::ToCreatureInfo(SCreatureInfo* pInfo)
 		return;
 
 	pInfo->name = m_core.Name;
-	pInfo->DbID = (m_userInfo ? m_userInfo->m_userId:0);
+	pInfo->DbID = (m_userInfo ? m_userInfo->m_userId : 0);
 	pInfo->metier = m_core.Metier;
 	pInfo->metierLev = m_core.MetierLev;
 	pInfo->faction = m_core.Faction;
@@ -14444,7 +14510,7 @@ void CRegionCreature::ToCreatureInfo(SCreatureInfo* pInfo)
 	pInfo->hp = m_core.GetHp();
 	pInfo->mp = m_core.GetMp();
 	pInfo->EnP = m_core.GetEnP();
-    pInfo->exploit = m_core.Exploit;
+	pInfo->exploit = m_core.Exploit;
 	pInfo->pkValue = m_core.Pk;
 	pInfo->credit = m_core.Credit;
 	/**************Tianh**************/
@@ -14464,11 +14530,11 @@ void CRegionCreature::ToCreatureInfo(SCreatureInfo* pInfo)
 	pInfo->vigour = m_core.Vigour;
 	pInfo->vigourPoint = m_core.VigourPoint;
 	/*********************************/
-    pInfo->money = m_pItemContainer ? m_pItemContainer->GetMoney() : 0;
+	pInfo->money = m_pItemContainer ? m_pItemContainer->GetMoney() : 0;
 	pInfo->bankMoney = m_pBank->GetMoney();
 	pInfo->DamMin = m_core.GetDamageMin();
 	pInfo->DamMax = m_core.GetDamageMax();
-	for (int i=0; i<MAX_ELEMENT_ATTR; i++)
+	for (int i = 0; i < MAX_ELEMENT_ATTR; i++)
 	{
 		pInfo->EleDamage[i] = m_core.ElementDamage[i].GetValue();
 		pInfo->EleArmor[i] = m_core.ElementArmor[i].GetValue();
@@ -14477,10 +14543,10 @@ void CRegionCreature::ToCreatureInfo(SCreatureInfo* pInfo)
 	pInfo->petLevel = (m_pet ? m_pet->m_core.Lev : 0);
 	pInfo->petHP = (m_pet ? m_pet->m_core.GetHp() : 0);
 
-	RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX<0)?(NULL):(m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX-m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY-m_scene->m_pTerrain->GetCenterY()));
+	RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX < 0) ? (NULL) : (m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(), m_iCurrentBlockY - m_scene->m_pTerrain->GetCenterY()));
 	if (pBlockMap)
 		pInfo->scene = pBlockMap->GetBlockName();
-	else 
+	else
 		pInfo->scene = "";
 
 	return;
@@ -14493,16 +14559,16 @@ bool CRegionCreature::IsUnionCaption()
 	if (m_unionID == 0)
 		return false;
 
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iter_union = g_region->m_unionMap.find(m_unionID);
-	if(iter_union == g_region->m_unionMap.end())
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iter_union = g_region->m_unionMap.find(m_unionID);
+	if (iter_union == g_region->m_unionMap.end())
 	{
 		return false;
 	}
-	else 
+	else
 	{
-		if(iter_union->second.m_nCaptainID != m_userInfo->m_userId)
+		if (iter_union->second.m_nCaptainID != m_userInfo->m_userId)
 			return false;
-		else 
+		else
 			return true;
 	}
 }
@@ -14519,69 +14585,70 @@ void CRegionCreature::State_SetVisible(bool bVisible)
 {
 	if (bVisible)
 		m_dwState |= CreState_Visible;
-	else 
+	else
 		m_dwState &= ~CreState_Visible;
 	NetSend_State();
-	m_modelRef ++;
+	m_modelRef++;
 }
 
 void CRegionCreature::State_SetMovable(bool bCanMove)
 {
 	if (bCanMove)
 		m_dwState |= CreState_CanMove;
-	else 
+	else
 		m_dwState &= ~CreState_CanMove;
 	NetSend_State();
-	m_modelRef ++;
+	m_modelRef++;
 }
 
 void CRegionCreature::State_SetSpeakable(bool bSpeakable)
 {
 	if (bSpeakable)
 		m_dwState |= CreState_CanSpeak;
-	else 
+	else
 		m_dwState &= ~CreState_CanSpeak;
 	NetSend_State();
-	m_modelRef ++;
+	m_modelRef++;
 }
 
 void CRegionCreature::State_SetPShopable(bool bPShopable)
 {
 	if (bPShopable)
 		m_dwState |= CreState_CanPShop;
-	else 
+	else
 		m_dwState &= ~CreState_CanPShop;
 	NetSend_State();
-	m_modelRef ++;
+	m_modelRef++;
 }
 
 bool CRegionCreature::IsDoingMoneyTask()
 {
-	return m_task.IsDoingMoneyTask()!=0;
+	return m_task.IsDoingMoneyTask() != 0;
 }
 
 
 void CRegionCreature::SetIncomeState(long lplayerNowLoginTime)					//ac.ma
 {
-	if( m_core.bAdult || lplayerNowLoginTime == 0) return;
-	unsigned long lTimeOnline = time(NULL) - m_playerNowLoginTime + m_lLastTotalOnline;		
+	if (m_core.bAdult || lplayerNowLoginTime == 0) return;
+	unsigned long lTimeOnline = time(NULL) - m_playerNowLoginTime + m_lLastTotalOnline;
 	if (m_ltempOnline < lTimeOnline)
 		m_bforGetTime = true;
 	m_ltempOnline = lTimeOnline;
 
-	if (lTimeOnline/(EVERY_PER_TIME * 4) >= 5)
+	if (lTimeOnline / (EVERY_PER_TIME * 4) >= 5)
 	{
-		if(lTimeOnline%EVERY_PER_TIME == 0 && m_bforGetTime)
+		if (lTimeOnline % EVERY_PER_TIME == 0 && m_bforGetTime)
 		{
 			SendSystemMessage(R(MSG_INCOME_STATE_FIVE_HOUR));
 			m_bforGetTime = false;
 		}
 		m_iIncomeState = 0;
-	}else
-		switch (lTimeOnline/(EVERY_PER_TIME * 4))
-	{
+	}
+	else
+		switch (lTimeOnline / (EVERY_PER_TIME * 4))
+		{
 		case 1:
-			if (lTimeOnline%(EVERY_PER_TIME * 4) == 0 && m_bforGetTime)
+			if (lTimeOnline % (EVERY_PER_TIME * 4) == 0 && m_bforGetTime)
 			{
 				SendSystemMessage(R(MSG_INCOME_STATE_ONE_HOUR));
 				m_bforGetTime = false;
@@ -14589,7 +14656,7 @@ void CRegionCreature::SetIncomeState(long lplayerNowLoginTime)					//ac.ma
 			m_iIncomeState = 100;
 			break;
 		case 2:
-			if (lTimeOnline%(EVERY_PER_TIME * 4) == 0 && m_bforGetTime)
+			if (lTimeOnline % (EVERY_PER_TIME * 4) == 0 && m_bforGetTime)
 			{
 				SendSystemMessage(R(MSG_INCOME_STATE_TWO_HOUR));
 				m_bforGetTime = false;
@@ -14597,7 +14664,7 @@ void CRegionCreature::SetIncomeState(long lplayerNowLoginTime)					//ac.ma
 			m_iIncomeState = 100;
 			break;
 		case 3:
-			if (lTimeOnline%(EVERY_PER_TIME * 2) == 0 && m_bforGetTime)
+			if (lTimeOnline % (EVERY_PER_TIME * 2) == 0 && m_bforGetTime)
 			{
 				SendSystemMessage(R(MSG_INCOME_STATE_THREE_HOUR));
 				SendSystemMessage(R(MSG_INCOME_STATE_FOUR_HOUR));
@@ -14606,59 +14673,59 @@ void CRegionCreature::SetIncomeState(long lplayerNowLoginTime)					//ac.ma
 			m_iIncomeState = 50;
 			break;
 		case 4:
-			if (lTimeOnline%(EVERY_PER_TIME * 2) == 0 && m_bforGetTime)
+			if (lTimeOnline % (EVERY_PER_TIME * 2) == 0 && m_bforGetTime)
 			{
 				SendSystemMessage(R(MSG_INCOME_STATE_FOUR_HOUR));
 				m_bforGetTime = false;
 			}
 			m_iIncomeState = 50;
 			break;
-	}
+		}
 
 }
 
-bool CRegionCreature::SaveExtraData(RtMemoryBlock &block)
+bool CRegionCreature::SaveExtraData(RtMemoryBlock& block)
 {
 	//static char saveBuffer[MAX_CMD_PACKET_SIZE*2];
-	S_MEMDEF(saveBuffer, MAX_CMD_PACKET_SIZE*2)
-	S_MEMPROTECTOR(saveBuffer, MAX_CMD_PACKET_SIZE*2, bMP)
+	S_MEMDEF(saveBuffer, MAX_CMD_PACKET_SIZE * 2)
+		S_MEMPROTECTOR(saveBuffer, MAX_CMD_PACKET_SIZE * 2, bMP)
 
-	int size = MAX_CMD_PACKET_SIZE*2;
+		int size = MAX_CMD_PACKET_SIZE * 2;
 	g_sendCmd->BeginWrite();
 
-    // ´ßÇ®ÈÎÎñÏà¹ØÊý¾Ý
+	// ´ßÇ®ÈÎÎñÏà¹ØÊý¾Ý
 	{
 		unsigned long dwTime = this->GetPlayerLogic()->GetNextGongTaskTime();
 		g_sendCmd->WriteShort(5); // °æ±¾
 		*g_sendCmd << m_mtBusy << m_mtFinish[0] << m_mtFinish[1] << m_mtFinish[2];
-		*g_sendCmd << m_mtClearDay << m_wenClearDay << m_wenTaskFinish << m_wenTaskAccept<< m_gongClearDay << m_gongTaskFinish << m_gongTaskAccept<<dwTime;
+		*g_sendCmd << m_mtClearDay << m_wenClearDay << m_wenTaskFinish << m_wenTaskAccept << m_gongClearDay << m_gongTaskFinish << m_gongTaskAccept << dwTime;
 		*g_sendCmd << m_UnionTask << m_UnionClearDay << m_MouTaskFinish << m_MouTaskAccept << m_MouClearDay;
 	}
 
-    // ´ò¿¨Ïà¹ØÊý¾Ý
-    {
-	    g_sendCmd->WriteShort(2); // °æ±¾
-	    *g_sendCmd << m_cardTime << m_usingCard << m_cardLastTime << m_LastDieTime;
-    }
+	// ´ò¿¨Ïà¹ØÊý¾Ý
+	{
+		g_sendCmd->WriteShort(2); // °æ±¾
+		*g_sendCmd << m_cardTime << m_usingCard << m_cardLastTime << m_LastDieTime;
+	}
 
-    // Åä·½Ïà¹ØÊý¾Ý
-    {
-	    g_sendCmd->WriteShort(1); // °æ±¾
-        g_sendCmd->WriteShort((short)m_listMatchID.size());
-        std::list<short>::iterator it;
-        for (it=m_listMatchID.begin(); it!=m_listMatchID.end(); it++)
-        {
-            g_sendCmd->WriteShort((short)*it);
-        }
-    }
-    
-    // Õ½¹¦
-    g_sendCmd->WriteLong(m_core.Exploit);
+	// Åä·½Ïà¹ØÊý¾Ý
+	{
+		g_sendCmd->WriteShort(1); // °æ±¾
+		g_sendCmd->WriteShort((short)m_listMatchID.size());
+		std::list<short>::iterator it;
+		for (it = m_listMatchID.begin(); it != m_listMatchID.end(); it++)
+		{
+			g_sendCmd->WriteShort((short)*it);
+		}
+	}
+
+	// Õ½¹¦
+	g_sendCmd->WriteLong(m_core.Exploit);
 
 	// ÉñµÆÏà¹ØÊý¾Ý  tim.yang  
 	{
 		g_sendCmd->WriteShort(3); // °æ±¾
-		if ( 0 == m_monsterCount)
+		if (0 == m_monsterCount)
 		{
 			m_IsAddMonster = 0;
 		}
@@ -14669,109 +14736,109 @@ bool CRegionCreature::SaveExtraData(RtMemoryBlock &block)
 		g_sendCmd->WriteShort(6);
 		m_playerLastLogoutTime = time(NULL);		//¼ÇÂ¼±¾´ÎÏÂÏßÊ±¼ä
 		m_lTotalOnline = m_playerLastLogoutTime - m_playerNowLoginTime + m_lLastTotalOnline;
-		if(m_core.bAdult)
+		if (m_core.bAdult)
 		{
 			m_playerLastLogoutTime = 0;
 			m_lTotalOnline = 0;
 			m_lTotalOffline = 0;
 		}
-		*g_sendCmd << m_playerLastLogoutTime << m_lTotalOnline << m_lTotalOffline;	
+		*g_sendCmd << m_playerLastLogoutTime << m_lTotalOnline << m_lTotalOffline;
 
-		*g_sendCmd<< m_useCardMinuteBottleNum << m_lastuseCardMinuteBottleTime;
+		*g_sendCmd << m_useCardMinuteBottleNum << m_lastuseCardMinuteBottleTime;
 	}
 
-    // ×¼±¸·¢ËÍÊý¾Ý
-    if(!g_sendCmd->SaveToBuffer(saveBuffer,size))
+	// ×¼±¸·¢ËÍÊý¾Ý
+	if (!g_sendCmd->SaveToBuffer(saveBuffer, size))
 	{
 		ERR1("[%s] save data to buffer error\n", m_core.Name.c_str());
 	}
-    block.SetData(saveBuffer,size);
+	block.SetData(saveBuffer, size);
 	return true;
 }
 
 #define EndVer  else { ERR1("[%s] load data version error\n",m_core.Name.c_str()); return false; }
 
-bool CRegionCreature::LoadExtraData(RtMemoryBlock &block)
+bool CRegionCreature::LoadExtraData(RtMemoryBlock& block)
 {
 	m_playerNowLoginTime = time(NULL);	//¼ÇÂ¼±¾´ÎµÇÂ½Ê±¼ä
-	if(block.size == 0) return true;
+	if (block.size == 0) return true;
 	CG_CmdPacket tmp;
-	if(!tmp.LoadFromBuffer((char*)block.data,block.size))
+	if (!tmp.LoadFromBuffer((char*)block.data, block.size))
 	{
-		ERR1("[%s] load data from buffer error\n",m_core.Name.c_str());
+		ERR1("[%s] load data from buffer error\n", m_core.Name.c_str());
 		return false;
 	}
 	short ver;
 
-    // ´ßÇ®ÈÎÎñÏà¹ØÊý¾Ý
+	// ´ßÇ®ÈÎÎñÏà¹ØÊý¾Ý
 	tmp << ver;
-	if(ver == 1)
+	if (ver == 1)
 	{
 		tmp << m_mtBusy << m_mtFinish[0] << m_mtFinish[1] << m_mtFinish[2];
 		tmp << m_mtClearDay;
 	}
-	else if(ver == 2)
+	else if (ver == 2)
 	{
 		tmp << m_mtBusy << m_mtFinish[0] << m_mtFinish[1] << m_mtFinish[2];
 		tmp << m_mtClearDay << m_wenClearDay << m_wenTaskFinish << m_wenTaskAccept;
 	}
-	else if(ver == 3)
+	else if (ver == 3)
 	{
 		tmp << m_mtBusy << m_mtFinish[0] << m_mtFinish[1] << m_mtFinish[2];
-		tmp << m_mtClearDay << m_wenClearDay << m_wenTaskFinish << m_wenTaskAccept<< m_gongClearDay << m_gongTaskFinish << m_gongTaskAccept;
+		tmp << m_mtClearDay << m_wenClearDay << m_wenTaskFinish << m_wenTaskAccept << m_gongClearDay << m_gongTaskFinish << m_gongTaskAccept;
 	}
-	else if(ver == 4)
+	else if (ver == 4)
 	{
 		unsigned long dwTime;
 		tmp << m_mtBusy << m_mtFinish[0] << m_mtFinish[1] << m_mtFinish[2];
-		tmp << m_mtClearDay << m_wenClearDay << m_wenTaskFinish << m_wenTaskAccept<< m_gongClearDay << m_gongTaskFinish << m_gongTaskAccept<<dwTime;
+		tmp << m_mtClearDay << m_wenClearDay << m_wenTaskFinish << m_wenTaskAccept << m_gongClearDay << m_gongTaskFinish << m_gongTaskAccept << dwTime;
 		this->GetPlayerLogic()->SetNextGongTaskTime(dwTime);
 	}
-	else if(ver == 5)
+	else if (ver == 5)
 	{
 		unsigned long dwTime;
 		tmp << m_mtBusy << m_mtFinish[0] << m_mtFinish[1] << m_mtFinish[2];
-		tmp << m_mtClearDay << m_wenClearDay << m_wenTaskFinish << m_wenTaskAccept<< m_gongClearDay << m_gongTaskFinish << m_gongTaskAccept<<dwTime;
-		tmp <<m_UnionTask << m_UnionClearDay<< m_MouTaskFinish << m_MouTaskAccept << m_MouClearDay;
+		tmp << m_mtClearDay << m_wenClearDay << m_wenTaskFinish << m_wenTaskAccept << m_gongClearDay << m_gongTaskFinish << m_gongTaskAccept << dwTime;
+		tmp << m_UnionTask << m_UnionClearDay << m_MouTaskFinish << m_MouTaskAccept << m_MouClearDay;
 		this->GetPlayerLogic()->SetNextGongTaskTime(dwTime);
 	}
 	EndVer;
-    if(m_mtClearDay != g_region->m_yDay)
+	if (m_mtClearDay != g_region->m_yDay)
 	{
 		m_mtFinish[0] = 0;
 		m_mtFinish[1] = 0;
 		m_mtFinish[2] = 0;
 		m_mtClearDay = g_region->m_yDay;
 	}
-	if(m_wenClearDay != g_region->m_yDay)
+	if (m_wenClearDay != g_region->m_yDay)
 	{
 		m_wenClearDay = g_region->m_yDay;
 		m_wenTaskFinish = 0;
 		m_wenTaskAccept = 0;
 	}
-	if(m_gongClearDay != g_region->m_yDay)
+	if (m_gongClearDay != g_region->m_yDay)
 	{
 		m_gongClearDay = g_region->m_yDay;
 		m_gongTaskFinish = 0;
 		m_gongTaskAccept = 0;
 	}
 
-	if(m_UnionClearDay != g_region->m_yDay)
+	if (m_UnionClearDay != g_region->m_yDay)
 	{
 		m_UnionClearDay = g_region->m_yDay;
 		m_UnionTask = 0;
 	}
 
-	if(m_MouClearDay != g_region->m_yDay)
+	if (m_MouClearDay != g_region->m_yDay)
 	{
 		m_MouClearDay = g_region->m_yDay;
 		m_MouTaskAccept = 0;
 		m_MouTaskFinish = 0;
 	}
 
-    // ´ò¿¨Ïà¹ØÊý¾Ý
+	// ´ò¿¨Ïà¹ØÊý¾Ý
 	tmp << ver;
-	if(ver == 1)
+	if (ver == 1)
 	{
 		tmp << m_cardTime << m_usingCard << m_cardLastTime;
 	}
@@ -14781,30 +14848,30 @@ bool CRegionCreature::LoadExtraData(RtMemoryBlock &block)
 	}
 	EndVer;
 
-    // Åä·½Ïà¹ØÊý¾Ý
+	// Åä·½Ïà¹ØÊý¾Ý
 	tmp << ver;
-	if(ver == 1)
-    {
-        short i, sID, sCnt;
-        tmp << sCnt;
-        m_listMatchID.clear();
-        for (i=0; i<sCnt; i++)
-        {
-            tmp << sID;
-            m_listMatchID.push_back(sID);
-        }
-    }EndVer;
+	if (ver == 1)
+	{
+		short i, sID, sCnt;
+		tmp << sCnt;
+		m_listMatchID.clear();
+		for (i = 0; i < sCnt; i++)
+		{
+			tmp << sID;
+			m_listMatchID.push_back(sID);
+		}
+	}EndVer;
 
-    // Õ½¹¦
-    tmp << m_core.Exploit;
+	// Õ½¹¦
+	tmp << m_core.Exploit;
 
 	tmp << ver;
-	if(ver == 3)//tim.yang ÉñµÆ
+	if (ver == 3)//tim.yang ÉñµÆ
 	{
 		tmp << m_IsAddMonster << m_monsterCount;
-		if(IsUser() && m_IsAddMonster && !m_FBID)
-			GodLightCreateMonster_AddMonster(this,m_monsterCount);
-		if(IsUser() && m_IsAddMonster && m_FBID)
+		if (IsUser() && m_IsAddMonster && !m_FBID)
+			GodLightCreateMonster_AddMonster(this, m_monsterCount);
+		if (IsUser() && m_IsAddMonster && m_FBID)
 			m_bIsFBReborn = true;//Èç¹ûÊÇÔÚ¸±±¾ÖÐÖØÉú
 	}
 
@@ -14815,7 +14882,8 @@ bool CRegionCreature::LoadExtraData(RtMemoryBlock &block)
 		m_playerNowLoginTime = time(NULL);	//¼ÇÂ¼±¾´ÎµÇÂ½Ê±¼ä
 		m_lTotalOnline = 0;
 		m_lTotalOffline = 0;
-	}else if (ver == 5)		
+	}
+	else if (ver == 5)
 	{
 		tmp << m_playerLastLogoutTime << m_lTotalOnline << m_lTotalOffline;		//¼ÇÂ¼ÉÏ´ÎÏÂÏßÊ±¼ä	
 		m_playerNowLoginTime = time(NULL);	//¼ÇÂ¼±¾´ÎµÇÂ½Ê±¼ä
@@ -14824,7 +14892,8 @@ bool CRegionCreature::LoadExtraData(RtMemoryBlock &block)
 		{
 			m_lTotalOffline = 0;
 			m_lTotalOnline = 0;
-		}else
+		}
+		else
 			m_lTotalOffline = ltempTotalOffline;
 		m_lLastTotalOnline = m_lTotalOnline;
 
@@ -14846,7 +14915,8 @@ bool CRegionCreature::LoadExtraData(RtMemoryBlock &block)
 		{
 			m_lTotalOffline = 0;
 			m_lTotalOnline = 0;
-		}else
+		}
+		else
 			m_lTotalOffline = ltempTotalOffline;
 		m_lLastTotalOnline = m_lTotalOnline;
 
@@ -14858,17 +14928,17 @@ bool CRegionCreature::LoadExtraData(RtMemoryBlock &block)
 			m_playerNowLoginTime = 0;
 			ltempTotalOffline = 0;
 		}
-		tmp<<m_useCardMinuteBottleNum<<m_lastuseCardMinuteBottleTime;
+		tmp << m_useCardMinuteBottleNum << m_lastuseCardMinuteBottleTime;
 	}
 	return true;
 }
 
-bool CRegionCreature::Save(SUserData &data)
+bool CRegionCreature::Save(SUserData& data)
 {
-	if(!m_userInfo->m_bSaveData) return false;
+	if (!m_userInfo->m_bSaveData) return false;
 
 	RtsSceneBlockMap* bmap = g_region->m_defScene->FindBlockByPos(m_pos);
-	if(bmap) {
+	if (bmap) {
 		data.scene = bmap->m_szFileName;
 	}
 	else {
@@ -14877,46 +14947,46 @@ bool CRegionCreature::Save(SUserData &data)
 	}
 
 	memset(&data.attr, 0, sizeof(data.attr));
-	data.attr.actorID		= m_actorInfo->Id;
-	data.attr.hp			= m_core.GetHp();
-	data.attr.mp			= m_core.GetMp();
-	data.attr.EnP           = m_core.GetEnP();
-	data.attr.metier		= m_core.Metier;
-	data.attr.metierLevel	= m_core.MetierLev;
-	data.attr.faction		= m_core.Faction;
-	data.attr.exp			= m_core.Exp;
-	data.attr.ap			= m_core.AttrPoint;
-	data.attr.sp			= m_core.SkillPoint;
-	data.attr.level			= m_core.Lev;
-	data.attr.x				= m_pos[0];
-	data.attr.y				= m_pos[1];	
-	data.attr.strength		= m_core.Str.Base;
-	data.attr.dexterity		= m_core.Dex.Base;
-	data.attr.constitution	= m_core.Con.Base;	
-	data.attr.intellect		= m_core.Int.Base;
-	data.attr.hit			= m_core.Hit.Base;	
-	data.attr.credit		= m_core.Credit;
-	data.attr.pk			= m_core.Pk;
-	data.attr.spClearCnt	= m_core.SkillClearCnt;
+	data.attr.actorID = m_actorInfo->Id;
+	data.attr.hp = m_core.GetHp();
+	data.attr.mp = m_core.GetMp();
+	data.attr.EnP = m_core.GetEnP();
+	data.attr.metier = m_core.Metier;
+	data.attr.metierLevel = m_core.MetierLev;
+	data.attr.faction = m_core.Faction;
+	data.attr.exp = m_core.Exp;
+	data.attr.ap = m_core.AttrPoint;
+	data.attr.sp = m_core.SkillPoint;
+	data.attr.level = m_core.Lev;
+	data.attr.x = m_pos[0];
+	data.attr.y = m_pos[1];
+	data.attr.strength = m_core.Str.Base;
+	data.attr.dexterity = m_core.Dex.Base;
+	data.attr.constitution = m_core.Con.Base;
+	data.attr.intellect = m_core.Int.Base;
+	data.attr.hit = m_core.Hit.Base;
+	data.attr.credit = m_core.Credit;
+	data.attr.pk = m_core.Pk;
+	data.attr.spClearCnt = m_core.SkillClearCnt;
 
 	/****Tianh**09.12.13**/
-	data.attr.Soul          = m_core.Soul;
-	data.attr.Vigour        = m_core.Vigour;
-	data.attr.VigourPoint   = m_core.VigourPoint;
-	data.attr.Sex           = m_core.Sex;
-	data.attr.Contribute    = m_core.Contribute;
-	data.attr.Point         = m_core.Point;
-	data.attr.Record        = m_core.Record;
-	data.attr.UnionRecord   = m_core.UnionRecord;
-	data.attr.JobRecord     = m_core.JobRecord;
-	data.attr.BornTag       = m_core.BornTag;
-	data.attr.Cul           = m_core.Cul;
-	data.attr.CulExp        = m_core.CulExp;
+	data.attr.Soul = m_core.Soul;
+	data.attr.Vigour = m_core.Vigour;
+	data.attr.VigourPoint = m_core.VigourPoint;
+	data.attr.Sex = m_core.Sex;
+	data.attr.Contribute = m_core.Contribute;
+	data.attr.Point = m_core.Point;
+	data.attr.Record = m_core.Record;
+	data.attr.UnionRecord = m_core.UnionRecord;
+	data.attr.JobRecord = m_core.JobRecord;
+	data.attr.BornTag = m_core.BornTag;
+	data.attr.Cul = m_core.Cul;
+	data.attr.CulExp = m_core.CulExp;
 	data.attr.RelivePostion = m_core.RelivePostion;
 	data.attr.PlayerOnlineTime = m_core.PlayerOnlineTime;
-	data.attr.GradeLev      = m_core.GradeLev;
-	data.attr.exploit       = m_core.Exploit;
-	data.attr.HeadImageID   = m_core.HeadImageID;
+	data.attr.GradeLev = m_core.GradeLev;
+	data.attr.exploit = m_core.Exploit;
+	data.attr.HeadImageID = m_core.HeadImageID;
 
 	data.userID = m_userInfo->m_userId;
 	m_pFriend->Save(data.friends);
@@ -14924,27 +14994,27 @@ bool CRegionCreature::Save(SUserData &data)
 	m_task.SaveFbTask(data.fbTask);
 	data.bank = m_pBank->SaveToString(g_region->m_pItemManager);
 	data.bankPet = m_pBankPet->SaveToString(g_region->m_pItemManager);
-	data.strEffects			= m_Skill.SaveEffectToString();		// skills effect
-	data.strSkills			= m_Skill.SaveToString();			// skills
+	data.strEffects = m_Skill.SaveEffectToString();		// skills effect
+	data.strSkills = m_Skill.SaveToString();			// skills
 
-	data.items				= m_pItemContainer->SaveToString();	// items;
-	data.pet				= m_pItemContainer->SavePetBagToString();	// pets;
-	data.money				= m_pItemContainer->GetMoney();
-	data.shortcut			= m_shortcut;
-	data.configData			= m_configData;
-	data.bankMoney			= m_pBank->GetMoney();
-	data.dwState			= m_dwState;
-	data.dungeonTID			= m_dungeonTID;				// ¸±±¾Î¨Ò»ID
-	data.dungeonUID			= m_dungeonUID;				// ¸±±¾ÀàÐÍID
-	data.dungeonLastQuit	= m_dungeonLastQuit;		// ¸±±¾ÀàÐÍID
-	data.LineSYSGroupID		= m_dwGroupID;				//·ÖÏßÏµÍ³×éID
-	data.LineSYSLineID		= m_dwLineID;				//·ÖÏßÏµÍ³ÏßID
-	data.popularity  		= m_popularity;
-	data.IsInWarfield		= m_bIsInWarfield;
-	data.lWarfieldLastQuit	= m_lWarfieldLastQuit;
-	data.petItemID			= m_dwPetSave;
+	data.items = m_pItemContainer->SaveToString();	// items;
+	data.pet = m_pItemContainer->SavePetBagToString();	// pets;
+	data.money = m_pItemContainer->GetMoney();
+	data.shortcut = m_shortcut;
+	data.configData = m_configData;
+	data.bankMoney = m_pBank->GetMoney();
+	data.dwState = m_dwState;
+	data.dungeonTID = m_dungeonTID;				// ¸±±¾Î¨Ò»ID
+	data.dungeonUID = m_dungeonUID;				// ¸±±¾ÀàÐÍID
+	data.dungeonLastQuit = m_dungeonLastQuit;		// ¸±±¾ÀàÐÍID
+	data.LineSYSGroupID = m_dwGroupID;				//·ÖÏßÏµÍ³×éID
+	data.LineSYSLineID = m_dwLineID;				//·ÖÏßÏµÍ³ÏßID
+	data.popularity = m_popularity;
+	data.IsInWarfield = m_bIsInWarfield;
+	data.lWarfieldLastQuit = m_lWarfieldLastQuit;
+	data.petItemID = m_dwPetSave;
 
-	data.isFirstLogin       = m_IsFirstLogin; //ÊÇ·ñµÚÒ»´ÎµÇÂ½
+	data.isFirstLogin = m_IsFirstLogin; //ÊÇ·ñµÚÒ»´ÎµÇÂ½
 
 	if (&m_Skill) //ÊÇ·ñÓÐ±äÀÇ¼¼ÄÜ --Èç¹ûÃ»ÓÐ´Ë¼¼ÄÜ   Ôò²»±£´æ±äÉíID  µÚ2´ÎÉÏÏß»ØÈËÐÎ
 	{
@@ -14955,32 +15025,32 @@ bool CRegionCreature::Save(SUserData &data)
 		}
 	}
 
-	data.ChangeModelID       = m_ChangeModelID;
-	data.isDead       = m_IsDead; //ÊÇ·ñËÀÍö
+	data.ChangeModelID = m_ChangeModelID;
+	data.isDead = m_IsDead; //ÊÇ·ñËÀÍö
 	//data.UpdateSCDTime      = (long)time(NULL);
 
 	//½Å±¾¹¦ÄÜ×´Ì¬Öµ
-	for(int ii=0; ii<SCRIPT_FUNC_STATE_COUNT; ii++)
+	for (int ii = 0; ii < SCRIPT_FUNC_STATE_COUNT; ii++)
 		data.lFunctionState[ii] = m_userInfo->m_lFunctionState[ii];
 
 	SaveExtraData(data.extraData);
 	return true;
 }
 
-bool CRegionCreature::Load(SUserData &data)
+bool CRegionCreature::Load(SUserData& data)
 {
 	// set actor Info
 	// ¸ù¾ÝÖ°ÒµºÍµÈ¼¶È¡³öÈËÎïID
-	SUserActor *actor = g_TableUserActor.FindUserActor(data.attr.actorID/*data.attr.metier,data.attr.metierLevel*/);
-	if(!actor) 
+	SUserActor* actor = g_TableUserActor.FindUserActor(data.attr.actorID/*data.attr.metier,data.attr.metierLevel*/);
+	if (!actor)
 	{
-		ERR2("Can't find actor by %d %d\n", data.attr.metier,data.attr.metierLevel);
+		ERR2("Can't find actor by %d %d\n", data.attr.metier, data.attr.metierLevel);
 		return false;
 	}
 
 	// region ²»ÐèÒªÅÐ¶Ï£¬ÔÚgameworldÉÏÅÐ¶Ï
 	/*
-	if(!actor->bZCreate && !actor->bSCreate) 
+	if(!actor->bZCreate && !actor->bSCreate)
 		return false;
 	*/
 	m_actorInfo = actor;
@@ -14988,78 +15058,78 @@ bool CRegionCreature::Load(SUserData &data)
 
 	m_dwLastModelID = actor->ModelId;
 
-	m_userInfo->m_username		= data.name;
-	m_userInfo->privileges		= data.privileges;
-	m_userInfo->m_bankPass		= data.bankPass;
-	m_core.Name					= data.name;
+	m_userInfo->m_username = data.name;
+	m_userInfo->privileges = data.privileges;
+	m_userInfo->m_bankPass = data.bankPass;
+	m_core.Name = data.name;
 
 	//½Å±¾¹¦ÄÜ×´Ì¬Öµ
-	for(int ii=0; ii<SCRIPT_FUNC_STATE_COUNT; ii++)
+	for (int ii = 0; ii < SCRIPT_FUNC_STATE_COUNT; ii++)
 		m_userInfo->m_lFunctionState[ii] = data.lFunctionState[ii];
 
 	// µÃµ½¶ÓÎé£¬ºÃÓÑ£¬ÓÊ¼þ
-	if(m_pTeam)
+	if (m_pTeam)
 	{
 		DEL_ONE(m_pTeam);
 		m_pTeam = NULL;
 	}
 
-	if(m_pMail)
+	if (m_pMail)
 	{
 		DEL_ONE(m_pMail);
 		m_pMail = NULL;
 	}
-	if(m_pFriend)
+	if (m_pFriend)
 	{
 		DEL_ONE(m_pFriend);
 		m_pFriend = NULL;
 	}
 
-	m_pTeam		= RT_NEW CServerTeam(this,m_oId,m_userInfo->m_userId,m_userInfo->m_username,data.attr.HeadImageID);
-	m_pFriend	= RT_NEW CServerFriend(this,m_oId,m_userInfo->m_userId,m_userInfo->m_username);
-	m_pMail		= RT_NEW CServerMail(this);
+	m_pTeam = RT_NEW CServerTeam(this, m_oId, m_userInfo->m_userId, m_userInfo->m_username, data.attr.HeadImageID);
+	m_pFriend = RT_NEW CServerFriend(this, m_oId, m_userInfo->m_userId, m_userInfo->m_username);
+	m_pMail = RT_NEW CServerMail(this);
 	m_pMail->SetFriendList(m_pFriend);
 
 	// fill user data 
-	m_unionID				= data.unionID;
-	m_unionName				= data.unionName;
-	m_unionNickName			= data.unionNickName;
-	m_unionIcon				= data.unionIcon;
-	m_pos[0]				= data.attr.x;
-	m_pos[1]				= data.attr.y;
-	m_pos[2]				= 0;
-	m_core.Metier			= data.attr.metier;
-	m_core.MetierLev		= data.attr.metierLevel;
-	m_core.Faction			= data.attr.faction;
-	m_core.Lev				= data.attr.level;
-	m_core.Str.Base			= data.attr.strength;
-	m_core.Dex.Base			= data.attr.dexterity;
-	m_core.Hit.Base			= data.attr.hit;
-	m_core.Con.Base			= data.attr.constitution;
-	m_core.Int.Base			= data.attr.intellect;
-	m_core.SkillPoint		= data.attr.sp;
-	m_core.AttrPoint		= data.attr.ap;
-	m_core.Exp				= data.attr.exp;
-	m_core.SkillClearCnt	= data.attr.spClearCnt;
-	m_core.Soul             = data.attr.Soul;
-	m_core.Vigour           = data.attr.Vigour;
-	m_core.VigourPoint      = data.attr.VigourPoint;
-	m_core.Sex              = data.attr.Sex;
-	m_core.Contribute       = data.attr.Contribute;
-	m_core.Point            = data.attr.Point;
-	m_core.Record           = data.attr.Record;
-	m_core.UnionRecord      = data.attr.UnionRecord;
-	m_core.JobRecord        = data.attr.JobRecord;
-	m_core.BornTag          = data.attr.BornTag;
-	m_core.RelivePostion    = data.attr.RelivePostion;
-	m_core.Cul              = data.attr.Cul;
-	m_core.Exploit          = data.attr.exploit;          // Õ½¹¦
-	m_core.CulExp           = data.attr.CulExp;  
+	m_unionID = data.unionID;
+	m_unionName = data.unionName;
+	m_unionNickName = data.unionNickName;
+	m_unionIcon = data.unionIcon;
+	m_pos[0] = data.attr.x;
+	m_pos[1] = data.attr.y;
+	m_pos[2] = 0;
+	m_core.Metier = data.attr.metier;
+	m_core.MetierLev = data.attr.metierLevel;
+	m_core.Faction = data.attr.faction;
+	m_core.Lev = data.attr.level;
+	m_core.Str.Base = data.attr.strength;
+	m_core.Dex.Base = data.attr.dexterity;
+	m_core.Hit.Base = data.attr.hit;
+	m_core.Con.Base = data.attr.constitution;
+	m_core.Int.Base = data.attr.intellect;
+	m_core.SkillPoint = data.attr.sp;
+	m_core.AttrPoint = data.attr.ap;
+	m_core.Exp = data.attr.exp;
+	m_core.SkillClearCnt = data.attr.spClearCnt;
+	m_core.Soul = data.attr.Soul;
+	m_core.Vigour = data.attr.Vigour;
+	m_core.VigourPoint = data.attr.VigourPoint;
+	m_core.Sex = data.attr.Sex;
+	m_core.Contribute = data.attr.Contribute;
+	m_core.Point = data.attr.Point;
+	m_core.Record = data.attr.Record;
+	m_core.UnionRecord = data.attr.UnionRecord;
+	m_core.JobRecord = data.attr.JobRecord;
+	m_core.BornTag = data.attr.BornTag;
+	m_core.RelivePostion = data.attr.RelivePostion;
+	m_core.Cul = data.attr.Cul;
+	m_core.Exploit = data.attr.exploit;          // Õ½¹¦
+	m_core.CulExp = data.attr.CulExp;
 	m_core.PlayerOnlineTime = data.attr.PlayerOnlineTime;
-	m_core.GradeLev         = data.attr.GradeLev;
-	m_core.HeadImageID      = data.attr.HeadImageID;
-	m_core.actorID          = data.attr.actorID;
-	m_core.EnP              = data.attr.EnP;
+	m_core.GradeLev = data.attr.GradeLev;
+	m_core.HeadImageID = data.attr.HeadImageID;
+	m_core.actorID = data.attr.actorID;
+	m_core.EnP = data.attr.EnP;
 	m_core.RecomputeAttr();
 	EquipCuff();
 	ReComputePetBagSize();
@@ -15070,17 +15140,17 @@ bool CRegionCreature::Load(SUserData &data)
 
 	//<add by fox>
 	static int PLAYER_CHECK_INTERVAL = 10;//¼ì²éµÄÊ±¼ä¼ä¸ô[µ¥Î»£ºÃë]
-	static CIniVariable SpeedCheckInterval(GetGameRule(),"GameCheck","PlayerCheckInterval",PLAYER_CHECK_INTERVAL );
+	static CIniVariable SpeedCheckInterval(GetGameRule(), "GameCheck", "PlayerCheckInterval", PLAYER_CHECK_INTERVAL);
 	//</add by fox>
-	SetTimer(CRE_TIMER_CHEATER_CHECK,PLAYER_CHECK_INTERVAL * 1000);
+	SetTimer(CRE_TIMER_CHEATER_CHECK, PLAYER_CHECK_INTERVAL * 1000);
 
 	m_hpAutoRecoverRate = 0.1;
 	m_mpAutoRecoverRate = 0.1;
 	m_shortcut = data.shortcut;
 	m_configData = data.configData;
-	
-	m_core.Pk		= data.attr.pk;
-	m_core.Credit	= data.attr.credit;
+
+	m_core.Pk = data.attr.pk;
+	m_core.Credit = data.attr.credit;
 
 	m_pFriend->Load(data.friends);
 	/*
@@ -15097,53 +15167,53 @@ bool CRegionCreature::Load(SUserData &data)
 	m_popularity = data.popularity;
 	LoadToPopularity(m_popularity.c_str());
 
-	m_Skill.LoadFromString(data.strSkills.c_str(),data.lastUpdateTime);
-//ÎªÃ¿¸öÈËÌí¼ÓÅ­Æø±¬·¢¼¼ÄÜ
-// 	m_Skill.StudySkill(1601, true);
-// 	m_Skill.StudySkill(1602, true);
-// 	m_Skill.StudySkill(1603, true);
+	m_Skill.LoadFromString(data.strSkills.c_str(), data.lastUpdateTime);
+	//ÎªÃ¿¸öÈËÌí¼ÓÅ­Æø±¬·¢¼¼ÄÜ
+	// 	m_Skill.StudySkill(1601, true);
+	// 	m_Skill.StudySkill(1602, true);
+	// 	m_Skill.StudySkill(1603, true);
 
 	m_task.LoadFromString(data.task);
 	m_task.LoadFbTask(data.fbTask);
 	GetPlayerLogic()->SetCurMainStoryID(m_task.m_nMainTaskData);
 	m_core.HeadModelId = data.headModelID;
-	
+
 	m_pItemContainer = RT_NEW CRegionItemContainer(g_region->m_pItemManager, this);
 	int iMaxLineCount = g_region->m_pItemManager->GetBankMaxLineCount();
 	m_pBank = RT_NEW CBag(iMaxLineCount, BANK_GRID_COLUMN_COUNT, 1, g_region->m_pItemManager);
 	m_pBankPet = RT_NEW CBag(BANK_PET_LINE_COUNT, BANK_PET_COLUMN_COUNT, 1, g_region->m_pItemManager);
 
-	if(m_pBank->LoadFromString(data.bank.c_str(), g_region->m_pItemManager) <=0 )
+	if (m_pBank->LoadFromString(data.bank.c_str(), g_region->m_pItemManager) <= 0)
 	{
 		ERR1("[CRegionServer::CreateUser] Bank LoadFromString Method Failed!(user=%s)\n", data.name.c_str());
 		return false;
 	}
 	m_pBank->SetMoney(data.bankMoney);
 
-	if(m_pBankPet->LoadFromString(data.bankPet.c_str(), g_region->m_pItemManager) <=0 )
+	if (m_pBankPet->LoadFromString(data.bankPet.c_str(), g_region->m_pItemManager) <= 0)
 	{
 		ERR1("[CRegionServer::CreateUser] BankPet LoadFromString Method Failed!(user=%s)\n", data.name.c_str());
 		return false;
 	}
 
-	if(m_pItemContainer->LoadFromString((char*)data.items.c_str()) <=0 )
+	if (m_pItemContainer->LoadFromString((char*)data.items.c_str()) <= 0)
 	{
 		ERR1("[CRegionServer::CreateUser] ItemContainer LoadFromString Method Failed!(user=%s)\n", data.name.c_str());
 		return false;
 	}
-	if(m_pItemContainer->LoadPetBagFromString((char*)data.pet.c_str()) <=0 )
+	if (m_pItemContainer->LoadPetBagFromString((char*)data.pet.c_str()) <= 0)
 	{
 		ERR1("[CRegionServer::CreateUser] ItemContainer LoadPetBagFromString Method Failed!(user=%s)\n", data.name.c_str());
 		return false;
 	}
 	m_pItemContainer->SetMoney(data.money);
 	RecomputeAttr();
-	
+
 	m_core.bAdult = data.bAdult;		//¶ÁÈ¡ÊÇ·ñ³ÉÈË	ac.ma
 
-	m_IsFirstLogin = data.isFirstLogin ; //ÊÇ·ñµÚÒ»´ÎµÇÂ½
-	m_IsDead       = data.isDead;      //ÊÇ·ñËÀÍö
-	m_ChangeModelID = data.ChangeModelID; 
+	m_IsFirstLogin = data.isFirstLogin; //ÊÇ·ñµÚÒ»´ÎµÇÂ½
+	m_IsDead = data.isDead;      //ÊÇ·ñËÀÍö
+	m_ChangeModelID = data.ChangeModelID;
 
 	m_Skill.StartupSkill();
 	m_Skill.LoadEffectFromString(data.strEffects.c_str());
@@ -15159,12 +15229,12 @@ bool CRegionCreature::Load(SUserData &data)
 	m_dwLineID = data.LineSYSLineID;
 	//rendh 2010.01.21
 	LoadExtraData(data.extraData);
-	ComputeCardTime(m_cardLastTime,data.onlineTime==0);
-	
+	ComputeCardTime(m_cardLastTime, data.onlineTime == 0);
+
 	JudgeDayTimeTaskIsAnotherDay();//tim.yang ÈÕ³£ÈÎÎñ
 
-	m_dwPetSave				= data.petItemID;
-	m_core.huiyuantime		= data.huiyuanTime;//tim.yang »áÔ±Ê±¼ä
+	m_dwPetSave = data.petItemID;
+	m_core.huiyuantime = data.huiyuanTime;//tim.yang »áÔ±Ê±¼ä
 	SetVip(data.isVip);
 	//if (!m_core.huiyuantime.empty())
 	//{	
@@ -15216,27 +15286,27 @@ bool CRegionCreature::IsHuiYuan()
 //tim.yang  ¸ù¾Ý»áÔ±Ê±¼äÅÐ¶ÏÊÇ·ñÌí¼Ó»áÔ±Ê±¼ä
 bool CRegionCreature::IsHuiYuanTimeOver(string huiyuantime)
 {
-	int year = 0,month = 0,day = 0,hour = 0;	
+	int year = 0, month = 0, day = 0, hour = 0;
 	int nstart = 0;
-	int nops = huiyuantime.find("-",nstart);
-	if (nops)  year = atoi(huiyuantime.substr(nstart,nops-nstart).c_str());
+	int nops = huiyuantime.find("-", nstart);
+	if (nops)  year = atoi(huiyuantime.substr(nstart, nops - nstart).c_str());
 
 	nstart = nops + 1;
-	nops = huiyuantime.find("-",nstart);
-	if(nops)   month = atoi(huiyuantime.substr(nstart,nops-nstart).c_str());
+	nops = huiyuantime.find("-", nstart);
+	if (nops)   month = atoi(huiyuantime.substr(nstart, nops - nstart).c_str());
 
 	nstart = nops + 1;
-	nops = huiyuantime.find(" ",nstart);
-	if(nops)   day = atoi(huiyuantime.substr(nstart,nops-nstart).c_str());
+	nops = huiyuantime.find(" ", nstart);
+	if (nops)   day = atoi(huiyuantime.substr(nstart, nops - nstart).c_str());
 
 	// ¼ÆËãÊ±¼ä
 	time_t nowTime = time(NULL);
 	tm now = *(localtime(&nowTime));
 
 	//ÅÐ¶Ï»áÔ±Ê±¼äÊÇ·ñµ½ÆÚ
-	if ((now.tm_year + 1900 > year) 
-		|| (now.tm_year + 1900 ==  year && now.tm_mon + 1 > month)
-		|| (now.tm_year + 1900 ==  year && now.tm_mon + 1 == month && now.tm_mday > day))
+	if ((now.tm_year + 1900 > year)
+		|| (now.tm_year + 1900 == year && now.tm_mon + 1 > month)
+		|| (now.tm_year + 1900 == year && now.tm_mon + 1 == month && now.tm_mday > day))
 	{
 		return true;
 	}
@@ -15250,21 +15320,21 @@ bool CRegionCreature::IsHuiYuanTimeOver(string huiyuantime)
 			return true;
 		}
 		//ÏÔÊ¾»áÔ±µ½ÆÚÊ±¼ä
-		tm temp; 
-		temp.tm_year=year-1900; 
-		temp.tm_mon=month-1; 
-		temp.tm_mday=day; 
-		temp.tm_hour=0; 
-		temp.tm_min=0; 
-		temp.tm_sec=1; 
-		temp.tm_isdst=-1; 
+		tm temp;
+		temp.tm_year = year - 1900;
+		temp.tm_mon = month - 1;
+		temp.tm_mday = day;
+		temp.tm_hour = 0;
+		temp.tm_min = 0;
+		temp.tm_sec = 1;
+		temp.tm_isdst = -1;
 		time_t tmp = mktime(&temp);
 		tm overtime = *(localtime(&tmp));
-		int disday = (overtime.tm_year - now.tm_year)*365 + (overtime.tm_yday - now.tm_yday);
-		if (disday>=0)
+		int disday = (overtime.tm_year - now.tm_year) * 365 + (overtime.tm_yday - now.tm_yday);
+		if (disday >= 0)
 		{
 			disday += 1;
-			m_huiyuanTime = nowTime+disday*24*3600;
+			m_huiyuanTime = nowTime + disday * 24 * 3600;
 		}
 		else
 		{
@@ -15280,9 +15350,9 @@ bool CRegionCreature::IsHuiYuanTimeOver(string huiyuantime)
 bool CRegionCreature::isteleport(int npcId)
 {
 	SNpc* pNpc = g_TableNpc.FindNpc(npcId);
-	if(!pNpc) return false;
+	if (!pNpc) return false;
 	vector<long>::iterator it = pNpc->Function.begin();
-	for(;it!=pNpc->Function.end();++it)
+	for (; it != pNpc->Function.end(); ++it)
 	{
 		if ((*it) == 7)
 		{
@@ -15295,24 +15365,24 @@ bool CRegionCreature::isteleport(int npcId)
 void CRegionCreature::JudgeDayTimeTaskIsAnotherDay()
 {
 	list<STaskInfo>::iterator it = m_task.m_taskList.begin();
-	for(; it!=m_task.m_taskList.end(); ++it)
+	for (; it != m_task.m_taskList.end(); ++it)
 	{
-		STaskDesc *desc = g_TableTask.FindTask(it->Id);
-		if(!desc) continue;
+		STaskDesc* desc = g_TableTask.FindTask(it->Id);
+		if (!desc) continue;
 		if (desc->group == -1 && it->DayTimeTaskFinishTime)
-		{		
+		{
 			// ¼ÆËãÊ±¼ä
 			time_t tmpTime = time(NULL);
 			tm now = *(localtime(&tmpTime));
 
 			long lastTime = it->DayTimeTaskFinishTime;
-			tm *last = localtime((time_t*)&lastTime);
-			if(!last) continue;
+			tm* last = localtime((time_t*)&lastTime);
+			if (!last) continue;
 
 			int day = 0;
-			day = (now.tm_year - last->tm_year)*365 + (now.tm_yday - last->tm_yday);
+			day = (now.tm_year - last->tm_year) * 365 + (now.tm_yday - last->tm_yday);
 
-			if(day != 0)
+			if (day != 0)
 			{
 				it->DayTimeTaskFinishTime = 0;
 			}
@@ -15321,48 +15391,48 @@ void CRegionCreature::JudgeDayTimeTaskIsAnotherDay()
 }
 //end
 
-void CRegionCreature::ComputeCardTime(long lastTime,bool newBie)
+void CRegionCreature::ComputeCardTime(long lastTime, bool newBie)
 {
 	// ¼ÆËã´ò¿¨Ê±¼ä
 	time_t tmpTime = time(NULL);
 
-	if(lastTime == 0)
+	if (lastTime == 0)
 	{
-		if(!newBie)
-            m_cardTime = 7*3600;
+		if (!newBie)
+			m_cardTime = 7 * 3600;
 		m_cardLastTime = tmpTime;
 		return;
 	}
 
 	tm now = *(localtime(&tmpTime));
 	time_t lastTime2 = lastTime;
-	tm *last = localtime(&lastTime2);
-	if(!last) return;
+	tm* last = localtime(&lastTime2);
+	if (!last) return;
 
 	int day = 0;
-	day = (now.tm_year - last->tm_year)*365 + (now.tm_yday - last->tm_yday);
-	if(day < 0) day = 0;
-	if(day > 7) day = 7;
-	
+	day = (now.tm_year - last->tm_year) * 365 + (now.tm_yday - last->tm_yday);
+	if (day < 0) day = 0;
+	if (day > 7) day = 7;
+
 	m_cardLastTime = tmpTime;
-	if(m_cardTime < 7*3600) 
+	if (m_cardTime < 7 * 3600)
 	{
 		m_cardTime += day * 3600;
-		if (m_cardTime > 7*3600)
-			m_cardTime = 7*3600;
+		if (m_cardTime > 7 * 3600)
+			m_cardTime = 7 * 3600;
 	}
-	if(m_cardTime < 0) m_cardTime = 0;
-	
+	if (m_cardTime < 0) m_cardTime = 0;
+
 }
 
 float CRegionCreature::GetExpRate()
 {
-	if(IsUserPet() || IsCallNpc()) return m_master->GetExpRate();
+	if (IsUserPet() || IsCallNpc()) return m_master->GetExpRate();
 
-	float rate = m_core.RateExp.GetValue()/100.0f;
-	if(IsUser())
+	float rate = m_core.RateExp.GetValue() / 100.0f;
+	if (IsUser())
 	{
-		if(m_usingCard) rate *= 2;
+		if (m_usingCard) rate *= 2;
 	}
 	return rate;
 }
@@ -15370,13 +15440,13 @@ float CRegionCreature::GetExpRate()
 void CRegionCreature::StartUseCard()
 {
 	time_t now = time(NULL);
-	tm *tt = localtime(&now);
-//	if(tt->tm_wday < 1 || tt->tm_wday > 4)
-//	{
-//		SendSystemMessage(R(MSG_ECARD_FAILED_DAY_ERROR));
-//		return;
-//	}
-	if(m_cardTime <= 30)
+	tm* tt = localtime(&now);
+	//	if(tt->tm_wday < 1 || tt->tm_wday > 4)
+	//	{
+	//		SendSystemMessage(R(MSG_ECARD_FAILED_DAY_ERROR));
+	//		return;
+	//	}
+	if (m_cardTime <= 30)
 	{
 		SendSystemMessage(R(MSG_ECARD_FAILED_TIME_NOT_ENOUGH));
 		return;
@@ -15389,13 +15459,13 @@ void CRegionCreature::StartUseCard()
 
 void CRegionCreature::ShowCardInfo()
 {
-	if(m_cardTime >= 3600)
+	if (m_cardTime >= 3600)
 	{
-        rt2_sprintf(g_strStaticBuffer, R(MSG_ECARD_TIME_H), m_cardTime/3600, (m_cardTime%3600)/60);
+		rt2_sprintf(g_strStaticBuffer, R(MSG_ECARD_TIME_H), m_cardTime / 3600, (m_cardTime % 3600) / 60);
 	}
 	else
 	{
-		rt2_sprintf(g_strStaticBuffer, R(MSG_ECARD_TIME), m_cardTime/60);
+		rt2_sprintf(g_strStaticBuffer, R(MSG_ECARD_TIME), m_cardTime / 60);
 	}
 	SendSystemMessage(g_strStaticBuffer);
 }
@@ -15406,23 +15476,23 @@ void CRegionCreature::EndUseCard()
 	m_usingCard = false;
 }
 
-void CRegionCreature::InvokeEventCommand(const char *event)
+void CRegionCreature::InvokeEventCommand(const char* event)
 {
-	if(!m_npcInfo) return;
+	if (!m_npcInfo) return;
 
 	// find command by event
 	int i;
-	for(i=0; i<(int)m_npcInfo->EventCmd.size(); i++)
+	for (i = 0; i < (int)m_npcInfo->EventCmd.size(); i++)
 	{
-		if(m_npcInfo->EventCmd[i].event == event)
+		if (m_npcInfo->EventCmd[i].event == event)
 		{
 			// exe command
-			ProcessTaskKey(m_npcInfo->EventCmd[i].command,TYPE_ADD,NULL);
+			ProcessTaskKey(m_npcInfo->EventCmd[i].command, TYPE_ADD, NULL);
 		}
 	}
 }
 
-int CRegionUser::Prededuct(short sPoint,long event,long lAuctionId /*= 0*/) // Ô¤¿ÛµãÊý, ÓÃÀ´×öÓÃµãÊýÏòNPCÂòµÀ¾ß, ²»ÄÜÎª¸ºÊý
+int CRegionUser::Prededuct(short sPoint, long event, long lAuctionId /*= 0*/) // Ô¤¿ÛµãÊý, ÓÃÀ´×öÓÃµãÊýÏòNPCÂòµÀ¾ß, ²»ÄÜÎª¸ºÊý
 {
 	int lDeductOrderID = 0;
 
@@ -15438,19 +15508,19 @@ int CRegionUser::Prededuct(short sPoint,long event,long lAuctionId /*= 0*/) // Ô
 	return lDeductOrderID;
 }
 
-void CRegionUser::Deduct(short sPoint,long orderid,DeductType type,void* v) // ¿ÛµãÊý, ÓÃÀ´×öÓÃµãÊýÏòNPCÂòµÀ¾ß, ²»ÄÜÎª¸ºÊý
+void CRegionUser::Deduct(short sPoint, long orderid, DeductType type, void* v) // ¿ÛµãÊý, ÓÃÀ´×öÓÃµãÊýÏòNPCÂòµÀ¾ß, ²»ÄÜÎª¸ºÊý
 {
-    //int lDeductOrderID = 0;
+	//int lDeductOrderID = 0;
 
-	CDeduct::GetDeductInstance()->AddDeductData(orderid,type,v);
-    CG_CmdPacket& packet = g_region->m_gws.BeginSend();
-    packet.WriteShort(r2g_deduct);
-    packet.WriteLong(m_userId);
-    packet.WriteLong(orderid);
-    packet.WriteShort(sPoint);
-    g_region->m_gws.EndSend();
+	CDeduct::GetDeductInstance()->AddDeductData(orderid, type, v);
+	CG_CmdPacket& packet = g_region->m_gws.BeginSend();
+	packet.WriteShort(r2g_deduct);
+	packet.WriteLong(m_userId);
+	packet.WriteLong(orderid);
+	packet.WriteShort(sPoint);
+	g_region->m_gws.EndSend();
 
-   // return lDeductOrderID;
+	// return lDeductOrderID;
 }
 
 void CRegionUser::OnPrededuct(long lDeductOrderID, char cResult, short sPoint)
@@ -15463,12 +15533,12 @@ void CRegionUser::OnDeduct(long lDeductOrderID, char cResult, short sPoint)
 
 void CRegionUser::LockAccount(short sLockFlag, long lLockSecond)
 {
-    CG_CmdPacket& packet = g_region->m_gws.BeginSend();
-    packet.WriteShort(r2g_lock_account);
-    packet.WriteLong(m_userId);
-    packet.WriteShort(sLockFlag);
-    packet.WriteLong(lLockSecond);
-    g_region->m_gws.EndSend();
+	CG_CmdPacket& packet = g_region->m_gws.BeginSend();
+	packet.WriteShort(r2g_lock_account);
+	packet.WriteLong(m_userId);
+	packet.WriteShort(sLockFlag);
+	packet.WriteLong(lLockSecond);
+	g_region->m_gws.EndSend();
 }
 
 // ----------------------------------------------------------------------------------
@@ -15482,24 +15552,24 @@ CRegionNpcTask::CRegionNpcTask()
 
 CRegionNpcTask::~CRegionNpcTask()
 {
-	DEL_ONE(m_pCNpcTaskLogicExt)//PZH
+	DEL_ONE(m_pCNpcTaskLogicExt);//PZH
 }
 
-void CRegionNpcTask::Interactive(CRegionCreature *target,CG_CmdPacket *cmd)
+void CRegionNpcTask::Interactive(CRegionCreature* target, CG_CmdPacket* cmd)
 {
-	char *str;
-	if(!cmd->ReadString(&str))
+	char* str;
+	if (!cmd->ReadString(&str))
 		return;
 
 	//LeiJun Èç¹ûNPCÓÐËùÊô£¬ÔòÖ»¶ÔÆäËùÊô½øÐÐ½»»¥
-	if(m_master && m_master != target)
+	if (m_master && m_master != target)
 		return;
 
 	//tim.yang    ÉñµÆ
-	if(strcmp(str,"GodLight") == 0)
+	if (strcmp(str, "GodLight") == 0)
 	{
-		int num = rtRandom(3,0);
-		switch(num)
+		int num = rtRandom(3, 0);
+		switch (num)
 		{
 		case 0:
 			target->GodLightCreateMonster(target);
@@ -15515,52 +15585,52 @@ void CRegionNpcTask::Interactive(CRegionCreature *target,CG_CmdPacket *cmd)
 		g_factory->DestroyObject(this);
 	}
 	// if(!IsScriptLoaded()) return;
-	else if(strcmp(str,"default") == 0)
+	else if (strcmp(str, "default") == 0)
 	{
 		// check if can finish task
-		if(m_npcInfo && m_npcInfo->DefaultTalk.size() > 0)
+		if (m_npcInfo && m_npcInfo->DefaultTalk.size() > 0)
 		{
 			GetCNpcTaskLogicExt()->DefTalk(target);
 			//g_region->ShowHtmlDialog(this,target,m_npcInfo->DefaultTalk.c_str());
 		}
 
-		if(IsScriptLoaded())
+		if (IsScriptLoaded())
 			CallScript("OnInteractive", false, target);
 	}
-	else if(strcmp(str,"QueryPoint")==0)
-    {
-        target->QueryAccountPoing();
-	}
-	else if(strncmp(str,"Rebirth",strlen("Rebirth"))==0)
+	else if (strcmp(str, "QueryPoint") == 0)
 	{
-		if ( !str[strlen("Rebirth")] && !str[strlen("Rebirth")+1] )
+		target->QueryAccountPoing();
+	}
+	else if (strncmp(str, "Rebirth", strlen("Rebirth")) == 0)
+	{
+		if (!str[strlen("Rebirth")] && !str[strlen("Rebirth") + 1])
 		{
 			return;
 		}
-		strtok(str,"_");
-		char *k = strtok(NULL,"_");
+		strtok(str, "_");
+		char* k = strtok(NULL, "_");
 		int num = atoi(k);
-		ERR2("\n%d\n",num);
+		ERR2("\n%d\n", num);
 		if (num > 0 && num < 6)
 		{
 			target->m_core.RelivePostion = num;
 			target->SendSystemMessage(R(RES_REBIRTH_LINKOK_SYSTEM));
 		}
-		g_region->ShowHtmlDialog(this,target,R(RES_REBIRTH_LINKOK));
+		g_region->ShowHtmlDialog(this, target, R(RES_REBIRTH_LINKOK));
 		return;
 	}
 	//------------add start by tony 06.05.22------------------------//
-	else if(strcmp(str,"BuyCircleTaskItem")==0)
+	else if (strcmp(str, "BuyCircleTaskItem") == 0)
 	{
 		target->OnBuyTaskItem(0);
 	}
 	//------------add end   by tony 06.05.22------------------------//
 
 	//3.31 LeiJunÌí¼ÓUIÌØÊâ¹¦ÄÜ½Å±¾µ÷ÓÃ
-	else if(strncmp(str, "Script_", 7)==0 && target && target->IsScriptLoaded())
+	else if (strncmp(str, "Script_", 7) == 0 && target && target->IsScriptLoaded())
 	{
-		const char *sScriptStr = str + 7;
-		if(sScriptStr[0] != '\0')
+		const char* sScriptStr = str + 7;
+		if (sScriptStr[0] != '\0')
 			target->CallScript(sScriptStr, false, this);
 		return;
 	}
@@ -15570,18 +15640,18 @@ void CRegionNpcTask::Interactive(CRegionCreature *target,CG_CmdPacket *cmd)
 	DisposeTaskInterface(target, str);
 }
 
-void CRegionNpcTask::DisposeTaskInterface(CRegionCreature *pTarget, char *pInfo)
+void CRegionNpcTask::DisposeTaskInterface(CRegionCreature* pTarget, char* pInfo)
 {
-	if(!pTarget || !pInfo || pInfo[0] == '\0')
+	if (!pTarget || !pInfo || pInfo[0] == '\0')
 		return;
 
-	if(0 != GetCNpcTaskLogicExt()->ProcessTask(pTarget, pInfo))
+	if (0 != GetCNpcTaskLogicExt()->ProcessTask(pTarget, pInfo))
 	{
 		// script enter function must be "Ent" prefix
-		if(strlen(pInfo) <= 3) return;
-		if(pInfo[0] != 'E' || pInfo[1] != 'n' || pInfo[2] != 't') return;
+		if (strlen(pInfo) <= 3) return;
+		if (pInfo[0] != 'E' || pInfo[1] != 'n' || pInfo[2] != 't') return;
 
-		if(strcmp(pInfo, "EntTask") == 0)
+		if (strcmp(pInfo, "EntTask") == 0)
 		{
 			// check if can accept RT_NEW task or finish task or select reward
 			//PZH
@@ -15599,78 +15669,78 @@ void CRegionNpcTask::DisposeTaskInterface(CRegionCreature *pTarget, char *pInfo)
 	}
 }
 
-bool CRegionNpcTask::ProcessFinishTaskList(CRegionCreature *target)
+bool CRegionNpcTask::ProcessFinishTaskList(CRegionCreature* target)
 {
 	long ret;
 
 	// finish task list
-	for(size_t i=0; i<m_finishTask.size(); i++)
+	for (size_t i = 0; i < m_finishTask.size(); i++)
 	{
 		// ¿ÉÒÔÍê³ÉµÄÈÎÎñÓÅÏÈ´¦Àí
 //-----------------------chg start by tony 06.05.09-------------------------------------------//
 #if 0
-@		ret = target->CheckTaskFinishState(m_finishTask[i]);
-@		if(ret == TASK_STATE_CAN_FINISH)
-@		{
-@			ShowHtmlDialog(target,m_finishTask[i]->npc2AfterFinishTalk.c_str());
-@			return true;
-@		}
+		@		ret = target->CheckTaskFinishState(m_finishTask[i]);
+		@		if (ret == TASK_STATE_CAN_FINISH)
+			@		{
+			@			ShowHtmlDialog(target, m_finishTask[i]->npc2AfterFinishTalk.c_str());
+			@			return true;
+			@		}
 #else
 		ret = target->CheckTaskFinishState(m_finishTask[i], this);
-		if(ret == TASK_STATE_CAN_FINISH)
+		if (ret == TASK_STATE_CAN_FINISH)
 		{
-			if(!IsCircleTaskNpc())
+			if (!IsCircleTaskNpc())
 			{
-				ShowHtmlDialog(target,m_finishTask[i]->npc2AfterFinishTalk.c_str());
+				ShowHtmlDialog(target, m_finishTask[i]->npc2AfterFinishTalk.c_str());
 			}
 			return true;
 		}
 #endif
 		//-----------------------chg end   by tony 06.05.09-------------------------------------------//
 	}
-	for(size_t i=0; i<m_finishTask.size(); i++)
+	for (size_t i = 0; i < m_finishTask.size(); i++)
 	{
-//-----------------------chg start by tony 06.05.09-------------------------------------------//
+		//-----------------------chg start by tony 06.05.09-------------------------------------------//
 #if 0
-@		ret = target->CheckTaskFinishState(m_finishTask[i]);
+		@		ret = target->CheckTaskFinishState(m_finishTask[i]);
 #else
 		ret = target->CheckTaskFinishState(m_finishTask[i], this);
 #endif
-//-----------------------chg end   by tony 06.05.09-------------------------------------------//
-		
-		if(ret == TASK_STATE_DOING)
+		//-----------------------chg end   by tony 06.05.09-------------------------------------------//
+
+		if (ret == TASK_STATE_DOING)
 		{
-			if(m_finishTask[i]->circleTask==0)
+			if (m_finishTask[i]->circleTask == 0)
 			{
-				ShowHtmlDialog(target,m_finishTask[i]->npc2InTaskTalk.c_str());
+				ShowHtmlDialog(target, m_finishTask[i]->npc2InTaskTalk.c_str());
 			}
 			//-----------------------add start by tony 06.05.09-------------------------------------------//
 			else
 			{
 				STaskInfo* info = target->m_task.FindTask(m_finishTask[i]->id);
-				if(!info) continue;
+				if (!info) continue;
 
 				//ShowHtmlDialog(target,m_acceptTask[i]->npc1InTaskTalk.c_str());
-				switch(m_finishTask[i]->circleTask)
+				switch (m_finishTask[i]->circleTask)
 				{
 				case TASK_CIRCLE_ITEM:
-					{
-						SItemBase* pBase= g_region->m_pItemManager->GetItemFromIndex(info->m_finditemID);						
-						g_region->ShowHtmlDialog(this,target,m_finishTask[i]->npc1InTaskTalk.c_str(), "FIND_ITEM", (char*)pBase->name);
-					}
-					break;
+				{
+					SItemBase* pBase = g_region->m_pItemManager->GetItemFromIndex(info->m_finditemID);
+					g_region->ShowHtmlDialog(this, target, m_finishTask[i]->npc1InTaskTalk.c_str(), "FIND_ITEM", (char*)pBase->name);
+				}
+				break;
 				case TASK_CIRCLE_FINDNPC:
-					{
-						SNpc* pNpc = g_TableNpc.FindNpc(info->m_findnpcID);
-						g_region->ShowHtmlDialog(this,target,m_finishTask[i]->npc1InTaskTalk.c_str(), "FIND_NPC", (char*)pNpc->Name.c_str());
-					}
-					break;
+				{
+					SNpc* pNpc = g_TableNpc.FindNpc(info->m_findnpcID);
+					g_region->ShowHtmlDialog(this, target, m_finishTask[i]->npc1InTaskTalk.c_str(), "FIND_NPC", (char*)pNpc->Name.c_str());
+				}
+				break;
 				case TASK_CIRCLE_BATTLE:
-					{
-						SNpc* pNpc = g_TableNpc.FindNpc(info->m_killmonsterID);
-						g_region->ShowHtmlDialog(this,target,m_finishTask[i]->npc1InTaskTalk.c_str(), "KILL_MONSTER", (char*)pNpc->Name.c_str());
-					}
-					break;
+				{
+					SNpc* pNpc = g_TableNpc.FindNpc(info->m_killmonsterID);
+					g_region->ShowHtmlDialog(this, target, m_finishTask[i]->npc1InTaskTalk.c_str(), "KILL_MONSTER", (char*)pNpc->Name.c_str());
+				}
+				break;
 				default:
 					break;
 				}
@@ -15702,9 +15772,9 @@ bool CRegionNpcTask::ProcessFinishTaskList(CRegionCreature *target)
 
 bool CRegionNpcTask::IsCircleTaskNpc()
 {
-	for(size_t i=0; i<m_acceptTask.size(); i++)
+	for (size_t i = 0; i < m_acceptTask.size(); i++)
 	{
-		if(m_acceptTask[i]->circleTask != 0)
+		if (m_acceptTask[i]->circleTask != 0)
 		{
 			return true;
 		}
@@ -15713,7 +15783,7 @@ bool CRegionNpcTask::IsCircleTaskNpc()
 	return false;
 }
 
-bool CRegionNpcTask::ProcessAcceptTaskList(CRegionCreature *target)
+bool CRegionNpcTask::ProcessAcceptTaskList(CRegionCreature* target)
 {
 	long ret;
 
@@ -15722,38 +15792,38 @@ bool CRegionNpcTask::ProcessAcceptTaskList(CRegionCreature *target)
 	//const int itemID[] = {71, 72, 13, 14, 46, 47};
 	//const int npcID[] = {1287,1288,1289,1290,1291};
 	//const int monsterID[]={1,2,3};
-	if(IsCircleTaskNpc())
-	{		
-		for(size_t i=0; i<m_acceptTask.size(); i++)
+	if (IsCircleTaskNpc())
+	{
+		for (size_t i = 0; i < m_acceptTask.size(); i++)
 		{
 			STaskInfo* info = target->m_task.FindTask(m_acceptTask[i]->id);
-			if(!info) continue;
+			if (!info) continue;
 			ret = target->CheckTaskAcceptState(m_acceptTask[i], this);
-			if( ret == TASK_STATE_DOING)
+			if (ret == TASK_STATE_DOING)
 			{
 				//ShowHtmlDialog(target,m_acceptTask[i]->npc1InTaskTalk.c_str());
-				switch(m_acceptTask[i]->circleTask)
+				switch (m_acceptTask[i]->circleTask)
 				{
 				case TASK_CIRCLE_ITEM:
-					{
-						SItemBase* pBase= g_region->m_pItemManager->GetItemFromIndex(info->m_finditemID);						
-						g_region->ShowHtmlDialog(this,target,m_acceptTask[i]->npc1InTaskTalk.c_str(), "FIND_ITEM", (char*)pBase->name);
-					}
-					break;
-				case TASK_CIRCLE_FINDNPC:
-					{
-						SNpc* pNpc = g_TableNpc.FindNpc(info->m_findnpcID);
-						g_region->ShowHtmlDialog(this,target,m_acceptTask[i]->npc1InTaskTalk.c_str(), "FIND_NPC", (char*)pNpc->Name.c_str());
-					}
-					break;
-				case TASK_CIRCLE_BATTLE:
-					{
-						SNpc* pNpc = g_TableNpc.FindNpc(info->m_killmonsterID);
-						g_region->ShowHtmlDialog(this,target,m_acceptTask[i]->npc1InTaskTalk.c_str(), "KILL_MONSTER", (char*)pNpc->Name.c_str());
-					}
-					break;
+				{
+					SItemBase* pBase = g_region->m_pItemManager->GetItemFromIndex(info->m_finditemID);
+					g_region->ShowHtmlDialog(this, target, m_acceptTask[i]->npc1InTaskTalk.c_str(), "FIND_ITEM", (char*)pBase->name);
 				}
-				
+				break;
+				case TASK_CIRCLE_FINDNPC:
+				{
+					SNpc* pNpc = g_TableNpc.FindNpc(info->m_findnpcID);
+					g_region->ShowHtmlDialog(this, target, m_acceptTask[i]->npc1InTaskTalk.c_str(), "FIND_NPC", (char*)pNpc->Name.c_str());
+				}
+				break;
+				case TASK_CIRCLE_BATTLE:
+				{
+					SNpc* pNpc = g_TableNpc.FindNpc(info->m_killmonsterID);
+					g_region->ShowHtmlDialog(this, target, m_acceptTask[i]->npc1InTaskTalk.c_str(), "KILL_MONSTER", (char*)pNpc->Name.c_str());
+				}
+				break;
+				}
+
 				return true;
 			}
 		}
@@ -15817,45 +15887,45 @@ bool CRegionNpcTask::ProcessAcceptTaskList(CRegionCreature *target)
 	//{
 	//-----------add end   by tony 06.05.09-------------------------------------//
 		// accept task list 
-		for(size_t i=0; i<m_acceptTask.size(); i++)
-		{
-			//---------chg start by tony 06.05.09---------------------------------------//
+	for (size_t i = 0; i < m_acceptTask.size(); i++)
+	{
+		//---------chg start by tony 06.05.09---------------------------------------//
 #if 0
-@			ret = target->CheckTaskAcceptState(m_acceptTask[i]);
+		@			ret = target->CheckTaskAcceptState(m_acceptTask[i]);
 #else
-			ret = target->CheckTaskAcceptState(m_acceptTask[i], this);
+		ret = target->CheckTaskAcceptState(m_acceptTask[i], this);
 #endif
-			switch(ret)
-			{
-			case TASK_STATE_DOING:
-				ShowHtmlDialog(target,m_acceptTask[i]->npc1InTaskTalk.c_str());
-				return true;
+		switch (ret)
+		{
+		case TASK_STATE_DOING:
+			ShowHtmlDialog(target, m_acceptTask[i]->npc1InTaskTalk.c_str());
+			return true;
 
-			case TASK_STATE_CAN_ACCEPT:
-				ShowHtmlDialog(target,m_acceptTask[i]->npc1PreAcceptTalk.c_str());
-				return true;
-			}
+		case TASK_STATE_CAN_ACCEPT:
+			ShowHtmlDialog(target, m_acceptTask[i]->npc1PreAcceptTalk.c_str());
+			return true;
 		}
+	}
 	//}
 	return false;
 }
 
-bool CRegionNpcTask::ProcessTask(CRegionCreature *target,char *str)
+bool CRegionNpcTask::ProcessTask(CRegionCreature* target, char* str)
 {
-	char *link = NULL;
+	char* link = NULL;
 
 	// finish task list
-	for(size_t i=0; i<m_finishTask.size(); i++)
+	for (size_t i = 0; i < m_finishTask.size(); i++)
 	{
 		//----------chg start by tony 06.05.11--------------------------//
 #if 0
-@		if(target->TaskProcess(m_finishTask[i],str,&link))
+		@		if (target->TaskProcess(m_finishTask[i], str, &link))
 #else
-		if(target->TaskProcess(m_finishTask[i],str,&link, this))
+		if (target->TaskProcess(m_finishTask[i], str, &link, this))
 #endif
-		//----------chg end   by tony 06.05.11--------------------------//
+			//----------chg end   by tony 06.05.11--------------------------//
 		{
-			ShowHtmlDialog(target,link);
+			ShowHtmlDialog(target, link);
 			return true;
 		}
 	}
@@ -15883,16 +15953,16 @@ bool CRegionNpcTask::ProcessTask(CRegionCreature *target,char *str)
 	else*/
 	{
 		size_t i = 0;
-		for(i=0; i<m_acceptTask.size(); i++)
+		for (i = 0; i < m_acceptTask.size(); i++)
 		{
-			if(target->TaskProcess(m_acceptTask[i],str,&link))
+			if (target->TaskProcess(m_acceptTask[i], str, &link))
 			{
 				//ShowHtmlDialog(target,link);
 				return true;
 			}
 		}
 	}
-	g_region->ShowHtmlDialog(this,target,R(RES_DEFAULT_TALK));
+	g_region->ShowHtmlDialog(this, target, R(RES_DEFAULT_TALK));
 	return false;
 }
 
@@ -15906,38 +15976,38 @@ void CRegionNpcTask::SetNpcFunction(long func)
 	m_func |= func;
 }
 
-void CRegionNpcTask::EntTask(CRegionCreature *target)
+void CRegionNpcTask::EntTask(CRegionCreature* target)
 {
-	if(ProcessFinishTaskList(target))
+	if (ProcessFinishTaskList(target))
 		return;
 
-	if(ProcessAcceptTaskList(target))
+	if (ProcessAcceptTaskList(target))
 		return;
-		
-	g_region->ShowHtmlDialog(this,target,R(RES_DEFAULT_TALK));
+
+	g_region->ShowHtmlDialog(this, target, R(RES_DEFAULT_TALK));
 	return;
 }
 
 //PZH
 CNpcTaskLogicExt* CRegionNpcTask::GetCNpcTaskLogicExt()
 {
-	
-	if(NULL == m_pCNpcTaskLogicExt)
+
+	if (NULL == m_pCNpcTaskLogicExt)
 	{
 		m_pCNpcTaskLogicExt = RT_NEW CNpcTaskLogicExt(*this);
 	}
 	return m_pCNpcTaskLogicExt;
 }
 //
-void CRegionNpcTask::ShowHtmlDialog(CRegionCreature *target,const char *link)
+void CRegionNpcTask::ShowHtmlDialog(CRegionCreature* target, const char* link)
 {
-	if(link && strlen(link) != 0)
+	if (link && strlen(link) != 0)
 	{
-		g_region->ShowHtmlDialog(this,target,link);
+		g_region->ShowHtmlDialog(this, target, link);
 	}
 	else
 	{
-		g_region->ShowHtmlDialog(this,target,m_npcInfo->DefaultTalk.c_str());
+		g_region->ShowHtmlDialog(this, target, m_npcInfo->DefaultTalk.c_str());
 	}
 }
 
@@ -15945,141 +16015,143 @@ void CRegionCreature::UpdateMatchToClient()
 {
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_match_list);
-    WriteMatchToNet(g_sendCmd);
-    RecvCmd(g_sendCmd);
+	WriteMatchToNet(g_sendCmd);
+	RecvCmd(g_sendCmd);
 }
 
-void CRegionCreature::WriteMatchToNet(CG_CmdPacket *cmd)
+void CRegionCreature::WriteMatchToNet(CG_CmdPacket* cmd)
 {
-    cmd->WriteShort((short)m_listMatchID.size());
-    std::list<short>::iterator it;
-    for (it=m_listMatchID.begin(); it!=m_listMatchID.end(); it++)
-    {
-        cmd->WriteShort((short)*it);
-    }
+	cmd->WriteShort((short)m_listMatchID.size());
+	std::list<short>::iterator it;
+	for (it = m_listMatchID.begin(); it != m_listMatchID.end(); it++)
+	{
+		cmd->WriteShort((short)*it);
+	}
 }
 
 void CRegionCreature::AddMatch(short sMatchID)
 {
-    std::list<short>::iterator it;
-    for (it=m_listMatchID.begin(); it!=m_listMatchID.end(); it++)
-    {
-        if (*it==sMatchID)
-            break;
-    }
-    if (it==m_listMatchID.end())
-    {
-        m_listMatchID.push_back(sMatchID);
-        UpdateMatchToClient();
-    }
+	std::list<short>::iterator it;
+	for (it = m_listMatchID.begin(); it != m_listMatchID.end(); it++)
+	{
+		if (*it == sMatchID)
+			break;
+	}
+	if (it == m_listMatchID.end())
+	{
+		m_listMatchID.push_back(sMatchID);
+		UpdateMatchToClient();
+	}
 }
 
 void CRegionCreature::DelMatch(short sMatchID)
 {
-    std::list<short>::iterator it;
-    for (it=m_listMatchID.begin(); it!=m_listMatchID.end(); it++)
-    {
-        if (*it==sMatchID)
-        {
-            m_listMatchID.erase(it);
-            UpdateMatchToClient();
-            break;
-        }
-    }
+	std::list<short>::iterator it;
+	for (it = m_listMatchID.begin(); it != m_listMatchID.end(); it++)
+	{
+		if (*it == sMatchID)
+		{
+			m_listMatchID.erase(it);
+			UpdateMatchToClient();
+			break;
+		}
+	}
 }
 
 bool CRegionUser::CheckBankPass(const std::string& strPass)
 {
-    if (m_bankPass.empty())
-    {
-        if (strPass.empty())
-            return true;
-        else
-            return false;
-    }
-    
-    char strMD5Password[36];
-    rtMD5StringString((char*)strPass.c_str(), strMD5Password);
-    std::string strMD5Check;
-    for (int i=0; i<16; i++)
-    {
-        strMD5Check.push_back(strMD5Password[i]);
-    }
+	if (m_bankPass.empty())
+	{
+		if (strPass.empty())
+			return true;
+		else
+			return false;
+	}
 
-    if (m_bankPass == strMD5Check)
-        return true;
-    else 
-        return false;
+	char strMD5Password[36];
+	rtMD5StringString((char*)strPass.c_str(), strMD5Password);
+	std::string strMD5Check;
+	for (int i = 0; i < 16; i++)
+	{
+		strMD5Check.push_back(strMD5Password[i]);
+	}
+
+	if (m_bankPass == strMD5Check)
+		return true;
+	else
+		return false;
 }
 
 int CRegionCreature::FindInSellRareItem(DWORD itemId)
 {
-    int idx = 0;
-    stlforeach(std::vector<SNpcSellRareItem>, iter, m_NpcSellRareItem)
-    {
-        SNpcSellRareItem& sri = *iter;
-        if (sri.item.id == itemId)
-            return idx;
-        idx ++;
-    }
-    return -1;
+	int idx = 0;
+	stlforeach(std::vector<SNpcSellRareItem>, iter, m_NpcSellRareItem)
+	{
+		SNpcSellRareItem& sri = *iter;
+		if (sri.item.id == itemId)
+			return idx;
+		idx++;
+	}
+	return -1;
 }
 
 bool CRegionCreature::StartRareItemSell()
 {
-    m_bNpcSellRareItemStart = true;
-    return true;
+	m_bNpcSellRareItemStart = true;
+	return true;
 }
 
 bool CRegionCreature::StopRareItemSell()
 {
-    m_bNpcSellRareItemStart = false;
-    return true;
+	m_bNpcSellRareItemStart = false;
+	return true;
 }
 
 void CRegionCreature::OnBuyTaskItem(int taskType)
 {
-	switch(taskType)
+	switch (taskType)
 	{
 	case 0:
+	{
+		STaskInfo* task = m_task.FindCircleTask();
+		if (task)
 		{
-			STaskInfo* task = m_task.FindCircleTask();
-			if(task)
+			STaskDesc* desc = g_TableTask.FindTask(task->Id);
+			if (desc && desc->circleTask == TASK_CIRCLE_ITEM)
 			{
-				STaskDesc *desc = g_TableTask.FindTask(task->Id);
-				if(desc && desc->circleTask==TASK_CIRCLE_ITEM)
+				//- ¼ì²éÍæ¼Ò½ðÇ®ÊÇ·ñ×ã¹»
+				if (GetGold() < 1000000)
 				{
-					//- ¼ì²éÍæ¼Ò½ðÇ®ÊÇ·ñ×ã¹»
-					if(GetGold()<1000000)
-					{
-						rt2_sprintf(g_strStaticBuffer, R(MSG_CARD_BUY_MONEY_NOT_ENOUGH), 1000000, GetGold());
-						SendSystemMessage(g_strStaticBuffer);
-						return;
-					}
-
-					//- ´´½¨µÀ¾ß²¢¸øÓèÍæ¼Ò
-					SItemID item = g_region->m_pItemManager->CreateItem(task->m_finditemID);
-					if ( ItemID_IsValid(item) )
-					{
-						if(AddItem(item))
-						{
-							LOG1("AddItem id[%d]\n", task->m_finditemID);
-							//- ¿Û³ý½ðÇ®
-							RemoveGold(1000000);
-							UpdateToClient(NET_CRE_UPDATE_TASK);
-						}
-					}
-				}else
-				{
-					SendSystemMessage("ÄãÃ»ÓÐÕâÑùµÄÈÎÎñ");
-					LOG("TaskError: circle task is not finding item\n");
+					rt2_sprintf(g_strStaticBuffer, R(MSG_CARD_BUY_MONEY_NOT_ENOUGH), 1000000, GetGold());
+					SendSystemMessage(g_strStaticBuffer);
+					return;
 				}
-			}else
+
+				//- ´´½¨µÀ¾ß²¢¸øÓèÍæ¼Ò
+				SItemID item = g_region->m_pItemManager->CreateItem(task->m_finditemID);
+				if (ItemID_IsValid(item))
+				{
+					if (AddItem(item))
+					{
+						LOG1("AddItem id[%d]\n", task->m_finditemID);
+						//- ¿Û³ý½ðÇ®
+						RemoveGold(1000000);
+						UpdateToClient(NET_CRE_UPDATE_TASK);
+					}
+				}
+			}
+			else
 			{
 				SendSystemMessage("ÄãÃ»ÓÐÕâÑùµÄÈÎÎñ");
+				LOG("TaskError: circle task is not finding item\n");
 			}
 		}
-		break;
+		else
+		{
+			SendSystemMessage("ÄãÃ»ÓÐÕâÑùµÄÈÎÎñ");
+		}
+	}
+	break;
 	default:
 		break;
 	}
@@ -16100,20 +16172,20 @@ bool CRegionUser::ForbidUser(bool bBan, ECreatureState eType, long lTimeSecond)
 	//packet.WriteLong(eType);
 	//packet.WriteLong(lTimeSecond*1000);
 	//g_region->m_gws.EndSend();
-    return true;
+	return true;
 }
 
 void CRegionUser::SaveAllActivityInfo(bool bDelete)
 {
-	for(ACTINFOS::iterator itInfo = m_ActInfos.begin();
+	for (ACTINFOS::iterator itInfo = m_ActInfos.begin();
 		itInfo != m_ActInfos.end();
 		++itInfo)
 	{
 		CRegionActManager::GetSingle()->SaveUserInfo(itInfo->first, this, GetActivityJoin(itInfo->first), itInfo->second);
-		if(bDelete)
+		if (bDelete)
 			DEL_ONE(itInfo->second);
 	}
-	if(bDelete)
+	if (bDelete)
 	{
 		m_ActInfos.clear();
 	}
@@ -16121,59 +16193,60 @@ void CRegionUser::SaveAllActivityInfo(bool bDelete)
 
 bool CRegionUser::wgCheckServer(unsigned char* buf, int& iDataSize, int iBufSize)
 {
-    int iCheckData = *(int*)buf;
-    short cmdID = ((short*)buf)[3];
-    unsigned long dwNow = (unsigned long)time(NULL);
-    if (cmdID==c2r_attack || cmdID==c2r_update_position)
-    {
-        // ¼ÆËã¿ÉÄÜµÄSeed
-        m_lClientLUASeed = ((m_lClientLUASeed * 205839 + 2835234) / 17) % 65536;
-        MSG2("%d, %d\n", iCheckData-m_lClientLUASeed, m_lClientLUASeed);
+	int iCheckData = *(int*)buf;
+	short cmdID = ((short*)buf)[3];
+	unsigned long dwNow = (unsigned long)time(NULL);
+	if (cmdID == c2r_attack || cmdID == c2r_update_position)
+	{
+		// ¼ÆËã¿ÉÄÜµÄSeed
+		m_lClientLUASeed = ((m_lClientLUASeed * 205839 + 2835234) / 17) % 65536;
+		MSG2("%d, %d\n", iCheckData - m_lClientLUASeed, m_lClientLUASeed);
 #ifdef _WIN32
-        if (((dwNow-m_lClientLastCheckedTime)>3)||(cmdID==c2r_attack))
+		if (((dwNow - m_lClientLastCheckedTime) > 3) || (cmdID == c2r_attack))
 #else
-        if (m_lClientLastCheckedTime==0)
-        {
-            m_lClientLastCheckedTime = dwNow;
-        }
-        if (((dwNow-m_lClientLastCheckedTime)>5*60)||(cmdID==c2r_attack)) // Ã¿5·ÖÖÓ¼ì²éÒ»´Î
+		if (m_lClientLastCheckedTime == 0)
+		{
+			m_lClientLastCheckedTime = dwNow;
+		}
+		if (((dwNow - m_lClientLastCheckedTime) > 5 * 60) || (cmdID == c2r_attack)) // Ã¿5·ÖÖÓ¼ì²éÒ»´Î
 #endif
-        {
-            if (cmdID==c2r_update_position)
-            {
-                m_lClientLastCheckedTime = dwNow+rand()%60; // Ëæ»ú1·ÖÖÓ
-            }
-            if (!g_region->JhWgCheck(iCheckData, m_lClientLUASeed, cmdID)) // ·µ»Øfalse±íÊ¾ÕÒµ½Íâ¹Ò
-            {
-                m_iJhWgCheckedCnt ++;
-                if (g_region->m_bJhWgServer)
-                {
-                    if (g_region->m_pJhWgServer)
-                    {
-                        g_region->m_pJhWgServer->CheckedUser(m_accountName.c_str(), m_username.c_str(), this->m_userId, m_iJhWgCheckedCnt);
-                    }
-                }else
-                {
-                    if (m_iJhWgCheckedCnt>57)
-                    {
-                        LOG1("Íæ¼Ò [%s] Ê¹ÓÃÍâ¹Ò\n", m_username.c_str());
-                        m_dummy->SendSystemMessage("ÎªÁË´´Ôì¹«Æ½µÄÓÎÏ·»·¾³£¬ÇëÎðÊ¹ÓÃÍâ¹Ò¡£Ê¹ÓÃÍâ¹ÒÕßÃ¿Îå·ÖÖÓ±»½ûÖ¹ÒÆ¶¯Ò»·ÖÖÓ");
-                        ForbidUser(true, CreState_CanMove, 60);
-                    }
-                }
-            }
-        }
-    }
-    iDataSize -= 4;
-    memcpy(buf, buf+4, iDataSize);
-    return true;
+		{
+			if (cmdID == c2r_update_position)
+			{
+				m_lClientLastCheckedTime = dwNow + rand() % 60; // Ëæ»ú1·ÖÖÓ
+			}
+			if (!g_region->JhWgCheck(iCheckData, m_lClientLUASeed, cmdID)) // ·µ»Øfalse±íÊ¾ÕÒµ½Íâ¹Ò
+			{
+				m_iJhWgCheckedCnt++;
+				if (g_region->m_bJhWgServer)
+				{
+					if (g_region->m_pJhWgServer)
+					{
+						g_region->m_pJhWgServer->CheckedUser(m_accountName.c_str(), m_username.c_str(), this->m_userId, m_iJhWgCheckedCnt);
+					}
+				}
+				else
+				{
+					if (m_iJhWgCheckedCnt > 57)
+					{
+						LOG1("Íæ¼Ò [%s] Ê¹ÓÃÍâ¹Ò\n", m_username.c_str());
+						m_dummy->SendSystemMessage("ÎªÁË´´Ôì¹«Æ½µÄÓÎÏ·»·¾³£¬ÇëÎðÊ¹ÓÃÍâ¹Ò¡£Ê¹ÓÃÍâ¹ÒÕßÃ¿Îå·ÖÖÓ±»½ûÖ¹ÒÆ¶¯Ò»·ÖÖÓ");
+						ForbidUser(true, CreState_CanMove, 60);
+					}
+				}
+			}
+		}
+	}
+	iDataSize -= 4;
+	memcpy(buf, buf + 4, iDataSize);
+	return true;
 }
 
-void CRegionUser::RecvCmd(CG_CmdPacket *cmd) 
+void CRegionUser::RecvCmd(CG_CmdPacket* cmd)
 {
-	if(!m_session) return;
+	if (!m_session) return;
 
-	if(g_bUnWg)
+	if (g_bUnWg)
 	{
 		short cmdID;
 		bool bEncrypt = true;
@@ -16181,7 +16254,7 @@ void CRegionUser::RecvCmd(CG_CmdPacket *cmd)
 
 		char* pCmdBuf = cmd->GetByteData();
 		memcpy(&cmdID, pCmdBuf, 2);
-		
+
 		//if(cmdID != r2c_init)
 		//{
 		//	bEncrypt = true;
@@ -16190,9 +16263,9 @@ void CRegionUser::RecvCmd(CG_CmdPacket *cmd)
 		//	bEncrypt = false;
 		//}
 
-		if(cmdID != r2c_init)
+		if (cmdID != r2c_init)
 		{
-			if( cmdID == r2c_update_show_info ||
+			if (cmdID == r2c_update_show_info ||
 				cmdID == r2c_remove_item ||
 				cmdID == r2c_learn_skill ||
 				cmdID == r2c_subsystem_mail ||
@@ -16203,19 +16276,19 @@ void CRegionUser::RecvCmd(CG_CmdPacket *cmd)
 				bIsBroadcast = false;
 			}
 
-			unsigned char buf[1024*20];
-			int size = 1024*20;
+			unsigned char buf[1024 * 20];
+			int size = 1024 * 20;
 			memset((void*)buf, 0, sizeof(buf));
 			cmd->SaveToBuffer((char*)buf, size);
 
 			size = sizeof(buf);
-			if(NES_Encrypt_S(m_userId, buf, size, true, bIsBroadcast))
+			if (NES_Encrypt_S(m_userId, buf, size, true, bIsBroadcast))
 			{
 				LOG1("NES_Encrypt_S Failed(size[%d])\n", size);
 				return;
 			}
 
-			if(size > MAX_CMD_PACKET_SIZE)
+			if (size > MAX_CMD_PACKET_SIZE)
 			{
 				LOG1("After NES_Encrypt_S, size is [%d], overflow\n", size);
 				return;
@@ -16223,32 +16296,33 @@ void CRegionUser::RecvCmd(CG_CmdPacket *cmd)
 
 			g_sendCmdWG->BeginWrite();
 			g_sendCmdWG->WriteBinary((char*)buf, size);
-			if(!m_session->SendPacket(g_sendCmdWG))
-				MSG4("UserInfo: user recv cmd error,cmd id is %d\n",cmdID);
+			if (!m_session->SendPacket(g_sendCmdWG))
+				MSG4("UserInfo: user recv cmd error,cmd id is %d\n", cmdID);
 			return;
 		}
 	}
 
-	if(!m_session->SendPacket(cmd))
+	if (!m_session->SendPacket(cmd))
 		MSG("UserInfo: user recv cmd error\n");
 }
 
-void CRegionCreature::OnAddAccountTime(long lUserID, char* pAccountTime,char cSucceed)
+void CRegionCreature::OnAddAccountTime(long lUserID, char* pAccountTime, char cSucceed)
 {
-	if (cSucceed==0)			// Èç¹ûÊ§°Ü
-	{	
+	if (cSucceed == 0)			// Èç¹ûÊ§°Ü
+	{
 		SItemID item = g_region->m_pItemManager->CreateItem(tempItemID);
-		if(ItemID_IsValid(item))
+		if (ItemID_IsValid(item))
 		{
 			AddItem(item);
 		}
 		rt2_sprintf(g_strStaticBuffer, "³äÖµÊ§°Ü"); // "¹ºÂòµã¿¨Ê§°Ü: %s"
 		SendSystemMessage(g_strStaticBuffer);
-	}else
-		{
-			rt2_sprintf(g_strStaticBuffer, "³äÖµ³É¹¦£»Ä¿Ç°ÄúµÄ»áÔ±µ½ÆÚÊ±¼äÎª %s,ÖØÐÂµÇÂ½ºó»áÔ±Ê±¼ä»á±»Ë¢ÐÂ£¡£¡", pAccountTime); 
-			SendSystemMessage(g_strStaticBuffer);
-		}
+	}
+	else
+	{
+		rt2_sprintf(g_strStaticBuffer, "³äÖµ³É¹¦£»Ä¿Ç°ÄúµÄ»áÔ±µ½ÆÚÊ±¼äÎª %s,ÖØÐÂµÇÂ½ºó»áÔ±Ê±¼ä»á±»Ë¢ÐÂ£¡£¡", pAccountTime);
+		SendSystemMessage(g_strStaticBuffer);
+	}
 }
 void CRegionCreature::WriteAccountTime(int index)
 {
@@ -16268,7 +16342,7 @@ void CRegionCreature::WriteAccountTime(int index)
 		break;
 	}
 	tempItemID = index;
-	RemoveItem(index,1);
+	RemoveItem(index, 1);
 	g_region->m_gws.EndSend();
 	WriteUseitemLog(index);
 }
@@ -16287,12 +16361,12 @@ void CRegionCreature::WriteUseitemLog(int index)
 // add by zzh
 void CRegionCreature::UpdateTrigger()
 {
-	if ( m_dungeonUID == 0 )
+	if (m_dungeonUID == 0)
 	{
 		return;
 	}
 
-	CRsDungeonMgr::SRsDungeon *fb = g_region->m_fbMgr->FindDungeon(m_dungeonUID);
+	CRsDungeonMgr::SRsDungeon* fb = g_region->m_fbMgr->FindDungeon(m_dungeonUID);
 
 	if (!fb) return;
 
@@ -16302,18 +16376,18 @@ void CRegionCreature::UpdateTrigger()
 	g_sendCmd->WriteLong(m_dungeonUID);
 	g_sendCmd->WriteLong(m_dungeonTID);
 	g_sendCmd->WriteLong(fb->process);
-	for (iter=fb->trigger.begin();iter!=fb->trigger.end();++iter)
+	for (iter = fb->trigger.begin(); iter != fb->trigger.end(); ++iter)
 	{
 		if ((*iter).id != 0)
 		{
 			long close = (*iter).close;
-			g_sendCmd->SerializeBit(close,1);
+			g_sendCmd->SerializeBit(close, 1);
 		}
 	}
 	RecvCmd(g_sendCmd);
 }
 // add by zzh
-void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false*/)
+void CRegionCreature::StartTrigger(CRegionCreature* npc, bool AotoOpen/* = false*/)
 {
 	if (!npc) return;
 
@@ -16321,12 +16395,12 @@ void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false
 	int id = npc->triggerID;
 	long delBlock = 0;
 
-	CRsDungeonMgr::SRsDungeon *fb = g_region->m_fbMgr->FindDungeon(m_dungeonUID);
-	STrigger *pTrigger = fb->GetTrigger(id);
+	CRsDungeonMgr::SRsDungeon* fb = g_region->m_fbMgr->FindDungeon(m_dungeonUID);
+	STrigger* pTrigger = fb->GetTrigger(id);
 
 	if (!pTrigger) return;
 
-	if(!ProcessTaskKeyList(pTrigger->startKey,TYPE_CHECK,NULL) && !AotoOpen)
+	if (!ProcessTaskKeyList(pTrigger->startKey, TYPE_CHECK, NULL) && !AotoOpen)
 	{
 		return;
 	}
@@ -16336,32 +16410,32 @@ void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false
 
 	if (pTrigger->type == 1 || pTrigger->type == 2 || pTrigger->type == 3)
 	{
-		if ( pTrigger->close )
+		if (pTrigger->close)
 		{
 			if (npc->triggerOpen == 0 && npc->m_lTriggerTime <= rtMilliseconds())
 			{
-				pTrigger->triggerCurNum ++;
+				pTrigger->triggerCurNum++;
 				if (pTrigger->triggerCurNum >= pTrigger->triggerNum)
 				{
-					if(!ProcessTaskKeyList(pTrigger->startKeyRemove,TYPE_REMOVE,NULL) && !AotoOpen)
+					if (!ProcessTaskKeyList(pTrigger->startKeyRemove, TYPE_REMOVE, NULL) && !AotoOpen)
 					{
-						pTrigger->triggerCurNum --;
+						pTrigger->triggerCurNum--;
 
 						start = 2;
 						g_sendCmd->BeginWrite();
 						g_sendCmd->WriteShort(r2c_start_trigger);
 						g_sendCmd->WriteShort(id);
-						g_sendCmd->SerializeBit(delBlock,1);
+						g_sendCmd->SerializeBit(delBlock, 1);
 						g_sendCmd->WriteByte(pTrigger->close);
 						g_sendCmd->WriteLong(npc->GetObjectId());
-						g_sendCmd->SerializeBit(start,2);
+						g_sendCmd->SerializeBit(start, 2);
 						RecvCmd(g_sendCmd);
 
 						return;
 					}
-					for (int i = 0;i<pTrigger->triggerNum;i++)
+					for (int i = 0; i < pTrigger->triggerNum; i++)
 					{
-						CRegionCreature *cre = m_scene->FindCreature(pTrigger->triggerUID[i]);
+						CRegionCreature* cre = m_scene->FindCreature(pTrigger->triggerUID[i]);
 						if (cre)
 						{
 							cre->m_lTriggerTime = rtMilliseconds() + pTrigger->UseTime;
@@ -16371,38 +16445,40 @@ void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false
 					pTrigger->close = 0;
 					start = 1;
 					if (!AotoOpen)
-						ProcessTaskKeyList(pTrigger->startKeyAdd,TYPE_ADD,NULL);
+						ProcessTaskKeyList(pTrigger->startKeyAdd, TYPE_ADD, NULL);
 				}
 				npc->triggerOpen = 1;
 				npc->triggerIsClose = 0;
-			}else
+			}
+			else
 				return;
-		}else
+		}
+		else
 		{
 			if (npc->triggerOpen == 1 && npc->m_lTriggerTime <= rtMilliseconds())
 			{
-				pTrigger->triggerCurNum --;
+				pTrigger->triggerCurNum--;
 				if (pTrigger->triggerCurNum <= 0)
 				{
-					if(!ProcessTaskKeyList(pTrigger->startKeyRemove,TYPE_REMOVE,NULL) && !AotoOpen)
+					if (!ProcessTaskKeyList(pTrigger->startKeyRemove, TYPE_REMOVE, NULL) && !AotoOpen)
 					{
-						pTrigger->triggerCurNum ++;
+						pTrigger->triggerCurNum++;
 
 						start = 2;
 						g_sendCmd->BeginWrite();
 						g_sendCmd->WriteShort(r2c_start_trigger);
 						g_sendCmd->WriteShort(id);
-						g_sendCmd->SerializeBit(delBlock,1);
+						g_sendCmd->SerializeBit(delBlock, 1);
 						g_sendCmd->WriteByte(pTrigger->close);
 						g_sendCmd->WriteLong(npc->GetObjectId());
-						g_sendCmd->SerializeBit(start,2);
+						g_sendCmd->SerializeBit(start, 2);
 						RecvCmd(g_sendCmd);
 
 						return;
 					}
-					for (int i = 0;i<pTrigger->triggerNum;i++)
+					for (int i = 0; i < pTrigger->triggerNum; i++)
 					{
-						CRegionCreature *cre = m_scene->FindCreature(pTrigger->triggerUID[i]);
+						CRegionCreature* cre = m_scene->FindCreature(pTrigger->triggerUID[i]);
 						if (cre)
 						{
 							cre->m_lTriggerTime = rtMilliseconds() + pTrigger->UseTime;
@@ -16412,11 +16488,12 @@ void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false
 					pTrigger->close = 1;
 					start = 1;
 					if (!AotoOpen)
-						ProcessTaskKeyList(pTrigger->startKeyAdd,TYPE_ADD,NULL);
+						ProcessTaskKeyList(pTrigger->startKeyAdd, TYPE_ADD, NULL);
 				}
 				npc->triggerOpen = 0;
 				npc->triggerIsClose = 1;
-			}else
+			}
+			else
 				return;
 		}
 	}
@@ -16425,23 +16502,23 @@ void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false
 	// »ú¹ØID
 	g_sendCmd->WriteShort(id);
 	// ÊÇ·ñÉ¾³ý×èµ²
-	g_sendCmd->SerializeBit(delBlock,1);
+	g_sendCmd->SerializeBit(delBlock, 1);
 	// ¿ªÆô»¹ÊÇ¹Ø±Õ
 	g_sendCmd->WriteByte(pTrigger->close);
 	// ´¥·¢Îï¼þID
 	g_sendCmd->WriteLong(npc->GetObjectId());
 	// ÊÇ·ñÆô¶¯
-	g_sendCmd->SerializeBit(start,2);
+	g_sendCmd->SerializeBit(start, 2);
 
 	if (start == 1)
 	{
 		// »ú¹Ø±»´¥·¢µÄ´ÎÊý
-		if ( !AotoOpen )
+		if (!AotoOpen)
 			pTrigger->curUseNum++;
 		// ±íÏÖÎï¼þID
-		for (int i = 0;i<pTrigger->opendoorNum;i++)
+		for (int i = 0; i < pTrigger->opendoorNum; i++)
 		{
-			CRegionCreature *cre = m_scene->FindCreature(pTrigger->opendoorUID[i]);
+			CRegionCreature* cre = m_scene->FindCreature(pTrigger->opendoorUID[i]);
 			if (cre)
 			{
 				cre->triggerIsClose = pTrigger->close;
@@ -16454,10 +16531,10 @@ void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false
 		if (pTrigger->type == 3)
 		{
 			// ×èµ²Îï¼þID
-			for (int i = 0;i<pTrigger->blockCount;i++)
+			for (int i = 0; i < pTrigger->blockCount; i++)
 			{
 				g_sendCmd->WriteLong(pTrigger->blockUID[i]);
-				if ( pTrigger->close )
+				if (pTrigger->close)
 				{
 					// Ìí¼Ó×èµ²Îï¼þ
 					long pos[2];
@@ -16465,19 +16542,20 @@ void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false
 					pos[0] = pTrigger->blockPos[i].x;
 					pos[1] = pTrigger->blockPos[i].y;
 					dir = pTrigger->blockDir[i];
-					if ( pTrigger->block[i] )
+					if (pTrigger->block[i])
 					{
-						CRegionCreature *cre = g_region->CreateNpc(pTrigger->block[i]);
-						if( cre )
+						CRegionCreature* cre = g_region->CreateNpc(pTrigger->block[i]);
+						if (cre)
 						{
 							pTrigger->blockUID[i] = cre->GetObjectId();
 							cre->triggerID = pTrigger->id;
 							m_scene->AddCreature(cre, pos, dir);
 						}
 					}
-				}else
+				}
+				else
 				{
-					CRegionCreature *cre = m_scene->FindCreature(pTrigger->blockUID[i]);
+					CRegionCreature* cre = m_scene->FindCreature(pTrigger->blockUID[i]);
 					if (cre)
 					{
 						m_scene->RemoveCreature(pTrigger->blockUID[i]);
@@ -16488,7 +16566,7 @@ void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false
 		}
 		else
 		{
-			g_region->m_fbMgr->StartTrigger(fb,pTrigger->id,!pTrigger->close);
+			g_region->m_fbMgr->StartTrigger(fb, pTrigger->id, !pTrigger->close);
 		}
 
 		if (fb->process < pTrigger->process)
@@ -16497,9 +16575,9 @@ void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false
 		}
 	}
 
-	CRegionUser *user;
+	CRegionUser* user;
 	std::list<DWORD>::iterator it = fb->listUser.begin();
-	for (; it!=fb->listUser.end(); it++)
+	for (; it != fb->listUser.end(); it++)
 	{
 		user = g_region->FindUser(*it);
 		if (user && user->m_dummy)
@@ -16511,31 +16589,31 @@ void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false
 	if (start == 1)
 	{
 		// ´¦ÀíÇ¿ÖÆ´ø¶¯»ú¹Ø
-		for (int i=0;i<pTrigger->closeTriggerNum;i++)
+		for (int i = 0; i < pTrigger->closeTriggerNum; i++)
 		{
 			if (pTrigger->closeTrigger[i])
 			{
-				STrigger *pForced = fb->GetTrigger(pTrigger->closeTrigger[i]);
+				STrigger* pForced = fb->GetTrigger(pTrigger->closeTrigger[i]);
 				if (!pForced)
 					continue;
-				if(pForced->fbID != fb->info->id)
+				if (pForced->fbID != fb->info->id)
 					continue;
-				CRegionCreature *cre;
-				for (int j=0;j<pForced->triggerNum;j++)
+				CRegionCreature* cre;
+				for (int j = 0; j < pForced->triggerNum; j++)
 				{
 					cre = m_scene->FindCreature(pForced->triggerUID[j]);
-					if(!cre)
+					if (!cre)
 						continue;
 					cre->triggerOpen = pForced->close;
 				}
-				if(!cre)
+				if (!cre)
 					continue;
 				pForced->triggerCurNum = pForced->triggerNum;
 				if (cre->triggerOpen)
 					pForced->curUseNum = pForced->maxUseNum;
 				else
 					pForced->curUseNum = 0;
-				StartTrigger(cre,true);
+				StartTrigger(cre, true);
 			}
 		}
 	}
@@ -16544,12 +16622,12 @@ void CRegionCreature::StartTrigger(CRegionCreature *npc, bool AotoOpen/* = false
 // add by zzh
 void CRegionCreature::EnterDungeon()
 {
-	if ( m_dungeonUID == 0 )
+	if (m_dungeonUID == 0)
 	{
 		return;
 	}
 
-	CRsDungeonMgr::SRsDungeon *fb = g_region->m_fbMgr->FindDungeon(m_dungeonUID);
+	CRsDungeonMgr::SRsDungeon* fb = g_region->m_fbMgr->FindDungeon(m_dungeonUID);
 
 	if (!fb) return;
 
@@ -16578,10 +16656,10 @@ void CRegionCreature::RefreshEquipWear()
 	char count = 0;
 	char part[16];
 	long wear[16];
-	for(DWORD i = CItemContainerBase::WEAPON_1; i < CItemContainerBase::MAX_EQUIP_PARTS;i ++)
+	for (DWORD i = CItemContainerBase::WEAPON_1; i < CItemContainerBase::MAX_EQUIP_PARTS; i++)
 	{
 		SItemID ret = m_pItemContainer->GetEquipItem((CItemContainerBase::EEquipParts)i, true);
-		if ( ItemID_IsValid(ret) && (ItemIsWeapon(ret) || ItemIsArmor(ret) || ItemIsShipin(ret)))
+		if (ItemID_IsValid(ret) && (ItemIsWeapon(ret) || ItemIsArmor(ret) || ItemIsShipin(ret)))
 		{
 			if (ret.curWear <= 0)
 			{
@@ -16592,7 +16670,7 @@ void CRegionCreature::RefreshEquipWear()
 				if (ret.Valid)
 				{
 					m_pItemContainer->OnCreatureAttribChanged((CItemContainerBase::EEquipParts)i);
-					m_pItemContainer->SetEquipValid((CItemContainerBase::EEquipParts)i,0);
+					m_pItemContainer->SetEquipValid((CItemContainerBase::EEquipParts)i, 0);
 				}
 				continue;
 			}
@@ -16606,7 +16684,7 @@ void CRegionCreature::RefreshEquipWear()
 		g_sendCmd->BeginWrite();
 		g_sendCmd->WriteShort(r2c_refresh_equip_wear);
 		g_sendCmd->WriteByte(count);
-		for (int i=0;i<count;i++)
+		for (int i = 0; i < count; i++)
 		{
 			g_sendCmd->WriteByte(part[i]);
 			g_sendCmd->WriteLong(wear[i]);
@@ -16615,16 +16693,16 @@ void CRegionCreature::RefreshEquipWear()
 	}
 }
 
-void CRegionCreature::ClientDoCommand(char command,long finished,bool sendself/* = false*/)
+void CRegionCreature::ClientDoCommand(char command, long finished, bool sendself/* = false*/)
 {
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_do_command);
 	g_sendCmd->WriteLong(GetObjectId());
-	g_sendCmd->SerializeBit(finished,1);
+	g_sendCmd->SerializeBit(finished, 1);
 	g_sendCmd->WriteByte(command);
 	if (m_scene)
 	{
-		m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,sendself ? NULL : this);
+		m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, sendself ? NULL : this);
 	}
 }
 
@@ -16642,7 +16720,7 @@ void CRegionCreature::SendPkGetItemList(std::vector<SItemID> itemList)
 	if (m_vPkGetItemList.size())
 	{
 		it = m_vPkGetItemList.begin();
-		for (;it!=m_vPkGetItemList.end();++it)
+		for (; it != m_vPkGetItemList.end(); ++it)
 		{
 			(*it).Serialize(g_sendCmd);
 		}
@@ -16659,7 +16737,7 @@ bool CRegionCreature::IsInProtect()
 // add by zzh
 void CRegionCreature::SetProtectTime(DWORD millseconds, bool add/* = false*/)
 {
-	if ( add )
+	if (add)
 	{
 		m_dwProtectTime += rtGetMilliseconds() + millseconds;
 	}
@@ -16667,7 +16745,7 @@ void CRegionCreature::SetProtectTime(DWORD millseconds, bool add/* = false*/)
 	{
 		m_dwProtectTime = rtGetMilliseconds() + millseconds;
 	}
-	
+
 	if (!(&m_Skill))
 	{
 		return;
@@ -16675,13 +16753,13 @@ void CRegionCreature::SetProtectTime(DWORD millseconds, bool add/* = false*/)
 	//ÊÇ·ñÒÑ¾­ÓÐÕâ¸öÐ§¹û  Èç¹ûÓÐÔò½«Õâ¸öÐ§¹ûÉ¾³ý  ÖØÐÂ¸³ÖµÐÂµÄÐ§¹û
 	if ((&m_Skill)->FindEffectbyId(PKPROTECT))
 	{
-		(&m_Skill)->DeleteEffect(PKPROTECT,true);
+		(&m_Skill)->DeleteEffect(PKPROTECT, true);
 	}
 
 	CActorSkill::SActorEffect* pEffect;
 	(&m_Skill)->m_listEffect.push_back(CActorSkill::SActorEffect());
 	SSkillEffect* pEffectAttr = Skill()->FindEffect(PKPROTECT);
-	
+
 	if (pEffectAttr)
 	{
 		pEffect = &((&m_Skill)->m_listEffect.back());
@@ -16699,11 +16777,11 @@ void CRegionCreature::SetProtectTime(DWORD millseconds, bool add/* = false*/)
 		(&m_Skill)->OnEffectModify();
 	}
 
-	
+
 
 	if (m_pet)
 	{
-		m_pet->SetProtectTime(millseconds,add);
+		m_pet->SetProtectTime(millseconds, add);
 	}
 }
 
@@ -16758,14 +16836,14 @@ void CRegionCreature::RemoveAllTargets()
 	{
 		stlforeach(STargetList, iter, m_targets)
 		{
-			CRegionCreature* target = m_scene->FindCreature( iter->Id );
+			CRegionCreature* target = m_scene->FindCreature(iter->Id);
 			if (target)
 			{
 				target->LeaveCombat();
 			}
 		}
 	}
-	m_targets.clear(); 
+	m_targets.clear();
 }
 
 // add by zzh
@@ -16776,22 +16854,23 @@ bool CRegionCreature::DoTeleportSkill(DWORD dwDistance)
 	BYTE cDir = m_dir;
 
 	float tmp[2];
-	tmp[0] = ((float)(cDir&0x3F))/0x3F;
-	if (cDir&0x80)  tmp[0] = -tmp[0];
-	tmp[1] = sqrt(1-tmp[0]*tmp[0]);
-	if (cDir&0x40)  tmp[1] = -tmp[1];
-	fDir[0] = - tmp[1];
-	fDir[1] =   tmp[0];
+	tmp[0] = ((float)(cDir & 0x3F)) / 0x3F;
+	if (cDir & 0x80)  tmp[0] = -tmp[0];
+	tmp[1] = sqrt(1 - tmp[0] * tmp[0]);
+	if (cDir & 0x40)  tmp[1] = -tmp[1];
+	fDir[0] = -tmp[1];
+	fDir[1] = tmp[0];
 	fDir[2] = 0.f;
 
 	float l;
 	l = fsqrt(fDir[0] * fDir[0] + fDir[1] * fDir[1] + fDir[2] * fDir[2]);
-	if( l > DELTA )
+	if (l > DELTA)
 	{
 		fDir[0] /= l;
 		fDir[1] /= l;
 		fDir[2] /= l;
-	}else
+	}
+	else
 	{
 		fDir[1] = 1.f;
 		fDir[0] = fDir[2] = 0.f;
@@ -16805,13 +16884,13 @@ bool CRegionCreature::DoTeleportSkill(DWORD dwDistance)
 	if (m_scene && m_scene->m_pTerrain)
 	{
 		int count = dwDistance / 20;
-		for (int i=0;i<count;i++)
+		for (int i = 0; i < count; i++)
 		{
 			float fX = m_pos[0] - fDir[0] * 20.f * (i + 1);
 			float fY = m_pos[1] - fDir[1] * 20.f * (i + 1);
-			
-			const RtSceneBlockTerrain::STileAttr* pAttr = m_scene->m_pTerrain->GetTerrainAttr(fX/20,fY/20);
-			if ( !pAttr || (pAttr && pAttr->bWalk) )
+
+			const RtSceneBlockTerrain::STileAttr* pAttr = m_scene->m_pTerrain->GetTerrainAttr(fX / 20, fY / 20);
+			if (!pAttr || (pAttr && pAttr->bWalk))
 			{
 				break;
 			}
@@ -16836,28 +16915,28 @@ bool CRegionCreature::CallSpirit(long dwSpiritID)
 {
 	if (dwSpiritID)
 	{
-		CRegionCreature *cre = g_region->CreateSpirit(dwSpiritID);
-		if(!cre) return false;
+		CRegionCreature* cre = g_region->CreateSpirit(dwSpiritID);
+		if (!cre) return false;
 
-		if(!m_scene->AddCreature(cre,m_pos,0))
+		if (!m_scene->AddCreature(cre, m_pos, 0))
 		{
 			g_factory->DestroyObject(cre);
 			return false;
 		}
 	}
-	else if(IsMonster() && m_npcInfo && m_npcInfo->CallSpiritNum)
+	else if (IsMonster() && m_npcInfo && m_npcInfo->CallSpiritNum)
 	{
-		for (int i=0;i<m_npcInfo->CallSpiritNum;i++)
+		for (int i = 0; i < m_npcInfo->CallSpiritNum; i++)
 		{
 			int SpiritID = m_npcInfo->CallSpiritID[i];
 			float fRate = m_npcInfo->CallSpiritRate[i];
 
 			if (GetProb(fRate))
 			{
-				CRegionCreature *cre = g_region->CreateSpirit(SpiritID);
-				if(!cre) return false;
+				CRegionCreature* cre = g_region->CreateSpirit(SpiritID);
+				if (!cre) return false;
 
-				if(!m_scene->AddCreature(cre,m_pos,0))
+				if (!m_scene->AddCreature(cre, m_pos, 0))
 				{
 					g_factory->DestroyObject(cre);
 					return false;
@@ -16870,11 +16949,11 @@ bool CRegionCreature::CallSpirit(long dwSpiritID)
 }
 
 // add by zzh
-bool CRegionCreature::StopCatchSpirit(char cInfo,bool broadcast/* = true*/)
+bool CRegionCreature::StopCatchSpirit(char cInfo, bool broadcast/* = true*/)
 {
-	if(!IsUser()) return false;
+	if (!IsUser()) return false;
 
-	CRegionCreature *cre = m_scene->FindCreature(m_dwCatchPet);
+	CRegionCreature* cre = m_scene->FindCreature(m_dwCatchPet);
 	if (cre)
 		cre->m_dwCatchMe = 0;
 
@@ -16887,7 +16966,7 @@ bool CRegionCreature::StopCatchSpirit(char cInfo,bool broadcast/* = true*/)
 		g_sendCmd->WriteByte(cInfo);
 		g_sendCmd->WriteLong(m_oId);
 		if (broadcast && m_scene)
-			m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+			m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 		else
 			RecvCmd(g_sendCmd);
 	}
@@ -16895,11 +16974,11 @@ bool CRegionCreature::StopCatchSpirit(char cInfo,bool broadcast/* = true*/)
 }
 
 // add by zzh
-bool CRegionCreature::AddCatchSpiritState(CRegionCreature *cre)
+bool CRegionCreature::AddCatchSpiritState(CRegionCreature* cre)
 {
-	if(!IsUser()) return false;
-	CCreatureState *state = FindStateByType(CRE_STATE_CATCH_PET);
-	if(state || !cre || !cre->IsSpirit())
+	if (!IsUser()) return false;
+	CCreatureState* state = FindStateByType(CRE_STATE_CATCH_PET);
+	if (state || !cre || !cre->IsSpirit())
 	{
 		state->End();
 		return false;
@@ -16907,7 +16986,7 @@ bool CRegionCreature::AddCatchSpiritState(CRegionCreature *cre)
 
 	state = RT_NEW CCreState_CatchPet;
 	SCreStateParam param;
-	if(!AddState(state,&param))
+	if (!AddState(state, &param))
 	{
 		DEL_ONE(state);
 		return false;
@@ -16927,7 +17006,7 @@ bool CRegionCreature::AddCatchSpiritState(CRegionCreature *cre)
 			g_sendCmd->WriteLong(m_oId);
 			g_sendCmd->WriteLong(cre->m_oId);
 			if (m_scene)
-				m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+				m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 		}
 	}
 	return true;
@@ -16936,7 +17015,7 @@ bool CRegionCreature::AddCatchSpiritState(CRegionCreature *cre)
 // add by zzh
 bool CRegionCreature::AddPetToBagByItem(long itemID)
 {
-	CBag *pPetBag = &m_pItemContainer->m_PetBag;
+	CBag* pPetBag = &m_pItemContainer->m_PetBag;
 	if (!pPetBag) return false;
 
 	//Ð¯´øÊýÁ¿ÉÏÏÞ=3+int£¨Íæ¼ÒÐÞÎªµÈ¼¶/20
@@ -16949,8 +17028,8 @@ bool CRegionCreature::AddPetToBagByItem(long itemID)
 	SItemID pet = g_region->m_pItemManager->CreateItem(itemID);
 	if (!ItemIsPet(pet)) return false;
 
-	int page,i,j;
-	if (pPetBag->AddItem(pet,&page,&i,&j))
+	int page, i, j;
+	if (pPetBag->AddItem(pet, &page, &i, &j))
 	{
 		CItemCmdBuilder_Svr::Build_r2c_refresh_single_item(ITEM_CONTAINER_PLAYER_PET_BAG, page, i, j, pet);
 		RecvCmd(g_sendCmd);
@@ -16961,8 +17040,8 @@ bool CRegionCreature::AddPetToBagByItem(long itemID)
 // add by zzh
 bool CRegionCreature::AddPetToBag(long dwPetID)
 {
-	if(!IsUser()) return false;
-	CBag *pPetBag = &m_pItemContainer->m_PetBag;
+	if (!IsUser()) return false;
+	CBag* pPetBag = &m_pItemContainer->m_PetBag;
 	if (!pPetBag) return false;
 
 	//Ð¯´øÊýÁ¿ÉÏÏÞ=3+int£¨Íæ¼ÒÐÞÎªµÈ¼¶/20
@@ -16972,14 +17051,14 @@ bool CRegionCreature::AddPetToBag(long dwPetID)
 		return false;
 	}
 
-	SPet *pPet = g_TablePet.FindPet(dwPetID);
-	if(!pPet) return false;
+	SPet* pPet = g_TablePet.FindPet(dwPetID);
+	if (!pPet) return false;
 
 	SItemID pet = g_region->m_pItemManager->CreateItem(pPet->dwItemID);
 	if (!ItemIsPet(pet)) return false;
 
-	int page,i,j;
-	if (pPetBag->AddItem(pet,&page,&i,&j) && IsUser())
+	int page, i, j;
+	if (pPetBag->AddItem(pet, &page, &i, &j) && IsUser())
 	{
 		CItemCmdBuilder_Svr::Build_r2c_refresh_single_item(ITEM_CONTAINER_PLAYER_PET_BAG, page, i, j, pet);
 		RecvCmd(g_sendCmd);
@@ -16992,7 +17071,7 @@ bool CRegionCreature::AddPetToBag(long dwPetID)
 bool CRegionCreature::DropUnRide(float fRate/* = 1.f*/)
 {
 	if (!IsRidePet()) return false;
-	
+
 	if (GetProb(fRate))
 	{
 		RideOffPet();
@@ -17002,9 +17081,9 @@ bool CRegionCreature::DropUnRide(float fRate/* = 1.f*/)
 }
 
 // add by zzh
-bool CRegionCreature::LinkUpWithPet(long petItemID/* = 0*/,bool bResetState/* = true*/)
+bool CRegionCreature::LinkUpWithPet(long petItemID/* = 0*/, bool bResetState/* = true*/)
 {
-	if (!IsUser()) 
+	if (!IsUser())
 		return false;
 
 	if (petItemID)
@@ -17018,51 +17097,51 @@ bool CRegionCreature::LinkUpWithPet(long petItemID/* = 0*/,bool bResetState/* = 
 			return false;
 		}
 
-		CBag *pPetBag = &m_pItemContainer->m_PetBag;
-		
-		int page,i,j;
-		if (!pPetBag->Find(petItemID,&page,&i,&j))
+		CBag* pPetBag = &m_pItemContainer->m_PetBag;
+
+		int page, i, j;
+		if (!pPetBag->Find(petItemID, &page, &i, &j))
 			return false;
 
-		SItemID pet = pPetBag->GetItem(page,i,j);
+		SItemID pet = pPetBag->GetItem(page, i, j);
 
 		if (!ItemIsPetSpectre(pet))
 			return false;
 
 		pet.params[PET_PARAM_STATE] = 1;
-		if (pPetBag->SetItem(page,i,j,pet))
+		if (pPetBag->SetItem(page, i, j, pet))
 		{
 			if (m_pet && m_pet->m_ai)
 			{
-				((CRegionPetAI *)m_pet->m_ai)->m_pItemPet = pet;
+				((CRegionPetAI*)m_pet->m_ai)->m_pItemPet = pet;
 				m_pet->State_SetVisible(false);
 				m_pet->m_ai->m_bHaveNextNodePos = false;
 			}
-			else 
+			else
 				return false;
 
 			CItemCmdBuilder_Svr::Build_r2c_refresh_single_item(ITEM_CONTAINER_PLAYER_PET_BAG, page, i, j, pet);
 			RecvCmd(g_sendCmd);
 		}
-		else 
+		else
 			return false;
 
 		DWORD LinkUpLev = pet.params[PET_PARAM_LINKUP_LEV];
 
-		m_core.DamageMin.Rate	*= (1 + ( LinkUpLev * 0.03f ));
-		m_core.DamageMax.Rate	*= (1 + ( LinkUpLev * 0.03f ));
-		m_core.Armor.Rate		*= (1 + ( LinkUpLev * 0.02f ));
-		m_core.MaxHp.Rate		*= (1 + ( LinkUpLev * 0.02f ));
-		m_core.MaxMp.Rate		*= (1 + ( LinkUpLev * 0.02f ));
-		m_core.Attack.Rate		*= (1 + ( LinkUpLev * 0.02f ));
-		m_core.Dodge.Rate		*= (1 + ( LinkUpLev * 0.02f ));
-		m_core.RestoreHp.Rate	*= (1 + ( LinkUpLev * 0.05f ));
-		m_core.ElementArmor[ELEMENT_WATER].Rate		*= (1 + ( LinkUpLev * 0.02f ));
-		m_core.ElementArmor[ELEMENT_FIRE].Rate		*= (1 + ( LinkUpLev * 0.02f ));
-		m_core.ElementArmor[ELEMENT_POISON].Rate	*= (1 + ( LinkUpLev * 0.02f ));
-		m_core.ElementDamage[ELEMENT_WATER].Rate	*= (1 + ( LinkUpLev * 0.03f ));
-		m_core.ElementDamage[ELEMENT_FIRE].Rate		*= (1 + ( LinkUpLev * 0.03f ));
-		m_core.ElementDamage[ELEMENT_POISON].Rate	*= (1 + ( LinkUpLev * 0.03f ));
+		m_core.DamageMin.Rate *= (1 + (LinkUpLev * 0.03f));
+		m_core.DamageMax.Rate *= (1 + (LinkUpLev * 0.03f));
+		m_core.Armor.Rate *= (1 + (LinkUpLev * 0.02f));
+		m_core.MaxHp.Rate *= (1 + (LinkUpLev * 0.02f));
+		m_core.MaxMp.Rate *= (1 + (LinkUpLev * 0.02f));
+		m_core.Attack.Rate *= (1 + (LinkUpLev * 0.02f));
+		m_core.Dodge.Rate *= (1 + (LinkUpLev * 0.02f));
+		m_core.RestoreHp.Rate *= (1 + (LinkUpLev * 0.05f));
+		m_core.ElementArmor[ELEMENT_WATER].Rate *= (1 + (LinkUpLev * 0.02f));
+		m_core.ElementArmor[ELEMENT_FIRE].Rate *= (1 + (LinkUpLev * 0.02f));
+		m_core.ElementArmor[ELEMENT_POISON].Rate *= (1 + (LinkUpLev * 0.02f));
+		m_core.ElementDamage[ELEMENT_WATER].Rate *= (1 + (LinkUpLev * 0.03f));
+		m_core.ElementDamage[ELEMENT_FIRE].Rate *= (1 + (LinkUpLev * 0.03f));
+		m_core.ElementDamage[ELEMENT_POISON].Rate *= (1 + (LinkUpLev * 0.03f));
 		RecomputeAttr();
 
 		m_dwLinkUpPet = pet.id;
@@ -17100,13 +17179,13 @@ bool CRegionCreature::LinkUpWithPet(long petItemID/* = 0*/,bool bResetState/* = 
 	}
 	else if (m_dwLinkUpPet)
 	{
-		CBag *pPetBag = &m_pItemContainer->m_PetBag;
+		CBag* pPetBag = &m_pItemContainer->m_PetBag;
 
-		int page,i,j;
-		if (!pPetBag->Find(m_dwLinkUpPet,&page,&i,&j))
+		int page, i, j;
+		if (!pPetBag->Find(m_dwLinkUpPet, &page, &i, &j))
 			return false;
 
-		SItemID pet = pPetBag->GetItem(page,i,j);
+		SItemID pet = pPetBag->GetItem(page, i, j);
 
 		if (!ItemIsPetSpectre(pet))
 			return false;
@@ -17114,11 +17193,11 @@ bool CRegionCreature::LinkUpWithPet(long petItemID/* = 0*/,bool bResetState/* = 
 		if (bResetState)
 			pet.params[PET_PARAM_STATE] = 0;
 
-		if (pPetBag->SetItem(page,i,j,pet))
+		if (pPetBag->SetItem(page, i, j, pet))
 		{
 			if (m_pet && m_pet->m_ai)
 			{
-				((CRegionPetAI *)m_pet->m_ai)->m_pItemPet = pet;
+				((CRegionPetAI*)m_pet->m_ai)->m_pItemPet = pet;
 				m_pet->State_SetVisible(true);
 				m_pet->m_ai->m_bHaveNextNodePos = false;
 			}
@@ -17133,20 +17212,20 @@ bool CRegionCreature::LinkUpWithPet(long petItemID/* = 0*/,bool bResetState/* = 
 
 		DWORD LinkUpLev = pet.params[PET_PARAM_LINKUP_LEV];
 
-		m_core.DamageMin.Rate	/= (1 + ( LinkUpLev * 0.03f ));
-		m_core.DamageMax.Rate	/= (1 + ( LinkUpLev * 0.03f ));
-		m_core.Armor.Rate		/= (1 + ( LinkUpLev * 0.02f ));
-		m_core.MaxHp.Rate		/= (1 + ( LinkUpLev * 0.02f ));
-		m_core.MaxMp.Rate		/= (1 + ( LinkUpLev * 0.02f ));
-		m_core.Attack.Rate		/= (1 + ( LinkUpLev * 0.02f ));
-		m_core.Dodge.Rate		/= (1 + ( LinkUpLev * 0.02f ));
-		m_core.RestoreHp.Rate	/= (1 + ( LinkUpLev * 0.05f ));
-		m_core.ElementArmor[ELEMENT_WATER].Rate		/= (1 + ( LinkUpLev * 0.02f ));
-		m_core.ElementArmor[ELEMENT_FIRE].Rate		/= (1 + ( LinkUpLev * 0.02f ));
-		m_core.ElementArmor[ELEMENT_POISON].Rate	/= (1 + ( LinkUpLev * 0.02f ));
-		m_core.ElementDamage[ELEMENT_WATER].Rate	/= (1 + ( LinkUpLev * 0.03f ));
-		m_core.ElementDamage[ELEMENT_FIRE].Rate		/= (1 + ( LinkUpLev * 0.03f ));
-		m_core.ElementDamage[ELEMENT_POISON].Rate	/= (1 + ( LinkUpLev * 0.03f ));
+		m_core.DamageMin.Rate /= (1 + (LinkUpLev * 0.03f));
+		m_core.DamageMax.Rate /= (1 + (LinkUpLev * 0.03f));
+		m_core.Armor.Rate /= (1 + (LinkUpLev * 0.02f));
+		m_core.MaxHp.Rate /= (1 + (LinkUpLev * 0.02f));
+		m_core.MaxMp.Rate /= (1 + (LinkUpLev * 0.02f));
+		m_core.Attack.Rate /= (1 + (LinkUpLev * 0.02f));
+		m_core.Dodge.Rate /= (1 + (LinkUpLev * 0.02f));
+		m_core.RestoreHp.Rate /= (1 + (LinkUpLev * 0.05f));
+		m_core.ElementArmor[ELEMENT_WATER].Rate /= (1 + (LinkUpLev * 0.02f));
+		m_core.ElementArmor[ELEMENT_FIRE].Rate /= (1 + (LinkUpLev * 0.02f));
+		m_core.ElementArmor[ELEMENT_POISON].Rate /= (1 + (LinkUpLev * 0.02f));
+		m_core.ElementDamage[ELEMENT_WATER].Rate /= (1 + (LinkUpLev * 0.03f));
+		m_core.ElementDamage[ELEMENT_FIRE].Rate /= (1 + (LinkUpLev * 0.03f));
+		m_core.ElementDamage[ELEMENT_POISON].Rate /= (1 + (LinkUpLev * 0.03f));
 		RecomputeAttr();
 
 		m_dwLinkUpPet = 0;
@@ -17154,7 +17233,7 @@ bool CRegionCreature::LinkUpWithPet(long petItemID/* = 0*/,bool bResetState/* = 
 		{//³èÎï¸½Ìå¼¼ÄÜÏûÊ§
 			if ((&m_Skill)->FindEffectbyId(APPOSEBODY))
 			{
-				(&m_Skill)->DeleteEffect(APPOSEBODY,true);
+				(&m_Skill)->DeleteEffect(APPOSEBODY, true);
 			}
 		}
 
@@ -17177,18 +17256,18 @@ bool CRegionCreature::IsLinkUpWithPet()
 }
 
 // add by zzh
-bool CRegionCreature::IsTeamFriend(CRegionCreature *cre)
+bool CRegionCreature::IsTeamFriend(CRegionCreature* cre)
 {
 	if (m_pTeam && cre->m_userInfo)
 	{
-		for (int i = 0; i<MAX_TEAM_MENBER_COUNT ;i++)
+		for (int i = 0; i < MAX_TEAM_MENBER_COUNT; i++)
 		{
-			if ( m_pTeam->mData.mMember[i].mDBID == cre->m_userInfo->m_userId)
+			if (m_pTeam->mData.mMember[i].mDBID == cre->m_userInfo->m_userId)
 			{
 				return true;
-			}	
+			}
 		}
-       
+
 	}
 	return false;
 }
@@ -17199,17 +17278,17 @@ int CRegionCreature::GetPetNum(DWORD petId)
 	if (!m_pItemContainer)
 		return 0;
 
-	CBag *pPetBag = &m_pItemContainer->m_PetBag;
+	CBag* pPetBag = &m_pItemContainer->m_PetBag;
 	if (!pPetBag) return 0;
 
-	SPet *pPet = g_TablePet.FindPet(petId);
-	if(!pPet) return 0;
+	SPet* pPet = g_TablePet.FindPet(petId);
+	if (!pPet) return 0;
 
-	SItemBase *pItemClass = g_region->m_pItemManager->GetItemFromIndex(pPet->dwItemID);
+	SItemBase* pItemClass = g_region->m_pItemManager->GetItemFromIndex(pPet->dwItemID);
 	if (!pItemClass)		return 0;
 
 	int count = 0;
-	if ( m_pItemContainer->m_PetBag.FindType(pPet->dwItemID, ItemColor_All, &count) )
+	if (m_pItemContainer->m_PetBag.FindType(pPet->dwItemID, ItemColor_All, &count))
 		return count;
 	return 0;
 }
@@ -17221,19 +17300,19 @@ bool CRegionCreature::RemovePetFromBag(DWORD petId, int num/* = 1*/)
 	if (!m_pItemContainer)
 		return false;
 
-	CBag *pPetBag = &m_pItemContainer->m_PetBag;
+	CBag* pPetBag = &m_pItemContainer->m_PetBag;
 	if (!pPetBag) return false;
 
-	SPet *pPet = g_TablePet.FindPet(petId);
-	if(!pPet) return false;
+	SPet* pPet = g_TablePet.FindPet(petId);
+	if (!pPet) return false;
 
 	DWORD typeId = pPet->dwItemID;
-	SItemBase *pItemClass = g_region->m_pItemManager->GetItemFromIndex(typeId);
+	SItemBase* pItemClass = g_region->m_pItemManager->GetItemFromIndex(typeId);
 	if (!pItemClass)		return false;
 
 	bool ret = m_pItemContainer->m_PetBag.RemoveItem(typeId, ItemColor_All, num);
 
-	if(ret)
+	if (ret)
 	{
 		CItemCmdBuilder_Svr::Build_r2c_bag_refresh(ITEM_CONTAINER_PLAYER_PET_BAG, &(m_pItemContainer->m_PetBag));
 		RecvCmd(g_sendCmd);
@@ -17253,19 +17332,19 @@ bool CRegionCreature::AddPetByItem(SItemID item)
 		return false;
 	}
 
-	int page,i,j;
+	int page, i, j;
 	bool ret = false;
-	if ( ItemIsPet(item.type))
-		ret = m_pItemContainer->m_PetBag.AddItem(item,&page,&i,&j);
+	if (ItemIsPet(item.type))
+		ret = m_pItemContainer->m_PetBag.AddItem(item, &page, &i, &j);
 
-	if(ret)
+	if (ret)
 	{
-		if ( ItemIsPet(item.type) )
-			CItemCmdBuilder_Svr::Build_r2c_bag_additem(item, ITEM_CONTAINER_PLAYER_PET_BAG, page,i,j, ITEM_REASON_PICK);
+		if (ItemIsPet(item.type))
+			CItemCmdBuilder_Svr::Build_r2c_bag_additem(item, ITEM_CONTAINER_PLAYER_PET_BAG, page, i, j, ITEM_REASON_PICK);
 		RecvCmd(g_sendCmd);
 		return true;
 	}
-	else 
+	else
 	{
 		return false;
 	}
@@ -17276,10 +17355,10 @@ void CRegionCreature::SendPetInfo()
 {
 	if (!m_pet || !m_pet->m_ai)
 	{
-		return ;
+		return;
 	}
 
-	CRegionPetAI *petAI = (CRegionPetAI*)m_pet->m_ai;
+	CRegionPetAI* petAI = (CRegionPetAI*)m_pet->m_ai;
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_model_info);
 	g_sendCmd->WriteLong(m_pet->m_oId);
@@ -17289,7 +17368,7 @@ void CRegionCreature::SendPetInfo()
 	g_sendCmd->WriteLong(petAI->m_pItemPet.params[PET_PARAM_ABILITY_LEV]);
 	g_sendCmd->WriteLong(m_oId);
 	if (m_scene)
-		m_scene->BroadcastCmd(m_pos,DEFAULT_RANGE,g_sendCmd,NULL);
+		m_scene->BroadcastCmd(m_pos, DEFAULT_RANGE, g_sendCmd, NULL);
 }
 
 // add by zzh
@@ -17298,5 +17377,5 @@ void CRegionCreature::ReComputePetBagSize()
 	if (!IsUser() || !m_pItemContainer)
 		return;
 
-	m_pItemContainer->m_PetBag.Resize(ITEM_PET_BAG_PAGE,ITEM_PET_BAG_LINE,3 + m_core.GradeLev / 20);
+	m_pItemContainer->m_PetBag.Resize(ITEM_PET_BAG_PAGE, ITEM_PET_BAG_LINE, 3 + m_core.GradeLev / 20);
 }

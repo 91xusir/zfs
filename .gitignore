@@ -1,4 +1,5 @@
 **/bin/
+**/vcpkg_installed/
 **/.*/
 *.exe
 **/temp/
@@ -405,3 +406,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+

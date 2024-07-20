@@ -229,7 +229,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 
             long lNowTime = (long)time(NULL)+100; // 100�볬ʱ
 	        CRegionUser *user;
-	        EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	        EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	        for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 	        {
 		        user = (*it).second;
@@ -2411,7 +2411,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			token = strtok( NULL, seps );
 			if (token)
 			{
-				EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+				EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 				if (stricmp(token, "all")==0)
 				{
 					CHECK_PRIVILEGES(EUP_ModifyAttrib, R(MSG_CLIENT_COMMAND_NOT_MODIFY), bPyGMOP);

@@ -172,10 +172,10 @@ public:
     GSClientSessionManager	    m_monitor;
 
 private:
-    typedef EXT_SPACE::hash_map<long, CGameWorldStub*> TGWSMap;
-    typedef EXT_SPACE::hash_map<DWORD,SUserInfo*> TUserMap;
-    typedef EXT_SPACE::hash_map<long, SListCmd*> TNetCmdMap;
-    typedef EXT_SPACE::hash_map<long, SChargeCard*> TChargeCardMap;
+    typedef EXT_SPACE::unordered_map<long, CGameWorldStub*> TGWSMap;
+    typedef EXT_SPACE::unordered_map<DWORD,SUserInfo*> TUserMap;
+    typedef EXT_SPACE::unordered_map<long, SListCmd*> TNetCmdMap;
+    typedef EXT_SPACE::unordered_map<long, SChargeCard*> TChargeCardMap;
 
     TUserMap                    m_userMap;
 

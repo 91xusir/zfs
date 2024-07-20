@@ -98,7 +98,7 @@ public:
 	int SetIcon(GWUser* pUser, long dwIconID);
 public:
 	vector<CUnion*> m_arrUnions;
-//	hash_map<DWORD, DWORD> m_mapUserToUnion;
+//	unordered_map<DWORD, DWORD> m_mapUserToUnion;
 
 private:
 	bool m_bInited;

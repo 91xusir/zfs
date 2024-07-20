@@ -15,7 +15,7 @@ public:
 	{
 		if((--*mP)==0)
 		{
-			DEL_ONE(mP)
+			DEL_ONE(mP);
 		}
 	};
 
@@ -36,7 +36,7 @@ public:
 	{
 		if(--*mP==0)
 		{
-			DEL_ONE(mP)
+			DEL_ONE(mP);
 			mP=RT_NEW int(1);
 			return true;
 		}
@@ -49,7 +49,7 @@ public:
 		++*vrCount.mP;
 		if(--*mP==0)
 		{
-			DEL_ONE(mP)
+			DEL_ONE(mP);
 			mP=vrCount.mP;
 			return true;
 		}

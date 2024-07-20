@@ -333,10 +333,10 @@ public:
 	CRS_Activity(void)	{}
 	~CRS_Activity(void)
 	{
-		for(ACT_RES::iterator it = mapActRes.begin();
+		for (ACT_RES::iterator it = mapActRes.begin();
 			it != mapActRes.end();
 			it++)
-			DEL_ONE(it->second)
+			DEL_ONE(it->second);
 		mapActRes.clear();
 	}
 

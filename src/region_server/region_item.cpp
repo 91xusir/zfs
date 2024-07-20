@@ -738,7 +738,7 @@ void CRegionItemContainer::DropEquipItem(CRegionCreature *pCre, int count, vecto
 	itemsDrop.clear();
 	vector<DWORD> arrDropItems;
 
-	EXT_SPACE::hash_map<DWORD, int> hmIter;
+	EXT_SPACE::unordered_map<DWORD, int> hmIter;
 	vector<SItemID> arrItems;
 	for (int i=0; i<MAX_EQUIP_PARTS; i++)
 	{
@@ -829,7 +829,7 @@ void CRegionItemContainer::DropBagItem(CRegionCreature *pCre, int count, vector<
 	if (count <= 0 || !pCre)	return;
 	vector<DWORD> arrDropItems;
 
-	EXT_SPACE::hash_map<DWORD, CBag::BagIter> hmIter;
+	EXT_SPACE::unordered_map<DWORD, CBag::BagIter> hmIter;
 	vector<SItemID> arrItems;
 	for (int p=0; p<m_Bag.GetPageCount(); p++)
 		for (int i=0; i<m_Bag.GetLineCount(); i++)
@@ -1265,7 +1265,7 @@ void CRegionItemContainer::AttribToCreature(SItemID& item, SAttribAddtion& att, 
 		{
 			DWORD effectID = att.count;
 			BYTE effectRate = att.skillRate;
-			EXT_SPACE::hash_map<DWORD, BYTE>::iterator iter = m_ReleaseEffectsToSelf.find(effectID);
+			EXT_SPACE::unordered_map<DWORD, BYTE>::iterator iter = m_ReleaseEffectsToSelf.find(effectID);
 			if (iter==m_ReleaseEffectsToSelf.end())
 			{
 				m_ReleaseEffectsToSelf[effectID] = effectRate;
@@ -1279,7 +1279,7 @@ void CRegionItemContainer::AttribToCreature(SItemID& item, SAttribAddtion& att, 
 		else
 		{
 			DWORD effectID = att.count;
-			EXT_SPACE::hash_map<DWORD, BYTE>::iterator iter = m_ReleaseEffectsToSelf.find(effectID);
+			EXT_SPACE::unordered_map<DWORD, BYTE>::iterator iter = m_ReleaseEffectsToSelf.find(effectID);
 			if (iter==m_ReleaseEffectsToSelf.end())
 			{
 				ERR("[CRegionItemContainer::AttribToCreature] ITEM_ATTRIB_RELEASEEFFECT_SELF remove error!\n");
@@ -1296,7 +1296,7 @@ void CRegionItemContainer::AttribToCreature(SItemID& item, SAttribAddtion& att, 
 		{
 			DWORD effectID = att.count;
 			BYTE effectRate = att.skillRate;
-			EXT_SPACE::hash_map<DWORD, BYTE>::iterator iter = m_ReleaseEffectsToEnemy.find(effectID);
+			EXT_SPACE::unordered_map<DWORD, BYTE>::iterator iter = m_ReleaseEffectsToEnemy.find(effectID);
 			if (iter==m_ReleaseEffectsToEnemy.end())
 			{
 				m_ReleaseEffectsToEnemy[effectID] = effectRate;
@@ -1310,7 +1310,7 @@ void CRegionItemContainer::AttribToCreature(SItemID& item, SAttribAddtion& att, 
 		else
 		{
 			DWORD effectID = att.count;
-			EXT_SPACE::hash_map<DWORD, BYTE>::iterator iter = m_ReleaseEffectsToEnemy.find(effectID);
+			EXT_SPACE::unordered_map<DWORD, BYTE>::iterator iter = m_ReleaseEffectsToEnemy.find(effectID);
 			if (iter==m_ReleaseEffectsToEnemy.end())
 			{
 				ERR("[CRegionItemContainer::AttribToCreature] ITEM_ATTRIB_RELEASEEFFECT_ENEMY remove error!\n");
@@ -1937,7 +1937,7 @@ void CRegionItemSaleStat::Run()
 
 	// 找出需要log的项，并发送log
 	std::vector<DWORD> ToRemoveList;
-	EXT_SPACE::hash_map<DWORD, SItemSaleStat>::iterator iter = m_Stat.begin();
+	EXT_SPACE::unordered_map<DWORD, SItemSaleStat>::iterator iter = m_Stat.begin();
 	for (; iter!=m_Stat.end(); iter++)
 	{
 		SItemSaleStat& stat = iter->second;
@@ -1965,7 +1965,7 @@ void CRegionItemSaleStat::Add(DWORD ItemIdx, int Count)
 		return;
 	}
 
-	EXT_SPACE::hash_map<DWORD, SItemSaleStat>::iterator iter = m_Stat.find(ItemIdx);
+	EXT_SPACE::unordered_map<DWORD, SItemSaleStat>::iterator iter = m_Stat.find(ItemIdx);
 	if (iter == m_Stat.end())
 	{
 		SItemSaleStat stat;

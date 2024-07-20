@@ -192,7 +192,7 @@ bool CNetSession::Send(CG_CmdPacket* pPacket)
 bool CNetSession::DoCmd(short cmdID, CG_CmdPacket *pPacket)
 {
 	guard;
-    EXT_SPACE::hash_map<short, NetCmdCB>::iterator it;
+    EXT_SPACE::unordered_map<short, NetCmdCB>::iterator it;
 	it = m_Bind.find(cmdID);
 	if (it!=m_Bind.end())
 	{
@@ -217,7 +217,7 @@ void CNetSession::BindCmd(short cmdID, NetCmdCB pFun)
 void CNetSession::UnbindCmd(short cmdID)
 {
 	guard;
-	EXT_SPACE::hash_map<short, NetCmdCB>::iterator it;
+	EXT_SPACE::unordered_map<short, NetCmdCB>::iterator it;
 	it = m_Bind.find(cmdID);
 	if (it!=m_Bind.end())
 	{

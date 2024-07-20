@@ -74,8 +74,8 @@ private:
 
 private:
     std::list<SGwDungeon>                   m_listDungeon;      // 副本的列表
-    EXT_SPACE::hash_map<long, SGwDungeon*>  m_mapDungeon;       // 副本索引<副本ID, 副本指针>
-    EXT_SPACE::hash_map<DWORD, SGwDungeon*> m_mapUser;          // 用户索引副本<玩家ID, 所在副本>
+    EXT_SPACE::unordered_map<long, SGwDungeon*>  m_mapDungeon;       // 副本索引<副本ID, 副本指针>
+    EXT_SPACE::unordered_map<DWORD, SGwDungeon*> m_mapUser;          // 用户索引副本<玩家ID, 所在副本>
     std::map<int, int>                      m_mapDungeonServer; // 副本服务器<索引, 副本数量>
     long                                    m_lDungeonIdx;      // 当前的索引
     int                                     m_iMaxDungeon;      // 最大的副本数量

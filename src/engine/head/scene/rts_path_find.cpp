@@ -179,7 +179,7 @@ bool RtsPathContainer::RemoveNode(RtsPathPos* pNode)
 
 		pNodes = pNodes->pNext;
 
-		DEL_ONE(pDelNode)
+		DEL_ONE(pDelNode);
 			pDelNode=NULL;
 
 		return true;
@@ -204,7 +204,7 @@ bool RtsPathContainer::RemoveNode(RtsPathPos* pNode)
 
 				p->pNext = p->pNext->pNext;
 
-				DEL_ONE(pDelNode)
+				DEL_ONE(pDelNode);
 					pDelNode=NULL;
 
 				return true;

@@ -72,7 +72,7 @@ public:
 
 			m_cachingSize -= buffer->size;
 
-			DEL_ONE(buffer)
+			DEL_ONE(buffer);
 
 			m_cached.pop_back();
 		}
@@ -108,7 +108,7 @@ public:
 
 			pArchive->Serialize(buffer->data, buffer->size);
 
-			DEL_ONE(pArchive)
+			DEL_ONE(pArchive);
 
 			buffer->used = 0;
 

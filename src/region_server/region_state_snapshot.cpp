@@ -73,7 +73,7 @@ void DrawRect(unsigned char* buf, int width, int height, int x, int y, int w, in
 void CRegionStateSnapshot::BuildSpawnMap(const char* filename)
 {
 #ifdef WIN32	
-	hash_map<CRegionSpawn*, RGBQUAD> colors;
+	unordered_map<CRegionSpawn*, RGBQUAD> colors;
 	char lastcolor = 1;
 
 	int cx = g_region->m_defScene->m_pTerrain->GetBlockCntX() * g_iSceneTerrainCntX;

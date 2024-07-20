@@ -56,7 +56,7 @@ public:
 			*mpMessage<<"-----------------------"<<end;
 		}
 
-		DEL_ONE(mpMessage)
+		DEL_ONE(mpMessage);
 	};
 
 	void Add(const T& vrT)

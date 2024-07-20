@@ -898,7 +898,7 @@ void CRegionServer::Run()
 	// 保存所有的玩家数据
     LOG("CRegionServer::Run(): Save all user data (max 15 sec)\n");
     time_t tExitTime = time(NULL);
-    EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator user = m_userMap.begin();
+    EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator user = m_userMap.begin();
     for (; user != m_userMap.end();)
     {
         // 15秒内才需要处理存盘，超过15秒就不存盘直接退出
@@ -1179,7 +1179,7 @@ void CRegionServer::Exit()
 
 void CRegionServer::OnTimer(ULONG id, DWORD dwParam[])
 {
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	switch(id)
 	{
     case REGION_TIMER_CHECK_DUNGEON:
@@ -1208,7 +1208,7 @@ void CRegionServer::OnTimer(ULONG id, DWORD dwParam[])
         {
             int iCnt = 0;
 		    CRegionUser *pUser;
-            EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator itUserMap;
+            EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator itUserMap;
 		    for(itUserMap=m_userMap.begin(); itUserMap!=m_userMap.end(); itUserMap++)
 		    {
 			    pUser = (*itUserMap).second;
@@ -1232,7 +1232,7 @@ void CRegionServer::OnTimer(ULONG id, DWORD dwParam[])
         {
             int iCnt = 0;
 		    CRegionUser *pUser;
-            EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator itUserMap;
+            EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator itUserMap;
 		    for(itUserMap=m_userMap.begin(); itUserMap!=m_userMap.end(); itUserMap++)
 		    {
 			    pUser = (*itUserMap).second;
@@ -1510,7 +1510,7 @@ void CRegionServer::ProcessUserLink()
 {
 	short cmdId;
 	CG_TCPSession *session;
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	CRegionUser *user;
 
 	vector<ULONG> delList;
@@ -1733,7 +1733,7 @@ void CRegionServer::ProcessUserLink()
 	// real erase user
 	for(size_t i=0; i<delList.size(); i++)
 	{
-		EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator iter = m_userMap.find(delList[i]);
+		EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator iter = m_userMap.find(delList[i]);
 		if (iter == m_userMap.end())
 			continue;
 
@@ -1833,7 +1833,7 @@ bool CRegionServer::CreateUser(SNetLink *link, SUserData &data, CG_CmdPacket *cm
 	if(!cre)
 		return false;
 	cre->GetPlayerLogic()->SetTeamFree(data.bTeamFree);
-	EXT_SPACE::hash_map<ULONG, CRegionUser*>::iterator oldUser = m_userMap.find(link->UserId);
+	EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator oldUser = m_userMap.find(link->UserId);
 	if (oldUser != m_userMap.end())
 	{
 		LOG1("New user [%s] comming, but there is old user exist in this server\n", oldUser->second->m_username.c_str());
@@ -2477,7 +2477,7 @@ CRegionCreature *CRegionServer::CreateNpc(short Id,bool cheat)
 
 CRegionUser *CRegionServer::FindUser(ULONG UserId, bool forceAll)
 {
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	it = m_userMap.find(UserId);
 	if(it==m_userMap.end())
 		return NULL;
@@ -2490,7 +2490,7 @@ CRegionUser *CRegionServer::FindUser(ULONG UserId, bool forceAll)
 
 CRegionUser *CRegionServer::FindUser(const char *Name, bool forceAll)
 {
-	EXT_SPACE::hash_map<DWORD,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<DWORD,CRegionUser*>::iterator it;
 	for(it=m_userMap.begin(); it!=m_userMap.end(); it++)
 	{
 		CRegionUser *user = (*it).second;
@@ -2556,7 +2556,7 @@ bool CRegionServer::KickUser(DWORD dbId, char cCause, bool saveData, bool logout
 // -----------------------------------------------------------------------
 void CRegionServer::SyncToClient()
 {
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	CRegionCreature  *pCreature;
 	CRegionUser		 *pUser;
     time_t tNow = time(NULL);
@@ -2608,7 +2608,7 @@ void CRegionServer::SyncToClient()
 
 void CRegionServer::ShowPingTime()
 {
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	
 	LOG("region: ping time list\n");
 	for(it=m_userMap.begin(); it!=m_userMap.end();it++)
@@ -2872,7 +2872,7 @@ void CRegionServer::StartListen()
 
 SUnionData* CRegionServer::FindUnion(DWORD unionID)
 {
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iterUnion = m_unionMap.find(unionID);
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iterUnion = m_unionMap.find(unionID);
 	if (iterUnion==g_region->m_unionMap.end())
 		return NULL;
 	else 
@@ -2883,7 +2883,7 @@ SUnionData* CRegionServer::FindUnion(const char* unionName)
 {
 	string name = unionName;
 
-	EXT_SPACE::hash_map<ULONG, SUnionData>::iterator iterUnion = m_unionMap.begin();
+	EXT_SPACE::unordered_map<ULONG, SUnionData>::iterator iterUnion = m_unionMap.begin();
 	for (; iterUnion!=m_unionMap.end(); iterUnion++)
 	{
 		if ((iterUnion->second).m_strName == name)
@@ -2904,7 +2904,7 @@ void CRegionServer::BroadcastShowTimerByScene(CRegionScene *pScene, const char *
 	g_sendCmd->WriteLong(lTime);
 	//BroadcastCmd(g_sendCmd, 0);
 
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	for(it=m_userMap.begin(); it!=m_userMap.end(); it++)
 	{
 		CRegionUser *user = (*it).second;
@@ -2933,7 +2933,7 @@ void CRegionServer::BroadcastSceneDataByScene(CRegionScene *pScene, int iCount, 
 	}
 	//BroadcastCmd(g_sendCmd, 0);
 
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	for(it=m_userMap.begin(); it!=m_userMap.end(); it++)
 	{
 		CRegionUser *user = (*it).second;
@@ -2957,7 +2957,7 @@ void CRegionServer::StartSchedule(CRegionCreature *pCreature, long lSchedule, co
 
 void CRegionServer::BroadcastCmd(CG_CmdPacket *cmd,CRegionCreature *exclude)
 {
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	CRegionUser *user;
 	
 	for(it=m_userMap.begin(); it!=m_userMap.end(); it++)
@@ -2970,7 +2970,7 @@ void CRegionServer::BroadcastCmd(CG_CmdPacket *cmd,CRegionCreature *exclude)
 
 void CRegionServer::BroadcastCmd(CG_CmdPacket *cmd,CRegionCreature *exclude,char faction)
 {
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	CRegionUser *user;
 
 	for(it=m_userMap.begin(); it!=m_userMap.end(); it++)
@@ -3022,7 +3022,7 @@ void CRegionServer::EndFun()
 
 	/*
 	// 传送活动场景中的玩家
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	CRegionUser *user;
 	for(it=m_userMap.begin(); it!=m_userMap.end(); it++)
 	{
@@ -3378,7 +3378,7 @@ bool CRegionServer::UserUploadString_IsValid(const char* str)
 
 int CRegionServer::GetCurrentCheckedWgUser()
 {
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	CRegionUser *user;
     int iTotal = 0;
 	for(it=m_userMap.begin(); it!=m_userMap.end(); it++)
@@ -3597,7 +3597,7 @@ bool CRegionServer::IsHashError(int id,CRegionUser *user,int hash)
 
 void CRegionServer::OnDayChange()
 {
-	EXT_SPACE::hash_map<ULONG,CRegionUser*>::iterator it;
+	EXT_SPACE::unordered_map<ULONG,CRegionUser*>::iterator it;
 	CRegionUser *user;
 	time_t tNow = time(NULL);
 	struct tm* pTm = localtime(&tNow);

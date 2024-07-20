@@ -95,7 +95,7 @@ public:
 		vector<char*>::iterator It;
 		for(It=mBufferList.begin();It!=mBufferList.end();++It)
 		{
-			DEL_ONE((*It))
+			DEL_ONE((*It));
 		}
 	};
 
@@ -224,7 +224,7 @@ public:
 
 		if(mpBuffer!=NULL)
 		{
-			DEL_ONE(mpBuffer)
+			DEL_ONE(mpBuffer);
 			mpBuffer=NULL;
 			mBufferSize=0;
 		}
@@ -243,7 +243,7 @@ public:
 		//释放自己的内存
 		if(mpBuffer!=NULL)
 		{
-			DEL_ONE(mpBuffer)
+			DEL_ONE(mpBuffer);
 			mpBuffer=NULL;
 			mBufferSize=0;
 		}

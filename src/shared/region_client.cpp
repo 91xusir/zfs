@@ -1963,7 +1963,7 @@ bool CRS_Npc::Load(const char *File)
                 arrStringRare.push_back(k);
                 k = strtok(NULL ,sep1);
             }
-            DEL_ARRAY(pStrRareItems)
+			DEL_ARRAY(pStrRareItems);
             int tmpIdx = 0;
             for (tmpIdx=0; tmpIdx<(int)arrStringRare.size(); tmpIdx++)
             {

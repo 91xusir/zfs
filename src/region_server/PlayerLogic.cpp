@@ -9,23 +9,23 @@
 #include <fstream>
 #include <string>
 
-bool ReadRegionConfigFile(const char *szFilename);
+bool ReadRegionConfigFile(const char* szFilename);
 extern char* g_strStaticBuffer;
 const int c_g_Min = 60000;
-unsigned long CPlayerLogic::s_Time[c_nNewNum] = {5 * c_g_Min, 15 * c_g_Min, 30 * c_g_Min, 
-50 * c_g_Min, 70 * c_g_Min, 95 * c_g_Min, 120 * c_g_Min};
-CPlayerLogic::CPlayerLogic(CRegionCreature& rPlayer):m_rPlayer(rPlayer), m_dwFireTime(0),
+unsigned long CPlayerLogic::s_Time[c_nNewNum] = { 5 * c_g_Min, 15 * c_g_Min, 30 * c_g_Min,
+50 * c_g_Min, 70 * c_g_Min, 95 * c_g_Min, 120 * c_g_Min };
+CPlayerLogic::CPlayerLogic(CRegionCreature& rPlayer) :m_rPlayer(rPlayer), m_dwFireTime(0),
 m_pCurUseSkill(NULL), m_enForTaskType(eNo), m_LiveType(eLive), m_pMonsterLogicExt(NULL), m_dwGetingSkinID(eEmptyDBID)
-,m_dwGetingMedicineID(eEmptyDBID), m_dwGetingMineID(eEmptyDBID), m_dwEndUsingTaskItemTime(0), 
-m_pUsingItem(NULL), m_nCurMainStory(0), m_dwNextOverHeadTime(0), m_dwOnLineTime(0xffffffff), m_dwEnterTime(0), 
-m_NewPlayerGuide(NULL), m_nNewW(c_nNewNum), m_dwCanUseYaoPingHpTime(0),m_dwCanUseYaoPingMpTime(0),
-m_dwCanUseYaoPingPetHpTime(0),m_dwCanUseYaoPingPetMpTime(0),m_dwCanUseYaoPingEnergyTime(0)
+, m_dwGetingMedicineID(eEmptyDBID), m_dwGetingMineID(eEmptyDBID), m_dwEndUsingTaskItemTime(0),
+m_pUsingItem(NULL), m_nCurMainStory(0), m_dwNextOverHeadTime(0), m_dwOnLineTime(0xffffffff), m_dwEnterTime(0),
+m_NewPlayerGuide(NULL), m_nNewW(c_nNewNum), m_dwCanUseYaoPingHpTime(0), m_dwCanUseYaoPingMpTime(0),
+m_dwCanUseYaoPingPetHpTime(0), m_dwCanUseYaoPingPetMpTime(0), m_dwCanUseYaoPingEnergyTime(0)
 {
 	SetMiss(false);
 	SetTeamFree(true);
-	if(!m_rPlayer.IsUser())
+	if (!m_rPlayer.IsUser())
 	{
-		if(GetMonsterLogicExt()->IsMineNPC() || GetMonsterLogicExt()->IsMedicineNPC())
+		if (GetMonsterLogicExt()->IsMineNPC() || GetMonsterLogicExt()->IsMedicineNPC())
 		{
 			m_LiveType = eHaveSkin;
 			GetMonsterLogicExt()->DropMineMedicineS();
@@ -39,13 +39,13 @@ m_dwCanUseYaoPingPetHpTime(0),m_dwCanUseYaoPingPetMpTime(0),m_dwCanUseYaoPingEne
 
 CPlayerLogic::~CPlayerLogic()
 {
-	DEL_ONE(m_pMonsterLogicExt)
-		DEL_ONE(m_NewPlayerGuide)
+	DEL_ONE(m_pMonsterLogicExt);
+	DEL_ONE(m_NewPlayerGuide);
 }
 
 CNewPlayerGuide* CPlayerLogic::GetCNewPlayerGuide()
 {
-	if(NULL == m_NewPlayerGuide)
+	if (NULL == m_NewPlayerGuide)
 	{
 		m_NewPlayerGuide = RT_NEW CNewPlayerGuide(m_rPlayer);
 	}
@@ -78,11 +78,11 @@ int  CPlayerLogic::StartIntonate(const SAttackParam& Param)
 	do
 	{
 		SSkill* pSkill = Skill()->FindSkill(Param.Skill);
-		if(NULL == pSkill)
+		if (NULL == pSkill)
 		{
 			break;
 		}
-		if(IsIntonating())
+		if (IsIntonating())
 		{
 			break;
 		}
@@ -92,12 +92,12 @@ int  CPlayerLogic::StartIntonate(const SAttackParam& Param)
 		//dwTime = (unsigned long)(dwTime * 0.9f);
 		m_dwFireTime = rtGetMilliseconds();
 		m_dwFireTime += dwTime;
-		if(IsMiss())
+		if (IsMiss())
 		{
 			SetMiss(false);
 		}
 		nRet = 0;
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
@@ -106,24 +106,24 @@ bool CPlayerLogic::CanStopSomeOnceIntonating(SSkill* pSkill, CRegionCreature& rP
 	bool bRet = false;
 	do
 	{
-		if(NULL == pSkill)
+		if (NULL == pSkill)
 		{
 			break;
 		}
-		if(!rPlayer.GetPlayerLogic()->IsIntonating())
+		if (!rPlayer.GetPlayerLogic()->IsIntonating())
 		{
 			break;
 		}
 		SSkill* pOtherSkill = Skill()->FindSkill(rPlayer.GetPlayerLogic()->GetSAttackParam().Skill);
-		if(NULL == pOtherSkill)
+		if (NULL == pOtherSkill)
 		{
 			break;
 		}
 		int nR = pSkill->iBreakOdds + pOtherSkill->iBreakOdds;
 		srand(rtGetMilliseconds());   ///< 随机种子
-		int nNum =rand() % 100;    
+		int nNum = rand() % 100;
 		bRet = nNum < nR;
-	}while(false);
+	} while (false);
 	return bRet;
 }
 
@@ -172,7 +172,7 @@ void  CPlayerLogic::RemoveFromInviteMap(unsigned long dwDBID)
 {
 	InviteMap& im = CPlayerLogic::GetInviteMap();
 	InviteMap::iterator iter = im.find(dwDBID);
-	if(im.end() != iter)
+	if (im.end() != iter)
 	{
 		im.erase(iter);
 	}
@@ -189,17 +189,17 @@ void CPlayerLogic::OnRun(unsigned long dwTime)
 {
 	InviteMap& im = CPlayerLogic::GetInviteMap();
 	InviteMap::iterator iter;
-	for(iter = im.begin(); im.end() != iter; iter++)
+	for (iter = im.begin(); im.end() != iter; iter++)
 	{
-		if(dwTime >= (*iter).second)
+		if (dwTime >= (*iter).second)
 		{
 			im.erase(iter);
 			break;
 		}
 	}
-	if(IsUsingTaskItem())
+	if (IsUsingTaskItem())
 	{
-		if(dwTime >= m_dwEndUsingTaskItemTime)
+		if (dwTime >= m_dwEndUsingTaskItemTime)
 		{
 			EndUsingTaskItem();
 		}
@@ -213,8 +213,8 @@ void CPlayerLogic::OnRun(unsigned long dwTime)
 
 void CPlayerLogic::OnGetItem(SItemID item, EItemContainer c, int page, int i, int j)
 {
-	CRegionCreature *cre = &m_rPlayer;
-	cre->m_nGetItemCount ++;
+	CRegionCreature* cre = &m_rPlayer;
+	cre->m_nGetItemCount++;
 	int DropUserID = 0;
 
 	CItemCmdBuilder_Svr::Build_r2c_bag_additem(item, c, page, i, j, ITEM_REASON_PICK);
@@ -223,12 +223,12 @@ void CPlayerLogic::OnGetItem(SItemID item, EItemContainer c, int page, int i, in
 	// 如果在队伍里面，通知其他的队伍成员
 	if (cre->m_pTeam)
 	{
-		for(int index=cre->m_pTeam->mData.Begin(); index!=cre->m_pTeam->mData.End(); index++)
+		for (int index = cre->m_pTeam->mData.Begin(); index != cre->m_pTeam->mData.End(); index++)
 		{
 			if (cre->m_pTeam->mData[index].mDBID == cre->m_userInfo->m_userId)
 				continue;
 
-			CRegionUser *pUser = g_region->FindUser(cre->m_pTeam->mData[index].mDBID);
+			CRegionUser* pUser = g_region->FindUser(cre->m_pTeam->mData[index].mDBID);
 			if (pUser && pUser->m_dummy)
 			{
 				CItemCmdBuilder_Svr::Build_r2c_other_additem(cre->m_core.Name.c_str(), item, ITEM_REASON_PICK);
@@ -256,21 +256,21 @@ void CPlayerLogic::OnGetItem(SItemID item, EItemContainer c, int page, int i, in
 	}
 }
 
-long  CPlayerLogic::CanFinishState(STaskDesc *task, CRegionCreature* npc)
+long  CPlayerLogic::CanFinishState(STaskDesc* task, CRegionCreature* npc)
 {
 	// check if doing task
-	if(m_rPlayer.IsDoingTask(task, npc))
+	if (m_rPlayer.IsDoingTask(task, npc))
 	{
 		// check if can auto finish task
-		if(task->finishType == TASK_FINISH_TYPE_NORMAL)
+		if (task->finishType == TASK_FINISH_TYPE_NORMAL)
 		{
-			if(m_rPlayer.CanFinishTask(task,0, npc))
+			if (m_rPlayer.CanFinishTask(task, 0, npc))
 			{
 				//FinishTask(task,0,npc);
 				return TASK_STATE_CAN_FINISH;
 			}
 		}
-		return TASK_STATE_DOING; 
+		return TASK_STATE_DOING;
 	}
 
 	return TASK_STATE_NONE;
@@ -279,7 +279,7 @@ long  CPlayerLogic::CanFinishState(STaskDesc *task, CRegionCreature* npc)
 
 void  CPlayerLogic::SharedTask(long nTaskID)
 {
-	STaskInfo *info = m_rPlayer.m_task.FindTask(nTaskID);
+	STaskInfo* info = m_rPlayer.m_task.FindTask(nTaskID);
 	char cRet = 0;
 	const int c_cTagNum = 10;
 	char cTag[c_cTagNum];
@@ -289,13 +289,13 @@ void  CPlayerLogic::SharedTask(long nTaskID)
 	char szBuff[c_nBuffSize];
 	do
 	{
-		if(NULL == info)
+		if (NULL == info)
 		{
 			cRet = 1;
 			break;
 		}
-		STaskDesc *pDesc = info->GetDesc();
-		if(NULL == pDesc)
+		STaskDesc* pDesc = info->GetDesc();
+		if (NULL == pDesc)
 		{
 			cRet = 1;
 			break;
@@ -305,17 +305,17 @@ void  CPlayerLogic::SharedTask(long nTaskID)
 			cRet = 1;
 			break;
 		}
-		if(NULL == m_rPlayer.m_pTeam)
+		if (NULL == m_rPlayer.m_pTeam)
 		{
 			cRet = 2;
 			break;
 		}
-		if(!pDesc->m_bShare)
+		if (!pDesc->m_bShare)
 		{
 			cRet = 3;
 			break;
 		}
-		CTeamData &td = m_rPlayer.m_pTeam->mData;
+		CTeamData& td = m_rPlayer.m_pTeam->mData;
 		int nNum = td.Size();
 		if (0 == nNum)
 		{
@@ -324,20 +324,20 @@ void  CPlayerLogic::SharedTask(long nTaskID)
 		}
 		STeamData* pData = td.GetTeamData();
 		int i;
-		
-		for(i = 0; i < nNum; i++)
+
+		for (i = 0; i < nNum; i++)
 		{
 			if (pData[i].mDBID == m_rPlayer.m_userInfo->m_userId)
 			{
 				continue;
 			}
 			CRegionUser* pUser = g_region->FindUser(pData[i].mDBID);
-			if(NULL == pUser)
+			if (NULL == pUser)
 			{
 				continue;
 			}
-			CRegionCreature *tmp = pUser->m_dummy;
-			if(NULL == tmp)
+			CRegionCreature* tmp = pUser->m_dummy;
+			if (NULL == tmp)
 			{
 				continue;
 			}
@@ -353,7 +353,7 @@ void  CPlayerLogic::SharedTask(long nTaskID)
 				continue;
 			}
 			long nRet = tmp->CheckTaskAcceptState(pDesc, NULL);
-			if(TASK_STATE_CAN_ACCEPT != nRet)
+			if (TASK_STATE_CAN_ACCEPT != nRet)
 			{
 				if (cTagNum < c_cTagNum)
 				{
@@ -367,39 +367,39 @@ void  CPlayerLogic::SharedTask(long nTaskID)
 			{
 				cTag[cTagNum++] = 0;//OK
 			}
-			CTaskInfo &cinfo = tmp->m_task;
-			STaskInfo *task = cinfo.FindTask(nTaskID);
-			if(NULL == task)
+			CTaskInfo& cinfo = tmp->m_task;
+			STaskInfo* task = cinfo.FindTask(nTaskID);
+			if (NULL == task)
 			{
 				cinfo.AddTask(nTaskID);
 			}
 			task = cinfo.FindTask(nTaskID);
-			if(NULL == task)
+			if (NULL == task)
 			{
 				continue;
 			}
 			task->FSetShared();
-			rt2_snprintf(szBuff, c_nBuffSize, R(MSG_TASK_SHARE), pDesc->name.c_str() , tmp->m_core.Name.c_str());
+			rt2_snprintf(szBuff, c_nBuffSize, R(MSG_TASK_SHARE), pDesc->name.c_str(), tmp->m_core.Name.c_str());
 			m_rPlayer.SendSystemMessage(szBuff);
-			
+
 			rt2_snprintf(szBuff, c_nBuffSize, R(MSG_TASK_MATESHARE), tmp->m_core.Name.c_str(), pDesc->name.c_str());
 			tmp->SendSystemMessage(szBuff);
 
 			tmp->UpdateToClient(NET_CRE_UPDATE_TASK);
 		}
-	}while(false);
+	} while (false);
 	switch (cRet)
 	{
-	/*case 0:
-		g_sendCmd->BeginWrite();
-		g_sendCmd->WriteShort(r2c_shared_task_ret);
-		g_sendCmd->WriteByte(cTagNum);
-		for (i = 0; i < cTagNum; i++)
-		{
-			g_sendCmd->WriteByte(cTag[i]);
-		}
-		m_rPlayer.RecvCmd(g_sendCmd);
-		break;*/
+		/*case 0:
+			g_sendCmd->BeginWrite();
+			g_sendCmd->WriteShort(r2c_shared_task_ret);
+			g_sendCmd->WriteByte(cTagNum);
+			for (i = 0; i < cTagNum; i++)
+			{
+				g_sendCmd->WriteByte(cTag[i]);
+			}
+			m_rPlayer.RecvCmd(g_sendCmd);
+			break;*/
 	case 2:
 		m_rPlayer.SendSystemMessage(R(MSG_TASK_NOTEAM));
 		break;
@@ -413,46 +413,46 @@ void CPlayerLogic::AcceptSharedTask(long nTaskID)
 	char cRet = 0;
 	do
 	{
-		STaskDesc *desc = g_TableTask.FindTask(nTaskID);
-		if(NULL == desc)
+		STaskDesc* desc = g_TableTask.FindTask(nTaskID);
+		if (NULL == desc)
 		{
 			cRet = 3;
 			break;
 		}
-		CTaskInfo &info = m_rPlayer.m_task;
-		STaskInfo *task = info.FindTask(nTaskID);
-		if(NULL == task)
+		CTaskInfo& info = m_rPlayer.m_task;
+		STaskInfo* task = info.FindTask(nTaskID);
+		if (NULL == task)
 		{
 			cRet = 4;
 			break;
 		}
-		if(!task->FIsShared())
+		if (!task->FIsShared())
 		{
 			cRet = 4;
 			break;
 		}
-		if(info.GetTaskAcceptNum() >= MAX_TASK_SELECT_NUM)
+		if (info.GetTaskAcceptNum() >= MAX_TASK_SELECT_NUM)
 		{
 			cRet = 1;
 			m_rPlayer.SendSystemMessage(R(MSG_TASK_GETTASKFAIL));
 			break;
 		}
 		long nRet = m_rPlayer.CheckTaskAcceptState(desc, NULL);
-		if(TASK_STATE_CAN_ACCEPT != nRet)
+		if (TASK_STATE_CAN_ACCEPT != nRet)
 		{
 			cRet = 2;
 			m_rPlayer.SendSystemMessage(R(MSG_TASK_TASKNOTMATCHCONDITION));
 			break;
 		}
 		bool bAccepted = m_rPlayer.AcceptTask(desc, NULL);
-		if(!bAccepted)
+		if (!bAccepted)
 		{
 			cRet = 2;
 			break;
 		}
 		m_rPlayer.CanFinishTask(desc, 0, NULL);
 		cRet = 0;
-	}while(false);
+	} while (false);
 
 	/*switch (cRet)
 	{
@@ -474,61 +474,61 @@ int	CPlayerLogic::AllMyTeamAddTaskItem(CRegionCreature* pDieNPC, long kk)
 	int nRet = 1;
 	do
 	{
-		if(NULL == pDieNPC)
+		if (NULL == pDieNPC)
 		{
 			break;
 		}
-		if(NULL == pDieNPC->m_npcInfo)
+		if (NULL == pDieNPC->m_npcInfo)
 		{
 			break;
 		}
-		if(NULL == m_rPlayer.m_pTeam)
-		{
-			break;
-		}
-
-		if(m_rPlayer.m_pTeam->mData.Empty())
+		if (NULL == m_rPlayer.m_pTeam)
 		{
 			break;
 		}
 
-		CTeamData &td = m_rPlayer.m_pTeam->mData;
+		if (m_rPlayer.m_pTeam->mData.Empty())
+		{
+			break;
+		}
+
+		CTeamData& td = m_rPlayer.m_pTeam->mData;
 		int nNum = td.Size();
 		int i;
 		STeamData* pData = td.GetTeamData();
-		for(i = 0; i < nNum; i++)
+		for (i = 0; i < nNum; i++)
 		{
 			CRegionUser* pUser = g_region->FindUser(pData[i].mDBID);
-			if(NULL == pUser)
+			if (NULL == pUser)
 			{
 				continue;
 			}
-			CRegionCreature *tmp = pUser->m_dummy;
-			if(NULL == tmp)
+			CRegionCreature* tmp = pUser->m_dummy;
+			if (NULL == tmp)
 			{
 				continue;
 			}
 			//CRegionCreature *tmp2 = m_rPlayer.m_scene->FindCreature(tmp->GetObjectId());
-			if(NULL == tmp/* || tmp != tmp2*/)
+			if (NULL == tmp/* || tmp != tmp2*/)
 			{
 				continue;
 			}
-			if(tmp->Distance(pDieNPC->m_pos) > 800)
+			if (tmp->Distance(pDieNPC->m_pos) > 800)
 			{
 				continue;
 			}
-			
-			if(/*pDieNPC->m_npcInfo->FbTask==0 &&*/
-				pDieNPC->m_npcInfo->TaskId[kk] && 
+
+			if (/*pDieNPC->m_npcInfo->FbTask==0 &&*/
+				pDieNPC->m_npcInfo->TaskId[kk] &&
 				tmp->m_task.IsTaskAccept(pDieNPC->m_npcInfo->TaskId[kk]))
 			{
-				if(tmp->GetItemNum(pDieNPC->m_npcInfo->TaskItemId[kk], ItemColor_White) < pDieNPC->m_npcInfo->TaskItemLimit[kk])
+				if (tmp->GetItemNum(pDieNPC->m_npcInfo->TaskItemId[kk], ItemColor_White) < pDieNPC->m_npcInfo->TaskItemLimit[kk])
 				{
 					tmp->AddItem(pDieNPC->m_npcInfo->TaskItemId[kk], ItemColor_White);
 					STaskInfo* info = tmp->m_task.FindTask(pDieNPC->m_npcInfo->TaskId[kk]);
 					if (NULL != info)
 					{
-						STaskDesc *pDesc = info->GetDesc();
+						STaskDesc* pDesc = info->GetDesc();
 						if (NULL != pDesc)
 						{
 							tmp->CanFinishTask(pDesc, 0, NULL);
@@ -541,7 +541,7 @@ int	CPlayerLogic::AllMyTeamAddTaskItem(CRegionCreature* pDieNPC, long kk)
 			}
 		}
 		nRet = 0;
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
@@ -571,11 +571,11 @@ bool CPlayerLogic::IsTaskDone(int nID)
 		}
 		bRet = true;*/
 		bRet = m_rPlayer.m_task.IsDoneTask(nID);
-	}while(false);
+	} while (false);
 	return bRet;
 }
 
-int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STaskDesc *pDesc)
+int CPlayerLogic::ProcessTaskKey(STaskKey& key, int op, vector<long>* param, STaskDesc* pDesc)
 {
 	const int c_nBuffSize = 200;
 	char szBuff[c_nBuffSize];
@@ -583,16 +583,16 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 	int nRet = -1;
 	do
 	{
-		if(key.key == "taskdone")
+		if (key.key == "taskdone")
 		{
 
-			if(TYPE_CHECK != op)
+			if (TYPE_CHECK != op)
 			{
 				nRet = 1;
 				break;
 			}
 			int nTaskID = atoi(key.param[0].c_str());
-			if(!IsTaskDone(nTaskID))
+			if (!IsTaskDone(nTaskID))
 			{
 				nRet = 2;
 				break;
@@ -614,15 +614,15 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 				break;
 			}
 		}
-		else if(key.key == "useitem")
+		else if (key.key == "useitem")
 		{
-			if(NULL == pDesc)
+			if (NULL == pDesc)
 			{
 				nRet = 2;
 				break;
 			}
-			STaskInfo *info = m_rPlayer.m_task.FindTask(pDesc->id);
-			if(NULL == info)
+			STaskInfo* info = m_rPlayer.m_task.FindTask(pDesc->id);
+			if (NULL == info)
 			{
 				nRet = 2;
 				break;
@@ -630,15 +630,15 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 			int i, n;
 			n = (int)(pDesc->taskReq.size());
 			bool bB = false;
-			for(i = 0; i < n; i++)
+			for (i = 0; i < n; i++)
 			{
-				if(!info->IsUseItem((char)(i)))
+				if (!info->IsUseItem((char)(i)))
 				{
 					bB = true;
 					break;
 				}
 			}
-			if(bB)
+			if (bB)
 			{
 				nRet = 2;
 				break;
@@ -648,7 +648,7 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 		{
 			long num;
 			num = atol(key.param[0].c_str());
-			if(num == 0)
+			if (num == 0)
 			{
 				nRet = 2;
 				break;
@@ -659,13 +659,13 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 				nRet = 1;
 				break;
 			}
-			if(m_rPlayer.m_pItemContainer->m_MissionBag.FreeSpace() < num)
+			if (m_rPlayer.m_pItemContainer->m_MissionBag.FreeSpace() < num)
 			{
 				nRet = 2;
 				break;
 			}
 		}
-		else if(key.key == "credit")
+		else if (key.key == "credit")
 		{
 			bool bB = true;
 			int num;
@@ -719,40 +719,40 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 				nRet = 2;
 				break;
 			case 4://声望
+			{
+				int nCreditType = atol(key.param[1].c_str());
+				num = atol(key.param[2].c_str());
+				switch (nCreditType)
 				{
-					int nCreditType = atol(key.param[1].c_str());
-					num = atol(key.param[2].c_str());
-					switch (nCreditType)
-					{
-					case 0://仙誉
-						rt2_sprintf(szBuff, R(MSG_GET_Honors), num);
-						break;
-					case 1://蜀郡官府声望
-						rt2_sprintf(szBuff, R(MSG_GET_AreaHonors1), num);
-						break;
-					case 2://发羌蛮族声望
-						rt2_sprintf(szBuff, R(MSG_GET_AreaHonors2), num);
-						break;
-					case 3://镇妖义士声望
-						rt2_sprintf(szBuff, R(MSG_GET_AreaHonors3), num);
-						break;
-					case 4://反隋义军声望
-						rt2_sprintf(szBuff, R(MSG_GET_AreaHonors4), num);
-						break;
-					case 5://仙魔联盟声望
-						rt2_sprintf(szBuff, R(MSG_GET_AreaHonors5), num);
-						break;
-					default:
-						break;
-					}
-					if (TYPE_ADD == op)
-					{
-						m_rPlayer.SendSystemMessage(szBuff);
-					}
+				case 0://仙誉
+					rt2_sprintf(szBuff, R(MSG_GET_Honors), num);
+					break;
+				case 1://蜀郡官府声望
+					rt2_sprintf(szBuff, R(MSG_GET_AreaHonors1), num);
+					break;
+				case 2://发羌蛮族声望
+					rt2_sprintf(szBuff, R(MSG_GET_AreaHonors2), num);
+					break;
+				case 3://镇妖义士声望
+					rt2_sprintf(szBuff, R(MSG_GET_AreaHonors3), num);
+					break;
+				case 4://反隋义军声望
+					rt2_sprintf(szBuff, R(MSG_GET_AreaHonors4), num);
+					break;
+				case 5://仙魔联盟声望
+					rt2_sprintf(szBuff, R(MSG_GET_AreaHonors5), num);
+					break;
+				default:
+					break;
 				}
+				if (TYPE_ADD == op)
+				{
+					m_rPlayer.SendSystemMessage(szBuff);
+				}
+			}
 
-				nRet = 2;
-				break;
+			nRet = 2;
+			break;
 			default:
 				nRet = 2;
 				break;
@@ -762,7 +762,7 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 				break;
 			}
 		}
-		else if(key.key == "have")
+		else if (key.key == "have")
 		{
 			nRet = 2;
 			if (TYPE_CHECK != op)
@@ -777,44 +777,44 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 			switch (nType)
 			{
 			case 0://宠物召唤
+			{
+				short nID = (short)(atol(key.param[1].c_str()));
+				if (NULL == m_rPlayer.m_pet)
 				{
-					short nID = (short)(atol(key.param[1].c_str()));
-					if (NULL == m_rPlayer.m_pet)
-					{
-						nRet = 1;
-						break;
-					}
-					if (nID != m_rPlayer.m_pet->m_npcId)
-					{
-						break;
-					}
-					bB = false;
+					nRet = 1;
+					break;
 				}
-				break;
+				if (nID != m_rPlayer.m_pet->m_npcId)
+				{
+					break;
+				}
+				bB = false;
+			}
+			break;
 			case 1://生活技能
+			{
+				nNum = atol(key.param[1].c_str());
+				int nSkillType = atol(key.param[2].c_str());
+				CSkillInstance* pS = m_rPlayer.m_Skill.FirstActiveSkill();
+				int nS = 0;
+				while (NULL != pS)
 				{
-					nNum = atol(key.param[1].c_str());
-					int nSkillType = atol(key.param[2].c_str());
-					CSkillInstance* pS =  m_rPlayer.m_Skill.FirstActiveSkill();
-					int nS = 0;
-					while(NULL != pS)
+					if (NULL != pS->m_pAttr)
 					{
-						if (NULL != pS->m_pAttr)
+						if (nSkillType == pS->m_pAttr->wClass)
 						{
-							if (nSkillType == pS->m_pAttr->wClass)
-							{
-								nS++;
-							}
+							nS++;
 						}
-						pS = m_rPlayer.m_Skill.NextActiveSkill();
 					}
-					if (nS < nNum)
-					{
-						break;
-					}
-					bB = false;
+					pS = m_rPlayer.m_Skill.NextActiveSkill();
 				}
-				break;
+				if (nS < nNum)
+				{
+					break;
+				}
+				bB = false;
+			}
+			break;
 			case 2://好友
 				if (NULL == m_rPlayer.m_pFriend)
 				{
@@ -829,90 +829,90 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 				bB = false;
 				break;
 			case 3://法宝炼化
+			{
+				SItemID	itemID;
+				int nID = atol(key.param[1].c_str());
+				nNum = atol(key.param[2].c_str());
+				bool bFind = false;
+
+
+				CItemContainerBase* pCon = m_rPlayer.m_pItemContainer;
+				if (NULL == pCon)
 				{
-					SItemID	itemID;
-					int nID = atol(key.param[1].c_str());
-					nNum = atol(key.param[2].c_str());
-					bool bFind = false;
+					nRet = 1;
+					break;
+				}
+				CBag* pBag = NULL;
+				pBag = &(pCon->m_Bag);
+				if (NULL == pBag)
+				{
+					nRet = 1;
+					break;
+				}
+				int		nPage = pBag->GetPageCount();
+				int		nLine = pBag->GetLineCount();
+				int		nCol = pBag->GetColCount();
+				//int nCun = 0;
 
-
-					CItemContainerBase *pCon = m_rPlayer.m_pItemContainer;
-					if (NULL == pCon)
+				int i, j, k;
+				for (i = 0; i < nPage && !bFind; i++)
+				{
+					for (j = 0; j < nLine && !bFind; j++)
 					{
-						nRet = 1;
-						break;
-					}
-					CBag *pBag =NULL;
-					pBag = &(pCon->m_Bag);
-					if (NULL == pBag)
-					{
-						nRet = 1;
-						break;
-					}
-					int		nPage	= pBag->GetPageCount();
-					int		nLine	 = pBag->GetLineCount();
-					int		nCol	 = pBag->GetColCount();
-					//int nCun = 0;
-
-					int i, j, k;
-					for(i = 0; i < nPage && !bFind; i++)
-					{
-						for (j = 0; j < nLine && !bFind; j++)
+						for (k = 0; k < nCol && !bFind; k++)
 						{
-							for(k = 0; k < nCol && !bFind; k++)
+							itemID = pBag->GetItem(i, j, k);
+							if (!ItemID_IsValid(itemID))
 							{
-								itemID = pBag->GetItem(i, j, k);
-								if (!ItemID_IsValid(itemID))
-								{
-									continue;
-								}
-								if (!ItemIsTrump(itemID))
-								{
-									continue;
-								}
-								if(CItemManager::GetIndexFromType(itemID.type) != nID)
-								{
-									continue;
-								}
-								if (itemID.params[TRUMP_LEV] < (unsigned long)(nNum))
-								{
-									continue;
-								}
-								bFind = true;
+								continue;
 							}
+							if (!ItemIsTrump(itemID))
+							{
+								continue;
+							}
+							if (CItemManager::GetIndexFromType(itemID.type) != nID)
+							{
+								continue;
+							}
+							if (itemID.params[TRUMP_LEV] < (unsigned long)(nNum))
+							{
+								continue;
+							}
+							bFind = true;
 						}
 					}
-
-					if (bFind)
-					{
-						nRet = 0;
-						bB = true;
-						break;
-					}
-					itemID = m_rPlayer.m_pItemContainer->GetEquipItem(CItemContainerBase::TRUMP, true);
-					bB = true;
-					if (!ItemID_IsValid(itemID))
-					{
-						break;
-					}
-					if(CItemManager::GetIndexFromType(itemID.type) != nID)
-					{
-						break;
-					}
-					if (itemID.params[TRUMP_LEV] < (unsigned long)(nNum))
-					{
-						break;
-					}
-					bB = false;
 				}
-				break;
+
+				if (bFind)
+				{
+					nRet = 0;
+					bB = true;
+					break;
+				}
+				itemID = m_rPlayer.m_pItemContainer->GetEquipItem(CItemContainerBase::TRUMP, true);
+				bB = true;
+				if (!ItemID_IsValid(itemID))
+				{
+					break;
+				}
+				if (CItemManager::GetIndexFromType(itemID.type) != nID)
+				{
+					break;
+				}
+				if (itemID.params[TRUMP_LEV] < (unsigned long)(nNum))
+				{
+					break;
+				}
+				bB = false;
+			}
+			break;
 			}
 			if (bB)
 			{
 				break;
 			}
 		}
-		else if(key.key == "gongreward")
+		else if (key.key == "gongreward")
 		{
 			int GradeLev = m_rPlayer.m_core.GradeLev;
 			float fLev = GradeLev / 20.0f + 1;
@@ -923,13 +923,13 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 			}
 			int nFinish = m_rPlayer.m_gongTaskFinish % 20 + 1;
 			//奖励门贡=INT((玩家修为等级/20+1)*(1+0.05*((玩家修为等级/20+1)-1))*1*(MOD((当前任务个数-1),20)+1))*(IF(当前任务个数<=20,3,1))
-			float fAdd = (fLev*(1 + 0.05f * (fLev - 1)) * nFinish)*nR;
+			float fAdd = (fLev * (1 + 0.05f * (fLev - 1)) * nFinish) * nR;
 			int nAdd = (int)(fAdd);
 			AddJobRecord(nAdd);
 			if (19 == m_rPlayer.m_gongTaskFinish)
 			{
-				if(GetProb(1)) m_rPlayer.AddItem(6222, ItemColor_White);
-				if(GetProb(0.01)) m_rPlayer.AddItem(6221, ItemColor_Blue);
+				if (GetProb(1)) m_rPlayer.AddItem(6222, ItemColor_White);
+				if (GetProb(0.01)) m_rPlayer.AddItem(6221, ItemColor_Blue);
 			}
 			//GradeLev--;
 			//奖励经验=INT((60*6*(20+5*(玩家修为等级-1)*(1+0.05*(玩家修为等级-1)))/210)*(MOD((当前任务个数-1),20)+1))
@@ -949,7 +949,7 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 			//int nAdd = (int)((fLev*(1 + 0.05f * (fLev - 1))*((m_rPlayer.m_wenTaskFinish - 1) % 20 + 1))*3);
 			//AddJobRecord(nAdd);
 		}
-		else if(key.key == "moureward")
+		else if (key.key == "moureward")
 		{
 			float fGradeLev = m_rPlayer.m_core.Lev / 20.0f;
 			float fLev = fGradeLev + 1;
@@ -962,7 +962,7 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 			AddGold(nAdd);
 			if (19 == m_rPlayer.m_MouTaskFinish)
 			{
-				if(GetProb(0.5))
+				if (GetProb(0.5))
 				{
 					m_rPlayer.AddItem(6500, ItemColor_White);
 				}
@@ -975,13 +975,13 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 		}
 		else if (key.key == "killmonster")
 		{
-			if(NULL == pDesc)
+			if (NULL == pDesc)
 			{
 				nRet = 2;
 				break;
 			}
-			STaskInfo *info = m_rPlayer.m_task.FindTask(pDesc->id);
-			if(NULL == info)
+			STaskInfo* info = m_rPlayer.m_task.FindTask(pDesc->id);
+			if (NULL == info)
 			{
 				nRet = 2;
 				break;
@@ -999,7 +999,7 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 		}
 		else if (key.key == "day")
 		{
-			if(TYPE_CHECK != op)
+			if (TYPE_CHECK != op)
 			{
 				nRet = 1;
 				break;
@@ -1035,13 +1035,13 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 		else if (key.key == "gradelev")
 		{
 			unsigned long nLev = atol(key.param[0].c_str());
-			if(TYPE_CHECK != op)
+			if (TYPE_CHECK != op)
 			{
 				nRet = 1;
 				break;
 			}
 
-			if(m_rPlayer.m_core.GradeLev > nLev)
+			if (m_rPlayer.m_core.GradeLev > nLev)
 			{
 				nRet = 0;
 				break;
@@ -1051,12 +1051,12 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 		}
 		else if (key.key == "inunion")
 		{
-			if(TYPE_CHECK != op)
+			if (TYPE_CHECK != op)
 			{
 				nRet = 1;
 				break;
 			}
-			if(0 != m_rPlayer.m_unionID)
+			if (0 != m_rPlayer.m_unionID)
 			{
 				nRet = 0;
 				break;
@@ -1070,21 +1070,21 @@ int CPlayerLogic::ProcessTaskKey(STaskKey &key, int op, vector<long> *param, STa
 			break;
 		}
 		nRet = 0;
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
 void CPlayerLogic::OnPetChange()
 {
 	bool bUpdate = false;
-	do 
+	do
 	{
-		STaskInfo *info = m_rPlayer.m_task.FindTask(11001);
-		if(NULL == info)
+		STaskInfo* info = m_rPlayer.m_task.FindTask(11001);
+		if (NULL == info)
 		{
 			break;
 		}
-		if(!info->FIsDoing())
+		if (!info->FIsDoing())
 		{
 			break;
 		}
@@ -1115,12 +1115,12 @@ void CPlayerLogic::OnPetChange()
 	}
 }
 
-void CPlayerLogic::OnTrumpLevUp(const SItemID &idS, int nNewLev)
+void CPlayerLogic::OnTrumpLevUp(const SItemID& idS, int nNewLev)
 {
-	do 
+	do
 	{
-		STaskDesc *desc = g_TableTask.FindTask(11005);
-		if(NULL == desc)
+		STaskDesc* desc = g_TableTask.FindTask(11005);
+		if (NULL == desc)
 		{
 			break;
 		}
@@ -1131,10 +1131,10 @@ void CPlayerLogic::OnTrumpLevUp(const SItemID &idS, int nNewLev)
 
 void CPlayerLogic::OnSkillNumChange()
 {
-	do 
+	do
 	{
-		STaskDesc *desc = g_TableTask.FindTask(11006);
-		if(NULL == desc)
+		STaskDesc* desc = g_TableTask.FindTask(11006);
+		if (NULL == desc)
 		{
 			break;
 		}
@@ -1145,11 +1145,11 @@ void CPlayerLogic::OnSkillNumChange()
 
 void CPlayerLogic::OnFriendNumChange()
 {
-	do 
+	do
 	{
 
-		STaskDesc *desc = g_TableTask.FindTask(11007);
-		if(NULL == desc)
+		STaskDesc* desc = g_TableTask.FindTask(11007);
+		if (NULL == desc)
 		{
 			break;
 		}
@@ -1160,7 +1160,7 @@ void CPlayerLogic::OnFriendNumChange()
 
 void CPlayerLogic::OnInsert(unsigned short int vConnection, DWORD vDBID)
 {
-	do 
+	do
 	{
 		unsigned short int nT = vConnection & SConnection::FRIEND;
 		if (0 == nT)
@@ -1173,7 +1173,7 @@ void CPlayerLogic::OnInsert(unsigned short int vConnection, DWORD vDBID)
 
 void CPlayerLogic::OnErase(unsigned short int vConnection, DWORD vDBID)
 {
-	do 
+	do
 	{
 		unsigned short int nT = vConnection & SConnection::FRIEND;
 		if (0 == nT)
@@ -1202,7 +1202,7 @@ bool CPlayerLogic::IsLive()
 void CPlayerLogic::Die()
 {
 	m_LiveType = eHaveItem;
-	if(IsGetingSkin())
+	if (IsGetingSkin())
 	{
 		CaneclGetingSkin();
 		SendGetSkinError(3);
@@ -1228,7 +1228,7 @@ void CPlayerLogic::SendGetSkinError(char cErr)
 
 	SItemID item;
 	CMonsterLogicExt* Teaget = NULL;
-	if(this->IsGetingSkin())
+	if (this->IsGetingSkin())
 	{
 		Teaget = GetGetingSkin();
 		if (NULL != Teaget)
@@ -1236,21 +1236,21 @@ void CPlayerLogic::SendGetSkinError(char cErr)
 			item = Teaget->m_SkinItem;
 		}
 	}
-	else 
+	else
 	{
 
-		if(this->IsGetingMine())
+		if (this->IsGetingMine())
 		{
 			Teaget = GetGetingMine();
 		}
-		else if(this->IsGetingMedicine())
+		else if (this->IsGetingMedicine())
 		{
 			Teaget = GetGetingMedicine();
 		}
-		if(NULL != Teaget)
+		if (NULL != Teaget)
 		{
 			CMonsterLogicExt::ItemList& il = Teaget->GetItemList();
-			if(!il.empty())
+			if (!il.empty())
 			{
 				item = *(il.begin());
 			}
@@ -1274,24 +1274,25 @@ long CPlayerLogic::GetMoveSpeed()
 	long nRet = m_rPlayer.m_moveSpeed;
 	do
 	{
-		if(NULL == m_rPlayer.m_ai)
+		if (NULL == m_rPlayer.m_ai)
 		{
 			break;
 		}
-		if(m_rPlayer.m_ai->m_bTrace)
+		if (m_rPlayer.m_ai->m_bTrace)
 		{
 			nRet = (long)(nRet * 1.5);
-		}else if ( CRegionAI::STATE_RETURN == m_rPlayer.m_ai->m_state )
+		}
+		else if (CRegionAI::STATE_RETURN == m_rPlayer.m_ai->m_state)
 		{
 			nRet = (long)(nRet * 10);
 		}
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
 CMonsterLogicExt* CPlayerLogic::GetMonsterLogicExt()
 {
-	if(NULL == m_pMonsterLogicExt)
+	if (NULL == m_pMonsterLogicExt)
 	{
 		m_pMonsterLogicExt = RT_NEW CMonsterLogicExt(m_rPlayer);
 	}
@@ -1352,7 +1353,7 @@ void CPlayerLogic::SetGetingMine(CMonsterLogicExt* pMonsterLogicExt)
 void CPlayerLogic::CaneclGetingSkin()
 {
 	CMonsterLogicExt* pEx = GetGetingSkin();
-	if(NULL != pEx)
+	if (NULL != pEx)
 	{
 		pEx->CaneclGetSkin();
 		m_dwGetingSkinID = eEmptyDBID;
@@ -1362,7 +1363,7 @@ void CPlayerLogic::CaneclGetingSkin()
 void CPlayerLogic::CaneclGetingMedicine()
 {
 	CMonsterLogicExt* pEx = GetGetingMedicine();
-	if(NULL != pEx)
+	if (NULL != pEx)
 	{
 		pEx->CaneclGetMedicine();
 		m_dwGetingMedicineID = eEmptyDBID;
@@ -1372,7 +1373,7 @@ void CPlayerLogic::CaneclGetingMedicine()
 void CPlayerLogic::CaneclGetingMine()
 {
 	CMonsterLogicExt* pEx = GetGetingMine();
-	if(NULL != pEx)
+	if (NULL != pEx)
 	{
 		pEx->CaneclGetMine();
 		m_dwGetingMineID = eEmptyDBID;
@@ -1396,27 +1397,27 @@ int  CPlayerLogic::GetSkillLevel(unsigned short SubID)
 	CSkillInstance* pSkill = m_rPlayer.m_Skill.FindActiveSkillBySubID(SubID);
 	do
 	{
-		if(NULL == pSkill)
+		if (NULL == pSkill)
 		{
 			break;
 		}
 		nRet = pSkill->m_pAttr->iLevel;
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
-SSkill*  CPlayerLogic::GetSkill(unsigned short SubID)
+SSkill* CPlayerLogic::GetSkill(unsigned short SubID)
 {
 	SSkill* pRetSkill = NULL;
 	CSkillInstance* pSkill = m_rPlayer.m_Skill.FindActiveSkillBySubID(SubID);
 	do
 	{
-		if(NULL == pSkill)
+		if (NULL == pSkill)
 		{
 			break;
 		}
 		pRetSkill = pSkill->m_pAttr;
-	}while(false);
+	} while (false);
 	return pRetSkill;
 }
 
@@ -1425,11 +1426,11 @@ void CPlayerLogic::AddLifeSkillExp(int nExp, unsigned short wSkillID)
 	CSkillInstance* pSkill = m_rPlayer.m_Skill.FindActiveSkillBySubID(wSkillID);
 	do
 	{
-		if(NULL == pSkill)
+		if (NULL == pSkill)
 		{
 			break;
 		}
-		if(nExp <= 0)
+		if (nExp <= 0)
 		{
 			break;
 		}
@@ -1440,12 +1441,12 @@ void CPlayerLogic::AddLifeSkillExp(int nExp, unsigned short wSkillID)
 			if (pSkill->m_wExp >= pSkill->m_pAttr->iLevelUpExp)
 			{
 				pSkill->m_wExp = pSkill->m_pAttr->iLevelUpExp;
-				int nCanLevel = m_rPlayer.m_core.Lev /5 + 1;
-				if(nCanLevel > 10)
+				int nCanLevel = m_rPlayer.m_core.Lev / 5 + 1;
+				if (nCanLevel > 10)
 				{
 					nCanLevel = 10;
 				}
-				if(pSkill->m_pAttr->iLevel >= nCanLevel)
+				if (pSkill->m_pAttr->iLevel >= nCanLevel)
 				{
 					m_rPlayer.SendSystemMessage(R(MSG_SKILL_NEEDCHARACTERLEVEL));
 					break;
@@ -1468,18 +1469,18 @@ void CPlayerLogic::AddLifeSkillExp(int nExp, unsigned short wSkillID)
 				g_sendCmd->WriteShort(pSkill->m_wExp);
 				m_rPlayer.RecvCmd(g_sendCmd);
 			}
-		}  
-	}while(false);
+		}
+	} while (false);
 }
 void CPlayerLogic::StopGetLifeItem()
 {
 	unsigned char cAni = 0xff;
-	if(IsGetingSkin())
+	if (IsGetingSkin())
 	{
 		cAni = DO_COMMAND_GETSKIN;
 		CaneclGetingSkin();
 	}
-	else if(IsGetingMine())
+	else if (IsGetingMine())
 	{
 		CMonsterLogicExt* pEx = GetGetingMine();
 		if (NULL != pEx)
@@ -1495,7 +1496,7 @@ void CPlayerLogic::StopGetLifeItem()
 			CaneclGetingMine();
 		}
 	}
-	else if(IsGetingMedicine())
+	else if (IsGetingMedicine())
 	{
 		cAni = DO_COMMAND_GETMEDICINE;
 		CaneclGetingMedicine();
@@ -1509,19 +1510,19 @@ void CPlayerLogic::StopGetLifeItem()
 void CPlayerLogic::DonotGetLifeItem()
 {
 	CMonsterLogicExt* pT = NULL;
-	if(IsGetingSkin())
+	if (IsGetingSkin())
 	{
 		pT = this->GetGetingSkin();
 	}
-	else if(IsGetingMine())
+	else if (IsGetingMine())
 	{
 		pT = this->GetGetingMine();
 	}
-	else if(IsGetingMedicine())
+	else if (IsGetingMedicine())
 	{
 		pT = this->GetGetingMedicine();
 	}
-	if(NULL != pT)
+	if (NULL != pT)
 	{
 		pT->OnClosePickwindow(&m_rPlayer);
 	}
@@ -1532,17 +1533,17 @@ bool CPlayerLogic::IsDoingTask(int nTaskID)
 	bool bRet = false;
 	do
 	{
-		STaskInfo *info = m_rPlayer.m_task.FindTask(nTaskID);
-		if(NULL == info)
+		STaskInfo* info = m_rPlayer.m_task.FindTask(nTaskID);
+		if (NULL == info)
 		{
 			break;
 		}
-		if(!info->FIsDoing())
+		if (!info->FIsDoing())
 		{
 			break;
 		}
 		bRet = true;
-	}while(false);
+	} while (false);
 	return bRet;
 }
 
@@ -1552,8 +1553,8 @@ int CPlayerLogic::UseTaskItem(int page, int gridI, int gridJ)
 	SItemID item;
 	do
 	{
-		item =  m_rPlayer.m_pItemContainer->m_Bag.GetItem(page, gridI, gridJ);
-		if(!ItemID_IsValid(item))
+		item = m_rPlayer.m_pItemContainer->m_Bag.GetItem(page, gridI, gridJ);
+		if (!ItemID_IsValid(item))
 		{
 			break;
 		}
@@ -1562,7 +1563,7 @@ int CPlayerLogic::UseTaskItem(int page, int gridI, int gridJ)
 		const int c_MaxTask = 16;
 		ItemTaskData* ppData[c_MaxTask];
 		nNum = CRSLogicExt::GetRSLogicExt().GetItemTaskData(dwIndex, ppData, c_MaxTask);
-		if(0 == nNum)
+		if (0 == nNum)
 		{
 			break;
 		}
@@ -1575,21 +1576,21 @@ int CPlayerLogic::UseTaskItem(int page, int gridI, int gridJ)
 			{
 				continue;
 			}
-			STaskInfo *info = m_rPlayer.m_task.FindTask(pData->pTask->id);
-			if(NULL == info)
+			STaskInfo* info = m_rPlayer.m_task.FindTask(pData->pTask->id);
+			if (NULL == info)
 			{
 				continue;
 			}
-			if(!info->FIsDoing())
+			if (!info->FIsDoing())
 			{
 				continue;
 			}
 
 			RtsSceneBlockMap::SArea* pArea = m_rPlayer.m_scene->m_pTerrain->FindFirstArea(m_rPlayer.m_pos[0], m_rPlayer.m_pos[1]);
 			int i;
-			for (i=0; i<9 && pArea; i++)
+			for (i = 0; i < 9 && pArea; i++)
 			{
-				if(NULL == pArea)
+				if (NULL == pArea)
 				{
 					continue;
 				}
@@ -1620,7 +1621,7 @@ int CPlayerLogic::UseTaskItem(int page, int gridI, int gridJ)
 
 		m_rPlayer.RecvCmd(g_sendCmd);
 		nRet = 0;
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
@@ -1636,7 +1637,7 @@ void CPlayerLogic::StartUseTaskItem()
 
 void CPlayerLogic::EndUsingTaskItem()
 {
-	do 
+	do
 	{
 		if (NULL == m_pUsingItem)
 		{
@@ -1646,15 +1647,15 @@ void CPlayerLogic::EndUsingTaskItem()
 		{
 			break;
 		}
-		STaskInfo *info = m_rPlayer.m_task.FindTask(m_pUsingItem->pTask->id);
-		if(NULL == info)
+		STaskInfo* info = m_rPlayer.m_task.FindTask(m_pUsingItem->pTask->id);
+		if (NULL == info)
 		{
-			break;	
+			break;
 		}
-		STaskDesc *pDesc = info->GetDesc();
+		STaskDesc* pDesc = info->GetDesc();
 		if (NULL == pDesc)
 		{
-			break;	
+			break;
 		}
 		info->SetUseItem(m_pUsingItem->cIndex);
 		m_rPlayer.UpdateToClient(NET_CRE_UPDATE_TASK);
@@ -1684,11 +1685,11 @@ void CPlayerLogic::TrackTask(long nTaskID)
 {
 	int nTrackNum = 0;
 	std::list<STaskInfo>::iterator iter;
-	STaskInfo *pInfo = NULL;
-	for(iter = m_rPlayer.m_task.m_taskList.begin(); iter != m_rPlayer.m_task.m_taskList.end(); iter++)
+	STaskInfo* pInfo = NULL;
+	for (iter = m_rPlayer.m_task.m_taskList.begin(); iter != m_rPlayer.m_task.m_taskList.end(); iter++)
 	{
-		STaskInfo &info = *iter;
-		
+		STaskInfo& info = *iter;
+
 		if (info.IsTrack())
 		{
 			nTrackNum++;
@@ -1714,7 +1715,7 @@ void CPlayerLogic::TrackTask(long nTaskID)
 
 void CPlayerLogic::CaneclTrackTask(long nTaskID)
 {
-	STaskInfo *info = m_rPlayer.m_task.FindTask(nTaskID);
+	STaskInfo* info = m_rPlayer.m_task.FindTask(nTaskID);
 	if (NULL != info)
 	{
 		info->CaneclTrack();
@@ -1726,7 +1727,7 @@ CMonsterLogicExt* CPlayerLogic::GetGetingSkin()
 {
 
 	CMonsterLogicExt* pRet = NULL;
-	do 
+	do
 	{
 		if (NULL == m_rPlayer.m_scene)
 		{
@@ -1736,12 +1737,12 @@ CMonsterLogicExt* CPlayerLogic::GetGetingSkin()
 		{
 			break;
 		}
-		CRegionCreature *pFind = m_rPlayer.m_scene->FindCreature(m_dwGetingSkinID);
+		CRegionCreature* pFind = m_rPlayer.m_scene->FindCreature(m_dwGetingSkinID);
 		if (NULL == pFind)
 		{
 			break;
 		}
-		if(pFind->IsUser())
+		if (pFind->IsUser())
 		{
 			break;
 		}
@@ -1753,7 +1754,7 @@ CMonsterLogicExt* CPlayerLogic::GetGetingSkin()
 CMonsterLogicExt* CPlayerLogic::GetGetingMine()
 {
 	CMonsterLogicExt* pRet = NULL;
-	do 
+	do
 	{
 		if (NULL == m_rPlayer.m_scene)
 		{
@@ -1763,12 +1764,12 @@ CMonsterLogicExt* CPlayerLogic::GetGetingMine()
 		{
 			break;
 		}
-		CRegionCreature *pFind = m_rPlayer.m_scene->FindCreature(m_dwGetingMineID);
+		CRegionCreature* pFind = m_rPlayer.m_scene->FindCreature(m_dwGetingMineID);
 		if (NULL == pFind)
 		{
 			break;
 		}
-		if(pFind->IsUser())
+		if (pFind->IsUser())
 		{
 			break;
 		}
@@ -1780,7 +1781,7 @@ CMonsterLogicExt* CPlayerLogic::GetGetingMine()
 CMonsterLogicExt* CPlayerLogic::GetGetingMedicine()
 {
 	CMonsterLogicExt* pRet = NULL;
-	do 
+	do
 	{
 		if (NULL == m_rPlayer.m_scene)
 		{
@@ -1790,12 +1791,12 @@ CMonsterLogicExt* CPlayerLogic::GetGetingMedicine()
 		{
 			break;
 		}
-		CRegionCreature *pFind = m_rPlayer.m_scene->FindCreature(m_dwGetingMedicineID);
+		CRegionCreature* pFind = m_rPlayer.m_scene->FindCreature(m_dwGetingMedicineID);
 		if (NULL == pFind)
 		{
 			break;
 		}
-		if(pFind->IsUser())
+		if (pFind->IsUser())
 		{
 			break;
 		}
@@ -1817,7 +1818,7 @@ int  CPlayerLogic::GetCurMainStoryID()
 int  CPlayerLogic::SetCurMainStoryID(int nMainStoryDataID)
 {
 	int nRet = 0;
-	do 
+	do
 	{
 		if (-1 == nMainStoryDataID)
 		{
@@ -1849,9 +1850,9 @@ int  CPlayerLogic::SetCurMainStoryID(int nMainStoryDataID)
 	return nRet;
 }
 
-void CPlayerLogic::AfterFinishTask(STaskDesc *task)
+void CPlayerLogic::AfterFinishTask(STaskDesc* task)
 {
-	do 
+	do
 	{
 		if (NULL == task)
 		{
@@ -1871,7 +1872,7 @@ void CPlayerLogic::AfterFinishTask(STaskDesc *task)
 			}
 			int i;
 			bool bB = false;
-			for(i = 0; i < pData->nTaskNum; i++)
+			for (i = 0; i < pData->nTaskNum; i++)
 			{
 				if (!IsTaskDone(pData->nTaskID[i]))
 				{
@@ -1888,7 +1889,7 @@ void CPlayerLogic::AfterFinishTask(STaskDesc *task)
 		}
 		NPCTaskMap& npcMap = GetNPCTaskMap();
 		NPCTaskMap::iterator iter;
-		for(iter = npcMap.begin(); npcMap.end() != iter; iter++)
+		for (iter = npcMap.begin(); npcMap.end() != iter; iter++)
 		{
 			short wID = (*iter).second;
 			if (wID == task->id)
@@ -1911,8 +1912,8 @@ int  CPlayerLogic::GetNextMainStoryID()
 			//ERR3("nIndex == CMainStoryMgr::GetMgr().GetMainStoryNum %d", 2);
 			break;
 		}
-		nRet = CMainStoryMgr::GetMgr().GetMainTaskIDByJobAndIndex(m_rPlayer.m_core.Metier, nIndex +1);
-	}while (false);
+		nRet = CMainStoryMgr::GetMgr().GetMainTaskIDByJobAndIndex(m_rPlayer.m_core.Metier, nIndex + 1);
+	} while (false);
 	return nRet;
 }
 
@@ -1924,7 +1925,7 @@ unsigned long CPlayerLogic::GetNextOverHeadTime()
 ETaskOverHead CPlayerLogic::GetTaskOverHead(DWORD npcOID)
 {
 	ETaskOverHead enRet = TOH_CanNotAccept;
-	do 
+	do
 	{
 		bool bB = false;
 		bool bDing = false;
@@ -1935,23 +1936,23 @@ ETaskOverHead CPlayerLogic::GetTaskOverHead(DWORD npcOID)
 			break;
 		}
 
-		CRegionCreature *pNPC = m_rPlayer.m_scene->FindCreature(npcOID);
+		CRegionCreature* pNPC = m_rPlayer.m_scene->FindCreature(npcOID);
 		if (NULL == pNPC || NULL == pNPC->m_npcInfo)
 		{
 			break;
 		}
-		CRegionNpcTask *pReNPC = (CRegionNpcTask*)(pNPC);
+		CRegionNpcTask* pReNPC = (CRegionNpcTask*)(pNPC);
 		CPlayerLogic::ForTaskType enType = pReNPC->GetPlayerLogic()->GetForTaskType();
 		nSize = pReNPC->m_finishTask.size();
-		for(size_t i=0; i < nSize; i++)
+		for (size_t i = 0; i < nSize; i++)
 		{
 			STaskDesc* pDesc = pReNPC->m_finishTask[i];
 			if (NULL == pDesc)
 			{
 				continue;
 			}
-			STaskInfo *info = m_rPlayer.m_task.FindTask(pDesc->id);
-			if(NULL != info)
+			STaskInfo* info = m_rPlayer.m_task.FindTask(pDesc->id);
+			if (NULL != info)
 			{
 				if (info->FIsCanFinish())
 				{
@@ -1976,15 +1977,15 @@ ETaskOverHead CPlayerLogic::GetTaskOverHead(DWORD npcOID)
 			break;
 		}
 		nSize = pReNPC->m_acceptTask.size();
-		for(size_t i=0; i < nSize; i++)
+		for (size_t i = 0; i < nSize; i++)
 		{
 			STaskDesc* pDesc = pReNPC->m_acceptTask[i];
 			if (NULL == pDesc)
 			{
 				continue;
 			}
-			STaskInfo *info = m_rPlayer.m_task.FindTask(pDesc->id);
-			if(NULL != info)
+			STaskInfo* info = m_rPlayer.m_task.FindTask(pDesc->id);
+			if (NULL != info)
 			{
 				if (info->FIsDoing())
 				{
@@ -2000,7 +2001,7 @@ ETaskOverHead CPlayerLogic::GetTaskOverHead(DWORD npcOID)
 			else
 			{
 				long ret = m_rPlayer.CheckTaskAcceptState(pDesc, pReNPC);
-				if(ret == TASK_STATE_CAN_ACCEPT)
+				if (ret == TASK_STATE_CAN_ACCEPT)
 				{
 					enRet = TOH_CanAccept;
 					if (CPlayerLogic::eRand != enType)
@@ -2044,8 +2045,8 @@ void CPlayerLogic::AddJobRecord(long nAdd)
 	const int c_nBuffSize = 256;
 	char szBuff[c_nBuffSize];
 	const char* pC = R(MSG_GET_JobRecord);
-	
-	do 
+
+	do
 	{
 		if (0 == nAdd)
 		{
@@ -2053,7 +2054,7 @@ void CPlayerLogic::AddJobRecord(long nAdd)
 		}
 
 		CRegionCreature* pAdd = &m_rPlayer;
-		if(m_rPlayer.IsUserPet() || m_rPlayer.IsCallNpc())
+		if (m_rPlayer.IsUserPet() || m_rPlayer.IsCallNpc())
 		{
 			pAdd = m_rPlayer.m_master;
 		}
@@ -2086,7 +2087,7 @@ void CPlayerLogic::AddContribute(long nAdd)
 	const int c_nBuffSize = 256;
 	char szBuff[c_nBuffSize];
 	const char* pC = R(MSG_GET_Contribute);
-	do 
+	do
 	{
 		if (0 == nAdd)
 		{
@@ -2094,7 +2095,7 @@ void CPlayerLogic::AddContribute(long nAdd)
 		}
 
 		CRegionCreature* pAdd = &m_rPlayer;
-		if(m_rPlayer.IsUserPet() || m_rPlayer.IsCallNpc())
+		if (m_rPlayer.IsUserPet() || m_rPlayer.IsCallNpc())
 		{
 			pAdd = m_rPlayer.m_master;
 		}
@@ -2112,7 +2113,7 @@ void CPlayerLogic::AddContribute(long nAdd)
 
 void CPlayerLogic::AddUnionRecord(int add)
 {
-	do 
+	do
 	{
 		if (0 == add)
 		{
@@ -2121,9 +2122,9 @@ void CPlayerLogic::AddUnionRecord(int add)
 		const int c_nBuffSize = 256;
 		char szBuff[c_nBuffSize];
 		const char* pC = R(MSG_GET_UnionRecord);
-		
+
 		CRegionCreature* pAdd = &m_rPlayer;
-		if(m_rPlayer.IsUserPet() || m_rPlayer.IsCallNpc())
+		if (m_rPlayer.IsUserPet() || m_rPlayer.IsCallNpc())
 		{
 			pAdd = m_rPlayer.m_master;
 		}
@@ -2153,7 +2154,7 @@ void CPlayerLogic::AddUnionRecord(int add)
 void CPlayerLogic::DoGuide(GuideType type)
 {
 	bool bB = false;
-	do 
+	do
 	{
 		switch (type)
 		{
@@ -2364,7 +2365,7 @@ void CPlayerLogic::DoGuide(GuideType type)
 
 void CPlayerLogic::OnAreaEnter(const char* szAreName)
 {
-	do 
+	do
 	{
 		if (NULL == szAreName)
 		{
@@ -2398,7 +2399,7 @@ void CPlayerLogic::SetOnLineTime(unsigned long dwTime)
 void CPlayerLogic::ClientGetOnLineTime()
 {
 	g_sendCmd->BeginWrite();
-	g_sendCmd->WriteShort(r2c_SynOnlineTime	);
+	g_sendCmd->WriteShort(r2c_SynOnlineTime);
 	unsigned long dwTime = GetOnLineTime();
 	g_sendCmd->WriteLong((long)(dwTime));
 	m_rPlayer.RecvCmd(g_sendCmd);
@@ -2407,8 +2408,8 @@ void CPlayerLogic::ClientGetOnLineTime()
 unsigned long CPlayerLogic::GetOnLineTime()
 {
 	unsigned long long dwTime = rtGetMilliseconds() - m_dwEnterTime;
-	dwTime +=  m_dwOnLineTime;
-	dwTime /=  1000;
+	dwTime += m_dwOnLineTime;
+	dwTime /= 1000;
 	return (unsigned long)(dwTime);
 }
 
@@ -2416,7 +2417,7 @@ void CPlayerLogic::OnRunNewPlayer(unsigned long dwTime)
 {
 	//static int s_nItemID[c_nNewNum] = {5700, 5701, 5702, 5706, 5707, 5708, 5709};
 
-	do 
+	do
 	{
 		if (m_nNewW >= c_nNewNum)
 		{
@@ -2438,11 +2439,11 @@ void CPlayerLogic::SendNewPlayerMail(int n)
 	//static int s_nItemID[c_nNewNum] = {5700, 5701, 5702, 5706, 5707, 5708, 5709};
 	////5702蜀山5703花间5704五台5705苗疆	
 	//static int s_nItemID2[CMainStoryMgr::eJobNum] = {5704, 5703, 5702, 5705};
-	int ItemID[CMainStoryMgr::eJobNum][c_nNewNum] = {{5702, 5706, 5710, 5714, 5718, 5722, 5726},
+	int ItemID[CMainStoryMgr::eJobNum][c_nNewNum] = { {5702, 5706, 5710, 5714, 5718, 5722, 5726},
 													 {5701, 5705, 5709, 5713, 5717, 5721, 5725},
 													 {5700, 5704, 5708, 5712, 5716, 5720, 5724},
-													 {5703, 5707, 5711, 5715, 5719, 5723, 5727}};
-	do 
+													 {5703, 5707, 5711, 5715, 5719, 5723, 5727} };
+	do
 	{
 		if (NULL == m_rPlayer.m_pMail)
 		{
@@ -2457,7 +2458,7 @@ void CPlayerLogic::SendNewPlayerMail(int n)
 		{
 			s_nItemID[2] = s_nItemID2[m_rPlayer.m_core.Metier - 1];
 		}*/
-		
+
 		const int c_nTitleLen = 64;
 		const int c_nContentLen = 256;
 		char szTitle[c_nTitleLen];
@@ -2469,16 +2470,16 @@ void CPlayerLogic::SendNewPlayerMail(int n)
 		}
 		else
 		{
-			rt2_sprintf(szContent, R(MSG_SERVER_MAIL_002), 
+			rt2_sprintf(szContent, R(MSG_SERVER_MAIL_002),
 				m_nNewW + 1, (s_Time[n + 1] - s_Time[m_nNewW]) / 60000, n + 2);
 		}
 
-		CItemManager*  pItemManager = m_rPlayer.m_pItemContainer->GetItemManager();
+		CItemManager* pItemManager = m_rPlayer.m_pItemContainer->GetItemManager();
 
 		SItemID Item = g_region->m_pItemManager->CreateItem(ItemID[m_rPlayer.m_core.Metier - 1][m_nNewW], ItemColor_White, 0, IB_NotBind);
 		std::string strItem = Item.SaveToString(pItemManager);
 
-		g_region->m_gws.SendMail(m_rPlayer.m_userInfo->m_userId, 0, 
+		g_region->m_gws.SendMail(m_rPlayer.m_userInfo->m_userId, 0,
 			"【系统】", szTitle, szContent, strItem, 0);
 		if (0 == n)
 		{
@@ -2508,7 +2509,7 @@ void CPlayerLogic::OnLevelUp()
 
 void CPlayerLogic::OnUseItem(SItemID item)
 {
-	do 
+	do
 	{
 		if (ItemIsYaoPing(item))
 		{
@@ -2611,7 +2612,7 @@ bool CPlayerLogic::IsInPShop()
 	return NULL != m_rPlayer.m_pPShop || 0 != m_rPlayer.m_bPShop;
 }
 
- CPlayerLogic::NPCTaskMap& CPlayerLogic::GetNPCTaskMap()
+CPlayerLogic::NPCTaskMap& CPlayerLogic::GetNPCTaskMap()
 {
 	return m_NPCTaskMap;
 }
@@ -2619,7 +2620,7 @@ bool CPlayerLogic::IsInPShop()
 short CPlayerLogic::FindInRandNPCMap(unsigned long dwNPCID)
 {
 	short wRet = 0x7fff;
-	do 
+	do
 	{
 		NPCTaskMap& npcMap = GetNPCTaskMap();
 		NPCTaskMap::iterator iter = npcMap.find(dwNPCID);
@@ -2641,7 +2642,7 @@ void CPlayerLogic::AddInRandNPCMap(unsigned long dwNPCID, short nTaskID)
 bool CPlayerLogic::IsAroundMe(CRegionCreature* pCre)
 {
 	bool bRet = false;
-	do 
+	do
 	{
 		if (NULL == pCre)
 		{
@@ -2656,9 +2657,9 @@ bool CPlayerLogic::IsAroundMe(CRegionCreature* pCre)
 			m_rPlayer.m_pos, DEFAULT_RANGE, NULL, PT_PATH, false);
 
 		int i;
-		for(i = 0; i < iCnt; i++)
+		for (i = 0; i < iCnt; i++)
 		{
-			if(pCre == pFindCreature[i])
+			if (pCre == pFindCreature[i])
 			{
 				bRet = true;
 				break;
@@ -2668,31 +2669,31 @@ bool CPlayerLogic::IsAroundMe(CRegionCreature* pCre)
 	return bRet;
 }
 
-void CPlayerLogic::OnSetItem(const SItemID &idS, const SItemID &idD)
+void CPlayerLogic::OnSetItem(const SItemID& idS, const SItemID& idD)
 {
 	OnItemChangeForTask(idS);
 	OnItemChangeForTask(idD);
 }
 
-void CPlayerLogic::OnRemoveItem(const SItemID &idS)
+void CPlayerLogic::OnRemoveItem(const SItemID& idS)
 {
 	OnItemChangeForTask(idS);
 }
 
-void CPlayerLogic::OnItemChangeForTask(const SItemID &idS)
+void CPlayerLogic::OnItemChangeForTask(const SItemID& idS)
 {
 	CRSLogicExt::ItemFinishTaskMap& finishMap = CRSLogicExt::GetRSLogicExt().GetItemFinishTaskMap();
 	unsigned long dwIndex = CItemManager::GetIndexFromType(idS.type);
-	do 
+	do
 	{
 		CRSLogicExt::ItemFinishTaskMap::iterator beg = finishMap.lower_bound(dwIndex);
 		CRSLogicExt::ItemFinishTaskMap::iterator end = finishMap.upper_bound(dwIndex);
 
 		CRSLogicExt::ItemFinishTaskMap::iterator iter;
-		for(iter = beg; iter != end; iter++)
+		for (iter = beg; iter != end; iter++)
 		{
-			STaskDesc *desc = g_TableTask.FindTask((*iter).second);
-			if(NULL == desc)
+			STaskDesc* desc = g_TableTask.FindTask((*iter).second);
+			if (NULL == desc)
 			{
 				continue;
 			}
@@ -2709,21 +2710,21 @@ int  CNpcTaskLogicExt::s_m_nCurIndex = 0;
 //char CNpcTaskLogicExt::s_m_TempBuff[CNpcTaskLogicExt::eTempBuffSize] = {0};
 G_MEMDEF(CNpcTaskLogicExt::s_m_DefTalkBuff, CNpcTaskLogicExt::eMaxTexSize)
 G_MEMDEF(CNpcTaskLogicExt::s_m_TempBuff, CNpcTaskLogicExt::eTempBuffSize)
-CNpcTaskLogicExt::CNpcTaskLogicExt(CRegionNpcTask& rNPC):m_rNPC(rNPC), m_pTalk(NULL), m_nTalkLen(0)
+CNpcTaskLogicExt::CNpcTaskLogicExt(CRegionNpcTask& rNPC) :m_rNPC(rNPC), m_pTalk(NULL), m_nTalkLen(0)
 {
 	S_MEMPROTECTOR(s_m_DefTalkBuff, eMaxTexSize, bMP1)
-	S_MEMPROTECTOR(s_m_TempBuff, eTempBuffSize, bMP2)
+		S_MEMPROTECTOR(s_m_TempBuff, eTempBuffSize, bMP2)
 
-	std::ifstream dataFile(m_rNPC.m_npcInfo->DefaultTalk.c_str(), std::ios::binary|std::ios::ate);
-	if( !dataFile.fail())
+		std::ifstream dataFile(m_rNPC.m_npcInfo->DefaultTalk.c_str(), std::ios::binary | std::ios::ate);
+	if (!dataFile.fail())
 	{
 		std::streampos size = dataFile.tellg();
-		dataFile.seekg (0, std::ios::beg);
+		dataFile.seekg(0, std::ios::beg);
 		dataFile.read(s_m_DefTalkBuff + s_m_nCurIndex, size);
 		s_m_DefTalkBuff[s_m_nCurIndex + size] = '\0';
 		const char* pF = "</body>";
 		char* pFind = strstr(s_m_DefTalkBuff + s_m_nCurIndex, pF);
-		if(NULL != pFind)
+		if (NULL != pFind)
 		{
 			m_pTalk = s_m_DefTalkBuff + s_m_nCurIndex;
 			m_nTalkLen = pFind - m_pTalk;
@@ -2734,11 +2735,11 @@ CNpcTaskLogicExt::CNpcTaskLogicExt(CRegionNpcTask& rNPC):m_rNPC(rNPC), m_pTalk(N
 	}
 
 }
-int CNpcTaskLogicExt::ShowTaskList(CRegionCreature *target)
+int CNpcTaskLogicExt::ShowTaskList(CRegionCreature* target)
 {
 	int nRet = 1;
 	CPlayerLogic::ForTaskType enType = m_rNPC.GetPlayerLogic()->GetForTaskType();
-	switch(enType)
+	switch (enType)
 	{
 	case CPlayerLogic::eRand:
 		nRet = ProcessRandTask(target);
@@ -2754,49 +2755,49 @@ int CNpcTaskLogicExt::ShowTaskList(CRegionCreature *target)
 	return nRet;
 }
 
-int CNpcTaskLogicExt::ProcessRandTask(CRegionCreature *target)
+int CNpcTaskLogicExt::ProcessRandTask(CRegionCreature* target)
 {
 	int nRet = 0;
 	const int c_nMaxTask = 20;
 	STaskDesc* DescBuff[c_nMaxTask];
 	int nNum = 0;
-	srand( (unsigned)time( NULL ) );
+	srand((unsigned)time(NULL));
 
 	do
 	{
 		nNum = GetCanFinishShowTask(target, DescBuff, c_nMaxTask, false);
-		if(nNum > 0)
+		if (nNum > 0)
 		{
 			int n = rand() % nNum;
 			target->FinishTask(DescBuff[n], 0, &m_rNPC);
-			if(!m_rNPC.IsCircleTaskNpc())
+			if (!m_rNPC.IsCircleTaskNpc())
 			{
 				m_rNPC.ShowHtmlDialog(target, DescBuff[n]->npc2AfterFinishTalk.c_str());
 			}
 			break;
 		}
 		nNum = GetDoingShowTask(target, DescBuff, c_nMaxTask, false);
-		if(nNum > 0)
+		if (nNum > 0)
 		{
 			int n = rand() % nNum;
 			nRet = ProcessDingTask(target, DescBuff[n]);
 			break;
 		}
 		nNum = GetAcceptShowTask(target, DescBuff, c_nMaxTask, false);
-		if(nNum > 0)
+		if (nNum > 0)
 		{
 			int n = rand() % nNum;
 			m_rNPC.ShowHtmlDialog(target, DescBuff[n]->npc1PreAcceptTalk.c_str());
 			break;
 		}
 		g_region->ShowHtmlDialog(&m_rNPC, target, R(RES_DEFAULT_TALK));
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
 
 
-int CNpcTaskLogicExt::DefTalkRand(std::ostrstream &os, CRegionCreature *target, int &nFinish, int &nDoing, int &nAccept, bool bWriteText)
+int CNpcTaskLogicExt::DefTalkRand(std::ostrstream& os, CRegionCreature* target, int& nFinish, int& nDoing, int& nAccept, bool bWriteText)
 {
 	int nRet = 0;
 	const int c_nMaxTask = 20;
@@ -2821,10 +2822,10 @@ int CNpcTaskLogicExt::DefTalkRand(std::ostrstream &os, CRegionCreature *target, 
 			break;
 		}
 		nNumCanFinish = GetCanFinishShowTask(target, DescBuff, c_nMaxTask, false);
-		if(nNumCanFinish > 0)
+		if (nNumCanFinish > 0)
 		{
 			int n = rand() % nNumCanFinish;
-			if(!m_rNPC.IsCircleTaskNpc())
+			if (!m_rNPC.IsCircleTaskNpc())
 			{
 				pShow = DescBuff[n];
 			}
@@ -2832,7 +2833,7 @@ int CNpcTaskLogicExt::DefTalkRand(std::ostrstream &os, CRegionCreature *target, 
 		else
 		{
 			nNumDoing = GetDoingShowTask(target, DescBuff, c_nMaxTask, false);
-			if(nNumDoing > 0)
+			if (nNumDoing > 0)
 			{
 				int n = rand() % nNumDoing;
 				pShow = DescBuff[n];
@@ -2840,12 +2841,12 @@ int CNpcTaskLogicExt::DefTalkRand(std::ostrstream &os, CRegionCreature *target, 
 			else
 			{
 				nNumCanAccept = GetAcceptShowTask(target, DescBuff, c_nMaxTask, false);
-				if(nNumCanAccept > 0)
+				if (nNumCanAccept > 0)
 				{
 					short wID = target->GetPlayerLogic()->FindInRandNPCMap(m_rNPC.m_npcInfo->Id);
 					bool bF = false;
 					int i;
-					for(i = 0; i < nNumCanAccept; i++)
+					for (i = 0; i < nNumCanAccept; i++)
 					{
 						if (wID == DescBuff[i]->id)
 						{
@@ -2868,7 +2869,7 @@ int CNpcTaskLogicExt::DefTalkRand(std::ostrstream &os, CRegionCreature *target, 
 		nDoing = nNumDoing;
 		nAccept = nNumCanAccept;
 
-		if(NULL != pShow)
+		if (NULL != pShow)
 		{
 			if (!bWriteText)
 			{
@@ -2880,7 +2881,7 @@ int CNpcTaskLogicExt::DefTalkRand(std::ostrstream &os, CRegionCreature *target, 
 			{
 				pChar = R(MSG_TASK_WHICHCANFINISH);//"可完成的任务";
 			}
-			else if(nNumDoing > 0)
+			else if (nNumDoing > 0)
 			{
 				pChar = R(MSG_TASK_WHICHONPROGRESS);//"正在做的任务";
 			}
@@ -2888,32 +2889,32 @@ int CNpcTaskLogicExt::DefTalkRand(std::ostrstream &os, CRegionCreature *target, 
 			{
 				pChar = R(MSG_TASK_WHICHCANACCEPT);//"可接受的任务";
 			}
-			os<<"<p><font color=\"#7FAF33\">"<<pChar<<"</font></p>"<<endl;
-			os<<"<p><a href=\"rs://_TA_"<<pShow->id<<"\">"<<pShow->name<<"</a></p>"<<endl;
+			os << "<p><font color=\"#7FAF33\">" << pChar << "</font></p>" << endl;
+			os << "<p><a href=\"rs://_TA_" << pShow->id << "\">" << pShow->name << "</a></p>" << endl;
 			nRet = 0;
 		}
 		else
 		{
 			nRet = 1;
 		}
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
-int CNpcTaskLogicExt::DefTalk(CRegionCreature *target)
+int CNpcTaskLogicExt::DefTalk(CRegionCreature* target)
 {
 	int nRet = 1;
 	//int nRetType = 0;
 	int nFinish = 0, nDoing = 0, nAccept = 0;
 	do
 	{
-		if(NULL == target)
+		if (NULL == target)
 		{
 			break;
 		}
 		char* pTalk = GetDefTalk();
 		int nLen = GetDefTalkLen();
-		if(NULL == pTalk || 1 > nLen)
+		if (NULL == pTalk || 1 > nLen)
 		{
 			break;
 		}
@@ -2921,7 +2922,7 @@ int CNpcTaskLogicExt::DefTalk(CRegionCreature *target)
 		int nT = 1;
 		std::ostrstream os(s_m_TempBuff + nLen, eTempBuffSize - nLen);
 		CPlayerLogic::ForTaskType enType = m_rNPC.GetPlayerLogic()->GetForTaskType();
-		switch(enType)
+		switch (enType)
 		{
 		case CPlayerLogic::eRand:
 			nT = DefTalkRand(os, target, nFinish, nDoing, nAccept);
@@ -2940,12 +2941,12 @@ int CNpcTaskLogicExt::DefTalk(CRegionCreature *target)
 		nRetType = 1;
 		break;
 		}*/
-		os<<"</body>"<<endl;
-		os<<"</html>"<<'\0';
+		os << "</body>" << endl;
+		os << "</html>" << '\0';
 		/*std::ofstream of("OK.text");
 		of<<s_m_TempBuff;*/
 		nRet = 0;
-	}while(false);
+	} while (false);
 	/*switch(nRetType)
 	{
 	case 0:
@@ -2978,7 +2979,7 @@ int CNpcTaskLogicExt::DefTalk(CRegionCreature *target)
 	return nRet;
 }
 
-int CNpcTaskLogicExt::SendList(CRegionCreature *target)
+int CNpcTaskLogicExt::SendList(CRegionCreature* target)
 {
 	int nRet = 1;
 	//const int c_nBuffSize = 2048;
@@ -2989,41 +2990,41 @@ int CNpcTaskLogicExt::SendList(CRegionCreature *target)
 	int nRetType = 0;
 	do
 	{
-		os<<"<html>"<<endl;
-		os<<"<head>"<<endl;
-		os<<"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gb2312\"/>"<<endl;
-		os<<"</head>"<<endl;
-		os<<"<body>"<<endl;
+		os << "<html>" << endl;
+		os << "<head>" << endl;
+		os << "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gb2312\"/>" << endl;
+		os << "</head>" << endl;
+		os << "<body>" << endl;
 		int nT = GetTaskList(os, target, true, nFinish, nDoing, nAccept);
-		if(0 != nT)
+		if (0 != nT)
 		{
 			nRetType = 1;
 			break;
 		}
 		nT = GetTaskList(os, target, false, nFinish, nDoing, nAccept);
-		if(0 != nT)
+		if (0 != nT)
 		{
 			nRetType = 1;
 			break;
 		}
 
 		nRet = 0;
-	}while(false);
-	switch(nRetType)
+	} while (false);
+	switch (nRetType)
 	{
 	case 0:
-		os<<"</body>"<<endl;
-		os<<"</html>"<<'\0';
+		os << "</body>" << endl;
+		os << "</html>" << '\0';
 		g_region->ShowHtmlDialog(&m_rNPC, target, s_m_TempBuff, NULL, NULL, 1);
 		break;
 	default:
-		g_region->ShowHtmlDialog(&m_rNPC,target,R(RES_DEFAULT_TALK));
+		g_region->ShowHtmlDialog(&m_rNPC, target, R(RES_DEFAULT_TALK));
 		break;
 	}
 	return nRet;
 }
 
-int CNpcTaskLogicExt::GetTaskList(std::ostrstream &os, CRegionCreature *target, bool bMain, int &nFinish, int &nDoing, int &nAccept, bool bWriteText)
+int CNpcTaskLogicExt::GetTaskList(std::ostrstream& os, CRegionCreature* target, bool bMain, int& nFinish, int& nDoing, int& nAccept, bool bWriteText)
 {
 	int nRet = 1;
 	const int c_nMaxTask = 20;
@@ -3049,7 +3050,7 @@ int CNpcTaskLogicExt::GetTaskList(std::ostrstream &os, CRegionCreature *target, 
 	nAccept = nCanAccept;
 	do
 	{
-		
+
 		const char* szCanFinish = R(MSG_TASK_WHICHCANFINISH);//"可完成的任务";
 		const char* szDoing = R(MSG_TASK_WHICHONPROGRESS);//"正在做的任务";
 		const char* szCanAccept = R(MSG_TASK_WHICHCANACCEPT);//"可接受的任务";
@@ -3061,113 +3062,113 @@ int CNpcTaskLogicExt::GetTaskList(std::ostrstream &os, CRegionCreature *target, 
 			break;
 		}
 
-		if(0 == nAllNum)
+		if (0 == nAllNum)
 		{
 			break;
 		}
 
 		int i;
-		if(0 != nCanFinish)
+		if (0 != nCanFinish)
 		{
-			os<<"<p><font color=\"#ABA615\">";
-			os<<szCanFinish;
+			os << "<p><font color=\"#ABA615\">";
+			os << szCanFinish;
 			if (bMain)
 			{
-				os<<"【主线】";
+				os << "【主线】";
 			}
-			os<<"</font></p>"<<endl;
-			for(i = 0; i < nCanFinish; i++)
+			os << "</font></p>" << endl;
+			for (i = 0; i < nCanFinish; i++)
 			{
-				os<<"<p><a href=\"rs://_TA_"<<CanFinish[i]->id<<"\">"<<CanFinish[i]->name<<"</a></p>"<<endl;
+				os << "<p><a href=\"rs://_TA_" << CanFinish[i]->id << "\">" << CanFinish[i]->name << "</a></p>" << endl;
 			}
-			os<<"<p>&nbsp;</p>"<<endl<<"<p>&nbsp;</p>"<<endl;
+			os << "<p>&nbsp;</p>" << endl << "<p>&nbsp;</p>" << endl;
 
 		}
 
-		if(0 != nCanAccept)
+		if (0 != nCanAccept)
 		{
-			os<<"<p><font color=\"#ABA615\">";
-			os<<szCanAccept;
+			os << "<p><font color=\"#ABA615\">";
+			os << szCanAccept;
 			if (bMain)
 			{
-				os<<"【主线】";
+				os << "【主线】";
 			}
-			os<<"</font></p>"<<endl;
-			for(i = 0; i < nCanAccept; i++)
+			os << "</font></p>" << endl;
+			for (i = 0; i < nCanAccept; i++)
 			{
-				os<<"<p><a href=\"rs://_TA_"<<CanAccept[i]->id<<"\">"<<CanAccept[i]->name<<"</a></p>"<<endl;
+				os << "<p><a href=\"rs://_TA_" << CanAccept[i]->id << "\">" << CanAccept[i]->name << "</a></p>" << endl;
 			}
 		}
 
-		if(0 != nDoing)
+		if (0 != nDoing)
 		{
-			os<<"<p><font color=\"#ABA615\">";
-			os<<szDoing;
+			os << "<p><font color=\"#ABA615\">";
+			os << szDoing;
 			if (bMain)
 			{
-				os<<"【主线】";
+				os << "【主线】";
 			}
-			os<<"</font></p>"<<endl;
-			for(i = 0; i < nDoing; i++)
+			os << "</font></p>" << endl;
+			for (i = 0; i < nDoing; i++)
 			{
-				os<<"<p><a href=\"rs://_TA_"<<Ding[i]->id<<"\">"<<Ding[i]->name<<"</a></p>"<<endl;
+				os << "<p><a href=\"rs://_TA_" << Ding[i]->id << "\">" << Ding[i]->name << "</a></p>" << endl;
 			}
-			os<<"<p>&nbsp;</p>"<<endl<<"<p>&nbsp;</p>"<<endl;
+			os << "<p>&nbsp;</p>" << endl << "<p>&nbsp;</p>" << endl;
 		}
 
 		nRet = 0;
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
-int CNpcTaskLogicExt::ProcessTask(CRegionCreature *target, const char *str)
+int CNpcTaskLogicExt::ProcessTask(CRegionCreature* target, const char* str)
 {
 	int nRet = 1;
 	do
 	{
-		if(NULL == str)
+		if (NULL == str)
 		{
 			break;
 		}
-		if('_' != str[0] || 'T' != str[1] || 'A' != str[2] || '_' != str[3])
+		if ('_' != str[0] || 'T' != str[1] || 'A' != str[2] || '_' != str[3])
 		{
 			break;
 		}
-		int nID = atoi(str+4);
+		int nID = atoi(str + 4);
 		STaskDesc* pDesc = FindTaskInFinish(nID);
-		if(NULL != pDesc)
+		if (NULL != pDesc)
 		{
 			nRet = ProcessFinishTask(target, pDesc);
-			if(0 == nRet)
+			if (0 == nRet)
 			{
 				break;
 			}
 		}
 
 		pDesc = FindTaskInAccept(nID);
-		if(NULL != pDesc)
+		if (NULL != pDesc)
 		{
 			nRet = ProcessAcceptTask(target, pDesc);
 			break;
 		}
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
-int CNpcTaskLogicExt::ProcessFinishTask(CRegionCreature *target, STaskDesc* pDesc)
+int CNpcTaskLogicExt::ProcessFinishTask(CRegionCreature* target, STaskDesc* pDesc)
 {
 	int nRet = 1;
 	do
 	{
-		if(NULL == pDesc)
+		if (NULL == pDesc)
 		{
 			break;
 		}
 		long ret = target->CheckTaskFinishState(pDesc, &m_rNPC, false);
 
-		if(TASK_STATE_CAN_FINISH == ret)
+		if (TASK_STATE_CAN_FINISH == ret)
 		{
-			if(!m_rNPC.IsCircleTaskNpc())
+			if (!m_rNPC.IsCircleTaskNpc())
 			{
 				//m_rNPC.ShowHtmlDialog(target, pDesc->npc2AfterFinishTalk.c_str());
 				g_region->ShowHtmlDialog(&m_rNPC, target, pDesc->npc2AfterFinishTalk.c_str(), NULL, NULL, 0, pDesc->id, 2);
@@ -3177,16 +3178,17 @@ int CNpcTaskLogicExt::ProcessFinishTask(CRegionCreature *target, STaskDesc* pDes
 			}
 			nRet = 0;
 			break;
-		}else if(TASK_STATE_DOING == ret)
+		}
+		else if (TASK_STATE_DOING == ret)
 		{
 			nRet = ProcessDingTask(target, pDesc);
 			break;
 		}
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
-int CNpcTaskLogicExt::ProcessAcceptTask(CRegionCreature *target, STaskDesc* pDesc)
+int CNpcTaskLogicExt::ProcessAcceptTask(CRegionCreature* target, STaskDesc* pDesc)
 {
 	int nRet = 1;
 	do
@@ -3194,7 +3196,7 @@ int CNpcTaskLogicExt::ProcessAcceptTask(CRegionCreature *target, STaskDesc* pDes
 		long ret;
 
 		ret = target->CheckTaskAcceptState(pDesc, &m_rNPC);
-		switch(ret)
+		switch (ret)
 		{
 		case TASK_STATE_DOING:
 			nRet = ProcessDingTask(target, pDesc);
@@ -3210,17 +3212,17 @@ int CNpcTaskLogicExt::ProcessAcceptTask(CRegionCreature *target, STaskDesc* pDes
 			break;
 		}
 
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
 bool CNpcTaskLogicExt::IsInFinishTask(short nID)
 {
 	bool bRet = false;
-	do 
+	do
 	{
 		STaskDesc* pTemp = NULL;
-		for(size_t i=0; i < m_rNPC.m_finishTask.size(); i++)
+		for (size_t i = 0; i < m_rNPC.m_finishTask.size(); i++)
 		{
 			pTemp = m_rNPC.m_finishTask[i];
 			if (NULL == pTemp)
@@ -3240,10 +3242,10 @@ bool CNpcTaskLogicExt::IsInFinishTask(short nID)
 bool CNpcTaskLogicExt::IsInAcceptTask(short nID)
 {
 	bool bRet = false;
-	do 
+	do
 	{
 		STaskDesc* pTemp = NULL;
-		for(size_t i=0; i < m_rNPC.m_acceptTask.size(); i++)
+		for (size_t i = 0; i < m_rNPC.m_acceptTask.size(); i++)
 		{
 			pTemp = m_rNPC.m_acceptTask[i];
 			if (NULL == pTemp)
@@ -3260,51 +3262,51 @@ bool CNpcTaskLogicExt::IsInAcceptTask(short nID)
 	return bRet;
 }
 
-int CNpcTaskLogicExt::ProcessDingTask(CRegionCreature *target, STaskDesc* pDesc)
+int CNpcTaskLogicExt::ProcessDingTask(CRegionCreature* target, STaskDesc* pDesc)
 {
 	int nRet = 1;
-	do 
+	do
 	{
 		STaskInfo* info = target->m_task.FindTask(pDesc->id);
-		if(NULL == info)
+		if (NULL == info)
 		{
 			break;
 		}
-		if(m_rNPC.IsCircleTaskNpc())
+		if (m_rNPC.IsCircleTaskNpc())
 		{
-			switch(pDesc->circleTask)
+			switch (pDesc->circleTask)
 			{
 			case TASK_CIRCLE_ITEM:
-				{
-					SItemBase* pBase= g_region->m_pItemManager->GetItemFromIndex(info->m_finditemID);						
-					g_region->ShowHtmlDialog(&m_rNPC, target, pDesc->npc1InTaskTalk.c_str(), "FIND_ITEM", (char*)pBase->name);
-				}
-				break;
+			{
+				SItemBase* pBase = g_region->m_pItemManager->GetItemFromIndex(info->m_finditemID);
+				g_region->ShowHtmlDialog(&m_rNPC, target, pDesc->npc1InTaskTalk.c_str(), "FIND_ITEM", (char*)pBase->name);
+			}
+			break;
 			case TASK_CIRCLE_FINDNPC:
-				{
-					SNpc* pNpc = g_TableNpc.FindNpc(info->m_findnpcID);
-					g_region->ShowHtmlDialog(&m_rNPC, target, pDesc->npc1InTaskTalk.c_str(), "FIND_NPC", (char*)pNpc->Name.c_str());
-				}
-				break;
+			{
+				SNpc* pNpc = g_TableNpc.FindNpc(info->m_findnpcID);
+				g_region->ShowHtmlDialog(&m_rNPC, target, pDesc->npc1InTaskTalk.c_str(), "FIND_NPC", (char*)pNpc->Name.c_str());
+			}
+			break;
 			case TASK_CIRCLE_BATTLE:
-				{
-					SNpc* pNpc = g_TableNpc.FindNpc(info->m_killmonsterID);
-					g_region->ShowHtmlDialog(&m_rNPC, target, pDesc->npc1InTaskTalk.c_str(), "KILL_MONSTER", (char*)pNpc->Name.c_str());
-				}
-				break;
+			{
+				SNpc* pNpc = g_TableNpc.FindNpc(info->m_killmonsterID);
+				g_region->ShowHtmlDialog(&m_rNPC, target, pDesc->npc1InTaskTalk.c_str(), "KILL_MONSTER", (char*)pNpc->Name.c_str());
+			}
+			break;
 			default:
 				break;
 			}
 		}
 		else
 		{
-			STaskDesc *pDesc = info->GetDesc();
+			STaskDesc* pDesc = info->GetDesc();
 			if (NULL == pDesc)
 			{
 				break;
 			}
 			char cType = 4;
-			if(pDesc->IsMainTask())
+			if (pDesc->IsMainTask())
 			{
 				cType = 3;
 			}
@@ -3331,13 +3333,13 @@ STaskDesc* CNpcTaskLogicExt::FindTaskInAccept(int nID)
 	STaskDesc* pRet = NULL;
 	short sID = (short)(nID);
 
-	for(size_t i=0; i<m_rNPC.m_acceptTask.size(); i++)
+	for (size_t i = 0; i < m_rNPC.m_acceptTask.size(); i++)
 	{
-		if(NULL == m_rNPC.m_acceptTask[i])
+		if (NULL == m_rNPC.m_acceptTask[i])
 		{
 			continue;
 		}
-		if(m_rNPC.m_acceptTask[i]->id == sID)
+		if (m_rNPC.m_acceptTask[i]->id == sID)
 		{
 			pRet = m_rNPC.m_acceptTask[i];
 			return pRet;
@@ -3351,13 +3353,13 @@ STaskDesc* CNpcTaskLogicExt::FindTaskInFinish(int nID)
 {
 	STaskDesc* pRet = NULL;
 	short sID = (short)(nID);
-	for(size_t i=0; i<m_rNPC.m_finishTask.size(); i++)
+	for (size_t i = 0; i < m_rNPC.m_finishTask.size(); i++)
 	{
-		if(NULL == m_rNPC.m_finishTask[i])
+		if (NULL == m_rNPC.m_finishTask[i])
 		{
 			continue;
 		}
-		if(m_rNPC.m_finishTask[i]->id == sID)
+		if (m_rNPC.m_finishTask[i]->id == sID)
 		{
 			pRet = m_rNPC.m_finishTask[i];
 			return pRet;
@@ -3372,7 +3374,7 @@ CNpcTaskLogicExt::SDSet& CNpcTaskLogicExt::GetSDSet()
 	return m_SDSet;
 }
 
-int CNpcTaskLogicExt::GetCanFinishShowTask(CRegionCreature *target, STaskDesc** ppBuff, int nBufNum, bool bMain)
+int CNpcTaskLogicExt::GetCanFinishShowTask(CRegionCreature* target, STaskDesc** ppBuff, int nBufNum, bool bMain)
 {
 	int nRet = 0;
 	long ret;
@@ -3380,7 +3382,7 @@ int CNpcTaskLogicExt::GetCanFinishShowTask(CRegionCreature *target, STaskDesc** 
 	SDSet& sd = GetSDSet();
 	STaskDesc* pTemp = NULL;
 
-	for(size_t i=0; i<m_rNPC.m_finishTask.size(); i++)
+	for (size_t i = 0; i < m_rNPC.m_finishTask.size(); i++)
 	{
 		pTemp = m_rNPC.m_finishTask[i];
 		if (NULL == pTemp)
@@ -3397,28 +3399,28 @@ int CNpcTaskLogicExt::GetCanFinishShowTask(CRegionCreature *target, STaskDesc** 
 			bOK = pTemp->m_TaskGroupID >= 40;
 		}
 
-		if(!bOK)
+		if (!bOK)
 		{
 			continue;
 		}
 
 		ret = target->GetPlayerLogic()->CanFinishState(m_rNPC.m_finishTask[i], &m_rNPC);
-		if(ret == TASK_STATE_CAN_FINISH)
+		if (ret == TASK_STATE_CAN_FINISH)
 		{
 			/*if(!m_rNPC.IsCircleTaskNpc())
 			{*/
-				if(nRet < nBufNum)
-				{
-					ppBuff[nRet++] = pTemp;
-					sd.insert(pTemp);
-				}
+			if (nRet < nBufNum)
+			{
+				ppBuff[nRet++] = pTemp;
+				sd.insert(pTemp);
+			}
 			//}
 		}
 	}
 	return nRet;
 }
 
-int CNpcTaskLogicExt::GetDoingShowTask(CRegionCreature *target, STaskDesc** ppBuff, int nBufNum, bool bMain)
+int CNpcTaskLogicExt::GetDoingShowTask(CRegionCreature* target, STaskDesc** ppBuff, int nBufNum, bool bMain)
 {
 	int nRet = 0;
 	long ret;
@@ -3427,7 +3429,7 @@ int CNpcTaskLogicExt::GetDoingShowTask(CRegionCreature *target, STaskDesc** ppBu
 	SDSet::iterator iter;
 	STaskDesc* pTemp = NULL;
 
-	for(size_t i=0; i < m_rNPC.m_finishTask.size(); i++)
+	for (size_t i = 0; i < m_rNPC.m_finishTask.size(); i++)
 	{
 		pTemp = m_rNPC.m_finishTask[i];
 		if (NULL == pTemp)
@@ -3443,21 +3445,21 @@ int CNpcTaskLogicExt::GetDoingShowTask(CRegionCreature *target, STaskDesc** ppBu
 		{
 			bOK = pTemp->m_TaskGroupID >= 40;
 		}
-		if(!bOK)
+		if (!bOK)
 		{
 			continue;
 		}
 		iter = sd.find(pTemp);
-		if(sd.end() != iter)
+		if (sd.end() != iter)
 		{
 			continue;
 		}
 		ret = target->GetPlayerLogic()->CanFinishState(pTemp, &m_rNPC);
-		if(ret != TASK_STATE_DOING)
+		if (ret != TASK_STATE_DOING)
 		{
 			continue;
 		}
-		if(nRet < nBufNum)
+		if (nRet < nBufNum)
 		{
 			sd.insert(pTemp);
 			ppBuff[nRet++] = pTemp;
@@ -3465,7 +3467,7 @@ int CNpcTaskLogicExt::GetDoingShowTask(CRegionCreature *target, STaskDesc** ppBu
 	}
 
 	// accept task list 
-	for(size_t i=0; i<m_rNPC.m_acceptTask.size(); i++)
+	for (size_t i = 0; i < m_rNPC.m_acceptTask.size(); i++)
 	{
 		pTemp = m_rNPC.m_acceptTask[i];
 		if (NULL == pTemp)
@@ -3481,22 +3483,22 @@ int CNpcTaskLogicExt::GetDoingShowTask(CRegionCreature *target, STaskDesc** ppBu
 		{
 			bOK = pTemp->m_TaskGroupID >= 40;
 		}
-		if(!bOK)
+		if (!bOK)
 		{
 			continue;
 		}
 
 		iter = sd.find(pTemp);
-		if(sd.end() != iter)
+		if (sd.end() != iter)
 		{
 			continue;
 		}
 
 		ret = target->CheckTaskAcceptState(pTemp, &m_rNPC);
 
-		if(ret == TASK_STATE_DOING)
+		if (ret == TASK_STATE_DOING)
 		{
-			if(nRet < nBufNum)
+			if (nRet < nBufNum)
 			{
 				ppBuff[nRet++] = pTemp;
 			}
@@ -3506,16 +3508,16 @@ int CNpcTaskLogicExt::GetDoingShowTask(CRegionCreature *target, STaskDesc** ppBu
 	return nRet;
 }
 
-int CNpcTaskLogicExt::GetAcceptShowTask(CRegionCreature *target, STaskDesc** ppBuff, int nBufNum, bool bMain)
+int CNpcTaskLogicExt::GetAcceptShowTask(CRegionCreature* target, STaskDesc** ppBuff, int nBufNum, bool bMain)
 {
 	int nRet = 0;
 	long ret;
 	STaskDesc* pTemp = NULL;
 	SDSet& sd = GetSDSet();
 	SDSet::iterator iter;
-	do 
+	do
 	{
-		for(size_t i=0; i<m_rNPC.m_acceptTask.size(); i++)
+		for (size_t i = 0; i < m_rNPC.m_acceptTask.size(); i++)
 		{
 			pTemp = m_rNPC.m_acceptTask[i];
 			if (NULL == pTemp)
@@ -3542,7 +3544,7 @@ int CNpcTaskLogicExt::GetAcceptShowTask(CRegionCreature *target, STaskDesc** ppB
 			{
 				bOK = pTemp->m_TaskGroupID >= 40;
 			}
-			if(!bOK)
+			if (!bOK)
 			{
 				continue;
 			}
@@ -3552,15 +3554,15 @@ int CNpcTaskLogicExt::GetAcceptShowTask(CRegionCreature *target, STaskDesc** ppB
 				continue;
 			}
 			iter = sd.find(pTemp);
-			if(sd.end() != iter)
+			if (sd.end() != iter)
 			{
 				continue;
 			}
 			ret = target->CheckTaskAcceptState(m_rNPC.m_acceptTask[i], &m_rNPC);
 
-			if(ret == TASK_STATE_CAN_ACCEPT)
+			if (ret == TASK_STATE_CAN_ACCEPT)
 			{
-				if(nRet < nBufNum)
+				if (nRet < nBufNum)
 				{
 					ppBuff[nRet++] = pTemp;
 				}
@@ -3571,30 +3573,30 @@ int CNpcTaskLogicExt::GetAcceptShowTask(CRegionCreature *target, STaskDesc** ppB
 	return nRet;
 }
 
-int CNpcTaskLogicExt::GetShowTask(CRegionCreature *target, STaskDesc** ppBuff, int nBufNum)
+int CNpcTaskLogicExt::GetShowTask(CRegionCreature* target, STaskDesc** ppBuff, int nBufNum)
 {
 	int nRet = 0;
 	long ret;
-	for(size_t i=0; i<m_rNPC.m_finishTask.size(); i++)
+	for (size_t i = 0; i < m_rNPC.m_finishTask.size(); i++)
 	{
 		ret = target->GetPlayerLogic()->CanFinishState(m_rNPC.m_finishTask[i], &m_rNPC);
-		if(ret == TASK_STATE_CAN_FINISH)
+		if (ret == TASK_STATE_CAN_FINISH)
 		{
-			if(!m_rNPC.IsCircleTaskNpc())
+			if (!m_rNPC.IsCircleTaskNpc())
 			{
-				if(nRet < nBufNum)
+				if (nRet < nBufNum)
 				{
 					ppBuff[nRet++] = m_rNPC.m_finishTask[i];
 				}
 			}
 		}
 	}
-	for(size_t i=0; i < m_rNPC.m_finishTask.size(); i++)
+	for (size_t i = 0; i < m_rNPC.m_finishTask.size(); i++)
 	{
 		ret = target->GetPlayerLogic()->CanFinishState(m_rNPC.m_finishTask[i], &m_rNPC);
-		if(ret == TASK_STATE_DOING)
+		if (ret == TASK_STATE_DOING)
 		{
-			if(nRet < nBufNum)
+			if (nRet < nBufNum)
 			{
 				ppBuff[nRet++] = m_rNPC.m_finishTask[i];
 			}
@@ -3602,26 +3604,26 @@ int CNpcTaskLogicExt::GetShowTask(CRegionCreature *target, STaskDesc** ppBuff, i
 	}
 
 	// accept task list 
-	for(size_t i=0; i<m_rNPC.m_acceptTask.size(); i++)
+	for (size_t i = 0; i < m_rNPC.m_acceptTask.size(); i++)
 	{
 		ret = target->CheckTaskAcceptState(m_rNPC.m_acceptTask[i], &m_rNPC);
 
-		if(ret == TASK_STATE_DOING)
+		if (ret == TASK_STATE_DOING)
 		{
-			if(nRet < nBufNum)
+			if (nRet < nBufNum)
 			{
 				ppBuff[nRet++] = m_rNPC.m_acceptTask[i];
 			}
 		}
 	}
 
-	for(size_t i=0; i<m_rNPC.m_acceptTask.size(); i++)
+	for (size_t i = 0; i < m_rNPC.m_acceptTask.size(); i++)
 	{
 		ret = target->CheckTaskAcceptState(m_rNPC.m_acceptTask[i], &m_rNPC);
 
-		if(ret == TASK_STATE_CAN_ACCEPT)
+		if (ret == TASK_STATE_CAN_ACCEPT)
 		{
-			if(nRet < nBufNum)
+			if (nRet < nBufNum)
 			{
 				ppBuff[nRet++] = m_rNPC.m_acceptTask[i];
 			}
@@ -3640,35 +3642,35 @@ int	CNpcTaskLogicExt::GetDefTalkLen()
 	return m_nTalkLen;
 }
 
-void CNpcTaskLogicExt::AcceptTaskByID(CRegionCreature *target, short nID)
+void CNpcTaskLogicExt::AcceptTaskByID(CRegionCreature* target, short nID)
 {
 
 	do
 	{
-		if(NULL == target)
+		if (NULL == target)
 		{
 			break;
 		}
 		STaskDesc* pDesc = FindTaskInAccept(nID);
-		if(NULL == pDesc)
+		if (NULL == pDesc)
 		{
 			break;
 		}
-		if(target->CanAcceptTask(pDesc, true, &m_rNPC))
+		if (target->CanAcceptTask(pDesc, true, &m_rNPC))
 		{
 			//ERR1("AcceptTaskByID %s\n", target->m_core.Name.c_str());
 			target->AcceptTask(pDesc, &m_rNPC);
-			
+
 			switch (pDesc->id)
 			{
 			case 11001:
 				//if (target->GetPlayerLogic()->IsHaveItem(16000))
-				{
-					target->GetPlayerLogic()->GetCNewPlayerGuide()->UsePet1();
-				}
-				break;
+			{
+				target->GetPlayerLogic()->GetCNewPlayerGuide()->UsePet1();
+			}
+			break;
 			case 11005:
-				target->GetPlayerLogic()->GetCNewPlayerGuide()->FaBao1 ();
+				target->GetPlayerLogic()->GetCNewPlayerGuide()->FaBao1();
 				break;
 			default:
 				break;
@@ -3680,31 +3682,31 @@ void CNpcTaskLogicExt::AcceptTaskByID(CRegionCreature *target, short nID)
 		//{
 		//	//m_rNPC.ShowHtmlDialog(target,link);
 		//}
-	}while(false);
+	} while (false);
 }
 
-void CNpcTaskLogicExt::FinishTaskByID(CRegionCreature *target, short nID, long nIndex)
+void CNpcTaskLogicExt::FinishTaskByID(CRegionCreature* target, short nID, long nIndex)
 {
 	do
 	{
-		if(NULL == target)
+		if (NULL == target)
 		{
 			break;
 		}
 		STaskDesc* pDesc = FindTaskInFinish(nID);
-		if(NULL == pDesc)
+		if (NULL == pDesc)
 		{
 			break;
 		}
 		target->CheckTaskFinishState(pDesc, &m_rNPC, true, nIndex);
-	}while(false);
+	} while (false);
 }
 
 ////////////////////////
 //class CMonsterLogicExt
 ///////////////////////
-CMonsterLogicExt::CMonsterLogicExt(CRegionCreature& rPlayer):m_rPlayer(rPlayer), m_dwGetSkinID(eEmptyDBID), m_dwKillerDBID(eEmptyDBID),
-m_dwGetMineID(eEmptyDBID), m_dwMineTime(0), m_dwGetMedicineID(eEmptyDBID), m_dwMedicineTime(0), 
+CMonsterLogicExt::CMonsterLogicExt(CRegionCreature& rPlayer) :m_rPlayer(rPlayer), m_dwGetSkinID(eEmptyDBID), m_dwKillerDBID(eEmptyDBID),
+m_dwGetMineID(eEmptyDBID), m_dwMineTime(0), m_dwGetMedicineID(eEmptyDBID), m_dwMedicineTime(0),
 m_nLifeSkillExp(0), m_dwCloseTime(0), m_dwEraseTime(0), m_dwSkinTime(0)
 {
 }
@@ -3718,22 +3720,22 @@ EItemSelectionLevel GetSelLevel(int lev);
 
 
 //Tianh  掉落
-CPlayerLogic::LiveType CMonsterLogicExt::DropItemS(CRegionCreature *killer, CRegionSceneFB* pFB)
+CPlayerLogic::LiveType CMonsterLogicExt::DropItemS(CRegionCreature* killer, CRegionSceneFB* pFB)
 {
 	CPlayerLogic::LiveType nRet = CPlayerLogic::eDead;
 	ItemList& il = GetItemList();
 	SItemID item;
-	CRegionCreature *pRelKiller = NULL;
+	CRegionCreature* pRelKiller = NULL;
 	int nRetType = 1;
 	do
 	{
-		if(NULL == killer)
+		if (NULL == killer)
 		{
 			nRetType = 1;
 			break;
 		}
 
-		if(killer->IsUserPet() || killer->IsCallNpc())
+		if (killer->IsUserPet() || killer->IsCallNpc())
 		{
 			pRelKiller = killer->m_master;
 			if (NULL == pRelKiller)
@@ -3751,9 +3753,9 @@ CPlayerLogic::LiveType CMonsterLogicExt::DropItemS(CRegionCreature *killer, CReg
 		il.clear();
 		//bool bFirstDropItem = true;
 
-		for(int i=0; i<m_rPlayer.m_npcInfo->ItemNum; i++)
+		for (int i = 0; i < m_rPlayer.m_npcInfo->ItemNum; i++)
 		{
-			if(m_rPlayer.m_npcInfo->ItemDropRate[i] < 1)
+			if (m_rPlayer.m_npcInfo->ItemDropRate[i] < 1)
 			{
 				double dR = m_rPlayer.m_npcInfo->ItemDropRate[i] *
 					g_cfg.game.item_drop_rate *
@@ -3764,14 +3766,14 @@ CPlayerLogic::LiveType CMonsterLogicExt::DropItemS(CRegionCreature *killer, CReg
 				}
 			}
 			EItemColor color = ItemColor_White;
-			if(GetProb(m_rPlayer.m_npcInfo->ItemGreenRate*g_cfg.game.item_green_rate))
+			if (GetProb(m_rPlayer.m_npcInfo->ItemGreenRate * g_cfg.game.item_green_rate))
 			{
 				color = ItemColor_Green;
-				if(GetProb(m_rPlayer.m_npcInfo->ItemBlueRate*g_cfg.game.item_blue_rate))	
+				if (GetProb(m_rPlayer.m_npcInfo->ItemBlueRate * g_cfg.game.item_blue_rate))
 				{
 					color = ItemColor_Blue;
 					// golden item
-					if(GetProb(m_rPlayer.m_npcInfo->ItemGoldRate))	
+					if (GetProb(m_rPlayer.m_npcInfo->ItemGoldRate))
 					{
 						color = ItemColor_Golden;
 					}
@@ -3779,38 +3781,38 @@ CPlayerLogic::LiveType CMonsterLogicExt::DropItemS(CRegionCreature *killer, CReg
 			}
 
 			EItemBind bindType = IB_NotBind;
-			switch(m_rPlayer.m_npcInfo->ItemBindType)
+			switch (m_rPlayer.m_npcInfo->ItemBindType)
 			{
-			case 0: bindType = IB_NotBind;break;
-			case 1: bindType = IB_BindWhenEquip;break;
-			case 2: bindType = IB_BindWhenPick;break;
+			case 0: bindType = IB_NotBind; break;
+			case 1: bindType = IB_BindWhenEquip; break;
+			case 2: bindType = IB_BindWhenPick; break;
 			case 3: //高级模式：金装，蓝装拾取绑定，其他不绑定
+			{
+				if (color == ItemColor_Golden)
 				{
-					if(color == ItemColor_Golden)
-					{
-						bindType = IB_BindWhenPick;
-					}
-					else if(color == ItemColor_Blue)
-					{
-						if(GetProb(0.2)) bindType = IB_NotBind;
-						else bindType = IB_BindWhenPick;
-
-					}
-					break;
+					bindType = IB_BindWhenPick;
 				}
+				else if (color == ItemColor_Blue)
+				{
+					if (GetProb(0.2)) bindType = IB_NotBind;
+					else bindType = IB_BindWhenPick;
+
+				}
+				break;
+			}
 			default: bindType = IB_NotBind;
 			}
 
-			item = g_region->m_pItemManager->CreateItem(m_rPlayer.m_npcInfo->Item[i],color,0,bindType);
+			item = g_region->m_pItemManager->CreateItem(m_rPlayer.m_npcInfo->Item[i], color, 0, bindType);
 			//if(!ItemCanNpcTrade(item.type)) continue;
-			if(ItemID_IsValid(item) && !ItemIsPet(item))
+			if (ItemID_IsValid(item) && !ItemIsPet(item))
 			{
 				il.push_back(item);
 			}
 		}
-		if(0 != m_rPlayer.m_npcInfo->dwSkinID)
+		if (0 != m_rPlayer.m_npcInfo->dwSkinID)
 		{
-			m_SkinItem = g_region->m_pItemManager->CreateItem(m_rPlayer.m_npcInfo->dwSkinID, 
+			m_SkinItem = g_region->m_pItemManager->CreateItem(m_rPlayer.m_npcInfo->dwSkinID,
 				ItemColor_White, 0, IB_NotBind);
 			if (ItemIsPet(m_SkinItem)) ItemID_SetInvalid(m_SkinItem);
 		}
@@ -3828,26 +3830,26 @@ CPlayerLogic::LiveType CMonsterLogicExt::DropItemS(CRegionCreature *killer, CReg
 			}
 		}*/
 
-		if(NULL == pFB)
+		if (NULL == pFB)
 		{
 			nRetType = 0;
 			break;
 		}
 
-		static int blueNum=0,greenNum=0,dropNum=0,goldNum=0;
-		SNpc *info = m_rPlayer.m_npcInfo; 
-		if(NULL == info) 
+		static int blueNum = 0, greenNum = 0, dropNum = 0, goldNum = 0;
+		SNpc* info = m_rPlayer.m_npcInfo;
+		if (NULL == info)
 		{
 			nRetType = 0;
 			break;
 		}
 
-		for(int i=0; i<info->RandItemNum; i++)
+		for (int i = 0; i < info->RandItemNum; i++)
 		{
 			/*if(!GetProb(info->RandItemDropRate[i])) continue;*/
-			if(info->RandItemDropRate[i] < 1 &&
-				!GetProb(info->RandItemDropRate[i]*g_cfg.game.item_drop_rate* 
-				ComputeGoldRate(pRelKiller->m_core.Lev, m_rPlayer.m_core.Lev)))
+			if (info->RandItemDropRate[i] < 1 &&
+				!GetProb(info->RandItemDropRate[i] * g_cfg.game.item_drop_rate *
+					ComputeGoldRate(pRelKiller->m_core.Lev, m_rPlayer.m_core.Lev)))
 			{
 				continue;
 			}
@@ -3862,26 +3864,26 @@ CPlayerLogic::LiveType CMonsterLogicExt::DropItemS(CRegionCreature *killer, CReg
 			//}
 			//
 
-			if(pFB->m_curDif == 4)
+			if (pFB->m_curDif == 4)
 			{
 				goldRate = 0.02;
 			}
 
 			//添加金装掉落的等级衰减
 			goldRate = goldRate * (pFB->m_curLev + 20) / pRelKiller->m_core.Lev;
-			if(goldRate > 0.1) goldRate = 0.1;
-			if(goldRate < 0) goldRate = 0;
+			if (goldRate > 0.1) goldRate = 0.1;
+			if (goldRate < 0) goldRate = 0;
 
 			EItemColor color = ItemColor_White;
 
-			if(info->Boss)
+			if (info->Boss)
 			{
 				//blueRate *= 5;
 				//goldRate = 0.1;
 
 				/*EItemColor */color = ItemColor_Green; //这里设置BOSS的掉落最低是绿装
 
-				if(GetProb(info->ItemBlueRate*g_cfg.game.item_blue_rate))
+				if (GetProb(info->ItemBlueRate * g_cfg.game.item_blue_rate))
 				{
 					color = ItemColor_Blue;
 					if (GetProb(info->ItemGoldRate))
@@ -3893,14 +3895,14 @@ CPlayerLogic::LiveType CMonsterLogicExt::DropItemS(CRegionCreature *killer, CReg
 			}
 			else
 			{
-				if(GetProb(info->ItemGreenRate*g_cfg.game.item_green_rate))
+				if (GetProb(info->ItemGreenRate * g_cfg.game.item_green_rate))
 				{
 					color = ItemColor_Green;
-					if(GetProb(info->ItemBlueRate*g_cfg.game.item_blue_rate))	
+					if (GetProb(info->ItemBlueRate * g_cfg.game.item_blue_rate))
 					{
 						color = ItemColor_Blue;
 						// golden item
-						if(GetProb(info->ItemGoldRate))	
+						if (GetProb(info->ItemGoldRate))
 						{
 							color = ItemColor_Golden;
 						}
@@ -3926,63 +3928,63 @@ CPlayerLogic::LiveType CMonsterLogicExt::DropItemS(CRegionCreature *killer, CReg
 			//}
 
 			EItemBind bindType = IB_NotBind;
-			switch(info->ItemBindType)
+			switch (info->ItemBindType)
 			{
-			case 0: bindType = IB_NotBind;break;
-			case 1: bindType = IB_BindWhenEquip;break;
-			case 2: bindType = IB_BindWhenPick;break;
+			case 0: bindType = IB_NotBind; break;
+			case 1: bindType = IB_BindWhenEquip; break;
+			case 2: bindType = IB_BindWhenPick; break;
 			case 3: //高级模式：金装，蓝装拾取绑定，其他不绑定
+			{
+				if (color == ItemColor_Golden)
 				{
-					if(color == ItemColor_Golden)
-					{
-						bindType = IB_BindWhenPick;
-					}
-					else if(color == ItemColor_Blue)
-					{
-						if(GetProb(0.2)) bindType = IB_NotBind;
-						else bindType = IB_BindWhenPick;
-
-					}
-					break;
+					bindType = IB_BindWhenPick;
 				}
+				else if (color == ItemColor_Blue)
+				{
+					if (GetProb(0.2)) bindType = IB_NotBind;
+					else bindType = IB_BindWhenPick;
+
+				}
+				break;
+			}
 			default: bindType = IB_NotBind;
 			}
 			//
 
 			SItemSelector sel;
 			sel.level = GetSelLevel(dropItemLev);
-			sel.type  = (EItemSelectionType)info->RandItem[i];
+			sel.type = (EItemSelectionType)info->RandItem[i];
 			vector<DWORD> id;
-			g_region->m_pItemManager->m_pSelectionTable->FindSelection(sel,id);
+			g_region->m_pItemManager->m_pSelectionTable->FindSelection(sel, id);
 			long nSize = (long)(id.size());
-			if(nSize == 0) continue;
-			long idx = GetRand(nSize-1,0);
+			if (nSize == 0) continue;
+			long idx = GetRand(nSize - 1, 0);
 
 			item = g_region->m_pItemManager->CreateItem(id[idx], color, 0, bindType);
 
-			if(ItemID_IsValid(item) && !ItemIsPet(item))
+			if (ItemID_IsValid(item) && !ItemIsPet(item))
 			{
 				if (ItemIsBlue(item))
 				{
 					std::string itemString;
 					item.SaveToReadableString(g_region->m_pItemManager, itemString);
 					ERR1("FB drop a BLUE item: item=%s\n", itemString.c_str());
-					ERR4("FB item drop=%d,gold=%d,blue=%d,green=%d\n",dropNum,goldNum,blueNum,greenNum);
+					ERR4("FB item drop=%d,gold=%d,blue=%d,green=%d\n", dropNum, goldNum, blueNum, greenNum);
 				}
-				else if(ItemIsGolden(item))
+				else if (ItemIsGolden(item))
 				{
 					std::string itemString;
 					item.SaveToReadableString(g_region->m_pItemManager, itemString);
 					ERR1("FB drop a GOLD item: item=%s\n", itemString.c_str());
-					ERR4("FB item drop=%d,gold=%d,blue=%d,green=%d\n",dropNum,goldNum,blueNum,greenNum);
+					ERR4("FB item drop=%d,gold=%d,blue=%d,green=%d\n", dropNum, goldNum, blueNum, greenNum);
 				}
 
 				il.push_back(item);
 			}
 		}
 		nRetType = 0;
-	}while(false);
-	switch(nRetType)
+	} while (false);
+	switch (nRetType)
 	{
 	case 0:
 		//m_pKiller = killer;
@@ -4007,15 +4009,15 @@ CPlayerLogic::LiveType CMonsterLogicExt::DropItemS(CRegionCreature *killer, CReg
 	return nRet;
 }
 
-void CMonsterLogicExt::UpdateTaskKillMonsterNum(CRegionCreature *killer)
+void CMonsterLogicExt::UpdateTaskKillMonsterNum(CRegionCreature* killer)
 {
 	const int c_BufNum = 128;
-	
-	STaskDesc *pBuff[c_BufNum];
+
+	STaskDesc* pBuff[c_BufNum];
 	const int c_nMaxTeamNum = 10;
 	//CRegionCreature *pCreBuff[c_nMaxTeamNum];
 
-	do 
+	do
 	{
 		if (NULL == killer)
 		{
@@ -4023,21 +4025,21 @@ void CMonsterLogicExt::UpdateTaskKillMonsterNum(CRegionCreature *killer)
 		}
 		int nNum = CRSLogicExt::GetRSLogicExt().GetNPCTaskData(m_rPlayer.m_npcInfo->Id, pBuff, c_BufNum);
 		int i;
-		for(i = 0; i < nNum; i++)
+		for (i = 0; i < nNum; i++)
 		{
 			if (NULL == pBuff[i])
 			{
 				continue;
 			}
-			if(NULL == killer->m_pTeam)
+			if (NULL == killer->m_pTeam)
 			{
 				UpdateTaskKillMonsterNumOnce(killer, pBuff[i]->id);
 				continue;
 			}
 
-			CTeamData &td = killer->m_pTeam->mData;
+			CTeamData& td = killer->m_pTeam->mData;
 			int nTeamNum = td.Size();
-			if(0 == nTeamNum)
+			if (0 == nTeamNum)
 			{
 				UpdateTaskKillMonsterNumOnce(killer, pBuff[i]->id);
 				continue;
@@ -4046,17 +4048,17 @@ void CMonsterLogicExt::UpdateTaskKillMonsterNum(CRegionCreature *killer)
 			for (int j = 0; j < nTeamNum; j++)
 			{
 				CRegionUser* pUser = g_region->FindUser(pData[j].mDBID);
-				if(NULL == pUser)
+				if (NULL == pUser)
 				{
 					continue;
 				}
-				CRegionCreature *tmp = pUser->m_dummy;
-				if(NULL == tmp)
+				CRegionCreature* tmp = pUser->m_dummy;
+				if (NULL == tmp)
 				{
 					continue;
 				}
-				
-				if(tmp->Distance(m_rPlayer.m_pos) > 800)
+
+				if (tmp->Distance(m_rPlayer.m_pos) > 800)
 				{
 					continue;
 				}
@@ -4066,18 +4068,18 @@ void CMonsterLogicExt::UpdateTaskKillMonsterNum(CRegionCreature *killer)
 	} while (false);
 }
 
-void CMonsterLogicExt::UpdateTaskKillMonsterNumOnce(CRegionCreature *pWho, int nTaskID)
+void CMonsterLogicExt::UpdateTaskKillMonsterNumOnce(CRegionCreature* pWho, int nTaskID)
 {
-	do 
+	do
 	{
 		const unsigned long c_dwMaxKill = 63;
-		STaskInfo *info = pWho->m_task.FindTask(nTaskID);
-		if(NULL == info)
+		STaskInfo* info = pWho->m_task.FindTask(nTaskID);
+		if (NULL == info)
 		{
 			break;
 		}
 
-		if(!info->FIsDoing())
+		if (!info->FIsDoing())
 		{
 			break;
 		}
@@ -4087,7 +4089,7 @@ void CMonsterLogicExt::UpdateTaskKillMonsterNumOnce(CRegionCreature *pWho, int n
 			break;
 		}
 		info->SetCurKillMonsterNum(dwNum + 1);
-		STaskDesc *pDesc = info->GetDesc();
+		STaskDesc* pDesc = info->GetDesc();
 		if (NULL == pDesc)
 		{
 			break;
@@ -4111,7 +4113,7 @@ CPlayerLogic::LiveType CMonsterLogicExt::DropMineMedicineS(/*CRegionCreature *ki
 		int nR[MAX_NPC_DROP_ITEM];
 		int nS = 0;
 
-		for(i = 0; i < m_rPlayer.m_npcInfo->ItemNum; i++)
+		for (i = 0; i < m_rPlayer.m_npcInfo->ItemNum; i++)
 		{
 			int nTemp = (int)(m_rPlayer.m_npcInfo->ItemDropRate[i] * 100);
 			nR[i] = nS + nTemp;
@@ -4120,27 +4122,27 @@ CPlayerLogic::LiveType CMonsterLogicExt::DropMineMedicineS(/*CRegionCreature *ki
 
 		int nRand = ::rand() % 100;
 		bool bFind = false;
-		for(i = 0; i < m_rPlayer.m_npcInfo->ItemNum; i++)
+		for (i = 0; i < m_rPlayer.m_npcInfo->ItemNum; i++)
 		{
-			if(nRand < nR[i])
+			if (nRand < nR[i])
 			{
 				bFind = true;
 				break;
 			}
 		}
-		if(!bFind)
+		if (!bFind)
 		{
 			break;
 		}
 		EItemColor color = ItemColor_White;
-		if(GetProb(m_rPlayer.m_npcInfo->ItemGreenRate*g_cfg.game.item_green_rate))
+		if (GetProb(m_rPlayer.m_npcInfo->ItemGreenRate * g_cfg.game.item_green_rate))
 		{
 			color = ItemColor_Green;
-			if(GetProb(m_rPlayer.m_npcInfo->ItemBlueRate*g_cfg.game.item_blue_rate))	
+			if (GetProb(m_rPlayer.m_npcInfo->ItemBlueRate * g_cfg.game.item_blue_rate))
 			{
 				color = ItemColor_Blue;
 				// golden item
-				if(GetProb(m_rPlayer.m_npcInfo->ItemGoldRate))	
+				if (GetProb(m_rPlayer.m_npcInfo->ItemGoldRate))
 				{
 					color = ItemColor_Golden;
 				}
@@ -4148,34 +4150,34 @@ CPlayerLogic::LiveType CMonsterLogicExt::DropMineMedicineS(/*CRegionCreature *ki
 		}
 
 		EItemBind bindType = IB_NotBind;
-		switch(m_rPlayer.m_npcInfo->ItemBindType)
+		switch (m_rPlayer.m_npcInfo->ItemBindType)
 		{
-		case 0: bindType = IB_NotBind;break;
-		case 1: bindType = IB_BindWhenEquip;break;
-		case 2: bindType = IB_BindWhenPick;break;
+		case 0: bindType = IB_NotBind; break;
+		case 1: bindType = IB_BindWhenEquip; break;
+		case 2: bindType = IB_BindWhenPick; break;
 		case 3: //高级模式：金装拾取绑定，蓝装20%概率装备绑定、80概率拾取绑定，其他不绑定
+		{
+			if (color == ItemColor_Golden)
 			{
-				if(color == ItemColor_Golden)
-				{
-					bindType = IB_BindWhenPick;
-				}
-				else if(color == ItemColor_Blue)
-				{
-					if(GetProb(0.2)) bindType = IB_NotBind;
-					else bindType = IB_BindWhenPick;
-				}
-				break;
+				bindType = IB_BindWhenPick;
 			}
+			else if (color == ItemColor_Blue)
+			{
+				if (GetProb(0.2)) bindType = IB_NotBind;
+				else bindType = IB_BindWhenPick;
+			}
+			break;
+		}
 		default: bindType = IB_NotBind;
 		}
 
-		item = g_region->m_pItemManager->CreateItem(m_rPlayer.m_npcInfo->Item[i],color,0,bindType);
-		if(ItemID_IsValid(item) && !ItemIsPet(item))
+		item = g_region->m_pItemManager->CreateItem(m_rPlayer.m_npcInfo->Item[i], color, 0, bindType);
+		if (ItemID_IsValid(item) && !ItemIsPet(item))
 		{
 			il.push_back(item);
 		}
 
-	}while(false);
+	} while (false);
 
 	return nRet;
 }
@@ -4188,49 +4190,49 @@ int CMonsterLogicExt::DropTaskLifeItem()
 	CRegionCreature* pGet = NULL;
 	do
 	{
-		if(IsMineNPC())
+		if (IsMineNPC())
 		{
 			pGet = GetGetingMine();
 		}
-		else if(IsMedicineNPC())
+		else if (IsMedicineNPC())
 		{
 			pGet = GetGetingMedicine();
 		}
-		if(NULL == pGet)
+		if (NULL == pGet)
 		{
 			break;
 		}
 		il.clear();
 		int i;
-		for(i = 0; i < m_rPlayer.m_npcInfo->nTaskNum; i++)
+		for (i = 0; i < m_rPlayer.m_npcInfo->nTaskNum; i++)
 		{
-			if(m_rPlayer.m_npcInfo->TaskId[i] && 
+			if (m_rPlayer.m_npcInfo->TaskId[i] &&
 				pGet->m_task.IsTaskAccept(m_rPlayer.m_npcInfo->TaskId[i]))
 			{
-				if(pGet->GetItemNum(m_rPlayer.m_npcInfo->TaskItemId[i], ItemColor_White) >= m_rPlayer.m_npcInfo->TaskItemLimit[i])
+				if (pGet->GetItemNum(m_rPlayer.m_npcInfo->TaskItemId[i], ItemColor_White) >= m_rPlayer.m_npcInfo->TaskItemLimit[i])
 				{
 					continue;
 				}
 				item = g_region->m_pItemManager->CreateItem(m_rPlayer.m_npcInfo->TaskItemId[i]);
-				if(ItemID_IsValid(item) && !ItemIsPet(item))
+				if (ItemID_IsValid(item) && !ItemIsPet(item))
 				{
 					il.push_back(item);
 				}
 			}
 		}
-		if(il.empty())
+		if (il.empty())
 		{
 			break;
 		}
 		nRet = 0;
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
-int CMonsterLogicExt::InTeamCanPick(CRegionCreature *Picker)
+int CMonsterLogicExt::InTeamCanPick(CRegionCreature* Picker)
 {
 	int nRet = 3;
-	do 
+	do
 	{
 		if (NULL == Picker /*|| NULL == m_pKiller*/)
 		{
@@ -4243,9 +4245,9 @@ int CMonsterLogicExt::InTeamCanPick(CRegionCreature *Picker)
 			break;
 		}
 
-		CRegionCreature *pKiller = NULL;
-		CRegionUser *user = g_region->FindUser(m_dwKillerDBID);
-		if(NULL == user) 
+		CRegionCreature* pKiller = NULL;
+		CRegionUser* user = g_region->FindUser(m_dwKillerDBID);
+		if (NULL == user)
 		{
 			break;
 		}
@@ -4284,7 +4286,7 @@ int CMonsterLogicExt::InTeamCanPick(CRegionCreature *Picker)
 			nRet = 3;//未知错误
 			break;
 		}
-		
+
 		if (eCaptainPick == PickType)
 		{
 			if (pKiller->m_pTeam->mData.GetCaptain() == Picker->m_userInfo->m_userId)
@@ -4314,43 +4316,43 @@ int CMonsterLogicExt::InTeamCanPick(CRegionCreature *Picker)
 	return nRet;
 }
 
-int CMonsterLogicExt::PickMyItem(CRegionCreature *Picker, unsigned long dwID)
+int CMonsterLogicExt::PickMyItem(CRegionCreature* Picker, unsigned long dwID)
 {
 	int nRet = 0;
 	do
 	{
-		if(NULL == Picker)
+		if (NULL == Picker)
 		{
 			nRet = 1;//未知错误
 			break;
 		}
-		CRegionCreature *RePicker = Picker;
+		CRegionCreature* RePicker = Picker;
 		int nT = InTeamCanPick(Picker);
-		if(1 == nT || 3 == nT)
+		if (1 == nT || 3 == nT)
 		{
 			break;//组队不能检
 		}
-		else if(2 == nT)
+		else if (2 == nT)
 		{
 			if (!Picker->IsUser())
 			{
 				nRet = 1;//未知错误
 				break;
 			}
-			if(Picker->m_userInfo->m_userId != m_dwKillerDBID)
+			if (Picker->m_userInfo->m_userId != m_dwKillerDBID)
 			{
 				nRet = 5;//该怪主要不是你打死的
 				break;
 			}
 		}
 
-		CRegionCreature *cre = Picker;
-		CItemContainerBase *pCon = cre->m_pItemContainer;
+		CRegionCreature* cre = Picker;
+		CItemContainerBase* pCon = cre->m_pItemContainer;
 
 		DWORD dwTick = rtGetMilliseconds();
 
 		// 检查两次捡道具的时间间隔, 如果两次检道具的时间在200毫秒内就认为检查到外挂
-		if (cre->m_dwLastPickItemTime && cre->m_dwLastPickItemTime+200>dwTick)
+		if (cre->m_dwLastPickItemTime && cre->m_dwLastPickItemTime + 200 > dwTick)
 		{
 			cre->PossiblyUsingWG();
 			cre->m_dwLastPickItemTime = dwTick;
@@ -4377,12 +4379,12 @@ int CMonsterLogicExt::PickMyItem(CRegionCreature *Picker, unsigned long dwID)
 		SItemID item;
 		CPlayerLogic::LiveType type = m_rPlayer.GetPlayerLogic()->GetLiveType();
 		bool bBreak = false;
-		switch(type)
+		switch (type)
 		{
 		case CPlayerLogic::eHaveItem:
-			for(iter = il.begin(); il.end() != iter; )
+			for (iter = il.begin(); il.end() != iter; )
 			{
-				if(dwID == (*iter).id)
+				if (dwID == (*iter).id)
 				{
 					item = (*iter);
 					bCanPick = true;
@@ -4400,18 +4402,18 @@ int CMonsterLogicExt::PickMyItem(CRegionCreature *Picker, unsigned long dwID)
 						for (i = 0; i < nNum; i++)
 						{
 							CRegionUser* pUser = g_region->FindUser(Picker->m_pTeam->mData[i].mDBID);
-							if(NULL == pUser)
+							if (NULL == pUser)
 							{
 								continue;
 							}
-							CRegionCreature *tmp = pUser->m_dummy;
-							if(NULL == tmp)
+							CRegionCreature* tmp = pUser->m_dummy;
+							if (NULL == tmp)
 							{
 								continue;
 							}
 							pBuff[ReNum++] = tmp;
 						}
-						
+
 						if (0 != ReNum)
 						{
 							int nR = rand() % ReNum;
@@ -4428,9 +4430,9 @@ int CMonsterLogicExt::PickMyItem(CRegionCreature *Picker, unsigned long dwID)
 			}
 			break;
 		case CPlayerLogic::eDropSkin:
-			if(this->IsMineNPC() || this->IsMedicineNPC())
+			if (this->IsMineNPC() || this->IsMedicineNPC())
 			{
-				if(il.empty())
+				if (il.empty())
 				{
 					nRet = 13;//状态不对
 					bBreak = true;
@@ -4442,7 +4444,7 @@ int CMonsterLogicExt::PickMyItem(CRegionCreature *Picker, unsigned long dwID)
 			}
 			else
 			{
-				if(dwID == m_SkinItem.id)
+				if (dwID == m_SkinItem.id)
 				{
 					item = m_SkinItem;
 					bCanPick = true;
@@ -4454,7 +4456,7 @@ int CMonsterLogicExt::PickMyItem(CRegionCreature *Picker, unsigned long dwID)
 			bBreak = true;
 			break;
 		}
-		if(bBreak)
+		if (bBreak)
 		{
 			break;
 		}
@@ -4466,12 +4468,12 @@ int CMonsterLogicExt::PickMyItem(CRegionCreature *Picker, unsigned long dwID)
 			break;
 		}
 
-		if (item.cBind==IB_BindWhenPick)
+		if (item.cBind == IB_BindWhenPick)
 			item.cBind = IB_Binded;
 
-		CBag *pBag;
+		CBag* pBag;
 		EItemContainer c;
-		if(ItemIsMissionItem(item) )
+		if (ItemIsMissionItem(item))
 		{
 			pBag = &(pCon->m_MissionBag);
 			c = ITEM_CONTAINER_PLAYER_MISSION_BAG;
@@ -4483,9 +4485,9 @@ int CMonsterLogicExt::PickMyItem(CRegionCreature *Picker, unsigned long dwID)
 		}
 
 		int page, i, j;
-		if(!pBag->AddItem(item, &page, &i, &j))
+		if (!pBag->AddItem(item, &page, &i, &j))
 		{
-			if(pBag->IsFull())
+			if (pBag->IsFull())
 			{
 				Picker->SendSystemMessage(R(MSG_CLEAR_BAG_ITEM));
 			}
@@ -4503,13 +4505,13 @@ int CMonsterLogicExt::PickMyItem(CRegionCreature *Picker, unsigned long dwID)
 		{
 			nRet = 11;
 		}
-	}while(false);
+	} while (false);
 
 	return nRet;
 }
 
 
-int CMonsterLogicExt::PickAllMyItem(CRegionCreature *Picker)
+int CMonsterLogicExt::PickAllMyItem(CRegionCreature* Picker)
 {
 	int nRet = 0;
 	unsigned long dwIDS[20];
@@ -4517,35 +4519,35 @@ int CMonsterLogicExt::PickAllMyItem(CRegionCreature *Picker)
 	int i;
 	int nT = 0;
 	CPlayerLogic::LiveType type = m_rPlayer.GetPlayerLogic()->GetLiveType();
-	switch(type)
+	switch (type)
 	{
 	case CPlayerLogic::eHaveItem:
+	{
+		ItemList& il = GetItemList();
+		ItemList::iterator iter;
+		for (iter = il.begin(); il.end() != iter; iter++)
 		{
-			ItemList& il = GetItemList();
-			ItemList::iterator iter;
-			for(iter = il.begin(); il.end() != iter; iter++)
-			{
-				dwIDS[nNum++] = (*iter).id;
-			}
-			int nPickNum = 0;
+			dwIDS[nNum++] = (*iter).id;
+		}
+		int nPickNum = 0;
 
-			for(i = 0; i < nNum; i++)
+		for (i = 0; i < nNum; i++)
+		{
+			nT = PickMyItem(Picker, dwIDS[i]);
+			if (0 == nT)
 			{
-				nT = PickMyItem(Picker, dwIDS[i]);
-				if(0 == nT)
-				{
-					nPickNum++;
-				}
-			}
-			if(0 == nPickNum)
-			{
-				nRet = nT;
+				nPickNum++;
 			}
 		}
-		break;
+		if (0 == nPickNum)
+		{
+			nRet = nT;
+		}
+	}
+	break;
 	case CPlayerLogic::eDropSkin:
 		nT = PickMyItem(Picker, m_SkinItem.id);
-		if(0 != nT)
+		if (0 != nT)
 		{
 			nRet = nT;
 		}
@@ -4558,18 +4560,18 @@ int CMonsterLogicExt::PickAllMyItem(CRegionCreature *Picker)
 	return nRet;
 }
 
-int CMonsterLogicExt::SendItemList(CRegionCreature *Picker, CG_CmdPacket* pPacket)
+int CMonsterLogicExt::SendItemList(CRegionCreature* Picker, CG_CmdPacket* pPacket)
 {
 	int nRet = 0;
 	do
 	{
-		if(NULL == Picker || NULL == pPacket)
+		if (NULL == Picker || NULL == pPacket)
 		{
 			nRet = 1;
 			pPacket->WriteByte(9);//未知错误
 			break;
 		}
-		
+
 		TObjectHash& Oh = g_factory->GetTObjectHash();
 		TObjectHash::iterator it;
 		it = Oh.find(m_rPlayer.GetObjectId());
@@ -4590,47 +4592,47 @@ int CMonsterLogicExt::SendItemList(CRegionCreature *Picker, CG_CmdPacket* pPacke
 		//}
 		bool bB = false;
 		CPlayerLogic::LiveType type = m_rPlayer.GetPlayerLogic()->GetLiveType();
-		switch(type)
+		switch (type)
 		{
 		case CPlayerLogic::eHaveItem:
+		{
+			int nT = InTeamCanPick(Picker);
+			if (1 == nT || 3 == nT)
 			{
-				int nT = InTeamCanPick(Picker);
-				if(1 == nT || 3 == nT)
+				nRet = 9;
+				pPacket->WriteByte(10);//你不能捡
+				bB = true;
+				break;//组队不能检
+			}
+			else if (2 == nT)
+			{
+				if (Picker->m_userInfo->m_userId != m_dwKillerDBID)
 				{
-					nRet = 9;
-					pPacket->WriteByte(10);//你不能捡
+					nRet = 5;//该怪主要不是你打死的
+					pPacket->WriteByte(5);//你不能捡
 					bB = true;
-					break;//组队不能检
-				}
-				else if (2 == nT)
-				{
-					if(Picker->m_userInfo->m_userId != m_dwKillerDBID)
-					{
-						nRet = 5;//该怪主要不是你打死的
-						pPacket->WriteByte(5);//你不能捡
-						bB = true;
-						break;
-					}
-				}
-
-				ItemList& il = GetItemList();
-				char cNum = (char)(il.size());
-				if(0 == cNum)
-				{
-					pPacket->WriteByte(2);//失败，东西被检光了
-				}
-				else
-				{
-					pPacket->WriteByte(0);//成功，下面是数组
-					pPacket->WriteByte(cNum);
-					ItemList::iterator iter;
-					for(iter = il.begin(); il.end() != iter; iter++)
-					{
-						(*iter).Serialize(pPacket);
-					}
+					break;
 				}
 			}
-			break;
+
+			ItemList& il = GetItemList();
+			char cNum = (char)(il.size());
+			if (0 == cNum)
+			{
+				pPacket->WriteByte(2);//失败，东西被检光了
+			}
+			else
+			{
+				pPacket->WriteByte(0);//成功，下面是数组
+				pPacket->WriteByte(cNum);
+				ItemList::iterator iter;
+				for (iter = il.begin(); il.end() != iter; iter++)
+				{
+					(*iter).Serialize(pPacket);
+				}
+			}
+		}
+		break;
 		case CPlayerLogic::eDropSkin:
 			pPacket->WriteByte(0);//成功，下面是数组
 			pPacket->WriteByte(1);
@@ -4643,33 +4645,33 @@ int CMonsterLogicExt::SendItemList(CRegionCreature *Picker, CG_CmdPacket* pPacke
 		{
 			break;
 		}
-	}while(false);
+	} while (false);
 
 	return nRet;
 }
 
 void CMonsterLogicExt::OnRun(unsigned long dwTime)
 {
-	if(CPlayerLogic::eDead == m_rPlayer.GetPlayerLogic()->GetLiveType())
+	if (CPlayerLogic::eDead == m_rPlayer.GetPlayerLogic()->GetLiveType())
 	{
 		OnErase();
 	}
-	else if(IsMineNPC())
+	else if (IsMineNPC())
 	{
 		GetMineRun(dwTime);
 	}
 	else
 	{
-		if(IsMedicineNPC())
+		if (IsMedicineNPC())
 		{
 			GetMedicineRun(dwTime);
 		}
 		else
 		{
-			if(!m_rPlayer.GetPlayerLogic()->IsLive())
+			if (!m_rPlayer.GetPlayerLogic()->IsLive())
 			{
 				GetSkinRun(dwTime);
-				if(dwTime > m_dwEraseTime)
+				if (dwTime > m_dwEraseTime)
 				{
 					//OnErase();
 					m_rPlayer.GetPlayerLogic()->SetLiveType(CPlayerLogic::eDead);
@@ -4677,7 +4679,7 @@ void CMonsterLogicExt::OnRun(unsigned long dwTime)
 				else if (m_dwEraseTime - dwTime > 600 * 1000)
 				{
 					RtCoreLog().Debug("\n");
-					RtCoreLog().Debug("Monster erase time error : %d \n",m_dwEraseTime - dwTime);
+					RtCoreLog().Debug("Monster erase time error : %d \n", m_dwEraseTime - dwTime);
 					RtCoreLog().Debug("\n");
 					m_rPlayer.GetPlayerLogic()->SetLiveType(CPlayerLogic::eDead);
 				}
@@ -4688,11 +4690,11 @@ void CMonsterLogicExt::OnRun(unsigned long dwTime)
 
 void CMonsterLogicExt::GetSkinRun(unsigned long dwTime)
 {
-	if(IsBeGetingSkin())
+	if (IsBeGetingSkin())
 	{
-		if(dwTime > m_dwSkinTime)
+		if (dwTime > m_dwSkinTime)
 		{
-			CRegionCreature*  pGetSkin = GetGetingSkin();
+			CRegionCreature* pGetSkin = GetGetingSkin();
 			if (NULL != pGetSkin)
 			{
 				int nMySkillLevel = pGetSkin->GetPlayerLogic()->GetSkillLevel(654);
@@ -4703,11 +4705,11 @@ void CMonsterLogicExt::GetSkinRun(unsigned long dwTime)
 				//int nNum =rand() % 100;
 				int nNum = GetRand(99, 0);
 
-				if(nNum < nR)
+				if (nNum < nR)
 				{
-					int nOneExp = (2+2*(nMySkillLevel - 1) * (1 + 0.05 * (nMySkillLevel -1 )));
+					int nOneExp = (2 + 2 * (nMySkillLevel - 1) * (1 + 0.05 * (nMySkillLevel - 1)));
 					float fS = 1 + (nNeetSkillLevel - nMySkillLevel) / 3.0f;
-					if(fS < 0)
+					if (fS < 0)
 					{
 						fS = 0;
 					}
@@ -4748,7 +4750,7 @@ void CMonsterLogicExt::GetMineRun(unsigned long dwTime)
 	switch (type)
 	{
 	case CPlayerLogic::eHaveSkin:
-		if(IsBeGetingMine())
+		if (IsBeGetingMine())
 		{
 			GettingMineRun(dwTime);
 		}
@@ -4765,7 +4767,7 @@ void CMonsterLogicExt::GetMedicineRun(unsigned long dwTime)
 	switch (type)
 	{
 	case CPlayerLogic::eHaveSkin:
-		if(IsBeGetingMedicine())
+		if (IsBeGetingMedicine())
 		{
 			GettingMedicineRun(dwTime);
 		}
@@ -4779,17 +4781,17 @@ void CMonsterLogicExt::GetMedicineRun(unsigned long dwTime)
 void CMonsterLogicExt::GettingMineRun(unsigned long dwTime)
 {
 	ItemList& il = GetItemList();
-	if(dwTime >= m_dwMineTime)
+	if (dwTime >= m_dwMineTime)
 	{
 		CRegionCreature* pGetMine = GetGetingMine();
 		char cAni = DO_COMMAND_GETMINE;
 		char cErr = 0;
 		do
 		{
-			if(m_rPlayer.m_npcInfo->nTaskNum > 0)
+			if (m_rPlayer.m_npcInfo->nTaskNum > 0)
 			{
 				int nTemp = DropTaskLifeItem();
-				if(0 != nTemp || il.empty())
+				if (0 != nTemp || il.empty())
 				{
 					cErr = 15;
 				}
@@ -4807,7 +4809,7 @@ void CMonsterLogicExt::GettingMineRun(unsigned long dwTime)
 				//int nNum =rand() % 100;
 				int nNum = GetRand(99, 0);
 
-				if(nNum >= nR)
+				if (nNum >= nR)
 				{
 					if (IsLifeSkillItemNPC())
 					{
@@ -4820,24 +4822,23 @@ void CMonsterLogicExt::GettingMineRun(unsigned long dwTime)
 					break;
 				}
 
-				if(il.empty())
+				if (il.empty())
 				{
 					cErr = 15;
 					break;
 				}
 
-				int nOneExp = (2+2*(nMySkillLevel - 1) * (1 + 0.05 * (nMySkillLevel -1 )));
+				int nOneExp = (2 + 2 * (nMySkillLevel - 1) * (1 + 0.05 * (nMySkillLevel - 1)));
 				float fS = 1 + (nNeetSkillLevel - nMySkillLevel) / 3.0f;
-				if(fS < 0)
+				if (fS < 0)
 				{
 					fS = 0;
 				}
 
 				m_nLifeSkillExp = (int)(nOneExp * fS);
 			}
-		}
-		while(false);
-		switch(cErr)
+		} while (false);
+		switch (cErr)
 		{
 		case 0:
 			if (NULL != pGetMine)
@@ -4851,7 +4852,7 @@ void CMonsterLogicExt::GettingMineRun(unsigned long dwTime)
 				g_sendCmd->WriteLong(m_rPlayer.GetObjectId());
 				g_sendCmd->WriteLong(pGetMine->GetObjectId());
 
-				SItemID&  Item = *(il.begin());//矿
+				SItemID& Item = *(il.begin());//矿
 				Item.Serialize(g_sendCmd);
 
 				pGetMine->RecvCmd(g_sendCmd);
@@ -4880,17 +4881,17 @@ void CMonsterLogicExt::GettingMineRun(unsigned long dwTime)
 void CMonsterLogicExt::GettingMedicineRun(unsigned long dwTime)
 {
 	ItemList& il = GetItemList();
-	if(dwTime >= m_dwMedicineTime)
+	if (dwTime >= m_dwMedicineTime)
 	{
 		CRegionCreature* pGetMedicine = GetGetingMedicine();
 		char cAni = DO_COMMAND_GETMINE;
 		char cErr = 0;
 		do
 		{
-			if(m_rPlayer.m_npcInfo->nTaskNum > 0)
+			if (m_rPlayer.m_npcInfo->nTaskNum > 0)
 			{
 				int nTemp = DropTaskLifeItem();
-				if(0 != nTemp || il.empty())
+				if (0 != nTemp || il.empty())
 				{
 					cErr = 15;
 				}
@@ -4907,20 +4908,20 @@ void CMonsterLogicExt::GettingMedicineRun(unsigned long dwTime)
 				//int nNum =rand() % 100;
 				int nNum = GetRand(99, 0);
 
-				if(nNum >= nR)
+				if (nNum >= nR)
 				{
 					cErr = 13;
 					break;
 				}
-				if(il.empty())
+				if (il.empty())
 				{
 					cErr = 15;
 					break;
 				}
 
-				int nOneExp = (2+2*(nMySkillLevel - 1) * (1 + 0.05 * (nMySkillLevel -1 )));
+				int nOneExp = (2 + 2 * (nMySkillLevel - 1) * (1 + 0.05 * (nMySkillLevel - 1)));
 				float fS = 1 + (nNeetSkillLevel - nMySkillLevel) / 3.0f;
-				if(fS < 0)
+				if (fS < 0)
 				{
 					fS = 0;
 				}
@@ -4929,8 +4930,8 @@ void CMonsterLogicExt::GettingMedicineRun(unsigned long dwTime)
 				m_nLifeSkillExp = (int)(nOneExp * fS);
 			}
 
-		}while(false);
-		switch(cErr)
+		} while (false);
+		switch (cErr)
 		{
 		case 0:
 			if (NULL != pGetMedicine)
@@ -4944,7 +4945,7 @@ void CMonsterLogicExt::GettingMedicineRun(unsigned long dwTime)
 				g_sendCmd->WriteLong(m_rPlayer.GetObjectId());
 				g_sendCmd->WriteLong(pGetMedicine->GetObjectId());
 
-				SItemID&  Item = *(il.begin());//药
+				SItemID& Item = *(il.begin());//药
 				Item.Serialize(g_sendCmd);
 
 				pGetMedicine->RecvCmd(g_sendCmd);
@@ -4994,20 +4995,20 @@ void CMonsterLogicExt::OnBeGetingLifeItemOK(int nExp, unsigned short wSkillID)
 		{
 			break;
 		}
-		CRegionUser *user = g_region->FindUser(m_dwKillerDBID);
-		if(NULL == user) 
+		CRegionUser* user = g_region->FindUser(m_dwKillerDBID);
+		if (NULL == user)
 		{
 			break;
 		}
 
 		CRegionCreature* pGet = user->m_dummy;
 
-		if(NULL == pGet)
+		if (NULL == pGet)
 		{
 			break;
 		}
 		pGet->GetPlayerLogic()->AddLifeSkillExp(nExp, wSkillID);
-	}while(false);
+	} while (false);
 }
 
 void CMonsterLogicExt::SetEraseTime(unsigned long dwTime)
@@ -5024,12 +5025,12 @@ CPlayerLogic::LiveType CMonsterLogicExt::UpdateItemS()
 {
 	CPlayerLogic::LiveType nRet = CPlayerLogic::eHaveItem;
 	ItemList& il = GetItemList();
-	if(0 == il.size())
+	if (0 == il.size())
 	{
 		CPlayerLogic::LiveType type = m_rPlayer.GetPlayerLogic()->GetLiveType();
-		if(CPlayerLogic::eHaveItem == type)
+		if (CPlayerLogic::eHaveItem == type)
 		{
-			if(0 != m_rPlayer.m_npcInfo->dwSkinID)
+			if (0 != m_rPlayer.m_npcInfo->dwSkinID)
 			{
 				m_rPlayer.GetPlayerLogic()->SetLiveType(CPlayerLogic::eHaveSkin);
 				nRet = CPlayerLogic::eHaveSkin;
@@ -5041,7 +5042,7 @@ CPlayerLogic::LiveType CMonsterLogicExt::UpdateItemS()
 				nRet = CPlayerLogic::eDead;
 			}
 		}
-		else if(CPlayerLogic::eDropSkin == type)
+		else if (CPlayerLogic::eDropSkin == type)
 		{
 			//OnErase();
 			m_rPlayer.GetPlayerLogic()->SetLiveType(CPlayerLogic::eDead);
@@ -5059,12 +5060,12 @@ CPlayerLogic::LiveType CMonsterLogicExt::UpdateItemS()
 
 void CMonsterLogicExt::OnErase()
 {
-	CRegionCreature*  pGetSkin = GetGetingSkin();
-	do 
+	CRegionCreature* pGetSkin = GetGetingSkin();
+	do
 	{
 		if (NULL != pGetSkin)
 		{
-			if(IsBeGetingSkin())
+			if (IsBeGetingSkin())
 			{
 				pGetSkin->ClientDoCommand(DO_COMMAND_GETSKIN, 1);
 				g_sendCmd->BeginWrite();
@@ -5087,14 +5088,14 @@ void CMonsterLogicExt::OnErase()
 			m_rPlayer.m_pos, DEFAULT_RANGE, NULL, PT_PATH, false);
 
 		int i;
-		for(i = 0; i < iCnt; i++)
+		for (i = 0; i < iCnt; i++)
 		{
-			if(NULL == pFindCreature[i])
+			if (NULL == pFindCreature[i])
 			{
 				continue;
 			}
-			CRegionCreature *pC = (CRegionCreature*)(pFindCreature[i]);
-			if(!pC->IsUser())
+			CRegionCreature* pC = (CRegionCreature*)(pFindCreature[i]);
+			if (!pC->IsUser())
 			{
 				continue;
 			}
@@ -5141,16 +5142,16 @@ bool CMonsterLogicExt::IsBeGetingSkin()
 	do
 	{
 		CPlayerLogic::LiveType type = m_rPlayer.GetPlayerLogic()->GetLiveType();
-		if(CPlayerLogic::eHaveSkin != type && CPlayerLogic::eDead != type)
+		if (CPlayerLogic::eHaveSkin != type && CPlayerLogic::eDead != type)
 		{
 			break;
 		}
-		if(NULL == GetGetingSkin())
+		if (NULL == GetGetingSkin())
 		{
 			break;
 		}
 		bRet = true;
-	}while(false);
+	} while (false);
 	return bRet;
 }
 
@@ -5159,12 +5160,12 @@ bool CMonsterLogicExt::IsBeGetingMine()
 	bool bRet = false;
 	do
 	{
-		if(NULL == GetGetingMine())
+		if (NULL == GetGetingMine())
 		{
 			break;
 		}
 		bRet = true;
-	}while(false);
+	} while (false);
 	return bRet;
 }
 
@@ -5173,12 +5174,12 @@ bool CMonsterLogicExt::IsBeGetingMedicine()
 	bool bRet = false;
 	do
 	{
-		if(NULL == GetGetingMedicine())
+		if (NULL == GetGetingMedicine())
 		{
 			break;
 		}
 		bRet = true;
-	}while(false);
+	} while (false);
 	return bRet;
 }
 
@@ -5214,23 +5215,23 @@ int  CMonsterLogicExt::GetSkin(CRegionCreature* pGetSkin)
 			nRet = 19;
 			break;
 		}
-		if(this->IsMineNPC())
+		if (this->IsMineNPC())
 		{
 			nRet = this->GetMine(pGetSkin);
 			break;
 		}
-		else if(this->IsMedicineNPC())
+		else if (this->IsMedicineNPC())
 		{
 			nRet = this->GetMedicine(pGetSkin);
 			break;
 		}
-		if(NULL == pGetSkin)
+		if (NULL == pGetSkin)
 		{
 			nRet = 7;
 			break;
 		}
 
-		if(IsBeGetingSkin()  && pGetSkin != GetGetingSkin())
+		if (IsBeGetingSkin() && pGetSkin != GetGetingSkin())
 		{
 			nRet = 10;//有人在剥了
 			break;
@@ -5249,7 +5250,7 @@ int  CMonsterLogicExt::GetSkin(CRegionCreature* pGetSkin)
 		int nMySkillLevel = pS->iLevel;//pGetSkin->GetPlayerLogic()->GetSkillLevel(654);
 		int nNeetSkillLevel = this->GetLifeItemLevel();
 
-		if(nMySkillLevel < nNeetSkillLevel)
+		if (nMySkillLevel < nNeetSkillLevel)
 		{
 			//rt2_snprintf(szBuff, c_n_BuffSize, R(MSG_SKILL_BOPILOW), m_rPlayer.m_core.Name.c_str(), nNeetSkillLevel, pS->szName);
 			//pGetSkin->SendSystemMessage(szBuff);
@@ -5259,7 +5260,7 @@ int  CMonsterLogicExt::GetSkin(CRegionCreature* pGetSkin)
 
 		bool bHave = pGetSkin->GetPlayerLogic()->IsHaveItem(6103);
 
-		if(!bHave)
+		if (!bHave)
 		{
 			nRet = 11;//没剥皮工具
 			break;
@@ -5267,7 +5268,7 @@ int  CMonsterLogicExt::GetSkin(CRegionCreature* pGetSkin)
 
 		CPlayerLogic::LiveType type = m_rPlayer.GetPlayerLogic()->GetLiveType();
 		bool bBreak = false;
-		switch(type)
+		switch (type)
 		{
 		case CPlayerLogic::eHaveSkin:
 
@@ -5301,12 +5302,12 @@ int  CMonsterLogicExt::GetSkin(CRegionCreature* pGetSkin)
 			bBreak = true;
 			break;
 		}
-		if(bBreak)
+		if (bBreak)
 		{
 			break;
 		}
 		nRet = 0;
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
@@ -5318,19 +5319,19 @@ int  CMonsterLogicExt::GetMine(CRegionCreature* pGetMine)
 		//const int c_n_BuffSize = 256;
 		//char szBuff[c_n_BuffSize];
 		char cAni = DO_COMMAND_GETMINE;
-		if(NULL == pGetMine)
+		if (NULL == pGetMine)
 		{
 			nRet = 7;
 			break;
 		}
 
-		if(IsBeGetingMine() && pGetMine != GetGetingMine())
+		if (IsBeGetingMine() && pGetMine != GetGetingMine())
 		{
 			nRet = 10;//有人在剥了
 			break;
 		}
 
-		if(0 == m_rPlayer.m_npcInfo->nTaskNum)
+		if (0 == m_rPlayer.m_npcInfo->nTaskNum)
 		{
 			SSkill* pS = pGetMine->GetPlayerLogic()->GetSkill(581);
 			if (NULL == pS)
@@ -5342,7 +5343,7 @@ int  CMonsterLogicExt::GetMine(CRegionCreature* pGetMine)
 			int nMySkillLevel = pS->iLevel;//pGetMine->GetPlayerLogic()->GetSkillLevel(581);
 			int nNeetSkillLevel = this->GetLifeItemLevel();
 
-			if(nMySkillLevel < nNeetSkillLevel)
+			if (nMySkillLevel < nNeetSkillLevel)
 			{
 				//rt2_snprintf(szBuff, c_n_BuffSize, R(MSG_SKILL_YEJINLOW), m_rPlayer.m_core.Name.c_str(), nNeetSkillLevel, pS->szName);
 				//pGetMine->SendSystemMessage(szBuff);
@@ -5352,7 +5353,7 @@ int  CMonsterLogicExt::GetMine(CRegionCreature* pGetMine)
 
 			bool bHave = pGetMine->GetPlayerLogic()->IsHaveItem(6101);
 
-			if(!bHave)
+			if (!bHave)
 			{
 				nRet = 11;//没挖矿工具
 				break;
@@ -5362,11 +5363,11 @@ int  CMonsterLogicExt::GetMine(CRegionCreature* pGetMine)
 		{
 			int i;
 			bool bB = true;
-			for(i = 0; i < m_rPlayer.m_npcInfo->nTaskNum; i++)
+			for (i = 0; i < m_rPlayer.m_npcInfo->nTaskNum; i++)
 			{
-				if(pGetMine->GetPlayerLogic()->IsDoingTask(m_rPlayer.m_npcInfo->TaskId[i]))
+				if (pGetMine->GetPlayerLogic()->IsDoingTask(m_rPlayer.m_npcInfo->TaskId[i]))
 				{
-					if(pGetMine->GetItemNum(m_rPlayer.m_npcInfo->TaskItemId[i], ItemColor_White) >= m_rPlayer.m_npcInfo->TaskItemLimit[i])
+					if (pGetMine->GetItemNum(m_rPlayer.m_npcInfo->TaskItemId[i], ItemColor_White) >= m_rPlayer.m_npcInfo->TaskItemLimit[i])
 					{
 						nRet = 18;//任务采集时超过上限，不能再采集
 						bB = true;
@@ -5378,7 +5379,7 @@ int  CMonsterLogicExt::GetMine(CRegionCreature* pGetMine)
 					break;
 				}
 			}
-			if(bB)
+			if (bB)
 			{
 				break;
 			}
@@ -5387,7 +5388,7 @@ int  CMonsterLogicExt::GetMine(CRegionCreature* pGetMine)
 
 		CPlayerLogic::LiveType type = m_rPlayer.GetPlayerLogic()->GetLiveType();
 		bool bBreak = false;
-		switch(type)
+		switch (type)
 		{
 		case CPlayerLogic::eHaveSkin:
 			if (pGetMine->IsUser())
@@ -5426,12 +5427,12 @@ int  CMonsterLogicExt::GetMine(CRegionCreature* pGetMine)
 			bBreak = true;
 			break;
 		}
-		if(bBreak)
+		if (bBreak)
 		{
 			break;
 		}
 		nRet = 0;
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
@@ -5443,19 +5444,19 @@ int  CMonsterLogicExt::GetMedicine(CRegionCreature* pGetMedicine)
 		//const int c_n_BuffSize = 256;
 		//char szBuff[c_n_BuffSize];
 		char cAni = DO_COMMAND_GETMINE;
-		if(NULL == pGetMedicine)
+		if (NULL == pGetMedicine)
 		{
 			nRet = 7;
 			break;
 		}
 
-		if(IsBeGetingMedicine() && pGetMedicine != GetGetingMedicine())
+		if (IsBeGetingMedicine() && pGetMedicine != GetGetingMedicine())
 		{
 			nRet = 10;//有人在剥了
 			break;
 		}
 
-		if(0 == m_rPlayer.m_npcInfo->nTaskNum)
+		if (0 == m_rPlayer.m_npcInfo->nTaskNum)
 		{
 			SSkill* pS = pGetMedicine->GetPlayerLogic()->GetSkill(582);
 			if (NULL == pS)
@@ -5463,11 +5464,11 @@ int  CMonsterLogicExt::GetMedicine(CRegionCreature* pGetMedicine)
 				nRet = 27;
 				break;
 			}
-			
+
 			int nMySkillLevel = pS->iLevel;//pGetMedicine->GetPlayerLogic()->GetSkillLevel(582);
 			int nNeetSkillLevel = this->GetLifeItemLevel();
 
-			if(nMySkillLevel < nNeetSkillLevel)
+			if (nMySkillLevel < nNeetSkillLevel)
 			{
 				//rt2_snprintf(szBuff, c_n_BuffSize, R(MSG_SKILL_BAICAOLOW), m_rPlayer.m_core.Name.c_str(), nNeetSkillLevel, pS->szName);
 				//pGetMedicine->SendSystemMessage(szBuff);
@@ -5477,7 +5478,7 @@ int  CMonsterLogicExt::GetMedicine(CRegionCreature* pGetMedicine)
 
 			bool bHave = pGetMedicine->GetPlayerLogic()->IsHaveItem(6102);
 
-			if(!bHave)
+			if (!bHave)
 			{
 				nRet = 11;//没挖矿工具
 				break;
@@ -5487,11 +5488,11 @@ int  CMonsterLogicExt::GetMedicine(CRegionCreature* pGetMedicine)
 		{
 			bool bB = true;
 			int i;
-			for(i = 0; i < m_rPlayer.m_npcInfo->nTaskNum; i++)
+			for (i = 0; i < m_rPlayer.m_npcInfo->nTaskNum; i++)
 			{
-				if(pGetMedicine->GetPlayerLogic()->IsDoingTask(m_rPlayer.m_npcInfo->TaskId[i]))
+				if (pGetMedicine->GetPlayerLogic()->IsDoingTask(m_rPlayer.m_npcInfo->TaskId[i]))
 				{
-					if(pGetMedicine->GetItemNum(m_rPlayer.m_npcInfo->TaskItemId[i], ItemColor_White) >= m_rPlayer.m_npcInfo->TaskItemLimit[i])
+					if (pGetMedicine->GetItemNum(m_rPlayer.m_npcInfo->TaskItemId[i], ItemColor_White) >= m_rPlayer.m_npcInfo->TaskItemLimit[i])
 					{
 						nRet = 18;//任务采集时超过上限，不能再采集
 						bB = true;
@@ -5503,7 +5504,7 @@ int  CMonsterLogicExt::GetMedicine(CRegionCreature* pGetMedicine)
 					break;
 				}
 			}
-			if(bB)
+			if (bB)
 			{
 				break;
 			}
@@ -5511,7 +5512,7 @@ int  CMonsterLogicExt::GetMedicine(CRegionCreature* pGetMedicine)
 		}
 		CPlayerLogic::LiveType type = m_rPlayer.GetPlayerLogic()->GetLiveType();
 		bool bBreak = false;
-		switch(type)
+		switch (type)
 		{
 		case CPlayerLogic::eHaveSkin:
 
@@ -5548,13 +5549,13 @@ int  CMonsterLogicExt::GetMedicine(CRegionCreature* pGetMedicine)
 			bBreak = true;
 			break;
 		}
-		if(bBreak)
+		if (bBreak)
 		{
 			break;
 		}
 
 		nRet = 0;
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
@@ -5564,7 +5565,7 @@ void CMonsterLogicExt::PickSkin(CRegionCreature* pGetSkin)
 	char cRet = 0;
 	do
 	{
-		if(NULL == pGetSkin)
+		if (NULL == pGetSkin)
 		{
 			cRet = 7;
 			break;
@@ -5580,21 +5581,21 @@ void CMonsterLogicExt::PickSkin(CRegionCreature* pGetSkin)
 			cRet = 1;//未知错误
 			break;
 		}
-		if(pGetSkin->m_userInfo->m_userId != m_dwKillerDBID)
+		if (pGetSkin->m_userInfo->m_userId != m_dwKillerDBID)
 		{
 			cRet = 5;//该怪主要不是你打死的
 			break;
 		}
 		CPlayerLogic::LiveType type = m_rPlayer.GetPlayerLogic()->GetLiveType();
-		if(CPlayerLogic::eDropSkin != type)
+		if (CPlayerLogic::eDropSkin != type)
 		{
 			cRet = 1;//状态不对
 			break;
 		}
-		if(this->IsMineNPC() || this->IsMedicineNPC())
+		if (this->IsMineNPC() || this->IsMedicineNPC())
 		{
 			ItemList& il = GetItemList();
-			if(il.empty())
+			if (il.empty())
 			{
 				cRet = 13;//状态不对
 				break;
@@ -5608,7 +5609,7 @@ void CMonsterLogicExt::PickSkin(CRegionCreature* pGetSkin)
 		{
 			item = m_SkinItem;
 		}
-	}while(false);
+	} while (false);
 	g_sendCmd->BeginWrite();
 	g_sendCmd->WriteShort(r2c_pickitem_type);
 	g_sendCmd->WriteByte(2);//扒皮
@@ -5641,47 +5642,47 @@ int CMonsterLogicExt::GetLifeItemLevel()
 
 bool CMonsterLogicExt::IsMineNPC()
 {
-	bool bRet =false;
+	bool bRet = false;
 	do
 	{
-		if(NULL == m_rPlayer.m_npcInfo)
+		if (NULL == m_rPlayer.m_npcInfo)
 		{
 			break;
 		}
 		bRet = (5 == m_rPlayer.m_npcInfo->Type || IsLifeSkillItemNPC());
-	}while(false);
+	} while (false);
 	return bRet;
 }
 
 bool CMonsterLogicExt::IsMedicineNPC()
 {
-	bool bRet =false;
+	bool bRet = false;
 	do
 	{
-		if(NULL == m_rPlayer.m_npcInfo)
+		if (NULL == m_rPlayer.m_npcInfo)
 		{
 			break;
 		}
 		bRet = 4 == m_rPlayer.m_npcInfo->Type;
-	}while(false);
+	} while (false);
 	return bRet;
 }
 
 bool CMonsterLogicExt::IsLifeSkillItemNPC()
 {
-	bool bRet =false;
+	bool bRet = false;
 	do
 	{
-		if(NULL == m_rPlayer.m_npcInfo)
+		if (NULL == m_rPlayer.m_npcInfo)
 		{
 			break;
 		}
 		bRet = 9 == m_rPlayer.m_npcInfo->Type;
-	}while(false);
+	} while (false);
 	return bRet;
 }
 
-void CMonsterLogicExt::OnClosePickwindow(CRegionCreature *pPlayer)
+void CMonsterLogicExt::OnClosePickwindow(CRegionCreature* pPlayer)
 {
 	CPlayerLogic::LiveType type = m_rPlayer.GetPlayerLogic()->GetLiveType();
 	do
@@ -5711,17 +5712,17 @@ void CMonsterLogicExt::OnClosePickwindow(CRegionCreature *pPlayer)
 				break;
 			}
 			pPlayer->m_pTeam->NextPicker();
-			
+
 			break;
 		}*/
-		if(CPlayerLogic::eDropSkin != type)
+		if (CPlayerLogic::eDropSkin != type)
 		{
 			break;
 		}
 		//this->m_pKiller = NULL;
 		m_dwKillerDBID = eEmptyDBID;
 		m_rPlayer.GetPlayerLogic()->SetLiveType(CPlayerLogic::eHaveSkin);
-	}while(false);
+	} while (false);
 }
 
 CRegionCreature* CMonsterLogicExt::GetGetingSkin()
@@ -5742,14 +5743,14 @@ CRegionCreature* CMonsterLogicExt::GetGetingMedicine()
 CRegionCreature* CMonsterLogicExt::GetCreature(unsigned long dwID)
 {
 	CRegionCreature* pGet = NULL;
-	do 
+	do
 	{
 		if (eEmptyDBID == dwID)
 		{
 			break;
 		}
-		CRegionUser *user = g_region->FindUser(m_dwKillerDBID);
-		if(NULL == user) 
+		CRegionUser* user = g_region->FindUser(m_dwKillerDBID);
+		if (NULL == user)
 		{
 			break;
 		}
@@ -5763,7 +5764,7 @@ CRegionCreature* CMonsterLogicExt::GetCreature(unsigned long dwID)
 //class CNewPlayerGuide
 ///////////////////////
 
-CNewPlayerGuide::CNewPlayerGuide(CRegionCreature& rPlayer):m_rPlayer(rPlayer)
+CNewPlayerGuide::CNewPlayerGuide(CRegionCreature& rPlayer) :m_rPlayer(rPlayer)
 {
 }
 
@@ -5826,13 +5827,13 @@ bool CNewPlayerGuide::EatHP()
 	float fHp = m_rPlayer.m_core.GetHp();
 	float ft = fHp / nMax;
 	bool bRet = false;
-	do 
+	do
 	{
 		if (ft > 0.5f)
 		{
 			break;
 		}
-		bRet =  DoGuide(eEatHP);
+		bRet = DoGuide(eEatHP);
 	} while (false);
 	return bRet;
 }
@@ -5843,13 +5844,13 @@ bool CNewPlayerGuide::EatMP()
 	float fMp = m_rPlayer.m_core.GetMp();
 	float ft = fMp / nMax;
 	bool bRet = false;
-	do 
+	do
 	{
 		if (ft > 0.5f)
 		{
 			break;
 		}
-		bRet =  DoGuide(eEatMP);
+		bRet = DoGuide(eEatMP);
 	} while (false);
 	return bRet;
 }
@@ -5883,7 +5884,7 @@ bool CNewPlayerGuide::LifeSkill1()
 bool CNewPlayerGuide::DoGuide(GuideType type)
 {
 	bool bRet = false;
-	do 
+	do
 	{
 		if (m_rPlayer.m_core.Lev > 8)
 		{
@@ -5927,7 +5928,7 @@ int CMainStoryMgr::BuildMgr()
 	{
 		m_MainTaskNum[i] = 0;
 	}
-	for(i = 0; i < nSize; i++)
+	for (i = 0; i < nSize; i++)
 	{
 		MainStoryData* pData = &(v[i]);
 		if (NULL == pData)
@@ -5936,7 +5937,7 @@ int CMainStoryMgr::BuildMgr()
 		}
 		IDSet.insert(pData);
 		nNum = pData->nTaskNum;
-		for(j = 0; j < nNum; j++)
+		for (j = 0; j < nNum; j++)
 		{
 			TaskIDSet[pData->nTaskID[j]] = i;
 		}
@@ -5983,7 +5984,7 @@ MainStoryData* CMainStoryMgr::GetMainStoryByID(int nID)
 			break;
 		}
 		pRet = *iter;
-	}while(false);
+	} while (false);
 	return pRet;
 }
 
@@ -6005,21 +6006,21 @@ MainStoryData* CMainStoryMgr::GetMainStoryByTaskID(int nTaskID)
 			break;
 		}
 		pRet = &(v[nIndex]);
-	}while(false);
+	} while (false);
 	return pRet;
 }
 
 int CMainStoryMgr::GetMainTaskIDByJobAndIndex(int nJob, int nIndex)
 {
 	int nRet = -1;
-	do 
+	do
 	{
 		nJob--;
 		if (nJob < 0 || nJob >= eJobNum)
 		{
 			break;
 		}
-		if (nIndex < 0 )
+		if (nIndex < 0)
 		{
 			break;
 		}
@@ -6036,7 +6037,7 @@ int CMainStoryMgr::GetMainTaskIDByJobAndIndex(int nJob, int nIndex)
 int CMainStoryMgr::GetIndexByMainTaskIDAndJob(int nJob, int nID)
 {
 	int nRet = -1;
-	do 
+	do
 	{
 		nJob--;
 		if (nJob < 0 || nJob >= eJobNum)
@@ -6065,7 +6066,7 @@ int CMainStoryMgr::GetIndexByMainTaskIDAndJob(int nJob, int nID)
 int CMainStoryMgr::GetMainStoryNum(int nJob)
 {
 	int nRet = 0;
-	do 
+	do
 	{
 		if (nJob <= 0 || nJob > eJobNum)
 		{
@@ -6087,7 +6088,7 @@ CMainStoryMgr& CMainStoryMgr::GetMgr()
 bool MainStoryIDCmp::operator () (MainStoryData* pData1, MainStoryData* pData2) const
 {
 	bool bRet = false;
-	do 
+	do
 	{
 		if (NULL == pData1 || NULL == pData2)
 		{
@@ -6121,9 +6122,9 @@ void CRSLogicExt::OnRun(DWORD dwTime)
 	const unsigned long c_Setp = 400;
 	static bool s_bScence = false;
 
-	do 
+	do
 	{
-		if(dwTime < s_NextTime)
+		if (dwTime < s_NextTime)
 		{
 			break;
 		}
@@ -6143,22 +6144,22 @@ void CRSLogicExt::OnRun(DWORD dwTime)
 		{
 			break;
 		}
-		for(it = pOh->begin(); pOh->end() != it; it++)
+		for (it = pOh->begin(); pOh->end() != it; it++)
 		{
-			CRegionObject *object = (*it).second;
-			if(NULL == object)
+			CRegionObject* object = (*it).second;
+			if (NULL == object)
 			{
 				continue;
 			}
-			if( OB_TYPE(object) != OBJECT_TYPE_CREATURE &&
+			if (OB_TYPE(object) != OBJECT_TYPE_CREATURE &&
 				OB_TYPE(object) != OBJECT_TYPE_NPC_SERVICE &&
 				OB_TYPE(object) != OBJECT_TYPE_NPC_COMBATIVE)
 			{
 				continue;
 			}
 
-			CRegionCreature *cre = (CRegionCreature*)object;
-			if(!cre->IsMonster())
+			CRegionCreature* cre = (CRegionCreature*)object;
+			if (!cre->IsMonster())
 			{
 				continue;
 			}
@@ -6169,7 +6170,7 @@ void CRSLogicExt::OnRun(DWORD dwTime)
 			ppBuff[nNum++] = cre;
 		}
 		int i;
-		for(i = 0; i < nNum; i++)
+		for (i = 0; i < nNum; i++)
 		{
 			ppBuff[i]->GetPlayerLogic()->GetMonsterLogicExt()->OnRun(dwTime);
 		}
@@ -6180,16 +6181,16 @@ void CRSLogicExt::OnRun(DWORD dwTime)
 
 void CRSLogicExt::InitTaskDesc()
 {
-	std::vector<STaskDesc> &v = g_TableTask.GetTaskTable();
+	std::vector<STaskDesc>& v = g_TableTask.GetTaskTable();
 	std::vector<STaskDesc>::iterator iter;
 	char cIndex = 0;
-	for(iter = v.begin(); v.end() != iter; iter++)
+	for (iter = v.begin(); v.end() != iter; iter++)
 	{
-		STaskDesc &Desc = *iter;
+		STaskDesc& Desc = *iter;
 
 		vector<STaskKey>::iterator itKey;
 		cIndex = 0;
-		for(itKey = Desc.taskReq.begin(); Desc.taskReq.end() != itKey; itKey++)
+		for (itKey = Desc.taskReq.begin(); Desc.taskReq.end() != itKey; itKey++)
 		{
 			ProcessTaskKey(*itKey, &Desc, cIndex);
 		}
@@ -6197,7 +6198,7 @@ void CRSLogicExt::InitTaskDesc()
 	CMainStoryMgr::GetMgr().BuildMgr();
 }
 
-bool CRSLogicExt::ProcessTaskKey(STaskKey &key, STaskDesc* pDesc, char &cIndex)
+bool CRSLogicExt::ProcessTaskKey(STaskKey& key, STaskDesc* pDesc, char& cIndex)
 {
 	bool bRet = false;
 	ItemTaskData data;
@@ -6206,7 +6207,7 @@ bool CRSLogicExt::ProcessTaskKey(STaskKey &key, STaskDesc* pDesc, char &cIndex)
 	NPCTaskMap& mapNPC = GetNPCTaskMap();
 	do
 	{
-		if(key.key == "useitem")
+		if (key.key == "useitem")
 		{
 			int nItemID = atoi(key.param[0].c_str());
 			data.pTask = pDesc;
@@ -6224,7 +6225,7 @@ bool CRSLogicExt::ProcessTaskKey(STaskKey &key, STaskDesc* pDesc, char &cIndex)
 		}
 		else if (key.key == "killmonster")
 		{
-			for(i = 1; i < 5; i++)
+			for (i = 1; i < 5; i++)
 			{
 				unsigned long dwNPCID = atol(key.param[i].c_str());
 				if (0 == dwNPCID)
@@ -6234,7 +6235,7 @@ bool CRSLogicExt::ProcessTaskKey(STaskKey &key, STaskDesc* pDesc, char &cIndex)
 				mapNPC.insert(std::make_pair(dwNPCID, pDesc));
 			}
 		}
-	}while(false);
+	} while (false);
 	return bRet;
 }
 
@@ -6244,11 +6245,11 @@ CRSLogicExt::ItemFinishTaskMap& CRSLogicExt::GetItemFinishTaskMap()
 	return m_ItemFinishTaskMap;
 }
 
-const char* CRSLogicExt::DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, bool bPyGMOP, long pyGmAccount, bool& bProce)
+const char* CRSLogicExt::DoClientCommand(CRegionCreature* cmdGiver, const char* szCommand, bool bPyGMOP, long pyGmAccount, bool& bProce)
 {
 	const char* pRet = "";
 	bProce = true;
-	do 
+	do
 	{
 		if (NULL == cmdGiver || NULL == szCommand)
 		{
@@ -6256,7 +6257,7 @@ const char* CRSLogicExt::DoClientCommand(CRegionCreature *cmdGiver,const char* s
 		}
 		std::istringstream is(szCommand);
 		std::string strKey;
-		is>>strKey;
+		is >> strKey;
 		if (strKey == "CreateUnion")
 		{
 			CG_CmdPacket& packet = g_region->m_gws.BeginSend();
@@ -6264,9 +6265,9 @@ const char* CRSLogicExt::DoClientCommand(CRegionCreature *cmdGiver,const char* s
 			packet.WriteShort(c2r_union_create);
 			packet.WriteLong(cmdGiver->m_userInfo->m_userId);
 			std::string str;
-			is>>str;
+			is >> str;
 			packet.WriteString(str.c_str());
-			is>>str;
+			is >> str;
 			packet.WriteString(str.c_str());
 			g_region->m_gws.EndSend();
 			cmdGiver->m_pItemContainer->LockOperate(true);
@@ -6274,13 +6275,13 @@ const char* CRSLogicExt::DoClientCommand(CRegionCreature *cmdGiver,const char* s
 		else if (strKey == "AcceptTask")
 		{
 			short wID;
-			is>>wID;
+			is >> wID;
 			cmdGiver->m_task.AddTask(wID);
-			STaskInfo *pTask = cmdGiver->m_task.FindTask(wID);
+			STaskInfo* pTask = cmdGiver->m_task.FindTask(wID);
 			if (NULL != pTask)
 			{
 				pTask->FSetDoing();
-				STaskDesc *desc = pTask->GetDesc();
+				STaskDesc* desc = pTask->GetDesc();
 				if (NULL != desc)
 				{
 					if (desc->IsMainTask())
@@ -6297,8 +6298,8 @@ const char* CRSLogicExt::DoClientCommand(CRegionCreature *cmdGiver,const char* s
 		else if (strKey == "FinishTask")
 		{
 			short wID;
-			is>>wID;
-			STaskDesc *desc = g_TableTask.FindTask(wID);
+			is >> wID;
+			STaskDesc* desc = g_TableTask.FindTask(wID);
 			if (NULL != desc)
 			{
 				cmdGiver->m_task.FinishTask(desc);
@@ -6308,7 +6309,7 @@ const char* CRSLogicExt::DoClientCommand(CRegionCreature *cmdGiver,const char* s
 		else if (strKey == "RemoveTask")
 		{
 			short wID;
-			is>>wID;
+			is >> wID;
 			bool bOK = cmdGiver->m_task.RemoveTask(wID);
 			if (!bOK)
 			{
@@ -6320,7 +6321,7 @@ const char* CRSLogicExt::DoClientCommand(CRegionCreature *cmdGiver,const char* s
 		else if (strKey == "MustKill")
 		{
 			long nPh = 1;
-			is>>nPh;
+			is >> nPh;
 			cmdGiver->m_core.DamageMin.Rate = nPh;
 			cmdGiver->m_core.DamageMax.Rate = nPh;
 			cmdGiver->m_IsInvincible = 1;
@@ -6329,11 +6330,11 @@ const char* CRSLogicExt::DoClientCommand(CRegionCreature *cmdGiver,const char* s
 		}
 		else if (strKey == "ReadConfig")
 		{
-			if(!ReadRegionConfigFile(R(INI_REGION)))
+			if (!ReadRegionConfigFile(R(INI_REGION)))
 			{
 				ERR("Startup: read region config file [sv_table/region.ini] failed");
 				return false;
-			}	
+			}
 		}
 		else
 		{
@@ -6357,7 +6358,7 @@ int CRSLogicExt::GetItemTaskData(unsigned long nIndex, ItemTaskData** ppBuff, in
 		ItemTaskDataMap::iterator end = mapData.upper_bound(nIndex);
 
 		ItemTaskDataMap::iterator iter;
-		for(iter = beg; iter != end; iter++)
+		for (iter = beg; iter != end; iter++)
 		{
 			if (nRet >= nBuffNum)
 			{
@@ -6365,7 +6366,7 @@ int CRSLogicExt::GetItemTaskData(unsigned long nIndex, ItemTaskData** ppBuff, in
 			}
 			ppBuff[nRet++] = &((*iter).second);
 		}
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
@@ -6383,7 +6384,7 @@ int CRSLogicExt::GetNPCTaskData(unsigned long nIndex, STaskDesc** ppBuff, int nB
 		NPCTaskMap::iterator end = mapData.upper_bound(nIndex);
 
 		NPCTaskMap::iterator iter;
-		for(iter = beg; iter != end; iter++)
+		for (iter = beg; iter != end; iter++)
 		{
 			if (nRet >= nBuffNum)
 			{
@@ -6391,7 +6392,7 @@ int CRSLogicExt::GetNPCTaskData(unsigned long nIndex, STaskDesc** ppBuff, int nB
 			}
 			ppBuff[nRet++] = (*iter).second;
 		}
-	}while(false);
+	} while (false);
 	return nRet;
 }
 
@@ -6400,34 +6401,34 @@ void  CRSLogicExt::SelectedByDBID(CRegionCreature* pFind, unsigned long dwDBID)
 	char cType = 0;
 	long ln = 0;
 	long id = -1;
-	do 
+	do
 	{
 		if (NULL == pFind)
 		{
 			cType = 1;
 			break;
 		}
-		if(NULL == pFind->m_scene)
+		if (NULL == pFind->m_scene)
 		{
 			cType = 1;
 			break;
 		}
-		CRegionUser *user = g_region->FindUser(dwDBID);
-		if(NULL == user) 
+		CRegionUser* user = g_region->FindUser(dwDBID);
+		if (NULL == user)
 		{
 			break;
 		}
-		CRegionObject *ob;
-		CRegionCreature *tmp;
+		CRegionObject* ob;
+		CRegionCreature* tmp;
 
 		CRegionObject* pFindCreature[SCENE_MAX_FIND_OBJECT];
 		// int ObjectNum = GetAroundCreatureByTile(pos, range, exclude, PT_PATH, false, MAX_SNAPSHOT_OBJECT_SIZE);
 		int ObjectNum = pFind->m_scene->GetAroundObjectByGrid(pFindCreature, pFind->m_pos, DEFAULT_RANGE, 50);
-		for (int i=0; i<ObjectNum; i++)
+		for (int i = 0; i < ObjectNum; i++)
 		{
 			ob = pFindCreature[i];
 
-			if( (OB_TYPE(ob) == OBJECT_TYPE_CREATURE) ||
+			if ((OB_TYPE(ob) == OBJECT_TYPE_CREATURE) ||
 				(OB_TYPE(ob) == OBJECT_TYPE_NPC_COMBATIVE)
 				)
 			{
@@ -6436,12 +6437,12 @@ void  CRSLogicExt::SelectedByDBID(CRegionCreature* pFind, unsigned long dwDBID)
 				{
 					continue;
 				}
-				if(!tmp->IsUser()) continue;
-				if(tmp->Distance(pFind->m_pos) > DEFAULT_RANGE) continue;
+				if (!tmp->IsUser()) continue;
+				if (tmp->Distance(pFind->m_pos) > DEFAULT_RANGE) continue;
 				if (tmp->m_userInfo->m_userId == dwDBID)
 				{
 					ln = 1;
-					id  = tmp->GetObjectId();
+					id = tmp->GetObjectId();
 					break;
 				}
 			}

@@ -11,7 +11,7 @@ CMissileManager::~CMissileManager()
 	for(list<CMissile*> ::iterator It = mMissileList.begin() ; It!=mMissileList.end() ;It++)
 	{
         (*It)->Destroy();
-		DEL_ONE(*It)
+		DEL_ONE(*It);
 	}
 }
 
@@ -46,7 +46,7 @@ void CMissileManager::Run(float vSecond)
 		else
 		{
             pMissile->Destroy();
-			DEL_ONE(pMissile)
+			DEL_ONE(pMissile);
 			It=mMissileList.erase(It);
 		}
 	}
