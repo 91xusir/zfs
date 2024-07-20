@@ -9,12 +9,12 @@
 <p align="center">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
+
   <h3 align="center">仙魔改真封神计划！</h3>
   <p align="center">
     一个很疯狂也持续了很久的计划！！
     <br />
 </p>
-
 
 
 - [1.上手指南](#1上手指南)
@@ -195,7 +195,8 @@ sdl
   ```c++
   迁移说明：
   1. 项目中的hash_map全部替换为标准库unordered_map.
-     最初的 C++ 标准库中没有类似 hash_map 的实现，但不同实现者自己提供了非标准的 hash_map。 
+     最初的 C++ 标准库中没有类似 hash_map 的实现，
+     但不同实现者自己提供了非标准的 hash_map。 
      因为这些实现不是遵循标准编写的，所以它们在功能和性能保证方面都有细微差别。
      从 C++ 11 开始，hash_map 实现已被添加到标准库中。
      但为了防止与已开发的代码存在冲突，决定使用替代名称 unordered_map。
@@ -206,10 +207,12 @@ sdl
   3. "error LNK2001: 无法解析的外部符号 _sscanf " 
      "error LNK2001: 无法解析的外部符号 __iob_func " 
   -------------------------------------------------------------------------------
-  	部分第三方库内使用了vs的printf和scanf等较老的接口,对于vs2013及更早版本编译的静态库，
-  	在vs及之后版本中提供了库 legacy_stdio_definitions.lib，该库提供了符号兼容性。
-      但是，对于某些从通用 CRT 删除的符号，则无法提供兼容性符号。 这些符号包括一些函数（例如，__iob_func）和
-      数据导出（例如，__imp___iob、__imp___pctype、__imp___mb_cur_max）。
+  	部分第三方库内使用了vs的printf和scanf等较老的接口,
+   对于vs2013及更早版本编译的静态库，
+   在vs及之后版本中提供了库 legacy_stdio_definitions.lib，
+   该库提供了符号兼容性。
+   但是，对于某些从通用 CRT 删除的符号，则无法提供兼容性符号。
+   这些符号包括一些函数（例如，__iob_func）
   	因此需要手动转换为新的符号
   // iob_func.cpp
   #include <stdio.h>
