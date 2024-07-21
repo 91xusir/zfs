@@ -111,6 +111,7 @@ namespace rt_graph {
         inline BOOL      IfZero   ( void )  { if( m_v[0] != 0.0f || m_v[1] != 0.0f || m_v[2] != 0.0f ) return FALSE; else return TRUE; }
         inline void      Zero     ( void );
         inline void      Normalize( void );
+        //·´×ª
 	    inline void      Negative (void)    { x=-x; y=-y; z=-z;}
         inline float     Length   ( void ) const ;
         inline float     Length2  ( void );

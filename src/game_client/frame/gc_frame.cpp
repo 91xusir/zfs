@@ -925,29 +925,37 @@ void CGameClientFrame::OnEndRender()
 void CGameClientFrame::OnRender()
 {
     guard;
-
+    // 如果当前进程为空，则返回，不进行渲染
     if (m_pCurrentProcess==NULL) return;
+
+    // 获取设备对象的经过时间，并存储在 fElapsedTime 中
     float fElapsedTime = GetDevice()->GetElapsedTime();
 
     if (g_WorldMapRenderer.GetRenderFlag())
-    {
+    { // 如果世界地图渲染器的渲染标志为真，则调用其 Render 方法进行渲染
         g_WorldMapRenderer.Render();
         return;
     }
-
+    // 获取设备对象的摄像机，并调用其 Render 方法进行渲染，传递经过时间
     GetDevice()->m_pCamera->Render(fElapsedTime);
+
+    // 调用当前进程的 OnRender 方法进行渲染，传递经过时间
     m_pCurrentProcess->OnRender(fElapsedTime);
+
+    // 结束设备对象的后处理过程
     GetDevice()->EndPostProcess();
 
+    // 开始计时，用于 UI 渲染时间测量
     rtClock(m_sTimerUI);
 
+    // 如果定义了 DO_CONSOLE 并且正在捕获视频，则调用 GameCaptureVideo 方法进行视频捕捉
 #if DO_CONSOLE
     if (bCaptureVideo)
     {
         GameCaptureVideo();
     }
 #endif
-
+    // 停止计时，结束 UI 渲染时间测量
     rtUnclock(m_sTimerUI);
 
     unguard;

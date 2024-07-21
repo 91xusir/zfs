@@ -65,16 +65,23 @@ public:
 	virtual void OnEndRender();					// 图形渲染后
 
 	virtual void OnMouseMove(int iButton, int x, int y, int increaseX, int increaseY);
+	//处理鼠标滚轮事件
 	virtual void OnMouseWheel(int iButton, long vDelta);
+	//左键按下
 	virtual void OnMouseLDown(int iButton, int x, int y);
+	//按钮释放
 	virtual void OnMouseUp(int iButton, int x, int y) {}
+	//左键双击
 	virtual void OnMouseLDClick(int iButton, int x, int y);
+	//右键按下
 	virtual void OnMouseRDown(int iButton, int x, int y);
-
+	//右键拖动
 	virtual void OnMouseRDrag(int iButton, int x, int y, int increaseX, int increaseY);
+	//鼠标中键拖动
 	virtual void OnMouseMDrag(int iButton, int x, int y, int increaseX, int increaseY);
-
+	//键盘按下事件
 	virtual void OnKeyDown(int iButton, int iKey);
+	//键盘释放事件
 	virtual void OnKeyUp(int iButton, int iKey);
 
 	inline int GetCurSelectChar() { return m_iCurSelectChar; }
@@ -191,11 +198,12 @@ private:
 
 public:
 	void UpdateCameraPos();
-	void UpdateCameraAt(std::string  at);
+	void UpdateCameraAt(float scale);
 	void OnLoading();
 	void OnRenderMask(RTGRenderMask mask, float fSecond);
 	void UpdateGraphConfig(const char* szName);
 
+	// 在当前m_mapActor寻找指定name的actor
 	CRT_ActorInstance* FindModel(const char* szName);
 
 	virtual void OnPoseBegin(SRT_Pose* pose);
@@ -238,7 +246,7 @@ private:
 	std::map<std::string, CRT_ActorInstance*>   m_mapActor;
 
 	CRT_ActorInstance* m_pBody;
-	CRT_ActorInstance* m_pCamera;
+	CRT_ActorInstance* m_pCamera;//?
 	CRT_ActorInstance* m_pWeaponWT;
 	CRT_ActorInstance* m_pWeaponFL;
 	CRT_ActorInstance* m_pWeaponFLWay;

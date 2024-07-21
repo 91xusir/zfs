@@ -310,8 +310,35 @@ LRESULT CALLBACK	FSOClientWndProc(HWND, UINT, WPARAM, LPARAM);
 G_MEMDEF(s_szDetechUsername, 40)
 
 
+#ifdef _PREVIEW
+void OpenConsole()
+{
+	// 尝试分配控制台
+	if (AllocConsole()) {
+		// 获取控制台的标准输入输出句柄
+		FILE* fp;
+		freopen_s(&fp, "CONOUT$", "w", stdout);  // 将标准输出重定向到控制台
+		freopen_s(&fp, "CONIN$", "r", stdin);   // 将标准输入重定向到控制台
+		freopen_s(&fp, "CONOUT$", "w", stderr);  // 将标准错误重定向到控制台
+
+		std::cout << "Preview控制台已打开" << std::endl;
+	}
+	else {
+		std::cerr << "无法分配控制台" << std::endl;
+	}
+}
+void CloseConsole()
+{
+	// 释放控制台
+	FreeConsole();
+}
+#endif
+
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+#ifdef _PREVIEW
+	OpenConsole();
+#endif
 	// add by yz 2010-6-11:注册全局内存保护
 	RegisterMemProtector();
 	//end
@@ -541,7 +568,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		{
 			MessageBox(NULL, R(MSG_RUNEXE_FSO), R(G_INFO), MB_OK | MB_ICONINFORMATION);
 			DEL_ARRAY(szMemoffset);
-				return 0;
+			return 0;
 		}
 #endif
 
@@ -905,7 +932,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 		g_pMusicThread->Terminate(0);
 		DEL_ONE(g_pMusicThread);
-			g_pMusicThread = NULL;
+		g_pMusicThread = NULL;
 
 		// 声音系统退出
 		LOG("Exit Pre Audio\n");
@@ -926,6 +953,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		// 核心库退出
 		LOG("Exit Core\n");
 		rtCoreExit();
+#ifdef _PREVIEW
+		FreeConsole();
+#endif
 		finalunguard;
 	}
 
@@ -939,54 +969,54 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 #endif
 
 	DEL_ARRAY(szMemoffset);
-		switch (iResult)
-		{
-		case 22:
-		{
-			//const char* szNewUserCard = GetGameIni()->GetEntry("net", "NewUserCard");
-			//if (szNewUserCard==NULL)
-			//{
-			//    szNewUserCard = "http://zfs.gamigo.com.cn/member/mem_reg.aspx?active_code=%s&active_password=%s";
-			//}
-			//std::string szCmd = "explorer.exe \"";
-			//sprintf(g_strStaticBuffer, szNewUserCard, GcLogin::m_szAccountUsername, GcLogin::m_szAccountPassword);
-			//szCmd += g_strStaticBuffer;
-			//szCmd += "\"";
-			//WinExec(szCmd.c_str(), SW_SHOW);
-		}
-		break;
-		case 23:
-		{
-			//const char* szHackerDeteched = GetGameIni()->GetEntry("net", "HackerDetected");
-			//if (szHackerDeteched)
-			//{
-			//    std::string szCmd = "explorer.exe \"";
-			//    szCmd += szHackerDeteched;
-			//    if (s_szDetechUsername[0])
-			//    {
-			//        szCmd += "?name=";
-			//        szCmd += s_szDetechUsername;
-			//    }
-			//    szCmd += "\"";
-			//    WinExec(szCmd.c_str(), SW_SHOW);
-			//}
-		}
-		break;
-		default:
-		{
-			//const char* szNewUserCard = NULL;
-			//if (szNewUserCard==NULL)
-			//{
-			//    szNewUserCard = "http://www.baidu.com";
-			//}
-			//std::string szCmd = "explorer.exe \"";
-			////sprintf(g_strStaticBuffer, szNewUserCard, GcLogin::m_szAccountUsername, GcLogin::m_szAccountPassword);
-			//szCmd += szNewUserCard;
-			//szCmd += "\"";
-			//WinExec(szCmd.c_str(), SW_SHOW);
-		}
-		break;
-		}
+	switch (iResult)
+	{
+	case 22:
+	{
+		//const char* szNewUserCard = GetGameIni()->GetEntry("net", "NewUserCard");
+		//if (szNewUserCard==NULL)
+		//{
+		//    szNewUserCard = "http://zfs.gamigo.com.cn/member/mem_reg.aspx?active_code=%s&active_password=%s";
+		//}
+		//std::string szCmd = "explorer.exe \"";
+		//sprintf(g_strStaticBuffer, szNewUserCard, GcLogin::m_szAccountUsername, GcLogin::m_szAccountPassword);
+		//szCmd += g_strStaticBuffer;
+		//szCmd += "\"";
+		//WinExec(szCmd.c_str(), SW_SHOW);
+	}
+	break;
+	case 23:
+	{
+		//const char* szHackerDeteched = GetGameIni()->GetEntry("net", "HackerDetected");
+		//if (szHackerDeteched)
+		//{
+		//    std::string szCmd = "explorer.exe \"";
+		//    szCmd += szHackerDeteched;
+		//    if (s_szDetechUsername[0])
+		//    {
+		//        szCmd += "?name=";
+		//        szCmd += s_szDetechUsername;
+		//    }
+		//    szCmd += "\"";
+		//    WinExec(szCmd.c_str(), SW_SHOW);
+		//}
+	}
+	break;
+	default:
+	{
+		//const char* szNewUserCard = NULL;
+		//if (szNewUserCard==NULL)
+		//{
+		//    szNewUserCard = "http://www.baidu.com";
+		//}
+		//std::string szCmd = "explorer.exe \"";
+		////sprintf(g_strStaticBuffer, szNewUserCard, GcLogin::m_szAccountUsername, GcLogin::m_szAccountPassword);
+		//szCmd += szNewUserCard;
+		//szCmd += "\"";
+		//WinExec(szCmd.c_str(), SW_SHOW);
+	}
+	break;
+	}
 
 	CrashRP::Stop();
 	return iResult;

@@ -270,7 +270,7 @@ void RtgCamera::UpdateMatrix(void)
 		m_bUpdate = FALSE; // update flag
         OnUpdateMatrix();
         ComputeFrustrum();
-      //  UpdateFrustrumClipPlanes();		
+      // UpdateFrustrumClipPlanes();		
     }
 }
 
@@ -666,9 +666,13 @@ BOOL RtgCameraEditor::OnAddRoll(float fAmount)
 
 BOOL RtgCameraEditor::OnMoveForward(float fAmount)
 {
+    // 当前相机位置
     RtgVertex3 v = m_vPos;
+    // 定义一个向上的向量
     RtgVertex3 up(0.f, 0.f, 1.f);
+    // 计算相机的移动方向：相机右向量（m_vAxisX）与向上向量（up）的叉积
     RtgVertex3 dir = m_vAxisX.Cross(up);
+    // 根据移动方向和移动量计算新的相机位置
     v += dir * fAmount;
     m_vPos.x = v.x;
     m_vPos.y = v.y;
