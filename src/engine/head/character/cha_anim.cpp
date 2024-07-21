@@ -179,13 +179,14 @@ CRT_ActorInstance::CRT_ActorInstance()
 }
 
 bool CRT_ActorInstance::CoreLinkParent(CRT_ActorInstance* parent, const char* slot)
-{
+{   // 如果父实例为空，返回false
     if (!parent)
         return false;
-
+    // 如果父实例的状态是就绪状态，直接调用具体的链接实现
     if (parent->GetState() == Object_State_Ready)
         return CoreLinkParentImpl(parent, slot);
 
+    // 创建一个用于链接的命令并添加到命令列表
     Rac_ActorLink* _cmd = CreateActorCommand<Rac_ActorLink>();
     _cmd->ltype = Rac_ActorLink::_link;
     _cmd->_parent = parent;
@@ -199,26 +200,29 @@ bool CRT_ActorInstance::CoreLinkParent(CRT_ActorInstance* parent, const char* sl
 
 void CRT_ActorInstance::CoreUnlinkParent()
 {
+    // 如果链接计数小于等于0，则直接调用具体的解除实现
     if (m_linkCount <= 0)
         return CoreUnlinkParentImpl();
-
+    // 创建一个用于解除链接的命令并添加到命令列表
     Rac_ActorLink* _cmd = CreateActorCommand<Rac_ActorLink>();
     _cmd->ltype = Rac_ActorLink::_unlink;
     m_listCommand.push_back(_cmd);	
 }
 
+// 具体实现将当前实例链接到父实例，并指定一个槽位
 bool CRT_ActorInstance::CoreLinkParentImpl(CRT_ActorInstance* parent, const char* slot)
-{
+{// 如果父实例为空或当前实例已有父实例，则返回false
     if (!parent || m_parent) 
         return false;
-
+    // 设置当前实例的父实例
     m_parent = parent;
     m_parentSlot.clear();
-
+    // 如果提供了槽位信息，则保存该槽位信息
     if (slot)
         m_parentSlot = slot;
-
+    // 将当前实例添加到父实例的子列表中
     parent->AddChild(this);
+    // 更新矩阵
     UpdateMatrix();
 
     return true;
@@ -235,10 +239,12 @@ void CRT_ActorInstance::CoreUnlinkParentImpl()
     UpdateMatrix();
 
 }
-
+// 将当前实例链接到父实例，并指定一个槽位
 bool CRT_ActorInstance::LinkParent(CRT_ActorInstance* parent, const char* slot)
 {
+    // 首先解除当前的父子链接关系
 	CoreUnlinkParent();
+    // 然后链接到新的父实例
     return CoreLinkParent(parent, slot);
 }
 

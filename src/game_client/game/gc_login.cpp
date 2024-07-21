@@ -311,6 +311,7 @@ void GcLogin::SetLoginState(EStatus eState)
 	case GLS_SELECT_GAMEWORLD_SERVER:
 		if (m_eStatus != GLS_LOGIN)
 		{
+			//当前mapActor组设置为登录act组
 			m_mapActor = m_mapLogin;
 		}
 		EnterSelectGameWorldServer();
@@ -352,9 +353,9 @@ namespace {
 
 	inline void _AdjustCameraMatrix(RtgMatrix16* matOut, RtgMatrix12* matIn)
 	{
+
 		RTASSERT(matOut);
 		RTASSERT(matIn);
-
 		RtgVertex3 z = *(RtgVertex3*)&matIn->_10;
 		z.Normalize();
 		z.Negative();
@@ -364,9 +365,11 @@ namespace {
 		y.Normalize();
 
 		matOut->Identity();
+		// 设置方向向量
 		matOut->SetRow(0, x);
 		matOut->SetRow(1, y);
 		matOut->SetRow(2, z);
+		// 设置位置
 		matOut->SetRow(3, (float*)&matIn->_30);
 	}
 }
@@ -394,11 +397,21 @@ void GcLogin::UpdateCameraPos()
 		{
 			_AdjustCameraMatrix(&mCamera, &_mat);
 			GetDevice()->m_pCamera->SetMatrix(mCamera);
+#ifdef _PREVIEW
+			RtgVertex3 eyePos, eyeDir;
+			GetDevice()->m_pCamera->GetEyeInfo(eyePos, eyeDir);
+			auto upvec = GetDevice()->m_pCamera->GetUpVec();
+			auto loolatpt = GetDevice()->m_pCamera->GetLookatPt();
+			std::cout << "pos: " << eyePos.x << "," << eyePos.y << "," << eyePos.z << std::endl;
+			std::cout << "dir: " << eyeDir.x << "," << eyeDir.y << "," << eyeDir.z << std::endl;
+			std::cout << "GetUpVec: " << upvec.x << "," << upvec.y << "," << upvec.z << std::endl;
+			std::cout << "loolatpt: " << loolatpt.x << "," << loolatpt.y << "," << loolatpt.z << std::endl;
+#endif
 		}
 	}
 	unguard;
 }
-void  GcLogin::UpdateCameraAt(std::string at)
+void  GcLogin::UpdateCameraAt(float scale)
 {
 	guard;
 	RtgMatrix16 mCamera;
@@ -411,10 +424,29 @@ void  GcLogin::UpdateCameraAt(std::string at)
 	{
 		RtgMatrix12 _mat;
 
-		if (m_pBody->GetBoneMat(&_mat, at.c_str()))
+		if (m_pBody->GetBoneMat(&_mat, "bcam"))
 		{
-			_AdjustCameraMatrix(&mCamera, &_mat);
+
+			RTASSERT(&mCamera);
+			RTASSERT(&_mat);
+
+			RtgVertex3 z = *(RtgVertex3*)&_mat._10;
+			z.Normalize();
+			z.Negative();
+			RtgVertex3 x = RtgVertex3(0.f, 0.f, 1.f).Cross(z);
+			x.Normalize();
+			RtgVertex3 y = z.Cross(x);
+			y.Normalize();
+
+			mCamera.Identity();
+			// 设置方向向量
+			mCamera.SetRow(0, x * scale);  // 进行缩放
+			mCamera.SetRow(1, y * scale);  // 进行缩放
+			mCamera.SetRow(2, z * scale);  // 进行缩放
+			mCamera.SetRow(3, (float*)&_mat._30);
 			GetDevice()->m_pCamera->SetMatrix(mCamera);
+			D3DXVECTOR3 lookatOffset(0.0f, 0.0f, 5.0f);
+
 		}
 	}
 	unguard;
@@ -440,6 +472,9 @@ void GcLogin::EnterSelectGameWorldServer()
 		if (!m_pCamera->PlayPose("idle", true))
 			m_pCamera->RegisterNotify(NULL);
 	}
+
+
+	//	GetDevice()->m_pCamera->MoveForward(100 * 100.0f);
 
 	StartGetGameWorldServer();
 
@@ -1736,7 +1771,7 @@ void GcLogin::OnNetDeleteUser(long id, char hasDel)
 		if (it != m_mapSelectActor.end())
 		{
 			DEL_ONE((*it).second);
-				m_mapSelectActor.erase(it);
+			m_mapSelectActor.erase(it);
 		}
 	}
 	QueryAccountInfo();
@@ -2144,9 +2179,9 @@ void GcLogin::OnBeginRender()
 void GcLogin::OnEndRender()
 {
 	guard;
-	//char cTmp[128] = "\0";
-	//rt2_sprintf(cTmp, "FPS:%.2f\r\nMouseX:%d\r\nMouseY:%d", fPs, g_workspace.GetMousePosX(), g_workspace.GetMousePosY());
-	//GetDevice()->DrawString(0, 0, 0xFF00FF00, cTmp);
+	char cTmp[128] = "\0";
+	rt2_sprintf(cTmp, "FPS:%.2f\r\nMouseX:%d\r\nMouseY:%d", fPs, g_workspace.GetMousePosX(), g_workspace.GetMousePosY());
+	GetDevice()->DrawString(0, 0, 0xFF00FF00, cTmp);
 	unguard;
 }
 
@@ -2181,6 +2216,7 @@ void GcLogin::OnRender(float fSecond)
 
 	RtgMatrix16 m16;
 	m16.Unit();
+	//
 	GetDevice()->SetMatrix(RTGTS_WORLD, &m16);
 	GetDevice()->SetRenderState(RTGRS_Z_TEST, TRUE);
 
@@ -2302,12 +2338,23 @@ void GcLogin::OnMouseMove(int iButton, int x, int y, int increaseX, int increase
 	if (!m_bCanInput) return;
 	unguard;
 }
-
 void GcLogin::OnMouseWheel(int iButton, long vDelta)
 {
 	guard;
 #ifdef _DEBUG
 	GetDevice()->m_pCamera->MoveForward(vDelta * 100.0f);
+#endif
+#ifdef _PREVIEW
+	GetDevice()->m_pCamera->MoveForward(vDelta * 100.0f);
+#endif
+#ifdef _PREVIEW
+	RtgVertex3 eyePos, eyeDir;
+	GetDevice()->m_pCamera->GetEyeInfo(eyePos, eyeDir);
+	std::cout << "pos: " << eyePos.x << "," << eyePos.y << "," << eyePos.z << std::endl;
+	std::cout << "dir: " << eyeDir.x << "," << eyeDir.y << "," << eyeDir.z << std::endl;
+	auto lookatpt = GetDevice()->m_pCamera->GetUpVec();
+	std::cout << "GetUpVec: " << lookatpt.x << "," << lookatpt.y << "," << lookatpt.z << std::endl;
+
 #endif
 	if (!m_bCanInput) return;
 	unguard;
@@ -2457,6 +2504,19 @@ void GcLogin::OnMouseRDrag(int iButton, int x, int y, int increaseX, int increas
 	GetDevice()->m_pCamera->AddYaw(DegreeToRadian(increaseX));
 	GetDevice()->m_pCamera->AddRoll(DegreeToRadian(-increaseY));
 #endif
+#ifdef _PREVIEW
+
+	GetDevice()->m_pCamera->AddYaw(DegreeToRadian(increaseX));
+	GetDevice()->m_pCamera->AddRoll(DegreeToRadian(-increaseY));
+#endif
+#ifdef _PREVIEW
+	RtgVertex3 eyePos, eyeDir;
+	GetDevice()->m_pCamera->GetEyeInfo(eyePos, eyeDir);
+	std::cout << "pos: " << eyePos.x << "," << eyePos.y << "," << eyePos.z << std::endl;
+	std::cout << "dir: " << eyeDir.x << "," << eyeDir.y << "," << eyeDir.z << std::endl;
+	auto lookatpt = GetDevice()->m_pCamera->GetUpVec();
+	std::cout << "GetUpVec: " << lookatpt.x << "," << lookatpt.y << "," << lookatpt.z << std::endl;
+#endif
 	if (m_eStatus == GLS_CREATE_CHAR)
 	{
 		if (m_iCurSelectChar == 0 || m_iCurSelectChar == 1)
@@ -2484,7 +2544,28 @@ void GcLogin::OnMouseMDrag(int iButton, int x, int y, int increaseX, int increas
 void GcLogin::OnKeyDown(int iButton, int iKey)
 {
 	guard;
+#ifdef _PREVIEW
+	//0.0136417, 0.166036, 0.986025
+	//	396.122, 5664.64, -480.806
+	//	- 0.0694927, -0.993768, 0.0871565
+	if (iButton == 86) {
+		RtgVertex3 vEyePt = { -1556.6,-1781.47,290.54 };  // 相机的位置
+		RtgVertex3 vLookatPt = { -1556.6, -1781.47,290.54 };  // 相机的目标位置
+		RtgVertex3 vUpVec = { -0.00033691,0.0149247,0.999889 };  // 上向量
+		GetDevice()->m_pCamera->SetViewParams(vEyePt, vLookatPt, vUpVec);
+		GetDevice()->m_pCamera->UpdateMatrix();
+	}
+#else
 	if (!m_bCanInput) return;
+#endif
+#ifdef _PREVIEW
+	RtgVertex3 eyePos, eyeDir;
+	GetDevice()->m_pCamera->GetEyeInfo(eyePos, eyeDir);
+	std::cout << "pos: " << eyePos.x << "," << eyePos.y << "," << eyePos.z << std::endl;
+	std::cout << "dir: " << eyeDir.x << "," << eyeDir.y << "," << eyeDir.z << std::endl;
+	auto lookatpt = GetDevice()->m_pCamera->GetUpVec();
+	std::cout << "GetUpVec: " << lookatpt.x << "," << lookatpt.y << "," << lookatpt.z << std::endl;
+#endif
 	unguard;
 }
 
