@@ -12,6 +12,7 @@
 #include "ui_form_textMsg.h"
 #include "UIForm_Server.h"
 #include "soft_keyboard.h"
+#include "../preLog.h"
 
 //1--五台 4--花间 7--蜀山 10--苗疆 13--蜀山(女) 16--苗疆(女)
 //static int s_userID[] = {1, 4, 7, 10, 13, 16};
@@ -334,7 +335,13 @@ void GcLogin::SetLoginState(EStatus eState)
 	}
 	if (m_eStatus != GLS_NONE)
 	{
-		UpdateCameraPos();
+		if (m_eStatus == GLS_SELECT_GAMEWORLD_SERVER || m_eStatus == GLS_LOGIN)
+		{
+			SJDL_UpdateCameraPos();
+		}
+		else {
+			UpdateCameraPos();
+		}
 	}
 	unguard;
 }
@@ -351,11 +358,16 @@ CRT_ActorInstance* GcLogin::FindModel(const char* szName)
 
 namespace {
 
+	/**
+	由于模型骨骼矩阵是 4x3 矩阵（RtgMatrix12），
+	而相机矩阵是 4x4 矩阵（RtgMatrix16），
+	需要一个转换函数 _AdjustCameraMatrix。
+	*/
 	inline void _AdjustCameraMatrix(RtgMatrix16* matOut, RtgMatrix12* matIn)
 	{
-
 		RTASSERT(matOut);
 		RTASSERT(matIn);
+
 		RtgVertex3 z = *(RtgVertex3*)&matIn->_10;
 		z.Normalize();
 		z.Negative();
@@ -363,25 +375,18 @@ namespace {
 		x.Normalize();
 		RtgVertex3 y = z.Cross(x);
 		y.Normalize();
-
+		//设置为单位矩阵
 		matOut->Identity();
-		// 设置方向向量
 		matOut->SetRow(0, x);
 		matOut->SetRow(1, y);
 		matOut->SetRow(2, z);
-		// 设置位置
 		matOut->SetRow(3, (float*)&matIn->_30);
 	}
 }
 // 更新相机位置
+//BOOKMARK: this is a bookmark
 void GcLogin::UpdateCameraPos()
 {
-
-	/** by：luyoyu
-	由于骨骼矩阵是 3x4 矩阵（RtgMatrix12），
-	而相机矩阵是 4x4 矩阵（RtgMatrix16），
-	需要一个转换函数 _AdjustCameraMatrix。
-	*/
 	guard;
 	RtgMatrix16 mCamera;
 
@@ -392,61 +397,46 @@ void GcLogin::UpdateCameraPos()
 	if (pCamera)
 	{
 		RtgMatrix12 _mat;
-
 		if (m_pBody->GetBoneMat(&_mat, "bcam"))
 		{
 			_AdjustCameraMatrix(&mCamera, &_mat);
 			GetDevice()->m_pCamera->SetMatrix(mCamera);
 #ifdef _PREVIEW
-			RtgVertex3 eyePos, eyeDir;
-			GetDevice()->m_pCamera->GetEyeInfo(eyePos, eyeDir);
-			auto upvec = GetDevice()->m_pCamera->GetUpVec();
-			auto loolatpt = GetDevice()->m_pCamera->GetLookatPt();
-			std::cout << "pos: " << eyePos.x << "," << eyePos.y << "," << eyePos.z << std::endl;
-			std::cout << "dir: " << eyeDir.x << "," << eyeDir.y << "," << eyeDir.z << std::endl;
-			std::cout << "GetUpVec: " << upvec.x << "," << upvec.y << "," << upvec.z << std::endl;
-			std::cout << "loolatpt: " << loolatpt.x << "," << loolatpt.y << "," << loolatpt.z << std::endl;
+			logMessage(info, "BodyMatrix: ");
+			logMessage(info, "\n" + _mat.ToString());
+			logMessage(info, "CameraMatrix: ");
+			logMessage(info, "\n" + mCamera.ToString());
 #endif
 		}
 	}
 	unguard;
 }
-void  GcLogin::UpdateCameraAt(float scale)
+void  GcLogin::SJDL_UpdateCameraPos()
 {
 	guard;
 	RtgMatrix16 mCamera;
-
 	CRT_ActorInstance* pCamera;
 	m_pBody = FindModel("Body");
 	pCamera = m_pBody;
-
 	if (pCamera)
 	{
 		RtgMatrix12 _mat;
-
 		if (m_pBody->GetBoneMat(&_mat, "bcam"))
 		{
-
 			RTASSERT(&mCamera);
 			RTASSERT(&_mat);
-
-			RtgVertex3 z = *(RtgVertex3*)&_mat._10;
-			z.Normalize();
-			z.Negative();
-			RtgVertex3 x = RtgVertex3(0.f, 0.f, 1.f).Cross(z);
+			RtgVertex3 x = *(RtgVertex3*)&_mat._00;
+			RtgVertex3 y = *(RtgVertex3*)&_mat._10;
+			RtgVertex3 z = *(RtgVertex3*)&_mat._20;
 			x.Normalize();
-			RtgVertex3 y = z.Cross(x);
 			y.Normalize();
-
+			z.Normalize();
 			mCamera.Identity();
-			// 设置方向向量
-			mCamera.SetRow(0, x * scale);  // 进行缩放
-			mCamera.SetRow(1, y * scale);  // 进行缩放
-			mCamera.SetRow(2, z * scale);  // 进行缩放
+			mCamera.SetRow(0, x);
+			mCamera.SetRow(1, y);
+			mCamera.SetRow(2, z);
 			mCamera.SetRow(3, (float*)&_mat._30);
 			GetDevice()->m_pCamera->SetMatrix(mCamera);
-			D3DXVECTOR3 lookatOffset(0.0f, 0.0f, 5.0f);
-
 		}
 	}
 	unguard;
@@ -1512,17 +1502,29 @@ void GcLogin::OnLoading()
 
 void GcLogin::UpdateGraphConfig(const char* szName)
 {
+	// 摄像机的视场角度（Field of View），单位为度
 	float fCameraFOV = 45.0f;
+	// 渲染视口的宽高比，例如4:3
 	float fCameraAspect = 4.f / 3.f;
+	//近截面
 	float fCameraNear = 10.0f;
+	//远截面
 	float fCameraFar = 30000.0f;
+	//雾效果开始的距离
 	float fFogNear = 1000.f;
+	//雾效果结束的距离
 	float fFogFar = 8000.f;
+	//雾效果开关
 	long  lFogEnable = 0;
+	//天空光的颜色，这里设置为深灰色
 	long  lSkyLight = 0xFF888888;
+	//主光源的红色分量强度
 	float fLightR = 70.f;
+	//主光源的宽度，0表示点光源
 	float fLightW = 0.f;
+	//辅助光源的红色分量强度
 	float fLight2R = 70.f;
+	//辅助光源的宽度，0表示点光源
 	float fLight2W = 0.f;
 	m_lSkyFog = false;
 	RtgVertex3 vSkyLight(0.5f, 0.5f, 0.5f);
@@ -2347,15 +2349,6 @@ void GcLogin::OnMouseWheel(int iButton, long vDelta)
 #ifdef _PREVIEW
 	GetDevice()->m_pCamera->MoveForward(vDelta * 100.0f);
 #endif
-#ifdef _PREVIEW
-	RtgVertex3 eyePos, eyeDir;
-	GetDevice()->m_pCamera->GetEyeInfo(eyePos, eyeDir);
-	std::cout << "pos: " << eyePos.x << "," << eyePos.y << "," << eyePos.z << std::endl;
-	std::cout << "dir: " << eyeDir.x << "," << eyeDir.y << "," << eyeDir.z << std::endl;
-	auto lookatpt = GetDevice()->m_pCamera->GetUpVec();
-	std::cout << "GetUpVec: " << lookatpt.x << "," << lookatpt.y << "," << lookatpt.z << std::endl;
-
-#endif
 	if (!m_bCanInput) return;
 	unguard;
 }
@@ -2509,14 +2502,6 @@ void GcLogin::OnMouseRDrag(int iButton, int x, int y, int increaseX, int increas
 	GetDevice()->m_pCamera->AddYaw(DegreeToRadian(increaseX));
 	GetDevice()->m_pCamera->AddRoll(DegreeToRadian(-increaseY));
 #endif
-#ifdef _PREVIEW
-	RtgVertex3 eyePos, eyeDir;
-	GetDevice()->m_pCamera->GetEyeInfo(eyePos, eyeDir);
-	std::cout << "pos: " << eyePos.x << "," << eyePos.y << "," << eyePos.z << std::endl;
-	std::cout << "dir: " << eyeDir.x << "," << eyeDir.y << "," << eyeDir.z << std::endl;
-	auto lookatpt = GetDevice()->m_pCamera->GetUpVec();
-	std::cout << "GetUpVec: " << lookatpt.x << "," << lookatpt.y << "," << lookatpt.z << std::endl;
-#endif
 	if (m_eStatus == GLS_CREATE_CHAR)
 	{
 		if (m_iCurSelectChar == 0 || m_iCurSelectChar == 1)
@@ -2545,26 +2530,23 @@ void GcLogin::OnKeyDown(int iButton, int iKey)
 {
 	guard;
 #ifdef _PREVIEW
-	//0.0136417, 0.166036, 0.986025
-	//	396.122, 5664.64, -480.806
-	//	- 0.0694927, -0.993768, 0.0871565
 	if (iButton == 86) {
-		RtgVertex3 vEyePt = { -1556.6,-1781.47,290.54 };  // 相机的位置
-		RtgVertex3 vLookatPt = { -1556.6, -1781.47,290.54 };  // 相机的目标位置
-		RtgVertex3 vUpVec = { -0.00033691,0.0149247,0.999889 };  // 上向量
-		GetDevice()->m_pCamera->SetViewParams(vEyePt, vLookatPt, vUpVec);
-		GetDevice()->m_pCamera->UpdateMatrix();
+		//RtgMatrix16 viewMatrix = {
+		//-0.999390f, 0.003043f, 0.034777f, 0.0f,
+		//0.034910f, 0.087103f, 0.995587f, 0.0f,
+		//0.0f, 0.996195f, -0.087156f, 0.0f,
+		//0.000015f, -14.942854f, -5898.691895f, 1.0f
+		//};
+		//// 获取相机实例并设置视图矩阵
+		//RtgCamera* camera = GetDevice()->m_pCamera;
+		//camera->SetViewMatrix(viewMatrix);
+		auto gvm = GetDevice()->m_pCamera->GetViewMatrix();
+		// 假设 gv 是一个 RtgMatrix16 类型的 4x4 矩阵
+		logMessage(info, "ViewMatrix: ");
+		logMessage(info, "\n" + gvm.ToString());
 	}
 #else
 	if (!m_bCanInput) return;
-#endif
-#ifdef _PREVIEW
-	RtgVertex3 eyePos, eyeDir;
-	GetDevice()->m_pCamera->GetEyeInfo(eyePos, eyeDir);
-	std::cout << "pos: " << eyePos.x << "," << eyePos.y << "," << eyePos.z << std::endl;
-	std::cout << "dir: " << eyeDir.x << "," << eyeDir.y << "," << eyeDir.z << std::endl;
-	auto lookatpt = GetDevice()->m_pCamera->GetUpVec();
-	std::cout << "GetUpVec: " << lookatpt.x << "," << lookatpt.y << "," << lookatpt.z << std::endl;
 #endif
 	unguard;
 }

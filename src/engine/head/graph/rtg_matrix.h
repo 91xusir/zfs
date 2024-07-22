@@ -1,4 +1,3 @@
-
 namespace rt_graph {
 
 ///////////////////////////////////////////////////////////////////////////////////////
@@ -51,7 +50,7 @@ public:
     void Zero( void );
     void Unit( void );
     void Dump( float m[12] ) const;
-
+    std::string ToString() const;
     RtgMatrix12   operator+ ( const RtgMatrix12 &rhs );
     RtgMatrix12   operator- ( const RtgMatrix12 &rhs );
     RtgMatrix12 & operator+=( const RtgMatrix12 &rhs );
@@ -191,8 +190,11 @@ public:
 
     void Zero( void );
     void Unit( void );
+    //设置为单位矩阵
     void Identity(void) { Unit();}
     void Dump( float m[16] ) const;
+    //格式化为字符串形式 方便控制台打印
+    std::string ToString() const;
 
     RtgMatrix16   operator+ ( const RtgMatrix16 &rhs );
     RtgMatrix16   operator- ( const RtgMatrix16 &rhs );

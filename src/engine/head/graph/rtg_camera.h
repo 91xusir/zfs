@@ -33,20 +33,20 @@ namespace rt_graph {
 		};
 
 	public:
-		RtgVertex3  m_vEyePt;       // 相机的位置 Attributes for view matrix
-		RtgVertex3  m_vLookatPt;    // 相机的目标位置
-		RtgVertex3  m_vAxisY;       // 上向量
-		RtgVertex3  m_vAxisX;       // 右向量
-		RtgVertex3  m_vAxisZ;       // 前向量（负的视线方向）
-		RtgVertex4  m_Planes[6];
+		RtgVertex3  m_vEyePt;       // 镜头(眼睛)位置 Attributes for view matrix
+		RtgVertex3  m_vLookatPt;    // 目标(观察点)位置
+		RtgVertex3  m_vAxisY;       // 镜头上方向
+		RtgVertex3  m_vAxisX;       // 镜头右方向
+		RtgVertex3  m_vAxisZ;       // 镜头前方向
+		RtgVertex4  m_Planes[6];    // 视锥面
 
 		RtgMatrix16 m_matView;      // 视图矩阵
-		RtgMatrix16 m_matBillboard;// 投影矩阵
+		RtgMatrix16 m_matBillboard; // 公告板矩阵
 
-		float       m_fFOV;         // Attributes for projection matrix
-		float       m_fAspect;
-		float       m_fNearPlane;
-		float       m_fFarPlane;
+		float       m_fFOV;         // 视角 Attributes for projection matrix
+		float       m_fAspect;		// 镜头宽高比
+		float       m_fNearPlane;	// 近剪裁面
+		float       m_fFarPlane;	// 远剪裁面
 		RtgMatrix16 m_matProj;
 		RtgMatrix16 m_matViewProj;
 		RtgMatrix16 m_matViewProj_Inv;
@@ -83,8 +83,10 @@ namespace rt_graph {
 
 		// 获取相机的视图矩阵
 		RtgMatrix16 GetViewMatrix() { return m_matView; }
+
 		// 获取相机的广告牌矩阵
 		RtgMatrix16 GetBillboardMatrix() { return m_matBillboard; }
+
 		// 获取相机的投影矩阵
 		RtgMatrix16 GetProjMatrix() { return m_matProj; }
 		// 重新更新相机的矩阵
@@ -99,9 +101,11 @@ namespace rt_graph {
 		void SetProjParams(float fFOV, float fAspect, float fNearPlane, float fFarPlane);
 		// 设置正交投影参数：左、上、右、下、近剪裁面和远剪裁面
 		void SetOrthoParams(float fLeft, float fTop, float fRight, float fBottom, float fNearPlane, float fFarPlane);
-		// 设置视图矩阵
+
+		// 设置视图矩阵 描述物体相对相机的位置
 		void SetViewMatrix(RtgMatrix16& m16);
-		// 设置相机的矩阵（通用设置函数）
+
+		// 设置相机的矩阵 及描述相机的位置，同时会更新视图矩阵（通用设置函数）
 		void SetMatrix(RtgMatrix16& ma);
 		// 更新相机的矩阵（通常在视图或投影参数改变后调用）
 		void UpdateMatrix(void);

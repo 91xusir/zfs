@@ -309,9 +309,9 @@ LRESULT CALLBACK	FSOClientWndProc(HWND, UINT, WPARAM, LPARAM);
 //static char s_szDetechUsername[40] = "";
 G_MEMDEF(s_szDetechUsername, 40)
 
-
+// 预览
 #ifdef _PREVIEW
-void OpenConsole()
+static void OpenConsole()
 {
 	// 尝试分配控制台
 	if (AllocConsole()) {
@@ -327,7 +327,7 @@ void OpenConsole()
 		std::cerr << "无法分配控制台" << std::endl;
 	}
 }
-void CloseConsole()
+static void CloseConsole()
 {
 	// 释放控制台
 	FreeConsole();
@@ -382,7 +382,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		{
 			ShowMessage("Rt Core init failed.\nExit now!");
 			return FALSE;
-		}
+	}
 
 		//rtCoreInit("game_client", 0, (RtOutputDevice*)-3, (RtOutputDeviceError*)-3, 0);
 #else
@@ -732,8 +732,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			if (GetGameIni()->GetEntry("Graph", "TotalTextureMem", &lTotalTextureMem))
 			{
 				//GetDevice()->m_Texture.SetTotalTextureMem(lTotalTextureMem);
-			}
 		}
+}
 #endif
 
 		long lMSWindowed = 0;
