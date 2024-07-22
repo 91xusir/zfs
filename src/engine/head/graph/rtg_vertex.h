@@ -412,7 +412,7 @@ namespace rt_graph {
 	    float dz = rhs.z - z;
 	    return dx*dx + dy*dy + dz*dz;
     }
-
+    // Normalize the vector 归一化
     void RtgVertex3::Normalize( void )
     {
         float fLen = Length();
@@ -428,7 +428,7 @@ namespace rt_graph {
     //#endif
         }
     }
-
+    // Cross product 叉积得正交向量
     RtgVertex3 RtgVertex3::Cross( const RtgVertex3 &rhs ) const
     {
         return RtgVertex3(m_v[1]*rhs[2] - m_v[2]*rhs[1], m_v[2]*rhs[0] - m_v[0]*rhs[2], m_v[0]*rhs[1] - m_v[1]*rhs[0]);

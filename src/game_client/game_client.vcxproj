@@ -374,6 +374,7 @@
     <ClInclude Include="..\shared\item_npc_shop.h" />
     <ClInclude Include="..\shared\item_pshop.h" />
     <ClInclude Include="..\shared\item_trade.h" />
+    <ClInclude Include="preLog.h" />
     <ClInclude Include="ui\ui_form_char.h" />
     <ClInclude Include="ui\ui_form_trump.h" />
     <ClInclude Include="ui\ui_layer_main.h" />
@@ -541,6 +542,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\engine\head\core\rtc2_thread.inl" />
+    <None Include="cpp.hint" />
     <None Include="frame\attack.cur" />
     <None Include="frame\cannotmove.cur" />
     <None Include="frame\deitem.cur" />
@@ -597,6 +599,7 @@
     <ClCompile Include="..\shared\item_pshop.cpp" />
     <ClCompile Include="..\shared\item_trade.cpp" />
     <ClCompile Include="iob_func.cpp" />
+    <ClCompile Include="preLog.cpp" />
     <ClCompile Include="ui\ui_form_char.cpp" />
     <ClCompile Include="ui\ui_form_trump.cpp" />
     <ClCompile Include="ui\ui_layer_main.cpp" />

@@ -232,6 +232,9 @@
     <Filter Include="frame\nes">
       <UniqueIdentifier>{8ac2ec69-338b-48c8-85c5-dbe1a587df00}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sjdl">
+      <UniqueIdentifier>{3caebf2f-d00a-4859-892e-8a529b25c958}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\engine\head\core\rt2_core.h">
@@ -1374,6 +1377,9 @@
     <ClInclude Include="game\NesClient.h">
       <Filter>frame\nes</Filter>
     </ClInclude>
+    <ClInclude Include="preLog.h">
+      <Filter>sjdl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\engine\head\core\rtc2_thread.inl">
@@ -1409,6 +1415,7 @@
     <None Include="frame\talk.cur">
       <Filter>frame\resource\cur</Filter>
     </None>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\engine\head\scene\rts_path_point.cpp">
@@ -2003,6 +2010,9 @@
       <Filter>frame\resource</Filter>
     </ClCompile>
     <ClCompile Include="iob_func.cpp" />
+    <ClCompile Include="preLog.cpp">
+      <Filter>sjdl</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="frame\game_client.rc">

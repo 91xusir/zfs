@@ -198,7 +198,7 @@ private:
 
 public:
 	void UpdateCameraPos();
-	void UpdateCameraAt(float scale);
+	void SJDL_UpdateCameraPos();
 	void OnLoading();
 	void OnRenderMask(RTGRenderMask mask, float fSecond);
 	void UpdateGraphConfig(const char* szName);
