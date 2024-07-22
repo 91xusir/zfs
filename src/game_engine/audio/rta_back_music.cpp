@@ -84,7 +84,7 @@ static int rta_core_write(SDL_RWops *context, const void *ptr, int size, int num
         int nWrote = ((RtArchive*)context->hidden.unknown.data1)->Serialize((void*)ptr, size*num)/size;
         if (nWrote==0)
         {
-            // TODO: Error
+            // D    WRYUIPIUVTGT6 G6TODO: Error
         }
         return (nWrote);
     }

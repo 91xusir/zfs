@@ -55,19 +55,19 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(ProjectDir)../bin/</OutDir>
-    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)</IntDir>
+    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)/</IntDir>
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ProjectDir)../bin/</OutDir>
-    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)</IntDir>
+    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)/</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
     <OutDir>$(ProjectDir)../bin/</OutDir>
-    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)</IntDir>
+    <IntDir>$(ProjectDir)../temp/$(ProjectName)/$(Configuration)/</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
@@ -144,6 +144,8 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <AdditionalDependencies>d3dx9.lib;d3d9.lib;graph_mt.lib;net_mt.lib;core_mt.lib;audio_mt.lib;libjpeg_MT.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_mt.lib;mikmod_mt.lib;native_midi_mt.lib;character_mt.lib;scene_mt.lib;filepack_mt.lib;ui_mt.lib;Encrypt_mt.lib;gdi32.lib;user32.lib</AdditionalDependencies>
@@ -155,6 +157,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

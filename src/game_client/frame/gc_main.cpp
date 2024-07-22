@@ -617,6 +617,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		ReadVersionFile(R(INI_VERSION));
 
 		// 更新注册表，如果是第一次运行，就发送PC Info
+		//TODO 现代程序不需要注册表 修改注册表容易报毒 后续优化为配置文件
 		CGameRegistry WinReg;
 		WinReg.Init();
 		if (!iniUser.GetEntry("game", "log"))
