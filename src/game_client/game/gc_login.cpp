@@ -264,7 +264,7 @@ bool GcLogin::ClearOnce()
 	unguard;
 
 }
-
+//lyymark 登录状态机
 void GcLogin::SetLoginState(EStatus eState)
 {
 	guard;
@@ -346,12 +346,11 @@ void GcLogin::SetLoginState(EStatus eState)
 	unguard;
 }
 
-CRT_ActorInstance* GcLogin::FindModel(const char* szName)
+CRT_ActorInstance* GcLogin::FindModel(const std::string& szName)
 {
 	guard;
-	std::map<std::string, CRT_ActorInstance*>::iterator it;
-	it = m_mapActor.find(std::string(szName));
-	if (it != m_mapActor.end()) return (*it).second;
+	auto it = m_mapActor.find(std::string(szName));
+	if (it != m_mapActor.end()) return it->second;
 	return NULL;
 	unguard;
 }
@@ -456,13 +455,13 @@ void GcLogin::EnterSelectGameWorldServer()
 	{
 		m_pCamera = NULL;
 	}
+
 	if (m_pCamera = FindModel("Camera"))
 	{
 		m_pCamera->RegisterNotify(this);
 		if (!m_pCamera->PlayPose("idle", true))
 			m_pCamera->RegisterNotify(NULL);
 	}
-
 
 	//	GetDevice()->m_pCamera->MoveForward(100 * 100.0f);
 
@@ -1131,6 +1130,7 @@ void GcLogin::UpdateSelectChar()
 	unguard;
 }
 
+//进入角色创建
 void GcLogin::EnterCreateChar()
 {
 	guard;
@@ -1456,6 +1456,7 @@ void GcLogin::OnLeaveCreateChar()
 	RTW_WIDGET("lbwutaitext")->Hide();
 }
 
+//loading页面加载
 void GcLogin::EnterLoading()
 {
 	guard;
@@ -1945,6 +1946,7 @@ void GcLogin::OnRun(float fSecond)
 		if (m_pCamera)
 		{
 			RtgMatrix12 _SlotMatrix;
+			//如果Camera有Bcam 则播放动画（移动镜头的效果）
 			if (m_pCamera->GetBoneMat(&_SlotMatrix, "Bcam"))
 			{
 				RtgMatrix16 camMat;
@@ -2529,6 +2531,7 @@ void GcLogin::OnMouseMDrag(int iButton, int x, int y, int increaseX, int increas
 void GcLogin::OnKeyDown(int iButton, int iKey)
 {
 	guard;
+	//lyymark 按v显示当前ViewMatrix
 #ifdef _PREVIEW
 	if (iButton == 86) {
 		//RtgMatrix16 viewMatrix = {

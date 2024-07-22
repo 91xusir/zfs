@@ -42,7 +42,7 @@ Character对模型动画,粒子系统等处理都是基于CPU处理的,几乎没
 
 ## 6.渲染流程
 
-![img](character/clip_image007.jpg)
+![ ](character/clip_image007.jpg) 
 
 
 ## 7.函数接口及类的说明
@@ -191,7 +191,7 @@ CRT_EffectEmitter *t = (CRT_EffectEmitter*)ActorPool()->Load(RT_RUNTIME_CLASS(CR
        return t;
 
     }
-    // 初始化
+// 初始化
     virtual bool Init(RtgDevice *dev,CRT_ActorInstance *actor);
 // 更新
     virtual void Tick(unsigned long delta);
@@ -644,113 +644,56 @@ virtual bool RequestTick() { return true; }
 
 ```c++
 // 标准材质
-
 class CRT_MtlStandard : public CRT_Material
-
 {
-
 // 读取/存储
-
     virtual long Serialize(RtArchive& Ar);
-
- 
-
     // 创建
-
     virtual CRT_PoolObject *NewObject() {
-
-       CRT_MtlStandard *t = (CRT_MtlStandard*)ActorPool()->Load(RT_RUNTIME_CLASS(CRT_MtlStandard));
-
+    CRT_MtlStandard *t = (CRT_MtlStandard*)ActorPool()->Load(RT_RUNTIME_CLASS(CRT_MtlStandard));
        *t = *this;
-
        t->m_poType = POOL_TYPE_MEMORY;
-
-    t->m_skin = NULL;
-
+       t->m_skin = NULL;
        t->m_rs = NULL;
-
        t->m_delta = 0;
-
     t->m_visibleGlobal = 1.0f;
-
     t->m_visibleLocal = 1.0f;
-
        return t;
-
     }
-
- 
-
     // 更新
-
-  virtual bool RequestTick();
-
+    virtual bool RequestTick();
     virtual void Tick(unsigned long delta);
-
     virtual bool RequestUseFrame();
-
     virtual void UseFrame(unsigned long frame);
-
-    
-
   // 初始化
-
 virtual bool Init(RtgDevice *dev,CRT_SkinInstance *skin,SRT_RenderSurface *rs);
-
-    // 渲染
-
+  // 渲染
 virtual void Render(RtgDevice *dev,RTGRenderMask mask);
-
-    virtual bool Exit();
-
-    // 是否激活
-
+virtual bool Exit();
+  // 是否激活
 virtual bool IsActive();
-
 // 是否透明
-
   virtual bool IsTransparent();
-
 // 是否需要更新法线
-
   virtual bool RequestUpdateNormal() {
-
-    return m_bSpec;
-
+  return m_bSpec;
 }
 
-// 设置/获取基础颜色
-
+	// 设置/获取基础颜色
     virtual bool SetBaseColor(RtgVertex3 &color);
-
     virtual bool GetBaseColor(RtgVertex3 &color);
-
     virtual string& GetName() { return m_name; }
-
     virtual void SetName(string &name) { m_name = name; }
-
- 
-
     // 获取/设置基础信息
-
     virtual void GetBaseInfo(RtgVertex4 &amb,RtgVertex4 &dif,RtgVertex4 &emi) {
-
        amb = m_amb;
-
        dif = m_dif;
-
        emi = m_emi;
-
     }
-
     virtual void SetBaseInfo(RtgVertex4 &amb,RtgVertex4 &dif,RtgVertex4 &emi) {
-
        m_amb = amb;
-
        m_dif = dif;
-
        m_emi = emi;
-
     }
 
  
@@ -758,17 +701,11 @@ virtual bool IsActive();
 // 材质帧(材质动画)
 
     struct SStandardKey
-
     {
-
        RtgVertex3 Rotate;      // 旋转
-
        RtgVertex3 Translate;    // 平移
-
        RtgVertex3 Scale;       // 缩放
-
-    float    Visible;      // 可见度
-
+       float    Visible;      // 可见度
        RtgVertex4 Amb,Dif,Emi; // 环境色,慢反射色,自发光色
 
  
@@ -1182,10 +1119,10 @@ class CRT_ActorInstance : public RtObject
     bool PlayPose(const char *name,bool loop=false,float speed=1.0f);
 // 在指定时间内播放
     bool PlayPoseInTime(const char *name,int mills,bool loop);
-    // 停止播放
+// 停止播放
     void StopPose();
-// 注册触发事件响应
-    void RegisterNotify(CRT_PoseNotify *notify);
+// 注册事件 完成后触发响应
+    void (CRT_PoseNotify *notify);
 // 设置动作表(从Actor中获取)
     void SetPoseMap(TPoseMap *map);
     // 获取动画长度

@@ -18,7 +18,7 @@ public:
 		GLS_SELECT_CHAR,  //选角色
 		GLS_CREATE_CHAR,   //创建角色
 		GLS_ENTER_GAME_LOADING,     //进入游戏
-		GLS_MAX //TODO 暂时未知作用
+		GLS_MAX //lyymark 暂时未知作用
 	};
 
 	enum EErrMsg
@@ -58,11 +58,14 @@ public:
 	// 初始化和清除
 	bool InitOnce();
 	bool ClearOnce();
-
-	virtual void OnRun(float fSecond);          // 逻辑渲染
-	virtual void OnBeginRender();				// 图形渲染前
-	virtual void OnRender(float fSecond);       // 图形渲染
-	virtual void OnEndRender();					// 图形渲染后
+	// 逻辑渲染
+	virtual void OnRun(float fSecond);   
+	// 图形渲染前
+	virtual void OnBeginRender();		
+	// 图形渲染
+	virtual void OnRender(float fSecond);  
+	// 图形渲染后
+	virtual void OnEndRender();					
 
 	virtual void OnMouseMove(int iButton, int x, int y, int increaseX, int increaseY);
 	//处理鼠标滚轮事件
@@ -204,7 +207,7 @@ public:
 	void UpdateGraphConfig(const char* szName);
 
 	// 在当前m_mapActor寻找指定name的actor
-	CRT_ActorInstance* FindModel(const char* szName);
+	CRT_ActorInstance* FindModel(const std::string& szName);
 
 	virtual void OnPoseBegin(SRT_Pose* pose);
 	virtual void OnPoseEnd(SRT_Pose* pose);
@@ -243,6 +246,7 @@ private:
 
 	bool                m_bLoading;
 
+	//当前Actor组件列表
 	std::map<std::string, CRT_ActorInstance*>   m_mapActor;
 
 	CRT_ActorInstance* m_pBody;
