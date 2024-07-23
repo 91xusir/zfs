@@ -13,7 +13,7 @@
 #include "UIForm_Server.h"
 #include "soft_keyboard.h"
 #include "../preLog.h"
-
+#include "../gc_fps.h"
 //1--五台 4--花间 7--蜀山 10--苗疆 13--蜀山(女) 16--苗疆(女)
 //static int s_userID[] = {1, 4, 7, 10, 13, 16};
 //static char* s_pszLoginCharName[] = {"role_wt_m_01", "role_hj_f_01", "role_ss_m_01", "role_mj_m_01", "role_ss_f_01", "role_mj_f_01"};
@@ -40,7 +40,7 @@ static char* s_pszCharAnimalName[] =
 };
 std::string GcLogin::m_szAccountUsername;
 std::string GcLogin::m_szAccountPassword;
-
+CLockFrame lockFrame(1000 / 60);
 GcLogin::GcLogin(CGameClientFrame* pGameClientFrame) :m_ini(true)
 {
 	m_eStatus = GLS_NONE;
@@ -1498,7 +1498,7 @@ bool GcLogin::LeaveLoading()
 void GcLogin::OnLoading()
 {
 	guard;
-	const char* szLoginConfigName = "scene/login2.ini";
+	const char* szLoginConfigName = "scene/login.ini";
 
 	if (!m_ini.OpenFile(szLoginConfigName))
 	{
@@ -1902,6 +1902,8 @@ void GcLogin::SetLastSelectCharID(int iID)
 void GcLogin::OnRun(float fSecond)
 {
 	guard;
+	//锁定60帧
+	CLockFrame(1000 / 60);
 	int i, j;
 	RtgVertex3 vOrig, vDir, v0, v1, vMin, vMax;
 	float r1, r2;
