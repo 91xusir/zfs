@@ -1844,7 +1844,7 @@ HRESULT CD3DApplication::DisplayErrorMsg( HRESULT hr, DWORD dwType )
             break;
 
         case D3DAPPERR_MEDIANOTFOUND:
-            //TODO 这里之前注释了，不知道为啥，先还原看看
+            //lyymark 这里之前注释了，不知道为啥，先还原看看
             // case HRESULT_FROM_WIN32( ERROR_FILE_NOT_FOUND ):
         case HRESULT_FROM_WIN32( ERROR_FILE_NOT_FOUND ):
             _tcscpy( strMsg, _T("Could not load required media." ) );

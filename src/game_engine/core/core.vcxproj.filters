@@ -84,7 +84,6 @@
     <ClInclude Include="zlib\zutil.h">
       <Filter>src\zlib</Filter>
     </ClInclude>
-    <ClInclude Include="rt2_resource_alloc.h" />
     <ClInclude Include="..\..\engine\head\core\rtc2_text_table.h">
       <Filter>sdk</Filter>
     </ClInclude>
@@ -332,6 +331,5 @@
     <None Include="..\..\engine\head\core\rtc2_thread.inl">
       <Filter>sdk</Filter>
     </None>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
