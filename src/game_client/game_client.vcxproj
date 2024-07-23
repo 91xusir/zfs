@@ -377,6 +377,7 @@
     <ClInclude Include="..\shared\item_npc_shop.h" />
     <ClInclude Include="..\shared\item_pshop.h" />
     <ClInclude Include="..\shared\item_trade.h" />
+    <ClInclude Include="gc_fps.h" />
     <ClInclude Include="preLog.h" />
     <ClInclude Include="ui\ui_form_char.h" />
     <ClInclude Include="ui\ui_form_trump.h" />
@@ -601,6 +602,7 @@
     <ClCompile Include="..\shared\item_npc_shop.cpp" />
     <ClCompile Include="..\shared\item_pshop.cpp" />
     <ClCompile Include="..\shared\item_trade.cpp" />
+    <ClCompile Include="gc_fps.cpp" />
     <ClCompile Include="iob_func.cpp" />
     <ClCompile Include="preLog.cpp" />
     <ClCompile Include="ui\ui_form_char.cpp" />
