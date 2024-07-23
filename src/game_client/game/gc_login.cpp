@@ -199,18 +199,23 @@ void LoadLoginSection(RtIni* pIni, const char* szSectionName,
 				(*it).second->LinkParent(pBody, (*it).first.c_str());
 			}
 		}*/
-		logMessage(info, pBody->m_Name + ":" + std::to_string(pBody->GetFrameNum()));
+
+
 
 		for (auto& pair : mapActor)
 		{
 			if (pair.first != "Body")
 			{
-
-			/*	if (!strncmp(pair.first.c_str(), "cloud", 5)) {
-					pair.second->SetCoreObject(pBody->GetCore());
-				}*/
-				pair.second->LinkParent(pBody, pair.first.c_str());
+#ifdef PREVIEW
+				logMessage(info, pBody->m_Name + ":" + std::to_string(pBody->GetFrameNum()));
+#endif
+				/*	if (!strncmp(pair.first.c_str(), "cloud", 5)) {
+						pair.second->SetCoreObject(pBody->GetCore());
+					}*/
+#ifdef PREVIEW
 				logMessage(info, pair.second->m_Name + ":" + std::to_string(pair.second->GetFrameNum()));
+#endif
+				pair.second->LinkParent(pBody, pair.first.c_str());
 			}
 		}
 

@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CRT_PoseNotify" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAABAAAkBAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_anim.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_SkinInstance" Collapsed="true">
+    <Position X="30.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EMEIAIQAAYAoBgAFNEAKgAEAAABQCEAEgFCACZCAwAg=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_anim.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TagPoseNotify" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_anim.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_ActorInstance" Collapsed="true">
+    <Position X="29" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GvHAXoxdOGoIP5Mu1OaWShH11KBRaFFkoPTm846R1rg=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_anim.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RtcSkinSubset" Collapsed="true">
+    <Position X="29" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAEAAQCAgAAAAAAAABAAEAAAAIAAAAkAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_PoolObject" Collapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BACAAAAAABBIAAAkAAAEAAAAAAAAAAAAQQCAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_Effect" Collapsed="true">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAwgBAAEAQAAAhEAAAFEEMAAABACwAAAZAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_EffectBase" Collapsed="true">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAYAAAAIAABAAEAQAAAAAAACBAAEABAAAAQAAABAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_Material" Collapsed="true">
+    <Position X="17.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAgBwABCAEBAgCAgUAIARQEMACACACQBgAZAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_MaterialLib" Collapsed="true">
+    <Position X="22" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAEhAAAAABABEQAAACgEGgCBRAMAASAAAAAgIQAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_Skin" Collapsed="true">
+    <Position X="25.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAACAAAAAABAGAAACAAFAACBACEBAAEAAAoA4AAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_VaSkin" Collapsed="true">
+    <Position X="24.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAoAAEAIEAAACgARKACGAACBACEAAQAAAAAA4AgA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_SkelSkin" Collapsed="true">
+    <Position X="26.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAAIAAEAACAAAKAgGAACBACEAAQAAAAAA4ABA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_Actor" Collapsed="true">
+    <Position X="13" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEBJAAoAKAACIAEkAAAIAAAAACAAAQAoQIIAAgQBACA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="keyframe&lt;T&gt;" Collapsed="true">
+    <Position X="32.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAEAAQgAAAAACACAAAAAAQAAAACAAAACAAEAQ=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_EffectEmitter" Collapsed="true">
+    <Position X="1.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAJQABEgwgBaAcEIDQpukIYLZQNcECQzASAwYEYAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_effect.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_EffectRibbon" Collapsed="true">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAZAQAEAwgBaEMAAEABgkAVDJAkMEAQjBAAiBkcAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_effect.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_Effect_Dynamic_Ribbon" Collapsed="true">
+    <Position X="6.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAQEJAAwgDQCkAAAAAgkAQDJAEMgEQjAAAghAYAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_effect.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_EffectRibbon2" Collapsed="true">
+    <Position X="8.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQBBEAwABSAEAAEAAgkAVTJAkMEAQjgAQgBAcAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_effect.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_EffectBlur" Collapsed="true">
+    <Position X="10.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQBAAAEIwAAQAEEAAAAgkEQCJgEMAQUjAAAoAAYAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_effect.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_MtlStandard" Collapsed="true">
+    <Position X="19.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQADSgQ8BwGVCBkHAgTJg0QYHJQEMACQiEIQkggZQA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_mtl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_MtlMu" Collapsed="true">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQEBAhAsBwCVCBsFCgTIg0RYDJVEMACQiCAQAgiZUE=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_mtl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CRT_MtlBlend" Collapsed="true">
+    <Position X="17.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAQADAgAsBwAVCBkFAgTIg0QYCJcEMACQiAAQAggZQA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_mtl.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RtcAcotrManager" Collapsed="true">
+    <Position X="34.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAGCAAACIiAABAAALABASBghGAQAAkwoYgAiGBoAIAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_manager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="ActorNotify" Collapsed="true">
+    <Position X="29" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAIAAAABAAAAgQAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_anim.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SRT_PoseEvent" Collapsed="true">
+    <Position X="34.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQIBAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SRT_Pose" Collapsed="true">
+    <Position X="32.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAEAAECIAAEgAAAAQAAEAQAAAwCAAgAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SRT_VaVtxPos" Collapsed="true">
+    <Position X="34.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAABgAQAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SRT_VaVtxNor" Collapsed="true">
+    <Position X="32.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SRT_VaVtxUV" Collapsed="true">
+    <Position X="29" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAgAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SRT_VaFrame" Collapsed="true">
+    <Position X="30.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAABAAAAAAAAAAAAAAAAAAAAAABAAAAACAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SRT_StaticVtx" Collapsed="true">
+    <Position X="29" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIIAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SRibbonFrame" Collapsed="true">
+    <Position X="32.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SRT_Bone" Collapsed="true">
+    <Position X="34.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAABQAEAAABAAAAAACAVIAAAAAAAAIAAoAAAEgAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SRT_BoneRef" Collapsed="true">
+    <Position X="29" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAIAAAEACAAAAAAAAAgAAAAABA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="SRT_DynamicVtx" Collapsed="true">
+    <Position X="30.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAIIIAAIAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_CRT_Slot" Collapsed="true">
+    <Position X="9.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_Rac_PlayPose" Collapsed="true">
+    <Position X="5.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAABAQQAAAAAAQAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_Rac_Setvc" Collapsed="true">
+    <Position X="1.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_Rac_ActorLink" Collapsed="true">
+    <Position X="13.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAIQAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_Rac_LoadSub" Collapsed="true">
+    <Position X="13.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAQAAAAAAAAAAAAAAAAAAABAAEAAAgAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_Rac_Setscale" Collapsed="true">
+    <Position X="13.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_Rac_Setbasecolor" Collapsed="true">
+    <Position X="9.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAACAAAAAAAEAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_Rac_Setvisible" Collapsed="true">
+    <Position X="5.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABBAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_Rac_Setmtl" Collapsed="true">
+    <Position X="1.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAABAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="_Rac_Needsyncmtl" Collapsed="true">
+    <Position X="9.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="RtcAcotrObject" Collapsed="true">
+    <Position X="30.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAgAIAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_manager.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="ActorNotifType" Collapsed="true">
+    <Position X="17.5" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_anim.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="CreateFinishNotify_t" Collapsed="true">
+    <Position X="32.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_anim.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="verArray_t" Collapsed="true">
+    <Position X="30.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="vcArray_t" Collapsed="true">
+    <Position X="29" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="boneArray_t" Collapsed="true">
+    <Position X="29" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="bonemap_t" Collapsed="true">
+    <Position X="30.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="TPoseMap" Collapsed="true">
+    <Position X="34.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="CRT_Slot" Collapsed="true">
+    <Position X="9.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_basic.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Rac_CmdType" Collapsed="true">
+    <Position X="17.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Rac_PlayPose" Collapsed="true">
+    <Position X="5.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Rac_Setvc" Collapsed="true">
+    <Position X="1.5" Y="19.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Rac_ActorLink" Collapsed="true">
+    <Position X="13.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Rac_LoadSub" Collapsed="true">
+    <Position X="13.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Rac_Setscale" Collapsed="true">
+    <Position X="13.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Rac_Setbasecolor" Collapsed="true">
+    <Position X="9.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Rac_Setvisible" Collapsed="true">
+    <Position X="5.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Rac_Setmtl" Collapsed="true">
+    <Position X="1.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="Rac_Needsyncmtl" Collapsed="true">
+    <Position X="9.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="ActorObjectType" Collapsed="true">
+    <Position X="5.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_manager.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="PoolFindRes" Collapsed="true">
+    <Position X="1.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_manager.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="_ActorNotifType" Collapsed="true">
+    <Position X="17.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAACIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_anim.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="__unnamed_enum_05a3_1" Collapsed="true">
+    <Position X="29" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_anim.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EActorQuality" Collapsed="true">
+    <Position X="30.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAgAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\cha_anim.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="_Rac_CmdType" Collapsed="true">
+    <Position X="17.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACgAAAABECSAAAAAEAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_command.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="_ActorObjectType" Collapsed="true">
+    <Position X="5.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAACAAAAAAAKAAAABAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_manager.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="_PoolFindRes" Collapsed="true">
+    <Position X="1.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAgAAAAAEAAAAAAA=</HashCode>
+      <FileName>D:\zfs_src\workspace\src\engine\head\character\rtc_actor_manager.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
