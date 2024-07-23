@@ -520,7 +520,6 @@ copy ..\..\libs\$(TargetName).lib ..\..\..\game_server\engine\libs\
     <ClInclude Include="zlib\trees.h" />
     <ClInclude Include="zlib\zconf.in.h" />
     <ClInclude Include="zlib\zutil.h" />
-    <ClInclude Include="rt2_resource_alloc.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rtc2_core.cpp" />
@@ -608,7 +607,6 @@ copy ..\..\libs\$(TargetName).lib ..\..\..\game_server\engine\libs\
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\engine\head\core\rtc2_thread.inl" />
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

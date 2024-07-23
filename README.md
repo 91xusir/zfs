@@ -34,7 +34,11 @@
 
 ### 1.上手指南
 
-开发环境：visual studio 2022
+开发环境：
+Visual Studio 2022 (v143) 
+Windows SDk 10.0.22000.0
+[Vcpkg](https://learn.microsoft.com/zh-cn/vcpkg/get_started/overview)
+[Git lfs](https://git-lfs.com/)
 
 #### 1.1 Clone
 
@@ -46,17 +50,15 @@ git clone https://github.com/reniao69/zfs.git
 
 ```
 打开各个vs解决方案，编译game_engine—>编译其他
-//TODO 后续将将写编译脚本一键编译
 ```
 
-- [ ] 编写cmake编译脚本
+- [ ] TODO: cmake编译脚本
 
 #### 1.3 项目说明
 
 ##### 1.3.1 目录结构
 
 ```
-├─Backup					vs旧版解决方案备份文件
 ├─bin    					编译生成的二进制文件 可以将客户端内容放在这里，方便调试gc
 ├─temp						编译生成的临时文件
 ├─docs						旧docs文档，将采用md重构
@@ -158,7 +160,7 @@ tool_ui					目录下存放着UI编辑器的源文件
 
 ##### 1.3.7 第三方库依赖
 
-```
+```c++
 atl
 boost
 cppunit
@@ -168,7 +170,7 @@ ToolkitPro1850
 max8
 max9
 mysql
-python25 预替换为python3
+python25 //TODO 替换为py3
 sdl
 ```
 
@@ -233,8 +235,6 @@ sdl
   ```
   
   ```
-
-  
 
 - [ ] 阅读客户端代码，重写md文档
 
