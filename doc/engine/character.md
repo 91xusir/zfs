@@ -837,33 +837,18 @@ virtual bool GetBoardPos(RtgVertex3 &pos) = 0;
  
 
 // 名字
-
     string m_name;
-
 // 是否生成影子
-
     bool  m_bDynShadow;
-
 // 是否公告板
-
     bool  m_bBoard;
-
 // 是否是静态的
-
-bool  m_bStatic;
-
+	bool  m_bStatic;
 // 版本
-
     char  m_szSkinVersion[10];
-
- 
-
 // 子集
-
-vector<SRT_RenderSurface>  m_rsList;
-
+   vector<SRT_RenderSurface>  m_rsList;
 // 材质
-
   CRT_MaterialLib       *m_mtlLib;
 
 };

@@ -152,6 +152,7 @@ void GcLogin::LoginErrMsg(EErrMsg eMsg, const char* szRetStr, short sRetCode)
 	}
 }
 
+//lyymark 加载登录配置文件
 void LoadLoginSection(RtIni* pIni, const char* szSectionName,
 	std::map<std::string, CRT_ActorInstance*>& mapActor)
 {
@@ -182,6 +183,7 @@ void LoadLoginSection(RtIni* pIni, const char* szSectionName,
 				if (szLink == "Body")
 				{
 					pBody = pActor;
+
 				}
 			}
 		} while (pIni->NextEntry(&szLink, &szName));
@@ -197,13 +199,21 @@ void LoadLoginSection(RtIni* pIni, const char* szSectionName,
 				(*it).second->LinkParent(pBody, (*it).first.c_str());
 			}
 		}*/
+		logMessage(info, pBody->m_Name + ":" + std::to_string(pBody->GetFrameNum()));
+
 		for (auto& pair : mapActor)
 		{
 			if (pair.first != "Body")
 			{
+
+			/*	if (!strncmp(pair.first.c_str(), "cloud", 5)) {
+					pair.second->SetCoreObject(pBody->GetCore());
+				}*/
 				pair.second->LinkParent(pBody, pair.first.c_str());
+				logMessage(info, pair.second->m_Name + ":" + std::to_string(pair.second->GetFrameNum()));
 			}
 		}
+
 	}
 	unguard;
 }
@@ -1883,6 +1893,7 @@ void GcLogin::SetLastSelectCharID(int iID)
 	//m_iLastSelectCharID = iID;
 }
 
+//lyymark 登录主循环入口
 void GcLogin::OnRun(float fSecond)
 {
 	guard;
@@ -1905,7 +1916,10 @@ void GcLogin::OnRun(float fSecond)
 		CRT_ActorInstance* act = it->second;
 
 		if (act)
+		{
+
 			act->Tick(fSecond * 1000.f, false);
+		}
 	}
 	if (m_pWeaponFL)
 	{
