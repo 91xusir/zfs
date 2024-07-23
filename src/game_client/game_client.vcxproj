@@ -132,7 +132,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
     <ClCompile>
       <AdditionalOptions>/Oy- %(AdditionalOptions)</AdditionalOptions>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include\atl;$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_PREVIEW;WIN32;NDEBUG;_WINDOWS;USE_D3DX9;LUA_OPNAMES;USE_D3D9;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;_PerfHUD_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
@@ -143,9 +143,10 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <MinimalRebuild>false</MinimalRebuild>
+      <MinimalRebuild>true</MinimalRebuild>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
+      <LanguageStandard>stdcpp14</LanguageStandard>
     </ClCompile>
     <Link>
       <AdditionalDependencies>d3dx9.lib;d3d9.lib;graph_mt.lib;net_mt.lib;core_mt.lib;audio_mt.lib;libjpeg_MT.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_mt.lib;mikmod_mt.lib;native_midi_mt.lib;character_mt.lib;scene_mt.lib;filepack_mt.lib;ui_mt.lib;Encrypt_mt.lib;gdi32.lib;user32.lib</AdditionalDependencies>
@@ -604,7 +605,6 @@
     <ClCompile Include="..\shared\item_trade.cpp" />
     <ClCompile Include="gc_fps.cpp" />
     <ClCompile Include="iob_func.cpp" />
-    <ClCompile Include="preLog.cpp" />
     <ClCompile Include="ui\ui_form_char.cpp" />
     <ClCompile Include="ui\ui_form_trump.cpp" />
     <ClCompile Include="ui\ui_layer_main.cpp" />

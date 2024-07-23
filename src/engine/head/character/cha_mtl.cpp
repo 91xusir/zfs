@@ -1368,20 +1368,14 @@ bool CRT_MtlBlend::RequestTick()
 	return (!m_bUseFrame && m_keyList.Size() != 0);
 }
 
-//lyymark ≤ƒ÷ ∂Øª≠
 void CRT_MtlBlend::Tick(float deltaMill)
 {
-	return;
-	unsigned long beg, end;
-	beg = m_keyList.GetBegFrame();
-	end = m_keyList.GetEndFrame();
-	m_delta += deltaMill;
-	// if(beg == end) return;
-	if (beg == end) {
-		beg = 0;
-	}
-//	UseFrame(beg + (UINT)(m_delta / 33) % (end - beg));
-    UseFrame(300);
+    unsigned long beg,end;
+    beg = m_keyList.GetBegFrame();
+    end = m_keyList.GetEndFrame();
+    m_delta += deltaMill;
+    if(beg == end) return;
+    UseFrame(beg + (UINT)(m_delta/33)%(end-beg));
 }
 
 bool CRT_MtlBlend::RequestUseFrame()
@@ -1392,8 +1386,10 @@ bool CRT_MtlBlend::RequestUseFrame()
 void CRT_MtlBlend::UseFrame(unsigned long frame)
 {
 	SBlendKey key;
+	//≤Â÷µÀ„÷°
 	if (!m_keyList.GetKeyFrame(frame, key))
 		return;
+	//‰÷»æ≤Ó÷µ÷°
 	Update(key);
 }
 

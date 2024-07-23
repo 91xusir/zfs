@@ -12,8 +12,8 @@
 #include "ui_form_textMsg.h"
 #include "UIForm_Server.h"
 #include "soft_keyboard.h"
-#include "../preLog.h"
 #include "../gc_fps.h"
+#include <typeinfo>
 //1--五台 4--花间 7--蜀山 10--苗疆 13--蜀山(女) 16--苗疆(女)
 //static int s_userID[] = {1, 4, 7, 10, 13, 16};
 //static char* s_pszLoginCharName[] = {"role_wt_m_01", "role_hj_f_01", "role_ss_m_01", "role_mj_m_01", "role_ss_f_01", "role_mj_f_01"};
@@ -191,31 +191,23 @@ void LoadLoginSection(RtIni* pIni, const char* szSectionName,
 
 	if (pBody)
 	{
-		/*std::map<std::string, CRT_ActorInstance*>::iterator it;
-		for (it = mapActor.begin(); it != mapActor.end(); it++)
-		{
-			if (!((*it).first == "Body"))
-			{
-				(*it).second->LinkParent(pBody, (*it).first.c_str());
-			}
-		}*/
-
-
 
 		for (auto& pair : mapActor)
 		{
 			if (pair.first != "Body")
 			{
-#ifdef PREVIEW
-				logMessage(info, pBody->m_Name + ":" + std::to_string(pBody->GetFrameNum()));
-#endif
-				/*	if (!strncmp(pair.first.c_str(), "cloud", 5)) {
-						pair.second->SetCoreObject(pBody->GetCore());
-					}*/
-#ifdef PREVIEW
-				logMessage(info, pair.second->m_Name + ":" + std::to_string(pair.second->GetFrameNum()));
-#endif
-				pair.second->LinkParent(pBody, pair.first.c_str());
+				auto& act = pair.second;
+				act->LinkParent(pBody, pair.first.c_str());
+				auto& pSkinList = act->m_skinList;
+				for (auto& skin : pSkinList) {
+					CRT_MaterialLib* _mtllib = skin->GetMaterialLib();
+					auto& mtls = _mtllib->m_mtlList;
+					for (auto& mtl : mtls) {
+						if (mtl) {
+							P_LOGERROR(mtl->GetName() +"--" + typeid(mtl).name());
+						}
+					}
+				}
 			}
 		}
 
@@ -415,12 +407,6 @@ void GcLogin::UpdateCameraPos()
 		{
 			_AdjustCameraMatrix(&mCamera, &_mat);
 			GetDevice()->m_pCamera->SetMatrix(mCamera);
-#ifdef _PREVIEW
-			logMessage(info, "BodyMatrix: ");
-			logMessage(info, "\n" + _mat.ToString());
-			logMessage(info, "CameraMatrix: ");
-			logMessage(info, "\n" + mCamera.ToString());
-#endif
 		}
 	}
 	unguard;
@@ -451,6 +437,8 @@ void  GcLogin::SJDL_UpdateCameraPos()
 			mCamera.SetRow(2, z);
 			mCamera.SetRow(3, (float*)&_mat._30);
 			GetDevice()->m_pCamera->SetMatrix(mCamera);
+			P_LOGINFO("BodyMatrix:\n" + _mat.ToString());
+			P_LOGINFO("CameraMatrix:\n" + mCamera.ToString());
 		}
 	}
 	unguard;
@@ -1901,9 +1889,10 @@ void GcLogin::SetLastSelectCharID(int iID)
 //lyymark 登录主循环入口
 void GcLogin::OnRun(float fSecond)
 {
+
 	guard;
-	//锁定60帧
-	CLockFrame(1000 / 60);
+	//lyymark 锁帧 后续改为加载登录页面完毕再锁
+	CLockFrame lockFrame(1000.0 / 60);
 	int i, j;
 	RtgVertex3 vOrig, vDir, v0, v1, vMin, vMax;
 	float r1, r2;
@@ -1913,21 +1902,19 @@ void GcLogin::OnRun(float fSecond)
 	static float fDiffSecond = 0.f;
 	CRT_ActorInstance* pActor;
 
-	fPs = (float)1.0 / fSecond;
-
+	//lyymark 更新声音
 	g_pSoundMgr->UpdateAll(NULL, GetDevice()->GetAppTime());
 
 
-	for (map<std::string, CRT_ActorInstance*>::iterator it = m_mapActor.begin(); it != m_mapActor.end(); ++it)
+	for (auto& pair : m_mapActor)
 	{
-		CRT_ActorInstance* act = it->second;
-
+		auto& act = pair.second;
 		if (act)
 		{
-
 			act->Tick(fSecond * 1000.f, false);
 		}
 	}
+
 	if (m_pWeaponFL)
 	{
 		m_pWeaponFL->Tick(fSecond * 1000.f, false);
@@ -2201,11 +2188,22 @@ void GcLogin::OnBeginRender()
 	unguard;
 }
 
+//lyymark 绘制帧率
 void GcLogin::OnEndRender()
 {
 	guard;
-	char cTmp[128] = "\0";
-	rt2_sprintf(cTmp, "FPS:%.2f\r\nMouseX:%d\r\nMouseY:%d", fPs, g_workspace.GetMousePosX(), g_workspace.GetMousePosY());
+	// 获取帧统计信息
+	const TCHAR* frameStats = GetDevice()->GetFrameStats();
+
+	// 获取鼠标位置
+	int mouseX = g_workspace.GetMousePosX();
+	int mouseY = g_workspace.GetMousePosY();
+
+	// 格式化字符串
+	TCHAR cTmp[128] = _T("\0");
+	_stprintf_s(cTmp, _T("%s\r\nMouseX: %d\r\nMouseY: %d"), frameStats, mouseX, mouseY);
+
+	// 绘制字符串
 	GetDevice()->DrawString(0, 0, 0xFF00FF00, cTmp);
 	unguard;
 }
@@ -2555,25 +2553,14 @@ void GcLogin::OnKeyDown(int iButton, int iKey)
 	//lyymark 按v显示当前ViewMatrix
 #ifdef _PREVIEW
 	if (iButton == 86) {
-		//RtgMatrix16 viewMatrix = {
-		//-0.999390f, 0.003043f, 0.034777f, 0.0f,
-		//0.034910f, 0.087103f, 0.995587f, 0.0f,
-		//0.0f, 0.996195f, -0.087156f, 0.0f,
-		//0.000015f, -14.942854f, -5898.691895f, 1.0f
-		//};
-		//// 获取相机实例并设置视图矩阵
-		//RtgCamera* camera = GetDevice()->m_pCamera;
-		//camera->SetViewMatrix(viewMatrix);
 		auto gvm = GetDevice()->m_pCamera->GetViewMatrix();
-		// 假设 gv 是一个 RtgMatrix16 类型的 4x4 矩阵
-		logMessage(info, "ViewMatrix: ");
-		logMessage(info, "\n" + gvm.ToString());
+		P_LOGINFO("ViewMatrix: \n" + gvm.ToString());
 	}
 #else
 	if (!m_bCanInput) return;
 #endif
 	unguard;
-}
+	}
 
 void GcLogin::OnKeyUp(int iButton, int iKey) {
 	guard;

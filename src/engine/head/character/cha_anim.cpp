@@ -533,13 +533,13 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */)
 
     ProcessComnandList();
 
+    float OldFrame = m_oldFrame;
+
+    m_curFrame += (deltaMill / 1000.f * 30.f * m_animSpeed);
+    m_oldFrame = m_curFrame;
+
 	if (m_curPose.IsVaild() && m_curPose.ResourceReady())
 	{
-		float OldFrame = m_oldFrame;
-		
-		m_curFrame += (deltaMill / 1000.f * 30.f * m_animSpeed);
-		m_oldFrame  = m_curFrame;
-		
 		if (m_curFrame >= m_curPose.EndFrm)
 		{
             ProcessPoseEvent(OldFrame, m_curPose.EndFrm + 1, &m_curPose);
@@ -572,12 +572,14 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */)
     DWORD ruSkin = rtMilliseconds();
 	for (size_t i = 0; i < m_skinList.size(); ++i)
 		if (m_skinList[i]) 
+            //lyymark 这里是CRT_SkinInstance
             m_skinList[i]->Tick(deltaMill);
     RtGetPref()->skinUpdate += rtMilliseconds() - ruSkin;
 
     DWORD ruEfft = rtMilliseconds();
 	for (size_t i = 0; i < m_effectList.size(); ++i)
 		if (m_effectList[i]->RequestTick()) 
+            //lyymark 这里是粒子发射器的Tick CRT_EffectEmitter类
             m_effectList[i]->Tick(deltaMill);
     RtGetPref()->efftUpdate += rtMilliseconds() - ruEfft;
 
@@ -922,6 +924,7 @@ void CRT_ActorInstance::OnLoadFinish()
     m_Notify.Notify(this, Actor_Load_Finish);
 }
 
+//lyymark CRT_ActorInstance 动画重置 
 void CRT_ActorInstance::Reset()
 {
     CoreUnlinkParentImpl();
@@ -1326,6 +1329,7 @@ bool CRT_ActorInstance::UpdateBone(float frame)
 
 }
 
+//llymark RealUseFrame
 void CRT_ActorInstance::RealUseFrame(float frame)
 {
     long _nframe = (long)frame;
@@ -1358,9 +1362,9 @@ void CRT_ActorInstance::RealUseFrame(float frame)
 	    }
         
 	    m_curFrame = frame;
-
         DWORD ruSkin = rtMilliseconds();
 	    for (int i = 0; i < m_skinList.size(); i++)
+            //更新网格 网格就是皮肤mesh
 		    m_skinList[i]->UseFrame(frame);
 
         for (size_t i = 0; i < m_childs.size(); ++i)
@@ -1371,10 +1375,10 @@ void CRT_ActorInstance::RealUseFrame(float frame)
 
         RtGetPref()->skinUpdate += rtMilliseconds() - ruSkin;
     }
-
-    for (int i = 0; i < m_skinList.size(); i++)
+    //llymark 这里是标准材质渲染
+    /*for (int i = 0; i < m_skinList.size(); i++)
         if (m_skinList[i]->ResourceReady())
-            m_skinList[i]->GetMaterialLib()->UseFrame(frame);
+            m_skinList[i]->GetMaterialLib()->UseFrame(frame);*/
 
     DWORD ruEfft = rtMilliseconds();
 	for (int i = 0; i < m_effectList.size(); i++)
@@ -2714,8 +2718,8 @@ void CRT_SkinInstance::Tick(float deltaMill)
     CRT_MaterialLib* _mtllib = GetMaterialLib();
 
     ProcessComnandList();
-
-    if (m_fadeOut < m_visible)
+    //llymark 材质逐渐显示的效果
+  /*  if (m_fadeOut < m_visible)
     {
         m_fadeOut += deltaMill / 2000.f;
 
@@ -2725,7 +2729,7 @@ void CRT_SkinInstance::Tick(float deltaMill)
         for (int i = 0; i < GetMaterialLib()->m_mtlList.size(); ++i)
             GetMaterialLib()->m_mtlList[i]->SetVisibleGlobal(m_fadeOut);
     }
-    
+    */
     if (_mtllib)
         _mtllib->Tick(deltaMill);
 }

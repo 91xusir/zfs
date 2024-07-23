@@ -1462,7 +1462,7 @@ struct SNpc
 	{
 		if(!sCommand)
 			return false;
-		for(int iIndex = 0; iIndex < EventCmd.size(); ++iIndex)
+		for(size_t iIndex = 0; iIndex < EventCmd.size(); ++iIndex)
 		{
 			if(EventCmd[iIndex].event == sCommand)
 				return true;

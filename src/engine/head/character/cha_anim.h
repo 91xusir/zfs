@@ -237,7 +237,7 @@ public:
 	bool ApplyEffect(const char* name);
 	bool RemoveEffect(const char* name);
 	void UnloadAllSkin();
-	// 更新对象的状态和子对象（如果需要）
+	// 更新对象的状态和子对象（如果需要）每帧一次
 	void Tick(float deltaMill, bool bUpdateChild = true);
 	void RealUseFrame(float frame);
 	bool UpdateBone(float frame);
@@ -278,7 +278,7 @@ public:
 		for (size_t i = 0; i < m_skinList.size(); ++i)
 			m_skinList[i]->OnMaterialChange();
 	}
-
+	//llymark act对象的帧
 	void UseFrame(float frame)
 	{
 		m_curFrame = frame;

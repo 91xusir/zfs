@@ -758,6 +758,7 @@ public :
         return true;
     }
 
+    //lyymark MtlStandard标准材质不走Tick 直接走的UseFrame
     void Tick(float deltaMill)
     {
         if (GetState() != Object_State_Ready)
@@ -1204,16 +1205,16 @@ public :
     }
 
 public :
-	float               m_animSpeed;	
-	TPoseMap            m_poseMap;
-    long                m_frameNum;						
-	bool                m_bUseLight;
+	float               m_animSpeed;	// 动画速度的倍率。控制动画播放的速度。
+	TPoseMap            m_poseMap;      // 动画姿势映射。存储不同动画姿势的数据。
+    long                m_frameNum;		// 当前动画的帧数。用于跟踪动画播放的位置。				
+	bool                m_bUseLight;    // 是否启用光照。布尔值，决定是否在渲染时应用光照。
 	bool                m_bUseVC;
 	bool                m_bZTest;
 	bool                m_bDynamicShadow;
 	char                m_animType;
-    boneArray_t         m_bones;
-    bonemap_t           m_boneMap;
+    boneArray_t         m_bones;        // 骨骼数组。存储角色的骨骼数据。
+    bonemap_t           m_boneMap;      // 骨骼索引映射。用于快速查找骨骼。
     vector<CRT_Skin*>   m_skinList;
 	vector<CRT_Effect*> m_eftList;
 	vector<RtgAABB>     m_boundBoxList;
@@ -1237,16 +1238,17 @@ public:
 			return Ar << k.frame << k.data;
 		}
 	};
+    // 遍历关键帧列表，查找frame对应的关键帧
 	bool GetKeyFrame(unsigned long frame,T &key)
-	{
+	{    // 遍历关键帧列表，寻找包含指定帧的区间
 		for(unsigned long i=1; i<m_keyList.size(); i++) {
 			if(m_keyList[i].frame >= frame && m_keyList[i-1].frame <= frame) {
 				unsigned long f1,f2;
-				T &prev = m_keyList[i-1].data;
-				f1 = m_keyList[i-1].frame;
-				T &next = m_keyList[i].data;
-				f2 = m_keyList[i].frame;
-				key.Interpolate(frame,f1,prev,f2,next);
+				T &prev = m_keyList[i-1].data;// 前一个关键帧的数据
+				f1 = m_keyList[i-1].frame;// 前一个关键帧的帧号
+				T &next = m_keyList[i].data;// 当前关键帧的数据
+				f2 = m_keyList[i].frame;// 当前关键帧的帧号
+				key.Interpolate(frame,f1,prev,f2,next);//插值计算
 				return true;
 			}
 		}
@@ -1318,6 +1320,7 @@ public:
 		END_VERSION_CONVERT
 		return Ar;
 	}
+    ////获取关键帧起始帧号
 	unsigned long GetBegFrame()
 	{
 		unsigned long size = (unsigned long)m_keyList.size();
@@ -1325,6 +1328,7 @@ public:
 			return 0;
 		return m_keyList[0].frame;
 	}
+    ////获取关键帧结束帧号
 	unsigned long GetEndFrame()
 	{
 		unsigned long size = (unsigned long)m_keyList.size();

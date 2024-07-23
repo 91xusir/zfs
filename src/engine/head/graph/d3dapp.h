@@ -121,6 +121,7 @@ namespace rt_graph_dx9 {
 		unsigned long     m_dwElapsedMS;
 		FLOAT             m_fFPS;              // Instanteous frame rate
 		TCHAR             m_strDeviceStats[90];// String to hold D3D device stats
+		//lyymark ÷°–≈œ¢
 		TCHAR             m_strFrameStats[90]; // String to hold frame stats
 
 		// Overridable variables for the app
@@ -173,8 +174,12 @@ namespace rt_graph_dx9 {
 			return m_uRenderFrame;
 		}
 
-		void            LockFpsPerFrame(DWORD dwMillisecondPerFrame) { m_dwFpsLocked = dwMillisecondPerFrame; }
+		void LockFpsPerFrame(DWORD dwMillisecondPerFrame) { m_dwFpsLocked = dwMillisecondPerFrame; }
+
 		float GetFps() const { return m_fFPS; }
+
+		TCHAR* GetFrameStats() { return m_strFrameStats; }
+
 		DWORD GetDeviceThreadId() const { return m_deviceThread; }
 		// Internal constructor
 		CD3DApplication();

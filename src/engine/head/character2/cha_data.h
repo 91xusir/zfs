@@ -810,7 +810,9 @@ public:
 
 	struct SKeyFrame 
 	{
+		//lyymark 关键帧
 		unsigned long frame;
+		//关键帧数据
 		T data;
 		friend RtArchive& operator<<(RtArchive &ar, SKeyFrame &k) 
 		{
