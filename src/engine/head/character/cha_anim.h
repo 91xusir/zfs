@@ -248,29 +248,10 @@ public:
 	void RenderHighLight(RtgDevice* dev, RtgVertex3& color, RtgVertex3& scale);
 	void RenderBone(RtgDevice* dev, RTGRenderMask mask);
 	void RenderNormal();
-	/// <summary>
-	/// 播放actor的动画
-	/// </summary>
-	/// <param name="name">动画名称</param>
-	/// <param name="loop">是否循环</param>
-	/// <param name="speed">播放速度</param>
-	/// <returns></returns>
+
 	bool PlayPose(const char* name, bool loop = false, float speed = 1.0f);
-	/// <summary>
-	/// 播放actor的动画 指定播放时间
-	/// </summary>
-	/// <param name="name">动画名称</param>
-	/// <param name="mills">时间</param>
-	/// <param name="loop">是否循环</param>
-	/// <returns></returns>
 	bool PlayPoseInTime(const char* name, int mills, bool loop);
 	void ProcessPoseEvent(float oldFrame, float curFrame, SRT_Pose* curPose);
-	/// <summary>
-	/// 播放actor默认动画
-	/// </summary>
-	/// <param name="loop"></param>
-	/// <param name="speed"></param>
-	/// <returns></returns>
 	bool PlayPose(bool loop = false, float speed = 1.0f);
 
 	bool ComputeVC(RtgMatrix16& world, vcArray_t& aryVc, RtgVertex3 vSkyLight, RtgLightItem* pLights);
