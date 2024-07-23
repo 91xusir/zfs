@@ -1,12 +1,15 @@
 #ifndef CLOCKFRAME_H
 #define CLOCKFRAME_H
 
-#include <windows.h> // For Sleep and GetTickCount
+#include "core/rt2_core.h" // For Sleep and GetTickCount
 
 class CLockFrame
 {
 public:
-    // 构造函数，接受锁定时间（单位：毫秒）
+    // 默认构造函数
+    CLockFrame(); // 默认构造函数声明
+
+    // 带参数的构造函数
     CLockFrame(DWORD vLockTime);
 
     // 析构函数

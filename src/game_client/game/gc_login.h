@@ -2,7 +2,17 @@
 #define _INC_GC_LOGIN_H_
 
 #include "gc_login_session.h"
-
+#include "../preLog.h"
+//lyymark preview信息输出
+#ifdef _PREVIEW
+#define P_LOGINFO(message) preLog::logInfo(message)
+#define P_LOGWARN(message) preLog::logWarn(message)
+#define P_LOGERROR(message) preLog::logError(message)
+#else
+#define P_LOGINFO(message)
+#define P_LOGWARN(message)
+#define P_LOGERROR(message)
+#endif
 
 // 这里处理登陆，选人等非游戏进行的流程
 class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
@@ -59,14 +69,14 @@ public:
 	bool InitOnce();
 	bool ClearOnce();
 	// 逻辑渲染
-	virtual void OnRun(float fSecond);   
+	virtual void OnRun(float fSecond);
 	// 图形渲染前
-	virtual void OnBeginRender();		
+	virtual void OnBeginRender();
 	// 图形渲染
-	virtual void OnRender(float fSecond);  
+	virtual void OnRender(float fSecond);
 	// 图形渲染后
-	virtual void OnEndRender();					
-
+	virtual void OnEndRender();
+	// 鼠标移动
 	virtual void OnMouseMove(int iButton, int x, int y, int increaseX, int increaseY);
 	//处理鼠标滚轮事件
 	virtual void OnMouseWheel(int iButton, long vDelta);
@@ -276,7 +286,6 @@ private:
 	int             iAnimalIndex;
 	short			headModelID;
 	short			headImageID;
-	float           fPs;
 	bool            bRandom;                               //随机创建
 	int             iRandomAnimalIndex;
 	short           headRandomModelID;

@@ -33,9 +33,9 @@ public:
 	virtual void OnBeginRender();
     virtual void OnEndRender();
 
-	virtual void OnRender();					//‰÷»æ—≠ª∑
+	virtual void OnRender();					//‰÷»æ
     virtual void OnRender2D();
-    virtual void OnFrameMove(float fDifTime);	//¬ﬂº≠—≠ª∑
+    virtual void OnFrameMove(float fDifTime);	//÷°—≠ª∑
 
     // Mouse Event
 	virtual void OnMouseMove(int x, int y, int increaseX, int increaseY);

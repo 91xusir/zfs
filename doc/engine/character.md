@@ -642,7 +642,11 @@ virtual bool RequestTick() { return true; }
 
 #### 7.3.3 材质
 
+材质分为MtlStandard 和MtlMu 和MtlBlend
+
 ```c++
+
+
 // 标准材质
 class CRT_MtlStandard : public CRT_Material
 {
@@ -698,8 +702,7 @@ virtual bool IsActive();
 
  
 
-// 材质帧(材质动画)
-
+// 材质帧(材质动画)  
     struct SStandardKey
     {
        RtgVertex3 Rotate;      // 旋转
@@ -708,62 +711,28 @@ virtual bool IsActive();
        float    Visible;      // 可见度
        RtgVertex4 Amb,Dif,Emi; // 环境色,慢反射色,自发光色
 
- 
-
 // 插值
-
        void Interpolate(unsigned long frame,unsigned long f1,SStandardKey &k1,
-
            unsigned long f2,SStandardKey &k2)
-
-       
-
     };
 
- 
-
 // 更新
-
     void Update(SStandardKey &key);
-
     void UpdateVisible(bool force);
-
     void ConvertOption();
-
-    
-
     string m_name;
-
     keyframe<SStandardKey> m_keyList;
-
- 
-
     bool    m_bMask;       // AlphaTest
-
     bool    m_bTwoSide;    // 是否双面
-
     bool    m_bAlpha;      // 是否混合
-
     long    m_alphaType;    // 混合类型
-
     float    m_visible;       // 可见度
-
     string   m_alphaOpt;      // "Blend","Add","Sub","Modulate"
-
-    
-
     RtgVertex4 m_amb,m_dif,m_emi,m_spe; // 光照
-
     float m_spePower;   // 高光强度
-
-  bool  m_bSpec;     // 是否有高光
-
+    bool  m_bSpec;     // 是否有高光
     string m_texture;      // 纹理
-
     bool  m_bUseFrame; 
-
-    
-
     bool     m_bTexMatrix;   // 纹理矩阵
 
     RtgVertex3    m_baseRotate;
@@ -1084,9 +1053,9 @@ class CRT_Actor : public CRT_PoolObject
     char m_animType;
 // 版本
     char m_szVersion[10];
-// 网格
+// 网格列表
 vector<CRT_Skin*>  m_skinList;
-// 特效
+// 特效列表
     vector<CRT_Effect*> m_eftList;
 // 包围盒
     vector<RtgAABB>   m_boundBoxList;

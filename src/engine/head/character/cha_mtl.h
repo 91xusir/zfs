@@ -780,11 +780,17 @@ class CRT_MtlBlend : public CRT_Material
 	void ConvertOption();
 
 	// basic info
+    //表示是否使用帧动画
 	bool		m_bUseFrame;
+    // name
 	string		m_name;
+    // 表示是否使用遮罩
 	bool		m_bMask;
+    // 是否双面渲染
 	bool		m_bTwoSide;
+    // 透明度
 	bool		m_bAlpha;
+    // 可见性
 	float		m_visible;
 	RtgVertex4  m_amb,m_dif,m_emi;
 	SBlendChannel m_channel[MAX_BLEND_CHANNEL];

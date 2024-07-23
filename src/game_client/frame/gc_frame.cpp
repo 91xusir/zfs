@@ -663,6 +663,7 @@ bool VaildCamera()
     unguard;
 }
 
+// 逻辑一帧的处理
 void CGameClientFrame::OnFrameMove(float fDifTime)
 {
     guard;

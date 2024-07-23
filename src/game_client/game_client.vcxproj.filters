@@ -2013,9 +2013,6 @@
       <Filter>frame\resource</Filter>
     </ClCompile>
     <ClCompile Include="iob_func.cpp" />
-    <ClCompile Include="preLog.cpp">
-      <Filter>sjdl</Filter>
-    </ClCompile>
     <ClCompile Include="gc_fps.cpp">
       <Filter>sjdl</Filter>
     </ClCompile>

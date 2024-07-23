@@ -331,5 +331,6 @@
     <None Include="..\..\engine\head\core\rtc2_thread.inl">
       <Filter>sdk</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
