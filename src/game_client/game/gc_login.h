@@ -21,16 +21,16 @@ public:
 	//状态
 	enum EStatus
 	{
-		GLS_NONE,
-		GLS_LOADING,//初始加载
+		GLS_NONE,					// 初始状态，表示没有特定状态
+		GLS_LOADING,				//初始加载
 		GLS_SELECT_GAMEWORLD_SERVER,//选择游戏世界服务器
-		GLS_LOGIN, //登录
-		GLS_SELECT_CHAR,  //选角色
-		GLS_CREATE_CHAR,   //创建角色
+		GLS_LOGIN,					//登录
+		GLS_SELECT_CHAR,			//选角色
+		GLS_CREATE_CHAR,			//创建角色
 		GLS_ENTER_GAME_LOADING,     //进入游戏
-		GLS_MAX //lyymark 暂时未知作用
+		GLS_MAX						//状态的最大值，通常用于表示状态总数或用于循环控制
 	};
-
+	//错误信息
 	enum EErrMsg
 	{
 		GLEM_NONE,
@@ -65,8 +65,9 @@ public:
 	GcLogin(CGameClientFrame* pGameClientFrame);
 	~GcLogin();
 
-	// 初始化和清除
+	// 初始化
 	bool InitOnce();
+	// 清除一次
 	bool ClearOnce();
 	// 逻辑渲染
 	virtual void OnRun(float fSecond);
@@ -100,18 +101,31 @@ public:
 	inline int GetCurSelectChar() { return m_iCurSelectChar; }
 	inline void SetCurSelectChar(int iSel) { m_iCurSelectChar = iSel; }
 	inline EStatus GetStatus() { return m_eStatus; }
-	void LoginErrMsg(EErrMsg eMsg, const char* szRetStr = NULL, short sRetCode = 0);
 
+	void LoginErrMsg(EErrMsg eMsg, const char* szRetStr = NULL, short sRetCode = 0);
 	void SelectGameWorld(int iIdx);
 
+	/// <summary>
+	/// 登录账户设置
+	/// </summary>
+	/// <param name="szUsername">用户名</param>
+	/// <param name="szPassword">密码</param>
 	void Login(char* szUsername, char* szPassword);
-	void OnNetLogin(int result, const char* szRetStr, short sRetCode, char cPointType, long lPoint);  //登录
-	void OnNetConnect(bool bSucceeded);		//网络连接
-	void SetForceLogin(bool bForceLogin);   //设置强制登录
-	void OnNetDisconnect();					//网络连接断开
+	//发送登录请求
+	void OnNetLogin(int result, const char* szRetStr, short sRetCode, char cPointType, long lPoint); 
+	//网络连接状态回调
+	void OnNetConnect(bool bSucceeded);	
+	//设置强制登录
+	void SetForceLogin(bool bForceLogin);   
+	//网络连接断开
+	void OnNetDisconnect();	
+	//被踢出
 	void OnNetKick(int iCause);
+	// 获取账户信息的回调函数
 	void OnNetGetAccountInfo();
+	// 选择角色完毕
 	void OnNetSelectCharDone();
+	// 关闭网络连接的函数
 	void NetClose();
 
 	//是否保存帐号
@@ -224,11 +238,10 @@ public:
 	virtual void OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event);
 	virtual void OnPoseBreak(SRT_Pose* oldPose, SRT_Pose* newPose);
 
-	void SetCharSex(bool bSex);         //人物角色性别---男女
-
+	void SetCharSex(bool bSex);					//人物角色性别---男女
 	void ChangeCharAnimal(bool bNext);          //改变人物角色生肖名称
 	void ChangeCharHair(bool bNext);            //改变人物角色发型名称
-	void ChangeCharImage(bool bNext);            //改变人物角色发型名称
+	void ChangeCharImage(bool bNext);           //改变人物角色发型名称
 
 private:
 	EStatus             m_eStatus;
@@ -248,11 +261,11 @@ private:
 	RtString            m_szGameWorldServerIP;
 	long                m_lGameWorldServerPort;
 
-	std::vector<CRT_ActorInstance*> m_listSelActor; // 选人界面的UI上面的人物
+	std::vector<CRT_ActorInstance*> m_listSelActor;   // 选人界面的UI上面的人物
 	std::vector<GcActor*>			m_listSelGcActor; // 选人界面的UI上面的人物
-	std::vector<short>  m_listSelectChar;       // 可选的人物，这里保存ID，具体的数据可以从g_TableUserActor中读出
+	std::vector<short>  m_listSelectChar;             // 可选的人物，这里保存ID，具体的数据可以从g_TableUserActor中读出
 
-	char                m_bSex;                 //0男,1女
+	char                m_bSex;                      //0男,1女
 
 	bool                m_bLoading;
 
@@ -260,7 +273,7 @@ private:
 	std::map<std::string, CRT_ActorInstance*>   m_mapActor;
 
 	CRT_ActorInstance* m_pBody;
-	CRT_ActorInstance* m_pCamera;//?
+	CRT_ActorInstance* m_pCamera;
 	CRT_ActorInstance* m_pWeaponWT;
 	CRT_ActorInstance* m_pWeaponFL;
 	CRT_ActorInstance* m_pWeaponFLWay;
