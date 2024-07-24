@@ -137,7 +137,7 @@ bool GcLoginSession::CreateChar(const char* name, char metier, char bIsS, char b
 	//rtMD5StringString((char*)password, md5String);
 	//md5String[32] = '\0';
 
-	if (!cmd.WriteShort(c2g_create_char))
+	if (!cmd.WriteShort	(c2g_create_char))
 		return false;
 
 	if (!cmd.WriteString((char*)name)) // 服务器上有检查长度 和 内容，确保不包含特殊字符

@@ -29,9 +29,6 @@
     <ClCompile Include="cha_sys.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\head\character2\rt_char_lib.cpp">
-      <Filter>header</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\engine\head\character2\cha_anim.h">

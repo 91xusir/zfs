@@ -758,7 +758,7 @@ public :
         return true;
     }
 
-    //lyymark MtlStandard标准材质
+    //lyymark 材质base tick
     void Tick(float deltaMill)
     {
         if (GetState() != Object_State_Ready)

@@ -1,8 +1,9 @@
 
 class GcLogin;
 // add [3/14/2009 tooth.shi]
-
+// 获取渲染设备
 RtgDeviceD3D9	*GetDevice();
+// 获取计时器
 GcTimer		*GetTimer();
 
 //ldr123 
