@@ -457,7 +457,7 @@ public:
 	void ShowCountDownForm();
 	void SetCountDownFormVisable(bool bVisable = false);
 	//end
-	// llymark 2024.7.23 
+	// lyymark 2024.7.23 
 	typedef struct strWidthLine
 	{
 		strWidthLine() :m_strMsg(""), m_nLine(0) {}

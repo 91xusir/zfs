@@ -278,7 +278,7 @@ public:
 		for (size_t i = 0; i < m_skinList.size(); ++i)
 			m_skinList[i]->OnMaterialChange();
 	}
-	//llymark act对象的帧
+	//lyymark act对象的帧
 	void UseFrame(float frame)
 	{
 		m_curFrame = frame;

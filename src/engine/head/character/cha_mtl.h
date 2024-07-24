@@ -131,8 +131,15 @@ class CRT_MtlStandard : public CRT_Material
         return (m_keyList.Size() != 0);
     }
 
+    // lyymark CRT_MtlStandard 主帧动画处理
     void Tick(float deltaMill)
     {
+        unsigned long beg, end;
+        beg = m_keyList.GetBegFrame();
+        end = m_keyList.GetEndFrame();
+        m_delta += deltaMill;
+        if (beg == end) return;
+        UseFrame(beg + (UINT)(m_delta / 33) % (end - beg));
     }
 
     bool RequestUseFrame()

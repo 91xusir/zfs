@@ -12,6 +12,9 @@ File Encoding         : 65001
 
 Date: 2011-09-01 14:49:16
 */
+CREATE DATABASE IF NOT EXISTS t_item;
+
+USE t_item;
 
 SET FOREIGN_KEY_CHECKS=0;
 
