@@ -179,11 +179,9 @@ void LoadLoginSection(RtIni* pIni, const char* szSectionName,
 				// 将actor实例添加到映射中
 				mapActor[std::string(szLink)] = pActor;
 				// 如果链接名称为"Body"，则将当前actor实例设为主体
-
 				if (szLink == "Body")
 				{
 					pBody = pActor;
-
 				}
 			}
 		} while (pIni->NextEntry(&szLink, &szName));
@@ -283,7 +281,7 @@ void GcLogin::SetLoginState(EStatus eState)
 	switch (m_eStatus)
 	{
 	case GLS_LOADING:
-		LeaveLoading();
+		 LeaveLoading();
 		break;
 	case GLS_SELECT_GAMEWORLD_SERVER:
 		bLeaveNow = LeaveSelectGameWorldServer();
@@ -1891,7 +1889,7 @@ void GcLogin::OnRun(float fSecond)
 {
 
 	guard;
-	//lyymark 锁帧 后续改为加载登录页面完毕再锁
+	//lyytodo 锁帧 后续改为加载登录页面完毕再锁
 	CLockFrame lockFrame(1000.0 / 60);
 	int i, j;
 	RtgVertex3 vOrig, vDir, v0, v1, vMin, vMax;
@@ -2256,23 +2254,24 @@ void GcLogin::OnRenderMask(RTGRenderMask mask, float fSecond)
 
 	RtgCamera* pCamera = GetDevice()->m_pCamera;
 
-	for (it = m_mapActor.begin(); it != m_mapActor.end(); it++)
-	{
-		pActor = (*it).second;
 
-		// Optimized for rendering by Wayne Wong on 2010-12-01
+	for (const auto& pair : m_mapActor)
+	{
+		// 获取指向 Actor 实例的指针
+		pActor = pair.second;
+
+		// 优化渲染逻辑
 		if (pCamera && !pCamera->CheckVisable(pActor->GetStaticBoundingBox()))
 			continue;
 
 		bool bFogChange = false;
-		if (m_lSkyFog == false)
+		// 判断是否需要更改雾效
+		if (!m_lSkyFog && pair.first == "Sky")
 		{
-			if ((*it).first == "Sky")
-			{
-				bFogChange = true;
-			}
+			bFogChange = true;
 		}
 
+		// 如果需要更改雾效，调整设备设置
 		if (bFogChange)
 		{
 			if (GetDevice()->GetFogEnable())
@@ -2284,13 +2283,17 @@ void GcLogin::OnRenderMask(RTGRenderMask mask, float fSecond)
 				bFogChange = false;
 			}
 		}
+
+		// 渲染 Actor
 		pActor->Render(GetDevice(), mask);
 
+		// 恢复雾效设置
 		if (bFogChange)
 		{
 			GetDevice()->SetFogEnable(TRUE);
 		}
 	}
+	
 
 	if (m_eStatus == GLS_SELECT_CHAR || m_eStatus == GLS_CREATE_CHAR)
 	{

@@ -172,8 +172,11 @@ void CGameClientFrame::OnFrameClose()
 bool CGameClientFrame::OnEnterLogin()
 {
     guard;
+    // 检查 m_pLogin 是否为空，以确保不重复初始化
     CHECK(m_pLogin==NULL);
+    // 创建新的 GcLogin 实例并赋值给 m_pLogin
     m_pLogin = RT_NEW GcLogin(this);
+
     if (m_pLogin==NULL)
     {
         return false;

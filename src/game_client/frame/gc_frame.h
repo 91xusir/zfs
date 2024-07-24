@@ -69,10 +69,13 @@ public:
     // Other
     virtual bool OnFrameInit();
     virtual void OnFrameClose();
-
+    // 进入登录逻辑
     bool OnEnterLogin();
+    // 离开登录逻辑
     void OnLeaveLogin();
+    // 进入游戏世界
     bool OnEnterGame();
+    // 离开游戏世界
     void OnLeaveGame();
 
 #if DO_CONSOLE
