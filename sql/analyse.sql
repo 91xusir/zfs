@@ -13,6 +13,10 @@ File Encoding         : 65001
 Date: 2011-09-02 16:53:40
 */
 
+CREATE DATABASE IF NOT EXISTS analyse;
+
+USE analyse;
+
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------

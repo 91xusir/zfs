@@ -12,6 +12,9 @@ File Encoding         : 65001
 
 Date: 2011-09-02 16:53:47
 */
+CREATE DATABASE IF NOT EXISTS activity;
+
+USE activity;
 
 SET FOREIGN_KEY_CHECKS=0;
 

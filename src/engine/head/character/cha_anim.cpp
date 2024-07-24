@@ -520,6 +520,7 @@ void CRT_ActorInstance::ClearComnandList()
             m_skinList[i]->ClearComnandList();
 }
 
+// lyymark CRT_ActorInstance 主帧动画处理
 void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */)
 {
     DWORD tkTick = rtMilliseconds();
@@ -1329,7 +1330,7 @@ bool CRT_ActorInstance::UpdateBone(float frame)
 
 }
 
-//llymark RealUseFrame
+//lyymark RealUseFrame
 void CRT_ActorInstance::RealUseFrame(float frame)
 {
     long _nframe = (long)frame;
@@ -1375,7 +1376,7 @@ void CRT_ActorInstance::RealUseFrame(float frame)
 
         RtGetPref()->skinUpdate += rtMilliseconds() - ruSkin;
     }
-    //llymark 这里是标准材质渲染
+    //lyymark 这里是标准材质渲染
     /*for (int i = 0; i < m_skinList.size(); i++)
         if (m_skinList[i]->ResourceReady())
             m_skinList[i]->GetMaterialLib()->UseFrame(frame);*/
@@ -2718,7 +2719,7 @@ void CRT_SkinInstance::Tick(float deltaMill)
     CRT_MaterialLib* _mtllib = GetMaterialLib();
 
     ProcessComnandList();
-    //llymark 材质逐渐显示的效果
+    //lyymark 材质淡入淡出的效果
   /*  if (m_fadeOut < m_visible)
     {
         m_fadeOut += deltaMill / 2000.f;

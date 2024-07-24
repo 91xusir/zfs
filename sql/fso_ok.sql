@@ -13,6 +13,10 @@ File Encoding         : 65001
 Date: 2011-09-02 16:53:24
 */
 
+CREATE DATABASE IF NOT EXISTS fso_ok;
+
+USE fso_ok;
+
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------

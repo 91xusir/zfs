@@ -758,7 +758,7 @@ public :
         return true;
     }
 
-    //lyymark MtlStandard标准材质不走Tick 直接走的UseFrame
+    //lyymark MtlStandard标准材质
     void Tick(float deltaMill)
     {
         if (GetState() != Object_State_Ready)
