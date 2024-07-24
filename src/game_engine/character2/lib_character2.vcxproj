@@ -193,7 +193,6 @@
     <ClCompile Include="cha_effect.cpp" />
     <ClCompile Include="cha_mtl.cpp" />
     <ClCompile Include="cha_sys.cpp" />
-    <ClCompile Include="..\..\head\character2\rt_char_lib.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\engine\head\character2\actor.h" />

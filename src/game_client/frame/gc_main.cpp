@@ -13,7 +13,7 @@
 extern RtScene* g_pScene;
 
 
-//作用未知
+//lyymark作用未知
 #ifdef _UNWG_
 #   ifdef _DEBUG
 #       pragma comment(lib, "NesClient_d.lib") // 在调试模式下链接调试版本的NesClient库
@@ -58,7 +58,7 @@ CSceneMusicApp* g_pMusicThread = 0;		 // 音乐线程指针
 
 RtgDeviceD3D9* GetDevice()
 {
-	return RtGetRender(); // 获取渲染设备
+	return RtGetRender(); 
 }
 
 GcTimer* GetTimer()

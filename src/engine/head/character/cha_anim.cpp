@@ -567,7 +567,7 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */)
 			ProcessPoseEvent(OldFrame, m_curFrame, &m_curPose);
 		}
 	}
-
+    //可能是骨骼动画
 	RealUseFrame(m_curFrame);
 
     DWORD ruSkin = rtMilliseconds();
@@ -1376,7 +1376,7 @@ void CRT_ActorInstance::RealUseFrame(float frame)
 
         RtGetPref()->skinUpdate += rtMilliseconds() - ruSkin;
     }
-    //lyymark 这里是标准材质渲染
+    //lyymark 疑似标准材质渲染重复了 推测是类型识别不正确，无法判断子类类型，后续出问题再修改
     /*for (int i = 0; i < m_skinList.size(); i++)
         if (m_skinList[i]->ResourceReady())
             m_skinList[i]->GetMaterialLib()->UseFrame(frame);*/

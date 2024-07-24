@@ -2,6 +2,8 @@
 
 ## 一、流程分析
 
+![ImageToStl.com_游戏主循环流程图](client/ImageToStl.com_游戏主循环流程图.png)
+
 ```c++
 //应用程序的进入点
 int APIENTRY WinMain(HINSTANCE hInstance, 
@@ -10,29 +12,22 @@ int APIENTRY WinMain(HINSTANCE hInstance,
                      int nCmdShow)
 //初始化命令行配置信息
 RtTextConfig cfgCommandLine(lpCmdLine);
-
 //初始化核心库,读取配置文件，主要用来进行设备配置,窗口配置,图形配置,贴图设置,质量设置,摄像机设置等信息.
 rtCoreInit("clt_engine.ini")
-
 //创建包管理器,并读取game_client.pak包文件,主要用来对游戏中的资源文件的加密包读取操作..
 CRtPackManager* pPackManager=new CRtPackManager;			
 pPackManager->OpenPack("game_client.pak",false);
-
 //创建CRtPackAndAnsiManager包管理器,用来管理CRtPackManage包管理器.
 CRtPackAndAnsiManager*pAllManager=new CRtPackAndAnsiManager(pPackManager,&RtCoreFile());
 RtCore::Instance().pFileManager=pAllManager;
-
 //加载游戏配置文件version_config.ini,根据version_config.ini中的信息找到BootConfigFile配置文件config_boot.ini和GameRuleFile配置文件game_config.ini.
 LoadConfig(std::string& vrError);
-
 //根据config_boot.ini文件中的信息得到
 //..\bin\language\chinese\Strmap.csv文件,
 //Strmap.csv文件里记录着游戏中消息对应的提示信息.
 const char* pStrmapPath = GetConfigBoot()->GetEntry("ConfigInfo","StrmapPath");
-
-//在InitMapString函数内部加载Strmap.csv文件,然后遍历该文件并把该文件中所有信息添加到MAP结构变量s_mapString中.
+//在InitMapString函数内部加载Strmap.csv文件,遍历该文件并把该文件中所有信息添加到MAP结构变量s_mapString中.
 InitMapString(pStrmapPath);
-
 // 读取游戏配置文件.. \bin\version\chinese_gb\config\game.ini,并初始化游戏相关设置.
 g_iniConfig = new RtIni();
 if (g_iniConfig->OpenFile(R(INI_GAME)))
@@ -98,28 +93,23 @@ if (!iniUser.GetEntry("game", "log"))
 
 //初始化图形系统
 rtGraphInit();
-
 //创建D3D设备并进行初始化
 g_pDevice = rtCreateDeviceD3D9();
 if(!GetDevice()->Init(hInstance, RT_RUNTIME_CLASS(CGameClientFrame), 
 	RT_RUNTIME_CLASS(GcCamera), "clt_graph.ini", "user.ini"))
-
 // 初始化声音系统，并播放背景音乐
 if (!rtSoundInit("RT3D-Audio", (HWND)GetDevice()->GetWndHandle()))
 if (!rtMusicInit())		
 g_pBackMusic->SetMusicPath("music");
 g_pSoundMgr->SetAudioPath("audio");
 const char* szMusicFileName = GetGameIni()->GetEntry("Audio", "LoginMusic");
-
 //创建应用程序框架
 g_pGameClientFrame = ((CGameClientFrame*)g_pDevice->GetEvent());
 g_pGameClientFrame->EnableNotifyOnMouseMove(true);
-
 //初始化场景系统
 if (!rtSceneInit("RT3D-Scene"))
 g_pScene = new GcScene;
-if (!g_pScene->OnceInit(g_pDevice))
-                                  |
+if (!g_pScene->OnceInit(g_pDevice))                  |
 //初始化人物系统并注册人物资源路径.        
 if (!ActorInit())
 ActorRegisterPath("creature/actor/");
@@ -129,7 +119,6 @@ ActorRegisterPath("scene/actor/");
 ActorRegisterPath("scene/material/");
 ActorRegisterPath("scene/effect/");
 ActorSetScene(g_pScene);
-
 //进入登陆状态,创建GcLogin对象,设置程序为登陆状态
 if (!((CGameClientFrame*)g_pGameClientFrame)->OnEnterLogin())
 /*-----------------程序的核心流程在这里------------------------*/
@@ -246,13 +235,13 @@ bool CGameClientFrame::OnEnterLogin()
     unguard;
 }
 /*------------------------------------------------------------*/
-
     ((GcScene*)g_pScene)->SetWorld(NULL);
     m_pCurrentProcess = m_pLogin;
     return true;
     unguard;
 /*------------------------------------------------------------*/
-//渲染场景,内部会调用OnBeginRender(),OnRender(),OnEndRender().在OnRender()函数内部将成员变量m_bLoading=true.
+//渲染场景,内部会调用OnBeginRender(),OnRender(),OnEndRender().
+//在OnRender()函数内部将成员变量m_bLoading=true.
   if (m_eStatus==GLS_LOADING)
     {
         if (m_bLoading)

@@ -1886,7 +1886,7 @@ void GcLogin::SetLastSelectCharID(int iID)
 	//m_iLastSelectCharID = iID;
 }
 
-//lyymark 登录主循环入口
+//lyymark GcLogin登录主循环入口
 void GcLogin::OnRun(float fSecond)
 {
 
