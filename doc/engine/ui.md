@@ -1,6 +1,6 @@
 # UI模块
 
-## 简介
+## 简介![UI](ui/UI.png)
 
 以可视化的界面实现用户与计算机之间得通信。
 
@@ -1429,3 +1429,32 @@ RtwWidget *m_Button = g_workspace.getWidgetFactory()->createWidget(wtButton);
      //将按钮添加到渲染列表
      g_workspace.AddWidget(m_Button);
  ```
+
+UI属性说明:
+
+	"Name"             // 名称
+	"Location"         // 位置
+	"Text"             // 文本
+	"TextColor"        // 文本颜色
+	"TextFont"         // 文本字体
+	"FontSize"         // 字体大小
+	"Alignment"        // 列对齐
+	"AlignLine"        // 行对齐
+	"Show"             // 是否显示
+	"Active"           // 是否激活
+	"MouseEvent"       // 鼠标事件
+	"MouseMove"        // 鼠标移动事件
+	"BackgroundColor"  // 背景颜色
+	"DragOut"          // 拖出事件
+	"DragIn"           // 拖入事件
+	"Enable"           // 是否启用
+	"Size"             // 尺寸
+	"Sound"            // 声音
+	"BorderCorlor"     // 边框颜色
+	"BorderSize"       // 边框大小
+	"padding"          // 内边距
+	"Penetrate"        // 是否穿透
+	"MouseHoverImage"  // 鼠标悬停图像
+	"MouseHoverSize"   // 鼠标悬停图像大小
+	"MouseHoverImgRect"// 鼠标悬停图像区域
+	"Inherit"          // 父类

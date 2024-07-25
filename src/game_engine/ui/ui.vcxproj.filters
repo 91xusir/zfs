@@ -304,4 +304,7 @@
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="UI.cd" />
+  </ItemGroup>
 </Project>

@@ -159,7 +159,7 @@ void LoadLoginSection(RtIni* pIni, const char* szSectionName,
 	guard;
 	RtString szLink, szName;
 	CRT_ActorInstance* pBody, * pActor;
-	pBody = NULL;
+	pBody = nullptr;
 	// 查找INI文件中指定名称的节
 	pIni->FindSection(szSectionName);
 	// 获取第一个条目
@@ -168,7 +168,6 @@ void LoadLoginSection(RtIni* pIni, const char* szSectionName,
 		do {
 			// 创建一个actor实例
 			pActor = RtcGetActorManager()->CreateActor(szName, true);
-
 			if (pActor)
 			{
 				// 如果actor名称不以"role"开头，则播放动作
@@ -183,33 +182,31 @@ void LoadLoginSection(RtIni* pIni, const char* szSectionName,
 				{
 					pBody = pActor;
 				}
-			}
-		} while (pIni->NextEntry(&szLink, &szName));
-	}
-
-	if (pBody)
-	{
-
-		for (auto& pair : mapActor)
-		{
-			if (pair.first != "Body")
-			{
-				auto& act = pair.second;
-				act->LinkParent(pBody, pair.first.c_str());
-				auto& pSkinList = act->m_skinList;
-				for (auto& skin : pSkinList) {
-					CRT_MaterialLib* _mtllib = skin->GetMaterialLib();
-					auto& mtls = _mtllib->m_mtlList;
-					for (auto& mtl : mtls) {
-						if (mtl) {
-							P_LOGERROR(mtl->GetName() +"--" + typeid(mtl).name());
-						}
+				else
+				{
+					// 直接链接非 "Body" 的 actor 实例
+					if (pBody) // 确保 pBody 已被设置
+					{
+						pActor->LinkParent(pBody, szLink.c_str());
 					}
 				}
 			}
-		}
-
+		} while (pIni->NextEntry(&szLink, &szName));
 	}
+	// 循环和上面合二为一优化   lyy [2024.7.25]
+	//if (pBody)
+	//{
+
+	//	for (auto& pair : mapActor)
+	//	{
+	//		if (pair.first != "Body")
+	//		{
+	//			auto& act = pair.second;
+	//			act->LinkParent(pBody, pair.first.c_str());
+	//		}
+	//	}
+
+	//}
 	unguard;
 }
 

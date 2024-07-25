@@ -286,41 +286,53 @@ void RtwForm::CalcClient()
 
 void RtwForm::OnMouseMove_This(RtwWidget* pWidget, RtwEventDelegate* pEvent)
 {
+	// 检查是否允许移动，如果不允许则退出函数    注释部分可能是否显示标题栏的条件
 	if (!m_bCanMove/* || !m_bShowTitleBar*/)
 		return;
-
+	//如果当前对象是鼠标捕获者，则继续处理鼠标移动。
 	if (g_workspace.getMouseCapture() == this)
 	{
+		// 获取鼠标移动的增量
 		const SSize& MouseDelta = g_workspace.getMouseDelta();
+		// 获取当前鼠标的位置
 		const SPoint& MousePoint = g_workspace.getMousePos();
+		// 计算鼠标移动前的位置
 		SPoint MouseLastPoint;
 		MouseLastPoint.x = MousePoint.x - MouseDelta.width;
 		MouseLastPoint.y = MousePoint.y - MouseDelta.height;
+		// 如果需要，可以在这里检查鼠标上一个位置是否在标题栏内
 // 		if (m_rcTitle.IsContain(MouseLastPoint))
 		{
+			// 调用 Offset 函数来调整窗口位置，根据鼠标移动的增量进行移动
 			Offset(MouseDelta);
 		}
 
 		// 防止移动到屏幕以外
  		SSize AdjectSize;
+
+		// 获取视口的矩形区域
  		RtwRect rcViewport = g_workspace.getViewportRect();
+		// 检查窗口右边是否超出视口的左边界，如果超出，则计算需要调整的宽度
  		if (m_rcFrame.right < 10)
  		{
  			AdjectSize.width = 10 - m_rcFrame.right;
  		}
+		// 检查窗口左边是否超出视口的右边界，如果超出，则计算需要调整的宽度
  		else if (m_rcFrame.left > rcViewport.right - 10)
  		{
  			AdjectSize.width = rcViewport.right - 10 - m_rcFrame.left;
  		}
+		// 检查窗口顶部是否超出视口的底部边界，如果超出，则计算需要调整的高度
  		if (m_rcFrame.top < -5)
  		{
  			AdjectSize.height = -5 - m_rcFrame.top;
  		}
+		// 检查窗口底部是否超出视口的顶部边界，如果超出，则计算需要调整的高度
  		else if (m_rcFrame.top > rcViewport.bottom - 10)
  		{
  			AdjectSize.height = rcViewport.bottom - 10 - m_rcFrame.top;
  		}
- 
+		// 如果需要调整的宽度或高度不为零，则调用 Offset 函数进行调整
  		if (AdjectSize.width != 0 || AdjectSize.height != 0)
  			Offset(AdjectSize);
 	}
