@@ -661,7 +661,7 @@ void Enable();
 
        //设置背景色
 
-       void SetBackgroundColor(RtwPixel color);
+       void SetLocationBackgroundColor(RtwPixel color);
 
        //清空背景图
 
@@ -1293,7 +1293,7 @@ bool LoadFromString(const std::string& strXml,
 
 ### 7.   UI主类
 ```c++
-该类为游戏中UI的主类，负责加载UI的XML文件，并对个部件进行初使化，计算每个部件的逻辑并渲染，可直接调全局变量g_workspace，不需额外创建对象。
+//该类为游戏中UI的主类，负责加载UI的XML文件，并对个部件进行初使化，计算每个部件的逻辑并渲染，可直接调全局变量g_workspace，不需额外创建对象。
 
 class CUiDesktop
 {

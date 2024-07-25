@@ -35,7 +35,7 @@ bool RtwXmlLoader::LoadFromFile(const std::string& FileName, RtwWidget* pParent,
 	{
 		//分析出错,可能是路径的问题,重置路径
 		bool bSuccess = false;
-		stlforeach (std::list<std::string>, iterPath, g_workspace.getDefaultXmlPaths())
+		stlforeach(std::list<std::string>, iterPath, g_workspace.getDefaultXmlPaths())
 		{
 			const std::string& strPath = *iterPath;
 			std::string strTmp = strPath + FileName;
@@ -105,14 +105,14 @@ bool RtwXmlLoader::_ProcessNode(RtsXmlDoc::NodePtr* pNode, RtwWidget* pParent/* 
 	{
 		if (pParent->getWidgetType() == wtLayer)
 			_pLayer = (CUiLayer*)pParent;
-		else 
+		else
 			_pParent = pParent;
 	}
 
 	const std::string& TagName = pNode->strName;
 	if (
-		TagName == "Ui"				/*普通ui组件*/ 
-		||  TagName == "SystemWidgets"	/*系统组件*/
+		TagName == "Ui"				/*普通ui组件*/
+		|| TagName == "SystemWidgets"	/*系统组件*/
 		)
 	{
 		UI_ENSURE_B(_ProcessChild_Widget(_pParent, _pLayer, pNode, pWidgetsCreated));
@@ -146,7 +146,7 @@ bool RtwXmlLoader::_ProcessNode_AddWidget(RtwWidget* pParent, CUiLayer* pLayer, 
 	{
 		UI_ENSURE_B(pLayer->AddWidget(pWidget)); //添加widget
 	}
-	else 
+	else
 	{
 		UI_ENSURE_B(g_workspace.AddWidget(pWidget));
 	}
@@ -218,7 +218,7 @@ bool RtwXmlLoader::_ProcessAttrib(RtwWidget* pWidget, RtsXmlDoc::NodePtr* pNode)
 			break;
 	case wt3dview:
 		UI_ENSURE_B(_ProcessAttrib_3dView((Rtw3DView*)pWidget, pNode))
-		break;
+			break;
 	default:
 		break;
 	}
@@ -239,39 +239,40 @@ bool RtwXmlLoader::_ProcessAttrib_Widget(RtwWidget* pWidget, RtsXmlDoc::NodePtr*
 		CUiTemplate* pTempl = g_workspace.getThemeManager()->getCurrentTheme()->FindTemplate(strTemplate);
 		if (pTempl)
 			_Process_Template(pNode, pWidget, pTempl);
-		else 
+		else
 			RtCoreLog().Error("[RtwXmlLoader::_ProcessAttrib_Widget] Template \'%s\' not found!\n", strTemplate.c_str());
 	}
 
-	std::string strName			= pNode->GetProp_s("Name");
-	std::string strLocation		= pNode->GetProp_s("Location");
-	std::string strText			= pNode->GetProp_s("Text");
-	std::string strTextColor	= pNode->GetProp_s("TextColor");
-	std::string strTextFont		= pNode->GetProp_s("TextFont");
-	int iFontSize				= pNode->GetPropInt("FontSize");
-	std::string strAlignCol		= pNode->GetProp_s("Alignment");
-	std::string strAlignLine	= pNode->GetProp_s("AlignLine");
-	std::string strShow			= pNode->GetProp_s("Show");
-	std::string strActive		= pNode->GetProp_s("Active");
-	std::string strMouseEvent	= pNode->GetProp_s("MouseEvent");
-	std::string strMouseMove	= pNode->GetProp_s("MouseMove");
-	std::string strBkColor		= pNode->GetProp_s("BackgroundColor");
-	std::string strDragOut		= pNode->GetProp_s("DragOut");
-	std::string strDragIn		= pNode->GetProp_s("DragIn");
-	std::string strEnable		= pNode->GetProp_s("Enable");
-	std::string strSize			= pNode->GetProp_s("Size");
-	std::string strSound		= pNode->GetProp_s("Sound");
-	std::string strBorderCorlor = pNode->GetProp_s("BorderCorlor");
-	std::string strBorderSize	= pNode->GetProp_s("BorderSize");
-	std::string strPadding		= pNode->GetProp_s("padding");
-	std::string strPenetrate	= pNode->GetProp_s("Penetrate");
-	std::string strMouseHoverImage	= pNode->GetProp_s("MouseHoverImage");
-	std::string strMouseHoverSize	= pNode->GetProp_s("MouseHoverSize");
-	std::string strMouseHoverImgRect= pNode->GetProp_s("MouseHoverImgRect");
+	std::string strName = pNode->GetProp_s("Name");			// 名称
+	std::string strLocation = pNode->GetProp_s("Location"); // 位置
+	std::string strText = pNode->GetProp_s("Text");			// 文本
+	std::string strTextColor = pNode->GetProp_s("TextColor"); // 文本颜色
+	std::string strTextFont = pNode->GetProp_s("TextFont"); // 文本字体
+	int iFontSize = pNode->GetPropInt("FontSize");			// 字体大小
+	std::string strAlignCol = pNode->GetProp_s("Alignment"); // 列对齐
+	std::string strAlignLine = pNode->GetProp_s("AlignLine"); // 行对齐
+	std::string strShow = pNode->GetProp_s("Show"); // 是否显示
+	std::string strActive = pNode->GetProp_s("Active"); // 是否激活
+	std::string strMouseEvent = pNode->GetProp_s("MouseEvent"); // 鼠标事件
+	std::string strMouseMove = pNode->GetProp_s("MouseMove"); // 鼠标移动事件
+	std::string strBkColor = pNode->GetProp_s("BackgroundColor"); // 背景颜色
+	std::string strDragOut = pNode->GetProp_s("DragOut"); // 拖出事件
+	std::string strDragIn = pNode->GetProp_s("DragIn"); // 拖入事件
+	std::string strEnable = pNode->GetProp_s("Enable"); // 是否启用
+	std::string strSize = pNode->GetProp_s("Size"); // 尺寸
+	std::string strSound = pNode->GetProp_s("Sound"); // 声音
+	std::string strBorderCorlor = pNode->GetProp_s("BorderCorlor"); // 边框颜色
+	std::string strBorderSize = pNode->GetProp_s("BorderSize"); // 边框大小
+	std::string strPadding = pNode->GetProp_s("padding"); // 内边距
+	std::string strPenetrate = pNode->GetProp_s("Penetrate"); // 是否穿透
+	std::string strMouseHoverImage = pNode->GetProp_s("MouseHoverImage"); // 鼠标悬停图像
+	std::string strMouseHoverSize = pNode->GetProp_s("MouseHoverSize"); // 鼠标悬停图像大小
+	std::string strMouseHoverImgRect = pNode->GetProp_s("MouseHoverImgRect"); // 鼠标悬停图像区域
 
-	if(!strBorderSize.empty())
+
+	if (!strBorderSize.empty())
 	{
-		int Bsize=atoi(strBorderSize.c_str());
+		int Bsize = atoi(strBorderSize.c_str());
 		pWidget->SetBorderSize(Bsize);
 		pWidget->SetBorderColor(0xFFC28D3B); //硬编码边框颜色(默认)
 	}
@@ -282,9 +283,9 @@ bool RtwXmlLoader::_ProcessAttrib_Widget(RtwWidget* pWidget, RtsXmlDoc::NodePtr*
 		pWidget->SetPadding(sm);
 	}
 
-	if(!strBorderCorlor.empty())
+	if (!strBorderCorlor.empty())
 	{
-		DWORD color = strtoul(strBorderCorlor.c_str()+1, NULL, 16); //边框颜色
+		DWORD color = strtoul(strBorderCorlor.c_str() + 1, NULL, 16); //边框颜色
 		pWidget->SetBorderColor(color);
 	}
 
@@ -333,31 +334,31 @@ bool RtwXmlLoader::_ProcessAttrib_Widget(RtwWidget* pWidget, RtsXmlDoc::NodePtr*
 	if (!strLocation.empty())
 	{//控件位置
 		pWidget->Move(rcLocation);
-		pWidget->SetWidgetSize(SSize(rcLocation.right-rcLocation.left,rcLocation.bottom-rcLocation.top));
+		pWidget->SetWidgetSize(SSize(rcLocation.right - rcLocation.left, rcLocation.bottom - rcLocation.top));
 	}
 
 	//背景色
 	if (!strBkColor.empty())
 	{
-		DWORD color = strtoul(strBkColor.c_str()+1, NULL, 16); // "#bbffffff"
+		DWORD color = strtoul(strBkColor.c_str() + 1, NULL, 16); // "#bbffffff"
 		pWidget->SetBackgroundColor(color);
 	}
 
 	//文本颜色
 	if (!strTextColor.empty())
 	{
-		DWORD color = strtoul(strTextColor.c_str()+1, NULL, 16); // "#bbffffff"
+		DWORD color = strtoul(strTextColor.c_str() + 1, NULL, 16); // "#bbffffff"
 		pWidget->SetTextColor(color);
 	}
 
 	//文本字体
-	if (!strTextFont.empty()) 
+	if (!strTextFont.empty())
 	{
 		pWidget->SetTextFont(strTextFont);
 	}
 
 	//字体大小(字号)
-	if(iFontSize)
+	if (iFontSize)
 	{
 		pWidget->SetFontSize(iFontSize);
 
@@ -448,7 +449,7 @@ bool RtwXmlLoader::_ProcessAttrib_Widget(RtwWidget* pWidget, RtsXmlDoc::NodePtr*
 		//这个是鼠标移动上去后边框的变化
 		if (strMouseHoverSize.empty())
 		{
-			tmp = SMargin(2,2,2,2);
+			tmp = SMargin(2, 2, 2, 2);
 		}
 		else
 		{
@@ -477,7 +478,7 @@ bool RtwXmlLoader::_ProcessAttrib_Layer(CUiLayer* pWidget, RtsXmlDoc::NodePtr* p
 	std::string strShow = pNode->GetProp_s("Show");
 	if (!strShow.empty())
 	{
-		if (strShow == "true") 
+		if (strShow == "true")
 			pWidget->Show();
 		else if (strShow == "false")
 			pWidget->Hide();
@@ -496,7 +497,7 @@ bool RtwXmlLoader::_ProcessAttrib_Form(RtwForm* pWidget, RtsXmlDoc::NodePtr* pNo
 	std::string strMove = pNode->GetProp_s("Movable");
 	if (!strMove.empty())
 	{
-		if (strMove == "true")         
+		if (strMove == "true")
 		{
 			pWidget->SetMovable(true);
 		}
@@ -554,7 +555,7 @@ bool RtwXmlLoader::_ProcessAttrib_Button(RtwButton* pWidget, RtsXmlDoc::NodePtr*
 //静态框属性处理
 bool RtwXmlLoader::_ProcessAttrib_Label(RtwLabel* pWidget, RtsXmlDoc::NodePtr* pNode)
 {
-	UI_ENSURE_B (_ProcessAttrib_Widget(pWidget, pNode));
+	UI_ENSURE_B(_ProcessAttrib_Widget(pWidget, pNode));
 	std::string strHyperLink = pNode->GetProp_s("HyperLink");
 	//超链接处理
 	if (!strHyperLink.empty())
@@ -882,7 +883,7 @@ bool RtwXmlLoader::_ProcessChild(RtwWidget* pWidget, CUiLayer* pLayer, RtsXmlDoc
 		UI_ENSURE_B(_ProcessChild_MediaFrame((CUiMediaFrame*)pWidget, pLayer, pNode))
 			break;
 	case wtHtmlView:
-		UI_ENSURE_B(_ProcessChild_HtmlView((RtwHtmlView*)pWidget,pLayer,pNode))
+		UI_ENSURE_B(_ProcessChild_HtmlView((RtwHtmlView*)pWidget, pLayer, pNode))
 			break;
 	case wtChatInputBox:
 		UI_ENSURE_B(_ProcessChild_ChatInputBox((RtwChatInputBox*)pWidget, pLayer, pNode))
@@ -900,10 +901,10 @@ bool RtwXmlLoader::_ProcessChild(RtwWidget* pWidget, CUiLayer* pLayer, RtsXmlDoc
 }
 
 bool RtwXmlLoader::_ProcessChild_Widget(
-											RtwWidget* pWidget, CUiLayer* pLayer, 
-											RtsXmlDoc::NodePtr* pNode, 
-											std::list<DWORD>* pWidgetsCreated
-									   )
+	RtwWidget* pWidget, CUiLayer* pLayer,
+	RtsXmlDoc::NodePtr* pNode,
+	std::list<DWORD>* pWidgetsCreated
+)
 {
 	RtsXmlDoc::NodePtr* pChildNode = pNode->pChildren;
 	while (pChildNode)
@@ -911,17 +912,17 @@ bool RtwXmlLoader::_ProcessChild_Widget(
 		if (pChildNode->strName == "BackgroundImage")
 			UI_ENSURE_B(_Process_BackgroundImage(pWidget, pChildNode))
 		else if (pChildNode->strName == "ImageSequence")
-		UI_ENSURE_B(_Process_ImageSequence(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_ImageSequence(pWidget, pChildNode))
 		else if (pChildNode->strName == "Hint")
-		UI_ENSURE_B(_Process_Hint(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_Hint(pWidget, pChildNode))
 		else if (pChildNode->strName == "Anchors")
-		UI_ENSURE_B(_Process_Anchors(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_Anchors(pWidget, pChildNode))
 		else if (pChildNode->strName == "Border")
-		UI_ENSURE_B(_Process_Border(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_Border(pWidget, pChildNode))
 		else if (pChildNode->strName == "FaceImage")
-		UI_ENSURE_B(_Process_FaceButton((RtwButton*)pWidget,pChildNode))
+			UI_ENSURE_B(_Process_FaceButton((RtwButton*)pWidget, pChildNode))
 
-		// Layer是特殊的
+			// Layer是特殊的
 		else if (pChildNode->strName == "Layer")
 		{
 			RtwWidget* pWidget = _Process_Layer(pChildNode);
@@ -1088,15 +1089,15 @@ bool RtwXmlLoader::_ProcessChild_Form(RtwForm* pWidget, CUiLayer* pLayer, RtsXml
 	UI_ENSURE_B(_ProcessChild_Widget(pWidget, pLayer, pNode));
 
 	RtsXmlDoc::NodePtr* pChildNode = pNode->pChildren;
-	pWidget->getCloseButton()->ModifyFlags(0,wfVisible);	//默认关闭窗体关闭按钮的显示
+	pWidget->getCloseButton()->ModifyFlags(0, wfVisible);	//默认关闭窗体关闭按钮的显示
 	while (pChildNode)
 	{
 		if (pChildNode->strName == "TitleBar")
 			UI_ENSURE_B(_Process_TitleBar(pWidget, pChildNode))
 		else if (pChildNode->strName == "CloseButton")
-		UI_ENSURE_B(_Process_CloseButton(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_CloseButton(pWidget, pChildNode))
 
-		pChildNode = pChildNode->pNext;
+			pChildNode = pChildNode->pNext;
 	}
 
 	return true;
@@ -1112,15 +1113,15 @@ bool RtwXmlLoader::_ProcessChild_Button(RtwButton* pWidget, CUiLayer* pLayer, Rt
 		if (pChildNode->strName == "NormalImage")		//正常
 			UI_ENSURE_B(_Process_NormalImage(pWidget, pChildNode))
 		else if (pChildNode->strName == "PushedImage")	//按下
-		UI_ENSURE_B(_Process_PushedImage(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_PushedImage(pWidget, pChildNode))
 		else if (pChildNode->strName == "DisabledImage")//禁用
-		UI_ENSURE_B(_Process_DisabledImage(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_DisabledImage(pWidget, pChildNode))
 		else if (pChildNode->strName == "HighlightImage")//高亮
-		UI_ENSURE_B(_Process_HighlightImage(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_HighlightImage(pWidget, pChildNode))
 		else if (pChildNode->strName == "BackgroundImage")//背景
-		UI_ENSURE_B(_Process_BackgroundImage(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_BackgroundImage(pWidget, pChildNode))
 
-		pChildNode = pChildNode->pNext;
+			pChildNode = pChildNode->pNext;
 	}
 
 	return true;
@@ -1165,11 +1166,11 @@ bool RtwXmlLoader::_ProcessChild_ScrollBarV(RtwVScrollBar* pWidget, CUiLayer* pL
 		if (pChildNode->strName == "HandleImage")
 			UI_ENSURE_B(_Process_HandleImage(pWidget, pChildNode))
 		else if (pChildNode->strName == "TopButton")	//顶按钮
-		UI_ENSURE_B(_Process_TopButton(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_TopButton(pWidget, pChildNode))
 		else if (pChildNode->strName == "BottomButton")	//底按钮
-		UI_ENSURE_B(_Process_BottomButton(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_BottomButton(pWidget, pChildNode))
 
-		pChildNode = pChildNode->pNext;
+			pChildNode = pChildNode->pNext;
 	}
 
 	return true;
@@ -1186,11 +1187,11 @@ bool RtwXmlLoader::_ProcessChild_ScrollBarH(RtwHScrollBar* pWidget, CUiLayer* pL
 		if (pChildNode->strName == "HandleImage")
 			UI_ENSURE_B(_Process_HandleImage(pWidget, pChildNode))
 		else if (pChildNode->strName == "LeftButton")	//左边按钮
-		UI_ENSURE_B(_Process_LeftButton(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_LeftButton(pWidget, pChildNode))
 		else if (pChildNode->strName == "RightButton")	//右边按钮
-		UI_ENSURE_B(_Process_RightButton(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_RightButton(pWidget, pChildNode))
 
-		pChildNode = pChildNode->pNext;
+			pChildNode = pChildNode->pNext;
 	}
 
 	return true;
@@ -1261,13 +1262,13 @@ bool RtwXmlLoader::_ProcessChild_ComboBox(RtwComboBox* pWidget, CUiLayer* pLayer
 		if (pChildNode->strName == "DropdownButton")	//下拉框下拉按钮
 			UI_ENSURE_B(_Process_DropdownButton(pWidget, pChildNode))
 		else if (pChildNode->strName == "Editor")		//下拉框中的输入框
-		UI_ENSURE_B(_Process_ComboEditor(pWidget, pChildNode))
+			UI_ENSURE_B(_Process_ComboEditor(pWidget, pChildNode))
 		else if (pChildNode->strName == "List")
-		UI_ENSURE_B(_Process_ComboList(pWidget,pChildNode))
-		else if (pChildNode->strName == "DropdownBox")	
-		UI_ENSURE_B(_ProcessChild_ListBox(pWidget->getDropList(),pLayer,pChildNode))
+			UI_ENSURE_B(_Process_ComboList(pWidget, pChildNode))
+		else if (pChildNode->strName == "DropdownBox")
+			UI_ENSURE_B(_ProcessChild_ListBox(pWidget->getDropList(), pLayer, pChildNode))
 
-		pChildNode = pChildNode->pNext;
+			pChildNode = pChildNode->pNext;
 	}
 
 	return true;
@@ -1738,21 +1739,21 @@ bool RtwXmlLoader::_Process_ImageSequence(RtwWidget* pWidget, RtsXmlDoc::NodePtr
 //处理复合图片
 RtwComplexImage* RtwXmlLoader::_Process_ComplexImage(RtsXmlDoc::NodePtr* pNode)
 {
-	std::string strFile				= pNode->GetProp_s("File");			//图片文件名
-	std::string strSource			= pNode->GetProp_s("Source");		//图片源矩形
-	std::string strBlend			= pNode->GetProp_s("Blend");		//混合渲染
-	std::string strTransparency		= pNode->GetProp_s("Transparency");	//透明度
-	std::string strBorder			= pNode->GetProp_s("Border");		//边框
-	std::string strBorderFile		= pNode->GetProp_s("BorderFile");	//边框文件
-	std::string strBorderSource		= pNode->GetProp_s("BorderSource");	//边框源矩形
-	std::string strBorderBlend		= pNode->GetProp_s("BorderBlend");	//边框混合渲染
+	std::string strFile = pNode->GetProp_s("File");			//图片文件名
+	std::string strSource = pNode->GetProp_s("Source");		//图片源矩形
+	std::string strBlend = pNode->GetProp_s("Blend");		//混合渲染
+	std::string strTransparency = pNode->GetProp_s("Transparency");	//透明度
+	std::string strBorder = pNode->GetProp_s("Border");		//边框
+	std::string strBorderFile = pNode->GetProp_s("BorderFile");	//边框文件
+	std::string strBorderSource = pNode->GetProp_s("BorderSource");	//边框源矩形
+	std::string strBorderBlend = pNode->GetProp_s("BorderBlend");	//边框混合渲染
 	std::string strBorderTransparency = pNode->GetProp_s("BorderTransparency");//边框透明度
 
 	RtwComplexImage* pOutputImage = g_workspace.getImageFactory()->createImageSequence();
 
 	SMargin sm(strBorder.c_str());
 
-	pOutputImage->borderSize  = sm;
+	pOutputImage->borderSize = sm;
 
 	bool bBlend;
 	if (strFile.rfind(".gif") != string::npos)
@@ -1848,7 +1849,7 @@ bool RtwXmlLoader::_Process_Hint(RtwWidget* pWidget, RtsXmlDoc::NodePtr* pNode)
 		pWidget->SetHint(pHint);
 		DROP_RTUI_OBJECT(pHint);
 	}
-	else 
+	else
 	{
 		//默认hint
 		pWidget->SetHint(g_workspace.getDefaultHint());
@@ -1884,10 +1885,10 @@ bool RtwXmlLoader::_Process_Anchor(RtwWidget* pWidget, RtsXmlDoc::NodePtr* pNode
 	SUiAnchor Anchor;
 	RtwWidget* pRelativeWidget = NULL;
 
-	std::string strPoint		= pNode->GetProp_s("point");
-	std::string strRelativeTo	= pNode->GetProp_s("relativeTo");
-	std::string strRelativePoint= pNode->GetProp_s("relativePoint");
-	std::string strOffset		= pNode->GetProp_s("offset");
+	std::string strPoint = pNode->GetProp_s("point");
+	std::string strRelativeTo = pNode->GetProp_s("relativeTo");
+	std::string strRelativePoint = pNode->GetProp_s("relativePoint");
+	std::string strOffset = pNode->GetProp_s("offset");
 
 	if (strPoint == "LEFT")
 		Anchor.Point = anchorLeft;
@@ -1901,7 +1902,7 @@ bool RtwXmlLoader::_Process_Anchor(RtwWidget* pWidget, RtsXmlDoc::NodePtr* pNode
 		Anchor.Point = anchorCenterV;
 	else if (strPoint == "CENTERH")
 		Anchor.Point = anchorCenterH;
-	else 
+	else
 		return false;
 
 	if (strRelativePoint.empty())
@@ -1919,7 +1920,7 @@ bool RtwXmlLoader::_Process_Anchor(RtwWidget* pWidget, RtsXmlDoc::NodePtr* pNode
 		Anchor.RelativePoint = anchorCenterV;
 	else if (strRelativePoint == "CENTERH")
 		Anchor.RelativePoint = anchorCenterH;
-	else 
+	else
 		return false;
 
 	if (!strRelativeTo.empty())
@@ -1947,8 +1948,8 @@ bool RtwXmlLoader::_Process_Anchor(RtwWidget* pWidget, RtsXmlDoc::NodePtr* pNode
 //处理边框(颜色)
 bool RtwXmlLoader::_Process_Border(RtwWidget* pWidget, RtsXmlDoc::NodePtr* pNode)
 {
-	std::string strSize		= pNode->GetProp_s("size");
-	std::string strColor	= pNode->GetProp_s("color");
+	std::string strSize = pNode->GetProp_s("size");
+	std::string strColor = pNode->GetProp_s("color");
 
 	if (!strSize.empty())
 	{
@@ -1958,7 +1959,7 @@ bool RtwXmlLoader::_Process_Border(RtwWidget* pWidget, RtsXmlDoc::NodePtr* pNode
 
 	if (!strColor.empty())
 	{
-		DWORD color = strtoul(strColor.c_str()+1, NULL, 16); // "#bbffffff"
+		DWORD color = strtoul(strColor.c_str() + 1, NULL, 16); // "#bbffffff"
 		pWidget->SetBorderColor(color);
 	}
 
@@ -2050,8 +2051,8 @@ bool RtwXmlLoader::_Process_FaceButton(RtwButton* pParent, RtsXmlDoc::NodePtr* p
 
 bool RtwXmlLoader::_Process_TreeNode(RtwTree* pWidget, RtsXmlDoc::NodePtr* pNode)
 {
-	std::string strText		= pNode->GetProp_s("Text");	
-	std::string strLink		= pNode->GetProp_s("Link");
+	std::string strText = pNode->GetProp_s("Text");
+	std::string strLink = pNode->GetProp_s("Link");
 	std::string strRootText = "";
 
 	if (pNode->GetParent())
@@ -2061,16 +2062,16 @@ bool RtwXmlLoader::_Process_TreeNode(RtwTree* pWidget, RtsXmlDoc::NodePtr* pNode
 
 	if (strText != "")
 	{
-		if(strRootText == "")
+		if (strRootText == "")
 			pWidget->InsertTreeItem(NULL, strText.c_str(), strLink.c_str());
 		else
-			pWidget->InsertTreeItem(strRootText.c_str(),strText.c_str(),strLink.c_str());
+			pWidget->InsertTreeItem(strRootText.c_str(), strText.c_str(), strLink.c_str());
 	}
 
 	RtsXmlDoc::NodePtr* pChildNode = pNode->pChildren;
 	while (pChildNode)
 	{
-		_Process_TreeNode(pWidget,pChildNode);
+		_Process_TreeNode(pWidget, pChildNode);
 		pChildNode = pChildNode->pNext;
 	}
 
@@ -2107,8 +2108,8 @@ bool RtwXmlLoader::_Process_TitleBar(RtwForm* pForm, RtsXmlDoc::NodePtr* pNode)
 {
 	pForm->SetTitleText(pNode->GetProp_s("Text"));
 
-	std::string strTitleBarHeight	= pNode->GetProp_s("Height");	//标题栏高度
-	std::string strShow				= pNode->GetProp_s("Show");		//是否显示栏
+	std::string strTitleBarHeight = pNode->GetProp_s("Height");	//标题栏高度
+	std::string strShow = pNode->GetProp_s("Show");		//是否显示栏
 
 	int TitleBarHeight = atoi(strTitleBarHeight.c_str());
 	if (TitleBarHeight > 0)
@@ -2340,7 +2341,7 @@ bool RtwXmlLoader::_MergeRtXmlNode(RtsXmlDoc::NodePtr* pNodeTo, RtsXmlDoc::NodeP
 			pToChild->pParent = pNodeTo;
 			if (pToChildLast)
 				pToChildLast->pNext = pToChild;
-			else 
+			else
 				pNodeTo->pChildren = pToChild;
 		}
 		_MergeRtXmlNode(pToChild, pFromChild);
@@ -2355,10 +2356,10 @@ bool RtwXmlLoader::_CreateRtXmlNode(RtsXmlDoc::NodePtr** ppRtXmlNode)
 {
 	UI_CHECK_B(ppRtXmlNode && !*ppRtXmlNode);
 	(*ppRtXmlNode) = RT_NEW RtsXmlDoc::NodePtr();
-	(*ppRtXmlNode)->strName		= "";
-	(*ppRtXmlNode)->pNext		= NULL;
-	(*ppRtXmlNode)->pParent		= NULL;
-	(*ppRtXmlNode)->pChildren	= NULL;
+	(*ppRtXmlNode)->strName = "";
+	(*ppRtXmlNode)->pNext = NULL;
+	(*ppRtXmlNode)->pParent = NULL;
+	(*ppRtXmlNode)->pChildren = NULL;
 	return true;
 }
 

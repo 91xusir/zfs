@@ -90,11 +90,10 @@ bool CGameClientFrame::OnDeviceInit()
     return true;
     unguard;
 }
-
+//lyymark 3.Frame.OnFrameInit 初始化 包括鼠标 UI 应用Graph配置
 bool CGameClientFrame::OnFrameInit()
 {
-    guard;
-    //初始化游戏光标
+
     GameInitCursor();
 
     // RS Load
@@ -107,7 +106,6 @@ bool CGameClientFrame::OnFrameInit()
 		ERR("道具初始化失败\n");
 		return false;
 	}
-
     UILayer::Initialize();
     m_bUIInit = TRUE;
 
@@ -168,7 +166,7 @@ void CGameClientFrame::OnFrameClose()
 #endif
     unguard;
 }
-
+//lyymark 3.Frame.OnEnterLogin 进入login逻辑帧
 bool CGameClientFrame::OnEnterLogin()
 {
     guard;
@@ -181,18 +179,24 @@ bool CGameClientFrame::OnEnterLogin()
     {
         return false;
     }
-
+    // 初始化登录对象
     if (!m_pLogin->InitOnce())
     {
+        // 初始化失败，删除 m_pLogin 实例并设置当前过程为空
         DEL_ONE(m_pLogin);
+        // 设置当前过程为空
         m_pCurrentProcess = NULL;
         return false;
     }
-
+    // 设置GCLogin状态为正在加载
     m_pLogin->SetLoginState(GcLogin::GLS_LOADING);
 
+    // 设置当前场景的世界为空
     ((GcScene*)g_pScene)->SetWorld(NULL);
+
+    // 设置当前过程为 Login
     m_pCurrentProcess = m_pLogin;
+
     return true;
     unguard;
 }
@@ -205,7 +209,7 @@ void CGameClientFrame::OnLeaveLogin()
     m_pCurrentProcess = NULL;
     unguard;
 }
-
+//lyymark 3.Frame.OnEnterLogin 进入开始游戏逻辑帧
 bool CGameClientFrame::OnEnterGame()
 {
     guard;
@@ -536,7 +540,7 @@ void CGameClientFrame::OnKeyDown(/*int iButton,*/ int iKey, bool bAltDown)
 
     unguard;
 }
-
+// lyymark 3.Frame.GameScreenSnapShot 截屏
 void GameScreenSnapShot()
 {
     guard;
@@ -666,7 +670,7 @@ bool VaildCamera()
     unguard;
 }
 
-// 逻辑一帧的处理
+//lyymark 3.Frame.OnFrameMove逻辑帧
 void CGameClientFrame::OnFrameMove(float fDifTime)
 {
     guard;

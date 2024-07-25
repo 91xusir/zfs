@@ -77,7 +77,7 @@ void UILayer::Initialize()
 void UILayer::EnterLoading()
 {
 	guard;
-
+	//重置UILayer
 	Reset();	
 
 	int iIndex = rtRandom()%4;
@@ -96,38 +96,20 @@ void UILayer::EnterLoading()
     static string s_LoadingFiles4[] = {"ui_texture/loading/y01",  "ui_texture/loading/y02", "ui_texture/loading/y03", "ui_texture/loading/y04", "ui_texture/loading/y05", "ui_texture/loading/y06", \
                         "ui_texture/loading/y07", "ui_texture/loading/y08", "ui_texture/loading/y09", "ui_texture/loading/y10", "ui_texture/loading/y11", "ui_texture/loading/y12"};
 
-    string *arrFiles;
-    if (iIndex==0)          arrFiles = s_LoadingFiles1;
-    else if (iIndex==1)     arrFiles = s_LoadingFiles2;
-    else if (iIndex==2)     arrFiles = s_LoadingFiles3;
-    else                    arrFiles = s_LoadingFiles4;
+	static string* s_LoadingFiles[] = { s_LoadingFiles1, s_LoadingFiles2, s_LoadingFiles3, s_LoadingFiles4 };
+	string* arrFiles = s_LoadingFiles[iIndex];
 
+
+	// 初始化图片序列
 	vector<SequenceImageItem> arrImages;
-	SequenceImageItem image;
-	image = SequenceImageItem(arrFiles[0].c_str(),  0,			 0,			fWidth, fHeight);
-	arrImages.push_back(image);
-	image = SequenceImageItem(arrFiles[1].c_str(),  256*fScale,  0,			fWidth, fHeight);
-	arrImages.push_back(image);
-	image = SequenceImageItem(arrFiles[2].c_str(),  512*fScale,  0,			fWidth, fHeight);
-	arrImages.push_back(image);
-	image = SequenceImageItem(arrFiles[3].c_str(),  768*fScale,  0,			fWidth, fHeight);
-	arrImages.push_back(image);
-	image = SequenceImageItem(arrFiles[4].c_str(),  0,			256*fHScale, fWidth, fHeight);
-	arrImages.push_back(image);
-	image = SequenceImageItem(arrFiles[5].c_str(),  256*fScale, 256*fHScale, fWidth, fHeight);
-	arrImages.push_back(image);
-	image = SequenceImageItem(arrFiles[6].c_str(),  512*fScale, 256*fHScale, fWidth, fHeight);
-	arrImages.push_back(image);
-	image = SequenceImageItem(arrFiles[7].c_str(),  768*fScale, 256*fHScale, fWidth, fHeight);
-	arrImages.push_back(image);
-	image = SequenceImageItem(arrFiles[8].c_str(),  0,			512*fHScale, fWidth, fHeight);
-	arrImages.push_back(image);
-	image = SequenceImageItem(arrFiles[9].c_str(),  256*fScale, 512*fHScale, fWidth, fHeight);
-	arrImages.push_back(image);
-	image = SequenceImageItem(arrFiles[10].c_str(), 512*fScale, 512*fHScale, fWidth, fHeight);
-	arrImages.push_back(image);
-	image = SequenceImageItem(arrFiles[11].c_str(), 768*fScale, 512*fHScale, fWidth, fHeight);
-	arrImages.push_back(image);
+	for (int i = 0; i < 12; ++i)
+	{
+		float x = (i % 4) * 256 * fScale;
+		float y = (i / 4) * 256 * fHScale;
+		SequenceImageItem image(arrFiles[i].c_str(), x, y, fWidth, fHeight);
+		arrImages.push_back(image);
+	}
+
 	g_LoadingMapRenderer.SetImages(arrImages);
 	g_LoadingMapRenderer.SetRenderFlag(true);
 

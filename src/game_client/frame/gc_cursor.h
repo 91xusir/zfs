@@ -4,7 +4,7 @@
 
 enum GameCursor
 {
-	GAME_CURSOR_NORMAL,             // 普通指针
+	GAME_CURSOR_NORMAL,             // 普通鼠标
 	GAME_CURSOR_ATTACK,             // 战斗
 	GAME_CURSOR_GOODSKILL,          // 有益技能
 	GAME_CURSOR_TALK,               // 对话

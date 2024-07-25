@@ -83,9 +83,9 @@ public:
 #endif
 
 public:
-    GcUserInput*    m_pCurrentProcess;
-    BOOL            m_bChangeGameFlowNextFrame;
-    BOOL            m_bNextGameFlow;
+    GcUserInput*    m_pCurrentProcess;          // 指向当前处理过程 Login|World
+    BOOL            m_bChangeGameFlowNextFrame; // 标志是否在下一帧更改游戏流程
+    BOOL            m_bNextGameFlow;            // 标志是否存在下一个游戏流程
 
     BOOL            m_bUIInit;
 
@@ -136,5 +136,5 @@ public:
 	void Play(const char* filename,bool loop = false,int looptime = 0);
 	void Stop();
 protected:
-	virtual int 		OnRun();
+	virtual int OnRun();
 };

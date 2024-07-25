@@ -662,7 +662,7 @@ bool RtLog::AddOutFile(const char* szName, const char* szFile, bool bAppend)
     AddOutput(outFile);
     return true;
 }
-
+//lyymark [core-log]
 bool RtLog::AddOutConsole(const char* szName, int iType)
 {
     RtLogOutputType outConsole( RT_NEW RtLogOutputConsole(szName, iType));

@@ -47,14 +47,16 @@ void GameInitCursor()
 #define LOAD_CURSOR(id, idc) \
 	{ CHECK(id < GAME_CURSOR_MAX);  GetCursorFileFromPackage(id, idc);}
 
-	LOAD_CURSOR(GAME_CURSOR_NORMAL,         ".\\cur\\1.ani");
+	//LOAD_CURSOR(GAME_CURSOR_NORMAL,         ".\\cur\\1.ani");
+	LOAD_CURSOR(GAME_CURSOR_NORMAL,         ".\\cur\\normal.ani");
 	LOAD_CURSOR(GAME_CURSOR_ATTACK,         ".\\cur\\2.ani");
 	LOAD_CURSOR(GAME_CURSOR_GOODSKILL,      ".\\cur\\3.ani");
 	LOAD_CURSOR(GAME_CURSOR_TALK,           ".\\cur\\4.ani");
 	LOAD_CURSOR(GAME_CURSOR_DEITEM,         ".\\cur\\5.ani");
 	LOAD_CURSOR(GAME_CURSOR_DIG,            ".\\cur\\6.ani");
 	LOAD_CURSOR(GAME_CURSOR_PICK_HERB,      ".\\cur\\7.ani");
-	LOAD_CURSOR(GAME_CURSOR_CAN_NOT_MOVE,   ".\\cur\\8.ani");
+	//LOAD_CURSOR(GAME_CURSOR_CAN_NOT_MOVE,   ".\\cur\\8.ani");
+	LOAD_CURSOR(GAME_CURSOR_CAN_NOT_MOVE,   ".\\cur\\cannotmove.ani");
 	LOAD_CURSOR(GAME_CURSOR_PICK_ITEM,      ".\\cur\\9.ani");
 	LOAD_CURSOR(GAME_CURSOR_GET_SKIN,       ".\\cur\\11.ani");
 	LOAD_CURSOR(GAME_CURSOR_WALK_ALONE,     ".\\cur\\10.ani");

@@ -2,7 +2,7 @@
 #include "graph/rt_graph.h"
 #include "gc_include.h"
 #include "gc_sequence_image.h"
-
+// µÇÂ¼Ò³Ãæ¼ÓÔØÍ¼Æ¬
 GcSequenceImage		g_LoadingMapRenderer;
 GcSequenceImage		g_WorldMapRenderer;
 
