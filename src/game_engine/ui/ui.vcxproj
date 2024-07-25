@@ -148,6 +148,9 @@
     <ClInclude Include="..\..\engine\head\ui\rtw_xml.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="UI.cd" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{70404A05-83CF-43DB-A6F4-D061B543B95F}</ProjectGuid>
     <RootNamespace>ui</RootNamespace>

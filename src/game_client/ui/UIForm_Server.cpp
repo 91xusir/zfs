@@ -2,15 +2,13 @@
 #include "ui_layer.h"
 #include "UIForm_Server.h"
 
-CUIForm_Server::CUIForm_Server(void):
-m_iSelect(-1)
+CUIForm_Server::CUIForm_Server(void):m_iSelect(-1)
 {
 	guard;
 	m_pfrmServer					= RTW_WIDGET("fmserver");
 	m_plstServerContent				= RTW_WIDGET_T(RtwListBox,"fmserver.fmxmm.lbxlogin");
 	m_plbSelectServer				= RTW_WIDGET("fmserver.fmxmm.lbtext");
 	m_pbtnOK						= RTW_WIDGET_T(RtwButton,"fmserver.fmxmm.btnok");
-
 	m_plstServerContent->EvSelect	+= RTW_CALLBACK(this,CUIForm_Server,OnSelectServer);
 	m_plstServerContent->EvLDClick  += RTW_CALLBACK(this,CUIForm_Server,OnBtnOKDown);
 	m_pbtnOK->EvLClick				+= RTW_CALLBACK(this,CUIForm_Server,OnBtnOKDown);

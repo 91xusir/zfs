@@ -13,6 +13,7 @@ extern unsigned long dwCurrentTime;
 
 namespace ui 
 {
+	//lyytodo 可以使用现代c++的basefor循环代替
 	#ifndef foreach
 	#define foreach(type, iter, var) \
 		for (type::iterator iter = (var).begin(); (iter) != (var).end(); ++(iter))

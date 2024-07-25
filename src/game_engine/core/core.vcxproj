@@ -607,7 +607,7 @@ copy ..\..\libs\$(TargetName).lib ..\..\..\game_server\engine\libs\
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\engine\head\core\rtc2_thread.inl" />
-    <None Include="ClassDiagram.cd" />
+    <None Include="Core.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

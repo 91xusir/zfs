@@ -55,6 +55,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <None Include="Character.cd" />
   </ItemGroup>
 </Project>

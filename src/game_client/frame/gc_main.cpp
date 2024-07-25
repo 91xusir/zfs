@@ -620,8 +620,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		ReadVersionFile(R(INI_VERSION));
 
 		// 更新注册表，如果是第一次运行，就发送PC Info
-		//lyytodo 现代程序不需要注册表
-	/*	CGameRegistry WinReg;
+		/*CGameRegistry WinReg;
 		WinReg.Init();
 		if (!iniUser.GetEntry("game", "log"))
 		{

@@ -86,6 +86,12 @@ bool RtwXmlLoader::_ProcessNode(RtsXmlDoc::NodePtr* pNode, RtwWidget* pParent/* 
 	if (!pNode)
 		return false;
 
+	// 支持的标签名集合
+	static const std::set<std::string> validTags = { 
+		"Ui",//普通UI组件
+		"SystemWidgets" //系统UI组件
+	};
+
 	// a sample xml file
 	// 
 	//<?xml version="1.0" encoding="UTF-8"?>
@@ -99,38 +105,26 @@ bool RtwXmlLoader::_ProcessNode(RtsXmlDoc::NodePtr* pNode, RtwWidget* pParent/* 
 	//</Ui>
 	//
 
-	RtwWidget* _pParent = NULL;
-	CUiLayer* _pLayer = NULL;
+	RtwWidget* _pParent = nullptr;
+	CUiLayer* _pLayer = nullptr;
 	if (pParent)
 	{
 		if (pParent->getWidgetType() == wtLayer)
-			_pLayer = (CUiLayer*)pParent;
+			_pLayer = dynamic_cast<CUiLayer*>(pParent);
 		else
 			_pParent = pParent;
 	}
 
 	const std::string& TagName = pNode->strName;
-	if (
-		TagName == "Ui"				/*普通ui组件*/
-		|| TagName == "SystemWidgets"	/*系统组件*/
-		)
+	if (validTags.find(TagName) != validTags.end())
 	{
 		UI_ENSURE_B(_ProcessChild_Widget(_pParent, _pLayer, pNode, pWidgetsCreated));
 	}
-	//if (TagName == "Ui")
-	//{
-	//	UI_ENSURE_B(_ProcessChild_Widget(_pParent, _pLayer, pNode, pWidgetsCreated));
-	//}
-	//else if (TagName == "SystemWidgets")
-	//{
-	//	UI_ENSURE_B(_ProcessChild_Widget(_pParent, _pLayer, pNode, pWidgetsCreated));
-	//}
 	else
 	{
 		RtCoreLog().Error("Invalid Tag Type \'%s\'\n", TagName.c_str());
 		return false;
 	}
-
 	return true;
 }
 
@@ -921,7 +915,6 @@ bool RtwXmlLoader::_ProcessChild_Widget(
 			UI_ENSURE_B(_Process_Border(pWidget, pChildNode))
 		else if (pChildNode->strName == "FaceImage")
 			UI_ENSURE_B(_Process_FaceButton((RtwButton*)pWidget, pChildNode))
-
 			// Layer是特殊的
 		else if (pChildNode->strName == "Layer")
 		{

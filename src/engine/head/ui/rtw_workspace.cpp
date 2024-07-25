@@ -10,48 +10,48 @@
 
 ui::CUiDesktop g_workspace;
 
-CUiDesktop::CUiDesktop() 
-					   :m_State(dsSuspend),
-						m_pRenderDevice(NULL),
-						m_pImageFactory(NULL),
-						m_pFontManager(NULL),
-						m_pWidgetFactory(NULL),
-						m_pThemeManager(NULL),
-						m_pSound(NULL),
-						m_pClipboard(NULL),
-						m_pDefaultHint(NULL),
-						m_pSystemLayer(NULL),
-						m_pGarbageContainer(NULL),
-						m_pFocusWidget(NULL),
-						m_pMouseHoverWidget(NULL),
-						m_pMouseDragWidget(NULL),
-						m_pHintWidget(NULL),
-						m_pUiXmlLoader(NULL),
-						m_pDefaultPopupMenu(NULL),
-						m_pDefaultMessageBox(NULL),
-						m_pDefaultInputBox(NULL),
-						m_pRefreshMediaFrame(NULL),
-						m_pHintTargetWidget(NULL),
-						m_pDefaultFocusWidget(NULL),
-						m_pMouseCaptureWidget(NULL),
-						m_pModalWidgetContainer(NULL),
-						m_pDefaultWidgetContainer(NULL),
-						m_pTopRenderWidgetContainer(NULL),
-						m_rTransparent(1.0),
-						m_bDebugMode(false),
-						m_bModeWnd(false),
-						m_bMouseLDown(false),
-						m_bMouseRDown(false),
-						m_pNoFocusWidget(NULL),
-						m_bFontFileOk(false), 
-						m_strDefaultFontName("")
+CUiDesktop::CUiDesktop()
+	:m_State(dsSuspend),
+	m_pRenderDevice(NULL),
+	m_pImageFactory(NULL),
+	m_pFontManager(NULL),
+	m_pWidgetFactory(NULL),
+	m_pThemeManager(NULL),
+	m_pSound(NULL),
+	m_pClipboard(NULL),
+	m_pDefaultHint(NULL),
+	m_pSystemLayer(NULL),
+	m_pGarbageContainer(NULL),
+	m_pFocusWidget(NULL),
+	m_pMouseHoverWidget(NULL),
+	m_pMouseDragWidget(NULL),
+	m_pHintWidget(NULL),
+	m_pUiXmlLoader(NULL),
+	m_pDefaultPopupMenu(NULL),
+	m_pDefaultMessageBox(NULL),
+	m_pDefaultInputBox(NULL),
+	m_pRefreshMediaFrame(NULL),
+	m_pHintTargetWidget(NULL),
+	m_pDefaultFocusWidget(NULL),
+	m_pMouseCaptureWidget(NULL),
+	m_pModalWidgetContainer(NULL),
+	m_pDefaultWidgetContainer(NULL),
+	m_pTopRenderWidgetContainer(NULL),
+	m_rTransparent(1.0),
+	m_bDebugMode(false),
+	m_bModeWnd(false),
+	m_bMouseLDown(false),
+	m_bMouseRDown(false),
+	m_pNoFocusWidget(NULL),
+	m_bFontFileOk(false),
+	m_strDefaultFontName("")
 {
-	m_HyperLinkDefaultStyle.bUnderLine		= true;
-	m_HyperLinkDefaultStyle.NormalColor		= RtwPixel(0xff22bb44);
-	m_HyperLinkDefaultStyle.HighlightColor	= RtwPixel(0xffee2233);
+	m_HyperLinkDefaultStyle.bUnderLine = true;
+	m_HyperLinkDefaultStyle.NormalColor = RtwPixel(0xff22bb44);
+	m_HyperLinkDefaultStyle.HighlightColor = RtwPixel(0xffee2233);
 }
 
-CUiDesktop::~CUiDesktop(){}
+CUiDesktop::~CUiDesktop() {}
 
 //设备无效
 void CUiDesktop::OnInvalidateDevice()
@@ -74,41 +74,54 @@ void CUiDesktop::OnRestoreDevice()
 //加载xml文件
 bool CUiDesktop::Load(const char* xmlName)
 {
+	// 清空事件移动队列
 	EvMove.Clear();
 
+	// 遍历 m_Layers 中的每个 UiLayer 对象
 	foreach(UiLayerList, iterLayer, m_Layers)
 	{
+		// 获取当前层
 		CUiLayer* pLayer = *iterLayer;
+		// 如果层的名称是 "layworld"
 		if (pLayer->getName() == "layworld")
 		{
- 			DROP_RTUI_OBJECT(pLayer);
- 			m_Layers.erase(iterLayer);
+			// 删除该层对象
+			DROP_RTUI_OBJECT(pLayer);
+			// 从 m_Layers 中移除该层
+			m_Layers.erase(iterLayer);
+			// 退出循环
 			break;
 		}
 	}
 
+	// 创建 XML 解析器对象
 	RtsXmlDoc XmlDoc;
+	// 解析 XML 文件，如果解析失败
 	if (XmlDoc.ParserFile(xmlName) != 0)
 	{
-		RtCoreLog().Error("打开xml文件%s失败，请确认文件存在并且正确\n", 
-
-			xmlName);
+		// 记录错误信息
+		RtCoreLog().Error("打开xml文件%s失败，请确认文件存在并且正确\n", xmlName);
+		// 返回加载失败
 		return false;
 	}
 
-	if (!_ProcessXmlFile((RtsXmlDoc::NodePtr*)XmlDoc.GetRoot()))
+	// 处理 XML 文件，如果处理失败
+	if (!_ProcessXmlFile(static_cast<RtsXmlDoc::NodePtr*>(XmlDoc.GetRoot())))
 	{
+		// 记录错误信息
 		RtCoreLog().Error("解析xml文件%s失败，请确认文件格式正确\n", xmlName);
+		// 返回加载失败
 		return false;
 	}
 
+	// 返回加载成功
 	return true;
 }
 
 //创建各种管理器
 bool CUiDesktop::Create(IUiRenderDevice* pRenderer, IUiImageFactory* pImageFactory, IUiFontManager* pFontManager)
 {
-	UI_CHECK_B(m_State==dsSuspend);
+	UI_CHECK_B(m_State == dsSuspend);
 
 	if (!pRenderer || !pImageFactory)
 	{
@@ -133,7 +146,7 @@ bool CUiDesktop::Create(IUiRenderDevice* pRenderer, IUiImageFactory* pImageFacto
 	m_pGarbageContainer = RT_NEW CUiWidgetContainer();
 	m_pGarbageContainer->grab();
 	UI_ENSURE_B(m_pModalWidgetContainer && m_pDefaultWidgetContainer && m_pTopRenderWidgetContainer && m_pGarbageContainer);
-
+	//lyymark 1.UI.Init 注册ui默认图片路径和xml路径
 	RegisterTexturePath("ui/textures/");
 	RegisterXmlPath("ui/");
 
@@ -191,7 +204,7 @@ bool CUiDesktop::Create(IUiRenderDevice* pRenderer, IUiImageFactory* pImageFacto
 //初始化系统组件
 bool CUiDesktop::_InitSystemWidgets()
 {
- 	UI_ENSURE_B(FindLayer(g_SystemWidgetName[sw_SystemLayer], (CUiLayer**)&m_pSystemLayer));
+	UI_ENSURE_B(FindLayer(g_SystemWidgetName[sw_SystemLayer], (CUiLayer**)&m_pSystemLayer));
 
 	UI_ENSURE_B(FindWidget(g_SystemWidgetName[sw_DefaultHint], (RtwWidget**)&m_pDefaultHint));
 	m_pDefaultHint->SetTransparency(0.7);
@@ -203,23 +216,23 @@ bool CUiDesktop::_InitSystemWidgets()
 	UI_ENSURE_B(FindWidget(g_SystemWidgetName[sw_AutoSbv]));
 	UI_ENSURE_B(FindWidget(g_SystemWidgetName[sw_AutoSbh]));
 
- 	UI_ENSURE_B(FindWidget(g_SystemWidgetName[sw_PopupMenu], (RtwWidget**)&m_pDefaultPopupMenu));
- 	AddTopRenderWidget(m_pDefaultPopupMenu);
- 
+	UI_ENSURE_B(FindWidget(g_SystemWidgetName[sw_PopupMenu], (RtwWidget**)&m_pDefaultPopupMenu));
+	AddTopRenderWidget(m_pDefaultPopupMenu);
+
 	//消息框
- 	m_pDefaultMessageBox = RT_NEW RtwMailBox();
- 	UI_ENSURE_B(m_pDefaultMessageBox->Init());
- 
+	m_pDefaultMessageBox = RT_NEW RtwMailBox();
+	UI_ENSURE_B(m_pDefaultMessageBox->Init());
+
 	//聊天输入框
- 	m_pDefaultInputBox = RT_NEW RtwChatInputBox();
- 	UI_ENSURE_B(m_pDefaultInputBox->Init());
+	m_pDefaultInputBox = RT_NEW RtwChatInputBox();
+	UI_ENSURE_B(m_pDefaultInputBox->Init());
 
 	return true;
 }
 
 bool CUiDesktop::Destroy()
 {
-	UI_CHECK_B(m_State==dsRun);
+	UI_CHECK_B(m_State == dsRun);
 
 	DROP_RTUI_OBJECT(m_pTopRenderWidgetContainer);
 	DROP_RTUI_OBJECT(m_pModalWidgetContainer);
@@ -235,8 +248,8 @@ bool CUiDesktop::Destroy()
 	DROP_RTUI_OBJECT(m_pHintTargetWidget);
 	DROP_RTUI_OBJECT(m_pSystemLayer);
 	DROP_RTUI_OBJECT(m_pGarbageContainer);
- 	DROP_RTUI_OBJECT(m_pDefaultMessageBox);
- 	DROP_RTUI_OBJECT(m_pDefaultInputBox);
+	DROP_RTUI_OBJECT(m_pDefaultMessageBox);
+	DROP_RTUI_OBJECT(m_pDefaultInputBox);
 
 	//释放所有组件
 	while (!m_Layers.empty())
@@ -284,12 +297,12 @@ void CUiDesktop::Run(DWORD dwDelta)
 	static RtwRect lastframe;
 	RtwRect nowframe;
 	nowframe = getViewportRect();
-	if( nowframe != lastframe)
+	if (nowframe != lastframe)
 	{
 		RtwEventDelegate e(etMove);
-		e.move.OrigFrame_Left	= nowframe.left;
-		e.move.OrigFrame_Right	= nowframe.right;
-		e.move.OrigFrame_Top	= nowframe.top;
+		e.move.OrigFrame_Left = nowframe.left;
+		e.move.OrigFrame_Right = nowframe.right;
+		e.move.OrigFrame_Top = nowframe.top;
 		e.move.OrigFrame_Bottom = nowframe.bottom;
 		EvMove(NULL, e);
 		lastframe = nowframe;
@@ -298,19 +311,19 @@ void CUiDesktop::Run(DWORD dwDelta)
 
 void CUiDesktop::Render()
 {
-    tick_begin();
+	tick_begin();
 
 	m_pRenderDevice->BeginRender();
 
 	static RtwRect lastframe;
 	RtwRect nowframe;
 	nowframe = getViewportRect();
-	if( nowframe != lastframe)
+	if (nowframe != lastframe)
 	{
 		RtwEventDelegate e(etMove);
-		e.move.OrigFrame_Left	= nowframe.left;
-		e.move.OrigFrame_Right	= nowframe.right;
-		e.move.OrigFrame_Top	= nowframe.top;
+		e.move.OrigFrame_Left = nowframe.left;
+		e.move.OrigFrame_Right = nowframe.right;
+		e.move.OrigFrame_Top = nowframe.top;
 		e.move.OrigFrame_Bottom = nowframe.bottom;
 		EvMove(NULL, e);
 		lastframe = nowframe;
@@ -365,15 +378,15 @@ void CUiDesktop::Render()
 
 	m_pRenderDevice->EndRender();
 
-	if( m_pMouseCaptureWidget )
+	if (m_pMouseCaptureWidget)
 	{
 		//被鼠标单击的组件
 		RtwEventDelegate e;
 		e.type = etButtonPressed;
 		e.mouse.x = m_MousePos.x;
-		e.mouse.y = m_MousePos.y;		
-		m_pMouseCaptureWidget->OnMouseCapture( e );
-	}	
+		e.mouse.y = m_MousePos.y;
+		m_pMouseCaptureWidget->OnMouseCapture(e);
+	}
 }
 
 void CUiDesktop::RemoveAll(bool bIncludeSystemWidgets/* = false*/)
@@ -387,7 +400,7 @@ bool CUiDesktop::FindLayer(DWORD LayerId, CUiLayer** ppLayer/* = NULL*/)
 	if (ppLayer)
 		*ppLayer = NULL;
 
-	foreach (UiLayerList, iter, m_Layers)
+	foreach(UiLayerList, iter, m_Layers)
 	{
 		CUiLayer* pLayer = *iter;
 		if (pLayer->getId() == LayerId)
@@ -410,7 +423,7 @@ bool CUiDesktop::FindLayer(const std::string& Name, CUiLayer** ppLayer/* = NULL*
 	if (ppLayer)
 		*ppLayer = NULL;
 
-	foreach (UiLayerList, iter, m_Layers)
+	foreach(UiLayerList, iter, m_Layers)
 	{
 		CUiLayer* pLayer = *iter;
 		if (pLayer->getName() == Name)
@@ -437,7 +450,7 @@ bool CUiDesktop::AddLayer(CUiLayer* pLayer, bool bAddToFront/* = false*/)
 
 	if (bAddToFront)
 		m_Layers.push_front(pLayer);
-	else 
+	else
 		m_Layers.push_back(pLayer);
 
 	return true;
@@ -446,7 +459,7 @@ bool CUiDesktop::AddLayer(CUiLayer* pLayer, bool bAddToFront/* = false*/)
 //通过id删除层
 bool CUiDesktop::RemoveLayer(DWORD LayerId)
 {
-	foreach (UiLayerList, iter, m_Layers)
+	foreach(UiLayerList, iter, m_Layers)
 	{
 		CUiLayer* pLayer = *iter;
 		if (pLayer->getId() == LayerId)
@@ -463,7 +476,7 @@ bool CUiDesktop::RemoveLayer(DWORD LayerId)
 //通过名字删除层
 bool CUiDesktop::RemoveLayer(const std::string& Name)
 {
-	foreach (UiLayerList, iter, m_Layers)
+	foreach(UiLayerList, iter, m_Layers)
 	{
 		CUiLayer* pLayer = *iter;
 		if (pLayer->getName() == Name)
@@ -486,7 +499,7 @@ bool CUiDesktop::FindWidget(DWORD WidgetId, bool bRecursive/* = false*/, RtwWidg
 	if (ppInLayer)
 		*ppInLayer = NULL;
 
-	if ( m_pDefaultWidgetContainer && m_pDefaultWidgetContainer->FindWidget(WidgetId, ppWidget) )
+	if (m_pDefaultWidgetContainer && m_pDefaultWidgetContainer->FindWidget(WidgetId, ppWidget))
 	{
 		return true;
 	}
@@ -497,7 +510,7 @@ bool CUiDesktop::FindWidget(DWORD WidgetId, bool bRecursive/* = false*/, RtwWidg
 		foreach(UiLayerList, iterLayer, m_Layers)
 		{
 			CUiLayer* pLayer = *iterLayer;
-			if ( pLayer->FindWidget(WidgetId, ppWidget, true) )
+			if (pLayer->FindWidget(WidgetId, ppWidget, true))
 			{
 				if (ppInLayer)
 				{
@@ -550,7 +563,7 @@ bool CUiDesktop::FindWidget(const std::string& FullName, RtwWidget** ppWidget/* 
 					{
 						return false;
 					}
-					else 
+					else
 					{
 						if (ppWidget)
 						{
@@ -560,12 +573,12 @@ bool CUiDesktop::FindWidget(const std::string& FullName, RtwWidget** ppWidget/* 
 						return true;
 					}
 				}
-				else 
+				else
 				{
 					return false;
 				}
 			}
-			else 
+			else
 			{
 				if (ppWidget)
 				{
@@ -593,7 +606,7 @@ bool CUiDesktop::FindWidget(const std::string& FullName, RtwWidget** ppWidget/* 
 	{
 		return false;
 	}
-	else 
+	else
 	{
 		if (ppWidget)
 		{
@@ -619,7 +632,7 @@ bool CUiDesktop::_SplitWidgetName(const std::string& FullName, std::vector<std::
 			str += arrShortName.back();
 			str += ".";
 		}
-		str += FullName.substr(offset, pos-offset);
+		str += FullName.substr(offset, pos - offset);
 		arrShortName.push_back(str);
 		offset = pos + 1;
 		pos = (int)FullName.find_first_of('.', offset);
@@ -639,7 +652,7 @@ bool CUiDesktop::AddWidget(RtwWidget* pWidget)
 	{
 		return AddLayer((CUiLayer*)pWidget);
 	}
-	else 
+	else
 	{
 		return m_pDefaultWidgetContainer->AddWidget(pWidget);
 	}
@@ -674,9 +687,9 @@ bool CUiDesktop::RemoveWidget(DWORD WidgetId)
 }
 
 bool CUiDesktop::PickWidget(
-									RtwWidget** ppWidget/* = NULL*/, CUiLayer** ppLayer/* = NULL*/, 
-									DWORD FlagMask/* = 0x00000000*/, UiLayerList* pExcludeLayers/* = NULL*/,
-									CUiWidgetContainer* pExcludeWidgets/* = NULL*/)
+	RtwWidget** ppWidget/* = NULL*/, CUiLayer** ppLayer/* = NULL*/,
+	DWORD FlagMask/* = 0x00000000*/, UiLayerList* pExcludeLayers/* = NULL*/,
+	CUiWidgetContainer* pExcludeWidgets/* = NULL*/)
 {
 	if (ppWidget)
 		*ppWidget = NULL;
@@ -691,10 +704,10 @@ bool CUiDesktop::PickWidget(
 	// TopRender窗口容器
 	// 系统默认层
 	// 其他层
- 	if (m_pDefaultPopupMenu && m_pDefaultPopupMenu->getVisible() && m_pDefaultPopupMenu->PickWidget(m_MousePos, ppWidget, FlagMask, pExcludeWidgets))
- 	{
- 		return true;
- 	}
+	if (m_pDefaultPopupMenu && m_pDefaultPopupMenu->getVisible() && m_pDefaultPopupMenu->PickWidget(m_MousePos, ppWidget, FlagMask, pExcludeWidgets))
+	{
+		return true;
+	}
 
 	if (m_pFocusWidget && m_pFocusWidget->PickWidget(m_MousePos, ppWidget, FlagMask, pExcludeWidgets))
 	{
@@ -711,7 +724,7 @@ bool CUiDesktop::PickWidget(
 			if (iterExLayer == pExcludeLayers->end())
 				return true;
 		}
-		else 
+		else
 		{
 			return true;
 		}
@@ -742,7 +755,7 @@ bool CUiDesktop::PickWidget(
 				if (iterExLayer == pExcludeLayers->end())
 					return true;
 			}
-			else 
+			else
 			{
 				return true;
 			}
@@ -777,7 +790,7 @@ bool CUiDesktop::PickWidget(
 			if (iterExLayer == pExcludeLayers->end())
 				return true;
 		}
-		else 
+		else
 		{
 			return true;
 		}
@@ -789,7 +802,7 @@ bool CUiDesktop::PickWidget(
 	{
 		return true;
 	}
-	else 
+	else
 	{
 		foreach(UiLayerList, iterLayer, m_Layers)
 		{
@@ -875,7 +888,7 @@ void CUiDesktop::PrintWidgetTree()
 	if (m_pGarbageContainer)
 		m_pGarbageContainer->PrintToConsole("Garbages");
 
-	foreach (UiLayerList, iterLayer, m_Layers)
+	foreach(UiLayerList, iterLayer, m_Layers)
 	{
 		CUiLayer* pLayer = *iterLayer;
 		pLayer->PrintToConsole();
@@ -885,7 +898,7 @@ void CUiDesktop::PrintWidgetTree()
 //通过名字显示树结构
 void CUiDesktop::PrintWidgetTree(const std::string& LayerName)
 {
-	foreach (UiLayerList, iterLayer, m_Layers)
+	foreach(UiLayerList, iterLayer, m_Layers)
 	{
 		CUiLayer* pLayer = *iterLayer;
 		if (pLayer->getName() == LayerName)
@@ -961,7 +974,7 @@ void CUiDesktop::DoGarbageClear()
 			GarbageToClear.push_back(pWidget);
 	}
 
-	foreach (UiWidgetList, iterClear, GarbageToClear)
+	foreach(UiWidgetList, iterClear, GarbageToClear)
 	{
 		RtwWidget* pWidget = *iterClear;
 		m_pGarbageContainer->RemoveWidget(pWidget->getId());
@@ -987,15 +1000,15 @@ bool CUiDesktop::_ProcessModalWidget_MouseEvent()
 bool CUiDesktop::MouseDown(int button)
 {
 	RtwEventDelegate e;
-	e.type			= weMouseDown; 
-	e.mouse.x		= m_MousePos.x;
-	e.mouse.y		= m_MousePos.y;
-	e.mouse.button	= button;
+	e.type = weMouseDown;
+	e.mouse.x = m_MousePos.x;
+	e.mouse.y = m_MousePos.y;
+	e.mouse.button = button;
 
-	if(button == buttonRight)
+	if (button == buttonRight)
 		m_bMouseRDown = true;
 
-	else if(button == buttonLeft)
+	else if (button == buttonLeft)
 		m_bMouseLDown = true;
 
 	// 处理Layer
@@ -1020,12 +1033,12 @@ bool CUiDesktop::MouseDown(int button)
 
 	if (bPickOk)
 	{
- 		if (m_pDefaultPopupMenu && m_pDefaultPopupMenu->getVisible() && m_pMouseCaptureWidget != m_pDefaultPopupMenu)
- 		{
- 			// 如果默认菜单显示,并且鼠标没有点中默认菜单,就关闭它
- 			if (!m_pDefaultPopupMenu->FindChild(m_pMouseCaptureWidget->getId(), NULL, true))
- 				HidePopupMenu();
- 		}
+		if (m_pDefaultPopupMenu && m_pDefaultPopupMenu->getVisible() && m_pMouseCaptureWidget != m_pDefaultPopupMenu)
+		{
+			// 如果默认菜单显示,并且鼠标没有点中默认菜单,就关闭它
+			if (!m_pDefaultPopupMenu->FindChild(m_pMouseCaptureWidget->getId(), NULL, true))
+				HidePopupMenu();
+		}
 
 		if (m_pMouseCaptureWidget->getEnable())
 		{
@@ -1035,7 +1048,7 @@ bool CUiDesktop::MouseDown(int button)
 			//让关闭按钮点击时,不区分是否有焦点
 			//begin
 			RtwWidget* pParent = m_pMouseCaptureWidget;
-			RtwButton *pCloseButton = NULL;
+			RtwButton* pCloseButton = NULL;
 
 			while (pParent && pParent->GetParent())
 			{
@@ -1044,7 +1057,7 @@ bool CUiDesktop::MouseDown(int button)
 
 			if (pParent->getWidgetType() == wtForm)
 			{
-				RtwForm *pForm = (RtwForm*)pParent;
+				RtwForm* pForm = (RtwForm*)pParent;
 				if (pForm->getShowCloseButton())
 				{
 					pCloseButton = pForm->getCloseButton();
@@ -1056,7 +1069,7 @@ bool CUiDesktop::MouseDown(int button)
 						m_pMouseCaptureWidget->grab();
 						m_pMouseCaptureWidget->OnMouseDown(e);
 
-						if (m_bModeWnd) 
+						if (m_bModeWnd)
 						{
 							bProcessed = true;
 						}
@@ -1093,13 +1106,13 @@ bool CUiDesktop::MouseDown(int button)
 			}
 		}
 	}
-	else 
+	else
 	{
 		SetFocusWidget(NULL);
 		HidePopupMenu();
 	}
 
-	if (m_bModeWnd) 
+	if (m_bModeWnd)
 	{
 		bProcessed = true;
 	}
@@ -1116,14 +1129,14 @@ bool CUiDesktop::MouseDown(int button)
 bool CUiDesktop::MouseUp(int button)
 {
 	RtwEventDelegate e;
-	e.type			= etMouseUp;
-	e.mouse.x		= m_MousePos.x;
-	e.mouse.y		= m_MousePos.y;
-	e.mouse.button	= button;
+	e.type = etMouseUp;
+	e.mouse.x = m_MousePos.x;
+	e.mouse.y = m_MousePos.y;
+	e.mouse.button = button;
 
-	if(button == buttonRight)
+	if (button == buttonRight)
 		m_bMouseRDown = false;
-	else if(button == buttonLeft)
+	else if (button == buttonLeft)
 		m_bMouseLDown = false;
 
 	// 处理Layer
@@ -1153,7 +1166,7 @@ bool CUiDesktop::MouseUp(int button)
 		if (m_pMouseDragWidget)
 		{
 			//被拖拽的组件
-			if(m_pMouseDragWidget && m_pMouseDragWidget->getFlag(wfDragOut))
+			if (m_pMouseDragWidget && m_pMouseDragWidget->getFlag(wfDragOut))
 			{
 				bProcessed = true;
 
@@ -1183,7 +1196,7 @@ bool CUiDesktop::MouseUp(int button)
 				bProcessed = true;
 				m_pMouseCaptureWidget->OnMouseUp(e);
 
- 				if (pPickWidget == m_pMouseCaptureWidget)
+				if (pPickWidget == m_pMouseCaptureWidget)
 				{
 					e.type = weMouseClick;
 					m_pMouseCaptureWidget->OnMouseClick(e);
@@ -1191,8 +1204,8 @@ bool CUiDesktop::MouseUp(int button)
 				else
 				{
 					//如果是closebutton,则相应
-					RtwButton *pCloseButton = NULL;
-					RtwWidget *pParent = pPickWidget;
+					RtwButton* pCloseButton = NULL;
+					RtwWidget* pParent = pPickWidget;
 
 					while (pParent && pParent->GetParent())
 					{
@@ -1203,7 +1216,7 @@ bool CUiDesktop::MouseUp(int button)
 					{
 						if (pParent->getWidgetType() == wtForm)
 						{
-							RtwForm *pForm = (RtwForm*)pParent;
+							RtwForm* pForm = (RtwForm*)pParent;
 							if (pForm->getShowCloseButton())
 							{
 								pCloseButton = pForm->getCloseButton();
@@ -1237,9 +1250,9 @@ bool CUiDesktop::MouseUp(int button)
 bool CUiDesktop::MouseDClick(int button)
 {
 	RtwEventDelegate e(etMouseDClick);
-	e.mouse.button	= button;
-	e.mouse.x		= m_MousePos.x;
-	e.mouse.y		= m_MousePos.y;
+	e.mouse.button = button;
+	e.mouse.x = m_MousePos.x;
+	e.mouse.y = m_MousePos.y;
 
 	// 处理Layer
 	foreach(UiLayerList, iterLayer, m_Layers)
@@ -1272,19 +1285,19 @@ bool CUiDesktop::MouseDClick(int button)
 //鼠标移动
 bool CUiDesktop::MouseMove(int x, int y)
 {
-	m_MouseDelta.width	= x - m_MousePos.x;
+	m_MouseDelta.width = x - m_MousePos.x;
 	m_MouseDelta.height = y - m_MousePos.y;
 	m_MousePos.x = x;
 	m_MousePos.y = y;
 
 	RtwEventDelegate e;
-	e.type		= etMouseMove;
-	e.mouse.x	= m_MousePos.x;
-	e.mouse.y	= m_MousePos.y;
+	e.type = etMouseMove;
+	e.mouse.x = m_MousePos.x;
+	e.mouse.y = m_MousePos.y;
 
-	if(m_bMouseLDown)
+	if (m_bMouseLDown)
 		e.mouse.button = buttonLeft;
-	else if(m_bMouseRDown)
+	else if (m_bMouseRDown)
 		e.mouse.button = buttonRight;
 
 	// 处理Layer
@@ -1295,14 +1308,14 @@ bool CUiDesktop::MouseMove(int x, int y)
 
 	// 处理Widget
 	RtwWidget* pWidget = NULL;
-	PickWidget(&pWidget, NULL, wfGrabMouse|wfMouseMove|wfPick);
+	PickWidget(&pWidget, NULL, wfGrabMouse | wfMouseMove | wfPick);
 
 	//让关闭按钮总是在移动到其位置时高亮,不区分是否有焦点
 	//begin
 	if (pWidget)
 	{
 		RtwWidget* pParent = pWidget;
-		RtwButton *pCloseButton = NULL;
+		RtwButton* pCloseButton = NULL;
 
 		while (pParent && pParent->GetParent())
 		{
@@ -1311,7 +1324,7 @@ bool CUiDesktop::MouseMove(int x, int y)
 
 		if (pParent->getWidgetType() == wtForm)
 		{
-			RtwForm *pForm = (RtwForm*)pParent;
+			RtwForm* pForm = (RtwForm*)pParent;
 			if (pForm->getShowCloseButton())
 			{
 				pCloseButton = pForm->getCloseButton();
@@ -1358,7 +1371,7 @@ bool CUiDesktop::MouseMove(int x, int y)
 		if (m_pMouseCaptureWidget->GetFlags(wfMouseMove))
 			m_pMouseCaptureWidget->OnMouseMove(e);
 	}
-	else 
+	else
 	{
 		if (m_pMouseHoverWidget && m_pMouseHoverWidget->GetFlags(wfMouseMove))
 			m_pMouseHoverWidget->OnMouseMove(e);
@@ -1376,7 +1389,7 @@ bool CUiDesktop::MouseMove(int x, int y)
 				DROP_RTUI_OBJECT(m_pHintTargetWidget);
 			}
 
-			if (m_pMouseHoverWidget->getFlag(wfHint,false))
+			if (m_pMouseHoverWidget->getFlag(wfHint, false))
 			{
 				m_pHintTargetWidget = m_pMouseHoverWidget;
 				m_pHintTargetWidget->grab();
@@ -1384,7 +1397,7 @@ bool CUiDesktop::MouseMove(int x, int y)
 				m_pHintTargetWidget->OnHint();
 			}
 		}
-		else 
+		else
 		{
 			if (m_pHintTargetWidget)
 			{
@@ -1405,7 +1418,7 @@ bool CUiDesktop::MouseMove(int x, int y)
 		}
 	}
 
-	if(!m_pHintTargetWidget && m_pHintWidget)
+	if (!m_pHintTargetWidget && m_pHintWidget)
 	{
 		m_pHintWidget->Hide();
 		DROP_RTUI_OBJECT(m_pHintWidget);
@@ -1418,9 +1431,9 @@ bool CUiDesktop::MouseMove(int x, int y)
 bool CUiDesktop::MouseWheel(int delta, int x, int y)
 {
 	RtwEventDelegate e(etMouseWheel);
-	e.mouseWheel.delta	= delta;
-	e.mouse.x			= x;
-	e.mouse.y			= y;
+	e.mouseWheel.delta = delta;
+	e.mouse.x = x;
+	e.mouse.y = y;
 
 	// 处理Layer
 	foreach(UiLayerList, iterLayer, m_Layers)
@@ -1494,20 +1507,20 @@ bool CUiDesktop::KeyUp(int key)
 
 	if (key == VK_ESCAPE)
 	{
-// 		RtCoreLog().Error("esc begin\n");
+		// 		RtCoreLog().Error("esc begin\n");
 		if (!m_lstFocusWidgetList.empty())
 		{
-// 			RtCoreLog().Error("!m_lstFocusWidgetList.empty()\n");
+			// 			RtCoreLog().Error("!m_lstFocusWidgetList.empty()\n");
 			RtwForm* pWidget = m_lstFocusWidgetList.front();
 			//不是form或者是form并且可以用esc关闭
 			if (pWidget->GetEscapeHide())
 			{
-// 				RtCoreLog().Error("!m_lstFocusWidgetList.empty() Hide\n");
+				// 				RtCoreLog().Error("!m_lstFocusWidgetList.empty() Hide\n");
 				pWidget->Hide();
 				if (!m_lstFocusWidgetList.empty())
 				{
-// 					RtCoreLog().Error("!m_lstFocusWidgetList.empty() setFocus\n");
-					//SetFocusWidget(m_lstFocusWidgetList.front());
+					// 					RtCoreLog().Error("!m_lstFocusWidgetList.empty() setFocus\n");
+										//SetFocusWidget(m_lstFocusWidgetList.front());
 				}
 			}
 		}
@@ -1542,11 +1555,11 @@ bool CUiDesktop::KeyUp(int key)
 }
 
 //插入
-void CUiDesktop::InsertFocusWidget(RtwForm *pWidget)
+void CUiDesktop::InsertFocusWidget(RtwForm* pWidget)
 {
 	//如果查找到了,说明已经存在了,则是切换focus状态
 	//先删除,后添加
-	if (pWidget && pWidget->getWidgetType()==wtForm && pWidget->GetEscapeHide())
+	if (pWidget && pWidget->getWidgetType() == wtForm && pWidget->GetEscapeHide())
 	{
 		DeleteFocusWidget(pWidget);
 
@@ -1555,13 +1568,13 @@ void CUiDesktop::InsertFocusWidget(RtwForm *pWidget)
 }
 
 //删除
-void CUiDesktop::DeleteFocusWidget(RtwForm *pWidget)
+void CUiDesktop::DeleteFocusWidget(RtwForm* pWidget)
 {
 	std::list<RtwForm*>::iterator vri = find(
-													m_lstFocusWidgetList.begin(),
-													m_lstFocusWidgetList.end(),
-													pWidget
-												);
+		m_lstFocusWidgetList.begin(),
+		m_lstFocusWidgetList.end(),
+		pWidget
+	);
 
 	if (vri == m_lstFocusWidgetList.end())
 	{
@@ -1590,7 +1603,7 @@ void CUiDesktop::SetMouseHoverWidget(RtwWidget* pWidget)
 
 	m_pMouseHoverWidget = pWidget;
 
-	if(m_pMouseHoverWidget)
+	if (m_pMouseHoverWidget)
 		m_pMouseHoverWidget->grab();
 }
 
@@ -1601,7 +1614,7 @@ void CUiDesktop::SetHintWidget(RtwWidget* pWidget)
 
 	m_pHintWidget = pWidget;
 
-	if(m_pHintWidget)
+	if (m_pHintWidget)
 		m_pHintWidget->grab();
 }
 
@@ -1647,7 +1660,7 @@ bool CUiDesktop::_ProcessXmlFile(RtsXmlDoc::NodePtr* pRoot)
 		{
 			UI_ENSURE_B(_ProcessXml_Config(pChildNode))
 		}
-		
+
 		pChildNode = pChildNode->pNext;
 	}
 	return true;
@@ -1692,7 +1705,7 @@ void CUiDesktop::ShowPopupMenu()
 }
 
 //显示指定的弹出式菜单
-void CUiDesktop::ShowPopupMenu(RtwPopupMenu* menu,void* xx,int x,int y)
+void CUiDesktop::ShowPopupMenu(RtwPopupMenu* menu, void* xx, int x, int y)
 {
 	RtwRect rc;
 	RtwRect rcHint = menu->GetFrameRect();
@@ -1721,7 +1734,7 @@ void CUiDesktop::ShowPopupMenu(RtwPopupMenu* menu,void* xx,int x,int y)
 		rc.Offset(0, g_workspace.getViewportRect().bottom - rc.bottom - 2);
 	}
 
-	menu->Move(SPoint(x,y));
+	menu->Move(SPoint(x, y));
 	menu->Refresh();
 	menu->Show();
 	menu->SetFocus();
@@ -1774,7 +1787,7 @@ void CUiDesktop::BringWidgetToTop(RtwWidget* pWidget)
 	{
 		pWidget->getLayer()->BringWidgetToTop(pWidget->getId());
 	}
-	else 
+	else
 	{
 		m_pDefaultWidgetContainer->BringWidgetToTop(pWidget->getId());
 	}
@@ -1791,7 +1804,7 @@ void CUiDesktop::BringWidgetToBottom(RtwWidget* pWidget)
 	{
 		pWidget->getLayer()->BringWidgetToBottom(pWidget->getId());
 	}
-	else 
+	else
 	{
 		m_pDefaultWidgetContainer->BringWidgetToBottom(pWidget->getId());
 	}
@@ -1800,7 +1813,7 @@ void CUiDesktop::BringWidgetToBottom(RtwWidget* pWidget)
 //注册图片路径
 bool CUiDesktop::RegisterTexturePath(const std::string& TexturePath)
 {
-	stlforeach (std::list<std::string>, iter, m_DefaultTexturePaths)
+	stlforeach(std::list<std::string>, iter, m_DefaultTexturePaths)
 	{
 		if (*iter == TexturePath)
 		{
@@ -1815,7 +1828,7 @@ bool CUiDesktop::RegisterTexturePath(const std::string& TexturePath)
 //注册xml路径
 bool CUiDesktop::RegisterXmlPath(const std::string& XmlPath)
 {
-	stlforeach (std::list<std::string>, iter, m_DefaultXmlPaths)
+	stlforeach(std::list<std::string>, iter, m_DefaultXmlPaths)
 	{
 		if (*iter == XmlPath)
 		{
@@ -1851,14 +1864,14 @@ void CUiDesktop::SetHintText(const std::string& HintText, bool b)
 //hint自动大小
 void CUiDesktop::AutoHintSize()
 {
-	if(m_pHintTargetWidget)
+	if (m_pHintTargetWidget)
 		m_pHintTargetWidget->AutoHintSize();
 }
 
 //设置hint的起始位置
 void CUiDesktop::SetHintPosition(int x, int y)
 {
-	if(m_pHintTargetWidget)
+	if (m_pHintTargetWidget)
 		m_pHintTargetWidget->AutoHintPosition();
 }
 
@@ -1875,9 +1888,9 @@ int CUiDesktop::GetMousePosY()
 }
 //end
 
-void CUiDesktop::ShowHint(RtwWidget* pWidget, int x){}
-void CUiDesktop::HideHint(int x){}
-void CUiDesktop::SetActiveWidget(RtwWidget* pWidget){}
+void CUiDesktop::ShowHint(RtwWidget* pWidget, int x) {}
+void CUiDesktop::HideHint(int x) {}
+void CUiDesktop::SetActiveWidget(RtwWidget* pWidget) {}
 
 //根据名字搜索组件
 RtwWidget* CUiDesktop::LookupWidget(const std::string szName)
@@ -1889,8 +1902,8 @@ RtwWidget* CUiDesktop::LookupWidget(const std::string szName)
 
 	if (!g_workspace.FindWidget(strName, &vpUI))
 	{
-		string Temp ("Can't find widget [");
-		Temp =Temp + szName + "]!!!!!!!!!!!!!!!!!!!";
+		string Temp("Can't find widget [");
+		Temp = Temp + szName + "]!!!!!!!!!!!!!!!!!!!";
 		RtCoreLog().Error(Temp.c_str());
 		CHECKEX(Temp.c_str());
 		return NULL;
@@ -1899,21 +1912,21 @@ RtwWidget* CUiDesktop::LookupWidget(const std::string szName)
 }
 
 //设置鼠标点中的组件指针
-void CUiDesktop::SetMouseCapture( RtwWidget* pkWidget )
+void CUiDesktop::SetMouseCapture(RtwWidget* pkWidget)
 {
-	m_pMouseCaptureWidget = pkWidget; 
+	m_pMouseCaptureWidget = pkWidget;
 }
 
 //设置提示框大小
-void CUiDesktop::SetHintSize(int x,int y)
+void CUiDesktop::SetHintSize(int x, int y)
 {
 	if (m_pHintTargetWidget)
 	{
 		if (m_pHintTargetWidget->getHint())
 		{
-			m_pHintTargetWidget->getHint()->SetWidgetSize(SSize(x,y));
+			m_pHintTargetWidget->getHint()->SetWidgetSize(SSize(x, y));
 		}
 		else
-			getDefaultHint()->SetWidgetSize(SSize(x,y));
+			getDefaultHint()->SetWidgetSize(SSize(x, y));
 	}
 }
