@@ -1,6 +1,14 @@
 # game client  (gc) 文档
 
-## 一、流程分析
+## 一、开发计划与日志
+
+- [x] 修改登录动画
+- [x] 修复材质帧动画
+- [x] 添加登录流程锁帧逻辑 优化cpu占用
+- [ ] 修改登录页面UI
+- [ ] 确定游戏主题总共几个线程
+
+## 二、流程分析
 
 ![ImageToStl.com_游戏主循环流程图](client/ImageToStl.com_游戏主循环流程图.png)
 
@@ -14,20 +22,26 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 RtTextConfig cfgCommandLine(lpCmdLine);
 //初始化核心库,读取配置文件，主要用来进行设备配置,窗口配置,图形配置,贴图设置,质量设置,摄像机设置等信息.
 rtCoreInit("clt_engine.ini")
+    
 //创建包管理器,并读取game_client.pak包文件,主要用来对游戏中的资源文件的加密包读取操作..
 CRtPackManager* pPackManager=new CRtPackManager;			
 pPackManager->OpenPack("game_client.pak",false);
+
 //创建CRtPackAndAnsiManager包管理器,用来管理CRtPackManage包管理器.
 CRtPackAndAnsiManager*pAllManager=new CRtPackAndAnsiManager(pPackManager,&RtCoreFile());
 RtCore::Instance().pFileManager=pAllManager;
+
 //加载游戏配置文件version_config.ini,根据version_config.ini中的信息找到BootConfigFile配置文件config_boot.ini和GameRuleFile配置文件game_config.ini.
 LoadConfig(std::string& vrError);
+
 //根据config_boot.ini文件中的信息得到
 //..\bin\language\chinese\Strmap.csv文件,
 //Strmap.csv文件里记录着游戏中消息对应的提示信息.
 const char* pStrmapPath = GetConfigBoot()->GetEntry("ConfigInfo","StrmapPath");
+
 //在InitMapString函数内部加载Strmap.csv文件,遍历该文件并把该文件中所有信息添加到MAP结构变量s_mapString中.
 InitMapString(pStrmapPath);
+
 // 读取游戏配置文件.. \bin\version\chinese_gb\config\game.ini,并初始化游戏相关设置.
 g_iniConfig = new RtIni();
 if (g_iniConfig->OpenFile(R(INI_GAME)))
@@ -69,10 +83,12 @@ if (g_iniConfig->OpenFile(R(INI_GAME)))
 if (szGuideIP)   { strncpy(g_szGuideServerHostIP, szGuideIP, 39); g_szGuideServerHostIP[39] = 0;}
 if (szGuidePort) {g_iGuideServerHostPort = atoi(szGuidePort);}
 GcLogin::StartGetGameWorldServer();
+
 // 取得Log Server的IP地址和端口,并对相关错误设置事件回调函数GameClientGuardErrorCallBack
 if (szLogIP) strcpy(g_szLogServerHostIP, szLogIP);
 if (szLogPort) g_iLogServerHostPort = atoi(szLogPort);
 rtSetGuardErrorCallback(GameClientGuardErrorCallBack);
+
 //读游戏版本文件,修改注册表.
 ReadVersionFile(R(INI_VERSION));
 CGameRegistry WinReg;
@@ -259,6 +275,7 @@ GetDevice()->RenderScene();
 if (!g_pGameClientFrame->Init(g_pDevice/*hInstance, g_hGCWnd, g_hGCWnd*/))
 /*应用程序逻辑运行:
 在函数Run()内部调用OnBeginRender(),OnRender(),OnEndRender()
+
 在OnRender()函数内部因为m_bLoading=true,执行语句OnLoading();SetLoginState(GLS_SELECT_GAMEWORLD_SERVER)
 而在GcLogin::OnLoading()函数内部会读取登录界面配置文件scene/login2.ini
 并将
@@ -270,6 +287,7 @@ CreateANI段下的内容分别加入到m_mapLogin,m_mapSelectChar,m_mapCreateCha
 然后打开登陆界面UILayer::EnterLogin()
 在UILayer::EnterLogin()函数内部创建UILayerLogin对象
 在UILayerLogin的构造函数中,先加载ui/ui_layer_login.xml层文件,为每一个UI控件添加事件响应函数.
+
 SetLoginState(GLS_SELECT_GAMEWORLD_SERVER)
 进入EnterSelectGameWorldServer();
 在EnterSelectGameWorldServer()函数内部显示游戏登陆界面,加载世界服务器列表,设置背景物件
@@ -545,4 +563,3 @@ rtCoreExit();
 
 
 ```
-

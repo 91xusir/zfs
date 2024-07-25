@@ -14,13 +14,13 @@ RtwWidget* LoadUI(const char* szName);
 template <class T>
 T* LoadUI_T(const char* szName)
 {
-	RtwWidget* vpUI = 0;
+	RtwWidget* vpUI = nullptr;
 	std::string strName = szName;
 	if (strName.find("layworld") == std::string::npos)
 		strName = "layworld." + strName;
 	if (!g_workspace.FindWidget(strName, &vpUI))
 	{
-		string Temp ("Can't find widget [");
+		std::string Temp ("Can't find widget [");
 		Temp =Temp + szName + "]!!!!!!!!!!!!!!!!!!!";
 		RtCoreLog().Error(Temp.c_str());
 		CHECKEX(Temp.c_str());

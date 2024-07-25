@@ -3,7 +3,7 @@
 
 #include "gc_login_session.h"
 #include "../preLog.h"
-//lyymark preview信息输出
+//lyymark 1.Game.Init.LogInfo 预览模式控制台输出
 #ifdef _PREVIEW
 #define P_LOGINFO(message) preLog::logInfo(message)
 #define P_LOGWARN(message) preLog::logWarn(message)
@@ -65,7 +65,7 @@ public:
 	GcLogin(CGameClientFrame* pGameClientFrame);
 	~GcLogin();
 
-	// 初始化
+	// GcLogin初始化一次
 	bool InitOnce();
 	// 清除一次
 	bool ClearOnce();

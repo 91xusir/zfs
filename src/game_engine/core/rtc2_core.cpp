@@ -126,7 +126,7 @@ namespace rt2_core {
 
 		if (szIniFile == NULL)
 		{
-			// Use default to start core
+			//lyytodo Use default to start core
 			;
 		}
 		else

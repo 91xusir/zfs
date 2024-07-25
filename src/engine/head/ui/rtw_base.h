@@ -417,7 +417,7 @@ namespace ui
 
 
 	//矩形
-	struct RtwRect
+	struct RtwRect	
 	{
 		enum ERectMouseHover	//点在矩形中的方向
 		{

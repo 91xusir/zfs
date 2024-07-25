@@ -1870,197 +1870,180 @@ void RtgDeviceD3D9::EndScene()
     m_pd3dDevice->EndScene();
 }
 
-HRESULT RtgDeviceD3D9::Render()
-{
-    HRESULT hResult = E_FAIL;
+HRESULT RtgDeviceD3D9::Render() {
+    HRESULT hResult = E_FAIL; // 初始化返回结果为失败
 
-    RtGetPref()->Time_Render = rtMilliseconds();
-    m_pBufferManager->PrepareFotRender();
+    RtGetPref()->Time_Render = rtMilliseconds(); // 获取当前渲染时间
+    m_pBufferManager->PrepareFotRender(); // 准备渲染缓冲区
 
-    if (FAILED(m_pd3dDevice->BeginScene()))
+    if (FAILED(m_pd3dDevice->BeginScene())) // 开始场景渲染
         return E_FAIL;
 
-    ID3DXEffect* _effect = GetEffect(Rtg_Effect_Bloom);
-    RTASSERT(!IsUsePostProcessEffectOn() || _effect);
-    
-    if (IsUsePostProcessEffectOn() || IsGray())
-        SetRenderTarget(m_texPostProcess, 0);
+    ID3DXEffect* _effect = GetEffect(Rtg_Effect_Bloom); // 获取效果
+    RTASSERT(!IsUsePostProcessEffectOn() || _effect); // 断言检查效果是否可用
 
-    if (FAILED(hResult = m_pd3dDevice->Clear( 0L, NULL, D3DCLEAR_ZBUFFER | D3DCLEAR_TARGET, m_dwClearColor, 1.0f, 0L )))
+    if (IsUsePostProcessEffectOn() || IsGray()) // 使用后处理效果或灰度
+        SetRenderTarget(m_texPostProcess, 0); // 设置渲染目标
+
+    // 清除渲染目标
+    if (FAILED(hResult = m_pd3dDevice->Clear(0L, NULL, D3DCLEAR_ZBUFFER | D3DCLEAR_TARGET, m_dwClearColor, 1.0f, 0L)))
         return DisplayErrorMsg(hResult, MSGERR_APPMUSTEXIT);
 
-    SetTextureFilterMag(RTGTEXF_LINEAR);
-    SetTextureFilterMin(RTGTEXF_LINEAR);
+    SetTextureFilterMag(RTGTEXF_LINEAR); // 设置纹理放大过滤
+    SetTextureFilterMin(RTGTEXF_LINEAR); // 设置纹理缩小过滤
 
-    OnBeginRender();
-    OnRender();
-    OnEndRender();
+    OnBeginRender(); // 开始渲染
+    OnRender(); // 渲染
+    OnEndRender(); // 结束渲染
 
-    if (IsUsePostProcessEffectOn())
-    {
-        RtgShader shader;
-        RECT _rect;
-        RtgNVertexVT _vrect[4];
-        BOOL bfog = GetFogEnable();
-        UINT _pass = 0;
-        RTGTextureAddress _taddress = GetTextureAddress();
+    if (IsUsePostProcessEffectOn()) { // 如果使用后处理效果
+        RtgShader shader; // 着色器
+        RECT _rect; // 矩形
+        RtgNVertexVT _vrect[4]; // 顶点
+        BOOL bfog = GetFogEnable(); // 获取雾效状态
+        UINT _pass = 0; // 渲染通道
+        RTGTextureAddress _taddress = GetTextureAddress(); // 纹理地址
 
-        _rect.left   = 0;
-        _rect.top    = 0;
+        _rect.left = 0;
+        _rect.top = 0;
         _rect.bottom = m_iWndHeight - 1;
-        _rect.right  = m_iWndWidth - 1;
+        _rect.right = m_iWndWidth - 1;
 
-        SetTextureFilterMag(RTGTEXF_POINT);
-        SetTextureFilterMin(RTGTEXF_POINT);
-
-        SetFogEnable(FALSE);
-        SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1);
- 
-        SetRenderTarget(m_texPostDown0, 0);
+        SetTextureFilterMag(RTGTEXF_POINT); // 设置纹理放大过滤
+        SetTextureFilterMin(RTGTEXF_POINT); // 设置纹理缩小过滤
+        SetFogEnable(FALSE); // 关闭雾效
+        SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1); // 设置顶点格式
+        SetRenderTarget(m_texPostDown0, 0); // 设置渲染目标
 
         shader.iNumStage = 1;
-        shader.Shaders[0].SetTexture(m_texPostProcess);
-        SetShader(&shader);
+        shader.Shaders[0].SetTexture(m_texPostProcess); // 设置纹理
+        SetShader(&shader); // 设置着色器
 
         _vrect[0] = RtgNVertexVT(0, 0, 0, 0);
         _vrect[1] = RtgNVertexVT(0, m_bloomTexH, 0, 1);
         _vrect[2] = RtgNVertexVT(m_bloomTexW, m_bloomTexH, 1, 1);
         _vrect[3] = RtgNVertexVT(m_bloomTexW, 0, 1, 0);
 
-        DrawPrimitiveUP(D3DPT_TRIANGLEFAN, &_vrect, sizeof(RtgNVertexVT), 2);
+        DrawPrimitiveUP(D3DPT_TRIANGLEFAN, &_vrect, sizeof(RtgNVertexVT), 2); // 绘制原始几何图形
 
-        SetTextureAddress(RTGTADD_CLAMP);
+        SetTextureAddress(RTGTADD_CLAMP); // 设置纹理地址模式
+        _effect->SetFloat("g_fIntensity", m_fPostProcessEffectIntensity); // 设置效果强度
+        _effect->SetFloatArray("TexelOffset_h", m_bloomTexOffset_h, Bloom_Kernel_Size); // 设置水平偏移
+        _effect->SetFloatArray("TexelOffset_v", m_bloomTexOffset_v, Bloom_Kernel_Size); // 设置垂直偏移
 
-        _effect->SetFloat("g_fIntensity", m_fPostProcessEffectIntensity);
-        _effect->SetFloatArray("TexelOffset_h", m_bloomTexOffset_h, Bloom_Kernel_Size);
-        _effect->SetFloatArray("TexelOffset_v", m_bloomTexOffset_v, Bloom_Kernel_Size);
-
-        SetRenderTarget(m_texPostDown1, 0);
+        SetRenderTarget(m_texPostDown1, 0); // 设置渲染目标
         shader.iNumStage = 1;
-        shader.Shaders[0].SetTexture(m_texPostDown0);
-        SetShader(&shader);
+        shader.Shaders[0].SetTexture(m_texPostDown0); // 设置纹理
+        SetShader(&shader); // 设置着色器
 
-        if (SUCCEEDED(_effect->SetTechnique("tec_gauss_h")) && SUCCEEDED(_effect->Begin(&_pass, 0)))
-        {
-            if (SUCCEEDED(_effect->BeginPass(0)))
-            {
-                DrawPrimitiveUP(D3DPT_TRIANGLEFAN, &_vrect, sizeof(RtgNVertexVT), 2);
-                _effect->EndPass();
+        if (SUCCEEDED(_effect->SetTechnique("tec_gauss_h")) && SUCCEEDED(_effect->Begin(&_pass, 0))) { // 设置水平高斯模糊技术
+            if (SUCCEEDED(_effect->BeginPass(0))) { // 开始通道
+                DrawPrimitiveUP(D3DPT_TRIANGLEFAN, &_vrect, sizeof(RtgNVertexVT), 2); // 绘制原始几何图形
+                _effect->EndPass(); // 结束通道
             }
-
-            _effect->End();	  
+            _effect->End(); // 结束效果
         }
 
-        RestoreRenderTarget();
+        RestoreRenderTarget(); // 恢复渲染目标
         shader.iNumStage = 1;
-        shader.Shaders[0].SetTexture(m_texPostDown1);
-        SetShader(&shader);
+        shader.Shaders[0].SetTexture(m_texPostDown1); // 设置纹理
+        SetShader(&shader); // 设置着色器
 
-        if (SUCCEEDED(_effect->SetTechnique("tec_gauss_v")) && SUCCEEDED(_effect->Begin(&_pass, 0)))
-        {
-            if (SUCCEEDED(_effect->BeginPass(0)))
-            {
-                DrawPrimitiveUP(D3DPT_TRIANGLEFAN, &_vrect, sizeof(RtgNVertexVT), 2);
-                _effect->EndPass();
+        if (SUCCEEDED(_effect->SetTechnique("tec_gauss_v")) && SUCCEEDED(_effect->Begin(&_pass, 0))) { // 设置垂直高斯模糊技术
+            if (SUCCEEDED(_effect->BeginPass(0))) { // 开始通道
+                DrawPrimitiveUP(D3DPT_TRIANGLEFAN, &_vrect, sizeof(RtgNVertexVT), 2); // 绘制原始几何图形
+                _effect->EndPass(); // 结束通道
             }
-
-            _effect->End();	  
+            _effect->End(); // 结束效果
         }
 
-        RestoreRenderTarget(); 
-        RestoreRenderTarget();
+        RestoreRenderTarget(); // 恢复渲染目标
+        RestoreRenderTarget(); // 再次恢复渲染目标
 
         shader.iNumStage = 2;
-        shader.Shaders[0].SetTexture(m_texPostProcess);
-        shader.Shaders[1].SetTexture(m_texPostDown0);
-        SetShader(&shader);
+        shader.Shaders[0].SetTexture(m_texPostProcess); // 设置纹理
+        shader.Shaders[1].SetTexture(m_texPostDown0); // 设置纹理
+        SetShader(&shader); // 设置着色器
 
-        SetTextureFilterMag(RTGTEXF_LINEAR);
-        SetTextureFilterMin(RTGTEXF_LINEAR);
+        SetTextureFilterMag(RTGTEXF_LINEAR); // 设置纹理放大过滤
+        SetTextureFilterMin(RTGTEXF_LINEAR); // 设置纹理缩小过滤
 
-        _vrect[0] = RtgNVertexVT(_rect.left,  _rect.top,    0, 0);
-        _vrect[1] = RtgNVertexVT(_rect.left,  _rect.bottom, 0, 1);
+        _vrect[0] = RtgNVertexVT(_rect.left, _rect.top, 0, 0);
+        _vrect[1] = RtgNVertexVT(_rect.left, _rect.bottom, 0, 1);
         _vrect[2] = RtgNVertexVT(_rect.right, _rect.bottom, 1, 1);
-        _vrect[3] = RtgNVertexVT(_rect.right, _rect.top,    1, 0);
+        _vrect[3] = RtgNVertexVT(_rect.right, _rect.top, 1, 0);
 
-        float _coeff  = min(((rtMilliseconds() - m_dwGrayBegin) / 1000.f), 1.f);
-        _effect->SetFloat("g_fGrayCoeff", _coeff);
+        float _coeff = min(((rtMilliseconds() - m_dwGrayBegin) / 1000.f), 1.f); // 计算灰度系数
+        _effect->SetFloat("g_fGrayCoeff", _coeff); // 设置灰度系数
 
-        const char* tec = IsGray() ? "tec_gray" : "tec";
-
-        if (SUCCEEDED(_effect->SetTechnique(tec)) && SUCCEEDED(_effect->Begin(&_pass, 0)))
-        {
-            if (SUCCEEDED(_effect->BeginPass(0)))
-            {
-                DrawPrimitiveUP(D3DPT_TRIANGLEFAN, &_vrect, sizeof(RtgNVertexVT), 2);
-                _effect->EndPass();
+        const char* tec = IsGray() ? "tec_gray" : "tec"; // 选择技术
+        if (SUCCEEDED(_effect->SetTechnique(tec)) && SUCCEEDED(_effect->Begin(&_pass, 0))) { // 设置技术
+            if (SUCCEEDED(_effect->BeginPass(0))) { // 开始通道
+                DrawPrimitiveUP(D3DPT_TRIANGLEFAN, &_vrect, sizeof(RtgNVertexVT), 2); // 绘制原始几何图形
+                _effect->EndPass(); // 结束通道
             }
-
-            _effect->End();	
+            _effect->End(); // 结束效果
         }
 
-        SetFogEnable(bfog);
-        SetTextureAddress(_taddress);
-
+        SetFogEnable(bfog); // 恢复雾效
+        SetTextureAddress(_taddress); // 恢复纹理地址模式
     }
-    else if (IsGray())
-    {
+    else if (IsGray()) { // 如果使用灰度效果
         RtgShader shader;
         RECT _rect;
         RtgNVertexVT _vrect[4];
         BOOL bfog = GetFogEnable();
         UINT _pass = 0;
 
-        _rect.left   = 0;
-        _rect.top    = 0;
+        _rect.left = 0;
+        _rect.top = 0;
         _rect.bottom = m_iWndHeight - 1;
-        _rect.right  = m_iWndWidth - 1;
+        _rect.right = m_iWndWidth - 1;
 
-        SetFogEnable(FALSE);
-        SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1);
+        SetFogEnable(FALSE); // 关闭雾效
+        SetFVF(D3DFVF_XYZRHW | D3DFVF_TEX1); // 设置顶点格式
 
         shader.iNumStage = 1;
-        shader.Shaders[0].SetTexture(m_texPostProcess);
-        SetShader(&shader);
+        shader.Shaders[0].SetTexture(m_texPostProcess); // 设置纹理
+        SetShader(&shader); // 设置着色器
 
-        _vrect[0] = RtgNVertexVT(_rect.left,  _rect.top,    0, 0);
-        _vrect[1] = RtgNVertexVT(_rect.left,  _rect.bottom, 0, 1);
+        _vrect[0] = RtgNVertexVT(_rect.left, _rect.top, 0, 0);
+        _vrect[1] = RtgNVertexVT(_rect.left, _rect.bottom, 0, 1);
         _vrect[2] = RtgNVertexVT(_rect.right, _rect.bottom, 1, 1);
-        _vrect[3] = RtgNVertexVT(_rect.right, _rect.top,    1, 0);
+        _vrect[3] = RtgNVertexVT(_rect.right, _rect.top, 1, 0);
 
-        RestoreRenderTarget();
+        RestoreRenderTarget(); // 恢复渲染目标
 
-        float _coeff  = min(((rtMilliseconds() - m_dwGrayBegin) / 1000.f), 1.f);
-        _effect->SetFloat("g_fGrayCoeff", _coeff);
+        float _coeff = min(((rtMilliseconds() - m_dwGrayBegin) / 1000.f), 1.f); // 计算灰度系数
+        _effect->SetFloat("g_fGrayCoeff", _coeff); // 设置灰度系数
 
-        if (SUCCEEDED(_effect->SetTechnique("tec_gray2")) && SUCCEEDED(_effect->Begin(&_pass, 0)))
-        {
-            if (SUCCEEDED(_effect->BeginPass(0)))
-            {
-                DrawPrimitiveUP(D3DPT_TRIANGLEFAN, &_vrect, sizeof(RtgNVertexVT), 2);
-                _effect->EndPass();
+        if (SUCCEEDED(_effect->SetTechnique("tec_gray2")) && SUCCEEDED(_effect->Begin(&_pass, 0))) { // 设置灰度效果技术
+            if (SUCCEEDED(_effect->BeginPass(0))) { // 开始通道
+                DrawPrimitiveUP(D3DPT_TRIANGLEFAN, &_vrect, sizeof(RtgNVertexVT), 2); // 绘制原始几何图形
+                _effect->EndPass(); // 结束通道
             }
-
-            _effect->End();	
+            _effect->End(); // 结束效果
         }
 
-        SetFogEnable(bfog);
+        SetFogEnable(bfog); // 恢复雾效
     }
 
-    SetTextureFilterMag(RTGTEXF_POINT);
-    SetTextureFilterMin(RTGTEXF_POINT);
+    SetTextureFilterMag(RTGTEXF_POINT); // 设置纹理放大过滤
+    SetTextureFilterMin(RTGTEXF_POINT); // 设置纹理缩小过滤
+    OnRender2D(); // 渲染 2D 内容
 
-    OnRender2D();
-
-    RtGetPref()->Time_Render = rtMilliseconds() - RtGetPref()->Time_Render;
+    RtGetPref()->Time_Render = rtMilliseconds() - RtGetPref()->Time_Render; // 计算渲染时间
     if (m_bDrawPerf)
-        DrawPerfInformation();
-    RtGetPref()->Reset();
+        DrawPerfInformation(); // 绘制性能信息
 
-    m_pd3dDevice->EndScene();
+    RtGetPref()->Reset(); // 重置首选项
 
-    return S_OK;
+    m_pd3dDevice->EndScene(); // 结束场景渲染
+
+    return S_OK; // 返回成功
 }
+
+
 
 void RtgDeviceD3D9::DrawPerfInformation()
 {

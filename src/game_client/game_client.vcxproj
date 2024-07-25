@@ -134,14 +134,14 @@
       <AdditionalOptions>/Oy- %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include\atl;$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_PREVIEW;WIN32;NDEBUG;_WINDOWS;USE_D3DX9;LUA_OPNAMES;USE_D3D9;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;_PerfHUD_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_PREVIEW;WIN32;NDEBUG;_WINDOWS;USE_D3DX9;LUA_OPNAMES;USE_D3D9;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>
       </PrecompiledHeader>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>true</MinimalRebuild>
       <DisableSpecificWarnings>

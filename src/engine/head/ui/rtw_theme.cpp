@@ -200,7 +200,7 @@ bool CUiThemeManager::Init()
 	CUiTheme* pTheme = RT_NEW CUiTheme();
 	// @@@@@
 	m_pCurrentTheme = pTheme;
-	if (pTheme->LoadFromFile("ui/themes/ZfsLike/theme.xml"))
+	if (pTheme->LoadFromFile("ui/theme.xml"))
 	{
 		UI_ENSURE_B(AddTheme(pTheme));
 	}

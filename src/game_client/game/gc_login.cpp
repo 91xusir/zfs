@@ -152,7 +152,7 @@ void GcLogin::LoginErrMsg(EErrMsg eMsg, const char* szRetStr, short sRetCode)
 	}
 }
 
-//lyymark 加载登录配置文件
+//lyymark 2.GcLogin.LoadLoginSection 加载login.ini配置文件
 void LoadLoginSection(RtIni* pIni, const char* szSectionName,
 	std::map<std::string, CRT_ActorInstance*>& mapActor)
 {
@@ -213,6 +213,7 @@ void LoadLoginSection(RtIni* pIni, const char* szSectionName,
 	unguard;
 }
 
+
 bool GcLogin::InitOnce()
 {
 	guard;
@@ -269,7 +270,7 @@ bool GcLogin::ClearOnce()
 	unguard;
 
 }
-//lyymark 登录状态机
+//lyymark 2.GcLogin 登录状态机
 void GcLogin::SetLoginState(EStatus eState)
 {
 	guard;
@@ -281,7 +282,7 @@ void GcLogin::SetLoginState(EStatus eState)
 	switch (m_eStatus)
 	{
 	case GLS_LOADING:
-		 LeaveLoading();
+		LeaveLoading();
 		break;
 	case GLS_SELECT_GAMEWORLD_SERVER:
 		bLeaveNow = LeaveSelectGameWorldServer();
@@ -321,6 +322,7 @@ void GcLogin::SetLoginState(EStatus eState)
 			m_mapActor = m_mapLogin;
 		}
 		EnterSelectGameWorldServer();
+
 		break;
 	case GLS_LOGIN:
 		if (m_eStatus != GLS_SELECT_GAMEWORLD_SERVER)
@@ -447,7 +449,8 @@ void GcLogin::EnterSelectGameWorldServer()
 	guard;
 	if (g_layerLogin == NULL)
 	{
-		UILayer::EnterLogin(); // 打开登陆界面
+		//lyymark 2.GcLogin 打开登录UI
+		UILayer::EnterLogin();
 	}
 
 	UpdateGraphConfig("Graph_Login");
@@ -1884,13 +1887,13 @@ void GcLogin::SetLastSelectCharID(int iID)
 	//m_iLastSelectCharID = iID;
 }
 
-//lyymark GcLogin登录主循环入口
+//lyymark 2.GcLogin.OnRun GcLogin帧主循环入口
 void GcLogin::OnRun(float fSecond)
 {
 
 	guard;
-	//lyytodo 锁帧 后续改为加载登录页面完毕再锁
-	CLockFrame lockFrame(1000.0 / 60);
+	//lyytodo 锁帧 改为引擎graph主循环入口里面统一设定
+	//CLockFrame lockFrame(1000.0 / 60);
 	int i, j;
 	RtgVertex3 vOrig, vDir, v0, v1, vMin, vMax;
 	float r1, r2;
@@ -1900,7 +1903,7 @@ void GcLogin::OnRun(float fSecond)
 	static float fDiffSecond = 0.f;
 	CRT_ActorInstance* pActor;
 
-	//lyymark 更新声音
+	//lyymark 2.GcLogin 更新声音
 	g_pSoundMgr->UpdateAll(NULL, GetDevice()->GetAppTime());
 
 
@@ -2186,7 +2189,7 @@ void GcLogin::OnBeginRender()
 	unguard;
 }
 
-//lyymark 绘制帧率
+//lyymark 2.GcLogin.OnRun OnEndRender 渲染结束 打印帧率统计信息
 void GcLogin::OnEndRender()
 {
 	guard;
@@ -2553,7 +2556,7 @@ void GcLogin::OnMouseMDrag(int iButton, int x, int y, int increaseX, int increas
 void GcLogin::OnKeyDown(int iButton, int iKey)
 {
 	guard;
-	//lyymark 按v显示当前ViewMatrix
+	//lyymark 2.GcLogin 按v显示当前ViewMatrix
 #ifdef _PREVIEW
 	if (iButton == 86) {
 		auto gvm = GetDevice()->m_pCamera->GetViewMatrix();

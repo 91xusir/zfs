@@ -13,7 +13,8 @@
 extern RtScene* g_pScene;
 
 
-//lyymark作用未知
+
+//lyytodo 作用未知
 #ifdef _UNWG_
 #   ifdef _DEBUG
 #       pragma comment(lib, "NesClient_d.lib") // 在调试模式下链接调试版本的NesClient库
@@ -199,6 +200,7 @@ void GameClientGuardErrorCallBack(const char* szMsg)
 #endif
 }
 
+
 //static char g_szGuideServerHostIP[40] = "guide.zfs.gamigo.com.cn";
 G_MEMDEF(g_szGuideServerHostIP, 40)
 static int g_iGuideServerHostPort = 6620;
@@ -333,9 +335,10 @@ static void CloseConsole()
 	FreeConsole();
 }
 #endif
-
+//lyymark 1.Game.Init 程序main函数入口
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
+	//GameClientGuardErrorCallBack("test error callback");
 #ifdef _PREVIEW
 	OpenConsole();
 #endif
@@ -345,7 +348,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 	CrashRP::Start();
 
-#ifdef _PerfHUD_
+#ifdef _PREVIEW
 	if (!*lpCmdLine)
 		lpCmdLine = "tooth.updaterun;127.0.0.1";
 #endif
@@ -461,7 +464,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			return FALSE;
 		}
 
-		//得到"Strmap.csv"文件
+		//lyymark 1.Game.Init 得到"Strmap.csv"文件
 		const char* pStrmapPath = GetConfigBoot()->GetEntry("ConfigInfo", "StrmapPath");
 		if (pStrmapPath == NULL)
 		{
@@ -617,8 +620,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		ReadVersionFile(R(INI_VERSION));
 
 		// 更新注册表，如果是第一次运行，就发送PC Info
-		//TODO 现代程序不需要注册表 修改注册表容易报毒 后续优化为配置文件
-		CGameRegistry WinReg;
+		//lyytodo 现代程序不需要注册表
+	/*	CGameRegistry WinReg;
 		WinReg.Init();
 		if (!iniUser.GetEntry("game", "log"))
 		{
@@ -632,7 +635,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 				iniUser.CloseFile();
 				SendSystemInfo();
 			}
-		}
+		}*/
 
 		// 窗口初始化
 		// 注释 [3/16/2009 tooth.shi]
@@ -675,7 +678,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			return FALSE;
 		}
 
-		// 图形标题配置加载
+		//lyymark 1.Game.Init 图形标题配置加载
 		if (!GetDevice()->Init(hInstance, RT_RUNTIME_CLASS(CGameClientFrame),
 			RT_RUNTIME_CLASS(GcCamera), "clt_graph.ini", "user.ini"))// change form GcCamera to RtgCameraEditor [3/24/2009 tooth.shi]
 		{
@@ -697,7 +700,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		}
 		g_pBackMusic->SetMusicPath("music");
 		g_pSoundMgr->SetAudioPath("audio");
-
+		// lyymark 1.Game.Init 创建音乐线程
 		g_pMusicThread = RT_NEW CSceneMusicApp();
 		if (g_pMusicThread)
 		{
@@ -803,6 +806,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			return false;
 		}
 
+		// 初始化d3d场景渲染
 		GetDevice()->RenderScene();
 
 #ifdef USE_LUA_CHECK
@@ -896,6 +900,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		// 执行程序
 		guard_name(WinMain::Run);
 		//         iResult = g_pGameClientFrame->Run();
+		//lyymark 1.Game.Init 启动游戏引擎，客户端主循环入口
 		iResult = GetDevice()->RunEngine();// change [3/25/2009 tooth.shi]
 		finalunguard;
 
