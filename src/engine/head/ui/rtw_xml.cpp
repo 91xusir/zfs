@@ -25,8 +25,12 @@ bool RtwXmlLoader::Reset()
 	return true;
 }
 
-//加载xml文件
-bool RtwXmlLoader::LoadFromFile(const std::string& FileName, RtwWidget* pParent, std::list<DWORD>* pWidgetsCreated)
+//lyymark 1.UI.XML.4.LoadFromFile 解析一个xml文件的元素
+bool RtwXmlLoader::LoadFromFile(
+	const std::string& FileName, 
+	RtwWidget* pParent,
+	std::list<DWORD>* pWidgetsCreated
+)
 {
 	Reset();
 
@@ -63,7 +67,11 @@ bool RtwXmlLoader::LoadFromFile(const std::string& FileName, RtwWidget* pParent,
 }
 
 //从字符串解析xml
-bool RtwXmlLoader::LoadFromString(const std::string& strXml, RtwWidget* pParent/* = NULL*/, std::list<DWORD>* pWidgetsCreated/* = NULL*/)
+bool RtwXmlLoader::LoadFromString(
+	const std::string& strXml, 
+	RtwWidget* pParent/* = NULL*/,
+	std::list<DWORD>* pWidgetsCreated/* = NULL*/
+)
 {
 	Reset();
 
@@ -80,18 +88,15 @@ bool RtwXmlLoader::LoadFromString(const std::string& strXml, RtwWidget* pParent/
 	return true;
 }
 
-//解析xml元素
-bool RtwXmlLoader::_ProcessNode(RtsXmlDoc::NodePtr* pNode, RtwWidget* pParent/* = NULL*/, std::list<DWORD>* pWidgetsCreated/* = NULL*/)
+//lyymark 1.UI.XML.5._ProcessNode 解析一个xml文件元素
+bool RtwXmlLoader::_ProcessNode(
+	RtsXmlDoc::NodePtr* pNode, 
+	RtwWidget* pParent/* = NULL*/,
+	std::list<DWORD>* pWidgetsCreated/* = NULL*/
+)
 {
 	if (!pNode)
 		return false;
-
-	// 支持的标签名集合
-	static const std::set<std::string> validTags = { 
-		"Ui",//普通UI组件
-		"SystemWidgets" //系统UI组件
-	};
-
 	// a sample xml file
 	// 
 	//<?xml version="1.0" encoding="UTF-8"?>
@@ -104,7 +109,12 @@ bool RtwXmlLoader::_ProcessNode(RtsXmlDoc::NodePtr* pNode, RtwWidget* pParent/* 
 	//    </Widget>
 	//</Ui>
 	//
-
+	
+	// 支持的根标签名
+	static const std::set<std::string> validTags = {
+		"Ui",//普通UI组件
+		"SystemWidgets" //系统UI组件
+	};
 	RtwWidget* _pParent = nullptr;
 	CUiLayer* _pLayer = nullptr;
 	if (pParent)
@@ -118,6 +128,7 @@ bool RtwXmlLoader::_ProcessNode(RtsXmlDoc::NodePtr* pNode, RtwWidget* pParent/* 
 	const std::string& TagName = pNode->strName;
 	if (validTags.find(TagName) != validTags.end())
 	{
+		//<Ui>
 		UI_ENSURE_B(_ProcessChild_Widget(_pParent, _pLayer, pNode, pWidgetsCreated));
 	}
 	else
@@ -893,14 +904,17 @@ bool RtwXmlLoader::_ProcessChild(RtwWidget* pWidget, CUiLayer* pLayer, RtsXmlDoc
 
 	return true;
 }
-
+//lyymark 1.UI.XML.6._ProcessChild_Widget 解析各个组件
 bool RtwXmlLoader::_ProcessChild_Widget(
-	RtwWidget* pWidget, CUiLayer* pLayer,
+	RtwWidget* pWidget,
+	CUiLayer* pLayer,
 	RtsXmlDoc::NodePtr* pNode,
 	std::list<DWORD>* pWidgetsCreated
 )
 {
 	RtsXmlDoc::NodePtr* pChildNode = pNode->pChildren;
+	//lyytodo 这里ifelse太多了!! 后面用map替换 [2024.7.26]
+	//
 	while (pChildNode)
 	{
 		if (pChildNode->strName == "BackgroundImage")
@@ -1350,7 +1364,11 @@ bool RtwXmlLoader::_Process_Template(RtsXmlDoc::NodePtr* pNode, RtwWidget* pWidg
 	return true;
 }
 
-RtwWidget* RtwXmlLoader::_Process_Widget(RtwWidget* pParent, CUiLayer* pLayer, RtsXmlDoc::NodePtr* pNode)
+RtwWidget* RtwXmlLoader::_Process_Widget(
+	RtwWidget* pParent, 
+	CUiLayer* pLayer, 
+	RtsXmlDoc::NodePtr* pNode
+)
 {
 	RtwWidget* pWidget = g_workspace.getWidgetFactory()->createWidget(wtWidget);
 	UI_ENSURE_B(_ProcessNode_AddWidget(pParent, pLayer, pWidget));
@@ -1385,7 +1403,11 @@ CUiLayer* RtwXmlLoader::_Process_Layer(RtsXmlDoc::NodePtr* pNode)
 	return pLayer;
 }
 
-RtwForm* RtwXmlLoader::_Process_Form(RtwWidget* pParent, CUiLayer* pLayer, RtsXmlDoc::NodePtr* pNode)
+RtwForm* RtwXmlLoader::_Process_Form(
+	RtwWidget* pParent, 
+	CUiLayer* pLayer,
+	RtsXmlDoc::NodePtr* pNode
+)
 {
 	RtwForm* pWidget = (RtwForm*)g_workspace.getWidgetFactory()->createWidget(wtForm);
 	UI_ENSURE_B(_ProcessNode_AddWidget(pParent, pLayer, pWidget));
@@ -1729,7 +1751,7 @@ bool RtwXmlLoader::_Process_ImageSequence(RtwWidget* pWidget, RtsXmlDoc::NodePtr
 	return true;
 }
 
-//处理复合图片
+//lyymark 2.UI._Process_ComplexImage 处理复合图片  如背景图+边框图
 RtwComplexImage* RtwXmlLoader::_Process_ComplexImage(RtsXmlDoc::NodePtr* pNode)
 {
 	std::string strFile = pNode->GetProp_s("File");			//图片文件名

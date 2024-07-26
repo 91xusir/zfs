@@ -90,7 +90,7 @@ bool CGameClientFrame::OnDeviceInit()
     return true;
     unguard;
 }
-//lyymark 3.Frame.OnFrameInit 初始化 包括鼠标 UI 应用Graph配置
+//lyymark 3.Frame.OnFrameInit 初始化 包括鼠标 UI初始化 应用Graph配置 
 bool CGameClientFrame::OnFrameInit()
 {
 

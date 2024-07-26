@@ -3278,7 +3278,7 @@ void GcLogin::OnPoseEnd(SRT_Pose* pose)
 			if (pImage)
 			{
 				//SetSourceRect的参数是左上角和右下角两个点
-				pImage->SetSourceRect(RtwRect(158, 249, 505, 485));
+				pImage->SetSourceRect(RtwRect(158, 249, 471, 399));
 				pImage->SetBlend(true);
 				RTW_WIDGET("fmjob.lbtxtjob")->SetBackgroundImage(pImage);
 			}

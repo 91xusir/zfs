@@ -267,6 +267,7 @@ void RtwComplexImage::SetSourceRect(RtwRect& vrRect)
 	for (int i=0; i<(int)getImageCount(); ++i)
 		getImage(i)->SetSourceRect(vrRect);
 	m_Source = RtwRect(vrRect.left, vrRect.top, vrRect.right, vrRect.bottom);
+	m_Source = vrRect;
 }
 
 
