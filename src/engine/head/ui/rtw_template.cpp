@@ -10,10 +10,11 @@ CUiTemplate::CUiTemplate():m_pNode(NULL)
 
 CUiTemplate::~CUiTemplate(){}
 
+//<ProgressBar  Name="HPBar">
 void CUiTemplate::SetNode(RtsXmlDoc::NodePtr* pNode)
 {
 	m_pNode = pNode;
-	m_WidgetType = g_workspace.getWidgetTypeFromTypeName(pNode->strName);
+	m_WidgetType = g_workspace.getWidgetTypeFromTypeName(pNode->strName);// ´«Èë "ProgressBar"
 }
 
 bool CUiTemplate::IsCompatibleWith(EWidgetType WidgetType)

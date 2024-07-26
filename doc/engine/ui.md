@@ -1432,29 +1432,39 @@ RtwWidget *m_Button = g_workspace.getWidgetFactory()->createWidget(wtButton);
 
 UI属性说明:
 
-	"Name"             // 名称
-	"Location"         // 位置
-	"Text"             // 文本
-	"TextColor"        // 文本颜色
-	"TextFont"         // 文本字体
-	"FontSize"         // 字体大小
-	"Alignment"        // 列对齐
-	"AlignLine"        // 行对齐
-	"Show"             // 是否显示
-	"Active"           // 是否激活
-	"MouseEvent"       // 鼠标事件
-	"MouseMove"        // 鼠标移动事件
-	"BackgroundColor"  // 背景颜色
-	"DragOut"          // 拖出事件
-	"DragIn"           // 拖入事件
-	"Enable"           // 是否启用
-	"Size"             // 尺寸
-	"Sound"            // 声音
-	"BorderCorlor"     // 边框颜色
-	"BorderSize"       // 边框大小
-	"padding"          // 内边距
-	"Penetrate"        // 是否穿透
-	"MouseHoverImage"  // 鼠标悬停图像
-	"MouseHoverSize"   // 鼠标悬停图像大小
-	"MouseHoverImgRect"// 鼠标悬停图像区域
-	"Inherit"          // 父类
+```c++
+"Name"             // 名称
+"Location"         // 位置
+"Text"             // 文本
+"TextColor"        // 文本颜色
+"TextFont"         // 文本字体
+"FontSize"         // 字体大小
+"Alignment"        // 列对齐
+"AlignLine"        // 行对齐
+"Show"             // 是否显示
+"Active"           // 是否激活
+"MouseEvent"       // 鼠标事件
+"MouseMove"        // 鼠标移动事件
+"Movable"          // 能否移动
+----------------------------------
+"NormalImage"      // 正常
+"PushedImage"      // 按下
+"DisabledImage"    // 禁用
+"HighlightImage"   // 高亮
+"BackgroundImage"  // 背景
+----------------------------------
+"BackgroundColor"  // 背景颜色
+"DragOut"          // 拖出事件
+"DragIn"           // 拖入事件
+"Enable"           // 是否启用
+"Size"             // 尺寸
+"Sound"            // 声音
+"BorderCorlor"     // 边框颜色
+"BorderSize"       // 边框大小
+"padding"          // 内边距  padding="0,30,0,0"  左上右下
+"Penetrate"        // 是否穿透
+"MouseHoverImage"  // 鼠标悬停图像
+"MouseHoverSize"   // 鼠标悬停图像大小
+"MouseHoverImgRect"// 鼠标悬停图像区域
+"Inherit"          // 父类
+```

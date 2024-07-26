@@ -71,7 +71,7 @@ void CUiDesktop::OnRestoreDevice()
 		m_pFontManager->OnRestoreDevice();
 }
 
-//加载xml文件
+//lyymark 1.UI.XML.1.Load 加载xml文件入口  这里加载的是xml组
 bool CUiDesktop::Load(const char* xmlName)
 {
 	// 清空事件移动队列
@@ -1640,7 +1640,9 @@ EWidgetType CUiDesktop::getWidgetTypeFromTypeShortName(const std::string& TypeSh
 	return wtUnknown;
 }
 
-//处理xml节点
+//lyymark 1.UI.XML.2.ProcessXmlFile 解析xml组的节点  
+//节点Loader的就是一个xml组
+//节点Config是配置信息，现在没有用
 bool CUiDesktop::_ProcessXmlFile(RtsXmlDoc::NodePtr* pRoot)
 {
 	const std::string& TagName = pRoot->strName;
@@ -1676,7 +1678,7 @@ RtwRect CUiDesktop::getViewportRect()
 
 	return m_pRenderDevice->getViewportRect();
 }
-
+//lyymark 1.UI.XML.3._ProcessXml_Loader 读取xml组里面的一个文件
 bool CUiDesktop::_ProcessXml_Loader(RtsXmlDoc::NodePtr* pNode)
 {
 	RtsXmlDoc::NodePtr* pChildNode = pNode->pChildren;

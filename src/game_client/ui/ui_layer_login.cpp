@@ -52,6 +52,7 @@ UILayerLogin::UILayerLogin()
 	//返回按钮
 	LOAD_UI("btnback")->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_BackSelectServer));
 
+	//lyymark 1.GcLogin 加载服务器列表UI
 	m_formServer = RT_NEW CUIForm_Server;
     m_iCurrentSelectServer = 1;
 	LOAD_UI("btnexit")->Show();

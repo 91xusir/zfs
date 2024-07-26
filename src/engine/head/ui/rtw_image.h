@@ -146,7 +146,7 @@ namespace ui
 		std::string     m_FileName;
 		std::string     m_Name;
 		RtwPixel          m_Color;
-		Real            m_Transparency;
+		Real            m_Transparency; 
 		Real			m_BackTransparency;
 		bool            m_bBlend;
 		EImageFillMode  m_FillMode;

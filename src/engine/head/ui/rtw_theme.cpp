@@ -62,9 +62,10 @@ bool CUiTheme::LoadFromFile(const std::string& FileName)
 
 	return true;
 }
-
+// 添加主题
 bool CUiTheme::AddTemplate(CUiTemplate* pTempl)
 {
+	//<ProgressBar  Name="HPBar">   ->  "HPBar"  一个HPBar是一个模板
 	if (FindTemplate(pTempl->getWidgetName()))
 		return false;
 
@@ -126,18 +127,19 @@ bool CUiTheme::_Process_Theme(RtsXmlDoc::NodePtr* pNode)
 {
 	if (!pNode)
 		return true;
-
+	//<Theme Name="ZfsLike">
 	m_Name = pNode->GetProp_s("Name");
 
 	RtsXmlDoc::NodePtr* pChildNode = pNode->pChildren;
 	while (pChildNode)
-	{
+	{//<Theme Name="ZfsLike">-><Templates Description="?Widget">
 		const std::string& TagName = pChildNode->strName;
 		if (TagName == "Templates")
 		{
 			RtsXmlDoc::NodePtr* pTemplNode = pChildNode->pChildren;
 			while (pTemplNode)
 			{
+				//<Theme Name = "ZfsLike">-><Templates Description="?Widget">-><ProgressBar Name="HPBar">
 				UI_ENSURE_B(_Process_Template(pTemplNode));
 				pTemplNode = pTemplNode->pNext;
 			}
@@ -161,13 +163,13 @@ bool CUiTheme::_Process_Theme(RtsXmlDoc::NodePtr* pNode)
 
 	return true;
 }
-
+// 处理_Process_Template的子元素
 bool CUiTheme::_Process_Template(RtsXmlDoc::NodePtr* pNode)
 {
+	// <ProgressBar  Name="HPBar">
 	CUiTemplate* pTempl = RT_NEW CUiTemplate();
 	pTempl->SetNode(pNode);
 	AddTemplate(pTempl);
-
 	return true;
 }
 
@@ -194,7 +196,7 @@ CUiThemeManager::CUiThemeManager()
 CUiThemeManager::~CUiThemeManager()
 {
 }
-
+//lyymark 1.UI.Theme 初始化主题 也就是组件默认材质
 bool CUiThemeManager::Init()
 {
 	CUiTheme* pTheme = RT_NEW CUiTheme();
