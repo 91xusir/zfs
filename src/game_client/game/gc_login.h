@@ -183,9 +183,13 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     void SetLastSelectCharID(int iID);
 
     // 游戏世界服务器列表结构体
+    //lyymark 注意 如果使用c++标准库的vector容器的话
+    // 不要使用RtString类型 因为vector会自动管理内存
     struct SGWServerList {
-        RtString szName;       // 服务器名称
-        RtString szIP;         // 服务器 IP 地址
+        //RtString szName;       // 服务器名称
+        //RtString szIP;         // 服务器 IP 地址
+        std::string szName;       // 服务器名称
+        std::string szIP;         // 服务器 IP 地址
         long     lPort;        // 服务器端口
         long     lEvaluation;  // 服务器评估值
         long     ping;         // 服务器 ping 值
@@ -288,8 +292,10 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     long              m_lSkyFog;
     RtIni             m_ini;
 
-    RtString m_szGameWorldServerName;
-    RtString m_szGameWorldServerIP;
+    //RtString m_szGameWorldServerName;
+    //RtString m_szGameWorldServerIP;
+    std::string m_szGameWorldServerName;
+    std::string m_szGameWorldServerIP;
     long     m_lGameWorldServerPort;
 
     std::vector<CRT_ActorInstance*> m_listSelActor;    // 选人界面的UI上面的人物
