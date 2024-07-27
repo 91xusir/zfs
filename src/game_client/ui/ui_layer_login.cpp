@@ -6,7 +6,7 @@
 UILayerLogin::UILayerLogin()
 {
 	guard;
-
+	//lyymark 2.GcLogin.XML 加载用户登录UI
 	g_workspace.Load("ui\\ui_layer_login.xml");
 
 	//用户名输入框
@@ -52,10 +52,10 @@ UILayerLogin::UILayerLogin()
 	//返回按钮
 	LOAD_UI("btnback")->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_BackSelectServer));
 
-	//lyymark 1.GcLogin 加载服务器列表UI
+	//lyymark 2.GcLogin.XML 加载服务器列表UI
 	m_formServer = RT_NEW CUIForm_Server;
     m_iCurrentSelectServer = 1;
-	LOAD_UI("btnexit")->Show();
+	//LOAD_UI("btnexit")->Show();
 
  	m_Keyboard.Init();
 

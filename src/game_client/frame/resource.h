@@ -2,6 +2,8 @@
 // Microsoft Visual C++ 生成的包含文件。
 // 供 game_client.rc 使用
 //
+#define IIDI_ICON_MAIN                  1
+#define IDI_SMALL_ICON                  1
 #define IDC_GOODSKILL                   103
 #define IDC_NORMAL                      104
 #define IDC_ATTACK                      105

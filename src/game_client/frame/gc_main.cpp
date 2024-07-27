@@ -1,4 +1,3 @@
-
 #include <io.h>
 #include "gc_include.h" // 包含游戏核心的公共头文件
 #include "gc_camera.h" // 包含游戏中摄像机相关的头文件
@@ -9,11 +8,8 @@
 #include "resource.h" // 包含资源相关的头文件
 #include <CrashReport/Export.h> // 包含崩溃报告导出功能相关的头文件
 
-
+// 场景指针
 extern RtScene* g_pScene;
-
-
-
 //lyytodo 作用未知
 #ifdef _UNWG_
 #   ifdef _DEBUG
@@ -22,8 +18,6 @@ extern RtScene* g_pScene;
 #       pragma comment(lib, "NesClient.lib") // 在非调试模式下链接发布版本的NesClient库
 #   endif
 #endif
-
-
 
 #ifndef WM_MOUSEWHEEL
 #   define WM_MOUSEWHEEL 0x020A // 定义鼠标滚轮消息
@@ -46,7 +40,6 @@ static CLogSender		g_LogSender;		// 日志发送器实例
 
 bool	g_bLogEnable = false;				// 日志功能是否启用的标志
 
-
 // 由yz于2010-6-11添加：声明内存保护器注册函数
 void RegisterMemProtector();
 // 结束
@@ -59,7 +52,7 @@ CSceneMusicApp* g_pMusicThread = 0;		 // 音乐线程指针
 
 RtgDeviceD3D9* GetDevice()
 {
-	return RtGetRender(); 
+	return RtGetRender();
 }
 
 GcTimer* GetTimer()
@@ -68,7 +61,6 @@ GcTimer* GetTimer()
 		g_pTimer = RT_NEW GcTimer();// 如果计时器为空，则创建一个新的GcTimer实例
 	return g_pTimer;// 返回计时器实例
 }
-
 
 HWND GetWndHandle()
 {
@@ -129,6 +121,7 @@ GcWorld* GetWorld()
 	return ((CGameClientFrame*)g_pGameClientFrame)->m_pWorld;
 }
 
+// 获取登录对象的函数
 GcLogin* GetLogin()
 {
 	if (!g_pGameClientFrame || !((CGameClientFrame*)g_pGameClientFrame)->m_pLogin)
@@ -199,7 +192,6 @@ void GameClientGuardErrorCallBack(const char* szMsg)
 	MessageBox(NULL, szMsg, g_szGCTitle, 0);
 #endif
 }
-
 
 //static char g_szGuideServerHostIP[40] = "guide.zfs.gamigo.com.cn";
 G_MEMDEF(g_szGuideServerHostIP, 40)
@@ -385,7 +377,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		{
 			ShowMessage("Rt Core init failed.\nExit now!");
 			return FALSE;
-	}
+		}
 
 		//rtCoreInit("game_client", 0, (RtOutputDevice*)-3, (RtOutputDeviceError*)-3, 0);
 #else
@@ -448,11 +440,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		// 			itoa(i,szTemp,10);
 		// 			strcat(szPack,szTemp);
 		// 			strcat(szPack,".pak");
-		// 
+		//
 		// 			if(!(access(szPack,0)==-1))
 		// 			{
 		// 				pPackManager->OpenPack(szPack,false);
-		// 			}	
+		// 			}
 		// 		}
 
 				//<add by fox for version>
@@ -475,7 +467,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		// 字符替换程序
 		InitMapString(pStrmapPath);
 		//</add by fox for version>
-
 
 		// 游戏配置文件
 		g_iniConfig = RT_NEW RtIni();
@@ -563,7 +554,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		}
 
 		// 字符替换程序
-//        InitMapString(szLanguage);//rem by fox for version 
+//        InitMapString(szLanguage);//rem by fox for version
 
 #ifndef _DEBUG
 		//if (!cfgCommandLine.GetValue("tooth.updaterun"))
@@ -640,12 +631,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		// 注释 [3/16/2009 tooth.shi]
 //         srand(time(NULL));
 //         FSOClientMainRegisterClass(hInstance);
-//         if (!FSOClientInitInstance(hInstance, nCmdShow, lIniResWidth, lIniResHeight)) 
+//         if (!FSOClientInitInstance(hInstance, nCmdShow, lIniResWidth, lIniResHeight))
 //         {
 //             ShowMessage(R(MSG_CANNOTCREATE_WND));
 //             return FALSE;
 //         }
-
 
 //         // 创建程序框架
 //         g_pGameClientFrame = new CGameClientFrame();
@@ -654,7 +644,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 //             ShowMessage(R(MSG_MEMORY_FAIL));
 //             return FALSE;
 //         }
-// 
+//
 //         if (lCaptureVideo)
 //         {
 //             ((CGameClientFrame*)g_pGameClientFrame)->m_bCanCaptureVideo = true;
@@ -677,7 +667,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			return FALSE;
 		}
 
-		//lyymark 1.Game.Init 图形标题配置加载
+		//lyymark 1.Game.Init 整个游戏的初始化入口 图形标题配置加载
 		if (!GetDevice()->Init(hInstance, RT_RUNTIME_CLASS(CGameClientFrame),
 			RT_RUNTIME_CLASS(GcCamera), "clt_graph.ini", "user.ini"))// change form GcCamera to RtgCameraEditor [3/24/2009 tooth.shi]
 		{
@@ -728,15 +718,14 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			((CGameClientFrame*)g_pGameClientFrame)->m_bCanCaptureVideo = true;
 		}
 
-
 #ifdef _DEBUG
 		{
 			long lTotalTextureMem;
 			if (GetGameIni()->GetEntry("Graph", "TotalTextureMem", &lTotalTextureMem))
 			{
 				//GetDevice()->m_Texture.SetTotalTextureMem(lTotalTextureMem);
+			}
 		}
-}
 #endif
 
 		long lMSWindowed = 0;
@@ -749,7 +738,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		// 注释 [3/16/2009 tooth.shi]
 //         g_pDevice->m_dwMaxMultiSampleTypeWindowed = lMSWindowed;
 //         g_pDevice->m_dwMaxMultiSampleTypeFullscreen = lMSFullscreen;
-// 
+//
 //         g_pDevice->BindViewWindow(RTGVWM_WINDOWED, g_hGCWnd);
 //         g_pDevice->BindViewWindow(RTGVWM_TOPWINDOW, g_hGCWnd);
 //         g_pDevice->SetViewWindowInfo(RTGVWM_WINDOWED, lIniResWidth, lIniResHeight, lIniResColorDepth, 0);
@@ -760,7 +749,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		}
 		//         g_pDevice->Init(g_pGameClientFrame, new GcCamera, hInstance);
 		//         g_pDevice->LockFps(30);
-		// 
+		//
 		//         // 声音系统初始化
 		// 		if (!rtAudioInit("RT3D-Engine", g_hGCWnd))
 		// 		{
@@ -794,8 +783,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			CHECKEX("ERROR: Scene initialization fail!");
 			return false;
 		}
-
-
 
 		ActorSetScene(g_pScene);
 
@@ -889,7 +876,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 		//CREATE_THREAD(callbackAccelerateCheck, 0);
 #endif
 		finalunguard;
-	}
+		}
 
 	{
 		LOG2("\n\n"
@@ -922,7 +909,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 		// 应用程序框架退出
 		g_pGameClientFrame->Close();
-
 
 		// 场景系统退出
 		LOG("Exit Pre Scene\n");
@@ -1027,7 +1013,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	return iResult;
 	//guard_end;// 注释 [3/16/2009 tooth.shi]
 	return 0;
-}
+	}
 
 ATOM FSOClientMainRegisterClass(HINSTANCE hInstance)
 {
@@ -1101,15 +1087,13 @@ BOOL FSOClientInitInstance(HINSTANCE hInstance, int nCmdShow, long lCreateWidth,
 	finalunguard;
 }
 
-
 //   FUNCTION: FSOClientWndProc(HWND, unsigned, WORD, LONG)
-// 
+//
 //   PURPOSE:  Processes messages for the main window.
-// 
+//
 //   WM_COMMAND	- process the application menu
 //   WM_PAINT	- Paint the main window
 //   WM_DESTROY	- post a quit message and return
-
 
 // 注释 [3/16/2009 tooth.shi]
 LRESULT CALLBACK FSOClientWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -1149,7 +1133,7 @@ LRESULT CALLBACK FSOClientWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
 		g_pGameClientFrame->OnKeyChar(lParam, wParam);
 		break;
 	case WM_SYSKEYDOWN:
-	case WM_KEYDOWN:				//按钮按下 
+	case WM_KEYDOWN:				//按钮按下
 		g_pGameClientFrame->OnKeyDown(lParam, wParam);
 		break;
 	case WM_SYSKEYUP:
@@ -1251,19 +1235,19 @@ LRESULT CALLBACK FSOClientWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM
 			/*    delete g_pDevice;
 				g_pDevice = 0;*/
 		}
-	}
+		}
 
 	if (GetDevice()) return GetDevice()->DeviceMsgProc(hWnd, message, wParam, lParam);
 	return DefWindowProc(hWnd, message, wParam, lParam);
 	finalunguard;
-}
+	}
 
 //add by yz 2010-6-11:全局内存保护注册
 void RegisterMemProtector()
 {
 #ifdef ENABLE_OPERATOR_NEW
 	rt2_ActiveSafestr();
-#endif 
+#endif
 
 	RegisterSharedMemProtector();
 
@@ -1282,7 +1266,6 @@ void RegisterMemProtector()
 		G_MEMPROTECTOR(s_szStringTemp, STRING_LENGTH)
 
 		G_MEMPROTECTOR(s_strCheckProcessName, 200)  //gc_world.cpp
-
 }
 //end
 

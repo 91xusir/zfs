@@ -1,4 +1,3 @@
-
 //-----------------------------------------------------------------------------
 // File: D3DApp.cpp
 //
@@ -24,17 +23,11 @@
 #include "rtg_graph_inter.h"
 #include "rtg_console.h"
 
-
 namespace rt_graph_dx9 {
-
-
 	//-----------------------------------------------------------------------------
 	// Global access to the app (needed for the global WndProc())
 	//-----------------------------------------------------------------------------
 	static CD3DApplication* g_pD3DApp = NULL;
-
-
-
 
 	//-----------------------------------------------------------------------------
 	// Name: CD3DApplication()
@@ -86,7 +79,7 @@ namespace rt_graph_dx9 {
 		// When m_bClipCursorWhenFullscreen is true, the cursor is limited to
 		// the device window when the app goes fullscreen.  This prevents users
 		// from accidentally clicking outside the app window on a multimon system.
-		// This flag is turned off by default for debug builds, since it makes 
+		// This flag is turned off by default for debug builds, since it makes
 		// multimon debugging difficult.
 #if defined(_DEBUG) || defined(DEBUG)
 		m_bClipCursorWhenFullscreen = false;
@@ -94,9 +87,6 @@ namespace rt_graph_dx9 {
 		m_bClipCursorWhenFullscreen = true;
 #endif
 	}
-
-
-
 
 	//-----------------------------------------------------------------------------
 	// Name: WndProc()
@@ -106,8 +96,6 @@ namespace rt_graph_dx9 {
 	{
 		return g_pD3DApp->MsgProc(hWnd, uMsg, wParam, lParam);
 	}
-
-
 
 	//-----------------------------------------------------------------------------
 	// Name: ConfirmDeviceHelper()
@@ -132,9 +120,6 @@ namespace rt_graph_dx9 {
 		return SUCCEEDED(g_pD3DApp->ConfirmDevice(pCaps, dwBehavior, adapterFormat, backBufferFormat));
 	}
 
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: Create()
 	// Desc:
@@ -143,18 +128,17 @@ namespace rt_graph_dx9 {
 	{
 		HRESULT hr;
 
-		// Create the Direct3D object
+		// 创建 Direct3D 设备
 		m_pD3D = ::Direct3DCreate9(D3D_SDK_VERSION);
-		if (m_pD3D == NULL)
+		if (m_pD3D == NULL)// 如果创建失败，显示错误消息并退出应用程序
 			return DisplayErrorMsg(D3DAPPERR_NODIRECT3D, MSGERR_APPMUSTEXIT);
 
-		// Build a list of Direct3D adapters, modes and devices. The
-		// ConfirmDevice() callback is used to confirm that only devices that
-		// meet the app's requirements are considered.
+		// 设置 D3D 枚举并指定回调函数
 		m_d3dEnumeration.SetD3D(m_pD3D);
 		m_d3dEnumeration.ConfirmDeviceCallback = ConfirmDeviceHelper;
+		// 执行设备枚举
 		if (FAILED(hr = m_d3dEnumeration.Enumerate()))
-		{
+		{        // 如果枚举失败，释放 Direct3D 对象并显示错误消息
 			SAFE_RELEASE(m_pD3D);
 			return DisplayErrorMsg(hr, MSGERR_APPMUSTEXIT);
 		}
@@ -177,9 +161,7 @@ namespace rt_graph_dx9 {
 				" 如果客户端发生异常， 请手动设置为32位色\n",
 				"错误", MB_OK | MB_ICONERROR);
 		}
-		//end
-		// Unless a substitute hWnd has been specified, create a window to
-		// render into
+		//除非已经指定了一个替代的窗口句柄（hWnd），否则创建一个窗口来渲染到其中
 		if (m_hWnd == NULL)
 		{
 			// Register the windows class
@@ -188,80 +170,120 @@ namespace rt_graph_dx9 {
 			//                      NULL,/*LoadCursor( NULL, IDC_ARROW )*/
 			//                      (HBRUSH)GetStockObject(WHITE_BRUSH),
 			//                      NULL, _T("D3D Window"),LoadIcon( hInstance, MAKEINTRESOURCE(IDI_MAIN_ICON))};
-			WNDCLASSEX wndClass = { sizeof(WNDCLASSEX),CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS,(WNDPROC)WndProc,0,0,hInstance,
-									LoadIcon(hInstance,(LPCTSTR)IDI_MAIN_ICON),NULL,(HBRUSH)(COLOR_WINDOW + 1),NULL,
-									_T("D3D Window"),LoadIcon(hInstance,(LPCTSTR)IDI_SMALL_ICON)
+			WNDCLASSEX wndClass = {
+								sizeof(WNDCLASSEX),       // cbSize: 结构体的大小，用于确保版本兼容性
+								CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS, // style: 窗口类的样式标志
+								// CS_HREDRAW: 窗口宽度变化时重绘整个窗口
+								// CS_VREDRAW: 窗口高度变化时重绘整个窗口
+								// CS_DBLCLKS: 允许双击消息
+(WNDPROC)WndProc,         // lpfnWndProc: 窗口过程函数的地址，处理窗口消息
+0,						  // cbClsExtra: 窗口类的额外字节数，通常设为 0
+0,                        // cbWndExtra: 窗口实例的额外字节数，通常设为 0
+hInstance,                // hInstance: 窗口类的应用程序实例句柄
+LoadIcon(hInstance, (LPCTSTR)IDI_MAIN_ICON), // hIcon: 窗口的图标句柄（大图标），从资源中加载
+NULL,                     // hCursor: 窗口的光标句柄，默认为 NULL 使用系统光标
+(HBRUSH)(COLOR_WINDOW + 1), // hbrBackground: 窗口的背景画刷，使用系统窗口颜色
+NULL,                     // lpszMenuName: 窗口的菜单名称，默认为 NULL
+_T("D3D Window"),         // lpszClassName: 窗口类名，用于标识窗口类
+LoadIcon(hInstance, (LPCTSTR)IDI_SMALL_ICON) // hIconSm: 窗口的小图标句柄，通常用于任务栏
 			};
-
+			// 注册窗口类
 			RegisterClassEx(&wndClass);
 
-			// Set the window's initial style    //alter by tim.yang  20080725  login对话框会缩小
+			// 设置窗口样式 //alter by tim.yang  20080725  login对话框会缩小
 			m_dwWindowStyle = WS_OVERLAPPED | WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU /*| WS_THICKFRAME */ | WS_VISIBLE;
 
-			// Set the window's initial width
-			RECT rc;
+			// 设置窗口大小
+		/*	RECT rc;
 			SetRect(&rc, 0, 0, m_dwCreationWidth, m_dwCreationHeight);
-			AdjustWindowRect(&rc, m_dwWindowStyle, false);
+			AdjustWindowRect(&rc, m_dwWindowStyle, false);*/
 
-			// Create the render window
-			m_hWnd = CreateWindow(_T("D3D Window"), m_strWindowTitle, m_dwWindowStyle,
-				CW_USEDEFAULT, CW_USEDEFAULT,
-				(rc.right - rc.left), (rc.bottom - rc.top), 0L,
-				NULL,//LoadMenu( hInstance, MAKEINTRESOURCE(IDR_MENU)) ,
-				hInstance, 0L);
+			// lyymark 窗口居中
+			RECT screenRect;
+			GetWindowRect(GetDesktopWindow(), &screenRect);
+			const int screenWidth = screenRect.right - screenRect.left;
+			const int screenHeight = screenRect.bottom - screenRect.top;
+			RECT windowRect;
+			SetRect(&windowRect, 0, 0, m_dwCreationWidth, m_dwCreationHeight);
+			AdjustWindowRect(&windowRect, m_dwWindowStyle, false);
+			const int windowWidth = windowRect.right - windowRect.left;
+			const int windowHeight = windowRect.bottom - windowRect.top;
+			const int x = (screenWidth - windowWidth) / 2;
+			constexpr int y = 1;
+
+			// lyymark 1.Device.CreateWindow 创建窗口
+			m_hWnd = CreateWindow(
+				_T("D3D Window"),             // lpClassName: 窗口类名，必须与 RegisterClassEx 中的 lpszClassName 匹配
+				m_strWindowTitle,             // lpWindowName: 窗口标题字符串，显示在窗口的标题栏上
+				m_dwWindowStyle,              // dwStyle: 窗口样式，定义窗口的外观和行为
+				x,                // x: 窗口左上角的 x 坐标，CW_USEDEFAULT 表示使用系统默认值
+				y,                // y: 窗口左上角的 y 坐标，CW_USEDEFAULT 表示使用系统默认值
+				windowWidth,				  // nWidth: 窗口的宽度，计算自 RECT 结构体中设置的大小
+				windowHeight,                 // nHeight: 窗口的高度，计算自 RECT 结构体中设置的大小
+				NULL,                         // hWndParent: 父窗口的句柄，如果窗口是顶级窗口则为 NULL
+				NULL,                         // hMenu: 窗口的菜单句柄，默认为 NULL，或使用 LoadMenu 函数加载菜单
+				hInstance,                    // hInstance: 应用程序的实例句柄
+				0L                            // lpParam: 额外的创建参数，通常设为 0
+			);
+		}
+		typedef HRESULT(WINAPI* DwmSetWindowAttributeProc)(HWND, DWORD, LPCVOID, DWORD);
+		static DwmSetWindowAttributeProc DwmSetWindowAttribute = (
+			DwmSetWindowAttributeProc)GetProcAddress(GetModuleHandle(TEXT("dwmapi.dll")),
+			"DwmSetWindowAttribute");
+
+		if (DwmSetWindowAttribute) {
+			constexpr DWORD dwAttribute = 20; // 设置暗色模式属性
+			constexpr BOOL bValue = TRUE; // 启用暗色模式
+			DwmSetWindowAttribute(m_hWnd, dwAttribute, &bValue, sizeof(bValue)); // 设置窗口属性
 		}
 
-		// The focus window can be a specified to be a different window than the
-		// device window.  If not, use the device window as the focus window.
+		// 如果没有设置焦点窗口，则将主窗口设置为焦点窗口
 		if (m_hWndFocus == NULL)
 			m_hWndFocus = m_hWnd;
 
-		// Save window properties
+		// 获取当前窗口的样式、边界和客户区大小
 		m_dwWindowStyle = GetWindowLong(m_hWnd, GWL_STYLE);
 		GetWindowRect(m_hWnd, &m_rcWindowBounds);
 		GetClientRect(m_hWnd, &m_rcWindowClient);
-
+		// 选择初始的 D3D 设置
 		if (FAILED(hr = ChooseInitialD3DSettings()))
-		{
+		{// 如果选择设置失败，释放 Direct3D 对象并显示错误消息
 			SAFE_RELEASE(m_pD3D);
 			return DisplayErrorMsg(hr, MSGERR_APPMUSTEXIT);
 		}
 
-		// Initialize the application timer
+		// 启动计时器
 		DXUtil_Timer(TIMER_START);
 
-		// Initialize the app's custom scene stuff
+		// 初始化场景
 		if (FAILED(hr = OneTimeSceneInit()))
 		{
 			SAFE_RELEASE(m_pD3D);
 			return DisplayErrorMsg(hr, MSGERR_APPMUSTEXIT);
 		}
 
-		// Initialize the 3D environment for the app
+		// 初始化 3D 环境
 		if (FAILED(hr = Initialize3DEnvironment()))
 		{
-			SAFE_RELEASE(m_pD3D);
+			// 如果初始化失败，释放 Direct3D 对象并显示错误消息
 			return DisplayErrorMsg(hr, MSGERR_APPMUSTEXIT);
 		}
 
-		// The app is ready to go
+		// 恢复游戏状态
 		Pause(false);
 
 		return S_OK;
 	}
 
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: FindBestWindowedMode()
-	// Desc: Sets up m_d3dSettings with best available windowed mode, subject to 
+	// Desc: Sets up m_d3dSettings with best available windowed mode, subject to
 	//       the bRequireHAL and bRequireREF constraints.  Returns false if no such
 	//       mode can be found.
 	//-----------------------------------------------------------------------------
 	bool CD3DApplication::FindBestWindowedMode(bool bRequireHAL, bool bRequireREF)
 	{
-		// Get display mode of primary adapter (which is assumed to be where the window 
+		// Get display mode of primary adapter (which is assumed to be where the window
 		// will appear)
 		D3DDISPLAYMODE primaryDesktopDisplayMode;
 		m_pD3D->GetAdapterDisplayMode(0, &primaryDesktopDisplayMode);
@@ -328,7 +350,6 @@ namespace rt_graph_dx9 {
 				}
 			}*/
 
-
 		m_d3dSettings.pWindowed_AdapterInfo = pBestAdapterInfo;
 		m_d3dSettings.pWindowed_DeviceInfo = pBestDeviceInfo;
 		m_d3dSettings.pWindowed_DeviceCombo = pBestDeviceCombo;
@@ -345,19 +366,16 @@ namespace rt_graph_dx9 {
 		return true;
 	}
 
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: FindBestFullscreenMode()
-	// Desc: Sets up m_d3dSettings with best available fullscreen mode, subject to 
+	// Desc: Sets up m_d3dSettings with best available fullscreen mode, subject to
 	//       the bRequireHAL and bRequireREF constraints.  Returns false if no such
 	//       mode can be found.
 	//-----------------------------------------------------------------------------
 	bool CD3DApplication::FindBestFullscreenMode(bool bRequireHAL, bool bRequireREF)
 	{
-		// For fullscreen, default to first HAL DeviceCombo that supports the current desktop 
-		// display mode, or any display mode if HAL is not compatible with the desktop mode, or 
+		// For fullscreen, default to first HAL DeviceCombo that supports the current desktop
+		// display mode, or any display mode if HAL is not compatible with the desktop mode, or
 		// non-HAL if no HAL is available
 		D3DDISPLAYMODE adapterDesktopDisplayMode;
 		D3DDISPLAYMODE bestAdapterDesktopDisplayMode;
@@ -468,12 +486,9 @@ namespace rt_graph_dx9 {
 		return true;
 	}
 
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: ChooseInitialD3DSettings()
-	// Desc: 
+	// Desc:
 	//-----------------------------------------------------------------------------
 	HRESULT CD3DApplication::ChooseInitialD3DSettings()
 	{
@@ -490,7 +505,6 @@ namespace rt_graph_dx9 {
 
 		return S_OK;
 	}
-
 
 #ifndef WM_MOUSEWHEEL
 #   define WM_MOUSEWHEEL 0x020A
@@ -524,7 +538,6 @@ namespace rt_graph_dx9 {
 			if (m_pAppFrame->GetEnableConsole() && m_pAppFrame->GetShowConsole())
 			{
 				m_pAppFrame->GetConsole()->OnKeyChar((int)wParam, bAltDown);
-
 			}
 			else
 			{
@@ -665,7 +678,6 @@ namespace rt_graph_dx9 {
 			m_pAppFrame->m_iLastMousePos[1] = yPos;
 		}
 		break;
-
 
 		////////////////////////////////////////////////////////////////////////////////////////
 		/*
@@ -920,10 +932,6 @@ namespace rt_graph_dx9 {
 		return DefWindowProc(hWnd, uMsg, wParam, lParam);
 	}
 
-
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: HandlePossibleSizeChange()
 	// Desc: Reset the device if the client area size has changed.
@@ -967,9 +975,6 @@ namespace rt_graph_dx9 {
 		}
 		return hr;
 	}
-
-
-
 
 	//-----------------------------------------------------------------------------
 	// Name: Initialize3DEnvironment()
@@ -1071,7 +1076,7 @@ namespace rt_graph_dx9 {
 
 			if (pDeviceInfo->DevType == D3DDEVTYPE_HAL)
 			{
-				// Be sure not to overflow m_strDeviceStats when appending the adapter 
+				// Be sure not to overflow m_strDeviceStats when appending the adapter
 				// description, since it can be long.  Note that the adapter description
 				// is initially CHAR and must be converted to TCHAR.
 				lstrcat(m_strDeviceStats, TEXT(": "));
@@ -1170,9 +1175,6 @@ namespace rt_graph_dx9 {
 		return hr;
 	}
 
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: BuildPresentParamsFromSettings()
 	// Desc:
@@ -1211,9 +1213,6 @@ namespace rt_graph_dx9 {
 			m_d3dpp.PresentationInterval = m_d3dSettings.PresentInterval();
 		}
 	}
-
-
-
 
 	//-----------------------------------------------------------------------------
 	// Name: Reset3DEnvironment()
@@ -1287,9 +1286,6 @@ namespace rt_graph_dx9 {
 		return S_OK;
 	}
 
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: ToggleFullScreen()
 	// Desc: Called when user toggles between fullscreen mode and windowed mode
@@ -1322,7 +1318,7 @@ namespace rt_graph_dx9 {
 			{
 				// m_d3dpp.FullScreen_PresentationInterval = D3DPRESENT_INTERVAL_ONE;
 				m_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
-				// m_d3dpp.SwapEffect = D3DSWAPEFFECT_FLIP; 
+				// m_d3dpp.SwapEffect = D3DSWAPEFFECT_FLIP;
 				// m_d3dpp.SwapEffect = D3DSWAPEFFECT_COPY;
 			}
 			hr = Reset3DEnvironment();
@@ -1375,9 +1371,6 @@ namespace rt_graph_dx9 {
 		return S_OK;
 	}
 
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: ForceWindowed()
 	// Desc: Switch to a windowed mode, even if that means picking a new device
@@ -1411,9 +1404,6 @@ namespace rt_graph_dx9 {
 		return S_OK;
 	}
 
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: AdjustWindowForChange()
 	// Desc: Prepare the window for a possible change between windowed mode and
@@ -1445,9 +1435,6 @@ namespace rt_graph_dx9 {
 		}
 		return S_OK;
 	}
-
-
-
 
 	//-----------------------------------------------------------------------------
 	// Name: UserSelectNewDevice()
@@ -1509,17 +1496,16 @@ namespace rt_graph_dx9 {
 		return S_OK;
 	}
 
-
-
 	//-----------------------------------------------------------------------------
 	// Name: Run()
 	//lyymark 1.d3dapp.CD3DApplication 渲染主循环
 	//-----------------------------------------------------------------------------
 	INT CD3DApplication::Run()
 	{
+		//lyymark fps limit
+		//LockFpsPerFrame(1000 / 60);
 		// 加载加速器表，用于处理键盘快捷键
 		HACCEL hAccel = LoadAccelerators(NULL, MAKEINTRESOURCE(IDR_MAIN_ACCEL));
-
 		// 用于消息处理的变量 Now we're ready to recieve and process Windows messages.
 		int bGotMsg;
 		MSG  msg;
@@ -1527,7 +1513,6 @@ namespace rt_graph_dx9 {
 		// 预取消息，以确保消息队列为空时不会阻塞
 		PeekMessage(&msg, NULL, 0U, 0U, PM_NOREMOVE);
 		// 消息循环
-		LockFpsPerFrame(1000 / 60);
 		while (WM_QUIT != msg.message)// 当消息不是退出消息时
 		{
 			// 检索消息，如果有消息则从消息队列中移除
@@ -1554,10 +1539,10 @@ namespace rt_graph_dx9 {
 					// Temporarily removed
 					if (m_dwFpsLocked)
 					{
-						 DWORD dSTime = timeGetTime();
+						DWORD dSTime = timeGetTime();
 						if (FAILED(Render3DEnvironment()))
 							SendMessage(m_hWnd, WM_CLOSE, 0, 0);
-						 DWORD dDTime = timeGetTime() - dSTime;
+						DWORD dDTime = timeGetTime() - dSTime;
 						if (dDTime < m_dwFpsLocked)
 						{
 							Sleep(m_dwFpsLocked - dDTime);
@@ -1570,7 +1555,6 @@ namespace rt_graph_dx9 {
 					}
 				}
 			}
-
 		}
 		// 销毁加速器表
 		if (hAccel != NULL)
@@ -1669,13 +1653,9 @@ namespace rt_graph_dx9 {
 		return S_OK;
 	}
 
-
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: UpdateStats()
-	// Desc: 
+	// Desc:
 	//-----------------------------------------------------------------------------
 	void CD3DApplication::UpdateStats()
 	{
@@ -1749,9 +1729,6 @@ namespace rt_graph_dx9 {
 		}
 	}
 
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: Pause()
 	// Desc: Called in to toggle the pause state of the app.
@@ -1779,9 +1756,6 @@ namespace rt_graph_dx9 {
 		}
 	}
 
-
-
-
 	//-----------------------------------------------------------------------------
 	// Name: Cleanup3DEnvironment()
 	// Desc: Cleanup scene objects
@@ -1806,9 +1780,6 @@ namespace rt_graph_dx9 {
 			m_pd3dDevice = NULL;
 		}
 	}
-
-
-
 
 	//-----------------------------------------------------------------------------
 	// Name: DisplayErrorMsg()

@@ -764,7 +764,9 @@
     <ResourceCompile Include="frame\game_client.rc" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="frame\icon_mai.ico" />
     <Image Include="frame\icon_main.ico" />
+    <Image Include="frame\icon_small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

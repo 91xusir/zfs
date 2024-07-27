@@ -262,12 +262,12 @@ RtwImage* RtwComplexImage::getImage(int index)
 	return m_Images[index].getImage();
 }
 
+//lyymark 2.UI.IMG.SetSourceRect 设置Rt图片的区域
 void RtwComplexImage::SetSourceRect(RtwRect& vrRect) 
 {
 	for (int i=0; i<(int)getImageCount(); ++i)
 		getImage(i)->SetSourceRect(vrRect);
 	m_Source = RtwRect(vrRect.left, vrRect.top, vrRect.right, vrRect.bottom);
-	m_Source = vrRect;
 }
 
 
@@ -297,7 +297,7 @@ void RtwComplexImage::SetBlend(bool bBlend)
 	}
 	m_bBlend = bBlend;
 }
-
+//lyymark 2.UI.IMG.CGifSequence.LoadFromFile 加载Rt图片文件,返会图片对象
 bool CGifSequence::LoadFromFile(const std::string& filename) 
 {
 	if (filename.rfind(".gif") == string::npos)

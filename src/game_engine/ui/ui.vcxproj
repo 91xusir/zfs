@@ -149,6 +149,7 @@
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="cpp.hint" />
     <None Include="UI.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

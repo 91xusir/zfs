@@ -22,32 +22,42 @@ void CUiImageImpl_Rt::OnBeforeDestroy()
 
 	RtwImage::OnBeforeDestroy();
 }
-
+//lyymark 2.UI.IMG.CUiImageImpl_Rt.LoadFromFile 加载Rt图片文件
 bool CUiImageImpl_Rt::LoadFromFile(const std::string& filename)
 {
+	// 如果当前图像已有纹理，先删除旧的纹理
 	if (m_Image.Shaders[0].GetTexture() != 0)
 		m_pRtgDevice->DeleteShader(&m_Image);
 
+	// 如果文件名为空
 	if (filename.empty())
 	{
+		// 设置纹理为空
 		m_Image.Shaders[0].SetTexture(0);
 		return false;
 	}
 	else
 	{
-        RtgTextItem* texItem = RtGetRender()->GetTextMgr()->CreateUiTexture(filename.c_str(), D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2);
+		// 根据图片大小 创建新的纹理对象
+		RtgTextItem* texItem = RtGetRender()->GetTextMgr()->CreateUiTexture(filename.c_str(), D3DX_DEFAULT_NONPOW2, D3DX_DEFAULT_NONPOW2);
 
-        if (!texItem)
-            return false;
+		// 如果创建失败，返回 false
+		if (!texItem)
+			return false;
 
+		// 设置新纹理
 		m_Image.Shaders[0].SetTexture(texItem);
-        SetSourceRect(RtwRect(0, 0, texItem->width, texItem->height));
+
+		// 设置源矩形为新纹理的大小
+		SetSourceRect(RtwRect(0, 0, texItem->width, texItem->height));
 	}
 
+	// 保存文件名
 	m_FileName = filename;
 
 	return true;
 }
+
 
 bool CUiImageImpl_Rt::LoadFromMemory(const void* data, int length)
 {

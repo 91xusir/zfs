@@ -492,7 +492,8 @@ public:
         DWORD   dwMaxMultiSampleTypeWindowed;
         DWORD   dwMaxMultiSampleTypeFullscreen;
         long    lMillisecondPerFrame;
-        bool    bvsync;
+        //lyymark 垂直同步
+        bool    bvsync;              
 
         // 质量
         long    lTextureQuality;    // 贴图质量   高 (贴图质量等级 0 最高, 1 其次, 2 再次)

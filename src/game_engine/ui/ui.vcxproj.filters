@@ -306,5 +306,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="UI.cd" />
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

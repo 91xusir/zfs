@@ -145,7 +145,7 @@ namespace ui
 		SMargin			borderSize;		
 		std::string     m_FileName;
 		std::string     m_Name;
-		RtwPixel          m_Color;
+		RtwPixel        m_Color;
 		Real            m_Transparency; 
 		Real			m_BackTransparency;
 		bool            m_bBlend;
@@ -154,6 +154,7 @@ namespace ui
 		int				eBlendSrcFunc;
 		bool            m_bHighLight;
 	protected:
+		// Í¼Æ¬µÄÇøÓò
 		RtwRect         m_Source;
 
 	};

@@ -133,9 +133,6 @@
     <Filter Include="game\ui\ui_warfield">
       <UniqueIdentifier>{9bb6f9a7-af53-404c-855c-53edd0942856}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\ui\ui_M1ADD">
-      <UniqueIdentifier>{4d437c3e-1aad-4a26-a4ad-27dde1b14cb3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="game\ui\ui_pet">
       <UniqueIdentifier>{f733a37a-1d43-4a69-bad6-2d7e6fcf9606}</UniqueIdentifier>
     </Filter>
@@ -234,6 +231,9 @@
     </Filter>
     <Filter Include="sjdl">
       <UniqueIdentifier>{3caebf2f-d00a-4859-892e-8a529b25c958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\ui\ui_lyyFix">
+      <UniqueIdentifier>{4d437c3e-1aad-4a26-a4ad-27dde1b14cb3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1045,37 +1045,37 @@
       <Filter>game\ui\ui_warfield</Filter>
     </ClInclude>
     <ClInclude Include="ui\Timer_Hint.h">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_form_maintask.h">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_form_task.h">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
     <ClInclude Include="ui\UI_form_Team.h">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIForm_Char.h">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIForm_Gem.h">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIForm_MiddleMap.h">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIForm_NewPeopleHelp.h">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIForm_Server.h">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIForm_Speaker.h">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
     <ClInclude Include="ui\UIForm_System.h">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_form_pet.h">
       <Filter>game\ui\ui_pet</Filter>
@@ -1710,37 +1710,37 @@
       <Filter>game\ui\ui_warfield</Filter>
     </ClCompile>
     <ClCompile Include="ui\Timer_Hint.cpp">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_maintask.cpp">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_task.cpp">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
     <ClCompile Include="ui\UI_form_Team.cpp">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIForm_Char.cpp">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIForm_Gem.cpp">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIForm_MiddleMap.cpp">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIForm_NewPeopleHelp.cpp">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIForm_Server.cpp">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIForm_Speaker.cpp">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
     <ClCompile Include="ui\UIForm_System.cpp">
-      <Filter>game\ui\ui_M1ADD</Filter>
+      <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_pet.cpp">
       <Filter>game\ui\ui_pet</Filter>
@@ -2026,5 +2026,7 @@
     <Image Include="frame\icon_main.ico">
       <Filter>frame\resource</Filter>
     </Image>
+    <Image Include="frame\icon_mai.ico" />
+    <Image Include="frame\icon_small.ico" />
   </ItemGroup>
 </Project>
