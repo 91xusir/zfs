@@ -17,7 +17,7 @@ CUIForm_Server::CUIForm_Server(void) {
     mp_btnServersList[6] = LOAD_UI_T(RtwButton, "serverForm.btnServer6");
     mp_btnServersList[7] = LOAD_UI_T(RtwButton, "serverForm.btnServer7");
     // 填充按钮映射
-    for (int i = 0; i < UILayerLogin::MAX_BUTTONS; ++i) {
+    for (int i = 0; i < UILayerLogin::MaxBtnsCounts; ++i) {
         mp_btnServersSelectedMap[mp_btnServersList[i]] = i;
     }
     mp_serverStatus[0] = LOAD_UI("serverForm.serverStatus0");
@@ -75,7 +75,7 @@ void CUIForm_Server::OnInsertNewServer(const int index, const std::string server
     setTips("请选择服务器:");
 
     // 只处理当前按钮索引有效的情况
-    if (index >= 0 && index < UILayerLogin::MAX_BUTTONS) {
+    if (index >= 0 && index < UILayerLogin::MaxBtnsCounts) {
 
         auto& btn = mp_btnServersList[index];
 

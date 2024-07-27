@@ -65,7 +65,6 @@ UILayerLogin::UILayerLogin() {
 
     //lyymark 2.GcLogin.XML 加载服务器列表UI
     m_formServer = RT_NEW CUIForm_Server;
-    m_iCurrentSelectServer = 0;
     //退出
     LOAD_UI("btnexit")->Show();
     //忘记密码
@@ -295,11 +294,11 @@ void UILayerLogin::OnUpdateText(RtwWidget* sender, RtwEventDelegate* e) {
 }
 
 //lyymark 2.GcLogin.UI.OnClicked_EnterUserLogin 进入用户登录页面
-void UILayerLogin::OnClicked_EnterUserLogin(const int& m_iCurrentSelectServer) {
+void UILayerLogin::OnClicked_EnterUserLogin(const int& currentSelectServer) {
     guard;
     if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_GAMEWORLD_SERVER) {
-        if (m_iCurrentSelectServer >= 0 && m_iCurrentSelectServer <= MAX_BUTTONS) {
-            GetLogin()->SelectGameWorld(m_iCurrentSelectServer);
+        if (currentSelectServer >= 0 && currentSelectServer <= MaxBtnsCounts) {
+            GetLogin()->SelectGameWorld(currentSelectServer);
         }
     }
     unguard;
