@@ -25,8 +25,9 @@ class CUIForm_Server {
     //lyymark 2.GcLogin.UI.Server
     /*-----------------------------------------------add by lyy*/
     RtwWidget* mp_serverForm;
-    RtwWidget* mp_tips;
+    RtwWidget* mp_serverTips;
     RtwButton* mp_btnServers[8]{};
+    RtwWidget* mp_serverStatus[8]{};
     int        activeBtnIndex;
 
    public:

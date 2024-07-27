@@ -23,7 +23,9 @@ RtwWidget* LoadUI(const char* szName)
         std::string Temp("Can't find widget [");
         Temp = Temp + szName + "]!!!!!!!!!!!!!!!!!!!";
 
-        // 记录错误日志
+        //预览模式下记录错误日志
+        P_LOGERROR(Temp);
+        // DEBUG 记录错误日志
         RtCoreLog().Error(Temp.c_str());
 
         // 执行错误检查宏 CHECKEX

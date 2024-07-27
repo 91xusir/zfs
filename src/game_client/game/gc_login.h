@@ -2,17 +2,7 @@
 #define _INC_GC_LOGIN_H_
 
 #include "gc_login_session.h"
-#include "../preLog.h"
-//lyymark 1.Game.Init.LogInfo 预览模式控制台输出
-#ifdef _PREVIEW
-#define P_LOGINFO(message) preLog::logInfo(message)
-#define P_LOGWARN(message) preLog::logWarn(message)
-#define P_LOGERROR(message) preLog::logError(message)
-#else
-#define P_LOGINFO(message)
-#define P_LOGWARN(message)
-#define P_LOGERROR(message)
-#endif
+
 
 // 这里处理登陆，选人等非游戏进行的流程
 class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify {
