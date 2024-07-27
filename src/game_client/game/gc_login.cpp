@@ -2314,6 +2314,7 @@ void GcLogin::OnMouseMDrag(int iButton, int x, int y, int increaseX, int increas
 void GcLogin::OnKeyDown(int iButton, int iKey) {
     guard;
     //lyymark 2.GcLogin 按v显示当前ViewMatrix
+    P_LOGINFO("key: \n" + std::to_string(iButton) + " " + std::to_string(iKey));
 #ifdef _PREVIEW
     if (iButton == 86) {
         auto gvm = GetDevice()->m_pCamera->GetViewMatrix();
@@ -2335,12 +2336,10 @@ void GcLogin::OnKeyUp(int iButton, int iKey) {
 
 void GcLogin::SelectGameWorld(int iIdx) {
     guard;
-    if (iIdx >= 0 && iIdx < ms_lGameWorldServerCount) {
-        m_szGameWorldServerName = ms_pGameWorldServerList[iIdx].szName;
-        m_szGameWorldServerIP = ms_pGameWorldServerList[iIdx].szIP;
-        m_lGameWorldServerPort = ms_pGameWorldServerList[iIdx].lPort;
-        SetLoginState(GLS_LOGIN);
-    }
+    m_szGameWorldServerName = ms_pGameWorldServerList[iIdx].szName;
+    m_szGameWorldServerIP = ms_pGameWorldServerList[iIdx].szIP;
+    m_lGameWorldServerPort = ms_pGameWorldServerList[iIdx].lPort;
+    SetLoginState(GLS_LOGIN);
     unguard;
 }
 
@@ -2696,9 +2695,8 @@ class GcsGuideSession : public CG_TCPSession {
     float    m_fReConnectTime;
 };
 
-CG_TCPSession*          GcLogin::ms_pGuideNet = NULL;
+CG_TCPSession*                      GcLogin::ms_pGuideNet = NULL;
 std::vector<GcLogin::SGWServerList> GcLogin::ms_pGameWorldServerList;
-long                    GcLogin::ms_lGameWorldServerCount = 0;
 
 void GcLogin::StartGetGameWorldServer() {
     guard;
@@ -2731,10 +2729,10 @@ float GcLogin::OnGuideGetGameWorldServerList(CG_CmdPacket* pPacket) {
     char* pName = NULL;
     char* pIP = NULL;
     // 先取得下次更新的时间，再取得服务器列表
-    pPacket->ReadShort(&sTimeSecond);  
+    pPacket->ReadShort(&sTimeSecond);
     pPacket->ReadShort(&sCnt);
 
-     // 更新 vector 大小
+    // 更新 vector 大小
     ms_pGameWorldServerList.resize(sCnt);
 
     for (int i = 0; i < sCnt; ++i) {
@@ -2842,7 +2840,7 @@ void GcLogin::OnUIUpdateGameWorldServerList() const {
     if (m_eStatus != GLS_SELECT_GAMEWORLD_SERVER)
         return;
     std::string szEvaluation;
-    int i = 0;
+    int         tempConunt = 0;
     for (auto& gwServer : ms_pGameWorldServerList) {
         std::string szName = gwServer.szName;
         switch (gwServer.lEvaluation) {
@@ -2859,6 +2857,10 @@ void GcLogin::OnUIUpdateGameWorldServerList() const {
             case 6:  // 2400
             case 7:  // 2800
             case 8:  // 3200
+            default:
+                //strcpy(szEvaluation, "普通");//by fox for string
+                szEvaluation = R(MSG_SERVER_NORMAL);
+                break;
             case 9:  // 3600
                 //strcpy(szEvaluation, "繁忙");//by fox for string
                 szEvaluation = R(MSG_SERVER_BUSY);
@@ -2867,14 +2869,9 @@ void GcLogin::OnUIUpdateGameWorldServerList() const {
                 //strcpy(szEvaluation, "满员");//by fox for string
                 szEvaluation = R(MSG_SERVER_FULL);
                 break;
-            default:
-                //strcpy(szEvaluation, "普通");//by fox for string
-                szEvaluation = R(MSG_SERVER_NORMAL);
-                break;
         }
-        g_layerLogin->m_formServer->OnInsertNewServer(i,szName, gwServer.ping, szEvaluation);
-        i++;
-        if (i > 7)i = 0;
+        g_layerLogin->m_formServer->OnInsertNewServer(tempConunt++, szName, gwServer.ping,
+                                                      szEvaluation);
     }
     //lyytodo 从文件中读取上次选中的服务器
     /*RtIni iniUser;
