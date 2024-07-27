@@ -2697,7 +2697,7 @@ class GcsGuideSession : public CG_TCPSession {
 };
 
 CG_TCPSession*          GcLogin::ms_pGuideNet = NULL;
-GcLogin::SGWServerList* GcLogin::ms_pGameWorldServerList = NULL;
+std::vector<GcLogin::SGWServerList> GcLogin::ms_pGameWorldServerList;
 long                    GcLogin::ms_lGameWorldServerCount = 0;
 
 void GcLogin::StartGetGameWorldServer() {
@@ -2726,27 +2726,32 @@ void GcLogin::OnGuideNetProcess(float fSecond) {
 
 float GcLogin::OnGuideGetGameWorldServerList(CG_CmdPacket* pPacket) {
     guard;
-    short         sTimeSecond = 10, sCnt, sPort;
-    char          cEvaluation;
-    char *        pName, *pIP;
-    SGWServerList item;
-    pPacket->ReadShort(&sTimeSecond);  // 先取得下次更新的时间，再取得服务器列表
+    short sTimeSecond = 10, sCnt, sPort;
+    char  cEvaluation;
+    char* pName = nullptr;
+    char* pIP = nullptr;
+    // 先取得下次更新的时间，再取得服务器列表
+    pPacket->ReadShort(&sTimeSecond);  
     pPacket->ReadShort(&sCnt);
 
-    ms_lGameWorldServerCount = sCnt;
-    DEL_ARRAY(ms_pGameWorldServerList);
-    ms_pGameWorldServerList = RT_NEW SGWServerList[ms_lGameWorldServerCount];
-    for (int i = 0; i < ms_lGameWorldServerCount; i++) {
+     // 更新 vector 大小
+    ms_pGameWorldServerList.resize(sCnt);
+
+    for (int i = 0; i < sCnt; ++i) {
         pPacket->ReadString(&pName);
         pPacket->ReadString(&pIP);
         pPacket->ReadShort(&sPort);
         pPacket->ReadByte(&cEvaluation);
 
-        ms_pGameWorldServerList[i].lPort = sPort;
-        ms_pGameWorldServerList[i].szName = pName;
-        ms_pGameWorldServerList[i].szIP = pIP;
-        ms_pGameWorldServerList[i].lEvaluation = cEvaluation;
-        //ms_pGameWorldServerList[i].ping = GetPing(pIP);
+        if (pName && pIP) {
+            ms_pGameWorldServerList[i].lPort = sPort;
+            ms_pGameWorldServerList[i].szName = pName;
+            ms_pGameWorldServerList[i].szIP = pIP;
+            ms_pGameWorldServerList[i].lEvaluation = cEvaluation;
+            // ms_pGameWorldServerList[i].ping = GetPing(pIP);
+        } else {
+            // 处理 pName 或 pIP 为空的情况
+        }
     }
     if (GetLogin()) {
         GetLogin()->OnUIUpdateGameWorldServerList();
@@ -2834,17 +2839,15 @@ int GcLogin::GetPing(char* zIP) {
 void GcLogin::OnUIUpdateGameWorldServerList() const {
     guard;
 
-    g_layerLogin->m_formServer->Refresh();
+    //g_layerLogin->m_formServer->Refresh();
 
     if (m_eStatus != GLS_SELECT_GAMEWORLD_SERVER)
         return;
 
     //lyytodo 这里包装一下 方便遍历 后面全局修改serverlist类型为vector
-    std::vector<SGWServerList> gwServerList(ms_pGameWorldServerList,
-                                            ms_pGameWorldServerList + ms_lGameWorldServerCount);
 
     std::string szEvaluation;
-    for (auto& gwServer : gwServerList) {
+    for (auto& gwServer : ms_pGameWorldServerList) {
         std::string szName = gwServer.szName;
         switch (gwServer.lEvaluation) {
             case -1:

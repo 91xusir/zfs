@@ -904,7 +904,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 	{
 		guard_name(WinMain::Exit);
 
-		DEL_ARRAY(GcLogin::ms_pGameWorldServerList);
+	
 		GcLogin::ms_lGameWorldServerCount = 0;
 
 		// 应用程序框架退出

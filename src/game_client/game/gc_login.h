@@ -194,8 +194,8 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     // 网络向导会话的静态指针
     static CG_TCPSession* ms_pGuideNet;
 
-    // 游戏世界服务器列表的静态指针
-    static SGWServerList* ms_pGameWorldServerList;
+    // 游戏世界服务器列表
+    static std::vector<SGWServerList> ms_pGameWorldServerList;
 
     // 游戏世界服务器数量的静态变量
     static long ms_lGameWorldServerCount;
