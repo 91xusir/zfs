@@ -3,69 +3,95 @@
 
 #include "ui_form_setting.h"
 #include "soft_keyboard.h"
-#include "UIForm_Server.h"
 
-class UILayerLogin
-{
-public:
-	UILayerLogin();
+class CUIForm_Server;
 
-	~UILayerLogin();
+class UILayerLogin {
+   public:
+    UILayerLogin();
 
-private:
-	void OnUpdateText(RtwWidget* sender, RtwEventDelegate*);
+    ~UILayerLogin();
 
-	void OnKey(RtwWidget* sender, RtwEventDelegate*);
+   private:
+    void OnUpdateText(RtwWidget* sender, RtwEventDelegate*);
 
-	void OnHideKeyboard(void*, void*);
+    void OnKey(RtwWidget* sender, RtwEventDelegate*);
 
-	void OnShowKeyboard(void*, void*);
-	
-	void ontab(RtwWidget* sender, RtwEventDelegate* e);
+    void OnHideKeyboard(void*, void*);
+
+    void OnShowKeyboard(void*, void*);
+
+    void ontab(RtwWidget* sender, RtwEventDelegate* e);
 
     void OnClicked_BackSelectServer(RtwWidget* sender, void*);
 
-	void OnClicked_Login(void*, void*);
+    void OnClicked_Login(void*, void*);
 
-public:
-	//强制登录按钮的响应事件
-	void OnClicked_ForceLogin(void*, void*);
+   public:
+    //强制登录按钮的响应事件
+    void OnClicked_ForceLogin(void*, void*);
 
-	void OnClicked_ForceLoginCancel(void*, void*);
+    void OnClicked_ForceLoginCancel(void*, void*);
 
-	void OnClicked_EnterLogin(RtwWidget* sender, RtwEventDelegate* e);
+    void OnClicked_EnterUserLogin(const int& serverId);
 
-private:
-	void OnClicked_Quit(void*, void*);
-	//领取密保
-	void OnClicked_GetPassword(void*, void*);
-	//忘记密码
-	void OnClicked_ForgetPassword(void*, void*);
-	//申请帐号
+   private:
+    //退出
+    void OnClicked_Quit(void*, void*);
+    //领取密保
+    void OnClicked_GetPassword(void*, void*);
+    //忘记密码
+    void OnClicked_ForgetPassword(void*, void*);
+    //申请帐号
     void OnClicked_CreateAccount(void*, void*);
-
-    void OnClicked_SelectServer(RtwWidget* sender, RtwEventDelegate* e);
-
+    //保存帐号
     void OnClicked_SaveAccount(RtwWidget* sender, RtwEventDelegate* e);
+    //打开软键盘
+    void OnClicked_Keyboard(void*, void*);
 
-	void OnClicked_Keyboard(void*, void*);
+   private:
+    int           m_iCurrentSelectServer;
+    CSoftKeyboard m_Keyboard;
 
-private:
-    int             m_iCurrentSelectServer;
-	CSoftKeyboard   m_Keyboard;
+   public:
+    constexpr static int MAX_BUTTONS = 8;
 
-public:
-    enum { MAX_BUTTON = 8 };
-	RtwTextBox*		m_username;
-	RtwTextBox*		m_password;
+    RtwTextBox* m_username;
+    RtwTextBox* m_password;
+
     CUiCheckButton* m_pBtnSaveAccount;
-    RtwButton*      m_pServerListButton[MAX_BUTTON];
-    RtwWidget*      m_pServerStatus[MAX_BUTTON];
-	/* gao 2010.1.13
+
+    RtwButton* m_pServerListButton[MAX_BUTTONS];
+
+    RtwWidget* m_pServerStatus[MAX_BUTTONS];
+    /* fox by lyy 2024.7.28
 	服务器选择界面
 	*/
-	CUIForm_Server* m_formServer;
-	/* end */
+    CUIForm_Server* m_formServer;
 };
 
-#endif // _INC_UI_LOGIN_LAYER_H_
+class CUIForm_Server {
+   public:
+    CUIForm_Server(void);
+    ~CUIForm_Server(void);
+    void Show();
+    void Hide();
+    void setTips(const std::string& tips);
+    void showTips();
+    void OnInsertNewServer(const int index, const std::string serverName, int ping,
+                           const std::string serverState);
+    void OnClicked_SelectServer(RtwWidget* sender, RtwEventDelegate* e);
+
+   private:
+    //lyymark 2.GcLogin.UI.Server
+    /*-----------------------------------------------add by lyy*/
+    RtwWidget*                          mp_serverForm;
+    RtwWidget*                          mp_serverTips;
+    RtwWidget*                          mp_btnServersList[UILayerLogin::MAX_BUTTONS]{};
+    std::unordered_map<RtwWidget*, int> mp_btnServersSelectedMap{};
+    RtwWidget*                          mp_serverStatus[8]{};
+
+   public:
+};
+
+#endif  // _INC_UI_LOGIN_LAYER_H_

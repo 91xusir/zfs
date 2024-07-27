@@ -65,11 +65,20 @@ UILayerLogin::UILayerLogin() {
 
     //lyymark 2.GcLogin.XML 加载服务器列表UI
     m_formServer = RT_NEW CUIForm_Server;
-    m_iCurrentSelectServer = 1;
-    //LOAD_UI("btnexit")->Show();
-
+    m_iCurrentSelectServer = 0;
+    //退出
+    LOAD_UI("btnexit")->Show();
+    //忘记密码
+    LOAD_UI("btnforgetpwd")->Show();
+    //申请帐号
+    LOAD_UI("btncreate")->Show();
+    //隐藏 返回
+    LOAD_UI("btnback")->Hide();
+    //隐藏 软键盘
     m_Keyboard.Init();
-
+    if (m_Keyboard.IsVisible()) {
+        m_Keyboard.HideSoftKeyboard();
+    }
     unguard;
 }
 
@@ -285,65 +294,14 @@ void UILayerLogin::OnUpdateText(RtwWidget* sender, RtwEventDelegate* e) {
     unguard;
 }
 
-void UILayerLogin::OnClicked_SelectServer(RtwWidget* sender, RtwEventDelegate* e) {
+//lyymark 2.GcLogin.UI.OnClicked_EnterUserLogin 进入用户登录页面
+void UILayerLogin::OnClicked_EnterUserLogin(const int& m_iCurrentSelectServer) {
     guard;
-    /* gao 2010.1.14
-	当前函数没有用，所以在此注释
-	防止游戏中出现意外错误
-	*/
-    /*if (GetLogin()->GetStatus()==GcLogin::GLS_SELECT_GAMEWORLD_SERVER)
-    {
-        int i;
-        for (i=0; i<MAX_BUTTON; i++)
-        {
-            if (m_pServerListButton[i]==sender)
-            {
-                m_iCurrentSelectServer = i+1;
-                break;
-            }
-        }
-        for (i=0; i<MAX_BUTTON; i++)
-        {
-            if (i!=(m_iCurrentSelectServer-1))
-            {
-                m_pServerListButton[i]->SetChecked(false);
-            }
-        }
-    }*/
-    /* end */
-    unguard;
-}
-
-void UILayerLogin::OnClicked_EnterLogin(RtwWidget* sender, RtwEventDelegate* e) {
-    guard;
-    /* gao 2010.1.14
-	此处，服务器列表由按钮改为列表
-	原来的代码，暂时注释
-	*/
     if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_GAMEWORLD_SERVER) {
-        int i;
-        for (i = 0; i < MAX_BUTTON; i++) {
-            if (m_pServerListButton[i] == sender) {
-                m_iCurrentSelectServer = i + 1;
-                break;
-            }
-        }
-        if (m_iCurrentSelectServer >= 1 && m_iCurrentSelectServer <= MAX_BUTTON) {
-            GetLogin()->SelectGameWorld(m_iCurrentSelectServer - 1);
+        if (m_iCurrentSelectServer >= 0 && m_iCurrentSelectServer <= MAX_BUTTONS) {
+            GetLogin()->SelectGameWorld(m_iCurrentSelectServer);
         }
     }
-    // 新代码
-    //m_iCurrentSelectServer = g_layerLogin->m_formServer->GetSelectItem() + 1;
-    //if (m_iCurrentSelectServer>=1 && m_iCurrentSelectServer<=g_layerLogin->m_formServer->GetMaxLineNum())
-    //{
-    //	GetLogin()->SelectGameWorld(m_iCurrentSelectServer-1);
-    //}
-    //else
-    //{
-    //	ShowMessage(R(LMSG_SELECT_SERVERS));
-    //}
-    /* end */
-
     unguard;
 }
 

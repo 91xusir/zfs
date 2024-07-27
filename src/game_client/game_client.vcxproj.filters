@@ -1068,9 +1068,6 @@
     <ClInclude Include="ui\UIForm_NewPeopleHelp.h">
       <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
-    <ClInclude Include="ui\UIForm_Server.h">
-      <Filter>game\ui\ui_lyyFix</Filter>
-    </ClInclude>
     <ClInclude Include="ui\UIForm_Speaker.h">
       <Filter>game\ui\ui_lyyFix</Filter>
     </ClInclude>
@@ -1382,6 +1379,9 @@
     </ClInclude>
     <ClInclude Include="gc_fps.h">
       <Filter>sjdl</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\UIForm_Server.h">
+      <Filter>game\ui\ui_login_selectchar</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1733,9 +1733,6 @@
     <ClCompile Include="ui\UIForm_NewPeopleHelp.cpp">
       <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
-    <ClCompile Include="ui\UIForm_Server.cpp">
-      <Filter>game\ui\ui_lyyFix</Filter>
-    </ClCompile>
     <ClCompile Include="ui\UIForm_Speaker.cpp">
       <Filter>game\ui\ui_lyyFix</Filter>
     </ClCompile>
@@ -2015,6 +2012,9 @@
     <ClCompile Include="iob_func.cpp" />
     <ClCompile Include="gc_fps.cpp">
       <Filter>sjdl</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\UIForm_Server.cpp">
+      <Filter>game\ui\ui_login_selectchar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

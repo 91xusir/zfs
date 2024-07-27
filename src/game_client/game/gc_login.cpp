@@ -489,7 +489,7 @@ void GcLogin::EnterSelectGameWorldServer() {
         m_Keyboard.HideSoftKeyboard();
     }
     //显示 服务器列表
-    RTW_WIDGET("fmserver")->Show();
+    RTW_WIDGET("serverForm")->Show();
 
     unguard;
 }
@@ -497,7 +497,7 @@ void GcLogin::EnterSelectGameWorldServer() {
 bool GcLogin::LeaveSelectGameWorldServer() {
     guard;
     CHECK(m_eStatus == GLS_SELECT_GAMEWORLD_SERVER);
-    RTW_WIDGET("fmserver")->Hide();
+    RTW_WIDGET("serverForm")->Hide();
     EndGetGameWorldServer();
     return true;
     unguard;
@@ -585,13 +585,13 @@ void GcLogin::EnterLogin() {
             m_Keyboard.ShowSoftKeyboard();
         }
 
-        RTW_WIDGET("fmserver")->Hide();
+        RTW_WIDGET("serverForm")->Hide();
         RTW_WIDGET("fmlogin")->Show();
         ((RtwForm*)RTW_WIDGET("fmlogin"))->SetShowCloseButton(false);
     } else {
         g_layerLogin->m_username->SetText(m_hallName);
         g_layerLogin->m_password->SetText(m_hallKey);
-        RTW_WIDGET("fmserver")->Hide();
+        RTW_WIDGET("serverForm")->Hide();
         RTW_WIDGET("fmlogin")->Show();
         ((RtwForm*)RTW_WIDGET("fmlogin"))->SetShowCloseButton(false);
         g_layerLogin->m_username->Disable();
@@ -2349,10 +2349,10 @@ void GcLogin::Login(char* szUsername, char* szPassword) {
     m_szAccountUsername = szUsername;
     m_szAccountPassword = szPassword;
 
-    if (m_szGameWorldServerIP.IsEmpty()) {
+    if (m_szGameWorldServerIP.empty()) {
         ShowMessage(R(LMSG_CANNOT_FIND_GWS_IP));
     }
-    if (!this->ConnectServer(m_szGameWorldServerIP, m_lGameWorldServerPort)) {
+    if (!this->ConnectServer(m_szGameWorldServerIP.c_str(), m_lGameWorldServerPort)) {
         LoginErrMsg(GLEM_CANNOT_CONNECT);
     }
     unguard;
@@ -2728,8 +2728,8 @@ float GcLogin::OnGuideGetGameWorldServerList(CG_CmdPacket* pPacket) {
     guard;
     short sTimeSecond = 10, sCnt, sPort;
     char  cEvaluation;
-    char* pName = nullptr;
-    char* pIP = nullptr;
+    char* pName = NULL;
+    char* pIP = NULL;
     // 先取得下次更新的时间，再取得服务器列表
     pPacket->ReadShort(&sTimeSecond);  
     pPacket->ReadShort(&sCnt);
@@ -2839,14 +2839,10 @@ int GcLogin::GetPing(char* zIP) {
 void GcLogin::OnUIUpdateGameWorldServerList() const {
     guard;
 
-    //g_layerLogin->m_formServer->Refresh();
-
     if (m_eStatus != GLS_SELECT_GAMEWORLD_SERVER)
         return;
-
-    //lyytodo 这里包装一下 方便遍历 后面全局修改serverlist类型为vector
-
     std::string szEvaluation;
+    int i = 0;
     for (auto& gwServer : ms_pGameWorldServerList) {
         std::string szName = gwServer.szName;
         switch (gwServer.lEvaluation) {
@@ -2876,7 +2872,9 @@ void GcLogin::OnUIUpdateGameWorldServerList() const {
                 szEvaluation = R(MSG_SERVER_NORMAL);
                 break;
         }
-        g_layerLogin->m_formServer->OnInsertNewServer(szName, gwServer.ping, szEvaluation);
+        g_layerLogin->m_formServer->OnInsertNewServer(i,szName, gwServer.ping, szEvaluation);
+        i++;
+        if (i > 7)i = 0;
     }
     //lyytodo 从文件中读取上次选中的服务器
     /*RtIni iniUser;
