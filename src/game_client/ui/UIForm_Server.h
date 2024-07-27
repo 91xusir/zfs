@@ -28,7 +28,7 @@ class CUIForm_Server {
     RtwWidget* mp_serverTips;
     RtwButton* mp_btnServers[8]{};
     RtwWidget* mp_serverStatus[8]{};
-    int        activeBtnIndex;
+    int        activeBtnIndex = 0;
 
    public:
 };

@@ -53,9 +53,10 @@ void CUIForm_Server::Hide() {
 void CUIForm_Server::Refresh() {
     guard;
     //m_plstServerContent->RemoveAllItems();
-    for (auto btn : mp_btnServers) {
-        btn->Hide();
-    }
+ /*   for (auto btn : mp_btnServers) {
+        if (btn)
+            btn->Hide();
+    }*/
     unguard;
 }
 
@@ -92,8 +93,10 @@ void CUIForm_Server::OnInsertNewServer(const std::string serverName, int ping,
             btn->SetText(serverName.c_str());  // 设置按钮文本
             btn->Show();                       // 显示按钮
         }
+        if (mp_serverStatus[activeBtnIndex])
+            mp_serverStatus[activeBtnIndex]->SetText(serverState.c_str());
         // 更新索引到下一个按钮
-        activeBtnIndex++;
+        activeBtnIndex= (activeBtnIndex + 1) % 8;
     }
     unguard;
 }
