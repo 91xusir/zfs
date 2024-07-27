@@ -3,6 +3,7 @@
 #define uimain_h__
 
 #include "ui/rtw_ui.h"
+#include "../preLog.h"
 
 RtwWidget* LoadUI(const char* szName);
 
@@ -22,6 +23,7 @@ T* LoadUI_T(const char* szName)
 	{
 		std::string Temp ("Can't find widget [");
 		Temp =Temp + szName + "]!!!!!!!!!!!!!!!!!!!";
+        P_LOGERROR(Temp);  //预览模式下记录错误日志 add by lyy
 		RtCoreLog().Error(Temp.c_str());
 		CHECKEX(Temp.c_str());
 		return NULL;

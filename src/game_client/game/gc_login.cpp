@@ -2833,7 +2833,7 @@ int GcLogin::GetPing(char* zIP) {
 //lyymark 2.GcLogin.UI.OnUIUpdateGameWorldServerList 更新游戏世界服务器列表
 void GcLogin::OnUIUpdateGameWorldServerList() const {
     guard;
-    return;
+
     g_layerLogin->m_formServer->Refresh();
 
     if (m_eStatus != GLS_SELECT_GAMEWORLD_SERVER)

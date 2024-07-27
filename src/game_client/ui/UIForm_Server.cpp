@@ -11,19 +11,26 @@ CUIForm_Server::CUIForm_Server(void) : m_iSelect(-1) {
     m_plstServerContent->EvSelect += RTW_CALLBACK(this, CUIForm_Server, OnSelectServer);
     m_plstServerContent->EvLDClick += RTW_CALLBACK(this, CUIForm_Server, OnBtnOKDown);
     m_pbtnOK->EvLClick += RTW_CALLBACK(this, CUIForm_Server, OnBtnOKDown);
+
     /*-----------------------------------------------add by lyy*/
-  /*  mp_serverForm = LOAD_UI("serverForm");
-    mp_tips = LOAD_UI("serverForm.tips");
-
-    mp_btnServers[0] = LOAD_UI_T(RtwButton, "formserver.btnServer1");
-    mp_btnServers[1] = LOAD_UI_T(RtwButton, "formserver.btnServer2");
-    mp_btnServers[2] = LOAD_UI_T(RtwButton, "formserver.btnServer3");
-    mp_btnServers[3] = LOAD_UI_T(RtwButton, "formserver.btnServer4");
-    mp_btnServers[4] = LOAD_UI_T(RtwButton, "formserver.btnServer5");
-    mp_btnServers[5] = LOAD_UI_T(RtwButton, "formserver.btnServer6");
-    mp_btnServers[6] = LOAD_UI_T(RtwButton, "formserver.btnServer7");
-    mp_btnServers[7] = LOAD_UI_T(RtwButton, "formserver.btnServer8");*/
-
+    mp_serverForm = LOAD_UI("serverForm");
+    mp_serverTips = LOAD_UI("serverForm.serverTips");
+    mp_btnServers[0] = LOAD_UI_T(RtwButton, "serverForm.btnServer1");
+    mp_btnServers[1] = LOAD_UI_T(RtwButton, "serverForm.btnServer2");
+    mp_btnServers[2] = LOAD_UI_T(RtwButton, "serverForm.btnServer3");
+    mp_btnServers[3] = LOAD_UI_T(RtwButton, "serverForm.btnServer4");
+    mp_btnServers[4] = LOAD_UI_T(RtwButton, "serverForm.btnServer5");
+    mp_btnServers[5] = LOAD_UI_T(RtwButton, "serverForm.btnServer6");
+    mp_btnServers[6] = LOAD_UI_T(RtwButton, "serverForm.btnServer7");
+    mp_btnServers[7] = LOAD_UI_T(RtwButton, "serverForm.btnServer8");
+    mp_serverStatus[0] = LOAD_UI("serverForm.serverStatus1");
+    mp_serverStatus[1] = LOAD_UI("serverForm.serverStatus2");
+    mp_serverStatus[2] = LOAD_UI("serverForm.serverStatus3");
+    mp_serverStatus[3] = LOAD_UI("serverForm.serverStatus4");
+    mp_serverStatus[4] = LOAD_UI("serverForm.serverStatus5");
+    mp_serverStatus[5] = LOAD_UI("serverForm.serverStatus6");
+    mp_serverStatus[6] = LOAD_UI("serverForm.serverStatus7");
+    mp_serverStatus[7] = LOAD_UI("serverForm.serverStatus8");
     unguard;
 }
 
@@ -83,7 +90,7 @@ void CUIForm_Server::OnInsertNewServer(const std::string serverName, int ping,
 
         if (btn) {
             btn->SetText(serverName.c_str());  // 设置按钮文本
-            btn->Show();               // 显示按钮
+            btn->Show();                       // 显示按钮
         }
         // 更新索引到下一个按钮
         activeBtnIndex++;
