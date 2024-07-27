@@ -231,7 +231,7 @@ bool RtwXmlLoader::_ProcessAttrib(RtwWidget* pWidget, RtsXmlDoc::NodePtr* pNode)
 	return true;
 }
 
-//处理widget属性
+//lyymark 1.UI.XML.7._ProcessAttrib _Widget处理widget属性
 bool RtwXmlLoader::_ProcessAttrib_Widget(RtwWidget* pWidget, RtsXmlDoc::NodePtr* pNode)
 {
 	// Reset First
@@ -253,7 +253,7 @@ bool RtwXmlLoader::_ProcessAttrib_Widget(RtwWidget* pWidget, RtsXmlDoc::NodePtr*
 	std::string strText = pNode->GetProp_s("Text");			// 文本
 	std::string strTextColor = pNode->GetProp_s("TextColor"); // 文本颜色
 	std::string strTextFont = pNode->GetProp_s("TextFont"); // 文本字体
-	int iFontSize = pNode->GetPropInt("FontSize");			// 字体大小
+	const int iFontSize = pNode->GetPropInt("FontSize");			// 字体大小
 	std::string strAlignCol = pNode->GetProp_s("Alignment"); // 列对齐
 	std::string strAlignLine = pNode->GetProp_s("AlignLine"); // 行对齐
 	std::string strShow = pNode->GetProp_s("Show"); // 是否显示
@@ -281,17 +281,16 @@ bool RtwXmlLoader::_ProcessAttrib_Widget(RtwWidget* pWidget, RtsXmlDoc::NodePtr*
 		pWidget->SetBorderSize(Bsize);
 		pWidget->SetBorderColor(0xFFC28D3B); //硬编码边框颜色(默认)
 	}
+	if (!strBorderCorlor.empty())
+	{
+		DWORD color = strtoul(strBorderCorlor.c_str() + 1, NULL, 16); //边框颜色
+		pWidget->SetBorderColor(color);
+	}
 
 	if (!strPadding.empty())
 	{
 		SMargin sm(strPadding.c_str());
 		pWidget->SetPadding(sm);
-	}
-
-	if (!strBorderCorlor.empty())
-	{
-		DWORD color = strtoul(strBorderCorlor.c_str() + 1, NULL, 16); //边框颜色
-		pWidget->SetBorderColor(color);
 	}
 
 	if (!strShow.empty())		//是否显示
@@ -932,7 +931,7 @@ bool RtwXmlLoader::_ProcessChild_Widget(
 			// Layer是特殊的
 		else if (pChildNode->strName == "Layer")
 		{
-			RtwWidget* pWidget = _Process_Layer(pChildNode);
+			const RtwWidget* pWidget = _Process_Layer(pChildNode);
 			UI_ENSURE_B(pWidget);
 			if (pWidgetsCreated)
 				pWidgetsCreated->push_back(pWidget->getId());
@@ -1751,10 +1750,10 @@ bool RtwXmlLoader::_Process_ImageSequence(RtwWidget* pWidget, RtsXmlDoc::NodePtr
 	return true;
 }
 
-//lyymark 2.UI._Process_ComplexImage 处理复合图片  如背景图+边框图
+//lyymark 1.UI.XML._Process_ComplexImage 处理复合图片  背景图+边框图
 RtwComplexImage* RtwXmlLoader::_Process_ComplexImage(RtsXmlDoc::NodePtr* pNode)
 {
-	std::string strFile = pNode->GetProp_s("File");			//图片文件名
+	std::string strFile	 = pNode->GetProp_s("File");			//图片文件名
 	std::string strSource = pNode->GetProp_s("Source");		//图片源矩形
 	std::string strBlend = pNode->GetProp_s("Blend");		//混合渲染
 	std::string strTransparency = pNode->GetProp_s("Transparency");	//透明度
@@ -1766,7 +1765,7 @@ RtwComplexImage* RtwXmlLoader::_Process_ComplexImage(RtsXmlDoc::NodePtr* pNode)
 
 	RtwComplexImage* pOutputImage = g_workspace.getImageFactory()->createImageSequence();
 
-	SMargin sm(strBorder.c_str());
+	const SMargin sm(strBorder.c_str());
 
 	pOutputImage->borderSize = sm;
 

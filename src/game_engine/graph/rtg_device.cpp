@@ -8,6 +8,7 @@ RtgRenderOption g_RenderOption;
 string _call_create_buffer_func_name;
 string _call_create_buffer_func_line;
 
+//lyymark 1.Core.RtgDevice 默认配置
 RtgDevice::RtgDevice()
 {
     int i;
@@ -135,8 +136,8 @@ RtgDevice::RtgDevice()
     m_userConfig.bFSAA                  = false;        // 全屏抗锯齿 关
     m_userConfig.bEdgeAntialias         = false;        // 全屏抗锯齿 关
     m_userConfig.bEnableConsole         = false;
-    m_userConfig.lWndWidth              = 800;
-    m_userConfig.lWndHeight             = 600;
+    m_userConfig.lWndWidth              = 1024;
+    m_userConfig.lWndHeight             = 768;
     m_userConfig.lWndColorDepth         = 32;
     m_userConfig.lTextureQuality        = 0;            // 贴图质量   高
     m_userConfig.lGeometryQuality       = 0;            // 贴图质量   高
@@ -144,8 +145,8 @@ RtgDevice::RtgDevice()
     m_userConfig.bObjEffect             = 1;            // 后期加强   关
     m_userConfig.dwMaxMultiSampleTypeWindowed   = 0;
     m_userConfig.dwMaxMultiSampleTypeFullscreen = 0;
-    m_userConfig.lMillisecondPerFrame   = 30;
-    m_userConfig.bvsync = false;
+    m_userConfig.lMillisecondPerFrame   = 16;           // 1000/16 = 60
+    m_userConfig.bvsync = false;                        // 垂直同步   关
 
     rt2_strcpy(m_config.szWindowTitle, "rtgGraph 3D App");
     m_config.iDefaultStartX          = CW_USEDEFAULT;   // 开始窗口的X位置
@@ -173,7 +174,7 @@ struct SResumeDefaultDisplayMode
 
 SResumeDefaultDisplayMode   s_ResumeDefaultDisplayMode;
 
-//bool RtgDevice::Init(RtgDeviceEvent* pEvent, RtgCamera* pCamera, RTHINSTANCE hInst)
+//lyymark 1.Device.Init Device初始化
 bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeClass* pCameraClass, const char* szGraphIni, const char* szUserIni)
 {
     RtIni graphIni;
@@ -227,7 +228,7 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
 
     ReadGraphIni(pGraphIni);
     ReadUserIni(pUserIni);
-
+// lyymark 搞不懂为什么不让生效 先放着
 #if defined(_MT) || defined(_DLL)
     m_userConfig.bFullscreen = false;
 #endif
@@ -267,7 +268,7 @@ RTHWND RtgDevice::GetWndHandle(RTGViewWindowMode eMode)
 }
 
 
-
+//lyymark 1.Core.ReadGraphIni加载Graph.ini配置
 void RtgDevice::ReadGraphIni(RtIni* pGraphIni)
 {
     long lTotalTextureMem = 8*1024*1024;
@@ -309,7 +310,7 @@ void RtgDevice::ReadGraphIni(RtIni* pGraphIni)
     if (m_config.iDefaultStartX==-1) m_config.iDefaultStartX = CW_USEDEFAULT;
     if (m_config.iDefaultStartY==-1) m_config.iDefaultStartY = CW_USEDEFAULT;
 }
-
+//lyymark 1.Core.ReadGraphIni加载User.ini配置
 void RtgDevice::ReadUserIni(RtIni* pUserIni)
 {
 //Heten

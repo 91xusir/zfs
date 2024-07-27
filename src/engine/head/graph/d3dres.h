@@ -13,8 +13,8 @@
 
 namespace rt_graph_dx9 {
 
-#define IDI_MAIN_ICON          101 // Application icon
-#define IDI_SMALL_ICON         102
+#define IDI_MAIN_ICON          115 // Application icon
+#define IDI_SMALL_ICON         1
 #define IDR_MAIN_ACCEL         113 // Keyboard accelerator
 #define IDR_MENU               141 // Application menu
 #define IDR_POPUP              142 // Popup menu

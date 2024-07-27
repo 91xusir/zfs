@@ -111,7 +111,7 @@ namespace rt_graph_dx9 {
 		D3DSURFACE_DESC   m_d3dsdBackBuffer;   // Surface desc of the backbuffer
 		DWORD             m_dwCreateFlags;     // Indicate sw or hw vertex processing
 		DWORD             m_dwWindowStyle;     // Saved window style for mode switches
-		DWORD             m_dwFpsLocked;
+		DWORD             m_dwFpsLocked;	   //Ëø¶¨Ö¡ÂÊ
 		RECT              m_rcWindowBounds;    // Saved window bounds for mode switches
 		RECT              m_rcWindowClient;    // Saved client area size for mode switches
 

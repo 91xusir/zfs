@@ -55,6 +55,9 @@ void CGdiPlusRenderImp::DrawImage(RtwImage* vpImage, const RtwRect& vrTargetRect
 	//剪裁
 	if(vpClipRect!=NULL)
 	{//有剪裁
+		//源图像矩形 (SourceRect): 定义了源图像中要提取的部分
+		//目标矩形 (TargetRect): 定义了在目标设备上绘制图像的位置和大小。
+		//裁剪矩形 (ClipRect): 限制了在目标设备上绘制的区域。
 		int SourceClipWidth = (vpClipRect->getWidth() * SourceRect.getWidth() ) / TargetRect.getWidth();
 		int SourceClipHeight = (vpClipRect->getHeight() * SourceRect.getHeight() ) / TargetRect.getHeight();
 		int SourceClipLeft  = SourceRect.left - 

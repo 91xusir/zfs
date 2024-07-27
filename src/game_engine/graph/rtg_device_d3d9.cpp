@@ -344,7 +344,7 @@ bool RtgDeviceD3D9::OnCreate3DDevice()
     CD3DApplication::m_bvsync = m_userConfig.bvsync;
 
     if (m_hRenderFullWnd) m_bCustomToggleFullscreen = true;
-
+    //lyymark 1.device创建主窗口在这边进去
     if (FAILED(CD3DApplication::Create((HINSTANCE)m_hAppInstance)))
     {
         RtCoreLog().Error("RtgDeviceD3D9错误: 创建D3D设备出错.\n");

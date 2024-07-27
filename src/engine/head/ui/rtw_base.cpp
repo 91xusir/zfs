@@ -239,7 +239,8 @@ void RtwRect::Expand(const RtwRect& rcOther)
 	}
 }
 
-//从字符串抽出矩形
+//lyymark 1.UI.XML.RtwRect.FromString 从xml字符串抽出矩形 
+//  转为 (x,y,width,height)模式 这里为 (x1,y1,x2,y2)模式
 bool RtwRect::FromString(const std::string& str)
 {
 	if (str.empty())
@@ -248,9 +249,9 @@ bool RtwRect::FromString(const std::string& str)
 	}
 	int width, height;
 	sscanf(str.c_str(), "%d, %d, %d, %d", &left, &top, &width, &height);
+
 	right = left + width;
 	bottom = top + height;
-
 	return true;
 }
 
@@ -290,6 +291,7 @@ SMargin::SMargin(const char* str)
 	case 1: right = top = bottom = left;		break;
 	case 2: right = left; bottom = top;			break;
 	case 3: bottom = top;						break;
+	default:									break;
 	}
 
 	fununguard;

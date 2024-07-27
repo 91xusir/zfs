@@ -2,12 +2,12 @@
 
 RT_IMPLEMENT_DYNAMIC(RtwForm, RtwWidget, 0, "ui")
 
-RtwForm::RtwForm():m_pTitleBarImage(NULL), m_pBtn_Close(NULL), m_bMode(false),m_bEnableEscapeHide(false)
+RtwForm::RtwForm() :m_pTitleBarImage(NULL), m_pBtn_Close(NULL), m_bMode(false), m_bEnableEscapeHide(false)
 {
-	m_Flag			 |= wfDClick;
+	m_Flag |= wfDClick;
 }
 
-RtwForm::~RtwForm(){}
+RtwForm::~RtwForm() {}
 
 void RtwForm::OnBeforeDestroy()
 {
@@ -49,8 +49,8 @@ bool RtwForm::Create(DWORD Id)
 	AddChild(m_pBtn_Close);
 	m_pBtn_Close->Show();
 	m_pBtn_Close->SetJoinParentAutoScroll(false);
- 	m_pBtn_Close->EvLClick += RTW_CALLBACK(this, RtwForm, OnClick_Close);
- 	EvMouseMove += RTW_CALLBACK(this, RtwForm, OnMouseMove_This);
+	m_pBtn_Close->EvLClick += RTW_CALLBACK(this, RtwForm, OnClick_Close);
+	EvMouseMove += RTW_CALLBACK(this, RtwForm, OnMouseMove_This);
 
 	return true;
 }
@@ -135,12 +135,12 @@ void RtwForm::SetShowTitleBar(bool bShow, bool bAdjectOtherPosition/* = true*/)
 			OffsetSize.width = 0;
 			OffsetSize.height = 10;
 		}
-		else 
+		else
 		{
 			OffsetSize.width = 0;
 			OffsetSize.height = -10;
 		}
-		
+
 		if (m_pChildren)
 		{
 			for (UiWidgetList::iterator iterWidget = m_pChildren->m_Widgets.begin(); iterWidget != m_pChildren->m_Widgets.end(); ++iterWidget)
@@ -164,7 +164,7 @@ void RtwForm::SetShowCloseButton(bool bShow)
 
 	if (bShow)
 		m_pBtn_Close->Show();
-	else 
+	else
 		m_pBtn_Close->Hide();
 }
 
@@ -193,6 +193,12 @@ void RtwForm::SetTitleBarHeight(int height)
 
 void RtwForm::DrawForeground(const RtwRect* pClipRect/* = NULL*/)
 {
+	//lyytodo 表单边框
+	/*if (m_BorderSize && m_BorderColor != 0x00000000)
+	{
+		const RtwPixel BorderColor = SETCOLORALPHA(m_BorderColor, m_Transparency);
+		g_workspace.getRenderDevice()->DrawRectangleBorder(m_rcFrame, BorderColor, pClipRect);
+	}*/
 	RtwWidget::DrawForeground(pClipRect);
 }
 
@@ -219,12 +225,12 @@ void RtwForm::DrawBackground(const RtwRect* pClipRect/* = NULL*/)
 	}
 	if (m_BkColor != 0)
 	{
-		g_workspace.getRenderDevice()->DrawRectangle(RtwRect(bgRect.left,bgRect.top+m_padding.top,bgRect.right,bgRect.bottom), SETCOLORALPHA(m_BkColor, m_Transparency));
+		g_workspace.getRenderDevice()->DrawRectangle(RtwRect(bgRect.left, bgRect.top + m_padding.top, bgRect.right, bgRect.bottom), SETCOLORALPHA(m_BkColor, m_Transparency));
 	}
 
 
-// 	if (m_bShowTitleBar)
-// 		bgRect.top += m_TitleBarHeight;
+	// 	if (m_bShowTitleBar)
+	// 		bgRect.top += m_TitleBarHeight;
 	RtwWidget::DrawBackground(&bgRect);
 
 	// Draw TitleBar
@@ -234,36 +240,36 @@ void RtwForm::DrawBackground(const RtwRect* pClipRect/* = NULL*/)
 		{
 			if (m_pTitleBarImage)
 			{
-				RtwImage *pImage = m_pTitleBarImage->getRenderImage();
+				RtwImage* pImage = m_pTitleBarImage->getRenderImage();
 				if (pImage)
 				{
 					pImage->SetCtrlTransparent(m_Transparency);
 					g_workspace.getRenderDevice()->DrawImage(pImage, m_rcTitle, SUiTextAlignment(alignNear, alignNear), &bgRect);
 				}
 			}
-// 			if (!m_TitleText.empty())
-// 			{
-// 				RtwRect rcTitleDraw(m_rcTitle.left + 8, m_rcTitle.top, m_rcTitle.right, m_rcTitle.bottom);
-// 				g_workspace.getFontManager()->DrawString(m_TitleText, rcTitleDraw, RtwPixel(0xffffffff), false, SUiTextAlignment(alignCenter, alignCenter), false, &bgRect);
-// 			}
+			// 			if (!m_TitleText.empty())
+			// 			{
+			// 				RtwRect rcTitleDraw(m_rcTitle.left + 8, m_rcTitle.top, m_rcTitle.right, m_rcTitle.bottom);
+			// 				g_workspace.getFontManager()->DrawString(m_TitleText, rcTitleDraw, RtwPixel(0xffffffff), false, SUiTextAlignment(alignCenter, alignCenter), false, &bgRect);
+			// 			}
 		}
 	}
 }
 
 void RtwForm::CalcClient()
 {
-	m_rcTitle.left   = m_rcFrame.left	 + (m_BorderSize);
-	m_rcTitle.right  = m_rcFrame.right	 - (m_BorderSize);
-	m_rcTitle.top    = m_rcFrame.top	 + (m_BorderSize);
+	m_rcTitle.left = m_rcFrame.left + (m_BorderSize);
+	m_rcTitle.right = m_rcFrame.right - (m_BorderSize);
+	m_rcTitle.top = m_rcFrame.top + (m_BorderSize);
 	m_rcTitle.bottom = m_rcFrame.bottom - (m_BorderSize);
 	if (m_bShowTitleBar)
 		m_rcTitle.bottom = m_rcFrame.top + m_TitleBarHeight;
-	else 
+	else
 		m_rcTitle.bottom = m_rcFrame.top;
 
-	m_rcClient.left   = m_rcFrame.left	 + (m_BorderSize + m_padding.left);
-	m_rcClient.right  = m_rcFrame.right	 - (m_BorderSize + m_padding.right);
-	m_rcClient.top    = m_rcFrame.top	 + (m_BorderSize + m_padding.top);
+	m_rcClient.left = m_rcFrame.left + (m_BorderSize + m_padding.left);
+	m_rcClient.right = m_rcFrame.right - (m_BorderSize + m_padding.right);
+	m_rcClient.top = m_rcFrame.top + (m_BorderSize + m_padding.top);
 	m_rcClient.bottom = m_rcFrame.bottom - (m_BorderSize + m_padding.bottom);
 	if (m_rcClient.bottom < m_rcClient.top)
 		m_rcClient.bottom = m_rcClient.top;
@@ -272,7 +278,7 @@ void RtwForm::CalcClient()
 	{
 		RtwRect& rcCloseBtnFrame = m_pBtn_Close->GetFrameRect();
 		RtwRect rcCloseBtn;
-		SMargin rcBtn =m_pBtn_Close->GetPadding();
+		SMargin rcBtn = m_pBtn_Close->GetPadding();
 		rcCloseBtn.right = m_rcTitle.right - rcBtn.right;
 		rcCloseBtn.left = rcCloseBtn.right - rcCloseBtnFrame.getWidth();
 		rcCloseBtn.top = m_rcTitle.top + rcBtn.top;
@@ -308,39 +314,39 @@ void RtwForm::OnMouseMove_This(RtwWidget* pWidget, RtwEventDelegate* pEvent)
 		}
 
 		// 防止移动到屏幕以外
- 		SSize AdjectSize;
+		SSize AdjectSize;
 
 		// 获取视口的矩形区域
- 		RtwRect rcViewport = g_workspace.getViewportRect();
+		RtwRect rcViewport = g_workspace.getViewportRect();
 		// 检查窗口右边是否超出视口的左边界，如果超出，则计算需要调整的宽度
- 		if (m_rcFrame.right < 10)
- 		{
- 			AdjectSize.width = 10 - m_rcFrame.right;
- 		}
+		if (m_rcFrame.right < 10)
+		{
+			AdjectSize.width = 10 - m_rcFrame.right;
+		}
 		// 检查窗口左边是否超出视口的右边界，如果超出，则计算需要调整的宽度
- 		else if (m_rcFrame.left > rcViewport.right - 10)
- 		{
- 			AdjectSize.width = rcViewport.right - 10 - m_rcFrame.left;
- 		}
+		else if (m_rcFrame.left > rcViewport.right - 10)
+		{
+			AdjectSize.width = rcViewport.right - 10 - m_rcFrame.left;
+		}
 		// 检查窗口顶部是否超出视口的底部边界，如果超出，则计算需要调整的高度
- 		if (m_rcFrame.top < -5)
- 		{
- 			AdjectSize.height = -5 - m_rcFrame.top;
- 		}
+		if (m_rcFrame.top < -5)
+		{
+			AdjectSize.height = -5 - m_rcFrame.top;
+		}
 		// 检查窗口底部是否超出视口的顶部边界，如果超出，则计算需要调整的高度
- 		else if (m_rcFrame.top > rcViewport.bottom - 10)
- 		{
- 			AdjectSize.height = rcViewport.bottom - 10 - m_rcFrame.top;
- 		}
+		else if (m_rcFrame.top > rcViewport.bottom - 10)
+		{
+			AdjectSize.height = rcViewport.bottom - 10 - m_rcFrame.top;
+		}
 		// 如果需要调整的宽度或高度不为零，则调用 Offset 函数进行调整
- 		if (AdjectSize.width != 0 || AdjectSize.height != 0)
- 			Offset(AdjectSize);
+		if (AdjectSize.width != 0 || AdjectSize.height != 0)
+			Offset(AdjectSize);
 	}
 }
 
 void RtwForm::OnClick_Close(RtwWidget* pWidget, RtwEventDelegate* pEvent)
 {
-	if (getCloseButton()->getFlag(wfVisible,false))
+	if (getCloseButton()->getFlag(wfVisible, false))
 	{
 		Hide(/*esTrans|esZoom*/);
 	}
@@ -357,28 +363,28 @@ void RtwForm::Show()
 	g_workspace.InsertFocusWidget(this);
 	RtwWidget::Show();
 
-// 	SSize AdjectSize;
-// 	RtwRect rcViewport = g_workspace.getViewportRect();
-// 	if (m_rcFrame.right < 10)
-// 	{
-// 		AdjectSize.width = 10 - m_rcFrame.right;
-// 	}
-// 	else if (m_rcFrame.left > rcViewport.right - 10)
-// 	{
-// 		AdjectSize.width = rcViewport.right - 10 - m_rcFrame.left;
-// 	}
-// 	if (m_rcFrame.top < -5)
-// 	{
-// 		AdjectSize.height = -5 - m_rcFrame.top;
-// 	}
-// 	else if (m_rcFrame.top > rcViewport.bottom - 10)
-// 	{
-// 		AdjectSize.height = rcViewport.bottom - 10 - m_rcFrame.top;
-// 	}
-// 
-// 	if (AdjectSize.width != 0 || AdjectSize.height != 0)
-// 		Offset(AdjectSize);
-}	
+	// 	SSize AdjectSize;
+	// 	RtwRect rcViewport = g_workspace.getViewportRect();
+	// 	if (m_rcFrame.right < 10)
+	// 	{
+	// 		AdjectSize.width = 10 - m_rcFrame.right;
+	// 	}
+	// 	else if (m_rcFrame.left > rcViewport.right - 10)
+	// 	{
+	// 		AdjectSize.width = rcViewport.right - 10 - m_rcFrame.left;
+	// 	}
+	// 	if (m_rcFrame.top < -5)
+	// 	{
+	// 		AdjectSize.height = -5 - m_rcFrame.top;
+	// 	}
+	// 	else if (m_rcFrame.top > rcViewport.bottom - 10)
+	// 	{
+	// 		AdjectSize.height = rcViewport.bottom - 10 - m_rcFrame.top;
+	// 	}
+	// 
+	// 	if (AdjectSize.width != 0 || AdjectSize.height != 0)
+	// 		Offset(AdjectSize);
+}
 
 void RtwForm::Hide()
 {
