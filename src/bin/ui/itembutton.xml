@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layWorld" Show="true">
+    <Form BackgroundColor="#ee000000" Inherit="" Location="27,19,200,300" MouseEvent="false" MouseMove="false" Name="frItemButton" Show="false"/>
+  </Layer>
+</Ui>

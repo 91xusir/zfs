@@ -1,72 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="engine">
-      <UniqueIdentifier>{56d08249-702e-4a07-a9a6-6faedd024680}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\core">
-      <UniqueIdentifier>{ab67378b-c68b-4b76-9e1e-4df4f175b778}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\core\core_include">
-      <UniqueIdentifier>{6847a0f0-6eeb-4e89-b2a4-5eff806b96ac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\graph">
-      <UniqueIdentifier>{8ccf94a7-368c-40c7-adbe-0d1ef8fae278}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\graph\graph_include">
-      <UniqueIdentifier>{856f3299-1e9e-4d0f-857a-bdf4ebc89781}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\graph\graph_source">
-      <UniqueIdentifier>{7b584bea-5d39-4588-b77e-7dde3836ac5f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\scene">
-      <UniqueIdentifier>{49a7b0fb-4535-4965-8d50-a87aa530e727}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\scene\scene_include">
-      <UniqueIdentifier>{d35f63ca-2a03-4deb-9f51-fdd1294d0ed1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\scene\scene_source">
-      <UniqueIdentifier>{48bdfc1f-64d9-44e2-abe3-f8e8b18eb455}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\character">
-      <UniqueIdentifier>{631544f1-a343-4bfe-9593-bbc07f1d60c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\character\character_include">
-      <UniqueIdentifier>{f6c6f2df-0897-46a2-af13-4808fa7aef5c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\character\character_source">
-      <UniqueIdentifier>{46b0cb3e-1091-4ef6-b1a6-b715574e8367}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\net">
-      <UniqueIdentifier>{06c74e77-0993-432a-be4f-e218c03f33eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\net\net_include">
-      <UniqueIdentifier>{5b0836d7-043d-4f78-92e8-143b29ffd7f8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\net\net_include\net_source">
-      <UniqueIdentifier>{e8b89d12-32e3-46bf-98d9-7fc12e363719}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\audio">
-      <UniqueIdentifier>{9b01d925-6726-4038-9d37-f6b7d24c0fc7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\audio\audio_include">
-      <UniqueIdentifier>{4cfb5b8c-b70a-4907-ae5a-af51a9e983e3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\audio\audio_source">
-      <UniqueIdentifier>{88f95b83-11db-4516-b21e-176583b1106f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\ui">
-      <UniqueIdentifier>{3164d706-eb70-406b-8eca-8d2670f4ed76}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\file_pack">
-      <UniqueIdentifier>{85c3916f-3d50-4a33-bf0e-3fdb519c8d9f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\file_pack\assistant">
-      <UniqueIdentifier>{91eed570-4e6d-4b0c-b31b-473dd6a361f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="engine\file_pack\interface">
-      <UniqueIdentifier>{a83a4063-3933-413d-a777-8885490eabd9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="game">
       <UniqueIdentifier>{331071b9-d1dc-4591-835b-44e54b0e39be}</UniqueIdentifier>
     </Filter>
@@ -105,9 +39,6 @@
     </Filter>
     <Filter Include="game\ui\ui_union">
       <UniqueIdentifier>{bbba67e2-d5d3-44da-ad47-5a7cd6a1eb6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="game\ui\ui_login_selectchar">
-      <UniqueIdentifier>{15604f31-eb3c-4b19-b468-4c51cda45bc4}</UniqueIdentifier>
     </Filter>
     <Filter Include="game\ui\ui_feod_castlewar">
       <UniqueIdentifier>{c9fd3c59-203b-4e15-9851-d8e31724ab5d}</UniqueIdentifier>
@@ -229,505 +160,583 @@
     <Filter Include="frame\nes">
       <UniqueIdentifier>{8ac2ec69-338b-48c8-85c5-dbe1a587df00}</UniqueIdentifier>
     </Filter>
-    <Filter Include="sjdl">
-      <UniqueIdentifier>{3caebf2f-d00a-4859-892e-8a529b25c958}</UniqueIdentifier>
-    </Filter>
     <Filter Include="game\ui\ui_lyyFix">
       <UniqueIdentifier>{4d437c3e-1aad-4a26-a4ad-27dde1b14cb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor">
+      <UniqueIdentifier>{a4d67ef6-8025-4a44-a058-e1f11e12435c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor\ui_login">
+      <UniqueIdentifier>{15604f31-eb3c-4b19-b468-4c51cda45bc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor\preUtils">
+      <UniqueIdentifier>{51a62569-c5d0-4dd0-8077-48f05ee95332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor\fps">
+      <UniqueIdentifier>{3caebf2f-d00a-4859-892e-8a529b25c958}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="other">
+      <UniqueIdentifier>{e53ae7c9-1e11-4025-82a0-147fc9a13aac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk">
+      <UniqueIdentifier>{56d08249-702e-4a07-a9a6-6faedd024680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\core">
+      <UniqueIdentifier>{ab67378b-c68b-4b76-9e1e-4df4f175b778}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\core\core_include">
+      <UniqueIdentifier>{6847a0f0-6eeb-4e89-b2a4-5eff806b96ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\graph">
+      <UniqueIdentifier>{8ccf94a7-368c-40c7-adbe-0d1ef8fae278}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\graph\graph_include">
+      <UniqueIdentifier>{856f3299-1e9e-4d0f-857a-bdf4ebc89781}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\graph\graph_source">
+      <UniqueIdentifier>{7b584bea-5d39-4588-b77e-7dde3836ac5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\scene">
+      <UniqueIdentifier>{49a7b0fb-4535-4965-8d50-a87aa530e727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\scene\scene_include">
+      <UniqueIdentifier>{d35f63ca-2a03-4deb-9f51-fdd1294d0ed1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\scene\scene_source">
+      <UniqueIdentifier>{48bdfc1f-64d9-44e2-abe3-f8e8b18eb455}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\character">
+      <UniqueIdentifier>{631544f1-a343-4bfe-9593-bbc07f1d60c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\character\character_include">
+      <UniqueIdentifier>{f6c6f2df-0897-46a2-af13-4808fa7aef5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\character\character_source">
+      <UniqueIdentifier>{46b0cb3e-1091-4ef6-b1a6-b715574e8367}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\net">
+      <UniqueIdentifier>{06c74e77-0993-432a-be4f-e218c03f33eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\net\net_include">
+      <UniqueIdentifier>{5b0836d7-043d-4f78-92e8-143b29ffd7f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\net\net_include\net_source">
+      <UniqueIdentifier>{e8b89d12-32e3-46bf-98d9-7fc12e363719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\audio">
+      <UniqueIdentifier>{9b01d925-6726-4038-9d37-f6b7d24c0fc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\audio\audio_include">
+      <UniqueIdentifier>{4cfb5b8c-b70a-4907-ae5a-af51a9e983e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\audio\audio_source">
+      <UniqueIdentifier>{88f95b83-11db-4516-b21e-176583b1106f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\ui">
+      <UniqueIdentifier>{3164d706-eb70-406b-8eca-8d2670f4ed76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\file_pack">
+      <UniqueIdentifier>{85c3916f-3d50-4a33-bf0e-3fdb519c8d9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\file_pack\assistant">
+      <UniqueIdentifier>{91eed570-4e6d-4b0c-b31b-473dd6a361f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="engine_sdk\file_pack\interface">
+      <UniqueIdentifier>{a83a4063-3933-413d-a777-8885490eabd9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\engine\head\core\rt2_core.h">
-      <Filter>engine\core</Filter>
+      <Filter>engine_sdk\core</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_build_option.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_database.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_debug.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_encrypt.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_engine_sys.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_file.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_lock.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_log.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_math.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_memory.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_object.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_platform.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_platform_unix.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_platform_win32.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_process.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_smartptr.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_string.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_system_info.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_text.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_text_ini.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_text_table.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_text_util.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_text_xml.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_thread.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_thread_event.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_time.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\rtc2_util.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\zconf.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\zlib.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\core\zstream.h">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rt_graph.h">
-      <Filter>engine\graph</Filter>
+      <Filter>engine_sdk\graph</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_buffer.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_camera.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_collision.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_config.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_device.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_device_2d.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_device_event.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_enum.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_frame.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_frustum.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_geometry.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_graph.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_image.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_ligth.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_math.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_matrix.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_node.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_plane.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_refreshrate.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_shader.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_texture.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_triangle.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_type.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_util.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\graph\rtg_vertex.h">
-      <Filter>engine\graph\graph_include</Filter>
+      <Filter>engine_sdk\graph\graph_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rt_scene.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_audio_3d.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_d_light.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_footprint.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_grass_render.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_innerve.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_light.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_model.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_obj_render_agent.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_object.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_object_manger.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_path_find.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_path_point.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_scene.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_scene_area.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_scene_block.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_scene_doc.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_scene_terrain.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_scene_type.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_scene_util.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_SceneManager.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\scene\rts_sv_scene.h">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\character\actor.h">
-      <Filter>engine\character\character_include</Filter>
+      <Filter>engine_sdk\character\character_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\character\cha_anim.h">
-      <Filter>engine\character\character_include</Filter>
+      <Filter>engine_sdk\character\character_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\character\cha_basic.h">
-      <Filter>engine\character\character_include</Filter>
+      <Filter>engine_sdk\character\character_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\character\cha_effect.h">
-      <Filter>engine\character\character_include</Filter>
+      <Filter>engine_sdk\character\character_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\character\cha_mtl.h">
-      <Filter>engine\character\character_include</Filter>
+      <Filter>engine_sdk\character\character_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\net\rt_net.h">
-      <Filter>engine\net\net_include</Filter>
+      <Filter>engine_sdk\net\net_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\net\g_cmdpacket.h">
-      <Filter>engine\net\net_include\net_source</Filter>
+      <Filter>engine_sdk\net\net_include\net_source</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\net\g_netpacket.h">
-      <Filter>engine\net\net_include\net_source</Filter>
+      <Filter>engine_sdk\net\net_include\net_source</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\net\g_netsocket.h">
-      <Filter>engine\net\net_include\net_source</Filter>
+      <Filter>engine_sdk\net\net_include\net_source</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\net\g_tcplistener.h">
-      <Filter>engine\net\net_include\net_source</Filter>
+      <Filter>engine_sdk\net\net_include\net_source</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\net\g_tcpsession.h">
-      <Filter>engine\net\net_include\net_source</Filter>
+      <Filter>engine_sdk\net\net_include\net_source</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\net\g_udpsession.h">
-      <Filter>engine\net\net_include\net_source</Filter>
+      <Filter>engine_sdk\net\net_include\net_source</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\audio\rt_audio.h">
-      <Filter>engine\audio</Filter>
+      <Filter>engine_sdk\audio</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\audio\rt_audio.h">
-      <Filter>engine\audio\audio_include</Filter>
+      <Filter>engine_sdk\audio\audio_include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\audio\rta_back_music.h">
-      <Filter>engine\audio\audio_include</Filter>
+      <Filter>engine_sdk\audio\audio_include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\audio\rta_sound.h">
-      <Filter>engine\audio\audio_include</Filter>
+      <Filter>engine_sdk\audio\audio_include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\audio\rta_sound_mgr.h">
-      <Filter>engine\audio\audio_include</Filter>
+      <Filter>engine_sdk\audio\audio_include</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_3dview.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_animation.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_base.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_button.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_chatbox.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_chatinputbox.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_clipboard.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_combobox.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_config.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_delegate.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_device2d.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_document.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_event.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_font.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_form.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_hint.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_htmlelement.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_htmllayout.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_htmlloader.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_htmlparser.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_htmlreflow.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_htmltaglist.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_htmltags.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_htmlview.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_hud.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_hyperlink.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_iconlist.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_image.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_label.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_layer.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_listbox.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_mailbox.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_mediaframe.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_panel.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_popup_menu.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_progressbar.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_ptr.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_python.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_richtext.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_scrollable.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_scrollbar.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_sound.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_tab.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_template.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_textbox.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_theme.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_timer.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_tree.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_ui.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_widget.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_workspace.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\ui\rtw_xml.h">
-      <Filter>engine\ui</Filter>
+      <Filter>engine_sdk\ui</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\memory_file.h">
-      <Filter>engine\file_pack</Filter>
+      <Filter>engine_sdk\file_pack</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\ansi_file.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\compress_mode.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\file_error.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\game_filter.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\memory_buffer.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\normal_pack.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\pack_error.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\pack_factory.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\pack_file.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\profile.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\profile_result.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\rt_async_file.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\unpack_file.h">
-      <Filter>engine\file_pack\assistant</Filter>
+      <Filter>engine_sdk\file_pack\assistant</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\game_pack.h">
-      <Filter>engine\file_pack\interface</Filter>
+      <Filter>engine_sdk\file_pack\interface</Filter>
     </ClInclude>
     <ClInclude Include="..\engine\head\filepack\pack_manager.h">
-      <Filter>engine\file_pack\interface</Filter>
+      <Filter>engine_sdk\file_pack\interface</Filter>
     </ClInclude>
     <ClInclude Include="game\gc_bulletin.h">
       <Filter>game\world</Filter>
@@ -736,12 +745,6 @@
       <Filter>game\world</Filter>
     </ClInclude>
     <ClInclude Include="game\gc_world.h">
-      <Filter>game\world</Filter>
-    </ClInclude>
-    <ClInclude Include="game\num_keyboard.h">
-      <Filter>game\world</Filter>
-    </ClInclude>
-    <ClInclude Include="game\soft_keyboard.h">
       <Filter>game\world</Filter>
     </ClInclude>
     <ClInclude Include="game\game_assistant.h">
@@ -925,10 +928,10 @@
       <Filter>game\ui\ui_union</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_layer_login.h">
-      <Filter>game\ui\ui_login_selectchar</Filter>
+      <Filter>refactor\ui_login</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_layer_select_char.h">
-      <Filter>game\ui\ui_login_selectchar</Filter>
+      <Filter>refactor\ui_login</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_form_castlewar.h">
       <Filter>game\ui\ui_feod_castlewar</Filter>
@@ -1374,19 +1377,19 @@
     <ClInclude Include="game\NesClient.h">
       <Filter>frame\nes</Filter>
     </ClInclude>
-    <ClInclude Include="preLog.h">
-      <Filter>sjdl</Filter>
-    </ClInclude>
     <ClInclude Include="gc_fps.h">
-      <Filter>sjdl</Filter>
+      <Filter>refactor\fps</Filter>
     </ClInclude>
-    <ClInclude Include="ui\UIForm_Server.h">
-      <Filter>game\ui\ui_login_selectchar</Filter>
+    <ClInclude Include="preLog.h">
+      <Filter>refactor\preUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>other</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\engine\head\core\rtc2_thread.inl">
-      <Filter>engine\core\core_include</Filter>
+      <Filter>engine_sdk\core\core_include</Filter>
     </None>
     <None Include="frame\attack.cur">
       <Filter>frame\resource\cur</Filter>
@@ -1418,11 +1421,13 @@
     <None Include="frame\talk.cur">
       <Filter>frame\resource\cur</Filter>
     </None>
-    <None Include="cpp.hint" />
+    <None Include="cpp.hint">
+      <Filter>other</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\engine\head\scene\rts_path_point.cpp">
-      <Filter>engine\scene\scene_include</Filter>
+      <Filter>engine_sdk\scene\scene_include</Filter>
     </ClCompile>
     <ClCompile Include="game\gc_bulletin.cpp">
       <Filter>game\world</Filter>
@@ -1431,12 +1436,6 @@
       <Filter>game\world</Filter>
     </ClCompile>
     <ClCompile Include="game\gc_world.cpp">
-      <Filter>game\world</Filter>
-    </ClCompile>
-    <ClCompile Include="game\num_keyboard.cpp">
-      <Filter>game\world</Filter>
-    </ClCompile>
-    <ClCompile Include="game\soft_keyboard.cpp">
       <Filter>game\world</Filter>
     </ClCompile>
     <ClCompile Include="game\game_clipboard.cpp">
@@ -1590,10 +1589,10 @@
       <Filter>game\ui\ui_union</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_layer_login.cpp">
-      <Filter>game\ui\ui_login_selectchar</Filter>
+      <Filter>refactor\ui_login</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_layer_select_char.cpp">
-      <Filter>game\ui\ui_login_selectchar</Filter>
+      <Filter>refactor\ui_login</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_castlewar.cpp">
       <Filter>game\ui\ui_feod_castlewar</Filter>
@@ -2009,12 +2008,17 @@
     <ClCompile Include="frame\gc_cursor.cpp">
       <Filter>frame\resource</Filter>
     </ClCompile>
-    <ClCompile Include="iob_func.cpp" />
     <ClCompile Include="gc_fps.cpp">
-      <Filter>sjdl</Filter>
+      <Filter>refactor\fps</Filter>
     </ClCompile>
-    <ClCompile Include="ui\UIForm_Server.cpp">
-      <Filter>game\ui\ui_login_selectchar</Filter>
+    <ClCompile Include="ui\ui_layer_server.cpp">
+      <Filter>refactor\ui_login</Filter>
+    </ClCompile>
+    <ClCompile Include="iob_func.cpp">
+      <Filter>other</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2026,7 +2030,5 @@
     <Image Include="frame\icon_main.ico">
       <Filter>frame\resource</Filter>
     </Image>
-    <Image Include="frame\icon_mai.ico" />
-    <Image Include="frame\icon_small.ico" />
   </ItemGroup>
 </Project>

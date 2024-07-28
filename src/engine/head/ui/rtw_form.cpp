@@ -159,13 +159,14 @@ void RtwForm::SetShowTitleBar(bool bShow, bool bAdjectOtherPosition/* = true*/)
 
 void RtwForm::SetShowCloseButton(bool bShow)
 {
-	if (!m_pBtn_Close || m_pBtn_Close->getVisible() == bShow)
-		return;
-
-	if (bShow)
-		m_pBtn_Close->Show();
-	else
-		m_pBtn_Close->Hide();
+    // 检查按钮是否存在以及当前可见性是否与 bShow 相同
+    if (m_pBtn_Close && m_pBtn_Close->getVisible() != bShow) {
+        // 根据 bShow 值来显示或隐藏按钮
+        if (bShow)
+            m_pBtn_Close->Show();  // 显示按钮
+        else
+            m_pBtn_Close->Hide();  // 隐藏按钮
+    }
 }
 
 void RtwForm::SetTitleBarHeight(int height)
@@ -364,28 +365,6 @@ void RtwForm::Show()
 {
 	g_workspace.InsertFocusWidget(this);
 	RtwWidget::Show();
-
-	// 	SSize AdjectSize;
-	// 	RtwRect rcViewport = g_workspace.getViewportRect();
-	// 	if (m_rcFrame.right < 10)
-	// 	{
-	// 		AdjectSize.width = 10 - m_rcFrame.right;
-	// 	}
-	// 	else if (m_rcFrame.left > rcViewport.right - 10)
-	// 	{
-	// 		AdjectSize.width = rcViewport.right - 10 - m_rcFrame.left;
-	// 	}
-	// 	if (m_rcFrame.top < -5)
-	// 	{
-	// 		AdjectSize.height = -5 - m_rcFrame.top;
-	// 	}
-	// 	else if (m_rcFrame.top > rcViewport.bottom - 10)
-	// 	{
-	// 		AdjectSize.height = rcViewport.bottom - 10 - m_rcFrame.top;
-	// 	}
-	// 
-	// 	if (AdjectSize.width != 0 || AdjectSize.height != 0)
-	// 		Offset(AdjectSize);
 }
 
 void RtwForm::Hide()

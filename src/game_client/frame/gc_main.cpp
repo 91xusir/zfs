@@ -856,21 +856,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 			return FALSE;
 		}
 
-		int start = ((std::string)lpCmdLine).find(";");
-		start = ((std::string)lpCmdLine).find(" ", start + 1);
-		int end = ((std::string)lpCmdLine).find(" ", start + 1);
-		if (std::string::npos != end)
-		{
-			std::string xx = ((std::string)lpCmdLine).substr(start + 1, end - start - 1);
-			GetLogin()->m_hallName = xx;
-			start = end + 1;
-			xx = ((std::string)lpCmdLine).substr(start);
-			GetLogin()->m_hallKey = xx;
-			if (!GetLogin()->m_hallName.empty() && !GetLogin()->m_hallKey.empty())
-			{
-				GetLogin()->m_ishallLogin = true;
-			}
-		}
+
 
 #ifndef _DEBUG
 		//CREATE_THREAD(callbackAccelerateCheck, 0);
@@ -885,21 +871,13 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
 		// 执行程序
 		guard_name(WinMain::Run);
-		//         iResult = g_pGameClientFrame->Run();
+	
 		//lyymark 1.Game.Init 启动游戏引擎，客户端主循环入口
-		iResult = GetDevice()->RunEngine();// change [3/25/2009 tooth.shi]
+		iResult = GetDevice()->RunEngine();
 		finalunguard;
 
 		LOG1("\n\n============== App End: %s\n\n", rtTimestamp());
 	}
-
-	//#ifndef _DEBUG
-	//	const char* szBug ="http://hd.wtgame.net/x/bug/";
-	//	std::string szCmd = "explorer.exe \"";
-	//	szCmd += szBug;
-	//	szCmd += "\"";
-	//	WinExec(szCmd.c_str(), SW_SHOW);
-	//#endif
 
 	{
 		guard_name(WinMain::Exit);

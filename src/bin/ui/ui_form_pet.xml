@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Anchor="none" Inherit="VoidTitleBarForm1" Location="213,191,250,145" Movable="true" Name="fmpet" Show="false" StartPosition="centerParent">
+      <Label Alignment="center" Inherit="" Location="24,3,200,16" Name="lbinfo" Text="宠物复活"/>
+      <Label Alignment="left" Inherit="" Location="26,23,230,16" Multiline="true" Name="lbtxt" Text="  将需要复活的宠物放置到下面位置"/>
+      <Label Alignment="center" Inherit="" Location="12,34,230,16" Multiline="true" Name="lbtxt" Text=""/>
+      <Form BorderSize="0,1,0,0" Inherit="Border" Location="0,102,130,20" Name="panChange" Text="">
+        <Label Alignment="center" FontSize="12" Inherit="" Location="5,-1,60,18" Name="lbneed" Show="true" Text="所需金钱" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,64,60,18"/>
+        </Label>
+        <Label Location="67,0,60,14" Name="lbmoney" Text="10000" TextColor=""/>
+      </Form>
+      <Button Alignment="center" BorderSize="" FontSize="12" Inherit="" Location="108,49,32,32" Name="aliasCombpet" Show="true" Text="" TextFont="宋体"/>
+      <Label Inherit="" Location="105,45,38,38" Name="1244" Show="true">
+        <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+      </Label>
+      <Button FontSize="12" Inherit="NewButton1" Location="127,101,60,21" Name="btnok" Show="true" Sound="ui_normalbt.wav" Text="确认" TextColor="#fffbff66" TextFont="宋体"/>
+      <Button FontSize="12" Inherit="NewButton1" Location="188,101,60,21" Name="btncancel" Show="true" Sound="ui_normalbt.wav" Text="取消" TextColor="#fffbff66" TextFont="宋体"/>
+      <Anchors>
+        <Anchor offset="-180,0" point="CENTERV"/>
+        <Anchor offset="0,-115" point="CENTERH"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>

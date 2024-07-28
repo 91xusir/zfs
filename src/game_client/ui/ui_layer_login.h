@@ -2,7 +2,7 @@
 #define _INC_UI_LOGIN_LAYER_H_
 
 #include "ui_form_setting.h"
-#include "soft_keyboard.h"
+
 
 class CUIForm_Server;
 
@@ -19,10 +19,6 @@ class UILayerLogin {
     void OnUpdateText(RtwWidget* sender, RtwEventDelegate*);
 
     void OnKey(RtwWidget* sender, RtwEventDelegate*);
-
-    void OnHideKeyboard(void*, void*);
-
-    void OnShowKeyboard(void*, void*);
 
     void ontab(RtwWidget* sender, RtwEventDelegate* e);
 
@@ -49,11 +45,9 @@ class UILayerLogin {
     void OnClicked_CreateAccount(void*, void*);
     //保存帐号
     void OnClicked_SaveAccount(RtwWidget* sender, RtwEventDelegate* e);
-    //打开软键盘
-    void OnClicked_Keyboard(void*, void*);
 
-   private:
-    CSoftKeyboard m_Keyboard;
+
+  
 
    public:
     constexpr static int MaxBtnsCounts = 8;  //设置服务器最大显示个数
@@ -62,7 +56,7 @@ class UILayerLogin {
     //CUiCheckButton*      m_pBtnSaveAccount; 
     CUIForm_Server*      m_formServer;
     //----------------------------------fox by lyy 2024.7.28
-    RtwWidget* mp_loginForm;
+    RtwForm* mp_loginForm;
 
     RtwWidget* mp_selectServerName;
 
@@ -72,8 +66,8 @@ class UILayerLogin {
 
     CUiCheckButton* mp_ckSaveAcc;
 
-    RtwWidget* mp_btnOk;
-    RtwWidget* mp_btnBack;
+    RtwButton* mp_btnOk;
+    RtwButton* mp_btnBack;
 };
 
 class CUIForm_Server {
@@ -91,7 +85,7 @@ class CUIForm_Server {
    private:
     //lyymark 2.GcLogin.UI.Server
     /*-----------------------------------------------add by lyy*/
-    RtwWidget*                          mp_serverForm;
+    RtwForm*                            mp_serverForm;
     RtwWidget*                          mp_serverTips;
     RtwButton*                          mp_btnServersList[UILayerLogin::MaxBtnsCounts]{};
     std::unordered_map<RtwButton*, int> mp_btnServersSelectedMap{};

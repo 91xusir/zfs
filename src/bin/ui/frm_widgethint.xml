@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+	<Form Name="frmWidgetHint" Inherit="TitleBarForm" Location="0,0,400,300" Show="false" BackgroundColor="#bb222222" Active="false" MouseEvent="false" MouseMove="false" EscapeHide="false">
+		<TitleBar Show="false" />
+		<CloseButton Show="false" />
+		<Label Name="labType1" Text="Type:" Location="2,2,70,16"  />
+		<Label Name="labID1" Text="ID:" Location="2,18,70,16" />
+		<Label Name="labName1" Text="Name:" Location="2,34,70,16" />
+		<Label Name="labRefCount1" Text="RefCount:" Location="2,50,70,16" />
+		<Label Name="labType" Text="" Location="70,2,330,16"  />
+		<Label Name="labID" Text="" Location="70,18,330,16" />
+		<Label Name="labName" Text="" Location="70,34,330,16" />
+		<Label Name="labRefCount" Text="" Location="70,50,330,16" />
+	</Form>
+</Ui>

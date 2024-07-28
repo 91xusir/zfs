@@ -53,20 +53,21 @@ class RtwWidget : public RtwRefObject, public IUiEventReceiver {
     virtual void OnRemoveChild(RtwWidget* pWidget);
     void         ModifyFlags(int add, int remove);
     void         ModifyFlag(int add, int remove);
-    bool         PickWidget(const SPoint& Position, RtwWidget** ppWidget = NULL, DWORD FlagMask = 0x00000000,
-                            CUiWidgetContainer* pExcludeWidgets = NULL);
+    bool         PickWidget(const SPoint& Position, RtwWidget** ppWidget = NULL,
+                            DWORD FlagMask = 0x00000000, CUiWidgetContainer* pExcludeWidgets = NULL);
     bool         AddChild(RtwWidget* pWidget);
     void         SetParent(RtwWidget* pWidget);
     bool         AddChild(CUiWidgetContainer* pWidgetContainer);
     bool         RemoveChild(DWORD WidgetID, bool bRecursive = false);
     bool         RemoveChild(const std::string& WidgetName, bool bRecursive);
     bool         FindChild(DWORD WidgetID, RtwWidget** ppWidget = NULL, bool bRecursive = false);
-    bool         FindChild(const std::string& WidgetName, RtwWidget** ppWidget = NULL, bool bRecursive = false);
+    bool         FindChild(const std::string& WidgetName, RtwWidget** ppWidget = NULL,
+                           bool bRecursive = false);
     RtwWidget*   GetChildWidget(const std::string& WidgetName);
-    bool         RemoveAllChildren(CUiWidgetContainer* pExcludeWidgets = NULL);  // 不删除自动滚动条
-    void         Enable();
-    void         Disable();
-    void         SetName(const std::string& name, const std::string& replacedName = "");
+    bool RemoveAllChildren(CUiWidgetContainer* pExcludeWidgets = NULL);  // 不删除自动滚动条
+    void Enable();
+    void Disable();
+    void SetName(const std::string& name, const std::string& replacedName = "");
     virtual void SetText(const std::string& text);
 
     void SetTextColor(RtwPixel color) { m_TextColor = color; }
@@ -84,13 +85,14 @@ class RtwWidget : public RtwRefObject, public IUiEventReceiver {
     void         ShowAndFocus();
     void         Refresh();
     void         Close();
-    void         Offset(const SSize& size, bool bTriggerEvent = true, bool bAutoScrollParent = true);
-    void         Move(const SPoint& pos, bool bTriggerEvent = true, bool bAutoScrollParent = true);
-    void         Move(const RtwRect& rect, bool bAbs = false, bool bTriggerEvent = true,
-                      bool bAutoScrollParent = true);  // 如果bAbs == false，则：如果有父亲Widget，区域是相对于父亲Widget的
-    void         CenterScreen(int nOffsetX = 0, int nOffsetY = 0);
-    void         SetBackgroundImage(RtwImage* pImage);
-    void         SetBackgroundColor(RtwPixel color);
+    void Offset(const SSize& size, bool bTriggerEvent = true, bool bAutoScrollParent = true);
+    void Move(const SPoint& pos, bool bTriggerEvent = true, bool bAutoScrollParent = true);
+    void Move(const RtwRect& rect, bool bAbs = false, bool bTriggerEvent = true,
+              bool bAutoScrollParent =
+                  true);  // 如果bAbs == false，则：如果有父亲Widget，区域是相对于父亲Widget的
+    void CenterScreen(int nOffsetX = 0, int nOffsetY = 0);
+    void SetBackgroundImage(RtwImage* pImage);
+    void SetBackgroundColor(RtwPixel color);
 
     void ClearBackGround() { m_pBackGround = NULL; }
 
@@ -170,9 +172,11 @@ class RtwWidget : public RtwRefObject, public IUiEventReceiver {
 
     void SetParam2(void* Param2) { m_Param2 = Param2; }
 
-    void SetUltraText1(const std::string& text = "", SUiTextAlignment& align = SUiTextAlignment(alignFar, alignFar),
+    void SetUltraText1(const std::string& text = "",
+                       SUiTextAlignment&  align = SUiTextAlignment(alignFar, alignFar),
                        int fontSize = 0, RtwPixel textColor = RtwPixel(0xffffffff));
-    void SetUltraText2(const std::string& text = "", SUiTextAlignment& align = SUiTextAlignment(alignNear, alignNear),
+    void SetUltraText2(const std::string& text = "",
+                       SUiTextAlignment&  align = SUiTextAlignment(alignNear, alignNear),
                        int fontSize = 0, RtwPixel textColor = RtwPixel(0xffffffff));
 
     void SetMaskValue(Real MaskValue) { m_MaskValue = MaskValue; }
@@ -236,9 +240,13 @@ class RtwWidget : public RtwRefObject, public IUiEventReceiver {
 
     RtwPixel getBackgroundColor() const { return m_BkColor; }
 
-    RtwWidget* GetParent() { return (m_pParent && m_pParent->getWidgetType() != wtLayer) ? m_pParent : NULL; }
+    RtwWidget* GetParent() {
+        return (m_pParent && m_pParent->getWidgetType() != wtLayer) ? m_pParent : NULL;
+    }
 
-    RtwWidget* getParent() { return (m_pParent && m_pParent->getWidgetType() != wtLayer) ? m_pParent : NULL; }
+    RtwWidget* getParent() {
+        return (m_pParent && m_pParent->getWidgetType() != wtLayer) ? m_pParent : NULL;
+    }
 
     CUiLayer*      getLayer();
     CUiMediaFrame* getMediaFrame();
@@ -284,7 +292,7 @@ class RtwWidget : public RtwRefObject, public IUiEventReceiver {
     void ResetHint(bool bShow);
 
    protected:
-    void         OnFrameSizeChanged();                           // Frame的大小变化时的响应函数
+    void         OnFrameSizeChanged();  // Frame的大小变化时的响应函数
     void         OnNameChanged(const std::string& OldFullName);  // 名字发生改变时的回掉
     virtual void CalcClient();  // Frame的大小变化时，要计算Client的位置和大小
 
@@ -336,7 +344,8 @@ class RtwWidget : public RtwRefObject, public IUiEventReceiver {
     int  m_nBackGroundAlpha;
     Real m_Transparency;
 
-    virtual void SetWidgetEffect(int nShowEffect = esNormal, int nHideEffect = esNormal, int nDelay = 300);
+    virtual void SetWidgetEffect(int nShowEffect = esNormal, int nHideEffect = esNormal,
+                                 int nDelay = 300);
     void         SetOwnHint(RtwWidget* pHint = NULL);  //
 
     void SetHoverBoderSize(SMargin BorderMargin) {
@@ -356,18 +365,18 @@ class RtwWidget : public RtwRefObject, public IUiEventReceiver {
     static const int Max_Width = 6 * 40;
 
     CUiWidgetContainer* m_pChildren;  // 子窗口容器
-    RtwWidget*       m_pParent;  // 父窗口（不改变父窗口的引用计数，由父窗口来设置这个变量）
-    RtwWidget*       m_pHint;    // Hint窗口
-    int              m_Id;       // 唯一ID
-    EWidgetType      m_WidgetType;        // 窗口部件类型
-    std::string      m_Name;              // 窗口部件名字(名字中不准有以下字符: ".$[]#")
-    int              m_Flag;              // 标志
-    std::string      m_Caption;           // 标题
-    std::string      m_Text;              // 窗口文字
-    std::string      m_FontType;          // 字体
-    int              m_FontSize;          // 字体大小
-    SUiTextAlignment m_TextAlign;         // 字体对其方式
-    RtwImage*        m_pBackGround;       // 背景图
+    RtwWidget* m_pParent;  // 父窗口（不改变父窗口的引用计数，由父窗口来设置这个变量）
+    RtwWidget*       m_pHint;        // Hint窗口
+    int              m_Id;           // 唯一ID
+    EWidgetType      m_WidgetType;   // 窗口部件类型
+    std::string      m_Name;         // 窗口部件名字(名字中不准有以下字符: ".$[]#")
+    int              m_Flag;         // 标志
+    std::string      m_Caption;      // 标题
+    std::string      m_Text;         // 窗口文字
+    std::string      m_FontType;     // 字体
+    int              m_FontSize;     // 字体大小
+    SUiTextAlignment m_TextAlign;    // 字体对其方式
+    RtwImage*        m_pBackGround;  // 背景图
     RtwComplexImage* m_pImageSequence;    // 图片序列
     RtwPixel         m_TextColor;         // 文字前景颜色
     bool             m_bTextUnderline;    // 文字是否下划线
@@ -379,14 +388,16 @@ class RtwWidget : public RtwRefObject, public IUiEventReceiver {
     int              m_BorderSize;        //
     SMargin          m_padding;           //border 以外的非客户区
     std::string      m_strSoundFilename;  // 点击时候播放的声音
-    std::list<SUiAnchor> m_Anchors;  // 锚点 (注册锚点对象的EvMove,如果锚点是屏幕,注册Desktop的EvMove)
-    SSize          m_WidgetSize;     // Widget大小
+    std::list<SUiAnchor>
+        m_Anchors;  // 锚点 (注册锚点对象的EvMove,如果锚点是屏幕,注册Desktop的EvMove)
+    SSize          m_WidgetSize;             // Widget大小
     bool           m_bJoinParentAutoScroll;  // 是否参与父亲Widget的自动滚动
     bool           m_bAutoScrollV;           // 自动滚动V
     bool           m_bAutoScrollH;           // 自动滚动H
     RtwVScrollBar* m_pAutoScrollV;
     RtwHScrollBar* m_pAutoScrollH;
-    bool m_bCalcAutoScrollFlag;  // 是否计算自动滚动(有些特殊情况下不能计算自动滚动，譬如响应自动滚动消息的时候)
+    bool
+        m_bCalcAutoScrollFlag;  // 是否计算自动滚动(有些特殊情况下不能计算自动滚动，譬如响应自动滚动消息的时候)
     bool m_Borderpadding;       //是否减去Border值
     bool m_bNeedSortForRender;  // 下次Render时是否需要排序
     void _SortChildrenForRender();
@@ -454,7 +465,8 @@ class RtwWidget : public RtwRefObject, public IUiEventReceiver {
     void _AddNamePrefix(const std::string& prefix);
     void _RemoveNamePrefix(const std::string& prefix);
 
-    void _RegisterEvent(RtwWidget* pWidget, RtwEventDispatcher* _pDispatcher, CUiDelegate& _Delegate);
+    void _RegisterEvent(RtwWidget* pWidget, RtwEventDispatcher* _pDispatcher,
+                        CUiDelegate& _Delegate);
     void _UnregisterAllEvents();
 
     void OnAutoScrollV(RtwWidget* pWidget, RtwEventDelegate* pEvent);
@@ -537,7 +549,8 @@ class CUiWidgetContainer : public RtwRefObject {
     bool RemoveWidget(const std::string& WidgetName, bool bRecursive = false);
     bool FindWidget(DWORD WidgetID, RtwWidget** ppWidget = NULL, bool bRecursive = false);
     bool FindWidget(DWORD WidgetID, UiWidgetList::iterator& iter);
-    bool FindWidget(const std::string& WidgetName, RtwWidget** ppWidget = NULL, bool bRecursive = false);
+    bool FindWidget(const std::string& WidgetName, RtwWidget** ppWidget = NULL,
+                    bool bRecursive = false);
     bool InsertWidget(RtwWidget* pWidget, int indexBefore);
     bool BringWidgetToTop(DWORD WidgetID);
     bool BringWidgetToBottom(DWORD WidgetID);
@@ -557,8 +570,8 @@ class CUiWidgetContainer : public RtwRefObject {
     void Render(CUiWidgetContainer* pExcludeWidgets = NULL);
     void PrintToConsole(const std::string& name, const std::string& prefix = "");
 
-    bool         PickWidget(const SPoint& Position, RtwWidget** ppWidget = NULL, DWORD FlagMask = 0x00000000,
-                            CUiWidgetContainer* pExcludeWidgets = NULL);
+    bool         PickWidget(const SPoint& Position, RtwWidget** ppWidget = NULL,
+                            DWORD FlagMask = 0x00000000, CUiWidgetContainer* pExcludeWidgets = NULL);
     UiWidgetList m_Widgets;
 
    protected:

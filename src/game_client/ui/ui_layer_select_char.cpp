@@ -80,7 +80,7 @@ UILayerSelectChar::UILayerSelectChar()
 	RTW_WIDGET("fmcreatid2")->Hide();
 	RTW_WIDGET("fmcreatid3")->Hide();
 
-	m_numKeyboard.Init();
+
 	m_iConfirmCnt = 0;
 	m_CurBtnIdx = 0;
 	m_OldPwd = "";

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="" Location="200,120,520,377" Name="fmdupetask" Show="false">
+      <CloseButton Location="20,20,20,20" Name="$hide" Show="true" Text="" Blend="true" padding="0,10,2,0">
+        <NormalImage Blend="true" File="" Source="194,206,20,20"/>
+        <HighlightImage Blend="true" File="" Source="215,206,20,20"/>
+        <PushedImage Blend="true" File="" Source="236,206,20,20"/>
+      </CloseButton>
+      <Label Location="0,30,520,347" Name="b">
+        <BackgroundImage Blend="true" File="" Source="0,0,256,128" Border="1,0,1,1" BorderFile="" BorderSource="10,40,1,1"/>
+      </Label>
+      <Label Location="0,0,290,30" Name="l">
+        <BackgroundImage Blend="true" File="" Source="0,0,256,31"/>
+      </Label>
+      <Label Location="290,0,230,30" Name="r">
+        <BackgroundImage Blend="true" File="" Source="0,32,210,31"/>
+      </Label>
+      <Tree AutoScrollV="true" BorderSize="1" Item1="first" Location="14,57,166,265" Name="treelist" padding="5,7,0,0">
+		<BackgroundImage  Border="1,1,1,1" BorderFile="" BorderSource="10,40,1,1" Blend="true"/>
+	  </Tree>
+      <Button Inherit="PushButton" Location="111,335,64,20" Name="btnfinishtask" Text="完成任务"/>
+      <Form Anchor="none" Inherit="" Location="185,56,316,293" Name="fmdupetaskright">
+        <HtmlView Dock="fill" Inherit="Border" Location="2,2,314,290" Name="viewright" BackgroundColor="#22000000"/>
+      </Form>
+    </Form>
+  </Layer>
+</Ui>

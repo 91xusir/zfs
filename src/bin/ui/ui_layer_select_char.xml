@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Loader Description="ui definition xml file">
+    <File Name="ui_layer_select_char.xml"/>
+  </Loader>
+  <Layer DefaultLayer="true" Height="600" Index="1" Name="layworld" Show="true" Width="800">
+    <Import Url="ui/ui_variable.xml"/>
+    <Import Url="ui/ui_template.xml"/>
+    <Button Anchor="right,top" Location="915,48,98,27" Name="btndeletechar" Show="false" Sound="ui_normalbt.wav">
+      <Anchors>
+        <Anchor offset="-10,0" point="RIGHT"/>
+        <Anchor offset="0,50" point="TOP"/>
+      </Anchors>
+      <NormalImage Blend="true" File="ui\textures\3.tga" Source="0,146,98,27"/>
+      <HighlightImage Blend="true" File="ui\textures\3.tga" Source="101,147,98,27"/>
+      <PushedImage Blend="true" File="ui\textures\3.tga" Source="202,147,98,27"/>
+    </Button>
+    <Button Anchor="right,top" Location="915,48,98,27" Name="btnrestore" Show="false" Sound="ui_normalbt.wav">
+      <Anchors>
+        <Anchor offset="-10,0" point="RIGHT"/>
+        <Anchor offset="0,50" point="TOP"/>
+      </Anchors>
+      <NormalImage Blend="true" File="ui\textures\4.tga" Source="0,58,98,27"/>
+      <HighlightImage Blend="true" File="ui\textures\4.tga" Source="102,58,98,27"/>
+      <PushedImage Blend="true" File="ui\textures\4.tga" Source="203,58,98,27"/>
+    </Button>
+    <Button Anchor="right,top" Location="915,85,98,27" Name="btnsetcharpwd" Show="false" Sound="ui_normalbt.wav">
+      <Anchors>
+        <Anchor offset="-10,0" point="RIGHT"/>
+        <Anchor offset="0,80" point="TOP"/>
+      </Anchors>
+      <NormalImage Blend="true" File="ui\textures\3.tga" Source="0,176,98,27"/>
+      <HighlightImage Blend="true" File="ui\textures\3.tga" Source="101,176,98,27"/>
+      <PushedImage Blend="true" File="ui\textures\3.tga" Source="202,176,98,27"/>
+    </Button>
+    <Button Anchor="right,top" Location="915,122,98,27" Name="btnchangecharpwd" Show="false" Sound="ui_normalbt.wav">
+      <Anchors>
+        <Anchor offset="-10,0" point="RIGHT"/>
+        <Anchor offset="0,110" point="TOP"/>
+      </Anchors>
+      <NormalImage Blend="true" File="ui\textures\3.tga" Source="0,205,98,27"/>
+      <HighlightImage Blend="true" File="ui\textures\3.tga" Source="101,205,98,27"/>
+      <PushedImage Blend="true" File="ui\textures\3.tga" Source="202,205,98,27"/>
+    </Button>
+    <Button Anchor="right,top" Location="915,159,98,27" Name="btndelcharpwd" Show="false" Sound="ui_normalbt.wav">
+      <Anchors>
+        <Anchor offset="-10,0" point="RIGHT"/>
+        <Anchor offset="0,140" point="TOP"/>
+      </Anchors>
+      <NormalImage Blend="true" File="ui\textures\3.tga" Source="0,235,98,27"/>
+      <HighlightImage Blend="true" File="ui\textures\3.tga" Source="101,235,98,27"/>
+      <PushedImage Blend="true" File="ui\textures\3.tga" Source="202,235,98,27"/>
+    </Button>
+    <Button Anchor="left,bottom" Disable="" Location="42,630,98,24" Name="btnbacklogin" Show="false" Sound="ui_normalbt.wav">
+      <Anchors>
+        <Anchor offset="0,-210" point="BOTTOM"/>
+        <Anchor offset="50,0" point="LEFT"/>
+      </Anchors>
+      <NormalImage Blend="true" File="ui\textures/3.tga" Source="0,60,99,26"/>
+      <HighlightImage Blend="true" File="ui\textures/3.tga" Source="102,60,99,26"/>
+      <PushedImage Blend="true" File="ui\textures/3.tga" Source="204,60,99,26"/>
+    </Button>
+    <Button Anchor="left,bottom" Disable="" Location="42,672,98,24" Name="btnexit" Show="false" Sound="ui_normalbt.wav">
+      <Anchors>
+        <Anchor offset="0,-180" point="BOTTOM"/>
+        <Anchor offset="50,0" point="LEFT"/>
+      </Anchors>
+      <NormalImage Blend="true" File="ui\textures/3.tga" Source="0,31,99,26"/>
+      <HighlightImage Blend="true" File="ui\textures/3.tga" Source="102,31,99,26"/>
+      <PushedImage Blend="true" File="ui\textures/3.tga" Source="204,31,99,26"/>
+    </Button>
+    <Button Location="235,85,110,28" Name="btnenter" Show="false" Sound="ui_entergame.wav">
+      <NormalImage Blend="true" File="ui\textures/3.tga" Source="0,0,110,28"/>
+      <HighlightImage Blend="true" File="ui\textures/3.tga" Source="112,0,110,28"/>
+      <PushedImage Blend="true" File="ui\textures/3.tga" Source="224,0,110,28"/>
+      <Anchors>
+        <Anchor offset="0,0" point="CENTERV"/>
+        <Anchor offset="0,180" point="CENTERH"/>
+      </Anchors>
+    </Button>
+    <CheckButton Anchor="TOP,LEFT" Inherit="" Location="481,173,121,68" Name="btnfemale" Show="false" Sound="ui_normalbt.wav">
+      <NormalImage Blend="true" File="ui\textures\7.tga" Source="20,435,121,68"/>
+      <HighlightImage Blend="true" File="ui\textures\7.tga" Source="304,8,121,68"/>
+      <PushedImage Blend="true" File="ui\textures\7.tga" Source="180,435,121,68"/>
+      <CheckedImage Blend="true" File="ui\textures\7.tga" Source="304,8,121,68"/>
+      <DisabledImage Blend="true" File="ui\textures\7.tga" Source="340,435,121,68"/>
+      <Anchors>
+        <Anchor offset="121,0" point="LEFT"/>
+        <Anchor offset="0,184" point="TOP"/>
+      </Anchors>
+    </CheckButton>
+    <CheckButton Anchor="TOP,LEFT" Inherit="" Location="329,175,121,68" Name="btnmale" Show="false" Sound="ui_normalbt.wav">
+      <NormalImage Blend="true" File="ui\textures\7.tga" Source="306,173,121,68"/>
+      <HighlightImage Blend="true" File="ui\textures\7.tga" Source="304,90,121,68"/>
+      <PushedImage Blend="true" File="ui\textures\7.tga" Source="308,246,121,68"/>
+      <CheckedImage Blend="true" File="ui\textures\7.tga" Source="304,90,121,68"/>
+      <DisabledImage Blend="true" File="ui\textures\7.tga" Source="351,337,121,68"/>
+      <Anchors>
+        <Anchor offset="0,185" point="TOP"/>
+        <Anchor offset="0,0" point="LEFT"/>
+      </Anchors>
+    </CheckButton>
+    <Form BorderSize="2" Inherit="VoidTitleBarForm1" Location="388,291,250,155" MouseMove="false" Name="ConfirmBox1" Show="false" Size="250,155">
+      <Label Location="25,15,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
+      <Button FontSize="12" Inherit="SmallPushButton" Location="97,107,59,19" Name="btnconfirm" Sound="ui_normalbt.wav" Text="确认" TextFont="宋体"/>
+    </Form>
+    <Form Inherit="VoidTitleBarForm1" Location="388,293,250,155" MouseMove="false" Name="ConfirmBox2" Show="false">
+      <Label Location="25,14,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
+      <Button FontSize="12" Inherit="SmallPushButton" Location="38,105,59,19" Name="btnconfirm" Sound="ui_normalbt.wav" Text="确认" TextFont="宋体"/>
+      <Button FontSize="12" Inherit="SmallPushButton" Location="153,105,59,19" Name="btncancel" Sound="ui_normalbt.wav" Text="取消" TextFont="宋体"/>
+    </Form>
+    <Form EscapeHide="false" Inherit="" Location="302,635,96,87" Name="fmshushan" Show="false">
+      <CheckButton Anchor="CENTERV,bottom" Location="9,6,76,76" Name="btnshushan" Show="true" Sound="ui_ssbutton.wav">
+        <NormalImage Blend="true" File="ui\textures\4.tga" Source="313,0,76,76"/>
+        <HighlightImage Blend="true" File="ui\textures\4.tga" Source="313,78,76,76"/>
+        <PushedImage Blend="true" File="ui\textures\4.tga" Source="313,157,76,76"/>
+        <CheckedImage Blend="true" File="ui\textures\6.tga" Source="302,-1,76,76"/>
+        <DisabledImage Blend="true" File="ui\textures\6.tga" Source="302,79,76,76"/>
+      </CheckButton>
+      <BackgroundImage Blend="true" File="ui\textures\3.tga" Source="306,42,96,87"/>
+      <Anchors>
+        <Anchor offset="0,-50" point="BOTTOM"/>
+        <Anchor offset="-200,0" point="CENTERV"/>
+      </Anchors>
+    </Form>
+    <Form EscapeHide="false" Inherit="" Location="410,630,96,87" Name="fmhuajian" Show="false">
+      <CheckButton Anchor="CENTERV,bottom" Inherit="PushButton" Location="9,6,76,76" Name="btnhuajian" Show="true" Sound="ui_ssbutton.wav">
+        <NormalImage Blend="true" File="ui\textures\4.tga" Source="392,0,76,76"/>
+        <HighlightImage Blend="true" File="ui\textures\4.tga" Source="392,78,76,76"/>
+        <PushedImage Blend="true" File="ui\textures\4.tga" Source="392,157,76,76"/>
+        <CheckedImage Blend="true" File="ui\textures\6.tga" Source="381,-1,76,76"/>
+        <DisabledImage Blend="true" File="ui\textures\6.tga" Source="381,79,76,76"/>
+      </CheckButton>
+      <BackgroundImage Blend="true" File="ui\textures\3.tga" Source="306,42,96,87"/>
+      <Anchors>
+        <Anchor offset="0,-50" point="BOTTOM"/>
+        <Anchor offset="-50,0" point="CENTERV"/>
+      </Anchors>
+    </Form>
+    <Form EscapeHide="false" Inherit="" Location="519,624,96,87" Name="fmshengwu" Show="false">
+      <CheckButton Anchor="CENTERV,bottom" Inherit="PushButton" Location="9,6,76,76" Name="btnshengwu" Show="true" Sound="ui_ssbutton.wav">
+        <NormalImage Blend="true" File="ui\textures\4.tga" Source="313,237,76,76"/>
+        <HighlightImage Blend="true" File="ui\textures\4.tga" Source="313,316,76,76"/>
+        <PushedImage Blend="true" File="ui\textures\4.tga" Source="313,395,76,76"/>
+        <CheckedImage Blend="true" File="ui\textures\6.tga" Source="302,158,76,76"/>
+        <DisabledImage Blend="true" File="ui\textures\6.tga" Source="302,237,76,76"/>
+      </CheckButton>
+      <BackgroundImage Blend="true" File="ui\textures\3.tga" Source="306,42,96,87"/>
+      <Anchors>
+        <Anchor offset="0,-50" point="BOTTOM"/>
+        <Anchor offset="100,0" point="CENTERV"/>
+      </Anchors>
+    </Form>
+    <Form EscapeHide="false" Inherit="" Location="623,617,96,87" Name="fmmingwang" Show="false">
+      <CheckButton Anchor="CENTERV,bottom" Inherit="PushButton" Location="9,6,76,76" Name="btnmingwang" Show="true" Sound="ui_ssbutton.wav">
+        <NormalImage Blend="true" File="ui\textures\4.tga" Source="392,237,76,76"/>
+        <HighlightImage Blend="true" File="ui\textures\4.tga" Source="392,316,76,76"/>
+        <PushedImage Blend="true" File="ui\textures\4.tga" Source="392,395,76,76"/>
+        <CheckedImage Blend="true" File="ui\textures\6.tga" Source="381,158,76,76"/>
+        <DisabledImage Blend="true" File="ui\textures\6.tga" Source="381,237,76,76"/>
+      </CheckButton>
+      <BackgroundImage Blend="true" File="ui\textures\3.tga" Source="306,42,96,87"/>
+      <Anchors>
+        <Anchor offset="0,-50" point="BOTTOM"/>
+        <Anchor offset="250,0" point="CENTERV"/>
+      </Anchors>
+    </Form>
+    <Form Anchor="CENTERH,RIGHT" EscapeHide="false" Location="666,364,346,237" Name="fmjob" Show="false">
+      <Label FontSize="12" Location="0,0,346,237" Name="lbtxtjob" Text="" TextFont="宋体"/>
+      <Anchors>
+        <Anchor offset="0,50" point="CENTERH"/>
+        <Anchor offset="0,0" point="RIGHT"/>
+      </Anchors>
+    </Form>
+    <Form Anchor="BOTTOM,CENTERV" EscapeHide="false" Inherit="" Location="2,577,1024,123" Name="fmckusername" Show="false">
+      <Form Inherit="" Location="3,0,253,123" Name="fmusername1" Show="true">
+        <CheckButton Inherit="" Location="0,0,253,123" Name="btnusername1" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\2.tga" Source="0,346,251,116"/>
+          <HighlightImage Blend="true" File="ui\textures\2.tga" Source="257,357,250,116"/>
+          <PushedImage Blend="true" File="ui\textures\9.tga" Source="0,13,250,115"/>
+          <CheckedImage Blend="true" File="ui\textures\2.tga" Source="257,357,250,116"/>
+          <DisabledImage Blend="true" File="ui\textures\9.tga" Source="254,13,250,115"/>
+          <Label Inherit="" Location="63,78,32,32" Name="lblock1" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="478,197,32,32"/>
+          </Label>
+          <Label Alignment="center" Location="185,54,40,15" Name="lbmetier1" Show="true"/>
+          <Label Alignment="center" Inherit="" Location="158,83,90,15" Name="lbusername1" Show="true"/>
+          <Label Alignment="center" Location="32,84,20,20" Name="lblev1" Show="true" Text=""/>
+        </CheckButton>
+        <Label Inherit="" Location="79,35,70,70" Name="lbuser1" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="290,241,68,68"/>
+        </Label>
+      </Form>
+      <Form Inherit="" Location="257,0,253,123" Name="fmusername2" Show="true">
+        <CheckButton Inherit="" Location="0,0,253,123" Name="btnusername2" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\2.tga" Source="0,346,251,116"/>
+          <HighlightImage Blend="true" File="ui\textures\2.tga" Source="257,357,250,116"/>
+          <PushedImage Blend="true" File="ui\textures\9.tga" Source="0,13,250,115"/>
+          <CheckedImage Blend="true" File="ui\textures\2.tga" Source="257,357,250,116"/>
+          <DisabledImage Blend="true" File="ui\textures\9.tga" Source="254,13,250,115"/>
+          <Label Inherit="" Location="64,78,32,32" Name="lblock2" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="478,197,32,32"/>
+          </Label>
+          <Label Alignment="center" Location="185,54,40,15" Name="lbmetier2" Show="true" Text=""/>
+          <Label Alignment="center" Inherit="" Location="158,83,90,15" Name="lbusername2" Show="true" Text=""/>
+          <Label Alignment="center" Location="32,84,20,20" Name="lblev2" Show="true" Text=""/>
+        </CheckButton>
+        <Label Inherit="" Location="79,35,70,70" Name="lbuser2" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="290,241,68,68"/>
+        </Label>
+      </Form>
+      <Form Inherit="" Location="511,0,253,123" Name="fmusername3" Show="true">
+        <CheckButton Inherit="" Location="0,0,253,123" Name="btnusername3" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\2.tga" Source="0,346,251,116"/>
+          <HighlightImage Blend="true" File="ui\textures\2.tga" Source="257,357,250,116"/>
+          <PushedImage Blend="true" File="ui\textures\9.tga" Source="0,13,250,115"/>
+          <CheckedImage Blend="true" File="ui\textures\2.tga" Source="257,357,250,116"/>
+          <DisabledImage Blend="true" File="ui\textures\9.tga" Source="254,13,250,115"/>
+          <Label Inherit="" Location="64,78,32,32" Name="lblock3" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="478,197,32,32"/>
+          </Label>
+          <Label Alignment="center" Location="185,54,40,15" Name="lbmetier3" Show="true" Text=""/>
+          <Label Alignment="center" Inherit="" Location="158,83,90,15" Name="lbusername3" Show="true" Text=""/>
+          <Label Alignment="center" Location="32,84,20,20" Name="lblev3" Show="true" Text=""/>
+        </CheckButton>
+        <Label Inherit="" Location="79,35,70,70" Name="lbuser3" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="290,241,68,68"/>
+        </Label>
+      </Form>
+      <Form Anchor="" Inherit="" Location="765,0,253,123" Name="fmusername4" Show="true">
+        <CheckButton Enable="" Inherit="" Location="0,0,253,123" Name="btnusername4" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\2.tga" Source="0,346,251,116"/>
+          <HighlightImage Blend="true" File="ui\textures\2.tga" Source="257,357,250,116"/>
+          <PushedImage Blend="true" File="ui\textures\9.tga" Source="0,13,250,115"/>
+          <CheckedImage Blend="true" File="ui\textures\2.tga" Source="257,357,250,116"/>
+          <DisabledImage Blend="true" File="ui\textures\9.tga" Source="254,13,250,115"/>
+          <Label Inherit="" Location="64,78,32,32" Name="lblock4" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="478,197,32,32"/>
+          </Label>
+          <Label Alignment="center" Location="185,54,40,15" Name="lbmetier4" Show="true" Text=""/>
+          <Label Alignment="center" Inherit="" Location="158,83,90,15" Name="lbusername4" Show="true" Text=""/>
+          <Label Alignment="center" Location="32,84,20,20" Name="lblev4" Show="true"/>
+        </CheckButton>
+        <Label Inherit="" Location="79,35,70,70" Name="lbuser4" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="290,241,68,68"/>
+        </Label>
+      </Form>
+      <Anchors>
+        <Anchor offset="0,-20" point="BOTTOM"/>
+        <Anchor offset="0,0" point="CENTERV"/>
+      </Anchors>
+    </Form>
+    <Form Anchor="CENTERH,RIGHT" EscapeHide="false" Inherit="" Location="378,194,240,250" Name="fmpwd" Show="false">
+      <Form Inherit="" Location="3,43,179,173" Name="fmpwdlock" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="292,0,179,173"/>
+        <Button Inherit="" Location="0,73,35,35" Name="btnnum1" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="-1,349,37,37"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="-1,387,37,37"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="-1,425,37,37"/>
+        </Button>
+        <Button Inherit="" Location="5,38,35,35" Name="btnnum2" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="37,349,37,37"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="37,387,37,37"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="37,425,37,37"/>
+        </Button>
+        <Button Inherit="" Location="28,12,35,35" Name="btnnum3" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="75,349,37,37"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="75,387,37,37"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="75,425,37,37"/>
+        </Button>
+        <Button Inherit="" Location="60,0,35,35" Name="btnnum4" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="113,349,37,37"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="113,387,37,37"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="113,425,37,37"/>
+        </Button>
+        <Button Inherit="" Location="94,4,35,35" Name="btnnum5" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="152,350,37,37"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="152,388,37,37"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="152,426,37,37"/>
+        </Button>
+        <Button Inherit="" Location="125,21,35,35" Name="btnnum6" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="190,350,37,37"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="190,388,37,37"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="190,426,37,37"/>
+        </Button>
+        <Button Inherit="" Location="142,51,35,35" Name="btnnum7" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="228,350,37,37"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="228,388,37,37"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="228,426,37,37"/>
+        </Button>
+        <Button Inherit="" Location="143,86,35,35" Name="btnnum8" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="266,350,37,37"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="266,388,37,37"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="266,426,37,37"/>
+        </Button>
+        <Button Inherit="" Location="128,117,35,35" Name="btnnum9" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="304,350,37,37"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="304,388,37,37"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="304,426,37,37"/>
+        </Button>
+        <Button Inherit="" Location="99,137,35,35" Name="btnnum0" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="342,350,37,37"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="341,388,37,37"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="341,426,37,37"/>
+        </Button>
+        <Button Inherit="" Location="65,140,35,35" Name="btnnumdelete" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="380,350,37,37"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="380,388,37,37"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="380,426,37,37"/>
+        </Button>
+        <Button Inherit="" Location="60,64,60,60" Name="btnnumenter" Show="true" Sound="ui_normalbt.wav">
+          <NormalImage Blend="true" File="ui\textures\3.tga" Source="424,293,60,60"/>
+          <HighlightImage Blend="true" File="ui\textures\3.tga" Source="424,353,60,60"/>
+          <PushedImage Blend="true" File="ui\textures\3.tga" Source="424,413,60,60"/>
+        </Button>
+      </Form>
+      <Form Inherit="" Location="3,8,179,28" Name="fmtxtpwd" Show="true">
+        <Label Inherit="" Location="0,0,34,28" Name="lbpwdleft" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="291,314,34,28"/>
+        </Label>
+        <Label Inherit="" Location="145,0,34,28" Name="lbpwdright" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="367,314,34,28"/>
+        </Label>
+        <Label Inherit="" Location="35,0,109,28" Name="lbpwdcenter" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="326,314,34,28"/>
+        </Label>
+        <EditBox Inherit="" Location="56,4,60,18" Name="txtnumpwd" Password="true" PasswordChar="" Show="true"/>
+      </Form>
+      <Label FontSize="12" Inherit="" Location="0,227,185,20" Name="lbtxt1" Show="true" Text="请输入人物密码锁 密码为4位数字" TextColor="#ffcdcccc" TextFont="宋体"/>
+      <Button Inherit="" Location="163,199,66,26" Name="closeblt" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\textures\3.tga" Source="306,465,66,25"/>
+        <HighlightImage Blend="true" File="ui\textures\3.tga" Source="374,465,66,25"/>
+        <PushedImage Blend="true" File="ui\textures\3.tga" Source="440,465,66,25"/>
+      </Button>
+      <Anchors>
+        <Anchor offset="0,50" point="CENTERH"/>
+        <Anchor offset="-100,0" point="RIGHT"/>
+      </Anchors>
+    </Form>
+    <Form Anchor="TOP,LEFT" EscapeHide="false" Location="30,105,288,118" Name="fmcreatid1" Show="false">
+      <BackgroundImage Blend="true" File="ui\textures\11.tga" Source="149,497,348,8"/>
+      <Label Inherit="" Location="0,0,288,2" Name="lbtop1" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\11.tga" Source="149,497,337,2"/>
+      </Label>
+      <Label Inherit="" Location="-1,115,288,2" Name="lbbottom1" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\11.tga" Source="149,497,337,2"/>
+      </Label>
+      <Label Inherit="" Location="28,10,43,21" Name="lbname" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\3.tga" Source="76,464,43,21"/>
+      </Label>
+      <Form Location="82,7,170,28" Name="fmname" Show="true">
+        <Label Inherit="" Location="0,0,34,28" Name="lbnameleft" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="291,314,34,28"/>
+        </Label>
+        <Label Inherit="" Location="35,0,100,28" Name="lbnamecenter" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="326,314,34,28"/>
+        </Label>
+        <Label Inherit="" Location="136,0,34,28" Name="lbnameright" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="367,314,34,28"/>
+        </Label>
+        <EditBox Inherit="NoBorderEditBox" Location="36,6,99,18" Name="txtname" Show="true"/>
+      </Form>
+      <Label Location="28,64,42,21" Name="lbborn" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\3.tga" Source="121,464,42,21"/>
+      </Label>
+      <Form Inherit="" Location="133,38,72,74" Name="fmanimal" Show="true">
+        <Label Inherit="" Location="0,0,72,72" Name="lbheadborder" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\6.tga" Source="44,432,72,74"/>
+        </Label>
+        <Label Inherit="" Location="4,5,64,64" Name="lbanimal" Show="true"/>
+      </Form>
+      <Button Inherit="" Location="86,63,18,20" Name="btnanimalleft" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\textures\2.tga" Source="472,0,18,20"/>
+        <HighlightImage Blend="true" File="ui\textures\2.tga" Source="472,22,18,20"/>
+        <PushedImage Blend="true" File="ui\textures\2.tga" Source="472,44,18,20"/>
+      </Button>
+      <Button Inherit="" Location="235,63,18,20" Name="btnanimalright" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\textures\2.tga" Source="493,0,18,20"/>
+        <HighlightImage Blend="true" File="ui\textures\2.tga" Source="493,22,18,20"/>
+        <PushedImage Blend="true" File="ui\textures\2.tga" Source="493,44,18,20"/>
+      </Button>
+      <Anchors>
+        <Anchor offset="0,260" point="TOP"/>
+        <Anchor offset="0,0" point="LEFT"/>
+      </Anchors>
+    </Form>
+    <Form Anchor="TOP,LEFT" EscapeHide="false" Inherit="" Location="30,206,288,154" Name="fmcreatid2" Show="false">
+      <BackgroundImage Blend="true" File="ui\textures\11.tga" Source="149,497,348,8"/>
+      <Button Inherit="" Location="86,10,18,20" Name="btnhairleft" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\textures\2.tga" Source="472,0,18,20"/>
+        <HighlightImage Blend="true" File="ui\textures\2.tga" Source="472,22,18,20"/>
+        <PushedImage Blend="true" File="ui\textures\2.tga" Source="472,44,18,20"/>
+      </Button>
+      <Button Inherit="" Location="235,10,18,20" Name="btnhairright" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\textures\2.tga" Source="493,0,18,20"/>
+        <HighlightImage Blend="true" File="ui\textures\2.tga" Source="493,22,18,20"/>
+        <PushedImage Blend="true" File="ui\textures\2.tga" Source="493,44,18,20"/>
+      </Button>
+      <Button Inherit="" Location="86,47,18,20" Name="btnfaceleft" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\textures\2.tga" Source="472,0,18,20"/>
+        <HighlightImage Blend="true" File="ui\textures\2.tga" Source="472,22,18,20"/>
+        <PushedImage Blend="true" File="ui\textures\2.tga" Source="472,44,18,20"/>
+      </Button>
+      <Button Inherit="" Location="235,47,18,20" Name="btnfaceright" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\textures\2.tga" Source="493,0,18,20"/>
+        <HighlightImage Blend="true" File="ui\textures\2.tga" Source="493,22,18,20"/>
+        <PushedImage Blend="true" File="ui\textures\2.tga" Source="493,44,18,20"/>
+      </Button>
+      <Button Inherit="" Location="86,97,18,20" Name="btnheadleft" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\textures\2.tga" Source="472,0,18,20"/>
+        <HighlightImage Blend="true" File="ui\textures\2.tga" Source="472,22,18,20"/>
+        <PushedImage Blend="true" File="ui\textures\2.tga" Source="472,44,18,20"/>
+      </Button>
+      <Button Inherit="" Location="234,97,18,20" Name="btnheadright" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\textures\2.tga" Source="493,0,18,20"/>
+        <HighlightImage Blend="true" File="ui\textures\2.tga" Source="493,22,18,20"/>
+        <PushedImage Blend="true" File="ui\textures\2.tga" Source="493,44,18,20"/>
+      </Button>
+      <Label Inherit="" Location="0,0,288,2" Name="lbtop2" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\11.tga" Source="149,497,337,2"/>
+      </Label>
+      <Label Inherit="" Location="0,151,288,2" Name="lbbottom2" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\11.tga" Source="149,497,337,2"/>
+      </Label>
+      <Label Inherit="" Location="28,10,44,21" Name="lbhair" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\3.tga" Source="167,464,44,21"/>
+      </Label>
+      <Label Inherit="" Location="28,46,45,21" Name="lbface" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\3.tga" Source="214,464,45,21"/>
+      </Label>
+      <Form Inherit="" Location="108,7,119,28" Name="fmhair" Show="true">
+        <Label AlignLine="CENTER" Alignment="center" Inherit="" Location="20,0,80,28" Name="lbhairname" Show="true"/>
+        <Label Inherit="" Location="0,0,34,28" Name="lbhairleft" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="291,314,34,28"/>
+        </Label>
+        <Label Inherit="" Location="35,0,49,28" Name="lbhaircenter" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="326,314,34,28"/>
+        </Label>
+        <Label Inherit="" Location="85,0,34,28" Name="lbhairright" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="367,314,34,28"/>
+        </Label>
+      </Form>
+      <Form Inherit="" Location="109,43,119,28" Name="fmface" Show="true">
+        <Label AlignLine="CENTER" Alignment="center" Inherit="" Location="20,0,80,28" Name="lbfacename" Show="true"/>
+        <Label Inherit="" Location="0,0,34,28" Name="lbfaceleft" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="291,314,34,28"/>
+        </Label>
+        <Label Inherit="" Location="35,0,49,28" Name="lbfacecenter" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="326,314,34,28"/>
+        </Label>
+        <Label Inherit="" Location="85,0,34,28" Name="lbfaceright" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures/2.tga" Source="367,314,34,28"/>
+        </Label>
+      </Form>
+      <Label Inherit="" Location="28,96,41,21" Name="lbhead" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\3.tga" Source="262,464,41,21"/>
+      </Label>
+      <Form Inherit="" Location="133,75,72,72" Name="fmhead" Show="true">
+        <Label Inherit="" Location="0,0,72,72" Name="lbheadborder" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\3.tga" Source="405,132,72,72"/>
+        </Label>
+        <Label Inherit="" Location="4,5,64,64" Name="lbpichead" Show="true"/>
+      </Form>
+      <Anchors>
+        <Anchor offset="0,390" point="TOP"/>
+        <Anchor offset="0,0" point="LEFT"/>
+      </Anchors>
+    </Form>
+    <Form Anchor="TOP,LEFT" EscapeHide="false" Inherit="" Location="31,383,288,45" Name="fmcreatid3" Show="false">
+      <BackgroundImage Blend="true" File="ui\textures\11.tga" Source="149,497,348,8"/>
+      <Label Inherit="" Location="0,0,288,2" Name="lbtop3" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\11.tga" Source="149,497,337,2"/>
+      </Label>
+      <Label Inherit="" Location="0,42,288,2" Name="lbbottom3" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\11.tga" Source="149,497,337,2"/>
+      </Label>
+      <Button Inherit="" Location="39,9,98,26" Name="btnrandom" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\textures\3.tga" Source="0,89,99,26"/>
+        <HighlightImage Blend="true" File="ui\textures\3.tga" Source="102,89,99,26"/>
+        <PushedImage Blend="true" File="ui\textures\3.tga" Source="204,89,99,26"/>
+      </Button>
+      <Button Inherit="" Location="156,9,98,26" Name="btncreate" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\textures\3.tga" Source="0,118,99,26"/>
+        <HighlightImage Blend="true" File="ui\textures\3.tga" Source="102,118,99,26"/>
+        <PushedImage Blend="true" File="ui\textures\3.tga" Source="204,118,99,26"/>
+      </Button>
+      <Anchors>
+        <Anchor offset="0,550" point="TOP"/>
+        <Anchor offset="0,0" point="LEFT"/>
+      </Anchors>
+    </Form>
+    <Button Anchor="left,bottom" Disable="" Inherit="" Location="42,630,98,24" Name="btnback" Show="false" Sound="ui_normalbt.wav">
+      <Anchors>
+        <Anchor offset="0,-100" point="BOTTOM"/>
+        <Anchor offset="50,0" point="LEFT"/>
+      </Anchors>
+      <NormalImage Blend="true" File="ui\textures/3.tga" Source="0,60,99,26"/>
+      <HighlightImage Blend="true" File="ui\textures/3.tga" Source="102,60,99,26"/>
+      <PushedImage Blend="true" File="ui\textures/3.tga" Source="204,60,99,26"/>
+    </Button>
+    <Label Inherit="" Location="0,180,288,71" Name="lbbackground" Show="false">
+      <BackgroundImage Blend="true" File="ui\textures/7.tga" Source="6,353,288,71"/>
+      <Anchors>
+        <Anchor offset="0,183" point="TOP"/>
+        <Anchor offset="0,0" point="LEFT"/>
+      </Anchors>
+    </Label>
+    <Label Inherit="" Location="274,724,70,31" Name="lbshushantext" Show="false">
+      <BackgroundImage Blend="true" File="ui\textures\9.tga" Source="193,364,70,31"/>
+      <Anchors>
+        <Anchor offset="0,-10" point="BOTTOM"/>
+        <Anchor offset="-200,0" point="CENTERV"/>
+      </Anchors>
+    </Label>
+    <Label Inherit="" Location="422,724,70,31" Name="lbhuajiantext" Show="false">
+      <BackgroundImage Blend="true" File="ui\textures\9.tga" Source="193,401,70,33"/>
+      <Anchors>
+        <Anchor offset="0,-10" point="BOTTOM"/>
+        <Anchor offset="-50,0" point="CENTERV"/>
+      </Anchors>
+    </Label>
+    <Label Inherit="" Location="575,724,70,31" Name="lbmiaojiangtext" Show="false">
+      <BackgroundImage Blend="true" File="ui\textures\9.tga" Source="193,438,70,33"/>
+      <Anchors>
+        <Anchor offset="0,-10" point="BOTTOM"/>
+        <Anchor offset="100,0" point="CENTERV"/>
+      </Anchors>
+    </Label>
+    <Label Inherit="" Location="724,724,70,31" Name="lbwutaitext" Show="false">
+      <BackgroundImage Blend="true" File="ui\textures\9.tga" Source="264,438,70,33"/>
+      <Anchors>
+        <Anchor offset="0,-10" point="BOTTOM"/>
+        <Anchor offset="250,0" point="CENTERV"/>
+      </Anchors>
+    </Label>
+  </Layer>
+</Ui>

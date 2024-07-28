@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+	<Loader Description="ui definition xml file" >
+			  <File Name="ui_layer_loading.xml" />
+			  <File Name="ui_layer_login.xml" />
+              <File Name="ui_layer_select_char.xml" />
+              <File Name="ui_layer_main.xml" />
+			  <File Name="ui_form_pkmode.xml" />
+			  <File Name="ui_popup_menu.xml" />
+			  <File Name="ui_form_char.xml" />
+			  <File Name="ui_form_fabaomp.xml" />
+			  <File Name="ui_form_fabao.xml" />
+			  <File Name="ui_form_pet.xml" />
+			  <File Name="ui_form_clearsp.xml" />
+			  <File Name="ui_form_item.xml" />
+			  <File Name="ui_form_trade.xml" />
+			  <File Name="ui_form_shop.xml" />
+			  <File Name="ui_form_pshop.xml" />
+			  <File Name="ui_form_look_pshop.xml" />
+			  <File Name="ui_form_bank.xml" />
+			  <File Name="ui_form_combine.xml" />
+			  <File Name="ui_form_tax.xml" />
+			  <File Name="ui_form_citybank.xml" />
+			  <File Name="ui_form_citylist.xml" />
+			  <File Name="ui_form_create_guild.xml" />
+			  <File Name="ui_form_gm_replay.xml" />
+			  <File Name="ui_form_skill.xml" />
+			  <File Name="ui_form_skill_learn.xml" />
+			  <File Name="ui_form_map.xml" />
+			  <File Name="ui_form_battle.xml" />
+			  <File Name="ui_form_citytime.xml" />
+			  <File Name="ui_form_dupe.xml" />
+			  <File Name="ui_form_vendor.xml" />
+			  <File Name="ui_form_order.xml" />
+			  <File Name="ui_form_auc.xml" />
+			  <File Name="ui_form_war_list.xml" />
+			  <File Name="ui_form_see_item.xml" />
+			  <File Name="ui_form_taskitem.xml" />
+			  <File Name="ui_form_helpsys.xml" />
+			  <File Name="ui_form_card.xml" />
+			  <File Name="ui_form_buycard.xml" />
+			  <File Name="ui_form_sellcard.xml" />
+			  <File Name="ui_form_bankpass.xml" />
+			  <File Name="ui_form_mine.xml" />
+			  <File Name="ui_form_fuse.xml" />
+			  <File Name="ui_form_beast.xml" />
+			  <File Name="ui_form_channel.xml" />
+			  <File Name="ui_form_chatlist.xml" />
+			  <File Name="ui_form_master.xml" />
+			  <File Name="ui_form_friend.xml" />
+			  <File Name="ui_form_mail.xml" />
+			  <File Name="ui_form_mailbook.xml" />
+			  <File Name="ui_form_setting.xml" />
+			  <File Name="ui_form_list.xml" />
+			  <File Name="ui_form_around.xml" />
+	</Loader>
+	<Config Theme="ZfsLike">
+	</Config>
+</Ui>
+

@@ -36,41 +36,7 @@ void UILayer::Initialize()
 	g_pUiClipboard = RT_NEW CUiClipboardImpl_Windows();
 	g_workspace.SetClipboard(g_pUiClipboard);
 
-
-/* ×¢ÊÍ [3/18/2009 tooth.shi]    g_workspace.SetFontName(R(RES_FONT));
-
-	g_workspace.RegisterClass("Form", RT_RUNTIME_CLASS(RtwForm));
-	g_workspace.RegisterClass("Label", RT_RUNTIME_CLASS(RtwLabel));
-    g_workspace.RegisterClass("Hyperlink", RT_RUNTIME_CLASS(RtwHyperlink));
-	g_workspace.RegisterClass("ProgressBar", RT_RUNTIME_CLASS(RtwProgressBar));
-	g_workspace.RegisterClass("Panel", RT_RUNTIME_CLASS(RtwPanel));
-	g_workspace.RegisterClass("VScrollBar", RT_RUNTIME_CLASS(RtwVScrollBar));
-	g_workspace.RegisterClass("HScrollBar", RT_RUNTIME_CLASS(RtwHScrollBar));
-	g_workspace.RegisterClass("ChatBox", RT_RUNTIME_CLASS(RtwChatBox));
-	g_workspace.RegisterClass("ChatInputBox", RT_RUNTIME_CLASS(RtwChatInputBox));
-	g_workspace.RegisterClass("Button", RT_RUNTIME_CLASS(RtwButton));
-	g_workspace.RegisterClass("ListBox", RT_RUNTIME_CLASS(RtwListBox));
-	g_workspace.RegisterClass("Tree", RT_RUNTIME_CLASS(RtwTree));
-	g_workspace.RegisterClass("ComboBox", RT_RUNTIME_CLASS(RtwComboBox));
-	g_workspace.RegisterClass("TextBox", RT_RUNTIME_CLASS(RtwTextBox));
-	g_workspace.RegisterClass("MailBox", RT_RUNTIME_CLASS(RtwMailBox));
-	g_workspace.RegisterClass("Tab", RT_RUNTIME_CLASS(RtwTab));
-	g_workspace.RegisterClass("HtmlView", RT_RUNTIME_CLASS(RtwHtmlView));
-	g_workspace.RegisterClass("AliasButton", RT_RUNTIME_CLASS(RtwAliasButton));
-	g_workspace.RegisterClass("IconList", RT_RUNTIME_CLASS(RtwIconList));
-	g_workspace.RegisterClass("HUD", RT_RUNTIME_CLASS(RtwHUD));
-    g_workspace.RegisterClass("PopupMenu", RT_RUNTIME_CLASS(RtwPopupMenu));
-
-	g_pDevice2D->CreateFont(R(RES_FONT), 12, 256);
-
-	g_workspace.CreateLayer(3);
-	g_workspace.AdjustLayer(GetDevice()->m_iWndWidth, GetDevice()->m_iWndHeight);
-	g_workspace.LoadTheme("ui/ui_theme.xml");	
-
-	g_workspace.EvSetCursor += RTW_CALLBACK_F(OnSetCursor);*/
-
 	EnterLoading();
-
 	unguard;
 }
 
