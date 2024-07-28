@@ -1,8 +1,6 @@
 #ifndef _INC_GC_LOGIN_H_
 #define _INC_GC_LOGIN_H_
-
 #include "gc_login_session.h"
-
 
 // 这里处理登陆，选人等非游戏进行的流程
 class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify {
@@ -16,7 +14,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
         GLS_SELECT_CHAR,              //选角色
         GLS_CREATE_CHAR,              //创建角色
         GLS_ENTER_GAME_LOADING,       //进入游戏
-        GLS_MAX                       //状态的最大值，通常用于表示状态总数或用于循环控制
+        GLS_MAX                       //状态的最大值
     };
 
     //错误信息
@@ -71,10 +69,8 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     virtual void OnMouseWheel(int iButton, long vDelta);
     //左键按下
     virtual void OnMouseLDown(int iButton, int x, int y);
-
-    //按钮释放
+    //按钮抬起
     virtual void OnMouseUp(int iButton, int x, int y) {}
-
     //左键双击
     virtual void OnMouseLDClick(int iButton, int x, int y);
     //右键按下
@@ -87,21 +83,19 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     virtual void OnKeyDown(int iButton, int iKey);
     //键盘释放事件
     virtual void OnKeyUp(int iButton, int iKey);
-
+    //获取当前选中角色
     inline int GetCurSelectChar() { return m_iCurSelectChar; }
-
+    //设置当前选中角色
     inline void SetCurSelectChar(int iSel) { m_iCurSelectChar = iSel; }
-
+    //获取当前状态
     inline EStatus GetStatus() { return m_eStatus; }
-
+    //错误信息
     void LoginErrMsg(EErrMsg eMsg, const char* szRetStr = NULL, short sRetCode = 0);
+    //选择游戏世界服务器
     void SelectGameWorld(int iIdx);
 
-    /// <summary>
-    /// 登录账户设置
-    /// </summary>
-    /// <param name="szUsername">用户名</param>
-    /// <param name="szPassword">密码</param>
+
+    /// 登录账号
     void Login(char* szUsername, char* szPassword);
     //发送登录请求
     void OnNetLogin(int result, const char* szRetStr, short sRetCode, char cPointType, long lPoint);
@@ -122,7 +116,6 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
 
     //是否保存帐号
     void SetSaveAccount(bool bSave) { bSaveAccount = bSave; }
-
     bool GetSaveAccount() { return bSaveAccount; }
 
     //人物角色左旋
@@ -229,7 +222,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     CSoftKeyboard m_Keyboard;
 
    private:
-    // 进入加载界面
+    // 加载界面
     void EnterLoading();
     bool LeaveLoading();
 
@@ -276,7 +269,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     void ChangeCharImage(bool bNext);   //改变人物角色发型名称
 
    private:
-    EStatus           m_eStatus;
+    EStatus           m_eStatus;    //
     EStatus           m_eNextStatus;
     EStatus           m_ePrevStatus;
     CGameClientFrame* m_pGameClientFrame;
@@ -289,9 +282,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     long              m_lSkyFog;
     RtIni             m_ini;
 
-    //RtString m_szGameWorldServerName;
-    //RtString m_szGameWorldServerIP;
-    std::string m_szGameWorldServerName;
+    std::string m_szGameWorldServerName;// 当前选择的游戏世界服务器
     std::string m_szGameWorldServerIP;
     long     m_lGameWorldServerPort;
 

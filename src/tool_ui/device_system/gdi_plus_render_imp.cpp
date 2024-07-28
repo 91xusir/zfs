@@ -96,7 +96,7 @@ void CGdiPlusRenderImp::DrawImage(RtwImage* vpImage,const RtwRect& vrTargetRect,
 	//gdi+要求的矩形格式
 	Rect DestRect(vrTargetRect.left,vrTargetRect.top,
 		vrTargetRect.getWidth(),vrTargetRect.getHeight());
-
+    //lyymark 这里似乎有问题
 	if(vpImage->getTransparency() ==1.0 || vpImage->m_bBlend)
 	{//完全不透明
 		//DrawImage中源Rect的宽高，要减1

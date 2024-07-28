@@ -202,8 +202,10 @@ void RtwForm::DrawForeground(const RtwRect* pClipRect/* = NULL*/)
 	RtwWidget::DrawForeground(pClipRect);
 }
 
+//lyytodo 2024.7.28 表单背景透明度始终为1 后续debug寻找问题 
 void RtwForm::DrawBackground(const RtwRect* pClipRect/* = NULL*/)
 {
+   // std::cout << m_Transparency << std::endl;
 	RtwRect bgRect;
 
 	//修正form背景色乱串的问题。李东日 2010.01.04

@@ -72,6 +72,7 @@ void ShowMessage(const char* szContent, const char* szCaption)
         MessageBox(hWnd, szContent, szCaption, MB_ICONINFORMATION);
     }else
     {
+        //lyymark 1.Global.UI.ShowErrorMessage
 		UIFormMsg::ShowStatic(szContent, UIFormMsg::TYPE_OK, true, "ErrMsgBox",false);
     }
 }

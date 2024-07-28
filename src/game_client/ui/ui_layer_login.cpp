@@ -7,27 +7,39 @@ UILayerLogin::UILayerLogin() {
     guard;
     //lyymark 2.GcLogin.XML 加载用户登录UI
     g_workspace.Load("ui\\ui_layer_login.xml");
+    //用户登录form
+    mp_loginForm = LOAD_UI("loginForm");
+
+    mp_selectServerName = LOAD_UI("loginForm.selectServerName");
+
+    mp_txtAccout = LOAD_UI_T(RtwTextBox, "loginForm.txtAccout");
+
+    mp_txtPwd = LOAD_UI_T(RtwTextBox, "loginForm.txtPwd");
+
+    mp_ckSaveAcc = LOAD_UI_T(CUiCheckButton, "loginForm.ckSaveAcc.");
+
+    mp_btnOk = LOAD_UI_T(RtwButton, "loginForm.btnOk");
+    mp_btnBack = LOAD_UI_T(RtwButton, "loginForm.btnBack");
 
     //用户名输入框
-    m_username = RTW_WIDGET_T(RtwTextBox, "fmlogin.fmusername.txtusername");
-    m_username->EvLClick += RTW_CALLBACK(this, UILayerLogin, OnHideKeyboard);
-    m_username->EvKeyChar += RTW_CALLBACK(this, UILayerLogin, ontab);
-    m_username->EvUpdateText.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnUpdateText));
+    //mp_txtAccout = RTW_WIDGET_T(RtwTextBox, "fmlogin.fmusername.txtusername");
+    mp_txtAccout->EvLClick += RTW_CALLBACK(this, UILayerLogin, OnHideKeyboard);
+    mp_txtAccout->EvKeyChar += RTW_CALLBACK(this, UILayerLogin, ontab);
+    mp_txtAccout->EvUpdateText.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnUpdateText));
     //设置用户输入框输入长度上限
-    m_username->SetCapacity(20);
-    m_username->SetFocus();
+    mp_txtAccout->SetCapacity(20);
+    mp_txtAccout->SetFocus();
 
     //密码输入框
-    m_password = RTW_WIDGET_T(RtwTextBox, "fmlogin.fmpassword.txtpassword");
-    m_password->EvLClick += RTW_CALLBACK(this, UILayerLogin, OnShowKeyboard);
-    m_password->EvKeyChar += RTW_CALLBACK(this, UILayerLogin, ontab);
-    m_password->EvUpdateText.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnUpdateText));
+    mp_txtPwd->EvLClick += RTW_CALLBACK(this, UILayerLogin, OnShowKeyboard);
+    mp_txtPwd->EvKeyChar += RTW_CALLBACK(this, UILayerLogin, ontab);
+    mp_txtPwd->EvUpdateText.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnUpdateText));
     //设置密码输入框输入长度上限
-    m_password->SetCapacity(30);
+    mp_txtPwd->SetCapacity(30);
 
     //单选框是否记住用户名
-    m_pBtnSaveAccount = RTW_WIDGET_T(CUiCheckButton, "fmlogin.chkbutton");
-    m_pBtnSaveAccount->EvLClick.ClearAndSetDelegate(
+  
+    mp_ckSaveAcc->EvLClick.ClearAndSetDelegate(
         RTW_CALLBACK(this, UILayerLogin, OnClicked_SaveAccount));
 
     //软键盘
@@ -35,11 +47,11 @@ UILayerLogin::UILayerLogin() {
         ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_Keyboard));
 
     //领取密保
-    LOAD_UI("btngetpwd")
-        ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_GetPassword));
+    //LOAD_UI("btngetpwd")
+    //    ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_GetPassword));
     //忘记密码
-    LOAD_UI("btnforgetpwd")
-        ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_ForgetPassword));
+  /*  LOAD_UI("btnforgetpwd")
+        ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_ForgetPassword));*/
     //申请帐号
     LOAD_UI("btncreate")
         ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_CreateAccount));
@@ -48,8 +60,10 @@ UILayerLogin::UILayerLogin() {
     LOAD_UI("btnexit")->EvLClick.ClearAndSetDelegate(
         RTW_CALLBACK(this, UILayerLogin, OnClicked_Quit));
     //登录按钮
-    LOAD_UI("fmlogin.btnlogin")
-        ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_Login));
+    //LOAD_UI("fmlogin.btnlogin")
+    //    ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_Login));
+    //LOAD_UI("fmlogin.btnlogin")
+    //    ->EvKeyDown.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnKey));
     //强制登录
     LOAD_UI("ConfirmBox2.btnconfirm")
         ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_ForceLogin));
@@ -57,18 +71,16 @@ UILayerLogin::UILayerLogin() {
         ->EvLClick.ClearAndSetDelegate(
             RTW_CALLBACK(this, UILayerLogin, OnClicked_ForceLoginCancel));
 
-    LOAD_UI("fmlogin.btnlogin")
-        ->EvKeyDown.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnKey));
     //返回按钮
-    LOAD_UI("btnback")->EvLClick.ClearAndSetDelegate(
-        RTW_CALLBACK(this, UILayerLogin, OnClicked_BackSelectServer));
+  /*  LOAD_UI("btnback")->EvLClick.ClearAndSetDelegate(
+        RTW_CALLBACK(this, UILayerLogin, OnClicked_BackSelectServer));*/
 
     //lyymark 2.GcLogin.XML 加载服务器列表UI
     m_formServer = RT_NEW CUIForm_Server;
     //退出
     LOAD_UI("btnexit")->Show();
     //忘记密码
-    LOAD_UI("btnforgetpwd")->Show();
+   // LOAD_UI("btnforgetpwd")->Show();
     //申请帐号
     LOAD_UI("btncreate")->Show();
     //隐藏 返回
@@ -122,41 +134,41 @@ void UILayerLogin::OnClicked_Login(void*, void*) {
     guard;
 
     if (GetLogin()->GetStatus() == GcLogin::GLS_LOGIN) {
-        if (m_username->GetText().length() == 0) {
+        if (mp_txtAccout->GetText().length() == 0) {
             ShowMessage(R(MSG_USERNAME_CANNOT_NULL));
             return;
         }
 
-        std::string str = m_username->GetText().substr(0, 1);
+        std::string str = mp_txtAccout->GetText().substr(0, 1);
         const char* pFirst = str.c_str();
         if (!((*pFirst >= 'A' && *pFirst <= 'Z') || (*pFirst >= 'a' && *pFirst <= 'z'))) {
             ShowMessage(R(MSG_USERNAME_INVALID));
             return;
         }
-        if (!strncmp(m_username->GetText().c_str(), "test", strlen("test")) == 0 &&
-            !strcmp(m_username->GetText().c_str(), "admin") == 0) {
-            if (m_username->GetText().length() < 4 || m_username->GetText().length() > 20) {
+        if (!strncmp(mp_txtAccout->GetText().c_str(), "test", strlen("test")) == 0 &&
+            !strcmp(mp_txtAccout->GetText().c_str(), "admin") == 0) {
+            if (mp_txtAccout->GetText().length() < 4 || mp_txtAccout->GetText().length() > 20) {
                 ShowMessage(R(MSG_USERNAME_INVALID_LONG));
                 return;
             }
         }
-        if (!IsValidAccountName(m_username->GetText())) {
+        if (!IsValidAccountName(mp_txtAccout->GetText())) {
             ShowMessage(R(MSG_USERNAME_INVALID));
             return;
         }
-        if (m_password->GetText().length() == 0) {
+        if (mp_txtPwd->GetText().length() == 0) {
             ShowMessage(R(MSG_PASSWORD_CANNOT_NULL));
             return;
         }
-        if (!strcmp(m_password->GetText().c_str(), "123456") == 0) {
-            if (m_password->GetText().length() < 7 || m_password->GetText().length() > 30) {
+        if (!strcmp(mp_txtPwd->GetText().c_str(), "123456") == 0) {
+            if (mp_txtPwd->GetText().length() < 7 || mp_txtPwd->GetText().length() > 30) {
                 ShowMessage(R(MSG_PASSWORD_INVALID_LONG));
                 return;
             }
         }
 
-        GetLogin()->Login((char*)m_username->GetText().c_str(),
-                          (char*)m_password->GetText().c_str());
+        GetLogin()->Login((char*)mp_txtAccout->GetText().c_str(),
+                          (char*)mp_txtPwd->GetText().c_str());
 
         // 保存帐号
         RtIni iniUser;
@@ -164,11 +176,11 @@ void UILayerLogin::OnClicked_Login(void*, void*) {
             return;
         }
 
-        if (m_pBtnSaveAccount->GetChecked()) {
+        if (mp_ckSaveAcc->GetChecked()) {
             if (!iniUser.FindSection("login"))
                 iniUser.AddSection("login");
-            if (!iniUser.SetEntry("login", "username", m_username->GetText().c_str())) {
-                iniUser.AddEntry("login", "username", m_username->GetText().c_str());
+            if (!iniUser.SetEntry("login", "username", mp_txtAccout->GetText().c_str())) {
+                iniUser.AddEntry("login", "username", mp_txtAccout->GetText().c_str());
             }
         } else {
             iniUser.DelEntry("login", "username");
@@ -273,14 +285,14 @@ void UILayerLogin::ontab(RtwWidget* sender, RtwEventDelegate* e) {
     guard;
     if (GetLogin()->GetStatus() == GcLogin::GLS_LOGIN) {
         if (e->key.code == vkTab || (e->key.code == vkTab && e->key.code == vkShift)) {
-            if (m_username->GetQualifiedID() == sender->GetQualifiedID()) {
+            if (mp_txtAccout->GetQualifiedID() == sender->GetQualifiedID()) {
                 m_Keyboard.ShowSoftKeyboard();
-                g_workspace.SetFocusWidget(m_password);
+                g_workspace.SetFocusWidget(mp_txtPwd);
             } else {
                 if (m_Keyboard.IsVisible()) {
                     m_Keyboard.HideSoftKeyboard();
                 }
-                g_workspace.SetFocusWidget(m_username);
+                g_workspace.SetFocusWidget(mp_txtAccout);
             }
         }
     }
@@ -298,6 +310,7 @@ void UILayerLogin::OnClicked_EnterUserLogin(const int& currentSelectServer) {
     guard;
     if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_GAMEWORLD_SERVER) {
         if (currentSelectServer >= 0 && currentSelectServer <= MaxBtnsCounts) {
+           
             GetLogin()->SelectGameWorld(currentSelectServer);
         }
     }
@@ -306,7 +319,7 @@ void UILayerLogin::OnClicked_EnterUserLogin(const int& currentSelectServer) {
 
 void UILayerLogin::OnClicked_SaveAccount(RtwWidget* sender, RtwEventDelegate* e) {
     guard;
-    if (m_pBtnSaveAccount->GetChecked()) {
+    if (mp_ckSaveAcc->GetChecked()) {
         GetLogin()->SetSaveAccount(true);
     } else {
         GetLogin()->SetSaveAccount(false);
