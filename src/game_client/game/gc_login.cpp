@@ -45,7 +45,7 @@ static char* s_pszCharAnimalName[] = {
     "ui/textures/animal10.tga", "ui/textures/animal11.tga", "ui/textures/animal12.tga"};
 std::string GcLogin::m_szAccountUsername;
 std::string GcLogin::m_szAccountPassword;
-CLockFrame  lockFrame(1000 / 60);
+
 
 GcLogin::GcLogin(CGameClientFrame* pGameClientFrame) : m_ini(true) {
     m_eStatus = GLS_NONE;
@@ -228,20 +228,6 @@ void LoadLoginSection(RtIni* pIni, const char* szSectionName,
             }
         } while (pIni->NextEntry(&szLink, &szName));
     }
-    // 循环和上面合二为一优化   lyy [2024.7.25]
-    //if (pBody)
-    //{
-
-    //	for (auto& pair : mapActor)
-    //	{
-    //		if (pair.first != "Body")
-    //		{
-    //			auto& act = pair.second;
-    //			act->LinkParent(pBody, pair.first.c_str());
-    //		}
-    //	}
-
-    //}
     unguard;
 }
 
@@ -455,7 +441,7 @@ void GcLogin::SJDL_UpdateCameraPos() {
 void GcLogin::EnterSelectGameWorldServer() {
     guard;
     if (g_layerLogin == NULL) {
-        //lyymark 2.GcLogin.UI 打开登录UI
+        //lyymark 2.GcLogin.UI 加载登录和服务器列表UI
         UILayer::EnterLogin();
     }
 
@@ -471,26 +457,22 @@ void GcLogin::EnterSelectGameWorldServer() {
             m_pCamera->RegisterNotify(NULL);
     }
 
-    //	GetDevice()->m_pCamera->MoveForward(100 * 100.0f);
-
     StartGetGameWorldServer();
-    //显示 退出
-    LOAD_UI("btnexit")->Show();
-    //隐藏 返回
+
+    LOAD_UI("btnexit")->Show();  //退出
+    LOAD_UI("btncreate")->Show();  //申请帐号
+    //隐藏返回
     LOAD_UI("btnback")->Hide();
-    //隐藏 领取密保
-    LOAD_UI("btngetpwd")->Hide();
-    //隐藏 忘记密码
-    LOAD_UI("btnforgetpwd")->Hide();
-    //隐藏 申请帐号
-    LOAD_UI("btncreate")->Hide();
-    //隐藏 软键盘
+    //隐藏领取密保
+   // LOAD_UI("btngetpwd")->Show();
+    //隐藏忘记密码
+  //  LOAD_UI("btnforgetpwd")->Show();
+    //隐藏软键盘
     if (m_Keyboard.IsVisible()) {
         m_Keyboard.HideSoftKeyboard();
     }
     //显示 服务器列表
     RTW_WIDGET("serverForm")->Show();
-
     unguard;
 }
 
@@ -506,7 +488,7 @@ bool GcLogin::LeaveSelectGameWorldServer() {
 void GcLogin::EnterLogin() {
     guard;
     if (g_layerLogin == NULL) {
-        UILayer::EnterLogin();  // 打开登陆界面
+        UILayer::EnterLogin();  
     }
 
     UpdateGraphConfig("Graph_Login");
@@ -522,9 +504,9 @@ void GcLogin::EnterLogin() {
     LOAD_UI("btnback")->Show();
     LOAD_UI("btnexit")->Show();
     //领取密保
-    LOAD_UI("btngetpwd")->Show();
+   // LOAD_UI("btngetpwd")->Show();
     //忘记密码
-    LOAD_UI("btnforgetpwd")->Show();
+  //  LOAD_UI("btnforgetpwd")->Show();
     //申请帐号
     LOAD_UI("btncreate")->Show();
 
@@ -540,7 +522,7 @@ void GcLogin::EnterLogin() {
         if (szSave) {
             iSave = atol(szSave);
             if (iSave > 0) {
-                g_layerLogin->m_pBtnSaveAccount->SetChecked(true);
+                g_layerLogin->mp_ckSaveAcc->SetChecked(true);
                 szIniUsername = iniUser.GetEntry("login", "username");
                 szIniPassword = iniUser.GetEntry("login", "password");
                 if (szIniUsername) {
@@ -553,7 +535,7 @@ void GcLogin::EnterLogin() {
                     szIniPassword = "";
                 }
             } else {
-                g_layerLogin->m_pBtnSaveAccount->SetChecked(false);
+                g_layerLogin->mp_ckSaveAcc->SetChecked(false);
                 szIniUsername = "";
                 szIniPassword = "";
                 m_szAccountUsername = szIniUsername;
@@ -568,34 +550,34 @@ void GcLogin::EnterLogin() {
     }
 
     if (!GetLogin()->m_ishallLogin) {
-        g_layerLogin->m_username->Enable();
-        g_layerLogin->m_password->Enable();
+        g_layerLogin->mp_txtAccout->Enable();
+        g_layerLogin->mp_txtPwd->Enable();
         // 设置控件值
-        g_layerLogin->m_username->SetText(std::string(m_szAccountUsername));
-        g_layerLogin->m_password->SetText(szIniPassword);
+        g_layerLogin->mp_txtAccout->SetText(std::string(m_szAccountUsername));
+        g_layerLogin->mp_txtPwd->SetText(szIniPassword);
 
         // 设置输入焦点
         if (m_szAccountUsername.length() == 0) {
-            g_layerLogin->m_username->SetFocus();
+            g_layerLogin->mp_txtAccout->SetFocus();
             if (m_Keyboard.IsVisible()) {
                 m_Keyboard.HideSoftKeyboard();
             }
         } else {
-            g_layerLogin->m_password->SetFocus();
+            g_layerLogin->mp_txtPwd->SetFocus();
             m_Keyboard.ShowSoftKeyboard();
         }
 
         RTW_WIDGET("serverForm")->Hide();
-        RTW_WIDGET("fmlogin")->Show();
-        ((RtwForm*)RTW_WIDGET("fmlogin"))->SetShowCloseButton(false);
+        RTW_WIDGET("loginForm")->Show();
+        ((RtwForm*)RTW_WIDGET("loginForm"))->SetShowCloseButton(false);
     } else {
-        g_layerLogin->m_username->SetText(m_hallName);
-        g_layerLogin->m_password->SetText(m_hallKey);
+        g_layerLogin->mp_txtAccout->SetText(m_hallName);
+        g_layerLogin->mp_txtPwd->SetText(m_hallKey);
         RTW_WIDGET("serverForm")->Hide();
-        RTW_WIDGET("fmlogin")->Show();
-        ((RtwForm*)RTW_WIDGET("fmlogin"))->SetShowCloseButton(false);
-        g_layerLogin->m_username->Disable();
-        g_layerLogin->m_password->Disable();
+        RTW_WIDGET("loginForm")->Show();
+        ((RtwForm*)RTW_WIDGET("loginForm"))->SetShowCloseButton(false);
+        g_layerLogin->mp_txtAccout->Disable();
+        g_layerLogin->mp_txtPwd->Disable();
     }
     unguard;
 }
@@ -603,7 +585,7 @@ void GcLogin::EnterLogin() {
 bool GcLogin::LeaveLogin() {
     guard;
     CHECK(m_eStatus == GLS_LOGIN);
-    RTW_WIDGET("fmlogin")->Hide();
+    RTW_WIDGET("loginForm")->Hide();
     return true;
     unguard;
 }
@@ -2336,10 +2318,12 @@ void GcLogin::OnKeyUp(int iButton, int iKey) {
 
 void GcLogin::SelectGameWorld(int iIdx) {
     guard;
-    m_szGameWorldServerName = ms_pGameWorldServerList[iIdx].szName;
-    m_szGameWorldServerIP = ms_pGameWorldServerList[iIdx].szIP;
-    m_lGameWorldServerPort = ms_pGameWorldServerList[iIdx].lPort;
-    SetLoginState(GLS_LOGIN);
+        m_szGameWorldServerName = ms_pGameWorldServerList[iIdx].szName;
+        m_szGameWorldServerIP = ms_pGameWorldServerList[iIdx].szIP;
+        m_lGameWorldServerPort = ms_pGameWorldServerList[iIdx].lPort;
+        //设置显示当前选择的服务器名称
+        g_layerLogin->mp_selectServerName->SetText(m_szGameWorldServerName);
+        SetLoginState(GLS_LOGIN);
     unguard;
 }
 

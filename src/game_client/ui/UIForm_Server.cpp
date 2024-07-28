@@ -19,6 +19,8 @@ CUIForm_Server::CUIForm_Server(void) {
     // ÃÓ≥‰∞¥≈•”≥…‰
     for (int i = 0; i < UILayerLogin::MaxBtnsCounts; ++i) {
         mp_btnServersSelectedMap[mp_btnServersList[i]] = i;
+        mp_btnServersList[i]->EvLClick +=
+            UI_DELEGATE_M(this, CUIForm_Server, OnClicked_SelectServer);
     }
     mp_serverStatus[0] = LOAD_UI("serverForm.serverStatus0");
     mp_serverStatus[1] = LOAD_UI("serverForm.serverStatus1");
@@ -28,11 +30,6 @@ CUIForm_Server::CUIForm_Server(void) {
     mp_serverStatus[5] = LOAD_UI("serverForm.serverStatus5");
     mp_serverStatus[6] = LOAD_UI("serverForm.serverStatus6");
     mp_serverStatus[7] = LOAD_UI("serverForm.serverStatus7");
-    for (auto& btn : mp_btnServersList) {
-        if (btn) {
-            btn->EvLClick += UI_DELEGATE_M(this, CUIForm_Server, OnClicked_SelectServer);
-        }
-    }
     unguard;
 }
 

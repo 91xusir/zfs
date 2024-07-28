@@ -56,11 +56,24 @@ class UILayerLogin {
     CSoftKeyboard m_Keyboard;
 
    public:
-    constexpr static int MaxBtnsCounts = 8;//设置服务器最大显示个数
-    RtwTextBox*          m_username;
-    RtwTextBox*          m_password;
-    CUiCheckButton*      m_pBtnSaveAccount;
-    CUIForm_Server* m_formServer;
+    constexpr static int MaxBtnsCounts = 8;  //设置服务器最大显示个数
+    //RtwTextBox*          mp_txtAccout;
+    //RtwTextBox*          mp_txtPwd;
+    //CUiCheckButton*      m_pBtnSaveAccount; 
+    CUIForm_Server*      m_formServer;
+    //----------------------------------fox by lyy 2024.7.28
+    RtwWidget* mp_loginForm;
+
+    RtwWidget* mp_selectServerName;
+
+    RtwTextBox* mp_txtAccout;
+
+    RtwTextBox* mp_txtPwd;
+
+    CUiCheckButton* mp_ckSaveAcc;
+
+    RtwWidget* mp_btnOk;
+    RtwWidget* mp_btnBack;
 };
 
 class CUIForm_Server {
@@ -80,8 +93,8 @@ class CUIForm_Server {
     /*-----------------------------------------------add by lyy*/
     RtwWidget*                          mp_serverForm;
     RtwWidget*                          mp_serverTips;
-    RtwWidget*                          mp_btnServersList[UILayerLogin::MaxBtnsCounts]{};
-    std::unordered_map<RtwWidget*, int> mp_btnServersSelectedMap{};
+    RtwButton*                          mp_btnServersList[UILayerLogin::MaxBtnsCounts]{};
+    std::unordered_map<RtwButton*, int> mp_btnServersSelectedMap{};
     RtwWidget*                          mp_serverStatus[UILayerLogin::MaxBtnsCounts]{};
 
    public:

@@ -1436,8 +1436,8 @@ INT CD3DApplication::Run() {
             // Render a frame during idle time (no messages are waiting)
             if (m_bReady)  // 如果应用程序已准备好
             {
-                // Temporarily removed
-                if (m_dwFpsLocked) {
+                // lyymark 1.d3dapp.帧率限制 运行3秒后限制
+                if (m_dwFpsLocked && DXUtil_Timer(TIMER_GETAPPTIME)>3.f) {
                     DWORD dSTime = timeGetTime();
                     if (FAILED(Render3DEnvironment()))
                         SendMessage(m_hWnd, WM_CLOSE, 0, 0);
