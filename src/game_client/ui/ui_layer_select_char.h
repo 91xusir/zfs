@@ -1,7 +1,7 @@
 #ifndef _INC_UI_LAYER_SELECT_CHAR_H_
 #define _INC_UI_LAYER_SELECT_CHAR_H_
 
-#include "num_keyboard.h"
+
 
 class UILayerSelectChar
 {
@@ -78,8 +78,6 @@ public:
 	    RtwTextBox*		m_numpwd;                 //人物角色密码锁
 		RtwTextBox*		m_charname;					//角色名称
 		RtwButton*      m_closeBtn;                 //密码框关闭按钮
-		CNumKeyboard    m_numKeyboard;              //数字键盘
-
 		int             m_iConfirmCnt;
 		int             m_CurBtnIdx;                //当前按钮的索引
 		std::string     m_OldPwd;

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="" Location="59,148,310,380" Movable="true" Name="fmnew_people" Show="false">
+      <Label Alignment="center" FontSize="18" Inherit="" Location="62,4,188,18" Name="lbname" Show="true" Text="升级帮助" TextColor="#ffdfde9b" TextFont="隶书"/>
+      <CloseButton Location="284,14,20,20" padding="0,22,5,0">
+        <NormalImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="359,83,20,20"/>
+      </CloseButton>
+      <Label Inherit="" Location="0,-1,310,50" Name="lbborder1" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,1,310,50"/>
+      </Label>
+      <Label BackgroundColor="#A016712C" Inherit="" Location="0,50,310,304" Name="lbborder2" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,53,310,10"/>
+      </Label>
+      <Label Inherit="" Location="0,355,310,23" Name="lbborder3" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,65,310,23"/>
+      </Label>
+      <HtmlView Inherit="" Location="6,46,300,300" Name="htmlhelp" Show="true"/>
+      <Button Inherit="" Location="120,352,15,15" Name="btnleft" Show="true">
+        <NormalImage Blend="true" File="ui\textures\1.tga" Source="258,101,9,8"/>
+        <HighlightImage Blend="true" File="ui\textures\1.tga" Source="268,101,9,8"/>
+        <PushedImage Blend="true" File="ui\textures\1.tga" Source="278,101,9,8"/>
+      </Button>
+      <Button Inherit="" Location="181,352,15,15" Name="btnright" Show="true">
+        <NormalImage Blend="true" File="ui\textures\1.tga" Source="288,101,9,8"/>
+        <HighlightImage Blend="true" File="ui\textures\1.tga" Source="298,101,9,8"/>
+        <PushedImage Blend="true" File="ui\textures\1.tga" Source="308,101,9,8"/>
+      </Button>
+      <Label Inherit="" Location="138,350,40,18" Name="lbpages" Show="true"/>
+      <Anchors>
+        <Anchor offset="-295,0" point="CENTERV"/>
+        <Anchor offset="0,-20" point="CENTERH"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>

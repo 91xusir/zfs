@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="BTitleBarForm" Location="120,120,632,377" Name="fmOrder" Show="false">
+      <Form Inherit="" Location="0,-30,625,32" Name="panTitle"/>
+      <Label Location="34,6,120,18" Name="lblist" Text="竞拍物品"/>
+      <Form Inherit="Border" Location="16,26,106,284" Name="panOrder" Title="ui_texture/tree_icon1.bmp">
+        <Form Inherit="" Location="0,2,100,58" Name="pansource01" Show="true">
+          <Button DragServer="false" Inherit="" Location="28,2,34,34" Name="btnskill">
+            <BackgroundImage Border="1,1,1,1" BorderFile="" BorderSource="95,10,4,4"/>
+          </Button>
+          <Label Alignment="center" Location="6,36,80,20" Name="lbskillinfo" Text="良牙战甲" TextMagin="4,0,0,0"/>
+        </Form>
+        <Label Alignment="center" Location="0,66,40,20" Name="lbPrice" Text="出价" TextMagin="4,0,0,0"/>
+        <EditBox Alignment="center" Inherit="EditBox" Location="38,66,62,20" Name="lbPricenum" Text="100000000" TextMagin="4,0,0,0"/>
+        <Label Alignment="center" Location="0,90,40,20" Name="lbPrice1" Text="一口价" TextMagin="4,0,0,0"/>
+        <Label Alignment="center" Inherit="" Location="38,90,62,20" Name="lbPricenum1" Text="100000000" TextMagin="4,0,0,0"/>
+        <Label Alignment="center" Location="0,124,40,20" Name="lbPrice2" Text="手续费" TextMagin="4,0,0,0"/>
+        <Label Alignment="center" Inherit="" Location="38,124,62,20" Name="lbPricenum2" Text="100000000" TextMagin="4,0,0,0"/>
+        <Label Alignment="center" Location="0,148,40,20" Name="lbPrice3" Text="总价" TextMagin="4,0,0,0"/>
+        <Label Alignment="center" Inherit="" Location="38,148,62,20" Name="lbPricenum3" Text="100000000" TextMagin="4,0,0,0"/>
+        <Button Inherit="PushButton" Location="30,190,64,20" Name="btnBuy" Text="开始竞拍"/>
+      </Form>
+      <Button Inherit="PushButton" Location="330,294,64,20" Name="btnRefresh" Text="刷新"/>
+      <Button Inherit="PushButton" Location="420,294,64,20" Name="btnBuy" Text="取消竞拍"/>
+      <Button Inherit="PushButton" Location="510,294,64,20" Name="btnBack" Text="返回"/>
+      <Label Location="338,6,120,18" Name="lbauc" Text="已竞拍物品"/>
+      <ListBox Anchor="none" Inherit="ListBox" Location="126,26,487,264" Name="fmAuctionRight">
+        <Column Inherit="Column" Text="" Width="20"/>
+        <Column Inherit="Column" Text="参与竟拍物品" Width="75"/>
+        <Column Inherit="Column" Text="装备等级" Width="60"/>
+        <Column Inherit="Column" Text="剩余时间" Width="80"/>
+        <Column Inherit="Column" Text="拍卖玩家" Width="92"/>
+        <Column Inherit="Column" Text="当前价格" Width="70"/>
+        <Column Inherit="Column" Text="一口价" Width="80"/>
+      </ListBox>
+	  <Label Inherit="" Location="0,-30,385,30" Name="541" Show="true">
+        <BackgroundImage Blend="true" File="" Source="0,0,255,30"/>
+      </Label>
+      <Label Inherit="" Location="380,-30,255,30" Name="1450" Show="true">
+        <BackgroundImage Blend="true" File="" Source="0,32,210,35"/>
+      </Label>
+    </Form>
+  </Layer>
+</Ui>

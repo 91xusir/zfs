@@ -212,14 +212,11 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     // 大厅登陆 KEY 的字符串
     std::string m_hallKey;
 
-    // 是否是大厅登陆的布尔值
+    // 是否是在终端登陆
     bool m_ishallLogin;
 
-    // 是否强制登陆的布尔值 (0---正常登录, 1---强制登录)
+    // 是否强制登陆 (0---正常登录, 1---强制登录)
     bool m_bForceLogin;
-
-    // 软键盘对象
-    CSoftKeyboard m_Keyboard;
 
    private:
     // 加载界面
@@ -229,6 +226,9 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     // 选择GameWorld服务器界面
     void EnterSelectGameWorldServer();
     bool LeaveSelectGameWorldServer();
+
+    //从文件中读取账号密码
+    void readAccountFromFile();
 
     // 登陆界面
     void EnterLogin();

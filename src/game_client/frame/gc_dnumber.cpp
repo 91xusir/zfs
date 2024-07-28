@@ -245,7 +245,7 @@ void GcDynamicNumber::AddString(const char* szString, const RtgVertex3& vPos, DW
 void GcDynamicNumber::Render(RtgCamera& inCamera, RtgDevice& inDevice, float fSecond)
 {
     int i, j, k, c, iCnt;
-    DWORD dwRes;
+    //DWORD dwRes;
     BYTE* pVB;
     SCharUV* pUV;
     RtgVertex3 vOffset;
@@ -258,7 +258,7 @@ void GcDynamicNumber::Render(RtgCamera& inCamera, RtgDevice& inDevice, float fSe
 	inDevice.SetRenderState(RTGRS_DIFFUSEMATERIALSOURCE,RTGMCS_COLOR1);
     */
 	// Render
-    if (m_iCnt)
+    if (m_iCnt) 
     {
         RtgMatrix16 m16;
         DWORD dwStride = sizeof(float)*3 + sizeof(DWORD) + sizeof(float)*2;

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form EscapeHide="true" Inherit="" Location="400,148,310,454" Movable="true" Name="fmconjurezz" Show="false">
+      <Label Alignment="center" FontSize="18" Location="93,4,130,20" Name="lbname" Show="true" Text="宠物资质" TextColor="#ffdfde9b" TextFont="隶书"/>
+      <CloseButton Location="284,14,20,20" Name="btnclose" padding="0,22,5,0">
+        <NormalImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="359,83,20,20"/>
+      </CloseButton>
+      <Form BackgroundColor="#A50E593A" EscapeHide="false" Inherit="" Location="15,48,145,200" Name="conjureform01" Show="true">
+        <Label Alignment="center" FontSize="12" Inherit="" Location="6,6,60,18" MouseEvent="true" MouseMove="true" Name="lblifegrowth" Show="true" Text="生命成长" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="431,84,36,18"/>
+          <Hint Text=""/>
+        </Label>
+        <Label Alignment="center" Inherit="" Location="68,7,70,15" Name="lblifegrowthcount" Show="true" Text="0000"/>
+        <Label Inherit="" Location="7,4,130,22" Name="lbim07" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="3,4,6,22" Name="lbim08" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="136,4,6,22" Name="lbim09" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Alignment="center" FontSize="12" Inherit="" Location="6,30,60,18" MouseEvent="true" MouseMove="true" Name="lbmagicgrowth" Show="true" Text="法力成长" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="431,84,36,18"/>
+          <Hint Text=""/>
+        </Label>
+        <Label Alignment="center" Inherit="" Location="68,31,70,15" Name="lbmagicgrowthcount" Show="true" Text="0000"/>
+        <Label Inherit="" Location="7,28,130,22" Name="lbim13" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="3,28,6,22" Name="lbim14" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="136,28,6,22" Name="lbim15" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Alignment="center" FontSize="12" Inherit="" Location="6,54,60,18" MouseEvent="true" MouseMove="true" Name="lbpydamgrowth" Show="true" Text="物伤成长" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="431,84,36,18"/>
+          <Hint Text=""/>
+        </Label>
+        <Label Alignment="center" Inherit="" Location="68,56,70,15" Name="lbpydamgrowthcount" Show="true" Text="0000"/>
+        <Label Inherit="" Location="7,52,130,22" Name="lbim19" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="3,52,6,22" Name="lbim20" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="136,52,6,22" Name="lbim21" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Alignment="center" FontSize="12" Inherit="" Location="6,78,60,18" MouseEvent="true" MouseMove="true" Name="lbpydefgrowth" Show="true" Text="物防成长" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="431,84,36,18"/>
+          <Hint Text=""/>
+        </Label>
+        <Label Alignment="center" Inherit="" Location="68,79,70,15" Name="lbpydefgrowthcount" Show="true" Text="0000"/>
+        <Label Inherit="" Location="7,76,130,22" Name="lbim25" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="3,76,6,22" Name="lbim26" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="136,76,6,22" Name="lbim27" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Alignment="center" FontSize="12" Inherit="" Location="6,102,60,18" MouseEvent="true" MouseMove="true" Name="lbhitgrowth" Show="true" Text="命中成长" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="431,84,36,18"/>
+          <Hint Text=""/>
+        </Label>
+        <Label Alignment="center" Inherit="" Location="68,103,70,15" Name="lbhitgrowthcount" Show="true" Text="0000"/>
+        <Label Inherit="" Location="7,100,130,22" Name="lbim31" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="3,100,6,22" Name="lbim32" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="136,100,6,22" Name="lbim33" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Alignment="center" Inherit="" Location="192,180,80,22" Name="lbdogecount" Show="true" Text=""/>
+        <Label Alignment="center" FontSize="12" Inherit="" Location="6,126,60,18" MouseEvent="true" MouseMove="true" Name="lbdodgegrowth" Show="true" Text="闪避成长" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="431,84,36,18"/>
+          <Hint Text=""/>
+        </Label>
+        <Label Alignment="center" Inherit="" Location="68,127,70,15" Name="lbdodgegrowthcount" Show="true" Text="0000"/>
+        <Label Inherit="" Location="7,124,130,22" Name="lbim10" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="3,124,6,22" Name="lbim11" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="136,124,6,22" Name="lbim12" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Alignment="center" FontSize="12" Inherit="" Location="6,150,60,18" MouseEvent="true" MouseMove="true" Name="lbstrlevtext" Show="true" Text="锻体等级" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="431,84,36,18"/>
+          <Hint Text=""/>
+        </Label>
+        <Label Alignment="center" Inherit="" Location="68,151,16,16" Name="lbstrlev01" Show="true" Text=""/>
+        <Label Alignment="center" Inherit="" Location="85,151,16,16" Name="lbstrlev02" Show="true" Text=""/>
+        <Label Alignment="center" Inherit="" Location="102,151,16,16" Name="lbstrlev03" Show="true" Text=""/>
+        <Label Alignment="center" Inherit="" Location="119,151,16,16" Name="lbstrlev04" Show="true" Text=""/>
+        <Label Inherit="" Location="7,148,130,22" Name="lbim1" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="3,148,6,22" Name="lbim2" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="136,148,6,22" Name="lbim3" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Alignment="center" FontSize="12" Inherit="" Location="6,174,60,18" MouseEvent="true" MouseMove="true" Name="lbcomplevtext" Show="true" Text="融合等级" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="431,84,36,18"/>
+          <Hint Text=""/>
+        </Label>
+        <Label Alignment="center" Inherit="" Location="68,175,16,16" Name="lbcomplev01" Show="true" Text=""/>
+        <Label Alignment="center" Inherit="" Location="85,175,16,16" Name="lbcomplev02" Show="true" Text=""/>
+        <Label Alignment="center" Inherit="" Location="102,175,16,16" Name="lbcomplev03" Show="true" Text=""/>
+        <Label Alignment="center" Inherit="" Location="119,175,16,16" Name="lbcomplev04" Show="true" Text=""/>
+        <Label Inherit="" Location="7,172,130,22" Name="lbim4" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="3,172,6,22" Name="lbim5" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="136,172,6,22" Name="lbim6" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+      </Form>
+      <Form BackgroundColor="" EscapeHide="false" Inherit="" Location="8,256,294,45" Name="conjureform04" Show="true">
+        <Form BackgroundColor="#ff0E593A" BackgroundTrans="0.63" EscapeHide="false" Inherit="" Location="101,1,185,45" Name="soulkey" NoMouseClip="true" Show="true" TitleSize="0">
+          <Button Alignment="center" Inherit="" Location="7,5,33,33" Name="lbhotkey1" Text=""/>
+          <Button Alignment="center" Inherit="" Location="52,5,33,33" Name="lbhotkey2" Text=""/>
+          <Button Alignment="center" Inherit="" Location="97,5,33,33" Name="lbhotkey3" Text=""/>
+          <Button Alignment="center" Inherit="" Location="142,5,33,33" Name="lbhotkey4" Text=""/>
+          <Button Location="14,347,12,12" Name="btnturn">
+            <BackgroundImage Blend="true" File="" Source="71,179,12,12"/>
+          </Button>
+          <Label Inherit="" Location="6,4,35,35" Name="lbf1" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="51,4,35,35" Name="lbf2" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="96,4,35,35" Name="lbf3" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="141,4,35,35" Name="lbf4" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+        </Form>
+        <Label Alignment="center" FontSize="12" Inherit="" Location="13,1,60,18" MouseEvent="true" MouseMove="true" Name="lbrytext" Show="true" Text="阴魂珠" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="431,84,36,18"/>
+          <Hint Text=""/>
+        </Label>
+      </Form>
+      <Form BackgroundColor="" EscapeHide="false" Inherit="" Location="10,301,295,65" Name="conjureform05" Show="true">
+        <Label Alignment="center" FontSize="12" Inherit="" Location="11,0,60,18" MouseEvent="true" MouseMove="true" Name="lbpastext" Show="true" Text="被动技能" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="431,84,36,18"/>
+          <Hint Text=""/>
+        </Label>
+        <Form BackgroundColor="#ff0E593A" EscapeHide="false" Inherit="" Location="5,21,280,45" Name="passive" NoMouseClip="true" Show="true" TitleSize="0">
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="11,5,33,33" Name="lbhotkey1" Text=""/>
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="56,5,33,33" Name="lbhotkey2" Text=""/>
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="101,5,33,33" Name="lbhotkey3" Text=""/>
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="146,5,33,33" Name="lbhotkey4" Text=""/>
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="191,5,33,33" Name="lbhotkey5" Text=""/>
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="236,5,33,33" Name="lbhotkey6" Text=""/>
+          <Button Location="14,347,12,12" Name="btnturn">
+            <BackgroundImage Blend="true" File="" Source="71,179,12,12"/>
+          </Button>
+          <Label Inherit="" Location="10,4,35,35" Name="lbf1" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="55,4,35,35" Name="lbf2" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="100,4,35,35" Name="lbf3" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="145,4,35,35" Name="lbf4" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="190,4,35,35" Name="lbf5" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="235,4,35,35" Name="lbf6" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+        </Form>
+      </Form>
+      <Form BackgroundColor="" EscapeHide="false" Inherit="" Location="11,370,294,65" Name="conjureform06" Show="true">
+        <Label Alignment="center" FontSize="12" Inherit="" Location="11,-1,60,18" MouseEvent="true" MouseMove="true" Name="lbskilltext" Show="true" Text="主动技能" TextColor="#fffcffc6" TextFont="宋体">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="431,84,36,18"/>
+          <Hint Text=""/>
+        </Label>
+        <Form BackgroundColor="#ff0E593A" EscapeHide="false" Inherit="" Location="4,19,280,45" Name="activekey" NoMouseClip="true" Show="true" TitleSize="0">
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="11,5,33,33" Name="lbhotkey1" Text=""/>
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="56,5,33,33" Name="lbhotkey2" Text=""/>
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="101,5,33,33" Name="lbhotkey3" Text=""/>
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="146,5,33,33" Name="lbhotkey4" Text=""/>
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="191,5,33,33" Name="lbhotkey5" Text=""/>
+          <Button Alignment="center" BorderSize="0" Inherit="" Location="236,5,33,33" Name="lbhotkey6" Text=""/>
+          <Button Location="14,347,12,12" Name="btnturn">
+            <BackgroundImage Blend="true" File="" Source="71,179,12,12"/>
+          </Button>
+          <Label Inherit="" Location="10,4,35,35" Name="lbf1" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="55,4,35,35" Name="lbf2" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="100,4,35,35" Name="lbf3" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="145,4,35,35" Name="lbf4" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="190,4,35,35" Name="lbf5" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+          <Label Inherit="" Location="235,4,35,35" Name="lbf6" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="473,3,36,36"/>
+          </Label>
+        </Form>
+      </Form>
+      <Form Inherit="" Location="161,48,145,200" Name="fmbackimage" Show="true">
+        <Label Inherit="" Location="4,32,30,18" Name="lbatt1" Show="true" Text="0000"/>
+        <Label Inherit="" Location="113,30,30,18" Name="lbatt2" Show="true" Text="0000"/>
+        <Label Inherit="" Location="60,84,30,18" Name="lbatt3" Show="true" Text="0000"/>
+        <Label Inherit="" Location="4,142,30,18" Name="lbdef1" Show="true" Text="0000"/>
+        <Label Inherit="" Location="111,112,30,18" Name="lbdef2" Show="true" Text="0000"/>
+        <Label Inherit="" Location="110,178,30,18" Name="lbdef3" Show="true" Text="0000"/>
+        <Label Inherit="" Location="3,31,30,16" Name="lbim02" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="0,31,6,16" Name="lbim01" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="30,31,6,16" Name="lbim03" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Inherit="" Location="58,84,30,16" Name="1316" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="111,30,30,16" Name="1436" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="2,141,30,16" Name="1557" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="109,112,30,16" Name="1679" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="3,31,30,16" Name="1802" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="109,177,30,16" Name="1926" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="0,141,6,16" Name="2111" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="108,30,6,16" Name="2237" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="54,84,6,16" Name="2364" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="107,112,6,16" Name="2492" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="106,177,6,16" Name="2621" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="138,30,6,16" Name="3031" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Inherit="" Location="86,84,6,16" Name="3162" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Inherit="" Location="29,141,6,16" Name="3294" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Inherit="" Location="137,112,6,16" Name="3427" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Inherit="" Location="137,177,6,16" Name="3561" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+      </Form>
+      <Form Inherit="" Location="183,49,100,100" Name="fmattackimage" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\4.tga" Source="193,85,109,109"/>
+      </Form>
+      <Form Inherit="" Location="183,149,100,100" Name="fmDefimage" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\4.tga" Source="193,188,109,106"/>
+      </Form>
+      <Label Inherit="" Location="0,0,310,50" Name="lbborder1" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,1,310,50"/>
+      </Label>
+      <Label BackgroundColor="#A016712C" Inherit="" Location="0,51,310,380" Name="lbborder2" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,53,310,10"/>
+      </Label>
+      <Label Inherit="" Location="0,432,310,23" Name="lbborder3" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,65,310,23"/>
+      </Label>
+      <Anchors>
+        <Anchor offset="15,0" point="CENTERV"/>
+        <Anchor offset="0,-10" point="CENTERH"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>

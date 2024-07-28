@@ -10,10 +10,7 @@
 #include "trump_show.h"
 #include "ui_form_msg.h"
 #include "ui_form_textMsg.h"
-#include "UIForm_Server.h"
-#include "soft_keyboard.h"
-#include "../gc_fps.h"
-#include <typeinfo>
+
 //1--五台 4--花间 7--蜀山 10--苗疆 13--蜀山(女) 16--苗疆(女)
 //static int s_userID[] = {1, 4, 7, 10, 13, 16};
 //static char* s_pszLoginCharName[] = {"role_wt_m_01", "role_hj_f_01", "role_ss_m_01", "role_mj_m_01", "role_ss_f_01", "role_mj_f_01"};
@@ -45,7 +42,6 @@ static char* s_pszCharAnimalName[] = {
     "ui/textures/animal10.tga", "ui/textures/animal11.tga", "ui/textures/animal12.tga"};
 std::string GcLogin::m_szAccountUsername;
 std::string GcLogin::m_szAccountPassword;
-
 
 GcLogin::GcLogin(CGameClientFrame* pGameClientFrame) : m_ini(true) {
     m_eStatus = GLS_NONE;
@@ -444,148 +440,81 @@ void GcLogin::EnterSelectGameWorldServer() {
         //lyymark 2.GcLogin.UI 加载登录和服务器列表UI
         UILayer::EnterLogin();
     }
-
     UpdateGraphConfig("Graph_Login");
-
-    if (m_pCamera) {
-        m_pCamera = NULL;
-    }
 
     if (m_pCamera = FindModel("Camera")) {
         m_pCamera->RegisterNotify(this);
         if (!m_pCamera->PlayPose("idle", true))
             m_pCamera->RegisterNotify(NULL);
     }
-
     StartGetGameWorldServer();
 
-    LOAD_UI("btnexit")->Show();  //退出
-    LOAD_UI("btncreate")->Show();  //申请帐号
-    //隐藏返回
-    LOAD_UI("btnback")->Hide();
-    //隐藏领取密保
-   // LOAD_UI("btngetpwd")->Show();
-    //隐藏忘记密码
-  //  LOAD_UI("btnforgetpwd")->Show();
-    //隐藏软键盘
-    if (m_Keyboard.IsVisible()) {
-        m_Keyboard.HideSoftKeyboard();
-    }
     //显示 服务器列表
-    RTW_WIDGET("serverForm")->Show();
+    g_layerLogin->m_formServer->Show();
     unguard;
 }
 
 bool GcLogin::LeaveSelectGameWorldServer() {
     guard;
     CHECK(m_eStatus == GLS_SELECT_GAMEWORLD_SERVER);
-    RTW_WIDGET("serverForm")->Hide();
+    g_layerLogin->m_formServer->Hide();
     EndGetGameWorldServer();
     return true;
     unguard;
 }
 
+void GcLogin::readAccountFromFile() {
+    // 读取用户名
+    RtIni       iniUser;
+    const char* szIniUsername = "";
+    if (iniUser.OpenFile(R(INI_USER))) {
+        const char* szSave = iniUser.GetEntry("account", "save");
+        bool        isSave = (szSave && atol(szSave) > 0);
+        g_layerLogin->mp_ckSaveAcc->SetChecked(isSave);
+        if (isSave) {
+            szIniUsername = iniUser.GetEntry("login", "username");
+        }
+        iniUser.CloseFile();
+    }
+    // 赋值用户名
+    m_szAccountUsername = szIniUsername ? szIniUsername : "";
+    g_layerLogin->mp_txtAccout->Enable();
+    g_layerLogin->mp_txtPwd->Enable();
+    // 设置控件值
+    g_layerLogin->mp_txtAccout->SetText(std::string(m_szAccountUsername));
+
+    // 设置输入焦点
+    if (m_szAccountUsername.empty()) {
+        g_layerLogin->mp_txtAccout->SetFocus();
+    } else {
+        g_layerLogin->mp_txtPwd->SetFocus();
+    }
+}
+
 void GcLogin::EnterLogin() {
     guard;
     if (g_layerLogin == NULL) {
-        UILayer::EnterLogin();  
+        UILayer::EnterLogin();
     }
-
     UpdateGraphConfig("Graph_Login");
-    if (m_pCamera) {
-        m_pCamera = NULL;
-    }
+
     if (m_pCamera = FindModel("Camera")) {
         m_pCamera->RegisterNotify(this);
         if (!m_pCamera->PlayPose("idle", true))
             m_pCamera->RegisterNotify(NULL);
     }
-
-    LOAD_UI("btnback")->Show();
-    LOAD_UI("btnexit")->Show();
-    //领取密保
-   // LOAD_UI("btngetpwd")->Show();
-    //忘记密码
-  //  LOAD_UI("btnforgetpwd")->Show();
-    //申请帐号
-    LOAD_UI("btncreate")->Show();
-
-    // 读取用户名和密码
-    RtIni       iniUser;
-    const char* szSave = 0;
-    int         iSave;
-    const char* szIniUsername = 0;
-    const char* szIniPassword = 0;
-
-    if (iniUser.OpenFile(R(INI_USER))) {
-        szSave = iniUser.GetEntry("account", "save");
-        if (szSave) {
-            iSave = atol(szSave);
-            if (iSave > 0) {
-                g_layerLogin->mp_ckSaveAcc->SetChecked(true);
-                szIniUsername = iniUser.GetEntry("login", "username");
-                szIniPassword = iniUser.GetEntry("login", "password");
-                if (szIniUsername) {
-                    m_szAccountUsername = szIniUsername;
-                } else {
-                    szIniUsername = "";
-                    m_szAccountUsername = szIniUsername;
-                }
-                if (!szIniPassword) {
-                    szIniPassword = "";
-                }
-            } else {
-                g_layerLogin->mp_ckSaveAcc->SetChecked(false);
-                szIniUsername = "";
-                szIniPassword = "";
-                m_szAccountUsername = szIniUsername;
-            }
-        } else {
-            szIniUsername = "";
-            szIniPassword = "";
-            m_szAccountUsername = szIniUsername;
-        }
-
-        iniUser.CloseFile();
-    }
-
-    if (!GetLogin()->m_ishallLogin) {
-        g_layerLogin->mp_txtAccout->Enable();
-        g_layerLogin->mp_txtPwd->Enable();
-        // 设置控件值
-        g_layerLogin->mp_txtAccout->SetText(std::string(m_szAccountUsername));
-        g_layerLogin->mp_txtPwd->SetText(szIniPassword);
-
-        // 设置输入焦点
-        if (m_szAccountUsername.length() == 0) {
-            g_layerLogin->mp_txtAccout->SetFocus();
-            if (m_Keyboard.IsVisible()) {
-                m_Keyboard.HideSoftKeyboard();
-            }
-        } else {
-            g_layerLogin->mp_txtPwd->SetFocus();
-            m_Keyboard.ShowSoftKeyboard();
-        }
-
-        RTW_WIDGET("serverForm")->Hide();
-        RTW_WIDGET("loginForm")->Show();
-        ((RtwForm*)RTW_WIDGET("loginForm"))->SetShowCloseButton(false);
-    } else {
-        g_layerLogin->mp_txtAccout->SetText(m_hallName);
-        g_layerLogin->mp_txtPwd->SetText(m_hallKey);
-        RTW_WIDGET("serverForm")->Hide();
-        RTW_WIDGET("loginForm")->Show();
-        ((RtwForm*)RTW_WIDGET("loginForm"))->SetShowCloseButton(false);
-        g_layerLogin->mp_txtAccout->Disable();
-        g_layerLogin->mp_txtPwd->Disable();
-    }
+    readAccountFromFile();
+   
+   // LOAD_UI_T(RtwForm, "loginForm")->SetShowCloseButton(false);
+   // LOAD_UI_T(RtwForm, "loginForm")->getCloseButton()->ModifyFlags(0, wfVisible);
+    g_layerLogin->mp_loginForm->Show();
     unguard;
 }
 
 bool GcLogin::LeaveLogin() {
     guard;
     CHECK(m_eStatus == GLS_LOGIN);
-    RTW_WIDGET("loginForm")->Hide();
+    g_layerLogin->mp_loginForm->Hide();
     return true;
     unguard;
 }
@@ -2318,12 +2247,12 @@ void GcLogin::OnKeyUp(int iButton, int iKey) {
 
 void GcLogin::SelectGameWorld(int iIdx) {
     guard;
-        m_szGameWorldServerName = ms_pGameWorldServerList[iIdx].szName;
-        m_szGameWorldServerIP = ms_pGameWorldServerList[iIdx].szIP;
-        m_lGameWorldServerPort = ms_pGameWorldServerList[iIdx].lPort;
-        //设置显示当前选择的服务器名称
-        g_layerLogin->mp_selectServerName->SetText(m_szGameWorldServerName);
-        SetLoginState(GLS_LOGIN);
+    m_szGameWorldServerName = ms_pGameWorldServerList[iIdx].szName;
+    m_szGameWorldServerIP = ms_pGameWorldServerList[iIdx].szIP;
+    m_lGameWorldServerPort = ms_pGameWorldServerList[iIdx].lPort;
+    //设置显示当前选择的服务器名称
+    g_layerLogin->mp_selectServerName->SetText(m_szGameWorldServerName);
+    SetLoginState(GLS_LOGIN);
     unguard;
 }
 
@@ -2410,7 +2339,7 @@ void GcLogin::OnNetLogin(int result, const char* szRetStr, short sRetCode, char 
                 break;  //帐号被锁定
         }
 
-        if (result != LOGIN_RET_FAILED_NEW_CARD || result != LOGIN_RET_FAILED_USER_ONLINE) {
+        if (result == LOGIN_RET_FAILED_NEW_CARD || result == LOGIN_RET_FAILED_USER_ONLINE) {
             RTW_WIDGET("fmlogin.fmpassword.txtpassword")->SetText("");
         }
 

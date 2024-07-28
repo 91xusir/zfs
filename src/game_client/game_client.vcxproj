@@ -68,7 +68,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
     <OutDir>$(ProjectDir)..\bin\</OutDir>
     <IntDir>$(ProjectDir)..\temp\$(ProjectName)\$(Configuration)\</IntDir>
-    <LinkIncremental>false</LinkIncremental>
+    <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
@@ -137,16 +137,16 @@
       <PreprocessorDefinitions>_PREVIEW;WIN32;NDEBUG;_WINDOWS;USE_D3DX9;LUA_OPNAMES;USE_D3D9;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <MinimalRebuild>true</MinimalRebuild>
+      <MinimalRebuild>false</MinimalRebuild>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
       <LanguageStandard>stdcpp14</LanguageStandard>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <AdditionalDependencies>d3dx9.lib;d3d9.lib;graph_mt.lib;net_mt.lib;core_mt.lib;audio_mt.lib;libjpeg_MT.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_mt.lib;mikmod_mt.lib;native_midi_mt.lib;character_mt.lib;scene_mt.lib;filepack_mt.lib;ui_mt.lib;Encrypt_mt.lib;gdi32.lib;user32.lib</AdditionalDependencies>
@@ -155,10 +155,13 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
-      <OptimizeReferences>true</OptimizeReferences>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>false</OptimizeReferences>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <LinkStatus>false</LinkStatus>
+      <LinkTimeCodeGenerationObjectFile />
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -329,8 +332,6 @@
     <ClInclude Include="game\gc_bulletin.h" />
     <ClInclude Include="game\gc_login.h" />
     <ClInclude Include="game\gc_world.h" />
-    <ClInclude Include="game\num_keyboard.h" />
-    <ClInclude Include="game\soft_keyboard.h" />
     <ClInclude Include="game\game_assistant.h" />
     <ClInclude Include="game\game_clipboard.h" />
     <ClInclude Include="..\shared\game_filter.h" />
@@ -441,7 +442,6 @@
     <ClInclude Include="ui\UIForm_Gem.h" />
     <ClInclude Include="ui\UIForm_MiddleMap.h" />
     <ClInclude Include="ui\UIForm_NewPeopleHelp.h" />
-    <ClInclude Include="ui\UIForm_Server.h" />
     <ClInclude Include="ui\UIForm_Speaker.h" />
     <ClInclude Include="ui\UIForm_System.h" />
     <ClInclude Include="ui\ui_form_pet.h" />
@@ -544,6 +544,7 @@
     <ClInclude Include="frame\gc_cursor.h" />
     <ClInclude Include="frame\resource.h" />
     <ClInclude Include="game\NesClient.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\engine\head\core\rtc2_thread.inl" />
@@ -564,8 +565,6 @@
     <ClCompile Include="game\gc_bulletin.cpp" />
     <ClCompile Include="game\gc_login.cpp" />
     <ClCompile Include="game\gc_world.cpp" />
-    <ClCompile Include="game\num_keyboard.cpp" />
-    <ClCompile Include="game\soft_keyboard.cpp" />
     <ClCompile Include="game\game_clipboard.cpp" />
     <ClCompile Include="game\game_states_machine.cpp" />
     <ClCompile Include="..\shared\game_string_assistant.cpp" />
@@ -666,7 +665,7 @@
     <ClCompile Include="ui\UIForm_Gem.cpp" />
     <ClCompile Include="ui\UIForm_MiddleMap.cpp" />
     <ClCompile Include="ui\UIForm_NewPeopleHelp.cpp" />
-    <ClCompile Include="ui\UIForm_Server.cpp" />
+    <ClCompile Include="ui\ui_layer_server.cpp" />
     <ClCompile Include="ui\UIForm_Speaker.cpp" />
     <ClCompile Include="ui\UIForm_System.cpp" />
     <ClCompile Include="ui\ui_form_pet.cpp" />
@@ -728,45 +727,166 @@
     <ClCompile Include="game\game_script_interface.cpp" />
     <ClCompile Include="game\lua_inf.cpp" />
     <ClCompile Include="game\lua_var.cpp" />
-    <ClCompile Include="LuaSource\src\lapi.c" />
-    <ClCompile Include="LuaSource\src\lcode.c" />
-    <ClCompile Include="LuaSource\src\ldebug.c" />
-    <ClCompile Include="LuaSource\src\ldo.c" />
-    <ClCompile Include="LuaSource\src\ldump.c" />
-    <ClCompile Include="LuaSource\src\lfunc.c" />
-    <ClCompile Include="LuaSource\src\lgc.c" />
-    <ClCompile Include="LuaSource\src\llex.c" />
-    <ClCompile Include="LuaSource\src\lmem.c" />
-    <ClCompile Include="LuaSource\src\lobject.c" />
-    <ClCompile Include="LuaSource\src\lopcodes.c" />
-    <ClCompile Include="LuaSource\src\lparser.c" />
-    <ClCompile Include="LuaSource\src\lstate.c" />
-    <ClCompile Include="LuaSource\src\lstring.c" />
-    <ClCompile Include="LuaSource\src\ltable.c" />
-    <ClCompile Include="LuaSource\src\ltests.c" />
-    <ClCompile Include="LuaSource\src\ltm.c" />
-    <ClCompile Include="LuaSource\src\lundump.c" />
-    <ClCompile Include="LuaSource\src\lvm.c" />
-    <ClCompile Include="LuaSource\src\lzio.c" />
-    <ClCompile Include="LuaSource\src\lib\lauxlib.c" />
-    <ClCompile Include="LuaSource\src\lib\lbaselib.c" />
-    <ClCompile Include="LuaSource\src\lib\ldblib.c" />
-    <ClCompile Include="LuaSource\src\lib\liolib.c" />
-    <ClCompile Include="LuaSource\src\lib\lmathlib.c" />
-    <ClCompile Include="LuaSource\src\lib\loadlib.c" />
-    <ClCompile Include="LuaSource\src\lib\lstrlib.c" />
-    <ClCompile Include="LuaSource\src\lib\ltablib.c" />
-    <ClCompile Include="LuaSource\src\luac\luac.c" />
-    <ClCompile Include="LuaSource\src\luac\print.c" />
+    <ClCompile Include="LuaSource\src\lapi.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lcode.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\ldebug.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\ldo.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\ldump.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lfunc.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lgc.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\llex.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lmem.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lobject.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lopcodes.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lparser.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lstate.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lstring.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\ltable.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\ltests.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\ltm.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lundump.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lvm.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lzio.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lib\lauxlib.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lib\lbaselib.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lib\ldblib.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lib\liolib.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lib\lmathlib.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lib\loadlib.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lib\lstrlib.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\lib\ltablib.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\luac\luac.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="LuaSource\src\luac\print.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
     <ClCompile Include="frame\gc_cursor.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="frame\game_client.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="frame\icon_mai.ico" />
     <Image Include="frame\icon_main.ico" />
-    <Image Include="frame\icon_small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

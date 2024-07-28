@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="TitleBarForm" Location="360,128,262,374" Name="fmgm" Show="false" StartPosition="centerParent">
+      <Label Location="20,2,60,18" Name="lbonline" Text="在线GM"/>
+      <Label Location="90,2,60,18" Name="lbgmname" Text="GM001"/>
+      <Label Location="20,22,60,18" Name="lbseq" Text="诉求数量"/>
+      <Label Location="90,22,60,18" Name="lbseqnum" Text="105"/>
+      <Label Location="20,42,80,18" Name="lbseqrequest" Text="诉求状态"/>
+      <Label Location="90,42,150,18" Name="lbseqstatus" Text="诉求正在处理中"/>
+      <Label Location="134,22,60,18" Name="lbseq1" Text="您的排位"/>
+      <Label Location="194,22,60,18" Name="lbseqnum1" Text="3"/>
+      <Label Location="20,62,60,18" Name="lbtitle" Text="标题"/>
+      <EditBox Inherit="EditBox" LineHeight="13" Location="20,80,212,18" Name="txttitle"/>
+      <ChatBox DClick="true" Inherit="" LineHeight="13" Location="20,106,212,138" Name="txtFeedback" Show="true"/>
+      <ScrollBarV Inherit="" Location="224,106,6,138" Name="scrolldialg" Show="true"/>
+      <Label Location="20,246,60,18" Name="lbinput" Text="诉求输入"/>
+      <ChatInputBox Inherit="" LineHeight="13" Location="10,266,212,16" Name="txtdialog"/>
+      <Button Inherit="PushButton" Location="147,286,64,20" Name="btnok" Text="发送"/>
+    </Form>
+  </Layer>
+</Ui>

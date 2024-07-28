@@ -8,7 +8,7 @@ UILayerLogin::UILayerLogin() {
     //lyymark 2.GcLogin.XML 加载用户登录UI
     g_workspace.Load("ui\\ui_layer_login.xml");
     //用户登录form
-    mp_loginForm = LOAD_UI("loginForm");
+    mp_loginForm = LOAD_UI_T(RtwForm, "loginForm");
 
     mp_selectServerName = LOAD_UI("loginForm.selectServerName");
 
@@ -22,36 +22,23 @@ UILayerLogin::UILayerLogin() {
     mp_btnBack = LOAD_UI_T(RtwButton, "loginForm.btnBack");
 
     //用户名输入框
-    //mp_txtAccout = RTW_WIDGET_T(RtwTextBox, "fmlogin.fmusername.txtusername");
-    mp_txtAccout->EvLClick += RTW_CALLBACK(this, UILayerLogin, OnHideKeyboard);
     mp_txtAccout->EvKeyChar += RTW_CALLBACK(this, UILayerLogin, ontab);
     mp_txtAccout->EvUpdateText.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnUpdateText));
+
     //设置用户输入框输入长度上限
     mp_txtAccout->SetCapacity(20);
     mp_txtAccout->SetFocus();
 
     //密码输入框
-    mp_txtPwd->EvLClick += RTW_CALLBACK(this, UILayerLogin, OnShowKeyboard);
     mp_txtPwd->EvKeyChar += RTW_CALLBACK(this, UILayerLogin, ontab);
     mp_txtPwd->EvUpdateText.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnUpdateText));
     //设置密码输入框输入长度上限
     mp_txtPwd->SetCapacity(30);
 
     //单选框是否记住用户名
-  
     mp_ckSaveAcc->EvLClick.ClearAndSetDelegate(
         RTW_CALLBACK(this, UILayerLogin, OnClicked_SaveAccount));
 
-    //软键盘
-    LOAD_UI("fmlogin.btnkeyboard")
-        ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_Keyboard));
-
-    //领取密保
-    //LOAD_UI("btngetpwd")
-    //    ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_GetPassword));
-    //忘记密码
-  /*  LOAD_UI("btnforgetpwd")
-        ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_ForgetPassword));*/
     //申请帐号
     LOAD_UI("btncreate")
         ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_CreateAccount));
@@ -59,11 +46,7 @@ UILayerLogin::UILayerLogin() {
     //退出按钮
     LOAD_UI("btnexit")->EvLClick.ClearAndSetDelegate(
         RTW_CALLBACK(this, UILayerLogin, OnClicked_Quit));
-    //登录按钮
-    //LOAD_UI("fmlogin.btnlogin")
-    //    ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_Login));
-    //LOAD_UI("fmlogin.btnlogin")
-    //    ->EvKeyDown.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnKey));
+
     //强制登录
     LOAD_UI("ConfirmBox2.btnconfirm")
         ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_ForceLogin));
@@ -84,12 +67,8 @@ UILayerLogin::UILayerLogin() {
     //申请帐号
     LOAD_UI("btncreate")->Show();
     //隐藏 返回
-    LOAD_UI("btnback")->Hide();
-    //隐藏 软键盘
-    m_Keyboard.Init();
-    if (m_Keyboard.IsVisible()) {
-        m_Keyboard.HideSoftKeyboard();
-    }
+    //LOAD_UI("btnback")->Hide();
+
     unguard;
 }
 
@@ -267,31 +246,15 @@ void UILayerLogin::OnKey(RtwWidget* sender, RtwEventDelegate* e) {
     unguard;
 }
 
-void UILayerLogin::OnHideKeyboard(void*, void*) {
-    guard;
-    if (m_Keyboard.IsVisible()) {
-        m_Keyboard.HideSoftKeyboard();
-    }
-    unguard;
-}
 
-void UILayerLogin::OnShowKeyboard(void*, void*) {
-    guard;
-    m_Keyboard.ShowSoftKeyboard();
-    unguard;
-}
 
 void UILayerLogin::ontab(RtwWidget* sender, RtwEventDelegate* e) {
     guard;
     if (GetLogin()->GetStatus() == GcLogin::GLS_LOGIN) {
         if (e->key.code == vkTab || (e->key.code == vkTab && e->key.code == vkShift)) {
             if (mp_txtAccout->GetQualifiedID() == sender->GetQualifiedID()) {
-                m_Keyboard.ShowSoftKeyboard();
                 g_workspace.SetFocusWidget(mp_txtPwd);
             } else {
-                if (m_Keyboard.IsVisible()) {
-                    m_Keyboard.HideSoftKeyboard();
-                }
                 g_workspace.SetFocusWidget(mp_txtAccout);
             }
         }
@@ -325,11 +288,11 @@ void UILayerLogin::OnClicked_SaveAccount(RtwWidget* sender, RtwEventDelegate* e)
         GetLogin()->SetSaveAccount(false);
     }
 
-    if (m_Keyboard.GetLastFocus()) {
+   /* if (m_Keyboard.GetLastFocus()) {
         g_workspace.SetFocusWidget(RTW_WIDGET("fmlogin.fmusername.txtusername"));
     } else {
         g_workspace.SetFocusWidget(RTW_WIDGET("fmlogin.fmpassword.txtpassword"));
-    }
+    }*/
 
     RtIni iniUser;
     if (!iniUser.OpenFile(R(INI_USER), true)) {
@@ -344,21 +307,5 @@ void UILayerLogin::OnClicked_SaveAccount(RtwWidget* sender, RtwEventDelegate* e)
     }
 
     iniUser.CloseFile();
-    unguard;
-}
-
-void UILayerLogin::OnClicked_Keyboard(void*, void*) {
-    guard;
-    if (m_Keyboard.GetLastFocus()) {
-        g_workspace.SetFocusWidget(RTW_WIDGET("fmlogin.fmusername.txtusername"));
-    } else {
-        g_workspace.SetFocusWidget(RTW_WIDGET("fmlogin.fmpassword.txtpassword"));
-    }
-
-    if (m_Keyboard.IsVisible()) {
-        m_Keyboard.HideSoftKeyboard();
-    } else {
-        m_Keyboard.ShowSoftKeyboard();
-    }
     unguard;
 }
