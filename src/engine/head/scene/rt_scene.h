@@ -35,7 +35,7 @@ class   RtsWayPoint;//tim.yang
   Include.
 ----------------------------------------------------------------------------*/
 #include <vector>
-using namespace std;
+//using namespace std;
 
 #include "graph/rt_graph.h"
 #include "audio/rt_audio.h"

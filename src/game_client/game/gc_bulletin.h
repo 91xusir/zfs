@@ -3,7 +3,7 @@
 
 #include "core/rt2_core.h"
 #include "graph/rt_graph.h"
-using namespace std;
+//using namespace std;
 
 
 class CBulletinManager

@@ -7,33 +7,33 @@
 
 UIFormWarfield::UIFormWarfield()
 {
-	m_pFrmThis		= RTW_WIDGET("fmwarlist");
-	m_pLabelTime	= RTW_WIDGET_T(RtwLabel, "fmwarlist.lbwartime");
-	m_pLabelTitle	= RTW_WIDGET_T(RtwLabel, "fmwarlist.lblist");
-	m_pTab			= RTW_WIDGET_T(RtwTab, "fmwarlist.tablist");
-	m_pListZhou		= RTW_WIDGET_T(RtwListBox, "fmwarlist.tablist.fmguildlist.listzhou");
-	m_pListShang	= RTW_WIDGET_T(RtwListBox, "fmwarlist.tablist.fmguildlist.listshang");
-	m_pBtnInfo		= RTW_WIDGET_T(RtwButton, "fmwarlist.tablist.btnguildlist");
-	m_pBtnSort		= RTW_WIDGET_T(RtwButton, "fmwarlist.tablist.btnguildinfo");
-	m_pLabelNumZhou		= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhounum");
-	m_pLabelNumShang	= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshangnum");
-	m_pLabelScoreZhou	= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhouscore");
-	m_pLabelScoreShang	= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshangscore");
-	m_pLabelRateZhou	= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhouchange");
-	m_pLabelRateShang	= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshangchange");
-	m_pProgressZhou1	= RTW_WIDGET_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barzhou1");
-	m_pProgressZhou2	= RTW_WIDGET_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barzhou2");
-	m_pProgressZhou3	= RTW_WIDGET_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barzhou3");
-	m_pProgressShang1	= RTW_WIDGET_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barshang1");
-	m_pProgressShang2	= RTW_WIDGET_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barshang2");
-	m_pProgressShang3	= RTW_WIDGET_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barshang3");
+	m_pFrmThis		= LOAD_UI("fmwarlist");
+	m_pLabelTime	= LOAD_UI_T(RtwLabel, "fmwarlist.lbwartime");
+	m_pLabelTitle	= LOAD_UI_T(RtwLabel, "fmwarlist.lblist");
+	m_pTab			= LOAD_UI_T(RtwTab, "fmwarlist.tablist");
+	m_pListZhou		= LOAD_UI_T(RtwListBox, "fmwarlist.tablist.fmguildlist.listzhou");
+	m_pListShang	= LOAD_UI_T(RtwListBox, "fmwarlist.tablist.fmguildlist.listshang");
+	m_pBtnInfo		= LOAD_UI_T(RtwButton, "fmwarlist.tablist.btnguildlist");
+	m_pBtnSort		= LOAD_UI_T(RtwButton, "fmwarlist.tablist.btnguildinfo");
+	m_pLabelNumZhou		= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhounum");
+	m_pLabelNumShang	= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshangnum");
+	m_pLabelScoreZhou	= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhouscore");
+	m_pLabelScoreShang	= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshangscore");
+	m_pLabelRateZhou	= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhouchange");
+	m_pLabelRateShang	= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshangchange");
+	m_pProgressZhou1	= LOAD_UI_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barzhou1");
+	m_pProgressZhou2	= LOAD_UI_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barzhou2");
+	m_pProgressZhou3	= LOAD_UI_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barzhou3");
+	m_pProgressShang1	= LOAD_UI_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barshang1");
+	m_pProgressShang2	= LOAD_UI_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barshang2");
+	m_pProgressShang3	= LOAD_UI_T(RtwProgressBar, "fmwarlist.tablist.fminfolist.barshang3");
 
-	m_pLabelZhou1Count	= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhou1count");
-	m_pLabelZhou2Count	= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhou2count");
-	m_pLabelZhou3Count	= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhou3count");
-	m_pLabelShang1Count	= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshang1count");
-	m_pLabelShang2Count	= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshang2count");
-	m_pLabelShang3Count	= RTW_WIDGET_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshang3count");
+	m_pLabelZhou1Count	= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhou1count");
+	m_pLabelZhou2Count	= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhou2count");
+	m_pLabelZhou3Count	= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbzhou3count");
+	m_pLabelShang1Count	= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshang1count");
+	m_pLabelShang2Count	= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshang2count");
+	m_pLabelShang3Count	= LOAD_UI_T(RtwLabel, "fmwarlist.tablist.fminfolist.lbshang3count");
 
 	m_pBtnInfo->EvLClick += RTW_CALLBACK(this, UIFormWarfield, OnBtnInfo);
 	m_pBtnSort->EvLClick += RTW_CALLBACK(this, UIFormWarfield, OnBtnList);

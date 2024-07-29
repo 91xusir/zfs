@@ -188,7 +188,7 @@ void UILayerLogin::OnClicked_ForceLogin(void*, void*) {
 }
 
 void UILayerLogin::OnClicked_ForceLoginCancel(void*, void*) {
-    RTW_WIDGET("fmlogin.fmpassword.txtpassword")->SetText("");
+    LOAD_UI("fmlogin.fmpassword.txtpassword")->SetText("");
     GetLogin()->SetForceLogin(false);
 }
 
@@ -294,9 +294,9 @@ void UILayerLogin::OnClicked_SaveAccount(RtwWidget* sender, RtwEventDelegate* e)
     }
 
     /* if (m_Keyboard.GetLastFocus()) {
-        g_workspace.SetFocusWidget(RTW_WIDGET("fmlogin.fmusername.txtusername"));
+        g_workspace.SetFocusWidget(LOAD_UI("fmlogin.fmusername.txtusername"));
     } else {
-        g_workspace.SetFocusWidget(RTW_WIDGET("fmlogin.fmpassword.txtpassword"));
+        g_workspace.SetFocusWidget(LOAD_UI("fmlogin.fmpassword.txtpassword"));
     }*/
 
     RtIni iniUser;

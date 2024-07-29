@@ -6,14 +6,14 @@ UIFormFeodBank::UIFormFeodBank()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmcitybank");
+	m_pFrmThis = LOAD_UI("fmcitybank");
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
-	m_tbWithdraw = RTW_WIDGET("fmcitybank.txtgold");
-	m_lbFeodBank = RTW_WIDGET("fmcitybank.lbbankgoldnum");
+	m_tbWithdraw = LOAD_UI("fmcitybank.txtgold");
+	m_lbFeodBank = LOAD_UI("fmcitybank.lbbankgoldnum");
 
-	m_pBtnOK = RTW_WIDGET_T(RtwButton, "fmcitybank.btnok");
-	m_pBtnCancel = RTW_WIDGET_T(RtwButton, "fmcitybank.btncancel");
+	m_pBtnOK = LOAD_UI_T(RtwButton, "fmcitybank.btnok");
+	m_pBtnCancel = LOAD_UI_T(RtwButton, "fmcitybank.btncancel");
 
 	// 注册本窗口中的事件
 	m_pBtnOK->EvLClick += RTW_CALLBACK(this, UIFormFeodBank, OnBtnOK);

@@ -11,13 +11,13 @@
 
 CUIForm_NewPeopleHelp::CUIForm_NewPeopleHelp(void):m_nCurrentPage(0), m_bVisableEnable(false)
 {
-	m_fmNewPeopleHelp	= RTW_WIDGET("fmnew_people");
-	m_htmlHelpInfo		= RTW_WIDGET_T(RtwHtmlView, "fmnew_people.htmlhelp");
-	m_btnLeft			= RTW_WIDGET_T(RtwButton,	"fmnew_people.btnleft");
-	m_btnRight			= RTW_WIDGET_T(RtwButton,	"fmnew_people.btnright");
-	m_lblPages			= RTW_WIDGET_T(RtwLabel,	"fmnew_people.lbpages");
+	m_fmNewPeopleHelp	= LOAD_UI("fmnew_people");
+	m_htmlHelpInfo		= LOAD_UI_T(RtwHtmlView, "fmnew_people.htmlhelp");
+	m_btnLeft			= LOAD_UI_T(RtwButton,	"fmnew_people.btnleft");
+	m_btnRight			= LOAD_UI_T(RtwButton,	"fmnew_people.btnright");
+	m_lblPages			= LOAD_UI_T(RtwLabel,	"fmnew_people.lbpages");
 
-	m_fmNewPeopleTips	= RTW_WIDGET("fmNewpeopleTips");
+	m_fmNewPeopleTips	= LOAD_UI("fmNewpeopleTips");
 	m_fmNewPeopleTips->Hide();
 // 	m_fmNewPeopleTips->SetWidgetEffect(esTrans, esTrans, 1000);
 

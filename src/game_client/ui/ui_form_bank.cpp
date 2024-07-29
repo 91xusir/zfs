@@ -20,28 +20,28 @@ UIFormBank::UIFormBank()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmnewbank");
-	m_pFrmGridsUp = RTW_WIDGET("fmnewbank.fmbank.fmbankitem");
-	m_pFrmGridsDown = RTW_WIDGET("fmnewbank.fmbank.fmselfitem");
-	m_lbNameUp = RTW_WIDGET("fmnewbank.fmbank.fmlbbank.lbbank");
-	m_lbNameDown = RTW_WIDGET("fmnewbank.fmbank.fmlbsell.lbsell");
-	m_lbMoneyUp = RTW_WIDGET("fmnewbank.fmbank.lbOtherMoney");
-	m_lbMoneyDown = RTW_WIDGET("fmnewbank.fmbank.lbSelfMoney");
-	m_lbMoneyNameUp = RTW_WIDGET("fmnewbank.fmbank.lbbuygold");
-	m_lbMoneyNameDown = RTW_WIDGET("fmnewbank.fmbank.lbsellgold");
-	m_btnMoney = RTW_WIDGET_T(RtwButton, "fmnewbank.fmbank.btngold");
+	m_pFrmThis = LOAD_UI("fmnewbank");
+	m_pFrmGridsUp = LOAD_UI("fmnewbank.fmbank.fmbankitem");
+	m_pFrmGridsDown = LOAD_UI("fmnewbank.fmbank.fmselfitem");
+	m_lbNameUp = LOAD_UI("fmnewbank.fmbank.fmlbbank.lbbank");
+	m_lbNameDown = LOAD_UI("fmnewbank.fmbank.fmlbsell.lbsell");
+	m_lbMoneyUp = LOAD_UI("fmnewbank.fmbank.lbOtherMoney");
+	m_lbMoneyDown = LOAD_UI("fmnewbank.fmbank.lbSelfMoney");
+	m_lbMoneyNameUp = LOAD_UI("fmnewbank.fmbank.lbbuygold");
+	m_lbMoneyNameDown = LOAD_UI("fmnewbank.fmbank.lbsellgold");
+	m_btnMoney = LOAD_UI_T(RtwButton, "fmnewbank.fmbank.btngold");
 	m_btnMoney->EvLClick += RTW_CALLBACK(this, UIFormBank, OnBtnMoney);
-	m_btnOK = RTW_WIDGET_T(RtwButton, "fmnewbank.fmbank.btnok");
+	m_btnOK = LOAD_UI_T(RtwButton, "fmnewbank.fmbank.btnok");
 	m_btnOK->EvLClick += RTW_CALLBACK(this, UIFormBank, OnOK);
-	m_btnCancel = RTW_WIDGET_T(RtwButton, "fmnewbank.fmbank.btncancel");
+	m_btnCancel = LOAD_UI_T(RtwButton, "fmnewbank.fmbank.btncancel");
 	m_btnCancel->EvLClick += RTW_CALLBACK(this, UIFormBank, OnCancel);
-//	RTW_WIDGET("fmnewbank.fmbank.$hide")->EvLClick += RTW_CALLBACK(this, UIFormBank, OnCancel);
-	m_pScrollUp = RTW_WIDGET_T(RtwVScrollBar, "fmnewbank.fmbank.scrollUp");
-	m_pScrollDown = RTW_WIDGET_T(RtwVScrollBar, "fmnewbank.fmbank.scrollDown");
+//	LOAD_UI("fmnewbank.fmbank.$hide")->EvLClick += RTW_CALLBACK(this, UIFormBank, OnCancel);
+	m_pScrollUp = LOAD_UI_T(RtwVScrollBar, "fmnewbank.fmbank.scrollUp");
+	m_pScrollDown = LOAD_UI_T(RtwVScrollBar, "fmnewbank.fmbank.scrollDown");
 	m_pScrollUp->EvScroll += RTW_CALLBACK(this, UIFormBank, OnScrollUp);
 	m_pScrollDown->EvScroll += RTW_CALLBACK(this, UIFormBank, OnScrollDown);
-    m_lbSize = RTW_WIDGET("fmnewbank.fmbank.lbbankleft");
-    m_lbSizeInfo = RTW_WIDGET("fmnewbank.fmbank.lbbankleftinfo");
+    m_lbSize = LOAD_UI("fmnewbank.fmbank.lbbankleft");
+    m_lbSizeInfo = LOAD_UI("fmnewbank.fmbank.lbbankleftinfo");
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
 //    m_ptrHoverImage = new RtwImage("highlight_button.tga");// change [3/17/2009 tooth.shi]

@@ -12,15 +12,15 @@ m_plbTrumpAttact(NULL),
 m_pproActorSoul(NULL),
 m_plbNowMoney(NULL)
 {
-	m_pfrmTrump				= RTW_WIDGET("fmborder");
-	m_pbtnTrumpABut			= RTW_WIDGET_T(RtwButton, "fmborder.fmInterface.fmProps.btnBaby");
-	m_plbTrumpLevel			= RTW_WIDGET("fmborder.fmInterface.fmProps.lbRank2");
-	m_plbVigourPoint		= RTW_WIDGET("fmborder.fmInterface.fmProps.lbGenki2");
-	m_plbTrumpAttactType	= RTW_WIDGET("fmborder.fmInterface.fmProps.lbAttack1.lbtext3");
-	m_plbTrumpAttact		= RTW_WIDGET("fmborder.fmInterface.fmProps.lbAttack2");
-	m_pproActorSoul			= RTW_WIDGET_T(RtwProgressBar,"fmborder.fmInterface.fmCurrently.barexp");
-	m_plbNowMoney			= RTW_WIDGET("fmborder.fmInterface.fmCurrently.lbNow4");
-	m_pproSoulRate			= RTW_WIDGET("fmborder.fmInterface.fmCurrently.lbtext9");
+	m_pfrmTrump				= LOAD_UI("fmborder");
+	m_pbtnTrumpABut			= LOAD_UI_T(RtwButton, "fmborder.fmInterface.fmProps.btnBaby");
+	m_plbTrumpLevel			= LOAD_UI("fmborder.fmInterface.fmProps.lbRank2");
+	m_plbVigourPoint		= LOAD_UI("fmborder.fmInterface.fmProps.lbGenki2");
+	m_plbTrumpAttactType	= LOAD_UI("fmborder.fmInterface.fmProps.lbAttack1.lbtext3");
+	m_plbTrumpAttact		= LOAD_UI("fmborder.fmInterface.fmProps.lbAttack2");
+	m_pproActorSoul			= LOAD_UI_T(RtwProgressBar,"fmborder.fmInterface.fmCurrently.barexp");
+	m_plbNowMoney			= LOAD_UI("fmborder.fmInterface.fmCurrently.lbNow4");
+	m_pproSoulRate			= LOAD_UI("fmborder.fmInterface.fmCurrently.lbtext9");
 
 	m_pbtnTrumpABut->ModifyFlags(wfDragClient | wfDragServer | wfHint, 0);
 	m_pbtnTrumpABut->EvDragEnd += RTW_CALLBACK(this, CUIForm_Trump, OnDragEndItem);
@@ -36,7 +36,7 @@ m_plbNowMoney(NULL)
 			rt2_sprintf(tmpStr,"fmborder.fmInterface.fmProperty.barexp%d",i+ 3);
 		else
 			rt2_sprintf(tmpStr,"fmborder.fmInterface.fmProperty.barexp%d",i- 5);
-		m_pproTrumpPro[i] = RTW_WIDGET_T(RtwProgressBar,tmpStr);
+		m_pproTrumpPro[i] = LOAD_UI_T(RtwProgressBar,tmpStr);
 		m_pproTrumpPro[i]->SetValue(0.f);
 		m_pproTrumpPro[i]->SetText("");
 	}
@@ -47,7 +47,7 @@ m_plbNowMoney(NULL)
 			rt2_sprintf(tmpStr,"fmborder.fmInterface.fmProperty.lbtext%d",i+ 3);
 		else
 			rt2_sprintf(tmpStr,"fmborder.fmInterface.fmProperty.lbtext%d",i- 5);
-		m_plbTrumpRate[i] = RTW_WIDGET_T(RtwProgressBar,tmpStr);
+		m_plbTrumpRate[i] = LOAD_UI_T(RtwProgressBar,tmpStr);
 		m_plbTrumpRate[i]->SetText("");
 	}
 
@@ -57,7 +57,7 @@ m_plbNowMoney(NULL)
 			rt2_sprintf(tmpStr,"fmborder.fmInterface.fmProperty.lbPro%d",i+ 3);
 		else
 			rt2_sprintf(tmpStr,"fmborder.fmInterface.fmProperty.lbPro%d",i- 5);
-			m_plbTrumpInfo[i] = RTW_WIDGET(tmpStr);
+			m_plbTrumpInfo[i] = LOAD_UI(tmpStr);
 			m_plbTrumpInfo[i]->SetText("0%");
 	}
 
@@ -67,7 +67,7 @@ m_plbNowMoney(NULL)
 			rt2_sprintf(tmpStr,"fmborder.fmInterface.fmProperty.btnStart%d",i+ 3);
 		else
 			rt2_sprintf(tmpStr,"fmborder.fmInterface.fmProperty.btnStart%d",i- 5);
-			m_pbtnTrumpButton[i] = RTW_WIDGET_T(RtwButton,tmpStr);
+			m_pbtnTrumpButton[i] = LOAD_UI_T(RtwButton,tmpStr);
 			m_pbtnTrumpButton[i]->EvLClick += RTW_CALLBACK(this,CUIForm_Trump,OnLClickRifine);
 
 
@@ -650,6 +650,6 @@ void CUIForm_Trump::OnDragEndItem(RtwWidget* sender, RtwEventDelegate* pEvent)
 void CUIForm_Trump::OnGetHintText(RtwWidget* sender, RtwEventDelegate* pEvent)
 {
 	guard;
-	g_layerMain->m_fromPlayerItems->OnGetHintText_Parts(RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnTrump"),NULL);
+	g_layerMain->m_fromPlayerItems->OnGetHintText_Parts(LOAD_UI_T(RtwButton, "fmitem.panItem.btnTrump"),NULL);
 	unguard;
 }

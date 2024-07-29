@@ -26,8 +26,8 @@ bool CProject::Init()
 	for(int i= 0;i< MAX_CHANNEL_CHATBOX;i++)
 	{
 		tmpStr.Format("tbfeedback.fmchat%d.txtFeedback",i);
-		CUIShowProject::mpBackGround[i]	=RTW_WIDGET(tmpStr.c_str())->GetBackground();
-		CUIShowProject::mpBorder[i]		=RTW_WIDGET(tmpStr.c_str())->GetBorder();
+		CUIShowProject::mpBackGround[i]	=LOAD_UI(tmpStr.c_str())->GetBackground();
+		CUIShowProject::mpBorder[i]		=LOAD_UI(tmpStr.c_str())->GetBorder();
 	}
 
 	SetInputProject();
@@ -40,8 +40,8 @@ bool CProject::Clear()
 	RtString tmpStr;
 	for(int i= 0;i< MAX_CHANNEL_CHATBOX;i++)
 	{
-		RTW_WIDGET(tmpStr.c_str())->SetBackgroundImage(CUIShowProject::mpBackGround[i]);
-		RTW_WIDGET(tmpStr.c_str())->SetBorder(CUIShowProject::mpBorder[i]);
+		LOAD_UI(tmpStr.c_str())->SetBackgroundImage(CUIShowProject::mpBackGround[i]);
+		LOAD_UI(tmpStr.c_str())->SetBorder(CUIShowProject::mpBorder[i]);
 
 		CUIShowProject::mpBackGround[i]=NULL;
 		CUIShowProject::mpBorder[i]=NULL;

@@ -7,18 +7,18 @@
 
 UIFormBid::UIFormBid()
 {
-	m_pFrmThis  = RTW_WIDGET("fmOrder");
-	m_pBtnItem	= RTW_WIDGET_T(RtwButton, "fmOrder.panOrder.pansource01.btnskill");
-	m_pLabelName	= RTW_WIDGET_T(RtwLabel, "fmOrder.panOrder.pansource01.lbskillinfo");
-	m_pBidPrice	= RTW_WIDGET_T(RtwTextBox, "fmOrder.panOrder.lbPricenum");
-	m_pUniquePrice	= RTW_WIDGET_T(RtwLabel, "fmOrder.panOrder.lbPricenum1");
-	m_pHandlingCharge	= RTW_WIDGET_T(RtwLabel, "fmOrder.panOrder.lbPricenum2");
-	m_pTotal			= RTW_WIDGET_T(RtwLabel, "fmOrder.panOrder.lbPricenum3");
-	m_pBtnBid			= RTW_WIDGET_T(RtwButton, "fmOrder.panOrder.btnBuy");
-	m_pBtnCancelBid		= RTW_WIDGET_T(RtwButton, "fmOrder.btnBuy");
-	m_pList				= RTW_WIDGET_T(RtwListBox, "fmOrder.fmAuctionRight");
-	m_pBtnBack			= RTW_WIDGET_T(RtwButton, "fmOrder.btnBack");
-	m_pBtnRefresh		= RTW_WIDGET_T(RtwButton, "fmOrder.btnRefresh");
+	m_pFrmThis  = LOAD_UI("fmOrder");
+	m_pBtnItem	= LOAD_UI_T(RtwButton, "fmOrder.panOrder.pansource01.btnskill");
+	m_pLabelName	= LOAD_UI_T(RtwLabel, "fmOrder.panOrder.pansource01.lbskillinfo");
+	m_pBidPrice	= LOAD_UI_T(RtwTextBox, "fmOrder.panOrder.lbPricenum");
+	m_pUniquePrice	= LOAD_UI_T(RtwLabel, "fmOrder.panOrder.lbPricenum1");
+	m_pHandlingCharge	= LOAD_UI_T(RtwLabel, "fmOrder.panOrder.lbPricenum2");
+	m_pTotal			= LOAD_UI_T(RtwLabel, "fmOrder.panOrder.lbPricenum3");
+	m_pBtnBid			= LOAD_UI_T(RtwButton, "fmOrder.panOrder.btnBuy");
+	m_pBtnCancelBid		= LOAD_UI_T(RtwButton, "fmOrder.btnBuy");
+	m_pList				= LOAD_UI_T(RtwListBox, "fmOrder.fmAuctionRight");
+	m_pBtnBack			= LOAD_UI_T(RtwButton, "fmOrder.btnBack");
+	m_pBtnRefresh		= LOAD_UI_T(RtwButton, "fmOrder.btnRefresh");
 
 	//m_pList->ModifyFlags(wfHint, 0);//rem by fox
 	//m_pList->SetColumnFormat(RtwStringFormat(alignCenter,alignCenter));//add by fox // ×¢ÊÍ [3/17/2009 tooth.shi]

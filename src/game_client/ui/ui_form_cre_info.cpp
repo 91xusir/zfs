@@ -5,11 +5,11 @@ UIFormCreInfo::UIFormCreInfo()
 {
 	guard;
 
-	m_pFrmThis			= RTW_WIDGET("fmhpcreature");
-	m_pFace				= RTW_WIDGET("fmhpcreature.panbossface");
-	m_pName				= RTW_WIDGET("fmhpcreature.panhpleft.lbbossname");
-	m_pLevel			= RTW_WIDGET("fmhpcreature.lblvboss");
-	m_pHPs				= RTW_WIDGET_T(RtwProgressBar, "fmhpcreature.barhp1");
+	m_pFrmThis			= LOAD_UI("fmhpcreature");
+	m_pFace				= LOAD_UI("fmhpcreature.panbossface");
+	m_pName				= LOAD_UI("fmhpcreature.panhpleft.lbbossname");
+	m_pLevel			= LOAD_UI("fmhpcreature.lblvboss");
+	m_pHPs				= LOAD_UI_T(RtwProgressBar, "fmhpcreature.barhp1");
 
 	m_pFrmThis->Hide();
 
@@ -41,7 +41,7 @@ void UIFormCreInfo::OnPreDraw()
 	pImageFace->SetBlend(true);
 	m_pFace->SetBackgroundImage(pImageFace);
 	m_pHPs->Show();
-	m_pHPs = RTW_WIDGET_T(RtwProgressBar, "fmhpcreature.barhp1");
+	m_pHPs = LOAD_UI_T(RtwProgressBar, "fmhpcreature.barhp1");
 	m_pHPs->SetValue((float)m_nHpRemain/m_nHpTotal);
 	unguard;
 }
@@ -96,11 +96,11 @@ UIFormMonInfo::UIFormMonInfo()
 {
 	guard;
 
-	m_pFrmThis			= RTW_WIDGET("fmmonhp");
-	m_pFace				= RTW_WIDGET("fmmonhp.monface");
-	m_pName				= RTW_WIDGET("fmmonhp.monpk.lbname");
-	m_pLevel			= RTW_WIDGET("fmmonhp.lbmonlv");
-	m_pHPs				= RTW_WIDGET_T(RtwProgressBar, "fmmonhp.monhp");
+	m_pFrmThis			= LOAD_UI("fmmonhp");
+	m_pFace				= LOAD_UI("fmmonhp.monface");
+	m_pName				= LOAD_UI("fmmonhp.monpk.lbname");
+	m_pLevel			= LOAD_UI("fmmonhp.lbmonlv");
+	m_pHPs				= LOAD_UI_T(RtwProgressBar, "fmmonhp.monhp");
 	m_pFace->ModifyFlag(wfClick, 0);
 	m_pFrmThis->EvRClick	+= RTW_CALLBACK(this,GcWorld,OnMouseRightDown);
 	m_pFrmThis->Hide();
@@ -190,9 +190,9 @@ void UIFormMonInfo::SetMonTextWhite()
 CUI_Form_Chant::CUI_Form_Chant()
 {
 	guard;
-	m_pFrmThis = RTW_WIDGET("ChantForm"/*"fmprocess"*/);
-	m_pName = RTW_WIDGET("ChantForm.SkillName");
-	m_pChantBar = RTW_WIDGET_T(RtwProgressBar, "ChantForm.ChantBar"/*"fmprocess.EXPBar"*/);
+	m_pFrmThis = LOAD_UI("ChantForm"/*"fmprocess"*/);
+	m_pName = LOAD_UI("ChantForm.SkillName");
+	m_pChantBar = LOAD_UI_T(RtwProgressBar, "ChantForm.ChantBar"/*"fmprocess.EXPBar"*/);
 
 	m_pFrmThis->Hide();
 	unguard;
@@ -246,8 +246,8 @@ CUIForm_Collect::CUIForm_Collect()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("ChantForm1");;
-	m_pCollectBar = RTW_WIDGET_T(RtwProgressBar, "ChantForm1.ChantBar");
+	m_pFrmThis = LOAD_UI("ChantForm1");;
+	m_pCollectBar = LOAD_UI_T(RtwProgressBar, "ChantForm1.ChantBar");
 	m_pFrmThis->Hide();
 	m_pCollectBar->SetValue(0.f);
 

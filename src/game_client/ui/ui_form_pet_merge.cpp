@@ -8,14 +8,14 @@
 
 UIFormPetMerge::UIFormPetMerge()
 {
-	m_pFmWindow		= RTW_WIDGET_T(RtwForm, "fmpetcompose");
-	m_pFmPetView1	= RTW_WIDGET_T(Rtw3DView, "fmpetcompose.fmbaby.fmmianpet");
-	m_pFmPetView2	= RTW_WIDGET_T(Rtw3DView, "fmpetcompose.fmbaby.fmotherpet");
-	m_pCbPetList1	= RTW_WIDGET_T(RtwComboBox, "fmpetcompose.fmbaby.cbtlist1");
-	m_pCbPetList2	= RTW_WIDGET_T(RtwComboBox, "fmpetcompose.fmbaby.cbtlist2");
-	m_pBtnItem		= RTW_WIDGET_T(RtwButton, "fmpetcompose.fmbaby.aliasCombweapon");
-	m_pBtnMerge		= RTW_WIDGET_T(RtwButton, "fmpetcompose.fmbaby.btncompose");
-	m_pLbRate		= RTW_WIDGET_T(RtwLabel, "fmpetcompose.fmbaby.lbmoney");
+	m_pFmWindow		= LOAD_UI_T(RtwForm, "fmpetcompose");
+	m_pFmPetView1	= LOAD_UI_T(Rtw3DView, "fmpetcompose.fmbaby.fmmianpet");
+	m_pFmPetView2	= LOAD_UI_T(Rtw3DView, "fmpetcompose.fmbaby.fmotherpet");
+	m_pCbPetList1	= LOAD_UI_T(RtwComboBox, "fmpetcompose.fmbaby.cbtlist1");
+	m_pCbPetList2	= LOAD_UI_T(RtwComboBox, "fmpetcompose.fmbaby.cbtlist2");
+	m_pBtnItem		= LOAD_UI_T(RtwButton, "fmpetcompose.fmbaby.aliasCombweapon");
+	m_pBtnMerge		= LOAD_UI_T(RtwButton, "fmpetcompose.fmbaby.btncompose");
+	m_pLbRate		= LOAD_UI_T(RtwLabel, "fmpetcompose.fmbaby.lbmoney");
 	m_pFmWindow->EvHide += RTW_CALLBACK(this,UIFormPetMerge,OnHide);
 
 	m_pCbPetList1->EvSelect	+= RTW_CALLBACK(this, UIFormPetMerge, OnSelectPet1);

@@ -268,7 +268,7 @@ CUIFormInputBox::CUIFormInputBox()//modify by fox for bug
 : m_autoDelete(false)
 {
 	guard;
-	m_pFrmThis = RTW_WIDGET("InputBox");
+	m_pFrmThis = LOAD_UI("InputBox");
 	m_pFrmThis->Hide();
 
 	RtwTextBox *pTB = (RtwTextBox *)m_pFrmThis->GetChildWidget("txtString");

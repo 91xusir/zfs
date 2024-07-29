@@ -5,13 +5,13 @@
 UIFormCard::UIFormCard()
 {
 	guard;
-    m_pFrmThis = RTW_WIDGET("fmcard");
+    m_pFrmThis = LOAD_UI("fmcard");
 
-    m_pCaption   = RTW_WIDGET("fmcard.lbinfo");
-    m_pTextInput = RTW_WIDGET_T(RtwTextBox, "fmcard.txtcard");
-    m_pBtnOK     = RTW_WIDGET_T(RtwButton, "fmcard.btnok");
+    m_pCaption   = LOAD_UI("fmcard.lbinfo");
+    m_pTextInput = LOAD_UI_T(RtwTextBox, "fmcard.txtcard");
+    m_pBtnOK     = LOAD_UI_T(RtwButton, "fmcard.btnok");
 
-    RtwButton* pBtnBack = RTW_WIDGET_T(RtwButton, "fmcard.btnback");
+    RtwButton* pBtnBack = LOAD_UI_T(RtwButton, "fmcard.btnback");
 
     m_pTextInput->SetAlphaNumberOnly(true);
     m_pTextInput->SetCapsLock(1);

@@ -699,7 +699,17 @@ struct SHyperLink {
     RtwPixel hilghtColor;  //高亮
     RtwPixel pushedColor;  //按下
 
-    vector<DWORD> vecParam;
+    std::vector<DWORD> vecParam;
+
+    // 默认构造函数，调用 Reset() 初始化成员
+    SHyperLink() { Reset(); }
+
+    // 带参数构造函数
+    SHyperLink(EHyperLinkType _Type, const std::string& _Text)
+        : Type(_Type), Text(_Text), childType(hlinkChildInvalid) {
+        // 初始化其他成员
+        normalColor = hilghtColor = pushedColor = RtwPixel();  // 使用默认构造函数
+    }
 
     void Reset() {
         Type = hlinkInvalid;
@@ -710,25 +720,16 @@ struct SHyperLink {
     }
 
     SHyperLink& operator=(const SHyperLink& t) {
-        Reset();
-        Type = t.Type;
-        childType = t.childType;
-        Text = t.Text;
-        normalColor = t.normalColor;
-        hilghtColor = t.hilghtColor;
-        pushedColor = t.pushedColor;
-
-        for (int i = 0; i < (int)t.vecParam.size(); ++i) {
-            vecParam.push_back(t.vecParam[i]);
+        if (this != &t) {  // 防止自赋值
+            Type = t.Type;
+            childType = t.childType;
+            Text = t.Text;
+            normalColor = t.normalColor;
+            hilghtColor = t.hilghtColor;
+            pushedColor = t.pushedColor;
+            vecParam = t.vecParam;  // 直接赋值，避免重复拷贝
         }
         return *this;
-    }
-
-    SHyperLink() { Reset(); }
-
-    SHyperLink(EHyperLinkType _Type, const std::string& _Text) {
-        Type = _Type;
-        Text = _Text;
     }
 
     bool        FromString(const std::string& str);

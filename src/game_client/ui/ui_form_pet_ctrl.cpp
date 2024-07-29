@@ -10,9 +10,9 @@
 
 UIFromPetCtrl::UIFromPetCtrl(void)
 {
-	m_pFormPetSkill	= RTW_WIDGET_T(RtwForm, "petskill");
-	m_pFormPetCtrl	= RTW_WIDGET_T(RtwForm, "petcontrol");
-	m_pBtnDefSkill	= RTW_WIDGET_T(RtwButton, "petskill.lbhotkey0");
+	m_pFormPetSkill	= LOAD_UI_T(RtwForm, "petskill");
+	m_pFormPetCtrl	= LOAD_UI_T(RtwForm, "petcontrol");
+	m_pBtnDefSkill	= LOAD_UI_T(RtwButton, "petskill.lbhotkey0");
 	m_pBtnDefSkill->EvLClick		+= RTW_CALLBACK(this, UIFromPetCtrl, SetDefSkill);
 	m_pBtnDefSkill->EvHint			+= RTW_CALLBACK(this, UIFromPetAptitude, GetPetSkillHint);
 	m_pBtnDefSkill->ModifyFlags(wfHint, 0);
@@ -20,19 +20,19 @@ UIFromPetCtrl::UIFromPetCtrl(void)
 	for (int i = 0;i<UIPET_SKILL_NUM;i++)
 	{
 		rt2_sprintf(str,"petskill.lbhotkey%d",i+1);
-		m_pBtnSkill[i]					= RTW_WIDGET_T(RtwButton, str);
+		m_pBtnSkill[i]					= LOAD_UI_T(RtwButton, str);
 		m_pBtnSkill[i]->EvRClick		+= RTW_CALLBACK(this, UIFromPetCtrl, DoUseSkill);
 		m_pBtnSkill[i]->EvLClick		+= RTW_CALLBACK(this, UIFromPetCtrl, SetDefSkill);
 		m_pBtnSkill[i]->EvHint			+= RTW_CALLBACK(this, UIFromPetAptitude, GetPetSkillHint);
 		m_pBtnSkill[i]->ModifyFlags(wfHint, 0);
 		m_pBtnSkill[i]->SetParam1(&m_CurPetItem.params[PET_PARAM_SKILL_1+i]);
 	}
-	m_pBtnCtrl[0]		= RTW_WIDGET_T(CUiCheckButton, "petcontrol.withattackblt");
+	m_pBtnCtrl[0]		= LOAD_UI_T(CUiCheckButton, "petcontrol.withattackblt");
 
-	m_pBtnCtrl[1]		= RTW_WIDGET_T(CUiCheckButton, "petcontrol.defattackblt");
-	m_pBtnCtrl[2]		= RTW_WIDGET_T(CUiCheckButton, "petcontrol.pasattackblt");
-	m_pBtnCtrl[3]		= RTW_WIDGET_T(CUiCheckButton, "petcontrol.attackblt");
-	m_pBtnCallBack		= RTW_WIDGET_T(RtwButton, "petcontrol.callcancel");
+	m_pBtnCtrl[1]		= LOAD_UI_T(CUiCheckButton, "petcontrol.defattackblt");
+	m_pBtnCtrl[2]		= LOAD_UI_T(CUiCheckButton, "petcontrol.pasattackblt");
+	m_pBtnCtrl[3]		= LOAD_UI_T(CUiCheckButton, "petcontrol.attackblt");
+	m_pBtnCallBack		= LOAD_UI_T(RtwButton, "petcontrol.callcancel");
 	for (int i=0;i<UIPET_CTRL_BUTTON_NUM;i++)
 	{
 		m_pBtnCtrl[i]->EvLClick		+= RTW_CALLBACK(this, UIFromPetCtrl, OnChangeAttackType);

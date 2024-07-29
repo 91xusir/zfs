@@ -7,28 +7,28 @@ RtwImage::Ptr		CUIShowProject::mpBorder[MAX_CHANNEL_CHATBOX];
 
 CUINormalShowProject::CUINormalShowProject()//构造//初始化
 {
-	RTW_WIDGET("tbfeedback")->ModifyFlags(wfGrabMouse,0);//要接收鼠标消息
+	LOAD_UI("tbfeedback")->ModifyFlags(wfGrabMouse,0);//要接收鼠标消息
 	RtString tmpStr;
 	for(int i= 0;i< MAX_CHANNEL_CHATBOX;i++)
 	{
 		tmpStr.Format("tbfeedback.fmchat%d.txtFeedback",i);
-		RTW_WIDGET(tmpStr.c_str())->ModifyFlags(wfGrabMouse,0);//要接收鼠标消息2010.6.4
-		RTW_WIDGET(tmpStr.c_str())->SetBackgroundImage(mpBackGround[i]);//要背景
-		RTW_WIDGET(tmpStr.c_str())->SetBorder(mpBorder[i]);//要背景
+		LOAD_UI(tmpStr.c_str())->ModifyFlags(wfGrabMouse,0);//要接收鼠标消息2010.6.4
+		LOAD_UI(tmpStr.c_str())->SetBackgroundImage(mpBackGround[i]);//要背景
+		LOAD_UI(tmpStr.c_str())->SetBorder(mpBorder[i]);//要背景
 	}
 };
 
 CUITransparentShowProject::CUITransparentShowProject()//构造//初始化
 {
-// 	RTW_WIDGET(UI_CHAT_FORM_ALL_WHOLE_ID)->ModifyFlags(0,wfGrabMouse);//不接收鼠标消息
-// 	RTW_WIDGET(UI_CHAT_FORM_WHOLE_ID)->ModifyFlags(0,wfGrabMouse);//不接收鼠标消息
+// 	LOAD_UI(UI_CHAT_FORM_ALL_WHOLE_ID)->ModifyFlags(0,wfGrabMouse);//不接收鼠标消息
+// 	LOAD_UI(UI_CHAT_FORM_WHOLE_ID)->ModifyFlags(0,wfGrabMouse);//不接收鼠标消息
 
 	RtString tmpStr;
 	for(int i= 0;i< MAX_CHANNEL_CHATBOX;i++)
 	{
 		tmpStr.Format("tbfeedback.fmchat%d.txtFeedback",i);
-		RTW_WIDGET(tmpStr.c_str())->SetBackgroundImage((RtwImage*)NULL);//不要背景
-		RTW_WIDGET(tmpStr.c_str())->SetBorder(NULL);//不要背景
+		LOAD_UI(tmpStr.c_str())->SetBackgroundImage((RtwImage*)NULL);//不要背景
+		LOAD_UI(tmpStr.c_str())->SetBorder(NULL);//不要背景
 	}
 };
 
@@ -37,11 +37,11 @@ CUITransparentShowProject::CUITransparentShowProject()//构造//初始化
  CUIProject1::CUIProject1()//构造//初始化
 {
 	//设置默认的键盘输入焦点
-	//g_workspace.SetFocusWidget(RTW_WIDGET(UI_INPUT_WHOLE_ID));
-	g_workspace.SetDefaultFocusWidget(RTW_WIDGET(UI_INPUT_WHOLE_ID));//g_workspace.SetSysEditName(UI_INPUT_WHOLE_ID);// change [3/16/2009 tooth.shi]
+	//g_workspace.SetFocusWidget(LOAD_UI(UI_INPUT_WHOLE_ID));
+	g_workspace.SetDefaultFocusWidget(LOAD_UI(UI_INPUT_WHOLE_ID));//g_workspace.SetSysEditName(UI_INPUT_WHOLE_ID);// change [3/16/2009 tooth.shi]
 	if(g_workspace.GetFocusWidget()==NULL)
 	{
-		g_workspace.SetFocusWidget(RTW_WIDGET(UI_INPUT_WHOLE_ID));
+		g_workspace.SetFocusWidget(LOAD_UI(UI_INPUT_WHOLE_ID));
 	}
 
 
@@ -74,7 +74,7 @@ CUITransparentShowProject::CUITransparentShowProject()//构造//初始化
 	//没有默认的键盘输入焦点
 	//g_workspace.SetFocusWidget(NULL);
 	g_workspace.SetDefaultFocusWidget(NULL);//g_workspace.SetSysEditName(""); // change [3/16/2009 tooth.shi]
-	if(g_workspace.GetFocusWidget()==RTW_WIDGET(UI_INPUT_WHOLE_ID))
+	if(g_workspace.GetFocusWidget()==LOAD_UI(UI_INPUT_WHOLE_ID))
 	{
 		g_workspace.SetFocusWidget(NULL);
 	}
@@ -96,7 +96,7 @@ CUITransparentShowProject::CUITransparentShowProject()//构造//初始化
 	 }
 
 	 RtwWidget* pWidget = g_workspace.GetFocusWidget();
-	 RtwWidget* pChatWidget = RTW_WIDGET(UI_INPUT_WHOLE_ID);
+	 RtwWidget* pChatWidget = LOAD_UI(UI_INPUT_WHOLE_ID);
 
 	 if (pWidget == NULL || (pWidget==pChatWidget && !pChatWidget->IsVisible()))
 	 {
@@ -146,10 +146,10 @@ CUITransparentShowProject::CUITransparentShowProject()//构造//初始化
 			if(vKey==VK_RETURN)
 			{
 				//GetWorld()->m_Chat.KeepFocus(true);
-				g_workspace.SetFocusWidget(RTW_WIDGET(UI_INPUT_WHOLE_ID));
+				g_workspace.SetFocusWidget(LOAD_UI(UI_INPUT_WHOLE_ID));
 			}
 		}
-		else if(pWidget==RTW_WIDGET(UI_INPUT_WHOLE_ID))
+		else if(pWidget==LOAD_UI(UI_INPUT_WHOLE_ID))
 		{//输入焦点在聊天输入框中//截获
 			if(vKey==VK_RETURN)
 			{
@@ -214,31 +214,31 @@ void CUIProject::ShortcutHint(bool vAlt,bool vCtrl,bool vShift)//hint的设置
 	SetMakeHint(vAlt,vCtrl,vShift);
 
 	// 属性C
-	RTW_WIDGET("fmsystem.btnsyschar")->SetHintText(MakeHint(R(HINT_CHAR_STRING),"C"));
+	LOAD_UI("fmsystem.btnsyschar")->SetHintText(MakeHint(R(HINT_CHAR_STRING),"C"));
 	// 宠物
-	RTW_WIDGET("fmsystem.btnpet")->SetHintText(MakeHint(R(HINT_PET_STRING),"Z"));
+	LOAD_UI("fmsystem.btnpet")->SetHintText(MakeHint(R(HINT_PET_STRING),"Z"));
 	// 道具
-	RTW_WIDGET("fmsystem.btnsysitem")->SetHintText(MakeHint(R(HINT_ITEM_STRING),"B"));
+	LOAD_UI("fmsystem.btnsysitem")->SetHintText(MakeHint(R(HINT_ITEM_STRING),"B"));
 	// 技能S
-	RTW_WIDGET("fmsystem.btnsysskill")->SetHintText(MakeHint(R(HINT_SKILL_STRING),"R"));
+	LOAD_UI("fmsystem.btnsysskill")->SetHintText(MakeHint(R(HINT_SKILL_STRING),"R"));
 	// 任务Q
-	RTW_WIDGET("fmsystem.btnsystask")->SetHintText(MakeHint(R(HINT_TASK_STRING),"Q"));
+	LOAD_UI("fmsystem.btnsystask")->SetHintText(MakeHint(R(HINT_TASK_STRING),"Q"));
 	// 组队
-	RTW_WIDGET("fmsystem.btnteam")->SetHintText(MakeHint(R(HINT_TEAM_STRING),"T"));
+	LOAD_UI("fmsystem.btnteam")->SetHintText(MakeHint(R(HINT_TEAM_STRING),"T"));
 	// 社群W
-	RTW_WIDGET("fmsystem.btnsysfriend")->SetHintText(MakeHint(R(HINT_SOC_STRING),"F"));
+	LOAD_UI("fmsystem.btnsysfriend")->SetHintText(MakeHint(R(HINT_SOC_STRING),"F"));
 	// 帮派
-	RTW_WIDGET("fmsystem.btnbangpai")->SetHintText(MakeHint(R(HINT_UNION_STRING),"G"));
+	LOAD_UI("fmsystem.btnbangpai")->SetHintText(MakeHint(R(HINT_UNION_STRING),"G"));
 	// 邮件M
-	RTW_WIDGET("fmsystem.btnsysmail")->SetHintText(MakeHint(R(HINT_MAIL_STRING),"L"));
+	LOAD_UI("fmsystem.btnsysmail")->SetHintText(MakeHint(R(HINT_MAIL_STRING),"L"));
 	// 排行 
-	RTW_WIDGET("fmsystem.btnsyslist")->SetHintText(MakeHint(R(HINT_LIST_STRING),"P"));
+	LOAD_UI("fmsystem.btnsyslist")->SetHintText(MakeHint(R(HINT_LIST_STRING),"P"));
 	// 系统O 
-	RTW_WIDGET("fmsystem.btnsystem")->SetHintText(MakeHint(R(HINT_SYSTEM_STRING),"X"));
+	LOAD_UI("fmsystem.btnsystem")->SetHintText(MakeHint(R(HINT_SYSTEM_STRING),"X"));
 	//// 诸侯
-	//RTW_WIDGET("fmcharall.tabcharall.btnguild")->SetHintText(MakeHint(R(HINT_GUILD_STRING),"U"));
+	//LOAD_UI("fmcharall.tabcharall.btnguild")->SetHintText(MakeHint(R(HINT_GUILD_STRING),"U"));
 	//// 好友F
-	//RTW_WIDGET("fmsystem.btnsysfriend")->SetHintText(MakeHint(R(HINT_FRIEND_STRING),"F"));
+	//LOAD_UI("fmsystem.btnsysfriend")->SetHintText(MakeHint(R(HINT_FRIEND_STRING),"F"));
 }
 
 

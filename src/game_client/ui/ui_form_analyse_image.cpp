@@ -5,25 +5,25 @@ UIFormAnalyseImage::UIFormAnalyseImage()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmwaigua");
+	m_pFrmThis = LOAD_UI("fmwaigua");
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
-	m_pBtnApplyNext = RTW_WIDGET("fmwaigua.btnrestart");
-	//m_pText = RTW_WIDGET("fmwaigua.lbtxt");
-	m_pImage = RTW_WIDGET("fmwaigua.btnPic");
-	m_pTimeLeft = RTW_WIDGET("fmwaigua.lbtimenum");
-	m_arrSelections[0] = RTW_WIDGET("fmwaigua.btnno1");
-	m_arrSelections[1] = RTW_WIDGET("fmwaigua.btnno2");
-	m_arrSelections[2] = RTW_WIDGET("fmwaigua.btnno3");
-	m_arrSelections[3] = RTW_WIDGET("fmwaigua.btnno4");
-    m_arrSelections[4] = RTW_WIDGET("fmwaigua.btnno5");
-    m_arrSelections[5] = RTW_WIDGET("fmwaigua.btnno6");
-    m_arrSelections[6] = RTW_WIDGET("fmwaigua.btnno7");
-    m_arrSelections[7] = RTW_WIDGET("fmwaigua.btnno8");
-    m_pType1Hint = RTW_WIDGET("fmwaigua.lbtxt");
-    m_pType2Hint = RTW_WIDGET("fmwaigua.lbsecondtime");
-    m_pType2Text = RTW_WIDGET("fmwaigua.txtinputno");
-    m_pType2Ok = RTW_WIDGET("fmwaigua.btnok");
+	m_pBtnApplyNext = LOAD_UI("fmwaigua.btnrestart");
+	//m_pText = LOAD_UI("fmwaigua.lbtxt");
+	m_pImage = LOAD_UI("fmwaigua.btnPic");
+	m_pTimeLeft = LOAD_UI("fmwaigua.lbtimenum");
+	m_arrSelections[0] = LOAD_UI("fmwaigua.btnno1");
+	m_arrSelections[1] = LOAD_UI("fmwaigua.btnno2");
+	m_arrSelections[2] = LOAD_UI("fmwaigua.btnno3");
+	m_arrSelections[3] = LOAD_UI("fmwaigua.btnno4");
+    m_arrSelections[4] = LOAD_UI("fmwaigua.btnno5");
+    m_arrSelections[5] = LOAD_UI("fmwaigua.btnno6");
+    m_arrSelections[6] = LOAD_UI("fmwaigua.btnno7");
+    m_arrSelections[7] = LOAD_UI("fmwaigua.btnno8");
+    m_pType1Hint = LOAD_UI("fmwaigua.lbtxt");
+    m_pType2Hint = LOAD_UI("fmwaigua.lbsecondtime");
+    m_pType2Text = LOAD_UI("fmwaigua.txtinputno");
+    m_pType2Ok = LOAD_UI("fmwaigua.btnok");
 
 	for (int i=0; i<ANALYSE_IMAGE_SELECTION_COUNT; i++)
 	{

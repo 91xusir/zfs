@@ -29,19 +29,19 @@ UIFormPlayerItems::UIFormPlayerItems()
 	guard;
 	m_bInMissionPage = false;
 
-	m_pFrmThis = RTW_WIDGET("fmitem");
+	m_pFrmThis = LOAD_UI("fmitem");
 	m_pFrmThis->ModifyFlags(wfDragClient, 0);
-	m_pTabThis = RTW_WIDGET_T(RtwTab,"fmitem.tabitem");
+	m_pTabThis = LOAD_UI_T(RtwTab,"fmitem.tabitem");
 	m_pTabThis->SetSelectedItem(0);
-	//RTW_WIDGET("fmitem.panItem")->ModifyFlags(0,wfDragOut);
+	//LOAD_UI("fmitem.panItem")->ModifyFlags(0,wfDragOut);
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 	m_pFrmThis->EvMouseMove += RTW_CALLBACK(this, UIFormPlayerItems, OnMouseMove);
 	m_pFrmThis->EvHide		+= RTW_CALLBACK(this, UIFormPlayerItems, OnThisHide);
 	m_pTabThis->EvChangeSelected+=RTW_CALLBACK(this,UIFormPlayerItems,OnTabSelect);
-	RTW_WIDGET("fmitem.tabitem.btnitembag3")->Disable();
-	RTW_WIDGET("fmitem.tabitem.btnitembag4")->Disable();
-	RTW_WIDGET("fmitem.tabitem.btnitembag5")->Disable();
-	RTW_WIDGET("fmitem.tabitem.btnitembag6")->Disable();
+	LOAD_UI("fmitem.tabitem.btnitembag3")->Disable();
+	LOAD_UI("fmitem.tabitem.btnitembag4")->Disable();
+	LOAD_UI("fmitem.tabitem.btnitembag5")->Disable();
+	LOAD_UI("fmitem.tabitem.btnitembag6")->Disable();
 
     //m_ptrHoverImage = new RtwImage("highlight_button.tga");// change [3/17/2009 tooth.shi]
 	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
@@ -52,28 +52,28 @@ UIFormPlayerItems::UIFormPlayerItems()
 	m_ptrHoverImage->getRenderImage()->SetBlend(true);
 
 
-	//m_btnParts[CItemContainerBase::WEAPON_1] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnRightHand");
-	//m_btnParts[CItemContainerBase::WEAPON_2] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnLeftHand");
-	//m_btnParts[CItemContainerBase::BODY] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnCloth");
-	//m_btnParts[CItemContainerBase::CHARM] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnCharm");
-	//m_btnParts[CItemContainerBase::FOOT] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnShoes");
-	//m_btnParts[CItemContainerBase::NECKLACE] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnNecklace");
-	//m_btnParts[CItemContainerBase::GLOVE] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnGlove");
-	//m_btnParts[CItemContainerBase::RING] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnRing");
+	//m_btnParts[CItemContainerBase::WEAPON_1] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnRightHand");
+	//m_btnParts[CItemContainerBase::WEAPON_2] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnLeftHand");
+	//m_btnParts[CItemContainerBase::BODY] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnCloth");
+	//m_btnParts[CItemContainerBase::CHARM] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnCharm");
+	//m_btnParts[CItemContainerBase::FOOT] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnShoes");
+	//m_btnParts[CItemContainerBase::NECKLACE] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnNecklace");
+	//m_btnParts[CItemContainerBase::GLOVE] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnGlove");
+	//m_btnParts[CItemContainerBase::RING] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnRing");
 
-	//m_btnParts[CItemContainerBase::CAESTUS] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnCaestus");
-	//m_btnParts[CItemContainerBase::RING2] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnRing2");
-	//m_btnParts[CItemContainerBase::KITS] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnKits");
-	//m_btnParts[CItemContainerBase::TRUMP] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnTrump");
-	//m_btnParts[CItemContainerBase::FASHION] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnFashion");
-	//m_btnParts[CItemContainerBase::SEALEDBOOK] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnBook");
-	//m_btnParts[CItemContainerBase::AEROCRAFT] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnFly");
-	//m_btnParts[CItemContainerBase::WEAPON_3] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnLeftHand");
-	//m_btnParts[CItemContainerBase::PANTS] = RTW_WIDGET_T(RtwButton, "fmitem.panItem.btnPants");
-	m_btnUpdate				= RTW_WIDGET_T(RtwButton,"fmitem.fmbt4.btnupdate");
-	m_btnShop				= RTW_WIDGET_T(RtwButton,"fmitem.fmbt4.btnpshop");
-	m_btnSplit				= RTW_WIDGET_T(RtwButton,"fmitem.fmbt4.btnchaifen");
-	m_btnBank				= RTW_WIDGET_T(RtwButton,"fmitem.fmbt4.btnbank");
+	//m_btnParts[CItemContainerBase::CAESTUS] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnCaestus");
+	//m_btnParts[CItemContainerBase::RING2] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnRing2");
+	//m_btnParts[CItemContainerBase::KITS] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnKits");
+	//m_btnParts[CItemContainerBase::TRUMP] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnTrump");
+	//m_btnParts[CItemContainerBase::FASHION] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnFashion");
+	//m_btnParts[CItemContainerBase::SEALEDBOOK] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnBook");
+	//m_btnParts[CItemContainerBase::AEROCRAFT] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnFly");
+	//m_btnParts[CItemContainerBase::WEAPON_3] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnLeftHand");
+	//m_btnParts[CItemContainerBase::PANTS] = LOAD_UI_T(RtwButton, "fmitem.panItem.btnPants");
+	m_btnUpdate				= LOAD_UI_T(RtwButton,"fmitem.fmbt4.btnupdate");
+	m_btnShop				= LOAD_UI_T(RtwButton,"fmitem.fmbt4.btnpshop");
+	m_btnSplit				= LOAD_UI_T(RtwButton,"fmitem.fmbt4.btnchaifen");
+	m_btnBank				= LOAD_UI_T(RtwButton,"fmitem.fmbt4.btnbank");
 	m_btnSplit->Disable();
 	m_btnBank->Disable();
 	m_btnUpdate->EvLClick	+=RTW_CALLBACK(this,UIFormPlayerItems,OnItemUpdate);
@@ -96,25 +96,25 @@ UIFormPlayerItems::UIFormPlayerItems()
 	//	m_btnParts[i]->EvHint += RTW_CALLBACK(this, UIFormPlayerItems, OnGetHintText_Parts);
 	//}
 
-	m_lbMoney = RTW_WIDGET("fmitem.lbmoneynum");
-	//m_lbPage = RTW_WIDGET("fmitem.lbpage");
-	m_btnTrash = RTW_WIDGET_T(RtwButton, "fmitem.btnTrash");
+	m_lbMoney = LOAD_UI("fmitem.lbmoneynum");
+	//m_lbPage = LOAD_UI("fmitem.lbpage");
+	m_btnTrash = LOAD_UI_T(RtwButton, "fmitem.btnTrash");
     m_btnTrash->ModifyFlags(wfDragClient|wfDragIn|wfHint|wfDClick, 0);
     m_btnTrash->EvDrag += RTW_CALLBACK(this, UIFormPlayerItems, OnDrag_Trash);
 	m_btnTrash->Show();
-    //m_btnPass = RTW_WIDGET_T(RtwButton, "fmitem.btnPass");
+    //m_btnPass = LOAD_UI_T(RtwButton, "fmitem.btnPass");
     //m_btnPass->ModifyFlags(wfDragClient|wfDragIn, 0);//表示往里拖拽
     //m_btnPass->EvDrag += RTW_CALLBACK(this, UIFormPlayerItems, OnDrag_Pass);
-	//m_btnPageLeft = RTW_WIDGET_T(RtwButton, "fmitem.btnitemleft");
+	//m_btnPageLeft = LOAD_UI_T(RtwButton, "fmitem.btnitemleft");
 	//m_btnPageLeft->EvLClick += RTW_CALLBACK(this, UIFormPlayerItems, OnLClick_LeftArrow);
-	//m_btnPageRight = RTW_WIDGET_T(RtwButton, "fmitem.btnitemright");
+	//m_btnPageRight = LOAD_UI_T(RtwButton, "fmitem.btnitemright");
 	//m_btnPageRight->EvLClick += RTW_CALLBACK(this, UIFormPlayerItems, OnLClick_RightArrow);
-	//m_btnCommonItem = RTW_WIDGET_T(RtwButton, "fmitem.tabitem.btnnormalitem");
+	//m_btnCommonItem = LOAD_UI_T(RtwButton, "fmitem.tabitem.btnnormalitem");
 	//m_btnCommonItem->EvLClick += RTW_CALLBACK(this, UIFormPlayerItems, OnLClick_CommonButton);
-	//m_btnMissionItem = RTW_WIDGET_T(RtwButton, "fmitem.tabitem.fmitembag7");
+	//m_btnMissionItem = LOAD_UI_T(RtwButton, "fmitem.tabitem.fmitembag7");
 	//m_btnMissionItem->EvLClick += RTW_CALLBACK(this, UIFormPlayerItems, OnLClick_MissionButton);
 //	m_pFrmThis->EvHide += RTW_CALLBACK(this, UIFormPlayerItems, OnClose);
-//	RTW_WIDGET("fmitem.$hide")->EvLClick += RTW_CALLBACK(this, UIFormPlayerItems, OnClose);
+//	LOAD_UI("fmitem.$hide")->EvLClick += RTW_CALLBACK(this, UIFormPlayerItems, OnClose);
 
 	// 创建Inventory的格子
 	RtString tmp;
@@ -128,7 +128,7 @@ UIFormPlayerItems::UIFormPlayerItems()
 	for(int k= 0;k< ITEM_PLAYER_INVENTORY_PAGE;k++)
 	{
 		tmp.Format("fmitem.tabitem.fmitembag%d",k+1);
-		m_frmGridsCommon[k] = RTW_WIDGET(tmp.c_str());
+		m_frmGridsCommon[k] = LOAD_UI(tmp.c_str());
 		RtwRect rc = m_frmGridsCommon[k]->GetFrameRect();
 		int left = rc.Left() +2;
 		int top = rc.Top() +2;
@@ -179,7 +179,7 @@ UIFormPlayerItems::UIFormPlayerItems()
 			}
 		}
 	}
-	m_frmGridsMission = RTW_WIDGET("fmitem.tabitem.fmitembag7");
+	m_frmGridsMission = LOAD_UI("fmitem.tabitem.fmitembag7");
 	for (int i=0; i<ITEM_PLAYER_INVENTORY_LINE; i++)
 	{
 		for (int j=0; j<ITEM_PLAYER_INVENTORY_COLUMN; j++)
@@ -1004,7 +1004,7 @@ void UIFormPlayerItems::OnMouseRDown_CommonButton(RtwWidget* sender, void*)
 	if (m_pPlayer->mItem.m_Bag.GetLock(m_pPlayer->mItem.m_Bag.GetPageIndex(), i, j))
 		return;
 
-	//if(RTW_WIDGET("fmplayershop")->IsVisible())
+	//if(LOAD_UI("fmplayershop")->IsVisible())
 	//{
 	g_layerMain->m_formPlayerShop->OnDeleteItem(item);
 	//}
@@ -1606,7 +1606,7 @@ void UIFormPlayerItems::OnEditNumOK(ui::RtwWidget* vpSender, RtwEventDelegate* v
 	if(lNum)
 	{
 		//发送相关信息
-		//if(RTW_WIDGET("fmplayershop")->IsVisible())
+		//if(LOAD_UI("fmplayershop")->IsVisible())
 		//{
 		SItemID item;
 		item= GetPlayer()->mItem.m_Bag.GetItem(m_byteBuyInfo[0], m_byteBuyInfo[1], m_byteBuyInfo[2]);
@@ -1717,14 +1717,14 @@ void UIFormPlayerItems::OnDragEnd_CommonItem(RtwWidget* sender, void* unused)
 		法宝修练的鼠标拖动控制
 		另程序优化，加入一else控制，当执行一步之后就不再去判断其它的
 		*/
-		const RtwRect rcTrump = RTW_WIDGET("fmborder.fmInterface.fmProps.btnBaby")->getFrameRect();
+		const RtwRect rcTrump = LOAD_UI("fmborder.fmInterface.fmProps.btnBaby")->getFrameRect();
 
 		const RtwRect rcClient =	pClient->GetFrameRect();
-		const RtwRect rcHotKey =	RTW_WIDGET("fmhotkey")->GetFrameRect();
-		const RtwRect rcHotKey1 =	RTW_WIDGET("fmshortcut_bar1")->GetFrameRect();
-		const RtwRect rcHotKey2 =	RTW_WIDGET("fmshortcut_bar2")->GetFrameRect();
-		const RtwRect rcAuction =	RTW_WIDGET("fmAuction.panOrder.pansource01.btnskill")->GetFrameRect();
-		const RtwRect rcDecompound =	RTW_WIDGET("fmseparate.btntbc1")->GetFrameRect();
+		const RtwRect rcHotKey =	LOAD_UI("fmhotkey")->GetFrameRect();
+		const RtwRect rcHotKey1 =	LOAD_UI("fmshortcut_bar1")->GetFrameRect();
+		const RtwRect rcHotKey2 =	LOAD_UI("fmshortcut_bar2")->GetFrameRect();
+		const RtwRect rcAuction =	LOAD_UI("fmAuction.panOrder.pansource01.btnskill")->GetFrameRect();
+		const RtwRect rcDecompound =	LOAD_UI("fmseparate.btntbc1")->GetFrameRect();
 
 		const RtwRect rcPetAbilityItem1 =	g_layerMain->m_formPetAbility->m_pBtnItem1->GetFrameRect();
 		const RtwRect rcPetAbilityItem2 =	g_layerMain->m_formPetAbility->m_pBtnItem2->GetFrameRect();
@@ -2074,7 +2074,7 @@ void UIFormPlayerItems::OnDragEnd_MissionItem(RtwWidget* sender, void*)
     else
     {
         const RtwRect rcClient = pClient->GetFrameRect();
-        const RtwRect rcHotKey = RTW_WIDGET("fmhotkey")->GetFrameRect();
+        const RtwRect rcHotKey = LOAD_UI("fmhotkey")->GetFrameRect();
         if ( rcHotKey.IsContained(rcClient.left, rcClient.top) )
         {
             // 把图标拖到快捷栏中
@@ -2443,7 +2443,7 @@ void UIFormPlayerItems::OnDragEnd_Parts(RtwWidget* sender, void*)
 //	else
 //	{
 //		const RtwRect& rcClient = pClient->GetFrameRect();
-//		const RtwRect& rcHotKey = RTW_WIDGET("fmhotkey")->GetFrameRect();
+//		const RtwRect& rcHotKey = LOAD_UI("fmhotkey")->GetFrameRect();
 //		if ( rcHotKey.IsContained(rcClient.left, rcClient.top) )
 //		{
 //			// 把图标拖到快捷栏中
@@ -2563,7 +2563,7 @@ void UIFormPlayerItems::OnDeleteItem(void*, void*)
 	{
 		CItemNetHelper::NetSend_DeleteItem(item.id, ITEM_CONTAINER_PLAYER_COMMON_BAG, m_pageBackup, m_iBackup, m_jBackup);
 
-		//if(RTW_WIDGET("fmplayershop")->IsVisible())
+		//if(LOAD_UI("fmplayershop")->IsVisible())
 		//{
 		g_layerMain->m_formPlayerShop->OnDeleteItem(item);
 		//}
@@ -2628,7 +2628,7 @@ void UIFormPlayerItems::OnThrowItem(void*, void*)
 		return;
 	}
 
-	//if(RTW_WIDGET("fmplayershop")->IsVisible())
+	//if(LOAD_UI("fmplayershop")->IsVisible())
 	//{
 	g_layerMain->m_formPlayerShop->OnDeleteItem(item);
 	//}

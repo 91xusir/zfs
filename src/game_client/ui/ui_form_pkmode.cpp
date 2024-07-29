@@ -4,8 +4,8 @@
 UIFormPkMode::UIFormPkMode()
 {
 	guard;
-	m_pfrmThis			= RTW_WIDGET("fmpk");
-	m_plstPKmode		= RTW_WIDGET_T(RtwListBox,"fmpk.lstPKmode");
+	m_pfrmThis			= LOAD_UI("fmpk");
+	m_plstPKmode		= LOAD_UI_T(RtwListBox,"fmpk.lstPKmode");
 	m_plstPKmode->AddItem();
 	m_plstPKmode->SetItemText(0,1,"Á·¼¶Ä£Ê½");
 	RtwImage* pImage0 = g_workspace.getImageFactory()->createImage("ui\\textures\\5.tga");
@@ -111,8 +111,8 @@ void UIFormPkMode::OnChangePkModeImage(EPkMode mode)
 	static RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui\\textures\\5.tga");
 	pImage->SetSourceRect(imgTmp);
 	pImage->SetBlend(true);
-	RTW_WIDGET("fmhp.btnPKmode")->SetHintText(m_plstPKmode->GetItemText(iSelect,1));
-	RTW_WIDGET("fmhp.btnPKmode")->SetBackgroundImage(pImage);
+	LOAD_UI("fmhp.btnPKmode")->SetHintText(m_plstPKmode->GetItemText(iSelect,1));
+	LOAD_UI("fmhp.btnPKmode")->SetBackgroundImage(pImage);
 	m_pfrmThis->Hide();
 }
 
@@ -159,8 +159,8 @@ void UIFormPkMode::OnChangePkMode(RtwWidget* sender, void*)
 	static RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui\\textures\\5.tga");
 	pImage->SetSourceRect(imgTmp);
 	pImage->SetBlend(true);
-	RTW_WIDGET("fmhp.btnPKmode")->SetHintText(m_plstPKmode->GetItemText(iSelect,1));
-	RTW_WIDGET("fmhp.btnPKmode")->SetBackgroundImage(pImage);
+	LOAD_UI("fmhp.btnPKmode")->SetHintText(m_plstPKmode->GetItemText(iSelect,1));
+	LOAD_UI("fmhp.btnPKmode")->SetBackgroundImage(pImage);
 	m_pfrmThis->Hide();
 
 	CG_CmdPacket *cmd = NetBeginWrite();

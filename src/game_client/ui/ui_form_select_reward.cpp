@@ -8,20 +8,20 @@ UIFormSelectReward::UIFormSelectReward()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmtaskitem");
+	m_pFrmThis = LOAD_UI("fmtaskitem");
 
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
-	m_pRewards[0] = RTW_WIDGET_T(CUiCheckButton, "fmtaskitem.aliasComb1");
-	m_pRewards[1] = RTW_WIDGET_T(CUiCheckButton, "fmtaskitem.aliasComb2");
-	m_pRewards[2] = RTW_WIDGET_T(CUiCheckButton, "fmtaskitem.aliasComb3");
-	m_pRewards[3] = RTW_WIDGET_T(CUiCheckButton, "fmtaskitem.aliasComb4");
-	m_pRewards[4] = RTW_WIDGET_T(CUiCheckButton, "fmtaskitem.aliasComb5");
-	m_pRewards[5] = RTW_WIDGET_T(CUiCheckButton, "fmtaskitem.aliasComb6");
-	m_pRewards[6] = RTW_WIDGET_T(CUiCheckButton, "fmtaskitem.aliasComb7");
-	m_pRewards[7] = RTW_WIDGET_T(CUiCheckButton, "fmtaskitem.aliasComb8");
-	m_pOK = RTW_WIDGET_T(RtwButton, "fmtaskitem.btnok");
-	m_pCancel = RTW_WIDGET_T(RtwButton, "fmtaskitem.btncancel");
-	m_pTitle = RTW_WIDGET("fmtaskitem.lbinfo");
+	m_pRewards[0] = LOAD_UI_T(CUiCheckButton, "fmtaskitem.aliasComb1");
+	m_pRewards[1] = LOAD_UI_T(CUiCheckButton, "fmtaskitem.aliasComb2");
+	m_pRewards[2] = LOAD_UI_T(CUiCheckButton, "fmtaskitem.aliasComb3");
+	m_pRewards[3] = LOAD_UI_T(CUiCheckButton, "fmtaskitem.aliasComb4");
+	m_pRewards[4] = LOAD_UI_T(CUiCheckButton, "fmtaskitem.aliasComb5");
+	m_pRewards[5] = LOAD_UI_T(CUiCheckButton, "fmtaskitem.aliasComb6");
+	m_pRewards[6] = LOAD_UI_T(CUiCheckButton, "fmtaskitem.aliasComb7");
+	m_pRewards[7] = LOAD_UI_T(CUiCheckButton, "fmtaskitem.aliasComb8");
+	m_pOK = LOAD_UI_T(RtwButton, "fmtaskitem.btnok");
+	m_pCancel = LOAD_UI_T(RtwButton, "fmtaskitem.btncancel");
+	m_pTitle = LOAD_UI("fmtaskitem.lbinfo");
 
 	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
 	for (int i=0; i<UI_FORM_SELECT_REWARD_MAX_COUNT; i++)

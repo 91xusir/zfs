@@ -536,14 +536,14 @@ void GcLogin::EnterSelectChar() {
     GetDevice()->SetPostProcessObjectHighLightOnoff(true);
 
     //获取按钮矩形,调整按钮位置
-    rectBtnSetChar = RTW_WIDGET("btnsetcharpwd")->GetClientRect();
-    rectBtnChangeChar = RTW_WIDGET("btnchangecharpwd")->GetClientRect();
-    RTW_WIDGET("fmckusername")->Show();
-    RTW_WIDGET("btnexit")->Show();
-    RTW_WIDGET("btnbacklogin")->Show();
+    rectBtnSetChar = LOAD_UI("btnsetcharpwd")->GetClientRect();
+    rectBtnChangeChar = LOAD_UI("btnchangecharpwd")->GetClientRect();
+    LOAD_UI("fmckusername")->Show();
+    LOAD_UI("btnexit")->Show();
+    LOAD_UI("btnbacklogin")->Show();
     //人物旋转按钮
-    //RTW_WIDGET("btnuserleft")->Show();
-    //RTW_WIDGET("btnuserright")->Show();
+    //LOAD_UI("btnuserleft")->Show();
+    //LOAD_UI("btnuserright")->Show();
 
     UpdateCameraPos();
     UpdateSelectChar();
@@ -559,17 +559,17 @@ bool GcLogin::LeaveSelectChar() {
 
     m_bCanInput = false;
 
-    RTW_WIDGET("fmckusername")->Hide();
-    RTW_WIDGET("btnenter")->Hide();
-    RTW_WIDGET("btndeletechar")->Hide();
-    RTW_WIDGET("btnsetcharpwd")->Hide();
-    RTW_WIDGET("btnchangecharpwd")->Hide();
-    RTW_WIDGET("btndelcharpwd")->Hide();
-    RTW_WIDGET("btnexit")->Hide();
-    RTW_WIDGET("btnbacklogin")->Hide();
+    LOAD_UI("fmckusername")->Hide();
+    LOAD_UI("btnenter")->Hide();
+    LOAD_UI("btndeletechar")->Hide();
+    LOAD_UI("btnsetcharpwd")->Hide();
+    LOAD_UI("btnchangecharpwd")->Hide();
+    LOAD_UI("btndelcharpwd")->Hide();
+    LOAD_UI("btnexit")->Hide();
+    LOAD_UI("btnbacklogin")->Hide();
     //人物旋转按钮
-    //RTW_WIDGET("btnuserleft")->Hide();
-    //RTW_WIDGET("btnuserright")->Hide();
+    //LOAD_UI("btnuserleft")->Hide();
+    //LOAD_UI("btnuserright")->Hide();
 
     m_listSelGcActor.clear();
     m_listSelectChar.clear();
@@ -639,20 +639,20 @@ void GcLogin::UpdateSelectChar() {
     m_listSelectChar.clear();
 
     if (info.chatCount == 0) {
-        RTW_WIDGET("btnenter")->Hide();
-        RTW_WIDGET("btndeletechar")->Hide();
-        RTW_WIDGET("btnsetcharpwd")->Hide();
-        RTW_WIDGET("btnchangecharpwd")->Hide();
-        RTW_WIDGET("btndelcharpwd")->Hide();
-        if (RTW_WIDGET("fmpwd")->IsVisible()) {
-            RTW_WIDGET("fmpwd")->Hide();
+        LOAD_UI("btnenter")->Hide();
+        LOAD_UI("btndeletechar")->Hide();
+        LOAD_UI("btnsetcharpwd")->Hide();
+        LOAD_UI("btnchangecharpwd")->Hide();
+        LOAD_UI("btndelcharpwd")->Hide();
+        if (LOAD_UI("fmpwd")->IsVisible()) {
+            LOAD_UI("fmpwd")->Hide();
         }
     }
 
-    RTW_WIDGET_T(CUiCheckButton, "fmckusername.fmusername1.btnusername1")->SetChecked(false);
-    RTW_WIDGET_T(CUiCheckButton, "fmckusername.fmusername2.btnusername2")->SetChecked(false);
-    RTW_WIDGET_T(CUiCheckButton, "fmckusername.fmusername3.btnusername3")->SetChecked(false);
-    RTW_WIDGET_T(CUiCheckButton, "fmckusername.fmusername4.btnusername4")->SetChecked(false);
+    LOAD_UI_T(CUiCheckButton, "fmckusername.fmusername1.btnusername1")->SetChecked(false);
+    LOAD_UI_T(CUiCheckButton, "fmckusername.fmusername2.btnusername2")->SetChecked(false);
+    LOAD_UI_T(CUiCheckButton, "fmckusername.fmusername3.btnusername3")->SetChecked(false);
+    LOAD_UI_T(CUiCheckButton, "fmckusername.fmusername4.btnusername4")->SetChecked(false);
     for (i = 0; i < info.chatCount; i++) {
         if (m_mapSelectActor.find(info.users[i].id) != m_mapSelectActor.end()) {
             pActor = m_mapSelectActor[info.users[i].id];
@@ -661,24 +661,24 @@ void GcLogin::UpdateSelectChar() {
         m_listSelGcActor.push_back(pActor);
         if (pActor) {
             if (m_iCurSelectChar == -1) {
-                RTW_WIDGET("btnenter")->Hide();
-                RTW_WIDGET("btnrestore")->Hide();
-                RTW_WIDGET("btndeletechar")->Hide();
-                RTW_WIDGET("btnsetcharpwd")->Hide();
-                RTW_WIDGET("btnchangecharpwd")->Hide();
-                RTW_WIDGET("btndelcharpwd")->Hide();
-                if (RTW_WIDGET("fmpwd")->IsVisible()) {
-                    RTW_WIDGET("fmpwd")->Hide();
+                LOAD_UI("btnenter")->Hide();
+                LOAD_UI("btnrestore")->Hide();
+                LOAD_UI("btndeletechar")->Hide();
+                LOAD_UI("btnsetcharpwd")->Hide();
+                LOAD_UI("btnchangecharpwd")->Hide();
+                LOAD_UI("btndelcharpwd")->Hide();
+                if (LOAD_UI("fmpwd")->IsVisible()) {
+                    LOAD_UI("fmpwd")->Hide();
                 }
             } else if (i == m_iCurSelectChar) {
-                RTW_WIDGET("btnenter")->Hide();
-                RTW_WIDGET("btnrestore")->Hide();
-                RTW_WIDGET("btndeletechar")->Hide();
-                RTW_WIDGET("btnsetcharpwd")->Hide();
-                RTW_WIDGET("btnchangecharpwd")->Hide();
-                RTW_WIDGET("btndelcharpwd")->Hide();
-                if (RTW_WIDGET("fmpwd")->IsVisible()) {
-                    RTW_WIDGET("fmpwd")->Hide();
+                LOAD_UI("btnenter")->Hide();
+                LOAD_UI("btnrestore")->Hide();
+                LOAD_UI("btndeletechar")->Hide();
+                LOAD_UI("btnsetcharpwd")->Hide();
+                LOAD_UI("btnchangecharpwd")->Hide();
+                LOAD_UI("btndelcharpwd")->Hide();
+                if (LOAD_UI("fmpwd")->IsVisible()) {
+                    LOAD_UI("fmpwd")->Hide();
                 }
                 pActor->GetGraph()->SetBaseColor(RtgVertex3(0.5f, 0.5f, 0.5f));
 
@@ -686,32 +686,32 @@ void GcLogin::UpdateSelectChar() {
                 memset(buf, 0, 1024);
                 rt2_sprintf(buf, "fmckusername.fmusername%d.btnusername%d", m_iCurSelectChar + 1,
                             m_iCurSelectChar + 1);
-                RTW_WIDGET_T(CUiCheckButton, buf)->SetChecked(true);
+                LOAD_UI_T(CUiCheckButton, buf)->SetChecked(true);
                 if (info.users[m_iCurSelectChar].isFrozen) {
-                    RTW_WIDGET("btnrestore")->Show();
+                    LOAD_UI("btnrestore")->Show();
                 } else {
-                    RTW_WIDGET("btnenter")->Show();
-                    RTW_WIDGET("btndeletechar")->Show();
+                    LOAD_UI("btnenter")->Show();
+                    LOAD_UI("btndeletechar")->Show();
                     if (info.users[m_iCurSelectChar].hasCharPwd) {
-                        if (RTW_WIDGET("btnsetcharpwd")->IsVisible()) {
-                            RTW_WIDGET("btnsetcharpwd")->Hide();
+                        if (LOAD_UI("btnsetcharpwd")->IsVisible()) {
+                            LOAD_UI("btnsetcharpwd")->Hide();
                         }
-                        RTW_WIDGET("btnchangecharpwd")->Move(rectBtnSetChar, true);
-                        RTW_WIDGET("btndelcharpwd")->Move(rectBtnChangeChar, true);
-                        RTW_WIDGET("btnchangecharpwd")->Show();
-                        RTW_WIDGET("btndelcharpwd")->Show();
+                        LOAD_UI("btnchangecharpwd")->Move(rectBtnSetChar, true);
+                        LOAD_UI("btndelcharpwd")->Move(rectBtnChangeChar, true);
+                        LOAD_UI("btnchangecharpwd")->Show();
+                        LOAD_UI("btndelcharpwd")->Show();
                     } else {
-                        if (RTW_WIDGET("btnchangecharpwd")->IsVisible()) {
-                            RTW_WIDGET("btnchangecharpwd")->Hide();
+                        if (LOAD_UI("btnchangecharpwd")->IsVisible()) {
+                            LOAD_UI("btnchangecharpwd")->Hide();
                         }
-                        if (RTW_WIDGET("btndelcharpwd")->IsVisible()) {
-                            RTW_WIDGET("btndelcharpwd")->Hide();
+                        if (LOAD_UI("btndelcharpwd")->IsVisible()) {
+                            LOAD_UI("btndelcharpwd")->Hide();
                         }
-                        RTW_WIDGET("btnsetcharpwd")->Show();
+                        LOAD_UI("btnsetcharpwd")->Show();
                     }
                 }
-                if (RTW_WIDGET("fmpwd")->IsVisible()) {
-                    RTW_WIDGET("fmpwd")->Hide();
+                if (LOAD_UI("fmpwd")->IsVisible()) {
+                    LOAD_UI("fmpwd")->Hide();
                 }
             } else {
                 pActor->GetGraph()->SetBaseColor(RtgVertex3(0.f, 0.f, 0.f));
@@ -719,10 +719,10 @@ void GcLogin::UpdateSelectChar() {
         }
     }
     if (m_pBody) {
-        RTW_WIDGET("fmckusername.fmusername1.btnusername1.lblock1")->Hide();
-        RTW_WIDGET("fmckusername.fmusername2.btnusername2.lblock2")->Hide();
-        RTW_WIDGET("fmckusername.fmusername3.btnusername3.lblock3")->Hide();
-        RTW_WIDGET("fmckusername.fmusername4.btnusername4.lblock4")->Hide();
+        LOAD_UI("fmckusername.fmusername1.btnusername1.lblock1")->Hide();
+        LOAD_UI("fmckusername.fmusername2.btnusername2.lblock2")->Hide();
+        LOAD_UI("fmckusername.fmusername3.btnusername3.lblock3")->Hide();
+        LOAD_UI("fmckusername.fmusername4.btnusername4.lblock4")->Hide();
 
         RtgMatrix12 _SlotMatrix;
 
@@ -738,19 +738,19 @@ void GcLogin::UpdateSelectChar() {
 			{
 				name = pActor->MetierName.c_str();
 			}
-			RTW_WIDGET("fmckusername.fmusername1.btnusername1.lbmetier1")->SetText(name);
+			LOAD_UI("fmckusername.fmusername1.btnusername1.lbmetier1")->SetText(name);
 			name = info.users[0].name;
-			RTW_WIDGET("fmckusername.fmusername1.btnusername1.lbusername1")->SetText(name);
+			LOAD_UI("fmckusername.fmusername1.btnusername1.lbusername1")->SetText(name);
 			rt2_sprintf(cTmp128, "%d", info.users[0].attributes.level);
 
-			RTW_WIDGET("fmckusername.fmusername1.btnusername1.lblev1")->SetText(cTmp128);
+			LOAD_UI("fmckusername.fmusername1.btnusername1.lblev1")->SetText(cTmp128);
 			if (info.users[0].hasCharPwd)
 			{
-				RTW_WIDGET("fmckusername.fmusername1.btnusername1.lblock1")->Show();
+				LOAD_UI("fmckusername.fmusername1.btnusername1.lblock1")->Show();
 			}
 			else
 			{
-				RTW_WIDGET("fmckusername.fmusername1.btnusername1.lblock1")->Hide();
+				LOAD_UI("fmckusername.fmusername1.btnusername1.lblock1")->Hide();
 			}
 
 			int iCharIndex = GetCharIndexByActorID(info.users[0].attributes.actorID);
@@ -764,7 +764,7 @@ void GcLogin::UpdateSelectChar() {
 
 			RtwImage *pImage = g_workspace.getImageFactory()->createImage(strImage);
 			pImage->SetBlend(true);
-			RTW_WIDGET("fmckusername.fmusername1.lbuser1")->SetBackgroundImage(pImage);
+			LOAD_UI("fmckusername.fmusername1.lbuser1")->SetBackgroundImage(pImage);
 
 			m_listSelGcActor[0]->mBaseActor.SetMatrix_Row(3, *_SlotMatrix.Row(3));
 		}
@@ -779,19 +779,19 @@ void GcLogin::UpdateSelectChar() {
 			{
 				name = pActor->MetierName.c_str();
 			}
-			RTW_WIDGET("fmckusername.fmusername2.btnusername2.lbmetier2")->SetText(name);
+			LOAD_UI("fmckusername.fmusername2.btnusername2.lbmetier2")->SetText(name);
 			name = info.users[1].name;
-			RTW_WIDGET("fmckusername.fmusername2.btnusername2.lbusername2")->SetText(name);
+			LOAD_UI("fmckusername.fmusername2.btnusername2.lbusername2")->SetText(name);
 			rt2_sprintf(cTmp128, "%d", info.users[1].attributes.level);
 
-			RTW_WIDGET("fmckusername.fmusername2.btnusername2.lblev2")->SetText(cTmp128);
+			LOAD_UI("fmckusername.fmusername2.btnusername2.lblev2")->SetText(cTmp128);
 			if (info.users[1].hasCharPwd)
 			{
-				RTW_WIDGET("fmckusername.fmusername2.btnusername2.lblock2")->Show();
+				LOAD_UI("fmckusername.fmusername2.btnusername2.lblock2")->Show();
 			}
 			else
 			{
-				RTW_WIDGET("fmckusername.fmusername2.btnusername2.lblock2")->Hide();
+				LOAD_UI("fmckusername.fmusername2.btnusername2.lblock2")->Hide();
 			}
 
 			int iCharIndex = GetCharIndexByActorID(info.users[1].attributes.actorID);
@@ -806,7 +806,7 @@ void GcLogin::UpdateSelectChar() {
 
 			RtwImage *pImage = g_workspace.getImageFactory()->createImage(strImage);
 			pImage->SetBlend(true);
-			RTW_WIDGET("fmckusername.fmusername2.lbuser2")->SetBackgroundImage(pImage);
+			LOAD_UI("fmckusername.fmusername2.lbuser2")->SetBackgroundImage(pImage);
 
 			m_listSelGcActor[1]->mBaseActor.SetMatrix_Row(3, *_SlotMatrix.Row(3));
 		}
@@ -821,19 +821,19 @@ void GcLogin::UpdateSelectChar() {
 			{
 				name = pActor->MetierName.c_str();
 			}
-			RTW_WIDGET("fmckusername.fmusername3.btnusername3.lbmetier3")->SetText(name);
+			LOAD_UI("fmckusername.fmusername3.btnusername3.lbmetier3")->SetText(name);
 			name = info.users[2].name;
-			RTW_WIDGET("fmckusername.fmusername3.btnusername3.lbusername3")->SetText(name);
+			LOAD_UI("fmckusername.fmusername3.btnusername3.lbusername3")->SetText(name);
 			rt2_sprintf(cTmp128, "%d", info.users[2].attributes.level);
 
-			RTW_WIDGET("fmckusername.fmusername3.btnusername3.lblev3")->SetText(cTmp128);
+			LOAD_UI("fmckusername.fmusername3.btnusername3.lblev3")->SetText(cTmp128);
 			if (info.users[2].hasCharPwd)
 			{
-				RTW_WIDGET("fmckusername.fmusername3.btnusername3.lblock3")->Show();
+				LOAD_UI("fmckusername.fmusername3.btnusername3.lblock3")->Show();
 			}
 			else
 			{
-				RTW_WIDGET("fmckusername.fmusername3.btnusername3.lblock3")->Hide();
+				LOAD_UI("fmckusername.fmusername3.btnusername3.lblock3")->Hide();
 			}
 
 			int iCharIndex = GetCharIndexByActorID(info.users[2].attributes.actorID);;
@@ -847,7 +847,7 @@ void GcLogin::UpdateSelectChar() {
 
 			RtwImage *pImage = g_workspace.getImageFactory()->createImage(strImage);
 			pImage->SetBlend(true);
-			RTW_WIDGET("fmckusername.fmusername3.lbuser3")->SetBackgroundImage(pImage);
+			LOAD_UI("fmckusername.fmusername3.lbuser3")->SetBackgroundImage(pImage);
 
 			m_listSelGcActor[2]->mBaseActor.SetMatrix_Row(3, *_SlotMatrix.Row(3));
 		}
@@ -863,19 +863,19 @@ void GcLogin::UpdateSelectChar() {
 			{
 				name = pActor->MetierName.c_str();
 			}
-			RTW_WIDGET("fmckusername.fmusername4.btnusername4.lbmetier4")->SetText(name);
+			LOAD_UI("fmckusername.fmusername4.btnusername4.lbmetier4")->SetText(name);
 			name = info.users[3].name;
-			RTW_WIDGET("fmckusername.fmusername4.btnusername4.lbusername4")->SetText(name);
+			LOAD_UI("fmckusername.fmusername4.btnusername4.lbusername4")->SetText(name);
 			rt2_sprintf(cTmp128, "%d", info.users[3].attributes.level);
 
-			RTW_WIDGET("fmckusername.fmusername4.btnusername4.lblev4")->SetText(cTmp128);
+			LOAD_UI("fmckusername.fmusername4.btnusername4.lblev4")->SetText(cTmp128);
 			if (info.users[3].hasCharPwd)
 			{
-				RTW_WIDGET("fmckusername.fmusername4.btnusername4.lblock4")->Show();
+				LOAD_UI("fmckusername.fmusername4.btnusername4.lblock4")->Show();
 			}
 			else
 			{
-				RTW_WIDGET("fmckusername.fmusername4.btnusername4.lblock4")->Hide();
+				LOAD_UI("fmckusername.fmusername4.btnusername4.lblock4")->Hide();
 			}
 
 			int iCharIndex = GetCharIndexByActorID(info.users[3].attributes.actorID);;
@@ -890,15 +890,15 @@ void GcLogin::UpdateSelectChar() {
 
 			RtwImage *pImage = g_workspace.getImageFactory()->createImage(strImage);
 			pImage->SetBlend(true);
-			RTW_WIDGET("fmckusername.fmusername4.lbuser4")->SetBackgroundImage(pImage);
+			LOAD_UI("fmckusername.fmusername4.lbuser4")->SetBackgroundImage(pImage);
 
 			m_listSelGcActor[3]->mBaseActor.SetMatrix_Row(3, *_SlotMatrix.Row(3));
 		}
 		*/
 
-        size_t nSize = m_listSelGcActor.size();
-        nSize = min(4, nSize);
-        for (size_t i = 0; i < nSize; ++i) {
+        int nSize = m_listSelGcActor.size();
+        nSize = std::min(4, nSize);
+        for (int i = 0; i < nSize; ++i) {
             char boneName[20];
             rt2_sprintf(boneName, "bno%u", i + 1);
             if (m_pBody->GetBoneMat(&_SlotMatrix, boneName) && m_listSelGcActor[i]) {
@@ -911,24 +911,24 @@ void GcLogin::UpdateSelectChar() {
                     name = pActor->MetierName.c_str();
                 rt2_sprintf(widgetName, "fmckusername.fmusername%u.btnusername%u.lbmetier%u", i + 1,
                             i + 1, i + 1);
-                RTW_WIDGET(widgetName)->SetText(name);
+                LOAD_UI(widgetName)->SetText(name);
 
                 name = info.users[i].name;
                 rt2_sprintf(widgetName, "fmckusername.fmusername%u.btnusername%u.lbusername%u",
                             i + 1, i + 1, i + 1);
-                RTW_WIDGET(widgetName)->SetText(name);
+                LOAD_UI(widgetName)->SetText(name);
 
                 rt2_sprintf(cTmp128, "%d", info.users[i].attributes.level);
                 rt2_sprintf(widgetName, "fmckusername.fmusername%u.btnusername%u.lblev%u", i + 1,
                             i + 1, i + 1);
-                RTW_WIDGET(widgetName)->SetText(cTmp128);
+                LOAD_UI(widgetName)->SetText(cTmp128);
 
                 rt2_sprintf(widgetName, "fmckusername.fmusername%u.btnusername%u.lblock%u", i + 1,
                             i + 1, i + 1);
                 if (info.users[i].hasCharPwd)
-                    RTW_WIDGET(widgetName)->Show();
+                    LOAD_UI(widgetName)->Show();
                 else
-                    RTW_WIDGET(widgetName)->Hide();
+                    LOAD_UI(widgetName)->Hide();
 
                 int iCharIndex = GetCharIndexByActorID(info.users[i].attributes.actorID);
                 vector<SCharImage> images;
@@ -942,7 +942,7 @@ void GcLogin::UpdateSelectChar() {
                 RtwImage* pImage = g_workspace.getImageFactory()->createImage(strImage);
                 pImage->SetBlend(true);
                 rt2_sprintf(widgetName, "fmckusername.fmusername%u.lbuser%u", i + 1, i + 1);
-                RTW_WIDGET(widgetName)->SetBackgroundImage(pImage);
+                LOAD_UI(widgetName)->SetBackgroundImage(pImage);
 
                 m_listSelGcActor[i]->mBaseActor.SetMatrix_Row(3, *_SlotMatrix.Row(3));
             }
@@ -1212,51 +1212,51 @@ void GcLogin::OnEnterCreateChar() {
     m_bCanInput = true;
 
     // Modified By Wayne Wong 2010-11-26 for demo
-    RTW_WIDGET("fmmingwang")->Show();
-    RTW_WIDGET("fmshengwu")->Show();
-    RTW_WIDGET("lbmiaojiangtext")->Show();
-    RTW_WIDGET("lbwutaitext")->Show();
+    LOAD_UI("fmmingwang")->Show();
+    LOAD_UI("fmshengwu")->Show();
+    LOAD_UI("lbmiaojiangtext")->Show();
+    LOAD_UI("lbwutaitext")->Show();
 
-    RTW_WIDGET("fmhuajian")->Show();
-    RTW_WIDGET("fmshushan")->Show();
+    LOAD_UI("fmhuajian")->Show();
+    LOAD_UI("fmshushan")->Show();
     LOAD_UI("btnback")->Show();
-    RTW_WIDGET("lbshushantext")->Show();
-    RTW_WIDGET("lbhuajiantext")->Show();
+    LOAD_UI("lbshushantext")->Show();
+    LOAD_UI("lbhuajiantext")->Show();
     //进入创人状态,将选人状态UI隐藏
-    if (RTW_WIDGET("fmckusername")->IsVisible()) {
-        RTW_WIDGET("fmckusername")->Hide();
+    if (LOAD_UI("fmckusername")->IsVisible()) {
+        LOAD_UI("fmckusername")->Hide();
     }
-    if (RTW_WIDGET("btnenter")->IsVisible()) {
-        RTW_WIDGET("btnenter")->Hide();
+    if (LOAD_UI("btnenter")->IsVisible()) {
+        LOAD_UI("btnenter")->Hide();
     }
-    if (RTW_WIDGET("btndeletechar")->IsVisible()) {
-        RTW_WIDGET("btndeletechar")->Hide();
+    if (LOAD_UI("btndeletechar")->IsVisible()) {
+        LOAD_UI("btndeletechar")->Hide();
     }
-    if (RTW_WIDGET("btnsetcharpwd")->IsVisible()) {
-        RTW_WIDGET("btnsetcharpwd")->Hide();
+    if (LOAD_UI("btnsetcharpwd")->IsVisible()) {
+        LOAD_UI("btnsetcharpwd")->Hide();
     }
-    if (RTW_WIDGET("btnchangecharpwd")->IsVisible()) {
-        RTW_WIDGET("btnchangecharpwd")->Hide();
+    if (LOAD_UI("btnchangecharpwd")->IsVisible()) {
+        LOAD_UI("btnchangecharpwd")->Hide();
     }
-    if (RTW_WIDGET("btndelcharpwd")->IsVisible()) {
-        RTW_WIDGET("btndelcharpwd")->Hide();
+    if (LOAD_UI("btndelcharpwd")->IsVisible()) {
+        LOAD_UI("btndelcharpwd")->Hide();
     }
-    if (RTW_WIDGET("btnexit")->IsVisible()) {
-        RTW_WIDGET("btnexit")->Hide();
+    if (LOAD_UI("btnexit")->IsVisible()) {
+        LOAD_UI("btnexit")->Hide();
     }
-    if (RTW_WIDGET("fmpwd")->IsVisible()) {
-        RTW_WIDGET("fmpwd")->Hide();
+    if (LOAD_UI("fmpwd")->IsVisible()) {
+        LOAD_UI("fmpwd")->Hide();
     }
-    if (RTW_WIDGET("btnbacklogin")->IsVisible()) {
-        RTW_WIDGET("btnbacklogin")->Hide();
+    if (LOAD_UI("btnbacklogin")->IsVisible()) {
+        LOAD_UI("btnbacklogin")->Hide();
     }
-    //if (RTW_WIDGET("btnuserleft")->IsVisible())
+    //if (LOAD_UI("btnuserleft")->IsVisible())
     //{
-    //	RTW_WIDGET("btnuserleft")->Hide();
+    //	LOAD_UI("btnuserleft")->Hide();
     //}
-    //if (RTW_WIDGET("btnuserright")->IsVisible())
+    //if (LOAD_UI("btnuserright")->IsVisible())
     //{
-    //	RTW_WIDGET("btnuserright")->Hide();
+    //	LOAD_UI("btnuserright")->Hide();
     //}
     m_pBody->RegisterNotify(this);
     OnRun(0.f);
@@ -1265,20 +1265,20 @@ void GcLogin::OnEnterCreateChar() {
 void GcLogin::OnLeaveCreateChar() {
     m_pBody->RegisterNotify(NULL);
     m_bCanInput = false;
-    RTW_WIDGET("fmcreatid1")->Hide();
-    RTW_WIDGET("fmcreatid2")->Hide();
-    RTW_WIDGET("fmcreatid3")->Hide();
-    RTW_WIDGET("fmmingwang")->Hide();
-    RTW_WIDGET("fmhuajian")->Hide();
-    RTW_WIDGET("fmshushan")->Hide();
-    RTW_WIDGET("fmshengwu")->Hide();
-    RTW_WIDGET("btnmale")->Hide();
-    RTW_WIDGET("btnfemale")->Hide();
+    LOAD_UI("fmcreatid1")->Hide();
+    LOAD_UI("fmcreatid2")->Hide();
+    LOAD_UI("fmcreatid3")->Hide();
+    LOAD_UI("fmmingwang")->Hide();
+    LOAD_UI("fmhuajian")->Hide();
+    LOAD_UI("fmshushan")->Hide();
+    LOAD_UI("fmshengwu")->Hide();
+    LOAD_UI("btnmale")->Hide();
+    LOAD_UI("btnfemale")->Hide();
     LOAD_UI("btnback")->Hide();
-    RTW_WIDGET("lbshushantext")->Hide();
-    RTW_WIDGET("lbhuajiantext")->Hide();
-    RTW_WIDGET("lbmiaojiangtext")->Hide();
-    RTW_WIDGET("lbwutaitext")->Hide();
+    LOAD_UI("lbshushantext")->Hide();
+    LOAD_UI("lbhuajiantext")->Hide();
+    LOAD_UI("lbmiaojiangtext")->Hide();
+    LOAD_UI("lbwutaitext")->Hide();
 }
 
 //loading页面加载
@@ -1467,9 +1467,9 @@ void GcLogin::OnSelectUser() {
     if (m_iCurSelectChar >= 0 && m_iCurSelectChar <= 4) {
         if (GetAccountInfo().users[m_iCurSelectChar].hasCharPwd) {
             bSelectUserWithPwd = true;
-            RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
-            RTW_WIDGET("fmpwd.lbtxt1")->SetText(std::string("请输入人物角色密码"));
-            RTW_WIDGET("fmpwd")->Show();
+            LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
+            LOAD_UI("fmpwd.lbtxt1")->SetText(std::string("请输入人物角色密码"));
+            LOAD_UI("fmpwd")->Show();
         } else {
             UILayer::EnterLoading();
             SelectChar(GetAccountInfo().users[m_iCurSelectChar].id);
@@ -1481,8 +1481,8 @@ void GcLogin::OnSelectUser() {
 }
 
 void GcLogin::OnSelectUserWithPwd() {
-    if (RTW_WIDGET("fmpwd")->IsVisible()) {
-        RTW_WIDGET("fmpwd")->Hide();
+    if (LOAD_UI("fmpwd")->IsVisible()) {
+        LOAD_UI("fmpwd")->Hide();
     }
     UILayer::EnterLoading();
     SelectChar(GetAccountInfo().users[m_iCurSelectChar].id);
@@ -1549,11 +1549,11 @@ void GcLogin::OnCharPasswordConfirm(const char* password) {
 }
 
 void GcLogin::ResetButtonPos() {
-    if (RTW_WIDGET("btnsetcharpwd")->IsVisible()) {
-        RTW_WIDGET("btnsetcharpwd")->Hide();
+    if (LOAD_UI("btnsetcharpwd")->IsVisible()) {
+        LOAD_UI("btnsetcharpwd")->Hide();
     }
-    RTW_WIDGET("btnchangecharpwd")->Show();
-    RTW_WIDGET("btndelcharpwd")->Show();
+    LOAD_UI("btnchangecharpwd")->Show();
+    LOAD_UI("btndelcharpwd")->Show();
 }
 
 void GcLogin::OnNetDeleteUser(long id, char hasDel) {
@@ -1579,7 +1579,7 @@ void GcLogin::OnRandomCreateUser() {
     RtwImage* pImage;
     pImage = g_workspace.getImageFactory()->createImage(s_pszCharAnimalName[iRandomAnimalIndex]);
     pImage->SetBlend(true);
-    RTW_WIDGET("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
+    LOAD_UI("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
 
     vector<SHeadModel> heads;
     if (!g_TableHeadModel.GetHeadModel(s_userID[iCharIndex], heads))
@@ -1590,8 +1590,8 @@ void GcLogin::OnRandomCreateUser() {
     if (m_ePrevHeadID != m_eNextHeadID) {
         m_listSelActor[m_iCurSelectChar]->UnloadSkin(heads[m_ePrevHeadID].skin.c_str());
         m_listSelActor[m_iCurSelectChar]->LoadSkin(heads[m_eNextHeadID].skin.c_str(), true);
-        RTW_WIDGET("fmcreatid2.fmhair.lbhairname")->SetText(heads[m_eNextHeadID].name);
-        //RTW_WIDGET("fmcreatid2.fmface.lbfacename")->SetText(heads[m_HeadModelIndex[iCharIndex]].name);
+        LOAD_UI("fmcreatid2.fmhair.lbhairname")->SetText(heads[m_eNextHeadID].name);
+        //LOAD_UI("fmcreatid2.fmface.lbfacename")->SetText(heads[m_HeadModelIndex[iCharIndex]].name);
     }
     m_ePrevHeadID = m_eNextHeadID;
 
@@ -1605,7 +1605,7 @@ void GcLogin::OnRandomCreateUser() {
 
     pImage = g_workspace.getImageFactory()->createImage(strImage);
     pImage->SetBlend(true);
-    RTW_WIDGET("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
+    LOAD_UI("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
 
     unguard;
 }
@@ -1617,18 +1617,18 @@ void GcLogin::OnCreateUser() {
     if (m_iCurSelectChar == -1) {
         ShowMessage(R(LMSG_PLS_CHOOSE_CHAR));
     }
-    if (RTW_WIDGET("fmcreatid1.fmname.txtname")->GetText().length() < 4 ||
-        RTW_WIDGET("fmcreatid1.fmname.txtname")->GetText().length() > 14) {
+    if (LOAD_UI("fmcreatid1.fmname.txtname")->GetText().length() < 4 ||
+        LOAD_UI("fmcreatid1.fmname.txtname")->GetText().length() > 14) {
         ShowMessage(R(MSG_USERNAME_INVALID));
         return;
     }
 
-    if (!RTW_WIDGET_T(CUiCheckButton, "btnmale")->GetChecked() &&
-        !RTW_WIDGET_T(CUiCheckButton, "btnfemale")->GetChecked()) {
+    if (!LOAD_UI_T(CUiCheckButton, "btnmale")->GetChecked() &&
+        !LOAD_UI_T(CUiCheckButton, "btnfemale")->GetChecked()) {
         ShowMessage(R(MSG_CHARACTER_SELECTSEXUAL));
         return;
     }
-    std::string sUsername = RTW_WIDGET("fmcreatid1.fmname.txtname")->GetText().c_str();
+    std::string sUsername = LOAD_UI("fmcreatid1.fmname.txtname")->GetText().c_str();
     const char* szUsername = sUsername.c_str();
     if (m_iCurSelectChar < 0)
         return;
@@ -2346,7 +2346,7 @@ void GcLogin::OnNetLogin(int result, const char* szRetStr, short sRetCode, char 
         }
 
         if (result == LOGIN_RET_FAILED_NEW_CARD || result == LOGIN_RET_FAILED_USER_ONLINE) {
-            RTW_WIDGET("fmlogin.fmpassword.txtpassword")->SetText("");
+            LOAD_UI("fmlogin.fmpassword.txtpassword")->SetText("");
         }
 
         LoginErrMsg(err, szRetStr, sRetCode);
@@ -2448,7 +2448,7 @@ void GcLogin::ChangeCharAnimal(bool bNext) {
     RtwImage* pImage =
         g_workspace.getImageFactory()->createImage(s_pszCharAnimalName[iAnimalIndex]);
     pImage->SetBlend(true);
-    RTW_WIDGET("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
+    LOAD_UI("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
 }
 
 //改变人物角色发型
@@ -2481,8 +2481,8 @@ void GcLogin::ChangeCharHair(bool bNext) {
     m_listSelActor[m_iCurSelectChar]->LoadSkin(heads[m_HeadModelIndex[iCharIndex]].skin.c_str(),
                                                true);
 
-    RTW_WIDGET("fmcreatid2.fmhair.lbhairname")->SetText(heads[m_HeadModelIndex[iCharIndex]].name);
-    //RTW_WIDGET("fmcreatid2.fmface.lbfacename")->SetText(heads[m_HeadModelIndex[iCharIndex]].name);
+    LOAD_UI("fmcreatid2.fmhair.lbhairname")->SetText(heads[m_HeadModelIndex[iCharIndex]].name);
+    //LOAD_UI("fmcreatid2.fmface.lbfacename")->SetText(heads[m_HeadModelIndex[iCharIndex]].name);
 }
 
 //改变人物2D头像
@@ -2518,7 +2518,7 @@ void GcLogin::ChangeCharImage(bool bNext) {
 
     RtwImage* pImage = g_workspace.getImageFactory()->createImage(strImage);
     pImage->SetBlend(true);
-    RTW_WIDGET("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
+    LOAD_UI("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
 }
 
 /*----------------------------------------------------------------------------
@@ -2579,7 +2579,7 @@ class GcsGuideSession : public CG_TCPSession {
         guard;
         short sCmdID;
         if (packet->ReadShort(&sCmdID)) {
-            //RtwWidget* pWidget = RTW_WIDGET("fmserver.fmxmm.lbserver"); gao
+            //RtwWidget* pWidget = LOAD_UI("fmserver.fmxmm.lbserver"); gao
             if (sCmdID == gs2c_gws_list) {
                 /*if (pWidget)
 				{
@@ -2815,37 +2815,37 @@ void GcLogin::OnPoseBegin(SRT_Pose* pose) {
     guard;
     //g_pMusicThread->Play("login_bg.ogg", true);
     if (m_eStatus == GLS_CREATE_CHAR) {
-        RTW_WIDGET("lbbackground")->Hide();
-        RTW_WIDGET("btnmale")->Hide();
-        RTW_WIDGET("btnfemale")->Hide();
-        RTW_WIDGET("fmcreatid1")->Hide();
-        RTW_WIDGET("fmcreatid2")->Hide();
-        RTW_WIDGET("fmcreatid3")->Hide();
-        RTW_WIDGET("fmjob")->Hide();
+        LOAD_UI("lbbackground")->Hide();
+        LOAD_UI("btnmale")->Hide();
+        LOAD_UI("btnfemale")->Hide();
+        LOAD_UI("fmcreatid1")->Hide();
+        LOAD_UI("fmcreatid2")->Hide();
+        LOAD_UI("fmcreatid3")->Hide();
+        LOAD_UI("fmjob")->Hide();
         if (pose->Name == "otooh" || pose->Name == "stooh" || pose->Name == "wtooh" ||
             pose->Name == "mtooh") {
-            RTW_WIDGET("fmhuajian.btnhuajian")->Enable();
-            RTW_WIDGET("fmshushan.btnshushan")->Disable();
-            RTW_WIDGET("fmshengwu.btnshengwu")->Disable();
-            RTW_WIDGET("fmmingwang.btnmingwang")->Disable();
+            LOAD_UI("fmhuajian.btnhuajian")->Enable();
+            LOAD_UI("fmshushan.btnshushan")->Disable();
+            LOAD_UI("fmshengwu.btnshengwu")->Disable();
+            LOAD_UI("fmmingwang.btnmingwang")->Disable();
         } else if (pose->Name == "otoos" || pose->Name == "htoos" || pose->Name == "wtoos" ||
                    pose->Name == "mtoos") {
-            RTW_WIDGET("fmhuajian.btnhuajian")->Disable();
-            RTW_WIDGET("fmshushan.btnshushan")->Enable();
-            RTW_WIDGET("fmshengwu.btnshengwu")->Disable();
-            RTW_WIDGET("fmmingwang.btnmingwang")->Disable();
+            LOAD_UI("fmhuajian.btnhuajian")->Disable();
+            LOAD_UI("fmshushan.btnshushan")->Enable();
+            LOAD_UI("fmshengwu.btnshengwu")->Disable();
+            LOAD_UI("fmmingwang.btnmingwang")->Disable();
         } else if (pose->Name == "otoom" || pose->Name == "htoom" || pose->Name == "stoom" ||
                    pose->Name == "wtoom") {
-            RTW_WIDGET("fmhuajian.btnhuajian")->Disable();
-            RTW_WIDGET("fmshushan.btnshushan")->Disable();
-            RTW_WIDGET("fmshengwu.btnshengwu")->Enable();
-            RTW_WIDGET("fmmingwang.btnmingwang")->Disable();
+            LOAD_UI("fmhuajian.btnhuajian")->Disable();
+            LOAD_UI("fmshushan.btnshushan")->Disable();
+            LOAD_UI("fmshengwu.btnshengwu")->Enable();
+            LOAD_UI("fmmingwang.btnmingwang")->Disable();
         } else if (pose->Name == "otoow" || pose->Name == "htoow" || pose->Name == "stoow" ||
                    pose->Name == "mtoow") {
-            RTW_WIDGET("fmhuajian.btnhuajian")->Disable();
-            RTW_WIDGET("fmshushan.btnshushan")->Disable();
-            RTW_WIDGET("fmshengwu.btnshengwu")->Disable();
-            RTW_WIDGET("fmmingwang.btnmingwang")->Enable();
+            LOAD_UI("fmhuajian.btnhuajian")->Disable();
+            LOAD_UI("fmshushan.btnshushan")->Disable();
+            LOAD_UI("fmshengwu.btnshengwu")->Disable();
+            LOAD_UI("fmmingwang.btnmingwang")->Enable();
         }
     }
     unguard;
@@ -2864,40 +2864,40 @@ void GcLogin::OnPoseEnd(SRT_Pose* pose) {
         if (pose->Name == "otooh" || pose->Name == "stooh" || pose->Name == "wtooh" ||
             pose->Name == "mtooh") {
             g_pMusicThread->Play("bgm_005_a.ogg", true);
-            RTW_WIDGET("lbbackground")->Show();
-            RTW_WIDGET("btnmale")->Show();
-            RTW_WIDGET("btnfemale")->Show();
-            RTW_WIDGET("fmcreatid1")->Show();
-            RTW_WIDGET("fmcreatid2")->Show();
-            RTW_WIDGET("fmcreatid3")->Show();
-            RTW_WIDGET("fmjob")->Show();
+            LOAD_UI("lbbackground")->Show();
+            LOAD_UI("btnmale")->Show();
+            LOAD_UI("btnfemale")->Show();
+            LOAD_UI("fmcreatid1")->Show();
+            LOAD_UI("fmcreatid2")->Show();
+            LOAD_UI("fmcreatid3")->Show();
+            LOAD_UI("fmjob")->Show();
             if (pImage) {
                 //SetSourceRect的参数是左上角和右下角两个点
                 pImage->SetSourceRect(RtwRect(158, 249, 471, 399));
                 pImage->SetBlend(true);
-                RTW_WIDGET("fmjob.lbtxtjob")->SetBackgroundImage(pImage);
+                LOAD_UI("fmjob.lbtxtjob")->SetBackgroundImage(pImage);
             }
-            RTW_WIDGET("btnmale")->Disable();
-            RTW_WIDGET("btnfemale")->Enable();
-            RTW_WIDGET_T(CUiCheckButton, "btnfemale")->SetChecked(true);
+            LOAD_UI("btnmale")->Disable();
+            LOAD_UI("btnfemale")->Enable();
+            LOAD_UI_T(CUiCheckButton, "btnfemale")->SetChecked(true);
             SetCharSex(true);
 
-            RTW_WIDGET("fmhuajian.btnhuajian")->Enable();
-            RTW_WIDGET("fmshushan.btnshushan")->Enable();
-            RTW_WIDGET("fmshengwu.btnshengwu")->Enable();
-            RTW_WIDGET("fmmingwang.btnmingwang")->Enable();
-            RTW_WIDGET_T(CUiCheckButton, "fmshushan.btnshushan")->SetChecked(false);
-            RTW_WIDGET_T(CUiCheckButton, "fmhuajian.btnhuajian")->SetChecked(true);
-            RTW_WIDGET_T(CUiCheckButton, "fmshengwu.btnshengwu")->SetChecked(false);
-            RTW_WIDGET_T(CUiCheckButton, "fmmingwang.btnmingwang")->SetChecked(false);
+            LOAD_UI("fmhuajian.btnhuajian")->Enable();
+            LOAD_UI("fmshushan.btnshushan")->Enable();
+            LOAD_UI("fmshengwu.btnshengwu")->Enable();
+            LOAD_UI("fmmingwang.btnmingwang")->Enable();
+            LOAD_UI_T(CUiCheckButton, "fmshushan.btnshushan")->SetChecked(false);
+            LOAD_UI_T(CUiCheckButton, "fmhuajian.btnhuajian")->SetChecked(true);
+            LOAD_UI_T(CUiCheckButton, "fmshengwu.btnshengwu")->SetChecked(false);
+            LOAD_UI_T(CUiCheckButton, "fmmingwang.btnmingwang")->SetChecked(false);
             //默认显示人物2D图像
             pImage =
                 g_workspace.getImageFactory()->createImage("ui_texture/pic_role_hj_f_01_f.dds");
             pImage->SetBlend(true);
-            RTW_WIDGET("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
+            LOAD_UI("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
             pImage = g_workspace.getImageFactory()->createImage(s_pszCharAnimalName[iAnimalIndex]);
             pImage->SetBlend(true);
-            RTW_WIDGET("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
+            LOAD_UI("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
             //播放人物动画
             if (m_pWeaponHL) {
                 m_pWeaponHL->PlayPose("login_s0", false);
@@ -2910,40 +2910,40 @@ void GcLogin::OnPoseEnd(SRT_Pose* pose) {
         } else if (pose->Name == "otoos" || pose->Name == "htoos" || pose->Name == "wtoos" ||
                    pose->Name == "mtoos") {
             g_pMusicThread->Play("bgm_004_a.ogg", true);
-            RTW_WIDGET("lbbackground")->Show();
-            RTW_WIDGET("btnmale")->Show();
-            RTW_WIDGET("btnfemale")->Show();
-            RTW_WIDGET("fmcreatid1")->Show();
-            RTW_WIDGET("fmcreatid2")->Show();
-            RTW_WIDGET("fmcreatid3")->Show();
-            RTW_WIDGET("fmjob")->Show();
+            LOAD_UI("lbbackground")->Show();
+            LOAD_UI("btnmale")->Show();
+            LOAD_UI("btnfemale")->Show();
+            LOAD_UI("fmcreatid1")->Show();
+            LOAD_UI("fmcreatid2")->Show();
+            LOAD_UI("fmcreatid3")->Show();
+            LOAD_UI("fmjob")->Show();
             if (pImage) {
                 //SetSourceRect的参数是左上角和右下角两个点
                 pImage->SetSourceRect(RtwRect(160, 5, 505, 240));
                 pImage->SetBlend(true);
-                RTW_WIDGET("fmjob.lbtxtjob")->SetBackgroundImage(pImage);
+                LOAD_UI("fmjob.lbtxtjob")->SetBackgroundImage(pImage);
             }
-            RTW_WIDGET("btnmale")->Enable();
-            RTW_WIDGET_T(CUiCheckButton, "btnmale")->SetChecked(true);
+            LOAD_UI("btnmale")->Enable();
+            LOAD_UI_T(CUiCheckButton, "btnmale")->SetChecked(true);
             SetCharSex(false);
-            RTW_WIDGET("btnfemale")->Disable();
+            LOAD_UI("btnfemale")->Disable();
 
-            RTW_WIDGET("fmhuajian.btnhuajian")->Enable();
-            RTW_WIDGET("fmshushan.btnshushan")->Enable();
-            RTW_WIDGET("fmshengwu.btnshengwu")->Enable();
-            RTW_WIDGET("fmmingwang.btnmingwang")->Enable();
-            RTW_WIDGET_T(CUiCheckButton, "fmhuajian.btnhuajian")->SetChecked(false);
-            RTW_WIDGET_T(CUiCheckButton, "fmshushan.btnshushan")->SetChecked(true);
-            RTW_WIDGET_T(CUiCheckButton, "fmshengwu.btnshengwu")->SetChecked(false);
-            RTW_WIDGET_T(CUiCheckButton, "fmmingwang.btnmingwang")->SetChecked(false);
+            LOAD_UI("fmhuajian.btnhuajian")->Enable();
+            LOAD_UI("fmshushan.btnshushan")->Enable();
+            LOAD_UI("fmshengwu.btnshengwu")->Enable();
+            LOAD_UI("fmmingwang.btnmingwang")->Enable();
+            LOAD_UI_T(CUiCheckButton, "fmhuajian.btnhuajian")->SetChecked(false);
+            LOAD_UI_T(CUiCheckButton, "fmshushan.btnshushan")->SetChecked(true);
+            LOAD_UI_T(CUiCheckButton, "fmshengwu.btnshengwu")->SetChecked(false);
+            LOAD_UI_T(CUiCheckButton, "fmmingwang.btnmingwang")->SetChecked(false);
             //默认显示人物2D图像
             pImage =
                 g_workspace.getImageFactory()->createImage("ui_texture/pic_role_ss_m_01_f.dds");
             pImage->SetBlend(true);
-            RTW_WIDGET("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
+            LOAD_UI("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
             pImage = g_workspace.getImageFactory()->createImage(s_pszCharAnimalName[iAnimalIndex]);
             pImage->SetBlend(true);
-            RTW_WIDGET("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
+            LOAD_UI("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
             //播放人物动画
             m_pWeaponFLWay->PlayPose("login_l0", false);
 
@@ -2953,40 +2953,40 @@ void GcLogin::OnPoseEnd(SRT_Pose* pose) {
         } else if (pose->Name == "otoom" || pose->Name == "htoom" || pose->Name == "stoom" ||
                    pose->Name == "wtoom") {
             g_pMusicThread->Play("bgm_015_a.ogg", true);
-            RTW_WIDGET("lbbackground")->Show();
-            RTW_WIDGET("btnmale")->Show();
-            RTW_WIDGET("btnfemale")->Show();
-            RTW_WIDGET("fmcreatid1")->Show();
-            RTW_WIDGET("fmcreatid2")->Show();
-            RTW_WIDGET("fmcreatid3")->Show();
-            RTW_WIDGET("fmjob")->Show();
+            LOAD_UI("lbbackground")->Show();
+            LOAD_UI("btnmale")->Show();
+            LOAD_UI("btnfemale")->Show();
+            LOAD_UI("fmcreatid1")->Show();
+            LOAD_UI("fmcreatid2")->Show();
+            LOAD_UI("fmcreatid3")->Show();
+            LOAD_UI("fmjob")->Show();
             if (pImage1) {
                 //SetSourceRect的参数是左上角和右下角两个点
                 pImage1->SetSourceRect(RtwRect(161, 250, 510, 480));
                 pImage1->SetBlend(true);
-                RTW_WIDGET("fmjob.lbtxtjob")->SetBackgroundImage(pImage1);
+                LOAD_UI("fmjob.lbtxtjob")->SetBackgroundImage(pImage1);
             }
-            RTW_WIDGET("btnmale")->Disable();
-            RTW_WIDGET("btnfemale")->Enable();
-            RTW_WIDGET_T(CUiCheckButton, "btnfemale")->SetChecked(true);
+            LOAD_UI("btnmale")->Disable();
+            LOAD_UI("btnfemale")->Enable();
+            LOAD_UI_T(CUiCheckButton, "btnfemale")->SetChecked(true);
             SetCharSex(true);
 
-            RTW_WIDGET("fmhuajian.btnhuajian")->Enable();
-            RTW_WIDGET("fmshushan.btnshushan")->Enable();
-            RTW_WIDGET("fmshengwu.btnshengwu")->Enable();
-            RTW_WIDGET("fmmingwang.btnmingwang")->Enable();
-            RTW_WIDGET_T(CUiCheckButton, "fmshushan.btnshushan")->SetChecked(false);
-            RTW_WIDGET_T(CUiCheckButton, "fmhuajian.btnhuajian")->SetChecked(false);
-            RTW_WIDGET_T(CUiCheckButton, "fmshengwu.btnshengwu")->SetChecked(true);
-            RTW_WIDGET_T(CUiCheckButton, "fmmingwang.btnmingwang")->SetChecked(false);
+            LOAD_UI("fmhuajian.btnhuajian")->Enable();
+            LOAD_UI("fmshushan.btnshushan")->Enable();
+            LOAD_UI("fmshengwu.btnshengwu")->Enable();
+            LOAD_UI("fmmingwang.btnmingwang")->Enable();
+            LOAD_UI_T(CUiCheckButton, "fmshushan.btnshushan")->SetChecked(false);
+            LOAD_UI_T(CUiCheckButton, "fmhuajian.btnhuajian")->SetChecked(false);
+            LOAD_UI_T(CUiCheckButton, "fmshengwu.btnshengwu")->SetChecked(true);
+            LOAD_UI_T(CUiCheckButton, "fmmingwang.btnmingwang")->SetChecked(false);
             //默认显示人物2D图像
             pImage =
                 g_workspace.getImageFactory()->createImage("ui_texture/pic_role_mj_f_01_f.dds");
             pImage->SetBlend(true);
-            RTW_WIDGET("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
+            LOAD_UI("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
             pImage = g_workspace.getImageFactory()->createImage(s_pszCharAnimalName[iAnimalIndex]);
             pImage->SetBlend(true);
-            RTW_WIDGET("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
+            LOAD_UI("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
             //播放人物动画
             if (m_pWeaponMJ) {
                 m_pWeaponMJ->PlayPose("login_z0", false);
@@ -2997,40 +2997,40 @@ void GcLogin::OnPoseEnd(SRT_Pose* pose) {
         } else if (pose->Name == "otoow" || pose->Name == "htoow" || pose->Name == "stoow" ||
                    pose->Name == "mtoow") {
             g_pMusicThread->Play("bgm_014_a.ogg", true);
-            RTW_WIDGET("lbbackground")->Show();
-            RTW_WIDGET("btnmale")->Show();
-            RTW_WIDGET("btnfemale")->Show();
-            RTW_WIDGET("fmcreatid1")->Show();
-            RTW_WIDGET("fmcreatid2")->Show();
-            RTW_WIDGET("fmcreatid3")->Show();
-            RTW_WIDGET("fmjob")->Show();
+            LOAD_UI("lbbackground")->Show();
+            LOAD_UI("btnmale")->Show();
+            LOAD_UI("btnfemale")->Show();
+            LOAD_UI("fmcreatid1")->Show();
+            LOAD_UI("fmcreatid2")->Show();
+            LOAD_UI("fmcreatid3")->Show();
+            LOAD_UI("fmjob")->Show();
             if (pImage1) {
                 //SetSourceRect的参数是左上角和右下角两个点
                 pImage1->SetSourceRect(RtwRect(168, 6, 511, 236));
                 pImage1->SetBlend(true);
-                RTW_WIDGET("fmjob.lbtxtjob")->SetBackgroundImage(pImage1);
+                LOAD_UI("fmjob.lbtxtjob")->SetBackgroundImage(pImage1);
             }
-            RTW_WIDGET("btnmale")->Enable();
-            RTW_WIDGET_T(CUiCheckButton, "btnmale")->SetChecked(true);
+            LOAD_UI("btnmale")->Enable();
+            LOAD_UI_T(CUiCheckButton, "btnmale")->SetChecked(true);
             SetCharSex(false);
-            RTW_WIDGET("btnfemale")->Disable();
+            LOAD_UI("btnfemale")->Disable();
 
-            RTW_WIDGET("fmhuajian.btnhuajian")->Enable();
-            RTW_WIDGET("fmshushan.btnshushan")->Enable();
-            RTW_WIDGET("fmshengwu.btnshengwu")->Enable();
-            RTW_WIDGET("fmmingwang.btnmingwang")->Enable();
-            RTW_WIDGET_T(CUiCheckButton, "fmhuajian.btnhuajian")->SetChecked(false);
-            RTW_WIDGET_T(CUiCheckButton, "fmshushan.btnshushan")->SetChecked(false);
-            RTW_WIDGET_T(CUiCheckButton, "fmshengwu.btnshengwu")->SetChecked(false);
-            RTW_WIDGET_T(CUiCheckButton, "fmmingwang.btnmingwang")->SetChecked(true);
+            LOAD_UI("fmhuajian.btnhuajian")->Enable();
+            LOAD_UI("fmshushan.btnshushan")->Enable();
+            LOAD_UI("fmshengwu.btnshengwu")->Enable();
+            LOAD_UI("fmmingwang.btnmingwang")->Enable();
+            LOAD_UI_T(CUiCheckButton, "fmhuajian.btnhuajian")->SetChecked(false);
+            LOAD_UI_T(CUiCheckButton, "fmshushan.btnshushan")->SetChecked(false);
+            LOAD_UI_T(CUiCheckButton, "fmshengwu.btnshengwu")->SetChecked(false);
+            LOAD_UI_T(CUiCheckButton, "fmmingwang.btnmingwang")->SetChecked(true);
             //默认显示人物2D图像
             pImage =
                 g_workspace.getImageFactory()->createImage("ui_texture/pic_role_wt_m_01_f.dds");
             pImage->SetBlend(true);
-            RTW_WIDGET("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
+            LOAD_UI("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
             pImage = g_workspace.getImageFactory()->createImage(s_pszCharAnimalName[iAnimalIndex]);
             pImage->SetBlend(true);
-            RTW_WIDGET("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
+            LOAD_UI("fmcreatid1.fmanimal.lbanimal")->SetBackgroundImage(pImage);
             //播放人物动画
             if (m_pWeaponWT) {
                 m_pWeaponWT->PlayPose("login_f0", false);
@@ -3086,8 +3086,8 @@ void GcLogin::SetSelectUser(int iSel) {
 
             //m_listSelActor[m_iCurSelectChar]->UnloadSkin(heads[m_ePrevHeadID].skin.c_str());
             //m_listSelActor[m_iCurSelectChar]->LoadSkin(heads[0].skin.c_str(), true);
-            RTW_WIDGET("fmcreatid2.fmhair.lbhairname")->SetText(heads[0].name);
-            RTW_WIDGET("fmcreatid2.fmface.lbfacename")->SetText("暂不开放");
+            LOAD_UI("fmcreatid2.fmhair.lbhairname")->SetText(heads[0].name);
+            LOAD_UI("fmcreatid2.fmface.lbfacename")->SetText("暂不开放");
             m_ePrevHeadID = m_eNextHeadID = 0;
         } break;
         default:

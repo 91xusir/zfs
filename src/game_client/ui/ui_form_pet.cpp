@@ -20,43 +20,43 @@ char PET_SPECTRE_IMAGE[] = "ui_texture/pic_pettype_03.dds";
 
 UIFromPetMain::UIFromPetMain(void)
 {
-	m_pFormMain			= RTW_WIDGET_T(RtwForm, "fmconjure");
-	m_pFormView			= RTW_WIDGET_T(Rtw3DView, "fmconjure.conjureform02");
+	m_pFormMain			= LOAD_UI_T(RtwForm, "fmconjure");
+	m_pFormView			= LOAD_UI_T(Rtw3DView, "fmconjure.conjureform02");
 
-	m_pBtnCallOut		= RTW_WIDGET_T(RtwButton, "fmconjure.fightblt");
-	m_pBtnCallBack		= RTW_WIDGET_T(RtwButton, "fmconjure.changenameblt");
-	m_pBtnAptitude		= RTW_WIDGET_T(RtwButton, "fmconjure.Qualityblt");
-	m_pBtnChangeName	= RTW_WIDGET_T(RtwButton, "fmconjure.callforblt");
+	m_pBtnCallOut		= LOAD_UI_T(RtwButton, "fmconjure.fightblt");
+	m_pBtnCallBack		= LOAD_UI_T(RtwButton, "fmconjure.changenameblt");
+	m_pBtnAptitude		= LOAD_UI_T(RtwButton, "fmconjure.Qualityblt");
+	m_pBtnChangeName	= LOAD_UI_T(RtwButton, "fmconjure.callforblt");
 
-	m_pListPet			= RTW_WIDGET_T(RtwListBox, "fmconjure.conjureform01.conjurelist");
-	m_pTexChangetName	= RTW_WIDGET_T(RtwTextBox, "fmconjure.conjuenamedit");
+	m_pListPet			= LOAD_UI_T(RtwListBox, "fmconjure.conjureform01.conjurelist");
+	m_pTexChangetName	= LOAD_UI_T(RtwTextBox, "fmconjure.conjuenamedit");
 
-	m_pLabelLev			= RTW_WIDGET_T(RtwLabel, "fmconjure.lbtext03");
-	m_pLabelHeartNeed		= RTW_WIDGET_T(RtwLabel, "fmconjure.lbtext04");
-	m_pLabelHp			= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbhpcount");
-	m_pLabelMp			= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbmpcount");
-	m_pLabelExp			= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbexpcount");
+	m_pLabelLev			= LOAD_UI_T(RtwLabel, "fmconjure.lbtext03");
+	m_pLabelHeartNeed		= LOAD_UI_T(RtwLabel, "fmconjure.lbtext04");
+	m_pLabelHp			= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbhpcount");
+	m_pLabelMp			= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbmpcount");
+	m_pLabelExp			= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbexpcount");
 
-	m_pLabelAtt			= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbpydamcount");
-	m_pLabelDef			= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbpydefcount");
-	m_pLabelHit			= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbhitcount");
-	m_pLabelDodge		= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbdogecount");
-	m_pLabelFireAtt		= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbfiredamcount");
-	m_pLabelWaterAtt	= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbwaterdamcount");
-	m_pLabelPosionAtt	= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbpoisondamcount");
-	m_pLabelFireDef		= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbfiredefcount");
-	m_pLabelWaterDef	= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbwaterdefcount");
-	m_pLabelPosionDef	= RTW_WIDGET_T(RtwLabel, "fmconjure.conjureform03.lbpoisondefcount");
+	m_pLabelAtt			= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbpydamcount");
+	m_pLabelDef			= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbpydefcount");
+	m_pLabelHit			= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbhitcount");
+	m_pLabelDodge		= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbdogecount");
+	m_pLabelFireAtt		= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbfiredamcount");
+	m_pLabelWaterAtt	= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbwaterdamcount");
+	m_pLabelPosionAtt	= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbpoisondamcount");
+	m_pLabelFireDef		= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbfiredefcount");
+	m_pLabelWaterDef	= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbwaterdefcount");
+	m_pLabelPosionDef	= LOAD_UI_T(RtwLabel, "fmconjure.conjureform03.lbpoisondefcount");
 
-	m_pProExp = RTW_WIDGET_T(RtwProgressBar,"fmconjure.conjureform03.EXPBar");
-	m_pProHp = RTW_WIDGET_T(RtwProgressBar,"fmconjure.conjureform03.HPBar");
-	m_pProMp = RTW_WIDGET_T(RtwProgressBar,"fmconjure.conjureform03.MPBar");
+	m_pProExp = LOAD_UI_T(RtwProgressBar,"fmconjure.conjureform03.EXPBar");
+	m_pProHp = LOAD_UI_T(RtwProgressBar,"fmconjure.conjureform03.HPBar");
+	m_pProMp = LOAD_UI_T(RtwProgressBar,"fmconjure.conjureform03.MPBar");
 
-	m_pLbPetTypeImage	= RTW_WIDGET_T(RtwLabel, "fmconjure.conjuetype");
+	m_pLbPetTypeImage	= LOAD_UI_T(RtwLabel, "fmconjure.conjuetype");
 	m_pLbPetTypeImage->ModifyFlags(wfGrabMouse|wfMouseMove|wfHint, 0);
 	m_pLbPetTypeImage->EvHint += RTW_CALLBACK(this, UIFromPetMain, GetHintPetType);
 
-	m_pLabelPetNum = RTW_WIDGET_T(RtwLabel,"fmconjure.lbtext2");
+	m_pLabelPetNum = LOAD_UI_T(RtwLabel,"fmconjure.lbtext2");
 
 	m_pFormMain->EvHide += RTW_CALLBACK(this,UIFromPetMain,OnHide);
 	m_pBtnCallOut->EvLClick		+= RTW_CALLBACK(this, UIFromPetMain, CallOutPet);

@@ -46,8 +46,8 @@
     	<Label Inherit="" Location="18,166,164,16" Name="lbnews9" Text="公告9"/>
     	<Label Inherit="" Location="18,184,164,16" Name="lbnews10" Text="公告10"/>
     </Form>
-     <Form Inherit="NoTitleBarForm" Location="0,548,1920,52" Name="shanghaiyunque" Show="true">
-      <Label Inherit="Background,Border" Location="200,20,420,50" Name="lbbutton" Text="开源封神 | 正在努力开发中 | https://github.com/reniao69/zfs ">
+     <Form Inherit="NoTitleBarForm" Location="0,548,1920,52" Name="kaiyuan" Show="true">
+      <Label HyperLink="url:www.baidu.com" Location="200,20,420,50" Name="lbbutton" Text="开源封神 | 正在努力开发中 | https://github.com/reniao69/zfs ">
         <Anchors>
           <Anchor point="CENTERV"/>
           <Anchor offset="0,15" point="BOTTOM"/>

@@ -48,7 +48,7 @@ CUiDesktop::CUiDesktop()
 {
 	m_HyperLinkDefaultStyle.bUnderLine = true;
 	m_HyperLinkDefaultStyle.NormalColor = RtwPixel(0xff22bb44);
-	m_HyperLinkDefaultStyle.HighlightColor = RtwPixel(0xffee2233);
+    m_HyperLinkDefaultStyle.HighlightColor = RtwPixel(0x406081F8);
 }
 
 CUiDesktop::~CUiDesktop() {}

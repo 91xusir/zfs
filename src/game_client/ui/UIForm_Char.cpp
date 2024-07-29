@@ -26,9 +26,9 @@ m_ihittmp(0),
 m_iAllpoint(0)
 {
 	guard;
-	m_pFromThis			= RTW_WIDGET("fmplaymain");
+	m_pFromThis			= LOAD_UI("fmplaymain");
 	m_pFromThis->EvHide	+=RTW_CALLBACK(this,CUIForm_Char,OnHide);
-	m_ptabThis			= RTW_WIDGET_T(RtwTab,"fmplaymain.tabitem");
+	m_ptabThis			= LOAD_UI_T(RtwTab,"fmplaymain.tabitem");
 	m_ptrHoverImage		= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
 	m_eNowShow			= NOSELECT;
 
@@ -39,32 +39,32 @@ m_iAllpoint(0)
 	m_ptrHoverImage->getRenderImage()->SetBlend(true);
 
 	// 第一人物属性界面
-	m_plbMetier			= RTW_WIDGET("fmplaymain.tabitem.fmAttrib.lbMeter");
-	m_plbName			= RTW_WIDGET("fmplaymain.tabitem.fmAttrib.lbplayername");
-	m_plbAnimal			= RTW_WIDGET("fmplaymain.tabitem.fmAttrib.lbAnimate");
-	m_plbPKlev			= RTW_WIDGET("fmplaymain.tabitem.fmAttrib.lbpklev");
-	m_plbLevel			= RTW_WIDGET("fmplaymain.tabitem.fmAttrib.lbplayerlev");
-	m_checkShowModel	= RTW_WIDGET_T(CUiCheckButton,"fmplaymain.tabitem.fmAttrib.btnswitchmodel");
-	m_btnLeftRotate		= RTW_WIDGET_T(RtwButton,"fmplaymain.tabitem.fmAttrib.btleft");
-	m_btnRightRotate	= RTW_WIDGET_T(RtwButton,"fmplaymain.tabitem.fmAttrib.btright");
-	m_btnAttribute		= RTW_WIDGET_T(RtwButton,"fmplaymain.tabitem.fmAttrib.btnupdate");
-	m_p3DPlayerView		= RTW_WIDGET_T(Rtw3DView,"fmplaymain.tabitem.fmAttrib.lbplayeract");
-	m_btnParts[CItemContainerBase::WEAPON_1]	= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnRightHand");
+	m_plbMetier			= LOAD_UI("fmplaymain.tabitem.fmAttrib.lbMeter");
+	m_plbName			= LOAD_UI("fmplaymain.tabitem.fmAttrib.lbplayername");
+	m_plbAnimal			= LOAD_UI("fmplaymain.tabitem.fmAttrib.lbAnimate");
+	m_plbPKlev			= LOAD_UI("fmplaymain.tabitem.fmAttrib.lbpklev");
+	m_plbLevel			= LOAD_UI("fmplaymain.tabitem.fmAttrib.lbplayerlev");
+	m_checkShowModel	= LOAD_UI_T(CUiCheckButton,"fmplaymain.tabitem.fmAttrib.btnswitchmodel");
+	m_btnLeftRotate		= LOAD_UI_T(RtwButton,"fmplaymain.tabitem.fmAttrib.btleft");
+	m_btnRightRotate	= LOAD_UI_T(RtwButton,"fmplaymain.tabitem.fmAttrib.btright");
+	m_btnAttribute		= LOAD_UI_T(RtwButton,"fmplaymain.tabitem.fmAttrib.btnupdate");
+	m_p3DPlayerView		= LOAD_UI_T(Rtw3DView,"fmplaymain.tabitem.fmAttrib.lbplayeract");
+	m_btnParts[CItemContainerBase::WEAPON_1]	= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnRightHand");
 	m_btnParts[CItemContainerBase::WEAPON_2]	= NULL;
-	m_btnParts[CItemContainerBase::BODY]		= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnCloth");
-	m_btnParts[CItemContainerBase::CHARM]		= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnCharm");
-	m_btnParts[CItemContainerBase::FOOT]		= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnShoes");
-	m_btnParts[CItemContainerBase::NECKLACE]	= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnNecklace");
-	m_btnParts[CItemContainerBase::GLOVE]		= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnGlove");
-	m_btnParts[CItemContainerBase::RING]		= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnRing");
-	m_btnParts[CItemContainerBase::CAESTUS]		= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnCaestus");
-	m_btnParts[CItemContainerBase::RING2]		= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnRing2");
-	m_btnParts[CItemContainerBase::KITS]		= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnKits");
-	m_btnParts[CItemContainerBase::TRUMP]		= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnTrump");
-	m_btnParts[CItemContainerBase::FASHION]		= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnFashion");
-	m_btnParts[CItemContainerBase::SEALEDBOOK]	= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnBook");
-	m_btnParts[CItemContainerBase::AEROCRAFT]	= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnFly");
-	m_btnParts[CItemContainerBase::WEAPON_3]	= RTW_WIDGET_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnLeftHand");
+	m_btnParts[CItemContainerBase::BODY]		= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnCloth");
+	m_btnParts[CItemContainerBase::CHARM]		= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnCharm");
+	m_btnParts[CItemContainerBase::FOOT]		= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnShoes");
+	m_btnParts[CItemContainerBase::NECKLACE]	= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnNecklace");
+	m_btnParts[CItemContainerBase::GLOVE]		= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnGlove");
+	m_btnParts[CItemContainerBase::RING]		= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnRing");
+	m_btnParts[CItemContainerBase::CAESTUS]		= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnCaestus");
+	m_btnParts[CItemContainerBase::RING2]		= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnRing2");
+	m_btnParts[CItemContainerBase::KITS]		= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnKits");
+	m_btnParts[CItemContainerBase::TRUMP]		= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnTrump");
+	m_btnParts[CItemContainerBase::FASHION]		= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnFashion");
+	m_btnParts[CItemContainerBase::SEALEDBOOK]	= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnBook");
+	m_btnParts[CItemContainerBase::AEROCRAFT]	= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnFly");
+	m_btnParts[CItemContainerBase::WEAPON_3]	= LOAD_UI_T(RtwButton, "fmplaymain.tabitem.fmAttrib.btnLeftHand");
 
 	m_btnLeftRotate->EvMouseCapture			+= RTW_CALLBACK(this, CUIForm_Char, OnLClick_RotatePlayer);
 	m_btnRightRotate->EvMouseCapture			+= RTW_CALLBACK(this, CUIForm_Char, OnLClick_RotatePlayer);
@@ -94,102 +94,102 @@ m_iAllpoint(0)
 	m_imgMetier->SetBlend(true);
 	m_btnAttribute->EvLClick		+= RTW_CALLBACK(this, CUIForm_Char, OnLClick_BtnAttribute);
 
-	m_pfrmChar			= RTW_WIDGET("fmnewchar");
+	m_pfrmChar			= LOAD_UI("fmnewchar");
 	m_pfrmChar->EvHide	+=RTW_CALLBACK(this,CUIForm_Char,OnCharHide);
 
-	/*m_plbSite			= RTW_WIDGET("layworld.fmnewchar.lbrank4.lbsitename");
-	m_plbAnimals		= RTW_WIDGET("layworld.fmnewchar.lbrank6.lbtext3");
-	m_plbSex			= RTW_WIDGET("layworld.fmnewchar.lbrank8.lbtext4");
-	m_plbEmployment		= RTW_WIDGET("layworld.fmnewchar.lbrank10.lbjobname");*/
-	m_hpBar				= RTW_WIDGET_T(RtwProgressBar,"fmnewchar.fmplayerstatus.fmstatuspbar.HPBar");
-	m_mpBar				= RTW_WIDGET_T(RtwProgressBar,"fmnewchar.fmplayerstatus.fmstatuspbar.MPBar");
-	m_powerBar			= RTW_WIDGET_T(RtwProgressBar,"fmnewchar.fmplayerstatus.fmstatuspbar.ENBar");
-	m_expBar			= RTW_WIDGET_T(RtwProgressBar,"fmnewchar.fmplayerstatus.fmstatuspbar.EXPBar");
+	/*m_plbSite			= LOAD_UI("layworld.fmnewchar.lbrank4.lbsitename");
+	m_plbAnimals		= LOAD_UI("layworld.fmnewchar.lbrank6.lbtext3");
+	m_plbSex			= LOAD_UI("layworld.fmnewchar.lbrank8.lbtext4");
+	m_plbEmployment		= LOAD_UI("layworld.fmnewchar.lbrank10.lbjobname");*/
+	m_hpBar				= LOAD_UI_T(RtwProgressBar,"fmnewchar.fmplayerstatus.fmstatuspbar.HPBar");
+	m_mpBar				= LOAD_UI_T(RtwProgressBar,"fmnewchar.fmplayerstatus.fmstatuspbar.MPBar");
+	m_powerBar			= LOAD_UI_T(RtwProgressBar,"fmnewchar.fmplayerstatus.fmstatuspbar.ENBar");
+	m_expBar			= LOAD_UI_T(RtwProgressBar,"fmnewchar.fmplayerstatus.fmstatuspbar.EXPBar");
 
-	m_plbhpcount		= RTW_WIDGET("fmnewchar.fmplayerstatus.fmstatuspbar.lbhpcount");
-	m_plbmpcount		= RTW_WIDGET("fmnewchar.fmplayerstatus.fmstatuspbar.lbmpcount");
-	m_plbpowercount		= RTW_WIDGET("fmnewchar.fmplayerstatus.fmstatuspbar.lbwlk3");
-	m_plbexpcount		= RTW_WIDGET("fmnewchar.fmplayerstatus.fmstatuspbar.lbexpcount");
-	m_plbUnion			= RTW_WIDGET("fmnewchar.fmplayerstatus.fmstatuspbar.lbgroupname");
+	m_plbhpcount		= LOAD_UI("fmnewchar.fmplayerstatus.fmstatuspbar.lbhpcount");
+	m_plbmpcount		= LOAD_UI("fmnewchar.fmplayerstatus.fmstatuspbar.lbmpcount");
+	m_plbpowercount		= LOAD_UI("fmnewchar.fmplayerstatus.fmstatuspbar.lbwlk3");
+	m_plbexpcount		= LOAD_UI("fmnewchar.fmplayerstatus.fmstatuspbar.lbexpcount");
+	m_plbUnion			= LOAD_UI("fmnewchar.fmplayerstatus.fmstatuspbar.lbgroupname");
 
-	m_plbstr			= RTW_WIDGET("fmnewchar.fmproperty1.fmxmm1.lbtitle3.lbstrpoint");
-	m_plbcon			= RTW_WIDGET("fmnewchar.fmproperty1.fmxmm2.lbtitle3.lbhealthpoint");
-	m_plbdex			= RTW_WIDGET("fmnewchar.fmproperty1.fmxmm3.lbtitle3.lbhitpoint");
-	m_plbint			= RTW_WIDGET("fmnewchar.fmproperty1.fmxmm4.lbtitle3.lbdexpoint");
-	m_plbhit			= RTW_WIDGET("fmnewchar.fmproperty1.fmxmm5.lbtitle3.lbwispoint");
-	m_plbApppoint		= RTW_WIDGET("fmnewchar.fmproperty1.fmxmm6.lbtitle3.lbappoint");
+	m_plbstr			= LOAD_UI("fmnewchar.fmproperty1.fmxmm1.lbtitle3.lbstrpoint");
+	m_plbcon			= LOAD_UI("fmnewchar.fmproperty1.fmxmm2.lbtitle3.lbhealthpoint");
+	m_plbdex			= LOAD_UI("fmnewchar.fmproperty1.fmxmm3.lbtitle3.lbhitpoint");
+	m_plbint			= LOAD_UI("fmnewchar.fmproperty1.fmxmm4.lbtitle3.lbdexpoint");
+	m_plbhit			= LOAD_UI("fmnewchar.fmproperty1.fmxmm5.lbtitle3.lbwispoint");
+	m_plbApppoint		= LOAD_UI("fmnewchar.fmproperty1.fmxmm6.lbtitle3.lbappoint");
 
-	m_pbtnStrAdd		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm1.btnstradd");
-	m_pbtnConAdd		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm2.btnhealadd");
-	m_pbtnDexAdd		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm3.btnhitadd");
-	m_pbtnIntAdd		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm4.btndexadd");
-	m_pbtnHitAdd		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm5.btnwisadd");
+	m_pbtnStrAdd		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm1.btnstradd");
+	m_pbtnConAdd		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm2.btnhealadd");
+	m_pbtnDexAdd		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm3.btnhitadd");
+	m_pbtnIntAdd		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm4.btndexadd");
+	m_pbtnHitAdd		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm5.btnwisadd");
 	m_pbtnStrAdd->EvLClick		+= RTW_CALLBACK(this,CUIForm_Char,Add_SubButton);
 	m_pbtnConAdd->EvLClick		+= RTW_CALLBACK(this,CUIForm_Char,Add_SubButton);
 	m_pbtnDexAdd->EvLClick		+= RTW_CALLBACK(this,CUIForm_Char,Add_SubButton);
 	m_pbtnIntAdd->EvLClick		+= RTW_CALLBACK(this,CUIForm_Char,Add_SubButton);
 	m_pbtnHitAdd->EvLClick		+= RTW_CALLBACK(this,CUIForm_Char,Add_SubButton);
 
-	m_pbtnStrSub		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm1.lbless");
-	m_pbtnConSub		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm2.lbless");
-	m_pbtnDexSub		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm3.lbless");
-	m_pbtnIntSub		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm4.lbless");
-	m_pbtnHitSub		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm5.lbless");
+	m_pbtnStrSub		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm1.lbless");
+	m_pbtnConSub		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm2.lbless");
+	m_pbtnDexSub		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm3.lbless");
+	m_pbtnIntSub		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm4.lbless");
+	m_pbtnHitSub		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm5.lbless");
 	m_pbtnStrSub->EvLClick		+= RTW_CALLBACK(this,CUIForm_Char,Add_SubButton);
 	m_pbtnConSub->EvLClick		+= RTW_CALLBACK(this,CUIForm_Char,Add_SubButton);
 	m_pbtnDexSub->EvLClick		+= RTW_CALLBACK(this,CUIForm_Char,Add_SubButton);
 	m_pbtnIntSub->EvLClick		+= RTW_CALLBACK(this,CUIForm_Char,Add_SubButton);
 	m_pbtnHitSub->EvLClick		+= RTW_CALLBACK(this,CUIForm_Char,Add_SubButton);
 
-	m_plbStrPower		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm1.lbtitle4.lbstrpowernum");
-	m_plbConPower		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm2.lbtitle4.lbconpowernum");
-	m_plbDexPower		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm3.lbtitle4.lbhitpowernum");
-	m_plbIntPower		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm4.lbtitle4.lbdexpowernum");
-	m_plbHitPower		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm5.lbtitle4.lbintpowernum");
+	m_plbStrPower		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm1.lbtitle4.lbstrpowernum");
+	m_plbConPower		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm2.lbtitle4.lbconpowernum");
+	m_plbDexPower		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm3.lbtitle4.lbhitpowernum");
+	m_plbIntPower		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm4.lbtitle4.lbdexpowernum");
+	m_plbHitPower		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm5.lbtitle4.lbintpowernum");
 
-	m_pbtnOK			= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm6.btnok");
-	m_pbtnCancel		= RTW_WIDGET_T(RtwButton,"fmnewchar.fmproperty1.fmxmm6.btncancel");
+	m_pbtnOK			= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm6.btnok");
+	m_pbtnCancel		= LOAD_UI_T(RtwButton,"fmnewchar.fmproperty1.fmxmm6.btncancel");
 	m_pbtnOK->EvLClick		+= RTW_CALLBACK(this,CUIForm_Char,OnBtnOK);
 	m_pbtnCancel->EvLClick	+= RTW_CALLBACK(this,CUIForm_Char,OnBtnCancel);
 						
-	m_ptabAttribute		= RTW_WIDGET_T(RtwTab,"fmnewchar.fmattrib.tbcattrib");
+	m_ptabAttribute		= LOAD_UI_T(RtwTab,"fmnewchar.fmattrib.tbcattrib");
 
-	m_plbAttack			= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum1");
-	m_plbArmor			= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum3");
-	m_plbDamage			= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum2");
-	m_plbDodge			= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum4");
-	m_plbAttackSpeed	= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum5");
-	m_plbAttackCritical	= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum6");
-	m_plbReAttackCritical=RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum7");
-	m_plbSkillCritical	= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum8");
-	m_plbReSkillCritical= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum9");
+	m_plbAttack			= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum1");
+	m_plbArmor			= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum3");
+	m_plbDamage			= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum2");
+	m_plbDodge			= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum4");
+	m_plbAttackSpeed	= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum5");
+	m_plbAttackCritical	= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum6");
+	m_plbReAttackCritical=LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum7");
+	m_plbSkillCritical	= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum8");
+	m_plbReSkillCritical= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmattackattrib.lbnum9");
 
-	m_plbFireAtt		= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmfireAT.lbnum1");
-	m_plbFireDef		= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmfireDEF.lbnum2");
-	m_plbWaterAtt		= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmwaterAT.lbnum3");
-	m_plbWaterDef		= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmwaterDEF.lbnum4");
-	m_plbPoisonAtt		= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmposionAT.lbnum5");
-	m_plbPoisonDef		= RTW_WIDGET("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmposionDEF.lbnum6");
+	m_plbFireAtt		= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmfireAT.lbnum1");
+	m_plbFireDef		= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmfireDEF.lbnum2");
+	m_plbWaterAtt		= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmwaterAT.lbnum3");
+	m_plbWaterDef		= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmwaterDEF.lbnum4");
+	m_plbPoisonAtt		= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmposionAT.lbnum5");
+	m_plbPoisonDef		= LOAD_UI("fmnewchar.fmattrib.tbcattrib.fmelementattrib.fmposionDEF.lbnum6");
 
 	// 2
-	m_pbtnTrump			= RTW_WIDGET_T(RtwButton,"fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.magicweaponicon");
-	m_plbTrumpLev		= RTW_WIDGET("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblMWlev");
-	m_plbTrumpFireAtt	= RTW_WIDGET("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblfireAT");
-	m_plbTrumpFireDef	= RTW_WIDGET("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblfireDEF");
-	m_plbTrumpWaterAtt	= RTW_WIDGET("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblwaterAT");
-	m_plbTrumpWaterDef	= RTW_WIDGET("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblwaterDEF");
-	m_plbTrumpPoisonAtt	= RTW_WIDGET("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblposionAT");
-	m_plbTrumpPoisonDef	= RTW_WIDGET("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblposionDEF");
+	m_pbtnTrump			= LOAD_UI_T(RtwButton,"fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.magicweaponicon");
+	m_plbTrumpLev		= LOAD_UI("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblMWlev");
+	m_plbTrumpFireAtt	= LOAD_UI("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblfireAT");
+	m_plbTrumpFireDef	= LOAD_UI("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblfireDEF");
+	m_plbTrumpWaterAtt	= LOAD_UI("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblwaterAT");
+	m_plbTrumpWaterDef	= LOAD_UI("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblwaterDEF");
+	m_plbTrumpPoisonAtt	= LOAD_UI("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblposionAT");
+	m_plbTrumpPoisonDef	= LOAD_UI("fmplaymain.tabitem.fmmagicweapon.fmMWattrib.fmattrib.lblposionDEF");
 
-	m_pproActorSoul		= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.pbarmana");
-	m_plbActorSoulNum	= RTW_WIDGET("fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.lblmana");
+	m_pproActorSoul		= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.pbarmana");
+	m_plbActorSoulNum	= LOAD_UI("fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.lblmana");
 
-	m_pproTrumpSoul		= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.pbarlevuping");
-	m_plbTrumpSoulNum	= RTW_WIDGET("fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.lblMWlevuprate");
-	m_pbtnToTrumpStart	= RTW_WIDGET_T(RtwButton,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.btnMWrefinery");
+	m_pproTrumpSoul		= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.pbarlevuping");
+	m_plbTrumpSoulNum	= LOAD_UI("fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.lblMWlevuprate");
+	m_pbtnToTrumpStart	= LOAD_UI_T(RtwButton,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.btnMWrefinery");
 	m_pbtnToTrumpStart->EvLClick += RTW_CALLBACK(this,CUIForm_Char,OnLClick_TrumpRifine);
 
-	m_pcomTrumpType		= RTW_WIDGET_T(RtwComboBox,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.cbtInjection");
+	m_pcomTrumpType		= LOAD_UI_T(RtwComboBox,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.cbtInjection");
 	m_pcomTrumpType->EvSelect += RTW_CALLBACK(this,CUIForm_Char,OnSelectTrumpAttach);
 	m_pcomTrumpType->RemoveAllItems();
 	for (int i=0;i<MAX_ELEMENT;i++)
@@ -203,11 +203,11 @@ m_iAllpoint(0)
 	m_pcomTrumpType->SetLineParam(ATTACK_POISON,(void*)&ATTACK_POISON);
 	m_pcomTrumpType->SetLineParam(DEF_POISON,(void*)&DEF_POISON);
 
-	m_pproTypeSoul		= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.pbarInjecting");
-	m_plbTypeSoulNum	= RTW_WIDGET("fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.lblMWInjectionrate");
-	m_pbtnToTypeStart	= RTW_WIDGET_T(RtwButton,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.btnInjection");
+	m_pproTypeSoul		= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.pbarInjecting");
+	m_plbTypeSoulNum	= LOAD_UI("fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.lblMWInjectionrate");
+	m_pbtnToTypeStart	= LOAD_UI_T(RtwButton,"fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.btnInjection");
 	m_pbtnToTypeStart->EvLClick += RTW_CALLBACK(this,CUIForm_Char,OnLClick_TrumpRifine);
-	m_plbTypeRate	= RTW_WIDGET("fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.lbrate");
+	m_plbTypeRate	= LOAD_UI("fmplaymain.tabitem.fmmagicweapon.fmMWrefinery.fmrefinery.lbrate");
 
 	m_pbtnTrump->ModifyFlag(wfHint,0);
 	m_pbtnTrump->EvHint	+=RTW_CALLBACK(this, CUIForm_Char, OnGetHintTrumpItem);
@@ -215,73 +215,73 @@ m_iAllpoint(0)
 	for(int i= 1;i<= MAXTRUMPSKILLNUM;i++)
 	{
 		tmp.Format("fmplaymain.tabitem.fmmagicweapon.fmMWskill.fmattrib.btnMWskillicon%d",i);
-		m_pbtnTrumpSkill[i-1]= RTW_WIDGET_T(RtwButton,tmp.c_str());
+		m_pbtnTrumpSkill[i-1]= LOAD_UI_T(RtwButton,tmp.c_str());
 		m_pbtnTrumpSkill[i-1]->ModifyFlag(wfDragOut|wfHint,0);
 		m_pbtnTrumpSkill[i-1]->EvHint	+=RTW_CALLBACK(this, CUIForm_Char, OnGetHintTrumpSkill);
 		m_pbtnTrumpSkill[i-1]->EvDrag	 += RTW_CALLBACK(this,CUIForm_Char,OnDrag_TrumpSkill);
 		m_pbtnTrumpSkill[i-1]->EvDragEnd += RTW_CALLBACK(this,CUIForm_Char,OnDragEnd_TrumpSkill);
 		tmp.Format("fmplaymain.tabitem.fmmagicweapon.fmMWskill.fmattrib.btnMWskill%d",i);
-		m_pbtnTrumpSkillup[i-1]= RTW_WIDGET_T(RtwButton,tmp.c_str());
+		m_pbtnTrumpSkillup[i-1]= LOAD_UI_T(RtwButton,tmp.c_str());
 		m_pbtnTrumpSkillup[i-1]->EvLClick += RTW_CALLBACK(this,CUIForm_Char,OnLDClick_LevupTrumpSkill);
 	}
 	m_bIsRifine = false;
 
 	// 3
-	m_plbXiuWeiLev				= RTW_WIDGET("fmplaymain.tabitem.fmpractice.fmpractice2.fmpracticelev.lbpracticelevtext");
-	m_plbJieDuan				= RTW_WIDGET("fmplaymain.tabitem.fmpractice.fmpractice2.fmpracticeStage.lbpracticelevtext");
-	m_pproXiuWei				= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmpractice2.fmpresentpractice.pgbpresentpractice");
-	m_plbXiuWeiPoint			= RTW_WIDGET("fmplaymain.tabitem.fmpractice.fmpractice2.fmpresentpractice.lbnumber1");
-	m_pproActorSoul_XiuWei		= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmpractice2.fmSoul.pgbSoul");
-	m_plbActorSoulNum_xiuWei	= RTW_WIDGET("fmplaymain.tabitem.fmpractice.fmpractice2.fmSoul.lbnumber2");
+	m_plbXiuWeiLev				= LOAD_UI("fmplaymain.tabitem.fmpractice.fmpractice2.fmpracticelev.lbpracticelevtext");
+	m_plbJieDuan				= LOAD_UI("fmplaymain.tabitem.fmpractice.fmpractice2.fmpracticeStage.lbpracticelevtext");
+	m_pproXiuWei				= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmpractice2.fmpresentpractice.pgbpresentpractice");
+	m_plbXiuWeiPoint			= LOAD_UI("fmplaymain.tabitem.fmpractice.fmpractice2.fmpresentpractice.lbnumber1");
+	m_pproActorSoul_XiuWei		= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmpractice2.fmSoul.pgbSoul");
+	m_plbActorSoulNum_xiuWei	= LOAD_UI("fmplaymain.tabitem.fmpractice.fmpractice2.fmSoul.lbnumber2");
 
-	m_plbSuming					= RTW_WIDGET("fmplaymain.tabitem.fmpractice.fmactivity2.fmlocalname.lbnumber3");
-	m_ppgbSuming				= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmlocalname.pgblocalname");
-	m_plbMenGong				= RTW_WIDGET("fmplaymain.tabitem.fmpractice.fmactivity2.fmschool.lbnumber4");
-	m_ppgbMenGong				= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmschool.pgbschool");
-	m_plbBangGong				= RTW_WIDGET("fmplaymain.tabitem.fmpractice.fmactivity2.fmfaction.lbnumber5");
-	m_ppgbBangGong				= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmfaction.pgbfaction");
-	m_plbJunGong				= RTW_WIDGET("fmplaymain.tabitem.fmpractice.fmactivity2.fmachievement.lbnumber6");
-	m_ppgbJunGong				= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmachievement.pgbachievement");
-	m_plbJiFen					= RTW_WIDGET("fmplaymain.tabitem.fmpractice.fmactivity2.fmintegral.lbnumber7");
-	m_ppgbJiFen					= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmintegral.pgbintegral");
-	m_plbMorality				= RTW_WIDGET("fmplaymain.tabitem.fmpractice.fmactivity2.fmmoral.lbnumber8");
-	m_ppgbMorality				= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmmoral.pgbmoral");
+	m_plbSuming					= LOAD_UI("fmplaymain.tabitem.fmpractice.fmactivity2.fmlocalname.lbnumber3");
+	m_ppgbSuming				= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmlocalname.pgblocalname");
+	m_plbMenGong				= LOAD_UI("fmplaymain.tabitem.fmpractice.fmactivity2.fmschool.lbnumber4");
+	m_ppgbMenGong				= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmschool.pgbschool");
+	m_plbBangGong				= LOAD_UI("fmplaymain.tabitem.fmpractice.fmactivity2.fmfaction.lbnumber5");
+	m_ppgbBangGong				= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmfaction.pgbfaction");
+	m_plbJunGong				= LOAD_UI("fmplaymain.tabitem.fmpractice.fmactivity2.fmachievement.lbnumber6");
+	m_ppgbJunGong				= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmachievement.pgbachievement");
+	m_plbJiFen					= LOAD_UI("fmplaymain.tabitem.fmpractice.fmactivity2.fmintegral.lbnumber7");
+	m_ppgbJiFen					= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmintegral.pgbintegral");
+	m_plbMorality				= LOAD_UI("fmplaymain.tabitem.fmpractice.fmactivity2.fmmoral.lbnumber8");
+	m_ppgbMorality				= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmpractice.fmactivity2.fmmoral.pgbmoral");
 
 	// 4
-	m_plbXianYu					= RTW_WIDGET("fmplaymain.tabitem.fmFame.fmreputation2.fmreputation21.lbnumber1");
-	m_ppgbXianYu				= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmreputation2.fmreputation21.pgbreputation");
-	m_pbtnSwap					= RTW_WIDGET_T(RtwButton,"fmplaymain.tabitem.fmFame.fmreputation2.btnchange");
+	m_plbXianYu					= LOAD_UI("fmplaymain.tabitem.fmFame.fmreputation2.fmreputation21.lbnumber1");
+	m_ppgbXianYu				= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmreputation2.fmreputation21.pgbreputation");
+	m_pbtnSwap					= LOAD_UI_T(RtwButton,"fmplaymain.tabitem.fmFame.fmreputation2.btnchange");
 
-	m_plbGuanfu					= RTW_WIDGET("fmplaymain.tabitem.fmFame.fmfame2.fmgovernment1.lbtext5");
-	m_plbGuanfuCount			= RTW_WIDGET("fmplaymain.tabitem.fmFame.fmfame2.fmgovernment2.lbnumber2");
-	m_ppgbGuanfu				= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmfame2.fmgovernment2.pgbgovernment");
-	m_plbManzu					= RTW_WIDGET("fmplaymain.tabitem.fmFame.fmfame2.fmtribe1.lbtext7");
-	m_plbManzuCount				= RTW_WIDGET("fmplaymain.tabitem.fmFame.fmfame2.fmtribe2.lbnumber3");
-	m_ppgbManzu					= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmfame2.fmtribe2.pgbtribe");
-	m_plbYishi					= RTW_WIDGET("fmplaymain.tabitem.fmFame.fmfame2.fmrighteousman1.lbtext9");
-	m_plbYishiCount				= RTW_WIDGET("fmplaymain.tabitem.fmFame.fmfame2.fmrighteousman2.lbnumber4");
-	m_ppgbYishi					= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmfame2.fmrighteousman2.pgbrighteousman");
-	m_plbYijun					= RTW_WIDGET("fmplaymain.tabitem.fmFame.fmfame2.fmopposesui1.lbtext11");
-	m_plbYijunCount				= RTW_WIDGET("fmplaymain.tabitem.fmFame.fmfame2.fmopposesui2.lbnumber5");
-	m_ppgbYijun					= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmfame2.fmopposesui2.pgbopposesui");
-	m_plbLianMeng				= RTW_WIDGET("fmplaymain.tabitem.fmFame.fmfame2.fmunion1.lbtext13");
-	m_plbLianMengCount			= RTW_WIDGET("fmplaymain.tabitem.fmFame.fmfame2.fmunion2.lbnumber6");
-	m_ppgbLianMeng				= RTW_WIDGET_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmfame2.fmunion2.pgbunion");
-	/*m_pbtnXiuXing		= RTW_WIDGET_T(RtwButton,"fmnewchar.tabctrl.btnwjs1");
-	m_pbtnChengjiu		= RTW_WIDGET_T(RtwButton,"fmnewchar.tabctrl.btnwjs2");
+	m_plbGuanfu					= LOAD_UI("fmplaymain.tabitem.fmFame.fmfame2.fmgovernment1.lbtext5");
+	m_plbGuanfuCount			= LOAD_UI("fmplaymain.tabitem.fmFame.fmfame2.fmgovernment2.lbnumber2");
+	m_ppgbGuanfu				= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmfame2.fmgovernment2.pgbgovernment");
+	m_plbManzu					= LOAD_UI("fmplaymain.tabitem.fmFame.fmfame2.fmtribe1.lbtext7");
+	m_plbManzuCount				= LOAD_UI("fmplaymain.tabitem.fmFame.fmfame2.fmtribe2.lbnumber3");
+	m_ppgbManzu					= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmfame2.fmtribe2.pgbtribe");
+	m_plbYishi					= LOAD_UI("fmplaymain.tabitem.fmFame.fmfame2.fmrighteousman1.lbtext9");
+	m_plbYishiCount				= LOAD_UI("fmplaymain.tabitem.fmFame.fmfame2.fmrighteousman2.lbnumber4");
+	m_ppgbYishi					= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmfame2.fmrighteousman2.pgbrighteousman");
+	m_plbYijun					= LOAD_UI("fmplaymain.tabitem.fmFame.fmfame2.fmopposesui1.lbtext11");
+	m_plbYijunCount				= LOAD_UI("fmplaymain.tabitem.fmFame.fmfame2.fmopposesui2.lbnumber5");
+	m_ppgbYijun					= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmfame2.fmopposesui2.pgbopposesui");
+	m_plbLianMeng				= LOAD_UI("fmplaymain.tabitem.fmFame.fmfame2.fmunion1.lbtext13");
+	m_plbLianMengCount			= LOAD_UI("fmplaymain.tabitem.fmFame.fmfame2.fmunion2.lbnumber6");
+	m_ppgbLianMeng				= LOAD_UI_T(RtwProgressBar,"fmplaymain.tabitem.fmFame.fmfame2.fmunion2.pgbunion");
+	/*m_pbtnXiuXing		= LOAD_UI_T(RtwButton,"fmnewchar.tabctrl.btnwjs1");
+	m_pbtnChengjiu		= LOAD_UI_T(RtwButton,"fmnewchar.tabctrl.btnwjs2");
 
-	//m_btnClose          = RTW_WIDGET_T(RtwButton, "fmnewchar.btnclose");
+	//m_btnClose          = LOAD_UI_T(RtwButton, "fmnewchar.btnclose");
 	//m_btnClose->EvLClick += RTW_CALLBACK(this, CUIForm_Char, OnHideGuide);
 
 
 
-	m_plbGuanfu         = RTW_WIDGET("fmnewchar.tabctrl.fmxmm1.lbwlk8");
-	m_plbManzu          = RTW_WIDGET("fmnewchar.tabctrl.fmxmm1.lbwlk9");
-	m_plbYishi          = RTW_WIDGET("fmnewchar.tabctrl.fmxmm1.lbwlk10");
-	m_plbYijun          = RTW_WIDGET("fmnewchar.tabctrl.fmxmm1.lbwlk11");
+	m_plbGuanfu         = LOAD_UI("fmnewchar.tabctrl.fmxmm1.lbwlk8");
+	m_plbManzu          = LOAD_UI("fmnewchar.tabctrl.fmxmm1.lbwlk9");
+	m_plbYishi          = LOAD_UI("fmnewchar.tabctrl.fmxmm1.lbwlk10");
+	m_plbYijun          = LOAD_UI("fmnewchar.tabctrl.fmxmm1.lbwlk11");
 
-	m_plbPk				= RTW_WIDGET("fmnewchar.tabctrl.fmxmm1.lbwlk7");*/
-	RTW_WIDGET("fmplaymain.tabitem.btnname")->Disable();
+	m_plbPk				= LOAD_UI("fmnewchar.tabctrl.fmxmm1.lbwlk7");*/
+	LOAD_UI("fmplaymain.tabitem.btnname")->Disable();
 
 	m_imgCharNormal = g_workspace.getImageFactory()->createImage("ui\\textures\\1.tga");
 	m_imgCharNormal->SetSourceRect(RtwRect(119,352,161,394));
@@ -1724,7 +1724,7 @@ void CUIForm_Char::SetCharButtonNormal()
 	guard;
 	if(m_bShowAnimation)
 	{
-		RTW_WIDGET_T(RtwButton,"fmsystem.btnsyschar")->SetNormalImage(m_imgCharNormal);
+		LOAD_UI_T(RtwButton,"fmsystem.btnsyschar")->SetNormalImage(m_imgCharNormal);
 		m_bShowAnimation = false;
 	}
 	unguard;
@@ -1734,7 +1734,7 @@ void CUIForm_Char::SetCharButtonAnimation()
 	guard;
 	if(!m_bShowAnimation && !IsVisible())
 	{
-		RTW_WIDGET_T(RtwButton,"fmsystem.btnsyschar")->SetNormalImage(m_imgCharAnimation);
+		LOAD_UI_T(RtwButton,"fmsystem.btnsyschar")->SetNormalImage(m_imgCharAnimation);
 		m_bShowAnimation = true;
 	}
 	unguard;
@@ -1939,7 +1939,7 @@ void CUIForm_Char::OnDragEnd_Parts(RtwWidget* sender, void*)
 	else
 	{
 		const RtwRect& rcClient = pClient->GetFrameRect();
-		const RtwRect& rcHotKey = RTW_WIDGET("fmhotkey")->GetFrameRect();
+		const RtwRect& rcHotKey = LOAD_UI("fmhotkey")->GetFrameRect();
 		if ( rcHotKey.IsContained(rcClient.left, rcClient.top) )
 		{
 			// 把图标拖到快捷栏中
@@ -1949,7 +1949,7 @@ void CUIForm_Char::OnDragEnd_Parts(RtwWidget* sender, void*)
 			string strID = "QS_" + sender->GetID();
 
 			RtwButton* pButton = NULL;
-			pButton = (RtwButton*)(RTW_WIDGET("fmitem")->GetChildWidget(strID));
+			pButton = (RtwButton*)(LOAD_UI("fmitem")->GetChildWidget(strID));
 			if (pButton==NULL)
 			{
 				// 				pButton = (RtwButton*)sender->Clone(NULL, strID);
@@ -2286,9 +2286,9 @@ void CUIForm_Char::OnDragEnd_TrumpSkill(RtwButton *sender, void*)
 		RtwRect rcSmallHotKey;
 		bool	bIsInHotKey= false;
 		int		iInHotKey = -1;
-		rcHotKey =	RTW_WIDGET("fmhotkey")->GetFrameRect();
-		rcHotKey1 =	RTW_WIDGET("fmshortcut_bar1")->GetFrameRect();
-		rcHotKey2 =	RTW_WIDGET("fmshortcut_bar2")->GetFrameRect();
+		rcHotKey =	LOAD_UI("fmhotkey")->GetFrameRect();
+		rcHotKey1 =	LOAD_UI("fmshortcut_bar1")->GetFrameRect();
+		rcHotKey2 =	LOAD_UI("fmshortcut_bar2")->GetFrameRect();
 		if(rcHotKey.IsContained(g_workspace.GetMousePosX(), g_workspace.GetMousePosY())
 			|| rcHotKey1.IsContained(g_workspace.GetMousePosX(), g_workspace.GetMousePosY())
 			|| rcHotKey2.IsContained(g_workspace.GetMousePosX(), g_workspace.GetMousePosY()))

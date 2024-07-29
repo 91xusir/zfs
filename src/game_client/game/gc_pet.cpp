@@ -48,7 +48,7 @@ void GcPet::CallBackPet()
 	for (; cCnt<10; cCnt++)
 	{
 		rt2_snprintf(g_strStaticBuffer, 2048, "fmhpc.fmcBuff.btnbuff%d", cCnt+1);
-		pButton = RTW_WIDGET_T(RtwButton, g_strStaticBuffer);
+		pButton = LOAD_UI_T(RtwButton, g_strStaticBuffer);
 		pButton->Hide();
 	}
 

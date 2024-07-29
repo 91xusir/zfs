@@ -20,15 +20,15 @@
 UIFormBankPet::UIFormBankPet()
 :m_BankBag(BANK_PET_LINE_COUNT, BANK_PET_COLUMN_COUNT ,1 , GetWorld()->m_pItemManager)
 {
-	m_pFmThis = RTW_WIDGET_T(RtwForm, "fmpetbank");				
-	m_pFmPetLookMine = RTW_WIDGET_T(RtwForm, "fmpetbank.conjureform02");			
-	m_pFmPetLookBank = RTW_WIDGET_T(RtwForm, "fmpetbank.conjureform04");					
+	m_pFmThis = LOAD_UI_T(RtwForm, "fmpetbank");				
+	m_pFmPetLookMine = LOAD_UI_T(RtwForm, "fmpetbank.conjureform02");			
+	m_pFmPetLookBank = LOAD_UI_T(RtwForm, "fmpetbank.conjureform04");					
 
-	m_pListPetMine = RTW_WIDGET_T(RtwListBox, "fmpetbank.conjureform01.obpetlist");			
-	m_pListPetBank = RTW_WIDGET_T(RtwListBox, "fmpetbank.conjureform03.mywithlist");		
+	m_pListPetMine = LOAD_UI_T(RtwListBox, "fmpetbank.conjureform01.obpetlist");			
+	m_pListPetBank = LOAD_UI_T(RtwListBox, "fmpetbank.conjureform03.mywithlist");		
 
-	m_pBtnToMine = RTW_WIDGET_T(RtwButton, "fmpetbank.petsellblt");			
-	m_pBtnToBank = RTW_WIDGET_T(RtwButton, "fmpetbank.petreturnblt");	
+	m_pBtnToMine = LOAD_UI_T(RtwButton, "fmpetbank.petsellblt");			
+	m_pBtnToBank = LOAD_UI_T(RtwButton, "fmpetbank.petreturnblt");	
 
 	m_pBtnToMine->EvLClick += RTW_CALLBACK(this, UIFormBankPet, OnLClickToMine);
 	m_pBtnToBank->EvLClick += RTW_CALLBACK(this, UIFormBankPet, OnLClickToBank);

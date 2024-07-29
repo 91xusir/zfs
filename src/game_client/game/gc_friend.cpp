@@ -374,7 +374,7 @@ void CClientFriend::ReceiveFromServer(byte vOperation,CG_CmdPacket *pPacket)
 		break;
 	case R2C_UPDATE_ALL_PLAYER:		//刷新所有成员的数据
 		{
-			long	Count;
+			//long	Count;
 			
 			long	DBID;
 			byte	Online;

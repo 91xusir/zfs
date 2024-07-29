@@ -11,10 +11,10 @@ m_pbtnCancel(NULL)
 {
 	guard;
 	// 初始化变量
-	m_pfrmSpeaker	= RTW_WIDGET("layworld.fmspeaker");
-	m_ptbTextBox	= RTW_WIDGET_T(RtwTextBox,"layworld.fmspeaker.ebcontent");
-	m_pbtnOK		= RTW_WIDGET_T(RtwButton,"layworld.fmspeaker.btntok");
-	m_pbtnCancel	= RTW_WIDGET_T(RtwButton,"layworld.fmspeaker.btntcancel");
+	m_pfrmSpeaker	= LOAD_UI("layworld.fmspeaker");
+	m_ptbTextBox	= LOAD_UI_T(RtwTextBox,"layworld.fmspeaker.ebcontent");
+	m_pbtnOK		= LOAD_UI_T(RtwButton,"layworld.fmspeaker.btntok");
+	m_pbtnCancel	= LOAD_UI_T(RtwButton,"layworld.fmspeaker.btntcancel");
 	// 事件注册
 	m_pfrmSpeaker->EvHide	+= RTW_CALLBACK(this,CUIForm_Speaker,FormHide);
 	m_pbtnOK->EvLClick		+= RTW_CALLBACK(this,CUIForm_Speaker,ButtonClick);

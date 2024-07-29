@@ -10,23 +10,23 @@ UIFormGm::UIFormGm()
 
 	m_state = sUnRequest;
 
-	m_pFrmThis = RTW_WIDGET("fmgm");
-	m_pBtnSend = RTW_WIDGET_T(RtwButton, "fmgm.btnok");
-	m_pChatInput = RTW_WIDGET_T(RtwChatInputBox, "fmgm.txtdialog");
-	m_pChatList = RTW_WIDGET_T(RtwChatBox, "fmgm.txtFeedback");
+	m_pFrmThis = LOAD_UI("fmgm");
+	m_pBtnSend = LOAD_UI_T(RtwButton, "fmgm.btnok");
+	m_pChatInput = LOAD_UI_T(RtwChatInputBox, "fmgm.txtdialog");
+	m_pChatList = LOAD_UI_T(RtwChatBox, "fmgm.txtFeedback");
 	//m_pChatList->EvScroll += RTW_CALLBACK(this, UIFormGm, OnAutoScroll_Content);
-	m_pLbQuestionCount = RTW_WIDGET_T(RtwWidget, "fmgm.lbseqnum");
-	m_pLbOrder = RTW_WIDGET_T(RtwWidget, "fmgm.lbseqnum1");
-	m_pLbGmName = RTW_WIDGET_T(RtwWidget, "fmgm.lbgmname");
-	m_pLbState = RTW_WIDGET_T(RtwWidget, "fmgm.lbseqstatus");
-	m_pTbTitle = RTW_WIDGET_T(RtwTextBox, "fmgm.txttitle");
+	m_pLbQuestionCount = LOAD_UI_T(RtwWidget, "fmgm.lbseqnum");
+	m_pLbOrder = LOAD_UI_T(RtwWidget, "fmgm.lbseqnum1");
+	m_pLbGmName = LOAD_UI_T(RtwWidget, "fmgm.lbgmname");
+	m_pLbState = LOAD_UI_T(RtwWidget, "fmgm.lbseqstatus");
+	m_pTbTitle = LOAD_UI_T(RtwTextBox, "fmgm.txttitle");
 
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
 	m_pChatInput->EvUpdateText += RTW_CALLBACK(this, UIFormGm, OnUpdateText_Chat);
 	m_pBtnSend->EvLClick += RTW_CALLBACK(this, UIFormGm, OnClicked_Send);
 
-	m_pContentScroll = RTW_WIDGET_T(RtwScrollBar, "fmgm.scrolldialg");
+	m_pContentScroll = LOAD_UI_T(RtwScrollBar, "fmgm.scrolldialg");
 	m_pContentScroll->EvScroll += RTW_CALLBACK(this, UIFormGm, OnScroll_Content);
 
 	m_pLbState->SetText("");

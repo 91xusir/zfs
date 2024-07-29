@@ -144,7 +144,7 @@ bool PlayerCannotDoAction(GcActor* pActor)
 					|| g_layerMain->m_formSale->IsVisible()
 					|| g_layerMain->m_formHelp->IsVisible()                 // 任务对话
 					|| g_layerMain->m_formPetEat->IsVisible()			
-					|| RTW_WIDGET("forautostate")->IsVisible()				//ac.ma  自动战斗状态的锁定
+					|| LOAD_UI("forautostate")->IsVisible()				//ac.ma  自动战斗状态的锁定
 					|| g_workspace.getMouseCapture();						//鼠标正拖动WIDGET
 			}
 		}
@@ -184,7 +184,7 @@ bool PlayerCannotUseSkillAtSkillfrom(GcActor* pActor)
 			|| g_layerMain->m_formSale->IsVisible()
 			|| g_layerMain->m_formHelp->IsVisible()                 // 任务对话
 			|| g_layerMain->m_formPetEat->IsVisible()			
-			|| RTW_WIDGET("forautostate")->IsVisible();				//ac.ma  自动战斗状态的锁定
+			|| LOAD_UI("forautostate")->IsVisible();				//ac.ma  自动战斗状态的锁定
 	}
 	GcWorld* pWorld = GetWorld();
 	if (!bResult && pWorld)
@@ -534,8 +534,8 @@ bool GcWorld::EnterGame()
 	LOAD_UI("fmhp")->Show();
 	LOAD_UI("fmdialg")->Show();
 	LOAD_UI("fmhotkey")->Show();
-	RTW_WIDGET("fmshortcut_bar1")->SetTransparency(0);
-	RTW_WIDGET("fmshortcut_bar2")->SetTransparency(0);
+	LOAD_UI("fmshortcut_bar1")->SetTransparency(0);
+	LOAD_UI("fmshortcut_bar2")->SetTransparency(0);
 	LOAD_UI("fmsystem")->Show();
 //	LOAD_UI("fmminimap")->Show();
 	GetWorld()->m_Chat.m_tabChat->Show();
@@ -549,7 +549,7 @@ bool GcWorld::EnterGame()
 	/* end */
 	LOAD_UI("panSysteminfo")->Show();
 	//LOAD_UI("fmnewsetting.fmsetting.tabsystem.fmgame.btndefault")->Enable();
-	m_frmHint = RTW_WIDGET_T(RtwHtmlView,"htmlhint");
+	m_frmHint = LOAD_UI_T(RtwHtmlView,"htmlhint");
 	m_frmHint->SetTransparency(0.8);
 	return true;
     unguard;
@@ -1372,9 +1372,9 @@ bool GcWorld::CanMove(bool isMiddleMap)
 		|| g_layerMain->m_formPetEat->IsVisible()	
 		//|| g_layerMain->m_formPlayerShop->IsVisible()
 		|| g_layerMain->m_formLookPlayerShop->IsVisible()
-		|| RTW_WIDGET("forautostate")->IsVisible()				//ac.ma  自动战斗状态的锁定
-		|| RTW_WIDGET("fmbankpass")->IsVisible()
-		|| RTW_WIDGET("fmlearn")->IsVisible()
+		|| LOAD_UI("forautostate")->IsVisible()				//ac.ma  自动战斗状态的锁定
+		|| LOAD_UI("fmbankpass")->IsVisible()
+		|| LOAD_UI("fmlearn")->IsVisible()
 		|| GetPlayer()->m_bPShop);
 
 	if(!isMiddleMap)
@@ -2488,7 +2488,7 @@ void GcWorld::OnMouseLDClick(int iButton,int x, int y)
 	if (m_pPlayer->GetAutoState())			//	ac.ma
 	{
 		//弹出一个是否选择框
-		RTW_WIDGET("forautostate")->Show();
+		LOAD_UI("forautostate")->Show();
 		return;
 	}
 
@@ -2642,7 +2642,7 @@ void GcWorld::OnMouseMove(int iButton, int x, int y, int increaseX, int increase
 {
 	guard;
 	RtwRect chatRect = GetWorld()->m_Chat.m_tabChat->GetFrameRect();
-	RtwRect inputRect = RTW_WIDGET("fmdialg")->GetFrameRect();
+	RtwRect inputRect = LOAD_UI("fmdialg")->GetFrameRect();
 	if(!chatRect.IsContain(x,y) && !inputRect.IsContain(x, y))
 		m_Chat.SetNeedChangeBackground(false);
 	g_layerMain->OnMouseMoveOnSkillShotcut();
@@ -2653,7 +2653,7 @@ void GcWorld::OnMouseHoverMove(int iButton, int x, int y, int increaseX, int inc
 {
 	guard;
 	g_layerMain->OnMouseMoveOnSkillShotcut();
-	RtwRect inputRect = RTW_WIDGET("fmdialg")->GetFrameRect();
+	RtwRect inputRect = LOAD_UI("fmdialg")->GetFrameRect();
 	RtwRect chatRect = GetWorld()->m_Chat.m_tabChat->GetFrameRect();
 
 	if(!chatRect.IsContain(x,y) && !inputRect.IsContain(x, y))
@@ -2671,7 +2671,7 @@ void GcWorld::OnMouseDragMove(int iButton, int x, int y, int increaseX, int incr
 	for(int i= 0;i< MAX_BAG_PAGE_COUNT;i++)
 	{
 		rt2_snprintf(tmpStr,100,"fmitem.tabitem.btnitembag%d",i+1);
-		rect = RTW_WIDGET(tmpStr)->GetFrameRect();
+		rect = LOAD_UI(tmpStr)->GetFrameRect();
 		if(rect.IsContain(x,y))
 		{
 			g_layerMain->m_fromPlayerItems->SetTabSelect(i);
@@ -2749,7 +2749,7 @@ void GcWorld::OnMouseLDown(int iButton, int x, int y)
 	if (m_pPlayer->GetAutoState())			//	ac.ma
 	{
 		//弹出一个是否选择框
-		RTW_WIDGET("forautostate")->Show();
+		LOAD_UI("forautostate")->Show();
 		return;
 	}
 
@@ -3313,10 +3313,10 @@ void GcWorld::OnKeyUp(int iButton,int iKey)
 		break;
 	case VK_F10:
 		GetWorld()->HideGuideForm();
-		if(RTW_WIDGET("fmF9")->IsVisible())
-			RTW_WIDGET("fmF9")->Hide();
+		if(LOAD_UI("fmF9")->IsVisible())
+			LOAD_UI("fmF9")->Hide();
 		else
-			RTW_WIDGET("fmF9")->Show();
+			LOAD_UI("fmF9")->Show();
 		SetCapture((HWND)GetDevice()->GetWndHandle());
 		break;
 	case VK_F12:
@@ -3374,13 +3374,13 @@ bool GcWorld::CanUseShortcut()
 		|| g_layerMain->m_formPetEat->IsVisible()	
 		//|| g_layerMain->m_formPlayerShop->IsVisible()
 		|| g_layerMain->m_formLookPlayerShop->IsVisible()
-		|| RTW_WIDGET("forautostate")->IsVisible()				//ac.ma  自动战斗状态的锁定
-		|| RTW_WIDGET("fmbankpass")->IsVisible()
-		//|| RTW_WIDGET("fmcard")->IsVisible()
-		//|| RTW_WIDGET("fmgm")->IsVisible()
-		//|| RTW_WIDGET("fmsellcard")->IsVisible()
-		|| RTW_WIDGET("fmlearn")->IsVisible()
-		|| RTW_WIDGET("fmtax")->IsVisible()
+		|| LOAD_UI("forautostate")->IsVisible()				//ac.ma  自动战斗状态的锁定
+		|| LOAD_UI("fmbankpass")->IsVisible()
+		//|| LOAD_UI("fmcard")->IsVisible()
+		//|| LOAD_UI("fmgm")->IsVisible()
+		//|| LOAD_UI("fmsellcard")->IsVisible()
+		|| LOAD_UI("fmlearn")->IsVisible()
+		|| LOAD_UI("fmtax")->IsVisible()
 		|| GetPlayer()->m_bPShop);
 		//|| g_workspace.getMouseCapture()						//鼠标正拖动WIDGET
 
@@ -4911,7 +4911,7 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
 			{
 				g_layerMain->m_formHelp2->Hide();
 			}
-			RTW_WIDGET("fmhtmlhelp.lbborder4")->SetBackgroundImage(pImage);
+			LOAD_UI("fmhtmlhelp.lbborder4")->SetBackgroundImage(pImage);
 			if (g_layerMain->m_formHelp) g_layerMain->m_formHelp->Show();
 			if (g_layerMain->m_viewHelp)
 			{
@@ -5071,7 +5071,7 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
 					{
 						g_layerMain->m_formHelp->Hide();
 					}
-					RTW_WIDGET("fmhtmlhelp2.lbborder4")->SetBackgroundImage(pImage);
+					LOAD_UI("fmhtmlhelp2.lbborder4")->SetBackgroundImage(pImage);
 					if (g_layerMain->m_formHelp2) g_layerMain->m_formHelp2->Show();
 					if (g_layerMain->m_viewHelp2)
 					{
@@ -5160,7 +5160,7 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
 					{
 						g_layerMain->m_formHelp->Hide();
 					}
-					RTW_WIDGET("fmhtmlhelp3.lbborder4")->SetBackgroundImage(pImage);
+					LOAD_UI("fmhtmlhelp3.lbborder4")->SetBackgroundImage(pImage);
 					if (g_layerMain->m_formHelp3) g_layerMain->m_formHelp3->Show();
 					if (g_layerMain->m_viewHelp3)
 					{
@@ -6965,7 +6965,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType)
 				g_layerMain->m_formGuide3->Hide();
 			}
 			RtwRect rectSrc = g_layerMain->m_formGuide4->GetClientRect();
-			RtwRect rectDest = RTW_WIDGET("fmsystem.btnsyschar")->GetClientRect();
+			RtwRect rectDest = LOAD_UI("fmsystem.btnsyschar")->GetClientRect();
 			rectDest.left -= rectSrc.getWidth();
 			rectDest.top  += (rectDest.getHeight()/2 - 10);
 			g_layerMain->m_formGuide4->Move(SPoint(rectDest.left, rectDest.top));
@@ -6985,7 +6985,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType)
 		{
 			//玩家首次攻击怪物的新手提示
 			RtwRect rectSrc = g_layerMain->m_formGuide2->GetClientRect();
-			RtwRect rectDest = RTW_WIDGET("fmmonhp")->GetClientRect();
+			RtwRect rectDest = LOAD_UI("fmmonhp")->GetClientRect();
 			rectDest.left += 30;
 			rectDest.top  += rectDest.getHeight()/2;
 			g_layerMain->m_formGuide2->Move(SPoint(rectDest.left, rectDest.top));
@@ -7005,7 +7005,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType)
 		{
 			//玩家首次hp低于50%
 			RtwRect rectSrc = g_layerMain->m_formGuide2->GetClientRect();
-			RtwRect rectDest = RTW_WIDGET("fmhp")->GetClientRect();
+			RtwRect rectDest = LOAD_UI("fmhp")->GetClientRect();
 			rectDest.left += 40;
 			rectDest.top  += rectDest.getHeight()/2 + 40;
 			g_layerMain->m_formGuide2->Move(SPoint(rectDest.left, rectDest.top));
@@ -7025,7 +7025,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType)
 		{
 			//玩家首次mp低于50%
 			RtwRect rectSrc = g_layerMain->m_formGuide2->GetClientRect();
-			RtwRect rectDest = RTW_WIDGET("fmhp")->GetClientRect();
+			RtwRect rectDest = LOAD_UI("fmhp")->GetClientRect();
 			rectDest.top  += rectDest.getHeight()/2 + 40;
 			g_layerMain->m_formGuide2->Move(SPoint(rectDest.left, rectDest.top));
 			g_layerMain->m_formGuide2->Show();
@@ -7044,7 +7044,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType)
 		{
 			//玩家接受任务11001，并且背包中有ID16000为的物品
 			RtwRect rectSrc = g_layerMain->m_formGuide4->GetClientRect();
-			RtwRect rectDest = RTW_WIDGET("fmsystem.btnpet")->GetClientRect();
+			RtwRect rectDest = LOAD_UI("fmsystem.btnpet")->GetClientRect();
 			rectDest.left -= rectSrc.getWidth();
 			rectDest.top  += (rectDest.getHeight()/2 - 10);
 			g_layerMain->m_formGuide4->Move(SPoint(rectDest.left, rectDest.top));
@@ -7085,7 +7085,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType)
 		{
 			//接受任务11005之后,技能按钮闪烁
 			RtwRect rectSrc = g_layerMain->m_formGuide4->GetClientRect();
-			RtwRect rectDest = RTW_WIDGET("fmsystem.btnsyschar")->GetClientRect();
+			RtwRect rectDest = LOAD_UI("fmsystem.btnsyschar")->GetClientRect();
 			rectDest.left -= rectSrc.getWidth();
 			rectDest.top  += (rectDest.getHeight()/2 - 10);
 			g_layerMain->m_formGuide4->Move(SPoint(rectDest.left, rectDest.top));
@@ -7105,7 +7105,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType)
 		{
 			//接到新邮件，打开邮箱
 			RtwRect rectSrc = g_layerMain->m_formGuide4->GetClientRect();
-			RtwRect rectDest = RTW_WIDGET("fmsystem.btnsysmail")->GetClientRect();
+			RtwRect rectDest = LOAD_UI("fmsystem.btnsysmail")->GetClientRect();
 			rectDest.left -= rectSrc.getWidth();
 			rectDest.top  += (rectDest.getHeight()/2 - 10);
 			g_layerMain->m_formGuide4->Move(SPoint(rectDest.left, rectDest.top));
@@ -7407,7 +7407,7 @@ void GcWorld::ShowAttrPoint()
 		}
 		//弹出接受任务的UI提示
 		RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmnewchar.fmproperty1.fmxmm3.btnhitadd")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmnewchar.fmproperty1.fmxmm3.btnhitadd")->GetClientRect();
 		rectDest.left += 20;
 		rectDest.top  += rectDest.getHeight()/2;
 		g_layerMain->m_formGuide5->Move(SPoint(rectDest.left, rectDest.top));
@@ -7433,7 +7433,7 @@ void GcWorld::ShowAttrPointAllocate()
 	{
 		//弹出接受任务的UI提示
 		RtwRect rectSrc = g_layerMain->m_formGuide3->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmnewchar.fmproperty1.fmxmm6.btnok")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmnewchar.fmproperty1.fmxmm6.btnok")->GetClientRect();
 		rectDest.left -= rectSrc.getWidth()/2+120;
 		rectDest.top  += (rectDest.getHeight()/2 - 60);
 		g_layerMain->m_formGuide3->Move(SPoint(rectDest.left, rectDest.top));
@@ -7459,7 +7459,7 @@ void GcWorld::ShowSkillPage()
 	{
 		//玩家首次打开技能页面
 		RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmborder_skill.fmskillall.tabskillall.fmsecond")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmborder_skill.fmskillall.tabskillall.fmsecond")->GetClientRect();
 		rectDest.left += (rectSrc.getWidth()/2 - 30);
 		rectDest.top  -= (rectDest.getHeight()/2 - 165);
 		g_layerMain->m_formGuide5->Move(SPoint(rectDest.left, rectDest.top));
@@ -7485,7 +7485,7 @@ void GcWorld::ShowSkillPoint()
 	{
 		//玩家首次打开技能页面
 		RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmborder_skill.fmskillall.tabskillall.fmsecond")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmborder_skill.fmskillall.tabskillall.fmsecond")->GetClientRect();
 		rectDest.left += (rectSrc.getWidth()/2 - 40);
 		rectDest.top  -= (rectDest.getHeight()/2 - 220);
 		g_layerMain->m_formGuide5->Move(SPoint(rectDest.left, rectDest.top));
@@ -7511,7 +7511,7 @@ void GcWorld::ShowCallPet()
 	{
 		//玩家召唤宠物
 		RtwRect rectSrc = g_layerMain->m_formGuide2->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmconjure.fightblt")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmconjure.fightblt")->GetClientRect();
 		rectDest.left += rectSrc.getWidth()/2-140;
 		rectDest.top  += (rectDest.getHeight()/2 + 5);
 		g_layerMain->m_formGuide2->Move(SPoint(rectDest.left, rectDest.top));
@@ -7537,7 +7537,7 @@ void GcWorld::ShowPetInfo()
 	{
 		//玩家当前召唤出宠物
 		RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmhpc")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmhpc")->GetClientRect();
 		rectDest.left += 140;
 		rectDest.top  += 20;
 		g_layerMain->m_formGuide5->Move(SPoint(rectDest.left, rectDest.top));
@@ -7562,7 +7562,7 @@ void GcWorld::ShowShopUI()
 	{
 		//玩家打开商店页面
 		RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmnewshop.fmshop.fmsellitem")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmnewshop.fmshop.fmsellitem")->GetClientRect();
 		rectDest.left += 3*36;
 		rectDest.top  += 2*36;
 		g_layerMain->m_formGuide5->Move(SPoint(rectDest.left, rectDest.top));
@@ -7588,7 +7588,7 @@ void GcWorld::ShowShopTrade()
 	{
 		//玩家点击物品出现购买页面
 		RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmnewshop.fmshop.tbctrading.fmcontent1.btnok")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmnewshop.fmshop.tbctrading.fmcontent1.btnok")->GetClientRect();
 		rectDest.left -= 120;
 		rectDest.top  -= 55;
 		g_layerMain->m_formGuide3->Move(SPoint(rectDest.left, rectDest.top));
@@ -7614,7 +7614,7 @@ void GcWorld::ShowLifePage()
 		HideGuideForm();
 		//玩家点击物品出现购买页面
 		RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmplaymain.tabitem.btnfabao")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmplaymain.tabitem.btnfabao")->GetClientRect();
 		rectDest.left += rectDest.getWidth();
 		rectDest.top  += 5;
 		g_layerMain->m_formGuide5->Move(SPoint(rectDest.left, rectDest.top));
@@ -7640,7 +7640,7 @@ void GcWorld::ShowViewMail()
 	{
 		//玩家查看邮件
 		RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmmail2.fmcontent.btnxmm3")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmmail2.fmcontent.btnxmm3")->GetClientRect();
 		rectDest.left += 70;
 		rectDest.top  -= 0;
 		g_layerMain->m_formGuide5->Move(SPoint(rectDest.left, rectDest.top));
@@ -7666,7 +7666,7 @@ void GcWorld::ShowExtraMail()
 	{
 		//玩家查看附件
 		RtwRect rectSrc = g_layerMain->m_formGuide3->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmmail1.fmcontent.btnview")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmmail1.fmcontent.btnview")->GetClientRect();
 		rectDest.left -= 260;
 		rectDest.top  -= 55;
 		g_layerMain->m_formGuide3->Move(SPoint(rectDest.left, rectDest.top));
@@ -7692,7 +7692,7 @@ void GcWorld::ShowStudySkill()
 	{
 		//玩家查看附件
 		RtwRect rectSrc = g_layerMain->m_formGuide3->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmlearn.fmcontent.fmzoning1.btulearn1")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmlearn.fmcontent.fmzoning1.btulearn1")->GetClientRect();
 		rectDest.left -= 130;
 		rectDest.top  -= 60;
 		g_layerMain->m_formGuide3->Move(SPoint(rectDest.left, rectDest.top));
@@ -7734,7 +7734,7 @@ void GcWorld::ShowFriendUI()
 		if (bFirstFriend)
 		{
 			RtwRect rectSrc = g_layerMain->m_formGuide2->GetClientRect();
-			RtwRect rectDest = RTW_WIDGET("fmmonhp")->GetClientRect();
+			RtwRect rectDest = LOAD_UI("fmmonhp")->GetClientRect();
 			rectDest.left -= 30;
 			rectDest.top  += rectDest.getHeight()/2 + 30;
 			g_layerMain->m_formGuide2->Move(SPoint(rectDest.left, rectDest.top));
@@ -7760,7 +7760,7 @@ void GcWorld::ShowMiddleMap()
 	{
 		//玩家查看附件
 		RtwRect rectSrc = g_layerMain->m_formGuide1->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmsysmap")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmsysmap")->GetClientRect();
 		rectDest.left += 100;
 		rectDest.top  -= 110;
 		g_layerMain->m_formGuide1->Move(SPoint(rectDest.left, rectDest.top));
@@ -7786,7 +7786,7 @@ void GcWorld::ShowMiddleMapAI()
 	{
 		//玩家查看附件
 		RtwRect rectSrc = g_layerMain->m_formGuide1->GetClientRect();
-		RtwRect rectDest = RTW_WIDGET("fmsysmap")->GetClientRect();
+		RtwRect rectDest = LOAD_UI("fmsysmap")->GetClientRect();
 		rectDest.left += 100;
 		rectDest.top  -= 110;
 		g_layerMain->m_formGuide1->Move(SPoint(rectDest.left, rectDest.top));
@@ -8303,7 +8303,7 @@ void GcWorld::OnMoveKeyDown(int direction)
 	if (m_pPlayer->GetAutoState())			//	ac.ma
 	{
 		//弹出一个是否选择框
-		RTW_WIDGET("forautostate")->Show();
+		LOAD_UI("forautostate")->Show();
 		return;
 	}
 	//end yz

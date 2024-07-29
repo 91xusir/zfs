@@ -49,52 +49,52 @@ UIFormMiniMap::UIFormMiniMap()
     m_ShaderPoint.Shaders[0].eAlphaOp   = RTGTOP_MODULATE;
     m_ShaderPoint.Shaders[0].eAlphaArg1 = RTGTA_DIFFUSE;
     m_ShaderPoint.Shaders[0].eAlphaArg2 = RTGTA_TEXTURE;
-	RTW_WIDGET("fmminimap")->ModifyFlags(wfInput | wfHint,0);
-	RTW_WIDGET("fmminimap.panmap")->ModifyFlags(wfInput | wfHint,0);
-	RTW_WIDGET("fmminimap.panallmap")->ModifyFlags(0,wfPick);
-    RTW_WIDGET("fmminimap.btnmapadd")->EvLClick   += RTW_CALLBACK(this, UIFormMiniMap, OnButtonZoomOutClick);
-    RTW_WIDGET("fmminimap.btnmapdec")->EvLClick   += RTW_CALLBACK(this, UIFormMiniMap, OnButtonZoomInClick);
-	RTW_WIDGET("fmminimap.btnsubline")->EvLClick  += RTW_CALLBACK(this, UIFormMiniMap, OnSelectChildThread);
-	RTW_WIDGET("fmminimap.btnhelp")->EvLClick	  += RTW_CALLBACK(this, UILayerMain, OnClicked_SysSetting_Help);
+	LOAD_UI("fmminimap")->ModifyFlags(wfInput | wfHint,0);
+	LOAD_UI("fmminimap.panmap")->ModifyFlags(wfInput | wfHint,0);
+	LOAD_UI("fmminimap.panallmap")->ModifyFlags(0,wfPick);
+    LOAD_UI("fmminimap.btnmapadd")->EvLClick   += RTW_CALLBACK(this, UIFormMiniMap, OnButtonZoomOutClick);
+    LOAD_UI("fmminimap.btnmapdec")->EvLClick   += RTW_CALLBACK(this, UIFormMiniMap, OnButtonZoomInClick);
+	LOAD_UI("fmminimap.btnsubline")->EvLClick  += RTW_CALLBACK(this, UIFormMiniMap, OnSelectChildThread);
+	LOAD_UI("fmminimap.btnhelp")->EvLClick	  += RTW_CALLBACK(this, UILayerMain, OnClicked_SysSetting_Help);
 	//主线任务
-	RTW_WIDGET("fmminimap.btnmaintask")->EvLClick += RTW_CALLBACK(this, UIFormMiniMap, OnClicked_MainTask);
+	LOAD_UI("fmminimap.btnmaintask")->EvLClick += RTW_CALLBACK(this, UIFormMiniMap, OnClicked_MainTask);
 	// 分线UI选择事件
-	RTW_WIDGET("fmsubline.btninto")->EvLClick			 += RTW_CALLBACK(this, UIFormMiniMap, OnChildThreadButtonDown);
-	RTW_WIDGET("fmsubline.btncancel")->EvLClick			 += RTW_CALLBACK(this, UIFormMiniMap, OnChildThreadButtonDown);
-	m_plstLineContent									 = RTW_WIDGET_T(RtwListBox,"fmsubline.ltbservers");
-	m_pwdtMiniMap										 = RTW_WIDGET("fmminimap");
-	m_pwdtMapTitle										 = RTW_WIDGET("fmmaptitle");
+	LOAD_UI("fmsubline.btninto")->EvLClick			 += RTW_CALLBACK(this, UIFormMiniMap, OnChildThreadButtonDown);
+	LOAD_UI("fmsubline.btncancel")->EvLClick			 += RTW_CALLBACK(this, UIFormMiniMap, OnChildThreadButtonDown);
+	m_plstLineContent									 = LOAD_UI_T(RtwListBox,"fmsubline.ltbservers");
+	m_pwdtMiniMap										 = LOAD_UI("fmminimap");
+	m_pwdtMapTitle										 = LOAD_UI("fmmaptitle");
 	/* end */
-    RTW_WIDGET("fmminimap.panmap")->EvDraw        += RTW_CALLBACK(this, UIFormMiniMap, OnDrawMiniMap);
-    //RTW_WIDGET("fmminimap.panmap")->EvMouseMove   += RTW_CALLBACK(this, UIFormMiniMap, OnMapMouseMoveEvent);
-    //RTW_WIDGET("fmminimap.panmap")->EvHint        += RTW_CALLBACK(this, UIFormMiniMap, OnGetNpcHintText);
-	RTW_WIDGET("fmminimap.panmap")->EvLClick	  += RTW_CALLBACK(this,UIFormMiniMap,OnMoveTo);
-    RTW_WIDGET("fmminimap.btnmapworld")->EvLClick      += RTW_CALLBACK(this, UIFormMiniMap, OnButtonShowWorldMap);
-	RTW_WIDGET("fmminimap.btnmapworld")->Hide();
+    LOAD_UI("fmminimap.panmap")->EvDraw        += RTW_CALLBACK(this, UIFormMiniMap, OnDrawMiniMap);
+    //LOAD_UI("fmminimap.panmap")->EvMouseMove   += RTW_CALLBACK(this, UIFormMiniMap, OnMapMouseMoveEvent);
+    //LOAD_UI("fmminimap.panmap")->EvHint        += RTW_CALLBACK(this, UIFormMiniMap, OnGetNpcHintText);
+	LOAD_UI("fmminimap.panmap")->EvLClick	  += RTW_CALLBACK(this,UIFormMiniMap,OnMoveTo);
+    LOAD_UI("fmminimap.btnmapworld")->EvLClick      += RTW_CALLBACK(this, UIFormMiniMap, OnButtonShowWorldMap);
+	LOAD_UI("fmminimap.btnmapworld")->Hide();
 
 	// 标题按钮事件
-	RTW_WIDGET("fmmaptitle.btnmaphide")->EvLClick      += RTW_CALLBACK(this, UIFormMiniMap, OnButtonShowHideClick);
-	RTW_WIDGET("fmmaptitle.btnmapshow")->EvLClick      += RTW_CALLBACK(this, UIFormMiniMap, OnButtonShowHideClick);
-	RTW_WIDGET("fmmaptitle.btnmaphide")->Show();
-	RTW_WIDGET("fmmaptitle.btnmapshow")->Hide();
-	m_pBtnWarView		= RTW_WIDGET_T(RtwButton, "fmminimap.btnwar");
+	LOAD_UI("fmmaptitle.btnmaphide")->EvLClick      += RTW_CALLBACK(this, UIFormMiniMap, OnButtonShowHideClick);
+	LOAD_UI("fmmaptitle.btnmapshow")->EvLClick      += RTW_CALLBACK(this, UIFormMiniMap, OnButtonShowHideClick);
+	LOAD_UI("fmmaptitle.btnmaphide")->Show();
+	LOAD_UI("fmmaptitle.btnmapshow")->Hide();
+	m_pBtnWarView		= LOAD_UI_T(RtwButton, "fmminimap.btnwar");
 	//保存列表的指针
-	/*m_pUIPlayerList		= RTW_WIDGET_T(RtwListBox,"fmteam.fmcontent.tbcteam.fmprep.lbxmembers");*/
+	/*m_pUIPlayerList		= LOAD_UI_T(RtwListBox,"fmteam.fmcontent.tbcteam.fmprep.lbxmembers");*/
 	m_pImage			= g_workspace.getImageFactory()->createImage("ui\\textures\\10.tga");
-	m_pLockCamera		= RTW_WIDGET_T(RtwButton, "fmminimap.btnperspective");
+	m_pLockCamera		= LOAD_UI_T(RtwButton, "fmminimap.btnperspective");
 
 	m_pLockCamera->EvLClick			+= RTW_CALLBACK(this,UIFormMiniMap,OnButtonLockCamera);
 
 	//change by yz   开启关闭内挂界面
 	////开关
-	//RTW_WIDGET("fmminimap.btnwho")->EvLClick	
-	//	+= RTW_CALLBACK(RTW_WIDGET("fmteam"), RtwWidget,DefaultChange);//打开或者关闭玩家列表
+	//LOAD_UI("fmminimap.btnwho")->EvLClick	
+	//	+= RTW_CALLBACK(LOAD_UI("fmteam"), RtwWidget,DefaultChange);//打开或者关闭玩家列表
 
 	////通知界面改变
-	//RTW_WIDGET("fmminimap.btnwho")->EvLClick	
+	//LOAD_UI("fmminimap.btnwho")->EvLClick	
 	//	+= RTW_CALLBACK(this, UIFormMiniMap,PlayerListUIChange);//通知列表改变
 
-	RTW_WIDGET("fmminimap.btnwho")->EvLClick
+	LOAD_UI("fmminimap.btnwho")->EvLClick
 		+= RTW_CALLBACK(this, UIFormMiniMap, SysBattleSetting);
 	//end change
 
@@ -107,10 +107,10 @@ UIFormMiniMap::UIFormMiniMap()
 
 	GetTimer()->AddTimer(this,UPDATE_PALYER_LIST_TIME);						//将时间消息关联到该类上
 
-    m_pWidgetSceneName = RTW_WIDGET("fmmaptitle.lbmapname");
+    m_pWidgetSceneName = LOAD_UI("fmmaptitle.lbmapname");
 	m_pWidgetSceneName->EvHint += RTW_CALLBACK(this, UIFormMiniMap, GetMiniMapHint);
 	m_pWidgetSceneName->ModifyFlag(wfHint|wfGrabMouse,0);
-    m_pWidgetPosition  = RTW_WIDGET("fmmaptitle.lbaddress");
+    m_pWidgetPosition  = LOAD_UI("fmmaptitle.lbaddress");
 	m_strMapName = "";
 	mPopMenuOpen=false;//pop菜单没有打开
 	m_bIsRunning= false;
@@ -149,7 +149,7 @@ void UIFormMiniMap::PopMenuClose(ui::RtwWidget* sender, RtwEventDelegate* e)
 {
 	if(mPopMenuOpen)
 	{
-		RTW_WIDGET("UserMenu")->Hide();
+		LOAD_UI("UserMenu")->Hide();
 	}
 
 }
@@ -218,11 +218,11 @@ void UIFormMiniMap::OnTimerEvent(DWORD vID)//时间回调函数
 
 void UIFormMiniMap::PlayerListUIChange(ui::RtwWidget* sender, RtwEventDelegate* e)
 {
-	if(! RTW_WIDGET("fmteam")->IsVisible())
+	if(! LOAD_UI("fmteam")->IsVisible())
 	{		
-		//RTW_WIDGET("fmteam")->Show();
+		//LOAD_UI("fmteam")->Show();
 	}else{
-		RTW_WIDGET("fmteam")->Hide();
+		LOAD_UI("fmteam")->Hide();
 	}
 	UpdatePlayerListUI();
 }
@@ -245,7 +245,7 @@ void UIFormMiniMap::SysBattleSetting(ui::RtwWidget* sender, RtwEventDelegate* e)
 
 void UIFormMiniMap::UpdatePlayerListUI()
 {
-//	//if(! RTW_WIDGET("fmteam.fmcontent.tbcteam.fmprep")->IsVisible())
+//	//if(! LOAD_UI("fmteam.fmcontent.tbcteam.fmprep")->IsVisible())
 //	//{//如果没有显示的情况下，直接返回
 //	//	return ;
 //	//}
@@ -334,9 +334,9 @@ void UIFormMiniMap::UpdatePlayerListUI()
 void UIFormMiniMap::OnDrawMiniMap(ui::RtwWidget* sender, RtwEventDelegate* e)
 {
     guard;
-	if (g_workspace.GetFocusWidget()!=RTW_WIDGET("UserMenu"))
+	if (g_workspace.GetFocusWidget()!=LOAD_UI("UserMenu"))
 	{
-		RTW_WIDGET("UserMenu")->Hide();
+		LOAD_UI("UserMenu")->Hide();
 	}
     RtwRect mapRect = sender->GetClientRect();
     GetDevice()->SetRenderState(RTGRS_LIGHTING, FALSE);
@@ -621,7 +621,7 @@ void UIFormMiniMap::DrawMiniMap(int iScreenX, int iScreenY, int iScreenWidth, in
 				lbNPC->SetName(strId);
 				lbNPC->ModifyFlag(wfGrabMouse|wfMouseMove|wfHint,0);
 				m_vectorNPCLable.push_back(lbNPC);
-				RTW_WIDGET("layworld.fmminimap.panmap")->AddChild(lbNPC);
+				LOAD_UI("layworld.fmminimap.panmap")->AddChild(lbNPC);
 				if (pActor->NpcType()==GcActor::ENT_USER)
 					lbNPC->SetHintText(pActor->GetName());
 				else if (pActor->m_pNpc)
@@ -701,7 +701,7 @@ void UIFormMiniMap::DrawMiniMap(int iScreenX, int iScreenY, int iScreenWidth, in
 				lbNPC->SetName(strId);
 				lbNPC->ModifyFlag(wfGrabMouse|wfMouseMove|wfHint,0);
 				m_vectorNPCLable.push_back(lbNPC);
-				RTW_WIDGET("layworld.fmminimap.panmap")->AddChild(lbNPC);
+				LOAD_UI("layworld.fmminimap.panmap")->AddChild(lbNPC);
 				lbNPC->SetHintText(teamData[teamActor].mName);
 
 			}else
@@ -757,7 +757,7 @@ void UIFormMiniMap::DrawMiniMap(int iScreenX, int iScreenY, int iScreenWidth, in
 				lbTaskdesc->SetBackgroundImage(tmpImage);
 			}
 			m_vectorTaskLabel.push_back(lbTaskdesc);
-			RTW_WIDGET("layworld.fmminimap.panmap")->AddChild(lbTaskdesc);
+			LOAD_UI("layworld.fmminimap.panmap")->AddChild(lbTaskdesc);
 		}else
 		{
 			lbTaskdesc = m_vectorTaskLabel[Taskdescnum];
@@ -1101,7 +1101,7 @@ void UIFormMiniMap::OnAreamapMoveTo(ui::RtwWidget* sender,RtwEventDelegate* e)
 }
 bool UIFormMiniMap::MapIsShow()
 {
-    return RTW_WIDGET("fmminimap.panallmap")->IsVisible();
+    return LOAD_UI("fmminimap.panallmap")->IsVisible();
 }
 
 void UIFormMiniMap::OnButtonShowHideClick(ui::RtwWidget* sender, RtwEventDelegate* e)
@@ -1130,16 +1130,16 @@ void UIFormMiniMap::OnButtonShowHideClick(ui::RtwWidget* sender, RtwEventDelegat
 		m_bShow = false;
 		m_bIsRunning = true;
 		m_fStep = -FSTEP;
-		RTW_WIDGET("fmmaptitle.btnmaphide")->Show();
-		RTW_WIDGET("fmmaptitle.btnmapshow")->Hide();
+		LOAD_UI("fmmaptitle.btnmaphide")->Show();
+		LOAD_UI("fmmaptitle.btnmapshow")->Hide();
 		pImage->SetSourceRect(showRect);
 	}else
 	{
 		m_bShow = true;
 		m_bIsRunning = true;
 		m_fStep = FSTEP;
-		RTW_WIDGET("fmmaptitle.btnmaphide")->Hide();
-		RTW_WIDGET("fmmaptitle.btnmapshow")->Show();
+		LOAD_UI("fmmaptitle.btnmaphide")->Hide();
+		LOAD_UI("fmmaptitle.btnmapshow")->Show();
 		pImage->SetSourceRect(hideRect);
 	}
     unguard;
@@ -1245,7 +1245,7 @@ void UIFormMiniMap::OnButtonShowWorldMap(ui::RtwWidget* sender, RtwEventDelegate
     arrImages.push_back(image);
     g_WorldMapRenderer.SetImages(arrImages);
     g_WorldMapRenderer.SetRenderFlag(true);*/
-	/*RtwWidget* worldLabel = RTW_WIDGET("lbworldmap");
+	/*RtwWidget* worldLabel = LOAD_UI("lbworldmap");
 	RtgViewWindowInfo WindosInfo = GetDevice()->GetViewWindowInfo(GetDevice()->GetViewWindowMode());
 	RtwRect worldRect = RtwRect(WindosInfo.iPosX,WindosInfo.iPosY,WindosInfo.iPosX+WindosInfo.dwWidth,WindosInfo.iPosY+WindosInfo.dwHeight);
 	worldLabel->MoveResize(worldRect);
@@ -1291,7 +1291,7 @@ void UIFormMiniMap::OnMapMouseMove(int iMouseX, int iMouseY)
         //        m_lastNpcHint.id = m_ptNpcs[i].id;
         //        m_lastNpcHint.x = iMouseX;
         //        m_lastNpcHint.y = iMouseY;
-        //        g_workspace.ShowHint(RTW_WIDGET("fmminimap.panmap"));
+        //        g_workspace.ShowHint(LOAD_UI("fmminimap.panmap"));
         //    }
         //    break;
         //}
@@ -1302,7 +1302,7 @@ void UIFormMiniMap::OnMapMouseMove(int iMouseX, int iMouseY)
 				m_lastNpcHint.id = m_vecNPCs[i].id;
 				m_lastNpcHint.x = iMouseX;
 				m_lastNpcHint.y = iMouseY;
-				g_workspace.ShowHint(RTW_WIDGET("fmminimap.panmap"));
+				g_workspace.ShowHint(LOAD_UI("fmminimap.panmap"));
 			}
 			break;
 		}
@@ -1318,12 +1318,12 @@ void UIFormMiniMap::OnMapMouseMove(int iMouseX, int iMouseY)
 void UIFormMiniMap::OnSelectChildThread(ui::RtwWidget* sender,RtwEventDelegate* e)
 {
 	guard;
-	if(RTW_WIDGET("fmsubline")->IsVisible())
-		RTW_WIDGET("fmsubline")->Hide();
+	if(LOAD_UI("fmsubline")->IsVisible())
+		LOAD_UI("fmsubline")->Hide();
 	else
 	{
-		RTW_WIDGET("fmsubline")->Show();
-		RTW_WIDGET_T(RtwListBox,"fmsubline.ltbservers")->RemoveAllItems();
+		LOAD_UI("fmsubline")->Show();
+		LOAD_UI_T(RtwListBox,"fmsubline.ltbservers")->RemoveAllItems();
 		if(GetPlayer()->GetGroupID() && GetPlayer()->GetLineID())
 		{
 			CG_CmdPacket* pPacket = NetBeginWrite();
@@ -1352,9 +1352,9 @@ void UIFormMiniMap::OnClicked_MainTask(ui::RtwWidget* sender,RtwEventDelegate* e
 void UIFormMiniMap::OnChildThreadButtonDown(ui::RtwWidget* sender,RtwEventDelegate* e)
 {
 	guard;
-	if(sender == RTW_WIDGET("fmsubline.btncancel"))
-		RTW_WIDGET("fmsubline")->Hide();
-	if(sender == RTW_WIDGET("fmsubline.btninto"))
+	if(sender == LOAD_UI("fmsubline.btncancel"))
+		LOAD_UI("fmsubline")->Hide();
+	if(sender == LOAD_UI("fmsubline.btninto"))
 	{
 		int iSelect = m_plstLineContent->GetSelectedItem();
 		if(iSelect != -1)
@@ -1369,11 +1369,11 @@ void UIFormMiniMap::OnChildThreadButtonDown(ui::RtwWidget* sender,RtwEventDelega
 				pPacket->WriteLong(newLine);
 				pPacket->WriteLong(GetPlayer()->GetLineID());
 				NetSend(pPacket);
-				RTW_WIDGET("fmsubline")->Hide();
+				LOAD_UI("fmsubline")->Hide();
 			}else
 			{
 				ShowSystemMessage(R(MSG_LINE_ERR_ALREADINLINE));
-				RTW_WIDGET("fmsubline")->Hide();
+				LOAD_UI("fmsubline")->Hide();
 			}
 		}
 	}
@@ -1594,12 +1594,12 @@ void UIFormMiniMap::OnButtonLockCamera(ui::RtwWidget* sender, RtwEventDelegate* 
 	if(GetWorld()->GetCameraMode() == GcWorld::CAMERA_MODE_TURN)
 	{
 		GetWorld()->SetCameraMode(GcWorld::CAMERA_MODE_LOCK);
-		RTW_WIDGET_T(RtwButton, "fmminimap.btnperspective")->SetHintText("镜头已锁");
+		LOAD_UI_T(RtwButton, "fmminimap.btnperspective")->SetHintText("镜头已锁");
 	}
 	else
 	{
 		GetWorld()->SetCameraMode(GcWorld::CAMERA_MODE_TURN);
-		RTW_WIDGET_T(RtwButton, "fmminimap.btnperspective")->SetHintText("镜头未锁");
+		LOAD_UI_T(RtwButton, "fmminimap.btnperspective")->SetHintText("镜头未锁");
 	}
 	if(g_layerMain->m_formSetting && g_layerMain->m_formSetting->IsVisible())
 		g_layerMain->m_formSetting->Change();

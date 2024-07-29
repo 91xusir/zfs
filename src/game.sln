@@ -202,7 +202,7 @@ Global
 		{4008276D-6829-4D64-8DAC-0A03810349B7}.server_Release|Win32.ActiveCfg = mtd|Win32
 		{4008276D-6829-4D64-8DAC-0A03810349B7}.tools_Debug|Win32.ActiveCfg = mtd|Win32
 		{4008276D-6829-4D64-8DAC-0A03810349B7}.tools_Realese|Win32.ActiveCfg = mtd|Win32
-		{70404A05-83CF-43DB-A6F4-D061B543B95F}.cilent_Preview|Win32.ActiveCfg = mt|Win32
+		{70404A05-83CF-43DB-A6F4-D061B543B95F}.cilent_Preview|Win32.ActiveCfg = ui_Preview|Win32
 		{70404A05-83CF-43DB-A6F4-D061B543B95F}.client_Debug|Win32.ActiveCfg = mtd|Win32
 		{70404A05-83CF-43DB-A6F4-D061B543B95F}.client_Release|Win32.ActiveCfg = mt|Win32
 		{70404A05-83CF-43DB-A6F4-D061B543B95F}.engine_md|Win32.ActiveCfg = md|Win32
@@ -515,7 +515,7 @@ Global
 		{2E091289-293D-4CE0-ACD7-A89BB3CCD295} = {5EB0514C-A775-4727-BEA2-04390706210F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F8E52D35-3856-406B-B348-8D4EBCC749A8}
 		VisualSVNWorkingCopyRoot = .
+		SolutionGuid = {F8E52D35-3856-406B-B348-8D4EBCC749A8}
 	EndGlobalSection
 EndGlobal

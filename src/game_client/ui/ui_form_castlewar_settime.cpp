@@ -10,13 +10,13 @@ UIFormCastleWarTimeSet::UIFormCastleWarTimeSet()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmcitytime");
+	m_pFrmThis = LOAD_UI("fmcitytime");
 
-	m_pBtnOk	 = RTW_WIDGET_T(RtwButton, "fmcitytime.btnok");
-	m_pBtnCancel = RTW_WIDGET_T(RtwButton, "fmcitytime.btncancel");
+	m_pBtnOk	 = LOAD_UI_T(RtwButton, "fmcitytime.btnok");
+	m_pBtnCancel = LOAD_UI_T(RtwButton, "fmcitytime.btncancel");
 
-	m_pLabelDefaultTime	= RTW_WIDGET_T(RtwLabel, "fmcitytime.lbdate");
-	m_pTimeSetBox		= RTW_WIDGET_T(RtwComboBox, "fmcitytime.cbtime");
+	m_pLabelDefaultTime	= LOAD_UI_T(RtwLabel, "fmcitytime.lbdate");
+	m_pTimeSetBox		= LOAD_UI_T(RtwComboBox, "fmcitytime.cbtime");
 
 	// 注册本窗口中的事件
 	m_pBtnOk->EvLClick		+= RTW_CALLBACK(this, UIFormCastleWarTimeSet, OnBtnOk);

@@ -104,10 +104,10 @@ void GcPlayer::SetTeamOff(long teamoff)
 	/*if (teamoff == 0)
 	{
 		m_bTeamOnOff = false;
-		RTW_WIDGET("btnteamoff")->SetText(string("关"));
+		LOAD_UI("btnteamoff")->SetText(string("关"));
 	}else{
 		m_bTeamOnOff = true;
-		RTW_WIDGET("btnteamoff")->SetText(string("开"));
+		LOAD_UI("btnteamoff")->SetText(string("开"));
 	}*/
 }
 bool GcPlayer::ActorInSkillTarget(GcActor* pActor, SSkill* pSkill)

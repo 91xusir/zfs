@@ -22,27 +22,27 @@ UIFormShop::UIFormShop()
 {
 	guard;
 
-	m_pFrmThis			=	RTW_WIDGET("fmnewshop");
-	m_pFrmGridsUp		=	RTW_WIDGET("fmnewshop.fmshop.fmsellitem");
-	m_pFrmGridsDown		=	RTW_WIDGET("fmnewshop.fmshop.tbctrading.fmcontent1.fmselfitem");
-	m_pFrmGridsDown2	=	RTW_WIDGET("fmnewshop.fmshop.tbctrading.fmcontent2.fmsellitem");
-	m_pCheckTab			=	RTW_WIDGET_T(RtwTab,"fmnewshop.fmshop.tbctrading");
-	m_lbMoneyName1		=	RTW_WIDGET_T(RtwLabel,"fmnewshop.fmshop.tbctrading.fmcontent1.lbtbc2");
-	m_lbWindowsTitle	=	RTW_WIDGET_T(RtwLabel,"fmnewshop.lbtitle");
-	m_lbPaidType		=	RTW_WIDGET_T(RtwLabel,"fmnewshop.fmshop.tbctrading.fmcontent1.lbmoney");
-	m_lbMoneyShopBuy	=	RTW_WIDGET("fmnewshop.fmshop.tbctrading.fmcontent1.lbbuygoldnum");
-	m_lbMoneyShopSell	=	RTW_WIDGET("fmnewshop.fmshop.tbctrading.fmcontent2.lbbuygoldnum");
-	m_btnOK				=	RTW_WIDGET_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent1.btnok");
-	m_btnSellOK			=	RTW_WIDGET_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent2.btnok");
-	m_btnCancel			=	RTW_WIDGET_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent1.btncancel");
-	m_btnSellCancel		=	RTW_WIDGET_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent2.btncancel");
-	m_btnRepairAll		=	RTW_WIDGET_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent1.btnall");
-	m_btnBuyRepairOne	=	RTW_WIDGET_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent1.btnrepair");
-	m_btnSellRepairOne	=	RTW_WIDGET_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent2.btnrepair");
-	m_btnSellRepairAll	=	RTW_WIDGET_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent2.btnall");
-	m_pScrollUp			=	RTW_WIDGET_T(RtwVScrollBar, "fmnewshop.fmshop.fmsellitem.scrollUp");
-	m_pScrollDown1		=	RTW_WIDGET_T(RtwVScrollBar, "fmnewshop.fmshop.tbctrading.fmcontent1.fmselfitem.scrollUp");
-	m_pScrollDown2		=	RTW_WIDGET_T(RtwVScrollBar, "fmnewshop.fmshop.tbctrading.fmcontent2.fmsellitem.scrollUp");
+	m_pFrmThis			=	LOAD_UI("fmnewshop");
+	m_pFrmGridsUp		=	LOAD_UI("fmnewshop.fmshop.fmsellitem");
+	m_pFrmGridsDown		=	LOAD_UI("fmnewshop.fmshop.tbctrading.fmcontent1.fmselfitem");
+	m_pFrmGridsDown2	=	LOAD_UI("fmnewshop.fmshop.tbctrading.fmcontent2.fmsellitem");
+	m_pCheckTab			=	LOAD_UI_T(RtwTab,"fmnewshop.fmshop.tbctrading");
+	m_lbMoneyName1		=	LOAD_UI_T(RtwLabel,"fmnewshop.fmshop.tbctrading.fmcontent1.lbtbc2");
+	m_lbWindowsTitle	=	LOAD_UI_T(RtwLabel,"fmnewshop.lbtitle");
+	m_lbPaidType		=	LOAD_UI_T(RtwLabel,"fmnewshop.fmshop.tbctrading.fmcontent1.lbmoney");
+	m_lbMoneyShopBuy	=	LOAD_UI("fmnewshop.fmshop.tbctrading.fmcontent1.lbbuygoldnum");
+	m_lbMoneyShopSell	=	LOAD_UI("fmnewshop.fmshop.tbctrading.fmcontent2.lbbuygoldnum");
+	m_btnOK				=	LOAD_UI_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent1.btnok");
+	m_btnSellOK			=	LOAD_UI_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent2.btnok");
+	m_btnCancel			=	LOAD_UI_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent1.btncancel");
+	m_btnSellCancel		=	LOAD_UI_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent2.btncancel");
+	m_btnRepairAll		=	LOAD_UI_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent1.btnall");
+	m_btnBuyRepairOne	=	LOAD_UI_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent1.btnrepair");
+	m_btnSellRepairOne	=	LOAD_UI_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent2.btnrepair");
+	m_btnSellRepairAll	=	LOAD_UI_T(RtwButton, "fmnewshop.fmshop.tbctrading.fmcontent2.btnall");
+	m_pScrollUp			=	LOAD_UI_T(RtwVScrollBar, "fmnewshop.fmshop.fmsellitem.scrollUp");
+	m_pScrollDown1		=	LOAD_UI_T(RtwVScrollBar, "fmnewshop.fmshop.tbctrading.fmcontent1.fmselfitem.scrollUp");
+	m_pScrollDown2		=	LOAD_UI_T(RtwVScrollBar, "fmnewshop.fmshop.tbctrading.fmcontent2.fmsellitem.scrollUp");
 	m_ptrHoverImage		=	g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
 
 	m_pFrmThis->EvRClick							+=	RTW_CALLBACK(this, UIFormShop, OnRClickRepair);
@@ -59,7 +59,7 @@ UIFormShop::UIFormShop()
 	m_pScrollUp->EvScroll							+=	RTW_CALLBACK(this, UIFormShop, OnScrollUp);
 	m_pScrollDown1->EvScroll						+=	RTW_CALLBACK(this, UIFormShop, OnScrollDown1);
 	m_pScrollDown2->EvScroll						+=	RTW_CALLBACK(this, UIFormShop, OnScrollDown2);
-	RTW_WIDGET("fmnewshop.btnclose")->EvLClick		+=	RTW_CALLBACK(this, UIFormShop, OnCancel);
+	LOAD_UI("fmnewshop.btnclose")->EvLClick		+=	RTW_CALLBACK(this, UIFormShop, OnCancel);
 
 	RtwRect rc = m_pFrmGridsUp->GetFrameRect();
 	int left = rc.Left() +1;
@@ -483,14 +483,14 @@ void UIFormShop::Refresh()
 		if (m_bBuyFromNpc)
 		{
 			m_fPriceRate = itemshop_buy_pricerate;
-			RTW_WIDGET("fmnewshop.fmshop.tbctrading.fmcontent1")->Show();
-			RTW_WIDGET("fmnewshop.fmshop.tbctrading.fmcontent2")->Hide();
+			LOAD_UI("fmnewshop.fmshop.tbctrading.fmcontent1")->Show();
+			LOAD_UI("fmnewshop.fmshop.tbctrading.fmcontent2")->Hide();
 		}
 		else
 		{
 			m_fPriceRate = itemshop_sell_pricerate;
-			RTW_WIDGET("fmnewshop.fmshop.tbctrading.fmcontent1")->Hide();
-			RTW_WIDGET("fmnewshop.fmshop.tbctrading.fmcontent2")->Show();
+			LOAD_UI("fmnewshop.fmshop.tbctrading.fmcontent1")->Hide();
+			LOAD_UI("fmnewshop.fmshop.tbctrading.fmcontent2")->Show();
 		}
 		m_pFrmThis->Show();
 		OnPreDraw();

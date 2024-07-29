@@ -9,15 +9,15 @@ CUIFormLookPlayerShop::CUIFormLookPlayerShop(void)
 :m_PShop(GetWorld()->m_pItemManager)
 {
 	guard;
-	m_pFrmThis				= RTW_WIDGET("fmbuyershop");
-	m_pFrmGridsUp			= RTW_WIDGET("fmbuyershop.frmsell.tabsell.frmitem");
-	m_pFrmGridsDown			= RTW_WIDGET("fmbuyershop.frmbuy.frmcontent");
-	m_lbSellerName			= RTW_WIDGET_T(RtwLabel,"fmbuyershop.lbinput.lbpalyername2.lbplayername");
-	m_tbxShopName			= RTW_WIDGET_T(RtwTextBox,"fmbuyershop.lbinput.lbshopname2.tbxshopname");
+	m_pFrmThis				= LOAD_UI("fmbuyershop");
+	m_pFrmGridsUp			= LOAD_UI("fmbuyershop.frmsell.tabsell.frmitem");
+	m_pFrmGridsDown			= LOAD_UI("fmbuyershop.frmbuy.frmcontent");
+	m_lbSellerName			= LOAD_UI_T(RtwLabel,"fmbuyershop.lbinput.lbpalyername2.lbplayername");
+	m_tbxShopName			= LOAD_UI_T(RtwTextBox,"fmbuyershop.lbinput.lbshopname2.tbxshopname");
 
 	m_tbxShopName->SetEnableInput(false);
-	RTW_WIDGET("fmbuyershop.frmsell.tabsell.btnpet")->Disable();
-	RTW_WIDGET("fmbuyershop.btnshopinfo")->Disable();
+	LOAD_UI("fmbuyershop.frmsell.tabsell.btnpet")->Disable();
+	LOAD_UI("fmbuyershop.btnshopinfo")->Disable();
 
 	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);

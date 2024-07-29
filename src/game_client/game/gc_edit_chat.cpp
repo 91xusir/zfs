@@ -452,7 +452,7 @@ void CEditChat::Receive(SChannelAtom* vpChannel,long vFromRegionID,char vFromNam
 	if (vpChannel->mChannel == SYSTEM_CHANNEL)
 	{
 		//将信息再上到系统信息专用框中
-		RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(vpChannel->mMask,Color,
+		LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(vpChannel->mMask,Color,
 			vpChannel->mDescription.c_str(),vFromName,vMessage);
 	}
 	else if (vpChannel->mChannel == SPEAKER_CHANNEL)

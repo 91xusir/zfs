@@ -149,232 +149,232 @@ UILayerMain::UILayerMain()
 	
 	//g_workspace.Load("ui/ui_layer_main.xml");
 	
-	//m_hotKeyLeft = RTW_WIDGET_T(RtwButton, "fmhotkey.btnhotkeyleft");
+	//m_hotKeyLeft = LOAD_UI_T(RtwButton, "fmhotkey.btnhotkeyleft");
 	//m_hotKeyLeft->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClick_HotKey);
 
-	//m_hotKeyRight = RTW_WIDGET_T(RtwButton, "fmhotkey.btnhotkeyright");
+	//m_hotKeyRight = LOAD_UI_T(RtwButton, "fmhotkey.btnhotkeyright");
 	//m_hotKeyRight->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClick_HotKey);
 
-	m_btnFbTask = RTW_WIDGET_T(RtwButton, "fmsystem.btndupetask");
+	m_btnFbTask = LOAD_UI_T(RtwButton, "fmsystem.btndupetask");
 	m_btnFbTask->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClick_FbTask);
 
-// 	RTW_WIDGET("worldfmfeedback")->ModifyFlags(0,wfInput|wfPick);
-	m_btnAutoBattle = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckbbattle");//for auto    ac.ma
-	m_btnAutoB = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckbautobattle");
-	m_btnAutoPick = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckbpick");
- 	m_btnAutoEatRed = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckbblood");
+// 	LOAD_UI("worldfmfeedback")->ModifyFlags(0,wfInput|wfPick);
+	m_btnAutoBattle = LOAD_UI_T(CUiCheckButton, "fmreborn.ckbbattle");//for auto    ac.ma
+	m_btnAutoB = LOAD_UI_T(CUiCheckButton, "fmreborn.ckbautobattle");
+	m_btnAutoPick = LOAD_UI_T(CUiCheckButton, "fmreborn.ckbpick");
+ 	m_btnAutoEatRed = LOAD_UI_T(CUiCheckButton, "fmreborn.ckbblood");
 	//m_btnAutoEatRed->SetChecked(true);	//heten
 	m_btnAutoEatRed->SetChecked(false);    //change by yz : 待玩家选择
- 	m_btnAutoEatBlue = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckbmana");//blue
+ 	m_btnAutoEatBlue = LOAD_UI_T(CUiCheckButton, "fmreborn.ckbmana");//blue
 	//m_btnAutoEatBlue->SetChecked(true);	//heten
 	m_btnAutoEatBlue->SetChecked(false);   //change by yz : 待玩家选择
-	m_btnAutoHp30 = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckb30hp");
-	m_btnAutoHp60 = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckb60hp");
+	m_btnAutoHp30 = LOAD_UI_T(CUiCheckButton, "fmreborn.ckb30hp");
+	m_btnAutoHp60 = LOAD_UI_T(CUiCheckButton, "fmreborn.ckb60hp");
 	m_btnAutoHp60->SetChecked(true);	//heten
-	m_btnAutoHp90 = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckb90hp");
-	m_btnAutoSellWhite = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckbsellwhite");
-	m_btnAutoSellGreen = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckbsellgreen");
-	m_btnAutoSellBlue = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckbsellblue");
-	m_btnAutoSellGold = RTW_WIDGET_T(CUiCheckButton, "fmreborn.ckbsellgolden");
+	m_btnAutoHp90 = LOAD_UI_T(CUiCheckButton, "fmreborn.ckb90hp");
+	m_btnAutoSellWhite = LOAD_UI_T(CUiCheckButton, "fmreborn.ckbsellwhite");
+	m_btnAutoSellGreen = LOAD_UI_T(CUiCheckButton, "fmreborn.ckbsellgreen");
+	m_btnAutoSellBlue = LOAD_UI_T(CUiCheckButton, "fmreborn.ckbsellblue");
+	m_btnAutoSellGold = LOAD_UI_T(CUiCheckButton, "fmreborn.ckbsellgolden");
  	
-	m_btnAutoStateYes = RTW_WIDGET_T(RtwButton, "forautostate.Yes");				//ac.ma
+	m_btnAutoStateYes = LOAD_UI_T(RtwButton, "forautostate.Yes");				//ac.ma
 	m_btnAutoStateYes->EvLClick += RTW_CALLBACK(this, UILayerMain, OnBtnAutoStateYes);
-	m_btnAutoStateNo = RTW_WIDGET_T(RtwButton, "forautostate.No");				//ac.ma
+	m_btnAutoStateNo = LOAD_UI_T(RtwButton, "forautostate.No");				//ac.ma
 	m_btnAutoStateNo->EvLClick += RTW_CALLBACK(this, UILayerMain, OnBtnAutoStateNo);
 
-	//m_hotKeyPage = RTW_WIDGET("fmhotkey.lbhotkeypage");
-	RTW_WIDGET_T(RtwButton, "fmhp.btnPKmode")->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClicked_PkMode);
+	//m_hotKeyPage = LOAD_UI("fmhotkey.lbhotkeypage");
+	LOAD_UI_T(RtwButton, "fmhp.btnPKmode")->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClicked_PkMode);
 
-	RTW_WIDGET("fmpk.lstPKmode")->EvActivate += RTW_CALLBACK(this, UILayerMain, OnActivateFrmPkMode);
+	LOAD_UI("fmpk.lstPKmode")->EvActivate += RTW_CALLBACK(this, UILayerMain, OnActivateFrmPkMode);
 
-	/*RTW_WIDGET("btnteam")->Hide();
-	RTW_WIDGET("btnteam")->EvLClick+=RTW_CALLBACK(this,UILayerMain,OnClicked_TeamApply);
-	RTW_WIDGET("btnteamoff")->SetText(string("开"));
-	RTW_WIDGET("btnteamoff")->Hide();
-	RTW_WIDGET("btnteamoff")->EvLClick+=RTW_CALLBACK(this,UILayerMain,OnClicked_TeamOff);*/
+	/*LOAD_UI("btnteam")->Hide();
+	LOAD_UI("btnteam")->EvLClick+=RTW_CALLBACK(this,UILayerMain,OnClicked_TeamApply);
+	LOAD_UI("btnteamoff")->SetText(string("开"));
+	LOAD_UI("btnteamoff")->Hide();
+	LOAD_UI("btnteamoff")->EvLClick+=RTW_CALLBACK(this,UILayerMain,OnClicked_TeamOff);*/
 	char hotkey1[30];
 	for (int i = 0; i < 10; ++i)
 	{
 		rt2_sprintf(hotkey1,"fmhotkey.lbhotkey%d",i+1);
-		m_hotKeyAlias[i] = RTW_WIDGET_T(RtwAliasButton, hotkey1);
+		m_hotKeyAlias[i] = LOAD_UI_T(RtwAliasButton, hotkey1);
 		m_hotKeyAlias[i]->ModifyFlag(wfDragOut | wfHint | wfVisible | wfDClick | wfDragIn | wfGrabMouse,0);
 
 		rt2_sprintf(hotkey1,"fmshortcut_bar1.lbhotkey%d",i+1);
-		m_hotKeyAlias[i+10] = RTW_WIDGET_T(RtwAliasButton, hotkey1);
+		m_hotKeyAlias[i+10] = LOAD_UI_T(RtwAliasButton, hotkey1);
 		m_hotKeyAlias[i+10]->ModifyFlag(wfDragOut | wfHint | wfVisible | wfDClick | wfDragIn | wfGrabMouse,0);
 
 		rt2_sprintf(hotkey1,"fmshortcut_bar2.lbhotkey%d",i+1);
-		m_hotKeyAlias[i+20] = RTW_WIDGET_T(RtwAliasButton, hotkey1);
+		m_hotKeyAlias[i+20] = LOAD_UI_T(RtwAliasButton, hotkey1);
 		m_hotKeyAlias[i+20]->ModifyFlag(wfDragOut | wfHint | wfVisible | wfDClick | wfDragIn | wfGrabMouse,0);
 	}
 	
-//	m_hotKeyButton = RTW_WIDGET_T(RtwAliasButton, "fmhotkey.lbhotkeybutton");
+//	m_hotKeyButton = LOAD_UI_T(RtwAliasButton, "fmhotkey.lbhotkeybutton");
 		
-    RTW_WIDGET("fmsystem.btnsyschar")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_System_Char);
-    RTW_WIDGET("fmsystem.btnsysitem")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_PlayerItems);
-    RTW_WIDGET("fmsystem.btnsysskill")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnClicked_System_Skill);
-    RTW_WIDGET("fmsystem.btnsyslist")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_HeroList);
-	RTW_WIDGET("fmshop.btnsysshop")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_ShopCenter);	//heten
+    LOAD_UI("fmsystem.btnsyschar")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_System_Char);
+    LOAD_UI("fmsystem.btnsysitem")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_PlayerItems);
+    LOAD_UI("fmsystem.btnsysskill")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnClicked_System_Skill);
+    LOAD_UI("fmsystem.btnsyslist")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_HeroList);
+	LOAD_UI("fmshop.btnsysshop")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_ShopCenter);	//heten
 
-	RTW_WIDGET("fmminimap.btnsysmap")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_System_Map);//gao 2010.1.5 内容取消
+	LOAD_UI("fmminimap.btnsysmap")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_System_Map);//gao 2010.1.5 内容取消
 
-	RTW_WIDGET("fmsystem.btnsystask")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_Attribute_task);
+	LOAD_UI("fmsystem.btnsystask")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_Attribute_task);
 
-	RTW_WIDGET("fmsystem.btnsysbattle")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnLClicked_System_Battle);
-	RTW_WIDGET("fmsystem.btnpet")->EvLClick			+= RTW_CALLBACK(this, UILayerMain, OnButtonPetDown);
-	RTW_WIDGET("fmsystem.btnbangpai")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_Union);
+	LOAD_UI("fmsystem.btnsysbattle")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnLClicked_System_Battle);
+	LOAD_UI("fmsystem.btnpet")->EvLClick			+= RTW_CALLBACK(this, UILayerMain, OnButtonPetDown);
+	LOAD_UI("fmsystem.btnbangpai")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_Union);
 
 	/* gao 2009.12.24
 	新添按钮事件的添加
 	*/
-	RTW_WIDGET("fmsystem.btnteam")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_TeamButton);
+	LOAD_UI("fmsystem.btnteam")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_TeamButton);
 	/* end */
 
     // fmsystem.btnsysfriend 在 gc_friend_with_ui.cpp (49)
-	RTW_WIDGET("fmsystem.btnsystem")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_System_System);
+	LOAD_UI("fmsystem.btnsystem")->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_System_System);
 
-	RTW_WIDGET("fmsyssetting.btnsysset")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnClicked_SysSetting_SysSet);
-	RTW_WIDGET("fmsyssetting.btnrestart")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnClicked_SysSetting_Restart);
-	RTW_WIDGET("fmsyssetting.btnexit")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnClicked_SysSetting_Exit);
-	RTW_WIDGET("fmexitconfirm.btnconfirm")->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClicked_ExitConfirm_Confirm);
-	RTW_WIDGET("fmexitconfirm.btncancel")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnClicked_ExitConfirm_Cancel);
+	LOAD_UI("fmsyssetting.btnsysset")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnClicked_SysSetting_SysSet);
+	LOAD_UI("fmsyssetting.btnrestart")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnClicked_SysSetting_Restart);
+	LOAD_UI("fmsyssetting.btnexit")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnClicked_SysSetting_Exit);
+	LOAD_UI("fmexitconfirm.btnconfirm")->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClicked_ExitConfirm_Confirm);
+	LOAD_UI("fmexitconfirm.btncancel")->EvLClick	+= RTW_CALLBACK(this, UILayerMain, OnClicked_ExitConfirm_Cancel);
 	
     rt2_snprintf(g_strStaticBuffer+100, 2048-100, R(G_VERSION), GetGameVersion());
-    RTW_WIDGET("fmsyssetting.lbver")->SetText(std::string(g_strStaticBuffer+100));
+    LOAD_UI("fmsyssetting.lbver")->SetText(std::string(g_strStaticBuffer+100));
 
-	m_formSysSetting = RTW_WIDGET("fmsyssetting");
+	m_formSysSetting = LOAD_UI("fmsyssetting");
 	//m_formSysSetting->EvKey += RTW_CALLBACK(m_formSysSetting, RtwWidget, DefaultKeyDown);
 
 	// PopupMenu
-	RTW_WIDGET_T(RtwPopupMenu, "UserMenu")->EvMenuSelect    += RTW_CALLBACK(this, UILayerMain, OnMenuUser);
-	//RTW_WIDGET_T(RtwPopupMenu, "UserMenuByname")->EvMenuSelect    += RTW_CALLBACK(this, UILayerMain, OnMenuUserByName);
-    RTW_WIDGET_T(RtwPopupMenu, "MonsterMenu")->EvMenuSelect += RTW_CALLBACK(this, UILayerMain, OnMenuMonster);
-    RTW_WIDGET_T(RtwPopupMenu, "PlayerMenu")->EvMenuSelect  += RTW_CALLBACK(this, UILayerMain, OnMenuPlayer);
-    RTW_WIDGET_T(RtwPopupMenu, "PetMenu")->EvMenuSelect     += RTW_CALLBACK(this, UILayerMain, OnMenuPet);
-    RTW_WIDGET_T(RtwPopupMenu, "NpcMenu")->EvMenuSelect     += RTW_CALLBACK(this, UILayerMain, OnMenuNpc);
-    RTW_WIDGET_T(RtwPopupMenu, "SystemMenu")->EvMenuSelect  += RTW_CALLBACK(this, UILayerMain, OnMenuSystem);
+	LOAD_UI_T(RtwPopupMenu, "UserMenu")->EvMenuSelect    += RTW_CALLBACK(this, UILayerMain, OnMenuUser);
+	//LOAD_UI_T(RtwPopupMenu, "UserMenuByname")->EvMenuSelect    += RTW_CALLBACK(this, UILayerMain, OnMenuUserByName);
+    LOAD_UI_T(RtwPopupMenu, "MonsterMenu")->EvMenuSelect += RTW_CALLBACK(this, UILayerMain, OnMenuMonster);
+    LOAD_UI_T(RtwPopupMenu, "PlayerMenu")->EvMenuSelect  += RTW_CALLBACK(this, UILayerMain, OnMenuPlayer);
+    LOAD_UI_T(RtwPopupMenu, "PetMenu")->EvMenuSelect     += RTW_CALLBACK(this, UILayerMain, OnMenuPet);
+    LOAD_UI_T(RtwPopupMenu, "NpcMenu")->EvMenuSelect     += RTW_CALLBACK(this, UILayerMain, OnMenuNpc);
+    LOAD_UI_T(RtwPopupMenu, "SystemMenu")->EvMenuSelect  += RTW_CALLBACK(this, UILayerMain, OnMenuSystem);
 	//人物的界面
-	//m_char=RTW_WIDGET("fmcharall");
+	//m_char=LOAD_UI("fmcharall");
 	//m_char->Hide();
-	m_fmsysbattle=RTW_WIDGET("fmreborn");
+	m_fmsysbattle=LOAD_UI("fmreborn");
 	//通用一级界面和二级界面
-	m_formHelp = RTW_WIDGET("fmhtmlhelp");
-    RTW_WIDGET("lbrequest")->ModifyFlag(wfInput,0);
+	m_formHelp = LOAD_UI("fmhtmlhelp");
+    LOAD_UI("lbrequest")->ModifyFlag(wfInput,0);
 	RtwImage *img = g_workspace.getImageFactory()->createImage("ui_texture\\Tips_request.gif");
 	if(img)
-		RTW_WIDGET("lbrequest")->SetBackgroundImage(img);
-	RTW_WIDGET("lbrequest")->Hide();
-	m_viewHelp = RTW_WIDGET_T(RtwHtmlView, "fmhtmlhelp.fmhtml.viewright");
+		LOAD_UI("lbrequest")->SetBackgroundImage(img);
+	LOAD_UI("lbrequest")->Hide();
+	m_viewHelp = LOAD_UI_T(RtwHtmlView, "fmhtmlhelp.fmhtml.viewright");
 	m_viewHelp->ModifyFlags(0,wfKeyboardEvent);
 	m_viewHelp->SetEnableInput(false);
 	m_viewHelp->EvLClick += RTW_CALLBACK(this, UILayerMain, OnHtmlAction_HtmlHelpView);
 	m_viewHelp->SetScrollBarV(true);
 	m_viewHelp->SetAutoScrollV(true);
-	m_btnClose = RTW_WIDGET_T(RtwButton, "fmhtmlhelp.btnswitch");
+	m_btnClose = LOAD_UI_T(RtwButton, "fmhtmlhelp.btnswitch");
 	m_btnClose->EvLClick += RTW_CALLBACK(this, UILayerMain, OnHideHelp);
 
-	m_formHelp2 = RTW_WIDGET("fmhtmlhelp2");
+	m_formHelp2 = LOAD_UI("fmhtmlhelp2");
 
-	m_viewHelp2 = RTW_WIDGET_T(RtwHtmlView, "fmhtmlhelp2.fmhtml.viewright");
+	m_viewHelp2 = LOAD_UI_T(RtwHtmlView, "fmhtmlhelp2.fmhtml.viewright");
 	m_viewHelp2->ModifyFlags(0,wfKeyboardEvent);
 	m_viewHelp2->SetEnableInput(false);
 	m_viewHelp2->EvLClick += RTW_CALLBACK(this, UILayerMain, OnHtmlAction_HtmlHelpView);
 	m_viewHelp2->SetScrollBarV(true);
 	m_viewHelp2->SetAutoScrollV(true);
-	m_btnClose2 = RTW_WIDGET_T(RtwButton, "fmhtmlhelp2.btnswitch");
+	m_btnClose2 = LOAD_UI_T(RtwButton, "fmhtmlhelp2.btnswitch");
 	m_btnClose2->EvLClick += RTW_CALLBACK(this, UILayerMain, OnHideHelp2);
 
-	m_btnAccept = RTW_WIDGET_T(RtwButton, "fmhtmlhelp2.btnaccept");
+	m_btnAccept = LOAD_UI_T(RtwButton, "fmhtmlhelp2.btnaccept");
 	m_btnAccept->EvLClick           += RTW_CALLBACK(this, UILayerMain, OnClicked_AcceptTask);
-	m_btnCancel = RTW_WIDGET_T(RtwButton, "fmhtmlhelp2.btncancel");
+	m_btnCancel = LOAD_UI_T(RtwButton, "fmhtmlhelp2.btncancel");
 	m_btnCancel->EvLClick           += RTW_CALLBACK(this, UILayerMain, OnClicked_CancelTask);
 
-	m_formHelp3 = RTW_WIDGET("fmhtmlhelp3");
+	m_formHelp3 = LOAD_UI("fmhtmlhelp3");
 
-	m_viewHelp3 = RTW_WIDGET_T(RtwHtmlView, "fmhtmlhelp3.fmhtml.viewright");
+	m_viewHelp3 = LOAD_UI_T(RtwHtmlView, "fmhtmlhelp3.fmhtml.viewright");
 	m_viewHelp3->ModifyFlags(0,wfKeyboardEvent);
 	m_viewHelp3->SetEnableInput(false);
 	m_viewHelp3->EvLClick += RTW_CALLBACK(this, UILayerMain, OnHtmlAction_HtmlHelpView);
 	m_viewHelp3->SetScrollBarV(true);
 	m_viewHelp3->SetAutoScrollV(true);
-	m_btnClose3 = RTW_WIDGET_T(RtwButton, "fmhtmlhelp3.btnswitch");
+	m_btnClose3 = LOAD_UI_T(RtwButton, "fmhtmlhelp3.btnswitch");
 	m_btnClose3->EvLClick += RTW_CALLBACK(this, UILayerMain, OnHideHelp3);
 
-	m_btnFinished = RTW_WIDGET_T(RtwButton, "fmhtmlhelp3.btnaccept");
+	m_btnFinished = LOAD_UI_T(RtwButton, "fmhtmlhelp3.btnaccept");
 	m_btnFinished->EvLClick           += RTW_CALLBACK(this, UILayerMain, OnClicked_FinishTask);
-	m_btnCancelFinished = RTW_WIDGET_T(RtwButton, "fmhtmlhelp3.btncancel");
+	m_btnCancelFinished = LOAD_UI_T(RtwButton, "fmhtmlhelp3.btncancel");
 	m_btnCancelFinished->EvLClick           += RTW_CALLBACK(this, UILayerMain, OnClicked_CancelFinishTask);
 	//主线任务
-	m_formMainLineTask = RTW_WIDGET("fmmainstory");
-	m_taskTree = RTW_WIDGET_T(RtwTree, "fmmainstory.treetask");
+	m_formMainLineTask = LOAD_UI("fmmainstory");
+	m_taskTree = LOAD_UI_T(RtwTree, "fmmainstory.treetask");
 	m_taskTree->ModifyFlag(0, wfGrabMouse | wfMouseMove);
-	m_viewDesc = RTW_WIDGET_T(RtwHtmlView, "fmmainstory.lbpaper.writing");
+	m_viewDesc = LOAD_UI_T(RtwHtmlView, "fmmainstory.lbpaper.writing");
 	m_viewDesc->ModifyFlags(wfGrabMouse,0);
 	m_viewDesc->SetEnableInput(false);
 	m_viewDesc->EvLClick += RTW_CALLBACK(this, UILayerMain, OnHtmlAction_HtmlHelpView);
-	m_formBtn1 = RTW_WIDGET("fmmainstory.lbpaper.fmbutton1");
-	m_formBtn2 = RTW_WIDGET("fmmainstory.lbpaper.fmbutton2");
-	m_btnMainAccept = RTW_WIDGET_T(RtwButton, "fmmainstory.lbpaper.fmbutton1.btnyes");
+	m_formBtn1 = LOAD_UI("fmmainstory.lbpaper.fmbutton1");
+	m_formBtn2 = LOAD_UI("fmmainstory.lbpaper.fmbutton2");
+	m_btnMainAccept = LOAD_UI_T(RtwButton, "fmmainstory.lbpaper.fmbutton1.btnyes");
 	m_btnMainAccept->EvLClick   += RTW_CALLBACK(this, UILayerMain, OnClicked_AcceptMainTask);
-	m_btnMainCancel = RTW_WIDGET_T(RtwButton, "fmmainstory.lbpaper.fmbutton1.btnno");
+	m_btnMainCancel = LOAD_UI_T(RtwButton, "fmmainstory.lbpaper.fmbutton1.btnno");
 	m_btnMainCancel->EvLClick   += RTW_CALLBACK(this, UILayerMain, OnClicked_CancelMainTask);
-	m_btnMainFinished = RTW_WIDGET_T(RtwButton, "fmmainstory.lbpaper.fmbutton2.btnyes");
+	m_btnMainFinished = LOAD_UI_T(RtwButton, "fmmainstory.lbpaper.fmbutton2.btnyes");
 	m_btnMainFinished->EvLClick   += RTW_CALLBACK(this, UILayerMain, OnClicked_FinishMainTask);
-	m_btnMainCancelFinished = RTW_WIDGET_T(RtwButton, "fmmainstory.lbpaper.fmbutton2.btnno");
+	m_btnMainCancelFinished = LOAD_UI_T(RtwButton, "fmmainstory.lbpaper.fmbutton2.btnno");
 	m_btnMainCancelFinished->EvLClick   += RTW_CALLBACK(this, UILayerMain, OnClicked_CancelFinishMainTask);
 	//新手指引
 	//气泡
-	m_formGuide1 = RTW_WIDGET("fmguide1");
-	m_viewGuide1 = RTW_WIDGET_T(RtwHtmlView, "fmguide1.htmlguide1");
+	m_formGuide1 = LOAD_UI("fmguide1");
+	m_viewGuide1 = LOAD_UI_T(RtwHtmlView, "fmguide1.htmlguide1");
 	m_viewGuide1->ModifyFlag(0, wfGrabMouse | wfMouseMove);
-	m_btnGuideClose1 = RTW_WIDGET_T(RtwButton, "fmguide1.btnhide");
+	m_btnGuideClose1 = LOAD_UI_T(RtwButton, "fmguide1.btnhide");
 	m_btnGuideClose1->EvLClick += RTW_CALLBACK(this, UILayerMain, HideGuideAllForm);
 	//气泡上
-	m_formGuide2 = RTW_WIDGET("fmguide2");
-	m_viewGuide2 = RTW_WIDGET_T(RtwHtmlView, "fmguide2.htmlguide2");
+	m_formGuide2 = LOAD_UI("fmguide2");
+	m_viewGuide2 = LOAD_UI_T(RtwHtmlView, "fmguide2.htmlguide2");
 	m_formGuide2->ModifyFlag(0, wfGrabMouse | wfMouseMove);
 	//气泡下
-	m_formGuide3 = RTW_WIDGET("fmguide3");
-	m_viewGuide3 = RTW_WIDGET_T(RtwHtmlView, "fmguide3.htmlguide3");
+	m_formGuide3 = LOAD_UI("fmguide3");
+	m_viewGuide3 = LOAD_UI_T(RtwHtmlView, "fmguide3.htmlguide3");
 	m_formGuide3->ModifyFlag(0, wfGrabMouse | wfMouseMove);
 	//气泡右
-	m_formGuide4 = RTW_WIDGET("fmguide4");
-	m_viewGuide4 = RTW_WIDGET_T(RtwHtmlView, "fmguide4.htmlguide4");
+	m_formGuide4 = LOAD_UI("fmguide4");
+	m_viewGuide4 = LOAD_UI_T(RtwHtmlView, "fmguide4.htmlguide4");
 	m_formGuide4->ModifyFlag(0, wfGrabMouse | wfMouseMove);
 	//气泡左
-	m_formGuide5 = RTW_WIDGET("fmguide5");
-	m_viewGuide5 = RTW_WIDGET_T(RtwHtmlView, "fmguide5.htmlguide5");
+	m_formGuide5 = LOAD_UI("fmguide5");
+	m_viewGuide5 = LOAD_UI_T(RtwHtmlView, "fmguide5.htmlguide5");
 	m_formGuide5->ModifyFlag(0, wfGrabMouse | wfMouseMove);
 	//脚本模块显示消息
-	m_formMessageBox1 = RTW_WIDGET("fmhtmlmessage1");
-	m_viewMessage1 = RTW_WIDGET_T(RtwHtmlView, "fmhtmlmessage1.fmhtml.viewright");
+	m_formMessageBox1 = LOAD_UI("fmhtmlmessage1");
+	m_viewMessage1 = LOAD_UI_T(RtwHtmlView, "fmhtmlmessage1.fmhtml.viewright");
 	m_viewMessage1->ModifyFlags(0,wfKeyboardEvent);
 	m_viewMessage1->SetEnableInput(false);
 	m_viewMessage1->EvLClick += RTW_CALLBACK(this, UILayerMain, OnHtmlAction_HtmlHelpView);
-	m_btnMessageOK1 = RTW_WIDGET_T(RtwButton, "fmhtmlmessage1.btnaccept");
+	m_btnMessageOK1 = LOAD_UI_T(RtwButton, "fmhtmlmessage1.btnaccept");
 	m_btnMessageOK1->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClicked_ShowScript1);
-	m_btnMessageCancel1 = RTW_WIDGET_T(RtwButton, "fmhtmlmessage1.btncancel");
+	m_btnMessageCancel1 = LOAD_UI_T(RtwButton, "fmhtmlmessage1.btncancel");
 	m_btnMessageCancel1->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClicked_CancelScript1);
 
-	m_formMessageBox2 = RTW_WIDGET("fmhtmlmessage2");
-	m_viewMessage2 = RTW_WIDGET_T(RtwHtmlView, "fmhtmlmessage2.fmhtml.viewright");
+	m_formMessageBox2 = LOAD_UI("fmhtmlmessage2");
+	m_viewMessage2 = LOAD_UI_T(RtwHtmlView, "fmhtmlmessage2.fmhtml.viewright");
 	m_viewMessage2->ModifyFlags(0,wfKeyboardEvent);
 	m_viewMessage2->SetEnableInput(false);
 	m_viewMessage2->EvLClick += RTW_CALLBACK(this, UILayerMain, OnHtmlAction_HtmlHelpView);
-	m_btnMessageOK2 = RTW_WIDGET_T(RtwButton, "fmhtmlmessage2.btnaccept");
+	m_btnMessageOK2 = LOAD_UI_T(RtwButton, "fmhtmlmessage2.btnaccept");
 	m_btnMessageOK2->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClicked_ShowScript2);
 
 	//活动相关
-	m_LableTimer = RTW_WIDGET_T(RtwLabel, "lbtask");
-	m_formSceneInfo = RTW_WIDGET_T(RtwForm, "fmact");
-	m_LableSceneInfo = RTW_WIDGET_T(RtwLabel, "fmact.lbbattle");
-	m_formSceneInfo1 = RTW_WIDGET_T(RtwForm, "fmact1");
-	m_LableSceneInfo11 = RTW_WIDGET_T(RtwLabel, "fmact1.lbbattle");
-	m_LableSceneInfo12 = RTW_WIDGET_T(RtwLabel, "fmact1.lbbattle1");
-	m_formSceneInfo2 = RTW_WIDGET_T(RtwForm, "fmact2");
-	m_LableSceneInfo21 = RTW_WIDGET_T(RtwLabel, "fmact2.lbbattle");
-	m_LableSceneInfo22 = RTW_WIDGET_T(RtwLabel, "fmact2.lbbattle1");
-	m_LableSceneInfo23 = RTW_WIDGET_T(RtwLabel, "fmact2.lbbattle2");
+	m_LableTimer = LOAD_UI_T(RtwLabel, "lbtask");
+	m_formSceneInfo = LOAD_UI_T(RtwForm, "fmact");
+	m_LableSceneInfo = LOAD_UI_T(RtwLabel, "fmact.lbbattle");
+	m_formSceneInfo1 = LOAD_UI_T(RtwForm, "fmact1");
+	m_LableSceneInfo11 = LOAD_UI_T(RtwLabel, "fmact1.lbbattle");
+	m_LableSceneInfo12 = LOAD_UI_T(RtwLabel, "fmact1.lbbattle1");
+	m_formSceneInfo2 = LOAD_UI_T(RtwForm, "fmact2");
+	m_LableSceneInfo21 = LOAD_UI_T(RtwLabel, "fmact2.lbbattle");
+	m_LableSceneInfo22 = LOAD_UI_T(RtwLabel, "fmact2.lbbattle1");
+	m_LableSceneInfo23 = LOAD_UI_T(RtwLabel, "fmact2.lbbattle2");
 
 	m_btnAutoBattle->EvLClick		+= RTW_CALLBACK(this, UILayerMain, OnClicked_AutoBattle);		//for  auto    ac.ma
 	m_btnAutoB->EvLClick			+= RTW_CALLBACK(this,UILayerMain,OnClicked_AutoFight);
@@ -391,50 +391,50 @@ UILayerMain::UILayerMain()
 	
 	
 	//新功能
-	//m_fmRage			= RTW_WIDGET("fmrage");
-	//m_btnRage			= RTW_WIDGET_T(RtwButton, "fmhp.rage");  //gao 2010.1.5 游戏中未用到的变量
-//	m_proRage			= RTW_WIDGET_T(RtwProgressBar,"fmhp.barrage");
+	//m_fmRage			= LOAD_UI("fmrage");
+	//m_btnRage			= LOAD_UI_T(RtwButton, "fmhp.rage");  //gao 2010.1.5 游戏中未用到的变量
+//	m_proRage			= LOAD_UI_T(RtwProgressBar,"fmhp.barrage");
 	//m_proRage->SetDirection(2);
 
-	m_playerForm		= RTW_WIDGET("fmhp");
-	m_playerLevel		= RTW_WIDGET("fmhp.lblv");
-	m_playerName		= RTW_WIDGET("fmhp.lbname");
-	m_playerHp			= RTW_WIDGET("fmhp.lbhpcount");
-	m_playerHpBar		= RTW_WIDGET_T(RtwProgressBar, "fmhp.barhp");
-	m_playerMp			= RTW_WIDGET("fmhp.lbmpcount");
-	m_playerMpBar		= RTW_WIDGET_T(RtwProgressBar, "fmhp.barmp");
+	m_playerForm		= LOAD_UI("fmhp");
+	m_playerLevel		= LOAD_UI("fmhp.lblv");
+	m_playerName		= LOAD_UI("fmhp.lbname");
+	m_playerHp			= LOAD_UI("fmhp.lbhpcount");
+	m_playerHpBar		= LOAD_UI_T(RtwProgressBar, "fmhp.barhp");
+	m_playerMp			= LOAD_UI("fmhp.lbmpcount");
+	m_playerMpBar		= LOAD_UI_T(RtwProgressBar, "fmhp.barmp");
 	/* gao 2009.12.24
 	修改经验条设置*/
-//	m_playerExp			= RTW_WIDGET("fmhp.lbexpcount");
-	m_playerExpBar		= RTW_WIDGET_T(RtwProgressBar, "fmhotkey.barexp");
+//	m_playerExp			= LOAD_UI("fmhp.lbexpcount");
+	m_playerExpBar		= LOAD_UI_T(RtwProgressBar, "fmhotkey.barexp");
 	/* end */
 
-	//m_btnRemind[0]		= RTW_WIDGET_T(RtwButton, "btninfo3");
+	//m_btnRemind[0]		= LOAD_UI_T(RtwButton, "btninfo3");
 	//m_btnRemind[0]->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClicked_RemindIcon);
-	//m_btnRemind[1]		= RTW_WIDGET_T(RtwButton, "btninfo2");
+	//m_btnRemind[1]		= LOAD_UI_T(RtwButton, "btninfo2");
 	//m_btnRemind[1]->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClicked_RemindIcon);
-	//m_btnRemind[2]		= RTW_WIDGET_T(RtwButton, "btninfo1");
+	//m_btnRemind[2]		= LOAD_UI_T(RtwButton, "btninfo1");
 	//m_btnRemind[2]->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClicked_RemindIcon);
 
     // 心情动作 Begin
-    RTW_WIDGET(g_storedIcon[ 8])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)1);
-	RTW_WIDGET(g_storedIcon[ 8])->SetParam1((void *)1);
-    RTW_WIDGET(g_storedIcon[ 9])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)2);
-	RTW_WIDGET(g_storedIcon[ 9])->SetParam1((void *)2);
-    RTW_WIDGET(g_storedIcon[10])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)3);
-	RTW_WIDGET(g_storedIcon[10])->SetParam1((void *)3);
-    RTW_WIDGET(g_storedIcon[11])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)4);
-	RTW_WIDGET(g_storedIcon[11])->SetParam1((void *)4);
-    RTW_WIDGET(g_storedIcon[12])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)5);
-	RTW_WIDGET(g_storedIcon[12])->SetParam1((void *)5);
-    RTW_WIDGET(g_storedIcon[13])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)6);
-	RTW_WIDGET(g_storedIcon[13])->SetParam1((void *)6);
-    RTW_WIDGET(g_storedIcon[14])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)7);
-	RTW_WIDGET(g_storedIcon[14])->SetParam1((void *)7);
+    LOAD_UI(g_storedIcon[ 8])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)1);
+	LOAD_UI(g_storedIcon[ 8])->SetParam1((void *)1);
+    LOAD_UI(g_storedIcon[ 9])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)2);
+	LOAD_UI(g_storedIcon[ 9])->SetParam1((void *)2);
+    LOAD_UI(g_storedIcon[10])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)3);
+	LOAD_UI(g_storedIcon[10])->SetParam1((void *)3);
+    LOAD_UI(g_storedIcon[11])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)4);
+	LOAD_UI(g_storedIcon[11])->SetParam1((void *)4);
+    LOAD_UI(g_storedIcon[12])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)5);
+	LOAD_UI(g_storedIcon[12])->SetParam1((void *)5);
+    LOAD_UI(g_storedIcon[13])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)6);
+	LOAD_UI(g_storedIcon[13])->SetParam1((void *)6);
+    LOAD_UI(g_storedIcon[14])->EvLClick += RTW_CALLBACK_1(this, UILayerMain, OnFunAction, (void*)7);
+	LOAD_UI(g_storedIcon[14])->SetParam1((void *)7);
 
 	//聊天窗中连接的悬浮窗口
- 	m_fmhyperLinkInChat = RTW_WIDGET("fmhyperLink");
- 	m_htmlviewLink		= RTW_WIDGET_T(RtwHtmlView, "fmhyperLink.htmlhint");
+ 	m_fmhyperLinkInChat = LOAD_UI("fmhyperLink");
+ 	m_htmlviewLink		= LOAD_UI_T(RtwHtmlView, "fmhyperLink.htmlhint");
  	m_htmlviewLink->SetEnableInput(false);
  	m_htmlviewLink->SetAutoSizeV(true);
 	//end
@@ -442,11 +442,11 @@ UILayerMain::UILayerMain()
 	//倒计时奖励
 	//begin
 	m_nCountDownMillisecond		= 0;
-	m_fmCountDown				= RTW_WIDGET("fmTimer");
-	m_lblTitle					= RTW_WIDGET_T(RtwLabel, "fmTimer.lbTile");
-	m_lblCountDownConditionText = RTW_WIDGET_T(RtwLabel, "fmTimer.lbTarget1");
-	m_lblCountDown				= RTW_WIDGET_T(RtwLabel, "fmTimer.lbTime");
-	m_lblCountDownText			= RTW_WIDGET_T(RtwLabel, "fmTimer.lbTime1");
+	m_fmCountDown				= LOAD_UI("fmTimer");
+	m_lblTitle					= LOAD_UI_T(RtwLabel, "fmTimer.lbTile");
+	m_lblCountDownConditionText = LOAD_UI_T(RtwLabel, "fmTimer.lbTarget1");
+	m_lblCountDown				= LOAD_UI_T(RtwLabel, "fmTimer.lbTime");
+	m_lblCountDownText			= LOAD_UI_T(RtwLabel, "fmTimer.lbTime1");
 
 	m_lblTitle->SetTextColor(RtwPixel(0xFFFFEFD5));
 	m_lblCountDownConditionText->SetTextColor(RtwPixel(0xffE0FFFF));
@@ -577,7 +577,7 @@ UILayerMain::UILayerMain()
     m_viewHelp->SetUserData(0);
     m_formHelp->EvHide += RTW_CALLBACK_F(OnHtmlViewHide);
     g_workspace.SetSysEditName("fmdialg.fmtxtdialog.txtdialog");// add by fancui for system edit @2005-04-27
-	RTW_WIDGET("fmBuff")->ModifyFlags(0,wfKeyboardEvent);//人物状态buffer条是不应该被active 的窗口
+	LOAD_UI("fmBuff")->ModifyFlags(0,wfKeyboardEvent);//人物状态buffer条是不应该被active 的窗口
 
 	/* gao 2010.1.13
 	读取游戏的聊天输入以及显示
@@ -741,9 +741,9 @@ void UILayerMain::OnClicked_TeamButton(RtwWidget* vpSender, RtwEventDelegate* e)
 	//{
 	//	//
 	//	
-	//	RTW_WIDGET_T(RtwTab,"fmteam.fmcontent.tbcteam")->SetSelectedItem(1);
-	//	/*RTW_WIDGET("fmteam.fmcontent.tbcteam.btnmembers")->Disable();
-	//	RTW_WIDGET("fmteam.fmcontent.tbcteam.btnrequest")->Disable();*/
+	//	LOAD_UI_T(RtwTab,"fmteam.fmcontent.tbcteam")->SetSelectedItem(1);
+	//	/*LOAD_UI("fmteam.fmcontent.tbcteam.btnmembers")->Disable();
+	//	LOAD_UI("fmteam.fmcontent.tbcteam.btnrequest")->Disable();*/
 	//	m_formTeam
 	//}
 	//else 
@@ -785,24 +785,24 @@ void UILayerMain::DoFrame()
 	{
 		if(tran < 0.6)
 		{
-			RTW_WIDGET("fmshortcut_bar1")->SetTransparency(tran);
-			if(RTW_WIDGET("fmshortcut_bar2")->IsVisible())
-				RTW_WIDGET("fmshortcut_bar2")->SetTransparency(tran);
+			LOAD_UI("fmshortcut_bar1")->SetTransparency(tran);
+			if(LOAD_UI("fmshortcut_bar2")->IsVisible())
+				LOAD_UI("fmshortcut_bar2")->SetTransparency(tran);
 			char hotKeyLabel[50];
 			for(size_t i = 0;i < 10;++i)
 			{
 				rt2_sprintf(hotKeyLabel,"fmshortcut_bar1.lbf%d",i+1);
 				if(m_hotKeyAlias[i+10]->GetButton())
 				{
-					RTW_WIDGET(hotKeyLabel)->SetTransparency(1.f);
+					LOAD_UI(hotKeyLabel)->SetTransparency(1.f);
 					m_hotKeyAlias[i+10]->SetTransparency(1.f);
 				}
-				if(RTW_WIDGET("fmshortcut_bar2")->IsVisible())
+				if(LOAD_UI("fmshortcut_bar2")->IsVisible())
 				{
 					rt2_sprintf(hotKeyLabel,"fmshortcut_bar2.lbf%d",i+1);
 					if(m_hotKeyAlias[i+20]->GetButton())
 					{
-						RTW_WIDGET(hotKeyLabel)->SetTransparency(1.f);
+						LOAD_UI(hotKeyLabel)->SetTransparency(1.f);
 						m_hotKeyAlias[i+20]->SetTransparency(1.f);
 					}
 				}
@@ -811,24 +811,24 @@ void UILayerMain::DoFrame()
 		}
 	}else
 	{
-		RTW_WIDGET("fmshortcut_bar1")->SetTransparency(tran);
-		if(RTW_WIDGET("fmshortcut_bar2")->IsVisible())
-			RTW_WIDGET("fmshortcut_bar2")->SetTransparency(tran);
+		LOAD_UI("fmshortcut_bar1")->SetTransparency(tran);
+		if(LOAD_UI("fmshortcut_bar2")->IsVisible())
+			LOAD_UI("fmshortcut_bar2")->SetTransparency(tran);
 		char hotKeyLabel[50];
 		for(size_t i = 0;i < 10;++i)
 		{
 			rt2_sprintf(hotKeyLabel,"fmshortcut_bar1.lbf%d",i+1);
 			if(m_hotKeyAlias[i+10]->GetButton())
 			{
-				RTW_WIDGET(hotKeyLabel)->SetTransparency(1.f);
+				LOAD_UI(hotKeyLabel)->SetTransparency(1.f);
 				m_hotKeyAlias[i+10]->SetTransparency(1.f);
 			}
-			if(RTW_WIDGET("fmshortcut_bar2")->IsVisible())
+			if(LOAD_UI("fmshortcut_bar2")->IsVisible())
 			{
 				rt2_sprintf(hotKeyLabel,"fmshortcut_bar2.lbf%d",i+1);
 				if(m_hotKeyAlias[i+20]->GetButton())
 				{
-					RTW_WIDGET(hotKeyLabel)->SetTransparency(1.f);
+					LOAD_UI(hotKeyLabel)->SetTransparency(1.f);
 					m_hotKeyAlias[i+20]->SetTransparency(1.f);
 				}
 			}
@@ -883,7 +883,7 @@ bool UILayerMain::Createheadimage(GcPlayer*  m_pPlayer)
 // 	SHeadModel pModel;
 // 	if(g_TableHeadModel.GetHeadModelByID(m_pPlayer->m_core.HeadModelId,pModel))
 // 	{
-// 		RtwButton* btnhead=RTW_WIDGET_T(RtwButton, "fmhp.headhp");
+// 		RtwButton* btnhead=LOAD_UI_T(RtwButton, "fmhp.headhp");
 // 		RtwImage* pImage = g_workspace.getImageFactory()->createImage("zb_texture/"+pModel.headimage+".dds");
 // 		btnhead->SetBackgroundImage(pImage);
 // 	}
@@ -924,7 +924,7 @@ void UILayerMain::OnClicked_System_System(void*, void*)
 {
 	guard;
 
-	RtwWidget* w = RTW_WIDGET("fmsyssetting");
+	RtwWidget* w = LOAD_UI("fmsyssetting");
 
 	if (w->GetFlags(wfVisible))
 		w->Hide();
@@ -981,7 +981,7 @@ void UILayerMain::OnClicked_SysSetting_SysSet(void*, void*)
 {
 	guard;
 
-	RTW_WIDGET("fmsyssetting")->Hide();
+	LOAD_UI("fmsyssetting")->Hide();
 
 	if (!m_formSetting)
 		m_formSetting = RT_NEW UIFormSetting;
@@ -995,9 +995,9 @@ void UILayerMain::OnClicked_SysSetting_Restart(void*, void*)
 {
 	guard;
 
-	RTW_WIDGET("fmsyssetting")->Hide();
-	RTW_WIDGET("fmshortcut_bar1")->Hide();
-	RTW_WIDGET("fmshortcut_bar2")->Hide();
+	LOAD_UI("fmsyssetting")->Hide();
+	LOAD_UI("fmshortcut_bar1")->Hide();
+	LOAD_UI("fmshortcut_bar2")->Hide();
 
 	if (GetWorld())
 	{
@@ -1015,9 +1015,9 @@ void UILayerMain::OnClicked_SysSetting_Exit(void*, void*)
 {
 	guard;
 
-	RTW_WIDGET("fmsyssetting")->Hide();
+	LOAD_UI("fmsyssetting")->Hide();
 
-	RTW_WIDGET("fmexitconfirm")->Show();
+	LOAD_UI("fmexitconfirm")->Show();
 
 	unguard;
 }
@@ -1026,7 +1026,7 @@ void UILayerMain::OnClicked_SysSetting_GM(void*, void*)
 {
 	guard;
 
-	RTW_WIDGET("fmsyssetting")->Hide();
+	LOAD_UI("fmsyssetting")->Hide();
 
 	if(m_formGm->IsVisible())
 	{
@@ -1044,11 +1044,11 @@ void UILayerMain::OnClicked_SysSetting_Help(void*,void*)
 {
    	guard;
 
-	RTW_WIDGET("fmsyssetting")->Hide();
-	if(!RTW_WIDGET("fmhelpsys")->IsVisible())
-		RTW_WIDGET("fmhelpsys")->Show();
+	LOAD_UI("fmsyssetting")->Hide();
+	if(!LOAD_UI("fmhelpsys")->IsVisible())
+		LOAD_UI("fmhelpsys")->Show();
 	else
-		RTW_WIDGET("fmhelpsys")->Hide();
+		LOAD_UI("fmhelpsys")->Hide();
 	//m_formGm->Show();
 	unguard;
 }
@@ -1077,7 +1077,7 @@ void UILayerMain::OnClicked_SysSetting_Close(void*, void*)
 {
 	guard;
 
-	RTW_WIDGET("fmsyssetting")->Hide();
+	LOAD_UI("fmsyssetting")->Hide();
 
 	unguard;
 }
@@ -1086,7 +1086,7 @@ void UILayerMain::OnClicked_ExitConfirm_Confirm(void*, void*)
 {
 	guard;
 
-	RTW_WIDGET("fmexitconfirm")->Hide();
+	LOAD_UI("fmexitconfirm")->Hide();
 
 	PostQuitMessage(0);
 
@@ -1097,7 +1097,7 @@ void UILayerMain::OnClicked_ExitConfirm_Cancel(void*, void*)
 {
 	guard;
 
-	RTW_WIDGET("fmexitconfirm")->Hide();
+	LOAD_UI("fmexitconfirm")->Hide();
 
 	unguard;
 }
@@ -2561,7 +2561,7 @@ RtwButton* UILayerMain::OnLoadSkillShortcut(const char* str)
 		char strId[32];
 		RtwButton* pButton = NULL;
 		rt2_sprintf(strId, "CommonSkillButton_%03d", pAttr->wID);
-		pButton = (RtwButton*)(RTW_WIDGET("fmborder_skill.fmskillall")->GetChildWidget(strId));
+		pButton = (RtwButton*)(LOAD_UI("fmborder_skill.fmskillall")->GetChildWidget(strId));
 		if (pButton==NULL)
 		{
 // change [3/18/2009 tooth.shi]			pButton = (RtwButton*)g_workspace.CreateWidget(NULL, strId, "Button",RtwButton::wfDefault | wfHint | wfDragClient | wfDragServer);
@@ -3379,7 +3379,7 @@ void UILayerMain::OnBtnAutoStateYes(void*, void*)
 {
 	guard;
 
-	RTW_WIDGET("forautostate")->Hide();
+	LOAD_UI("forautostate")->Hide();
 	m_btnAutoBattle->SetChecked(false);
 	//m_btnAutoPick->SetChecked(false);		//heten
 	GetWorld()->m_pPlayer->SetAutobattle(false);
@@ -3393,7 +3393,7 @@ void UILayerMain::OnBtnAutoStateNo(void*, void*)
 {
 	guard;
 
-	RTW_WIDGET("forautostate")->Hide();
+	LOAD_UI("forautostate")->Hide();
 	
 	unguard;
 }
@@ -3402,7 +3402,7 @@ void UILayerMain::OnBtnAutoStateNo(void*, void*)
 //{
 //	guard;
 //
-//    RtwTab* pTab = RTW_WIDGET_T(RtwTab, "fmcharall.tabcharall");
+//    RtwTab* pTab = LOAD_UI_T(RtwTab, "fmcharall.tabcharall");
 //    if (!m_char->IsVisible())
 //    {
 //        m_char->Show();
@@ -3423,7 +3423,7 @@ void UILayerMain::OnBtnAutoStateNo(void*, void*)
 //{
 //	guard;
 //
-//    RtwTab* pTab = RTW_WIDGET_T(RtwTab, "fmcharall.tabcharall");
+//    RtwTab* pTab = LOAD_UI_T(RtwTab, "fmcharall.tabcharall");
 //    if (!m_char->IsVisible())
 //    {
 //        m_char->Show();
@@ -3444,7 +3444,7 @@ void UILayerMain::OnBtnAutoStateNo(void*, void*)
 //{
 //	guard;
 //
-//    RtwTab* pTab = RTW_WIDGET_T(RtwTab, "fmcharall.tabcharall");
+//    RtwTab* pTab = LOAD_UI_T(RtwTab, "fmcharall.tabcharall");
 //    if (!m_char->IsVisible())
 //    {
 //        m_char->Show();
@@ -3465,7 +3465,7 @@ void UILayerMain::OnClicked_Attribute_union(RtwWidget* sender, RtwEventDelegate*
 {
 	guard;
 
-    //RtwTab* pTab = RTW_WIDGET_T(RtwTab, "fmcharall.tabcharall");
+    //RtwTab* pTab = LOAD_UI_T(RtwTab, "fmcharall.tabcharall");
     //if (!m_char->IsVisible())
     //{
     //    m_char->Show();
@@ -3487,7 +3487,7 @@ void UILayerMain::OnClicked_Attribute_union(RtwWidget* sender, RtwEventDelegate*
 //{
 //	guard;
 //
-//    RtwTab* pTab = RTW_WIDGET_T(RtwTab, "fmcharall.tabcharall");
+//    RtwTab* pTab = LOAD_UI_T(RtwTab, "fmcharall.tabcharall");
 //    if (!m_char->IsVisible())
 //    {
 //        m_char->Show();
@@ -3515,7 +3515,7 @@ void UILayerMain::OnClicked_Attribute_task(RtwWidget* sender, RtwEventDelegate* 
 	{
 		m_formTask->Show();
 	}
-    //RtwTab* pTab = RTW_WIDGET_T(RtwTab, "fmcharall.tabcharall");
+    //RtwTab* pTab = LOAD_UI_T(RtwTab, "fmcharall.tabcharall");
     //if (!m_char->IsVisible())
     //{
     //    m_char->Show();
@@ -3689,10 +3689,10 @@ void UILayerMain::OnClicked_TeamOff(RtwWidget* sender, void*)
 	if (GetPlayer()->m_bTeamOnOff)
 	{
 		// 队伍开关
-		RTW_WIDGET("btnteamoff")->SetText(string("开"));
+		LOAD_UI("btnteamoff")->SetText(string("开"));
 		GetWorld()->m_Team.SendToServer(7,1);
 	}else{
-		RTW_WIDGET("btnteamoff")->SetText(string("关"));
+		LOAD_UI("btnteamoff")->SetText(string("关"));
 		GetWorld()->m_Team.SendToServer(7,0);
 	}
 	unguard;
@@ -3711,11 +3711,11 @@ void UILayerMain::OnActivateFrmPkMode(RtwWidget* sender, RtwEventDelegate* e)
 {
 	guard;
 
-	if(sender == RTW_WIDGET("lstPKmode"))
+	if(sender == LOAD_UI("lstPKmode"))
 	{
-		if (e->type == weMouseClick && e->activate.widget != RTW_WIDGET("fmhp.btnPKmode"))
+		if (e->type == weMouseClick && e->activate.widget != LOAD_UI("fmhp.btnPKmode"))
 		{
-			RTW_WIDGET("lstPKmode")->Hide();
+			LOAD_UI("lstPKmode")->Hide();
 		}
 	}
 
@@ -4007,8 +4007,8 @@ void UILayerMain::OnSetHotKeyStateFree()
 void UILayerMain::OnMouseMoveOnSkillShotcut()
 {
 	guard;
-	RtwRect rectShotcut1 = RTW_WIDGET("fmshortcut_bar1")->GetFrameRect();
-	RtwRect rectShotcut2 = RTW_WIDGET("fmshortcut_bar2")->GetFrameRect();
+	RtwRect rectShotcut1 = LOAD_UI("fmshortcut_bar1")->GetFrameRect();
+	RtwRect rectShotcut2 = LOAD_UI("fmshortcut_bar2")->GetFrameRect();
 	if(rectShotcut1.IsContain(g_workspace.GetMousePosX(),g_workspace.GetMousePosY())
 		|| rectShotcut2.IsContain(g_workspace.GetMousePosX(),g_workspace.GetMousePosY()) 
 		|| g_workspace.GetDragClient())

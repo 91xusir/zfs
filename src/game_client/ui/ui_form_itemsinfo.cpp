@@ -9,7 +9,7 @@ UIFormItemsInfo::UIFormItemsInfo()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmseeitem");
+	m_pFrmThis = LOAD_UI("fmseeitem");
 	RtwRect rc = m_pFrmThis->GetFrameRect();
 	m_pFrmThis->Show();
 	m_pFrmThis->Move(rc.left-1, rc.top-1);
@@ -19,25 +19,25 @@ UIFormItemsInfo::UIFormItemsInfo()
     //m_ptrHoverImage = new RtwImage("highlight_button.tga");// change [3/17/2009 tooth.shi]
 	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
 
-	m_btnParts[CItemContainerBase::WEAPON_1] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnRightHand");
-	//m_btnParts[CItemContainerBase::WEAPON_2] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnLeftHand");
-	m_btnParts[CItemContainerBase::WEAPON_3] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnLeftHand");
-	m_btnParts[CItemContainerBase::NECKLACE] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnNecklace");
-	m_btnParts[CItemContainerBase::GLOVE] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnGlove");
-	m_btnParts[CItemContainerBase::RING] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnRing");
-	m_btnParts[CItemContainerBase::BODY] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnCloth");
-	m_btnParts[CItemContainerBase::FOOT] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnShoes");
-	m_btnParts[CItemContainerBase::CHARM] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnCharm");
+	m_btnParts[CItemContainerBase::WEAPON_1] = LOAD_UI_T(RtwButton, "fmseeitem.btnRightHand");
+	//m_btnParts[CItemContainerBase::WEAPON_2] = LOAD_UI_T(RtwButton, "fmseeitem.btnLeftHand");
+	m_btnParts[CItemContainerBase::WEAPON_3] = LOAD_UI_T(RtwButton, "fmseeitem.btnLeftHand");
+	m_btnParts[CItemContainerBase::NECKLACE] = LOAD_UI_T(RtwButton, "fmseeitem.btnNecklace");
+	m_btnParts[CItemContainerBase::GLOVE] = LOAD_UI_T(RtwButton, "fmseeitem.btnGlove");
+	m_btnParts[CItemContainerBase::RING] = LOAD_UI_T(RtwButton, "fmseeitem.btnRing");
+	m_btnParts[CItemContainerBase::BODY] = LOAD_UI_T(RtwButton, "fmseeitem.btnCloth");
+	m_btnParts[CItemContainerBase::FOOT] = LOAD_UI_T(RtwButton, "fmseeitem.btnShoes");
+	m_btnParts[CItemContainerBase::CHARM] = LOAD_UI_T(RtwButton, "fmseeitem.btnCharm");
 
-	m_btnParts[CItemContainerBase::CAESTUS] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnCaestus");
-	m_btnParts[CItemContainerBase::RING2] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnRing2");
-	m_btnParts[CItemContainerBase::KITS] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnKits");
-	m_btnParts[CItemContainerBase::TRUMP] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnTrump");
-	m_btnParts[CItemContainerBase::FASHION] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnFashion");
-	m_btnParts[CItemContainerBase::SEALEDBOOK] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnBook");
-	m_btnParts[CItemContainerBase::AEROCRAFT] = RTW_WIDGET_T(RtwButton, "fmseeitem.btnFly");
+	m_btnParts[CItemContainerBase::CAESTUS] = LOAD_UI_T(RtwButton, "fmseeitem.btnCaestus");
+	m_btnParts[CItemContainerBase::RING2] = LOAD_UI_T(RtwButton, "fmseeitem.btnRing2");
+	m_btnParts[CItemContainerBase::KITS] = LOAD_UI_T(RtwButton, "fmseeitem.btnKits");
+	m_btnParts[CItemContainerBase::TRUMP] = LOAD_UI_T(RtwButton, "fmseeitem.btnTrump");
+	m_btnParts[CItemContainerBase::FASHION] = LOAD_UI_T(RtwButton, "fmseeitem.btnFashion");
+	m_btnParts[CItemContainerBase::SEALEDBOOK] = LOAD_UI_T(RtwButton, "fmseeitem.btnBook");
+	m_btnParts[CItemContainerBase::AEROCRAFT] = LOAD_UI_T(RtwButton, "fmseeitem.btnFly");
 
-	m_pPlayerName = RTW_WIDGET("fmseeitem.lbname");
+	m_pPlayerName = LOAD_UI("fmseeitem.lbname");
 
     for (int nPart=0; nPart<CItemContainerBase::MAX_EQUIP_PARTS; nPart++)
     {

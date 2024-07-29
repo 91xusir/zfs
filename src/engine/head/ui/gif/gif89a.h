@@ -3,7 +3,7 @@
 
 #include <fstream>
 #include <windows.h>
-using namespace std;
+//using namespace std;
 
 typedef struct
 {	

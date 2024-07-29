@@ -45,23 +45,23 @@ int	GetItemClass(CAuctionItem* item)
 
 UIFormVendor::UIFormVendor()
 {
-	m_pFrmThis  = RTW_WIDGET("fmVendor");
-	m_pTree		= RTW_WIDGET_T(RtwTree, "fmVendor.panItem");
-	m_pList		= RTW_WIDGET_T(RtwListBox, "fmVendor.fmAuctionRight");
+	m_pFrmThis  = LOAD_UI("fmVendor");
+	m_pTree		= LOAD_UI_T(RtwTree, "fmVendor.panItem");
+	m_pList		= LOAD_UI_T(RtwListBox, "fmVendor.fmAuctionRight");
 	
-	m_pBtnSell		= RTW_WIDGET_T(RtwButton, "fmVendor.btnSell");
-	m_pBtnBuy		= RTW_WIDGET_T(RtwButton, "fmVendor.btnBuy");
-	m_pBtnRefresh	= RTW_WIDGET_T(RtwButton, "fmVendor.btnRefresh");
-	m_btn1			=RTW_WIDGET_T(RtwButton, "fmVendor.panItem.btn1");
-	m_btn2			=RTW_WIDGET_T(RtwButton, "fmVendor.panItem.btn2");
-	m_btn3			=RTW_WIDGET_T(RtwButton, "fmVendor.panItem.btn3");
-	m_btn4			=RTW_WIDGET_T(RtwButton, "fmVendor.panItem.btn4");
-	m_btn5			=RTW_WIDGET_T(RtwButton, "fmVendor.panItem.btn5");
-	m_btn6			=RTW_WIDGET_T(RtwButton, "fmVendor.panItem.btn6");
+	m_pBtnSell		= LOAD_UI_T(RtwButton, "fmVendor.btnSell");
+	m_pBtnBuy		= LOAD_UI_T(RtwButton, "fmVendor.btnBuy");
+	m_pBtnRefresh	= LOAD_UI_T(RtwButton, "fmVendor.btnRefresh");
+	m_btn1			=LOAD_UI_T(RtwButton, "fmVendor.panItem.btn1");
+	m_btn2			=LOAD_UI_T(RtwButton, "fmVendor.panItem.btn2");
+	m_btn3			=LOAD_UI_T(RtwButton, "fmVendor.panItem.btn3");
+	m_btn4			=LOAD_UI_T(RtwButton, "fmVendor.panItem.btn4");
+	m_btn5			=LOAD_UI_T(RtwButton, "fmVendor.panItem.btn5");
+	m_btn6			=LOAD_UI_T(RtwButton, "fmVendor.panItem.btn6");
 //	m_pList->SetColumnFormat(RtwStringFormat(alignCenter,alignCenter));//add by fox
 	m_pList->ModifyFlags(wfHint,0);
 	//m_pList->ModifyFlags(wfHint, 0);
-	//						RTW_WIDGET_T(RtwButton, "fmVendor.panItem.btn1");
+	//						LOAD_UI_T(RtwButton, "fmVendor.panItem.btn1");
 	m_pBtnSell->EvLClick	+= RTW_CALLBACK(this, UIFormVendor, OnBtnSellClicked);
 	m_pBtnBuy->EvLClick		+= RTW_CALLBACK(this, UIFormVendor, OnBtnBuyClicked);
 	//m_pList->EvHint			+= RTW_CALLBACK(this, UIFormVendor, OnGetListHintItemText);

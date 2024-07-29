@@ -3,9 +3,9 @@
 
 UIFormHelp::UIFormHelp()
 {
-    m_pFrmThis  = RTW_WIDGET("fmhelpsys");
-    m_pHtmlView = RTW_WIDGET_T(RtwHtmlView,"fmhelpsys.fmhelpright.viewright");
-    m_pTree     = RTW_WIDGET_T(RtwTree,"fmhelpsys.treelist");
+    m_pFrmThis  = LOAD_UI("fmhelpsys");
+    m_pHtmlView = LOAD_UI_T(RtwHtmlView,"fmhelpsys.fmhelpright.viewright");
+    m_pTree     = LOAD_UI_T(RtwTree,"fmhelpsys.treelist");
 
     m_pTree->EvSelect += RTW_CALLBACK(this, UIFormHelp, OnTreeNodeSelect);
  	m_pHtmlView->EvLClick += RTW_CALLBACK(this, UILayerMain, OnHtmlAction_HtmlHelpView);

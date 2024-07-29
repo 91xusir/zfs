@@ -13,40 +13,40 @@ UIFormSetting::UIFormSetting()
 
 	//声音
 
-	//m_soundVolume = RTW_WIDGET_T(RtwHScrollBar, "fmnewsetting.fmsetting.tabsystem.fmaudio.scrollaudio");
+	//m_soundVolume = LOAD_UI_T(RtwHScrollBar, "fmnewsetting.fmsetting.tabsystem.fmaudio.scrollaudio");
 
 
-	//m_usersInScreen= RTW_WIDGET_T(RtwHScrollBar, "fmnewsetting.fmsetting.tabsystem.fmgame.scrollnumber");
+	//m_usersInScreen= LOAD_UI_T(RtwHScrollBar, "fmnewsetting.fmsetting.tabsystem.fmgame.scrollnumber");
 	//m_usersInScreen->SetRange(0, 100);	
 	//m_usersInScreen->EvScroll += RTW_CALLBACK(this, UIFormSetting, OnScroll_UsersInScreen);
 
- //   m_resolution = RTW_WIDGET_T(RtwComboBox, "fmnewsetting.fmsetting.tabsystem.fmphoto.cbsize");
+ //   m_resolution = LOAD_UI_T(RtwComboBox, "fmnewsetting.fmsetting.tabsystem.fmphoto.cbsize");
 
 	//m_resolution->EvSelect			+= RTW_CALLBACK(this, UIFormSetting, OnSelect_Resolution);
 	//m_resolution->EvUpdateText		+= RTW_CALLBACK(this, UIFormSetting, OnSelect_Resolution);
 
-	//m_fullscreen		= RTW_WIDGET_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmphoto.ckscreen");
-	//m_3dsound			= RTW_WIDGET_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmaudio.ckscreen");
+	//m_fullscreen		= LOAD_UI_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmphoto.ckscreen");
+	//m_3dsound			= LOAD_UI_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmaudio.ckscreen");
 
-	//m_lockcamera		= RTW_WIDGET_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.ckcamera");
+	//m_lockcamera		= LOAD_UI_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.ckcamera");
 
-	//m_displayhud		= RTW_WIDGET_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.ckhud");
-	//m_hudSay			= RTW_WIDGET_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.cksay");
-	//m_hudName			= RTW_WIDGET_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.ckname");
-	//m_hudGuild			= RTW_WIDGET_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.ckguild");
-	//m_hudNick			= RTW_WIDGET_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.cknick");
-	//m_hudCountry		= RTW_WIDGET_T(RtwButton, "fmnewsetting.fmsetting.tabsystem.fmgame.ckcountry");
+	//m_displayhud		= LOAD_UI_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.ckhud");
+	//m_hudSay			= LOAD_UI_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.cksay");
+	//m_hudName			= LOAD_UI_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.ckname");
+	//m_hudGuild			= LOAD_UI_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.ckguild");
+	//m_hudNick			= LOAD_UI_T(CUiCheckButton, "fmnewsetting.fmsetting.tabsystem.fmgame.cknick");
+	//m_hudCountry		= LOAD_UI_T(RtwButton, "fmnewsetting.fmsetting.tabsystem.fmgame.ckcountry");
 
-	//m_UIRefuse=RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmgame.ckrefuse");//拒绝邀请
+	//m_UIRefuse=LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmgame.ckrefuse");//拒绝邀请
 	//m_oldSetting.game.bRefuse=false;
 
 
 
-	//m_UIInputProject			= RTW_WIDGET_T(RtwComboBox,"fmnewsetting.fmsetting.tabsystem.fmgame.cbinputmode");
+	//m_UIInputProject			= LOAD_UI_T(RtwComboBox,"fmnewsetting.fmsetting.tabsystem.fmgame.cbinputmode");
 	//m_UIInputProject->SetSelectedItem(0);
 	m_oldSetting.game.sUIInputProject=sUIInputProject;
 
-	//m_UIShowProject				= RTW_WIDGET_T(RtwComboBox,"fmnewsetting.fmsetting.tabsystem.fmgame.cbfeedback");
+	//m_UIShowProject				= LOAD_UI_T(RtwComboBox,"fmnewsetting.fmsetting.tabsystem.fmgame.cbfeedback");
 	//m_UIShowProject->SetSelectedItem(0);
 	m_oldSetting.game.sUIShowProject=sUIShowProject;
 
@@ -67,68 +67,68 @@ UIFormSetting::UIFormSetting()
 	//m_refuseGuild->EvLClick+=
 
 
-	//m_graphQuality		= RTW_WIDGET_T(RtwComboBox, "fmnewsetting.fmsetting.tabsystem.fmphoto.cbshow");//图形显示质量
+	//m_graphQuality		= LOAD_UI_T(RtwComboBox, "fmnewsetting.fmsetting.tabsystem.fmphoto.cbshow");//图形显示质量
  //   m_graphQuality->EvSelect += RTW_CALLBACK(this,UIFormSetting,OnSelect_GraphQuality);
-	//m_expertButton		= RTW_WIDGET_T(RtwButton, "fmnewsetting.fmsetting.tabsystem.fmphoto.btnadvance");//定制选项按钮
+	//m_expertButton		= LOAD_UI_T(RtwButton, "fmnewsetting.fmsetting.tabsystem.fmphoto.btnadvance");//定制选项按钮
 
-	//m_textureQuality	= RTW_WIDGET_T(RtwComboBox, "fmexpertsetting.fmphoto.cbtexture");//贴图质量
-	//m_effectQuality		= RTW_WIDGET_T(RtwComboBox, "fmexpertsetting.fmphoto.cbeffect");//特效质量
-	//m_shadowQuality		= RTW_WIDGET_T(RtwComboBox, "fmexpertsetting.fmphoto.cbshadow");//阴影质量
+	//m_textureQuality	= LOAD_UI_T(RtwComboBox, "fmexpertsetting.fmphoto.cbtexture");//贴图质量
+	//m_effectQuality		= LOAD_UI_T(RtwComboBox, "fmexpertsetting.fmphoto.cbeffect");//特效质量
+	//m_shadowQuality		= LOAD_UI_T(RtwComboBox, "fmexpertsetting.fmphoto.cbshadow");//阴影质量
 
-	//m_sawtooth			= RTW_WIDGET_T(CUiCheckButton, "fmexpertsetting.fmphoto.cksawtooth");//全屏抗锯齿
-	//m_reflect			= RTW_WIDGET_T(CUiCheckButton, "fmexpertsetting.fmphoto.ckreflect");//环境反射
-	//m_reflectpeople		= RTW_WIDGET_T(CUiCheckButton, "fmexpertsetting.fmphoto.ckreflectp");//人物反射
-	//m_effectPost		= RTW_WIDGET_T(CUiCheckButton, "fmexpertsetting.fmphoto.ckupper");//后期处理
-	//m_effectObject      = RTW_WIDGET_T(CUiCheckButton, "fmexpertsetting.fmphoto.ckeffectobj");//后期加强
+	//m_sawtooth			= LOAD_UI_T(CUiCheckButton, "fmexpertsetting.fmphoto.cksawtooth");//全屏抗锯齿
+	//m_reflect			= LOAD_UI_T(CUiCheckButton, "fmexpertsetting.fmphoto.ckreflect");//环境反射
+	//m_reflectpeople		= LOAD_UI_T(CUiCheckButton, "fmexpertsetting.fmphoto.ckreflectp");//人物反射
+	//m_effectPost		= LOAD_UI_T(CUiCheckButton, "fmexpertsetting.fmphoto.ckupper");//后期处理
+	//m_effectObject      = LOAD_UI_T(CUiCheckButton, "fmexpertsetting.fmphoto.ckeffectobj");//后期加强
 
-	m_frmThis						= RTW_WIDGET("fmnewsetting");
-	m_ExpertForm					= RTW_WIDGET("fmexpertsetting");//定制窗口
+	m_frmThis						= LOAD_UI("fmnewsetting");
+	m_ExpertForm					= LOAD_UI("fmexpertsetting");//定制窗口
 	//m_pFormThis->EvKey += RTW_CALLBACK(m_pFormThis, RtwWidget, DefaultKeyDown);
 	// new setting
-	m_checkWindows					= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.btnwindow");
-	m_checkFullScreen				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.btnscreen");
-	m_lstResolution					= RTW_WIDGET_T(RtwListBox,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.lbresolution");
-	m_expertButton					= RTW_WIDGET_T(RtwButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.btncustomize");
-	m_hsBarVideo					= RTW_WIDGET_T(RtwHScrollBar,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.Scroll1");
-	m_checkLight					= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.btnlighting1");
-	m_checkFullScreenLight			= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.btnlighting2");
-	m_musicVolume					= RTW_WIDGET_T(RtwHScrollBar,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline2.Scroll1");
-	m_soundVolume					= RTW_WIDGET_T(RtwHScrollBar,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline2.Scroll2");
-	m_checkMusicSilence				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline2.btnaudio1");
-	m_checkSoundSilence				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline2.btnaudio2");
-	m_3dsound						= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline2.btnaudio3");
-	m_checkShowSelfName				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow1");
-	m_checkShowBlood				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow7");
-	m_checkShowDegree				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow2");
-	m_checkShowDamage				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow8");
-	m_checkShowUnionName			= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow3");
-	m_checkShowEXP					= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow9");
-	m_checkShowOtherName			= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow4");
-	m_checkShowNPCName				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow5");
-	m_checkShowOtherSpeak			= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow10");
-	m_checkShowTradeName			= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow6");
-	m_checkShowSelfSpeak			= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow11");
-	m_lockcamera					= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline2.btnoperating1");
-	m_checkSkillShotcut				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline2.btnoperating2");
-	m_btnResDefault					= RTW_WIDGET_T(RtwButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline2.btndefault");
-	m_checkRefuseTeam				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction1");
-	m_checkRefuseAction				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction4");
-	m_checkRefuseMail				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction2");
-	m_checkRefuseDuel				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction5");
-	m_checkRefuseFriend				= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction3");
-	m_checkRefuseMonster			= RTW_WIDGET_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction6");
+	m_checkWindows					= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.btnwindow");
+	m_checkFullScreen				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.btnscreen");
+	m_lstResolution					= LOAD_UI_T(RtwListBox,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.lbresolution");
+	m_expertButton					= LOAD_UI_T(RtwButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.btncustomize");
+	m_hsBarVideo					= LOAD_UI_T(RtwHScrollBar,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.Scroll1");
+	m_checkLight					= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.btnlighting1");
+	m_checkFullScreenLight			= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline1.btnlighting2");
+	m_musicVolume					= LOAD_UI_T(RtwHScrollBar,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline2.Scroll1");
+	m_soundVolume					= LOAD_UI_T(RtwHScrollBar,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline2.Scroll2");
+	m_checkMusicSilence				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline2.btnaudio1");
+	m_checkSoundSilence				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline2.btnaudio2");
+	m_3dsound						= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmphoto.fmhemline2.btnaudio3");
+	m_checkShowSelfName				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow1");
+	m_checkShowBlood				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow7");
+	m_checkShowDegree				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow2");
+	m_checkShowDamage				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow8");
+	m_checkShowUnionName			= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow3");
+	m_checkShowEXP					= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow9");
+	m_checkShowOtherName			= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow4");
+	m_checkShowNPCName				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow5");
+	m_checkShowOtherSpeak			= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow10");
+	m_checkShowTradeName			= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow6");
+	m_checkShowSelfSpeak			= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline1.btnshow11");
+	m_lockcamera					= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline2.btnoperating1");
+	m_checkSkillShotcut				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline2.btnoperating2");
+	m_btnResDefault					= LOAD_UI_T(RtwButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline2.btndefault");
+	m_checkRefuseTeam				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction1");
+	m_checkRefuseAction				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction4");
+	m_checkRefuseMail				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction2");
+	m_checkRefuseDuel				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction5");
+	m_checkRefuseFriend				= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction3");
+	m_checkRefuseMonster			= LOAD_UI_T(CUiCheckButton,"fmnewsetting.fmsetting.tabsystem.fmaudio.fmhemline3.btninteraction6");
 	// textuersetting
-	m_checkTextureQuality1			= RTW_WIDGET_T(CUiCheckButton,"fmexpertsetting.btnlow1");
-	m_checkTextureQuality2			= RTW_WIDGET_T(CUiCheckButton,"fmexpertsetting.btnmedium1");
-	m_checkTextureQuality3			= RTW_WIDGET_T(CUiCheckButton,"fmexpertsetting.btnhigh1");
+	m_checkTextureQuality1			= LOAD_UI_T(CUiCheckButton,"fmexpertsetting.btnlow1");
+	m_checkTextureQuality2			= LOAD_UI_T(CUiCheckButton,"fmexpertsetting.btnmedium1");
+	m_checkTextureQuality3			= LOAD_UI_T(CUiCheckButton,"fmexpertsetting.btnhigh1");
 	// effectsetting
-	m_checkEffectQuality1			= RTW_WIDGET_T(CUiCheckButton,"fmexpertsetting.btnlow2");
-	m_checkEffectQuality2			= RTW_WIDGET_T(CUiCheckButton,"fmexpertsetting.btnmedium2");
-	m_checkEffectQuality3			= RTW_WIDGET_T(CUiCheckButton,"fmexpertsetting.btnhigh2");
+	m_checkEffectQuality1			= LOAD_UI_T(CUiCheckButton,"fmexpertsetting.btnlow2");
+	m_checkEffectQuality2			= LOAD_UI_T(CUiCheckButton,"fmexpertsetting.btnmedium2");
+	m_checkEffectQuality3			= LOAD_UI_T(CUiCheckButton,"fmexpertsetting.btnhigh2");
 	// shadowsetting
-	m_checkShadowQuality1			= RTW_WIDGET_T(CUiCheckButton,"fmexpertsetting.btnlow3");
-	m_checkShadowQuality2			= RTW_WIDGET_T(CUiCheckButton,"fmexpertsetting.btnmedium3");
-	m_checkShadowQuality3			= RTW_WIDGET_T(CUiCheckButton,"fmexpertsetting.btnhigh3");
+	m_checkShadowQuality1			= LOAD_UI_T(CUiCheckButton,"fmexpertsetting.btnlow3");
+	m_checkShadowQuality2			= LOAD_UI_T(CUiCheckButton,"fmexpertsetting.btnmedium3");
+	m_checkShadowQuality3			= LOAD_UI_T(CUiCheckButton,"fmexpertsetting.btnhigh3");
 
 	m_lstResolution->EvSelect		+= RTW_CALLBACK(this, UIFormSetting, OnSelect_Resolution);
 	m_hsBarVideo->SetData(0,3,0);
@@ -168,22 +168,22 @@ UIFormSetting::UIFormSetting()
 	m_lockcamera->EvLClick			+= RTW_CALLBACK(this,UIFormSetting,OnCheckButtonCamera);
 	m_btnResDefault->EvLClick		+= RTW_CALLBACK(this,UIFormSetting,OnClick_DefaultCamera);
 	//定制中的确定按钮
-	RTW_WIDGET("fmexpertsetting.Yes")->EvLClick +=RTW_CALLBACK(this,UIFormSetting,OnExpertClick_OK);
+	LOAD_UI("fmexpertsetting.Yes")->EvLClick +=RTW_CALLBACK(this,UIFormSetting,OnExpertClick_OK);
 	//定制中的取消按钮
-	RTW_WIDGET("fmexpertsetting.No")->EvLClick +=RTW_CALLBACK(this,UIFormSetting,OnExpertClick_Cancel);
+	LOAD_UI("fmexpertsetting.No")->EvLClick +=RTW_CALLBACK(this,UIFormSetting,OnExpertClick_Cancel);
 
-	RTW_WIDGET("fmnewsetting.fmsetting.btnok")->EvLClick += RTW_CALLBACK(this, UIFormSetting, OnClick_OK);
-	RTW_WIDGET("fmnewsetting.fmsetting.btncancel")->EvLClick += RTW_CALLBACK(this, UIFormSetting, OnClick_Cancel);
-	//RTW_WIDGET("fmnewsetting.fmsetting.btnapply")->EvLClick += RTW_CALLBACK(this, UIFormSetting, OnClick_Apply);
-	//RTW_WIDGET("fmnewsetting.fmsetting.tabsystem.fmgame.btndefault")->EvLClick += 
+	LOAD_UI("fmnewsetting.fmsetting.btnok")->EvLClick += RTW_CALLBACK(this, UIFormSetting, OnClick_OK);
+	LOAD_UI("fmnewsetting.fmsetting.btncancel")->EvLClick += RTW_CALLBACK(this, UIFormSetting, OnClick_Cancel);
+	//LOAD_UI("fmnewsetting.fmsetting.btnapply")->EvLClick += RTW_CALLBACK(this, UIFormSetting, OnClick_Apply);
+	//LOAD_UI("fmnewsetting.fmsetting.tabsystem.fmgame.btndefault")->EvLClick += 
 	//	RTW_CALLBACK(this, UIFormSetting, OnClick_DefaultCamera);		
 	//if (WorldIsInited())
-	//	RTW_WIDGET("fmnewsetting.fmsetting.tabsystem.btngame")->Show();
+	//	LOAD_UI("fmnewsetting.fmsetting.tabsystem.btngame")->Show();
 	//else
-	//	RTW_WIDGET("fmnewsetting.fmsetting.tabsystem.btngame")->Hide();
+	//	LOAD_UI("fmnewsetting.fmsetting.tabsystem.btngame")->Hide();
 	InitResolution();
-	RTW_WIDGET_T(RtwTab, "fmnewsetting.fmsetting.tabsystem")->SetSelectedItem(0);
-	RTW_WIDGET("fmnewsetting")->Hide();
+	LOAD_UI_T(RtwTab, "fmnewsetting.fmsetting.tabsystem")->SetSelectedItem(0);
+	LOAD_UI("fmnewsetting")->Hide();
 
 	RtIni iniGame;
     if (iniGame.OpenFile(R(INI_GAME)))
@@ -312,11 +312,11 @@ UIFormSetting::UIFormSetting()
 		}
 		iniUser.CloseFile();
 	}
-	RTW_WIDGET("fmshortcut_bar1")->Show();
+	LOAD_UI("fmshortcut_bar1")->Show();
 	if(g_layerMain->m_eSetting.m_bShowSkillShotcut)
-		RTW_WIDGET("fmshortcut_bar2")->Show();
+		LOAD_UI("fmshortcut_bar2")->Show();
 	else
-		RTW_WIDGET("fmshortcut_bar2")->Hide();
+		LOAD_UI("fmshortcut_bar2")->Hide();
 	RtwHUD::s_cShowItem = 0;
 	RtwHUD::s_cShowItem = RtwHUD::s_cShowItem | RtwHUD::siName | RtwHUD::siSpeak | RtwHUD::siPetAbility | RtwHUD::siPetFuseLev | RtwHUD::siPetMaster;
 	if(g_layerMain->m_eSetting.m_bShowUnionName)
@@ -540,12 +540,12 @@ void UIFormSetting::OnClick_OK(void*, void*)
 	{
 		GetDevice()->SetViewWindowInfo(eMode, curRes.width, curRes.height, m_bkColorDepth, 60);
 		GetDevice()->SetViewMode(eMode);
-		RTW_WIDGET("fmnewsetting")->CenterScreen();		
-		RTW_WIDGET("ConfirmResolution")->ShowModal();
-		RTW_WIDGET("ConfirmResolution")->CenterScreen();
-		RTW_WIDGET("ConfirmResolution.Yes")->EvLClick = RTW_CALLBACK(this, UIFormSetting, OnClick_ConfirmResolution_Yes);
-		RTW_WIDGET("ConfirmResolution.No")->EvLClick = RTW_CALLBACK(this, UIFormSetting, OnClick_ConfirmResolution_No);
-		//RTW_WIDGET("ConfirmResolution.$hide")->EvLClick = RTW_CALLBACK(this, UIFormSetting, OnClick_ConfirmResolution_No);
+		LOAD_UI("fmnewsetting")->CenterScreen();		
+		LOAD_UI("ConfirmResolution")->ShowModal();
+		LOAD_UI("ConfirmResolution")->CenterScreen();
+		LOAD_UI("ConfirmResolution.Yes")->EvLClick = RTW_CALLBACK(this, UIFormSetting, OnClick_ConfirmResolution_Yes);
+		LOAD_UI("ConfirmResolution.No")->EvLClick = RTW_CALLBACK(this, UIFormSetting, OnClick_ConfirmResolution_No);
+		//LOAD_UI("ConfirmResolution.$hide")->EvLClick = RTW_CALLBACK(this, UIFormSetting, OnClick_ConfirmResolution_No);
 		m_confirmVideoTimeStamp = rtGetMilliseconds();
 		m_confirmVideoTimer = GetTimer()->AddTimer(this, 1);
 	}
@@ -647,7 +647,7 @@ void UIFormSetting::OnClick_Cancel(void*, void*)
 
 		////
   //  }
-	RTW_WIDGET("fmnewsetting")->Hide();
+	LOAD_UI("fmnewsetting")->Hide();
 	unguard;
 }
 
@@ -973,7 +973,7 @@ void UIFormSetting::OnClick_ConfirmResolution_Yes(void*, void*)
 		m_confirmVideoTimer = 0;
 	}
 
-	RTW_WIDGET("ConfirmResolution")->Hide();
+	LOAD_UI("ConfirmResolution")->Hide();
 
 	SettingSaveResolutionInfo();
 
@@ -989,7 +989,7 @@ void UIFormSetting::OnClick_ConfirmResolution_No(void*, void*)
 		m_confirmVideoTimer = 0;
 	}
 
-	RTW_WIDGET("ConfirmResolution")->Hide();
+	LOAD_UI("ConfirmResolution")->Hide();
 
 	GetDevice()->SetViewWindowInfo(
 		m_bkViewMode,
@@ -1000,7 +1000,7 @@ void UIFormSetting::OnClick_ConfirmResolution_No(void*, void*)
 
 	GetDevice()->SetViewMode(m_bkViewMode);
 
-	if (RTW_WIDGET("fmnewsetting")->GetFlags(wfVisible))
+	if (LOAD_UI("fmnewsetting")->GetFlags(wfVisible))
 	{
 		RefreshVideoSettings();
 	}
@@ -1287,7 +1287,7 @@ void UIFormSetting::OnTimerEvent(DWORD dwID)
 	{
 		rt2_sprintf(g_strStaticBuffer, R(MSG_RESUME_DISPLAY_SETTING), left);
 
-		RTW_WIDGET("ConfirmResolution.Time")->SetText(g_strStaticBuffer);
+		LOAD_UI("ConfirmResolution.Time")->SetText(g_strStaticBuffer);
 
 		return;
 	}
@@ -1319,9 +1319,9 @@ void UIFormSetting::OnCheckButtonShowSkillShotcut(ui::RtwWidget* vpSender, RtwEv
 	guard;
 	g_layerMain->m_eSetting.m_bShowSkillShotcut = m_checkSkillShotcut->GetChecked();
 	if(g_layerMain->m_eSetting.m_bShowSkillShotcut)
-		RTW_WIDGET("fmshortcut_bar2")->Show();
+		LOAD_UI("fmshortcut_bar2")->Show();
 	else
-		RTW_WIDGET("fmshortcut_bar2")->Hide();
+		LOAD_UI("fmshortcut_bar2")->Hide();
 	unguard;
 }
 void UIFormSetting::OnCheckButtonSilence(ui::RtwWidget* vpSender, RtwEventDelegate*)
@@ -1503,12 +1503,12 @@ void UIFormSetting::OnCheckButtonCamera(ui::RtwWidget* vpSender, RtwEventDelegat
 	if(m_lockcamera->GetChecked())
 	{
 		GetWorld()->SetCameraMode(GcWorld::CAMERA_MODE_LOCK);
-		RTW_WIDGET_T(RtwButton, "fmminimap.btnperspective")->SetHintText("镜头已锁");
+		LOAD_UI_T(RtwButton, "fmminimap.btnperspective")->SetHintText("镜头已锁");
 	}
 	else
 	{
 		GetWorld()->SetCameraMode(GcWorld::CAMERA_MODE_TURN);
-		RTW_WIDGET_T(RtwButton, "fmminimap.btnperspective")->SetHintText("镜头未锁");
+		LOAD_UI_T(RtwButton, "fmminimap.btnperspective")->SetHintText("镜头未锁");
 	}
 	unguard;
 }

@@ -9,18 +9,18 @@
 
 UIFormSale::UIFormSale()
 {
-	m_pFrmThis  = RTW_WIDGET("fmAuction");
+	m_pFrmThis  = LOAD_UI("fmAuction");
 	m_pFrmThis->ModifyFlags(wfDragClient, 0);
-	m_pBtnItem	= RTW_WIDGET_T(RtwButton, "fmAuction.panOrder.pansource01.btnskill");
-	m_pLabelName	= RTW_WIDGET_T(RtwLabel, "fmAuction.panOrder.pansource01.lbskillinfo");
-	m_pBasePrice	= RTW_WIDGET_T(RtwTextBox, "fmAuction.panOrder.lbPricenum");
-	m_pUniquePrice	= RTW_WIDGET_T(RtwTextBox, "fmAuction.panOrder.lbPricenum1");
-	m_pTimeLimit	= RTW_WIDGET_T(RtwComboBox, "fmAuction.panOrder.cbtime");
-	m_pHandlingCharge	= RTW_WIDGET_T(RtwLabel, "fmAuction.panOrder.lbPricenum2");
-	m_pBtnSell			= RTW_WIDGET_T(RtwButton, "fmAuction.panOrder.btnBuy");
-	m_pList				= RTW_WIDGET_T(RtwListBox, "fmAuction.fmAuctionRight");
-	m_pBtnBack			= RTW_WIDGET_T(RtwButton, "fmAuction.btnBack");
-	m_pBtnRefresh		= RTW_WIDGET_T(RtwButton, "fmAuction.btnRefresh");
+	m_pBtnItem	= LOAD_UI_T(RtwButton, "fmAuction.panOrder.pansource01.btnskill");
+	m_pLabelName	= LOAD_UI_T(RtwLabel, "fmAuction.panOrder.pansource01.lbskillinfo");
+	m_pBasePrice	= LOAD_UI_T(RtwTextBox, "fmAuction.panOrder.lbPricenum");
+	m_pUniquePrice	= LOAD_UI_T(RtwTextBox, "fmAuction.panOrder.lbPricenum1");
+	m_pTimeLimit	= LOAD_UI_T(RtwComboBox, "fmAuction.panOrder.cbtime");
+	m_pHandlingCharge	= LOAD_UI_T(RtwLabel, "fmAuction.panOrder.lbPricenum2");
+	m_pBtnSell			= LOAD_UI_T(RtwButton, "fmAuction.panOrder.btnBuy");
+	m_pList				= LOAD_UI_T(RtwListBox, "fmAuction.fmAuctionRight");
+	m_pBtnBack			= LOAD_UI_T(RtwButton, "fmAuction.btnBack");
+	m_pBtnRefresh		= LOAD_UI_T(RtwButton, "fmAuction.btnRefresh");
 
 	//m_pList->ModifyFlags(wfHint, 0);//rem by fox
 //	m_pList->SetColumnFormat(RtwStringFormat(alignCenter,alignCenter));//add by fox// ×¢ÊÍ [3/17/2009 tooth.shi]

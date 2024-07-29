@@ -19,12 +19,12 @@ UIFormItemFuse::UIFormItemFuse()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmfuse");
-	m_pBtnItem1 = RTW_WIDGET("fmfuse.aliasCombitem1");
-	m_pBtnItem2 = RTW_WIDGET("fmfuse.aliasCombitem2");
-	m_pMoney = RTW_WIDGET("fmfuse.lbtext2");
-	m_pBtnOK = RTW_WIDGET_T(RtwButton, "fmfuse.btnok");
-	m_pBtnCancel = RTW_WIDGET_T(RtwButton, "fmfuse.btncancel");
+	m_pFrmThis = LOAD_UI("fmfuse");
+	m_pBtnItem1 = LOAD_UI("fmfuse.aliasCombitem1");
+	m_pBtnItem2 = LOAD_UI("fmfuse.aliasCombitem2");
+	m_pMoney = LOAD_UI("fmfuse.lbtext2");
+	m_pBtnOK = LOAD_UI_T(RtwButton, "fmfuse.btnok");
+	m_pBtnCancel = LOAD_UI_T(RtwButton, "fmfuse.btncancel");
 
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 	m_pFrmThis->ModifyFlags(wfDragClient, 0);

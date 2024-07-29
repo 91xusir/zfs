@@ -47,7 +47,7 @@ mState(NULL_OPERATION),
 mpUIListGroup(NULL)
 {
 	//g_workspace.Load("ui/ui_layer_main.xml");
-	//mpTeamOnOff = RTW_WIDGET_T(RtwButton, "fmdialg.btnPKmode");
+	//mpTeamOnOff = LOAD_UI_T(RtwButton, "fmdialg.btnPKmode");
 	//mpTeamOnOff->CenterScreen();
 	//mpTeamOnOff->EvLClick += RTW_CALLBACK(this, CTeamWithUI, SetTeamOnOff);
 	//mpTeamOnOff->Show();
@@ -79,15 +79,15 @@ void CTeamWithUI::Init()
 {
     guard;
 	//<社群界面的事件>
-	RTW_WIDGET("fmcharall.tabcharall.fmsoc.btninvite")->EvLClick+=
+	LOAD_UI("fmcharall.tabcharall.fmsoc.btninvite")->EvLClick+=
 		RTW_CALLBACK(&(GetWorld()->m_Team),CTeamWithUI,UserInterfaceEvent);
-	RTW_WIDGET("fmcharall.tabcharall.fmsoc.btnleave")->EvLClick+=
+	LOAD_UI("fmcharall.tabcharall.fmsoc.btnleave")->EvLClick+=
 		RTW_CALLBACK(&(GetWorld()->m_Team),CTeamWithUI,UserInterfaceEvent);
-	RTW_WIDGET("fmhplist.btnleave")->EvLClick+=
+	LOAD_UI("fmhplist.btnleave")->EvLClick+=
 		RTW_CALLBACK(&(GetWorld()->m_Team),CTeamWithUI,UserInterfaceEvent);
-	RTW_WIDGET("fmcharall.tabcharall.fmsoc.btndivid")->EvLClick+=
+	LOAD_UI("fmcharall.tabcharall.fmsoc.btndivid")->EvLClick+=
 		RTW_CALLBACK(&(GetWorld()->m_Team),CTeamWithUI,UserInterfaceEvent);
-	RTW_WIDGET("fmcharall.tabcharall.fmsoc.btnteamclose")->EvLClick+=
+	LOAD_UI("fmcharall.tabcharall.fmsoc.btnteamclose")->EvLClick+=
 		RTW_CALLBACK(&(GetWorld()->m_Team),CTeamWithUI,UserInterfaceEvent);
 	//</社群界面的事件>
 
@@ -96,10 +96,10 @@ void CTeamWithUI::Init()
 	//队伍的列表被右键点击
 	for(int i=0;i<MAX_TEAM_MENBER_COUNT-1;i++)
 	{
-		RTW_WIDGET(TEAM_LIST_WHOLE_ID[i])->ModifyFlags(wfGrabMouse|wfClick|wfDClick,0);
-		RTW_WIDGET(TEAM_LIST_WHOLE_ID[i])->EvRClick+=
+		LOAD_UI(TEAM_LIST_WHOLE_ID[i])->ModifyFlags(wfGrabMouse|wfClick|wfDClick,0);
+		LOAD_UI(TEAM_LIST_WHOLE_ID[i])->EvRClick+=
 			RTW_CALLBACK(this,CTeamWithUI,UserInterfaceEvent);
-		RTW_WIDGET(TEAM_LIST_WHOLE_ID[i])->EvLDClick+=
+		LOAD_UI(TEAM_LIST_WHOLE_ID[i])->EvLDClick+=
 			RTW_CALLBACK(this,CTeamWithUI,UserLDBClick);
 	}
 	//</队伍的列表被右键点击>
@@ -118,35 +118,35 @@ void CTeamWithUI::Init()
 	string Temp2;
 	for(int i=0;i<MAX_TEAM_MENBER_COUNT-1;i++)
 	{
-		mDataList[i].mpMemberUI=RTW_WIDGET(TEAM_LIST_WHOLE_ID[i]);
+		mDataList[i].mpMemberUI=LOAD_UI(TEAM_LIST_WHOLE_ID[i]);
 
 		mDataList[i].mpMemberUI->EvLClick += RTW_CALLBACK(this,CTeamWithUI,OnLClickMemberUI);
 		
 		Temp1=TEAM_LIST_WHOLE_ID[i];
 
 		Temp2=Temp1+UI_SPLIT_FLAG+TEAM_NAME_ID;
-		mDataList[i].mpMemberNameUI=RTW_WIDGET_T(RtwLabel, Temp2.c_str());
+		mDataList[i].mpMemberNameUI=LOAD_UI_T(RtwLabel, Temp2.c_str());
 		
 		Temp2=Temp1+UI_SPLIT_FLAG+TEAM_HP_ID;
-		mDataList[i].mpMemberHpUI=RTW_WIDGET_T(RtwProgressBar, Temp2.c_str());
+		mDataList[i].mpMemberHpUI=LOAD_UI_T(RtwProgressBar, Temp2.c_str());
 		
 		Temp2=Temp1+UI_SPLIT_FLAG+TEAM_MP_ID;
-		mDataList[i].mpMemberMpUI=RTW_WIDGET_T(RtwProgressBar, Temp2.c_str());
+		mDataList[i].mpMemberMpUI=LOAD_UI_T(RtwProgressBar, Temp2.c_str());
 
 		Temp2=Temp1+UI_SPLIT_FLAG+TEAM_HEAD_ID;
-		mDataList[i].mpMemberHeadUI=RTW_WIDGET_T(RtwLabel, Temp2.c_str());
+		mDataList[i].mpMemberHeadUI=LOAD_UI_T(RtwLabel, Temp2.c_str());
 
 		Temp2=Temp1+UI_SPLIT_FLAG+TEAM_LEVEL_ID;
-		mDataList[i].mpMemberLevelUI=RTW_WIDGET_T(RtwLabel, Temp2.c_str());
+		mDataList[i].mpMemberLevelUI=LOAD_UI_T(RtwLabel, Temp2.c_str());
 
 		/*Temp2=Temp1+UI_SPLIT_FLAG+TEAM_CAPTAIN;
-		mDataList[i].mpCaptainUI=RTW_WIDGET_T(RtwLabel, Temp2.c_str());*/
+		mDataList[i].mpCaptainUI=LOAD_UI_T(RtwLabel, Temp2.c_str());*/
 
 		mDataList[i].mpMemberUI->Hide();
 	}
-	mpUIListGroup=RTW_WIDGET(TEAM_WHOLE_ID);
+	mpUIListGroup=LOAD_UI(TEAM_WHOLE_ID);
 	mpUIListGroup->Hide();
-	//RTW_WIDGET("fmhplistla")->Hide();//max// gao 2009.12.25 此处一个无用图层
+	//LOAD_UI("fmhplistla")->Hide();//max// gao 2009.12.25 此处一个无用图层
 	TeamDataChange();
     unguard;
 }
@@ -156,11 +156,11 @@ void CTeamWithUI::SetEnableHotkey(ui::RtwButton* vpSenderButton)
     guard;
 	//	RtwWidget*	GetWidget(const std::string& id);
 
-//	RtwButton* pButton=RTW_WIDGET_T(RtwAliasButton,UI_HOTKEY_ENABLE_WHOLE_ID)->GetButton();
+//	RtwButton* pButton=LOAD_UI_T(RtwAliasButton,UI_HOTKEY_ENABLE_WHOLE_ID)->GetButton();
 //	pButton->GetQualifiedID();
 	/*RtwButton* pButton = (RtwButton*)g_workspace.getWidgetFactory()->createWidget(wtButton);
 	pButton->CloneFrom((RtwButton*)vpSenderButton);
-	RTW_WIDGET_T(RtwAliasButton,UI_HOTKEY_ENABLE_WHOLE_ID)->SetButton(pButton);*/ //gao 2009.12.18 去除原右键技能框
+	LOAD_UI_T(RtwAliasButton,UI_HOTKEY_ENABLE_WHOLE_ID)->SetButton(pButton);*/ //gao 2009.12.18 去除原右键技能框
     unguard;
 }
 
@@ -481,9 +481,9 @@ void CTeamWithUI::TeamDataChange()
 	if(mData.Size()==0)
 	{
 		mpUIListGroup->Hide();
-		RTW_WIDGET("fmhp.lbcaptain")->Hide();
-		RTW_WIDGET("fmhplist.fmhplist1.lbcaptain")->Hide();
-		//RTW_WIDGET("fmhplistla")->Hide();// gao 2009.12.25 此处一个无用图层
+		LOAD_UI("fmhp.lbcaptain")->Hide();
+		LOAD_UI("fmhplist.fmhplist1.lbcaptain")->Hide();
+		//LOAD_UI("fmhplistla")->Hide();// gao 2009.12.25 此处一个无用图层
 		return;
 	}
 
@@ -497,7 +497,7 @@ void CTeamWithUI::TeamDataChange()
 	NewRect.bottom = NewRect.top + TeamGroupRect.getHeight()-(MAX_TEAM_MENBER_COUNT-1-mData.Size())*(OneMemberRect.getHeight());
 	mpUIListGroup->MoveResize(NewRect);
 	mpUIListGroup->Show();
-	//RTW_WIDGET("fmhplistla")->Show();// gao 2009.12.25 此处一个无用图层
+	//LOAD_UI("fmhplistla")->Show();// gao 2009.12.25 此处一个无用图层
 	
 	int Index=0;
 	for(int i=mData.Begin();i!=mData.End();i++)
@@ -555,13 +555,13 @@ void CTeamWithUI::TeamDataChange()
 	}
 	if (mData.GetCaptain() != mSelfDBID)
 	{
-		RTW_WIDGET("fmhp.lbcaptain")->Hide();
-		RTW_WIDGET("fmhplist.fmhplist1.lbcaptain")->Show();
+		LOAD_UI("fmhp.lbcaptain")->Hide();
+		LOAD_UI("fmhplist.fmhplist1.lbcaptain")->Show();
 	}
 	else
 	{
-		RTW_WIDGET("fmhp.lbcaptain")->Show();
-		RTW_WIDGET("fmhplist.fmhplist1.lbcaptain")->Hide();
+		LOAD_UI("fmhp.lbcaptain")->Show();
+		LOAD_UI("fmhplist.fmhplist1.lbcaptain")->Hide();
 	}
 	for(;Index!=MAX_TEAM_MENBER_COUNT-1;Index++)
 	{

@@ -3,10 +3,10 @@
 
 UIFormShopCenter::UIFormShopCenter()
 {
-	m_pFrmThis  = RTW_WIDGET_T(RtwForm,"fmshoppingmail");
+	m_pFrmThis  = LOAD_UI_T(RtwForm,"fmshoppingmail");
 	m_pFrmThis->SetMovable(true);
 
-	m_pTabPage = RTW_WIDGET_T(RtwTab,"fmshoppingmail.tabitem");
+	m_pTabPage = LOAD_UI_T(RtwTab,"fmshoppingmail.tabitem");
 	m_pTabPage->EvChangeSelected += RTW_CALLBACK(this, UIFormShopCenter, ChangeSelectTab);
 
 	//ÍÆ¼öÉÌÆ·
@@ -14,45 +14,45 @@ UIFormShopCenter::UIFormShopCenter()
 	for (size_t i = 1; i <= MAX_PAGE_COUNT; i++)
 	{
 		rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d", i);
-		m_pFormItemType[i] = RTW_WIDGET_T(RtwForm, tmp);
+		m_pFormItemType[i] = LOAD_UI_T(RtwForm, tmp);
 		rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d.fmitem.btfirstpage", i);
-		m_pFirstBtn[i] = RTW_WIDGET_T(RtwButton, tmp);
+		m_pFirstBtn[i] = LOAD_UI_T(RtwButton, tmp);
 		m_pFirstBtn[i]->EvLClick += RTW_CALLBACK(this, UIFormShopCenter, ShowFirstPage);
 		rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d.fmitem.btuppage", i);
-		m_pUpBtn[i] = RTW_WIDGET_T(RtwButton, tmp);
+		m_pUpBtn[i] = LOAD_UI_T(RtwButton, tmp);
 		rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d.fmitem.btdownpage", i);
-		m_pDownBtn[i] = RTW_WIDGET_T(RtwButton, tmp);
+		m_pDownBtn[i] = LOAD_UI_T(RtwButton, tmp);
 		rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d.fmitem.btendpage", i);
-		m_pEndBtn[i] = RTW_WIDGET_T(RtwButton, tmp);
+		m_pEndBtn[i] = LOAD_UI_T(RtwButton, tmp);
 		for (size_t j = 1; j <= MAX_ITEM_COUNT; j++)
 		{
 			rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d.fmitem.fmiteminfo%d", i, j);
-			m_pFormItem[i][j] = RTW_WIDGET_T(RtwForm, tmp);
+			m_pFormItem[i][j] = LOAD_UI_T(RtwForm, tmp);
 			rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d.fmitem.fmiteminfo%d.btbuyitem", i, j);
-			m_pBtnBuyItem[i][j] = RTW_WIDGET_T(RtwButton, tmp);
+			m_pBtnBuyItem[i][j] = LOAD_UI_T(RtwButton, tmp);
 			rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d.fmitem.fmiteminfo%d.btgiveitem", i, j);
-			m_pBtnPresentItem[i][j] = RTW_WIDGET_T(RtwButton, tmp);
+			m_pBtnPresentItem[i][j] = LOAD_UI_T(RtwButton, tmp);
 			rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d.fmitem.fmiteminfo%d.lblitemicon", i, j);
-			m_pItemIcon[i][j] = RTW_WIDGET_T(RtwLabel, tmp);
+			m_pItemIcon[i][j] = LOAD_UI_T(RtwLabel, tmp);
 			rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d.fmitem.fmiteminfo%d.lblitemname", i, j);
-			m_pLableItemName[i][j] = RTW_WIDGET_T(RtwLabel, tmp);
+			m_pLableItemName[i][j] = LOAD_UI_T(RtwLabel, tmp);
 			rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d.fmitem.fmiteminfo%d.lblprice", i, j);
-			m_pLableItemPrice[i][j] = RTW_WIDGET_T(RtwLabel, tmp);
+			m_pLableItemPrice[i][j] = LOAD_UI_T(RtwLabel, tmp);
 			rt2_snprintf(tmp, 256, "fmshoppingmail.tabitem.fmtab%d.fmitem.fmiteminfo%d.lbloffsale", i, j);
-			m_pLableItemDownPrice[i][j] = RTW_WIDGET_T(RtwLabel, tmp);
+			m_pLableItemDownPrice[i][j] = LOAD_UI_T(RtwLabel, tmp);
 		}
 	}
 
-	m_ckBtnAll = RTW_WIDGET_T(CUiCheckButton, "fmshoppingmail.tabitem.fmtab1.bttype1");
+	m_ckBtnAll = LOAD_UI_T(CUiCheckButton, "fmshoppingmail.tabitem.fmtab1.bttype1");
 	m_ckBtnAll->EvLClick += RTW_CALLBACK(this, UIFormShopCenter, ShowCheckCommendItemAll);
-	m_ckBtnHot = RTW_WIDGET_T(CUiCheckButton, "fmshoppingmail.tabitem.fmtab1.bttype2");
+	m_ckBtnHot = LOAD_UI_T(CUiCheckButton, "fmshoppingmail.tabitem.fmtab1.bttype2");
 	m_ckBtnHot->EvLClick += RTW_CALLBACK(this, UIFormShopCenter, ShowCheckCommendItemHot);
-	m_ckBtnNew = RTW_WIDGET_T(CUiCheckButton, "fmshoppingmail.tabitem.fmtab1.bttype3");
+	m_ckBtnNew = LOAD_UI_T(CUiCheckButton, "fmshoppingmail.tabitem.fmtab1.bttype3");
 	m_ckBtnNew->EvLClick += RTW_CALLBACK(this, UIFormShopCenter, ShowCheckCommendItemNew);
-	m_ckBtnPresent = RTW_WIDGET_T(CUiCheckButton, "fmshoppingmail.tabitem.fmtab1.bttype4");
+	m_ckBtnPresent = LOAD_UI_T(CUiCheckButton, "fmshoppingmail.tabitem.fmtab1.bttype4");
 	m_ckBtnPresent->EvLClick += RTW_CALLBACK(this, UIFormShopCenter, ShowCheckCommendItemPresent);
 
-	m_shopActorView = RTW_WIDGET_T(Rtw3DView, "fmshoppingmail.fmitemact.lbitemact");
+	m_shopActorView = LOAD_UI_T(Rtw3DView, "fmshoppingmail.fmitemact.lbitemact");
 
 	for (size_t i = 0; i < MAX_PAGE_COUNT; i++)
 	{

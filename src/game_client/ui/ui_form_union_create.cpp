@@ -27,10 +27,10 @@ UIFormUnionCreate::UIFormUnionCreate()
 {
 	guard;
 
-	m_pFrmThis		= RTW_WIDGET("fmcreateunion");
-	m_pUnionName	=	RTW_WIDGET_T(RtwTextBox, "fmcreateunion.edtunionname");	
-	m_pBtnOK		= RTW_WIDGET_T(RtwButton, "fmcreateunion.btnok");
-	m_pBtnCancel	= RTW_WIDGET_T(RtwButton, "fmcreateunion.btnclose");
+	m_pFrmThis		= LOAD_UI("fmcreateunion");
+	m_pUnionName	=	LOAD_UI_T(RtwTextBox, "fmcreateunion.edtunionname");	
+	m_pBtnOK		= LOAD_UI_T(RtwButton, "fmcreateunion.btnok");
+	m_pBtnCancel	= LOAD_UI_T(RtwButton, "fmcreateunion.btnclose");
 
 	m_pUnionName->SetCapacity(UNION_NAME_STRING_MAX);
 

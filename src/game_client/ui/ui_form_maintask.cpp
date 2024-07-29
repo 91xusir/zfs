@@ -3,12 +3,12 @@
 
 UIFormMainTask::UIFormMainTask()
 {
-	m_CloseTree		= RTW_WIDGET_T(RtwButton, "fmtaskline.$hide");
+	m_CloseTree		= LOAD_UI_T(RtwButton, "fmtaskline.$hide");
 	m_CloseTree->EvLClick	  += RTW_CALLBACK(this, UIFormMainTask, HideTaskTree);
-	m_CloseDesc		= RTW_WIDGET_T(RtwButton, "fmtasklinedesc.$hide");
+	m_CloseDesc		= LOAD_UI_T(RtwButton, "fmtasklinedesc.$hide");
 	m_CloseDesc->EvLClick	  += RTW_CALLBACK(this, UIFormMainTask, HideTaskDesc);
 
-	m_pTreeList     = RTW_WIDGET_T(RtwTree,"fmtaskline.treetask");
+	m_pTreeList     = LOAD_UI_T(RtwTree,"fmtaskline.treetask");
 	m_pTreeList->SetBorderpadding(false);
 	m_pTreeList->EvSelect	+= RTW_CALLBACK(this, UIFormMainTask, OnTreeNodeSelect);
 }
@@ -20,7 +20,7 @@ UIFormMainTask::~UIFormMainTask()
 bool UIFormMainTask::IsVisible()
 {
 	guard;
-	if (RTW_WIDGET("fmtaskline")->IsVisible() && RTW_WIDGET("fmtasklinedesc")->IsVisible())	return true;
+	if (LOAD_UI("fmtaskline")->IsVisible() && LOAD_UI("fmtasklinedesc")->IsVisible())	return true;
 	else	return false;
 	unguard;
 }
@@ -43,12 +43,12 @@ void UIFormMainTask::Show()
 
 void UIFormMainTask::ShowTaskTree()
 {
-	RTW_WIDGET("fmtaskline")->Show();
+	LOAD_UI("fmtaskline")->Show();
 }
 
 void UIFormMainTask::ShowTaskDesc()
 {
-	RTW_WIDGET("fmtasklinedesc")->Show();
+	LOAD_UI("fmtasklinedesc")->Show();
 }
 
 void UIFormMainTask::Hide()
@@ -61,12 +61,12 @@ void UIFormMainTask::Hide()
 
 void UIFormMainTask::HideTaskTree(RtwWidget* sender,void*)
 {
-	RTW_WIDGET("fmtaskline")->Hide();
+	LOAD_UI("fmtaskline")->Hide();
 }
 
 void UIFormMainTask::HideTaskDesc(RtwWidget* sender,void*)
 {
-	RTW_WIDGET("fmtasklinedesc")->Hide();
+	LOAD_UI("fmtasklinedesc")->Hide();
 }
 
 void UIFormMainTask::OnTreeNodeSelect(RtwWidget* pSender, RtwEventDelegate* pEvent)
@@ -83,13 +83,13 @@ void UIFormMainTask::OnTreeNodeSelect(RtwWidget* pSender, RtwEventDelegate* pEve
 		TaskGroupData* taskGroup = g_TaskGroup.FindTaskGroup(*itGroup);
 		if(m_pTreeList->getSelectItem()->text == taskGroup->strGroupName) 
 		{
-			if (RTW_WIDGET("fmtasklinedesc")->IsVisible())
+			if (LOAD_UI("fmtasklinedesc")->IsVisible())
 			{
-				RTW_WIDGET("fmtasklinedesc")->Hide();
+				LOAD_UI("fmtasklinedesc")->Hide();
 			}
 			else
 			{
-				RTW_WIDGET("fmtasklinedesc")->Show();
+				LOAD_UI("fmtasklinedesc")->Show();
 			}
 		}
 	}
@@ -121,7 +121,7 @@ void UIFormMainTask::OnTreeNodeSelect(RtwWidget* pSender, RtwEventDelegate* pEve
 				if (pImage)
 				{
 					pImage->SetBlend(true);
-					RTW_WIDGET("fmtasklinedesc.lbtasklinedesc")->SetBackgroundImage(pImage);
+					LOAD_UI("fmtasklinedesc.lbtasklinedesc")->SetBackgroundImage(pImage);
 				}
 			}
 		}
@@ -211,7 +211,7 @@ void UIFormMainTask::SetSelectedSectionID(int sectionId)
 			if (pImage)
 			{
 				pImage->SetBlend(true);
-				RTW_WIDGET("fmtasklinedesc.lbtasklinedesc")->SetBackgroundImage(pImage);
+				LOAD_UI("fmtasklinedesc.lbtasklinedesc")->SetBackgroundImage(pImage);
 			}
 		}
 	}
