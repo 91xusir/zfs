@@ -126,7 +126,7 @@ void RtwLabel::SetHyperLink(SHyperLink* pHyperLink) {
 
 void RtwLabel::OnLClick_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
     if (getHyperLink()) {
-        CUiMediaFrame* pFrame = (CUiMediaFrame*)this;
+        CUiMediaFrame* pFrame = static_cast<CUiMediaFrame*>(g_workspace.getWidgetFactory()->createWidget(wtMediaFrame));
         if (pFrame) {
             pFrame->SetNextHyperLink(&m_HyperLink);
         }
