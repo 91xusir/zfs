@@ -20,20 +20,20 @@ UIFormTrade::UIFormTrade()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmtrade");
-	m_pFrmGridsUp = RTW_WIDGET("fmtrade.fmotheritem");
-	m_pFrmGridsDown = RTW_WIDGET("fmtrade.fmselfitem");
-	m_lbNameUp = RTW_WIDGET("fmtrade.fmlbother.lbother");
-	m_lbNameDown = RTW_WIDGET("fmtrade.fmlbself.lbself");
-	m_lbMoneyUp = RTW_WIDGET("fmtrade.lbOtherMoney");
-	m_lbMoneyDown = RTW_WIDGET("fmtrade.lbSelfMoney");
-	m_btnMoney = RTW_WIDGET_T(RtwButton, "fmtrade.btngold");
-	m_btnOK = RTW_WIDGET_T(RtwButton, "fmtrade.btnok");
+	m_pFrmThis = LOAD_UI("fmtrade");
+	m_pFrmGridsUp = LOAD_UI("fmtrade.fmotheritem");
+	m_pFrmGridsDown = LOAD_UI("fmtrade.fmselfitem");
+	m_lbNameUp = LOAD_UI("fmtrade.fmlbother.lbother");
+	m_lbNameDown = LOAD_UI("fmtrade.fmlbself.lbself");
+	m_lbMoneyUp = LOAD_UI("fmtrade.lbOtherMoney");
+	m_lbMoneyDown = LOAD_UI("fmtrade.lbSelfMoney");
+	m_btnMoney = LOAD_UI_T(RtwButton, "fmtrade.btngold");
+	m_btnOK = LOAD_UI_T(RtwButton, "fmtrade.btnok");
 	m_btnOK->EvLClick += RTW_CALLBACK(this, UIFormTrade, OnOK);
-	m_btnDeal = RTW_WIDGET_T(RtwButton, "fmtrade.btncancel");
+	m_btnDeal = LOAD_UI_T(RtwButton, "fmtrade.btncancel");
 	m_btnDeal->EvLClick += RTW_CALLBACK(this, UIFormTrade, OnDeal);
 	m_btnMoney->EvLClick += RTW_CALLBACK(this, UIFormTrade, OnMoney);
-	//	RTW_WIDGET("fmtrade.$hide")->EvLClick += RTW_CALLBACK(this, UIFormTrade, OnClose);
+	//	LOAD_UI("fmtrade.$hide")->EvLClick += RTW_CALLBACK(this, UIFormTrade, OnClose);
 	m_pFrmThis->EvHide += RTW_CALLBACK(this, UIFormTrade, OnClose);
 
 	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui\\textures\\highlight_button.tga");
@@ -42,7 +42,7 @@ UIFormTrade::UIFormTrade()
 	m_ptrHoverImage->getRenderImage()->eBlendSrcFunc = RTGBLEND_SRCALPHA;
 	m_ptrHoverImage->getRenderImage()->SetBlend(true);
 	// 注册其他窗口中的事件
-	RTW_WIDGET("fmcharall.tabcharall.fmsoc.btntrade")->EvLClick += RTW_CALLBACK(this, UIFormTrade, OnBtnInvite);
+	LOAD_UI("fmcharall.tabcharall.fmsoc.btntrade")->EvLClick += RTW_CALLBACK(this, UIFormTrade, OnBtnInvite);
 
 	RtwRect rc = m_pFrmGridsUp->GetFrameRect();
 	int left = rc.Left() +1;
@@ -122,15 +122,15 @@ UIFormTrade::UIFormTrade()
 	m_pFrmThis->Hide();
 	m_bRefuseInvite = false;
 
-	m_pFmPetTrade	= RTW_WIDGET_T(RtwForm, "fmtrade2");
-	m_pBtnToTrade	= RTW_WIDGET_T(RtwButton, "fmtrade2.petsellblt");
-	m_pBtnToMine	= RTW_WIDGET_T(RtwButton, "fmtrade2.petreturnblt");
-	m_pListPetMine	= RTW_WIDGET_T(RtwListBox, "fmtrade2.conjureform02.mywithlist");
-	m_pListPetTrade = RTW_WIDGET_T(RtwListBox, "fmtrade2.conjureform03.myselllist");
-	m_pListPetOther = RTW_WIDGET_T(RtwListBox, "fmtrade2.conjureform01.obpetlist");
-	m_pBtnTradePet	= RTW_WIDGET_T(RtwButton, "fmtrade.pettradeblt");
-	m_pBtnLookPet	= RTW_WIDGET_T(RtwButton, "fmtrade2.btcheckchar");
-	m_p3DView		= RTW_WIDGET_T(Rtw3DView, "fmtrade2.conjureform04");
+	m_pFmPetTrade	= LOAD_UI_T(RtwForm, "fmtrade2");
+	m_pBtnToTrade	= LOAD_UI_T(RtwButton, "fmtrade2.petsellblt");
+	m_pBtnToMine	= LOAD_UI_T(RtwButton, "fmtrade2.petreturnblt");
+	m_pListPetMine	= LOAD_UI_T(RtwListBox, "fmtrade2.conjureform02.mywithlist");
+	m_pListPetTrade = LOAD_UI_T(RtwListBox, "fmtrade2.conjureform03.myselllist");
+	m_pListPetOther = LOAD_UI_T(RtwListBox, "fmtrade2.conjureform01.obpetlist");
+	m_pBtnTradePet	= LOAD_UI_T(RtwButton, "fmtrade.pettradeblt");
+	m_pBtnLookPet	= LOAD_UI_T(RtwButton, "fmtrade2.btcheckchar");
+	m_p3DView		= LOAD_UI_T(Rtw3DView, "fmtrade2.conjureform04");
 
 	m_pFmPetTrade->EvHide		+= RTW_CALLBACK(this, UIFormTrade, OnHidePetTrade);
 	m_pBtnToTrade->EvLClick		+= RTW_CALLBACK(this, UIFormTrade, OnLClickPetToTrade);

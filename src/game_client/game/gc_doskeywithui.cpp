@@ -9,7 +9,7 @@ void CDoskeyWithUI::OnLock()
 	guard;
 	if(mpDoskeyList==NULL)
 	{
-		mpDoskeyList=RTW_WIDGET_T(RtwListBox,UI_DOSKEY_LIST_WHOLE_ID);
+		mpDoskeyList=LOAD_UI_T(RtwListBox,UI_DOSKEY_LIST_WHOLE_ID);
 		mpDoskeyList->SetAutoScrollH(false);
 		mpDoskeyList->SetAutoScrollV(false);
 	}

@@ -10,7 +10,7 @@ UIFormTimer::UIFormTimer()
 {
 	guard;
 
-	m_pLabelTimer = RTW_WIDGET_T(RtwLabel, "lbbattle");
+	m_pLabelTimer = LOAD_UI_T(RtwLabel, "lbbattle");
 
 	m_total_time = 0;
 

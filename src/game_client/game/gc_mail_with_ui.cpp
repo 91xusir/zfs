@@ -112,54 +112,54 @@ void CMailWithUI::Init()
 
 	
 	//点击系统的收件箱
-	RTW_WIDGET("fmsystem.btnsysmail")->EvLClick += 
+	LOAD_UI("fmsystem.btnsysmail")->EvLClick += 
 		RTW_CALLBACK(this, CMailWithUI, OpenMailUI);
 
 	//[新建,回复,抄送]开收发邮件界面，删除邮件，导出邮件
 
-	RTW_WIDGET("fmmail2.fmcontent.btnxmm1")->EvLClick += 
+	LOAD_UI("fmmail2.fmcontent.btnxmm1")->EvLClick += 
 		RTW_CALLBACK(this, CMailWithUI, NewMail);
-	RTW_WIDGET("fmmail1.fmcontent.btnreplay")->EvLClick += 
+	LOAD_UI("fmmail1.fmcontent.btnreplay")->EvLClick += 
 		RTW_CALLBACK(this, CMailWithUI, ReplayMail);
-	RTW_WIDGET("fmmail1.fmcontent.btncc")->EvLClick += 
+	LOAD_UI("fmmail1.fmcontent.btncc")->EvLClick += 
 		RTW_CALLBACK(this, CMailWithUI, CCMail);
-	RTW_WIDGET("fmmail1.fmcontent.btnview")->EvLClick += 
+	LOAD_UI("fmmail1.fmcontent.btnview")->EvLClick += 
 		RTW_CALLBACK(this, CMailWithUI, OnReceiveItemAndMoney);
-	RTW_WIDGET("fmmail1.fmcontent.btnback")->EvLClick += 
+	LOAD_UI("fmmail1.fmcontent.btnback")->EvLClick += 
 		RTW_CALLBACK(this, CMailWithUI, ReturnToMailBox);
-	RTW_WIDGET("fmmail2.fmcontent.btnxmm5")->EvLClick += 
+	LOAD_UI("fmmail2.fmcontent.btnxmm5")->EvLClick += 
 		RTW_CALLBACK(this, CMailWithUI, OnEnsureDeleteMail);
-	RTW_WIDGET("fmmail2.fmcontent.btnxmm2")->EvLClick += 
+	LOAD_UI("fmmail2.fmcontent.btnxmm2")->EvLClick += 
 		RTW_CALLBACK(this, CMailWithUI, ExportMail);
 
 	
 	//收发界面的发邮件按钮
-	RTW_WIDGET("fmmail4.fmcontent.btncc")->EvLClick += 
+	LOAD_UI("fmmail4.fmcontent.btncc")->EvLClick += 
 		RTW_CALLBACK(this, CMailWithUI, SendMail);
 
-	RTW_WIDGET(UI_RETURN_MAIL_BOX_WHOLE_ID)->EvLClick += 
+	LOAD_UI(UI_RETURN_MAIL_BOX_WHOLE_ID)->EvLClick += 
 		RTW_CALLBACK(this, CMailWithUI, ReturnToMailBox);
 
 	//表情框的开关
-	RTW_WIDGET(UI_MAIL_FACE_SWITCH_WHOLE_ID)->EvLClick += 
+	LOAD_UI(UI_MAIL_FACE_SWITCH_WHOLE_ID)->EvLClick += 
 		RTW_CALLBACK(this, CMailWithUI, ChangeFaceUI);
 
 	//表情框的激活事件
-	RTW_WIDGET(UI_MAIL_FACE_FORM_WHOLE_ID)->EvActivate+=
+	LOAD_UI(UI_MAIL_FACE_FORM_WHOLE_ID)->EvActivate+=
 		RTW_CALLBACK(this,CMailWithUI,ActiveFaceForm);
 
 	//表情框中列表的选择事件
-// 	RTW_WIDGET_T(RtwIconList,UI_MAIL_FACE_ICON_LIST_WHOLE_ID)->EvSelect+=
+// 	LOAD_UI_T(RtwIconList,UI_MAIL_FACE_ICON_LIST_WHOLE_ID)->EvSelect+=
 // 		RTW_CALLBACK(this,CMailWithUI,UserInterfaceSelect); tooth.shi
 
 
 	//得到指针
-	mpMailUI=RTW_WIDGET(UI_MAIL_WHOLE_ID);
+	mpMailUI=LOAD_UI(UI_MAIL_WHOLE_ID);
 // 	mpMailUI->SetWidgetEffect(esTrans, esTrans);
 	//mpMailUI->EvKey+=RTW_CALLBACK(mpMailUI,RtwWidget,DefaultKeyDown);
 
-	mpReceiveListUI=RTW_WIDGET_T(RtwListBox,UI_MAIL_LIST_WHOLE_ID);
-	mpPreviewUI=RTW_WIDGET_T(RtwTextBox,UI_MAIL_PREVIEW_WHOLE_ID);
+	mpReceiveListUI=LOAD_UI_T(RtwListBox,UI_MAIL_LIST_WHOLE_ID);
+	mpPreviewUI=LOAD_UI_T(RtwTextBox,UI_MAIL_PREVIEW_WHOLE_ID);
 	/* gao 2009.11.24
 	此处，如果设置为不接受输入，那么整个程序将无法接受任何的输入，
 	我们用下面的的SetEnableInput(false)来带代替此行代码。
@@ -167,37 +167,37 @@ void CMailWithUI::Init()
 	//mpPreviewUI->ModifyFlags(0,wfInput);
 	/* gao 2009.11.23
 	标题无法显示的问题*/
-	mpPreviewFormUI		= RTW_WIDGET_T(RtwLabel,UI_MAIL_PREVIEW_TITLE_WHOLE_ID);
-	mpPreviewAuthorUI	= RTW_WIDGET_T(RtwLabel,"fmmail1.fmcontent.lbpeople1");
-	mpPreviewTitleUI	= RTW_WIDGET_T(RtwLabel,"fmmail1.fmcontent.lbpeople2");
-	mpPreviewTimeUI		= RTW_WIDGET_T(RtwLabel,"fmmail1.fmcontent.lbpeople3");
-	m_pSendButton		= RTW_WIDGET_T(RtwButton,"fmmail4.fmcontent.btnxmm");
-	m_pReceiveButton	= RTW_WIDGET_T(RtwButton,"fmmail1.fmcontent.btnxmm");
+	mpPreviewFormUI		= LOAD_UI_T(RtwLabel,UI_MAIL_PREVIEW_TITLE_WHOLE_ID);
+	mpPreviewAuthorUI	= LOAD_UI_T(RtwLabel,"fmmail1.fmcontent.lbpeople1");
+	mpPreviewTitleUI	= LOAD_UI_T(RtwLabel,"fmmail1.fmcontent.lbpeople2");
+	mpPreviewTimeUI		= LOAD_UI_T(RtwLabel,"fmmail1.fmcontent.lbpeople3");
+	m_pSendButton		= LOAD_UI_T(RtwButton,"fmmail4.fmcontent.btnxmm");
+	m_pReceiveButton	= LOAD_UI_T(RtwButton,"fmmail1.fmcontent.btnxmm");
 	m_pReceiveButton->ModifyFlags(wfGrabMouse | wfMouseMove | wfHint, 0);
 	m_pReceiveButton->EvHint		+= RTW_CALLBACK(this, CMailWithUI, OnGetHintReceiveItem);
-	m_pReceiveMoney		= RTW_WIDGET_T(RtwLabel,"fmmail1.fmcontent.lbtext9");
+	m_pReceiveMoney		= LOAD_UI_T(RtwLabel,"fmmail1.fmcontent.lbtext9");
 	m_pSendButton->ModifyFlags(wfDragClient | wfDragServer|wfDragIn|wfDragOut, 0);
 	m_pSendButton->EvDrag		+= RTW_CALLBACK(this, CMailWithUI, OnDragToSendItem);
 	m_pSendButton->EvDragEnd	+= RTW_CALLBACK(this, CMailWithUI, OnDragEndSendItem);
 	m_pSendButton->EvHint		+= RTW_CALLBACK(this, CMailWithUI, OnGetHintItemText);
 	m_pSendButton->EvMouseRDown += RTW_CALLBACK(this, CMailWithUI, OnSendButtonMouseButtonDown);
 	m_pReceiveButton->EvDrag	+= RTW_CALLBACK(this, CMailWithUI, OnDragToSendItem);
-	m_pSendMoney				= RTW_WIDGET_T(RtwTextBox,"fmmail4.fmcontent.ebx1");
+	m_pSendMoney				= LOAD_UI_T(RtwTextBox,"fmmail4.fmcontent.ebx1");
 	m_pSendMoney->EvInputChar	+= RTW_CALLBACK(this, CMailWithUI, OnSendMoneyChanged);
 	m_pSendMoney->SetNumberOnly(true);
 	/* end */
 	
 	mpDisplayMail=NULL;
 
-	mpMailBookUI=RTW_WIDGET(UI_MAILBOOK_WHOLE_ID);
+	mpMailBookUI=LOAD_UI(UI_MAILBOOK_WHOLE_ID);
 	mpMailBookUI->EvHide		+= RTW_CALLBACK(this,CMailWithUI, OnHideSendMail);
 	//mpMailBookUI->EvKey+=RTW_CALLBACK(mpMailBookUI,RtwWidget,DefaultKeyDown);
 
-	mpSendToNameUI=RTW_WIDGET(UI_SEND_TO_NAME_WHOLE_ID);
-	mpTitleUI=RTW_WIDGET(UI_MAIL_TITLE_WHOLE_ID);
-	mpContentUI=RTW_WIDGET_T(RtwTextBox,UI_MAIL_CONTENT_WHOLE_ID);
-	mpChatFaceUI=RTW_WIDGET(UI_MAIL_FACE_FORM_WHOLE_ID);
-	//mpInfoAtFriendListUI=RTW_WIDGET(UI_MAIL_INFO_WHOLE_ID);
+	mpSendToNameUI=LOAD_UI(UI_SEND_TO_NAME_WHOLE_ID);
+	mpTitleUI=LOAD_UI(UI_MAIL_TITLE_WHOLE_ID);
+	mpContentUI=LOAD_UI_T(RtwTextBox,UI_MAIL_CONTENT_WHOLE_ID);
+	mpChatFaceUI=LOAD_UI(UI_MAIL_FACE_FORM_WHOLE_ID);
+	//mpInfoAtFriendListUI=LOAD_UI(UI_MAIL_INFO_WHOLE_ID);
 
 	/* gao 2009.11.24
 	此处功能是可以让用邮件显示多行，包括输入邮件，显示邮件
@@ -241,11 +241,11 @@ void CMailWithUI::Init()
 	/* gao 2010.2.2
 	查看游戏邮件界面
 	*/
-	m_pfrmDisplayMail = RTW_WIDGET("fmmail1");
+	m_pfrmDisplayMail = LOAD_UI("fmmail1");
 	m_pfrmDisplayMail->EvHint		+= RTW_CALLBACK(this,CMailWithUI,OnHideSendMail);
-	RTW_WIDGET("fmmail2.fmcontent.btnxmm3")->EvLClick	+= RTW_CALLBACK(this, CMailWithUI, UserInterfaceEvent);
-	RTW_WIDGET("fmmail1.fmcontent.btnback")->EvLClick	+= RTW_CALLBACK(this, CMailWithUI, UserInterfaceEvent);
-	RTW_WIDGET("fmmail2.fmcontent.btnxmm4")->EvLClick	+= RTW_CALLBACK(this, CMailWithUI, UserInterfaceEvent);
+	LOAD_UI("fmmail2.fmcontent.btnxmm3")->EvLClick	+= RTW_CALLBACK(this, CMailWithUI, UserInterfaceEvent);
+	LOAD_UI("fmmail1.fmcontent.btnback")->EvLClick	+= RTW_CALLBACK(this, CMailWithUI, UserInterfaceEvent);
+	LOAD_UI("fmmail2.fmcontent.btnxmm4")->EvLClick	+= RTW_CALLBACK(this, CMailWithUI, UserInterfaceEvent);
 	Initface();
 	m_imgAlreadyOpen = g_workspace.getImageFactory()->createImage("ui_texture/ReadedMessage.tga");
 	m_imgAlreadyOpen->SetBlend(true);
@@ -276,7 +276,7 @@ void CMailWithUI::OpenMailBookUI()
 	g_workspace.SetFocusWidget(mpSendToNameUI);
 	mpMailBookUI->Show();
 	mpMailBookUI->BringToTop();
-	RTW_WIDGET(UI_MAIL_FACE_FORM_WHOLE_ID)->Hide();
+	LOAD_UI(UI_MAIL_FACE_FORM_WHOLE_ID)->Hide();
     unguard;
 }
 // 写邮件
@@ -285,7 +285,7 @@ void CMailWithUI::NewMail(void*,void*)
     guard;
 	ClearMailBookUI();
 	OpenMailBookUI();
-	RTW_WIDGET("fmmail4.lbtitle")->SetText(R(MSG_CREATEMAIL));
+	LOAD_UI("fmmail4.lbtitle")->SetText(R(MSG_CREATEMAIL));
     return;
     unguard;
 }
@@ -398,7 +398,7 @@ void CMailWithUI::CCMail(void*,void*)
 		mpTitleUI->SetText(Temp.c_str());
 	}
 	OpenMailBookUI();
-	RTW_WIDGET("fmmail4.lbtitle")->SetText(R(MSG_MAIL_TRANSMITMAIL));
+	LOAD_UI("fmmail4.lbtitle")->SetText(R(MSG_MAIL_TRANSMITMAIL));
 	return;
 
 	
@@ -452,7 +452,7 @@ void CMailWithUI::ReplayMail(void*,void*)
 
 	}
 	OpenMailBookUI();
-	RTW_WIDGET("fmmail4.lbtitle")->SetText(R(MSG_MAIL_REPLYMAIL));
+	LOAD_UI("fmmail4.lbtitle")->SetText(R(MSG_MAIL_REPLYMAIL));
 	return;
     unguard;
 }
@@ -609,9 +609,9 @@ void CMailWithUI::ActiveFaceForm(ui::RtwWidget* vpSender, RtwEventDelegate* vpEv
     guard;
 	//表情框//失效事件
 	if (vpEvent->type == etUnFocus && 
-		vpEvent->activate.widget != RTW_WIDGET(UI_MAIL_FACE_SWITCH_WHOLE_ID))
+		vpEvent->activate.widget != LOAD_UI(UI_MAIL_FACE_SWITCH_WHOLE_ID))
 	{
-		RTW_WIDGET(UI_MAIL_FACE_FORM_WHOLE_ID)->Hide();
+		LOAD_UI(UI_MAIL_FACE_FORM_WHOLE_ID)->Hide();
 	}
     unguard;
 }
@@ -621,9 +621,9 @@ void CMailWithUI::UserInterfaceSelect(ui::RtwWidget* vpSender, RtwEventDelegate*
     guard;
 	//表情框被选择
 	const char* pKey;
-	pKey=RTW_WIDGET_T(RtwIconList,UI_MAIL_FACE_ICON_LIST_WHOLE_ID)->GetSelectedKey();
+	pKey=LOAD_UI_T(RtwIconList,UI_MAIL_FACE_ICON_LIST_WHOLE_ID)->GetSelectedKey();
 	//mpContentUI->InsertImage(pKey);
-	RTW_WIDGET(UI_MAIL_FACE_FORM_WHOLE_ID)->Hide();//将窗口关闭
+	LOAD_UI(UI_MAIL_FACE_FORM_WHOLE_ID)->Hide();//将窗口关闭
     unguard;
 }
 
@@ -634,13 +634,13 @@ void CMailWithUI::ChangeFaceUI(ui::RtwWidget* vpSender, RtwEventDelegate* )
 	const string& Sender=vpSender->GetID();
 	if(Sender=="btnchatface")
 	{//表情框按钮
-		if(RTW_WIDGET(UI_MAIL_FACE_FORM_WHOLE_ID)->GetFlags(wfVisible))
+		if(LOAD_UI(UI_MAIL_FACE_FORM_WHOLE_ID)->GetFlags(wfVisible))
 		{
-			RTW_WIDGET(UI_MAIL_FACE_FORM_WHOLE_ID)->Hide();
+			LOAD_UI(UI_MAIL_FACE_FORM_WHOLE_ID)->Hide();
 		}
 		else
 		{
-			RTW_WIDGET(UI_MAIL_FACE_FORM_WHOLE_ID)->Show();
+			LOAD_UI(UI_MAIL_FACE_FORM_WHOLE_ID)->Show();
 			g_workspace.SetActiveWidget(mpChatFaceUI);
 			g_workspace.BringWidgetToTop(mpChatFaceUI);
 			//mpChatFaceUI->BringToTop();
@@ -652,9 +652,9 @@ void CMailWithUI::ChangeFaceUI(ui::RtwWidget* vpSender, RtwEventDelegate* )
 void CMailWithUI::ReturnToMailBox(void *sender ,void *)
 {
     guard;
-	if(sender == RTW_WIDGET("fmmail1.fmcontent.btnback"))
+	if(sender == LOAD_UI("fmmail1.fmcontent.btnback"))
 	{
-		RTW_WIDGET("fmmail1")->Hide();
+		LOAD_UI("fmmail1")->Hide();
 		mpMailUI->Show();
 	}else
 	{
@@ -972,7 +972,7 @@ void CMailWithUI::UserInterfaceEvent(ui::RtwWidget* vpSender, RtwEventDelegate* 
     guard;
 	GetWorld()->HideGuideForm();
 
-	if(vpSender == RTW_WIDGET("fmmail2.fmcontent.btnxmm3"))
+	if(vpSender == LOAD_UI("fmmail2.fmcontent.btnxmm3"))
 	{
 		//列表的点选
 		int SelectIndex=mpReceiveListUI->GetSelectedItem();
@@ -1004,9 +1004,9 @@ void CMailWithUI::UserInterfaceEvent(ui::RtwWidget* vpSender, RtwEventDelegate* 
 			}
 		}	
 	}
-	else if(vpSender == RTW_WIDGET("fmmail4.fmcontent.btnback"))
+	else if(vpSender == LOAD_UI("fmmail4.fmcontent.btnback"))
 		m_pfrmDisplayMail->Hide();
-	else if(vpSender == RTW_WIDGET("fmmail2.fmcontent.btnxmm4"))
+	else if(vpSender == LOAD_UI("fmmail2.fmcontent.btnxmm4"))
 		mpMailUI->Hide();
     unguard;
 }
@@ -1204,7 +1204,7 @@ void CMailWithUI::SetMailButtonNormal()
 	guard;
 	if(m_bShowAnimation)
 	{
-		RTW_WIDGET_T(RtwButton,"fmsystem.btnsysmail")->SetNormalImage(m_imgMailNormal);
+		LOAD_UI_T(RtwButton,"fmsystem.btnsysmail")->SetNormalImage(m_imgMailNormal);
 		m_bShowAnimation = false;
 	}
 	unguard;
@@ -1214,7 +1214,7 @@ void CMailWithUI::SetMailButtonAnimation()
 	guard;
 	if(!m_bShowAnimation && !mpMailUI->GetFlags(wfVisible))
 	{
-		RTW_WIDGET_T(RtwButton,"fmsystem.btnsysmail")->SetNormalImage(m_imgMailAnimation);
+		LOAD_UI_T(RtwButton,"fmsystem.btnsysmail")->SetNormalImage(m_imgMailAnimation);
 		m_bShowAnimation = true;
 	}
 	unguard;

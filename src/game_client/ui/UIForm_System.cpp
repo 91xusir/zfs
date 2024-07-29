@@ -11,10 +11,10 @@ m_fStep(0.f),
 m_bShow(false)
 {
 	guard;
-	m_pfrmSystem = 	RTW_WIDGET("layworld.fmsystem");
-	m_pbtnShow_CloseButton = RTW_WIDGET_T(RtwButton,"layworld.fmsystem.btnsyschar");
-	RTW_WIDGET("fmclose.btnclose")->EvLClick += RTW_CALLBACK(this, CUIForm_System, Show_Close);
-	RTW_WIDGET("fmclose.btnopen")->EvLClick += RTW_CALLBACK(this, CUIForm_System, Show_Close);
+	m_pfrmSystem = 	LOAD_UI("layworld.fmsystem");
+	m_pbtnShow_CloseButton = LOAD_UI_T(RtwButton,"layworld.fmsystem.btnsyschar");
+	LOAD_UI("fmclose.btnclose")->EvLClick += RTW_CALLBACK(this, CUIForm_System, Show_Close);
+	LOAD_UI("fmclose.btnopen")->EvLClick += RTW_CALLBACK(this, CUIForm_System, Show_Close);
 	unguard;
 }
 
@@ -45,15 +45,15 @@ void CUIForm_System::Show_Close(ui::RtwWidget* vpSender, RtwEventDelegate* vpEve
 		m_bShow = false;
 		m_bIsRunning = true;
 		m_fStep = -m_fSTEP;
-		RTW_WIDGET("fmclose.btnclose")->Show();
-		RTW_WIDGET("fmclose.btnopen")->Hide();
+		LOAD_UI("fmclose.btnclose")->Show();
+		LOAD_UI("fmclose.btnopen")->Hide();
 	}else
 	{
 		m_bShow = true;
 		m_bIsRunning = true;
 		m_fStep = m_fSTEP;
-		RTW_WIDGET("fmclose.btnclose")->Hide();
-		RTW_WIDGET("fmclose.btnopen")->Show();
+		LOAD_UI("fmclose.btnclose")->Hide();
+		LOAD_UI("fmclose.btnopen")->Show();
 	}
 	unguard;
 }

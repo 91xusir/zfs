@@ -5,7 +5,7 @@
 #include "net/rt_net.h"
 //#include "rt_system_info.h"
 #include "rt1tort2.h"
-using namespace std;
+//using namespace std;
 
 #define LOGSERVER_DEFORT_PORT		9110
 

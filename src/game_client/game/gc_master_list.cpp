@@ -37,7 +37,7 @@ void CGCMasterList::UIDbClick(ui::RtwWidget* vpSender, RtwEventDelegate* )
 void CGCMasterList::Init()
 {
 	//保存列表的指针
-	mpUIList=RTW_WIDGET_T(RtwListBox,"fmMaster.listmail");
+	mpUIList=LOAD_UI_T(RtwListBox,"fmMaster.listmail");
 	mpUIList->ModifyFlags(wfDClick,0);
 	//mpUIList->SetColumnFormat(RtwStringFormat(alignCenter,alignCenter));	// 注释 [3/17/2009 tooth.shi]
 	mpUIList->EvLDClick+=RTW_CALLBACK(this,CGCMasterList,UIDbClick);
@@ -48,7 +48,7 @@ void CGCMasterList::Init()
 //		mpUIList->GetColumnHeader(i)->EvLClick += RTW_CALLBACK(this,CGCMasterList,UIClick);tooth.shi
 	}
 	
-	mpUI=RTW_WIDGET("fmMaster");
+	mpUI=LOAD_UI("fmMaster");
 	mpUI->Hide();
 
 	//mpUI->EvKey += RTW_CALLBACK(mpUI,RtwWidget,DefaultKeyDown);
@@ -256,5 +256,5 @@ void CGCMasterList::UpdateUI()
 		mpUIList->SetItemText(Index,3,PrenticeSize);		//3列//出师徒弟
 	}
 
-	RTW_WIDGET("fmMaster")->Show();
+	LOAD_UI("fmMaster")->Show();
 }

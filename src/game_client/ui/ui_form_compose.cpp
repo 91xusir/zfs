@@ -43,40 +43,40 @@ UIFormItemCompose::UIFormItemCompose()
 	m_ScrollLine = 0;
 	m_bMaking = false;
 
-	m_pFrmThis = RTW_WIDGET("fmmineskill");
+	m_pFrmThis = LOAD_UI("fmmineskill");
 	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);
 	m_ptrHoverImage->getRenderImage()->eBlendDstFunc = RTGBLEND_ONE;
 	m_ptrHoverImage->getRenderImage()->eBlendSrcFunc = RTGBLEND_SRCALPHA;
 	m_ptrHoverImage->getRenderImage()->SetBlend(true);
-	m_pProductInfo = RTW_WIDGET("fmmineskill.lbtext1");
-	m_pMaterialTitle = RTW_WIDGET("fmmineskill.lbborder1.lbxmm");
-	m_pComposeList = RTW_WIDGET_T(RtwListBox, "fmmineskill.fmtext.listfriend");
-	m_pProductIcon = RTW_WIDGET_T(RtwButton, "fmmineskill.btnmineitem");
+	m_pProductInfo = LOAD_UI("fmmineskill.lbtext1");
+	m_pMaterialTitle = LOAD_UI("fmmineskill.lbborder1.lbxmm");
+	m_pComposeList = LOAD_UI_T(RtwListBox, "fmmineskill.fmtext.listfriend");
+	m_pProductIcon = LOAD_UI_T(RtwButton, "fmmineskill.btnmineitem");
 	((RtwButton*)m_pProductIcon)->SetHoverImage(m_ptrHoverImage);
-	m_pMaterialIcon[0] = RTW_WIDGET_T(RtwButton, "fmmineskill.pansource.btnmineitem");
+	m_pMaterialIcon[0] = LOAD_UI_T(RtwButton, "fmmineskill.pansource.btnmineitem");
 	((RtwButton*)m_pMaterialIcon[0])->SetHoverImage(m_ptrHoverImage);
-	m_pMaterialIcon[1] = RTW_WIDGET_T(RtwButton, "fmmineskill.pansource.btnmineitem1");
+	m_pMaterialIcon[1] = LOAD_UI_T(RtwButton, "fmmineskill.pansource.btnmineitem1");
 	((RtwButton*)m_pMaterialIcon[1])->SetHoverImage(m_ptrHoverImage);
-	m_pMaterialIcon[2] = RTW_WIDGET_T(RtwButton, "fmmineskill.pansource.btnmineitem2");
+	m_pMaterialIcon[2] = LOAD_UI_T(RtwButton, "fmmineskill.pansource.btnmineitem2");
 	((RtwButton*)m_pMaterialIcon[2])->SetHoverImage(m_ptrHoverImage);
-	m_pMaterialIcon[3] = RTW_WIDGET_T(RtwButton, "fmmineskill.pansource.btnmineitem3");
+	m_pMaterialIcon[3] = LOAD_UI_T(RtwButton, "fmmineskill.pansource.btnmineitem3");
 	((RtwButton*)m_pMaterialIcon[3])->SetHoverImage(m_ptrHoverImage);
-	m_pMaterialIcon[4] = RTW_WIDGET_T(RtwButton, "fmmineskill.pansource.btnmineitem4");
+	m_pMaterialIcon[4] = LOAD_UI_T(RtwButton, "fmmineskill.pansource.btnmineitem4");
 	((RtwButton*)m_pMaterialIcon[4])->SetHoverImage(m_ptrHoverImage);
-	m_pMaterialInfo[0] = RTW_WIDGET("fmmineskill.pansource.lbtbc3");
-	m_pMaterialInfo[1] = RTW_WIDGET("fmmineskill.pansource.lbtbc4");
-	m_pMaterialInfo[2] = RTW_WIDGET("fmmineskill.pansource.lbtbc2");
-	m_pMaterialInfo[3] = RTW_WIDGET("fmmineskill.pansource.lbtbc5");
-	m_pMaterialInfo[4] = RTW_WIDGET("fmmineskill.pansource.lbmineinfo4");
-	m_pMake = RTW_WIDGET_T(RtwButton, "fmmineskill.btnok");
-	m_pCount = RTW_WIDGET_T(RtwTextBox, "fmmineskill.lbtext2");
-	m_pLeftArrow = RTW_WIDGET_T(RtwButton, "fmmineskill.btnbaby3");
-	m_pRightArrow = RTW_WIDGET_T(RtwButton, "fmmineskill.btnbaby4");
-	//m_pMaterialScroll = RTW_WIDGET_T(RtwScrollBar, "fmmineskill.fmsource.scrolldialg");
-	m_pFrmImage = RTW_WIDGET("fmmineskill.pansource");
-	m_pMaxCont = RTW_WIDGET_T(RtwButton, "fmmineskill.btnbaby2");
-	m_pNeedMoney = RTW_WIDGET_T(RtwLabel, "fmmineskill.lbmoney");
+	m_pMaterialInfo[0] = LOAD_UI("fmmineskill.pansource.lbtbc3");
+	m_pMaterialInfo[1] = LOAD_UI("fmmineskill.pansource.lbtbc4");
+	m_pMaterialInfo[2] = LOAD_UI("fmmineskill.pansource.lbtbc2");
+	m_pMaterialInfo[3] = LOAD_UI("fmmineskill.pansource.lbtbc5");
+	m_pMaterialInfo[4] = LOAD_UI("fmmineskill.pansource.lbmineinfo4");
+	m_pMake = LOAD_UI_T(RtwButton, "fmmineskill.btnok");
+	m_pCount = LOAD_UI_T(RtwTextBox, "fmmineskill.lbtext2");
+	m_pLeftArrow = LOAD_UI_T(RtwButton, "fmmineskill.btnbaby3");
+	m_pRightArrow = LOAD_UI_T(RtwButton, "fmmineskill.btnbaby4");
+	//m_pMaterialScroll = LOAD_UI_T(RtwScrollBar, "fmmineskill.fmsource.scrolldialg");
+	m_pFrmImage = LOAD_UI("fmmineskill.pansource");
+	m_pMaxCont = LOAD_UI_T(RtwButton, "fmmineskill.btnbaby2");
+	m_pNeedMoney = LOAD_UI_T(RtwLabel, "fmmineskill.lbmoney");
 
 	char tmp[128];
 	for (int i=1;i<ICT_Count-1;i++)
@@ -85,30 +85,30 @@ UIFormItemCompose::UIFormItemCompose()
 		m_pBackImage[i] = g_workspace.getImageFactory()->createImage(tmp);
 		m_pBackImage[i]->SetBlend(true);
 	}
-	//m_pFrmThis = RTW_WIDGET("fmmineskill");	// 控制显示与否的大FORM
-	//m_pComposeList = RTW_WIDGET_T(RtwListBox, "fmmineskill.fmmine.listfriend");	// 列表框
-	//m_pMaterialTitle = RTW_WIDGET("fmmineskill.fmmine.lbtitle");				// 标题
-	//m_pProductIcon = RTW_WIDGET_T(RtwButton, "fmmineskill.fmsource.pansource01.btnmineitem");	// 炼化的图标
-	//m_pProductInfo = RTW_WIDGET("fmmineskill.fmsource.pansource01.lbmineinfo");	// 炼化的信息
+	//m_pFrmThis = LOAD_UI("fmmineskill");	// 控制显示与否的大FORM
+	//m_pComposeList = LOAD_UI_T(RtwListBox, "fmmineskill.fmmine.listfriend");	// 列表框
+	//m_pMaterialTitle = LOAD_UI("fmmineskill.fmmine.lbtitle");				// 标题
+	//m_pProductIcon = LOAD_UI_T(RtwButton, "fmmineskill.fmsource.pansource01.btnmineitem");	// 炼化的图标
+	//m_pProductInfo = LOAD_UI("fmmineskill.fmsource.pansource01.lbmineinfo");	// 炼化的信息
 	//// 材料的图标与信息
-	//m_pMaterialIcon[0] = RTW_WIDGET_T(RtwButton, "fmmineskill.fmsource.pansource03.btnmineitem");
-	//m_pMaterialIcon[1] = RTW_WIDGET_T(RtwButton, "fmmineskill.fmsource.pansource04.btnmineitem");
-	//m_pMaterialIcon[2] = RTW_WIDGET_T(RtwButton, "fmmineskill.fmsource.pansource05.btnmineitem");
-	//m_pMaterialIcon[3] = RTW_WIDGET_T(RtwButton, "fmmineskill.fmsource.pansource06.btnmineitem");
-	//m_pMaterialIcon[4] = RTW_WIDGET_T(RtwButton, "fmmineskill.fmsource.pansource07.btnmineitem");
-	//m_pMaterialInfo[0] = RTW_WIDGET("fmmineskill.fmsource.pansource03.lbmineinfo");
-	//m_pMaterialInfo[1] = RTW_WIDGET("fmmineskill.fmsource.pansource04.lbmineinfo");
-	//m_pMaterialInfo[2] = RTW_WIDGET("fmmineskill.fmsource.pansource05.lbmineinfo");
-	//m_pMaterialInfo[3] = RTW_WIDGET("fmmineskill.fmsource.pansource06.lbmineinfo");
-	//m_pMaterialIcon[4] = RTW_WIDGET_T(RtwButton, "fmmineskill.fmsource.pansource07.btnmineitem");
+	//m_pMaterialIcon[0] = LOAD_UI_T(RtwButton, "fmmineskill.fmsource.pansource03.btnmineitem");
+	//m_pMaterialIcon[1] = LOAD_UI_T(RtwButton, "fmmineskill.fmsource.pansource04.btnmineitem");
+	//m_pMaterialIcon[2] = LOAD_UI_T(RtwButton, "fmmineskill.fmsource.pansource05.btnmineitem");
+	//m_pMaterialIcon[3] = LOAD_UI_T(RtwButton, "fmmineskill.fmsource.pansource06.btnmineitem");
+	//m_pMaterialIcon[4] = LOAD_UI_T(RtwButton, "fmmineskill.fmsource.pansource07.btnmineitem");
+	//m_pMaterialInfo[0] = LOAD_UI("fmmineskill.fmsource.pansource03.lbmineinfo");
+	//m_pMaterialInfo[1] = LOAD_UI("fmmineskill.fmsource.pansource04.lbmineinfo");
+	//m_pMaterialInfo[2] = LOAD_UI("fmmineskill.fmsource.pansource05.lbmineinfo");
+	//m_pMaterialInfo[3] = LOAD_UI("fmmineskill.fmsource.pansource06.lbmineinfo");
+	//m_pMaterialIcon[4] = LOAD_UI_T(RtwButton, "fmmineskill.fmsource.pansource07.btnmineitem");
 
-	//m_pMake = RTW_WIDGET_T(RtwButton, "fmmineskill.btnok");	// 制作的确定按键
-	//m_pCount = RTW_WIDGET_T(RtwTextBox, "fmmineskill.lbtimes");	// 制作的数量
-	//m_pLeftArrow = RTW_WIDGET_T(RtwButton, "fmmineskill.btnitemleft");	// 数量的减
-	//m_pRightArrow = RTW_WIDGET_T(RtwButton, "fmmineskill.btnitemright");// 数量的加
-	//m_pMaterialScroll = RTW_WIDGET_T(RtwScrollBar, "fmmineskill.fmsource.scrolldialg");	// 滚动条
-	//m_pFrmImage = RTW_WIDGET("fmmineskill");		// 炼化背景图
-	//m_pProgressBar = RTW_WIDGET_T(RtwProgressBar, "panBar.barexp");	// 进度条
+	//m_pMake = LOAD_UI_T(RtwButton, "fmmineskill.btnok");	// 制作的确定按键
+	//m_pCount = LOAD_UI_T(RtwTextBox, "fmmineskill.lbtimes");	// 制作的数量
+	//m_pLeftArrow = LOAD_UI_T(RtwButton, "fmmineskill.btnitemleft");	// 数量的减
+	//m_pRightArrow = LOAD_UI_T(RtwButton, "fmmineskill.btnitemright");// 数量的加
+	//m_pMaterialScroll = LOAD_UI_T(RtwScrollBar, "fmmineskill.fmsource.scrolldialg");	// 滚动条
+	//m_pFrmImage = LOAD_UI("fmmineskill");		// 炼化背景图
+	//m_pProgressBar = LOAD_UI_T(RtwProgressBar, "panBar.barexp");	// 进度条
 
 	m_pCount->SetNumberOnly(true);
 	m_pCount->EvInputChar		+= RTW_CALLBACK(this,UIFormItemCompose,OnTextBoxChange);

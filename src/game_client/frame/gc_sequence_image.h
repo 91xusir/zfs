@@ -6,7 +6,7 @@ namespace rt_graph {
     typedef _RtgTextItem RtgTextItem;
 }
 
-using namespace std;
+//using namespace std;
 
 struct SequenceImageItem
 {

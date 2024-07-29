@@ -6,10 +6,10 @@ CUIForm_Pickup::CUIForm_Pickup(void):
 m_iNowPage(0)
 {
 	guard;
-	m_pfrmPickup					= RTW_WIDGET("fmpickup");
-	m_pbtnUppage					= RTW_WIDGET_T(RtwButton,"fmpickup.fmcontent.btnon");
-	m_pbtnDownpage					= RTW_WIDGET_T(RtwButton,"fmpickup.fmcontent.btnnext");
-	m_pbtnAllPickup					= RTW_WIDGET_T(RtwButton,"fmpickup.fmcontent.btnpickup");
+	m_pfrmPickup					= LOAD_UI("fmpickup");
+	m_pbtnUppage					= LOAD_UI_T(RtwButton,"fmpickup.fmcontent.btnon");
+	m_pbtnDownpage					= LOAD_UI_T(RtwButton,"fmpickup.fmcontent.btnnext");
+	m_pbtnAllPickup					= LOAD_UI_T(RtwButton,"fmpickup.fmcontent.btnpickup");
 	m_pbtnUppage->EvLClick			+= RTW_CALLBACK(this,CUIForm_Pickup,OnBtnOtherDown);
 	m_pbtnDownpage->EvLClick		+= RTW_CALLBACK(this,CUIForm_Pickup,OnBtnOtherDown);
 	m_pbtnAllPickup->EvLClick		+=RTW_CALLBACK(this,CUIForm_Pickup,OnBtnOtherDown);
@@ -20,13 +20,13 @@ m_iNowPage(0)
 	{
 		memset(name,0,80);
 		rt2_sprintf(name,"fmpickup.fmcontent.fmprops.lbprops%d",i);
-		m_pfrmShowLabel[i]		= RTW_WIDGET(name);
+		m_pfrmShowLabel[i]		= LOAD_UI(name);
 		memset(name,0,80);
 		rt2_sprintf(name,"fmpickup.fmcontent.fmprops.lbprops%d.btnbaby%d",i,i);
-		m_pbtnItem[i]			= RTW_WIDGET_T(RtwButton,name);
+		m_pbtnItem[i]			= LOAD_UI_T(RtwButton,name);
 		memset(name,0,80);
 		rt2_sprintf(name,"fmpickup.fmcontent.fmprops.lbprops%d.lbbaby%d",i,i);
-		m_plbItem[i]			= RTW_WIDGET_T(RtwLabel,name);
+		m_plbItem[i]			= LOAD_UI_T(RtwLabel,name);
 		m_pbtnItem[i]->ModifyFlags(wfHint | wfVisible | wfDClick | wfGrabMouse,0);
 		m_pbtnItem[i]->EvLClick	+=RTW_CALLBACK(this,CUIForm_Pickup,OnBtnDown);
 		m_pbtnItem[i]->EvHint	+=RTW_CALLBACK(this,CUIForm_Pickup,OnHintItem);

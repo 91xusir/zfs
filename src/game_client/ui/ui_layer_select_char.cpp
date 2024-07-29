@@ -10,75 +10,75 @@ UILayerSelectChar::UILayerSelectChar()
 
 	//选人界面
 	//四个新建人物按钮
-	RTW_WIDGET("fmckusername.fmusername1.btnusername1")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_CreateChar1);
-	RTW_WIDGET("fmckusername.fmusername2.btnusername2")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_CreateChar2);
-	RTW_WIDGET("fmckusername.fmusername3.btnusername3")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_CreateChar3);
-	RTW_WIDGET("fmckusername.fmusername4.btnusername4")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_CreateChar4);
+	LOAD_UI("fmckusername.fmusername1.btnusername1")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_CreateChar1);
+	LOAD_UI("fmckusername.fmusername2.btnusername2")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_CreateChar2);
+	LOAD_UI("fmckusername.fmusername3.btnusername3")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_CreateChar3);
+	LOAD_UI("fmckusername.fmusername4.btnusername4")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_CreateChar4);
 	//恢复人物
-	RTW_WIDGET("btnrestore")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Restore);
+	LOAD_UI("btnrestore")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Restore);
 	//删除人物
-	RTW_WIDGET("btndeletechar")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Delete);
+	LOAD_UI("btndeletechar")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Delete);
 	//设置密码
-	RTW_WIDGET("btnsetcharpwd")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SetCharPwd);
+	LOAD_UI("btnsetcharpwd")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SetCharPwd);
 	//变更密码
-	RTW_WIDGET("btnchangecharpwd")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_ChangeCharPwd);
+	LOAD_UI("btnchangecharpwd")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_ChangeCharPwd);
 	//解除密码
-	RTW_WIDGET("btndelcharpwd")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_DelCharPwd);
+	LOAD_UI("btndelcharpwd")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_DelCharPwd);
 	//人物角色性别
-	RTW_WIDGET("btnmale")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SetSexMale);
-	RTW_WIDGET("btnfemale")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SetSexFemale);
+	LOAD_UI("btnmale")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SetSexMale);
+	LOAD_UI("btnfemale")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SetSexFemale);
 	//人物左旋按钮
-	//RTW_WIDGET("btnuserleft")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_LeftRotation);
-	//RTW_WIDGET("btnuserleft")->EvMouseLDown += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_LMouseDown);
-	//RTW_WIDGET("btnuserleft")->EvMouseLUp += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_LMouseUp);
+	//LOAD_UI("btnuserleft")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_LeftRotation);
+	//LOAD_UI("btnuserleft")->EvMouseLDown += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_LMouseDown);
+	//LOAD_UI("btnuserleft")->EvMouseLUp += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_LMouseUp);
 	//人物右旋按钮
-	//RTW_WIDGET("btnuserright")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_RightRotation);
+	//LOAD_UI("btnuserright")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_RightRotation);
 	//进入游戏
-    RTW_WIDGET("btnenter")->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Enter));
+    LOAD_UI("btnenter")->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Enter));
 	//返回登录按钮
-	RTW_WIDGET("btnbacklogin")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Back);
+	LOAD_UI("btnbacklogin")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Back);
 	//返回选人按钮
-	RTW_WIDGET("btnback")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Back);
+	LOAD_UI("btnback")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Back);
 	//退出游戏
-	RTW_WIDGET("btnexit")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Exit);
+	LOAD_UI("btnexit")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Exit);
 	//人物角色密码锁
-	m_numpwd = RTW_WIDGET_T(RtwTextBox, "fmpwd.fmtxtpwd.txtnumpwd");
+	m_numpwd = LOAD_UI_T(RtwTextBox, "fmpwd.fmtxtpwd.txtnumpwd");
 	m_numpwd->SetCapacity(4);
 	m_numpwd->EvUpdateText.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerSelectChar, OnUpdateText));
-	RTW_WIDGET("fmpwd.lbtxt1")->SetText(std::string("请输入人物密码，密码为4位数字"));
+	LOAD_UI("fmpwd.lbtxt1")->SetText(std::string("请输入人物密码，密码为4位数字"));
 	//密码框关闭按钮
-	m_closeBtn = RTW_WIDGET_T(RtwButton, "fmpwd.closeblt");
+	m_closeBtn = LOAD_UI_T(RtwButton, "fmpwd.closeblt");
 	m_closeBtn->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_ClosePwd);
 
 	//创建人物角色界面
-	m_charname = RTW_WIDGET_T(RtwTextBox, "fmcreatid1.fmname.txtname");
+	m_charname = LOAD_UI_T(RtwTextBox, "fmcreatid1.fmname.txtname");
 	m_charname->SetCapacity(14);
 	//人物生肖选择框
-	RTW_WIDGET("fmcreatid1.btnanimalleft")->EvLClick    += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevAnimal);
-	RTW_WIDGET("fmcreatid1.btnanimalright")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextAnimal);
+	LOAD_UI("fmcreatid1.btnanimalleft")->EvLClick    += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevAnimal);
+	LOAD_UI("fmcreatid1.btnanimalright")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextAnimal);
 	//人物角色发型
-	RTW_WIDGET("fmcreatid2.btnhairleft")->EvLClick    += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevHair);
-	RTW_WIDGET("fmcreatid2.btnhairright")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextHair);
+	LOAD_UI("fmcreatid2.btnhairleft")->EvLClick    += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevHair);
+	LOAD_UI("fmcreatid2.btnhairright")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextHair);
 	//人物角色脸型
-	RTW_WIDGET("fmcreatid2.btnfaceleft")->EvLClick    += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevFace);
-	RTW_WIDGET("fmcreatid2.btnfaceright")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextFace);
+	LOAD_UI("fmcreatid2.btnfaceleft")->EvLClick    += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevFace);
+	LOAD_UI("fmcreatid2.btnfaceright")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextFace);
 	//人物角色头像
-	RTW_WIDGET("fmcreatid2.btnheadleft")->EvLClick    += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevHead);
-	RTW_WIDGET("fmcreatid2.btnheadright")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextHead);
+	LOAD_UI("fmcreatid2.btnheadleft")->EvLClick    += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevHead);
+	LOAD_UI("fmcreatid2.btnheadright")->EvLClick   += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextHead);
 	//随机创建
-	RTW_WIDGET("fmcreatid3.btnrandom")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_RandomCreate);
+	LOAD_UI("fmcreatid3.btnrandom")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_RandomCreate);
 	//完成创建
-	RTW_WIDGET("fmcreatid3.btncreate")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_CreateChar);
+	LOAD_UI("fmcreatid3.btncreate")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_CreateChar);
 
 	//四大门派---------蜀山派,花间门,苗疆,五台山
-	RTW_WIDGET("fmshushan.btnshushan")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectShushan);
-	RTW_WIDGET("fmhuajian.btnhuajian")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectHuajian);
-	RTW_WIDGET("fmshengwu.btnshengwu")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectShenwu);
-	RTW_WIDGET("fmmingwang.btnmingwang")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectMingwang);
+	LOAD_UI("fmshushan.btnshushan")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectShushan);
+	LOAD_UI("fmhuajian.btnhuajian")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectHuajian);
+	LOAD_UI("fmshengwu.btnshengwu")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectShenwu);
+	LOAD_UI("fmmingwang.btnmingwang")->EvLClick  += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectMingwang);
 
-	RTW_WIDGET("fmcreatid1")->Hide();
-	RTW_WIDGET("fmcreatid2")->Hide();
-	RTW_WIDGET("fmcreatid3")->Hide();
+	LOAD_UI("fmcreatid1")->Hide();
+	LOAD_UI("fmcreatid2")->Hide();
+	LOAD_UI("fmcreatid3")->Hide();
 
 
 	m_iConfirmCnt = 0;
@@ -100,7 +100,7 @@ void UILayerSelectChar::OnClicked_CreateChar1(void*, void*)
 	{
 		if (GetLogin()->GetStatus()==GcLogin::GLS_SELECT_CHAR)
 		{
-			if (RTW_WIDGET("fmckusername.fmusername1.btnusername1.lbusername1")->GetText().empty())
+			if (LOAD_UI("fmckusername.fmusername1.btnusername1.lbusername1")->GetText().empty())
 			{
 				GetLogin()->SetLoginState(GcLogin::GLS_CREATE_CHAR);
 			}
@@ -119,7 +119,7 @@ void UILayerSelectChar::OnClicked_CreateChar2(void*, void*)
 	{
 		if (GetLogin()->GetStatus()==GcLogin::GLS_SELECT_CHAR)
 		{
-			if (RTW_WIDGET("fmckusername.fmusername2.btnusername2.lbusername2")->GetText().empty())
+			if (LOAD_UI("fmckusername.fmusername2.btnusername2.lbusername2")->GetText().empty())
 			{
 				GetLogin()->SetLoginState(GcLogin::GLS_CREATE_CHAR);
 			}
@@ -138,7 +138,7 @@ void UILayerSelectChar::OnClicked_CreateChar3(void*, void*)
 	{
 		if (GetLogin()->GetStatus()==GcLogin::GLS_SELECT_CHAR)
 		{
-			if (RTW_WIDGET("fmckusername.fmusername3.btnusername3.lbusername3")->GetText().empty())
+			if (LOAD_UI("fmckusername.fmusername3.btnusername3.lbusername3")->GetText().empty())
 			{
 				GetLogin()->SetLoginState(GcLogin::GLS_CREATE_CHAR);
 			}
@@ -157,7 +157,7 @@ void UILayerSelectChar::OnClicked_CreateChar4(void*, void*)
 	{
 		if (GetLogin()->GetStatus()==GcLogin::GLS_SELECT_CHAR)
 		{
-			if (RTW_WIDGET("fmckusername.fmusername4.btnusername4.lbusername4")->GetText().empty())
+			if (LOAD_UI("fmckusername.fmusername4.btnusername4.lbusername4")->GetText().empty())
 			{
 				GetLogin()->SetLoginState(GcLogin::GLS_CREATE_CHAR);
 			}
@@ -199,9 +199,9 @@ void UILayerSelectChar::OnClicked_Delete(void*, void*)
 				if (GetLogin()->GetAccountInfo().users[GetLogin()->GetCurSelectChar()].hasCharPwd)
 				{
 					m_iConfirmCnt = 0;
-					RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
-					RTW_WIDGET("fmpwd")->Show();
-					RTW_WIDGET("fmpwd.lbtxt1")->SetText(std::string("请输入人物密码锁"));
+					LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
+					LOAD_UI("fmpwd")->Show();
+					LOAD_UI("fmpwd.lbtxt1")->SetText(std::string("请输入人物密码锁"));
 				} 
 				else
 				{
@@ -228,8 +228,8 @@ void UILayerSelectChar::OnClicked_SetCharPwd(void*, void*)
 			//去除人物在密码进入游戏时对密码的操作
 			GetLogin()->SetSelectUserWithPwd(false);
 			m_iConfirmCnt = 0;
-			RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
-			RTW_WIDGET("fmpwd")->Show();
+			LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
+			LOAD_UI("fmpwd")->Show();
 		}
 	}
 	unguard;
@@ -246,9 +246,9 @@ void UILayerSelectChar::OnClicked_ChangeCharPwd(void*, void*)
 			//去除人物在密码进入游戏时对密码的操作
 			GetLogin()->SetSelectUserWithPwd(false);
 			m_iConfirmCnt = 0;
-			RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
-			RTW_WIDGET("fmpwd")->Show();
-			RTW_WIDGET("fmpwd.lbtxt1")->SetText(std::string("请输入人物原密码锁"));
+			LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
+			LOAD_UI("fmpwd")->Show();
+			LOAD_UI("fmpwd.lbtxt1")->SetText(std::string("请输入人物原密码锁"));
 		}
 	}
 	unguard;
@@ -265,9 +265,9 @@ void UILayerSelectChar::OnClicked_DelCharPwd(void*, void*)
 			//去除人物在密码进入游戏时对密码的操作
 			GetLogin()->SetSelectUserWithPwd(false);
 			m_iConfirmCnt = 0;
-			RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
-			RTW_WIDGET("fmpwd")->Show();
-			RTW_WIDGET("fmpwd.lbtxt1")->SetText(std::string("请输入人物原密码锁"));
+			LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
+			LOAD_UI("fmpwd")->Show();
+			LOAD_UI("fmpwd.lbtxt1")->SetText(std::string("请输入人物原密码锁"));
 		}
 	}
 	unguard;
@@ -275,12 +275,12 @@ void UILayerSelectChar::OnClicked_DelCharPwd(void*, void*)
 //人物角色性别---男女
 void UILayerSelectChar::OnClicked_SetSexMale(void*, void*)
 {
-	RTW_WIDGET_T(CUiCheckButton, "btnmale")->SetChecked(true);
+	LOAD_UI_T(CUiCheckButton, "btnmale")->SetChecked(true);
 	GetLogin()->SetCharSex(false);
 }
 void UILayerSelectChar::OnClicked_SetSexFemale(void*, void*)
 {
-	RTW_WIDGET_T(CUiCheckButton, "btnfemale")->SetChecked(true);
+	LOAD_UI_T(CUiCheckButton, "btnfemale")->SetChecked(true);
 	GetLogin()->SetCharSex(true);
 }
 //人物左旋按钮
@@ -384,7 +384,7 @@ void UILayerSelectChar::OnClicked_Exit(void*, void*)
 void UILayerSelectChar::OnClicked_ClosePwd(void*, void*)
 {
 
-	RTW_WIDGET("fmpwd")->Hide();
+	LOAD_UI("fmpwd")->Hide();
 
 }
 
@@ -509,7 +509,7 @@ void UILayerSelectChar::OnClicked_CreateChar(void*, void*)
 void UILayerSelectChar::OnClicked_SelectShushan(void*, void*)
 {
 	guard;
-	if (RTW_WIDGET("fmshushan.btnshushan")->getEnable())
+	if (LOAD_UI("fmshushan.btnshushan")->getEnable())
 	{
 		if (GetLogin())
 		{
@@ -525,7 +525,7 @@ void UILayerSelectChar::OnClicked_SelectShushan(void*, void*)
 void UILayerSelectChar::OnClicked_SelectHuajian(void*, void*)
 {
 	guard;
-	if (RTW_WIDGET("fmhuajian.btnhuajian")->getEnable())
+	if (LOAD_UI("fmhuajian.btnhuajian")->getEnable())
 	{
 		if (GetLogin())
 		{
@@ -541,7 +541,7 @@ void UILayerSelectChar::OnClicked_SelectHuajian(void*, void*)
 void UILayerSelectChar::OnClicked_SelectShenwu(void*, void*)
 {
 	guard;
-	if (RTW_WIDGET("fmshengwu.btnshengwu")->getEnable())
+	if (LOAD_UI("fmshengwu.btnshengwu")->getEnable())
 	{
 		if (GetLogin())
 		{
@@ -558,7 +558,7 @@ void UILayerSelectChar::OnClicked_SelectShenwu(void*, void*)
 void UILayerSelectChar::OnClicked_SelectMingwang(void*, void*)
 {
 	guard;
-	if (RTW_WIDGET("fmmingwang.btnmingwang")->getEnable())
+	if (LOAD_UI("fmmingwang.btnmingwang")->getEnable())
 	{
 		if (GetLogin())
 		{
@@ -624,7 +624,7 @@ void UILayerSelectChar::OnReceivePasswordConfirm(char lRet)
 			}else
 			{
 				UIFormMsg::ShowStatic(R(PASSWORD_ERR), UIFormMsg::TYPE_OK);
-				RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
+				LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
 			}
 		}
 	}
@@ -655,58 +655,58 @@ void UILayerSelectChar::OnReceiveDelPassword(char lRet)
 void UILayerSelectChar::OnUpdateText(RtwWidget* sender, RtwEventDelegate* e)
 {
 	guard;
-	if (RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->GetText().empty())
+	if (LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->GetText().empty())
 	{
 		ShowMessage(R(MSG_CHARACTER_CANNOT_NULL));
-		RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
+		LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
 		return;
 	}
-	if (RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->GetText().length()<4)
+	if (LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->GetText().length()<4)
 	{
 		ShowMessage(R(MSG_CHARACTERPASSWORDISFOUR));
-		RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
+		LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
 		return;
 	}
 	//人物设置角色密码登入游戏
 	if (GetLogin()->GetSelectUserWithPwd())
 	{
-		GetLogin()->OnCharPasswordConfirm(RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->GetText().c_str());
+		GetLogin()->OnCharPasswordConfirm(LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->GetText().c_str());
 	}
 	m_iConfirmCnt++;
 	if (m_iConfirmCnt == 1)           //-------------第一次点击确定
 	{
 		if (m_CurBtnIdx == 1)         //删除人物按钮
 		{
-			GetLogin()->OnCharPasswordConfirm(RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->GetText().c_str());
-			if (RTW_WIDGET("fmpwd")->IsVisible())
+			GetLogin()->OnCharPasswordConfirm(LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->GetText().c_str());
+			if (LOAD_UI("fmpwd")->IsVisible())
 			{
-				RTW_WIDGET("fmpwd")->Hide();
+				LOAD_UI("fmpwd")->Hide();
 			}
 		}else if (m_CurBtnIdx == 2)  //设置密码按钮
 		{
-			m_OldPwd = RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->GetText();
-			RTW_WIDGET("fmpwd.lbtxt1")->SetText(std::string("请将刚才的密码再输入一遍"));
+			m_OldPwd = LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->GetText();
+			LOAD_UI("fmpwd.lbtxt1")->SetText(std::string("请将刚才的密码再输入一遍"));
 		}
 		else if (m_CurBtnIdx == 3)  //变更密码
 		{
-			m_OldPwd = RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->GetText();
-			RTW_WIDGET("fmpwd.lbtxt1")->SetText(std::string("请输入新密码"));
+			m_OldPwd = LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->GetText();
+			LOAD_UI("fmpwd.lbtxt1")->SetText(std::string("请输入新密码"));
 		}
 		else if (m_CurBtnIdx == 4)  //解除密码
 		{
-			GetLogin()->OnDelCharPassword(RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->GetText().c_str());
-			if (RTW_WIDGET("fmpwd")->IsVisible())
+			GetLogin()->OnDelCharPassword(LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->GetText().c_str());
+			if (LOAD_UI("fmpwd")->IsVisible())
 			{
-				RTW_WIDGET("fmpwd")->Hide();
+				LOAD_UI("fmpwd")->Hide();
 			}
 		}
-		RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
+		LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->SetText("");
 	} 
 	else if(m_iConfirmCnt == 2)     //-------------第二次点击确定
 	{
 		if (m_CurBtnIdx == 2)
 		{
-			m_NewPwd = RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->GetText();
+			m_NewPwd = LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->GetText();
 			if (m_NewPwd != m_OldPwd)
 			{
 				ShowMessage(R(MSG_LOGIN_PASS_NOTSAME));
@@ -714,16 +714,16 @@ void UILayerSelectChar::OnUpdateText(RtwWidget* sender, RtwEventDelegate* e)
 			else
 			{
 				GetLogin()->OnSetCharPassword(m_NewPwd.c_str());
-				if (RTW_WIDGET("fmpwd")->IsVisible())
+				if (LOAD_UI("fmpwd")->IsVisible())
 				{
-					RTW_WIDGET("fmpwd")->Hide();
+					LOAD_UI("fmpwd")->Hide();
 				}
 			}
 		}
 		else if (m_CurBtnIdx == 3)
 		{
-			m_OldPwd = RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->GetText();
-			RTW_WIDGET("fmpwd.lbtxt1")->SetText(std::string("请再输入一次确认密码"));
+			m_OldPwd = LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->GetText();
+			LOAD_UI("fmpwd.lbtxt1")->SetText(std::string("请再输入一次确认密码"));
 		}
 	}
 	else if (m_iConfirmCnt == 3)
@@ -731,7 +731,7 @@ void UILayerSelectChar::OnUpdateText(RtwWidget* sender, RtwEventDelegate* e)
 		//变更密码的特殊处理
 		if (m_CurBtnIdx == 3)
 		{
-			m_NewPwd = RTW_WIDGET("fmpwd.fmtxtpwd.txtnumpwd")->GetText();
+			m_NewPwd = LOAD_UI("fmpwd.fmtxtpwd.txtnumpwd")->GetText();
 			if (m_NewPwd != m_OldPwd)
 			{
 				ShowMessage(R(MSG_LOGIN_PASS_NOTSAME));
@@ -740,9 +740,9 @@ void UILayerSelectChar::OnUpdateText(RtwWidget* sender, RtwEventDelegate* e)
 			{
 				GetLogin()->OnChangeCharPassword(m_OldPwd.c_str(),m_NewPwd.c_str());
 			}
-			if (RTW_WIDGET("fmpwd")->IsVisible())
+			if (LOAD_UI("fmpwd")->IsVisible())
 			{
-				RTW_WIDGET("fmpwd")->Hide();
+				LOAD_UI("fmpwd")->Hide();
 			}
 		}
 	}

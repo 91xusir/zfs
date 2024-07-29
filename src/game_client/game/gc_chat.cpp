@@ -100,12 +100,12 @@ CChat::~CChat()
 void CChat::Init()
 {
 	guard;
-	m_tabChat		= RTW_WIDGET_T(RtwTab,"tbfeedback");
+	m_tabChat		= LOAD_UI_T(RtwTab,"tbfeedback");
 	char tmpStr[100];
 	for(int i= 0;i< MAX_CHANNEL_CHATBOX;i++)
 	{
 		rt2_snprintf(tmpStr,100,"tbfeedback.fmchat%d.txtFeedback",i);
-		m_chatFeedback[i]	= RTW_WIDGET_T(RtwChatBox, tmpStr);
+		m_chatFeedback[i]	= LOAD_UI_T(RtwChatBox, tmpStr);
 		// 	m_chatFeedback->ModifyFlags(0,wfMouseMove);
 		m_chatFeedback[i]->EvScroll		+= RTW_CALLBACK(this, CChat, OnAutoScroll_Feedback);
 		m_chatFeedback[i]->EvRClick		+= RTW_CALLBACK(this, CChat, OnClick_Rfunction);
@@ -117,31 +117,31 @@ void CChat::Init()
 		m_chatFeedback[i]->SetScrollBarV(true);
 
 		rt2_snprintf(tmpStr,100,"tbfeedback.fmchat%d.scrolldialg",i);
-		m_chatScroll[i]						= RTW_WIDGET_T(RtwVScrollBar, tmpStr);
+		m_chatScroll[i]						= LOAD_UI_T(RtwVScrollBar, tmpStr);
 		m_chatScroll[i]->SetValue(100);
 		m_chatScroll[i]->EvMouseMove		+= RTW_CALLBACK(this, CChat, OnScroll_FocusWidget);
 		m_chatScroll[i]->EvScroll			+= RTW_CALLBACK(this, CChat, OnScroll_ManualScroll);
 
 		//
 		rt2_snprintf(tmpStr,100,"tbfeedback.btnchat%d",i);
-		m_btnChatSelect[i]					= RTW_WIDGET_T(RtwButton,tmpStr);
+		m_btnChatSelect[i]					= LOAD_UI_T(RtwButton,tmpStr);
 		m_btnChatSelect[i]->EvRClick		+=RTW_CALLBACK(this,CChat,OnRClick_btnChatSelect);
 	}
 
 	//添加世界框
-	m_worldchatFeedback = RTW_WIDGET_T(RtwChatBox,"worldfmfeedback.txtFeedback");
+	m_worldchatFeedback = LOAD_UI_T(RtwChatBox,"worldfmfeedback.txtFeedback");
 	m_worldchatFeedback->SetEnableInput(false);
 	m_worldchatFeedback->EvLClick	+= RTW_CALLBACK(this, CChat, OnClick_Lfunction);
 
-	m_systemFeedBack = RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID);
+	m_systemFeedBack = LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID);
 	m_systemFeedBack->EvRClick		+= RTW_CALLBACK(this, CChat, OnClick_Rfunction);
 	m_systemFeedBack->EvLClick		+= RTW_CALLBACK(this, CChat, OnClick_Lfunction);
 	// 	m_systemFeedBack->SetScrollBarV(true);
 	// 	m_systemFeedBack->SetAutoScrollV(true);
-	// 	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->EvScroll += RTW_CALLBACK(this, RtwTextBox, OnScroll_ScrollBarV);
+	// 	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->EvScroll += RTW_CALLBACK(this, RtwTextBox, OnScroll_ScrollBarV);
 
 
-	m_popupMenu = RTW_WIDGET_T(RtwPopupMenu, "RuserMenu");
+	m_popupMenu = LOAD_UI_T(RtwPopupMenu, "RuserMenu");
 	m_popupMenu->AddItem("密语");
 	m_popupMenu->AddItem("复制名字");
 	m_popupMenu->AddItem("添加好友");		//heten
@@ -174,82 +174,82 @@ void CChat::Init()
 	mChannel.push_back(SChannelAtom(SYSTEM_CHANNEL		,CHAT_CHANNEL_SYSTEM	,SYSTEM_CHANNEL_MASK	,R(SYSTEM_CHANNEL_DESCRIPTION)  ,SYSTEM_CHANNEL_COLOR));
 
 	//设置系统信息的过滤器
-	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->SetFilter(SYSTEM_CHANNEL_MASK);
-	//RTW_WIDGET(UI_SYSTEM_FORM_ALL_WHOLE_ID)->ModifyFlags(0,wfGrabMouse);	//将系统信息框的所有的鼠标事件移除
-	//RTW_WIDGET(UI_SYSTEM_FORM_ALL_WHOLE_ID)->ModifyFlags(0,wfPick);
-	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->SetEnableInput(false);
-	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->SetClearTime(SYSTEM_INFO_SCROLL_TIME);
-	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->ClearBackGround();
+	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->SetFilter(SYSTEM_CHANNEL_MASK);
+	//LOAD_UI(UI_SYSTEM_FORM_ALL_WHOLE_ID)->ModifyFlags(0,wfGrabMouse);	//将系统信息框的所有的鼠标事件移除
+	//LOAD_UI(UI_SYSTEM_FORM_ALL_WHOLE_ID)->ModifyFlags(0,wfPick);
+	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->SetEnableInput(false);
+	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->SetClearTime(SYSTEM_INFO_SCROLL_TIME);
+	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->ClearBackGround();
 	//将时间消息关联到该类上
 	GetTimer()->AddTimer(this,SYSTEM_INFO_CLEAR_TIME);
 
-	RTW_WIDGET(UI_CHANNEL_BUTTON_WHOLE_ID)->EvLClick	+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	LOAD_UI(UI_CHANNEL_BUTTON_WHOLE_ID)->EvLClick	+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
 
 	//聊天频道的复选框
-	RTW_WIDGET(UI_NORMAL_CHANNEL_WHOLE_ID)->EvLClick	+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
-	RTW_WIDGET(UI_PUBLIC_CHANNEL_WHOLE_ID)->EvLClick	+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
-	RTW_WIDGET(UI_PERSONAL_CHANNEL_WHOLE_ID)->EvLClick	+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
-	RTW_WIDGET(UI_TEAM_CHANNEL_WHOLE_ID)->EvLClick		+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
-	RTW_WIDGET(UI_GUILD_CHANNEL_WHOLE_ID)->EvLClick		+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
-	RTW_WIDGET(UI_COUNTRY_CHANNEL_WHOLE_ID)->EvLClick	+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
-	RTW_WIDGET("fmchannel.ckbattleinfo")->EvLClick		+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	LOAD_UI(UI_NORMAL_CHANNEL_WHOLE_ID)->EvLClick	+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	LOAD_UI(UI_PUBLIC_CHANNEL_WHOLE_ID)->EvLClick	+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	LOAD_UI(UI_PERSONAL_CHANNEL_WHOLE_ID)->EvLClick	+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	LOAD_UI(UI_TEAM_CHANNEL_WHOLE_ID)->EvLClick		+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	LOAD_UI(UI_GUILD_CHANNEL_WHOLE_ID)->EvLClick		+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	LOAD_UI(UI_COUNTRY_CHANNEL_WHOLE_ID)->EvLClick	+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	LOAD_UI("fmchannel.ckbattleinfo")->EvLClick		+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
 
-	m_checkChat[0]			= RTW_WIDGET_T(CUiCheckButton,UI_NORMAL_CHANNEL_WHOLE_ID);
+	m_checkChat[0]			= LOAD_UI_T(CUiCheckButton,UI_NORMAL_CHANNEL_WHOLE_ID);
 	m_iMask[0]				= NEAR_CHANNEL_MASK;
-	m_checkChat[1]			= RTW_WIDGET_T(CUiCheckButton,UI_PUBLIC_CHANNEL_WHOLE_ID);
+	m_checkChat[1]			= LOAD_UI_T(CUiCheckButton,UI_PUBLIC_CHANNEL_WHOLE_ID);
 	m_iMask[1]				= WORLD_CHANNEL_MASK;
-	m_checkChat[2]			= RTW_WIDGET_T(CUiCheckButton,UI_PERSONAL_CHANNEL_WHOLE_ID);
+	m_checkChat[2]			= LOAD_UI_T(CUiCheckButton,UI_PERSONAL_CHANNEL_WHOLE_ID);
 	m_iMask[2]				= PERSONAL_CHANNEL_MASK;
-	m_checkChat[3]			= RTW_WIDGET_T(CUiCheckButton,UI_TEAM_CHANNEL_WHOLE_ID);
+	m_checkChat[3]			= LOAD_UI_T(CUiCheckButton,UI_TEAM_CHANNEL_WHOLE_ID);
 	m_iMask[3]				= TEAM_CHANNEL_MASK;
-	m_checkChat[4]			= RTW_WIDGET_T(CUiCheckButton,UI_GUILD_CHANNEL_WHOLE_ID);
+	m_checkChat[4]			= LOAD_UI_T(CUiCheckButton,UI_GUILD_CHANNEL_WHOLE_ID);
 	m_iMask[4]				= UNION_CHANNEL_MASK;
-	m_checkChat[5]			= RTW_WIDGET_T(CUiCheckButton,UI_COUNTRY_CHANNEL_WHOLE_ID);
+	m_checkChat[5]			= LOAD_UI_T(CUiCheckButton,UI_COUNTRY_CHANNEL_WHOLE_ID);
 	m_iMask[5]				= BATTLE_CHANNEL_MASK;
-	m_checkChat[6]			= RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckbattleinfo");
+	m_checkChat[6]			= LOAD_UI_T(CUiCheckButton,"fmchannel.ckbattleinfo");
 	m_iMask[6]				= BATTLEINFO_CHANNEL_MASK;
 
-	RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->EvActivate			+=RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	LOAD_UI(UI_CHANNEL_WHOLE_ID)->EvActivate			+=RTW_CALLBACK(this,CChat,UserInterfaceEvent);
 
 
 	//输入框的键盘事件
-	mpChatInput=RTW_WIDGET_T(RtwChatInputBox,UI_INPUT_WHOLE_ID);
+	mpChatInput=LOAD_UI_T(RtwChatInputBox,UI_INPUT_WHOLE_ID);
 	mpChatInput->EvKey			+= RTW_CALLBACK(this,CChat,UserInterfaceKeyEvent);
 	mpChatInput->EvUpdateText	+= RTW_CALLBACK(this,CChat,UpdateChatText);
 
 	//doskey的界面
-	RTW_WIDGET_T(RtwListBox,UI_DOSKEY_LIST_WHOLE_ID)->EvSelect	+= RTW_CALLBACK(this,CChat,UserInterfaceSelect);
+	LOAD_UI_T(RtwListBox,UI_DOSKEY_LIST_WHOLE_ID)->EvSelect	+= RTW_CALLBACK(this,CChat,UserInterfaceSelect);
 
 	//对话背景的开关
-	//RTW_WIDGET("fmdialg.btnFeedbackclose")->ModifyFlags(wfDClick,0);//可以双击
-	RTW_WIDGET(UI_FEEDBACK_SWITCH_WHOLE_ID)->EvLClick			+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	//LOAD_UI("fmdialg.btnFeedbackclose")->ModifyFlags(wfDClick,0);//可以双击
+	LOAD_UI(UI_FEEDBACK_SWITCH_WHOLE_ID)->EvLClick			+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
 
 	//对话用表情栏目的开关
-	//RTW_WIDGET("fmdialg.btnchatface")->ModifyFlags(wfDClick,0);//可以双击
-	RTW_WIDGET(UI_CHAT_FACE_SWITCH_WHOLE_ID)->EvLClick			+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	//LOAD_UI("fmdialg.btnchatface")->ModifyFlags(wfDClick,0);//可以双击
+	LOAD_UI(UI_CHAT_FACE_SWITCH_WHOLE_ID)->EvLClick			+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
 
 	//表情框的选择事件tooth.shi
-	// 	RTW_WIDGET_T(RtwIconList,UI_CHAT_FACE_ICON_LIST_WHOLE_ID)->EvSelect+=RTW_CALLBACK(this,CChat,UserInterfaceSelect);
-	RTW_WIDGET(UI_CHAT_FACE_FORM_WHOLE_ID)->EvActivate			+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
+	// 	LOAD_UI_T(RtwIconList,UI_CHAT_FACE_ICON_LIST_WHOLE_ID)->EvSelect+=RTW_CALLBACK(this,CChat,UserInterfaceSelect);
+	LOAD_UI(UI_CHAT_FACE_FORM_WHOLE_ID)->EvActivate			+= RTW_CALLBACK(this,CChat,UserInterfaceEvent);
 	/* gao 2010.1.6 */	
 	//聊天遮罩按钮的初始化
 	for (int i = 0;i < 6;++i)
 		Time[i] = 0;
 
-	m_pbtnChatMask = RTW_WIDGET_T(RtwButton,"layworld.fmdialg.channelall");
+	m_pbtnChatMask = LOAD_UI_T(RtwButton,"layworld.fmdialg.channelall");
 	m_pbtnChatMask->Disable();
 	m_pbtnChatMask->EvLClick	+= RTW_CALLBACK(this, CChat, OnMaskbtnDown);
 
-	m_pbtnChannelSelect = RTW_WIDGET_T(RtwButton,"fmdialg.btnchanel");
+	m_pbtnChannelSelect = LOAD_UI_T(RtwButton,"fmdialg.btnchanel");
 	//喇叭窗口的初始坐标计算
 	RtwRect	Rect=m_tabChat->GetFrameRect();
-	RtwRect rect2 = RTW_WIDGET("worldfmfeedback")->getFrameRect();
+	RtwRect rect2 = LOAD_UI("worldfmfeedback")->getFrameRect();
 	int height = rect2.top - rect2.bottom;
 	rect2.top = Rect.top + height;
 	rect2.bottom = Rect.top;
-	RTW_WIDGET("worldfmfeedback")->MoveResize(rect2,true);
+	LOAD_UI("worldfmfeedback")->MoveResize(rect2,true);
 
-	m_plisChannelList = RTW_WIDGET_T(RtwListBox, "listchannel");
+	m_plisChannelList = LOAD_UI_T(RtwListBox, "listchannel");
 	m_plisChannelList->AddItem("....");
 	m_plisChannelList->AddItem("附近");
 	m_plisChannelList->AddItem("队伍");
@@ -259,14 +259,14 @@ void CChat::Init()
 	m_plisChannelList->AddItem("密语");
 	m_plisChannelList->EvSelect += RTW_CALLBACK(this, CChat, OnChannelListSelect);
 	m_plisChannelList->EvUnFocus+= RTW_CALLBACK(this, CChat, OnChannelListLoseFocus);
-	// 	RTW_WIDGET("fmfeedback")->EvMouseMove		+= RTW_CALLBACK(this,CChat,SetChatBackGround);
+	// 	LOAD_UI("fmfeedback")->EvMouseMove		+= RTW_CALLBACK(this,CChat,SetChatBackGround);
 
-	m_plstDIY		= RTW_WIDGET_T(RtwListBox,"fmdiy.listdiy");
+	m_plstDIY		= LOAD_UI_T(RtwListBox,"fmdiy.listdiy");
 	m_plstDIY->AddItem("频道过滤设置");
 	m_plstDIY->AddItem("频道名称设置");
 	m_plstDIY->EvSelect								+= RTW_CALLBACK(this,CChat,OnListDIY_Select);
-	//RTW_WIDGET("fmdiy")->EvUnFocus					+= RTW_CALLBACK(this,CChat,OnLoseFocus);
-	//RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->EvUnFocus		+= RTW_CALLBACK(this,CChat,OnLoseFocus);
+	//LOAD_UI("fmdiy")->EvUnFocus					+= RTW_CALLBACK(this,CChat,OnLoseFocus);
+	//LOAD_UI(UI_CHANNEL_WHOLE_ID)->EvUnFocus		+= RTW_CALLBACK(this,CChat,OnLoseFocus);
 	/* end */
 
 	Initfacebtn();
@@ -280,7 +280,7 @@ void CChat::Initfacebtn()
 #define BFID_SIZE_X		24
 #define BFID_SIZE_Y		24
 	char strId[32];
-	m_faceform = RTW_WIDGET(UI_CHAT_FACE_FORM_WHOLE_ID);
+	m_faceform = LOAD_UI(UI_CHAT_FACE_FORM_WHOLE_ID);
 
 	for (int i=0; i<5; i++)
 		for (int j=0; j<8; j++)
@@ -311,13 +311,13 @@ void CChat::UserInterfacebtndown(ui::RtwWidget* vpSender,void*)
 {
 	guard;
 	const string& Sender=vpSender->GetQualifiedID();
-	if(RTW_WIDGET(UI_CHAT_FACE_FORM_WHOLE_ID)->GetFlags(wfVisible))
+	if(LOAD_UI(UI_CHAT_FACE_FORM_WHOLE_ID)->GetFlags(wfVisible))
 	{
-		RTW_WIDGET(UI_CHAT_FACE_FORM_WHOLE_ID)->Hide();
+		LOAD_UI(UI_CHAT_FACE_FORM_WHOLE_ID)->Hide();
 	}
 	else
 	{
-		RTW_WIDGET(UI_CHAT_FACE_FORM_WHOLE_ID)->Show();
+		LOAD_UI(UI_CHAT_FACE_FORM_WHOLE_ID)->Show();
 	}
 
 	for (int i=0; i<5; i++)
@@ -372,25 +372,25 @@ void CChat::OnTimerEvent(DWORD vID)//时间回调函数
 	//switch(ranI)
 	//{
 	//case 0:
-	//	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_ZHIFUSHU));
+	//	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_ZHIFUSHU));
 	//	break;
 	//case 1:
-	//	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_RONGHESHU));
+	//	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_RONGHESHU));
 	//	break;
 	//case 2:
-	//	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_FABAOLIANHUA));
+	//	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_FABAOLIANHUA));
 	//	break;
 	//case 3:
-	//	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_FABAOFENJIE));
+	//	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_FABAOFENJIE));
 	//	break;
 	//case 4:
-	//	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_BAITAN));
+	//	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_BAITAN));
 	//	break;
 	//case 5:
-	//	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_SHOUYI));
+	//	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_SHOUYI));
 	//	break;
 	//case 6:
-	//	RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_QISHOUSHU));
+	//	LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->Add(pChannel->mMask,0xFF90EE90,pChannel->mDescription.c_str(),"",(char*)R(MSG_TIPS_QISHOUSHU));
 	//	break;
 	//default:
 	//	break;
@@ -438,15 +438,15 @@ void CChat::UserInterfaceEvent(ui::RtwWidget* vpSender, RtwEventDelegate* e)
 		{//不显示
 			m_tabChat->Hide();
 			/* gao 2010.1.9 让喇叭窗口跟着进行相就的更改*/
-			RTW_WIDGET("worldfmfeedback")->Hide();
-			//RTW_WIDGET("fmchannelbtn")->Hide();
+			LOAD_UI("worldfmfeedback")->Hide();
+			//LOAD_UI("fmchannelbtn")->Hide();
 			
 		}
 		else
 		{//显示//并改变
 			m_tabChat->Show();
 			/* gao 2010.1.9 让喇叭窗口跟着进行相就的更改*/
-			RTW_WIDGET("worldfmfeedback")->Show();
+			LOAD_UI("worldfmfeedback")->Show();
 			
 			RtwRect Rect;
 			char tmpStr[100];
@@ -460,10 +460,10 @@ void CChat::UserInterfaceEvent(ui::RtwWidget* vpSender, RtwEventDelegate* e)
 			{
 				// 整体form
 				rt2_snprintf(tmpStr,100,"tbfeedback.fmchat%d",i);
-				Rect=RTW_WIDGET(tmpStr)->GetFrameRect();
+				Rect=LOAD_UI(tmpStr)->GetFrameRect();
 				Rect.top+= SubtractHeight;				//y向下偏移
 				//Rect.bottom-= SubtractHeight;				//y向下偏移
-				RTW_WIDGET(tmpStr)->MoveResize(Rect,true);
+				LOAD_UI(tmpStr)->MoveResize(Rect,true);
 				//上字部分
 				Rect= m_chatFeedback[i]->GetFrameRect();
 				Rect.top+= SubtractHeight;				//y向下偏移
@@ -476,35 +476,35 @@ void CChat::UserInterfaceEvent(ui::RtwWidget* vpSender, RtwEventDelegate* e)
 				m_chatScroll[i]->MoveResize(Rect,true);
 				//背景部分
 				rt2_snprintf(tmpStr,100,"tbfeedback.fmchat%d.back",i);
-				Rect=RTW_WIDGET(tmpStr)->GetFrameRect();
+				Rect=LOAD_UI(tmpStr)->GetFrameRect();
 				//Rect.top+= SubtractHeight;				//y向下偏移
 				Rect.bottom-= SubtractHeight;				//y向下偏移
-				RTW_WIDGET(tmpStr)->MoveResize(Rect,true);
+				LOAD_UI(tmpStr)->MoveResize(Rect,true);
 				//聊天框的装饰物件
 				rt2_snprintf(tmpStr,100,"tbfeedback.fmchat%d.pandialgtop",i);
-				Rect=RTW_WIDGET(tmpStr)->GetFrameRect();
+				Rect=LOAD_UI(tmpStr)->GetFrameRect();
 				//Rect.top+= SubtractHeight;				//y向下偏移
 				Rect.bottom-=SubtractHeight;				//抵消外部窗口的y值变化，改变y值，y的绝对数值，不变
-				RTW_WIDGET(tmpStr)->MoveResize(Rect);
+				LOAD_UI(tmpStr)->MoveResize(Rect);
 			}
 
 			//heten  世界聊天框移动
-			Rect=RTW_WIDGET("worldfmfeedback")->GetFrameRect();
+			Rect=LOAD_UI("worldfmfeedback")->GetFrameRect();
 			Rect.top+= SubtractHeight;				//y向下偏移
 			Rect.bottom+= SubtractHeight;				//y向下偏移
-			RTW_WIDGET("worldfmfeedback")->MoveResize(Rect,true);
+			LOAD_UI("worldfmfeedback")->MoveResize(Rect,true);
 			//end
 		} 
 	}
 	else if(Sender==UI_CHAT_FACE_SWITCH_ID)
 	{//表情框按钮
-		if(RTW_WIDGET(UI_CHAT_FACE_FORM_WHOLE_ID)->GetFlags(wfVisible))
+		if(LOAD_UI(UI_CHAT_FACE_FORM_WHOLE_ID)->GetFlags(wfVisible))
 		{
-			RTW_WIDGET(UI_CHAT_FACE_FORM_WHOLE_ID)->Hide();
+			LOAD_UI(UI_CHAT_FACE_FORM_WHOLE_ID)->Hide();
 		}
 		else
 		{
-			RTW_WIDGET(UI_CHAT_FACE_FORM_WHOLE_ID)->Show();
+			LOAD_UI(UI_CHAT_FACE_FORM_WHOLE_ID)->Show();
 		}
 	}
 
@@ -527,14 +527,14 @@ void CChat::UserInterfaceEvent(ui::RtwWidget* vpSender, RtwEventDelegate* e)
 	{
 		if(e->type == etUnFocus)
 		{
-			RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->Hide();
+			LOAD_UI(UI_CHANNEL_WHOLE_ID)->Hide();
 		}
 	}
 	else if(Sender==UI_CHAT_FACE_FORM_ID)
 	{//表情框失去焦点
 		if(e->type == etUnFocus)
 		{
-			RTW_WIDGET(UI_CHAT_FACE_FORM_WHOLE_ID)->Hide();
+			LOAD_UI(UI_CHAT_FACE_FORM_WHOLE_ID)->Hide();
 		}
 	}
     unguard;
@@ -550,7 +550,7 @@ void CChat::UserInterfaceEvent(ui::RtwWidget* vpSender, RtwEventDelegate* e)
 //			SChannelAtom* pChannel=GetChannel((EChannels)i);
 //			if(pChannel!=NULL)
 //			{
-//				RTW_WIDGET_T(CUiCheckButton ,pChannel->mUIID.c_str())->SetChecked(false);
+//				LOAD_UI_T(CUiCheckButton ,pChannel->mUIID.c_str())->SetChecked(false);
 //			}
 //		}
 //	}
@@ -576,29 +576,29 @@ void CChat::OnMaskbtnDown(RtwWidget* pWidget, RtwEventDelegate* pEvent)
 {
 	guard;
 	// 去调用综合过滤
-	//if(RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->GetFlags(wfVisible))
+	//if(LOAD_UI(UI_CHANNEL_WHOLE_ID)->GetFlags(wfVisible))
 	//{
-	//	RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->Hide();
+	//	LOAD_UI(UI_CHANNEL_WHOLE_ID)->Hide();
 	//}
 	//else
 	//{
-	//	RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->Show();
-	//	g_workspace.BringWidgetToBottom(RTW_WIDGET_T(RtwForm, "fmfeedback"));
-	//	g_workspace.SetFocusWidget(RTW_WIDGET(UI_CHANNEL_WHOLE_ID));
+	//	LOAD_UI(UI_CHANNEL_WHOLE_ID)->Show();
+	//	g_workspace.BringWidgetToBottom(LOAD_UI_T(RtwForm, "fmfeedback"));
+	//	g_workspace.SetFocusWidget(LOAD_UI(UI_CHANNEL_WHOLE_ID));
 	//}
 	//// 跟据当前遮罩的复选框选择进行配置综合的遮罩
 	//m_iChatMask = 0;
-	//if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.cknormalcl")->GetChecked())
+	//if(LOAD_UI_T(CUiCheckButton,"fmchannel.cknormalcl")->GetChecked())
 	//	m_iChatMask |= NEAR_CHANNEL_MASK;
-	//if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckgroupcl")->GetChecked())
+	//if(LOAD_UI_T(CUiCheckButton,"fmchannel.ckgroupcl")->GetChecked())
 	//	m_iChatMask |= TEAM_CHANNEL_MASK;
-	//if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckguildcl")->GetChecked())
+	//if(LOAD_UI_T(CUiCheckButton,"fmchannel.ckguildcl")->GetChecked())
 	//	m_iChatMask |= UNION_CHANNEL_MASK;
-	//if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckcountrycl")->GetChecked())
+	//if(LOAD_UI_T(CUiCheckButton,"fmchannel.ckcountrycl")->GetChecked())
 	//	m_iChatMask |= BATTLE_CHANNEL_MASK;
-	//if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckallcl")->GetChecked())
+	//if(LOAD_UI_T(CUiCheckButton,"fmchannel.ckallcl")->GetChecked())
 	//	m_iChatMask |= WORLD_CHANNEL_MASK;
-	//if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckpersoncl")->GetChecked())
+	//if(LOAD_UI_T(CUiCheckButton,"fmchannel.ckpersoncl")->GetChecked())
 	//	m_iChatMask |= PERSONAL_CHANNEL_MASK;
 	//RefreshChatWidget();
 	unguard;
@@ -666,7 +666,7 @@ void CChat::OnSystemBtnDown(int key)
 void CChat::SetChatBackGround(RtwWidget* pWidget, RtwEventDelegate* pEvent)
 {
 	guard;
-// 	RTW_WIDGET("fmfeedback.scrolldialg")->Show();
+// 	LOAD_UI("fmfeedback.scrolldialg")->Show();
 // 	m_bNeedChangeBackground = true;
 	unguard;
 }
@@ -681,13 +681,13 @@ void CChat::SetNeedChangeBackground(bool need)
 	if (need/* && *//**/)
 	{
 		m_chatScroll[iSelect]->Show();
-		RTW_WIDGET("fmdialg")->Show();
+		LOAD_UI("fmdialg")->Show();
 		char tmpStr[100];
 		for(int i= 0;i< MAX_CHANNEL_CHATBOX;i++)
 		{
 			m_btnChatSelect[i]->Show();
 			rt2_snprintf(tmpStr,100,"tbfeedback.fmchat%d.back",i);
-			RTW_WIDGET(tmpStr)->Show();
+			LOAD_UI(tmpStr)->Show();
 		}
 		///.show
 	}
@@ -715,40 +715,40 @@ void CChat::DoFrame()
 			{
 				m_btnChatSelect[i]->Hide();
 				rt2_snprintf(tmpStr,100,"tbfeedback.fmchat%d.back",i);
-				RTW_WIDGET(tmpStr)->Hide();
+				LOAD_UI(tmpStr)->Hide();
 			}
 
 			//焦点不是输入框并且输入框不为空
 			if (g_workspace.getFocusWidget()!=mpChatInput && mpChatInput->getText().empty())
 			{
-				RTW_WIDGET("fmdialg")->Hide();
+				LOAD_UI("fmdialg")->Hide();
 				/*if(m_faceform->IsVisible())
 					m_faceform->Hide();*/
 			}
 			else
 			{
-				RTW_WIDGET("fmdialg")->Show();
+				LOAD_UI("fmdialg")->Show();
 			}
 
-			/*if(RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->GetFlags(wfVisible))
+			/*if(LOAD_UI(UI_CHANNEL_WHOLE_ID)->GetFlags(wfVisible))
 			{
-				RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->Hide();
+				LOAD_UI(UI_CHANNEL_WHOLE_ID)->Hide();
 			}*/
 		}
 	}
 
 	m_tabChat->SetBackgroundColor(color);
 
-	if(RTW_WIDGET("fmdiy")->IsVisible())
+	if(LOAD_UI("fmdiy")->IsVisible())
 	{
-		if(g_layerMain->GetFocusParentWidget(g_workspace.GetFocusWidget())!= RTW_WIDGET("fmdiy"))
-			RTW_WIDGET("fmdiy")->Hide();
+		if(g_layerMain->GetFocusParentWidget(g_workspace.GetFocusWidget())!= LOAD_UI("fmdiy"))
+			LOAD_UI("fmdiy")->Hide();
 	}
 
-	if(RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->IsVisible())
+	if(LOAD_UI(UI_CHANNEL_WHOLE_ID)->IsVisible())
 	{
-		if(g_layerMain->GetFocusParentWidget(g_workspace.GetFocusWidget())!= RTW_WIDGET(UI_CHANNEL_WHOLE_ID))
-			RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->Hide();
+		if(g_layerMain->GetFocusParentWidget(g_workspace.GetFocusWidget())!= LOAD_UI(UI_CHANNEL_WHOLE_ID))
+			LOAD_UI(UI_CHANNEL_WHOLE_ID)->Hide();
 	}
 	unguard;
 }
@@ -1164,7 +1164,7 @@ void CChat::SystemMessage(const std::string& vrMessage,bool vIgnoreRepeated)//[s
 
 	static SChannelAtom* pSystemChannel=GetChannel(SYSTEM_CHANNEL);
 
-	const string& rLastMessage=RTW_WIDGET_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->GetLast(pSystemChannel->mMask);
+	const string& rLastMessage=LOAD_UI_T(RtwChatBox, UI_SYSTEM_FORM_BOX_WHOLE_ID)->GetLast(pSystemChannel->mMask);
 	
 	if(vIgnoreRepeated)
 	{//要求忽略重复的信息
@@ -1248,7 +1248,7 @@ void CChat::OnClick_Rfunction(RtwWidget* pWidget, RtwEventDelegate* pEvent)
 	}
 	unguard;
 
-	//RTW_WIDGET("RuserMenu")->Hide();
+	//LOAD_UI("RuserMenu")->Hide();
 }
 
 void CChat::OnClick_Lfunction(RtwWidget* pWidget, RtwEventDelegate* pEvent)
@@ -1278,20 +1278,20 @@ void CChat::OnClick_Lfunction(RtwWidget* pWidget, RtwEventDelegate* pEvent)
 		if (itemname->type==RtwChatBox::eit_Name)
 		{
 			std::string strmyname;
-			if (RTW_WIDGET_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->getText()!="")
+			if (LOAD_UI_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->getText()!="")
 			{
 				strmyname+=(itemname->text.substr(0,(int)itemname->text.size()-2))+" "+strtext;
-				RTW_WIDGET_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->SetText(strmyname);
-			}else if(RTW_WIDGET_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->getText()==""){
+				LOAD_UI_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->SetText(strmyname);
+			}else if(LOAD_UI_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->getText()==""){
 				strtext="";
 				std::string strname;
 				strname+=(itemname->text.substr(0,(int)itemname->text.size()-2))+" ";
-				RTW_WIDGET_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->SetText(strname);
+				LOAD_UI_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->SetText(strname);
 			}
-			GetWorld()->m_Chat.getmEdit().GetmDoskey().SetEditText(RTW_WIDGET_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->getText());
-			GetWorld()->m_Chat.OnMemberChoice(0,RTW_WIDGET_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->getText().c_str());
+			GetWorld()->m_Chat.getmEdit().GetmDoskey().SetEditText(LOAD_UI_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->getText());
+			GetWorld()->m_Chat.OnMemberChoice(0,LOAD_UI_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->getText().c_str());
 
-			g_workspace.SetFocusWidget(RTW_WIDGET_T(RtwChatInputBox,UI_INPUT_WHOLE_ID));
+			g_workspace.SetFocusWidget(LOAD_UI_T(RtwChatInputBox,UI_INPUT_WHOLE_ID));
 		}
 	}
 	unguard;
@@ -1422,18 +1422,18 @@ void CChat::UserInterfaceSelect(ui::RtwWidget* vpSender,void*)
 	else if(Sender==UI_CHAT_FACE_ICON_LIST_WHOLE_ID)
 	{
 		const char* pKey;
-		pKey=RTW_WIDGET_T(RtwIconList,UI_CHAT_FACE_ICON_LIST_WHOLE_ID)->GetSelectedKey();
-		//RTW_WIDGET_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->InsertImage(pKey);
-		RTW_WIDGET(UI_CHAT_FACE_FORM_WHOLE_ID)->Hide();//将窗口关闭
+		pKey=LOAD_UI_T(RtwIconList,UI_CHAT_FACE_ICON_LIST_WHOLE_ID)->GetSelectedKey();
+		//LOAD_UI_T(RtwChatInputBox,UI_INPUT_WHOLE_ID)->InsertImage(pKey);
+		LOAD_UI(UI_CHAT_FACE_FORM_WHOLE_ID)->Hide();//将窗口关闭
 		mEdit.Change();
 	}
 	//else if(Sender==UI_CHAT_FORM_WHOLE_ID)
 	//{
-	//	RtwChatBox::Item* pItem=RTW_WIDGET_T(RtwChatBox,UI_CHAT_FORM_WHOLE_ID)->GetSelectItem();
+	//	RtwChatBox::Item* pItem=LOAD_UI_T(RtwChatBox,UI_CHAT_FORM_WHOLE_ID)->GetSelectItem();
 	//	if(pItem!=NULL)
 	//	{
 
-	//		RtwChatBox::Piece*	pPiece=RTW_WIDGET_T(RtwChatBox,UI_CHAT_FORM_WHOLE_ID)->GetSelectPiece();
+	//		RtwChatBox::Piece*	pPiece=LOAD_UI_T(RtwChatBox,UI_CHAT_FORM_WHOLE_ID)->GetSelectPiece();
 	//		if(pPiece!=NULL)
 	//		{
 	//			switch(pPiece->type)
@@ -1471,10 +1471,10 @@ void CChat::OnRClick_btnChatSelect(RtwWidget* sender, void*)
 	//	if(sender== m_btnChatSelect[i])
 	//		m_tabChat->SetSelectedItem(i);
 	//}
-	RTW_WIDGET("fmdiy")->Move(g_workspace.GetMousePosX(),g_workspace.GetMousePosY());
-	RTW_WIDGET("fmdiy")->Show();
+	LOAD_UI("fmdiy")->Move(g_workspace.GetMousePosX(),g_workspace.GetMousePosY());
+	LOAD_UI("fmdiy")->Show();
 	m_plstDIY->Show();
-	g_workspace.SetFocusWidget(RTW_WIDGET("fmdiy"));
+	g_workspace.SetFocusWidget(LOAD_UI("fmdiy"));
 	unguard;
 }
 
@@ -1484,11 +1484,11 @@ void CChat::OnListDIY_Select(RtwWidget* sender, void*)
 	int iSelect= m_plstDIY->GetSelectedItem();
 	if(iSelect== 0)
 	{
-		RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->Show();
-		RtwRect rect= RTW_WIDGET("fmdiy")->GetFrameRect();
-		RTW_WIDGET(UI_CHANNEL_WHOLE_ID)->Move(rect.left,rect.top);
+		LOAD_UI(UI_CHANNEL_WHOLE_ID)->Show();
+		RtwRect rect= LOAD_UI("fmdiy")->GetFrameRect();
+		LOAD_UI(UI_CHANNEL_WHOLE_ID)->Move(rect.left,rect.top);
 		g_workspace.BringWidgetToBottom(m_tabChat);
-		g_workspace.SetFocusWidget(RTW_WIDGET(UI_CHANNEL_WHOLE_ID));
+		g_workspace.SetFocusWidget(LOAD_UI(UI_CHANNEL_WHOLE_ID));
 		int jSelect= m_tabChat->GetSelectedItem();
 		OnSetMaskInit(m_iChatMask[jSelect]);
 	}else if(iSelect== 1)
@@ -1498,7 +1498,7 @@ void CChat::OnListDIY_Select(RtwWidget* sender, void*)
 		pFrm->SetTxtLength(4);
 		pFrm->EvOK = RTW_CALLBACK_1(this, CChat, OnChangeChatName, pFrm);
 	}
-	RTW_WIDGET("fmdiy")->Hide();
+	LOAD_UI("fmdiy")->Hide();
 	unguard;
 }
 
@@ -1506,39 +1506,39 @@ void CChat::OnSetMaskInit(int& mask)
 {
 	guard;
 	if(mask& NEAR_CHANNEL_MASK)
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.cknormalcl")->SetChecked(true);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.cknormalcl")->SetChecked(true);
 	else
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.cknormalcl")->SetChecked(false);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.cknormalcl")->SetChecked(false);
 
 	if(mask& TEAM_CHANNEL_MASK)
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckgroupcl")->SetChecked(true);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckgroupcl")->SetChecked(true);
 	else
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckgroupcl")->SetChecked(false);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckgroupcl")->SetChecked(false);
 
 	if(mask& UNION_CHANNEL_MASK)
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckguildcl")->SetChecked(true);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckguildcl")->SetChecked(true);
 	else
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckguildcl")->SetChecked(false);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckguildcl")->SetChecked(false);
 
 	if(mask& BATTLE_CHANNEL_MASK)
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckcountrycl")->SetChecked(true);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckcountrycl")->SetChecked(true);
 	else
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckcountrycl")->SetChecked(false);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckcountrycl")->SetChecked(false);
 
 	if(mask& WORLD_CHANNEL_MASK)
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckallcl")->SetChecked(true);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckallcl")->SetChecked(true);
 	else
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckallcl")->SetChecked(false);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckallcl")->SetChecked(false);
 
 	if(mask& PERSONAL_CHANNEL_MASK)
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckpersoncl")->SetChecked(true);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckpersoncl")->SetChecked(true);
 	else
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckpersoncl")->SetChecked(false);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckpersoncl")->SetChecked(false);
 
 	if(mask& BATTLEINFO_CHANNEL_MASK)
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckbattleinfo")->SetChecked(true);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckbattleinfo")->SetChecked(true);
 	else
-		RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckbattleinfo")->SetChecked(false);
+		LOAD_UI_T(CUiCheckButton,"fmchannel.ckbattleinfo")->SetChecked(false);
 	SaveChatSet();
 	unguard;
 }
@@ -1547,19 +1547,19 @@ void CChat::OnGetMaskValue(int& mask)
 {
 	guard;
 	mask= 0;
-	if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.cknormalcl")->GetChecked())
+	if(LOAD_UI_T(CUiCheckButton,"fmchannel.cknormalcl")->GetChecked())
 		mask |= NEAR_CHANNEL_MASK;
-	if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckgroupcl")->GetChecked())
+	if(LOAD_UI_T(CUiCheckButton,"fmchannel.ckgroupcl")->GetChecked())
 		mask |= TEAM_CHANNEL_MASK;
-	if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckguildcl")->GetChecked())
+	if(LOAD_UI_T(CUiCheckButton,"fmchannel.ckguildcl")->GetChecked())
 		mask |= UNION_CHANNEL_MASK;
-	if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckcountrycl")->GetChecked())
+	if(LOAD_UI_T(CUiCheckButton,"fmchannel.ckcountrycl")->GetChecked())
 		mask |= BATTLE_CHANNEL_MASK;
-	if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckallcl")->GetChecked())
+	if(LOAD_UI_T(CUiCheckButton,"fmchannel.ckallcl")->GetChecked())
 		mask |= WORLD_CHANNEL_MASK;
-	if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckpersoncl")->GetChecked())
+	if(LOAD_UI_T(CUiCheckButton,"fmchannel.ckpersoncl")->GetChecked())
 		mask |= PERSONAL_CHANNEL_MASK;
-	if(RTW_WIDGET_T(CUiCheckButton,"fmchannel.ckbattleinfo")->GetChecked())
+	if(LOAD_UI_T(CUiCheckButton,"fmchannel.ckbattleinfo")->GetChecked())
 		mask |= BATTLEINFO_CHANNEL_MASK;
 	unguard;
 }

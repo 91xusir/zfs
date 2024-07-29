@@ -34,13 +34,13 @@ UIFormSkill::UIFormSkill()
             {
                 m = y*SKILL_GRID_ROW+x+1;
                 rt2_snprintf(g_strStaticBuffer+l, 200-l,"panskill%02d", m);
-                m_pPanelMap[c][y][x]  = RTW_WIDGET(g_strStaticBuffer);
+                m_pPanelMap[c][y][x]  = LOAD_UI(g_strStaticBuffer);
 				rt2_snprintf(g_strStaticBuffer+l, 200-l,"panskill%02d.btnskill", m);
-				m_pSkillMap[c][y][x]  = RTW_WIDGET_T(RtwButton, g_strStaticBuffer);
+				m_pSkillMap[c][y][x]  = LOAD_UI_T(RtwButton, g_strStaticBuffer);
                 rt2_snprintf(g_strStaticBuffer+l, 200-l,"panskill%02d.lbskilllev", m);
-                m_pLevelMap[c][y][x]  = RTW_WIDGET(g_strStaticBuffer);
+                m_pLevelMap[c][y][x]  = LOAD_UI(g_strStaticBuffer);
 				rt2_snprintf(g_strStaticBuffer+l, 200-l,"panskill%02d.btnstradd", m);
-				m_pAddButton[c][y][x] = RTW_WIDGET_T(RtwButton, g_strStaticBuffer);
+				m_pAddButton[c][y][x] = LOAD_UI_T(RtwButton, g_strStaticBuffer);
 				m_pAddButton[c][y][x]->ModifyFlags(0,wfPick);
 				//m_pLevelMap[c][y][x]->SetParent(NULL);
 				//m_pSkillMap[c][y][x]->AddChild(m_pLevelMap[c][y][x]);
@@ -61,10 +61,10 @@ UIFormSkill::UIFormSkill()
             }
         }
     }
-	m_lbMeter1					= RTW_WIDGET_T(RtwLabel,"fmborder_skill.fmskillall.tabskillall.fmfirst.lbshowweapon");
-	m_lbMetertree1				= RTW_WIDGET_T(RtwLabel,"fmborder_skill.fmskillall.tabskillall.fmfirst.lbskilltree");
-	m_lbMeter2					= RTW_WIDGET_T(RtwLabel,"fmborder_skill.fmskillall.tabskillall.fmsecond.lbshowweapon");
-	m_lbMetertree2				= RTW_WIDGET_T(RtwLabel,"fmborder_skill.fmskillall.tabskillall.fmsecond.lbskilltree");
+	m_lbMeter1					= LOAD_UI_T(RtwLabel,"fmborder_skill.fmskillall.tabskillall.fmfirst.lbshowweapon");
+	m_lbMetertree1				= LOAD_UI_T(RtwLabel,"fmborder_skill.fmskillall.tabskillall.fmfirst.lbskilltree");
+	m_lbMeter2					= LOAD_UI_T(RtwLabel,"fmborder_skill.fmskillall.tabskillall.fmsecond.lbshowweapon");
+	m_lbMetertree2				= LOAD_UI_T(RtwLabel,"fmborder_skill.fmskillall.tabskillall.fmsecond.lbskilltree");
 
 	m_imgImage1 = g_workspace.getImageFactory()->createImage("ui\\textures\\24.tga");
 	if(m_imgImage1)
@@ -86,17 +86,17 @@ UIFormSkill::UIFormSkill()
 		m_imgImage4->SetBlend(true);
 	m_lbMetertree2->SetBackgroundImage(m_imgImage4);
 
-	m_pSP = RTW_WIDGET("fmborder_skill.fmskillall.tabskillall.lbspnum");
-	m_pPP = RTW_WIDGET("fmborder_skill.fmskillall.tabskillall.lbspnum1");
-	m_pPanelClass[0] = RTW_WIDGET("fmborder_skill.fmskillall.tabskillall.fmfirst");
-    m_pPanelClass[1] = RTW_WIDGET("fmborder_skill.fmskillall.tabskillall.fmsecond");
+	m_pSP = LOAD_UI("fmborder_skill.fmskillall.tabskillall.lbspnum");
+	m_pPP = LOAD_UI("fmborder_skill.fmskillall.tabskillall.lbspnum1");
+	m_pPanelClass[0] = LOAD_UI("fmborder_skill.fmskillall.tabskillall.fmfirst");
+    m_pPanelClass[1] = LOAD_UI("fmborder_skill.fmskillall.tabskillall.fmsecond");
 
     m_pPanelClass[0]->EvShow += RTW_CALLBACK(this, UIFormSkill, OnClass1Show);
     m_pPanelClass[1]->EvShow += RTW_CALLBACK(this, UIFormSkill, OnClass2Show);
 
 
-    RTW_WIDGET("fmborder_skill.fmskillall.tabskillall.fmthird")->EvShow += RTW_CALLBACK(this, UIFormSkill, OnClass3Show);
-	RTW_WIDGET("fmborder_skill.fmskillall.tabskillall.fmhemline")->EvShow += RTW_CALLBACK(this, UIFormSkill, OnClass4Show);
+    LOAD_UI("fmborder_skill.fmskillall.tabskillall.fmthird")->EvShow += RTW_CALLBACK(this, UIFormSkill, OnClass3Show);
+	LOAD_UI("fmborder_skill.fmskillall.tabskillall.fmhemline")->EvShow += RTW_CALLBACK(this, UIFormSkill, OnClass4Show);
 
 // change [3/20/2009 tooth.shi]    RtScriptCsvFile csv;
 	RtCsv csv;
@@ -123,7 +123,7 @@ UIFormSkill::UIFormSkill()
         ERR("Load [skill_tree.csv] Failed.\n");
     }
 
-    m_pFrmThis = RTW_WIDGET("fmborder_skill");
+    m_pFrmThis = LOAD_UI("fmborder_skill");
 //	m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
 // change [3/20/2009 tooth.shi]    m_ptrImage = new RtwImage("passive_mask");
@@ -141,11 +141,11 @@ UIFormSkill::UIFormSkill()
 	for (int j=0; j<SKILL_COMMON_NUM; j++)
 	{
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d", str.c_str(), j+1);
-		m_pCommonSkill[j] = RTW_WIDGET(g_strStaticBuffer);
+		m_pCommonSkill[j] = LOAD_UI(g_strStaticBuffer);
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d.lbskilllev", str.c_str(), j+1);
-		m_pCommonLev[j] = RTW_WIDGET(g_strStaticBuffer);
+		m_pCommonLev[j] = LOAD_UI(g_strStaticBuffer);
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d.btnskill",str.c_str(), j+1);
-		m_pCommonBtn[j] = RTW_WIDGET_T(RtwButton, g_strStaticBuffer);
+		m_pCommonBtn[j] = LOAD_UI_T(RtwButton, g_strStaticBuffer);
 		m_pCommonBtn[j]->ModifyFlags(wfDragOut|wfHint|wfDClick|wfDClick, 0);
 		//m_pCommonBtn[j]->EvLDClick		+= RTW_CALLBACK(this, UIFormSkill, OnLDClickTreeItem);
 		m_pCommonBtn[j]->EvRClick		+= RTW_CALLBACK(this, UIFormSkill, OnRDownSkillItem);
@@ -160,11 +160,11 @@ UIFormSkill::UIFormSkill()
 	for (int j=0; j<SKILL_EXPRESSION_NUM; j++)
 	{
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d", str.c_str(), j+1 + SKILL_COMMON_NUM);
-		m_pExpressionSkill[j] = RTW_WIDGET(g_strStaticBuffer);
+		m_pExpressionSkill[j] = LOAD_UI(g_strStaticBuffer);
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d.lbskilllev", str.c_str(), j+1 + SKILL_COMMON_NUM);
-		m_pExpressionLev[j] = RTW_WIDGET(g_strStaticBuffer);
+		m_pExpressionLev[j] = LOAD_UI(g_strStaticBuffer);
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d.btnskill",str.c_str(), j+1 + SKILL_COMMON_NUM);
-		m_pExpressionBtn[j] = RTW_WIDGET_T(RtwButton, g_strStaticBuffer);
+		m_pExpressionBtn[j] = LOAD_UI_T(RtwButton, g_strStaticBuffer);
 		m_pExpressionBtn[j]->ModifyFlags(wfDragOut|wfHint|wfDClick|wfDClick, 0);
 		//m_pExpressionBtn[j]->EvLDClick		+= RTW_CALLBACK(this, UIFormSkill, OnLDClickTreeItem);
 		m_pExpressionBtn[j]->EvRClick		+= RTW_CALLBACK(this, UIFormSkill, OnRDownSkillItem);
@@ -179,11 +179,11 @@ UIFormSkill::UIFormSkill()
 	for (int j=0; j<SKILL_BOOK_NUM; j++)
 	{
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d", str.c_str(), j+1 + SKILL_COMMON_NUM + SKILL_EXPRESSION_NUM);
-		m_pBookSkill[j] = RTW_WIDGET(g_strStaticBuffer);
+		m_pBookSkill[j] = LOAD_UI(g_strStaticBuffer);
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d.lbskilllev", str.c_str(), j+1 + SKILL_COMMON_NUM + SKILL_EXPRESSION_NUM);
-		m_pBookLev[j] = RTW_WIDGET(g_strStaticBuffer);
+		m_pBookLev[j] = LOAD_UI(g_strStaticBuffer);
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d.btnskill",str.c_str(), j+1 + SKILL_COMMON_NUM + SKILL_EXPRESSION_NUM);
-		m_pBookBtn[j] = RTW_WIDGET_T(RtwButton, g_strStaticBuffer);
+		m_pBookBtn[j] = LOAD_UI_T(RtwButton, g_strStaticBuffer);
 		m_pBookBtn[j]->ModifyFlags(wfDragOut|wfHint|wfDClick|wfDClick, 0);
 		//m_pBookBtn[j]->EvLDClick		+= RTW_CALLBACK(this, UIFormSkill, OnLDClickTreeItem);
 		m_pBookBtn[j]->EvRClick			+= RTW_CALLBACK(this, UIFormSkill, OnRDownSkillItem);
@@ -198,14 +198,14 @@ UIFormSkill::UIFormSkill()
 	for (int j=0; j<SKILL_TRUMP_NUM; j++)
 	{
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d", str.c_str(), j+1 + SKILL_COMMON_NUM + SKILL_EXPRESSION_NUM + SKILL_BOOK_NUM);
-		m_pTrumpSkill[j] = RTW_WIDGET(g_strStaticBuffer);
+		m_pTrumpSkill[j] = LOAD_UI(g_strStaticBuffer);
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d.lbskilllev", str.c_str(), j+1 + SKILL_COMMON_NUM + SKILL_EXPRESSION_NUM + SKILL_BOOK_NUM);
-		m_pTrumpLev[j] = RTW_WIDGET(g_strStaticBuffer);
+		m_pTrumpLev[j] = LOAD_UI(g_strStaticBuffer);
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d.btnstradd",str.c_str(), j+1 + SKILL_COMMON_NUM + SKILL_EXPRESSION_NUM + SKILL_BOOK_NUM);
-		m_pTrumpAdd[j] = RTW_WIDGET_T(RtwButton, g_strStaticBuffer);
+		m_pTrumpAdd[j] = LOAD_UI_T(RtwButton, g_strStaticBuffer);
 		m_pTrumpAdd[j]->ModifyFlags(0,wfPick);
 		rt2_sprintf(g_strStaticBuffer, "%s.panskill%02d.btnskill",str.c_str(), j+1 + SKILL_COMMON_NUM + SKILL_EXPRESSION_NUM + SKILL_BOOK_NUM);
-		m_pTrumpBtn[j] = RTW_WIDGET_T(RtwButton, g_strStaticBuffer);
+		m_pTrumpBtn[j] = LOAD_UI_T(RtwButton, g_strStaticBuffer);
 		m_pTrumpBtn[j]->ModifyFlags(wfDragOut|wfHint|wfDClick|wfDClick, 0);
 		m_pTrumpBtn[j]->EvLDClick		+= RTW_CALLBACK(this, UIFormSkill, OnLDClickTreeItem);
 		m_pTrumpBtn[j]->EvRClick		+= RTW_CALLBACK(this, UIFormSkill, OnRDownSkillItem);
@@ -217,7 +217,7 @@ UIFormSkill::UIFormSkill()
 		m_pTrumpLev[j]->ModifyFlags(0,wfPick);
 		//m_pTrumpSkill[j]->Hide();
 	}
-	m_btnClose = RTW_WIDGET_T(RtwButton, "fmborder_skill.btnclose");
+	m_btnClose = LOAD_UI_T(RtwButton, "fmborder_skill.btnclose");
 	m_btnClose->EvLClick += RTW_CALLBACK(this, UIFormSkill, OnHideSkillPane);
     OnResize();
     Refresh();
@@ -274,9 +274,9 @@ void UIFormSkill::SetWidgetLabelName(int Metier)
 		rt2_sprintf(szLev, "SMSG_CLASS_NAME_%d", iBase+c);
 		switch (c)
 		{
-		case 0: pWidget = RTW_WIDGET("fmborder_skill.fmskillall.tabskillall.btnfirst"); break;
-		case 1: pWidget = RTW_WIDGET("fmborder_skill.fmskillall.tabskillall.btnsecond"); break;
-		case 2: pWidget = RTW_WIDGET("fmborder_skill.fmskillall.tabskillall.btnthird"); break;
+		case 0: pWidget = LOAD_UI("fmborder_skill.fmskillall.tabskillall.btnfirst"); break;
+		case 1: pWidget = LOAD_UI("fmborder_skill.fmskillall.tabskillall.btnsecond"); break;
+		case 2: pWidget = LOAD_UI("fmborder_skill.fmskillall.tabskillall.btnthird"); break;
 		}
 		rt2_strncpy(szLev, Rs(szLev), 32);
 		pWidget->SetText(szLev);
@@ -294,24 +294,24 @@ void UIFormSkill::OnResize()
     int i, j;
 
     rt2_sprintf(strId, "%s.scrolldialg", szSkillCtrl);
-    m_pScrollBar = RTW_WIDGET_T(RtwScrollBar, strId);
+    m_pScrollBar = LOAD_UI_T(RtwScrollBar, strId);
 
     for (i=0; i<SKILL_LIST_SIZE; i++)
 	{
 	
         rt2_sprintf(strId, "%s.fmother.panskill%02d", szSkillCtrl, i+1);
-        m_pWndSkillList[i] = RTW_WIDGET(strId);
+        m_pWndSkillList[i] = LOAD_UI(strId);
         j = strlen(strId);
-        rt2_strncpy(strId+j, ".btnskill", 100-j);		m_pWndSkillListBtn[i]			= RTW_WIDGET_T(RtwButton, strId);
-        rt2_strncpy(strId+j, ".lbskillname", 100-j);	m_pWndSkillListName[i]			= RTW_WIDGET(strId);
-		rt2_strncpy(strId+j, ".lbskillinfo1", 100-j);	m_pWndSkillListInfo1[i]			= RTW_WIDGET(strId);
-		rt2_strncpy(strId+j, ".lbxmm3", 100-j);			m_pWndSkillListInfolb[i]		= RTW_WIDGET(strId);
-		rt2_strncpy(strId+j, ".lbskillinfo2", 100-j);	m_pWndSkillListInfo2[i]			= RTW_WIDGET(strId);
-        rt2_strncpy(strId+j, ".lbexpcount", 100-j);		m_pWndSkillListExp[i]			= RTW_WIDGET(strId);
-        rt2_strncpy(strId+j, ".barexp", 100-j);			m_pWndSkillListExpProgress[i]	= RTW_WIDGET_T(RtwProgressBar, strId);
-		rt2_strncpy(strId+j, ".lbok", 100-j);			m_pBtnForgetSkill[i]			= RTW_WIDGET_T(RtwButton,strId);
-		rt2_strncpy(strId+j, ".lbflower", 100-j);		m_pWndSkillListExpbpf[i]		= RTW_WIDGET(strId); 
-		rt2_strncpy(strId+j, ".lbxmm2", 100-j);			m_pWndSkillListExpTXT[i]		= RTW_WIDGET(strId);
+        rt2_strncpy(strId+j, ".btnskill", 100-j);		m_pWndSkillListBtn[i]			= LOAD_UI_T(RtwButton, strId);
+        rt2_strncpy(strId+j, ".lbskillname", 100-j);	m_pWndSkillListName[i]			= LOAD_UI(strId);
+		rt2_strncpy(strId+j, ".lbskillinfo1", 100-j);	m_pWndSkillListInfo1[i]			= LOAD_UI(strId);
+		rt2_strncpy(strId+j, ".lbxmm3", 100-j);			m_pWndSkillListInfolb[i]		= LOAD_UI(strId);
+		rt2_strncpy(strId+j, ".lbskillinfo2", 100-j);	m_pWndSkillListInfo2[i]			= LOAD_UI(strId);
+        rt2_strncpy(strId+j, ".lbexpcount", 100-j);		m_pWndSkillListExp[i]			= LOAD_UI(strId);
+        rt2_strncpy(strId+j, ".barexp", 100-j);			m_pWndSkillListExpProgress[i]	= LOAD_UI_T(RtwProgressBar, strId);
+		rt2_strncpy(strId+j, ".lbok", 100-j);			m_pBtnForgetSkill[i]			= LOAD_UI_T(RtwButton,strId);
+		rt2_strncpy(strId+j, ".lbflower", 100-j);		m_pWndSkillListExpbpf[i]		= LOAD_UI(strId); 
+		rt2_strncpy(strId+j, ".lbxmm2", 100-j);			m_pWndSkillListExpTXT[i]		= LOAD_UI(strId);
 		m_pWndSkillListBtn[i]->SetBorderColor(0xeec8c6aa);
 		m_pWndSkillListBtn[i]->SetBorderSize(0);
         m_pWndSkillList[i]->EvLDClick       += RTW_CALLBACK(this, UIFormSkill, OnLDClickSkillItem);
@@ -510,7 +510,7 @@ void UIFormSkill::Refresh()
 	/* 2010.1.27 gao
 	重新设计此函数
 	*/
-	c = RTW_WIDGET_T(RtwTab, "fmborder_skill.fmskillall.tabskillall")->GetSelectedItem();
+	c = LOAD_UI_T(RtwTab, "fmborder_skill.fmskillall.tabskillall")->GetSelectedItem();
 	// 当是第一页或第二页的时候
 	if(c == 0 || c == 1)
 	{
@@ -966,7 +966,7 @@ void UIFormSkill::OnShow(void *,void *)
 {
 	guard;
 	int c;
-	c = RTW_WIDGET_T(RtwTab, "fmborder_skill.fmskillall.tabskillall")->GetSelectedItem();
+	c = LOAD_UI_T(RtwTab, "fmborder_skill.fmskillall.tabskillall")->GetSelectedItem();
 
 	if(IsShowing())
 	{
@@ -991,7 +991,7 @@ void UIFormSkill::OnShow(void *,void *)
 	/* gao 2009.12.17
 	Refresh()中此处已经刷新，所以此处就注释了
 	*/
-    /*RtwTab* pTab = RTW_WIDGET_T(RtwTab, "fmborder_skill.fmskillall.tabskillall");
+    /*RtwTab* pTab = LOAD_UI_T(RtwTab, "fmborder_skill.fmskillall.tabskillall");
     switch (pTab->GetSelectedItem())
     {
     default:
@@ -1253,9 +1253,9 @@ void UIFormSkill::OnDragEndSkillItem(RtwWidget* sender, void*)	// sender is the 
 		RtwRect rcSmallHotKey;
 		bool	bIsInHotKey= false;
 		int		iInHotKey = -1;
-		rcHotKey =	RTW_WIDGET("fmhotkey")->GetFrameRect();
-		rcHotKey1 =	RTW_WIDGET("fmshortcut_bar1")->GetFrameRect();
-		rcHotKey2 =	RTW_WIDGET("fmshortcut_bar2")->GetFrameRect();
+		rcHotKey =	LOAD_UI("fmhotkey")->GetFrameRect();
+		rcHotKey1 =	LOAD_UI("fmshortcut_bar1")->GetFrameRect();
+		rcHotKey2 =	LOAD_UI("fmshortcut_bar2")->GetFrameRect();
 		if(rcHotKey.IsContained(g_workspace.GetMousePosX(), g_workspace.GetMousePosY())
 			|| rcHotKey1.IsContained(g_workspace.GetMousePosX(), g_workspace.GetMousePosY())
 			|| rcHotKey2.IsContained(g_workspace.GetMousePosX(), g_workspace.GetMousePosY()))
@@ -1739,13 +1739,13 @@ void UIFormSkill::OnBtnAddSkillDown(RtwWidget* sender, void*)
 	guard;
 	unguard;
 }
-
 void UIFormSkill::OnGetTreeItemSkillHint(RtwWidget* sender, void*)
 {
     guard;
     int iLine=0;
     GcActor* pActor = GetPlayer();
     if (pActor==NULL) return;
+    //lyytodo 这里似乎有问题
     unsigned short wSkillID = (unsigned short)sender->GetUserData();
     SSkill* pSkill = Skill()->FindSkill(wSkillID);
     const char* pTxt;

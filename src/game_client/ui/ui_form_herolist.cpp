@@ -78,24 +78,24 @@ UIFormHeroList::UIFormHeroList()
 {
 	guard;
 
-	m_pFrmThis						= RTW_WIDGET("fmnewlist");
-	m_pTabHeroList					= RTW_WIDGET_T(RtwTab, "fmnewlist.fmlist.tablist");
-	m_listHeroAoShi					= RTW_WIDGET_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist1.listaoshi");
-	m_listHeroXianChong				= RTW_WIDGET_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist2.listaoshi");
-	m_listHeroShuiDi				= RTW_WIDGET_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist3.listaoshi");
-	m_listHeroFuJia					= RTW_WIDGET_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist4.listaoshi");
-	m_listHeroYuanBao				= RTW_WIDGET_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist5.listaoshi");
-	m_listHeroLongHu				= RTW_WIDGET_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist6.listaoshi");
-	m_listHeroDiFu					= RTW_WIDGET_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist7.listaoshi");
+	m_pFrmThis						= LOAD_UI("fmnewlist");
+	m_pTabHeroList					= LOAD_UI_T(RtwTab, "fmnewlist.fmlist.tablist");
+	m_listHeroAoShi					= LOAD_UI_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist1.listaoshi");
+	m_listHeroXianChong				= LOAD_UI_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist2.listaoshi");
+	m_listHeroShuiDi				= LOAD_UI_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist3.listaoshi");
+	m_listHeroFuJia					= LOAD_UI_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist4.listaoshi");
+	m_listHeroYuanBao				= LOAD_UI_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist5.listaoshi");
+	m_listHeroLongHu				= LOAD_UI_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist6.listaoshi");
+	m_listHeroDiFu					= LOAD_UI_T(RtwListBox, "fmnewlist.fmlist.tablist.fmpersonlist7.listaoshi");
 
 	// 注册本窗口中的事件
-	RTW_WIDGET("fmnewlist.fmlist.tablist.btnguildlist")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
-	RTW_WIDGET("fmnewlist.fmlist.tablist.btnguildlist1")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
-	RTW_WIDGET("fmnewlist.fmlist.tablist.btnguildlist2")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
-	RTW_WIDGET("fmnewlist.fmlist.tablist.btnguildlist3")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
-	RTW_WIDGET("fmnewlist.fmlist.tablist.btnguildlist4")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
-	RTW_WIDGET("fmnewlist.fmlist.tablist.btnguildlist5")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
-	RTW_WIDGET("fmnewlist.fmlist.tablist.btnguildlist6")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
+	LOAD_UI("fmnewlist.fmlist.tablist.btnguildlist")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
+	LOAD_UI("fmnewlist.fmlist.tablist.btnguildlist1")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
+	LOAD_UI("fmnewlist.fmlist.tablist.btnguildlist2")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
+	LOAD_UI("fmnewlist.fmlist.tablist.btnguildlist3")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
+	LOAD_UI("fmnewlist.fmlist.tablist.btnguildlist4")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
+	LOAD_UI("fmnewlist.fmlist.tablist.btnguildlist5")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
+	LOAD_UI("fmnewlist.fmlist.tablist.btnguildlist6")->EvLClick += RTW_CALLBACK(this, UIFormHeroList, OnNeedRefresh);
 	m_listHeroAoShi->GetColumnHeader(0)->EvLClick			+= RTW_CALLBACK(this, UIFormHeroList, OnHeroSortHeaderClick);
 	m_listHeroAoShi->GetColumnHeader(1)->EvLClick			+= RTW_CALLBACK(this, UIFormHeroList, OnHeroSortHeaderClick);
 	m_listHeroAoShi->GetColumnHeader(2)->EvLClick			+= RTW_CALLBACK(this, UIFormHeroList, OnHeroSortHeaderClick);

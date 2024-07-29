@@ -20,28 +20,28 @@ m_iOffsetX(0),
 m_iOffsetY(0)
 {
 	guard;
-	m_frmMiddleMap				= RTW_WIDGET("fmsysmap");
-	m_btnClose                  = RTW_WIDGET_T(RtwButton, "fmsysmap.$hide");
+	m_frmMiddleMap				= LOAD_UI("fmsysmap");
+	m_btnClose                  = LOAD_UI_T(RtwButton, "fmsysmap.$hide");
 	m_btnClose->EvLClick        += RTW_CALLBACK(this, CUIForm_MiddleMap, OnHideMiddleMap);
-	m_pfrmMap					= RTW_WIDGET("fmsysmap.fmborder.Areamap");
-	m_pcomComboBox				= RTW_WIDGET_T(RtwComboBox,"fmsysmap.fmchoose.cbtbc");
-	m_pTaskListUI				= RTW_WIDGET_T(RtwListBox,"fmsysmap.tbcchoose.fmAaea1.lbx1");
-	//m_pNPCListUI				= RTW_WIDGET_T(RtwListBox,"fmsysmap.tbcchoose.fmAaea1.lbx1");
-	m_pNPCTree					= RTW_WIDGET_T(RtwTree,"fmsysmap.tbcchoose.fmAaea2.trnpclist");
-	m_pbtnTask					= RTW_WIDGET_T(RtwButton,"fmsysmap.tbcchoose.btntask");
-	m_pbtnNPC					= RTW_WIDGET_T(RtwButton,"fmsysmap.tbcchoose.btnnpc");
-	//m_pbtnUp					= RTW_WIDGET_T(RtwButton,"fmsysmap.fmborder.Areamap.fmbutton.btnup");
-	//m_pbtnDown					= RTW_WIDGET_T(RtwButton,"fmsysmap.fmborder.Areamap.fmbutton.btndown");
-	//m_pbtnLeft					= RTW_WIDGET_T(RtwButton,"fmsysmap.fmborder.Areamap.fmbutton.btnleft");
-	//m_pbtnRight					= RTW_WIDGET_T(RtwButton,"fmsysmap.fmborder.Areamap.fmbutton.btnright");
-	m_pbtnAutoRunToNPC			= RTW_WIDGET_T(RtwButton,"fmsysmap.search1");
-	m_pbtnShowTaskInfo			= RTW_WIDGET_T(RtwButton,"fmsysmap.search2");
-	m_plbTasklabel				= RTW_WIDGET("fmsysmap.lbwjs");
-	m_ptabControl				= RTW_WIDGET_T(RtwTab,"fmsysmap.tbcchoose");
-	m_ptbxPosX					= RTW_WIDGET_T(RtwTextBox,"fmsysmap.mapxtext");
-	m_ptbxPosY					= RTW_WIDGET_T(RtwTextBox,"fmsysmap.mapytext");
-	m_pbtnAutoMove				= RTW_WIDGET_T(RtwButton,"fmsysmap.movtoxy");
-	m_pcheckButton				= RTW_WIDGET_T(CUiCheckButton,"fmsysmap.showchoose");
+	m_pfrmMap					= LOAD_UI("fmsysmap.fmborder.Areamap");
+	m_pcomComboBox				= LOAD_UI_T(RtwComboBox,"fmsysmap.fmchoose.cbtbc");
+	m_pTaskListUI				= LOAD_UI_T(RtwListBox,"fmsysmap.tbcchoose.fmAaea1.lbx1");
+	//m_pNPCListUI				= LOAD_UI_T(RtwListBox,"fmsysmap.tbcchoose.fmAaea1.lbx1");
+	m_pNPCTree					= LOAD_UI_T(RtwTree,"fmsysmap.tbcchoose.fmAaea2.trnpclist");
+	m_pbtnTask					= LOAD_UI_T(RtwButton,"fmsysmap.tbcchoose.btntask");
+	m_pbtnNPC					= LOAD_UI_T(RtwButton,"fmsysmap.tbcchoose.btnnpc");
+	//m_pbtnUp					= LOAD_UI_T(RtwButton,"fmsysmap.fmborder.Areamap.fmbutton.btnup");
+	//m_pbtnDown					= LOAD_UI_T(RtwButton,"fmsysmap.fmborder.Areamap.fmbutton.btndown");
+	//m_pbtnLeft					= LOAD_UI_T(RtwButton,"fmsysmap.fmborder.Areamap.fmbutton.btnleft");
+	//m_pbtnRight					= LOAD_UI_T(RtwButton,"fmsysmap.fmborder.Areamap.fmbutton.btnright");
+	m_pbtnAutoRunToNPC			= LOAD_UI_T(RtwButton,"fmsysmap.search1");
+	m_pbtnShowTaskInfo			= LOAD_UI_T(RtwButton,"fmsysmap.search2");
+	m_plbTasklabel				= LOAD_UI("fmsysmap.lbwjs");
+	m_ptabControl				= LOAD_UI_T(RtwTab,"fmsysmap.tbcchoose");
+	m_ptbxPosX					= LOAD_UI_T(RtwTextBox,"fmsysmap.mapxtext");
+	m_ptbxPosY					= LOAD_UI_T(RtwTextBox,"fmsysmap.mapytext");
+	m_pbtnAutoMove				= LOAD_UI_T(RtwButton,"fmsysmap.movtoxy");
+	m_pcheckButton				= LOAD_UI_T(CUiCheckButton,"fmsysmap.showchoose");
 
 	m_pTaskListUI->SetDrawScrollBarV(true);
 	//m_pNPCListUI->SetDrawScrollBarV(true);
@@ -1302,8 +1302,8 @@ void CUIForm_MiddleMap::OnShowTaskInfo(ui::RtwWidget* sender, RtwEventDelegate* 
 	{
 		g_layerMain->m_formTask->Show();
 	}
-	g_workspace.SetFocusWidget(RTW_WIDGET("fmmaintask"));
-	RTW_WIDGET_T(RtwTab,"fmmaintask.fmtask.tabitem")->SetSelectedItem(1);
+	g_workspace.SetFocusWidget(LOAD_UI("fmmaintask"));
+	LOAD_UI_T(RtwTab,"fmmaintask.fmtask.tabitem")->SetSelectedItem(1);
 }
 void CUIForm_MiddleMap::SetOnMoveto(int x,int y)
 {

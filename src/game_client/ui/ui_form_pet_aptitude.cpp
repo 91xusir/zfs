@@ -9,24 +9,24 @@
 
 UIFromPetAptitude::UIFromPetAptitude(void)
 {
-	m_pFormMain					= RTW_WIDGET_T(RtwForm, "fmconjurezz");
-	m_pFormView					= RTW_WIDGET_T(RtwForm, "fmconjurezz");
+	m_pFormMain					= LOAD_UI_T(RtwForm, "fmconjurezz");
+	m_pFormView					= LOAD_UI_T(RtwForm, "fmconjurezz");
 
-	m_pLabelGrowthHp			= RTW_WIDGET_T(RtwLabel, "fmconjurezz.conjureform01.lblifegrowthcount");
-	m_pLabelGrowthMp			= RTW_WIDGET_T(RtwLabel, "fmconjurezz.conjureform01.lbmagicgrowthcount");
-	m_pLabelGrowthAtt			= RTW_WIDGET_T(RtwLabel, "fmconjurezz.conjureform01.lbpydamgrowthcount");
-	m_pLabelGrowthDef			= RTW_WIDGET_T(RtwLabel, "fmconjurezz.conjureform01.lbpydefgrowthcount");
-	m_pLabelGrowthHit			= RTW_WIDGET_T(RtwLabel, "fmconjurezz.conjureform01.lbhitgrowthcount");
-	m_pLabelGrowthDodge			= RTW_WIDGET_T(RtwLabel, "fmconjurezz.conjureform01.lbdodgegrowthcount");
-	m_pLabelFuseName			= RTW_WIDGET_T(RtwLabel, "fmconjurezz.conjureform01.lbcomplevtext");
+	m_pLabelGrowthHp			= LOAD_UI_T(RtwLabel, "fmconjurezz.conjureform01.lblifegrowthcount");
+	m_pLabelGrowthMp			= LOAD_UI_T(RtwLabel, "fmconjurezz.conjureform01.lbmagicgrowthcount");
+	m_pLabelGrowthAtt			= LOAD_UI_T(RtwLabel, "fmconjurezz.conjureform01.lbpydamgrowthcount");
+	m_pLabelGrowthDef			= LOAD_UI_T(RtwLabel, "fmconjurezz.conjureform01.lbpydefgrowthcount");
+	m_pLabelGrowthHit			= LOAD_UI_T(RtwLabel, "fmconjurezz.conjureform01.lbhitgrowthcount");
+	m_pLabelGrowthDodge			= LOAD_UI_T(RtwLabel, "fmconjurezz.conjureform01.lbdodgegrowthcount");
+	m_pLabelFuseName			= LOAD_UI_T(RtwLabel, "fmconjurezz.conjureform01.lbcomplevtext");
 
 	for (int i = 0;i<MAX_ELEMENT_ATTR;i++)
 	{
 		char str[128];
 		rt2_snprintf(str,128,"fmconjurezz.fmbackimage.lbatt%d",i+1);
-		m_pLabelElementAtt[i]	= RTW_WIDGET_T(RtwLabel, str);
+		m_pLabelElementAtt[i]	= LOAD_UI_T(RtwLabel, str);
 		rt2_snprintf(str,128,"fmconjurezz.fmbackimage.lbdef%d",i+1);
-		m_pLabelElementDef[i]	= RTW_WIDGET_T(RtwLabel, str);
+		m_pLabelElementDef[i]	= LOAD_UI_T(RtwLabel, str);
 	}
 
 	char str[128];
@@ -35,34 +35,34 @@ UIFromPetAptitude::UIFromPetAptitude(void)
 		if (i < UIPET_SAMELEV_IMAGE_NUM)
 		{
 			rt2_sprintf(str,"fmconjurezz.conjureform01.lbstrlev0%d",i+1);
-			m_pLabelAbilityLev[i]		= RTW_WIDGET_T(RtwLabel, str);
+			m_pLabelAbilityLev[i]		= LOAD_UI_T(RtwLabel, str);
 			m_pLabelAbilityLev[i]->ModifyFlags(wfGrabMouse|wfMouseMove|wfHint, 0);
 			m_pLabelAbilityLev[i]->EvHint += RTW_CALLBACK(this, UIFromPetAptitude, GetLevHint);
 			m_pLabelAbilityLev[i]->SetParam1(&m_CurPetItem.params[PET_PARAM_ABILITY_LEV]);
 
 			rt2_sprintf(str,"fmconjurezz.conjureform01.lbcomplev0%d",i+1);
-			m_pLabelFuseLev[i]			= RTW_WIDGET_T(RtwLabel, str);
+			m_pLabelFuseLev[i]			= LOAD_UI_T(RtwLabel, str);
 			m_pLabelFuseLev[i]->ModifyFlags(wfGrabMouse|wfMouseMove|wfHint, 0);
 			m_pLabelFuseLev[i]->EvHint += RTW_CALLBACK(this, UIFromPetAptitude, GetLevHint);
 			m_pLabelFuseLev[i]->SetParam1(&m_CurPetItem.params[PET_PARAM_FUSE_LEV]);
 
 			//sprintf(str,"fmconjurezz.conjureform04.lbsoullev0%d",i+1);
-			//m_pLabelLinkupLev[i]		= RTW_WIDGET_T(RtwLabel, str);
+			//m_pLabelLinkupLev[i]		= LOAD_UI_T(RtwLabel, str);
 
 			rt2_sprintf(str,"fmconjurezz.conjureform04.soulkey.lbhotkey%d",i+1);
-			m_pBtnLinkupBeads[i]		= RTW_WIDGET_T(RtwButton, str);
+			m_pBtnLinkupBeads[i]		= LOAD_UI_T(RtwButton, str);
 			m_pBtnLinkupBeads[i]->EvDragIn		+= RTW_CALLBACK(this, UIFromPetAptitude, DragInBeads);
 			m_pBtnLinkupBeads[i]->ModifyFlags(wfHint, 0);
 			m_pBtnLinkupBeads[i]->EvHint += RTW_CALLBACK(this, UIFromPetAptitude, GetBeadsGrade);
 			m_pBtnLinkupBeads[i]->SetParam1(&m_CurPetItem.params[PET_PARAM_BEADS_1+i]);
 		}
 		rt2_sprintf(str,"fmconjurezz.conjureform05.passive.lbhotkey%d",i+1);
-		m_pBtnPassive[i]				= RTW_WIDGET_T(RtwButton, str);
+		m_pBtnPassive[i]				= LOAD_UI_T(RtwButton, str);
 		m_pBtnPassive[i]->EvHint		+= RTW_CALLBACK(this, UIFromPetAptitude, GetPetSkillHint);
 		m_pBtnPassive[i]->ModifyFlags(wfHint, 0);
 		m_pBtnPassive[i]->SetParam1(&m_CurPetItem.params[PET_PARAM_PASSIVE_1+i]);
 		rt2_sprintf(str,"fmconjurezz.conjureform06.activekey.lbhotkey%d",i+1);
-		m_pBtnSkill[i]					= RTW_WIDGET_T(RtwButton, str);
+		m_pBtnSkill[i]					= LOAD_UI_T(RtwButton, str);
 		m_pBtnSkill[i]->EvHint			+= RTW_CALLBACK(this, UIFromPetAptitude, GetPetSkillHint);
 		m_pBtnSkill[i]->EvRClick		+= RTW_CALLBACK(this, UIFromPetCtrl, DoUseSkill);
 		m_pBtnSkill[i]->ModifyFlags(wfHint, 0);

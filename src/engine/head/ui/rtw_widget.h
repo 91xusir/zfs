@@ -10,8 +10,8 @@
 //********************************************************************
 
 namespace ui {
+class RtwWidget;
 typedef std::list<RtwWidget*> UiWidgetList;
-
 /* 最基本的窗口部件类
 	 从RtwWidget继承的类都要做到：    
 	 (RtwRefObject)重载OnBeforeDestroy

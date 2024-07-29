@@ -34,18 +34,18 @@ void CUI_form_Team::Init()
 {
 	guard;
 	//队伍成员界面
-	m_pTeam								=	RTW_WIDGET("fmteam");
-	m_pCloseForm						=	RTW_WIDGET_T(RtwButton,	 "fmteam.btnclose");
-	m_pLookInfo							=	RTW_WIDGET_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn1");
-	m_pAddFriend						=	RTW_WIDGET_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn2");
-	m_pKick								=	RTW_WIDGET_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn3");
-	m_pTransFer							=	RTW_WIDGET_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn4");
-	m_pDisband							=	RTW_WIDGET_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn5");
-	m_pRequest							=	RTW_WIDGET_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn6");
-	m_pOpenBuff							=	RTW_WIDGET_T(RtwButton,	 "fmteam.fmteaminfo.btnaddition");
-	m_pSelectRect						=	RTW_WIDGET_T(RtwLabel,	 "fmteam.fmteaminfo.fmmember.lbhighlight");
-	m_pPickMode							=	RTW_WIDGET_T(RtwComboBox,"fmteam.fmteaminfo.fmbtns.fmdistribute.cbxlist");
-	m_pPickModeHint						=	RTW_WIDGET_T(RtwLabel,	 "fmteam.fmteaminfo.fmbtns.fmdistribute.lbdistribute");
+	m_pTeam								=	LOAD_UI("fmteam");
+	m_pCloseForm						=	LOAD_UI_T(RtwButton,	 "fmteam.btnclose");
+	m_pLookInfo							=	LOAD_UI_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn1");
+	m_pAddFriend						=	LOAD_UI_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn2");
+	m_pKick								=	LOAD_UI_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn3");
+	m_pTransFer							=	LOAD_UI_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn4");
+	m_pDisband							=	LOAD_UI_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn5");
+	m_pRequest							=	LOAD_UI_T(RtwButton,	 "fmteam.fmteaminfo.fmbtns.btn6");
+	m_pOpenBuff							=	LOAD_UI_T(RtwButton,	 "fmteam.fmteaminfo.btnaddition");
+	m_pSelectRect						=	LOAD_UI_T(RtwLabel,	 "fmteam.fmteaminfo.fmmember.lbhighlight");
+	m_pPickMode							=	LOAD_UI_T(RtwComboBox,"fmteam.fmteaminfo.fmbtns.fmdistribute.cbxlist");
+	m_pPickModeHint						=	LOAD_UI_T(RtwLabel,	 "fmteam.fmteaminfo.fmbtns.fmdistribute.lbdistribute");
 
 	m_pCloseForm->EvLClick				+=	RTW_CALLBACK(this, CUI_form_Team, OnCloseForm);
 	m_pLookInfo->EvLClick				+=	RTW_CALLBACK(this, CUI_form_Team, OnBtnLookInfo);
@@ -60,28 +60,28 @@ void CUI_form_Team::Init()
 	m_pPickModeHint->ModifyFlag(wfHint|wfGrabMouse,0);
 
 	//组队BUFF界面
-	m_pBuff								=	RTW_WIDGET("fmaddition");
-	m_pBuffIntroduce					=	RTW_WIDGET_T(RtwButton,"fmaddition.fmadditioninfo.fmanimal.fmanimal.btnillustrate");
-	m_pTeamBuff							=	RTW_WIDGET_T(RtwLabel,"fmaddition.fmadditioninfo.fmanimal.fmanimal.lbicon");
-	m_pNearTeamMember					=	RTW_WIDGET_T(RtwLabel,"fmaddition.fmadditioninfo.fmexperience.fmexperience1.lb2");
-	m_pEXPUp							=	RTW_WIDGET_T(RtwLabel,"fmaddition.fmadditioninfo.fmexperience.fmexperience1.lb4");
-	m_pIntimatePlayer					=	RTW_WIDGET_T(RtwLabel,"fmaddition.fmadditioninfo.fmfriend.fmfriend1.lb2");
-	m_pAttackUp							=	RTW_WIDGET_T(RtwLabel,"fmaddition.fmadditioninfo.fmfriend.fmfriend1.lb4");
+	m_pBuff								=	LOAD_UI("fmaddition");
+	m_pBuffIntroduce					=	LOAD_UI_T(RtwButton,"fmaddition.fmadditioninfo.fmanimal.fmanimal.btnillustrate");
+	m_pTeamBuff							=	LOAD_UI_T(RtwLabel,"fmaddition.fmadditioninfo.fmanimal.fmanimal.lbicon");
+	m_pNearTeamMember					=	LOAD_UI_T(RtwLabel,"fmaddition.fmadditioninfo.fmexperience.fmexperience1.lb2");
+	m_pEXPUp							=	LOAD_UI_T(RtwLabel,"fmaddition.fmadditioninfo.fmexperience.fmexperience1.lb4");
+	m_pIntimatePlayer					=	LOAD_UI_T(RtwLabel,"fmaddition.fmadditioninfo.fmfriend.fmfriend1.lb2");
+	m_pAttackUp							=	LOAD_UI_T(RtwLabel,"fmaddition.fmadditioninfo.fmfriend.fmfriend1.lb4");
 
 	m_pBuffIntroduce->EvLClick			+=	RTW_CALLBACK(this, CUI_form_Team, OnBtnLookIntroduce);
 
 	//附近玩家列表
-	m_pNearPlayer						=	RTW_WIDGET("fmteamprep");
-	m_pNearListBox						=	RTW_WIDGET_T(RtwListBox,"fmteamprep.fmprep.lbxmembers");
-	m_pBtnNearClose						=	RTW_WIDGET_T(RtwButton,"fmteamprep.fmprep.btnclose");
+	m_pNearPlayer						=	LOAD_UI("fmteamprep");
+	m_pNearListBox						=	LOAD_UI_T(RtwListBox,"fmteamprep.fmprep.lbxmembers");
+	m_pBtnNearClose						=	LOAD_UI_T(RtwButton,"fmteamprep.fmprep.btnclose");
 
 	//请求列表
-	m_pApply							=	RTW_WIDGET("fmteamrequest");
-	m_pApplyListBox						=	RTW_WIDGET_T(RtwListBox,"fmteamrequest.fmprep.lbxmembers");
-	m_pBtnAgree							=	RTW_WIDGET_T(RtwButton,"fmteamrequest.btnaccept");
-	m_pBtnReject						=	RTW_WIDGET_T(RtwButton,"fmteamrequest.btnrefuse");
-	m_pBtnApplyClose					=	RTW_WIDGET_T(RtwButton,"fmteamrequest.btnclose");
-	m_pApplyListPopMenu					=	RTW_WIDGET_T(RtwPopupMenu,"RDMenu");
+	m_pApply							=	LOAD_UI("fmteamrequest");
+	m_pApplyListBox						=	LOAD_UI_T(RtwListBox,"fmteamrequest.fmprep.lbxmembers");
+	m_pBtnAgree							=	LOAD_UI_T(RtwButton,"fmteamrequest.btnaccept");
+	m_pBtnReject						=	LOAD_UI_T(RtwButton,"fmteamrequest.btnrefuse");
+	m_pBtnApplyClose					=	LOAD_UI_T(RtwButton,"fmteamrequest.btnclose");
+	m_pApplyListPopMenu					=	LOAD_UI_T(RtwPopupMenu,"RDMenu");
 
 	m_pApplyListBox->EvRClickItem		+=	RTW_CALLBACK(this, CUI_form_Team,OnApplyListPopUpMenu);
 	m_pApplyListBox->EvHintItem			+=	RTW_CALLBACK(this, CUI_form_Team,OnApplyListHint);
@@ -90,7 +90,7 @@ void CUI_form_Team::Init()
 	m_pBtnApplyClose->EvLClick			+=	RTW_CALLBACK(this, CUI_form_Team,OnApplyListBtnClear);
 	m_pApplyListPopMenu->EvMenuSelect	+=  RTW_CALLBACK(this, CUI_form_Team,OnApplyListRDMenuSelect);
 	m_pApplyListPopMenu->EvUnFocus		+=  RTW_CALLBACK(this, CUI_form_Team,OnApplyListRDMenuUnFocus);
-	RTW_WIDGET("lbrequest")->EvLClick	+=	RTW_CALLBACK(this, CUI_form_Team,OnBtnShowApply);
+	LOAD_UI("lbrequest")->EvLClick	+=	RTW_CALLBACK(this, CUI_form_Team,OnBtnShowApply);
 
 	RtwRect Rect;
 	for(int i = 0; i < TEAM_MAX_MEMBER; ++i)
@@ -105,13 +105,13 @@ void CUI_form_Team::Init()
 		char leve[128];rt2_snprintf(leve,128,"%s%d%s",name,i+1,".lbgrade");
 		char cpow[128];rt2_snprintf(cpow,128,"%s%d%s",name,i+1,".lbnumber");
 		char prof[128];rt2_snprintf(prof,128,"%s%d%s",name,i+1,".lbunion");
-		TeamMembers[i]->TeamMemberForm			=	RTW_WIDGET_T(RtwForm,form);
-		TeamMembers[i]->TeamMemberHead			=	RTW_WIDGET_T(RtwLabel,head);
-		TeamMembers[i]->TeamMemberAnimal		=	RTW_WIDGET_T(RtwLabel,anim);
-		TeamMembers[i]->TeamMemberName			=	RTW_WIDGET_T(RtwLabel,Name);
-		TeamMembers[i]->TeamMemberLevel			=	RTW_WIDGET_T(RtwLabel,leve);
-		TeamMembers[i]->TeamMemberCombatPower	=	RTW_WIDGET_T(RtwLabel,cpow);
-		TeamMembers[i]->TeamMemberProfession	=	RTW_WIDGET_T(RtwLabel,prof);
+		TeamMembers[i]->TeamMemberForm			=	LOAD_UI_T(RtwForm,form);
+		TeamMembers[i]->TeamMemberHead			=	LOAD_UI_T(RtwLabel,head);
+		TeamMembers[i]->TeamMemberAnimal		=	LOAD_UI_T(RtwLabel,anim);
+		TeamMembers[i]->TeamMemberName			=	LOAD_UI_T(RtwLabel,Name);
+		TeamMembers[i]->TeamMemberLevel			=	LOAD_UI_T(RtwLabel,leve);
+		TeamMembers[i]->TeamMemberCombatPower	=	LOAD_UI_T(RtwLabel,cpow);
+		TeamMembers[i]->TeamMemberProfession	=	LOAD_UI_T(RtwLabel,prof);
 		TeamMembers[i]->IsShow					=	false;
 		TeamMembers[i]->TeamMemberForm->ModifyFlags(wfInput | wfHint,0);
 		TeamMembers[i]->TeamMemberForm->EvLClick	+=	RTW_CALLBACK(this, CUI_form_Team, OnSelectMember);
@@ -120,7 +120,7 @@ void CUI_form_Team::Init()
 	for (int i = 0; i < 12; ++i)
 	{
 		char animal[128];rt2_snprintf(animal,128,"%s%d",animalname,i+(!i)*12);
-		m_pAnimel[i] = RTW_WIDGET_T(RtwLabel,animal);
+		m_pAnimel[i] = LOAD_UI_T(RtwLabel,animal);
 	}
 	
 
@@ -445,7 +445,7 @@ void CUI_form_Team::SetTeamButtonNormal()
 	guard;
 	if(m_bShowAnimation)
 	{
-		RTW_WIDGET_T(RtwButton,"fmsystem.btnteam")->SetNormalImage(m_imgTeamNormal);
+		LOAD_UI_T(RtwButton,"fmsystem.btnteam")->SetNormalImage(m_imgTeamNormal);
 		m_bShowAnimation = false;
 	}
 	unguard;
@@ -456,7 +456,7 @@ void CUI_form_Team::SetTeamButtonAnimation()
 	guard;
 	if(!m_bShowAnimation && !IsVisibale())
 	{
-		RTW_WIDGET_T(RtwButton,"fmsystem.btnteam")->SetNormalImage(m_imgTeamAnimation);
+		LOAD_UI_T(RtwButton,"fmsystem.btnteam")->SetNormalImage(m_imgTeamAnimation);
 		m_bShowAnimation = true;
 	}
 	unguard;
@@ -688,7 +688,7 @@ void CUI_form_Team::OnApplyListBtnAgree(ui::RtwWidget* vpSender, RtwEventDelegat
 			if (m_mapApply.empty())
 			{
 				m_pApply->Hide();
-				RTW_WIDGET("lbrequest")->Hide();
+				LOAD_UI("lbrequest")->Hide();
 			}
 		}
 		/* end */
@@ -730,7 +730,7 @@ void CUI_form_Team::OnApplyListBtnDisagree(ui::RtwWidget* vpSender, RtwEventDele
 			if (m_mapApply.empty())
 			{
 				m_pApply->Hide();
-				RTW_WIDGET("lbrequest")->Hide();
+				LOAD_UI("lbrequest")->Hide();
 			}
 		}
 		/* end */
@@ -797,7 +797,7 @@ void CUI_form_Team::OnApplyListRDMenuUnFocus(ui::RtwWidget* vpSender, RtwEventDe
 void CUI_form_Team::OnBtnShowApply(ui::RtwWidget *vpSender, ui::RtwEventDelegate *vpEvent)
 {
 	guard;
-	if (RTW_WIDGET("lbrequest")->IsVisible())
+	if (LOAD_UI("lbrequest")->IsVisible())
 	{
 		if (GetWorld()->m_Team.mData.GetCaptain() == GetPlayer()->DBID())
 		{

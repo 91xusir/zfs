@@ -323,8 +323,8 @@ void CClientTeam::Dismiss()
 			//同时改变当前数据
 			mData.Clear();
 			TeamDataChange();
-			if (RTW_WIDGET("lbrequest")->IsVisible())
-				RTW_WIDGET("lbrequest")->Hide();
+			if (LOAD_UI("lbrequest")->IsVisible())
+				LOAD_UI("lbrequest")->Hide();
 		}
 		else
 		{	//如果不是队长，告诉用户
@@ -817,7 +817,7 @@ void CClientTeam::ReceiveFromServer(CG_CmdPacket *pPacket)
 				strcpy(pUnionName,"");
 			}*/
 			OtherApplyTeam(OtherDBID,string(pOtherName),level,metier,OtherAnimal,OtherPower);
-			RTW_WIDGET("lbrequest")->Show();
+			LOAD_UI("lbrequest")->Show();
 		}
 		break;
 	case R2C_OTHER_AGREE_APPLY:
@@ -833,13 +833,13 @@ void CClientTeam::ReceiveFromServer(CG_CmdPacket *pPacket)
 		TransferCaptain(OtherDBID);
 		if (mData.GetCaptain() == GetPlayer()->DBID())
 		{
-			RTW_WIDGET("fmteam.fmteaminfo.fmbtns.btn3")->Enable();
-			RTW_WIDGET("fmteam.fmteaminfo.fmbtns.btn4")->Enable();
-			RTW_WIDGET("fmteam.fmteaminfo.fmbtns.btn5")->Enable();
+			LOAD_UI("fmteam.fmteaminfo.fmbtns.btn3")->Enable();
+			LOAD_UI("fmteam.fmteaminfo.fmbtns.btn4")->Enable();
+			LOAD_UI("fmteam.fmteaminfo.fmbtns.btn5")->Enable();
 		}else
 		{
-			if (RTW_WIDGET("lbrequest")->IsVisible())
-				RTW_WIDGET("lbrequest")->Hide();
+			if (LOAD_UI("lbrequest")->IsVisible())
+				LOAD_UI("lbrequest")->Hide();
 		}
 		g_layerMain->m_formTeam->OnRefresh();
 		break;

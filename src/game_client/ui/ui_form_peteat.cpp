@@ -17,11 +17,11 @@ UIFormPetEat::UIFormPetEat()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmbeast");
-	m_pBtn_PetFrom = RTW_WIDGET_T(RtwButton, "fmbeast.aliasBeast2");
-    m_pBtn_PetTo = RTW_WIDGET_T(RtwButton, "fmbeast.aliasBeast1");
-	m_pBtn_Ok = RTW_WIDGET_T(RtwButton, "fmbeast.btnok");
-	m_pBtn_Cancel = RTW_WIDGET_T(RtwButton, "fmbeast.btncancel");
+	m_pFrmThis = LOAD_UI("fmbeast");
+	m_pBtn_PetFrom = LOAD_UI_T(RtwButton, "fmbeast.aliasBeast2");
+    m_pBtn_PetTo = LOAD_UI_T(RtwButton, "fmbeast.aliasBeast1");
+	m_pBtn_Ok = LOAD_UI_T(RtwButton, "fmbeast.btnok");
+	m_pBtn_Cancel = LOAD_UI_T(RtwButton, "fmbeast.btncancel");
 
 	m_pBtn_Ok->EvLClick += RTW_CALLBACK(this, UIFormPetEat, OnClicked_Ok);
 	m_pBtn_Cancel->EvLClick += RTW_CALLBACK(this, UIFormPetEat, OnClicked_Cancel);

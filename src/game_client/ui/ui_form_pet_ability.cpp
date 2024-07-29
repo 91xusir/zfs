@@ -7,14 +7,14 @@
 
 UIFormPetAbility::UIFormPetAbility()
 {
-	m_pFmWindow		= RTW_WIDGET_T(RtwForm, "fmpetcombine");
-	m_pFmPetView	= RTW_WIDGET_T(Rtw3DView, "fmpetcombine.fmbaby.fmmianpet");
-	m_pCbPetList	= RTW_WIDGET_T(RtwComboBox, "fmpetcombine.fmbaby.cbtlist1");
-	m_pBtnItem1		= RTW_WIDGET_T(RtwButton, "fmpetcombine.fmbaby.btnitem1");
-	m_pBtnItem2		= RTW_WIDGET_T(RtwButton, "fmpetcombine.fmbaby.btnitem2");
-	m_pBtnAbility	= RTW_WIDGET_T(RtwButton, "fmpetcombine.fmbaby.btncompose");
-	m_pLbRate		= RTW_WIDGET_T(RtwLabel, "fmpetcombine.fmbaby.lbmoney");
-	m_pLbLev		= RTW_WIDGET_T(RtwLabel, "fmpetcombine.fmbaby.1253");
+	m_pFmWindow		= LOAD_UI_T(RtwForm, "fmpetcombine");
+	m_pFmPetView	= LOAD_UI_T(Rtw3DView, "fmpetcombine.fmbaby.fmmianpet");
+	m_pCbPetList	= LOAD_UI_T(RtwComboBox, "fmpetcombine.fmbaby.cbtlist1");
+	m_pBtnItem1		= LOAD_UI_T(RtwButton, "fmpetcombine.fmbaby.btnitem1");
+	m_pBtnItem2		= LOAD_UI_T(RtwButton, "fmpetcombine.fmbaby.btnitem2");
+	m_pBtnAbility	= LOAD_UI_T(RtwButton, "fmpetcombine.fmbaby.btncompose");
+	m_pLbRate		= LOAD_UI_T(RtwLabel, "fmpetcombine.fmbaby.lbmoney");
+	m_pLbLev		= LOAD_UI_T(RtwLabel, "fmpetcombine.fmbaby.1253");
 	m_pFmWindow->EvHide += RTW_CALLBACK(this,UIFormPetAbility,OnHide);
 
 	m_pCbPetList->EvSelect	+= RTW_CALLBACK(this, UIFormPetAbility, OnSelectPet);

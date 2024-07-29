@@ -17,18 +17,18 @@ UIFormItemUpdate::UIFormItemUpdate()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmcombine");
+	m_pFrmThis = LOAD_UI("fmcombine");
 	m_pFrmThis->ModifyFlags(wfDragClient, 0);
 	m_pFrmThis->EvFocus		+= RTW_CALLBACK(this,UIFormItemUpdate,OnGetFocus);
 	m_pFrmThis->EvHide		+= RTW_CALLBACK(this,UIFormItemUpdate,OnHide);
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
-	m_pBtnItem = RTW_WIDGET("fmcombine.fmbaby.aliasCombweapon");
-	m_pBtnScroll = RTW_WIDGET("fmcombine.fmbaby.aliasCombscroll");
-	m_pBtnLuckStone = RTW_WIDGET("fmcombine.fmbaby.aliasCombadd");
+	m_pBtnItem = LOAD_UI("fmcombine.fmbaby.aliasCombweapon");
+	m_pBtnScroll = LOAD_UI("fmcombine.fmbaby.aliasCombscroll");
+	m_pBtnLuckStone = LOAD_UI("fmcombine.fmbaby.aliasCombadd");
 
-	m_pBtnOK = RTW_WIDGET_T(RtwButton, "fmcombine.btnok");
-	m_pBtnCancel = RTW_WIDGET_T(RtwButton, "fmcombine.btncancel");
+	m_pBtnOK = LOAD_UI_T(RtwButton, "fmcombine.btnok");
+	m_pBtnCancel = LOAD_UI_T(RtwButton, "fmcombine.btncancel");
 
 	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);
@@ -55,7 +55,7 @@ UIFormItemUpdate::UIFormItemUpdate()
 	m_pBtnLuckStone->EvHint			+= RTW_CALLBACK(this, UIFormItemUpdate, OnGetHintText);
 	((RtwButton*)m_pBtnLuckStone)->SetHoverImage(m_ptrHoverImage);
 
-    m_ReqMoney = RTW_WIDGET("fmcombine.lbmoney");
+    m_ReqMoney = LOAD_UI("fmcombine.lbmoney");
 
 	// 注册本窗口中的事件
 	m_pBtnOK->EvLClick += RTW_CALLBACK(this, UIFormItemUpdate, OnBtnOK);

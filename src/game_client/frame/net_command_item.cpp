@@ -2452,7 +2452,7 @@ bool CItemNetHelper::NetSend_DispartItem(EItemContainer container, int pageFrom,
 
 bool CItemNetHelper::NetSend_DeleteItem(DWORD itemId, EItemContainer container, int page, int gridI, int gridJ)
 {
-	//if(RTW_WIDGET("fmplayershop")->IsVisible())
+	//if(LOAD_UI("fmplayershop")->IsVisible())
 	//{
 	SItemID item;
 	int i,j,p;

@@ -88,34 +88,34 @@ void CFriendWithUI::Init()
 
 	
 	//主界面打开好友列表
-	RTW_WIDGET("fmsystem.btnsysfriend")->EvLClick += 
+	LOAD_UI("fmsystem.btnsysfriend")->EvLClick += 
 		RTW_CALLBACK(this, CFriendWithUI, OpenUI);
 
 
 	//设置第一页为默认页面
-	RTW_WIDGET_T(RtwTab,UI_SWITCH_TAB_WHOLE_ID)->SetSelectedItem(UI_TAB_FRIEND);
+	LOAD_UI_T(RtwTab,UI_SWITCH_TAB_WHOLE_ID)->SetSelectedItem(UI_TAB_FRIEND);
 
 	//<社群界面的事件>
-	RTW_WIDGET("fmcharall.tabcharall.fmsoc.btnfriend")->EvLClick+=
+	LOAD_UI("fmcharall.tabcharall.fmsoc.btnfriend")->EvLClick+=
 		RTW_CALLBACK(&(GetWorld()->m_Friend),CFriendWithUI,UserInterfaceEvent);
 	//</社群界面的事件>
 
 	// 2010.3.11
-	/*RTW_WIDGET(UI_FRIEND_DELETE_WHOLE_ID)->EvLClick+=
+	/*LOAD_UI(UI_FRIEND_DELETE_WHOLE_ID)->EvLClick+=
 		RTW_CALLBACK(&(GetWorld()->m_Friend),CFriendWithUI,DelPlayer);*/
 
 	
 	//界面的指针
-	mpUI=RTW_WIDGET(UI_FRIEND_WHOLE_ID);
-	mpUITab=RTW_WIDGET_T(RtwTab,UI_SWITCH_TAB_WHOLE_ID);
+	mpUI=LOAD_UI(UI_FRIEND_WHOLE_ID);
+	mpUITab=LOAD_UI_T(RtwTab,UI_SWITCH_TAB_WHOLE_ID);
 
-	mpUIFriendList=RTW_WIDGET_T(RtwListBox,UI_FRIEND_LIST_WHOLE_ID);
-	//mpUIEnemyList=RTW_WIDGET_T(RtwListBox,UI_ENEMY_LIST_WHOLE_ID); // 仇人界面指针 目前不用 change by 李泽华 2010.05.12
-	mpUITemporaryFriendList = RTW_WIDGET_T(RtwListBox,UI_TEMPORARYFRIEND_LIST_WHOLE_ID);// 临时好友界面指针 add by 李泽华 2010.05.12
-	mpUIBlackList=RTW_WIDGET_T(RtwListBox,UI_BLACKLIST_LIST_WHOLE_ID);
-	//mpUIMasterPrenticeList=RTW_WIDGET_T(RtwListBox,UI_MASTER_PRENTICE_WHOLE_ID);	//gao
+	mpUIFriendList=LOAD_UI_T(RtwListBox,UI_FRIEND_LIST_WHOLE_ID);
+	//mpUIEnemyList=LOAD_UI_T(RtwListBox,UI_ENEMY_LIST_WHOLE_ID); // 仇人界面指针 目前不用 change by 李泽华 2010.05.12
+	mpUITemporaryFriendList = LOAD_UI_T(RtwListBox,UI_TEMPORARYFRIEND_LIST_WHOLE_ID);// 临时好友界面指针 add by 李泽华 2010.05.12
+	mpUIBlackList=LOAD_UI_T(RtwListBox,UI_BLACKLIST_LIST_WHOLE_ID);
+	//mpUIMasterPrenticeList=LOAD_UI_T(RtwListBox,UI_MASTER_PRENTICE_WHOLE_ID);	//gao
 	
-	mpUITitle = RTW_WIDGET_T(RtwButton, UI_FRIEND_TITLE_WHOLE_ID);
+	mpUITitle = LOAD_UI_T(RtwButton, UI_FRIEND_TITLE_WHOLE_ID);
 	
 
 	//事件的挂接
@@ -153,7 +153,7 @@ void CFriendWithUI::Init()
 	//mpUIMasterPrenticeList->EvHint+=RTW_CALLBACK(this,CFriendWithUI,UserHint);						//gao
 	
 
-	//RTW_WIDGET_T(RtwButton,UI_BLACKLIST_ADD_WHOLE_ID)->EvLClick+=RTW_CALLBACK(this,CFriendWithUI,EditBlackListName);// gao
+	//LOAD_UI_T(RtwButton,UI_BLACKLIST_ADD_WHOLE_ID)->EvLClick+=RTW_CALLBACK(this,CFriendWithUI,EditBlackListName);// gao
 	
 
 	//监听社交友名单被单击
@@ -169,10 +169,10 @@ void CFriendWithUI::Init()
 //	mMasterPrenticeClick.AddListener<GcPrenticeMgr,&GcPrenticeMgr::OnMasterPrenticeListDBClick>(g_GcPrenticeMgr);//师徒管理也要监听
 
 	/* gao 2010.2.4 关闭事件的注册*/
-	RTW_WIDGET("fmnewfriendlist.fmfriendlist.btnclose")->EvLClick			+= RTW_CALLBACK(this,CFriendWithUI,OnCloseForm);
-	RTW_WIDGET("fmnewfriendlist.fmfriendlist.btnadd")->EvLClick				+= RTW_CALLBACK(this,CFriendWithUI,OnEditAddName);
+	LOAD_UI("fmnewfriendlist.fmfriendlist.btnclose")->EvLClick			+= RTW_CALLBACK(this,CFriendWithUI,OnCloseForm);
+	LOAD_UI("fmnewfriendlist.fmfriendlist.btnadd")->EvLClick				+= RTW_CALLBACK(this,CFriendWithUI,OnEditAddName);
 	//
-	m_pRDMenu = RTW_WIDGET_T(RtwPopupMenu, "rdfriendmenu");
+	m_pRDMenu = LOAD_UI_T(RtwPopupMenu, "rdfriendmenu");
 
 	m_pRDMenu->EvMenuSelect	+= RTW_CALLBACK(this, CFriendWithUI, OnPopMenuSelect);
 	m_pRDMenu->EvUnFocus += RTW_CALLBACK(this,CFriendWithUI,OnPospMenuLoseFocus);
@@ -973,7 +973,7 @@ void CFriendWithUI::SetEnableHotkey(ui::RtwButton* vpSenderButton)
     guard;
 	/*RtwButton* pButton = (RtwButton*)g_workspace.getWidgetFactory()->createWidget(wtButton);
 	pButton->CloneFrom((RtwButton*)vpSenderButton);
-	RTW_WIDGET_T(RtwAliasButton,UI_HOTKEY_ENABLE_WHOLE_ID)->SetButton(pButton);*/ //gao 2009.12.18 去除原右键技能框
+	LOAD_UI_T(RtwAliasButton,UI_HOTKEY_ENABLE_WHOLE_ID)->SetButton(pButton);*/ //gao 2009.12.18 去除原右键技能框
     unguard;
 }
 
@@ -1083,7 +1083,7 @@ void CFriendWithUI::MessageBoxOK(ui::RtwWidget* vpSender, RtwEventDelegate* vpEv
 	for(It=FriendConfirmList.begin();It!=FriendConfirmList.end();)
 	{
 		std::string strMessage;
-		strMessage =RTW_WIDGET("ConfirmBox2.lbinfoexit")->GetText();
+		strMessage =LOAD_UI("ConfirmBox2.lbinfoexit")->GetText();
 		if((*It).m_strMassage==strMessage)
 		{
 			AgreeOtherInvite((*It).mDBID);
@@ -1232,11 +1232,11 @@ void CFriendWithUI::OnShowOfflineFriendOrNo(ui::RtwWidget* vpSender, RtwEventDel
 	if(m_bShowOfflineFriend)
 	{
 		m_bShowOfflineFriend = false;
-		RTW_WIDGET("fmnewfriendlist.fmfriendlist.btnoffline")->SetText("显示离线");
+		LOAD_UI("fmnewfriendlist.fmfriendlist.btnoffline")->SetText("显示离线");
 	}else
 	{
 		m_bShowOfflineFriend = true;
-		RTW_WIDGET("fmnewfriendlist.fmfriendlist.btnoffline")->SetText("隐藏离线");
+		LOAD_UI("fmnewfriendlist.fmfriendlist.btnoffline")->SetText("隐藏离线");
 	}
 	DataChange();
 	unguard;
@@ -1321,7 +1321,7 @@ void CFriendWithUI::OnPopMenuSelect(ui::RtwWidget* vpSender, RtwEventDelegate*)
 			if(mpUIFriendList->GetSelectedItem() != -1)
 			{
 				GetWorld()->m_Mail.NewMail(NULL,NULL);
-				RTW_WIDGET("fmmail4.fmcontent.ebpeople1")->SetText(mpUIFriendList->GetItemText(mpUIFriendList->GetSelectedItem(),0));
+				LOAD_UI("fmmail4.fmcontent.ebpeople1")->SetText(mpUIFriendList->GetItemText(mpUIFriendList->GetSelectedItem(),0));
 			}
 			break;
 		//case 4:
@@ -1374,7 +1374,7 @@ void CFriendWithUI::OnPopMenuSelect(ui::RtwWidget* vpSender, RtwEventDelegate*)
 			if(mpUITemporaryFriendList->GetSelectedItem() != -1)
 			{
 				GetWorld()->m_Mail.NewMail(NULL,NULL);
-				RTW_WIDGET("fmmail4.fmcontent.ebpeople1")->SetText(mpUITemporaryFriendList->GetItemText(mpUITemporaryFriendList->GetSelectedItem(),0));
+				LOAD_UI("fmmail4.fmcontent.ebpeople1")->SetText(mpUITemporaryFriendList->GetItemText(mpUITemporaryFriendList->GetSelectedItem(),0));
 			}
 			break;
 		//case 4:

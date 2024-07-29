@@ -7,14 +7,14 @@
 
 UIFormPetToBeads::UIFormPetToBeads()
 {
-	m_pFmWindow		= RTW_WIDGET_T(RtwForm, "fmpetbeads");
-	m_pFmPetView	= RTW_WIDGET_T(Rtw3DView, "fmpetbeads.fmbaby.fmmianpet");
-	m_pCbPetList	= RTW_WIDGET_T(RtwComboBox, "fmpetbeads.fmbaby.cbtlist1");
-	m_pBtnItem1		= RTW_WIDGET_T(RtwButton, "fmpetbeads.fmbaby.btnitem1");
-	m_pBtnItem2		= RTW_WIDGET_T(RtwButton, "fmpetbeads.fmbaby.btnitem2");
-	m_pBtnToBeads	= RTW_WIDGET_T(RtwButton, "fmpetbeads.fmbaby.btncompose");
-	m_pLbRate		= RTW_WIDGET_T(RtwLabel, "fmpetbeads.fmbaby.lbmoney");
-	m_pLbGrade		= RTW_WIDGET_T(RtwLabel, "fmpetbeads.fmbaby.1253");
+	m_pFmWindow		= LOAD_UI_T(RtwForm, "fmpetbeads");
+	m_pFmPetView	= LOAD_UI_T(Rtw3DView, "fmpetbeads.fmbaby.fmmianpet");
+	m_pCbPetList	= LOAD_UI_T(RtwComboBox, "fmpetbeads.fmbaby.cbtlist1");
+	m_pBtnItem1		= LOAD_UI_T(RtwButton, "fmpetbeads.fmbaby.btnitem1");
+	m_pBtnItem2		= LOAD_UI_T(RtwButton, "fmpetbeads.fmbaby.btnitem2");
+	m_pBtnToBeads	= LOAD_UI_T(RtwButton, "fmpetbeads.fmbaby.btncompose");
+	m_pLbRate		= LOAD_UI_T(RtwLabel, "fmpetbeads.fmbaby.lbmoney");
+	m_pLbGrade		= LOAD_UI_T(RtwLabel, "fmpetbeads.fmbaby.1253");
 	m_pFmWindow->EvHide += RTW_CALLBACK(this,UIFormPetToBeads,OnHide);
 
 	m_pCbPetList->EvSelect	+= RTW_CALLBACK(this, UIFormPetToBeads, OnSelectPet);

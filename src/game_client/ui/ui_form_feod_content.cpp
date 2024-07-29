@@ -8,15 +8,15 @@ UIFormFeodContent::UIFormFeodContent()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmcitylist");
+	m_pFrmThis = LOAD_UI("fmcitylist");
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
-	m_lbTaxRate = RTW_WIDGET("fmcitylist.lbtaxnum");
-	m_lbIncomeToday = RTW_WIDGET("fmcitylist.lbtotadygoldnum");
-	m_lbBank = RTW_WIDGET("fmcitylist.lbcitygoldnum");
+	m_lbTaxRate = LOAD_UI("fmcitylist.lbtaxnum");
+	m_lbIncomeToday = LOAD_UI("fmcitylist.lbtotadygoldnum");
+	m_lbBank = LOAD_UI("fmcitylist.lbcitygoldnum");
 
-	m_pBtnOK = RTW_WIDGET_T(RtwButton, "fmcitylist.btnok");
-	m_pBtnCancel = RTW_WIDGET_T(RtwButton, "fmcitylist.btncancel");
+	m_pBtnOK = LOAD_UI_T(RtwButton, "fmcitylist.btnok");
+	m_pBtnCancel = LOAD_UI_T(RtwButton, "fmcitylist.btncancel");
 
 	// 注册本窗口中的事件
 	m_pBtnOK->EvLClick += RTW_CALLBACK(this, UIFormFeodContent, OnBtnOK);

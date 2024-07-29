@@ -15,22 +15,22 @@ UIFormCastleWar::UIFormCastleWar()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmbattle");
+	m_pFrmThis = LOAD_UI("fmbattle");
 
-	m_pTabGuild			= RTW_WIDGET_T(RtwTab, "fmbattle.fmcity.tabguild");
-	m_pBtnAttacker		= RTW_WIDGET_T(RtwButton, "fmbattle.fmcity.tabguild.btnattacklist");
-	m_pBtnDefender		= RTW_WIDGET_T(RtwButton, "fmbattle.fmcity.tabguild.btndeflist");
-	m_pBtnAllow			= RTW_WIDGET_T(RtwButton, "fmbattle.fmcity.btnagree");
-	m_pBtnApply			= RTW_WIDGET_T(RtwButton, "fmbattle.fmcity.btnjoin");
-	m_pBtnCancelApply	= RTW_WIDGET_T(RtwButton, "fmbattle.fmcity.btnleave");
+	m_pTabGuild			= LOAD_UI_T(RtwTab, "fmbattle.fmcity.tabguild");
+	m_pBtnAttacker		= LOAD_UI_T(RtwButton, "fmbattle.fmcity.tabguild.btnattacklist");
+	m_pBtnDefender		= LOAD_UI_T(RtwButton, "fmbattle.fmcity.tabguild.btndeflist");
+	m_pBtnAllow			= LOAD_UI_T(RtwButton, "fmbattle.fmcity.btnagree");
+	m_pBtnApply			= LOAD_UI_T(RtwButton, "fmbattle.fmcity.btnjoin");
+	m_pBtnCancelApply	= LOAD_UI_T(RtwButton, "fmbattle.fmcity.btnleave");
 
-	m_pListAttacker		= RTW_WIDGET_T(RtwListBox, "fmbattle.fmcity.tabguild.fmattacklist.listattack");
-	m_pListDefender		= RTW_WIDGET_T(RtwListBox, "fmbattle.fmcity.tabguild.fmdeflist.listdef");
+	m_pListAttacker		= LOAD_UI_T(RtwListBox, "fmbattle.fmcity.tabguild.fmattacklist.listattack");
+	m_pListDefender		= LOAD_UI_T(RtwListBox, "fmbattle.fmcity.tabguild.fmdeflist.listdef");
 
-	m_pLabelCastleName	= RTW_WIDGET_T(RtwLabel, "fmbattle.fmcity.lbcity");
-	m_pLabelUnionName	= RTW_WIDGET_T(RtwLabel, "fmbattle.fmcity.lbguildname");
-	m_pLabelUnionLogo	= RTW_WIDGET_T(RtwLabel, "fmbattle.fmcity.lblv");
-	m_pLabelStartTime	= RTW_WIDGET_T(RtwLabel, "fmbattle.fmcity.lbattacktime");
+	m_pLabelCastleName	= LOAD_UI_T(RtwLabel, "fmbattle.fmcity.lbcity");
+	m_pLabelUnionName	= LOAD_UI_T(RtwLabel, "fmbattle.fmcity.lbguildname");
+	m_pLabelUnionLogo	= LOAD_UI_T(RtwLabel, "fmbattle.fmcity.lblv");
+	m_pLabelStartTime	= LOAD_UI_T(RtwLabel, "fmbattle.fmcity.lbattacktime");
 
 	// 注册本窗口中的事件
 	m_pBtnAttacker->EvLClick	+= RTW_CALLBACK(this, UIFormCastleWar, OnBtnAttacker);

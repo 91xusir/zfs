@@ -11,18 +11,18 @@ UIFormBuyCard::UIFormBuyCard()
 
     m_pList = RT_NEW CCardTradeList;
 
-	m_pFrmThis = RTW_WIDGET("fmbuycard");
+	m_pFrmThis = LOAD_UI("fmbuycard");
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
-	m_pFrmGrids = RTW_WIDGET("fmbuycard.fmsellcard");
+	m_pFrmGrids = LOAD_UI("fmbuycard.fmsellcard");
 
-	m_lbMoneyTotal = RTW_WIDGET("fmbuycard.lbgoldnum");
-	m_lbPageInfo = RTW_WIDGET("fmbuycard.lbpage");
+	m_lbMoneyTotal = LOAD_UI("fmbuycard.lbgoldnum");
+	m_lbPageInfo = LOAD_UI("fmbuycard.lbpage");
 
-	m_btnBuy = RTW_WIDGET_T(RtwButton, "fmbuycard.btnok");
-	m_btnCancel = RTW_WIDGET_T(RtwButton, "fmbuycard.btncancel");
-	m_btnPageLeft = RTW_WIDGET_T(RtwButton, "fmbuycard.btnitemleft");
-    m_btnPageRight = RTW_WIDGET_T(RtwButton, "fmbuycard.btnitemright");
+	m_btnBuy = LOAD_UI_T(RtwButton, "fmbuycard.btnok");
+	m_btnCancel = LOAD_UI_T(RtwButton, "fmbuycard.btncancel");
+	m_btnPageLeft = LOAD_UI_T(RtwButton, "fmbuycard.btnitemleft");
+    m_btnPageRight = LOAD_UI_T(RtwButton, "fmbuycard.btnitemright");
 
     //m_btnBuy->SetText("Ë¢ÐÂÁÐ±í");//by fox for string
 	m_btnBuy->SetText(R(MSG_REFURBISH_LIST));

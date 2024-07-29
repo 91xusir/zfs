@@ -16,8 +16,8 @@ bool g_bNotify = true;
 CBulletinManager::CBulletinManager()
 {
 	g_workspace.Load("ui/ui_layer_main.xml");
-	m_pFormBulletin = RTW_WIDGET_T(RtwForm, "fmBulletin");
-	m_pChatBulletin = RTW_WIDGET_T(RtwTextBox, "fmBulletin.txtFeedback");
+	m_pFormBulletin = LOAD_UI_T(RtwForm, "fmBulletin");
+	m_pChatBulletin = LOAD_UI_T(RtwTextBox, "fmBulletin.txtFeedback");
 
 	m_pChatBulletin->SetEnableInput(false);
 	m_pChatBulletin->SetMultiLine(false);

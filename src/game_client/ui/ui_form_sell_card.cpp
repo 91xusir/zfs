@@ -6,18 +6,18 @@
 UIFormSellCard::UIFormSellCard()
 {
 	guard;
-    m_pFrmThis = RTW_WIDGET("fmsellcard");
+    m_pFrmThis = LOAD_UI("fmsellcard");
 
-    m_pTextCardID  = RTW_WIDGET_T(RtwTextBox, "fmsellcard.txtcard");
-    m_pTextCardPwd = RTW_WIDGET_T(RtwTextBox, "fmsellcard.txtpass");
-    m_pTextPrice   = RTW_WIDGET_T(RtwTextBox, "fmsellcard.txtprice");
-    m_pBtnOK       = RTW_WIDGET_T(RtwButton,  "fmsellcard.btnok");
+    m_pTextCardID  = LOAD_UI_T(RtwTextBox, "fmsellcard.txtcard");
+    m_pTextCardPwd = LOAD_UI_T(RtwTextBox, "fmsellcard.txtpass");
+    m_pTextPrice   = LOAD_UI_T(RtwTextBox, "fmsellcard.txtprice");
+    m_pBtnOK       = LOAD_UI_T(RtwButton,  "fmsellcard.btnok");
 
-    RtwWidget* pLable3 = RTW_WIDGET("fmsellcard.lbrule3");
+    RtwWidget* pLable3 = LOAD_UI("fmsellcard.lbrule3");
     rt2_sprintf(g_strStaticBuffer, "3.寄售价格只能在%d万～%d万的范围之内", CCardTradeList::e_lMinPrice/10000, CCardTradeList::e_lMaxPrice/10000);
     pLable3->SetText(g_strStaticBuffer);
 
-    RtwButton* pBtnCancel = RTW_WIDGET_T(RtwButton, "fmsellcard.btncancel");
+    RtwButton* pBtnCancel = LOAD_UI_T(RtwButton, "fmsellcard.btncancel");
 
     m_pTextCardID->SetAlphaNumberOnly(true);
     m_pTextCardID->SetCapsLock(1);

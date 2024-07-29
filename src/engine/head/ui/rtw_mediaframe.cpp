@@ -79,7 +79,7 @@ void CUiMediaFrame::SetNextHyperLink(SHyperLink* pHLink)
 	}
 	else 
 	{
-		m_NextHyperLink = *pHLink;
+        m_NextHyperLink = *pHLink;
 		g_workspace.SetRefreshMediaFrame(this);
 	}
 }

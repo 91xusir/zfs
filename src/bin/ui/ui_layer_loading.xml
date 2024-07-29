@@ -3,8 +3,6 @@
   <Loader Description="ui definition xml file" >
 	<File Name="ui_layer_loading.xml" />
   </Loader>
-
-
     <Layer Name="layworld" Show="true" Index="2"  DefaultLayer="true"  Width="800"  Height="600">
             <Form Name="picloginbg"  Dock="fill"  FadeIn="true"  FadeOut="true" >
                 <BackgroundImage  File=""  Blend="true" />

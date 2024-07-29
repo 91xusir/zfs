@@ -11,26 +11,26 @@ m_itemListBag(BUY_ITEM_LINE_COUNT,BUY_ITEM_COLUMN_COUNT,1,GetWorld()->m_pItemMan
 {
 	guard;
 
-	m_pFrmThis				= RTW_WIDGET("fmplayershop");
-	m_pFrmGridsUp			= RTW_WIDGET("fmplayershop.frmsell.tabsell.frmitem");
-	m_pFrmGridsDown			= RTW_WIDGET("fmplayershop.frmbuy.frmcontent");
-	m_btnStopSellOne		= RTW_WIDGET_T(RtwButton,"fmplayershop.fmbtn3.btnunshowitem");
-	m_lbSellerName			= RTW_WIDGET_T(RtwLabel,"fmplayershop.lbinput.lbpalyername2.lbplayername");
-	m_tbxShopName			= RTW_WIDGET_T(RtwTextBox,"fmplayershop.lbinput.tbxshopname");
-	m_tbxTotalMoney			= RTW_WIDGET_T(RtwTextBox,"fmplayershop.fmtotalprice.lbprice2.tbxshopname");
-	m_btnChangeName			= RTW_WIDGET_T(RtwButton,"fmplayershop.lbinput.btnStart1");
-	m_btnStart				= RTW_WIDGET_T(RtwButton,"fmplayershop.fmbtn3.btnstart");
-	m_btnStop				= RTW_WIDGET_T(RtwButton,"fmplayershop.fmbtn3.btncloseshop");
-	m_btnShopChat			= RTW_WIDGET_T(RtwButton,"fmplayershop.btnshopinfo");
+	m_pFrmThis				= LOAD_UI("fmplayershop");
+	m_pFrmGridsUp			= LOAD_UI("fmplayershop.frmsell.tabsell.frmitem");
+	m_pFrmGridsDown			= LOAD_UI("fmplayershop.frmbuy.frmcontent");
+	m_btnStopSellOne		= LOAD_UI_T(RtwButton,"fmplayershop.fmbtn3.btnunshowitem");
+	m_lbSellerName			= LOAD_UI_T(RtwLabel,"fmplayershop.lbinput.lbpalyername2.lbplayername");
+	m_tbxShopName			= LOAD_UI_T(RtwTextBox,"fmplayershop.lbinput.tbxshopname");
+	m_tbxTotalMoney			= LOAD_UI_T(RtwTextBox,"fmplayershop.fmtotalprice.lbprice2.tbxshopname");
+	m_btnChangeName			= LOAD_UI_T(RtwButton,"fmplayershop.lbinput.btnStart1");
+	m_btnStart				= LOAD_UI_T(RtwButton,"fmplayershop.fmbtn3.btnstart");
+	m_btnStop				= LOAD_UI_T(RtwButton,"fmplayershop.fmbtn3.btncloseshop");
+	m_btnShopChat			= LOAD_UI_T(RtwButton,"fmplayershop.btnshopinfo");
 
-	m_pFrmBuyItemList		= RTW_WIDGET("fmpshoplist");
-	m_pFrmGridsBuyItem		= RTW_WIDGET("fmpshoplist.fmitem");
-	m_cbxComboBoxBuyItem	= RTW_WIDGET_T(RtwComboBox,"fmpshoplist.fmlist.cbxlist");
-	m_btnOK					= RTW_WIDGET_T(RtwButton,"fmpshoplist.btnok");
-	m_btnCancel				= RTW_WIDGET_T(RtwButton,"fmpshoplist.btnback");
+	m_pFrmBuyItemList		= LOAD_UI("fmpshoplist");
+	m_pFrmGridsBuyItem		= LOAD_UI("fmpshoplist.fmitem");
+	m_cbxComboBoxBuyItem	= LOAD_UI_T(RtwComboBox,"fmpshoplist.fmlist.cbxlist");
+	m_btnOK					= LOAD_UI_T(RtwButton,"fmpshoplist.btnok");
+	m_btnCancel				= LOAD_UI_T(RtwButton,"fmpshoplist.btnback");
 
 	m_btnShopChat->Disable();
-	RTW_WIDGET("fmplayershop.frmsell.tabsell.btnpet")->Disable();
+	LOAD_UI("fmplayershop.frmsell.tabsell.btnpet")->Disable();
 	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);
 	m_ptrHoverImage->getRenderImage()->eBlendDstFunc = RTGBLEND_ONE;

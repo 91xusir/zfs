@@ -7,14 +7,14 @@ UIFormFeodTax::UIFormFeodTax()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmtax");
+	m_pFrmThis = LOAD_UI("fmtax");
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
-	m_tbTaxSet = RTW_WIDGET("fmtax.txttax");
-	m_lbIncomeToday = RTW_WIDGET("fmtax.lbtotadygoldnum");
+	m_tbTaxSet = LOAD_UI("fmtax.txttax");
+	m_lbIncomeToday = LOAD_UI("fmtax.lbtotadygoldnum");
 
-	m_pBtnOK = RTW_WIDGET_T(RtwButton, "fmtax.btnok");
-	m_pBtnCancel = RTW_WIDGET_T(RtwButton, "fmtax.btncancel");
+	m_pBtnOK = LOAD_UI_T(RtwButton, "fmtax.btnok");
+	m_pBtnCancel = LOAD_UI_T(RtwButton, "fmtax.btncancel");
 
 	// 注册本窗口中的事件
 	m_pBtnOK->EvLClick += RTW_CALLBACK(this, UIFormFeodTax, OnBtnOK);

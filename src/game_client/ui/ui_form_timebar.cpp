@@ -7,8 +7,8 @@ UIFormTimeBar::UIFormTimeBar()
 {
 	guard;
 
-	m_pFrmThis = RTW_WIDGET("fmprocess");
-	m_pProgressBar = RTW_WIDGET_T(RtwProgressBar, "fmprocess.EXPBar");
+	m_pFrmThis = LOAD_UI("fmprocess");
+	m_pProgressBar = LOAD_UI_T(RtwProgressBar, "fmprocess.EXPBar");
 
 	m_pFrmThis->Hide();
 

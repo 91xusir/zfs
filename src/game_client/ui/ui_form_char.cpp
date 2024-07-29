@@ -86,67 +86,67 @@ UIFormCharProp::~UIFormCharProp()
 
 bool UIFormCharProp::Init()
 {
-	m_pFormAll = RTW_WIDGET("fmcharall");
+	m_pFormAll = LOAD_UI("fmcharall");
 	//m_pFormAll->EvKey += RTW_CALLBACK(m_pFormAll, RtwWidget, DefaultKeyDown);
 
-	m_form = RTW_WIDGET("fmcharall.tabcharall.fmchar");
+	m_form = LOAD_UI("fmcharall.tabcharall.fmchar");
 	if(m_form)
         m_bValid = true;
 	else
 		m_bValid = false;
 
-	RTW_WIDGET("fmcharall.tabcharall.fmchar.btnstradd")->EvLClick += 
+	LOAD_UI("fmcharall.tabcharall.fmchar.btnstradd")->EvLClick += 
 		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
-	RTW_WIDGET("fmcharall.tabcharall.fmchar.btnhitadd")->EvLClick += 
+	LOAD_UI("fmcharall.tabcharall.fmchar.btnhitadd")->EvLClick += 
 		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
-	RTW_WIDGET("fmcharall.tabcharall.fmchar.btndexadd")->EvLClick += 
+	LOAD_UI("fmcharall.tabcharall.fmchar.btndexadd")->EvLClick += 
 		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
-	RTW_WIDGET("fmcharall.tabcharall.fmchar.btnwisadd")->EvLClick += 
+	LOAD_UI("fmcharall.tabcharall.fmchar.btnwisadd")->EvLClick += 
 		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
-	RTW_WIDGET("fmcharall.tabcharall.fmchar.btnhealadd")->EvLClick += 
-		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
-
-	RTW_WIDGET("fmcharall.tabcharall.fmchar.btnstradd")->EvLDClick += 
-		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
-	RTW_WIDGET("fmcharall.tabcharall.fmchar.btnhitadd")->EvLDClick += 
-		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
-	RTW_WIDGET("fmcharall.tabcharall.fmchar.btndexadd")->EvLDClick += 
-		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
-	RTW_WIDGET("fmcharall.tabcharall.fmchar.btnwisadd")->EvLDClick += 
-		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
-	RTW_WIDGET("fmcharall.tabcharall.fmchar.btnhealadd")->EvLDClick += 
+	LOAD_UI("fmcharall.tabcharall.fmchar.btnhealadd")->EvLClick += 
 		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
 
-	RTW_WIDGET("fmcharall.tabcharall.fmchar")->EvShow += RTW_CALLBACK(this, UIFormCharProp, OnShow);
-	RTW_WIDGET("fmcharall")->EvShow += RTW_CALLBACK(this, UIFormCharProp, OnShow);
+	LOAD_UI("fmcharall.tabcharall.fmchar.btnstradd")->EvLDClick += 
+		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
+	LOAD_UI("fmcharall.tabcharall.fmchar.btnhitadd")->EvLDClick += 
+		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
+	LOAD_UI("fmcharall.tabcharall.fmchar.btndexadd")->EvLDClick += 
+		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
+	LOAD_UI("fmcharall.tabcharall.fmchar.btnwisadd")->EvLDClick += 
+		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
+	LOAD_UI("fmcharall.tabcharall.fmchar.btnhealadd")->EvLDClick += 
+		RTW_CALLBACK(this, UIFormCharProp, OnClickAddAttr);
 
-	m_jobName = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbjobname");
-	m_faction = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbsitename");
-	m_name    = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbname");
-	m_exp     = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbexpcount");
-	m_lev     = RTW_WIDGET("fmcharall.tabcharall.fmchar.lblevnum");
-	m_pk	  = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbpkname");
-	m_credit  = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbprenum");
-	m_exploit = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbwarnum");
+	LOAD_UI("fmcharall.tabcharall.fmchar")->EvShow += RTW_CALLBACK(this, UIFormCharProp, OnShow);
+	LOAD_UI("fmcharall")->EvShow += RTW_CALLBACK(this, UIFormCharProp, OnShow);
 
-	m_attrPoint = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbappoint");
-	m_skillPoint = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbsppoint");
+	m_jobName = LOAD_UI("fmcharall.tabcharall.fmchar.lbjobname");
+	m_faction = LOAD_UI("fmcharall.tabcharall.fmchar.lbsitename");
+	m_name    = LOAD_UI("fmcharall.tabcharall.fmchar.lbname");
+	m_exp     = LOAD_UI("fmcharall.tabcharall.fmchar.lbexpcount");
+	m_lev     = LOAD_UI("fmcharall.tabcharall.fmchar.lblevnum");
+	m_pk	  = LOAD_UI("fmcharall.tabcharall.fmchar.lbpkname");
+	m_credit  = LOAD_UI("fmcharall.tabcharall.fmchar.lbprenum");
+	m_exploit = LOAD_UI("fmcharall.tabcharall.fmchar.lbwarnum");
 
-	m_hp	= RTW_WIDGET("fmcharall.tabcharall.fmchar.lbhpcount");
-	m_mp    = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbmpcount");
+	m_attrPoint = LOAD_UI("fmcharall.tabcharall.fmchar.lbappoint");
+	m_skillPoint = LOAD_UI("fmcharall.tabcharall.fmchar.lbsppoint");
 
-	m_str   = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbstrpoint");
-	m_con   = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbhealthpoint");
-	m_dex   = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbdexpoint");
-	m_int   = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbwispoint");
-	m_hit   = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbhitpoint");
+	m_hp	= LOAD_UI("fmcharall.tabcharall.fmchar.lbhpcount");
+	m_mp    = LOAD_UI("fmcharall.tabcharall.fmchar.lbmpcount");
+
+	m_str   = LOAD_UI("fmcharall.tabcharall.fmchar.lbstrpoint");
+	m_con   = LOAD_UI("fmcharall.tabcharall.fmchar.lbhealthpoint");
+	m_dex   = LOAD_UI("fmcharall.tabcharall.fmchar.lbdexpoint");
+	m_int   = LOAD_UI("fmcharall.tabcharall.fmchar.lbwispoint");
+	m_hit   = LOAD_UI("fmcharall.tabcharall.fmchar.lbhitpoint");
 
 
-	m_strBtn   = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbstr");
-	m_conBtn   = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbhealth");
-	m_dexBtn   = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbdex");
-	m_intBtn   = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbwis");
-	m_hitBtn   = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbhit");
+	m_strBtn   = LOAD_UI("fmcharall.tabcharall.fmchar.lbstr");
+	m_conBtn   = LOAD_UI("fmcharall.tabcharall.fmchar.lbhealth");
+	m_dexBtn   = LOAD_UI("fmcharall.tabcharall.fmchar.lbdex");
+	m_intBtn   = LOAD_UI("fmcharall.tabcharall.fmchar.lbwis");
+	m_hitBtn   = LOAD_UI("fmcharall.tabcharall.fmchar.lbhit");
 
 	m_strBtn->EvHint += RTW_CALLBACK(this, UIFormCharProp, OnSkillCriHint);
 	m_dexBtn->EvHint += RTW_CALLBACK(this, UIFormCharProp, OnSkillCriHint);
@@ -155,29 +155,29 @@ bool UIFormCharProp::Init()
 	m_hitBtn->ModifyFlags(0,wfHint);
 	m_conBtn->ModifyFlags(0,wfHint);
 
-	m_strPower = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbstrpowernum");
-	m_conPower = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbconpowernum");
-	m_dexPower = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbdexpowernum");
-	m_intPower = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbintpowernum");
-	m_hitPower = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbhitpowernum");
+	m_strPower = LOAD_UI("fmcharall.tabcharall.fmchar.lbstrpowernum");
+	m_conPower = LOAD_UI("fmcharall.tabcharall.fmchar.lbconpowernum");
+	m_dexPower = LOAD_UI("fmcharall.tabcharall.fmchar.lbdexpowernum");
+	m_intPower = LOAD_UI("fmcharall.tabcharall.fmchar.lbintpowernum");
+	m_hitPower = LOAD_UI("fmcharall.tabcharall.fmchar.lbhitpowernum");
 
-	m_attack = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbattackpoint");
-	m_damage = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbdamagepoint");
-	m_dodge  = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbdoggepoint");
-	m_armor  = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbdefpoint");
-	m_attSpeed = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbspeedpoint");
+	m_attack = LOAD_UI("fmcharall.tabcharall.fmchar.lbattackpoint");
+	m_damage = LOAD_UI("fmcharall.tabcharall.fmchar.lbdamagepoint");
+	m_dodge  = LOAD_UI("fmcharall.tabcharall.fmchar.lbdoggepoint");
+	m_armor  = LOAD_UI("fmcharall.tabcharall.fmchar.lbdefpoint");
+	m_attSpeed = LOAD_UI("fmcharall.tabcharall.fmchar.lbspeedpoint");
 
-	m_hpBar = RTW_WIDGET_T(RtwProgressBar,"fmcharall.tabcharall.fmchar.barhp");
-	m_mpBar = RTW_WIDGET_T(RtwProgressBar,"fmcharall.tabcharall.fmchar.barmp");
-	m_expBar = RTW_WIDGET_T(RtwProgressBar,"fmcharall.tabcharall.fmchar.barexp");
+	m_hpBar = LOAD_UI_T(RtwProgressBar,"fmcharall.tabcharall.fmchar.barhp");
+	m_mpBar = LOAD_UI_T(RtwProgressBar,"fmcharall.tabcharall.fmchar.barmp");
+	m_expBar = LOAD_UI_T(RtwProgressBar,"fmcharall.tabcharall.fmchar.barexp");
 
-	m_fireArmor = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbfirepoint");
-	m_waterArmor = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbwaterpoint");
-	m_poisonArmor = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbpoisonpoint");
+	m_fireArmor = LOAD_UI("fmcharall.tabcharall.fmchar.lbfirepoint");
+	m_waterArmor = LOAD_UI("fmcharall.tabcharall.fmchar.lbwaterpoint");
+	m_poisonArmor = LOAD_UI("fmcharall.tabcharall.fmchar.lbpoisonpoint");
 
-	m_fireDamage = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbfirepointA");
-	m_waterDamage = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbwaterpointA");
-	m_poisonDamage = RTW_WIDGET("fmcharall.tabcharall.fmchar.lbpoisonpointA");
+	m_fireDamage = LOAD_UI("fmcharall.tabcharall.fmchar.lbfirepointA");
+	m_waterDamage = LOAD_UI("fmcharall.tabcharall.fmchar.lbwaterpointA");
+	m_poisonDamage = LOAD_UI("fmcharall.tabcharall.fmchar.lbpoisonpointA");
 	return m_bValid;
 }
 
@@ -423,19 +423,19 @@ bool UIFormCharProp::Update()
 
 	if(cre->AttrPoint > 0)
 	{
-		RTW_WIDGET("fmcharall.tabcharall.fmchar.btnstradd")->Show();
-		RTW_WIDGET("fmcharall.tabcharall.fmchar.btndexadd")->Show();
-		RTW_WIDGET("fmcharall.tabcharall.fmchar.btnwisadd")->Show();
-		RTW_WIDGET("fmcharall.tabcharall.fmchar.btnhitadd")->Show();
-		RTW_WIDGET("fmcharall.tabcharall.fmchar.btnhealadd")->Show();
+		LOAD_UI("fmcharall.tabcharall.fmchar.btnstradd")->Show();
+		LOAD_UI("fmcharall.tabcharall.fmchar.btndexadd")->Show();
+		LOAD_UI("fmcharall.tabcharall.fmchar.btnwisadd")->Show();
+		LOAD_UI("fmcharall.tabcharall.fmchar.btnhitadd")->Show();
+		LOAD_UI("fmcharall.tabcharall.fmchar.btnhealadd")->Show();
 	}
 	else
 	{
-		RTW_WIDGET("fmcharall.tabcharall.fmchar.btnstradd")->Hide();
-		RTW_WIDGET("fmcharall.tabcharall.fmchar.btndexadd")->Hide();
-		RTW_WIDGET("fmcharall.tabcharall.fmchar.btnwisadd")->Hide();
-		RTW_WIDGET("fmcharall.tabcharall.fmchar.btnhitadd")->Hide();
-		RTW_WIDGET("fmcharall.tabcharall.fmchar.btnhealadd")->Hide();
+		LOAD_UI("fmcharall.tabcharall.fmchar.btnstradd")->Hide();
+		LOAD_UI("fmcharall.tabcharall.fmchar.btndexadd")->Hide();
+		LOAD_UI("fmcharall.tabcharall.fmchar.btnwisadd")->Hide();
+		LOAD_UI("fmcharall.tabcharall.fmchar.btnhitadd")->Hide();
+		LOAD_UI("fmcharall.tabcharall.fmchar.btnhealadd")->Hide();
 	}
 
 	tmp.Format("%d",cre->ElementDamage[ELEMENT_FIRE].GetValue());
@@ -455,9 +455,9 @@ bool UIFormCharProp::Update()
 	if (g_layerMain->m_formUnion)
 	{
 		if (g_layerMain->m_formUnion->m_unionData.m_nID==0)
-			RTW_WIDGET("fmcharall.tabcharall.fmchar.lbcountryname")->SetText(R(MSG_NO_UNION));
+			LOAD_UI("fmcharall.tabcharall.fmchar.lbcountryname")->SetText(R(MSG_NO_UNION));
 		else 
-			RTW_WIDGET("fmcharall.tabcharall.fmchar.lbcountryname")->SetText(g_layerMain->m_formUnion->m_unionData.m_strName);
+			LOAD_UI("fmcharall.tabcharall.fmchar.lbcountryname")->SetText(g_layerMain->m_formUnion->m_unionData.m_strName);
 	}
 
 	return true;
@@ -506,7 +506,7 @@ void UIFormCharProp::OnShow(void *,void *)
 
 bool UIFormCharProp::IsVisible()
 {
-	return RTW_WIDGET("fmcharall.tabcharall.fmchar")->IsVisible();
+	return LOAD_UI("fmcharall.tabcharall.fmchar")->IsVisible();
 }
 
 // ----------------------------------------------------------------------------
@@ -520,38 +520,38 @@ UIFormPetProp::UIFormPetProp()
 
 bool UIFormPetProp::Init()
 {
-	m_pFormAll = RTW_WIDGET("fmcharall");
+	m_pFormAll = LOAD_UI("fmcharall");
 	//m_pFormAll->EvKey += RTW_CALLBACK(m_pFormAll, RtwWidget, DefaultKeyDown);
 
-	m_form = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem");
+	m_form = LOAD_UI("fmcharall.tabcharall.fmpetsystem");
 	if(m_form)
         m_bValid = true;
 	else
 		m_bValid = false;
 
-	RTW_WIDGET("fmcharall.tabcharall.fmpetsystem")->EvShow += RTW_CALLBACK(this, UIFormPetProp, OnShow);
-	RTW_WIDGET("fmcharall")->EvShow += RTW_CALLBACK(this, UIFormPetProp, OnShow);
+	LOAD_UI("fmcharall.tabcharall.fmpetsystem")->EvShow += RTW_CALLBACK(this, UIFormPetProp, OnShow);
+	LOAD_UI("fmcharall")->EvShow += RTW_CALLBACK(this, UIFormPetProp, OnShow);
 
-	m_name1    = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lbpetname");//名称
-	m_name2    = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lbpetsex");//名字
-	m_fiveElements = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lbelements");//五行
-	m_expcount = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lbexpcount");//经验值
-	m_expbar     = RTW_WIDGET_T(RtwProgressBar,"fmcharall.tabcharall.fmpetsystem.barexp");//经验条
-	m_lev     = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lblev");//等级
-	m_growth     = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lbgrowth");//成长度
-	m_feed     = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lbfeed");//养成度
+	m_name1    = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lbpetname");//名称
+	m_name2    = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lbpetsex");//名字
+	m_fiveElements = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lbelements");//五行
+	m_expcount = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lbexpcount");//经验值
+	m_expbar     = LOAD_UI_T(RtwProgressBar,"fmcharall.tabcharall.fmpetsystem.barexp");//经验条
+	m_lev     = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lblev");//等级
+	m_growth     = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lbgrowth");//成长度
+	m_feed     = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lbfeed");//养成度
 
-	m_attack = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lbattackpoint");//伤害
-	m_damage = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lbdamagepoint");//防御
-	m_dodge  = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lbdoggepoint");//命中
-	m_armor  = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lbdefpoint");//闪躲
-	m_attSpeed = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.lbspeedpoint");//攻击速度
+	m_attack = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lbattackpoint");//伤害
+	m_damage = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lbdamagepoint");//防御
+	m_dodge  = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lbdoggepoint");//命中
+	m_armor  = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lbdefpoint");//闪躲
+	m_attSpeed = LOAD_UI("fmcharall.tabcharall.fmpetsystem.lbspeedpoint");//攻击速度
 
-	m_skill1 = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.petskill1");//技能1
-	m_skill2 = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.petskill2");//技能2
-	m_skill3 = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.petskill3");//技能3
-	m_skill4 = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.petskill4");//技能4
-	m_skill5 = RTW_WIDGET("fmcharall.tabcharall.fmpetsystem.petskill5");//技能5
+	m_skill1 = LOAD_UI("fmcharall.tabcharall.fmpetsystem.petskill1");//技能1
+	m_skill2 = LOAD_UI("fmcharall.tabcharall.fmpetsystem.petskill2");//技能2
+	m_skill3 = LOAD_UI("fmcharall.tabcharall.fmpetsystem.petskill3");//技能3
+	m_skill4 = LOAD_UI("fmcharall.tabcharall.fmpetsystem.petskill4");//技能4
+	m_skill5 = LOAD_UI("fmcharall.tabcharall.fmpetsystem.petskill5");//技能5
 
 	Clear();
 	return m_bValid;
@@ -752,7 +752,7 @@ bool UIFormPetProp::Clear()
 
 bool UIFormPetProp::IsVisible()
 {
-	return RTW_WIDGET("fmcharall.tabcharall.fmpetsystem")->IsVisible();
+	return LOAD_UI("fmcharall.tabcharall.fmpetsystem")->IsVisible();
 }
 //end
 
@@ -773,23 +773,23 @@ UIFormPetSimple::~UIFormPetSimple()
 
 bool UIFormPetSimple::Init()
 {
-	m_form = RTW_WIDGET("fmhpc");
-	m_formHp  = RTW_WIDGET("fmhpc.fmhpbar");
+	m_form = LOAD_UI("fmhpc");
+	m_formHp  = LOAD_UI("fmhpc.fmhpbar");
     
 	if(m_form)
 		m_bValid = true;
 	else
 		m_bValid = false;
 
-	m_name    = RTW_WIDGET("fmhpc.lblvtc");
-	m_lev     = RTW_WIDGET("fmhpc.lblvc");
-	m_expRate = RTW_WIDGET("fmhpc.fmhpbar.lbexpcountc");
-	m_pPetFace= RTW_WIDGET("fmhpc.lbpartface");
-	m_hp	= RTW_WIDGET("fmhpc.fmhpbar.lbhpcountc");
-	m_mp    = RTW_WIDGET("fmhpc.fmhpbar.lbmpcountc");
-	m_hpBar  = RTW_WIDGET_T(RtwProgressBar,"fmhpc.fmhpbar.barhpc");
-	m_mpBar  = RTW_WIDGET_T(RtwProgressBar,"fmhpc.fmhpbar.barmpc");
-	m_expBar = RTW_WIDGET_T(RtwProgressBar,"fmhpc.fmhpbar.barexpc");
+	m_name    = LOAD_UI("fmhpc.lblvtc");
+	m_lev     = LOAD_UI("fmhpc.lblvc");
+	m_expRate = LOAD_UI("fmhpc.fmhpbar.lbexpcountc");
+	m_pPetFace= LOAD_UI("fmhpc.lbpartface");
+	m_hp	= LOAD_UI("fmhpc.fmhpbar.lbhpcountc");
+	m_mp    = LOAD_UI("fmhpc.fmhpbar.lbmpcountc");
+	m_hpBar  = LOAD_UI_T(RtwProgressBar,"fmhpc.fmhpbar.barhpc");
+	m_mpBar  = LOAD_UI_T(RtwProgressBar,"fmhpc.fmhpbar.barmpc");
+	m_expBar = LOAD_UI_T(RtwProgressBar,"fmhpc.fmhpbar.barexpc");
 
 	m_form->EvLClick += RTW_CALLBACK(this, UIFormPetSimple, OnLClickUI);
 	m_formHp->EvLClick += RTW_CALLBACK(this, UIFormPetSimple, OnLClickUI);
@@ -953,29 +953,29 @@ void UIFormCharSimple::OnTimerOK(void*, void*)
 
 bool UIFormCharSimple::Init()
 {
-	m_form = RTW_WIDGET("fmhp");
+	m_form = LOAD_UI("fmhp");
 	if(m_form)
 		m_bValid = true;
 	else
 		m_bValid = false;
 
-	m_name    = RTW_WIDGET("fmhp.lbname");
-	m_lev     = RTW_WIDGET("fmhp.lblv");
-	m_PlayerImage = RTW_WIDGET("fmhp.lbpicrole");
-	m_expRate = RTW_WIDGET("fmhotkey.lbexpcount"); //change by 李泽华 2010.05.05
-	m_hp	= RTW_WIDGET("fmhp.lbhpcount");
-	m_mp    = RTW_WIDGET("fmhp.lbmpcount");
-	m_ep    = RTW_WIDGET("fmhp.lbnpcount");
+	m_name    = LOAD_UI("fmhp.lbname");
+	m_lev     = LOAD_UI("fmhp.lblv");
+	m_PlayerImage = LOAD_UI("fmhp.lbpicrole");
+	m_expRate = LOAD_UI("fmhotkey.lbexpcount"); //change by 李泽华 2010.05.05
+	m_hp	= LOAD_UI("fmhp.lbhpcount");
+	m_mp    = LOAD_UI("fmhp.lbmpcount");
+	m_ep    = LOAD_UI("fmhp.lbnpcount");
 
-	m_hpBar  = RTW_WIDGET_T(RtwProgressBar,"fmhp.barhp");
-	m_mpBar  = RTW_WIDGET_T(RtwProgressBar,"fmhp.barmp");
-	m_expBar = RTW_WIDGET_T(RtwProgressBar,"fmhotkey.barexp");
-	m_epBar  = RTW_WIDGET_T(RtwProgressBar,"fmhp.barnp");
+	m_hpBar  = LOAD_UI_T(RtwProgressBar,"fmhp.barhp");
+	m_mpBar  = LOAD_UI_T(RtwProgressBar,"fmhp.barmp");
+	m_expBar = LOAD_UI_T(RtwProgressBar,"fmhotkey.barexp");
+	m_epBar  = LOAD_UI_T(RtwProgressBar,"fmhp.barnp");
 
 // 	ldr123 能量条new
-	m_fmPower		=	RTW_WIDGET("fmhp.fmPower");
-	m_lblPowerSequence= RTW_WIDGET_T(RtwLabel, "fmhp.fmPower.lblPowerSequence"); 
-	m_lblPowerCucurbit= RTW_WIDGET_T(RtwLabel, "fmhp.fmPower.lblPowerCucurbit"); 
+	m_fmPower		=	LOAD_UI("fmhp.fmPower");
+	m_lblPowerSequence= LOAD_UI_T(RtwLabel, "fmhp.fmPower.lblPowerSequence"); 
+	m_lblPowerCucurbit= LOAD_UI_T(RtwLabel, "fmhp.fmPower.lblPowerCucurbit"); 
 	m_ImageSequence = g_workspace.getImageFactory()->createImageSequence();
 	m_ImageCucurbit = g_workspace.getImageFactory()->createImageSequence();
 
@@ -1026,18 +1026,18 @@ bool UIFormCharSimple::Init()
 	m_fmPower->Show();
 // 	end
 
-	m_dynTaskTrack	= RTW_WIDGET_T(RtwHtmlView, "fmtasktrack.fmtrack.htmltrack");
+	m_dynTaskTrack	= LOAD_UI_T(RtwHtmlView, "fmtasktrack.fmtrack.htmltrack");
 	m_dynTaskTrack->ModifyFlags(0,wfInput);
 	m_dynTaskTrack->ModifyFlags(wfGrabMouse,0);
 	m_dynTaskTrack->SetEnableInput(false);
 	m_dynTaskTrack->EvLClick += RTW_CALLBACK(this, UILayerMain, OnHtmlTask_HtmlHelpView);
 	//任务追踪滚动条
-	m_taskTrackScroll = RTW_WIDGET_T(RtwVScrollBar, "fmtasktrack.scrolltask");
+	m_taskTrackScroll = LOAD_UI_T(RtwVScrollBar, "fmtasktrack.scrolltask");
 	//m_taskTrackScroll->EvMouseMove += RTW_CALLBACK(this, UIFormCharSimple, OnScroll_MouseMove);
 	m_taskTrackScroll->EvScroll += RTW_CALLBACK(this, UIFormCharSimple, OnScroll_TaskTrack);
 
-	RTW_WIDGET("fmtasktrack.btntasktrack")->EvLClick += RTW_CALLBACK(this, UIFormCharSimple, OnClicked_HideTrack);
-	RTW_WIDGET("fmtasktrack.btntasktrack2")->EvLClick += RTW_CALLBACK(this, UIFormCharSimple, OnClicked_ShowTrack);
+	LOAD_UI("fmtasktrack.btntasktrack")->EvLClick += RTW_CALLBACK(this, UIFormCharSimple, OnClicked_HideTrack);
+	LOAD_UI("fmtasktrack.btntasktrack2")->EvLClick += RTW_CALLBACK(this, UIFormCharSimple, OnClicked_ShowTrack);
 	m_form->EvLClick								+=RTW_CALLBACK(this,UIFormCharSimple,OnSetTargetSelf);
 
 	SetTrackVisible(true);
@@ -1403,7 +1403,7 @@ void UIFormCharSimple::SetVisible(bool visible)
  
 bool UIFormCharSimple::IsTrackVisible()
 {
-	if (RTW_WIDGET("fmtasktrack")->IsVisible())
+	if (LOAD_UI("fmtasktrack")->IsVisible())
 	{
 		return true;
 	} 
@@ -1417,20 +1417,20 @@ void UIFormCharSimple::SetTrackVisible(bool bVisible)
 {
 	if (bVisible)
 	{
-		RTW_WIDGET("fmtasktrack")->Show();
+		LOAD_UI("fmtasktrack")->Show();
 	} 
 	else
 	{
-		RTW_WIDGET("fmtasktrack")->Hide();
+		LOAD_UI("fmtasktrack")->Hide();
 	}
 }
 
 void UIFormCharSimple::OnClicked_HideTrack(void*, void*)
 {
 	bShowScroll = false;
-	RTW_WIDGET("fmtasktrack.btntasktrack")->Hide();
-	RTW_WIDGET("fmtasktrack.btntasktrack2")->Show();
-	RTW_WIDGET("fmtasktrack.fmtrack")->Hide();
+	LOAD_UI("fmtasktrack.btntasktrack")->Hide();
+	LOAD_UI("fmtasktrack.btntasktrack2")->Show();
+	LOAD_UI("fmtasktrack.fmtrack")->Hide();
 	if (m_taskTrackScroll->IsVisible())
 	{
 		m_taskTrackScroll->Hide();
@@ -1440,21 +1440,21 @@ void UIFormCharSimple::OnClicked_HideTrack(void*, void*)
 void UIFormCharSimple::OnClicked_ShowTrack(void*, void*)
 {
 	bShowScroll = true;
-	RTW_WIDGET("fmtasktrack.btntasktrack")->Show();
-	RTW_WIDGET("fmtasktrack.btntasktrack2")->Hide();
-	RTW_WIDGET("fmtasktrack.fmtrack")->Show();
+	LOAD_UI("fmtasktrack.btntasktrack")->Show();
+	LOAD_UI("fmtasktrack.btntasktrack2")->Hide();
+	LOAD_UI("fmtasktrack.fmtrack")->Show();
 	//if (m_taskTrackScroll->IsVisible())
 	//{
 	//	m_taskTrackScroll->Show();
 	//}
 
-	//if (RTW_WIDGET("fmtasktrack.fmtrack")->IsVisible())
+	//if (LOAD_UI("fmtasktrack.fmtrack")->IsVisible())
 	//{
-	//	RTW_WIDGET("fmtasktrack.fmtrack")->Hide();
+	//	LOAD_UI("fmtasktrack.fmtrack")->Hide();
 	//} 
 	//else
 	//{
-	//	RTW_WIDGET("fmtasktrack.fmtrack")->Show();
+	//	LOAD_UI("fmtasktrack.fmtrack")->Show();
 	//}
 	//if (m_taskTrackScroll->IsVisible())
 	//{
@@ -1486,7 +1486,7 @@ UIFormMagicWeaponAddMp::~UIFormMagicWeaponAddMp()
 
 bool UIFormMagicWeaponAddMp::Init()
 {
-	m_form = RTW_WIDGET("fmfabaomp");
+	m_form = LOAD_UI("fmfabaomp");
 	if(m_form)
 		m_bValid = true;
 	else
@@ -1494,16 +1494,16 @@ bool UIFormMagicWeaponAddMp::Init()
 
 	m_form->EvHide += RTW_CALLBACK(this, UIFormMagicWeaponAddMp, OnHide);
 
-	m_name    = RTW_WIDGET("fmfabaomp.panfabaomp.lbfabaoname");
-	m_lev     = RTW_WIDGET("fmfabaomp.panfabaomp.lbfabaolev");
-	m_mp      = RTW_WIDGET("fmfabaomp.panfabaomp.lbfabaomp");
-	m_icon    = RTW_WIDGET_T(RtwButton,"fmfabaomp.panfabaomp.btnfabao");
+	m_name    = LOAD_UI("fmfabaomp.panfabaomp.lbfabaoname");
+	m_lev     = LOAD_UI("fmfabaomp.panfabaomp.lbfabaolev");
+	m_mp      = LOAD_UI("fmfabaomp.panfabaomp.lbfabaomp");
+	m_icon    = LOAD_UI_T(RtwButton,"fmfabaomp.panfabaomp.btnfabao");
 
-	m_hostMpBarMsg = RTW_WIDGET("fmfabaomp.lbprimenum");
-	m_mpBarMsg	   = RTW_WIDGET("fmfabaomp.lbmpnum");
+	m_hostMpBarMsg = LOAD_UI("fmfabaomp.lbprimenum");
+	m_mpBarMsg	   = LOAD_UI("fmfabaomp.lbmpnum");
 		
-	m_mpBar		  = RTW_WIDGET_T(RtwProgressBar,"fmfabaomp.barmp");
-	m_hostMpBar   = RTW_WIDGET_T(RtwProgressBar,"fmfabaomp.barprime");
+	m_mpBar		  = LOAD_UI_T(RtwProgressBar,"fmfabaomp.barmp");
+	m_hostMpBar   = LOAD_UI_T(RtwProgressBar,"fmfabaomp.barprime");
 
 	m_mpBar->SetValue(0);
 	m_hostMpBar->SetValue(0);
@@ -1614,37 +1614,37 @@ UIFormMagicWeaponAddEle::~UIFormMagicWeaponAddEle()
 
 bool UIFormMagicWeaponAddEle::Init()
 {
-	m_form = RTW_WIDGET("fmfabao");
+	m_form = LOAD_UI("fmfabao");
 	if(m_form)
 		m_bValid = true;
 	else
 		m_bValid = false;
 
-	RTW_WIDGET("fmfabao")->EvHide += RTW_CALLBACK(this, UIFormMagicWeaponAddEle, OnHide);
-	RTW_WIDGET("fmfabao")->EvShow += RTW_CALLBACK(this, UIFormMagicWeaponAddEle, OnShow);
-	RTW_WIDGET("fmfabao.btnwater")->EvLClick += RTW_CALLBACK(this, UIFormMagicWeaponAddEle, OnClickAddEle);
-	RTW_WIDGET("fmfabao.btnfire")->EvLClick += RTW_CALLBACK(this, UIFormMagicWeaponAddEle, OnClickAddEle);
-	RTW_WIDGET("fmfabao.btnposion")->EvLClick += RTW_CALLBACK(this, UIFormMagicWeaponAddEle, OnClickAddEle);
+	LOAD_UI("fmfabao")->EvHide += RTW_CALLBACK(this, UIFormMagicWeaponAddEle, OnHide);
+	LOAD_UI("fmfabao")->EvShow += RTW_CALLBACK(this, UIFormMagicWeaponAddEle, OnShow);
+	LOAD_UI("fmfabao.btnwater")->EvLClick += RTW_CALLBACK(this, UIFormMagicWeaponAddEle, OnClickAddEle);
+	LOAD_UI("fmfabao.btnfire")->EvLClick += RTW_CALLBACK(this, UIFormMagicWeaponAddEle, OnClickAddEle);
+	LOAD_UI("fmfabao.btnposion")->EvLClick += RTW_CALLBACK(this, UIFormMagicWeaponAddEle, OnClickAddEle);
 
-	m_name					= RTW_WIDGET("fmfabao.panfabao.lbfabaoname");
-	m_icon					= RTW_WIDGET_T(RtwButton,"fmfabao.panfabao.btnfabao");
-	m_lev					= RTW_WIDGET("fmfabao.panfabao.lbfabaolev");
-	m_mp					= RTW_WIDGET("fmfabao.panfabao.lbfabaomp");
-	m_rate[ELEMENT_WATER]   = RTW_WIDGET("fmfabao.lbsucwaternum");
-	m_rate[ELEMENT_FIRE]    = RTW_WIDGET("fmfabao.lbsucfirenum");
-	m_rate[ELEMENT_POISON]  = RTW_WIDGET("fmfabao.lbsucposionnum");
+	m_name					= LOAD_UI("fmfabao.panfabao.lbfabaoname");
+	m_icon					= LOAD_UI_T(RtwButton,"fmfabao.panfabao.btnfabao");
+	m_lev					= LOAD_UI("fmfabao.panfabao.lbfabaolev");
+	m_mp					= LOAD_UI("fmfabao.panfabao.lbfabaomp");
+	m_rate[ELEMENT_WATER]   = LOAD_UI("fmfabao.lbsucwaternum");
+	m_rate[ELEMENT_FIRE]    = LOAD_UI("fmfabao.lbsucfirenum");
+	m_rate[ELEMENT_POISON]  = LOAD_UI("fmfabao.lbsucposionnum");
 
-	m_value[ELEMENT_WATER]   = RTW_WIDGET("fmfabao.lbwaternownum");
-	m_value[ELEMENT_FIRE]    = RTW_WIDGET("fmfabao.lbfirenownum");
-	m_value[ELEMENT_POISON]  = RTW_WIDGET("fmfabao.lbposionnownum");
+	m_value[ELEMENT_WATER]   = LOAD_UI("fmfabao.lbwaternownum");
+	m_value[ELEMENT_FIRE]    = LOAD_UI("fmfabao.lbfirenownum");
+	m_value[ELEMENT_POISON]  = LOAD_UI("fmfabao.lbposionnownum");
 	
-	m_bar[ELEMENT_WATER]  = RTW_WIDGET_T(RtwProgressBar,"fmfabao.barwater");
-	m_bar[ELEMENT_FIRE]   = RTW_WIDGET_T(RtwProgressBar,"fmfabao.barfire");
-	m_bar[ELEMENT_POISON] = RTW_WIDGET_T(RtwProgressBar,"fmfabao.barposion");
+	m_bar[ELEMENT_WATER]  = LOAD_UI_T(RtwProgressBar,"fmfabao.barwater");
+	m_bar[ELEMENT_FIRE]   = LOAD_UI_T(RtwProgressBar,"fmfabao.barfire");
+	m_bar[ELEMENT_POISON] = LOAD_UI_T(RtwProgressBar,"fmfabao.barposion");
 
-	m_cost[ELEMENT_WATER]  = RTW_WIDGET("fmfabao.lbwaterneednum");
-	m_cost[ELEMENT_FIRE]   = RTW_WIDGET("fmfabao.lbfireneednum");
-	m_cost[ELEMENT_POISON] = RTW_WIDGET("fmfabao.lbposionneednum");
+	m_cost[ELEMENT_WATER]  = LOAD_UI("fmfabao.lbwaterneednum");
+	m_cost[ELEMENT_FIRE]   = LOAD_UI("fmfabao.lbfireneednum");
+	m_cost[ELEMENT_POISON] = LOAD_UI("fmfabao.lbposionneednum");
 
 	m_bar[ELEMENT_WATER]->SetValue(0); 
 	m_bar[ELEMENT_FIRE]->SetValue(0);
@@ -1848,16 +1848,16 @@ UIFormRecoverPet::~UIFormRecoverPet()
 
 bool UIFormRecoverPet::Init()
 {
-	m_form = RTW_WIDGET("fmpet");
+	m_form = LOAD_UI("fmpet");
 	if(m_form)
 		m_bValid = true;
 	else
 		m_bValid = false;
 
-	m_cost	= RTW_WIDGET("fmpet.panChange.lbmoney");
-	m_yes   = RTW_WIDGET_T(RtwButton,"fmpet.btnok");
-	m_no    = RTW_WIDGET_T(RtwButton,"fmpet.btncancel");
-	m_icon  = RTW_WIDGET_T(RtwButton,"fmpet.aliasCombpet");
+	m_cost	= LOAD_UI("fmpet.panChange.lbmoney");
+	m_yes   = LOAD_UI_T(RtwButton,"fmpet.btnok");
+	m_no    = LOAD_UI_T(RtwButton,"fmpet.btncancel");
+	m_icon  = LOAD_UI_T(RtwButton,"fmpet.aliasCombpet");
 	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);
 	m_ptrHoverImage->getRenderImage()->eBlendDstFunc = RTGBLEND_ONE;
@@ -2107,22 +2107,22 @@ UIFormClearSkill::~UIFormClearSkill()
 
 bool UIFormClearSkill::Init()
 {
-	m_form = RTW_WIDGET("fmclearsp");
+	m_form = LOAD_UI("fmclearsp");
 	if(m_form)
 		m_bValid = true;
 	else
 		m_bValid = false;
 
-	m_cost	= RTW_WIDGET("fmclearsp.lbmoneynum");
-	m_yes   = RTW_WIDGET_T(RtwButton,"fmclearsp.btnok");
-	m_no    = RTW_WIDGET_T(RtwButton,"fmclearsp.btncancel");
+	m_cost	= LOAD_UI("fmclearsp.lbmoneynum");
+	m_yes   = LOAD_UI_T(RtwButton,"fmclearsp.btnok");
+	m_no    = LOAD_UI_T(RtwButton,"fmclearsp.btncancel");
 
 	m_yes->EvLClick	   += RTW_CALLBACK(this, UIFormClearSkill, OnYes);
 	m_no->EvLClick     += RTW_CALLBACK(this, UIFormClearSkill, OnNo);
 	m_form->EvShow     += RTW_CALLBACK(this, UIFormClearSkill, OnShow);
 	
-	m_leftCnt	= RTW_WIDGET("fmclearsp.lbtimenum");
-	m_usedCnt	= RTW_WIDGET("fmclearsp.lbchangednum");
+	m_leftCnt	= LOAD_UI("fmclearsp.lbtimenum");
+	m_usedCnt	= LOAD_UI("fmclearsp.lbchangednum");
 
 	m_cost->SetText("");
 	SetVisible(false);
@@ -2186,20 +2186,20 @@ void UIFormClearSkill::OnShow(void *,void *)
 UIFormRebirth::UIFormRebirth()
 {
 	guard;
-	m_pFrmThis	= RTW_WIDGET("fmrebirth");
+	m_pFrmThis	= LOAD_UI("fmrebirth");
 
-	m_pLabelNotice  = RTW_WIDGET_T(RtwLabel, "fmrebirth.lbnotice");
-	m_pLabelTimer	= RTW_WIDGET_T(RtwLabel, "fmrebirth.lbtime");
-	m_pBtnPerfect	= RTW_WIDGET_T(RtwButton, "fmrebirth.btperfect");
-	m_pBtnOrigin	= RTW_WIDGET_T(RtwButton, "fmrebirth.btorigin");
-	m_pBtnBackCast	= RTW_WIDGET_T(RtwButton, "fmrebirth.btbackcast");
+	m_pLabelNotice  = LOAD_UI_T(RtwLabel, "fmrebirth.lbnotice");
+	m_pLabelTimer	= LOAD_UI_T(RtwLabel, "fmrebirth.lbtime");
+	m_pBtnPerfect	= LOAD_UI_T(RtwButton, "fmrebirth.btperfect");
+	m_pBtnOrigin	= LOAD_UI_T(RtwButton, "fmrebirth.btorigin");
+	m_pBtnBackCast	= LOAD_UI_T(RtwButton, "fmrebirth.btbackcast");
 
-	//m_gScreenEffect = RTW_WIDGET("fmscreeneffect");
+	//m_gScreenEffect = LOAD_UI("fmscreeneffect");
 	//m_gScreenEffect->SetText("");
 	//m_gScreenEffect->SetBackgroundColor(0xaf000000);
 	//m_gScreenEffect->Hide();
 
-	//RtwButton* pBtnBack = RTW_WIDGET_T(RtwButton, "fmcard.btnback");
+	//RtwButton* pBtnBack = LOAD_UI_T(RtwButton, "fmcard.btnback");
 
 	//m_pTextInput->SetAlphaNumberOnly(true);
 	//m_pTextInput->SetCapsLock(1);
@@ -2251,7 +2251,7 @@ void UIFormRebirth::Show(bool bModal)
 		m_pBtnPerfect->Enable();
 
 	m_pFrmThis->SetFocus();
-	((RtwForm*)RTW_WIDGET("fmrebirth"))->SetShowCloseButton(false);
+	((RtwForm*)LOAD_UI("fmrebirth"))->SetShowCloseButton(false);
  
  /*	RtwRect rc = g_workspace.getViewportRect();
  	m_gScreenEffect->Move(RtwRect(0, 0, rc.getWidth(), rc.getHeight()));

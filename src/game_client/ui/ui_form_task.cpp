@@ -6,124 +6,124 @@
 
 UIFormTask::UIFormTask()
 {
-	m_pFrmThis  = RTW_WIDGET_T(RtwForm,"fmmaintask");
+	m_pFrmThis  = LOAD_UI_T(RtwForm,"fmmaintask");
 	m_pFrmThis->SetMovable(true);
 
-	m_pTree1     = RTW_WIDGET_T(RtwTree,"fmmaintask.fmtask.tabitem.fmcurrenttask.treetask");
+	m_pTree1     = LOAD_UI_T(RtwTree,"fmmaintask.fmtask.tabitem.fmcurrenttask.treetask");
 	m_pTree1->SetBorderpadding(false);
 	m_pTree1->EvSelect	+= RTW_CALLBACK(this, UIFormTask, OnTreeNodeSelect1);
 	m_pTree1->InitItemImage(2, 1, SSize(16, 16), SSize(16, 16));
 
-	m_pTree2     = RTW_WIDGET_T(RtwTree,"fmmaintask.fmtask.tabitem.fmaccepttask.treetask");
+	m_pTree2     = LOAD_UI_T(RtwTree,"fmmaintask.fmtask.tabitem.fmaccepttask.treetask");
 	m_pTree2->SetBorderpadding(false);
 	m_pTree2->EvSelect	+= RTW_CALLBACK(this, UIFormTask, OnTreeNodeSelect2);
 
-	m_pTree3     = RTW_WIDGET_T(RtwTree,"fmmaintask.fmtask.tabitem.fmsharetask.treetask");
+	m_pTree3     = LOAD_UI_T(RtwTree,"fmmaintask.fmtask.tabitem.fmsharetask.treetask");
 	m_pTree3->SetBorderpadding(false);
 	m_pTree3->EvSelect	+= RTW_CALLBACK(this, UIFormTask, OnTreeNodeSelect3);
 
-	m_tab = RTW_WIDGET_T(RtwTab,"fmmaintask.fmtask.tabitem");
+	m_tab = LOAD_UI_T(RtwTab,"fmmaintask.fmtask.tabitem");
 	m_tab->EvChangeSelected += RTW_CALLBACK(this, UIFormTask, ChangeSelectTab);
-	m_taskDesc1 = RTW_WIDGET_T(RtwHtmlView,"fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmhtmldesc.htmldesc");
-	RTW_WIDGET("fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1")->SetAutoScrollV(true);
+	m_taskDesc1 = LOAD_UI_T(RtwHtmlView,"fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmhtmldesc.htmldesc");
+	LOAD_UI("fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1")->SetAutoScrollV(true);
 
 	m_taskDesc1->SetAutoSizeV(true);
 	m_taskDesc1->ModifyFlags(wfGrabMouse,0);
 	m_taskDesc1->SetEnableInput(false);
 	m_taskDesc1->EvLClick += RTW_CALLBACK(this , UILayerMain, OnHtmlTask_HtmlHelpView);
 	//奖励LABLE
-	m_LableReward = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.lbprizetext");
+	m_LableReward = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.lbprizetext");
 	//固定奖励
-	m_formFix = RTW_WIDGET_T(RtwForm, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward");
-	m_FixLable1 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward1");
-	m_LableImage1 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward1.lbicon1");
+	m_formFix = LOAD_UI_T(RtwForm, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward");
+	m_FixLable1 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward1");
+	m_LableImage1 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward1.lbicon1");
 	m_LableImage1->ModifyFlag(wfGrabMouse|wfMouseMove|wfHint,0);
 	m_LableImage1->EvHint += RTW_CALLBACK(this, UIFormTask, OnShowHintText);
-	m_LableText1 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward1.lbcenter.lbtext1");
-	m_FixLable2 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward2");
-	m_LableImage2 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward2.lbicon2");
-	m_LableText2 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward2.lbcenter.lbtext2");
-	m_FixLable3 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward3");
-	m_LableImage3 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward3.lbicon3");
-	m_LableText3 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward3.lbcenter.lbtext3");
-	m_FixLable4 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward4");
-	m_LableImage4 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward4.lbicon4");
-	m_LableText4 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward4.lbcenter.lbtext4");
+	m_LableText1 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward1.lbcenter.lbtext1");
+	m_FixLable2 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward2");
+	m_LableImage2 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward2.lbicon2");
+	m_LableText2 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward2.lbcenter.lbtext2");
+	m_FixLable3 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward3");
+	m_LableImage3 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward3.lbicon3");
+	m_LableText3 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward3.lbcenter.lbtext3");
+	m_FixLable4 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward4");
+	m_LableImage4 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward4.lbicon4");
+	m_LableText4 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.lbreward4.lbcenter.lbtext4");
 	//固定奖励道具
-	m_formFixItem = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall");
-	m_FixItem1 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem1");
-	m_ItemImage1 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem1.fmicon.btnicon");
+	m_formFixItem = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall");
+	m_FixItem1 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem1");
+	m_ItemImage1 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem1.fmicon.btnicon");
 	m_ItemImage1->ModifyFlag(wfGrabMouse|wfMouseMove|wfHint,0);
 	m_ItemImage1->EvHint += RTW_CALLBACK(this, UIFormTask, OnShowHintText);
-	m_ItemText1 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem1.lbtext");
-	m_FixItem2 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem2");
-	m_ItemImage2 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem2.fmicon.btnicon");
-	m_ItemText2 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem2.lbtext");
-	m_FixItem3 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem3");
-	m_ItemImage3 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem3.fmicon.btnicon");
-	m_ItemText3 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem3.lbtext");
-	m_FixItem4 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem4");
-	m_ItemImage4 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem4.fmicon.btnicon");
-	m_ItemText4 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem4.lbtext");
+	m_ItemText1 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem1.lbtext");
+	m_FixItem2 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem2");
+	m_ItemImage2 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem2.fmicon.btnicon");
+	m_ItemText2 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem2.lbtext");
+	m_FixItem3 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem3");
+	m_ItemImage3 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem3.fmicon.btnicon");
+	m_ItemText3 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem3.lbtext");
+	m_FixItem4 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem4");
+	m_ItemImage4 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem4.fmicon.btnicon");
+	m_ItemText4 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmfixreward.fmitemall.fmitem4.lbtext");
 	//随机奖励道具
-	m_formRandom = RTW_WIDGET_T(RtwForm, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward");
-	m_RandomItem1 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem1");
-	m_RandomImage1 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem1.fmicon.btnicon");
+	m_formRandom = LOAD_UI_T(RtwForm, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward");
+	m_RandomItem1 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem1");
+	m_RandomImage1 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem1.fmicon.btnicon");
  	m_RandomImage1->ModifyFlag(wfGrabMouse|wfMouseMove|wfHint,0);
 	m_RandomImage1->EvHint += RTW_CALLBACK(this, UIFormTask, OnShowHintText);
 	m_RandomImage1->EvLClick += RTW_CALLBACK(this, UIFormTask, OnShowHintText);
-	m_RandomText1 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem1.lbtext");
-	m_RandomItem2 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem2");
-	m_RandomImage2 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem2.fmicon.btnicon");
+	m_RandomText1 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem1.lbtext");
+	m_RandomItem2 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem2");
+	m_RandomImage2 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem2.fmicon.btnicon");
 	m_RandomImage2->ModifyFlag(wfGrabMouse|wfMouseMove|wfHint,0);
 	m_RandomImage2->EvHint += RTW_CALLBACK(this, UIFormTask, OnShowHintText);
 	m_RandomImage2->EvLClick += RTW_CALLBACK(this, UIFormTask, OnShowHintText);
-	m_RandomText2 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem2.lbtext");
-	m_RandomItem3 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem3");
-	m_RandomImage3 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem3.fmicon.btnicon");
-	m_RandomText3 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem3.lbtext");
-	m_RandomItem4 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem4");
-	m_RandomImage4 = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem4.fmicon.btnicon");
-	m_RandomText4 = RTW_WIDGET_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem4.lbtext");
+	m_RandomText2 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem2.lbtext");
+	m_RandomItem3 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem3");
+	m_RandomImage3 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem3.fmicon.btnicon");
+	m_RandomText3 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem3.lbtext");
+	m_RandomItem4 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem4");
+	m_RandomImage4 = LOAD_UI_T(RtwButton, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem4.fmicon.btnicon");
+	m_RandomText4 = LOAD_UI_T(RtwLabel, "fmmaintask.fmtask.tabitem.fmcurrenttask.fmtask1.fmrandomreward.fmitem4.lbtext");
 
-	m_taskDesc2 = RTW_WIDGET_T(RtwHtmlView,"fmmaintask.fmtask.tabitem.fmaccepttask.fmtask2.fmhtmlaccept.htmlaccept");
+	m_taskDesc2 = LOAD_UI_T(RtwHtmlView,"fmmaintask.fmtask.tabitem.fmaccepttask.fmtask2.fmhtmlaccept.htmlaccept");
 	m_taskDesc2->ModifyFlags(wfGrabMouse,0);
 	m_taskDesc2->SetEnableInput(false);
 	m_taskDesc2->EvLClick += RTW_CALLBACK(this , UILayerMain, OnHtmlTask_HtmlHelpView);
-	m_taskDesc3 = RTW_WIDGET_T(RtwHtmlView,"fmmaintask.fmtask.tabitem.fmsharetask.fmtask3.fmhtmlshare.htmlshare");
+	m_taskDesc3 = LOAD_UI_T(RtwHtmlView,"fmmaintask.fmtask.tabitem.fmsharetask.fmtask3.fmhtmlshare.htmlshare");
 	m_taskDesc3->ModifyFlags(wfGrabMouse,0);
 	m_taskDesc3->SetEnableInput(false);
 	m_taskDesc3->EvLClick += RTW_CALLBACK(this , UILayerMain, OnHtmlTask_HtmlHelpView);
 
-	m_Close		= RTW_WIDGET_T(RtwButton, "fmmaintask.$hide");
+	m_Close		= LOAD_UI_T(RtwButton, "fmmaintask.$hide");
 	m_Close->EvLClick	  += RTW_CALLBACK(this, UIFormTask, OnHide);
 
 	//任务追踪
-	RTW_WIDGET("fmmaintask.fmtaskbtn1.cktasktrack")->EvLClick += RTW_CALLBACK(this, UIFormTask, OnClickTaskTrack);
-	RTW_WIDGET_T(CUiCheckButton, "fmmaintask.fmtaskbtn1.cktasktrack")->SetChecked(true);
+	LOAD_UI("fmmaintask.fmtaskbtn1.cktasktrack")->EvLClick += RTW_CALLBACK(this, UIFormTask, OnClickTaskTrack);
+	LOAD_UI_T(CUiCheckButton, "fmmaintask.fmtaskbtn1.cktasktrack")->SetChecked(true);
 
-	m_pTaskTrack = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtaskbtn1.btntasktrack");
+	m_pTaskTrack = LOAD_UI_T(RtwButton, "fmmaintask.fmtaskbtn1.btntasktrack");
 	m_pTaskTrack->EvLClick += RTW_CALLBACK(this, UIFormTask, OnClick_TrackTask);
 
 	//任务共享
-	m_pTaskShared = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtaskbtn1.btnsharetask");
+	m_pTaskShared = LOAD_UI_T(RtwButton, "fmmaintask.fmtaskbtn1.btnsharetask");
 	m_pTaskShared->EvLClick += RTW_CALLBACK(this, UIFormTask, OnClicked_ShareTask);
 
-	m_pTaskCancel = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtaskbtn1.btncanceltask");
+	m_pTaskCancel = LOAD_UI_T(RtwButton, "fmmaintask.fmtaskbtn1.btncanceltask");
 	m_pTaskCancel->EvLClick += RTW_CALLBACK(this, UIFormTask, OnClickCancelTask);
 
 	//任务共享面板接受取消
-	m_pTaskAccept = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtaskbtn3.btnaccept");
+	m_pTaskAccept = LOAD_UI_T(RtwButton, "fmmaintask.fmtaskbtn3.btnaccept");
 	m_pTaskAccept->EvLClick += RTW_CALLBACK(this, UIFormTask, OnClicked_AcceptShareTask);
 
-	m_pSharedCancel = RTW_WIDGET_T(RtwButton, "fmmaintask.fmtaskbtn3.btncancel");
+	m_pSharedCancel = LOAD_UI_T(RtwButton, "fmmaintask.fmtaskbtn3.btncancel");
 
 	//关闭按钮
-	RTW_WIDGET("fmmaintask.fmtaskbtn1.btnclose")->EvLClick += RTW_CALLBACK(this, UIFormTask, OnTaskClose);
-	RTW_WIDGET("fmmaintask.fmtaskbtn2.btnclose")->EvLClick += RTW_CALLBACK(this, UIFormTask, OnTaskClose);
-	RTW_WIDGET("fmmaintask.fmtaskbtn3.btnclose")->EvLClick += RTW_CALLBACK(this, UIFormTask, OnTaskClose);
+	LOAD_UI("fmmaintask.fmtaskbtn1.btnclose")->EvLClick += RTW_CALLBACK(this, UIFormTask, OnTaskClose);
+	LOAD_UI("fmmaintask.fmtaskbtn2.btnclose")->EvLClick += RTW_CALLBACK(this, UIFormTask, OnTaskClose);
+	LOAD_UI("fmmaintask.fmtaskbtn3.btnclose")->EvLClick += RTW_CALLBACK(this, UIFormTask, OnTaskClose);
 
-	RTW_WIDGET("fmmaintask.fmtaskbtn1")->Show();
+	LOAD_UI("fmmaintask.fmtaskbtn1")->Show();
 
 	m_LastTaskId1 = 0;
 	m_LastTaskId2 = 0;
@@ -794,11 +794,11 @@ void UIFormTask::OnTreeNodeSelect1(RtwWidget* pSender, RtwEventDelegate* pEvent)
 	{
 		if (desc->m_bShare)
 		{
-			RTW_WIDGET("fmmaintask.fmtaskbtn1.btnsharetask")->Enable();
+			LOAD_UI("fmmaintask.fmtaskbtn1.btnsharetask")->Enable();
 		}
 		else
 		{
-			RTW_WIDGET("fmmaintask.fmtaskbtn1.btnsharetask")->Disable();
+			LOAD_UI("fmmaintask.fmtaskbtn1.btnsharetask")->Disable();
 		}
 	}
 
@@ -950,9 +950,9 @@ void UIFormTask::SetSelectedTaskID1(int taskId)
 	ResizeTaskReward();
 
 	//if (desc->canCancel == 0)
-	//	RTW_WIDGET("fmcharall.tabcharall.fmtask.btndeltask")->Disable();
+	//	LOAD_UI("fmcharall.tabcharall.fmtask.btndeltask")->Disable();
 	//else
-	//	RTW_WIDGET("fmcharall.tabcharall.fmtask.btndeltask")->Enable();
+	//	LOAD_UI("fmcharall.tabcharall.fmtask.btndeltask")->Enable();
 }
 
 void UIFormTask::SetSelectedTaskID2(int taskId)
@@ -1565,47 +1565,47 @@ void UIFormTask::ChangeSelectTab(RtwWidget* pSender, RtwEventDelegate* pEvent)
 	switch(i)
 	{
 	case 0:
-		RTW_WIDGET("fmmaintask.fmtaskbtn1")->Show();
-		if (RTW_WIDGET("fmmaintask.fmtaskbtn2")->IsVisible())
+		LOAD_UI("fmmaintask.fmtaskbtn1")->Show();
+		if (LOAD_UI("fmmaintask.fmtaskbtn2")->IsVisible())
 		{
-			RTW_WIDGET("fmmaintask.fmtaskbtn2")->Hide();
+			LOAD_UI("fmmaintask.fmtaskbtn2")->Hide();
 		}
-		if (RTW_WIDGET("fmmaintask.fmtaskbtn3")->IsVisible())
+		if (LOAD_UI("fmmaintask.fmtaskbtn3")->IsVisible())
 		{
-			RTW_WIDGET("fmmaintask.fmtaskbtn3")->Hide();
+			LOAD_UI("fmmaintask.fmtaskbtn3")->Hide();
 		}
 		break;
 	case 1:
-		RTW_WIDGET("fmmaintask.fmtaskbtn2")->Show();
-		if (RTW_WIDGET("fmmaintask.fmtaskbtn1")->IsVisible())
+		LOAD_UI("fmmaintask.fmtaskbtn2")->Show();
+		if (LOAD_UI("fmmaintask.fmtaskbtn1")->IsVisible())
 		{
-			RTW_WIDGET("fmmaintask.fmtaskbtn1")->Hide();
+			LOAD_UI("fmmaintask.fmtaskbtn1")->Hide();
 		}
-		if (RTW_WIDGET("fmmaintask.fmtaskbtn3")->IsVisible())
+		if (LOAD_UI("fmmaintask.fmtaskbtn3")->IsVisible())
 		{
-			RTW_WIDGET("fmmaintask.fmtaskbtn3")->Hide();
+			LOAD_UI("fmmaintask.fmtaskbtn3")->Hide();
 		}
 		break;
 	case 2:
-		RTW_WIDGET("fmmaintask.fmtaskbtn3")->Show();
-		if (RTW_WIDGET("fmmaintask.fmtaskbtn1")->IsVisible())
+		LOAD_UI("fmmaintask.fmtaskbtn3")->Show();
+		if (LOAD_UI("fmmaintask.fmtaskbtn1")->IsVisible())
 		{
-			RTW_WIDGET("fmmaintask.fmtaskbtn1")->Hide();
+			LOAD_UI("fmmaintask.fmtaskbtn1")->Hide();
 		}
-		if (RTW_WIDGET("fmmaintask.fmtaskbtn2")->IsVisible())
+		if (LOAD_UI("fmmaintask.fmtaskbtn2")->IsVisible())
 		{
-			RTW_WIDGET("fmmaintask.fmtaskbtn2")->Hide();
+			LOAD_UI("fmmaintask.fmtaskbtn2")->Hide();
 		}
 		break;
 	default:
-		RTW_WIDGET("fmmaintask.fmtaskbtn1")->Show();
-		if (RTW_WIDGET("fmmaintask.fmtaskbtn2")->IsVisible())
+		LOAD_UI("fmmaintask.fmtaskbtn1")->Show();
+		if (LOAD_UI("fmmaintask.fmtaskbtn2")->IsVisible())
 		{
-			RTW_WIDGET("fmmaintask.fmtaskbtn2")->Hide();
+			LOAD_UI("fmmaintask.fmtaskbtn2")->Hide();
 		}
-		if (RTW_WIDGET("fmmaintask.fmtaskbtn3")->IsVisible())
+		if (LOAD_UI("fmmaintask.fmtaskbtn3")->IsVisible())
 		{
-			RTW_WIDGET("fmmaintask.fmtaskbtn3")->Hide();
+			LOAD_UI("fmmaintask.fmtaskbtn3")->Hide();
 		}
 		break;
 	}
@@ -1650,14 +1650,14 @@ void UIFormTask::OnClickCancelTask(RtwWidget *sender,void *)
 
 void UIFormTask::OnClickTaskTrack(RtwWidget *sender, void *)
 {
-	if (RTW_WIDGET_T(CUiCheckButton, "fmmaintask.fmtaskbtn1.cktasktrack")->GetChecked())
+	if (LOAD_UI_T(CUiCheckButton, "fmmaintask.fmtaskbtn1.cktasktrack")->GetChecked())
 	{
-		RTW_WIDGET("fmmaintask.fmtaskbtn1.btntasktrack")->Enable();
+		LOAD_UI("fmmaintask.fmtaskbtn1.btntasktrack")->Enable();
 		g_layerMain->m_formCharSimple->SetCheckTrack(true);
 	} 
 	else
 	{
-		RTW_WIDGET("fmmaintask.fmtaskbtn1.btntasktrack")->Disable();
+		LOAD_UI("fmmaintask.fmtaskbtn1.btntasktrack")->Disable();
 		g_layerMain->m_formCharSimple->SetCheckTrack(false);
 	}
 }

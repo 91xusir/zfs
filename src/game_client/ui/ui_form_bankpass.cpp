@@ -8,16 +8,16 @@ UIFormBankPass::UIFormBankPass()
 
 	m_state = sAddPass;
 
-	m_pFrmThis = RTW_WIDGET("fmbankpass");
-	m_pTitle = RTW_WIDGET("fmbankpass.lbinfo");
-	m_pText1 = RTW_WIDGET("fmbankpass.lbpass1");
-	m_pEdit1 = RTW_WIDGET("fmbankpass.txtpass1");
-	m_pText2 = RTW_WIDGET("fmbankpass.lbpass2");
-	m_pEdit2 = RTW_WIDGET("fmbankpass.txtpass2");
-	m_pText3 = RTW_WIDGET("fmbankpass.lbpass3");
-	m_pEdit3 = RTW_WIDGET("fmbankpass.txtpass3");
-	m_pBtnOK = RTW_WIDGET_T(RtwButton, "fmbankpass.btnok");
-	m_pBtnCancel = RTW_WIDGET_T(RtwButton, "fmbankpass.btnback");
+	m_pFrmThis = LOAD_UI("fmbankpass");
+	m_pTitle = LOAD_UI("fmbankpass.lbinfo");
+	m_pText1 = LOAD_UI("fmbankpass.lbpass1");
+	m_pEdit1 = LOAD_UI("fmbankpass.txtpass1");
+	m_pText2 = LOAD_UI("fmbankpass.lbpass2");
+	m_pEdit2 = LOAD_UI("fmbankpass.txtpass2");
+	m_pText3 = LOAD_UI("fmbankpass.lbpass3");
+	m_pEdit3 = LOAD_UI("fmbankpass.txtpass3");
+	m_pBtnOK = LOAD_UI_T(RtwButton, "fmbankpass.btnok");
+	m_pBtnCancel = LOAD_UI_T(RtwButton, "fmbankpass.btnback");
 
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 

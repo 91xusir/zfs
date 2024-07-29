@@ -5,17 +5,17 @@
 
 UIFormDupe::UIFormDupe()
 {
-	m_pFrmThis  = RTW_WIDGET_T(RtwForm,"fmdupetask");
+	m_pFrmThis  = LOAD_UI_T(RtwForm,"fmdupetask");
 	m_pFrmThis->SetMovable(true);
-	m_pHtmlView = RTW_WIDGET_T(RtwHtmlView,"fmdupetask.fmdupetaskright.viewright");
+	m_pHtmlView = LOAD_UI_T(RtwHtmlView,"fmdupetask.fmdupetaskright.viewright");
 	m_pHtmlView->SetEnableInput(false);
-	m_Close		= RTW_WIDGET_T(RtwButton, "fmdupetask.$hide");
+	m_Close		= LOAD_UI_T(RtwButton, "fmdupetask.$hide");
 	m_Close->EvLClick	  += RTW_CALLBACK(this, UIFormDupe, OnHide);
 	m_pHtmlView->EvAction += RTW_CALLBACK(this , UIFormDupe, OnHtmlAction_HtmlHelpView);
 	m_pHtmlView->EvLClick += RTW_CALLBACK(g_layerMain , UIFormDupe, OnHtmlAction_HtmlHelpView);
-	m_pTree     = RTW_WIDGET_T(RtwTree,"fmdupetask.treelist");
+	m_pTree     = LOAD_UI_T(RtwTree,"fmdupetask.treelist");
 	m_pTree->SetBorderpadding(false);
-	m_pBtnFinishTask = RTW_WIDGET_T(RtwButton, "fmdupetask.btnfinishtask");
+	m_pBtnFinishTask = LOAD_UI_T(RtwButton, "fmdupetask.btnfinishtask");
 
 	m_pTree->EvSelect	+= RTW_CALLBACK(this, UIFormDupe, OnTreeNodeSelect);
 	//m_pFrmThis->EvKey		+= RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);

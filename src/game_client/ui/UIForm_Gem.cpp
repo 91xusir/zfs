@@ -16,10 +16,10 @@
 CUIForm_Gem::CUIForm_Gem(void)
 {
 	guard;
-	m_pFrmThis				= RTW_WIDGET("fmgem");
-	m_plbMoney				= RTW_WIDGET_T(RtwLabel,"fmgem.lbmoney");
-	m_btnOK					= RTW_WIDGET_T(RtwButton,"fmgem.btnok");
-	m_pLbRate				= RTW_WIDGET("fmgem.lbrate");
+	m_pFrmThis				= LOAD_UI("fmgem");
+	m_plbMoney				= LOAD_UI_T(RtwLabel,"fmgem.lbmoney");
+	m_btnOK					= LOAD_UI_T(RtwButton,"fmgem.btnok");
+	m_pLbRate				= LOAD_UI("fmgem.lbrate");
 	m_btnOK->EvLClick		+= RTW_CALLBACK(this,CUIForm_Gem,OnBtnOKDown);
 	m_pFrmThis->ModifyFlags(wfDragClient, 0);
 	m_pFrmThis->EvFocus		+= RTW_CALLBACK(this,CUIForm_Gem,OnGetFocus);
@@ -28,7 +28,7 @@ CUIForm_Gem::CUIForm_Gem(void)
 	for(int i = 0;i< 5;i++)
 	{
 		rt2_sprintf(fullName,"fmgem.pansource.btnmineitem%d",i);
-		m_pBtnItem[i]		= RTW_WIDGET(fullName);
+		m_pBtnItem[i]		= LOAD_UI(fullName);
 	}
 	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);

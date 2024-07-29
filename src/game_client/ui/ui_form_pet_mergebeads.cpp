@@ -7,20 +7,20 @@
 
 UIFormPetMergeBeads::UIFormPetMergeBeads()
 {
-	m_pFmWindow		= RTW_WIDGET_T(RtwForm, "fmmergebeads");
-	m_pFmPetView	= RTW_WIDGET_T(Rtw3DView, "fmmergebeads.fmbaby.fmmianpet");
-	m_pCbPetList	= RTW_WIDGET_T(RtwComboBox, "fmmergebeads.fmbaby.cbtlist1");
-	m_pBtnItem		= RTW_WIDGET_T(RtwButton, "fmmergebeads.fmbaby.btnitem1");
+	m_pFmWindow		= LOAD_UI_T(RtwForm, "fmmergebeads");
+	m_pFmPetView	= LOAD_UI_T(Rtw3DView, "fmmergebeads.fmbaby.fmmianpet");
+	m_pCbPetList	= LOAD_UI_T(RtwComboBox, "fmmergebeads.fmbaby.cbtlist1");
+	m_pBtnItem		= LOAD_UI_T(RtwButton, "fmmergebeads.fmbaby.btnitem1");
 
-	m_pBtnMergeBeads	= RTW_WIDGET_T(RtwButton, "fmmergebeads.fmbaby.btncompose");
-	m_pLbRate		= RTW_WIDGET_T(RtwLabel, "fmmergebeads.fmbaby.lbmoney");
+	m_pBtnMergeBeads	= LOAD_UI_T(RtwButton, "fmmergebeads.fmbaby.btncompose");
+	m_pLbRate		= LOAD_UI_T(RtwLabel, "fmmergebeads.fmbaby.lbmoney");
 
 	m_pFmPetView->EvHide += RTW_CALLBACK(this,UIFormPetMergeBeads,OnHide);
 	char str[128];
 	for (int i=0;i<UIPET_LINKUP_BEADS_NUM;i++)
 	{
 		rt2_sprintf(str,"fmmergebeads.fmbaby.lbJewelry%d",i+1);
-		m_pLbBeads[i]		= RTW_WIDGET_T(RtwLabel, str);
+		m_pLbBeads[i]		= LOAD_UI_T(RtwLabel, str);
 		m_pLbBeads[i]->ModifyFlags(wfHint, 0);
 		m_pLbBeads[i]->SetParam1(&m_pet.params[PET_PARAM_BEADS_1+i]);
 	}

@@ -16,7 +16,7 @@
 
 UIFormItemDecompound::UIFormItemDecompound(void)
 {
-	m_pFrmThis = RTW_WIDGET("fmseparate");
+	m_pFrmThis = LOAD_UI("fmseparate");
 	m_pFrmThis->EvFocus		+= RTW_CALLBACK(this,UIFormItemDecompound,OnGetFocus);
 	m_pFrmThis->EvHide		+= RTW_CALLBACK(this,UIFormItemDecompound,OnHide);
 	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
@@ -24,13 +24,13 @@ UIFormItemDecompound::UIFormItemDecompound(void)
 	m_ptrHoverImage->getRenderImage()->eBlendDstFunc = RTGBLEND_ONE;
 	m_ptrHoverImage->getRenderImage()->eBlendSrcFunc = RTGBLEND_SRCALPHA;
 	m_ptrHoverImage->getRenderImage()->SetBlend(true);
-	m_pDecompoundIcon				= RTW_WIDGET_T(RtwButton, "fmseparate.btntbc1");
+	m_pDecompoundIcon				= LOAD_UI_T(RtwButton, "fmseparate.btntbc1");
 	m_pDecompoundIcon->EvDragEnd	+= RTW_CALLBACK(this, UIFormItemDecompound, OnDragEndDecompound);
 	m_pDecompoundIcon->EvMouseRDown	+= RTW_CALLBACK(this, UIFormItemDecompound, OnMouseRDown);
 	m_pDecompoundIcon->EvHint		+= RTW_CALLBACK(this, UIFormItemDecompound, OnGetHintItemText);
 	((RtwButton*)m_pDecompoundIcon)->SetHoverImage(m_ptrHoverImage);
-	m_pStartDecompound = RTW_WIDGET_T(RtwButton, "fmseparate.btntbc3");
-	m_pClose = RTW_WIDGET_T(RtwButton, "fmseparate.btntbc2");
+	m_pStartDecompound = LOAD_UI_T(RtwButton, "fmseparate.btntbc3");
+	m_pClose = LOAD_UI_T(RtwButton, "fmseparate.btntbc2");
 
 	m_pStartDecompound->EvLClick += RTW_CALLBACK(this, UIFormItemDecompound, StartDecompound);
 	m_pClose->EvLClick += RTW_CALLBACK(this, UIFormItemDecompound, Close);

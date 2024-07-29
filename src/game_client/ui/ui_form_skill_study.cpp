@@ -5,15 +5,15 @@ UIFormSkillStudy::UIFormSkillStudy()
 {
     guard;
 
-    m_pFrmThis = RTW_WIDGET("fmlearn");
-	m_btnClose = RTW_WIDGET_T(RtwButton, "fmlearn.btnclose");
+    m_pFrmThis = LOAD_UI("fmlearn");
+	m_btnClose = LOAD_UI_T(RtwButton, "fmlearn.btnclose");
 	m_btnClose->EvLClick += RTW_CALLBACK(this, UIFormSkillStudy, OnLClickClose);
-	m_pStudyBtn[0] = RTW_WIDGET_T(RtwButton, "fmlearn.fmcontent.fmzoning1.btulearn1");
-	m_pStudyBtn[1] = RTW_WIDGET_T(RtwButton, "fmlearn.fmcontent.fmzoning1.btulearn2");
-	m_pStudyBtn[2] = RTW_WIDGET_T(RtwButton, "fmlearn.fmcontent.fmzoning1.btulearn3");
-	m_pStudyBtn[3] = RTW_WIDGET_T(RtwButton, "fmlearn.fmcontent.fmzoning2.btulearn1");
-	m_pStudyBtn[4] = RTW_WIDGET_T(RtwButton, "fmlearn.fmcontent.fmzoning2.btulearn2");
-	m_pStudyBtn[5] = RTW_WIDGET_T(RtwButton, "fmlearn.fmcontent.fmzoning2.btulearn3");
+	m_pStudyBtn[0] = LOAD_UI_T(RtwButton, "fmlearn.fmcontent.fmzoning1.btulearn1");
+	m_pStudyBtn[1] = LOAD_UI_T(RtwButton, "fmlearn.fmcontent.fmzoning1.btulearn2");
+	m_pStudyBtn[2] = LOAD_UI_T(RtwButton, "fmlearn.fmcontent.fmzoning1.btulearn3");
+	m_pStudyBtn[3] = LOAD_UI_T(RtwButton, "fmlearn.fmcontent.fmzoning2.btulearn1");
+	m_pStudyBtn[4] = LOAD_UI_T(RtwButton, "fmlearn.fmcontent.fmzoning2.btulearn2");
+	m_pStudyBtn[5] = LOAD_UI_T(RtwButton, "fmlearn.fmcontent.fmzoning2.btulearn3");
 
 	for(int i=0;i<6;i++)
 	{

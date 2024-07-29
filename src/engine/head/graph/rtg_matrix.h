@@ -126,6 +126,10 @@ public:
         case 1 : return (RtgVertex3*)&_10; break;
         case 2 : return (RtgVertex3*)&_20; break;
         case 3 : return (RtgVertex3*)&_30; break;
+        default:
+            // 处理无效的_row值
+            RTASSERT(false);  // 触发断言，表明程序逻辑错误
+            return nullptr;   // 返回一个空指针作为占位符
         }
     }
 
