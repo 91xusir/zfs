@@ -3680,7 +3680,7 @@ void GcActor::OnAttackEvent(SAttack* pAttack)
 
 	CRT_ActorInstance* pInstS, *pInstT;
 	GcActor* pTarget;
-	RtgMatrix12* pMat;
+	//RtgMatrix12* pMat;
 	RtgVertex3 vPos, TargetVertex3;
 	char cTmp128[128];
 	CBeelineMissile* pMissile;
