@@ -1,4 +1,4 @@
-#include "gc_include.h"
+#include "uimain.h"
 
 // 定义 LoadUI 函数，根据控件名称加载控件
 RtwWidget* LoadUI(const char* szName)

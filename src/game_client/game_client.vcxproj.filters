@@ -169,12 +169,6 @@
     <Filter Include="refactor\ui_login">
       <UniqueIdentifier>{15604f31-eb3c-4b19-b468-4c51cda45bc4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="refactor\preUtils">
-      <UniqueIdentifier>{51a62569-c5d0-4dd0-8077-48f05ee95332}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="refactor\fps">
-      <UniqueIdentifier>{3caebf2f-d00a-4859-892e-8a529b25c958}</UniqueIdentifier>
-    </Filter>
     <Filter Include="other">
       <UniqueIdentifier>{e53ae7c9-1e11-4025-82a0-147fc9a13aac}</UniqueIdentifier>
     </Filter>
@@ -243,6 +237,9 @@
     </Filter>
     <Filter Include="engine_sdk\file_pack\interface">
       <UniqueIdentifier>{a83a4063-3933-413d-a777-8885490eabd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor\utils">
+      <UniqueIdentifier>{51a62569-c5d0-4dd0-8077-48f05ee95332}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1377,14 +1374,17 @@
     <ClInclude Include="game\NesClient.h">
       <Filter>frame\nes</Filter>
     </ClInclude>
-    <ClInclude Include="gc_fps.h">
-      <Filter>refactor\fps</Filter>
-    </ClInclude>
     <ClInclude Include="preLog.h">
-      <Filter>refactor\preUtils</Filter>
+      <Filter>refactor\utils</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>other</Filter>
+    </ClInclude>
+    <ClInclude Include="lyyUtils.h">
+      <Filter>refactor\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="fpsLimit.h">
+      <Filter>refactor\utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -2008,10 +2008,7 @@
     <ClCompile Include="frame\gc_cursor.cpp">
       <Filter>frame\resource</Filter>
     </ClCompile>
-    <ClCompile Include="gc_fps.cpp">
-      <Filter>refactor\fps</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\ui_layer_server.cpp">
+    <ClCompile Include="ui\ui_login_serverList.cpp">
       <Filter>refactor\ui_login</Filter>
     </ClCompile>
     <ClCompile Include="iob_func.cpp">
@@ -2019,6 +2016,9 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>other</Filter>
+    </ClCompile>
+    <ClCompile Include="fpsLimit.cpp">
+      <Filter>refactor\utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -2,10 +2,10 @@
 
 #ifndef GC_BASE_ACTOR_H
 #define GC_BASE_ACTOR_H
-#include "game_states_machine.h"
+//#include "game_states_machine.h"
 #include "gc_actor_graph.h"
 #include "scene/rts_path_find.h"
-#include "gc_player_items.h"
+//#include "gc_player_items.h"
 
 #include <vector>
 #include <unordered_map>
@@ -17,7 +17,7 @@ using EXT_SPACE::unordered_map;
 using std::string;
 using std::list;
 
-#include "character/actor.h"
+//#include "character/actor.h"
 
 class GcActor;
 struct SActor;

@@ -13,262 +13,216 @@ WidgetÃû×Ö¸ñÊ½Îª "[¸¸Ç×Ãû×Ö.]×Ô¼ºÃû×Ö" Ä¿Ç°Ö»Ö§³ÖÔö¼Ó¸¸Ç×Ãû×Ö£¬²»Ö§³Ö¼õ£¬Ö÷ÒªÊÇ¿
 */
 
 unsigned long dwCurrentTime = 0;
-std::string ui::g_WidgetTypeShortName[] = 
-{
-	"nav",
-	"unk",
-	"wgt",
-	"lyr",
-	"lab",
-	"btn",
-	"frm",
-	"edt",
-	"sbv",
-	"sbh",
-	"lst",
-	"pgb",
-	"cmb",
-	"tab",
-	"chk",
-	"tre",
-	"mnu",
-	"mfm"
-};
+std::string   ui::g_WidgetTypeShortName[] = {"nav", "unk", "wgt", "lyr", "lab", "btn",
+                                             "frm", "edt", "sbv", "sbh", "lst", "pgb",
+                                             "cmb", "tab", "chk", "tre", "mnu", "mfm"};
 
-std::string ui::g_WidgetTypeName[] = 
-{
-	"NotAva",
-	"Unknown",
-	"Widget",
-	"Layer",
-	"Label",
-	"Button",
-	"Form",
-	"EditBox",
-	"ScrollBarV",
-	"ScrollBarH",
-	"ListBox",
-	"ProgressBar",
-	"ComboBox",
-	"TabCtrl",
-	"CheckButton",
-	"Tree",
-	"PopupMenu",
-	"MediaFrame",
-	"AliasButton",
-	"HtmlView",
-	"ChatInputBox",
-	"ChatBox",
-	"Hud",
-	"D3DView",
-	"Count",
- 	"Column"
-};
+std::string ui::g_WidgetTypeName[] = {
+    "NotAva",      "Unknown",  "Widget",       "Layer",      "Label",     "Button",
+    "Form",        "EditBox",  "ScrollBarV",   "ScrollBarH", "ListBox",   "ProgressBar",
+    "ComboBox",    "TabCtrl",  "CheckButton",  "Tree",       "PopupMenu", "MediaFrame",
+    "AliasButton", "HtmlView", "ChatInputBox", "ChatBox",    "Hud",       "D3DView",
+    "Count",       "Column"};
 
 RT_IMPLEMENT_DYNAMIC(RtwRefObject, RtObject, 0, "ui")
+
 //ÊÍ·ÅÕýÔÚ±»Ê¹ÓÃµÄ×é¼þ
-void RtwRefObject::drop()
-{
-	if (m_bIsDestroying)
-		return;
+void RtwRefObject::drop() {
+    if (m_bIsDestroying)
+        return;
 
-	if (m_RefCounter<=0) //ÒýÓÃ¼ÆÊýÒÑ¾­Îª0£¬´íÎóµÄÊ¹ÓÃÁËÒýÓÃ¼ÆÊý
-	{
- 		UI_CHECKEX("[UI] ´íÎóµÄÊ¹ÓÃÁËÒýÓÃ¼ÆÊý£¬»òÕßUiObjectÒÑ¾­±»ÊÍ·Å");
-		return;
-	}
+    if (m_RefCounter <= 0)  //ÒýÓÃ¼ÆÊýÒÑ¾­Îª0£¬´íÎóµÄÊ¹ÓÃÁËÒýÓÃ¼ÆÊý
+    {
+        UI_CHECKEX("[UI] ´íÎóµÄÊ¹ÓÃÁËÒýÓÃ¼ÆÊý£¬»òÕßUiObjectÒÑ¾­±»ÊÍ·Å");
+        return;
+    }
 
-	m_RefCounter--;			//ÒýÓÃ¼ÆÊý×Ô¼õ
-	if (m_RefCounter==0)	//µ±Îª0Ê±,±íÊ¾¿ÉÒÔÉ¾³ý×é¼þºÍ´Ó×é¼þ¹ÜÀíÆ÷ÀïÌÞ³ýµô±¾×é¼þ
-	{
-		if (IsKindOf(RT_RUNTIME_CLASS(RtwWidget)))
-		{
-			g_workspace.getWidgetFactory()->OnDeleteWidget((RtwWidget*)this);	//É¾³ý¿Ø¼þ
-		}
-		else if (IsKindOf(RT_RUNTIME_CLASS(RtwImage)))		//ÊÇ·ñÊÇÍ¼Æ¬ÀàÐÍ£¿
-		{
-			CUiImageRegister* pkImageRegister = IUiImageFactory::UiImageFactory();
-			pkImageRegister->unregisterImage((RtwImage*)this);	//ËùÓÐµÄÍ¼Æ¬¶¼ÔÚÕâÀï½â³ý¼ÇÂ¼//add by fox
-		}
-		OnBeforeDestroy();
-		RtwRefObject *pThis = this;
-		DEL_ONE(pThis);
-	}
+    m_RefCounter--;         //ÒýÓÃ¼ÆÊý×Ô¼õ
+    if (m_RefCounter == 0)  //µ±Îª0Ê±,±íÊ¾¿ÉÒÔÉ¾³ý×é¼þºÍ´Ó×é¼þ¹ÜÀíÆ÷ÀïÌÞ³ýµô±¾×é¼þ
+    {
+        if (IsKindOf(RT_RUNTIME_CLASS(RtwWidget))) {
+            g_workspace.getWidgetFactory()->OnDeleteWidget((RtwWidget*)this);  //É¾³ý¿Ø¼þ
+        } else if (IsKindOf(RT_RUNTIME_CLASS(RtwImage)))  //ÊÇ·ñÊÇÍ¼Æ¬ÀàÐÍ£¿
+        {
+            CUiImageRegister* pkImageRegister = IUiImageFactory::UiImageFactory();
+            pkImageRegister->unregisterImage(
+                (RtwImage*)this);  //ËùÓÐµÄÍ¼Æ¬¶¼ÔÚÕâÀï½â³ý¼ÇÂ¼//add by fox
+        }
+        OnBeforeDestroy();
+        RtwRefObject* pThis = this;
+        DEL_ONE(pThis);
+    }
 }
 
 //°´ÕÕ¸ñÊ½È¡´óÐ¡
-bool SSize::FromString(const std::string& str)
-{
-	sscanf(str.c_str(), "%d, %d", &width, &height);
-	return true;
+bool SSize::FromString(const std::string& str) {
+    sscanf(str.c_str(), "%d, %d", &width, &height);
+    return true;
 }
 
 //½«sizeÊä³öµ½×Ö·û´®
-std::string SSize::ToString()
-{
-	char szBuf[16] = "\0";
-	rt2_sprintf(szBuf, "%d, %d", width, height);
-	return szBuf;
+std::string SSize::ToString() {
+    char szBuf[16] = "\0";
+    rt2_sprintf(szBuf, "%d, %d", width, height);
+    return szBuf;
 }
 
 //´Ó×Ö·û´®ÖÐ¶ÁÈ¡×ø±êµã
-bool SPoint::FromString(const std::string& str)
-{
-	sscanf(str.c_str(), "%d, %d", &x, &y);
+bool SPoint::FromString(const std::string& str) {
+    sscanf(str.c_str(), "%d, %d", &x, &y);
 
-	return true;
+    return true;
 }
 
 //½«×ø±êµãÊä³öµ½×Ö·û´®
-std::string SPoint::ToString()
-{
-	char szBuf[64] = "\0";
-	rt2_sprintf(szBuf, "%d, %d", x, y);
-	return szBuf;
+std::string SPoint::ToString() {
+    char szBuf[64] = "\0";
+    rt2_sprintf(szBuf, "%d, %d", x, y);
+    return szBuf;
 }
 
 //²ÎÊýÌá¹©µÄ¾ØÐÎÊÇ·ñÔÚ±¾¾ØÐÎÄÚ²¿»ò±¾¾ØÐÎÊÇ·ñÔÚÌá¹©µÄ¾ØÐÎÄÚ²¿
-bool RtwRect::IsIntersect(const RtwRect& rc) const
-{
-	if (rc.left < left && rc.right < left)
-		return false;
-	if (rc.left > right && rc.right > right)
-		return false;
-	if (rc.top < top && rc.bottom < top)
-		return false;
-	if (rc.top > bottom && rc.bottom > bottom)
-		return false;
+bool RtwRect::IsIntersect(const RtwRect& rc) const {
+    if (rc.left < left && rc.right < left)
+        return false;
+    if (rc.left > right && rc.right > right)
+        return false;
+    if (rc.top < top && rc.bottom < top)
+        return false;
+    if (rc.top > bottom && rc.bottom > bottom)
+        return false;
 
-	return true;
+    return true;
 }
 
 //ËõÐ¡±¾ÉíÒÔÊÊÓ¦²ÎÊýÌá¹©¾ØÐÎ
-void RtwRect::ClipBy(const RtwRect& rc)
-{
-	if (rc.left > left)
-	{
-		left = rc.left;
-	}
+void RtwRect::ClipBy(const RtwRect& rc) {
+    if (rc.left > left) {
+        left = rc.left;
+    }
 
-	if (rc.right < right)
-	{
-		right = rc.right;
-	}
+    if (rc.right < right) {
+        right = rc.right;
+    }
 
-	if (rc.top > top)
-	{
-		top = rc.top;
-	}
+    if (rc.top > top) {
+        top = rc.top;
+    }
 
-	if (rc.bottom < bottom)
-	{
-		bottom = rc.bottom;
-	}
+    if (rc.bottom < bottom) {
+        bottom = rc.bottom;
+    }
 }
 
 //ÖØÖÃ´óÐ¡
-void RtwRect::ReSize(const SSize& size)
-{
-	right = left + size.width-1;
-	bottom = top + size.height-1;
+void RtwRect::ReSize(const SSize& size) {
+    right = left + size.width - 1;
+    bottom = top + size.height - 1;
 }
 
 //¾ØÐÎ¶ÔÆë(±¾¾ØÐÎÓë²ÎÊý¾ØÐÎ¶ÔÆë,XAlign,YAlignÎªºáÊú¶ÔÆë·½Ê½)
-void RtwRect::Align(const RtwRect& TargetRect,EAlignment XAlign, EAlignment YAlign)
-{
-	int w = getWidth();
-	int h = getHeight();
+void RtwRect::Align(const RtwRect& TargetRect, EAlignment XAlign, EAlignment YAlign) {
+    int w = getWidth();
+    int h = getHeight();
 
-	switch(XAlign)
-	{
-	case alignNear:		//×ó¶ÔÆë
-		left = TargetRect.left ;
-		break;
-	case alignCenter:	//¾ÓÖÐ¶ÔÆë
-		//left = ( 2*TargetRect.left + TargetRect.getWidth() - w )/2 ;
-		//Î»ÔËËãtest
-		left = ((TargetRect.left<<1) + TargetRect.getWidth() - w)>>1;
-		break;
-	case alignFar:		//·ÇÓÒ¶ÔÆë,Ô´¾ØÐÎµÄ×ó±ß¿¿×ÅÄ¿±ê¾ØÐÎµÄÓÒ±ß
-		left = TargetRect.right - w + 1;
-		break;
-	default:
-		break;
-	}
+    switch (XAlign) {
+        case alignNear:  //×ó¶ÔÆë
+            left = TargetRect.left;
+            break;
+        case alignCenter:  //¾ÓÖÐ¶ÔÆë
+            //left = ( 2*TargetRect.left + TargetRect.getWidth() - w )/2 ;
+            //Î»ÔËËãtest
+            left = ((TargetRect.left << 1) + TargetRect.getWidth() - w) >> 1;
+            break;
+        case alignFar:  //·ÇÓÒ¶ÔÆë,Ô´¾ØÐÎµÄ×ó±ß¿¿×ÅÄ¿±ê¾ØÐÎµÄÓÒ±ß
+            left = TargetRect.right - w + 1;
+            break;
+        default:
+            break;
+    }
 
-	switch(YAlign)
-	{
-	case alignNear:	//¶¥¶ÔÆë
-		top = TargetRect.top ;
-		break;
-	case alignCenter://×ÝÏò¾ÓÖÐ
-		top = ((TargetRect.top<<1) + TargetRect.getHeight() - h )>>1 ;
-		break;
-	case alignFar:	//·ÇµÍ¶ÔÆë, Ô´¾ØÐÎµÄ¶¥¶Ë¿¿×ÅÄ¿±ê¾ØÐÎµÄµ×¶Ë
-		top = TargetRect.bottom - h + 1 ;
-		break;
-	default:
-		break;
-	}
+    switch (YAlign) {
+        case alignNear:  //¶¥¶ÔÆë
+            top = TargetRect.top;
+            break;
+        case alignCenter:  //×ÝÏò¾ÓÖÐ
+            top = ((TargetRect.top << 1) + TargetRect.getHeight() - h) >> 1;
+            break;
+        case alignFar:  //·ÇµÍ¶ÔÆë, Ô´¾ØÐÎµÄ¶¥¶Ë¿¿×ÅÄ¿±ê¾ØÐÎµÄµ×¶Ë
+            top = TargetRect.bottom - h + 1;
+            break;
+        default:
+            break;
+    }
 
-	right = left + w -1;
-	bottom = top + h -1;
+    right = left + w - 1;
+    bottom = top + h - 1;
 }
 
 //À©´ó×Ô¼ºÒÔÊÊÓ¦²ÎÊý¸ø³öµÄ¾ØÐÎ
-void RtwRect::Expand(const RtwRect& rcOther)
-{
-	if (rcOther.left < left)
-	{
-		left = rcOther.left;
-	}
+void RtwRect::Expand(const RtwRect& rcOther) {
+    if (rcOther.left < left) {
+        left = rcOther.left;
+    }
 
-	if (rcOther.right > right)
-	{
-		right = rcOther.right;
-	}
+    if (rcOther.right > right) {
+        right = rcOther.right;
+    }
 
-	if (rcOther.top < top)
-	{
-		top = rcOther.top;
-	}
+    if (rcOther.top < top) {
+        top = rcOther.top;
+    }
 
-	if (rcOther.bottom > bottom)
-	{
-		bottom = rcOther.bottom;
-	}
+    if (rcOther.bottom > bottom) {
+        bottom = rcOther.bottom;
+    }
 }
 
-//lyymark 1.UI.XML.RtwRect.FromString ´Óxml×Ö·û´®³é³ö¾ØÐÎ 
+//lyymark 1.UI.XML.RtwRect.FromString ´Óxml×Ö·û´®³é³ö¾ØÐÎ
 //  ×ªÎª (x,y,width,height)Ä£Ê½ ÕâÀïÎª (x1,y1,x2,y2)Ä£Ê½
-bool RtwRect::FromString(const std::string& str)
-{
-	if (str.empty())
-	{
-		return false;
-	}
-	int width, height;
-	sscanf(str.c_str(), "%d, %d, %d, %d", &left, &top, &width, &height);
+bool RtwRect::FromString(const std::string& str) {
+    if (str.empty()) {
+        return false;
+    }
+    int width, height;
+    sscanf(str.c_str(), "%d, %d, %d, %d", &left, &top, &width, &height);
 
-	right = left + width;
-	bottom = top + height;
-	return true;
+    right = left + width;
+    bottom = top + height;
+    return true;
 }
 
 //½«¾ØÐÎ±£´æµ½×Ö·û´®
-std::string RtwRect::ToString()
-{
-	char szBuf[64] = "\0";
-	rt2_sprintf(szBuf, "%d,%d,%d,%d", left, top, getWidth(), getHeight());
-	return szBuf;
+std::string RtwRect::ToString() {
+    char szBuf[64] = "\0";
+    rt2_sprintf(szBuf, "%d,%d,%d,%d", left, top, getWidth(), getHeight());
+    return szBuf;
 }
 
 //´Ó×Ö·û´®¶ÁÈ¡±ßÔµÖµ
-SMargin::SMargin(const char* str)
-{
-	funguard;
+SMargin::SMargin(const char* str) {
+    funguard;
+    left = right = top = bottom = 0;  // Ä¬ÈÏ³õÊ¼»¯Îª 0
+    if (str && strlen(str) > 0) {
+        const int count = sscanf(str, "%d,%d,%d,%d", &left, &top, &right, &bottom);
 
-	int* data = &left;
+        // ¸ù¾Ý½âÎöµ½µÄÖµµÄÊýÁ¿½øÐÐµ÷Õû
+        switch (count) {
+            case 1:
+                right = top = bottom = left;
+                break;
+            case 2:
+                right = left;
+                bottom = top;
+                break;
+            case 3:
+                bottom = top;
+                break;
+            default:
+                break;
+        }
+    }
+    /*int* data = &left;
 	char* t = strdup(str);
 	int at = 0;
 
@@ -280,84 +234,81 @@ SMargin::SMargin(const char* str)
 
 		token = strtok(NULL, " ,");
 		at++;
-	}
+	}*/
 
-	//ÓÉfree¸ÄÀ´£¬ÕâÀïÔÚ¿Í»§¶ËÆô¶¯Ê±±ÀÀ££¬Ã»°ì·¨Ö®ÏÂ×¢ÊÍ
-	//DEL_ARRAY(t);
+    //ÓÉfree¸ÄÀ´£¬ÕâÀïÔÚ¿Í»§¶ËÆô¶¯Ê±±ÀÀ££¬Ã»°ì·¨Ö®ÏÂ×¢ÊÍ
+    //DEL_ARRAY(t);
 
-	switch(at)
+    /*switch(at)
 	{
 	case 0:	left = right = top = bottom = 0;	break;
 	case 1: right = top = bottom = left;		break;
 	case 2: right = left; bottom = top;			break;
 	case 3: bottom = top;						break;
 	default:									break;
-	}
+	}*/
 
-	fununguard;
+    fununguard;
 }
 
 //½âÎö³¬Á´½Ó×Ö·û´®
-bool SHyperLink::FromString(const std::string& str)
-{
-	//static char cTmp1024[1024];
-	S_MEMDEF(cTmp1024, 1024)
-	S_MEMPROTECTOR(cTmp1024, 1024, bMP)
-	char* token = NULL;
-	char sep[] = ":";
-	UI_ENSURE_B(str.size() < 1024);
+bool SHyperLink::FromString(const std::string& str) {
+    //static char cTmp1024[1024];
+    S_MEMDEF(cTmp1024, 1024)
+    S_MEMPROTECTOR(cTmp1024, 1024, bMP)
+    char* token = NULL;
+    char  sep[] = ":";
+    UI_ENSURE_B(str.size() < 1024);
 
-	rt2_strcpy(cTmp1024, str.c_str());
-	token = strtok(cTmp1024, sep);
-	UI_ENSURE_B(token);
-	if (strcmp(token, "File") == 0)
-		Type = hlinkFile;
-	else if (strcmp(token, "Widget") == 0)
-		Type = hlinkWidget;
-	else if (strcmp(token, "String") == 0)
-		Type = hlinkString;
-	else if (strcmp(token,"rs") == 0)
-		Type = hlinkRServer;
-	else if (strcmp(token,"client") == 0)
-		Type = hlinkClient;
-	else if ((strncmp(token,"task",4) == 0) || (strncmp(token,"zhou",4) == 0) || (strncmp(token,"shang",5) == 0))
-		Type = hlinkNpc;
-	else if (strcmp(token,"url") == 0)
-		Type = hlinkURL;
-	else  
-		Type = hlinkInvalid;
+    rt2_strcpy(cTmp1024, str.c_str());
+    token = strtok(cTmp1024, sep);
+    UI_ENSURE_B(token);
+    if (strcmp(token, "File") == 0)
+        Type = hlinkFile;
+    else if (strcmp(token, "Widget") == 0)
+        Type = hlinkWidget;
+    else if (strcmp(token, "String") == 0)
+        Type = hlinkString;
+    else if (strcmp(token, "rs") == 0)
+        Type = hlinkRServer;
+    else if (strcmp(token, "client") == 0)
+        Type = hlinkClient;
+    else if ((strncmp(token, "task", 4) == 0) || (strncmp(token, "zhou", 4) == 0) ||
+             (strncmp(token, "shang", 5) == 0))
+        Type = hlinkNpc;
+    else if (strcmp(token, "url") == 0)
+        Type = hlinkURL;
+    else
+        Type = hlinkInvalid;
 
-	if (Type != hlinkNpc)
-	{
-		token = strtok(NULL, sep);
-	}
-	UI_ENSURE_B(token);
-	Text = token;
+    if (Type != hlinkNpc) {
+        token = strtok(NULL, sep);
+    }
+    UI_ENSURE_B(token);
+    Text = token;
 
-	return true;
+    return true;
 }
 
 //½«³¬Á´½Ó±£´æµ½×Ö·û´®
-std::string SHyperLink::ToString()
-{
-	std::string strOut;
-	switch (Type)
-	{
-	case hlinkFile:
-		strOut += "File:";
-		break;
-	case hlinkWidget:
-		strOut += "Widget:";
-		break;
-	case hlinkString:
-		strOut += "String:";
-		break;
-	default:
-		strOut += "Unknown:";
-		break;
-	}
+std::string SHyperLink::ToString() {
+    std::string strOut;
+    switch (Type) {
+        case hlinkFile:
+            strOut += "File:";
+            break;
+        case hlinkWidget:
+            strOut += "Widget:";
+            break;
+        case hlinkString:
+            strOut += "String:";
+            break;
+        default:
+            strOut += "Unknown:";
+            break;
+    }
 
-	strOut += Text;
+    strOut += Text;
 
-	return strOut;
+    return strOut;
 }

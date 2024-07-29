@@ -1272,6 +1272,9 @@ RtwForm* RtwXmlLoader::_Process_Form(RtwWidget* pParent, CUiLayer* pLayer,
     // 所有的子Widget
     UI_ENSURE_B(_ProcessChild_Form(pWidget, NULL, pNode));
 
+    //lyyfix 解决按钮位置不对的问题
+    pWidget->Refresh();
+    //endfix
     pWidget->drop();
     return pWidget;
 }

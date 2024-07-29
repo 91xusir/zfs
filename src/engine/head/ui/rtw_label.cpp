@@ -54,26 +54,28 @@ void RtwLabel::DrawForeground(const RtwRect* pClipRect/* = NULL*/)
 		if( m_bIsUseSystemFont && m_FontType.empty() )
 		{
 			//tim.yang 修改Label字体的大小 
-			RtwFont*  pkFont = NULL;
+			RtwFont* pkFont = g_workspace.getFontManager()->getDefaultFont();
+            ;
+			/*RtwFont*  pkFont = NULL;
 			switch( m_FontSize ) 
 			{
 			default:
-// 			case 12:
+ 			case 12:
 				{
 					pkFont = g_workspace.getFontManager()->getDefaultFont();
 				}
 				break;
-// 			case 14:
-// 				{
-// 					pkFont = g_workspace.getFontManager()->getUISystemFont14();
-// 				}
-// 				break;
-// 			case 16:
-// 				{
-// 					pkFont = g_workspace.getFontManager()->getUISystemFont16();
-// 				}
-// 				break;
-			}
+ 			case 14:
+ 				{
+ 					pkFont = g_workspace.getFontManager()->getUISystemFont14();
+ 				}
+ 				break;
+ 			case 16:
+ 				{
+ 					pkFont = g_workspace.getFontManager()->getUISystemFont16();
+ 				}
+ 				break;
+			}*/
 			g_workspace.getFontManager()->DrawString(m_Text, m_rcClient, SETCOLORALPHA(RenderColor, m_Transparency), pkFont,true, m_TextAlign, false, pClipRect );
 			//end
 		}else

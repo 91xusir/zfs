@@ -1085,6 +1085,7 @@ void RtwWidget::AutoHintPosition()
 //自动的hint大小(editbox)
 void RtwWidget::AutoHintSize()
 {
+    //lyytodo
 	return; //Y直接return????
 	if (m_pHint)
 	{

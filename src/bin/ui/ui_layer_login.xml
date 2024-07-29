@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="GBK"?>
 <Ui>
  <Loader Description="ui definition xml file">
-  <File Name="ui_layer_login.xml"/>
+  <File Name="ui/ui_layer_login.xml"/>
   <File Name="ui/ui_form_server.xml"/>
   <File Name="ui/ui_form_setting.xml"/>
  </Loader>
  <Layer DefaultIndex="true" Height="600" Index="1" Name="layworld" Show="true" Width="800">
-  <Import Url="ui/ui_variable.xml"/>
-  <Import Url="ui/ui_template.xml"/>
 
   <Form BorderSize="2" Inherit="VoidTitleBarForm1" Location="388,291,250,155" MouseMove="false" Name="ConfirmBox1" Show="false" Size="250,155" EscapeHide="false">
-   <Label Location="25,15,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
+   <Label Location="25,15,200,75" Multiline="true" Name="lbinfoexit" Text=""/>
    <Button FontSize="12" Inherit="SmallPushButton" Location="97,107,59,19" Name="btnconfirm" Text="确认" TextFont="宋体"/>
   </Form>
   <Form Inherit="VoidTitleBarForm1" Location="388,293,250,155" MouseMove="true" Name="ConfirmBox2" Show="false" EscapeHide="false">
-   <Label Location="25,14,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
+   <Label Location="25,14,200,75" Multiline="true" Name="lbinfoexit" Text=""/>
    <Button FontSize="12" Inherit="SmallPushButton" Location="38,105,59,19" Name="btnconfirm" Text="确认" TextFont="宋体"/>
    <Button FontSize="12" Inherit="SmallPushButton" Location="153,105,59,19" Name="btncancel" Text="取消" TextFont="宋体"/>
   </Form>
@@ -109,97 +107,5 @@
         <Anchor offset="-86,0" point="RIGHT"/>
       </Anchors>
     </Button>
-<!--   
-  <Form Anchors="CENTERV,CENTERH" Location="89,183,579,145" Name="fmlogin" Show="false" EscapeHide="false">
-   <Form Location="183,16,216,29" Name="fmusername" show="true" EscapeHide="false">
-    <Label Inherit="" Location="0,0,35,29" Name="lbusrenameleft" Show="true">
-     <BackgroundImage Blend="true" File="ui/textures/2.tga" Source="291,314,34,28"/>
-    </Label>
-    <Label Inherit="" Location="181,0,35,29" Name="lbusrenameright" Show="true">
-     <BackgroundImage Blend="true" File="ui/textures/2.tga" Source="367,314,34,28"/>
-    </Label>
-    <Label Inherit="" Location="36,0,144,29" Name="lbusrenamecenter" Show="true">
-     <BackgroundImage Blend="true" File="ui/textures/2.tga" Source="326,314,34,28"/>
-    </Label>
-    <EditBox Inherit="NoBorderEditBox" Location="36,6,144,18" Name="txtusername" Show="true"/>
-   </Form>
-   <CheckButton Inherit="CheckButton1" Location="415,21,19,18"  MouseMove="true" Name="chkbutton" Show="true" Sound="ui_softb_bt.wav"/>
-   <Button Location="235,85,110,28" Name="btnlogin" Sound="ui_enterbt.wav">
-    <NormalImage Blend="true" File="ui/textures/3.tga" Source="0,0,109,28"/>
-    <HighlightImage Blend="true" File="ui/textures/3.tga" Source="112,0,108,28"/>
-    <PushedImage Blend="true" File="ui/textures/3.tga" Source="224,0,108,28"/>
-   </Button>
-   <Label Inherit="" Location="0,0,289,145" Name="lbleft" Show="true">
-    <BackgroundImage Blend="true" File="ui/textures/2.tga" Source="0,0,289,145"/>
-   </Label>
-   <Label Inherit="" Location="290,0,289,145" Name="lbright" Show="true">
-    <BackgroundImage Blend="true" File="ui/textures/2.tga" Source="0,148,289,145"/>
-   </Label>
-   <Form Inherit="" Location="183,48,216,29" Name="fmpassword" Show="true" EscapeHide="false">
-    <Label Inherit="" Location="0,0,35,29" Name="lbpasswordleft" Show="true">
-     <BackgroundImage Blend="true" File="ui/textures/2.tga" Source="291,314,34,28"/>
-    </Label>
-    <Label Inherit="" Location="181,0,35,29" Name="lbpasswordright" Show="true">
-     <BackgroundImage Blend="true" File="ui/textures/2.tga" Source="367,314,34,28"/>
-    </Label>
-    <Label Inherit="" Location="36,0,144,29" Name="lbpasswordcenter" Show="true">
-     <BackgroundImage Blend="true" File="ui/textures/2.tga" Source="326,314,34,28"/>
-    </Label>
-    <EditBox Inherit="NoBorderEditBox" Location="36,6,144,18" Name="txtpassword" Password="true" PasswordChar="*" Show="true"/>
-   </Form>
-   <Button Inherit="" Location="415,50,28,25" Name="btnkeyboard" Show="true" Sound="ui_softb_swi.wav">
-    <NormalImage Blend="true" File="ui/textures/2.tga" Source="472,66,26,25"/>
-    <HighlightImage Blend="true" File="ui/textures/2.tga" Source="472,94,26,25"/>
-    <PushedImage Blend="true" File="ui/textures/2.tga" Source="472,122,26,25"/>
-   </Button>
-   <Anchors>
-    <Anchor offset="0,0" point="CENTERV"/>
-    <Anchor offset="0,0" point="CENTERH"/>
-   </Anchors>
-  </Form>
-  <Button Anchor="left,bottom" Disable="" Location="42,630,98,24" Name="btnback" Show="false" Sound="ui_exitbt.wav">
-   <Anchors>
-    <Anchor offset="0,-70" point="BOTTOM"/>
-    <Anchor offset="10,0" point="LEFT"/>
-   </Anchors>
-   <NormalImage Blend="true" File="ui\textures/3.tga" Source="0,60,99,26"/>
-   <HighlightImage Blend="true" File="ui\textures/3.tga" Source="102,60,99,26"/>
-   <PushedImage Blend="true" File="ui\textures/3.tga" Source="204,60,99,26"/>
-  </Button>
-  <!-- <Button Anchor="left,bottom" Disable="" Location="42,672,98,24" Name="btnexit" Show="false" Sound="ui_exitbt.wav"> -->
-   <!-- <Anchors> -->
-    <!-- <Anchor offset="0,-30" point="BOTTOM"/> -->
-    <!-- <Anchor offset="10,0" point="LEFT"/> -->
-   <!-- </Anchors> -->
-   <!-- <NormalImage Blend="true" File="ui\textures/3.tga" Source="0,31,99,26"/> -->
-   <!-- <HighlightImage Blend="true" File="ui\textures/3.tga" Source="102,31,99,26"/> -->
-   <!-- <PushedImage Blend="true" File="ui\textures/3.tga" Source="204,31,99,26"/> -->
-  <!-- </Button> -->
-  <Button Anchor="CENTERV,bottom" Disable="" Location="296,672,80,30" Name="btngetpwd" Show="false" Sound="ui_softb_bt.wav">
-   <Anchors>
-    <Anchor offset="0,-50" point="BOTTOM"/>
-    <Anchor offset="-150,0" point="CENTERV"/>
-   </Anchors>
-   <NormalImage Blend="true" File="ui\textures/3.tga" Source="0,262,80,28"/>
-   <HighlightImage Blend="true" File="ui\textures/3.tga" Source="0,304,80,28"/>
-  </Button>
-  <Button Anchor="CENTERV,bottom" Disable="" Location="490,672,80,30" Name="btnforgetpwd" Show="false" Sound="ui_softb_bt.wav">
-   <Anchors>
-    <Anchor offset="0,-50" point="BOTTOM"/>
-    <Anchor offset="0,0" point="CENTERV"/>
-   </Anchors>
-   <NormalImage Blend="true" File="ui\textures/3.tga" Source="84,262,80,28"/>
-   <HighlightImage Blend="true" File="ui\textures/3.tga" Source="84,304,80,28"/>
-  </Button>
-  <!-- <Button Anchor="CENTERV,bottom" Disable="" Location="685,671,80,30" Name="btncreate" Show="false" Sound="ui_softb_bt.wav"> -->
-   <!-- <Anchors> -->
-    <!-- <Anchor offset="0,-50" point="BOTTOM"/> -->
-    <!-- <Anchor offset="150,0" point="CENTERV"/> -->
-   <!-- </Anchors> -->
-   <!-- <NormalImage Blend="true" File="ui\textures/3.tga" Source="175,262,80,28"/> -->
-   <!-- <HighlightImage Blend="true" File="ui\textures/3.tga" Source="175,304,80,28"/> -->
-  <!-- </Button> -->
-  <Import Url="ui/ui_form_setting.xml"/>
-  <Import Url="ui/ui_form_keyboard.xml"/> -->
  </Layer>
 </Ui>
