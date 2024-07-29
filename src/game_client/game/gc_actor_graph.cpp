@@ -425,7 +425,7 @@ void GcActorGraph::RenderDynamicShadow(RtgDevice &vrDevice)
 	// try clip scene
 	if(!ClipScene(aabb)) return;
    
-	DWORD sVB,sIB;
+	//DWORD sVB,sIB;
 	BYTE *vb,*ib;
 	
 	// update vb
@@ -563,7 +563,7 @@ void GcActorGraph::RenderFloatTexture(RtgDevice &_dev,RtgTextItem* texItem,int a
 	// try clip scene
 	if(!ClipScene(aabb)) return;
 
-	DWORD sVB,sIB;
+	//DWORD sVB,sIB;
 	BYTE *vb,*ib;
 
 	// update vb

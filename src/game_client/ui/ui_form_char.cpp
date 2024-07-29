@@ -21,7 +21,7 @@
 
 
 // UI Task Sort
-static enum ETaskSort
+ enum ETaskSort
 {
 	TaskSort_Name,
 	TaskSort_Level,

@@ -28,14 +28,14 @@ namespace ui {
 #define Real double
 #endif
 
-const Real UI_REAL_PRECISION = 0.000001;
+constexpr Real UI_REAL_PRECISION = 0.000001;
 
 #ifndef REAL_EQUAL
 #define REAL_EQUAL(a, b)                                                                           \
     (((a) - (b) > -UI_REAL_PRECISION) && ((a) - (b) < UI_REAL_PRECISION)) /*是否相等*/
 #endif
 
-const Real UI_PI = 3.1415926535;  //π的值
+constexpr Real UI_PI = 3.1415926535;  //π的值
 
 //设置颜色的alpha值
 #define SETCOLORALPHA(obj, tra) (((RtwPixel)obj).SetAlpha(tra))
@@ -115,7 +115,7 @@ struct SUiTextAlignment {
     EAlignment align : 16;
     EAlignment lineAlign : 16;
 
-    SUiTextAlignment() {
+    SUiTextAlignment(){
         align = alignNear;
         lineAlign = alignCenter;
     }
@@ -624,10 +624,10 @@ struct SRect3D {
     RtwRect s;
     float   z;
 
-    SRect3D() {}
+    SRect3D() noexcept {}
 };
 
-inline bool operator==(const RtwRect& rc1, const RtwRect& rc2) {
+inline bool operator==(const RtwRect& rc1, const RtwRect& rc2) noexcept {
     return (rc1.left == rc2.left && rc1.right == rc2.right && rc1.top == rc2.top &&
             rc1.bottom == rc2.bottom);
 }
@@ -653,7 +653,7 @@ struct SUiAnchor {
     EAnchorPoint RelativePoint;
     SSize        Offset;
 
-    void Reset() {
+    void Reset() noexcept {
         Point = anchorLeft;
         RelativeWidgetName.clear();
         RelativePoint = anchorLeft;
@@ -711,7 +711,13 @@ struct SHyperLink {
         normalColor = hilghtColor = pushedColor = RtwPixel();  // 使用默认构造函数
     }
 
-    void Reset() {
+    // 拷贝构造函数
+    SHyperLink(const SHyperLink& other)
+        : Type(other.Type), childType(other.childType), Text(other.Text),
+          normalColor(other.normalColor), hilghtColor(other.hilghtColor),
+          pushedColor(other.pushedColor), vecParam(other.vecParam) {}
+
+    void Reset() noexcept {
         Type = hlinkInvalid;
         childType = hlinkChildInvalid;
         Text = "";
@@ -719,18 +725,21 @@ struct SHyperLink {
         vecParam.clear();
     }
 
-    SHyperLink& operator=(const SHyperLink& t) {
-        if (this != &t) {  // 防止自赋值
-            Type = t.Type;
-            childType = t.childType;
-            Text = t.Text;
-            normalColor = t.normalColor;
-            hilghtColor = t.hilghtColor;
-            pushedColor = t.pushedColor;
-            vecParam = t.vecParam;  // 直接赋值，避免重复拷贝
+    SHyperLink& operator=(const SHyperLink& other) {
+        if (this != &other) {  // 防止自赋值
+            Type = other.Type;
+            childType = other.childType;
+            Text = other.Text;
+            normalColor = other.normalColor;
+            hilghtColor = other.hilghtColor;
+            pushedColor = other.pushedColor;
+            vecParam = other.vecParam;  // 直接赋值，避免重复拷贝
         }
         return *this;
     }
+
+    // 析构函数
+    ~SHyperLink() {}
 
     bool        FromString(const std::string& str);
     std::string ToString();

@@ -32,28 +32,34 @@
 	<BackgroundImage File="zfs_texture/xxn.tga" Source="0,0,128,149" Blend="true" />
       </Label>
     </Form>
-     <Form Inherit="TitleBarForm" Location="240,20,200,240" Name="lbnewsinfo" Show="true" >
+     <Form Inherit="TitleBarForm" Location="240,20,175,220" Name="lbnewsinfo" Show="true" >
     <CloseButton Show="false"/>
-    	<Label Inherit="" Location="82,4,164,16" Name="lbtitle" Text="游戏公告"/>
-    	<Label Inherit="" Location="18,22,164,16" Name="lbnews1" Text="这里之后可以修改"/>
-    	<Label Inherit="" Location="18,40,164,16" Name="lbnews2" Text="用http库请求后端"/>
-    	<Label Inherit="" Location="18,58,164,16" Name="lbnews3" Text="方便动态修改公告"/>
-    	<Label Inherit="" Location="18,76,164,16" Name="lbnews4" Text="公告4"/>
-    	<Label Inherit="" Location="18,94,164,16" Name="lbnews5" Text="公告5"/>
-    	<Label Inherit="" Location="18,112,164,16" Name="lbnews6" Text="公告6"/>
-    	<Label Inherit="" Location="18,130,164,16" Name="lbnews7" Text="公告7"/>
-    	<Label Inherit="" Location="18,148,164,16" Name="lbnews8" Text="公告8"/>
-    	<Label Inherit="" Location="18,166,164,16" Name="lbnews9" Text="公告9"/>
-    	<Label Inherit="" Location="18,184,164,16" Name="lbnews10" Text="公告10"/>
+    	<Label Inherit="" Location="60,4,164,16" Name="lbtitle" Text="游戏公告"/>
+    	<Label Inherit="" Location="18,22,164,16" Name="lbnews1" Text="天上白玉京，十二楼五城。"/>
+    	<Label Inherit="" Location="18,40,164,16" Name="lbnews2" Text="仙人抚我顶，结发受长生。"/>
+    	<Label Inherit="" Location="18,58,164,16" Name="lbnews3" Text="误逐世间乐，颇穷理乱情。"/>
+    	<Label Inherit="" Location="18,76,164,16" Name="lbnews4"  Text="九十六圣君，浮云挂空名。"/>
+    	<Label Inherit="" Location="18,94,164,16" Name="lbnews5"  Text="天地赌一掷，未能忘战争。"/>
+    	<Label Inherit="" Location="18,112,164,16" Name="lbnews6" Text="试涉霸王略，将期轩冕荣。"/>
+    	<Label Inherit="" Location="18,130,164,16" Name="lbnews7" Text="时命乃大谬，弃之海上行。"/>
+    	<Label Inherit="" Location="18,148,164,16" Name="lbnews8" Text="学剑翻自哂，为文竟何成。"/>
+    	<Label Inherit="" Location="18,166,164,16" Name="lbnews9" Text="剑非万人敌，文窃四海声。"/>
+    	<!-- <Label Inherit="" Location="18,184,164,16" Name="lbnews10"Text="公告10"/> -->
     </Form>
      <Form Inherit="NoTitleBarForm" Location="0,548,1920,52" Name="kaiyuan" Show="true">
-      <Label HyperLink="url:www.baidu.com" Location="200,20,420,50" Name="lbbutton" Text="开源封神 | 正在努力开发中 | https://github.com/reniao69/zfs ">
+      <Label  Location="200,20,420,50" Name="lbbutton" Text="真封神 | 开源版 | 点击查看开发进度 ->">
         <Anchors>
           <Anchor point="CENTERV"/>
           <Anchor offset="0,15" point="BOTTOM"/>
         </Anchors>
       </Label>
-      <Label Inherit="" Location="1135,6,124,44" Name="lbversion" Text="测试预览 0.01版">
+	     <Label HyperLink="url:github.com/reniao69/zfs" Location="250,20,420,50" Name="githubUrl" Text="https://github.com/reniao69/zfs ">
+        <Anchors>
+          <Anchor offset="225,0" point="CENTERV"/>
+          <Anchor offset="0,15" point="BOTTOM"/>
+        </Anchors>
+      </Label>
+      <Label Inherit="" Location="1135,6,124,44" Name="lbversion" Text="测试预览 0.01 版">
         <Anchors>
           <Anchor offset="-20,0" point="RIGHT"/>
           <Anchor offset="0,20" point="BOTTOM"/>
