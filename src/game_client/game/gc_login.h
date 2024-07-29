@@ -95,7 +95,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     void SelectGameWorld(int iIdx);
 
 
-    /// µÇÂ¼ÕËºÅ
+    // µÇÂ¼ÕËºÅ
     void Login(char* szUsername, char* szPassword);
     //·¢ËÍµÇÂ¼ÇëÇó
     void OnNetLogin(int result, const char* szRetStr, short sRetCode, char cPointType, long lPoint);
@@ -250,7 +250,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
 
    public:
     void UpdateCameraPos();
-    void SJDL_UpdateCameraPos();
+    void Lyy_UpdateCameraPos();
     void OnLoading();
     void OnRenderMask(RTGRenderMask mask, float fSecond);
     void UpdateGraphConfig(const char* szName);

@@ -60,13 +60,13 @@
             </Form>
 
             <Form Name="ConfirmBox1" Inherit="VoidTitleBarForm1" Size="200,150" MouseMove="false">
-                <Label Name="lbinfoexit" Location="10,10,152,66" Text="³ÌÐòÉÏ×Ö" Multiline="true" Alignment="center" />
-                <Button Name="btnconfirm" Inherit="PushButton" Location="68,94,64,20" Text="È·ÈÏ" />
+                <Label Name="lbinfoexit" Location="10,10,152,66" Text="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" Multiline="true" Alignment="center" />
+                <Button Name="btnconfirm" Inherit="PushButton" Location="68,94,64,20" Text="È·ï¿½ï¿½" />
             </Form>
             <Form Name="ConfirmBox2" Inherit="VoidTitleBarForm1" Size="200,150" MouseMove="false">
-                <Label Name="lbinfoexit" Location="10,10,152,66" Text="³ÌÐòÉÏ×Ö" Multiline="true" Alignment="center"/>
-                <Button Name="btnconfirm" Inherit="PushButton" Location="44,94,64,20" Text="È·ÈÏ" />
-                <Button Name="btncancel" Inherit="PushButton" Location="114,94,64,20" Text="È¡Ïû" />
+                <Label Name="lbinfoexit" Location="10,10,152,66" Text="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" Multiline="true" Alignment="center"/>
+                <Button Name="btnconfirm" Inherit="PushButton" Location="44,94,64,20" Text="È·ï¿½ï¿½" />
+                <Button Name="btncancel" Inherit="PushButton" Location="114,94,64,20" Text="È¡ï¿½ï¿½" />
             </Form>
             <!-- Button -->
             <Button Name="NewButton1">
@@ -93,7 +93,7 @@
                 <PushedImage File="zfs_texture/gw_b2.tga" Source="0,6,128,24"/>
             </Button>
 
-            <Button Name="PushButton" Text="PushButton" Sound="ui_softb_bt.wav" TextFont="ËÎÌå">
+            <Button Name="PushButton" Text="PushButton" Sound="ui_softb_bt.wav" TextFont="ï¿½ï¿½ï¿½ï¿½">
                 <NormalImage Blend="true" File="zfs_texture/gw_b1.png" Source="0,0,128,30"/>
                 <HighlightImage Blend="true" File="zfs_texture/gw_b4.png" Source="0,0,128,30"/>
                 <PushedImage Blend="true" File="zfs_texture/gw_b2.png" Source="0,0,128,30"/>
@@ -367,7 +367,7 @@
         </Templates>
 
         <!-- SystemWidgets -->
-        <SystemWidgets Description="??Widgets??Theme§»Widgets">
+        <SystemWidgets Description="??Widgets??Themeï¿½ï¿½Widgets">
             <Layer Name="$laySystem">
                 <Label BackgroundColor="#bb222222" Location="0,0,32,32" Name="$DefaultHL" Show="false">
                     <BackgroundImage Blend="true" File="ui/textures/highlight_button.tga"/>
@@ -402,8 +402,8 @@
                 <PopupMenu BackgroundColor="#bb222222" Location="0,0,100,200" Name="$PopupMenu" Show="false"/>
                 <Form BackgroundColor="#b2000000" Inherit="TitleBarForm" Name="$MessageBox" Show="false" Size="300,170">
                     <EditBox EnableInput="false" Inherit="EditBox" Location="30,40,240,70" MultiLine="true" Name="$Message" Show="true" WordWrap="true"/>
-                    <Button Inherit="PushButton" Location="34,104,80,24" Name="$Ok" Show="true" Text="È·¶¨" TextColor="#ff000000"/>
-                    <Button Inherit="PushButton" Location="186,104,80,24" Name="$Cancel" Show="true" Text="È¡Ïû" TextColor="#ff000000"/>
+                    <Button Inherit="PushButton" Location="34,104,80,24" Name="$Ok" Show="true" Text="È·ï¿½ï¿½" TextColor="#ff000000"/>
+                    <Button Inherit="PushButton" Location="186,104,80,24" Name="$Cancel" Show="true" Text="È¡ï¿½ï¿½" TextColor="#ff000000"/>
                     <Anchors>
                         <Anchor point="CENTERV"/>
                         <Anchor offset="0,-140" point="CENTERH"/>

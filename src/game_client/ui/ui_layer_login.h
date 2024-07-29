@@ -3,17 +3,18 @@
 
 #include "ui_form_setting.h"
 
-
 class CUIForm_Server;
 
-/* fox by lyy 2024.7.28
-	服务器选择 以及 登录界面
-*/
+
 class UILayerLogin {
    public:
     UILayerLogin();
 
     ~UILayerLogin();
+
+    void Show();
+
+    void Hide();
 
    private:
     void OnUpdateText(RtwWidget* sender, RtwEventDelegate*);

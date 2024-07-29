@@ -2,15 +2,17 @@
 #ifndef uimain_h__
 #define uimain_h__
 
-#include "ui/rtw_ui.h"
+#include <string>
+#include <core/rt2_core.h>
+#include <ui/rtw_widget.h>
+#include <ui/rtw_workspace.h>
 #include "../preLog.h"
-
-RtwWidget* LoadUI(const char* szName);
 
 #define RTW_WIDGET(name) LoadUI(name)
 #define RTW_WIDGET_T(class_type,name) LoadUI_T<class_type>(name)
 #define LOAD_UI(name) LoadUI(name)
 #define LOAD_UI_T(class_type, name) LoadUI_T<class_type>(name)
+RtwWidget* LoadUI(const char* szName);
 
 template <class T>
 T* LoadUI_T(const char* szName)
@@ -30,4 +32,6 @@ T* LoadUI_T(const char* szName)
 	}
 	return  (T*)vpUI;
 }
+
+
 #endif // uimain_h__

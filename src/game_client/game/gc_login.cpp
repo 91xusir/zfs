@@ -3,13 +3,15 @@
 #include "gc_login.h"
 #include "region_client.h"
 #include "gc_login_session.h"
-#include "game_script_interface.h"
-#include "gc_constant.h"
+//#include "game_script_interface.h"
+//#include "gc_constant.h"
 #include "gs_protocol.h"
 #include "lgs_gws.h"
-#include "trump_show.h"
+//#include "trump_show.h"
 #include "ui_form_msg.h"
 #include "ui_form_textMsg.h"
+
+
 
 //1--五台 4--花间 7--蜀山 10--苗疆 13--蜀山(女) 16--苗疆(女)
 //static int s_userID[] = {1, 4, 7, 10, 13, 16};
@@ -40,6 +42,8 @@ static char* s_pszCharAnimalName[] = {
     "ui/textures/animal4.tga",  "ui/textures/animal5.tga",  "ui/textures/animal6.tga",
     "ui/textures/animal7.tga",  "ui/textures/animal8.tga",  "ui/textures/animal9.tga",
     "ui/textures/animal10.tga", "ui/textures/animal11.tga", "ui/textures/animal12.tga"};
+
+
 std::string GcLogin::m_szAccountUsername;
 std::string GcLogin::m_szAccountPassword;
 
@@ -340,7 +344,7 @@ void GcLogin::SetLoginState(EStatus eState) {
     }
     if (m_eStatus != GLS_NONE) {
         if (m_eStatus == GLS_SELECT_GAMEWORLD_SERVER || m_eStatus == GLS_LOGIN) {
-            SJDL_UpdateCameraPos();
+            Lyy_UpdateCameraPos();
         } else {
             UpdateCameraPos();
         }
@@ -404,7 +408,7 @@ void GcLogin::UpdateCameraPos() {
     unguard;
 }
 
-void GcLogin::SJDL_UpdateCameraPos() {
+void GcLogin::Lyy_UpdateCameraPos() {
     guard;
     RtgMatrix16        mCamera;
     CRT_ActorInstance* pCamera;
@@ -504,9 +508,9 @@ void GcLogin::EnterLogin() {
             m_pCamera->RegisterNotify(NULL);
     }
     readAccountFromFile();
-   
-   // LOAD_UI_T(RtwForm, "loginForm")->SetShowCloseButton(false);
-   // LOAD_UI_T(RtwForm, "loginForm")->getCloseButton()->ModifyFlags(0, wfVisible);
+
+    // LOAD_UI_T(RtwForm, "loginForm")->SetShowCloseButton(false);
+    // LOAD_UI_T(RtwForm, "loginForm")->getCloseButton()->ModifyFlags(0, wfVisible);
     g_layerLogin->mp_loginForm->Show();
     unguard;
 }
@@ -2247,6 +2251,8 @@ void GcLogin::OnKeyUp(int iButton, int iKey) {
 
 void GcLogin::SelectGameWorld(int iIdx) {
     guard;
+    if (iIdx < 0 || iIdx >= ms_pGameWorldServerList.size())
+        return;
     m_szGameWorldServerName = ms_pGameWorldServerList[iIdx].szName;
     m_szGameWorldServerIP = ms_pGameWorldServerList[iIdx].szIP;
     m_lGameWorldServerPort = ms_pGameWorldServerList[iIdx].lPort;

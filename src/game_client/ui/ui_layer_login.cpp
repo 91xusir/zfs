@@ -1,6 +1,6 @@
 #include "gc_include.h"
 #include "ui_layer.h"
-#include "ui_form_msg.h"
+//#include "ui_form_msg.h"
 #include "gc_login.h"
 
 UILayerLogin::UILayerLogin() {
@@ -55,7 +55,7 @@ UILayerLogin::UILayerLogin() {
             RTW_CALLBACK(this, UILayerLogin, OnClicked_ForceLoginCancel));
 
     //返回按钮
-  /*  LOAD_UI("btnback")->EvLClick.ClearAndSetDelegate(
+    /*  LOAD_UI("btnback")->EvLClick.ClearAndSetDelegate(
         RTW_CALLBACK(this, UILayerLogin, OnClicked_BackSelectServer));*/
 
     //lyymark 2.GcLogin.XML 加载服务器列表UI
@@ -63,7 +63,7 @@ UILayerLogin::UILayerLogin() {
     //退出
     LOAD_UI("btnexit")->Show();
     //忘记密码
-   // LOAD_UI("btnforgetpwd")->Show();
+    // LOAD_UI("btnforgetpwd")->Show();
     //申请帐号
     LOAD_UI("btncreate")->Show();
     //隐藏 返回
@@ -79,6 +79,16 @@ UILayerLogin::~UILayerLogin() {
     }
 
     unguard;
+}
+
+void UILayerLogin::Show() {
+
+    mp_loginForm->Show();
+    mp_loginForm->SetShowCloseButton(false);
+}
+
+void UILayerLogin::Hide() {
+    mp_loginForm->Hide();
 }
 
 void UILayerLogin::OnClicked_BackSelectServer(RtwWidget* sender, void*) {
@@ -246,8 +256,6 @@ void UILayerLogin::OnKey(RtwWidget* sender, RtwEventDelegate* e) {
     unguard;
 }
 
-
-
 void UILayerLogin::ontab(RtwWidget* sender, RtwEventDelegate* e) {
     guard;
     if (GetLogin()->GetStatus() == GcLogin::GLS_LOGIN) {
@@ -269,13 +277,10 @@ void UILayerLogin::OnUpdateText(RtwWidget* sender, RtwEventDelegate* e) {
 }
 
 //lyymark 2.GcLogin.UI.OnClicked_EnterUserLogin 进入用户登录页面
-void UILayerLogin::OnClicked_EnterUserLogin(const int& currentSelectServer) {
+void UILayerLogin::OnClicked_EnterUserLogin(const int& currentSelectServerIndex) {
     guard;
     if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_GAMEWORLD_SERVER) {
-        if (currentSelectServer >= 0 && currentSelectServer <= MaxBtnsCounts) {
-           
-            GetLogin()->SelectGameWorld(currentSelectServer);
-        }
+        GetLogin()->SelectGameWorld(currentSelectServerIndex);
     }
     unguard;
 }
@@ -288,7 +293,7 @@ void UILayerLogin::OnClicked_SaveAccount(RtwWidget* sender, RtwEventDelegate* e)
         GetLogin()->SetSaveAccount(false);
     }
 
-   /* if (m_Keyboard.GetLastFocus()) {
+    /* if (m_Keyboard.GetLastFocus()) {
         g_workspace.SetFocusWidget(RTW_WIDGET("fmlogin.fmusername.txtusername"));
     } else {
         g_workspace.SetFocusWidget(RTW_WIDGET("fmlogin.fmpassword.txtpassword"));

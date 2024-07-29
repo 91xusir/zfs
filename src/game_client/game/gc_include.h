@@ -45,7 +45,7 @@ using namespace ui;
 #include "gc_skill.h"
 #include "pk.h"
 #include "gc_actor.h"
-#include "gc_base_actor.h"
+
 #include "gc_synchro_actor.h"
 #include "gc_player.h"
 #include "gc_pet.h"
@@ -67,8 +67,6 @@ using namespace ui;
 #include "ui_layer.h"
 #include "NesClient.h"
 
-//lyymark add prelog.h 2024.7.27
-#include "../preLog.h"
 /*----------------------------------------------------------------------------
 -   End.
 ----------------------------------------------------------------------------*/

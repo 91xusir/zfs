@@ -160,8 +160,11 @@
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalOptions>/ignore:4099 %(AdditionalOptions)</AdditionalOptions>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
-      <LinkStatus>false</LinkStatus>
+      <LinkStatus>
+      </LinkStatus>
       <LinkTimeCodeGenerationObjectFile />
+      <LinkTimeCodeGeneration>
+      </LinkTimeCodeGeneration>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -379,8 +382,9 @@
     <ClInclude Include="..\shared\item_npc_shop.h" />
     <ClInclude Include="..\shared\item_pshop.h" />
     <ClInclude Include="..\shared\item_trade.h" />
-    <ClInclude Include="gc_fps.h" />
+    <ClInclude Include="fpsLimit.h" />
     <ClInclude Include="preLog.h" />
+    <ClInclude Include="lyyUtils.h" />
     <ClInclude Include="ui\ui_form_char.h" />
     <ClInclude Include="ui\ui_form_trump.h" />
     <ClInclude Include="ui\ui_layer_main.h" />
@@ -602,7 +606,7 @@
     <ClCompile Include="..\shared\item_npc_shop.cpp" />
     <ClCompile Include="..\shared\item_pshop.cpp" />
     <ClCompile Include="..\shared\item_trade.cpp" />
-    <ClCompile Include="gc_fps.cpp" />
+    <ClCompile Include="fpsLimit.cpp" />
     <ClCompile Include="iob_func.cpp" />
     <ClCompile Include="ui\ui_form_char.cpp" />
     <ClCompile Include="ui\ui_form_trump.cpp" />
@@ -665,7 +669,7 @@
     <ClCompile Include="ui\UIForm_Gem.cpp" />
     <ClCompile Include="ui\UIForm_MiddleMap.cpp" />
     <ClCompile Include="ui\UIForm_NewPeopleHelp.cpp" />
-    <ClCompile Include="ui\ui_layer_server.cpp" />
+    <ClCompile Include="ui\ui_login_serverList.cpp" />
     <ClCompile Include="ui\UIForm_Speaker.cpp" />
     <ClCompile Include="ui\UIForm_System.cpp" />
     <ClCompile Include="ui\ui_form_pet.cpp" />
