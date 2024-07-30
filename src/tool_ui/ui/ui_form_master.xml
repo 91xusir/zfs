@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Ui>
-  <Layer Name="layworld" Show="true">
-    <Form Inherit="TitleBarForm" Location="264,100,318,354" Name="fmMaster" Show="false" TBMargin="0,12,8,-2">
-      <Label Location="14,5,194,18" Name="lblist" Text="师傅登记列表"/>
-      <ListBox Inherit="ListBox" Location="14,25,288,262" Name="listmail"/>
-    </Form>
-  </Layer>
-</Ui>

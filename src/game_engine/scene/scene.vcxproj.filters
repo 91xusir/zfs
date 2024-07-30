@@ -1,57 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="source">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="header">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rt_scene.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_audio_3d.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_d_light.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_footprint.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_innerve.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_light.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_model.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_obj_render_agent.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_object.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_object_manger.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_scene.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_scene_block.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_scene_loader.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="rts_SceneManager.cpp">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\scene\rts_grass_render.cpp">
       <Filter>header</Filter>
@@ -83,7 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rts_scene_xml_loader.h">
-      <Filter>source</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\scene\rts_grass_render.h">
       <Filter>header</Filter>

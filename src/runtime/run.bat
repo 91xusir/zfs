@@ -1,1 +1,0 @@
-.\game_client.exe tooth.updaterun;127.0.0.1
