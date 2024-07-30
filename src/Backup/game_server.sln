@@ -1,0 +1,161 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E0C95604-7AB2-4B6C-8461-D48401CC3060}"
+	ProjectSection(SolutionItems) = preProject
+		docs\服务器整体架构.vsd = docs\服务器整体架构.vsd
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LoginServer", "LoginServer", "{3BDE59D4-5351-4E1E-A0B4-800573C0C4F0}"
+	ProjectSection(SolutionItems) = preProject
+		docs\LoginServer\CchargeSession--OnReceive.png = docs\LoginServer\CchargeSession--OnReceive.png
+		docs\LoginServer\CchargeSession类中大致流程.png = docs\LoginServer\CchargeSession类中大致流程.png
+		docs\LoginServer\CDBMySql类.png = docs\LoginServer\CDBMySql类.png
+		docs\LoginServer\g_lgs-Run.png = docs\LoginServer\g_lgs-Run.png
+		docs\LoginServer\index.chm = docs\LoginServer\index.chm
+		docs\LoginServer\Login流程.png = docs\LoginServer\Login流程.png
+		docs\LoginServer\main.png = docs\LoginServer\main.png
+		docs\LoginServer\main整体调用.png = docs\LoginServer\main整体调用.png
+		docs\LoginServer\SendCmd.png = docs\LoginServer\SendCmd.png
+		docs\LoginServer\Tick--ParseCmd.png = docs\LoginServer\Tick--ParseCmd.png
+		docs\LoginServer\Tick.png = docs\LoginServer\Tick.png
+		docs\LoginServer\整体与数据库连接流程.png = docs\LoginServer\整体与数据库连接流程.png
+		docs\LoginServer\详细设计说明书.doc = docs\LoginServer\详细设计说明书.doc
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameServer", "GameServer", "{A52586B2-C2F9-45CB-8D0C-DD3CF71E240E}"
+	ProjectSection(SolutionItems) = preProject
+		docs\GameServer\城战及国战系统.doc = docs\GameServer\城战及国战系统.doc
+		docs\GameServer\子帐号登陆系统.doc = docs\GameServer\子帐号登陆系统.doc
+		docs\GameServer\游戏打斗系统.doc = docs\GameServer\游戏打斗系统.doc
+		docs\GameServer\游戏技能系统.doc = docs\GameServer\游戏技能系统.doc
+		docs\GameServer\游戏拍卖系统.doc = docs\GameServer\游戏拍卖系统.doc
+		docs\GameServer\游戏组队系统.doc = docs\GameServer\游戏组队系统.doc
+		docs\GameServer\游戏经济系统.doc = docs\GameServer\游戏经济系统.doc
+		docs\GameServer\游戏角色实体及NPC实体系统.doc = docs\GameServer\游戏角色实体及NPC实体系统.doc
+		docs\GameServer\游戏道具系统.doc = docs\GameServer\游戏道具系统.doc
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "好友，邮件，师徒系统", "好友，邮件，师徒系统", "{D120C810-773A-4061-BE2D-30361ADFFE4A}"
+	ProjectSection(SolutionItems) = preProject
+		docs\GameServer\好友，邮件，师徒系统\服务端好友，师徒，邮件系统.doc = docs\GameServer\好友，邮件，师徒系统\服务端好友，师徒，邮件系统.doc
+		docs\GameServer\好友，邮件，师徒系统\自己删除别人从好友中.png = docs\GameServer\好友，邮件，师徒系统\自己删除别人从好友中.png
+		docs\GameServer\好友，邮件，师徒系统\自己同意别人的邀请.png = docs\GameServer\好友，邮件，师徒系统\自己同意别人的邀请.png
+		docs\GameServer\好友，邮件，师徒系统\自己拒绝别人的邀请.png = docs\GameServer\好友，邮件，师徒系统\自己拒绝别人的邀请.png
+		docs\GameServer\好友，邮件，师徒系统\自己邀请别人加入好友.png = docs\GameServer\好友，邮件，师徒系统\自己邀请别人加入好友.png
+		docs\GameServer\好友，邮件，师徒系统\邮件.png = docs\GameServer\好友，邮件，师徒系统\邮件.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "工会（诸侯国）系统", "工会（诸侯国）系统", "{CF614064-9E88-4117-8940-43177636F072}"
+	ProjectSection(SolutionItems) = preProject
+		docs\GameServer\工会（诸侯国）系统\GWS--cmd_c2r_union_create.JPG = docs\GameServer\工会（诸侯国）系统\GWS--cmd_c2r_union_create.JPG
+		docs\GameServer\工会（诸侯国）系统\RS--cmd_c2r_union_create.JPG = docs\GameServer\工会（诸侯国）系统\RS--cmd_c2r_union_create.JPG
+		docs\GameServer\工会（诸侯国）系统\工会（诸侯国）系统.docx = docs\GameServer\工会（诸侯国）系统\工会（诸侯国）系统.docx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "副本系统", "副本系统", "{0D7FF31E-0A18-47B6-9DB5-82C01BC530AF}"
+	ProjectSection(SolutionItems) = preProject
+		docs\GameServer\副本系统\cmd_c2r_enter_fb.png = docs\GameServer\副本系统\cmd_c2r_enter_fb.png
+		docs\GameServer\副本系统\cmd_c2r_finish_fb_task.png = docs\GameServer\副本系统\cmd_c2r_finish_fb_task.png
+		docs\GameServer\副本系统\cmd_c2r_leave_fb.png = docs\GameServer\副本系统\cmd_c2r_leave_fb.png
+		docs\GameServer\副本系统\cmd_r2g_create_dungeon_ret.png = docs\GameServer\副本系统\cmd_r2g_create_dungeon_ret.png
+		docs\GameServer\副本系统\cmd_r2g_destroy_dungeon.png = docs\GameServer\副本系统\cmd_r2g_destroy_dungeon.png
+		docs\GameServer\副本系统\cmd_r2g_enter_dungeon.png = docs\GameServer\副本系统\cmd_r2g_enter_dungeon.png
+		docs\GameServer\副本系统\cmd_r2g_leave_dungeon.png = docs\GameServer\副本系统\cmd_r2g_leave_dungeon.png
+		docs\GameServer\副本系统\cmd_r2g_modify_maxdungeon.png = docs\GameServer\副本系统\cmd_r2g_modify_maxdungeon.png
+		docs\GameServer\副本系统\服务端副本系统.doc = docs\GameServer\副本系统\服务端副本系统.doc
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "游戏AI", "游戏AI", "{621AD5D5-5FDD-4581-8C9F-E7BD791CD321}"
+	ProjectSection(SolutionItems) = preProject
+		docs\GameServer\游戏AI\CRegionAI.jpg = docs\GameServer\游戏AI\CRegionAI.jpg
+		docs\GameServer\游戏AI\EFun_SetAI.png = docs\GameServer\游戏AI\EFun_SetAI.png
+		docs\GameServer\游戏AI\UseSkill.png = docs\GameServer\游戏AI\UseSkill.png
+		docs\GameServer\游戏AI\游戏AI.doc = docs\GameServer\游戏AI\游戏AI.doc
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "聊天系统", "聊天系统", "{50525FEA-4F48-4A08-B611-1E7C93C1D390}"
+	ProjectSection(SolutionItems) = preProject
+		docs\GameServer\聊天系统\GWS-同盟聊天.png = docs\GameServer\聊天系统\GWS-同盟聊天.png
+		docs\GameServer\聊天系统\GWS-私人频道.png = docs\GameServer\聊天系统\GWS-私人频道.png
+		docs\GameServer\聊天系统\GWS-队伍频道.png = docs\GameServer\聊天系统\GWS-队伍频道.png
+		docs\GameServer\聊天系统\GWS服务端消息图.png = docs\GameServer\聊天系统\GWS服务端消息图.png
+		docs\GameServer\聊天系统\PS-一般频道.png = docs\GameServer\聊天系统\PS-一般频道.png
+		docs\GameServer\聊天系统\PS-国家频道.png = docs\GameServer\聊天系统\PS-国家频道.png
+		docs\GameServer\聊天系统\RS-GM.png = docs\GameServer\聊天系统\RS-GM.png
+		docs\GameServer\聊天系统\RS-公共频道.png = docs\GameServer\聊天系统\RS-公共频道.png
+		docs\GameServer\聊天系统\RS-同盟聊天.png = docs\GameServer\聊天系统\RS-同盟聊天.png
+		docs\GameServer\聊天系统\RS-私人频道.png = docs\GameServer\聊天系统\RS-私人频道.png
+		docs\GameServer\聊天系统\RS-队伍频道.png = docs\GameServer\聊天系统\RS-队伍频道.png
+		docs\GameServer\聊天系统\一般频道被调用图.png = docs\GameServer\聊天系统\一般频道被调用图.png
+		docs\GameServer\聊天系统\服务端聊天系统.doc = docs\GameServer\聊天系统\服务端聊天系统.doc
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GameWorldServer", "GameWorldServer", "{0C3CE09E-7CCD-412C-BF69-CE5FAF72FF5B}"
+	ProjectSection(SolutionItems) = preProject
+		docs\GameWorldServer\GameWorldServer.chm = docs\GameWorldServer\GameWorldServer.chm
+		docs\GameWorldServer\GameWorldServer详细设计说明书.doc = docs\GameWorldServer\GameWorldServer详细设计说明书.doc
+		docs\GameWorldServer\RunClient调用关系图 .png = docs\GameWorldServer\RunClient调用关系图 .png
+		docs\GameWorldServer\主循环调用关系.png = docs\GameWorldServer\主循环调用关系.png
+		docs\GameWorldServer\服务器对象类图.png = docs\GameWorldServer\服务器对象类图.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RegionServer", "RegionServer", "{B8211F5E-F7A5-4743-8C10-1D19FE33A0CA}"
+	ProjectSection(SolutionItems) = preProject
+		docs\RegionServer\Consign调用图.JPG = docs\RegionServer\Consign调用图.JPG
+		docs\RegionServer\CRegionCreature类图.JPG = docs\RegionServer\CRegionCreature类图.JPG
+		docs\RegionServer\g_region.Run()调用图.JPG = docs\RegionServer\g_region.Run()调用图.JPG
+		docs\RegionServer\Process调用图.JPG = docs\RegionServer\Process调用图.JPG
+		docs\RegionServer\RegionServer.chm = docs\RegionServer\RegionServer.chm
+		docs\RegionServer\RegionServer类图.JPG = docs\RegionServer\RegionServer类图.JPG
+		docs\RegionServer\SyncToClient调用图.JPG = docs\RegionServer\SyncToClient调用图.JPG
+		docs\RegionServer\服务器整体架构.jpg = docs\RegionServer\服务器整体架构.jpg
+		docs\RegionServer\继承结构.JPG = docs\RegionServer\继承结构.JPG
+		docs\RegionServer\详细设计说明书.doc = docs\RegionServer\详细设计说明书.doc
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gameworld_server", "gameworld_server\gameworld_server.vcxproj", "{5963BA9A-FE60-4743-9BFE-465AE21FD059}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "login_server", "login_server\login_server.vcxproj", "{0C5043E1-5162-4998-A22D-D879CFC9CBB2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "region_server", "region_server\region_server.vcxproj", "{6E9AC750-6EA9-430D-BA49-20A466DCF323}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5963BA9A-FE60-4743-9BFE-465AE21FD059}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5963BA9A-FE60-4743-9BFE-465AE21FD059}.Debug|Win32.Build.0 = Debug|Win32
+		{5963BA9A-FE60-4743-9BFE-465AE21FD059}.Release|Win32.ActiveCfg = Release|Win32
+		{5963BA9A-FE60-4743-9BFE-465AE21FD059}.Release|Win32.Build.0 = Release|Win32
+		{0C5043E1-5162-4998-A22D-D879CFC9CBB2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0C5043E1-5162-4998-A22D-D879CFC9CBB2}.Debug|Win32.Build.0 = Debug|Win32
+		{0C5043E1-5162-4998-A22D-D879CFC9CBB2}.Release|Win32.ActiveCfg = Release|Win32
+		{0C5043E1-5162-4998-A22D-D879CFC9CBB2}.Release|Win32.Build.0 = Release|Win32
+		{6E9AC750-6EA9-430D-BA49-20A466DCF323}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6E9AC750-6EA9-430D-BA49-20A466DCF323}.Debug|Win32.Build.0 = Debug|Win32
+		{6E9AC750-6EA9-430D-BA49-20A466DCF323}.Release|Win32.ActiveCfg = Release|Win32
+		{6E9AC750-6EA9-430D-BA49-20A466DCF323}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3BDE59D4-5351-4E1E-A0B4-800573C0C4F0} = {E0C95604-7AB2-4B6C-8461-D48401CC3060}
+		{A52586B2-C2F9-45CB-8D0C-DD3CF71E240E} = {E0C95604-7AB2-4B6C-8461-D48401CC3060}
+		{D120C810-773A-4061-BE2D-30361ADFFE4A} = {A52586B2-C2F9-45CB-8D0C-DD3CF71E240E}
+		{CF614064-9E88-4117-8940-43177636F072} = {A52586B2-C2F9-45CB-8D0C-DD3CF71E240E}
+		{0D7FF31E-0A18-47B6-9DB5-82C01BC530AF} = {A52586B2-C2F9-45CB-8D0C-DD3CF71E240E}
+		{621AD5D5-5FDD-4581-8C9F-E7BD791CD321} = {A52586B2-C2F9-45CB-8D0C-DD3CF71E240E}
+		{50525FEA-4F48-4A08-B611-1E7C93C1D390} = {A52586B2-C2F9-45CB-8D0C-DD3CF71E240E}
+		{0C3CE09E-7CCD-412C-BF69-CE5FAF72FF5B} = {E0C95604-7AB2-4B6C-8461-D48401CC3060}
+		{B8211F5E-F7A5-4743-8C10-1D19FE33A0CA} = {E0C95604-7AB2-4B6C-8461-D48401CC3060}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

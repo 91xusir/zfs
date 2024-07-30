@@ -1377,9 +1377,6 @@
     <ClInclude Include="fpsLimit.h">
       <Filter>refactor-重构代码放这里\utils</Filter>
     </ClInclude>
-    <ClInclude Include="frame\gc_main.h">
-      <Filter>frame\win_main</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\engine\head\core\rtc2_thread.inl">
