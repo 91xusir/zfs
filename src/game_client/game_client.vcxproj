@@ -83,7 +83,7 @@
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <PrecompiledHeader />
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
@@ -111,7 +111,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;USE_D3DX9;LUA_OPNAMES;USE_D3D9;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader />
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -516,7 +516,6 @@
     <ClInclude Include="frame\net_session.h" />
     <ClInclude Include="frame\net_synchro_position.h" />
     <ClInclude Include="..\shared\region_client.h" />
-    <ClInclude Include="frame\gc_log_msg.h" />
     <ClInclude Include="game\game_script_interface.h" />
     <ClInclude Include="game\lua_class.h" />
     <ClInclude Include="game\lua_inc.h" />
@@ -548,6 +547,7 @@
     <ClInclude Include="frame\resource.h" />
     <ClInclude Include="game\NesClient.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="ui\ui_login_account.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\engine\head\core\rtc2_thread.inl" />
@@ -669,6 +669,7 @@
     <ClCompile Include="ui\UIForm_Gem.cpp" />
     <ClCompile Include="ui\UIForm_MiddleMap.cpp" />
     <ClCompile Include="ui\UIForm_NewPeopleHelp.cpp" />
+    <ClCompile Include="ui\ui_login_account .cpp" />
     <ClCompile Include="ui\ui_login_serverList.cpp" />
     <ClCompile Include="ui\UIForm_Speaker.cpp" />
     <ClCompile Include="ui\UIForm_System.cpp" />
@@ -726,7 +727,6 @@
     <ClCompile Include="frame\net_session.cpp" />
     <ClCompile Include="frame\net_synchro_position.cpp" />
     <ClCompile Include="..\shared\region_client.cpp" />
-    <ClCompile Include="frame\gc_log_msg.cpp" />
     <ClCompile Include="game\game_script_interface.cpp" />
     <ClCompile Include="game\lua_inf.cpp" />
     <ClCompile Include="game\lua_var.cpp" />
@@ -883,6 +883,8 @@
     <ClCompile Include="frame\gc_cursor.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

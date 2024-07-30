@@ -6,7 +6,9 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
+#ifndef STRICT
 #define STRICT
+#endif  // !STRICT
 #include <windows.h>
 #include <D3D9.h>
 #include "graph\DXUtil.h"
