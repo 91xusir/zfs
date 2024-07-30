@@ -1281,9 +1281,6 @@
     <ClInclude Include="frame\gc_log_msg.h">
       <Filter>frame\log_msg</Filter>
     </ClInclude>
-    <ClInclude Include="frame\gc_log_sender.h">
-      <Filter>frame\log_msg</Filter>
-    </ClInclude>
     <ClInclude Include="game\game_script_interface.h">
       <Filter>frame\script_interface</Filter>
     </ClInclude>
@@ -1374,7 +1371,7 @@
     <ClInclude Include="game\NesClient.h">
       <Filter>frame\nes</Filter>
     </ClInclude>
-    <ClInclude Include="preLog.h">
+    <ClInclude Include="preConsole.h">
       <Filter>refactor\utils</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
@@ -1903,9 +1900,6 @@
     <ClCompile Include="frame\gc_log_msg.cpp">
       <Filter>frame\log_msg</Filter>
     </ClCompile>
-    <ClCompile Include="frame\gc_log_sender.cpp">
-      <Filter>frame\log_msg</Filter>
-    </ClCompile>
     <ClCompile Include="game\game_script_interface.cpp">
       <Filter>frame\script_interface</Filter>
     </ClCompile>
@@ -2018,6 +2012,9 @@
       <Filter>other</Filter>
     </ClCompile>
     <ClCompile Include="fpsLimit.cpp">
+      <Filter>refactor\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="preConsole.cpp">
       <Filter>refactor\utils</Filter>
     </ClCompile>
   </ItemGroup>

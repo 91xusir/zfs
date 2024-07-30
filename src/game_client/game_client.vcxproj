@@ -383,7 +383,7 @@
     <ClInclude Include="..\shared\item_pshop.h" />
     <ClInclude Include="..\shared\item_trade.h" />
     <ClInclude Include="fpsLimit.h" />
-    <ClInclude Include="preLog.h" />
+    <ClInclude Include="preConsole.h" />
     <ClInclude Include="lyyUtils.h" />
     <ClInclude Include="ui\ui_form_char.h" />
     <ClInclude Include="ui\ui_form_trump.h" />
@@ -517,7 +517,6 @@
     <ClInclude Include="frame\net_synchro_position.h" />
     <ClInclude Include="..\shared\region_client.h" />
     <ClInclude Include="frame\gc_log_msg.h" />
-    <ClInclude Include="frame\gc_log_sender.h" />
     <ClInclude Include="game\game_script_interface.h" />
     <ClInclude Include="game\lua_class.h" />
     <ClInclude Include="game\lua_inc.h" />
@@ -608,6 +607,7 @@
     <ClCompile Include="..\shared\item_trade.cpp" />
     <ClCompile Include="fpsLimit.cpp" />
     <ClCompile Include="iob_func.cpp" />
+    <ClCompile Include="preConsole.cpp" />
     <ClCompile Include="ui\ui_form_char.cpp" />
     <ClCompile Include="ui\ui_form_trump.cpp" />
     <ClCompile Include="ui\ui_layer_main.cpp" />
@@ -727,7 +727,6 @@
     <ClCompile Include="frame\net_synchro_position.cpp" />
     <ClCompile Include="..\shared\region_client.cpp" />
     <ClCompile Include="frame\gc_log_msg.cpp" />
-    <ClCompile Include="frame\gc_log_sender.cpp" />
     <ClCompile Include="game\game_script_interface.cpp" />
     <ClCompile Include="game\lua_inf.cpp" />
     <ClCompile Include="game\lua_var.cpp" />
