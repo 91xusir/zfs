@@ -127,7 +127,6 @@ namespace rt2_core {
 		if (szIniFile == NULL)
 		{
 			//lyytodo Use default to start core
-			;
 		}
 		else
 		{

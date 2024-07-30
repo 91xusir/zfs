@@ -1482,12 +1482,13 @@ void UIFormMiniMap::OnReceiveLineInfo(CG_CmdPacket *pvPacket)
 		pImage->SetBlend(true);
 		m_plstLineContent->SetLineItemImage(i, 1, pImage);
 
-		if (g_bLogEnable)
+        //lyymark y原来debug的代码 暂时注释掉
+		/*if (g_bLogEnable)
 		{
 			memset(tmpstr,0,50);
 			sprintf(tmpstr,"%d",linInfo.dwUserCount);
 			m_plstLineContent->SetItemText(i,1,tmpstr);
-		}
+		}*/
 	}
 	unguard;
 }

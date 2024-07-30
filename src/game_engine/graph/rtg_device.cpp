@@ -225,14 +225,10 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
     s_ResumeDefaultDisplayMode.dwScreenHeight = devMode.dmPelsHeight;
     s_ResumeDefaultDisplayMode.dwColorDepth   = devMode.dmBitsPerPel;
     s_ResumeDefaultDisplayMode.dwRefreshRate  = devMode.dmDisplayFrequency;
-
     ReadGraphIni(pGraphIni);
     ReadUserIni(pUserIni);
-// lyymark 搞不懂为什么不让生效 先放着
-#if defined(_MT) || defined(_DLL)
+    //lyymark 默认取消全屏
     m_userConfig.bFullscreen = false;
-#endif
-
     ApplyConfig();
 
     RtgImage::StaticInit();

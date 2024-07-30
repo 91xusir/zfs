@@ -1,2 +1,2 @@
 #pragma once
-#include "preLog.h"
+#include "preConsole.h"

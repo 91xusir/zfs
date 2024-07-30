@@ -1,10 +1,7 @@
 #include "ui_login_account.h"
-#include "ui/rtw_delegate.h"
-#include "uimain.h"
-#include "gc_frame.h"
-#include "gc_global.h"
-#include "gc_login.h"
-#include "string_mapping.h"
+#include <uimain.h>
+#include <string_mapping.h>
+
 
 
 UILoginAccount::UILoginAccount() {
@@ -149,7 +146,7 @@ void UILoginAccount::OnClicked_ForceLogin(void*, void*) {
 }
 
 void UILoginAccount::OnClicked_ForceLoginCancel(void*, void*) {
-    RTW_WIDGET("fmlogin.fmpassword.txtpassword")->SetText("");
+    LOAD_UI("fmlogin.fmpassword.txtpassword")->SetText("");
     GetLogin()->SetForceLogin(false);
 }
 
