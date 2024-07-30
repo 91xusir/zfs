@@ -1,310 +1,321 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
+    <Filter Include="src">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="other">
+      <UniqueIdentifier>{2de75571-f754-425b-89e7-5f1aa170c4b8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\engine\head\ui\rtw_3dview.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_animation.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_base.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_button.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_chatbox.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_chatinputbox.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_clipboard.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_combobox.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_device2d.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_document.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_event.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_font.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_form.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_hint.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_htmlelement.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_htmlloader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_htmlreflow.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_htmltags.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_htmlview.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_hud.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_hyperlink.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_iconlist.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_image.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_label.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_layer.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_listbox.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_mailbox.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_mediaframe.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_panel.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_popup_menu.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_progressbar.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_richtext.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_scrollable.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_scrollbar.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_sound.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_tab.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_template.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_textbox.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_theme.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_tree.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_widget.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_workspace.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\rtw_xml.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\engine\head\ui\gif\gif89a.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <Filter>other</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\engine\head\ui\rtw_3dview.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_animation.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_base.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_button.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_chatbox.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_chatinputbox.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_clipboard.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_combobox.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_config.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_delegate.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_device2d.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_document.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_event.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_font.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_form.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_hint.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_htmlelement.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_htmllayout.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_htmlloader.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_htmlparser.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_htmlreflow.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_htmltaglist.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_htmltags.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_htmlview.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_hud.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_hyperlink.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_iconlist.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_image.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_label.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_layer.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_listbox.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_mailbox.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_mediaframe.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_panel.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_popup_menu.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_progressbar.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_ptr.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_python.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_richtext.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_scrollable.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_scrollbar.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_sound.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_tab.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_template.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_textbox.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_theme.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_timer.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_tree.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_ui.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_widget.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_workspace.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\rtw_xml.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\engine\head\ui\gif\gif89a.h">
-      <Filter>Source Files</Filter>
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="stdafx.h">
+      <Filter>other</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="UI.cd" />
-    <None Include="cpp.hint" />
+    <None Include="UI.cd">
+      <Filter>other</Filter>
+    </None>
+    <None Include="cpp.hint">
+      <Filter>other</Filter>
+    </None>
   </ItemGroup>
 </Project>
