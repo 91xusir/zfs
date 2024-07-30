@@ -1,4 +1,7 @@
+#ifndef STRICT
 #define STRICT
+#endif  // !STRICT
+
 #include "rtg_graph_inter.h"
 #include <windows.h>
 #include <basetsd.h>
@@ -8,25 +11,21 @@
 
 namespace rt_graph {
 
-BOOL    WINAPI DDEnumCallbackEx( GUID*, LPSTR, LPSTR, LPVOID, HMONITOR );
-HRESULT WINAPI EnumModesCallback( LPDDSURFACEDESC pddsd,  LPVOID pContext );
-HRESULT WINAPI EnumAllModesCallback( LPDDSURFACEDESC2 pddsd, LPVOID pContext );
+BOOL WINAPI    DDEnumCallbackEx(GUID*, LPSTR, LPSTR, LPVOID, HMONITOR);
+HRESULT WINAPI EnumModesCallback(LPDDSURFACEDESC pddsd, LPVOID pContext);
+HRESULT WINAPI EnumAllModesCallback(LPDDSURFACEDESC2 pddsd, LPVOID pContext);
 
 //#define SAFE_DELETE(p)  { if(p) { delete (p);     (p)=NULL; } }
 //#define SAFE_RELEASE(p) { if(p) { (p)->Release(); (p)=NULL; } }
 
-bool RtgDisplayModeEnum::EnumAll()
-{
-    if (!EnumDevices())
-    {
+bool RtgDisplayModeEnum::EnumAll() {
+    if (!EnumDevices()) {
         return false;
     }
 
     std::list<SDevice>::iterator it = m_listDevices.begin();
-    for (; it!=m_listDevices.end(); it++)
-    {
-        if (!EnumModes(&(*it)))
-        {
+    for (; it != m_listDevices.end(); it++) {
+        if (!EnumModes(&(*it))) {
             return false;
         }
     }
@@ -39,127 +38,103 @@ bool RtgDisplayModeEnum::EnumAll()
 // Desc: Retrieves all available DirectDraw devices and stores the information
 //       in g_aDevices[]
 //-----------------------------------------------------------------------------
-bool RtgDisplayModeEnum::EnumDevices()
-{
-    return DirectDrawEnumerateEx( DDEnumCallbackEx, 
-        (LPVOID)this,
-        DDENUM_ATTACHEDSECONDARYDEVICES |
-        DDENUM_DETACHEDSECONDARYDEVICES |
-        DDENUM_NONDISPLAYDEVICES )==DD_OK;
+bool RtgDisplayModeEnum::EnumDevices() {
+    return DirectDrawEnumerateEx(DDEnumCallbackEx, (LPVOID)this,
+                                 DDENUM_ATTACHEDSECONDARYDEVICES | DDENUM_DETACHEDSECONDARYDEVICES |
+                                     DDENUM_NONDISPLAYDEVICES) == DD_OK;
 }
 
 //-----------------------------------------------------------------------------
 // Name: UpdateModesListBox()
 // Desc: Updates the "modes to test" and "all modes" list boxes
 //-----------------------------------------------------------------------------
-bool RtgDisplayModeEnum::EnumModes( RtgDisplayModeEnum::SDevice* pDevice )
-{
+bool RtgDisplayModeEnum::EnumModes(RtgDisplayModeEnum::SDevice* pDevice) {
     LPDIRECTDRAW7 pDD = NULL;
-    HRESULT       hr;    
+    HRESULT       hr;
 
     // Create a DirectDraw device based using the selected device guid
-    if( SUCCEEDED( hr = DirectDrawCreateEx( &(pDevice->guid), (VOID**) &pDD, IID_IDirectDraw7, NULL) ) )
-    {
+    if (SUCCEEDED(hr =
+                      DirectDrawCreateEx(&(pDevice->guid), (VOID**)&pDD, IID_IDirectDraw7, NULL))) {
         // Enumerate and display all supported modes along
-        // with supported bit depth, and refresh rates 
+        // with supported bit depth, and refresh rates
         // in the "All Modes" listbox
-        hr = pDD->EnumDisplayModes( DDEDM_REFRESHRATES, NULL,
-            (VOID*) pDevice, EnumAllModesCallback );
+        hr = pDD->EnumDisplayModes(DDEDM_REFRESHRATES, NULL, (VOID*)pDevice, EnumAllModesCallback);
 
         // Release this device
-        SAFE_RELEASE( pDD ); 
+        SAFE_RELEASE(pDD);
     }
 
-    return hr==DD_OK;
+    return hr == DD_OK;
 }
-
-
-
 
 //-----------------------------------------------------------------------------
 // Name: DDEnumCallbackEx()
 // Desc: Enumerates all available DirectDraw devices
 //-----------------------------------------------------------------------------
-BOOL WINAPI DDEnumCallbackEx( GUID* pGUID,    
-                              LPSTR strDriverDescription, 
-                              LPSTR strDriverName,        
-                              LPVOID pContext,           
-                              HMONITOR hm )       
-{
+BOOL WINAPI DDEnumCallbackEx(GUID* pGUID, LPSTR strDriverDescription, LPSTR strDriverName,
+                             LPVOID pContext, HMONITOR hm) {
     RtgDisplayModeEnum* pEnumer = (RtgDisplayModeEnum*)pContext;
-    HRESULT hr;
-    LPDIRECTDRAW pDD = NULL;
-   
-    // Create a DirectDraw device using the enumerated guid 
-    hr = DirectDrawCreateEx( pGUID, (VOID**)&pDD, IID_IDirectDraw7, NULL );
+    HRESULT             hr;
+    LPDIRECTDRAW        pDD = NULL;
 
-    if( SUCCEEDED(hr) )
-    {
+    // Create a DirectDraw device using the enumerated guid
+    hr = DirectDrawCreateEx(pGUID, (VOID**)&pDD, IID_IDirectDraw7, NULL);
+
+    if (SUCCEEDED(hr)) {
         pEnumer->m_listDevices.push_back(RtgDisplayModeEnum::SDevice());
         RtgDisplayModeEnum::SDevice* pDevice = &(pEnumer->m_listDevices.back());
 
-        if( pGUID )
-        {
+        if (pGUID) {
             // Add it to the global storage structure
             pDevice->guid = *pGUID;
-        }
-        else
-        {
+        } else {
             // Clear the guid from the global storage structure
-            ZeroMemory( &(pDevice->guid), sizeof(GUID) );
+            ZeroMemory(&(pDevice->guid), sizeof(GUID));
         }
 
         // Copy the description of the driver into the structure
-        lstrcpyn( pDevice->strDescription, strDriverDescription, 256 );
-        lstrcpyn( pDevice->strDriverName, strDriverName, 64 );
+        lstrcpyn(pDevice->strDescription, strDriverDescription, 256);
+        lstrcpyn(pDevice->strDriverName, strDriverName, 64);
 
         // Retrive the modes this device can support
         pDevice->listScreenSize.clear();
-        hr = pDD->EnumDisplayModes( 0, NULL, (LPVOID)pDevice, EnumModesCallback );
-    
-        // Release this device 
-        SAFE_RELEASE( pDD );
+        hr = pDD->EnumDisplayModes(0, NULL, (LPVOID)pDevice, EnumModesCallback);
+
+        // Release this device
+        SAFE_RELEASE(pDD);
     }
 
     // Continue looking for more devices
     return TRUE;
 }
 
-
-
-
 //-----------------------------------------------------------------------------
 // Name: EnumModesCallback()
-// Desc: Enumerates the available modes for the device from which 
-//       EnumDisplayModes() was called.  It records the unique mode sizes in 
+// Desc: Enumerates the available modes for the device from which
+//       EnumDisplayModes() was called.  It records the unique mode sizes in
 //       the g_aDevices[g_dwDeviceCount].aModeSize array
 //-----------------------------------------------------------------------------
-HRESULT WINAPI EnumModesCallback( LPDDSURFACEDESC pddsd,  
-                                  LPVOID pContext )
-{
-    DWORD dwModeSizeX;
-    DWORD dwModeSizeY;
+HRESULT WINAPI EnumModesCallback(LPDDSURFACEDESC pddsd, LPVOID pContext) {
+    DWORD                        dwModeSizeX;
+    DWORD                        dwModeSizeY;
     RtgDisplayModeEnum::SDevice* pDevice = (RtgDisplayModeEnum::SDevice*)pContext;
 
     std::list<RtgDisplayModeEnum::SScreenSize>::iterator it = pDevice->listScreenSize.begin();
-    for( ; it!=pDevice->listScreenSize.end(); it++ )
-    {
+    for (; it != pDevice->listScreenSize.end(); it++) {
         dwModeSizeX = (*it).dwWidth;
         dwModeSizeY = (*it).dwHeight;
 
-        if ( ( dwModeSizeX == pddsd->dwWidth ) && ( dwModeSizeY == pddsd->dwHeight ) )
-        {
+        if ((dwModeSizeX == pddsd->dwWidth) && (dwModeSizeY == pddsd->dwHeight)) {
             // If this mode has been added, then stop looking
             break;
         }
     }
 
     // If this mode was not in g_aDevices[g_dwDeviceCount].aModeSize[]
-    // then added it. 
-    if( it == pDevice->listScreenSize.end() )
-    {
+    // then added it.
+    if (it == pDevice->listScreenSize.end()) {
         pDevice->listScreenSize.push_back(RtgDisplayModeEnum::SScreenSize());
-        pDevice->listScreenSize.back().dwWidth  = pddsd->dwWidth;
+        pDevice->listScreenSize.back().dwWidth = pddsd->dwWidth;
         pDevice->listScreenSize.back().dwHeight = pddsd->dwHeight;
     }
 
@@ -170,44 +145,35 @@ HRESULT WINAPI EnumModesCallback( LPDDSURFACEDESC pddsd,
 // Name: EnumAllModesCallback()
 // Desc: For each mode enumerated, it adds it to the "All Modes" listbox.
 //-----------------------------------------------------------------------------
-HRESULT WINAPI EnumAllModesCallback( LPDDSURFACEDESC2 pddsd,  
-                                     LPVOID pContext )
-{
+HRESULT WINAPI EnumAllModesCallback(LPDDSURFACEDESC2 pddsd, LPVOID pContext) {
     RtgDisplayModeEnum::SDevice* pDevice = (RtgDisplayModeEnum::SDevice*)pContext;
 
     std::list<RtgDisplayModeEnum::SScreenSize>::iterator it = pDevice->listScreenSize.begin();
-    for( ; it!=pDevice->listScreenSize.end(); it++ )
-    {
+    for (; it != pDevice->listScreenSize.end(); it++) {
         RtgDisplayModeEnum::SScreenSize* pScreenSize = &(*it);
-        if ( ( pScreenSize->dwWidth == pddsd->dwWidth ) && ( pScreenSize->dwHeight == pddsd->dwHeight ) )
-        {
-            RtgDisplayModeEnum::SBitCount* pBitCount;
-            std::list<RtgDisplayModeEnum::SBitCount>::iterator itBit = pScreenSize->listBitCount.begin();
-            for( ; itBit!=pScreenSize->listBitCount.end(); itBit++ )
-            {
+        if ((pScreenSize->dwWidth == pddsd->dwWidth) &&
+            (pScreenSize->dwHeight == pddsd->dwHeight)) {
+            RtgDisplayModeEnum::SBitCount*                     pBitCount;
+            std::list<RtgDisplayModeEnum::SBitCount>::iterator itBit =
+                pScreenSize->listBitCount.begin();
+            for (; itBit != pScreenSize->listBitCount.end(); itBit++) {
                 pBitCount = &(*itBit);
-                if (pBitCount->dwBitCount==pddsd->ddpfPixelFormat.dwRGBBitCount)
-                {
+                if (pBitCount->dwBitCount == pddsd->ddpfPixelFormat.dwRGBBitCount) {
                     break;
                 }
             }
-            if (itBit==pScreenSize->listBitCount.end())
-            {
+            if (itBit == pScreenSize->listBitCount.end()) {
                 pScreenSize->listBitCount.push_back(RtgDisplayModeEnum::SBitCount());
                 pScreenSize->listBitCount.back().dwBitCount = pddsd->ddpfPixelFormat.dwRGBBitCount;
                 pScreenSize->listBitCount.back().listRefreshRate.push_back(pddsd->dwRefreshRate);
-            }else
-            {
+            } else {
                 std::list<DWORD>::iterator itRate = pBitCount->listRefreshRate.begin();
-                for( ; itRate!=pBitCount->listRefreshRate.end(); itRate++ )
-                {
-                    if ((*itRate)==pddsd->dwRefreshRate)
-                    {
+                for (; itRate != pBitCount->listRefreshRate.end(); itRate++) {
+                    if ((*itRate) == pddsd->dwRefreshRate) {
                         break;
                     }
                 }
-                if (itBit==pScreenSize->listBitCount.end())
-                {
+                if (itBit == pScreenSize->listBitCount.end()) {
                     pBitCount->listRefreshRate.push_back(pddsd->dwRefreshRate);
                 }
             }
@@ -215,7 +181,6 @@ HRESULT WINAPI EnumAllModesCallback( LPDDSURFACEDESC2 pddsd,
     }
     return TRUE;
 }
-
 
 /*
 
@@ -557,7 +522,8 @@ HRESULT PerformDirectDrawRefreshRate( LPDIRECTDRAW7 pDD, SIZE* aTestModes,
 }
 */
 
-} // namespace rt_graph
+}  // namespace rt_graph
+
 /*----------------------------------------------------------------------------
 -   The End.
 ----------------------------------------------------------------------------*/

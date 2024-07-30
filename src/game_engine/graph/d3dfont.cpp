@@ -6,7 +6,9 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
+#ifndef STRICT
 #define STRICT
+#endif  // !STRICT
 #include <stdio.h>
 #include <tchar.h>
 #include <D3DX9.h>

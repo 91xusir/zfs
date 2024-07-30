@@ -6,7 +6,9 @@
 //
 // Copyright (c) 1997-2001 Microsoft Corporation. All rights reserved
 //-----------------------------------------------------------------------------
+#ifndef STRICT
 #define STRICT
+#endif  // !STRICT
 #include <Windows.h>
 #include <WindowsX.h>
 #include <tchar.h>

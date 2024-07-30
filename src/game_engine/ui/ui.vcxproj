@@ -95,6 +95,9 @@
     <ClCompile Include="..\..\engine\head\ui\rtw_widget.cpp" />
     <ClCompile Include="..\..\engine\head\ui\rtw_workspace.cpp" />
     <ClCompile Include="..\..\engine\head\ui\rtw_xml.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\engine\head\ui\gif\gif89a.h" />
@@ -425,11 +428,11 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\engine\head;$(ProjectDir)..\..\sdk\include\dxsdk</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;GAME_CLIENT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Lib>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>

@@ -5,11 +5,10 @@
 //
 // Copyright (c) Microsoft Corporation. All rights reserved.
 //-----------------------------------------------------------------------------
+#ifndef STRICT
 #define STRICT
+#endif  // !STRICT
 #include <windows.h>
-#include <windowsx.h>
-#include <mmsystem.h>
-#include <stdio.h>
 #include <tchar.h>
 #include <D3D9.h>
 #include "graph\DXUtil.h"
@@ -18,10 +17,7 @@
 #include "graph\D3DSettings.h"
 #include "graph\D3DApp.h"
 #include "graph\D3DRes.h"
-
-#include "core/rt2_core.h"
 #include "rtg_graph_inter.h"
-#include "rtg_console.h"
 
 namespace rt_graph_dx9 {
 //-----------------------------------------------------------------------------

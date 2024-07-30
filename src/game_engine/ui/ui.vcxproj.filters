@@ -139,6 +139,7 @@
     <ClCompile Include="..\..\engine\head\ui\gif\gif89a.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\engine\head\ui\rtw_3dview.h">
@@ -300,9 +301,7 @@
     <ClInclude Include="..\..\engine\head\ui\gif\gif89a.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="UI.cd" />

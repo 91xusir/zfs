@@ -141,6 +141,7 @@
     <ClCompile Include="TextureRLEWrapper.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="jconfig.h">
@@ -326,5 +327,6 @@
     <ClInclude Include="..\..\engine\head\graph\rtg_vertex.h">
       <Filter>sdk</Filter>
     </ClInclude>
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
 </Project>

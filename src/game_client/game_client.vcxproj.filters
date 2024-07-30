@@ -124,9 +124,6 @@
     <Filter Include="frame\net">
       <UniqueIdentifier>{9788b005-3c23-47e1-b71c-c979a03d6a9c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="frame\log_msg">
-      <UniqueIdentifier>{01139388-d459-458d-80a9-e1a17159c8ae}</UniqueIdentifier>
-    </Filter>
     <Filter Include="frame\script_interface">
       <UniqueIdentifier>{820c3a8f-f5ab-4ddd-9596-17b46ab0edfa}</UniqueIdentifier>
     </Filter>
@@ -162,12 +159,6 @@
     </Filter>
     <Filter Include="game\ui\ui_lyyFix">
       <UniqueIdentifier>{4d437c3e-1aad-4a26-a4ad-27dde1b14cb3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="refactor">
-      <UniqueIdentifier>{a4d67ef6-8025-4a44-a058-e1f11e12435c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="refactor\ui_login">
-      <UniqueIdentifier>{15604f31-eb3c-4b19-b468-4c51cda45bc4}</UniqueIdentifier>
     </Filter>
     <Filter Include="other">
       <UniqueIdentifier>{e53ae7c9-1e11-4025-82a0-147fc9a13aac}</UniqueIdentifier>
@@ -238,7 +229,13 @@
     <Filter Include="engine_sdk\file_pack\interface">
       <UniqueIdentifier>{a83a4063-3933-413d-a777-8885490eabd9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="refactor\utils">
+    <Filter Include="refactor-重构代码放这里">
+      <UniqueIdentifier>{a4d67ef6-8025-4a44-a058-e1f11e12435c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor-重构代码放这里\ui_login">
+      <UniqueIdentifier>{15604f31-eb3c-4b19-b468-4c51cda45bc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor-重构代码放这里\utils">
       <UniqueIdentifier>{51a62569-c5d0-4dd0-8077-48f05ee95332}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -925,10 +922,10 @@
       <Filter>game\ui\ui_union</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_layer_login.h">
-      <Filter>refactor\ui_login</Filter>
+      <Filter>refactor-重构代码放这里\ui_login</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_layer_select_char.h">
-      <Filter>refactor\ui_login</Filter>
+      <Filter>refactor-重构代码放这里\ui_login</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_form_castlewar.h">
       <Filter>game\ui\ui_feod_castlewar</Filter>
@@ -1278,9 +1275,6 @@
     <ClInclude Include="..\shared\region_client.h">
       <Filter>frame\net</Filter>
     </ClInclude>
-    <ClInclude Include="frame\gc_log_msg.h">
-      <Filter>frame\log_msg</Filter>
-    </ClInclude>
     <ClInclude Include="game\game_script_interface.h">
       <Filter>frame\script_interface</Filter>
     </ClInclude>
@@ -1372,16 +1366,19 @@
       <Filter>frame\nes</Filter>
     </ClInclude>
     <ClInclude Include="preConsole.h">
-      <Filter>refactor\utils</Filter>
+      <Filter>refactor-重构代码放这里\utils</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>other</Filter>
     </ClInclude>
     <ClInclude Include="lyyUtils.h">
-      <Filter>refactor\utils</Filter>
+      <Filter>refactor-重构代码放这里\utils</Filter>
     </ClInclude>
     <ClInclude Include="fpsLimit.h">
-      <Filter>refactor\utils</Filter>
+      <Filter>refactor-重构代码放这里\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\ui_login_account.h">
+      <Filter>refactor-重构代码放这里\ui_login</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1586,10 +1583,10 @@
       <Filter>game\ui\ui_union</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_layer_login.cpp">
-      <Filter>refactor\ui_login</Filter>
+      <Filter>refactor-重构代码放这里\ui_login</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_layer_select_char.cpp">
-      <Filter>refactor\ui_login</Filter>
+      <Filter>refactor-重构代码放这里\ui_login</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_castlewar.cpp">
       <Filter>game\ui\ui_feod_castlewar</Filter>
@@ -1897,9 +1894,6 @@
     <ClCompile Include="..\shared\region_client.cpp">
       <Filter>frame\net</Filter>
     </ClCompile>
-    <ClCompile Include="frame\gc_log_msg.cpp">
-      <Filter>frame\log_msg</Filter>
-    </ClCompile>
     <ClCompile Include="game\game_script_interface.cpp">
       <Filter>frame\script_interface</Filter>
     </ClCompile>
@@ -2003,7 +1997,7 @@
       <Filter>frame\resource</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_login_serverList.cpp">
-      <Filter>refactor\ui_login</Filter>
+      <Filter>refactor-重构代码放这里\ui_login</Filter>
     </ClCompile>
     <ClCompile Include="iob_func.cpp">
       <Filter>other</Filter>
@@ -2012,10 +2006,13 @@
       <Filter>other</Filter>
     </ClCompile>
     <ClCompile Include="fpsLimit.cpp">
-      <Filter>refactor\utils</Filter>
+      <Filter>refactor-重构代码放这里\utils</Filter>
     </ClCompile>
     <ClCompile Include="preConsole.cpp">
-      <Filter>refactor\utils</Filter>
+      <Filter>refactor-重构代码放这里\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\ui_login_account .cpp">
+      <Filter>refactor-重构代码放这里\ui_login</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
