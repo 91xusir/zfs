@@ -1,3 +1,5 @@
+#pragma once
+#include "gc_timer.h"
 
 class GcLogin;
 // add [3/14/2009 tooth.shi]

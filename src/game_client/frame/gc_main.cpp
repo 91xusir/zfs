@@ -1,4 +1,4 @@
-#include <io.h>
+//#include <io.h>
 #include "gc_include.h"            // 包含游戏核心的公共头文件
 #include "gc_camera.h"             // 包含游戏中摄像机相关的头文件
 //#include "gc_log_msg.h"            // 包含游戏日志消息相关的头文件

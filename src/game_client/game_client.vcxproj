@@ -332,6 +332,7 @@
     <ClInclude Include="..\engine\head\filepack\unpack_file.h" />
     <ClInclude Include="..\engine\head\filepack\game_pack.h" />
     <ClInclude Include="..\engine\head\filepack\pack_manager.h" />
+    <ClInclude Include="frame\gc_main.h" />
     <ClInclude Include="game\gc_bulletin.h" />
     <ClInclude Include="game\gc_login.h" />
     <ClInclude Include="game\gc_world.h" />
@@ -547,7 +548,6 @@
     <ClInclude Include="frame\resource.h" />
     <ClInclude Include="game\NesClient.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="ui\ui_login_account.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\engine\head\core\rtc2_thread.inl" />
@@ -669,8 +669,7 @@
     <ClCompile Include="ui\UIForm_Gem.cpp" />
     <ClCompile Include="ui\UIForm_MiddleMap.cpp" />
     <ClCompile Include="ui\UIForm_NewPeopleHelp.cpp" />
-    <ClCompile Include="ui\ui_login_account .cpp" />
-    <ClCompile Include="ui\ui_login_serverList.cpp" />
+    <ClCompile Include="ui\ui_form_server.cpp" />
     <ClCompile Include="ui\UIForm_Speaker.cpp" />
     <ClCompile Include="ui\UIForm_System.cpp" />
     <ClCompile Include="ui\ui_form_pet.cpp" />

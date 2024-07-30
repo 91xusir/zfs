@@ -1377,8 +1377,8 @@
     <ClInclude Include="fpsLimit.h">
       <Filter>refactor-重构代码放这里\utils</Filter>
     </ClInclude>
-    <ClInclude Include="ui\ui_login_account.h">
-      <Filter>refactor-重构代码放这里\ui_login</Filter>
+    <ClInclude Include="frame\gc_main.h">
+      <Filter>frame\win_main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1996,7 +1996,7 @@
     <ClCompile Include="frame\gc_cursor.cpp">
       <Filter>frame\resource</Filter>
     </ClCompile>
-    <ClCompile Include="ui\ui_login_serverList.cpp">
+    <ClCompile Include="ui\ui_form_server.cpp">
       <Filter>refactor-重构代码放这里\ui_login</Filter>
     </ClCompile>
     <ClCompile Include="iob_func.cpp">
@@ -2010,9 +2010,6 @@
     </ClCompile>
     <ClCompile Include="preConsole.cpp">
       <Filter>refactor-重构代码放这里\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\ui_login_account .cpp">
-      <Filter>refactor-重构代码放这里\ui_login</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
