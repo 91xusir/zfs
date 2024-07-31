@@ -11,8 +11,6 @@
 #include "ui_form_msg.h"
 #include "ui_form_textMsg.h"
 
-
-
 //1--五台 4--花间 7--蜀山 10--苗疆 13--蜀山(女) 16--苗疆(女)
 //static int s_userID[] = {1, 4, 7, 10, 13, 16};
 //static char* s_pszLoginCharName[] = {"role_wt_m_01", "role_hj_f_01", "role_ss_m_01", "role_mj_m_01", "role_ss_f_01", "role_mj_f_01"};
@@ -42,7 +40,6 @@ static char* s_pszCharAnimalName[] = {
     "ui/textures/animal4.tga",  "ui/textures/animal5.tga",  "ui/textures/animal6.tga",
     "ui/textures/animal7.tga",  "ui/textures/animal8.tga",  "ui/textures/animal9.tga",
     "ui/textures/animal10.tga", "ui/textures/animal11.tga", "ui/textures/animal12.tga"};
-
 
 std::string GcLogin::m_szAccountUsername;
 std::string GcLogin::m_szAccountPassword;
@@ -180,8 +177,8 @@ void GcLogin::LoginErrMsg(EErrMsg eMsg, const char* szRetStr, short sRetCode) {
         rt2_sprintf(g_strStaticBuffer, "%s [%s]", pMsg, szRetStr);
         ShowMessage(g_strStaticBuffer);
     } else if (sRetCode) {
-        if (sRetCode == 110) {
-            UIFormMsg* pFrm = UIFormMsg::ShowStatic(pMsg, UIFormMsg::TYPE_OK_CANCEL);
+        if (sRetCode == 110) {//lyymark 强制登录设置
+            UIFormMsg* pFrm = UIFormMsg::ShowStatic(pMsg, UIFormMsg::TYPE_OK_CANCEL, false, "forcelogin_");
             pFrm->EvOK = RTW_CALLBACK_1(g_layerLogin, UILayerLogin, OnClicked_ForceLogin, pFrm);
             pFrm->EvCancel =
                 RTW_CALLBACK_1(g_layerLogin, UILayerLogin, OnClicked_ForceLoginCancel, pFrm);
@@ -454,14 +451,14 @@ void GcLogin::EnterSelectGameWorldServer() {
     StartGetGameWorldServer();
 
     //显示 服务器列表
-    g_layerLogin->m_formServer->Show();
+    g_layerLogin->mp_layerServer->Show();
     unguard;
 }
 
 bool GcLogin::LeaveSelectGameWorldServer() {
     guard;
     CHECK(m_eStatus == GLS_SELECT_GAMEWORLD_SERVER);
-    g_layerLogin->m_formServer->Hide();
+    g_layerLogin->mp_layerServer->Hide();
     EndGetGameWorldServer();
     return true;
     unguard;
@@ -511,14 +508,14 @@ void GcLogin::EnterLogin() {
 
     // LOAD_UI_T(RtwForm, "loginForm")->SetShowCloseButton(false);
     // LOAD_UI_T(RtwForm, "loginForm")->getCloseButton()->ModifyFlags(0, wfVisible);
-    g_layerLogin->mp_loginForm->Show();
+    g_layerLogin->Show();
     unguard;
 }
 
 bool GcLogin::LeaveLogin() {
     guard;
     CHECK(m_eStatus == GLS_LOGIN);
-    g_layerLogin->mp_loginForm->Hide();
+    g_layerLogin->Hide();
     return true;
     unguard;
 }
@@ -2346,7 +2343,7 @@ void GcLogin::OnNetLogin(int result, const char* szRetStr, short sRetCode, char 
         }
 
         if (result == LOGIN_RET_FAILED_NEW_CARD || result == LOGIN_RET_FAILED_USER_ONLINE) {
-            LOAD_UI("fmlogin.fmpassword.txtpassword")->SetText("");
+            LOAD_UI("loginForm.txtPwd")->SetText("");
         }
 
         LoginErrMsg(err, szRetStr, sRetCode);
@@ -2778,19 +2775,19 @@ void GcLogin::OnUIUpdateGameWorldServerList() const {
             case 8:  // 3200
             default:
                 //strcpy(szEvaluation, "普通");//by fox for string
-                szEvaluation = R(MSG_SERVER_NORMAL);
+                szEvaluation = "流畅";  // R(MSG_SERVER_NORMAL);
                 break;
             case 9:  // 3600
                 //strcpy(szEvaluation, "繁忙");//by fox for string
-                szEvaluation = R(MSG_SERVER_BUSY);
+                szEvaluation = "繁忙";  // R(MSG_SERVER_BUSY);
                 break;
             case 10:  // 4000 人以上
                 //strcpy(szEvaluation, "满员");//by fox for string
                 szEvaluation = R(MSG_SERVER_FULL);
                 break;
         }
-        g_layerLogin->m_formServer->OnInsertNewServer(tempConunt++, szName, gwServer.ping,
-                                                      szEvaluation);
+        g_layerLogin->mp_layerServer->OnInsertNewServer(tempConunt++, szName, gwServer.ping,
+                                                        szEvaluation);
     }
     //lyytodo 从文件中读取上次选中的服务器
     /*RtIni iniUser;
@@ -2806,7 +2803,7 @@ void GcLogin::OnUIUpdateGameWorldServerList() const {
 	}
 	if (m_iLastServer >= 0)
 	{
-		g_layerLogin->m_formServer->SetSelectItemLast(m_iLastServer);
+		g_layerLogin->mp_layerServer->SetSelectItemLast(m_iLastServer);
 	}*/
     unguard;
 }

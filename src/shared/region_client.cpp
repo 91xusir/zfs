@@ -4405,13 +4405,13 @@ static int T[] =
 
 int ha_P3(char const*s, int maxn, int hashs)
 {
-	register unsigned int h;
-	register unsigned char *p;
+	 unsigned int h;
+	 unsigned char *p;
 
 	h = (unsigned char) *s;
 	if (h) {
 		if (hashs > 256) {
-			register int oh = T[(unsigned char) *s];
+			 int oh = T[(unsigned char) *s];
 
 			for (p = (unsigned char *) s + 1; *p && p <= (unsigned char *) s + maxn; p++) {
 				h = T[h ^ *p];
@@ -4433,9 +4433,9 @@ int ha_P3(char const*s, int maxn, int hashs)
 
 int ha_P2(char const*s, int maxn)
 {
-	register unsigned char oh, h;
-	register unsigned char *p;
-	register int i;
+	 unsigned char oh, h;
+	 unsigned char *p;
+	 int i;
 
 	if (!*s)
 		return 0;

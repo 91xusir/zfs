@@ -205,7 +205,7 @@ namespace rt2_core {
 		*/
 		if (m_bDumpLeakInfo)
 		{
-			// 由于Log已经Shutdown，所以只能用ANSI文件来记录
+			// lyymark 由于Log已经Shutdown，所以只能用ANSI文件来记录
 			FILE* fp = fopen("memory_leak.txt", "wt");
 			if (fp)
 			{

@@ -19,6 +19,9 @@
 #include "graph\D3DRes.h"
 #include "rtg_graph_inter.h"
 
+//回调关闭函数
+void global_closeApp();
+
 namespace rt_graph_dx9 {
 //-----------------------------------------------------------------------------
 // Global access to the app (needed for the global WndProc())
@@ -88,6 +91,13 @@ CD3DApplication::CD3DApplication() {
 // Desc: Static msg handler which passes messages to the application class.
 //-----------------------------------------------------------------------------
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+    switch (uMsg) {
+        case WM_CLOSE:
+            global_closeApp();
+            return 0;
+        default:
+            break;
+    }
     return g_pD3DApp->MsgProc(hWnd, uMsg, wParam, lParam);
 }
 
@@ -1433,7 +1443,7 @@ INT CD3DApplication::Run() {
             if (m_bReady)  // 如果应用程序已准备好
             {
                 // lyymark 1.d3dapp.帧率限制 运行3秒后限制
-                if (m_dwFpsLocked && DXUtil_Timer(TIMER_GETAPPTIME)>3.f) {
+                if (m_dwFpsLocked && DXUtil_Timer(TIMER_GETAPPTIME) > 3.f) {
                     DWORD dSTime = timeGetTime();
                     if (FAILED(Render3DEnvironment()))
                         SendMessage(m_hWnd, WM_CLOSE, 0, 0);

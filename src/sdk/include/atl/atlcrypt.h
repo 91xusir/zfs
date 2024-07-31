@@ -55,7 +55,7 @@ public:
 		LPCTSTR szContainer = NULL, LPCTSTR szProvider = MS_DEF_PROV,
 		DWORD dwFlags = 0) throw();
 
-	HRESULT Uninitialize();
+	HRESULT Uninitialize() throw();
 
 	HRESULT GetParam(DWORD dwParam, BYTE * pbData, DWORD * pdwDataLen, DWORD dwFlags = 0) throw();
 	HRESULT SetParam( DWORD dwParam, BYTE* pbData, DWORD dwFlags = 0) throw();

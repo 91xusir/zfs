@@ -53,7 +53,7 @@ public:
 	// attribute
 
 	// 取得时间控制器的总数,最多为32个对象
-	DWORD GetTotal()
+    inline DWORD GetTotal() const
 	{
 		return m_dwCount;
 	}

@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="GBK"?>
 <Ui>
- <Loader Description="ui definition xml file">
-  <File Name="ui/ui_layer_login.xml"/>
-  <File Name="ui/ui_form_server.xml"/>
-  <File Name="ui/ui_form_setting.xml"/>
- </Loader>
- <Layer DefaultIndex="true" Height="600" Index="1" Name="layworld" Show="true" Width="800">
+  <Loader Description="ui definition xml file">
+    <File Name="ui/ui_layer_login.xml"/>
+    <File Name="ui/ui_form_server.xml"/>
+    <File Name="ui/ui_form_setting.xml"/>
+  </Loader>
+  <Layer DefaultIndex="true" Height="600" Index="1" Name="layworld" Show="true" Width="800">
 
-  <Form BorderSize="2" Inherit="VoidTitleBarForm1" Location="388,291,250,155" MouseMove="false" Name="ConfirmBox1" Show="false" Size="250,155" EscapeHide="false">
-   <Label Location="25,15,200,75" Multiline="true" Name="lbinfoexit" Text=""/>
-   <Button FontSize="12" Inherit="SmallPushButton" Location="97,107,59,19" Name="btnconfirm" Text="确认" TextFont="宋体"/>
-  </Form>
-  <Form Inherit="VoidTitleBarForm1" Location="388,293,250,155" MouseMove="true" Name="ConfirmBox2" Show="false" EscapeHide="false">
-   <Label Location="25,14,200,75" Multiline="true" Name="lbinfoexit" Text=""/>
-   <Button FontSize="12" Inherit="SmallPushButton" Location="38,105,59,19" Name="btnconfirm" Text="确认" TextFont="宋体"/>
-   <Button FontSize="12" Inherit="SmallPushButton" Location="153,105,59,19" Name="btncancel" Text="取消" TextFont="宋体"/>
-  </Form>
-  <Form Inherit="TitleBarForm" Location="20,20,200,130" Name="lbgameinfo" Show="true" MouseMove="false" >
+    <Form BorderSize="2" Inherit="TitleBarForm" Location="378,167,200,150" MouseMove="false" Name="ConfirmBox1" Show="false" Size="250,155" EscapeHide="false">
+      <Label Location="25,15,200,75" Multiline="true" Name="lbinfoexit" Text=""/>
+      <Button FontSize="12" Inherit="PushButton" Location="70,94,64,20" Name="btnconfirm" Text="确认" TextFont="宋体"/>
+    </Form>
+    <Form Inherit="TitleBarForm" Location="246,122,200,150" MouseMove="true" Name="ConfirmBox2" Show="false" EscapeHide="false">
+      <Label Location="25,14,200,75" Multiline="true" Name="lbinfoexit" Text=""/>
+      <Button FontSize="12" Inherit="PushButton" Location="44,94,64,20" Name="btnconfirm" Text="确认" TextFont="宋体"/>
+      <Button FontSize="12" Inherit="PushButton" Location="114,94,64,20" Name="btncancel" Text="取消" TextFont="宋体"/>
+    </Form>
+    <Form Inherit="TitleBarForm" Location="20,20,200,130" Name="lbgameinfo" Show="true" MouseMove="false">
       <CloseButton Show="false"/>
       <Label Inherit="" Location="62,4,184,16" Name="lbserver0" Text="健康游戏通告"/>
       <Label Inherit="" Location="18,22,184,16" Name="lbserver1" Text="抵制不良游戏，拒绝盗版游戏。"/>
       <Label Inherit="" Location="18,40,184,16" Name="lbserver2" Text="注意自我保护，谨防受骗上当。"/>
       <Label Inherit="" Location="18,58,184,16" Name="lbserver3" Text="适度游戏益脑，沉迷游戏伤身。"/>
-      <Label Inherit="" Location="18,76,184,16" Name="lbserver4" Text="合理安排时间，享受健康生活。"/>	
-  </Form>
-    <Form Inherit="TitleBarForm" Location="20,150,150,225" Name="logo" Show="true" >
+      <Label Inherit="" Location="18,76,184,16" Name="lbserver4" Text="合理安排时间，享受健康生活。"/>
+    </Form>
+    <Form Inherit="TitleBarForm" Location="20,150,150,225" Name="logo" Show="true">
       <CloseButton Show="false"/>
       <Label Inherit="" Location="30,3,128,16" Name="wxtext" Text="真封神·浴火重生"/>
       <Label Inherit="" Location="100,80,128,16" Name="wxtext" Text="by:鸿钧"/>
       <Label Inherit="" Location="1,40,128,149" Name="wxlogo" Text="">
-	<BackgroundImage File="zfs_texture/xxn.tga" Source="0,0,128,149" Blend="true" />
+        <BackgroundImage File="zfs_texture/xxn.tga" Source="0,0,128,149" Blend="true" />
       </Label>
     </Form>
-     <Form Inherit="TitleBarForm" Location="240,20,175,220" Name="lbnewsinfo" Show="true" >
-    <CloseButton Show="false"/>
-    	<Label Inherit="" Location="60,4,164,16" Name="lbtitle" Text="游戏公告"/>
-    	<Label Inherit="" Location="18,22,164,16" Name="lbnews1" Text="天上白玉京，十二楼五城。"/>
-    	<Label Inherit="" Location="18,40,164,16" Name="lbnews2" Text="仙人抚我顶，结发受长生。"/>
-    	<Label Inherit="" Location="18,58,164,16" Name="lbnews3" Text="误逐世间乐，颇穷理乱情。"/>
-    	<Label Inherit="" Location="18,76,164,16" Name="lbnews4"  Text="九十六圣君，浮云挂空名。"/>
-    	<Label Inherit="" Location="18,94,164,16" Name="lbnews5"  Text="天地赌一掷，未能忘战争。"/>
-    	<Label Inherit="" Location="18,112,164,16" Name="lbnews6" Text="试涉霸王略，将期轩冕荣。"/>
-    	<Label Inherit="" Location="18,130,164,16" Name="lbnews7" Text="时命乃大谬，弃之海上行。"/>
-    	<Label Inherit="" Location="18,148,164,16" Name="lbnews8" Text="学剑翻自哂，为文竟何成。"/>
-    	<Label Inherit="" Location="18,166,164,16" Name="lbnews9" Text="剑非万人敌，文窃四海声。"/>
-    	<!-- <Label Inherit="" Location="18,184,164,16" Name="lbnews10"Text="公告10"/> -->
+    <Form Inherit="TitleBarForm" Location="240,20,175,220" Name="lbnewsinfo" Show="true">
+      <CloseButton Show="false"/>
+      <Label Inherit="" Location="60,4,164,16" Name="lbtitle" Text="游戏公告"/>
+      <Label Inherit="" Location="18,22,164,16" Name="lbnews1" Text="天上白玉京，十二楼五城。"/>
+      <Label Inherit="" Location="18,40,164,16" Name="lbnews2" Text="仙人抚我顶，结发受长生。"/>
+      <Label Inherit="" Location="18,58,164,16" Name="lbnews3" Text="误逐世间乐，颇穷理乱情。"/>
+      <Label Inherit="" Location="18,76,164,16" Name="lbnews4" Text="九十六圣君，浮云挂空名。"/>
+      <Label Inherit="" Location="18,94,164,16" Name="lbnews5" Text="天地赌一掷，未能忘战争。"/>
+      <Label Inherit="" Location="18,112,164,16" Name="lbnews6" Text="试涉霸王略，将期轩冕荣。"/>
+      <Label Inherit="" Location="18,130,164,16" Name="lbnews7" Text="时命乃大谬，弃之海上行。"/>
+      <Label Inherit="" Location="18,148,164,16" Name="lbnews8" Text="学剑翻自哂，为文竟何成。"/>
+      <Label Inherit="" Location="18,166,164,16" Name="lbnews9" Text="剑非万人敌，文窃四海声。"/>
+      <!-- <Label Inherit="" Location="18,184,164,16" Name="lbnews10"Text="公告10"/> -->
     </Form>
-     <Form Inherit="NoTitleBarForm" Location="0,548,1920,52" Name="kaiyuan" Show="true">
-      <Label  Location="200,20,420,50" Name="lbbutton" Text="真封神 | 开源版 | 点击查看开发进度 ->">
+    <Form Inherit="NoTitleBarForm" Location="0,548,1920,52" Name="kaiyuan" Show="true">
+      <Label Location="200,20,420,50" Name="lbbutton" Text="真封神 | 开源版 | 点击查看开发进度 ->">
         <Anchors>
           <Anchor point="CENTERV"/>
           <Anchor offset="0,15" point="BOTTOM"/>
         </Anchors>
       </Label>
-	     <Label HyperLink="url:github.com/reniao69/zfs" Location="250,20,420,50" Name="githubUrl" Text="https://github.com/reniao69/zfs ">
+      <Label HyperLink="url:github.com/reniao69/zfs" Location="250,20,200,50" Name="srcUrl" Text="https://github.com/reniao69/zfs ">
         <Anchors>
-          <Anchor offset="225,0" point="CENTERV"/>
+          <Anchor offset="120,0" point="CENTERV"/>
           <Anchor offset="0,15" point="BOTTOM"/>
         </Anchors>
       </Label>
@@ -70,7 +70,7 @@
       </Anchors>
     </Form>
 
-      <Form Anchor="right,bottom" Inherit="TitleBarForm" Location="578,196,214,150" Name="loginForm" Show="false" StartPosition1="centerParent">
+    <Form Anchor="right,bottom" Inherit="TitleBarForm" Location="578,196,214,150" Name="loginForm" Show="false" StartPosition1="centerParent">
       <CloseButton Show="false"/>
       <TitleBar Text="登     陆"/>
       <Label Location="45,3,50,16" Name="ttServerName" Text="当前服" />
@@ -80,7 +80,7 @@
       <Label Location="54,48,30,16" Name="lbPwd" Text="密码"/>
       <EditBox Inherit="EditBox" Location="90,48,86,16" Name="txtPwd" PasswordChar="*" Password="true"/>
       <Label Location="90,68,100,16" Name="lbSaveAcc" Text="保存帐号"/>
-      <CheckButton Inherit="CheckButton" Location="62,70,12,12" Name="ckSaveAcc"  MouseMove="true" how="true" Sound="ui_softb_bt.wav" />
+      <CheckButton Inherit="CheckButton" Location="62,70,12,12" Name="ckSaveAcc" MouseMove="true" how="true" Sound="ui_softb_bt.wav" />
       <Button GrabKeyboard="true" Inherit="PushButton" Location="32,90,64,20" Name="btnOk" Text="确认"/>
       <Button GrabKeyboard="true" Inherit="PushButton" Location="118,90,64,20" Name="btnBack" Text="返回" Sound="ui_exitbt.wav"/>
       <Anchors>
@@ -89,29 +89,29 @@
       </Anchors>
     </Form>
 
-    <Button Anchor="right,bottom" Inherit="PushButton" Location="678,420,64,20" Name="btnweb" Show="true" Text="官网">
+    <Button Anchor="right,bottom" Inherit="PushButton" Location="678,420,64,20" Name="btnWeb" Show="true" Text="官网">
       <Anchors>
         <Anchor offset="-86,0" point="RIGHT"/>
         <Anchor offset="0,-200" point="BOTTOM"/>
       </Anchors>
     </Button>
-    <Button Anchor="right,bottom" Inherit="PushButton" Location="678,446,64,20" Name="btnsystem" Show="true" Text="系统">
+    <Button Anchor="right,bottom" Inherit="PushButton" Location="678,446,64,20" Name="btnSystem" Show="true" Text="系统">
       <Anchors>
         <Anchor offset="0,-174" point="BOTTOM"/>
         <Anchor offset="-86,0" point="RIGHT"/>
       </Anchors>
     </Button>
-    <Button Anchor="right,bottom" Inherit="PushButton" Location="678,472,64,20" Name="btncreate" Show="true" Text="创建帐号">
+    <Button Anchor="right,bottom" Inherit="PushButton" Location="678,472,64,20" Name="btnCreate" Show="true" Text="创建帐号">
       <Anchors>
         <Anchor offset="0,-148" point="BOTTOM"/>
         <Anchor offset="-86,0" point="RIGHT"/>
       </Anchors>
     </Button>
-    <Button Anchor="right,bottom" Inherit="PushButton" Location="678,498,64,20" Name="btnexit" Show="true" Text="退出" Sound="ui_exitbt.wav">
+    <Button Anchor="right,bottom" Inherit="PushButton" Location="678,498,64,20" Name="btnExit" Show="true" Text="退出" Sound="ui_exitbt.wav">
       <Anchors>
         <Anchor offset="0,-122" point="BOTTOM"/>
         <Anchor offset="-86,0" point="RIGHT"/>
       </Anchors>
     </Button>
- </Layer>
+  </Layer>
 </Ui>

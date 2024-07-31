@@ -5,6 +5,7 @@
 #include "game_assistant.h"
 #include "UIForm_MiddleMap.h"
 #include "ui_form_task.h"
+#include "ui_form_setting.h"
 /* gao 2010.1.29 分线定义头文件 */
 #include "../shared/linesys_net_define.h"
 /* end */

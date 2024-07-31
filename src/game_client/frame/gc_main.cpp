@@ -17,7 +17,6 @@ static HINSTANCE g_hGCInst = 0;  // 应用程序实例句柄
 G_MEMDEF(g_szGCTitle, 100)        // 定义一个100字符长度的全局标题字符串
 G_MEMDEF(g_szGCWindowClass, 100)  // 定义一个100字符长度的全局窗口类名字符串
 
-static HWND          g_hGCWnd = 0;            // 窗口句柄
 static CRtgAppFrame* g_pGameClientFrame = 0;  // 游戏客户端框架指针
 static RtIni* g_iniConfig;  // 配置文件指针，指向 "game.ini"，此指针不会被删除
 
@@ -40,9 +39,9 @@ GcTimer* GetTimer() {
     return g_pTimer;                  // 返回计时器实例
 }
 
-HWND GetWndHandle() {
-    return g_hGCWnd;
-}
+//HWND GetWndHandle() {
+//    return GetDevice()->m_hWnd;
+//}
 
 CRtgAppFrame* GetApp() {
     return g_pGameClientFrame;

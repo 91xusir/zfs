@@ -102,6 +102,7 @@ namespace rt_graph_dx9 {
 	protected:
 		// Main objects used for creating and rendering the 3D scene
 		D3DPRESENT_PARAMETERS m_d3dpp;         // Parameters for CreateDevice/Reset
+        //lyymark Ö÷´°¿Ú¾ä±ú
 		HWND              m_hWnd;              // The main app window
 		HWND              m_hWndFocus;         // The D3D focus window (usually same as m_hWnd)
 		HMENU             m_hMenu;             // App menu bar (stored here when fullscreen)

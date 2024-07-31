@@ -3,7 +3,8 @@
 /*---------------------------*/
 
 #include <Windows.h>
-#include <CrashReport/Export.h>
+#undef max
+#undef min
 #include <algorithm>
 #include <assert.h>
 #include <atlstr.h>
@@ -45,5 +46,7 @@
 /*---------------------------*/
 // 其他需要预编译的头文件
 #include "core/rt2_core.h"
+#include "gc_timer.h"
+#include "ui/rtw_ui.h"
 /*---------------------------*/
 

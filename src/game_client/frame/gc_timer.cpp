@@ -151,7 +151,6 @@ int GcTimer::RemoveTimer(unsigned long dwID)
     return this->m_dwCount;
 }
 
-
 int GcTimer::RemoveObject(GcTimerListener *pListener)
 {
     int i, j;

@@ -2,7 +2,7 @@
 #include "ui_layer.h"
 #include "ui_form_trade.h"
 #include "ui_form_union.h"
-
+#include "ui_form_setting.h"
 short UIFormSetting::sUIInputProject = 0;
 short UIFormSetting::sUIShowProject = 0;
 
