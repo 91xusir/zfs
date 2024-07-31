@@ -96,7 +96,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
 
 
     // 登录账号
-    void Login(char* szUsername, char* szPassword);
+    void Login(const std::string& szUsername, const std::string& szPassword);
     //发送登录请求
     void OnNetLogin(int result, const char* szRetStr, short sRetCode, char cPointType, long lPoint);
     //网络连接状态回调

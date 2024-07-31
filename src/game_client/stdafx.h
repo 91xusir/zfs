@@ -10,6 +10,7 @@
 #include <atlstr.h>
 #include <chrono>
 #include <ctype.h>
+#include <cctype>
 #include <errno.h>
 #include <io.h>
 #include <iomanip>

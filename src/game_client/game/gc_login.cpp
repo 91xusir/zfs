@@ -406,7 +406,6 @@ void GcLogin::UpdateCameraPos() {
 }
 
 void GcLogin::Lyy_UpdateCameraPos() {
-    guard;
     RtgMatrix16        mCamera;
     CRT_ActorInstance* pCamera;
     m_pBody = FindModel("Body");
@@ -432,11 +431,9 @@ void GcLogin::Lyy_UpdateCameraPos() {
             P_LOGINFO("CameraMatrix:\n" + mCamera.ToString());
         }
     }
-    unguard;
 }
 
 void GcLogin::EnterSelectGameWorldServer() {
-    guard;
     if (g_layerLogin == NULL) {
         //lyymark 2.GcLogin.UI 加载登录和服务器列表UI
         UILayer::EnterLogin();
@@ -452,16 +449,13 @@ void GcLogin::EnterSelectGameWorldServer() {
 
     //显示 服务器列表
     g_layerLogin->mp_layerServer->Show();
-    unguard;
 }
 
 bool GcLogin::LeaveSelectGameWorldServer() {
-    guard;
     CHECK(m_eStatus == GLS_SELECT_GAMEWORLD_SERVER);
     g_layerLogin->mp_layerServer->Hide();
     EndGetGameWorldServer();
     return true;
-    unguard;
 }
 
 void GcLogin::readAccountFromFile() {
@@ -493,7 +487,6 @@ void GcLogin::readAccountFromFile() {
 }
 
 void GcLogin::EnterLogin() {
-    guard;
     if (g_layerLogin == NULL) {
         UILayer::EnterLogin();
     }
@@ -505,11 +498,7 @@ void GcLogin::EnterLogin() {
             m_pCamera->RegisterNotify(NULL);
     }
     readAccountFromFile();
-
-    // LOAD_UI_T(RtwForm, "loginForm")->SetShowCloseButton(false);
-    // LOAD_UI_T(RtwForm, "loginForm")->getCloseButton()->ModifyFlags(0, wfVisible);
     g_layerLogin->Show();
-    unguard;
 }
 
 bool GcLogin::LeaveLogin() {
@@ -2259,7 +2248,7 @@ void GcLogin::SelectGameWorld(int iIdx) {
     unguard;
 }
 
-void GcLogin::Login(char* szUsername, char* szPassword) {
+void GcLogin::Login(const std::string& szUsername, const std::string& szPassword) {
     guard;
     m_szAccountUsername = szUsername;
     m_szAccountPassword = szPassword;

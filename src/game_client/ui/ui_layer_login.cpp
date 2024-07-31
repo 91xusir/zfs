@@ -2,6 +2,8 @@
 #include "ui_layer.h"
 #include "gc_login.h"
 #include "ui_form_msg.h"
+#include <algorithm>
+#include <cctype>
 
 void global_closeApp() {
 
@@ -12,7 +14,7 @@ void global_closeApp() {
 }
 
 static bool IsValidAccountName(const string& name) {
-    if (name.empty() || name.length() > 40) {
+    if (name.length() < 4 || name.length() > 20 || name == "admin" || !std::isalpha(name[0])) {
         return false;
     }
     return std::all_of(name.begin(), name.end(), [](char c) {
@@ -63,12 +65,6 @@ UILayerLogin::UILayerLogin() {
     LOAD_UI("btnExit")->EvLClick.ClearAndSetDelegate(
         RTW_CALLBACK(this, UILayerLogin, OnClicked_Quit));
 
- /*   UIFormMsg* pConfirm = UIFormMsg::ShowStatic("您已经在别的地方在线,是否强制登录?",
-                                                UIFormMsg::TYPE_OK_CANCEL, true, "force_login");
-    pConfirm->EvOK.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerLogin, OnClicked_ForceLogin));
-    pConfirm->EvCancel.ClearAndSetDelegate(
-        RTW_CALLBACK(this, UILayerLogin, OnClicked_ForceLoginCancel));*/
-
     //lyymark 2.GcLogin.XML 加载服务器列表UI
     mp_layerServer = RT_NEW UILayerServer;
 }
@@ -96,60 +92,46 @@ void UILayerLogin::OnClicked_BackSelectServer(RtwWidget* sender, void*) {
 
 //游戏客户端登录按钮的响应事件
 void UILayerLogin::OnClicked_Login(void*, void*) {
+    // 获取登录状态
+    if (GetLogin()->GetStatus() != GcLogin::GLS_LOGIN) {
+        return;
+    }
+    const std::string username = mp_txtAccout->GetText();
+    const std::string password = mp_txtPwd->GetText();
 
-    if (GetLogin()->GetStatus() == GcLogin::GLS_LOGIN) {
-        if (mp_txtAccout->GetText().length() == 0) {
-            ShowMessage(R(MSG_USERNAME_CANNOT_NULL));
-            return;
-        }
+    // 验证账户
+    if (username.empty()) {
+        ShowMessage(R(MSG_USERNAME_CANNOT_NULL));
+        return;
+    }
+    if (!IsValidAccountName(username)) {
+        ShowMessage(R(MSG_USERNAME_INVALID));
+        return;
+    }
+    // 验证密码
+    if (password.empty()) {
+        ShowMessage(R(MSG_PASSWORD_CANNOT_NULL));
+        return;
+    }
+    if (password.length() < 7 || password.length() > 30) {
+        ShowMessage(R(MSG_PASSWORD_INVALID_LONG));
+        return;
+    }
 
-        std::string str = mp_txtAccout->GetText().substr(0, 1);
-        const char* pFirst = str.c_str();
-        if (!((*pFirst >= 'A' && *pFirst <= 'Z') || (*pFirst >= 'a' && *pFirst <= 'z'))) {
-            ShowMessage(R(MSG_USERNAME_INVALID));
-            return;
-        }
-        if (!strncmp(mp_txtAccout->GetText().c_str(), "test", strlen("test")) == 0 &&
-            !strcmp(mp_txtAccout->GetText().c_str(), "admin") == 0) {
-            if (mp_txtAccout->GetText().length() < 4 || mp_txtAccout->GetText().length() > 20) {
-                ShowMessage(R(MSG_USERNAME_INVALID_LONG));
-                return;
-            }
-        }
-        if (!IsValidAccountName(mp_txtAccout->GetText())) {
-            ShowMessage(R(MSG_USERNAME_INVALID));
-            return;
-        }
-        if (mp_txtPwd->GetText().length() == 0) {
-            ShowMessage(R(MSG_PASSWORD_CANNOT_NULL));
-            return;
-        }
-        if (!strcmp(mp_txtPwd->GetText().c_str(), "123456") == 0) {
-            if (mp_txtPwd->GetText().length() < 7 || mp_txtPwd->GetText().length() > 30) {
-                ShowMessage(R(MSG_PASSWORD_INVALID_LONG));
-                return;
-            }
-        }
+    // 执行登录
+    GetLogin()->Login(username, password);
 
-        GetLogin()->Login((char*)mp_txtAccout->GetText().c_str(),
-                          (char*)mp_txtPwd->GetText().c_str());
-
-        // 保存帐号
-        RtIni iniUser;
-        if (!iniUser.OpenFile(R(INI_USER), true)) {
-            return;
-        }
-
+    // 保存帐号
+    RtIni iniUser;
+    if (iniUser.OpenFile(R(INI_USER), true)) {
         if (mp_ckSaveAcc->GetChecked()) {
-            if (!iniUser.FindSection("login"))
+            if (!iniUser.FindSection("login")) {
                 iniUser.AddSection("login");
-            if (!iniUser.SetEntry("login", "username", mp_txtAccout->GetText().c_str())) {
-                iniUser.AddEntry("login", "username", mp_txtAccout->GetText().c_str());
             }
+            iniUser.SetEntry("login", "username", username.c_str());
         } else {
             iniUser.DelEntry("login", "username");
         }
-
         iniUser.CloseFile();
     }
 }

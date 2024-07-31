@@ -59,7 +59,7 @@
                 <BackgroundImage Border="2,2,2,2" BorderFile="" BorderSource="72,12,2,2" Blend="true"/>
             </Form>
 
-            <!-- <Form Name="ConfirmBox1" Inherit="VoidTitleBarForm1" Size="200,150" MouseMove="false">
+            <Form Name="ConfirmBox1" Inherit="VoidTitleBarForm1" Size="200,150" MouseMove="false">
                 <Label Name="lbinfoexit" Location="10,10,152,66" Text=" " Multiline="true" Alignment="center" />
                 <Button Name="btnconfirm" Inherit="PushButton" Location="68,94,64,20" Text="确认" />
             </Form>
@@ -67,7 +67,7 @@
                 <Label Name="lbinfoexit" Location="10,10,152,66" Text=" " Multiline="true" Alignment="center"/>
                 <Button Name="btnconfirm" Inherit="PushButton" Location="44,94,64,20" Text="确认" />
                 <Button Name="btncancel" Inherit="PushButton" Location="114,94,64,20" Text="取消" />
-            </Form> -->
+            </Form>
             <!-- Button -->
             <Button Name="ClearButton">
                 <NormalImage  />

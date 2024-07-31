@@ -13,8 +13,8 @@
     </Form>
     <Form Inherit="TitleBarForm" Location="246,122,200,150" MouseMove="true" Name="ConfirmBox2" Show="false" EscapeHide="false">
       <Label Location="25,14,200,75" Multiline="true" Name="lbinfoexit" Text=""/>
-      <Button FontSize="12" Inherit="PushButton" Location="44,94,64,20" Name="btnconfirm" Text="确认" TextFont="宋体"/>
-      <Button FontSize="12" Inherit="PushButton" Location="114,94,64,20" Name="btncancel" Text="取消" TextFont="宋体"/>
+      <Button FontSize="12" Inherit="PushButton" Location="38,105,59,19" Name="btnconfirm" Text="确认" TextFont="宋体"/>
+      <Button FontSize="12" Inherit="PushButton" Location="153,105,59,19" Name="btncancel" Text="取消" TextFont="宋体"/>
     </Form>
     <Form Inherit="TitleBarForm" Location="20,20,200,130" Name="lbgameinfo" Show="true" MouseMove="false">
       <CloseButton Show="false"/>
@@ -114,4 +114,5 @@
       </Anchors>
     </Button>
   </Layer>
+
 </Ui>
