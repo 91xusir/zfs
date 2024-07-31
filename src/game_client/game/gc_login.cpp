@@ -177,8 +177,9 @@ void GcLogin::LoginErrMsg(EErrMsg eMsg, const char* szRetStr, short sRetCode) {
         rt2_sprintf(g_strStaticBuffer, "%s [%s]", pMsg, szRetStr);
         ShowMessage(g_strStaticBuffer);
     } else if (sRetCode) {
-        if (sRetCode == 110) {//lyymark 强制登录设置
-            UIFormMsg* pFrm = UIFormMsg::ShowStatic(pMsg, UIFormMsg::TYPE_OK_CANCEL, false, "forcelogin_");
+        if (sRetCode == 110) {  //lyymark 强制登录设置
+            UIFormMsg* pFrm =
+                UIFormMsg::ShowStatic(pMsg, UIFormMsg::TYPE_OK_CANCEL, false, "forcelogin_");
             pFrm->EvOK = RTW_CALLBACK_1(g_layerLogin, UILayerLogin, OnClicked_ForceLogin, pFrm);
             pFrm->EvCancel =
                 RTW_CALLBACK_1(g_layerLogin, UILayerLogin, OnClicked_ForceLoginCancel, pFrm);
@@ -340,11 +341,7 @@ void GcLogin::SetLoginState(EStatus eState) {
             break;
     }
     if (m_eStatus != GLS_NONE) {
-        if (m_eStatus == GLS_SELECT_GAMEWORLD_SERVER || m_eStatus == GLS_LOGIN) {
-            Lyy_UpdateCameraPos();
-        } else {
-            UpdateCameraPos();
-        }
+        Lyy_UpdateCameraPos();
     }
     unguard;
 }
@@ -388,7 +385,6 @@ inline void _AdjustCameraMatrix(RtgMatrix16* matOut, RtgMatrix12* matIn) {
 // 更新相机位置
 //BOOKMARK: this is a bookmark
 void GcLogin::UpdateCameraPos() {
-    guard;
     RtgMatrix16 mCamera;
 
     CRT_ActorInstance* pCamera;
@@ -402,9 +398,9 @@ void GcLogin::UpdateCameraPos() {
             GetDevice()->m_pCamera->SetMatrix(mCamera);
         }
     }
-    unguard;
 }
 
+// lyymark 2.GcLogin 修复相机位置矩阵 by lyy 2024-07-30
 void GcLogin::Lyy_UpdateCameraPos() {
     RtgMatrix16        mCamera;
     CRT_ActorInstance* pCamera;
@@ -412,7 +408,7 @@ void GcLogin::Lyy_UpdateCameraPos() {
     pCamera = m_pBody;
     if (pCamera) {
         RtgMatrix12 _mat;
-        if (m_pBody->GetBoneMat(&_mat, "bcam")) {
+        if (m_pBody->GetBoneMat(&_mat, "bcam") || m_pBody->GetBoneMat(&_mat, "Bcam")) {
             RTASSERT(&mCamera);
             RTASSERT(&_mat);
             RtgVertex3 x = *(RtgVertex3*)&_mat._00;
@@ -434,6 +430,9 @@ void GcLogin::Lyy_UpdateCameraPos() {
 }
 
 void GcLogin::EnterSelectGameWorldServer() {
+    if (m_pCamera) {
+        m_pCamera = NULL;
+    }
     if (g_layerLogin == NULL) {
         //lyymark 2.GcLogin.UI 加载登录和服务器列表UI
         UILayer::EnterLogin();
@@ -462,21 +461,26 @@ void GcLogin::readAccountFromFile() {
     // 读取用户名
     RtIni       iniUser;
     const char* szIniUsername = "";
+    const char* szIniPassword = "";
     if (iniUser.OpenFile(R(INI_USER))) {
         const char* szSave = iniUser.GetEntry("account", "save");
         bool        isSave = (szSave && atol(szSave) > 0);
         g_layerLogin->mp_ckSaveAcc->SetChecked(isSave);
         if (isSave) {
             szIniUsername = iniUser.GetEntry("login", "username");
+            szIniPassword = iniUser.GetEntry("login", "password");
         }
         iniUser.CloseFile();
     }
     // 赋值用户名
     m_szAccountUsername = szIniUsername ? szIniUsername : "";
+    m_szAccountPassword = szIniPassword ? szIniPassword : "";
+
     g_layerLogin->mp_txtAccout->Enable();
     g_layerLogin->mp_txtPwd->Enable();
     // 设置控件值
     g_layerLogin->mp_txtAccout->SetText(std::string(m_szAccountUsername));
+    g_layerLogin->mp_txtAccout->SetText(std::string(m_szAccountPassword));
 
     // 设置输入焦点
     if (m_szAccountUsername.empty()) {
@@ -487,6 +491,9 @@ void GcLogin::readAccountFromFile() {
 }
 
 void GcLogin::EnterLogin() {
+    if (m_pCamera) {
+        m_pCamera = NULL;
+    }
     if (g_layerLogin == NULL) {
         UILayer::EnterLogin();
     }
@@ -518,8 +525,8 @@ void GcLogin::EnterSelectChar() {
 
     UpdateGraphConfig("Graph_SelectChar");
     //开启后处理特效
-    GetDevice()->SetPostProcessEffectOnoff(true);
-    GetDevice()->SetPostProcessObjectHighLightOnoff(true);
+    //GetDevice()->SetPostProcessEffectOnoff(true);
+    //GetDevice()->SetPostProcessObjectHighLightOnoff(true);
 
     //获取按钮矩形,调整按钮位置
     rectBtnSetChar = LOAD_UI("btnsetcharpwd")->GetClientRect();
@@ -531,7 +538,7 @@ void GcLogin::EnterSelectChar() {
     //LOAD_UI("btnuserleft")->Show();
     //LOAD_UI("btnuserright")->Show();
 
-    UpdateCameraPos();
+    Lyy_UpdateCameraPos();
     UpdateSelectChar();
 
     m_iCurSelectChar = -1;

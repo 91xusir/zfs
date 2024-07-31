@@ -113,7 +113,7 @@ void UILayerLogin::OnClicked_Login(void*, void*) {
         ShowMessage(R(MSG_PASSWORD_CANNOT_NULL));
         return;
     }
-    if (password.length() < 7 || password.length() > 30) {
+    if (password.length() < 6 || password.length() > 20) {
         ShowMessage(R(MSG_PASSWORD_INVALID_LONG));
         return;
     }
@@ -205,12 +205,6 @@ void UILayerLogin::OnClicked_SaveAccount(RtwWidget* sender, RtwEventDelegate* e)
     } else {
         GetLogin()->SetSaveAccount(false);
     }
-
-    /* if (m_Keyboard.GetLastFocus()) {
-        g_workspace.SetFocusWidget(LOAD_UI("fmlogin.fmusername.txtusername"));
-    } else {
-        g_workspace.SetFocusWidget(LOAD_UI("fmlogin.fmpassword.txtpassword"));
-    }*/
 
     RtIni iniUser;
     if (!iniUser.OpenFile(R(INI_USER), true)) {
