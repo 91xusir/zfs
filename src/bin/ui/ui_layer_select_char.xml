@@ -100,11 +100,11 @@
         <Anchor offset="0,0" point="LEFT"/>
       </Anchors>
     </CheckButton>
-    <Form BorderSize="2" Inherit="VoidTitleBarForm1" Location="388,291,250,155" MouseMove="false" Name="ConfirmBox1" Show="false" Size="250,155">
+    <Form BorderSize="2" Inherit="confirmTitleBarForm" Location="388,291,250,155" MouseMove="false" Name="ConfirmBox1" Show="false" Size="250,155">
       <Label Location="25,15,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
       <Button FontSize="12" Inherit="SmallPushButton" Location="97,107,59,19" Name="btnconfirm" Sound="ui_normalbt.wav" Text="确认" TextFont="宋体"/>
     </Form>
-    <Form Inherit="VoidTitleBarForm1" Location="388,293,250,155" MouseMove="false" Name="ConfirmBox2" Show="false">
+    <Form Inherit="confirmTitleBarForm" Location="388,293,250,155" MouseMove="false" Name="ConfirmBox2" Show="false">
       <Label Location="25,14,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
       <Button FontSize="12" Inherit="SmallPushButton" Location="38,105,59,19" Name="btnconfirm" Sound="ui_normalbt.wav" Text="确认" TextFont="宋体"/>
       <Button FontSize="12" Inherit="SmallPushButton" Location="153,105,59,19" Name="btncancel" Sound="ui_normalbt.wav" Text="取消" TextFont="宋体"/>

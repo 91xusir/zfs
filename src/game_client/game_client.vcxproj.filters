@@ -232,11 +232,11 @@
     <Filter Include="refactor-重构代码放这里">
       <UniqueIdentifier>{a4d67ef6-8025-4a44-a058-e1f11e12435c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="refactor-重构代码放这里\ui_login">
-      <UniqueIdentifier>{15604f31-eb3c-4b19-b468-4c51cda45bc4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="refactor-重构代码放这里\utils">
       <UniqueIdentifier>{51a62569-c5d0-4dd0-8077-48f05ee95332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor-重构代码放这里\login">
+      <UniqueIdentifier>{15604f31-eb3c-4b19-b468-4c51cda45bc4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -735,9 +735,6 @@
     <ClInclude Include="game\gc_bulletin.h">
       <Filter>game\world</Filter>
     </ClInclude>
-    <ClInclude Include="game\gc_login.h">
-      <Filter>game\world</Filter>
-    </ClInclude>
     <ClInclude Include="game\gc_world.h">
       <Filter>game\world</Filter>
     </ClInclude>
@@ -922,10 +919,10 @@
       <Filter>game\ui\ui_union</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_layer_login.h">
-      <Filter>refactor-重构代码放这里\ui_login</Filter>
+      <Filter>refactor-重构代码放这里\login</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_layer_select_char.h">
-      <Filter>refactor-重构代码放这里\ui_login</Filter>
+      <Filter>refactor-重构代码放这里\login</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_form_castlewar.h">
       <Filter>game\ui\ui_feod_castlewar</Filter>
@@ -1377,6 +1374,9 @@
     <ClInclude Include="fpsLimit.h">
       <Filter>refactor-重构代码放这里\utils</Filter>
     </ClInclude>
+    <ClInclude Include="game\gc_login.h">
+      <Filter>refactor-重构代码放这里\login</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\engine\head\core\rtc2_thread.inl">
@@ -1421,9 +1421,6 @@
       <Filter>engine_sdk\scene\scene_include</Filter>
     </ClCompile>
     <ClCompile Include="game\gc_bulletin.cpp">
-      <Filter>game\world</Filter>
-    </ClCompile>
-    <ClCompile Include="game\gc_login.cpp">
       <Filter>game\world</Filter>
     </ClCompile>
     <ClCompile Include="game\gc_world.cpp">
@@ -1580,10 +1577,10 @@
       <Filter>game\ui\ui_union</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_layer_login.cpp">
-      <Filter>refactor-重构代码放这里\ui_login</Filter>
+      <Filter>refactor-重构代码放这里\login</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_layer_select_char.cpp">
-      <Filter>refactor-重构代码放这里\ui_login</Filter>
+      <Filter>refactor-重构代码放这里\login</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_castlewar.cpp">
       <Filter>game\ui\ui_feod_castlewar</Filter>
@@ -1994,7 +1991,7 @@
       <Filter>frame\resource</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_server.cpp">
-      <Filter>refactor-重构代码放这里\ui_login</Filter>
+      <Filter>refactor-重构代码放这里\login</Filter>
     </ClCompile>
     <ClCompile Include="iob_func.cpp">
       <Filter>other</Filter>
@@ -2007,6 +2004,9 @@
     </ClCompile>
     <ClCompile Include="preConsole.cpp">
       <Filter>refactor-重构代码放这里\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="game\gc_login.cpp">
+      <Filter>refactor-重构代码放这里\login</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

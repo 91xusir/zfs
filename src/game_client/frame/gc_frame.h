@@ -93,7 +93,7 @@ public:
 
     GcLogin*        m_pLogin;
     GcWorld*        m_pWorld;
-	CItemManager*	m_pItemManager;
+	CItemManager*	m_pItemManager;//物品管理器
 	// begin gc_frame.h [3/15/2009 tooth.shi]
 	//RtwFont		    mFont;
 	// end gc_frame.h [3/15/2009 tooth.shi]

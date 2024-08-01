@@ -822,45 +822,55 @@ void GcActorGraph::UnloadAllSkin()
 bool GcActorGraph::ReplaceActor(const char* szActorName)
 {
     guard;
-    if (m_pActor)
+    if (m_pActor)// 如果当前有演员对象
     {
-		if (m_pActor->GetCore())
+		if (m_pActor->GetCore())// 如果当前演员对象有核心对象
 		{
 			char buf[100];
+            // 将核心对象的标签字符串拷贝到 buf 中，限制为 100 个字符
 			rt2_strncpy(buf, m_pActor->GetCore()->m_poTag.c_str(), 100);
 			//buf[99] = 0;
-
+            // 查找字符 '.' 并将其替换为 '\0'，以分离标签的名称部分
 			char* p = strchr(buf, '.');
 			if (p) *p = 0;
-
+            // 如果当前演员的标签与要替换的演员名称相同，则返回 true
 			if (stricmp(buf, szActorName)==0)
 			{
 				return true;
 			}
 		}
+        // 如果标签不匹配或核心对象为空，释放当前演员对象
         RtcGetActorManager()->ReleaseActor(m_pActor);
 		
         m_pActor = NULL;
     }
+    // 加载新演员对象
     LoadActor(szActorName);
-
+    // 遍历子演员图谱
     std::map<std::string, GcActorGraph*>::iterator it = m_mapChildren.begin();
     for (; it!=m_mapChildren.end(); it++)
-    {
+    {// 将新演员对象链接到每个子演员图谱
         (*it).second->m_pActor->LinkParent(m_pActor, (*it).first.c_str());
     }
-    return true;
+    return true;// 成功替换演员
     unguard;
 }
 
 bool GcActorGraph::Link(const char* szLinkName, const char* szActorName)
 {
+    // 参数说明：
+    // szLinkName - link点名称，表示要链接的link点的名称。如果为空，则使用默认名称 "none"。
+    // szActorName - actor名称，表示要链接的模型的名称。如果为空，则不进行链接操作。
+
     guard;
     if (m_pActor==NULL) return false;
+
     GcActorGraph* pChild;
     std::string strLinkName;
     if (szLinkName) strLinkName = szLinkName;
     else            strLinkName = "none";
+
+
     std::map<std::string, GcActorGraph*>::iterator it = m_mapChildren.find(strLinkName);
     if (it!=m_mapChildren.end())
     {
@@ -869,12 +879,12 @@ bool GcActorGraph::Link(const char* szLinkName, const char* szActorName)
         {
             return true; // 已经存在
         }
-        if (!UnLink(strLinkName.c_str()))
+        if (!UnLink(strLinkName.c_str()))//卸载之前的出错
         {
             return false;
         }
     }
-    if (szActorName && szActorName[0])
+    if (szActorName && szActorName[0])//模型名称有效
     {
         pChild = RT_NEW GcActorGraph;
         if (!pChild->LoadActor(szActorName))
@@ -882,7 +892,7 @@ bool GcActorGraph::Link(const char* szLinkName, const char* szActorName)
             DEL_ONE(pChild);
             return false;
         }
-        if (pChild->m_pActor->LinkParent(m_pActor, szLinkName))
+        if (pChild->m_pActor->LinkParent(this->m_pActor, szLinkName))
         {
             RtgMatrix12 _m12;
             _m12.Unit();

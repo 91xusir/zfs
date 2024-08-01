@@ -286,8 +286,8 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     std::string m_szGameWorldServerIP;
     long     m_lGameWorldServerPort;
 
-    std::vector<CRT_ActorInstance*> m_listSelActor;    // 选人界面的UI上面的人物
-    std::vector<GcActor*>           m_listSelGcActor;  // 选人界面的UI上面的人物
+    std::vector<GcActor*>           m_listSelGcActor;  // 选人界面的UI上面的人物  lyy：这个保存数据信息？装备之类的
+    std::vector<CRT_ActorInstance*> m_listSelActor;    // 选人界面的UI上面的人物  lyy：这个保存图形信息？
     std::vector<short> m_listSelectChar;  // 可选的人物，这里保存ID，具体的数据可以从g_TableUserActor中读出
 
     char m_bSex;  //0男,1女
@@ -311,9 +311,9 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     std::map<DWORD, CRT_ActorInstance*>       m_mapCreateActor;
     RtgMatrix12                               mWeaponMatrix;
 
-    CRT_ActorInstance* m_pPetActor1;
+  /*  CRT_ActorInstance* m_pPetActor1;
     CRT_ActorInstance* m_pPetActor2;
-    CRT_ActorInstance* m_pPetActor3;
+    CRT_ActorInstance* m_pPetActor3;*/
 
     int         m_HeadModelIndex[4];
     int         m_HeadImageIndex[4];

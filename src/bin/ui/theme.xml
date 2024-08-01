@@ -5,7 +5,7 @@
             <Form/>
         </WidgetsDefaultAttrib>
         <Templates Description="?Widget">
-             <!-- EditBox -->
+            <!-- EditBox -->
             <EditBox Name="StudioEdit">
                 <Border color="#99999999" size="1"/>
             </EditBox>
@@ -16,11 +16,11 @@
                 <BackgroundImage Border="1,1,1,1" BorderFile="" BorderSource="10,47,1,1" Blend="true"/>
             </EditBox>
             <!-- Form -->
+            <!-- 默认form 后续需要修复透明的问题 -->
             <Form Name="TitleBarForm" padding="0,30,0,0" Movable="true" BackgroundColor="#b5000000">
-                <!-- <Form Name="TitleBarForm" padding="0,30,0,0" Movable="true"> -->
                 <BackgroundImage BorderBlend="true" Border="2,2,2,2" BorderFile="zfs_texture/bd.png" BorderSource="10,40,6,6"/>
                 <!-- <BackgroundImage File="zfs_texture/mi.tga" Source="50,5,1,1" Blend="true" Transparency="0.7" /> -->
-                <TitleBar Height="31" Show="true">
+                <TitleBar Height="30" Show="true">
                     <TitleImage Blend="true" File="zfs_texture/ui_4.tga" Source="0,169,240,31" />
                 </TitleBar>
                 <CloseButton Location="20,20,20,20" Name="$hide" Show="true" Text="" Blend="true" padding="0,10,2,0">
@@ -28,6 +28,13 @@
                     <HighlightImage Blend="true" File="zfs_texture/ui_4.tga" Source="215,206,20,20"/>
                     <PushedImage Blend="true" File="zfs_texture/ui_4.tga" Source="236,206,20,20"/>
                 </CloseButton>
+            </Form>
+            <!-- 确认框form -->
+            <Form Name="confirmTitleBarForm" padding="0,20,0,0" BackgroundColor="#60000000">
+                <BackgroundImage BorderBlend="true" Border="2,2,2,2" BorderFile="zfs_texture/bd.png" BorderSource="10,40,6,6"/>
+                <TitleBar Height="20" Show="true">
+                    <TitleImage Blend="true" File="zfs_texture/ui_4.tga" Source="0,169,240,31" />
+                </TitleBar>
             </Form>
             <Form Name="BTitleBarForm" padding="0,30,0,0" BackgroundColor="#b5000000">
                 <!-- <BackgroundImage Border="2,2,2,2" BorderFile="" BorderBlend="true" BorderSource="10,40,6,6" Blend="true" File="" Source="0,52,24,23"/> -->
@@ -45,7 +52,7 @@
                     <TitleImage Blend="true" File="" Source="0,169,240,31"/>
                 </TitleBar>
             </Form>
-            <Form Name="VoidTitleBarForm1" padding="0,16,0,0" BackgroundColor="#A30E593A">
+            <Form Name="VoidTitleBarForm1" padding="0,16,0,0" BackgroundColor="#60000000">
                 <BackgroundImage Border="4,4,4,4" BorderFile="ui/textures/2.tga" BorderBlend="true" BorderSource="489,176,10,10" Blend="true" File="" Source="0,52,50,230"/>
                 <TitleBar Height="16" Show="true">
                     <TitleImage Blend="true" File="ui/textures/2.tga" Source="0,462,250,16"/>
@@ -69,7 +76,7 @@
                 <BackgroundImage Border="2,2,2,2" BorderFile="" BorderSource="72,12,2,2" Blend="true"/>
             </Form>
 
-            <!-- <Form Name="ConfirmBox1" Inherit="VoidTitleBarForm1" Size="200,150" MouseMove="false">
+            <Form Name="ConfirmBox1" Inherit="VoidTitleBarForm1" Size="200,150" MouseMove="false">
                 <Label Name="lbinfoexit" Location="10,10,152,66" Text=" " Multiline="true" Alignment="center" />
                 <Button Name="btnconfirm" Inherit="PushButton" Location="68,94,64,20" Text="确认" />
             </Form>
@@ -77,8 +84,27 @@
                 <Label Name="lbinfoexit" Location="10,10,152,66" Text=" " Multiline="true" Alignment="center"/>
                 <Button Name="btnconfirm" Inherit="PushButton" Location="44,94,64,20" Text="确认" />
                 <Button Name="btncancel" Inherit="PushButton" Location="114,94,64,20" Text="取消" />
-            </Form> -->
+            </Form>
             <!-- Button -->
+            <Button Name="PushButton" Text="PushButton" Sound="ui_softb_bt.wav">
+                <NormalImage Blend="true" File="zfs_texture/gw_b1.png" Source="0,0,128,30"/>
+                <HighlightImage Blend="true" File="zfs_texture/gw_b4.png" Source="0,0,128,30"/>
+                <PushedImage Blend="true" File="zfs_texture/gw_b2.png" Source="0,0,128,30"/>
+                <DisabledImage Blend="true" File="zfs_texture/gw_b3.png" Source="0,0,128,30"/>
+            </Button>
+            <Button Name="SmallPushButton" Text="PushButton" Sound="ui_softb_bt.wav">
+
+                <NormalImage Blend="true" File="zfs_texture/gw_b1.png" Source="0,0,128,30"/>
+                <HighlightImage Blend="true" File="zfs_texture/gw_b4.png" Source="0,0,128,30"/>
+                <PushedImage Blend="true" File="zfs_texture/gw_b2.png" Source="0,0,128,30"/>
+                <DisabledImage Blend="true" File="zfs_texture/gw_b3.png" Source="0,0,128,30"/>
+            </Button>
+            <Button Name="BigPushButton" Text="PushButton" Sound="ui_softb_bt.wav">
+                <NormalImage Blend="true" File="ui/textures/5.tga" Source="315,2,65,19"/>
+                <HighlightImage Blend="true" File="ui/textures/5.tga" Source="315,23,65,19"/>
+                <PushedImage Blend="true" File="ui/textures/5.tga" Source="315,44,65,19"/>
+                <DisabledImage Blend="true" File="ui/textures/5.tga" Source="315,44,65,19"/>
+            </Button>
             <Button Name="ClearButton">
                 <NormalImage  />
                 <PushedImage  />
@@ -103,25 +129,7 @@
                 <PushedImage File="zfs_texture/gw_b2.tga" Source="0,6,128,24"/>
             </Button>
 
-            <Button Name="PushButton" Text="PushButton" Sound="ui_softb_bt.wav">
-                <NormalImage Blend="true" File="zfs_texture/gw_b1.png" Source="0,0,128,30"/>
-                <HighlightImage Blend="true" File="zfs_texture/gw_b4.png" Source="0,0,128,30"/>
-                <PushedImage Blend="true" File="zfs_texture/gw_b2.png" Source="0,0,128,30"/>
-                <DisabledImage Blend="true" File="zfs_texture/gw_b3.png" Source="0,0,128,30"/>
-            </Button>
-            <Button Name="SmallPushButton" Text="PushButton" Sound="ui_softb_bt.wav">
 
-                <NormalImage Blend="true" File="ui/textures/5.tga" Source="384,2,57,19"/>
-                <HighlightImage Blend="true" File="ui/textures/5.tga" Source="384,23,57,19"/>
-                <PushedImage Blend="true" File="ui/textures/5.tga" Source="384,44,57,19"/>
-                <DisabledImage Blend="true" File="ui/textures/5.tga" Source="384,44,57,19"/>
-            </Button>
-            <Button Name="BigPushButton" Text="PushButton" Sound="ui_softb_bt.wav">
-                <NormalImage Blend="true" File="ui/textures/5.tga" Source="315,2,65,19"/>
-                <HighlightImage Blend="true" File="ui/textures/5.tga" Source="315,23,65,19"/>
-                <PushedImage Blend="true" File="ui/textures/5.tga" Source="315,44,65,19"/>
-                <DisabledImage Blend="true" File="ui/textures/5.tga" Source="315,44,65,19"/>
-            </Button>
             <Button Name="LPushButton" Text="PushButton" Sound="mbutton.wav">
                 <!-- <BackgroundImage Border="23,0,23,0" BorderFile="ui/textures/gw_b1.bmp" BorderSource="0,37,64,25" Blend="true"/> -->
                 <NormalImage Blend="true" File="zfs_texture/gw_b1.png" Source="0,6,128,24"/>
@@ -228,7 +236,7 @@
             <CheckButton Name="CKBorder" Text="">
                 <BackgroundImage Border="1,1,1,1" BorderFile="" BorderSource="72,12,2,2" Blend="true"/>
             </CheckButton>
-       
+
             <!-- ProgressBar -->
             <ProgressBar Name="HPBar">
                 <BackgroundImage Blend="true" File="ui/textures/1.tga" Source="150,497,13,10"/>

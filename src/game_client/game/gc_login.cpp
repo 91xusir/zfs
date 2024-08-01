@@ -59,9 +59,9 @@ GcLogin::GcLogin(CGameClientFrame* pGameClientFrame) : m_ini(true) {
     m_pWeaponFLWay = NULL;
     m_pWeaponHL = NULL;
     m_pWeaponMJ = NULL;
-    m_pPetActor1 = NULL;
-    m_pPetActor2 = NULL;
-    m_pPetActor3 = NULL;
+    //m_pPetActor1 = NULL;
+    //m_pPetActor2 = NULL;
+    //m_pPetActor3 = NULL;
     for (int i = 0; i < 4; i++)
         m_HeadModelIndex[i] = 0;
     for (int i = 0; i < 4; i++)
@@ -265,9 +265,9 @@ bool GcLogin::ClearOnce() {
     RtcGetActorManager()->ReleaseActor(m_pWeaponFLWay);
     RtcGetActorManager()->ReleaseActor(m_pWeaponHL);
     RtcGetActorManager()->ReleaseActor(m_pWeaponMJ);
-    RtcGetActorManager()->ReleaseActor(m_pPetActor1);
-    RtcGetActorManager()->ReleaseActor(m_pPetActor2);
-    RtcGetActorManager()->ReleaseActor(m_pPetActor3);
+    //RtcGetActorManager()->ReleaseActor(m_pPetActor1);
+    //RtcGetActorManager()->ReleaseActor(m_pPetActor2);
+    //RtcGetActorManager()->ReleaseActor(m_pPetActor3);
 
     GetDevice()->m_dwClearColor = 0x00000000;
 
@@ -365,7 +365,6 @@ namespace {
 inline void _AdjustCameraMatrix(RtgMatrix16* matOut, RtgMatrix12* matIn) {
     RTASSERT(matOut);
     RTASSERT(matIn);
-
     RtgVertex3 z = *(RtgVertex3*)&matIn->_10;
     z.Normalize();
     z.Negative();
@@ -380,7 +379,24 @@ inline void _AdjustCameraMatrix(RtgMatrix16* matOut, RtgMatrix12* matIn) {
     matOut->SetRow(2, z);
     matOut->SetRow(3, (float*)&matIn->_30);
 }
+
+inline void Lyy_AdjustCameraMatrix(RtgMatrix16* matOut, RtgMatrix12* matIn) {
+    RTASSERT(matOut);
+    RTASSERT(matIn);
+    RtgVertex3 x = *(RtgVertex3*)&matIn->_00;
+    RtgVertex3 y = *(RtgVertex3*)&matIn->_10;
+    RtgVertex3 z = *(RtgVertex3*)&matIn->_20;
+    x.Normalize();
+    y.Normalize();
+    z.Normalize();
+    matOut->Identity();
+    matOut->SetRow(0, x);
+    matOut->SetRow(1, y);
+    matOut->SetRow(2, z);
+    matOut->SetRow(3, (float*)&matIn->_30);
+}
 }  // namespace
+   // namespace
 
 // 更新相机位置
 //BOOKMARK: this is a bookmark
@@ -409,19 +425,7 @@ void GcLogin::Lyy_UpdateCameraPos() {
     if (pCamera) {
         RtgMatrix12 _mat;
         if (m_pBody->GetBoneMat(&_mat, "bcam") || m_pBody->GetBoneMat(&_mat, "Bcam")) {
-            RTASSERT(&mCamera);
-            RTASSERT(&_mat);
-            RtgVertex3 x = *(RtgVertex3*)&_mat._00;
-            RtgVertex3 y = *(RtgVertex3*)&_mat._10;
-            RtgVertex3 z = *(RtgVertex3*)&_mat._20;
-            x.Normalize();
-            y.Normalize();
-            z.Normalize();
-            mCamera.Identity();
-            mCamera.SetRow(0, x);
-            mCamera.SetRow(1, y);
-            mCamera.SetRow(2, z);
-            mCamera.SetRow(3, (float*)&_mat._30);
+            Lyy_AdjustCameraMatrix(&mCamera, &_mat);
             GetDevice()->m_pCamera->SetMatrix(mCamera);
             P_LOGINFO("BodyMatrix:\n" + _mat.ToString());
             P_LOGINFO("CameraMatrix:\n" + mCamera.ToString());
@@ -480,7 +484,7 @@ void GcLogin::readAccountFromFile() {
     g_layerLogin->mp_txtPwd->Enable();
     // 设置控件值
     g_layerLogin->mp_txtAccout->SetText(std::string(m_szAccountUsername));
-    g_layerLogin->mp_txtAccout->SetText(std::string(m_szAccountPassword));
+    g_layerLogin->mp_txtPwd->SetText(std::string(m_szAccountPassword));
 
     // 设置输入焦点
     if (m_szAccountUsername.empty()) {
@@ -587,18 +591,20 @@ void GcLogin::UpdateSelectChar() {
         // 更新角色是否被冻结状态
         m_bCharFrozen[i] = info.users[i].isFrozen;
 
-        // 查找用户角色信息
+        // 根据用户信息的角色id 在 user_actor.csv表查找角色信息 模型id等
         pUser = g_TableUserActor.FindUserActor(info.users[i].attributes.actorID);
         if (pUser) {
-            // 如果在角色选择映射中找不到该角色
-            if (m_mapSelectActor.find(info.users[i].id) == m_mapSelectActor.end()) {
-                // 查找角色模型信息
+
+            if (m_mapSelectActor.find(info.users[i].id) ==
+                m_mapSelectActor.end()) {  // 如果未创建模型则创建角色模型
+                // 根据模型id  查找角色模型信息   cre_model.csv
                 pModel = g_TableCreModel.FindCreModel(pUser->ModelId);
                 if (pModel) {
                     // 创建新角色对象
                     pActor = RT_NEW GcActor;
-                    pActor->CreateGraphData((SCreModel*)pModel, info.users[i].headModelID);
-                    pActor->SetName(info.users[i].name);
+                    pActor->CreateGraphData((SCreModel*)pModel,
+                                            info.users[i].headModelID);  //合成角色模型
+                    pActor->SetName(info.users[i].name);  //用户数据库表中的角色名
                     pActor->DisplayActor(true);
 
                     // 隐藏角色的HUD（头顶显示信息）    ps：不确定
@@ -631,7 +637,7 @@ void GcLogin::UpdateSelectChar() {
     m_listSelGcActor.clear();
     m_listSelectChar.clear();
 
-    if (info.chatCount == 0) {
+    if (info.chatCount == 0) {  //如果角色计数为0
         LOAD_UI("btnenter")->Hide();
         LOAD_UI("btndeletechar")->Hide();
         LOAD_UI("btnsetcharpwd")->Hide();
@@ -719,178 +725,9 @@ void GcLogin::UpdateSelectChar() {
 
         RtgMatrix12 _SlotMatrix;
 
-        // Modified by Wayne Wong 2010-12-01
-        /*
-		if (m_pBody->GetBoneMat(&_SlotMatrix, "bno1") && m_listSelGcActor.size()>0 && m_listSelGcActor[0])
-		{
-			//设置人物按钮相应的信息
-			char cTmp128[128];
-			std::string name;
-			SUserActor* pActor = g_TableUserActor.FindUserActor(info.users[0].attributes.metier, info.users[0].attributes.metierLevel);
-			if (pActor)
-			{
-				name = pActor->MetierName.c_str();
-			}
-			LOAD_UI("fmckusername.fmusername1.btnusername1.lbmetier1")->SetText(name);
-			name = info.users[0].name;
-			LOAD_UI("fmckusername.fmusername1.btnusername1.lbusername1")->SetText(name);
-			rt2_sprintf(cTmp128, "%d", info.users[0].attributes.level);
-
-			LOAD_UI("fmckusername.fmusername1.btnusername1.lblev1")->SetText(cTmp128);
-			if (info.users[0].hasCharPwd)
-			{
-				LOAD_UI("fmckusername.fmusername1.btnusername1.lblock1")->Show();
-			}
-			else
-			{
-				LOAD_UI("fmckusername.fmusername1.btnusername1.lblock1")->Hide();
-			}
-
-			int iCharIndex = GetCharIndexByActorID(info.users[0].attributes.actorID);
-			vector<SCharImage> images;
-			if (!g_TableCharImage.GetCharImage(s_userID[iCharIndex], images))
-				return;
-
-			std::string strImage = "ui_texture/";
-			strImage += images[info.users[0].attributes.HeadImageID].imageGame;
-			strImage += ".dds";
-
-			RtwImage *pImage = g_workspace.getImageFactory()->createImage(strImage);
-			pImage->SetBlend(true);
-			LOAD_UI("fmckusername.fmusername1.lbuser1")->SetBackgroundImage(pImage);
-
-			m_listSelGcActor[0]->mBaseActor.SetMatrix_Row(3, *_SlotMatrix.Row(3));
-		}
-
-		if (m_pBody->GetBoneMat(&_SlotMatrix, "bno2") && m_listSelGcActor.size()>1 && m_listSelGcActor[1])
-		{
-			//设置人物按钮相应的信息
-			char cTmp128[128];
-			std::string name;
-			SUserActor* pActor = g_TableUserActor.FindUserActor(info.users[1].attributes.metier, info.users[1].attributes.metierLevel);
-			if (pActor)
-			{
-				name = pActor->MetierName.c_str();
-			}
-			LOAD_UI("fmckusername.fmusername2.btnusername2.lbmetier2")->SetText(name);
-			name = info.users[1].name;
-			LOAD_UI("fmckusername.fmusername2.btnusername2.lbusername2")->SetText(name);
-			rt2_sprintf(cTmp128, "%d", info.users[1].attributes.level);
-
-			LOAD_UI("fmckusername.fmusername2.btnusername2.lblev2")->SetText(cTmp128);
-			if (info.users[1].hasCharPwd)
-			{
-				LOAD_UI("fmckusername.fmusername2.btnusername2.lblock2")->Show();
-			}
-			else
-			{
-				LOAD_UI("fmckusername.fmusername2.btnusername2.lblock2")->Hide();
-			}
-
-			int iCharIndex = GetCharIndexByActorID(info.users[1].attributes.actorID);
-
-			vector<SCharImage> images;
-			if (!g_TableCharImage.GetCharImage(s_userID[iCharIndex], images))
-				return;
-
-			std::string strImage = "ui_texture/";
-			strImage += images[info.users[1].attributes.HeadImageID].imageGame;
-			strImage += ".dds";
-
-			RtwImage *pImage = g_workspace.getImageFactory()->createImage(strImage);
-			pImage->SetBlend(true);
-			LOAD_UI("fmckusername.fmusername2.lbuser2")->SetBackgroundImage(pImage);
-
-			m_listSelGcActor[1]->mBaseActor.SetMatrix_Row(3, *_SlotMatrix.Row(3));
-		}
-
-		if (m_pBody->GetBoneMat(&_SlotMatrix, "bno3") && m_listSelGcActor.size()>2 && m_listSelGcActor[2])
-		{
-			//设置人物按钮相应的信息
-			char cTmp128[128];
-			std::string name;
-			SUserActor* pActor = g_TableUserActor.FindUserActor(info.users[2].attributes.metier, info.users[2].attributes.metierLevel);
-			if (pActor)
-			{
-				name = pActor->MetierName.c_str();
-			}
-			LOAD_UI("fmckusername.fmusername3.btnusername3.lbmetier3")->SetText(name);
-			name = info.users[2].name;
-			LOAD_UI("fmckusername.fmusername3.btnusername3.lbusername3")->SetText(name);
-			rt2_sprintf(cTmp128, "%d", info.users[2].attributes.level);
-
-			LOAD_UI("fmckusername.fmusername3.btnusername3.lblev3")->SetText(cTmp128);
-			if (info.users[2].hasCharPwd)
-			{
-				LOAD_UI("fmckusername.fmusername3.btnusername3.lblock3")->Show();
-			}
-			else
-			{
-				LOAD_UI("fmckusername.fmusername3.btnusername3.lblock3")->Hide();
-			}
-
-			int iCharIndex = GetCharIndexByActorID(info.users[2].attributes.actorID);;
-			vector<SCharImage> images;
-			if (!g_TableCharImage.GetCharImage(s_userID[iCharIndex], images))
-				return;
-
-			std::string strImage = "ui_texture/";
-			strImage += images[info.users[2].attributes.HeadImageID].imageGame;
-			strImage += ".dds";
-
-			RtwImage *pImage = g_workspace.getImageFactory()->createImage(strImage);
-			pImage->SetBlend(true);
-			LOAD_UI("fmckusername.fmusername3.lbuser3")->SetBackgroundImage(pImage);
-
-			m_listSelGcActor[2]->mBaseActor.SetMatrix_Row(3, *_SlotMatrix.Row(3));
-		}
-
-
-		if (m_pBody->GetBoneMat(&_SlotMatrix, "bno4") && m_listSelGcActor.size()>3 && m_listSelGcActor[3])
-		{
-			//设置人物按钮相应的信息
-			char cTmp128[128];
-			std::string name;
-			SUserActor* pActor = g_TableUserActor.FindUserActor(info.users[3].attributes.metier, info.users[3].attributes.metierLevel);
-			if (pActor)
-			{
-				name = pActor->MetierName.c_str();
-			}
-			LOAD_UI("fmckusername.fmusername4.btnusername4.lbmetier4")->SetText(name);
-			name = info.users[3].name;
-			LOAD_UI("fmckusername.fmusername4.btnusername4.lbusername4")->SetText(name);
-			rt2_sprintf(cTmp128, "%d", info.users[3].attributes.level);
-
-			LOAD_UI("fmckusername.fmusername4.btnusername4.lblev4")->SetText(cTmp128);
-			if (info.users[3].hasCharPwd)
-			{
-				LOAD_UI("fmckusername.fmusername4.btnusername4.lblock4")->Show();
-			}
-			else
-			{
-				LOAD_UI("fmckusername.fmusername4.btnusername4.lblock4")->Hide();
-			}
-
-			int iCharIndex = GetCharIndexByActorID(info.users[3].attributes.actorID);;
-
-			vector<SCharImage> images;
-			if (!g_TableCharImage.GetCharImage(s_userID[iCharIndex], images))
-				return;
-
-			std::string strImage = "ui_texture/";
-			strImage += images[info.users[3].attributes.HeadImageID].imageGame;
-			strImage += ".dds";
-
-			RtwImage *pImage = g_workspace.getImageFactory()->createImage(strImage);
-			pImage->SetBlend(true);
-			LOAD_UI("fmckusername.fmusername4.lbuser4")->SetBackgroundImage(pImage);
-
-			m_listSelGcActor[3]->mBaseActor.SetMatrix_Row(3, *_SlotMatrix.Row(3));
-		}
-		*/
-
         int nSize = m_listSelGcActor.size();
-        nSize = std::min(4, nSize);
+        //nSize = std::min(4, nSize);
+        nSize = std::min(3, nSize);
         for (int i = 0; i < nSize; ++i) {
             char boneName[20];
             rt2_sprintf(boneName, "bno%u", i + 1);
@@ -943,7 +780,7 @@ void GcLogin::UpdateSelectChar() {
     }
 
     //挂宝宝
-    if (!m_pPetActor1) {
+    /* if (!m_pPetActor1) {
         const std::string szPetName = "mon502a";
         m_pPetActor1 = RtcGetActorManager()->CreateActor(szPetName.c_str(), true);
         if (m_pPetActor1 == NULL) {
@@ -969,7 +806,7 @@ void GcLogin::UpdateSelectChar() {
             return;
         }
         m_pPetActor3->LinkParent(m_pBody, "bb03");
-    }
+    }*/
 
     for (i = 0; i < m_listSelGcActor.size(); i++) {
         pActor = m_listSelGcActor[i];
@@ -1002,14 +839,20 @@ void GcLogin::EnterCreateChar() {
     const SUserActor*                                   pUser;
     CRT_ActorInstance*                                  pActor;
     std::map<std::string, CRT_ActorInstance*>::iterator it;
-
+    // 如果 m_mapCreateActor 为空，意味着没有创建任何角色模型
     if (m_mapCreateActor.size() == 0) {
+        // 遍历可创建角色 user_actor.csv
         for (i = 0; i < g_TableUserActor.GetUserCount(); i++) {
+            //先取出第一个
             pUser = g_TableUserActor.GetUserByIdx(i);
-            if (pUser) {
-                if (!pUser->bZCreate && !pUser->bSCreate)
+            if (pUser) {                                   // 如果用户对象存在
+                if (!pUser->bZCreate && !pUser->bSCreate)  // 如果用户商周都不能创建则跳过
                     continue;
+                // 如果 m_mapCreateActor 中不存在该用户的 ID
                 if (m_mapCreateActor.find(pUser->Id) == m_mapCreateActor.end()) {
+                    // 获取可创建角色的索引 1，4，7，16
+                    // static int s_userID[] = {WU_TAI_ID, HUA_JIAN_ID, SHU_SHAN_ID, MIAO_JIANG_ID};
+
                     iUserIdx = GetCharIndexByActorID(pUser->Id);
                     pActor = FindModel(s_pszLoginCharName[iUserIdx]);
                     if (pActor) {
@@ -1137,22 +980,20 @@ void GcLogin::EnterCreateChar() {
             short actorID = m_listSelectChar[index];
             if (actorID == WU_TAI_ID)  //五台山
             {
-                if (m_pBody->GetBoneMat(&_SlotMatrix, "bno8")) {
-                    mActorMatrix = _SlotMatrix;
-                    mActorMatrix.RotateLX(DegreeToRadian(90.f));
-                    mActorMatrix.RotateLZ(DegreeToRadian(180.f));
+                if (m_pBody->GetBoneMat(&_SlotMatrix, "bno1")) {
+                    Lyy_AdjustCameraMatrix(&mActorMatrix, &_SlotMatrix);
                     m_listSelActor[index]->SetMatrix(mActorMatrix);
                 }
             } else if (actorID == HUA_JIAN_ID)  //花间门
             {
-                if (m_pBody->GetBoneMat(&_SlotMatrix, "bno6")) {
-                    _AdjustCameraMatrix(&mActorMatrix, &_SlotMatrix);
+                if (m_pBody->GetBoneMat(&_SlotMatrix, "bno2")) {
+                    Lyy_AdjustCameraMatrix(&mActorMatrix, &_SlotMatrix);
                     m_listSelActor[index]->SetMatrix(mActorMatrix);
                 }
             } else if (actorID == SHU_SHAN_ID)  //蜀山派
             {
-                if (m_pBody->GetBoneMat(&_SlotMatrix, "bno5")) {
-                    _AdjustCameraMatrix(&mActorMatrix, &_SlotMatrix);
+                if (m_pBody->GetBoneMat(&_SlotMatrix, "bno3")) {
+                    Lyy_AdjustCameraMatrix(&mActorMatrix, &_SlotMatrix);
                     WeaponMatrix = *m_pWeaponFL->GetMatrix();
                     WeaponMatrix = mActorMatrix;
                     WeaponMatrix._32 += 25.f;
@@ -1162,8 +1003,8 @@ void GcLogin::EnterCreateChar() {
                 }
             } else if (actorID == MIAO_JIANG_ID)  //苗疆
             {
-                if (m_pBody->GetBoneMat(&_SlotMatrix, "bno7")) {
-                    _AdjustCameraMatrix(&mActorMatrix, &_SlotMatrix);
+                if (m_pBody->GetBoneMat(&_SlotMatrix, "root")) {
+                    Lyy_AdjustCameraMatrix(&mActorMatrix, &_SlotMatrix);
                     mActorMatrix = _SlotMatrix;
                     mActorMatrix.RotateLX(DegreeToRadian(28.f));
                     mActorMatrix.RotateLY(DegreeToRadian(10.f));
@@ -1684,7 +1525,7 @@ void GcLogin::OnRun(float fSecond) {
     if (m_pWeaponFLWay) {
         m_pWeaponFLWay->Tick(fSecond * 1000.f, false);
     }
-    if (m_pPetActor1) {
+    /*  if (m_pPetActor1) {
         m_pPetActor1->Tick(fSecond * 1000.f, false);
     }
     if (m_pPetActor2) {
@@ -1692,7 +1533,7 @@ void GcLogin::OnRun(float fSecond) {
     }
     if (m_pPetActor3) {
         m_pPetActor3->Tick(fSecond * 1000.f, false);
-    }
+    }*/
 
     if (m_eStatus == GLS_SELECT_GAMEWORLD_SERVER) {
         // 向导的网络
@@ -1735,7 +1576,7 @@ void GcLogin::OnRun(float fSecond) {
         }
     }
     if (m_eStatus == GLS_SELECT_CHAR || m_eStatus == GLS_CREATE_CHAR) {
-        if (m_pPetActor1 && m_pPetActor1->IsPlayingPose()) {
+        /* if (m_pPetActor1 && m_pPetActor1->IsPlayingPose()) {
             m_pPetActor1->PlayPose("wait", false);
         }
         if (m_pPetActor2 && m_pPetActor2->IsPlayingPose()) {
@@ -1743,7 +1584,7 @@ void GcLogin::OnRun(float fSecond) {
         }
         if (m_pPetActor3 && m_pPetActor3->IsPlayingPose()) {
             m_pPetActor3->PlayPose("wait", false);
-        }
+        }*/
         // update pose
         for (i = 0; i < m_listSelActor.size(); i++) {
             pActor = m_listSelActor[i];
@@ -2033,7 +1874,7 @@ void GcLogin::OnRenderMask(RTGRenderMask mask, float fSecond) {
         }
     }
     if (m_eStatus == GLS_SELECT_CHAR) {
-        if (m_pPetActor1) {
+        /*  if (m_pPetActor1) {
             m_pPetActor1->Render(GetDevice(), mask);
         }
         if (m_pPetActor2) {
@@ -2041,7 +1882,7 @@ void GcLogin::OnRenderMask(RTGRenderMask mask, float fSecond) {
         }
         if (m_pPetActor3) {
             m_pPetActor3->Render(GetDevice(), mask);
-        }
+        }*/
     }
     unguard;
 }
@@ -3047,23 +2888,23 @@ void GcLogin::SetSelectUser(int iSel) {
     const char* poseName = NULL;
     switch (m_eStatus) {
         case GLS_SELECT_CHAR: {
-            poseName = GetCameraPoseName(iSel, true);
+         /*   poseName = GetCameraPoseName(iSel, true);
             if (poseName && (m_pCamera = FindModel("Camera"))) {
                 m_pCamera->RegisterNotify(this);
                 if (!m_pCamera->PlayPose(poseName, false, 1.f))
                     m_pCamera->RegisterNotify(NULL);
-            }
+            }*/
             m_iCurSelectChar = iSel;
             UpdateSelectChar();
         } break;
         case GLS_CREATE_CHAR: {
-            poseName = GetCameraPoseName(iSel, false);
+      /*      poseName = GetCameraPoseName(iSel, false);
             if (poseName && (m_pCamera = FindModel("Camera"))) {
                 m_pCamera->RegisterNotify(this);
                 if (!m_pCamera->PlayPose(poseName, false, 1.f)) {
                     m_pCamera->RegisterNotify(NULL);
                 }
-            }
+            }*/
             m_iCurSelectChar = iSel;
 
             //默认显示人物发型和脸型

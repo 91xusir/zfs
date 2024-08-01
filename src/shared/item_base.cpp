@@ -3950,17 +3950,17 @@ bool CBag::Resize(int page, int line, int col)
 void CBag::Clear()
 {
 	guard;
-	m_nPoint = 0;	//heten
-	m_nMoney = 0;
-	m_nItemCount = 0;
-	m_nCurrentPage = 0;
+    m_nPoint = 0;        // 重置积分为0
+    m_nMoney = 0;        // 重置金钱数量为0
+    m_nItemCount = 0;    // 重置物品数量为0
+    m_nCurrentPage = 0;  // 重置当前页面为0
 	for (int p=0; p<MAX_BAG_PAGE_COUNT; p++)
 		for (int i=0; i<MAX_BAG_LINE_COUNT; i++)
 			for (int j=0; j<MAX_BAG_COLUMN_COUNT; j++)
 			{
-				m_nItemID[p][i][j].Clear();
+				m_nItemID[p][i][j].Clear();// 清空当前格子的物品ID
 
-				m_AssistantAttrib[p][i][j] = 0x00 | (1<<IAA_Visible);
+				m_AssistantAttrib[p][i][j] = 0x00 | (1<<IAA_Visible);//辅助属性 可见
 			}
 	
 	unguard;
@@ -5806,7 +5806,7 @@ int CItemContainerBase::LoadFromString(char* str)
 	int ret = sscanf(pReadPtr, "#%04x", &version);
 	pReadPtr += 5;
 
-	if (version==11)
+	if (version==11)//000b
     {
         // 普通道具背包
         iTmp = m_Bag.LoadFromString(pReadPtr, m_pItemManager);

@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <cctype>
 
-void global_closeApp() {
+void global_closeApp(void*, void*,void*) {
 
     UIFormMsg* pConfirm =
         UIFormMsg::ShowStatic("确定退出游戏吗?", UIFormMsg::TYPE_OK_CANCEL, true, "game_exit");
@@ -62,8 +62,7 @@ UILayerLogin::UILayerLogin() {
         RTW_CALLBACK(this, UILayerLogin, OnClicked_CreateAccount));
 
     //退出按钮
-    LOAD_UI("btnExit")->EvLClick.ClearAndSetDelegate(
-        RTW_CALLBACK(this, UILayerLogin, OnClicked_Quit));
+    LOAD_UI("btnExit")->EvLClick.ClearAndSetDelegate(UI_DELEGATE_F(global_closeApp));
 
     //lyymark 2.GcLogin.XML 加载服务器列表UI
     mp_layerServer = RT_NEW UILayerServer;

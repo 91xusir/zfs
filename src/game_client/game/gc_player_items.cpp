@@ -350,7 +350,7 @@ void CItemContainer::_UpdateGraph(EEquipParts part)
 				m_pMaster->EquipWeapon(false,NULL,NULL,ItemID_CreateInvalid());
 			}
 			break;
-		case WEAPON_2:
+		case WEAPON_2://lyytodo Ë«ÎäÆ÷
 			{
 				//if (m_pMaster->m_core.Metier==METIER_HUNTER)
 				//{

@@ -135,6 +135,18 @@ void IUiFontManager::DrawString(const std::string& str,
 	}
 }
 
+/// <summary>
+/// 绘制指定的文本字符串到指定的矩形区域，允许设置文本颜色、换行、对齐方式、下划线、剪裁区域、字体和字体大小。
+/// </summary>
+/// <param name="str">要绘制的文本字符串。</param>
+/// <param name="rect">指定文本绘制的矩形区域。</param>
+/// <param name="textColor">文本的颜色。</param>
+/// <param name="bWordWrap">是否自动换行。如果为 true，文本在超出矩形区域时会自动换行；否则，不换行。</param>
+/// <param name="align">文本的对齐方式，包括水平和垂直对齐。</param>
+/// <param name="bUnderLine">是否对文本加下划线。如果为 true，则文本下会有下划线；否则，没有下划线。</param>
+/// <param name="pClipRect">指定剪裁区域。绘制的文本将被限制在该矩形区域内；如果为 null，则不进行剪裁。</param>
+/// <param name="FontName">要使用的字体名称。如果为空字符串，则使用默认字体。</param>
+/// <param name="nFontSize">字体的大小。如果未指定，则默认为 12。</param>
 void IUiFontManager::DrawString(const std::string& str,
 								const RtwRect& rect, 
 								const RtwPixel& textColor,

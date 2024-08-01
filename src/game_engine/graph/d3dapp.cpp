@@ -20,7 +20,7 @@
 #include "rtg_graph_inter.h"
 
 //回调关闭函数
-void global_closeApp();
+void global_closeApp(void*, void*, void*);
 
 namespace rt_graph_dx9 {
 //-----------------------------------------------------------------------------
@@ -93,7 +93,7 @@ CD3DApplication::CD3DApplication() {
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
     switch (uMsg) {
         case WM_CLOSE:
-            global_closeApp();
+            global_closeApp(nullptr, nullptr, nullptr);
             return 0;
         default:
             break;

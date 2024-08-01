@@ -7,15 +7,16 @@
   </Loader>
   <Layer DefaultIndex="true" Height="600" Index="1" Name="layworld" Show="true" Width="800">
 
-    <Form BorderSize="2" Inherit="TitleBarForm" Location="378,167,200,150" MouseMove="false" Name="ConfirmBox1" Show="false" Size="250,155" EscapeHide="false">
-      <Label Location="25,15,200,75" Multiline="true" Name="lbinfoexit" Text=""/>
-      <Button FontSize="12" Inherit="PushButton" Location="90,94,64,20" Name="btnconfirm" Text="确认" TextFont="宋体"/>
+  <Form BorderSize="2" Inherit="confirmTitleBarForm" Location="388,291,250,155" MouseMove="false" Name="ConfirmBox1" Show="false" Size="250,155">
+      <Label Location="25,15,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
+      <Button FontSize="12" Inherit="SmallPushButton" Location="97,107,59,19" Name="btnconfirm" Sound="ui_normalbt.wav" Text="确认" TextFont="宋体"/>
     </Form>
-    <Form Inherit="TitleBarForm" Location="246,122,200,150" MouseMove="true" Name="ConfirmBox2" Show="false" EscapeHide="false">
-      <Label Location="25,14,200,75" Multiline="true" Name="lbinfoexit" Text=""/>
-      <Button FontSize="12" Inherit="PushButton" Location="25,94,64,20" Name="btnconfirm" Text="确认" TextFont="宋体"/>
-      <Button FontSize="12" Inherit="PushButton" Location="114,94,64,20" Name="btncancel" Text="取消" TextFont="宋体"/>
+    <Form Inherit="confirmTitleBarForm" Location="388,293,250,155" MouseMove="false" Name="ConfirmBox2" Show="false">
+      <Label Location="25,14,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
+      <Button FontSize="12" Inherit="SmallPushButton" Location="38,105,59,19" Name="btnconfirm" Sound="ui_normalbt.wav" Text="确认" TextFont="宋体"/>
+      <Button FontSize="12" Inherit="SmallPushButton" Location="153,105,59,19" Name="btncancel" Sound="ui_normalbt.wav" Text="取消" TextFont="宋体"/>
     </Form>
+
     <Form Inherit="TitleBarForm" Location="20,20,200,130" Name="lbgameinfo" Show="true" MouseMove="false">
       <CloseButton Show="false"/>
       <Label Inherit="" Location="62,4,184,16" Name="lbserver0" Text="健康游戏通告"/>
@@ -24,6 +25,7 @@
       <Label Inherit="" Location="18,58,184,16" Name="lbserver3" Text="适度游戏益脑，沉迷游戏伤身。"/>
       <Label Inherit="" Location="18,76,184,16" Name="lbserver4" Text="合理安排时间，享受健康生活。"/>
     </Form>
+
     <Form Inherit="TitleBarForm" Location="20,150,150,225" Name="logo" Show="true">
       <CloseButton Show="false"/>
       <Label Inherit="" Location="30,3,128,16" Name="wxtext" Text="真封神·浴火重生"/>
@@ -32,6 +34,7 @@
         <BackgroundImage File="zfs_texture/xxn.tga" Source="0,0,128,149" Blend="true" />
       </Label>
     </Form>
+
     <Form Inherit="TitleBarForm" Location="240,20,175,220" Name="lbnewsinfo" Show="true">
       <CloseButton Show="false"/>
       <Label Inherit="" Location="60,4,164,16" Name="lbtitle" Text="游戏公告"/>
@@ -46,6 +49,7 @@
       <Label Inherit="" Location="18,166,164,16" Name="lbnews9" Text="剑非万人敌，文窃四海声。"/>
       <!-- <Label Inherit="" Location="18,184,164,16" Name="lbnews10"Text="公告10"/> -->
     </Form>
+    
     <Form Inherit="NoTitleBarForm" Location="0,548,1920,52" Name="kaiyuan" Show="true">
       <Label Location="200,20,420,50" Name="lbbutton" Text="真封神 | 开源版 | 点击查看开发进度 ->">
         <Anchors>

@@ -162,7 +162,7 @@ void RtcAcotrManager::FrameMove()
 
     if (_ao._type != Actor_Obj_Unknow)
     {
-        objset_t::iterator idel = m_releaseQueue.find(_ao._obj);
+        const objset_t::iterator idel = m_releaseQueue.find(_ao._obj);
 
         if (idel == m_releaseQueue.end())
         {
@@ -225,7 +225,7 @@ CRT_ActorInstance* RtcAcotrManager::CreateActor(const char _fileName[],
     case PoolFind_Not_Load :
         {
             RTASSERT(!_obj);
-
+            //lyymark 强制加载和缓存加载
             if (!bForceLoad && m_bMutiThreadLoad)
             {
                 _actor->SetState(Object_State_Loading);
@@ -635,7 +635,7 @@ bool RtcAcotrManager::LoadActorObject(const RtcAcotrObject& _actobj)
 
     return true;
 }
-
+//创建CreateActorObject  包括创建skin和actor
 bool RtcAcotrManager::CreateActorObject(const RtcAcotrObject& _actobj)
 {
     bool res = false;
