@@ -745,7 +745,6 @@ void GcLogin::UpdateSelectChar() {
             if (m_pBody->GetBoneMat(&_SlotMatrix, boneName) && m_listSelGcActor[i]) {
                 //设置人物按钮相应的信息
                 std::string name;
-                char        cTmp128[128], widgetName[128];
                 SUserActor* pActor = g_TableUserActor.FindUserActor(
                     info.users[i].attributes.metier, info.users[i].attributes.metierLevel);
                 if (pActor)
@@ -1053,7 +1052,9 @@ bool GcLogin::LeaveCreateChar() {
 }
 
 void GcLogin::OnEnterCreateChar() {
-    UILayer::EnterSelectChar();
+    if (g_layerSelectChar == nullptr) {
+        UILayer::EnterSelectChar();
+    }
     m_bCanInput = true;
 
     // Modified By Wayne Wong 2010-11-26 for demo
@@ -1095,14 +1096,7 @@ void GcLogin::OnEnterCreateChar() {
     if (LOAD_UI("btnbacklogin")->IsVisible()) {
         LOAD_UI("btnbacklogin")->Hide();
     }
-    //if (LOAD_UI("btnuserleft")->IsVisible())
-    //{
-    //	LOAD_UI("btnuserleft")->Hide();
-    //}
-    //if (LOAD_UI("btnuserright")->IsVisible())
-    //{
-    //	LOAD_UI("btnuserright")->Hide();
-    //}
+
     m_pBody->RegisterNotify(this);
     OnRun(0.f);
 }

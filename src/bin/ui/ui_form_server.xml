@@ -2,9 +2,9 @@
 <Ui>
   <Layer Name="layworld" Show="true">
     <!-- todo 删除无用的事件  -->
-    <Form Anchor="right,bottom" Inherit="TitleBarForm" Location="596,146,196,280" Name="serverForm" Show="false" StartPosition1="centerParent">
+    <Form Inherit="TitleBarForm" Location="596,146,196,280" Name="serverForm" Show="false">
       <CloseButton Show="false"/>
-      <Label Inherit="" Location="6,4,184,16" Name="serverTips" Text="正在获取服务器列表"/>
+      <Label Location="6,4,184,16" Name="serverTips" Text="正在获取服务器列表"/>
       <Button DClick="false" GrabKeyboard="true" Inherit="PushButton" Location="18,28,120,20" Name="btnServer0" Show="false" Text="游戏米果（1服）"/>
       <Label Location="146,30,100,16" Name="serverStatus0" Show="false" Text="流畅"/>
       <Button DClick="false" GrabKeyboard="true" Inherit="PushButton" Location="18,54,120,20" Name="btnServer1" Show="false" Text="游戏米果（2服）"/>
