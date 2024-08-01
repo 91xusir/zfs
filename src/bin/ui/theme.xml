@@ -38,7 +38,7 @@
             </Form>
             <!-- ÎÞ±êÌâ -->
             <Form Name="NoTitleBarForm" BackgroundColor="#b5000000">
-                <BackgroundImage Border="2,2,2,2" BorderFile="zfs_texture/bd.png" BorderSource="17,39,2,2" Blend="true"/>
+                <BackgroundImage Border="1,1,1,1" BorderFile="zfs_texture/bd.png" BorderSource="17,39,2,2" Blend="true"/>
                 <TitleBar Show="false"/>
             </Form>
             <!-- ////////////////////////////////////////// -->

@@ -653,12 +653,12 @@ void GcLogin::UpdateSelectChar() {
         }
     }
     // 获取按钮对象，初始化未选中
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < g_layerSelectChar->selectCharBtnMap.size(); i++) {
         g_layerSelectChar->selectCharBtnMap[i]->SetChecked(false);
         g_layerSelectChar->selectCharBtnMap[i]->Disable();
     }
     // 根据角色计数启用相应的按钮
-    for (int i = 0; i < info.chatCount && i < 3; ++i) {
+    for (int i = 0; i < info.chatCount && i < g_layerSelectChar->selectCharBtnMap.size(); ++i) {
         g_layerSelectChar->selectCharBtnMap[i]->Enable();
     }
 
@@ -2906,7 +2906,10 @@ void GcLogin::SetSelectUser(int iSel) {
                     m_pCamera->RegisterNotify(NULL);
             }*/
             m_iCurSelectChar = iSel;
-            g_layerSelectChar->selectCharBtnMap[m_iCurSelectChar]->SetTextColor(0xffff0000);
+            for (size_t i = 0; i < g_layerSelectChar->selectCharBtnMap.size(); i++) {
+                g_layerSelectChar->selectCharBtnMap[i]->SetTextColor(0xffffffff);  //白色
+            }
+            g_layerSelectChar->selectCharBtnMap[m_iCurSelectChar]->SetTextColor(0xffff0000);  //红色
             UpdateSelectChar();
         } break;
         case GLS_CREATE_CHAR: {
