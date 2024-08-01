@@ -525,7 +525,9 @@ void GcLogin::EnterSelectChar() {
     if (m_pCamera) {
         m_pCamera = NULL;
     }
-    UILayer::EnterSelectChar();
+    if (g_layerSelectChar == nullptr) {
+        UILayer::EnterSelectChar();
+    }
 
     UpdateGraphConfig("Graph_SelectChar");
     //开启后处理特效
@@ -535,9 +537,11 @@ void GcLogin::EnterSelectChar() {
     //获取按钮矩形,调整按钮位置
     rectBtnSetChar = LOAD_UI("btnsetcharpwd")->GetClientRect();
     rectBtnChangeChar = LOAD_UI("btnchangecharpwd")->GetClientRect();
-    LOAD_UI("fmckusername")->Show();
-    LOAD_UI("btnexit")->Show();
-    LOAD_UI("btnbacklogin")->Show();
+    LOAD_UI("Pnbutton")->Show();
+    //LOAD_UI("btnuser2")->Show();
+    //LOAD_UI("btnuser3")->Show();
+    //LOAD_UI("btnexit")->Show();
+    //LOAD_UI("btnback")->Show();
     //人物旋转按钮
     //LOAD_UI("btnuserleft")->Show();
     //LOAD_UI("btnuserright")->Show();
@@ -556,14 +560,14 @@ bool GcLogin::LeaveSelectChar() {
 
     m_bCanInput = false;
 
-    LOAD_UI("fmckusername")->Hide();
+    LOAD_UI("Pnbutton")->Hide();
     LOAD_UI("btnenter")->Hide();
+
     LOAD_UI("btndeletechar")->Hide();
     LOAD_UI("btnsetcharpwd")->Hide();
     LOAD_UI("btnchangecharpwd")->Hide();
     LOAD_UI("btndelcharpwd")->Hide();
-    LOAD_UI("btnexit")->Hide();
-    LOAD_UI("btnbacklogin")->Hide();
+
     //人物旋转按钮
     //LOAD_UI("btnuserleft")->Hide();
     //LOAD_UI("btnuserright")->Hide();
@@ -637,9 +641,10 @@ void GcLogin::UpdateSelectChar() {
     m_listSelGcActor.clear();
     m_listSelectChar.clear();
 
-    if (info.chatCount == 0) {  //如果角色计数为0
-        LOAD_UI("btnenter")->Hide();
-        LOAD_UI("btndeletechar")->Hide();
+    if (info.chatCount == 0) {                //如果角色计数为0
+        LOAD_UI("btnenter")->Disable();       //禁止进入游戏
+        LOAD_UI("btndeletechar")->Disable();  //禁止删除角色
+
         LOAD_UI("btnsetcharpwd")->Hide();
         LOAD_UI("btnchangecharpwd")->Hide();
         LOAD_UI("btndelcharpwd")->Hide();
@@ -647,11 +652,17 @@ void GcLogin::UpdateSelectChar() {
             LOAD_UI("fmpwd")->Hide();
         }
     }
+    // 获取按钮对象，初始化未选中
+    for (int i = 0; i < 3; i++) {
+        g_layerSelectChar->selectCharBtnMap[i]->SetChecked(false);
+        g_layerSelectChar->selectCharBtnMap[i]->Disable();
+    }
+    // 根据角色计数启用相应的按钮
+    for (int i = 0; i < info.chatCount && i < 3; ++i) {
+        g_layerSelectChar->selectCharBtnMap[i]->Enable();
+    }
 
-    LOAD_UI_T(CUiCheckButton, "fmckusername.fmusername1.btnusername1")->SetChecked(false);
-    LOAD_UI_T(CUiCheckButton, "fmckusername.fmusername2.btnusername2")->SetChecked(false);
-    LOAD_UI_T(CUiCheckButton, "fmckusername.fmusername3.btnusername3")->SetChecked(false);
-    LOAD_UI_T(CUiCheckButton, "fmckusername.fmusername4.btnusername4")->SetChecked(false);
+    //LOAD_UI_T(CUiCheckButton, "fmckusername.fmusername4.btnusername4")->SetChecked(false);
     for (i = 0; i < info.chatCount; i++) {
         if (m_mapSelectActor.find(info.users[i].id) != m_mapSelectActor.end()) {
             pActor = m_mapSelectActor[info.users[i].id];
@@ -660,9 +671,9 @@ void GcLogin::UpdateSelectChar() {
         m_listSelGcActor.push_back(pActor);
         if (pActor) {
             if (m_iCurSelectChar == -1) {
-                LOAD_UI("btnenter")->Hide();
+                LOAD_UI("btnenter")->Disable();
+                LOAD_UI("btndeletechar")->Disable();
                 LOAD_UI("btnrestore")->Hide();
-                LOAD_UI("btndeletechar")->Hide();
                 LOAD_UI("btnsetcharpwd")->Hide();
                 LOAD_UI("btnchangecharpwd")->Hide();
                 LOAD_UI("btndelcharpwd")->Hide();
@@ -670,9 +681,9 @@ void GcLogin::UpdateSelectChar() {
                     LOAD_UI("fmpwd")->Hide();
                 }
             } else if (i == m_iCurSelectChar) {
-                LOAD_UI("btnenter")->Hide();
+                LOAD_UI("btnenter")->Disable();
+                LOAD_UI("btndeletechar")->Disable();
                 LOAD_UI("btnrestore")->Hide();
-                LOAD_UI("btndeletechar")->Hide();
                 LOAD_UI("btnsetcharpwd")->Hide();
                 LOAD_UI("btnchangecharpwd")->Hide();
                 LOAD_UI("btndelcharpwd")->Hide();
@@ -683,14 +694,14 @@ void GcLogin::UpdateSelectChar() {
 
                 char buf[1024];
                 memset(buf, 0, 1024);
-                rt2_sprintf(buf, "fmckusername.fmusername%d.btnusername%d", m_iCurSelectChar + 1,
-                            m_iCurSelectChar + 1);
-                LOAD_UI_T(CUiCheckButton, buf)->SetChecked(true);
+                /*     rt2_sprintf(buf, "Pnbutton.btnuser%d", m_iCurSelectChar + 1);
+                LOAD_UI_T(CUiCheckButton, buf)->SetChecked(true);*/
+                g_layerSelectChar->selectCharBtnMap[m_iCurSelectChar]->SetChecked(true);
                 if (info.users[m_iCurSelectChar].isFrozen) {
                     LOAD_UI("btnrestore")->Show();
                 } else {
-                    LOAD_UI("btnenter")->Show();
-                    LOAD_UI("btndeletechar")->Show();
+                    LOAD_UI("btnenter")->Enable();
+                    LOAD_UI("btndeletechar")->Enable();
                     if (info.users[m_iCurSelectChar].hasCharPwd) {
                         if (LOAD_UI("btnsetcharpwd")->IsVisible()) {
                             LOAD_UI("btnsetcharpwd")->Hide();
@@ -718,10 +729,10 @@ void GcLogin::UpdateSelectChar() {
         }
     }
     if (m_pBody) {
-        LOAD_UI("fmckusername.fmusername1.btnusername1.lblock1")->Hide();
-        LOAD_UI("fmckusername.fmusername2.btnusername2.lblock2")->Hide();
-        LOAD_UI("fmckusername.fmusername3.btnusername3.lblock3")->Hide();
-        LOAD_UI("fmckusername.fmusername4.btnusername4.lblock4")->Hide();
+        //LOAD_UI("fmckusername.fmusername1.btnusername1.lblock1")->Hide();
+        //LOAD_UI("fmckusername.fmusername2.btnusername2.lblock2")->Hide();
+        //LOAD_UI("fmckusername.fmusername3.btnusername3.lblock3")->Hide();
+        //LOAD_UI("fmckusername.fmusername4.btnusername4.lblock4")->Hide();
 
         RtgMatrix12 _SlotMatrix;
 
@@ -738,29 +749,29 @@ void GcLogin::UpdateSelectChar() {
                 SUserActor* pActor = g_TableUserActor.FindUserActor(
                     info.users[i].attributes.metier, info.users[i].attributes.metierLevel);
                 if (pActor)
-                    name = pActor->MetierName.c_str();
+                    /*         name = pActor->MetierName.c_str();
                 rt2_sprintf(widgetName, "fmckusername.fmusername%u.btnusername%u.lbmetier%u", i + 1,
                             i + 1, i + 1);
-                LOAD_UI(widgetName)->SetText(name);
+                LOAD_UI(widgetName)->SetText(name);*/
 
-                name = info.users[i].name;
-                rt2_sprintf(widgetName, "fmckusername.fmusername%u.btnusername%u.lbusername%u",
-                            i + 1, i + 1, i + 1);
-                LOAD_UI(widgetName)->SetText(name);
+                    name = info.users[i].name;
+                /*     rt2_sprintf(widgetName, "Pnbutton.btnuser%d", i + 1);
+                LOAD_UI(widgetName)->SetText(name);*/
+                g_layerSelectChar->selectCharBtnMap[i]->SetText(name);
 
-                rt2_sprintf(cTmp128, "%d", info.users[i].attributes.level);
-                rt2_sprintf(widgetName, "fmckusername.fmusername%u.btnusername%u.lblev%u", i + 1,
+                /* rt2_sprintf(cTmp128, "%d", info.users[i].attributes.level);*/
+                /* rt2_sprintf(widgetName, "fmckusername.fmusername%u.btnusername%u.lblev%u", i + 1,
                             i + 1, i + 1);
-                LOAD_UI(widgetName)->SetText(cTmp128);
+                LOAD_UI(widgetName)->SetText(cTmp128);*/
 
-                rt2_sprintf(widgetName, "fmckusername.fmusername%u.btnusername%u.lblock%u", i + 1,
+                /*   rt2_sprintf(widgetName, "fmckusername.fmusername%u.btnusername%u.lblock%u", i + 1,
                             i + 1, i + 1);
                 if (info.users[i].hasCharPwd)
                     LOAD_UI(widgetName)->Show();
                 else
-                    LOAD_UI(widgetName)->Hide();
+                    LOAD_UI(widgetName)->Hide();*/
 
-                int iCharIndex = GetCharIndexByActorID(info.users[i].attributes.actorID);
+                /* int iCharIndex = GetCharIndexByActorID(info.users[i].attributes.actorID);
                 vector<SCharImage> images;
                 if (!g_TableCharImage.GetCharImage(s_userID[iCharIndex], images))
                     return;
@@ -772,7 +783,7 @@ void GcLogin::UpdateSelectChar() {
                 RtwImage* pImage = g_workspace.getImageFactory()->createImage(strImage);
                 pImage->SetBlend(true);
                 rt2_sprintf(widgetName, "fmckusername.fmusername%u.lbuser%u", i + 1, i + 1);
-                LOAD_UI(widgetName)->SetBackgroundImage(pImage);
+                LOAD_UI(widgetName)->SetBackgroundImage(pImage);*/
 
                 m_listSelGcActor[i]->mBaseActor.SetMatrix_Row(3, *_SlotMatrix.Row(3));
             }
@@ -1057,8 +1068,8 @@ void GcLogin::OnEnterCreateChar() {
     LOAD_UI("lbshushantext")->Show();
     LOAD_UI("lbhuajiantext")->Show();
     //进入创人状态,将选人状态UI隐藏
-    if (LOAD_UI("fmckusername")->IsVisible()) {
-        LOAD_UI("fmckusername")->Hide();
+    if (LOAD_UI("Pnbutton")->IsVisible()) {
+        LOAD_UI("Pnbutton")->Hide();
     }
     if (LOAD_UI("btnenter")->IsVisible()) {
         LOAD_UI("btnenter")->Hide();
@@ -2888,17 +2899,18 @@ void GcLogin::SetSelectUser(int iSel) {
     const char* poseName = NULL;
     switch (m_eStatus) {
         case GLS_SELECT_CHAR: {
-         /*   poseName = GetCameraPoseName(iSel, true);
+            /*   poseName = GetCameraPoseName(iSel, true);
             if (poseName && (m_pCamera = FindModel("Camera"))) {
                 m_pCamera->RegisterNotify(this);
                 if (!m_pCamera->PlayPose(poseName, false, 1.f))
                     m_pCamera->RegisterNotify(NULL);
             }*/
             m_iCurSelectChar = iSel;
+            g_layerSelectChar->selectCharBtnMap[m_iCurSelectChar]->SetTextColor(0xffff0000);
             UpdateSelectChar();
         } break;
         case GLS_CREATE_CHAR: {
-      /*      poseName = GetCameraPoseName(iSel, false);
+            /*      poseName = GetCameraPoseName(iSel, false);
             if (poseName && (m_pCamera = FindModel("Camera"))) {
                 m_pCamera->RegisterNotify(this);
                 if (!m_pCamera->PlayPose(poseName, false, 1.f)) {

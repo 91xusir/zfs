@@ -4,9 +4,74 @@
     <File Name="ui_layer_select_char.xml"/>
   </Loader>
   <Layer DefaultLayer="true" Height="600" Index="1" Name="layworld" Show="true" Width="800">
-    <Import Url="ui/ui_variable.xml"/>
-    <Import Url="ui/ui_template.xml"/>
-    <Button Anchor="right,top" Location="915,48,98,27" Name="btndeletechar" Show="false" Sound="ui_normalbt.wav">
+    <Form BorderSize="2" Inherit="confirmTitleBarForm" Location="388,291,250,155" MouseMove="false" Name="ConfirmBox1" Show="false" Size="250,155">
+      <Label Location="25,15,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
+      <Button FontSize="12" Inherit="SmallPushButton" Location="97,107,59,19" Name="btnconfirm" Sound="ui_normalbt.wav" Text="确认" TextFont="宋体"/>
+    </Form>
+    <Form Inherit="confirmTitleBarForm" Location="388,293,250,155" MouseMove="false" Name="ConfirmBox2" Show="false">
+      <Label Location="25,14,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
+      <Button FontSize="12" Inherit="SmallPushButton" Location="38,105,59,19" Name="btnconfirm" Sound="ui_normalbt.wav" Text="确认" TextFont="宋体"/>
+      <Button FontSize="12" Inherit="SmallPushButton" Location="153,105,59,19" Name="btncancel" Sound="ui_normalbt.wav" Text="取消" TextFont="宋体"/>
+    </Form>
+    <Button Anchor="right,bottom" Disable="" Inherit="PushButton" Location="698,380,80,20" Name="btnenter" Show="show" Text="进入游戏">
+      <Anchors>
+        <Anchor offset="0,-204" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+    <Button Anchor="right,bottom" Disable="true" Inherit="PushButton" Location="698,406,80,20" Name="btnchargecard" Show="show" Text="充值点数">
+      <Anchors>
+        <Anchor offset="0,-178" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+
+
+    <Button Anchor="right,bottom" Disable="" Inherit="PushButton" Location="698,432,80,20" Name="btncreaterole" Show="show" Text="创建角色">
+      <Anchors>
+        <Anchor offset="0,-152" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+    <Button Anchor="right,bottom" Disable="true" Inherit="PushButton" Location="698,458,80,20" Name="btnsetcharpwd" Show="show" Text="角色密码">
+      <Anchors>
+        <Anchor offset="0,-126" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+    <Button Anchor="right,bottom" Disable="" Inherit="PushButton" Location="698,484,80,20" Name="btndeletechar" Show="show" Text="删除角色">
+      <Anchors>
+        <Anchor offset="0,-100" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+    <Button Anchor="right,bottom" Disable="" Inherit="PushButton" Location="698,510,80,20" Name="btnback" Show="show" Text="返回" Sound="ui_exitbt.wav">
+      <Anchors>
+        <Anchor offset="0,-74" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+    <Form Alignment="center" Dock="bottom" Inherit="NoTitleBarForm" Location="0,548,1035,52" Name="Pnbutton" Show="show" Text="">
+      <Button Anchor="right,bottom" Disable="" Inherit="PushButton" Location="230,12,112,30" Name="btnuser1" Show="show" Text="无"/>
+      <Button Anchor="right,bottom" Disable="" Inherit="PushButton" Location="370,12,112,30" Name="btnuser2" Show="show" Text="无"/>
+      <Button Anchor="right,bottom" Disable="" Inherit="PushButton" Location="510,12,112,30" Name="btnuser3" Show="show" Text="无"/>
+      <Anchors>
+        <Anchor point="BOTTOM"/>
+        <Anchor/>
+      </Anchors>
+    </Form>
+    <Form Inherit="NoTitleBarForm" Location="10,100,128,100" Name="RaleInfo">
+      <Label Location="5,10,50,20" Name="rName" Text="角色："/>
+      <Label Location="50,10,80,20" Name="RaleName"/>
+      <Label Location="5,32,50,20" Name="rlev" Text="等级："/>
+      <Label Location="50,32,70,20" Name="Lev"/>
+      <Label Location="5,53,50,20" Name="rFaction" Text="阵营："/>
+      <Label Location="50,53,70,20" Name="Faction"/>
+      <Label Location="5,73,50,20" Name="rMiter" Text="职业："/>
+      <Label Location="50,73,70,20" Name="Miter"/>
+    </Form>
+
+    <!-- <Button Anchor="right,top" Location="915,48,98,27" Name="btndeletechar" Show="false" Sound="ui_normalbt.wav">
       <Anchors>
         <Anchor offset="-10,0" point="RIGHT"/>
         <Anchor offset="0,50" point="TOP"/>
@@ -14,7 +79,7 @@
       <NormalImage Blend="true" File="ui\textures\3.tga" Source="0,146,98,27"/>
       <HighlightImage Blend="true" File="ui\textures\3.tga" Source="101,147,98,27"/>
       <PushedImage Blend="true" File="ui\textures\3.tga" Source="202,147,98,27"/>
-    </Button>
+    </Button> -->
     <Button Anchor="right,top" Location="915,48,98,27" Name="btnrestore" Show="false" Sound="ui_normalbt.wav">
       <Anchors>
         <Anchor offset="-10,0" point="RIGHT"/>
@@ -24,7 +89,7 @@
       <HighlightImage Blend="true" File="ui\textures\4.tga" Source="102,58,98,27"/>
       <PushedImage Blend="true" File="ui\textures\4.tga" Source="203,58,98,27"/>
     </Button>
-    <Button Anchor="right,top" Location="915,85,98,27" Name="btnsetcharpwd" Show="false" Sound="ui_normalbt.wav">
+    <!-- <Button Anchor="right,top" Location="915,85,98,27" Name="btnsetcharpwd" Show="false" Sound="ui_normalbt.wav">
       <Anchors>
         <Anchor offset="-10,0" point="RIGHT"/>
         <Anchor offset="0,80" point="TOP"/>
@@ -32,7 +97,7 @@
       <NormalImage Blend="true" File="ui\textures\3.tga" Source="0,176,98,27"/>
       <HighlightImage Blend="true" File="ui\textures\3.tga" Source="101,176,98,27"/>
       <PushedImage Blend="true" File="ui\textures\3.tga" Source="202,176,98,27"/>
-    </Button>
+    </Button> -->
     <Button Anchor="right,top" Location="915,122,98,27" Name="btnchangecharpwd" Show="false" Sound="ui_normalbt.wav">
       <Anchors>
         <Anchor offset="-10,0" point="RIGHT"/>
@@ -51,7 +116,7 @@
       <HighlightImage Blend="true" File="ui\textures\3.tga" Source="101,235,98,27"/>
       <PushedImage Blend="true" File="ui\textures\3.tga" Source="202,235,98,27"/>
     </Button>
-    <Button Anchor="left,bottom" Disable="" Location="42,630,98,24" Name="btnbacklogin" Show="false" Sound="ui_normalbt.wav">
+    <!-- <Button Anchor="left,bottom" Disable="" Location="42,630,98,24" Name="btnbacklogin" Show="false" Sound="ui_normalbt.wav">
       <Anchors>
         <Anchor offset="0,-210" point="BOTTOM"/>
         <Anchor offset="50,0" point="LEFT"/>
@@ -59,8 +124,8 @@
       <NormalImage Blend="true" File="ui\textures/3.tga" Source="0,60,99,26"/>
       <HighlightImage Blend="true" File="ui\textures/3.tga" Source="102,60,99,26"/>
       <PushedImage Blend="true" File="ui\textures/3.tga" Source="204,60,99,26"/>
-    </Button>
-    <Button Anchor="left,bottom" Disable="" Location="42,672,98,24" Name="btnexit" Show="false" Sound="ui_normalbt.wav">
+    </Button> -->
+    <!-- <Button Anchor="left,bottom" Disable="" Location="42,672,98,24" Name="btnexit" Show="false" Sound="ui_normalbt.wav">
       <Anchors>
         <Anchor offset="0,-180" point="BOTTOM"/>
         <Anchor offset="50,0" point="LEFT"/>
@@ -68,8 +133,8 @@
       <NormalImage Blend="true" File="ui\textures/3.tga" Source="0,31,99,26"/>
       <HighlightImage Blend="true" File="ui\textures/3.tga" Source="102,31,99,26"/>
       <PushedImage Blend="true" File="ui\textures/3.tga" Source="204,31,99,26"/>
-    </Button>
-    <Button Location="235,85,110,28" Name="btnenter" Show="false" Sound="ui_entergame.wav">
+    </Button> -->
+    <!-- <Button Location="235,85,110,28" Name="btnenter" Show="false" Sound="ui_entergame.wav">
       <NormalImage Blend="true" File="ui\textures/3.tga" Source="0,0,110,28"/>
       <HighlightImage Blend="true" File="ui\textures/3.tga" Source="112,0,110,28"/>
       <PushedImage Blend="true" File="ui\textures/3.tga" Source="224,0,110,28"/>
@@ -77,7 +142,7 @@
         <Anchor offset="0,0" point="CENTERV"/>
         <Anchor offset="0,180" point="CENTERH"/>
       </Anchors>
-    </Button>
+    </Button> -->
     <CheckButton Anchor="TOP,LEFT" Inherit="" Location="481,173,121,68" Name="btnfemale" Show="false" Sound="ui_normalbt.wav">
       <NormalImage Blend="true" File="ui\textures\7.tga" Source="20,435,121,68"/>
       <HighlightImage Blend="true" File="ui\textures\7.tga" Source="304,8,121,68"/>
@@ -100,15 +165,7 @@
         <Anchor offset="0,0" point="LEFT"/>
       </Anchors>
     </CheckButton>
-    <Form BorderSize="2" Inherit="confirmTitleBarForm" Location="388,291,250,155" MouseMove="false" Name="ConfirmBox1" Show="false" Size="250,155">
-      <Label Location="25,15,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
-      <Button FontSize="12" Inherit="SmallPushButton" Location="97,107,59,19" Name="btnconfirm" Sound="ui_normalbt.wav" Text="确认" TextFont="宋体"/>
-    </Form>
-    <Form Inherit="confirmTitleBarForm" Location="388,293,250,155" MouseMove="false" Name="ConfirmBox2" Show="false">
-      <Label Location="25,14,200,75" Multiline="true" Name="lbinfoexit" Text="程序上字"/>
-      <Button FontSize="12" Inherit="SmallPushButton" Location="38,105,59,19" Name="btnconfirm" Sound="ui_normalbt.wav" Text="确认" TextFont="宋体"/>
-      <Button FontSize="12" Inherit="SmallPushButton" Location="153,105,59,19" Name="btncancel" Sound="ui_normalbt.wav" Text="取消" TextFont="宋体"/>
-    </Form>
+
     <Form EscapeHide="false" Inherit="" Location="302,635,96,87" Name="fmshushan" Show="false">
       <CheckButton Anchor="CENTERV,bottom" Location="9,6,76,76" Name="btnshushan" Show="true" Sound="ui_ssbutton.wav">
         <NormalImage Blend="true" File="ui\textures\4.tga" Source="313,0,76,76"/>
@@ -489,7 +546,7 @@
         <Anchor offset="0,0" point="LEFT"/>
       </Anchors>
     </Form>
-    <Button Anchor="left,bottom" Disable="" Inherit="" Location="42,630,98,24" Name="btnback" Show="false" Sound="ui_normalbt.wav">
+    <!-- <Button Anchor="left,bottom" Disable="" Inherit="" Location="42,630,98,24" Name="btnback" Show="false" Sound="ui_normalbt.wav">
       <Anchors>
         <Anchor offset="0,-100" point="BOTTOM"/>
         <Anchor offset="50,0" point="LEFT"/>
@@ -497,7 +554,7 @@
       <NormalImage Blend="true" File="ui\textures/3.tga" Source="0,60,99,26"/>
       <HighlightImage Blend="true" File="ui\textures/3.tga" Source="102,60,99,26"/>
       <PushedImage Blend="true" File="ui\textures/3.tga" Source="204,60,99,26"/>
-    </Button>
+    </Button> -->
     <Label Inherit="" Location="0,180,288,71" Name="lbbackground" Show="false">
       <BackgroundImage Blend="true" File="ui\textures/7.tga" Source="6,353,288,71"/>
       <Anchors>

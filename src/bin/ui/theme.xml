@@ -36,6 +36,12 @@
                     <TitleImage Blend="true" File="zfs_texture/ui_4.tga" Source="0,169,240,31" />
                 </TitleBar>
             </Form>
+            <!-- ÎÞ±êÌâ -->
+            <Form Name="NoTitleBarForm" BackgroundColor="#b5000000">
+                <BackgroundImage Border="2,2,2,2" BorderFile="zfs_texture/bd.png" BorderSource="17,39,2,2" Blend="true"/>
+                <TitleBar Show="false"/>
+            </Form>
+            <!-- ////////////////////////////////////////// -->
             <Form Name="BTitleBarForm" padding="0,30,0,0" BackgroundColor="#b5000000">
                 <!-- <BackgroundImage Border="2,2,2,2" BorderFile="" BorderBlend="true" BorderSource="10,40,6,6" Blend="true" File="" Source="0,52,24,23"/> -->
                 <TitleBar Height="30" Show="true"/>
@@ -58,10 +64,7 @@
                     <TitleImage Blend="true" File="ui/textures/2.tga" Source="0,462,250,16"/>
                 </TitleBar>
             </Form>
-            <Form Name="NoTitleBarForm" BackgroundColor="#b5000000">
-                <BackgroundImage Border="1,1,1,1" BorderFile="" BorderSource="10,40,1,1" Blend="true" File="" Source="0,52,24,23"/>
-                <TitleBar Show="false"/>
-            </Form>
+
             <Form Name="NoForm">
                 <BackgroundImage Border="2,2,2,2" BorderFile="" BorderSource="10,40,6,6" Blend="true" File="" Source="0,52,24,23"/>
                 <TitleBar Show="false"/>

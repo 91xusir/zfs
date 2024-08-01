@@ -1,3 +1,4 @@
+#include <unordered_map>
 #ifndef _INC_UI_LAYER_SELECT_CHAR_H_
 #define _INC_UI_LAYER_SELECT_CHAR_H_
 
@@ -82,6 +83,8 @@ public:
 		int             m_CurBtnIdx;                //当前按钮的索引
 		std::string     m_OldPwd;
 		std::string     m_NewPwd;
+        //fix by lyy
+        std::unordered_map<int, CUiCheckButton*> selectCharBtnMap{};
 };
 
 #endif // _INC_UI_LAYER_SELECT_CHAR_H_
