@@ -106,9 +106,6 @@
     <Filter Include="game\mail\master_list">
       <UniqueIdentifier>{c9828cab-b6fb-4fab-9f13-d19952104aa3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\encrypt">
-      <UniqueIdentifier>{ba31b72c-849a-46c4-824a-1971ba2a4950}</UniqueIdentifier>
-    </Filter>
     <Filter Include="game\pet">
       <UniqueIdentifier>{03d6776b-20f3-4c65-b411-2f9640473a69}</UniqueIdentifier>
     </Filter>
@@ -1205,9 +1202,6 @@
     </ClInclude>
     <ClInclude Include="..\shared\master_list_const.h">
       <Filter>game\mail\master_list</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Encrypt.h">
-      <Filter>game\encrypt</Filter>
     </ClInclude>
     <ClInclude Include="game\gc_pet.h">
       <Filter>game\pet</Filter>

@@ -88,9 +88,6 @@ class GcLoginSession : protected CG_TCPSession {
     ///
     CG_CmdPacket& GetRecvCmd() { return m_recvCmd; }
 
-    //std::string GetMD5StringString(std::string sstring);
-    std::string EncryptString(std::string sstring);
-
    private:
     void RegisterCommand(short id, CommandCallback callback);
 

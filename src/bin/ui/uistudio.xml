@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="GBK"?>
-<Ui>
-	<Loader Description="按照顺序Load以下所有xml文件" >
-	</Loader>
-	<Config Theme="ZfsLike">
-	</Config>
-</Ui>

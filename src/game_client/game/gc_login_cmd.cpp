@@ -315,12 +315,12 @@ BEGIN_CMD_FUNC(cmd_g2c_query_account_ret) {
         m_account.users[n].hasCharPwd = hasCharPwd;
         m_account.users[n].isFrozen = isFrozen;
     }
-
-    if (m_account.chatCount > 0) {
+    GetLogin()->SetLoginState(GcLogin::GLS_SELECT_CHAR);
+  /*  if (m_account.chatCount > 0) {
         GetLogin()->SetLoginState(GcLogin::GLS_SELECT_CHAR);
     } else {
         GetLogin()->SetLoginState(GcLogin::GLS_CREATE_CHAR);
-    }
+    }*/
 }
 
 END_CMD_FUNC;

@@ -27,7 +27,7 @@ Character对模型动画,粒子系统等处理都是基于CPU处理的,几乎没
 
 ## 3.模块关系
 主要模块关系
-![img](file:///C:/Users/chiro/AppData/Local/Temp/msohtmlclip1/01/clip_image001.jpg)
+![模块关系图](character/模块关系图-17224588491871.jpg)
 详细图
 ![img](character/clip_image003.png)
 

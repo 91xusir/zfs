@@ -9,40 +9,24 @@ UIFormMsg::UIFormMsg(FormType t, int layer)  //modify by fox for bug
 
     switch (t) {
         case TYPE_OK:
-            // 		m_pFrmThis = g_workspace.LoadWidgetFromTheme("ConfirmBox1", layer);// change [3/18/2009 tooth.shi]
             m_pFrmThis = LOAD_UI("ConfirmBox1");
             m_pFrmThis->CenterScreen();
             m_pFrmThis->Hide();
-
-            (m_pFrmThis->GetChildWidget("layworld.ConfirmBox1.btnconfirm"))->EvLClick +=
-                RTW_CALLBACK(this, UIFormMsg, OnLClick_OK);
-
-            // 		(m_pFrmThis->GetChildWidget("layworld.ConfirmBox1.$hide"))->EvLClick +=
-            // 			RTW_CALLBACK(this, UIFormMsg, OnLClick_OK);
-
+            (m_pFrmThis->GetChildWidget("layworld.ConfirmBox1.btnconfirm"))
+                ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UIFormMsg, OnLClick_OK));
             break;
 
         case TYPE_OK_CANCEL:
-            //		m_pFrmThis = g_workspace.LoadWidgetFromTheme("ConfirmBox2", layer);// change [3/18/2009 tooth.shi]
             m_pFrmThis = LOAD_UI("ConfirmBox2");
             m_pFrmThis->CenterScreen();
             m_pFrmThis->Hide();
+            (m_pFrmThis->GetChildWidget("layworld.ConfirmBox2.btnconfirm"))
+                ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UIFormMsg, OnLClick_OK));
 
-            (m_pFrmThis->GetChildWidget("layworld.ConfirmBox2.btnconfirm"))->EvLClick +=
-                RTW_CALLBACK(this, UIFormMsg, OnLClick_OK);
-
-            (m_pFrmThis->GetChildWidget("layworld.ConfirmBox2.btncancel"))->EvLClick +=
-                RTW_CALLBACK(this, UIFormMsg, OnLClick_Cancel);
-
-            // 		(m_pFrmThis->GetChildWidget("$hide"))->EvLClick +=
-            // 			RTW_CALLBACK(this, UIFormMsg, OnLClick_Cancel);
+            (m_pFrmThis->GetChildWidget("layworld.ConfirmBox2.btncancel"))
+                ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UIFormMsg, OnLClick_Cancel));
             break;
     }
-
-    //m_pFrmThis->ModifyFlags(wfGrabKeyboard, 0);
-    //m_pFrmThis->EvClose += RTW_CALLBACK(this, UIFormMsg, OnClose);rem by fox for bug
-    //m_pFrmThis->EvKey += RTW_CALLBACK(this, UIFormMsg, OnKeyDown); // 为什么没有响应EvKey??
-
     unguard;
 }
 
@@ -72,8 +56,10 @@ RtwButton* UIFormMsg::GetButtonOK(FormType t) {
     return (RtwButton*)m_pFrmThis->GetChildWidget("layworld.ConfirmBox1.btnconfirm");
 }
 
-UIFormMsg* UIFormMsg::ShowStatic(const RtString& text, FormType t, bool modal, const string& id,
-                                 bool vDefaultLayer) {
+//lyytodo  以下为脑瘫设计....公用一个ConfirmBox  后面修改
+UIFormMsg* UIFormMsg::ShowStatic(const RtString& text, FormType t /* = TYPE_OK*/,
+                                 bool modal /* = true*/, const string& id /*= ""*/,
+                                 bool vDefaultLayer /*= true*/) {
     guard;
     //一个补丁//当不同类型的UIFormMsg，的ID是不应该一样的//add by fox for bug
     string FixID;
@@ -91,7 +77,7 @@ UIFormMsg* UIFormMsg::ShowStatic(const RtString& text, FormType t, bool modal, c
 
     unordered_map<string, RtwRefPtr<UIFormMsg>>::iterator iter = s_forms.find(FixID);
 
-    if (iter != s_forms.end()) {
+    if (iter != s_forms.end()) {  //已存在
         //需要重新初始化
         //<add by fox for bug>
         iter->second->EvOK.Clear();
@@ -100,12 +86,10 @@ UIFormMsg* UIFormMsg::ShowStatic(const RtString& text, FormType t, bool modal, c
         LOAD_UI("layworld.ConfirmBox2.btnconfirm")->SetParam1(NULL);
         LOAD_UI("layworld.ConfirmBox2.btncancel")->SetParam1(NULL);
         //</add by fox for bug>
-
         iter->second->Show(text, modal);
         iter->second->m_pFrmThis->CenterScreen();
         LOAD_UI("layworld.ConfirmBox2.btnconfirm")->SetParam1(iter->second);
         LOAD_UI("layworld.ConfirmBox2.btncancel")->SetParam1(iter->second);
-
         return iter->second;
     }
 

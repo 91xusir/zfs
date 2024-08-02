@@ -238,7 +238,7 @@ bool CG_TCPSession::SendPacket(CG_CmdPacket *packet,bool flush,bool sys)
 	m_sendNetPkt.AddCmdPacket(packet);
 	m_sendNetPkt.SetSeq(m_sendSeq);
 	
-	int row = m_sendNetPkt.GetTotalSize();
+	const int row = m_sendNetPkt.GetTotalSize();
 
 	// dont's encrypt sys packet 
 	if(sys)

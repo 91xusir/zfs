@@ -1433,7 +1433,7 @@ int CLgsThread::pubwin_list_cmd_user_login()
 
 	return LOGIN_RET_FAILED_ACCOUNT_PAUSE;//PZH
 	//验证密码， 如果正确， 则不再去pubwin进行验证
-
+    //lyymark 登录验证
 	CURL* curl;
 	char errorBuffer[300];
 	memset(errorBuffer,0,sizeof(errorBuffer));

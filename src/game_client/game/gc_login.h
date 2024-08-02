@@ -69,8 +69,10 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     virtual void OnMouseWheel(int iButton, long vDelta);
     //左键按下
     virtual void OnMouseLDown(int iButton, int x, int y);
+
     //按钮抬起
     virtual void OnMouseUp(int iButton, int x, int y) {}
+
     //左键双击
     virtual void OnMouseLDClick(int iButton, int x, int y);
     //右键按下
@@ -83,17 +85,20 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     virtual void OnKeyDown(int iButton, int iKey);
     //键盘释放事件
     virtual void OnKeyUp(int iButton, int iKey);
+
     //获取当前选中角色
     inline int GetCurSelectChar() { return m_iCurSelectChar; }
+
     //设置当前选中角色
     inline void SetCurSelectChar(int iSel) { m_iCurSelectChar = iSel; }
+
     //获取当前状态
     inline EStatus GetStatus() { return m_eStatus; }
+
     //错误信息
     void LoginErrMsg(EErrMsg eMsg, const char* szRetStr = NULL, short sRetCode = 0);
     //选择游戏世界服务器
     void SelectGameWorld(int iIdx);
-
 
     // 登录账号
     void Login(const std::string& szUsername, const std::string& szPassword);
@@ -116,6 +121,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
 
     //是否保存帐号
     void SetSaveAccount(bool bSave) { bSaveAccount = bSave; }
+
     bool GetSaveAccount() { return bSaveAccount; }
 
     //人物角色左旋
@@ -170,7 +176,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     static int GetPing(char* zIP);
 
     // 更新游戏世界服务器列表的 UI 的函数
-    void OnUIUpdateGameWorldServerList()const;
+    void OnUIUpdateGameWorldServerList() const;
 
     // 设置最后选择的角色 ID 的函数
     void SetLastSelectCharID(int iID);
@@ -183,9 +189,9 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
         //RtString szIP;         // 服务器 IP 地址
         std::string szName;       // 服务器名称
         std::string szIP;         // 服务器 IP 地址
-        long     lPort;        // 服务器端口
-        long     lEvaluation;  // 服务器评估值
-        long     ping;         // 服务器 ping 值
+        long        lPort;        // 服务器端口
+        long        lEvaluation;  // 服务器评估值
+        long        ping;         // 服务器 ping 值
     };
 
     // 网络向导会话的静态指针
@@ -212,7 +218,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     // 大厅登陆 KEY 的字符串
     std::string m_hallKey;
 
-    // 是否是在终端登陆
+    // 是否是在大厅登陆
     bool m_ishallLogin;
 
     // 是否强制登陆 (0---正常登录, 1---强制登录)
@@ -269,7 +275,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     void ChangeCharImage(bool bNext);   //改变人物角色发型名称
 
    private:
-    EStatus           m_eStatus;    //
+    EStatus           m_eStatus;  //
     EStatus           m_eNextStatus;
     EStatus           m_ePrevStatus;
     CGameClientFrame* m_pGameClientFrame;
@@ -282,13 +288,14 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     long              m_lSkyFog;
     RtIni             m_ini;
 
-    std::string m_szGameWorldServerName;// 当前选择的游戏世界服务器
+    std::string m_szGameWorldServerName;  // 当前选择的游戏世界服务器
     std::string m_szGameWorldServerIP;
-    long     m_lGameWorldServerPort;
+    long        m_lGameWorldServerPort;
 
-    std::vector<GcActor*>           m_listSelGcActor;  // 选人界面的UI上面的人物  lyy：这个保存数据信息？装备之类的
-    std::vector<CRT_ActorInstance*> m_listSelActor;    // 选人界面的UI上面的人物  lyy：这个保存图形信息？
-    std::vector<short> m_listSelectChar;  // 可选的人物，这里保存ID，具体的数据可以从g_TableUserActor中读出
+    std::vector<GcActor*> m_listSelGcActor;  // 选人界面的UI上面的人物 这个是存可选玩家角色
+    std::vector<CRT_ActorInstance*> m_listSelActor;  // 选人界面的UI上面的人物 这个是存可以创建人物
+    std::vector<short>
+        m_listSelectChar;  // 可选的人物，这里保存ID，具体的数据可以从g_TableUserActor中读出
 
     char m_bSex;  //0男,1女
 
@@ -311,13 +318,13 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     std::map<DWORD, CRT_ActorInstance*>       m_mapCreateActor;
     RtgMatrix12                               mWeaponMatrix;
 
-  /*  CRT_ActorInstance* m_pPetActor1;
+    /*  CRT_ActorInstance* m_pPetActor1;
     CRT_ActorInstance* m_pPetActor2;
     CRT_ActorInstance* m_pPetActor3;*/
 
-    int         m_HeadModelIndex[4];
-    int         m_HeadImageIndex[4];
-    char        m_bCharFrozen[4];
+    int m_HeadModelIndex[4] = {};
+    int m_HeadImageIndex[4] = {};
+
     std::string m_strCharPassword;
     RtwRect     rectBtnSetChar;     //设置角色密码矩形
     RtwRect     rectBtnChangeChar;  //变更角色密码矩形

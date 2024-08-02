@@ -32,13 +32,10 @@ class UILayerLogin {
 
     void OnClicked_EnterUserLogin(const int& serverId);
     //退出
-    void OnClicked_Quit(void*, void*);
+    static void OnClicked_Quit(void*, void*);
 
    private:
-    //领取密保
-    void OnClicked_GetPassword(void*, void*);
-    //忘记密码
-    void OnClicked_ForgetPassword(void*, void*);
+
     //申请帐号
     void OnClicked_CreateAccount(void*, void*);
     //保存帐号

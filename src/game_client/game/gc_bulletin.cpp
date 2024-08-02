@@ -15,7 +15,7 @@ bool g_bNotify = true;
 
 CBulletinManager::CBulletinManager()
 {
-	g_workspace.Load("ui/ui_layer_main.xml");
+	g_workspace.Load("ui/3.main.xml");
 	m_pFormBulletin = LOAD_UI_T(RtwForm, "fmBulletin");
 	m_pChatBulletin = LOAD_UI_T(RtwTextBox, "fmBulletin.txtFeedback");
 

@@ -63,20 +63,31 @@ bool CThreadSafeList<T>::GetCmd(T *cmd)
 	return true;
 }
 
-template<class T>
-bool CThreadSafeList<T>::AddCmd(T *cmd)
-{
-	LOCK_CS(&m_cs);
-	if(m_cmdNum >= m_maxCmd)
-	{
-		UNLOCK_CS(&m_cs);
-		return false;
-	}
-	m_cmdList.push_back(*cmd);
-	m_cmdNum++;
-	UNLOCK_CS(&m_cs);
-	return true;
+template <class T>
+bool CThreadSafeList<T>::AddCmd(T* cmd) {
+    // 锁定互斥量（临界区）以确保线程安全
+    LOCK_CS(&m_cs);
+
+    // 检查当前命令数是否超过最大命令数限制
+    if (m_cmdNum >= m_maxCmd) {
+        // 释放互斥量并返回 false，表示添加命令失败
+        UNLOCK_CS(&m_cs);
+        return false;
+    }
+
+    // 将命令添加到命令列表中
+    m_cmdList.push_back(*cmd);
+
+    // 增加命令数量计数
+    m_cmdNum++;
+
+    // 释放互斥量
+    UNLOCK_CS(&m_cs);
+
+    // 返回 true，表示命令添加成功
+    return true;
 }
+
 
 template<class T>
 int CThreadSafeList<T>::GetCmdNum()

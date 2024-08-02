@@ -5,12 +5,10 @@
 #include <algorithm>
 #include <cctype>
 
-void global_closeApp(void*, void*,void*) {
+void global_closeApp(void*, void*, void*) {
 
-    UIFormMsg* pConfirm =
-        UIFormMsg::ShowStatic("确定退出游戏吗?", UIFormMsg::TYPE_OK_CANCEL, true, "game_exit");
-    pConfirm->EvOK.ClearAndSetDelegate(RTW_CALLBACK(NULL, UILayerLogin, OnClicked_Quit));
-    pConfirm->EvCancel.Clear();
+    UIFormMsg* pConfirm = UIFormMsg::ShowStatic("确定退出游戏吗?", UIFormMsg::TYPE_OK_CANCEL);
+    pConfirm->EvOK.ClearAndSetDelegate(UI_DELEGATE_F(UILayerLogin::OnClicked_Quit));
 }
 
 static bool IsValidAccountName(const string& name) {
@@ -24,7 +22,7 @@ static bool IsValidAccountName(const string& name) {
 
 UILayerLogin::UILayerLogin() {
     //lyymark 2.GcLogin.XML 加载用户登录UI
-    g_workspace.Load("ui\\ui_layer_login.xml");
+    g_workspace.Load("ui/1.login.xml");
     //用户登录form
     mp_loginForm = LOAD_UI_T(RtwForm, "loginForm");
     mp_selectServerName = LOAD_UI("loginForm.selectServerName");
@@ -150,27 +148,11 @@ void UILayerLogin::OnClicked_Quit(void*, void*) {
     PostQuitMessage(0);
 }
 
-//领取密保
-void UILayerLogin::OnClicked_GetPassword(void*, void*) {
-    const char* szHomepage = GetGameIni()->GetEntry("net", "HomePage");
-    if (szHomepage == NULL)
-        szHomepage = "http://www.wtgame.net";
-    ShellExecute(0, 0, szHomepage, 0, 0, SW_SHOW);
-}
-
-//忘记密码
-void UILayerLogin::OnClicked_ForgetPassword(void*, void*) {
-    const char* szHomepage = GetGameIni()->GetEntry("net", "HomePage");
-    if (szHomepage == NULL)
-        szHomepage = "http://www.wtgame.net";
-    ShellExecute(0, 0, szHomepage, 0, 0, SW_SHOW);
-}
-
 //申请帐号
 void UILayerLogin::OnClicked_CreateAccount(void*, void*) {
     const char* szHomepage = GetGameIni()->GetEntry("net", "HomePage");
     if (szHomepage == NULL)
-        szHomepage = "http://www.wtgame.net";
+        szHomepage = "https://gitee.com/chuangxxt/zfs";
     ShellExecute(0, 0, szHomepage, 0, 0, SW_SHOW);
 }
 

@@ -78,51 +78,27 @@ void UILayer::EnterLoading()
 
 	g_LoadingMapRenderer.SetImages(arrImages);
 	g_LoadingMapRenderer.SetRenderFlag(true);
-
 	unguard;
-}
-
-void UILayer::EnterSelectServer()
-{
-    guard;
-
-    //Reset();
-
-    //g_layerLogin = new UILayerLogin;
-
-    //g_workspace.AdjustLayer(GetDevice()->m_iWndWidth, GetDevice()->m_iWndHeight);
-
-    //LeaveLoading();
-
-    unguard;
 }
 
 void UILayer::EnterLogin()
 {
 	guard;
-
-	Reset();
-
+    Reset();
 	g_layerLogin = RT_NEW UILayerLogin;
-
 	g_workspace.AdjustLayer(GetDevice()->m_iWndWidth, GetDevice()->m_iWndHeight);
-
 	LeaveLoading();
-
 	unguard;
 }
 
 void UILayer::EnterSelectChar()
 {
 	guard;
-
+    //重置删除之前的UI
 	Reset();
-
 	g_layerSelectChar = RT_NEW UILayerSelectChar;
 	g_workspace.AdjustLayer(GetDevice()->m_iWndWidth, GetDevice()->m_iWndHeight);
-
 	LeaveLoading();
-
 	unguard;
 }
 

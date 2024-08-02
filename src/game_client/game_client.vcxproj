@@ -73,6 +73,11 @@
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnableManifest>true</VcpkgEnableManifest>
+    <VcpkgApplocalDeps>false</VcpkgApplocalDeps>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
+    <VcpkgUseMD>false</VcpkgUseMD>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -135,7 +140,7 @@
     <ClCompile>
       <AdditionalOptions>/Oy- %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include\atl;$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>NOMINMAX;_HAS_STD_BYTE=0;_PREVIEW;WIN32;NDEBUG;_WINDOWS;USE_D3DX9;LUA_OPNAMES;USE_D3D9;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -496,7 +501,6 @@
     <ClInclude Include="game\gc_mail.h" />
     <ClInclude Include="game\gc_master_list.h" />
     <ClInclude Include="..\shared\master_list_const.h" />
-    <ClInclude Include="game\Encrypt.h" />
     <ClInclude Include="game\gc_pet.h" />
     <ClInclude Include="..\shared\pet_base.h" />
     <ClInclude Include="..\shared\rt1tort2.h" />

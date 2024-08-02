@@ -6,148 +6,94 @@
 //
 #include "GW_ActivityManager.h"
 
-GW_BEGIN_CMD(cmd_c2g_login)
+GW_BEGIN_CMD(cmd_c2g_login)  // 开始处理 cmd_c2g_login 命令
 {
-	char* name;
-	char* pwname;//tim.yang secret name
-	char* pubwinKey;
-	char* pwd;
-	char* glompwd;
-	char  code;
-	char cPower = 0;// 是否强制登陆 PZH
+    char* name;        // 存储用户名
+    char* pwname;      // 存储加密过的用户名
+    char* pubwinKey;   // 存储 PubWin 密钥
+    char* pwd;         // 存储 MD5 加密后的密码
+    char* glompwd;     // 存储 Glob 密码的指针
+    char  code;        // 存储登录代码的变量
+    char  cPower = 0;  // 存储是否强制登录的标志，
 
-	if (!packet->ReadString(&name))
-		return eInvalidData;
-    if (strlen(name)>50) return eInvalidData;
+    // 读取用户名
+    if (!packet->ReadString(&name))
+        return eInvalidData;  // 读取失败，返回无效数据错误
+    if (strlen(name) > 50)
+        return eInvalidData;  // 用户名长度超过限制，返回无效数据错误
 
-	if (!packet->ReadString(&pwname))
-		return eInvalidData;
+    // 读取加密过的用户名
+    if (!packet->ReadString(&pwname))
+        return eInvalidData;  // 读取失败，返回无效数据错误
 
-	if (!packet->ReadString(&pubwinKey))
-		return eInvalidData;
+    // 读取 PubWin 密钥
+    if (!packet->ReadString(&pubwinKey))
+        return eInvalidData;  // 读取失败，返回无效数据错误
 
-	if (!packet->ReadString(&glompwd))
-		return eInvalidData;
+    // 读取 Glob 密码
+    if (!packet->ReadString(&glompwd))
+        return eInvalidData;  // 读取失败，返回无效数据错误
 
-	// already md5 encode
-	if (!packet->ReadString(&pwd))
-		return eInvalidData;
+    // 读取 MD5 加密后的密码
+    if (!packet->ReadString(&pwd))
+        return eInvalidData;  // 读取失败，返回无效数据错误
 
-	// We will repeat the password twice
-	// Replace Louis.Huang @ Mon 15 Dec 2008
-// #ifndef _FINAL
-// 	 if (strlen(pwd)>32) return eInvalidData;
-// #else
-// 	if (strlen(pwd) > 64) return eInvalidData;
-// 	// int iMiddle = strlen(pwd) / 2;
-// 	pwd += 30;
-// #endif
+    // 读取登录代码
+    if (!packet->ReadByte(&code))
+        return eInvalidData;  // 读取失败，返回无效数据错误
 
-	if (!packet->ReadByte(&code))
-		return eInvalidData;
+    GWUnloginClient* uc = g_server.m_curUnloginClient;  // 获取当前未登录客户端对象
 
-	GWUnloginClient *uc = g_server.m_curUnloginClient;
-
-	//PZH
-	if (!packet->ReadByte(&cPower))
-	{
-		cPower = 0;
-	}
-	bool bPowerLogic = 0 != cPower;
-	uc->SetPowerLogin(bPowerLogic);
-	//
-
-    // Login username必须是由英文字母，数字和下划线组成
-    //     由于TO有部分会员可能包含除字母数字下划线外的其他字符，所以这边只能限制不能包含空格
-   /* bool bCheckError = false;
-    char* pC = name;
-    while (*pC)
-    {
-        if (!(((*pC)>='a'&&(*pC)<='z')||((*pC)>='A'&&(*pC)<='Z')||((*pC)>='0'&&(*pC)<='9')||((*pC)=='_')))
-        {
-            break;
-        }
-        pC ++;
+    // 读取是否强制登录的标志
+    if (!packet->ReadByte(&cPower)) {
+        cPower = 0;  // 如果读取失败，默认标志为0
     }
-    if (*pC!=NULL)
-    {
-        bCheckError = true;
-    }
+    bool bPowerLogic = 0 != cPower;  // 根据标志决定是否强制登录
+    uc->SetPowerLogin(bPowerLogic);  // 设置客户端的强制登录标志
 
-    if (!bCheckError)
-    {
-        pC = pwd;
-        while (*pC)
-        {
-            if (!(((*pC)>='a'&&(*pC)<='z')||((*pC)>='A'&&(*pC)<='Z')||((*pC)>='0'&&(*pC)<='9')))
-            {
-                break;
-            }
-            pC ++;
-        }
-        if (*pC!=NULL)
-        {
-            bCheckError = true;
-        }
-    }*/
+    char  ip[32];  // 存储客户端 IP 地址的缓冲区
+    short port;    // 存储客户端端口号的变量
+    // 获取客户端的远程地址
+    if (!uc->netLink->GetSocket().GetRemoteAddr(ip, &port))
+        return eNetwork;  // 获取失败，返回网络错误
 
-    //if (strchr(name,' ') || strchr(pwd,' '))
-    //if (bCheckError)
-    //{
-    //    g_sendCmd->BeginWrite();
-    //    g_sendCmd->WriteShort(g2c_login_ret);
-    //    g_sendCmd->WriteLong(LOGIN_RET_FAILED_UNKNOWN); // unknown
-    //    g_sendCmd->WriteShort(1);
-    //    uc->netLink->SendPacket(g_sendCmd);
-    //    uc->valid = false;
-    //    return eOkay;
-    //}
+    // 检查登录时间间隔，避免频繁登录
+    if (rtGetMilliseconds() - uc->lastLoginTime < MIN_LOGIN_INTERVAL)
+        return eInvalidData;  // 登录间隔过短，返回无效数据错误
 
-	char ip[32];
-	short port;
-	if (!uc->netLink->GetSocket().GetRemoteAddr(ip, &port))
-		return eNetwork;
+    uc->lastLoginTime = rtGetMilliseconds();  // 更新最后登录时间
+    long      ret = 0;                        // 存储登录结果
+    const int c_nBuffSize = 64;               // 缓冲区大小
+    char      szBuff[c_nBuffSize];            // 存储处理后的用户名
+    rt2_strcpy(szBuff, name);                 // 复制用户名到缓冲区
+    strlwr(szBuff);                           // 将用户名转换为小写
+    uc->SetAccountName(szBuff);               // 设置客户端的账户名
 
-	// LOG2("User try login [name=%s, ip=%s]\n", name, ip);	
-	if(rtGetMilliseconds() - uc->lastLoginTime < MIN_LOGIN_INTERVAL)
-		return eInvalidData;
-
-	uc->lastLoginTime = rtGetMilliseconds();
-	long ret = 0;
-    /*PZH*/
-	//string szAccount = name;
-    //strlwr((char*)szAccount.c_str()); 
-	const int c_nBuffSize = 64;
-	char szBuff[c_nBuffSize];
-	rt2_strcpy(szBuff, name);
-	strlwr(szBuff);
-	uc->SetAccountName(szBuff);
-	if(CLogicExt::GetCLogicExt().IsLockName(name))
-	{
-		ret = -3;
-        g_sendCmd->BeginWrite();
-		g_sendCmd->WriteShort(g2c_login_ret);
-        g_sendCmd->WriteLong(LOGIN_RET_FAILED_ACCOUNT_WRONG5); // 被锁定十分钟，还没到解锁时间
-        g_sendCmd->WriteShort(2); // unknown
-		uc->netLink->SendPacket(g_sendCmd);
-	}
-    else /**/if (!g_server.m_login.LoginAccount(uc->seed, /*PZH*/ /*name*/szBuff/**/, 
-		pwname,pubwinKey,glompwd,pwd, ip/*PZH*/, bPowerLogic))
-    {
-        ret = -2;
-        g_sendCmd->BeginWrite();
-		g_sendCmd->WriteShort(g2c_login_ret);
-        g_sendCmd->WriteLong(LOGIN_RET_FAILED_UNKNOWN); // unknown
-        g_sendCmd->WriteShort(2); // unknown
-		uc->netLink->SendPacket(g_sendCmd);
+    // 检查账户是否被锁定
+    if (CLogicExt::GetCLogicExt().IsLockName(name)) {
+        ret = -3;                              // 设置返回值为锁定错误代码
+        g_sendCmd->BeginWrite();               // 开始写入响应数据
+        g_sendCmd->WriteShort(g2c_login_ret);  // 写入登录返回码
+        g_sendCmd->WriteLong(LOGIN_RET_FAILED_ACCOUNT_WRONG5);  // 写入锁定错误代码
+        g_sendCmd->WriteShort(2);                               // 写入未知数据
+        uc->netLink->SendPacket(g_sendCmd);                     // 发送响应数据
+    } else if (!g_server.m_login.LoginAccount(uc->seed, szBuff, pwname, pubwinKey, glompwd, pwd, ip,
+                                              bPowerLogic)) {
+        ret = -2;                                        // 设置返回值为登录失败代码
+        g_sendCmd->BeginWrite();                         // 开始写入响应数据
+        g_sendCmd->WriteShort(g2c_login_ret);            // 写入登录返回码
+        g_sendCmd->WriteLong(LOGIN_RET_FAILED_UNKNOWN);  // 写入登录失败错误代码
+        g_sendCmd->WriteShort(2);                        // 写入未知数据
+        uc->netLink->SendPacket(g_sendCmd);              // 发送响应数据
     }
 
-	if(ret != 0)
-	{
-		uc->valid = false;
-	}
+    if (ret != 0) {
+        uc->valid = false;  // 登录失败，将客户端标记为无效
+    }
 }
-GW_END_CMD;
+
+GW_END_CMD;  // 结束处理 cmd_c2g_login 命令
+
 
 GW_BEGIN_CMD(cmd_c2g_select_char)
 {

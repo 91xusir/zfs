@@ -969,8 +969,6 @@ void CGameClientFrame::OnRender()
     unguard;
 }
 
-
-
 void CGameClientFrame::OnRender2D()
 {
     //extern double g_RenderUiUseTime;

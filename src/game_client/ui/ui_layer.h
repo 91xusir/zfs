@@ -11,7 +11,6 @@ public:
 	static void Initialize();
 	static void Reset();
 	static void Clear();
-    static void EnterSelectServer();
 	static void EnterLogin();
 	static void EnterSelectChar();
 	static void EnterMain();
