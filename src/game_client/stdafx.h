@@ -21,6 +21,7 @@
 #include <map>
 #include <math.h>
 #include <memory>
+#include <ostream>
 #include <queue>
 #include <set>
 #include <setjmp.h>
@@ -32,11 +33,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
-#include <string.h>
 #include <strstream>
 #include <time.h>
 #include <tlhelp32.h>
 #include <typeinfo>
+#include <thread>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>

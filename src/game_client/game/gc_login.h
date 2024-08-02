@@ -335,11 +335,13 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     short       headRandomImageID;
     int         m_ePrevHeadID;
     int         m_eNextHeadID;
-    long        m_iLastServer;        //记录上一个选中的服务器
-    bool        bSelectUserWithPwd;   //密码登入游戏
-    int         m_nDisconnectCause;   //网络断开原因
-    bool        bSaveAccount;         //是否保存账号
-    int         m_selectFaction = 1;  //阵营 1商 2周
+    long        m_iLastServer;       //记录上一个选中的服务器
+    bool        bSelectUserWithPwd;  //密码登入游戏
+    int         m_nDisconnectCause;  //网络断开原因
+    bool        bSaveAccount;        //是否保存账号
+   public:
+    //直接public了 原则上要封装 实际懒得
+    int m_selectFaction = -1;  //阵营 1商 2周 -1代表没选  用于判断二阶段返回 by lyy
 };
 
 #endif  // _INC_GC_LOGIN_H_

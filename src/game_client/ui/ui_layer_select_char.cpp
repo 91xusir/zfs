@@ -35,10 +35,9 @@ UILayerSelectChar::UILayerSelectChar() {
     //创建人物角色界面
 
     LOAD_UI("fmorder.btnshang")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)1);
+        RTW_CALLBACK_1(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)1);
     LOAD_UI("fmorder.btnzhou")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)2);
-    
+        RTW_CALLBACK_1(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)2);
 
     m_charname = LOAD_UI_T(RtwTextBox, "fmcreatid1.fmname.txtname");
     m_charname->SetCapacity(14);
@@ -101,19 +100,20 @@ void UILayerSelectChar::OnClicked_Enter(void*, void*) {
 //返回按钮
 void UILayerSelectChar::OnClicked_Back(void*, void*) {
     guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-            if (GetLogin()->GetAccountInfo().chatCount > 0) {
-                GetLogin()->SetLoginState(GcLogin::GLS_SELECT_CHAR);
-            } else {
-                //没有创人直接返回登录界面
-                GetLogin()->NetClose();
-                GetLogin()->SetLoginState(GcLogin::GLS_LOGIN);
-            }
-        } else if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
-            GetLogin()->NetClose();
-            GetLogin()->SetLoginState(GcLogin::GLS_LOGIN);
+    const auto& gc_login = GetLogin();
+    if (!gc_login)
+        return;
+    const auto& status = gc_login->GetStatus();
+
+    if (status == GcLogin::GLS_CREATE_CHAR) {
+        if (gc_login->m_selectFaction != -1) {
+            gc_login->SetSelectShangOrZhou(-1);
+        } else {
+            gc_login->SetLoginState(GcLogin::GLS_SELECT_CHAR);
         }
+    } else if (status == GcLogin::GLS_SELECT_CHAR) {
+        gc_login->NetClose();
+        gc_login->SetLoginState(GcLogin::GLS_LOGIN);
     }
     unguard;
 }
@@ -138,7 +138,7 @@ void UILayerSelectChar::OnClicked_EngterCreateChar(void*, void*) {
     }
 }
 
-//shang zhou
+//商 周
 void UILayerSelectChar::OnClicked_SelectShangOrZhou(RtwWidget* sender, RtwEventDelegate* e) {
     const auto& gc_login = GetLogin();
     if (gc_login) {
@@ -437,9 +437,7 @@ void UILayerSelectChar::OnReceiveDelPassword(char lRet) {
     unguard;
 }
 
-void UILayerSelectChar::OnUpdateText(RtwWidget* sender, RtwEventDelegate*) {
-
-}
+void UILayerSelectChar::OnUpdateText(RtwWidget* sender, RtwEventDelegate*) {}
 
 void UILayerSelectChar::OnConfirm_Delete(void*, void*) {
     guard;

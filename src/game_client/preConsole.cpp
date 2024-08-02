@@ -1,13 +1,42 @@
 #include "preConsole.h"
+#include <atomic>
+#include <chrono>
+#include <consoleapi.h>
+#include <consoleapi2.h>
+#include <corecrt.h>
+#include <cstdio>
+#include <cstdlib>
+#include <ctime>
+#include <functional>
+#include <graph/rtg_graph.h>
+#include <iomanip>
+#include <iosfwd>
+#include <iostream>
+#include <ostream>
+#include <processenv.h>
+#include <string>
+#include <thread>
+#include <unordered_map>
+#include <windows.h>
 
-std::unordered_map<std::string, std::string> preConsole::commandMap;
+std::unordered_map<std::string, std::function<void()>> preConsole::commandMap = {
+    {"openfps",
+     []() {
+         RtGetRender()->EnableDrawPref(true, 5.f, 120.f);
+     }},
+    {"closefps",
+     []() {
+         RtGetRender()->EnableDrawPref(false, 5.f, 120.f);
+     }},
+};
+
 std::atomic<bool> preConsole::console_running{false};
-std::thread preConsole::console_thread;
+std::thread       preConsole::console_thread;
 
 std::string preConsole::getCurrentTime() {
-    auto now = std::chrono::system_clock::now();
-    std::time_t now_time = std::chrono::system_clock::to_time_t(now);
-    std::tm now_tm = *std::localtime(&now_time);
+    auto               now = std::chrono::system_clock::now();
+    std::time_t        now_time = std::chrono::system_clock::to_time_t(now);
+    std::tm            now_tm = *std::localtime(&now_time);
     std::ostringstream oss;
     oss << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S");
     return oss.str();
@@ -21,20 +50,14 @@ void preConsole::ConsoleHandler() {
         if (command == "exit") {
             console_running = false;
         } else {
-            size_t pos = command.find(' ');
-            if (pos != std::string::npos && pos < command.length() - 1) {
-                std::string key = command.substr(0, pos);
-                std::string value = command.substr(pos + 1);
-                auto it = commandMap.find(key);
-                if (it != commandMap.end()) {
-                    std::cout << "Ö´ÐÐÃüÁî: " << it->second << "£¬Öµ: " << value << std::endl;
-                } else {
-                    std::cout << "Î´ÖªÃüÁî: " << key << std::endl;
-                }
+            if (commandMap.find(command) != commandMap.end()) {
+                commandMap[command]();
             } else {
-                std::cout << "ÎÞÐ§ÃüÁî¸ñÊ½: " << command << std::endl;
+                std::cout << "ÃüÁî²»´æÔÚ: " << command << std::endl;
             }
         }
+        // ·ÀÖ¹ CPU ¹ýÔØ£¬ÐÝÃß 100 ºÁÃë
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 }
 
@@ -59,10 +82,6 @@ void preConsole::CloseConsole() {
         console_thread.join();
     }
     FreeConsole();
-}
-
-void preConsole::AddCommand(const std::string& command, const std::string& response) {
-    commandMap[command] = response;
 }
 
 void preConsole::logInfo(const std::string& message) {

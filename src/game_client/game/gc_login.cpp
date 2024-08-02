@@ -668,14 +668,34 @@ void GcLogin::UpdateSelectChar() {
     unguard;
 }
 
-// 选择阵营
+// 选择阵营 add by lyy 2024.8.3
 void GcLogin::SetSelectShangOrZhou(int iSei) {
+    //关门
+    if (iSei == -1) {
+        m_selectFaction = -1;
+        if (m_pCamera)
+            m_pCamera = nullptr;
+        if (m_pCamera = FindModel("Door")) {
+            m_pCamera->PlayPose("close");
+            m_pCamera->RegisterNotify(nullptr);
+        }
+        LOAD_UI("fmorder")->Show();
+        LOAD_UI("fmcreatid")->Hide();
+        return;
+    }
+
     if (iSei != 1 && iSei != 2)
         return;
+    //开门
     if (m_pCamera)
-        m_pCamera=nullptr;
-    m_pCamera = FindModel("Door");
-
+        m_pCamera = nullptr;
+    if (m_pCamera = FindModel("Door")) {
+        m_pCamera->PlayPose("open");
+        m_pCamera->RegisterNotify(nullptr);
+    }
+    m_selectFaction = iSei;
+    LOAD_UI("fmorder")->Hide();
+    LOAD_UI("fmcreatid")->Show();
 }
 
 void GcLogin::SetSelectUser(int iSel) {
@@ -710,7 +730,6 @@ void GcLogin::EnterCreateChar() {
     if (m_pCamera) {
         m_pCamera = NULL;
     }
-
     m_iCurSelectChar = -1;
 
     // 生成可选人物的列表
@@ -926,16 +945,17 @@ void GcLogin::OnEnterCreateChar() {
         UILayer::EnterSelectChar();
     }
     m_bCanInput = true;
+    LOAD_UI("fmorder")->Show();
+    LOAD_UI("fmcreatid")->Hide();
 
     // Modified By Wayne Wong 2010-11-26 for demo
     LOAD_UI("fmmingwang")->Show();
     LOAD_UI("fmshengwu")->Show();
     LOAD_UI("lbmiaojiangtext")->Show();
     LOAD_UI("lbwutaitext")->Show();
-
     LOAD_UI("fmhuajian")->Show();
     LOAD_UI("fmshushan")->Show();
-    LOAD_UI("btnback")->Show();
+
     LOAD_UI("lbshushantext")->Show();
     LOAD_UI("lbhuajiantext")->Show();
 
@@ -946,6 +966,9 @@ void GcLogin::OnEnterCreateChar() {
 void GcLogin::OnLeaveCreateChar() {
     m_pBody->RegisterNotify(NULL);
     m_bCanInput = false;
+    LOAD_UI("fmorder")->Hide();
+    LOAD_UI("fmcreatid")->Hide();
+
     LOAD_UI("fmcreatid1")->Hide();
     LOAD_UI("fmcreatid2")->Hide();
     LOAD_UI("fmcreatid3")->Hide();
@@ -955,7 +978,6 @@ void GcLogin::OnLeaveCreateChar() {
     LOAD_UI("fmshengwu")->Hide();
     LOAD_UI("btnmale")->Hide();
     LOAD_UI("btnfemale")->Hide();
-    LOAD_UI("btnback")->Hide();
     LOAD_UI("lbshushantext")->Hide();
     LOAD_UI("lbhuajiantext")->Hide();
     LOAD_UI("lbmiaojiangtext")->Hide();
@@ -1421,41 +1443,41 @@ void GcLogin::OnRun(float fSecond) {
             m_pPetActor3->PlayPose("wait", false);
         }*/
         // update pose
-        for (i = 0; i < m_listSelActor.size(); i++) {
-            pActor = m_listSelActor[i];
-            if (pActor) {
-                if (!pActor->IsPlayingPose()) {
-                    // Modified by Wayne Wong 2010-11-26 for Demo
-                    //int charIndex = GetCharIndexByActorID(m_listSelectChar[i]);
-                    int actorID = m_listSelectChar[i];
-                    if (actorID == WU_TAI_ID)  // (charIndex == 0)
-                    {
-                        m_pWeaponWT->PlayPose("login_wait_n0", false);
-                        pActor->PlayPose("login_wait_n0", false);
-                    } else if (actorID == HUA_JIAN_ID)  // (charIndex == 1)
-                    {
-                        m_pWeaponHL->PlayPose("wait_s0", false);
-                        pActor->PlayPose("wait_s0", false);
-                    } else if (actorID == SHU_SHAN_ID)  // (charIndex == 2)
-                    {
-                        m_pWeaponFLWay->PlayPose("wait_l0", false);
-                        pActor->PlayPose("wait_l0", false);
-                    } else if (actorID == MIAO_JIANG_ID)  // (charIndex == 3)
-                    {
-                        m_pWeaponMJ->PlayPose("login_wait_n0", false);
-                        pActor->PlayPose("login_wait_n0", false);
-                    }
-                }
+        //for (i = 0; i < m_listSelActor.size(); i++) {
+        //    pActor = m_listSelActor[i];
+        //    if (pActor) {
+        //        if (!pActor->IsPlayingPose()) {
+        //            // Modified by Wayne Wong 2010-11-26 for Demo
+        //            //int charIndex = GetCharIndexByActorID(m_listSelectChar[i]);
+        //            int actorID = m_listSelectChar[i];
+        //            if (actorID == WU_TAI_ID)  // (charIndex == 0)
+        //            {
+        //                m_pWeaponWT->PlayPose("login_wait_n0", false);
+        //                pActor->PlayPose("login_wait_n0", false);
+        //            } else if (actorID == HUA_JIAN_ID)  // (charIndex == 1)
+        //            {
+        //                m_pWeaponHL->PlayPose("wait_s0", false);
+        //                pActor->PlayPose("wait_s0", false);
+        //            } else if (actorID == SHU_SHAN_ID)  // (charIndex == 2)
+        //            {
+        //                m_pWeaponFLWay->PlayPose("wait_l0", false);
+        //                pActor->PlayPose("wait_l0", false);
+        //            } else if (actorID == MIAO_JIANG_ID)  // (charIndex == 3)
+        //            {
+        //                m_pWeaponMJ->PlayPose("login_wait_n0", false);
+        //                pActor->PlayPose("login_wait_n0", false);
+        //            }
+        //        }
 
-                pActor->Tick(fSecond * 1000.f);
-            }
-        }
+        //        pActor->Tick(fSecond * 1000.f);
+        //    }
+        //}
         for (i = 0; i < m_listSelGcActor.size(); i++) {
             if (m_listSelGcActor[i]) {
                 if (m_listSelGcActor[i]->GetGraph() && m_listSelGcActor[i]->GetGraph()->p()) {
                     if (!m_listSelGcActor[i]->GetGraph()->p()->IsPlayingPose()) {
 
-                        m_listSelGcActor[i]->mBaseActor.PlayPose(GcBaseActor::POSE_STAND);
+                        //m_listSelGcActor[i]->mBaseActor.PlayPose(GcBaseActor::POSE_STAND);
 
                         //if (i == 0)
                         //{

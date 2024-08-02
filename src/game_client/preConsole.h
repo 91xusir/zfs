@@ -1,14 +1,12 @@
 #pragma once
 
-#include <chrono>
+#include <atomic>
+#include <consoleapi2.h>
+#include <functional>
 #include <string>
-#include <iostream>
-#include <sstream>
-#include <iomanip>
 #include <thread>
 #include <unordered_map>
-#include <atomic>
-#include <windows.h>
+#include <Windows.h>
 
 // 预览模式控制台输出宏定义
 #ifdef _PREVIEW
@@ -26,25 +24,24 @@
 #endif
 
 class preConsole {
-private:
+   public:
     // 颜色定义
     static constexpr WORD WHITE_COLOR = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE;
     static constexpr WORD RED_COLOR = FOREGROUND_RED | FOREGROUND_INTENSITY;
     static constexpr WORD YELLOW_COLOR = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_INTENSITY;
 
     // 静态成员变量
-    static std::unordered_map<std::string, std::string> commandMap;
-    static std::atomic<bool> console_running;
-    static std::thread console_thread;
+    static std::unordered_map<std::string, std::function<void()>> commandMap;
+    static std::atomic<bool>                                      console_running;
+    static std::thread                                            console_thread;
 
     // 静态函数
     static std::string getCurrentTime();
-    static void ConsoleHandler();
+    static void        ConsoleHandler();
 
-public:
+   public:
     static void OpenConsole();
     static void CloseConsole();
-    static void AddCommand(const std::string& command, const std::string& response);
 
     static void logInfo(const std::string& message);
     static void logWarn(const std::string& message, const std::string& file, int line);
