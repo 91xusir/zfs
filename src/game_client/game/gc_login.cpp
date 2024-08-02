@@ -512,9 +512,8 @@ void GcLogin::EnterSelectChar() {
     LOAD_UI("btnsetcharpwd")->Disable();  //禁止设置角色密码 懒得写了  lyy  2024.8.2
     LOAD_UI("btnRMB")->Show();
     LOAD_UI("btnRMB")->Disable();  //禁止充值点数 懒得写了  lyy  2024.8.2
-
+    LOAD_UI("RaleInfo")->Hide();
     UpdateSelectChar();
-
     m_iCurSelectChar = -1;
     m_bCanInput = true;
     unguard;
@@ -531,7 +530,7 @@ bool GcLogin::LeaveSelectChar() {
     LOAD_UI("btndeletechar")->Hide();
     LOAD_UI("btnsetcharpwd")->Hide();
     LOAD_UI("btnRMB")->Hide();
-
+    LOAD_UI("RaleInfo")->Hide();
     //人物旋转按钮
     //LOAD_UI("btnuserleft")->Hide();
     //LOAD_UI("btnuserright")->Hide();
@@ -559,7 +558,6 @@ void GcLogin::UpdateSelectChar() {
     }
     // 获取按钮对象，初始化未选中
     for (auto& btn : g_layerSelectChar->m_charBtnArray) {
-        btn->SetChecked(false);
         btn->Disable();
         btn->SetText("无");
     }
@@ -607,41 +605,57 @@ void GcLogin::UpdateSelectChar() {
                 return;
             }
         }
-        m_mapSelectActor[user.id] = pActor;
+        if (pActor)
+            m_mapSelectActor[user.id] = pActor;
     }
-    //根据模型列表读取角色，判断是否为选中角色
+    //根据模型列表读取可选角色，这里看似多余，应该是为了后面创建角色判断是否重复角色?
     for (std::size_t i = 0; i < accountInfo.chatCount; i++) {
         if (m_mapSelectActor.find(accountInfo.users[i].id) != m_mapSelectActor.end()) {
             pActor = m_mapSelectActor[accountInfo.users[i].id];
         }
         m_listSelectChar.push_back(accountInfo.users[i].id);
         m_listSelGcActor.push_back(pActor);
-        g_layerSelectChar->m_charBtnArray[i]->SetTextColor(0xffffffff);  //白色
-        if ( i == m_iCurSelectChar) {
-            g_layerSelectChar->m_charBtnArray[m_iCurSelectChar]->SetTextColor(0xffff0000);  //红色
-            LOAD_UI("btnenter")->Enable();
-            LOAD_UI("btndeletechar")->Enable();
-        }
     }
+
+    if (accountInfo.chatCount < 3)
+        LOAD_UI("btncreaterole")->Enable();
+    else
+        LOAD_UI("btncreaterole")->Disable();
+
     if (m_pBody) {
         RtgMatrix12 _SlotMatrix;
         std::size_t nSize = std::min(m_listSelGcActor.size(), static_cast<std::size_t>(3));
         for (std::size_t i = 0; i < nSize; ++i) {
+            auto&       user = accountInfo.users[i];
             std::string boneName = "bno" + std::to_string(i + 1);
-            if (m_pBody->GetBoneMat(&_SlotMatrix, boneName.c_str()) && m_listSelGcActor[i]) {
-                //设置人物按钮相应的信息
+            if (m_pBody->GetBoneMat(&_SlotMatrix, boneName.c_str())) {
                 SUserActor* pActor =
-                    g_TableUserActor.FindUserActor(accountInfo.users[i].attributes.metier,
-                                                   accountInfo.users[i].attributes.metierLevel);
-                if (pActor) {
-                    std::string name = accountInfo.users[i].name;
-                    g_layerSelectChar->m_charBtnArray[i]->SetText(name);
-                }
+                    g_TableUserActor.FindUserActor(user.attributes.metier,        //职业
+                                                   user.attributes.metierLevel);  //几转？
+                if (!pActor)
+                    continue;
+                std::string RaleName = user.name;
+                g_layerSelectChar->m_charBtnArray[i]->SetText(RaleName);
                 m_listSelGcActor[i]->mBaseActor.SetMatrix_Row(3, *_SlotMatrix.Row(3));
+                g_layerSelectChar->m_charBtnArray[i]->SetTextColor(0xffffffff);  //白色
+                if (i == m_iCurSelectChar) {
+                    g_layerSelectChar->m_charBtnArray[m_iCurSelectChar]->SetTextColor(
+                        0xffff0000);  //红色
+                    LOAD_UI("btnenter")->Enable();
+                    LOAD_UI("btndeletechar")->Enable();
+                    std::string Lev = "Lv: " + std::to_string(user.attributes.level);
+                    std::string Faction = g_layerSelectChar->m_faction[user.attributes.faction];
+                    std::string Miter = pActor->MetierName;
+                    LOAD_UI("RaleInfo")->Show();
+                    LOAD_UI("RaleInfo.RaleName")->SetText(RaleName);
+                    LOAD_UI("RaleInfo.Lev")->SetText(Lev);
+                    LOAD_UI("RaleInfo.Faction")->SetText(Faction);
+                    LOAD_UI("RaleInfo.Miter")->SetText(Miter);
+                    P_LOGINFO("当前选择的角色id为:" + std::to_string(user.id));
+                }
             }
         }
     }
-
     for (std::size_t i = 0; i < m_listSelGcActor.size(); i++) {
         pActor = m_listSelGcActor[i];
         if (pActor && pActor->m_pHUD) {
@@ -650,9 +664,44 @@ void GcLogin::UpdateSelectChar() {
             pActor->Run(0.01f);
         }
     }
-
     OnRun(0.f);
     unguard;
+}
+
+// 选择阵营
+void GcLogin::SetSelectShangOrZhou(int iSei) {
+    if (iSei != 1 && iSei != 2)
+        return;
+    if (m_pCamera)
+        m_pCamera=nullptr;
+    m_pCamera = FindModel("Door");
+
+}
+
+void GcLogin::SetSelectUser(int iSel) {
+    if (iSel == m_iCurSelectChar) {
+        return;
+    }
+    switch (m_eStatus) {
+        case GLS_SELECT_CHAR: {
+            m_iCurSelectChar = iSel;
+            UpdateSelectChar();
+        } break;
+        case GLS_CREATE_CHAR: {
+            m_iCurSelectChar = iSel;
+            vector<SHeadModel> heads;
+            if (!g_TableHeadModel.GetHeadModel(s_userID[m_iCurSelectChar], heads))
+                return;
+
+            //m_listSelActor[m_iCurSelectChar]->UnloadSkin(heads[m_ePrevHeadID].skin.c_str());
+            //m_listSelActor[m_iCurSelectChar]->LoadSkin(heads[0].skin.c_str(), true);
+            LOAD_UI("fmcreatid2.fmhair.lbhairname")->SetText(heads[0].name);
+            LOAD_UI("fmcreatid2.fmface.lbfacename")->SetText("暂不开放");
+            m_ePrevHeadID = m_eNextHeadID = 0;
+        } break;
+        default:
+            break;
+    }
 }
 
 //lyymark 3.Gclogin 进入角色创建
@@ -889,22 +938,6 @@ void GcLogin::OnEnterCreateChar() {
     LOAD_UI("btnback")->Show();
     LOAD_UI("lbshushantext")->Show();
     LOAD_UI("lbhuajiantext")->Show();
-    //进入创人状态,将选人状态UI隐藏
-    if (LOAD_UI("Pnbutton")->IsVisible()) {
-        LOAD_UI("Pnbutton")->Hide();
-    }
-    if (LOAD_UI("btnenter")->IsVisible()) {
-        LOAD_UI("btnenter")->Hide();
-    }
-    if (LOAD_UI("btndeletechar")->IsVisible()) {
-        LOAD_UI("btndeletechar")->Hide();
-    }
-    if (LOAD_UI("btnsetcharpwd")->IsVisible()) {
-        LOAD_UI("btnsetcharpwd")->Hide();
-    }
-    if (LOAD_UI("btnbacklogin")->IsVisible()) {
-        LOAD_UI("btnbacklogin")->Hide();
-    }
 
     m_pBody->RegisterNotify(this);
     OnRun(0.f);
@@ -1112,7 +1145,7 @@ void GcLogin::OnRightRotation() {
 //进入游戏
 void GcLogin::OnSelectUser() {
     guard;
-    if (m_iCurSelectChar >= 0 && m_iCurSelectChar <= 4) {
+    if (m_iCurSelectChar >= 0 && m_iCurSelectChar < g_layerSelectChar->MaxUserCharBtn) {
         UILayer::EnterLoading();
         SelectChar(GetAccountInfo().users[m_iCurSelectChar].id);
     } else {
@@ -2674,42 +2707,6 @@ void GcLogin::OnPoseEnd(SRT_Pose* pose) {
 void GcLogin::OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event) {}
 
 void GcLogin::OnPoseBreak(SRT_Pose* oldPose, SRT_Pose* newPose) {}
-
-void GcLogin::SetSelectUser(int iSel) {
-    if (iSel == m_iCurSelectChar) {
-        return;
-    }
-    const char* poseName = NULL;
-    switch (m_eStatus) {
-        case GLS_SELECT_CHAR: {
-            poseName = GetCameraPoseName(iSel, true);
-            m_iCurSelectChar = iSel;
-            UpdateSelectChar();
-        } break;
-        case GLS_CREATE_CHAR: {
-            m_iCurSelectChar = iSel;
-
-            //默认显示人物发型和脸型
-            // Modified by Wayne Wong 2010-11-26
-            //int iCharIndex = GetCharIndexByActorID(m_listSelectChar[m_iCurSelectChar]);
-            //vector<SHeadModel> heads;
-            //if (!g_TableHeadModel.GetHeadModel(s_userID[iCharIndex], heads))
-            //	return;
-
-            vector<SHeadModel> heads;
-            if (!g_TableHeadModel.GetHeadModel(s_userID[m_iCurSelectChar], heads))
-                return;
-
-            //m_listSelActor[m_iCurSelectChar]->UnloadSkin(heads[m_ePrevHeadID].skin.c_str());
-            //m_listSelActor[m_iCurSelectChar]->LoadSkin(heads[0].skin.c_str(), true);
-            LOAD_UI("fmcreatid2.fmhair.lbhairname")->SetText(heads[0].name);
-            LOAD_UI("fmcreatid2.fmface.lbfacename")->SetText("暂不开放");
-            m_ePrevHeadID = m_eNextHeadID = 0;
-        } break;
-        default:
-            break;
-    }
-}
 
 int GcLogin::GetCharIndexByActorID(short actorID) {
     int iCharIndex = 0;

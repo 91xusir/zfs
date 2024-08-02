@@ -7,20 +7,12 @@ class UILayerSelectChar {
     //选人界面
     //按钮回调
     void OnClicked_SelectChar(RtwWidget* sender, RtwEventDelegate* e);
+    void OnClicked_SelectShangOrZhou(RtwWidget* sender, RtwEventDelegate* e);
 
-    void OnClicked_CreateChar1(void*, void*);
-    void OnClicked_CreateChar2(void*, void*);
-    void OnClicked_CreateChar3(void*, void*);
-    //恢复人物
-    void OnClicked_Restore(void*, void*);
+    void OnClicked_EngterCreateChar(void*, void*);
     //删除人物
     void OnClicked_Delete(void*, void*);
-    //设置密码
-    void OnClicked_SetCharPwd(void*, void*);
-    //变更密码
-    void OnClicked_ChangeCharPwd(void*, void*);
-    //解除密码
-    void OnClicked_DelCharPwd(void*, void*);
+
     //人物角色---男性
     void OnClicked_SetSexMale(void*, void*);
     //人物角色---女性
@@ -35,10 +27,6 @@ class UILayerSelectChar {
     void OnClicked_Enter(void*, void*);
     //返回按钮
     void OnClicked_Back(void*, void*);
-    //退出游戏
-    void OnClicked_Exit(void*, void*);
-    //密码关闭框
-    void OnClicked_ClosePwd(void*, void*);
 
     //创建人物角色界面
     //角色名输入框
@@ -63,7 +51,6 @@ class UILayerSelectChar {
     void OnClicked_SelectHuajian(void*, void*);
     void OnClicked_SelectShushan(void*, void*);
     void OnClicked_SelectShenwu(void*, void*);
-
     void OnConfirm_Delete(void*, void*);
 
    public:
@@ -75,17 +62,10 @@ class UILayerSelectChar {
     void OnUpdateText(RtwWidget* sender, RtwEventDelegate*);
 
    public:
-    struct charInfo {
-        std::string name;
-        std::string lev;
-        std::string faction;
-        std::string miter;
-    };
-
-    RtwTextBox*                       m_charname;  //创建角色名称
-    constexpr static int              MaxUserCharBtn = 3;
-    std::unordered_map<int, charInfo> m_charInfos{};//用户角色信息
-    CUiCheckButton*                   m_charBtnArray[MaxUserCharBtn];
+    constexpr static int                   MaxUserCharBtn = 3;
+    std::unordered_map<short, std::string> m_faction = {{1, "商"}, {2, "周"}, {3, "中立"}};
+    RtwTextBox*                            m_charname;  //创建角色名称
+    CUiCheckButton*                        m_charBtnArray[MaxUserCharBtn];
 };
 
 #endif  // _INC_UI_LAYER_SELECT_CHAR_H_

@@ -14,9 +14,11 @@ UILayerSelectChar::UILayerSelectChar() {
     //进入游戏
     LOAD_UI("btnenter")
         ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Enter));
-    //返回上级
+    //返回上级 创建人物时有两阶段需要判断
     LOAD_UI("btnback")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Back);
-
+    //创建人物
+    LOAD_UI("btncreaterole")->EvLClick +=
+        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_EngterCreateChar);
     //删除人物
     LOAD_UI("btndeletechar")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Delete);
 
@@ -31,6 +33,13 @@ UILayerSelectChar::UILayerSelectChar() {
     //LOAD_UI("btnuserright")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_RightRotation);
 
     //创建人物角色界面
+
+    LOAD_UI("fmorder.btnshang")->EvLClick +=
+        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)1);
+    LOAD_UI("fmorder.btnzhou")->EvLClick +=
+        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)2);
+    
+
     m_charname = LOAD_UI_T(RtwTextBox, "fmcreatid1.fmname.txtname");
     m_charname->SetCapacity(14);
     //人物生肖选择框
@@ -111,9 +120,30 @@ void UILayerSelectChar::OnClicked_Back(void*, void*) {
 
 //选择人物
 void UILayerSelectChar::OnClicked_SelectChar(RtwWidget* sender, RtwEventDelegate* e) {
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
-            GetLogin()->SetSelectUser((int)e->param1);
+    const auto& gc_login = GetLogin();
+    if (gc_login) {
+        if (gc_login->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
+            gc_login->SetSelectUser((int)e->param1);
+        }
+    }
+}
+
+//创建人物
+void UILayerSelectChar::OnClicked_EngterCreateChar(void*, void*) {
+    const auto& gc_login = GetLogin();
+    if (gc_login) {
+        if (gc_login->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
+            gc_login->SetLoginState(GcLogin::GLS_CREATE_CHAR);
+        }
+    }
+}
+
+//shang zhou
+void UILayerSelectChar::OnClicked_SelectShangOrZhou(RtwWidget* sender, RtwEventDelegate* e) {
+    const auto& gc_login = GetLogin();
+    if (gc_login) {
+        if (gc_login->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
+            gc_login->SetSelectShangOrZhou((int)e->param1);
         }
     }
 }
@@ -405,6 +435,10 @@ void UILayerSelectChar::OnReceiveDelPassword(char lRet) {
         }
     }
     unguard;
+}
+
+void UILayerSelectChar::OnUpdateText(RtwWidget* sender, RtwEventDelegate*) {
+
 }
 
 void UILayerSelectChar::OnConfirm_Delete(void*, void*) {

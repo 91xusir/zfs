@@ -8,7 +8,7 @@
 void global_closeApp(void*, void*, void*) {
 
     UIFormMsg* pConfirm = UIFormMsg::ShowStatic("确定退出游戏吗?", UIFormMsg::TYPE_OK_CANCEL);
-    pConfirm->EvOK.ClearAndSetDelegate(UI_DELEGATE_F(UILayerLogin::OnClicked_Quit));
+    pConfirm->EvOK+=(UI_DELEGATE_F(UILayerLogin::OnClicked_Quit));
 }
 
 static bool IsValidAccountName(const string& name) {

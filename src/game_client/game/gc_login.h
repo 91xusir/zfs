@@ -149,6 +149,9 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     void SetLoginState(EStatus eState);
     void UpdateSelectChar();
 
+    //选择商或者周  lyy  2024.8.3
+    void SetSelectShangOrZhou(int iSei);
+
     void SetSelectUser(int iSel);
 
     bool GetSelectUserWithPwd() { return bSelectUserWithPwd; }  //密码进入游戏
@@ -298,10 +301,9 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
         m_listSelectChar;  // 可选的人物，这里保存ID，具体的数据可以从g_TableUserActor中读出
 
     char m_bSex;  //0男,1女
-
     bool m_bLoading;
 
-    //当前Actor组件列表
+    //界面 Actor组件列表 登录 选角 创建
     std::map<std::string, CRT_ActorInstance*> m_mapActor;
 
     CRT_ActorInstance*                        m_pBody;
@@ -318,10 +320,6 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     std::map<DWORD, CRT_ActorInstance*>       m_mapCreateActor;
     RtgMatrix12                               mWeaponMatrix;
 
-    /*  CRT_ActorInstance* m_pPetActor1;
-    CRT_ActorInstance* m_pPetActor2;
-    CRT_ActorInstance* m_pPetActor3;*/
-
     int m_HeadModelIndex[4] = {};
     int m_HeadImageIndex[4] = {};
 
@@ -337,10 +335,11 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     short       headRandomImageID;
     int         m_ePrevHeadID;
     int         m_eNextHeadID;
-    long        m_iLastServer;       //记录上一个选中的服务器
-    bool        bSelectUserWithPwd;  //密码登入游戏
-    int         m_nDisconnectCause;  //网络断开原因
-    bool        bSaveAccount;
+    long        m_iLastServer;        //记录上一个选中的服务器
+    bool        bSelectUserWithPwd;   //密码登入游戏
+    int         m_nDisconnectCause;   //网络断开原因
+    bool        bSaveAccount;         //是否保存账号
+    int         m_selectFaction = 1;  //阵营 1商 2周
 };
 
 #endif  // _INC_GC_LOGIN_H_
