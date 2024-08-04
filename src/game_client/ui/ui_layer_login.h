@@ -32,7 +32,7 @@ class UILayerLogin {
 
     void OnClicked_EnterUserLogin(const int& serverId);
     //ÍË³ö
-    static void OnClicked_Quit(void*, void*);
+    void OnClicked_Quit(void*, void*);
 
    private:
 

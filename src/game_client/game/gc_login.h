@@ -181,9 +181,6 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     // 更新游戏世界服务器列表的 UI 的函数
     void OnUIUpdateGameWorldServerList() const;
 
-    // 设置最后选择的角色 ID 的函数
-    void SetLastSelectCharID(int iID);
-
     // 游戏世界服务器列表结构体
     //lyymark 注意 如果使用c++标准库的vector容器的话
     // 不要使用RtString类型 因为vector会自动管理内存
@@ -272,76 +269,95 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     virtual void OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event);
     virtual void OnPoseBreak(SRT_Pose* oldPose, SRT_Pose* newPose);
 
-    void SetCharSex(bool bSex);         //人物角色性别---男女
-    void ChangeCharAnimal(bool bNext);  //改变人物角色生肖名称
-    void ChangeCharHair(bool bNext);    //改变人物角色发型名称
-    void ChangeCharImage(bool bNext);   //改变人物角色发型名称
+    void ChangeCharHair(bool bNext);  //改变人物角色发型名称
 
    private:
-    EStatus           m_eStatus;  //
-    EStatus           m_eNextStatus;
-    EStatus           m_ePrevStatus;
-    CGameClientFrame* m_pGameClientFrame;
-    int               m_iCurSelectChar;
-    bool              m_bSelectCharDone;
-    bool              m_bCanInput;
-    bool              m_bLight2;
-    RtgLightItem      m_lightDirect;
-    RtgLightItem      m_lightDirect2;
-    long              m_lSkyFog;
-    RtIni             m_ini;
+    EStatus m_eStatus;
+    EStatus m_eNextStatus;
+    EStatus m_ePrevStatus;
+
+    CGameClientFrame* m_pGameClientFrame;  //游戏客户端指针
+    int               m_iCurSelectChar;    //当前选中的人物
+
+    bool m_bSelectCharDone;
+    bool m_bCanInput;  //是否允许输入
+
+    //环境光特效之类的
+    bool         m_bLight2;
+    RtgLightItem m_lightDirect;
+    RtgLightItem m_lightDirect2;
+    long         m_lSkyFog;
+
+    //ini文件读取类
+    RtIni m_ini;
+
+    //角色选择 begin
+    struct selectCharInfo {
+        int      ID;
+        GcActor* gcActor;
+    };
+
+    using selectIndex = int;
+    std::unordered_map<selectIndex, selectCharInfo> m_mapSelectChar = {};
+    //角色选择 end
 
     std::string m_szGameWorldServerName;  // 当前选择的游戏世界服务器
-    std::string m_szGameWorldServerIP;
-    long        m_lGameWorldServerPort;
+    std::string m_szGameWorldServerIP;    //IP
+    long        m_lGameWorldServerPort;   //端口
 
-    std::vector<GcActor*> m_listSelGcActor;  // 选人界面的UI上面的人物 这个是存可选玩家角色
-    std::vector<CRT_ActorInstance*> m_listSelActor;  // 选人界面的UI上面的人物 这个是存可以创建人物
-    std::vector<short>
-        m_listSelectChar;  // 可选的人物，这里保存ID，具体的数据可以从g_TableUserActor中读出
+    std::vector<GcActor*>           m_selectUserCharActs;  // 选人界面人物
+    std::vector<CRT_ActorInstance*> m_creatActorList;      // 创人界面人物
+    // 可选的人物，这里保存数据表里的唯一id
+    std::vector<short> m_selectUserCharIds;
 
     char m_bSex;  //0男,1女
-    bool m_bLoading;
+
+    bool m_bLoading;  //判断是否初始化加载
 
     //界面 Actor组件列表 登录 选角 创建
     std::map<std::string, CRT_ActorInstance*> m_mapActor;
 
-    CRT_ActorInstance*                        m_pBody;
-    CRT_ActorInstance*                        m_pCamera;
-    CRT_ActorInstance*                        m_pWeaponWT;
-    CRT_ActorInstance*                        m_pWeaponFL;
-    CRT_ActorInstance*                        m_pWeaponFLWay;
-    CRT_ActorInstance*                        m_pWeaponHL;
-    CRT_ActorInstance*                        m_pWeaponMJ;
-    std::map<std::string, CRT_ActorInstance*> m_mapLogin;
-    std::map<std::string, CRT_ActorInstance*> m_mapSelectChar;
-    std::map<std::string, CRT_ActorInstance*> m_mapCreateChar;
-    std::map<DWORD, GcActor*>                 m_mapSelectActor;
-    std::map<DWORD, CRT_ActorInstance*>       m_mapCreateActor;
-    RtgMatrix12                               mWeaponMatrix;
+    CRT_ActorInstance* m_pBody;
+    CRT_ActorInstance* m_pCamera;
+    CRT_ActorInstance* m_pZsDao;       //战士武器1
+    CRT_ActorInstance* m_pZsDao2;      //战士武器2
+    CRT_ActorInstance* m_pSsJian;      //术士武器
+    CRT_ActorInstance* m_pSsJianPath;  //术士武器轨迹
+    CRT_ActorInstance* m_pMmGong;      //MM武器
+    CRT_ActorInstance* m_pDsLun;       //道士武器
+    //login.ini begin
+    std::map<std::string, CRT_ActorInstance*> m_mapLogin;       //登录动画物件
+    std::map<std::string, CRT_ActorInstance*> m_mapSelectChar;  //选人
+    std::map<std::string, CRT_ActorInstance*> m_mapCreateChar;  //创人
+    //login.ini end
+    //键为角色数据库的id 选角列表角色模型
+    std::map<DWORD, GcActor*> m_mapSelectActor;
 
-    int m_HeadModelIndex[4] = {};
-    int m_HeadImageIndex[4] = {};
+    //
+    std::map<DWORD, CRT_ActorInstance*> m_mapCreateActor;
 
-    std::string m_strCharPassword;
-    RtwRect     rectBtnSetChar;     //设置角色密码矩形
-    RtwRect     rectBtnChangeChar;  //变更角色密码矩形
-    int         iAnimalIndex;
-    short       headModelID;
-    short       headImageID;
-    bool        bRandom;  //随机创建
-    int         iRandomAnimalIndex;
-    short       headRandomModelID;
-    short       headRandomImageID;
-    int         m_ePrevHeadID;
-    int         m_eNextHeadID;
-    long        m_iLastServer;       //记录上一个选中的服务器
-    bool        bSelectUserWithPwd;  //密码登入游戏
-    int         m_nDisconnectCause;  //网络断开原因
-    bool        bSaveAccount;        //是否保存账号
+    int m_HeadModelIndex[4] = {};  //头模型数组
+    int m_HeadImageIndex[4] = {};  //头像数组 待删除
+
+    std::string m_strCharPassword;  //角色密码 待删除
+
+    int   iAnimalIndex;
+    short headModelID;
+    short headImageID;
+    bool  bRandom;  //随机创建
+    int   iRandomAnimalIndex;
+    short headRandomModelID;
+    short headRandomImageID;
+    int   m_ePrevHeadID;
+    int   m_eNextHeadID;
+    long  m_iLastServer;       //记录上一个选中的服务器
+    bool  bSelectUserWithPwd;  //密码登入游戏
+    int   m_nDisconnectCause;  //网络断开原因
+    bool  bSaveAccount;        //是否保存账号
    public:
     //直接public了 原则上要封装 实际懒得
     int m_selectFaction = -1;  //阵营 1商 2周 -1代表没选  用于判断二阶段返回 by lyy
+    std::vector<std::string> creatTray = {"bon1", "bno2", "bno3"};  //创建人物的托盘
 };
 
 #endif  // _INC_GC_LOGIN_H_

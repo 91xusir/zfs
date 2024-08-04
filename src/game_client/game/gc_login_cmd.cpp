@@ -172,8 +172,8 @@ BEGIN_CMD_FUNC(cmd_g2c_create_char_ret) {
     m_account.users[m_account.chatCount].deleteDate = "";
     m_account.chatCount++;
 
-    // 角色信息已经加入本地帐号信息
-    GetLogin()->SetLastSelectCharID(((SUserAttr*)attributes)->metier);
+    // 上一次选择的角色
+    //GetLogin()->SetLastSelectCharID(((SUserAttr*)attributes)->metier);
     //进入选人界面
     GetLogin()->SetLoginState(GcLogin::GLS_SELECT_CHAR);
 }

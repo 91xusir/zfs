@@ -441,6 +441,7 @@ bool GcBaseActor::SetGraph(short HeadModelID, const char* vpActorName) {
     return SetGraph(mpModel, HeadModelID, vpActorName);
     unguard;
 }
+
 //lyymark 1.base.actor.setgraph actor基本图形加载
 bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vpActorName) {
     // 将图形中的actor替换为 vpActorName 对应的演员
@@ -463,7 +464,7 @@ bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vp
                         ((Rac_LoadSub*)_cmd)->stype == Rac_LoadSub::_sub_skin &&
                         ((Rac_LoadSub*)_cmd)->otype == Rac_LoadSub::_load) {
                         if (((Rac_LoadSub*)_cmd)->sname != "")
-                            _it = listCommand.erase(_it);// 删除skin加载命令
+                            _it = listCommand.erase(_it);  // 删除skin加载命令
                         else
                             ++_it;
                     }
@@ -476,8 +477,8 @@ bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vp
                 while (_it != skinList.end()) {
                     CRT_SkinInstance* skinInstance = *_it;
                     if (skinInstance->m_Name != "") {
-                        _it = skinList.erase(_it);// 从列表中删除皮肤实例
-                        RtcGetActorManager()->ReleaseSkin(skinInstance);// 释放皮肤实例
+                        _it = skinList.erase(_it);  // 从列表中删除皮肤实例
+                        RtcGetActorManager()->ReleaseSkin(skinInstance);  // 释放皮肤实例
                     } else {
                         ++_it;
                     }
@@ -525,7 +526,7 @@ bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vp
             m_strComplexFoot = vpModel->FootSkin;
             mGraph.LoadSkin(m_strComplexFoot.c_str(), false);
         }
-    } else {// 如果模型有附加的皮肤，加载附加皮肤
+    } else {  // 如果模型有附加的皮肤，加载附加皮肤
         if (!vpModel->AddedSkin.empty())
             mGraph.LoadSkin(vpModel->AddedSkin.c_str(), false);
         // 如果 mGraph 有效，并且模型有替换材质，进行材质替换
@@ -1610,10 +1611,10 @@ bool GcBaseActor::PlayPose(char vpPoseName[], bool vLoop) {
     bool bResult;
     if (m_pMaster->m_eRideState == GcActor::ERS_ACTOR) {
         bResult = m_pMaster->m_pRidePet->mBaseActor.mGraph.PlayPose(vpPoseName, vLoop);
-        rt2_strncpy(m_pMaster->m_pRidePet->mBaseActor.m_szLastPoseName, vpPoseName, 40);
+        rt2_core::rt2_strncpy(m_pMaster->m_pRidePet->mBaseActor.m_szLastPoseName, vpPoseName, 40);
     } else {
         bResult = mGraph.PlayPose(vpPoseName, vLoop);
-        rt2_strncpy(m_szLastPoseName, vpPoseName, 40);
+        rt2_core::rt2_strncpy(m_szLastPoseName, vpPoseName, 40);
     }
     //if (!bResult)
     //{
@@ -1628,6 +1629,7 @@ bool GcBaseActor::IsPlayer() {
     return (&(GetWorld()->m_pPlayer->mBaseActor) == this);
 }
 
+//弓箭
 const char* BowPoseName[] = {
     "wait_bow",    // 0 默认站立动作
     "attack_bow",  // 1 默认攻击动作
@@ -1938,7 +1940,7 @@ char* GcBaseActor::GetPoseByWeapon(EPoses Pose, SItemID& item) {
     // 动作基础名
     const char* basic = NULL;
     basic = BasicPoseName[Pose];
-    if (!basic || Pose <= POSE_NONE)
+    if (!basic || Pose <= POSE_NONE)  //非法动作
         return NULL;
 
     // 武器名
@@ -2063,33 +2065,39 @@ const char* GcBaseActor::GetPoseByWeapon(EPoses PoseId, SItemID& item1, SItemID&
 
 const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, float fSpeed) {
     guard;
-    m_vPoseID = vPoseID;
+    m_vPoseID = vPoseID;  // 设置当前姿态ID
+    // 检查姿态ID是否有效
     if (vPoseID < POSE_NONE || vPoseID >= POSE_MAX) {
-        return "";
+        return "";  // 如果姿态ID无效，返回空字符串
     }
-
+    // 如果当前角色处于骑乘状态，委托骑宠处理
     if (m_pMaster->m_eRideState == GcActor::ERS_ACTOR) {
         return m_pMaster->m_pRidePet->mBaseActor.PlayPose(vPoseID, vLoop, pSkill, fSpeed);
     }
-
+    // 如果模型信息未创建，输出错误日志并返回NULL
     if (mpModel == NULL) {
         LOG("GcBaseActor::PlayPose 试图播放一个模型信息还没有创建的人物动作.\n");
         return NULL;
     }
     const char* pPoseName = NULL;
+    // 根据模型复杂性选择姿态名称数组
     if (mpModel->bComplex)
         pPoseName = pDefaultPoseName[vPoseID];
     else
-        pPoseName = pDefaultPoseNameSimple[vPoseID];
+        pPoseName = pDefaultPoseName[vPoseID];
+    //pPoseName = pDefaultPoseNameSimple[vPoseID];
 
     SItemID  Item1, Item2;
     SWeapon *pWeaClass1, *pWeaClass2 = NULL;
+    // 获取当前装备的武器
     Item1 = m_pMaster->mItem.GetEquipItem(CItemContainer::WEAPON_1, true);
     //Item2 = m_pMaster->mItem.GetEquipItem(CItemContainer::WEAPON_2, true);
     pWeaClass1 = (SWeapon*)(((CGameClientFrame*)GetApp())->m_pItemManager->GetItem(Item1.type));
     //pWeaClass2 = (SWeapon*)( ((CGameClientFrame*)GetApp())->m_pItemManager->GetItem(Item2.type) );
 
     int iSkillTime = 0;
+    //判断当前是否复杂模型
+
     if (!mpModel->bComplex) {
         if (vPoseID == POSE_IDLE) {
             pPoseName = GetPoseByNPC(vPoseID);
@@ -2120,7 +2128,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                 }
             }
         }
-    } else if (m_pMaster->m_cShapeshift == 2) {
+    } else if (m_pMaster->m_cShapeshift == 2) {  // 如果角色变身状态为2
         if (vPoseID == POSE_IDLE) {
             pPoseName = GetPoseByNPC(vPoseID);
         } else if (vPoseID == POSE_WALK) {
@@ -2138,10 +2146,10 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                 if (pSkill) {
                     if ((pWeaClass1 && pWeaClass1->bBothHands) ||
                         (pWeaClass1 && pWeaClass2 && !ItemIsShield(Item2) && !ItemIsShield(Item1)))
-                        pPoseName = pSkill->szRAction2;
+                        pPoseName = pSkill->szRAction2;  // 双手
                     else
-                        pPoseName = pSkill->szRAction1;
-                    iSkillTime = pSkill->iRTime;
+                        pPoseName = pSkill->szRAction1;  //单手
+                    iSkillTime = pSkill->iRTime;         // 获取技能释放时间
                     CActorSkill::SActorPassive* pStrengthenSkill = NULL;
                     //if(pSkill->wStrSkillSub)
                     //{
@@ -2212,6 +2220,12 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
         if (vPoseID == POSE_ATTACK && pSkill) {
             pPoseName = pSkill->szRAction1;
         }
+        if (vPoseID == POSE_STAND) {
+            pPoseName = "wait_non";
+        }
+        if (vPoseID == POSE_WALK) {
+            pPoseName = "walk_non";
+        }
     }
 
     if (vPoseID == POSE_FUNACTION) {
@@ -2232,13 +2246,18 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
     }
 
     if (m_bLastLoop == vLoop && m_bLastLoop == true && strcmp(m_szLastPoseName, pPoseName) == 0) {
-        if (!mGraph.p()->IsPlayingPose())
-            ERR("Last is a loop cmd, but GetCurrentPose()==NULL!\n");
+        std::string CurrentPose = mGraph.p()->GetCurrentPose().Name;
+        std::string m_szLastPose = m_szLastPoseName;
+        std::string l =
+            "Last is " + m_szLastPose + ",but GetCurrentPose() == " + CurrentPose + "\n";
+        if (!mGraph.p()->IsPlayingPose()) {
+            ERR(l.c_str());
+        }
         return m_szLastPoseName;
     }
 
     m_bLastLoop = vLoop;
-    rt2_strncpy(m_szLastPoseName, pPoseName, 40);
+    rt2_core::rt2_strncpy(m_szLastPoseName, pPoseName, 40);
     //m_szLastPoseName[39] = 0;
 
     SRT_Pose* tpose = mGraph.p()->GetPose(m_szLastPoseName);
@@ -2259,10 +2278,12 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
 
     m_fLastPoseSpeed = fSpeed;
     if (!mGraph.PlayPose(m_szLastPoseName, vLoop, fSpeed)) {
-        // ERR2("播放动作失败,模型文件[%s] 动作[%s] \n", mGraph.FileName(), m_szLastPoseName);
+        if (GetWorld() && IsPlayer())
+            ERR2("播放动作失败,模型文件[%s] 动作[%s] id[%d]\n", mGraph.FileName(), m_szLastPoseName,
+                 vPoseID);
         const SRT_Pose* pActorPose = &mGraph.p()->GetCurrentPose();
         if (pActorPose && pActorPose->IsVaild()) {
-            rt2_strncpy(m_szLastPoseName, pActorPose->Name.c_str(), 40);
+            rt2_core::rt2_strncpy(m_szLastPoseName, pActorPose->Name.c_str(), 40);
             //m_szLastPoseName[39] = 0;
         }
         return NULL;

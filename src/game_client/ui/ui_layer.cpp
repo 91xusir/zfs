@@ -5,6 +5,17 @@
 #include "ui_form_textMsg.h"
 #include "ui_form_msg.h"
 
+static void Quit() {
+    PostQuitMessage(0);
+}
+
+void global_closeApp(void*, void*, void*) {
+    UIFormMsg* pConfirm = UIFormMsg::ShowStatic("确定退出游戏吗?", UIFormMsg::TYPE_OK_CANCEL);
+    pConfirm->EvOK += (UI_DELEGATE_F(Quit));
+}
+
+
+
 UILayerLogin*		g_layerLogin;
 UILayerSelectChar*	g_layerSelectChar;
 UILayerMain*		g_layerMain;

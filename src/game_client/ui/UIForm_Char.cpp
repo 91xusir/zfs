@@ -2234,6 +2234,7 @@ void CUIForm_Char::OnLClick_BtnTrumpSkillUp(RtwWidget *sender, void*)
 		{
 			GcActor* pActor = GetPlayer();
 			if (pActor==NULL) return;
+            //lyymark  warning C4302: “类型强制转换”: 从“const void *”到“unsigned short”截断
 			unsigned short wSkillID = (unsigned short)m_pbtnTrumpSkill[i]->GetUserData();
 			SSkill* pSkill = Skill()->FindSkill(wSkillID);
 			if (pSkill->wClass== 13)

@@ -1504,6 +1504,8 @@ bool net_r2c_point_result(short cmdID, CG_CmdPacket *pPacket)
 	pPlayer->m_Point += sPoint;
 
 	g_layerMain->m_formShop->Refresh();
+    //lyymark  warning C4715: “net_r2c_point_result”: 不是所有的控件路径都返回值
+    return true;
 
 	unguard;
 }

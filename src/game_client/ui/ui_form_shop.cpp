@@ -1688,7 +1688,7 @@ void UIFormShop::OnDragFromBagToDown(ui::RtwWidget *sender, ui::RtwEventDelegate
 	if (!pDragSvr) return;
 	const string& WidgetID = pDragSvr->GetID();
 	// 是不是道具栏的格子
-	int i,j,page,ii,jj,pp;
+	int i,j,page,ii,jj;
 	if (g_layerMain->m_fromPlayerItems && g_layerMain->m_fromPlayerItems->Is_Widget_Common(WidgetID, i, j) )
 	{
 		m_iBagI = i;m_iBagJ = j;
@@ -1738,7 +1738,7 @@ bool UIFormShop::OnBagToShop(ui::RtwWidget *sender, ui::RtwEventDelegate *e)
 		Refresh();
 		//return false;
 	}
-	int i,j,page,ii,jj,pp;
+	int i,j,page,ii,jj;
 	i = e->mouse.x;
 	j = e->mouse.y;
 	CItemContainer *pCon = &(GetWorld()->m_pPlayer->mItem);

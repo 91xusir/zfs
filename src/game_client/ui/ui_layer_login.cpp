@@ -5,11 +5,7 @@
 #include <algorithm>
 #include <cctype>
 
-void global_closeApp(void*, void*, void*) {
-
-    UIFormMsg* pConfirm = UIFormMsg::ShowStatic("确定退出游戏吗?", UIFormMsg::TYPE_OK_CANCEL);
-    pConfirm->EvOK+=(UI_DELEGATE_F(UILayerLogin::OnClicked_Quit));
-}
+extern void global_closeApp(void*, void*, void*);
 
 static bool IsValidAccountName(const string& name) {
     if (name.length() < 4 || name.length() > 20 || name == "admin" || !std::isalpha(name[0])) {

@@ -2,7 +2,8 @@
 #include "ui_form_herolist.h"
 
 // Sort
-static enum ESort
+//lyymark warning C4091: “static ”: 没有声明变量时忽略“ESort”的左侧
+/*static*/ enum ESort
 {
 	Sort_Name,
 	Sort_Level,

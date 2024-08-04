@@ -132,21 +132,7 @@ class CRT_MtlStandard : public CRT_Material
     }
 
     // lyymark CRT_MtlStandard 主帧动画处理
-    void Tick(float deltaMill)
-    {
-        unsigned long beg = m_keyList.GetBegFrame();
-        unsigned long end = m_keyList.GetEndFrame();
-        // 如果起始帧和结束帧相同，则无需处理
-        if (beg == end)
-            return;
-        // 计算帧数
-        unsigned long frameCount = static_cast<UINT>(m_delta / 33);
-        unsigned long currentFrame = beg + (frameCount % (end - beg));
-        // 更新当前帧
-        UseFrame(currentFrame);
-        // 更新累计时间
-        m_delta += deltaMill;
-    }
+    void Tick(float deltaMill);
 
     bool RequestUseFrame()
     {

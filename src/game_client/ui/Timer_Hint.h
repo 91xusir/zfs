@@ -1,7 +1,8 @@
 #pragma once
 #include "ui/rtw_ui.h"
 
-extern enum HINT_WIDGET;
+//lyymark 没有声明变量时忽略“HINT_WIDGET”的左侧
+enum HINT_WIDGET;
 
 class CTimer_Hint : public GcTimerListener
 {

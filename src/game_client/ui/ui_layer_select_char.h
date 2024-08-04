@@ -13,10 +13,6 @@ class UILayerSelectChar {
     //删除人物
     void OnClicked_Delete(void*, void*);
 
-    //人物角色---男性
-    void OnClicked_SetSexMale(void*, void*);
-    //人物角色---女性
-    void OnClicked_SetSexFemale(void*, void*);
     //人物左旋按钮
     void OnClicked_LeftRotation(void*, void*);
     void OnClicked_LMouseDown(void*, void*);
@@ -30,18 +26,12 @@ class UILayerSelectChar {
 
     //创建人物角色界面
     //角色名输入框
-    //人物生肖选择框
-    void OnClicked_PrevAnimal(void*, void*);
-    void OnClicked_NextAnimal(void*, void*);
+
     //人物角色发型
     void OnClicked_PrevHair(void*, void*);
     void OnClicked_NextHair(void*, void*);
-    //人物角色脸型
-    void OnClicked_PrevFace(void*, void*);
-    void OnClicked_NextFace(void*, void*);
-    //人物角色头像
-    void OnClicked_PrevHead(void*, void*);
-    void OnClicked_NextHead(void*, void*);
+
+
     //随机创建
     void OnClicked_RandomCreate(void*, void*);
     //完成创建

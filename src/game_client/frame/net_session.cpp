@@ -342,6 +342,8 @@ bool NetSend(CG_CmdPacket* pPacket)
     {
         return GetNet()->Send(pPacket);
     }
+   //lyymark  warning C4715: “NetSend”: 不是所有的控件路径都返回值
+    return false;
 }
 
 bool NetSendEx(CG_CmdPacket* pPacket)

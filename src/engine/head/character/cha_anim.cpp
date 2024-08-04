@@ -476,7 +476,6 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */) {
             RealUseFrame(m_curFrame);
         }
     }
-
     DWORD ruSkin = rtMilliseconds();
     for (size_t i = 0; i < m_skinList.size(); ++i)
         if (m_skinList[i])
@@ -1199,8 +1198,10 @@ void CRT_ActorInstance::RealUseFrame(float frame) {
 
         RtGetPref()->skinUpdate += rtMilliseconds() - ruSkin;
     }
-    //lyymark 疑似标准材质渲染重复了 推测是类型识别不正确，无法判断子类类型，后续出问题再修改
-    /*for (int i = 0; i < m_skinList.size(); i++)
+    //lyymark 疑似标准材质渲染重复了
+    //推测是类型识别不正确，无法判断子类类型，
+    //先注释后续出问题再修改 by lyy
+ /*   for (int i = 0; i < m_skinList.size(); i++)
         if (m_skinList[i]->ResourceReady())
             m_skinList[i]->GetMaterialLib()->UseFrame(frame);*/
 

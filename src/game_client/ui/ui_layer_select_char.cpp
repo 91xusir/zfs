@@ -23,8 +23,6 @@ UILayerSelectChar::UILayerSelectChar() {
     LOAD_UI("btndeletechar")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Delete);
 
     //人物角色性别
-    LOAD_UI("btnmale")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SetSexMale);
-    LOAD_UI("btnfemale")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SetSexFemale);
     //人物左旋按钮
     //LOAD_UI("btnuserleft")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_LeftRotation);
     //LOAD_UI("btnuserleft")->EvMouseLDown += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_LMouseDown);
@@ -41,26 +39,13 @@ UILayerSelectChar::UILayerSelectChar() {
 
     m_charname = LOAD_UI_T(RtwTextBox, "fmcreatid1.fmname.txtname");
     m_charname->SetCapacity(14);
-    //人物生肖选择框
-    LOAD_UI("fmcreatid1.btnanimalleft")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevAnimal);
-    LOAD_UI("fmcreatid1.btnanimalright")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextAnimal);
+
     //人物角色发型
     LOAD_UI("fmcreatid2.btnhairleft")->EvLClick +=
         RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevHair);
     LOAD_UI("fmcreatid2.btnhairright")->EvLClick +=
         RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextHair);
-    //人物角色脸型
-    LOAD_UI("fmcreatid2.btnfaceleft")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevFace);
-    LOAD_UI("fmcreatid2.btnfaceright")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextFace);
-    //人物角色头像
-    LOAD_UI("fmcreatid2.btnheadleft")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevHead);
-    LOAD_UI("fmcreatid2.btnheadright")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextHead);
+
     //随机创建
     LOAD_UI("fmcreatid3.btnrandom")->EvLClick +=
         RTW_CALLBACK(this, UILayerSelectChar, OnClicked_RandomCreate);
@@ -166,17 +151,6 @@ void UILayerSelectChar::OnClicked_Delete(void*, void*) {
     unguard;
 }
 
-//人物角色性别---男女
-void UILayerSelectChar::OnClicked_SetSexMale(void*, void*) {
-    LOAD_UI_T(CUiCheckButton, "btnmale")->SetChecked(true);
-    GetLogin()->SetCharSex(false);
-}
-
-void UILayerSelectChar::OnClicked_SetSexFemale(void*, void*) {
-    LOAD_UI_T(CUiCheckButton, "btnfemale")->SetChecked(true);
-    GetLogin()->SetCharSex(true);
-}
-
 //人物左旋按钮
 void UILayerSelectChar::OnClicked_LeftRotation(void*, void*) {
     guard;
@@ -220,26 +194,6 @@ void UILayerSelectChar::OnClicked_RightRotation(void*, void*) {
 }
 
 //创建人物角色界面
-//人物生肖选择框
-void UILayerSelectChar::OnClicked_PrevAnimal(void*, void*) {
-    guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-            GetLogin()->ChangeCharAnimal(false);
-        }
-    }
-    unguard;
-}
-
-void UILayerSelectChar::OnClicked_NextAnimal(void*, void*) {
-    guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-            GetLogin()->ChangeCharAnimal(true);
-        }
-    }
-    unguard;
-}
 
 //人物角色发型
 //上一个发型名称
@@ -259,38 +213,6 @@ void UILayerSelectChar::OnClicked_NextHair(void*, void*) {
     if (GetLogin()) {
         if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
             GetLogin()->ChangeCharHair(true);
-        }
-    }
-    unguard;
-}
-
-//人物角色脸型
-void UILayerSelectChar::OnClicked_PrevFace(void*, void*) {
-    guard;
-    unguard;
-}
-
-void UILayerSelectChar::OnClicked_NextFace(void*, void*) {
-    guard;
-    unguard;
-}
-
-//人物角色头像
-void UILayerSelectChar::OnClicked_PrevHead(void*, void*) {
-    guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-            GetLogin()->ChangeCharImage(false);
-        }
-    }
-    unguard;
-}
-
-void UILayerSelectChar::OnClicked_NextHead(void*, void*) {
-    guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-            GetLogin()->ChangeCharImage(true);
         }
     }
     unguard;

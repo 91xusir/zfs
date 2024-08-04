@@ -1101,7 +1101,7 @@ void UIFormSetting::RefreshVideoSettings()
 
 		n++;
 	}
-	char buf[8];
+	
 	int cursel   = m_lstResolution->GetSelectedItem();
 
 	RTGViewWindowMode eMode = GetDevice()->GetViewWindowMode();

@@ -1,13 +1,9 @@
 #pragma once
 // 系统库预编译头文件内容
 /*---------------------------*/
-
 #include <Windows.h>
-#undef max
-#undef min
 #include <algorithm>
 #include <assert.h>
-#include <atlstr.h>
 #include <chrono>
 #include <ctype.h>
 #include <cctype>
