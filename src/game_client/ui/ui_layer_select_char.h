@@ -54,8 +54,8 @@ class UILayerSelectChar {
    public:
     constexpr static int                   MaxUserCharBtn = 3;
     std::unordered_map<short, std::string> m_faction = {{1, "商"}, {2, "周"}, {3, "中立"}};
-    RtwTextBox*                            m_charname;  //创建角色名称
     CUiCheckButton*                        m_charBtnArray[MaxUserCharBtn];
-};
 
+    RtwTextBox*                            m_charname;  //创建角色名称
+};
 #endif  // _INC_UI_LAYER_SELECT_CHAR_H_

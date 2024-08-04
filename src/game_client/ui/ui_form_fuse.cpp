@@ -446,6 +446,8 @@ bool UIFormItemFuse::OnBagToFuseItem2(RtwWidget* sender, RtwEventDelegate* e)
 	{
 		g_pSoundMgr->PlayOnce("ui_putfail.wav", false, 0, pos);
 	}
+    // warning C4715: “UIFormItemFuse::OnBagToFuseItem2”: 不是所有的控件路径都返回值
+    return true;
 	unguard;
 }
 

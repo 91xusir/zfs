@@ -76,7 +76,7 @@ void UILayerSelectChar::OnClicked_Enter(void*, void*) {
     guard;
     if (GetLogin()) {
         if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
-            GetLogin()->OnSelectUser();
+            GetLogin()->OnSelectUserDone();
         }
     }
     unguard;
@@ -91,8 +91,8 @@ void UILayerSelectChar::OnClicked_Back(void*, void*) {
     const auto& status = gc_login->GetStatus();
 
     if (status == GcLogin::GLS_CREATE_CHAR) {
-        if (gc_login->m_selectFaction != -1) {
-            gc_login->SetSelectShangOrZhou(-1);
+        if (gc_login->m_selectFaction != GcLogin::None) {
+            gc_login->SetSelectShangOrZhou(GcLogin::None);
         } else {
             gc_login->SetLoginState(GcLogin::GLS_SELECT_CHAR);
         }
@@ -108,7 +108,11 @@ void UILayerSelectChar::OnClicked_SelectChar(RtwWidget* sender, RtwEventDelegate
     const auto& gc_login = GetLogin();
     if (gc_login) {
         if (gc_login->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
-            gc_login->SetSelectUser((int)e->param1);
+            int iSel = (int)e->param1;
+            if (iSel == gc_login->m_curSelCharIndex)
+                return;
+            gc_login->m_curSelCharIndex = iSel;
+            gc_login->UpdateSelectChar();
         }
     }
 }
@@ -135,20 +139,53 @@ void UILayerSelectChar::OnClicked_SelectShangOrZhou(RtwWidget* sender, RtwEventD
 
 //删除人物
 void UILayerSelectChar::OnClicked_Delete(void*, void*) {
-    guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
+    const auto& gc_login = GetLogin();
+    if (!gc_login)
+        return;
+    if (gc_login->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
 
-            if (GetLogin()->GetCurSelectChar() != -1) {
-
-                GetLogin()->OnCharPasswordConfirm("");
-
-            } else {
-                UIFormMsg::ShowStatic(R(LMSG_PLS_CHOOSE_CHAR), UIFormMsg::TYPE_OK);
-            }
+        if (gc_login->m_curSelCharIndex != -1) {
+            gc_login->OnCharPasswordConfirm("");
+        } else {
+            UIFormMsg::ShowStatic(R(LMSG_PLS_CHOOSE_CHAR), UIFormMsg::TYPE_OK);
         }
     }
-    unguard;
+}
+
+void UILayerSelectChar::OnReceivePasswordConfirm(char lRet) {
+    const auto& gc_login = GetLogin();
+    if (!gc_login)
+        return;
+
+    if (gc_login->GetStatus() != GcLogin::GLS_SELECT_CHAR)
+        return;
+    if (lRet != 1) {
+        UIFormMsg::ShowStatic(R(PASSWORD_ERR), UIFormMsg::TYPE_OK);
+        return;
+    }
+    if (gc_login->GetSelectUserWithPwd()) {
+        gc_login->OnSelectUserWithPwd();
+    } else {
+        const GcAccountInfo& info = gc_login->GetAccountInfo();
+        int                  iSel = gc_login->m_curSelCharIndex;
+        if (info.users[iSel].attributes.level >= 30) {
+            UIFormMsg* pFrm = UIFormMsg::ShowStatic(R(LMSG_CONFIRM_DELETE_CHAR_THIRTY),
+                                                    UIFormMsg::TYPE_OK_CANCEL);
+            pFrm->EvOK = RTW_CALLBACK_1(this, UILayerSelectChar, OnConfirm_Delete, pFrm);
+        } else {
+            UIFormMsg* pFrm =
+                UIFormMsg::ShowStatic(R(LMSG_CONFIRM_DELETE_CHAR), UIFormMsg::TYPE_OK_CANCEL);
+            pFrm->EvOK = RTW_CALLBACK_1(this, UILayerSelectChar, OnConfirm_Delete, pFrm);
+        }
+    }
+}
+
+void UILayerSelectChar::OnConfirm_Delete(void*, void*) {
+    if (GetLogin()) {
+        if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
+            GetLogin()->OnDeleteUser();
+        }
+    }
 }
 
 //人物左旋按钮
@@ -311,36 +348,6 @@ void UILayerSelectChar::OnReceiveSetPassword(char lRet) {
     unguard;
 }
 
-void UILayerSelectChar::OnReceivePasswordConfirm(char lRet) {
-    guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
-            if (lRet == 1) {
-                if (GetLogin()->GetSelectUserWithPwd()) {
-                    GetLogin()->OnSelectUserWithPwd();
-                } else {
-                    const GcAccountInfo& info = GetLogin()->GetAccountInfo();
-                    int                  iSel = GetLogin()->GetCurSelectChar();
-                    if (info.users[iSel].attributes.level >= 30) {
-                        UIFormMsg* pFrm = UIFormMsg::ShowStatic(R(LMSG_CONFIRM_DELETE_CHAR_THIRTY),
-                                                                UIFormMsg::TYPE_OK_CANCEL);
-                        pFrm->EvOK =
-                            RTW_CALLBACK_1(this, UILayerSelectChar, OnConfirm_Delete, pFrm);
-                    } else {
-                        UIFormMsg* pFrm = UIFormMsg::ShowStatic(R(LMSG_CONFIRM_DELETE_CHAR),
-                                                                UIFormMsg::TYPE_OK_CANCEL);
-                        pFrm->EvOK =
-                            RTW_CALLBACK_1(this, UILayerSelectChar, OnConfirm_Delete, pFrm);
-                    }
-                }
-            } else {
-                UIFormMsg::ShowStatic(R(PASSWORD_ERR), UIFormMsg::TYPE_OK);
-            }
-        }
-    }
-    unguard;
-}
-
 //解除密码锁
 void UILayerSelectChar::OnReceiveDelPassword(char lRet) {
     guard;
@@ -360,13 +367,3 @@ void UILayerSelectChar::OnReceiveDelPassword(char lRet) {
 }
 
 void UILayerSelectChar::OnUpdateText(RtwWidget* sender, RtwEventDelegate*) {}
-
-void UILayerSelectChar::OnConfirm_Delete(void*, void*) {
-    guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
-            GetLogin()->OnDeleteUser();
-        }
-    }
-    unguard;
-}

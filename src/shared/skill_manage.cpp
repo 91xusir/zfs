@@ -896,7 +896,7 @@ const char* CActorSkill::SaveToString()
     BYTE cSize;
     BYTE iVersion = 4;
     WORD wResumeTime;
-    WORD wExp;
+    //WORD wExp;
 
     memcpy(pData, &iVersion, sizeof(BYTE)); pData += sizeof(BYTE);              // Version
     memcpy(pData, &m_sActiveSkillID, sizeof(short)); pData += sizeof(short);    // Active Skill
@@ -1922,6 +1922,8 @@ float CActorSkill::GetPublicCDRate(SSkill* pAttr)
 	{
 		return (School_PublicCDMaxTime)?((float)m_SchoolPublicCDTime / School_PublicCDMaxTime):0.f;
 	}
+    //warning C4715: “CActorSkill::GetPublicCDRate”: 不是所有的控件路径都返回值
+    return 0.f;
 }
 
 void CActorSkill::ShutdownSkill()

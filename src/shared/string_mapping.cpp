@@ -52,7 +52,7 @@ bool CheckValidChat(const char* szContent)
 			char* charn=(char *)szContent;
 			int num=str.find(v_chatBanned[i].c_str());
 			std::string schatban=v_chatBanned[i].c_str();
-			for (int j = num; j < schatban.size()+num; j++)
+            for (size_t j = num; j < schatban.size() + num; j++)
 			{
 				charn[j]='*';
 			}

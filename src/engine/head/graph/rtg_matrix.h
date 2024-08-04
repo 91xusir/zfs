@@ -183,7 +183,7 @@ public:
     };
 
 public:
-    RtgMatrix16() {}
+    RtgMatrix16() { Unit(); }
     RtgMatrix16( const RtgMatrix16 & );
     RtgMatrix16( const float m[16] );
     RtgMatrix16( float v00, float v01, float v02, float v03,

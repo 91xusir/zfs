@@ -350,8 +350,8 @@ SItemID CreatePetItem(SItemID item, CItemManager* pItemMgr)
 	SetPetHpAndMp(item,pPet);
 
 	item.params[PET_PARAM_STATE] = 0;
-	int count = 0;
-	int skillCnt = PET_PARAM_PASSIVE_1;
+	size_t count = 0;
+    size_t skillCnt = PET_PARAM_PASSIVE_1;
 	for (int i=PET_PARAM_PASSIVE_1;i<=PET_PARAM_PASSIVE_6;i++)
 	{
 		if (count < pPet->vPassive.size() && count < pPet->vPassiveRate.size()  && GetProb(pPet->vPassiveRate[count]))

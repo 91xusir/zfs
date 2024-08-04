@@ -226,10 +226,8 @@ bool GcLoginSession::RestoreChar(long id) {
 
 bool GcLoginSession::QueryAccountInfo() {
     CG_CmdPacket& cmd = BeginSend();
-
     if (!cmd.WriteShort(c2g_query_account))
         return false;
-
     return EndSend();
 }
 

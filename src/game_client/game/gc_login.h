@@ -1,6 +1,6 @@
-#ifndef _INC_GC_LOGIN_H_
-#define _INC_GC_LOGIN_H_
+#pragma once
 #include "gc_login_session.h"
+#include <gc_frame.h>
 
 // 这里处理登陆，选人等非游戏进行的流程
 class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify {
@@ -53,41 +53,30 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
 
     // GcLogin初始化一次
     bool InitOnce();
-    // 清除一次
     bool ClearOnce();
     // 逻辑渲染
     virtual void OnRun(float fSecond);
-    // 图形渲染前
+    // 图形渲染前后回调
     virtual void OnBeginRender();
-    // 图形渲染
     virtual void OnRender(float fSecond);
-    // 图形渲染后
     virtual void OnEndRender();
-    // 鼠标移动
+    //处理鼠标事件
     virtual void OnMouseMove(int iButton, int x, int y, int increaseX, int increaseY);
-    //处理鼠标滚轮事件
+    //滚轮事件
     virtual void OnMouseWheel(int iButton, long vDelta);
-    //左键按下
     virtual void OnMouseLDown(int iButton, int x, int y);
 
-    //按钮抬起
     virtual void OnMouseUp(int iButton, int x, int y) {}
 
-    //左键双击
     virtual void OnMouseLDClick(int iButton, int x, int y);
-    //右键按下
     virtual void OnMouseRDown(int iButton, int x, int y);
-    //右键拖动
     virtual void OnMouseRDrag(int iButton, int x, int y, int increaseX, int increaseY);
-    //鼠标中键拖动
     virtual void OnMouseMDrag(int iButton, int x, int y, int increaseX, int increaseY);
-    //键盘按下事件
     virtual void OnKeyDown(int iButton, int iKey);
-    //键盘释放事件
     virtual void OnKeyUp(int iButton, int iKey);
 
     //获取当前选中角色
-    inline int GetCurSelectChar() { return m_iCurSelectChar; }
+    inline int GetCurSelectChar() const { return m_iCurSelectChar; }
 
     //设置当前选中角色
     inline void SetCurSelectChar(int iSel) { m_iCurSelectChar = iSel; }
@@ -99,7 +88,6 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     void LoginErrMsg(EErrMsg eMsg, const char* szRetStr = NULL, short sRetCode = 0);
     //选择游戏世界服务器
     void SelectGameWorld(int iIdx);
-
     // 登录账号
     void Login(const std::string& szUsername, const std::string& szPassword);
     //发送登录请求
@@ -120,9 +108,9 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     void NetClose();
 
     //是否保存帐号
-    void SetSaveAccount(bool bSave) { bSaveAccount = bSave; }
+    inline void SetSaveAccount(bool bSave) { bSaveAccount = bSave; }
 
-    bool GetSaveAccount() { return bSaveAccount; }
+    inline bool GetSaveAccount() const { return bSaveAccount; }
 
     //人物角色左旋
     void OnLeftRotation();
@@ -130,54 +118,51 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     void OnLeftRotationUp();
     //人物角色右旋
     void OnRightRotation();
-    //进入游戏
-    void OnSelectUser();
+    // 确定选角后进入游戏
+    void OnSelectUserDone();
     void OnSelectUserWithPwd();
+    //恢复角色
     void OnRestoreChar();
     void OnRestoreCharSuccess();
+    //删除角色
     void OnDeleteUser();
+    //角色删除回调 用于删除本地图形
+    void OnNetDeleteUser(long id, char hasDel);
+    //随机创建角色
     void OnRandomCreateUser();
     void OnCreateUser();
+    //设置角色密码
     void OnSetCharPassword(const char* password);
     void OnChangeCharPassword(const char* old, const char* newpassword);
     void OnDelCharPassword(const char* password);
     void OnCharPasswordConfirm(const char* password);
-    void ResetButtonPos();
-
-    void OnNetDeleteUser(long id, char hasDel);
-
+    //设置登录状态
     void SetLoginState(EStatus eState);
+    //更新选中角色
     void UpdateSelectChar();
-
     //选择商或者周  lyy  2024.8.3
     void SetSelectShangOrZhou(int iSei);
-
     void SetSelectUser(int iSel);
 
-    bool GetSelectUserWithPwd() { return bSelectUserWithPwd; }  //密码进入游戏
+    //密码进入游戏
+    inline bool GetSelectUserWithPwd() { return bSelectUserWithPwd; }
 
-    void SetSelectUserWithPwd(bool bSel) { bSelectUserWithPwd = bSel; }
+    inline void SetSelectUserWithPwd(bool bSel) { bSelectUserWithPwd = bSel; }
 
     virtual void OnConnect(bool bSucceeded);
     virtual void OnDisconnect();
-
     // 向导的网络，本来应该作为普通成员，但是为了在系统初始化之前就去取服务器列表，就把他作为静态成员
    public:
     // 开始获取游戏世界服务器的函数
     static void StartGetGameWorldServer();
-
     // 结束获取游戏世界服务器的函数
     static void EndGetGameWorldServer();
-
     // 处理网络指南进程的函数
     static void OnGuideNetProcess(float fSecond);
-
     // 获取游戏世界服务器列表的函数，返回下一次获取的时间
     static float OnGuideGetGameWorldServerList(CG_CmdPacket* pPacket);
-
     // 获取指定 IP 的 ping 值的函数
     static int GetPing(char* zIP);
-
     // 更新游戏世界服务器列表的 UI 的函数
     void OnUIUpdateGameWorldServerList() const;
 
@@ -194,173 +179,124 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
         long        ping;         // 服务器 ping 值
     };
 
-    // 网络向导会话的静态指针
-    static CG_TCPSession* ms_pGuideNet;
-
-    // 游戏世界服务器列表
-    static std::vector<SGWServerList> ms_pGameWorldServerList;
-
-    // 向导IP 地址的静态字符串
-    static std::string ms_szGuideIP;
-
-    // 向导端口的静态变量
-    static long ms_lGuidePort;
-
-    // 账号用户名的静态字符串
-    static std::string m_szAccountUsername;
-
-    // 账号密码的静态字符串
-    static std::string m_szAccountPassword;
-
-    // 大厅登陆用户名的字符串
-    std::string m_hallName;
-
-    // 大厅登陆 KEY 的字符串
-    std::string m_hallKey;
-
-    // 是否是在大厅登陆
-    bool m_ishallLogin;
-
+    static CG_TCPSession*             ms_pGuideNet;             // 网络向导会话的静态指针
+    static std::vector<SGWServerList> ms_pGameWorldServerList;  // 游戏世界服务器列表
+    static std::string                ms_szGuideIP;             // 向导IP 地址的静态字符串
+    static long                       ms_lGuidePort;            // 向导端口的静态变量
+    static std::string                m_szAccountUsername;      // 账号用户名的静态字符串
+    static std::string                m_szAccountPassword;      // 账号密码的静态字符串
+    // 命令行登陆用户名的字符串
+    std::string m_hallName = "";
+    // 命令行登陆 KEY 的字符串
+    std::string m_hallKey = "";
+    // 是否是在命令行登陆
+    bool m_ishallLogin = false;
     // 是否强制登陆 (0---正常登录, 1---强制登录)
-    bool m_bForceLogin;
+    bool m_bForceLogin = false;
 
    private:
     // 加载界面
     void EnterLoading();
     bool LeaveLoading();
-
     // 选择GameWorld服务器界面
     void EnterSelectGameWorldServer();
     bool LeaveSelectGameWorldServer();
-
     //从文件中读取账号密码
-    void readAccountFromFile();
-
+    void ReadAccountFromFile();
     // 登陆界面
     void EnterLogin();
     bool LeaveLogin();
-
     // 选人界面，包括删除任务
     void EnterSelectChar();
     bool LeaveSelectChar();
-
     // 创建人物界面
-    void EnterCreateChar();
-    bool LeaveCreateChar();
-    void OnEnterCreateChar();
-    void OnLeaveCreateChar();
-
+    void               EnterCreateChar();
+    bool               LeaveCreateChar();
+    void               OnEnterCreateChar();
+    void               OnLeaveCreateChar();
     int                GetCharIndexByActorID(short actorID);
     const char*        GetCameraPoseName(int iSel, bool bSelectChar);
     CRT_ActorInstance* GetSelectedActorByActorID(short actorID);
 
    public:
-    void UpdateCameraPos();
-    void Lyy_UpdateCameraPos();
-    void OnLoading();
-    void OnRenderMask(RTGRenderMask mask, float fSecond);
-    void UpdateGraphConfig(const char* szName);
-
+    void        Lyy_UpdateCameraPos();
+    void        OnLoading();
+    void        OnRenderMask(RTGRenderMask mask, float fSecond);
+    void        UpdateGraphConfig(const char* szName);
+    static bool DetectIntersection(const int& x, const int& y, CRT_ActorInstance* actor);
     // 在当前m_mapActor寻找指定name的actor
     CRT_ActorInstance* FindModel(const std::string& szName);
-
-    virtual void OnPoseBegin(SRT_Pose* pose);
-    virtual void OnPoseEnd(SRT_Pose* pose);
-    virtual void OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event);
-    virtual void OnPoseBreak(SRT_Pose* oldPose, SRT_Pose* newPose);
-
-    void ChangeCharHair(bool bNext);  //改变人物角色发型名称
-
+    virtual void       OnPoseBegin(SRT_Pose* pose);
+    virtual void       OnPoseEnd(SRT_Pose* pose);
+    virtual void       OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event);
+    virtual void       OnPoseBreak(SRT_Pose* oldPose, SRT_Pose* newPose);
+    void               ChangeCharHair(bool bNext);  //改变人物角色发型名称
    private:
-    EStatus m_eStatus;
-    EStatus m_eNextStatus;
-    EStatus m_ePrevStatus;
-
-    CGameClientFrame* m_pGameClientFrame;  //游戏客户端指针
-    int               m_iCurSelectChar;    //当前选中的人物
-
-    bool m_bSelectCharDone;
-    bool m_bCanInput;  //是否允许输入
-
+    EStatus           m_eStatus = GLS_NONE;          //当前状态
+    EStatus           m_eNextStatus = GLS_NONE;      //下一个状态
+    CGameClientFrame* m_pGameClientFrame = nullptr;  //游戏客户端指针
+    int               m_iCurSelectChar = -1;         //当前选中的人物
+    bool              m_bSelCharNetSucceed = false;  //判断选角服务器响应是否成功
+    bool              m_bCanInput = false;           //是否允许鼠标键盘输入 这里不包括输入框UI类 只是当前类
     //环境光特效之类的
-    bool         m_bLight2;
-    RtgLightItem m_lightDirect;
-    RtgLightItem m_lightDirect2;
-    long         m_lSkyFog;
-
-    //ini文件读取类
-    RtIni m_ini;
-
-    //角色选择 begin
-    struct selectCharInfo {
-        int      ID;
-        GcActor* gcActor;
-    };
-
-    using selectIndex = int;
-    std::unordered_map<selectIndex, selectCharInfo> m_mapSelectChar = {};
-    //角色选择 end
-
-    std::string m_szGameWorldServerName;  // 当前选择的游戏世界服务器
-    std::string m_szGameWorldServerIP;    //IP
-    long        m_lGameWorldServerPort;   //端口
-
-    std::vector<GcActor*>           m_selectUserCharActs;  // 选人界面人物
-    std::vector<CRT_ActorInstance*> m_creatActorList;      // 创人界面人物
-    // 可选的人物，这里保存数据表里的唯一id
-    std::vector<short> m_selectUserCharIds;
-
-    char m_bSex;  //0男,1女
-
-    bool m_bLoading;  //判断是否初始化加载
-
+    bool                  m_bLight2;
+    RtgLightItem          m_lightDirect;
+    RtgLightItem          m_lightDirect2;
+    long                  m_lSkyFog;
+    RtIni                 m_ini;                       //ini文件读取
+    std::string           m_szGameWorldServerName;     // 当前选择的游戏世界服务器
+    std::string           m_szGameWorldServerIP;       //IP
+    long                  m_lGameWorldServerPort;      //端口
+    std::vector<GcActor*> m_selectUserCharActs;        // 选人界面人物
+    std::vector<CRT_ActorInstance*> m_creatActorList;  // 创人界面人物
+    std::vector<short> m_selectUserCharIds;  // 可选的人物，这里保存数据表里的唯一id
+    char m_bSex = SEX_MALE;                  //0男,1女
+    bool m_bLoading = false;                 //判断是否初始化加载
     //界面 Actor组件列表 登录 选角 创建
-    std::map<std::string, CRT_ActorInstance*> m_mapActor;
-
-    CRT_ActorInstance* m_pBody;
-    CRT_ActorInstance* m_pCamera;
-    CRT_ActorInstance* m_pZsDao;       //战士武器1
-    CRT_ActorInstance* m_pZsDao2;      //战士武器2
-    CRT_ActorInstance* m_pSsJian;      //术士武器
-    CRT_ActorInstance* m_pSsJianPath;  //术士武器轨迹
-    CRT_ActorInstance* m_pMmGong;      //MM武器
-    CRT_ActorInstance* m_pDsLun;       //道士武器
-    //login.ini begin
-    std::map<std::string, CRT_ActorInstance*> m_mapLogin;       //登录动画物件
-    std::map<std::string, CRT_ActorInstance*> m_mapSelectChar;  //选人
-    std::map<std::string, CRT_ActorInstance*> m_mapCreateChar;  //创人
-    //login.ini end
-    //键为角色数据库的id 选角列表角色模型
-    std::map<DWORD, GcActor*> m_mapSelectActor;
-
+    std::map<std::string, CRT_ActorInstance*> m_mapActor = {};
+    //创建角色界面的人物装备模型
+    CRT_ActorInstance* m_pBody = nullptr;
+    CRT_ActorInstance* m_pZsDao = nullptr;       //战士武器1
+    CRT_ActorInstance* m_pZsDao2 = nullptr;      //战士武器2
+    CRT_ActorInstance* m_pSsJian = nullptr;      //术士武器
+    CRT_ActorInstance* m_pSsJianPath = nullptr;  //术士武器轨迹
+    CRT_ActorInstance* m_pMmGong = nullptr;      //MM武器
+    CRT_ActorInstance* m_pDsLun = nullptr;       //道士武器
+    //login.ini 加载保存在这里
+    std::map<std::string, CRT_ActorInstance*> m_mapLogin = {};       //登录动画物件
+    std::map<std::string, CRT_ActorInstance*> m_mapSelectChar = {};  //选人
+    std::map<std::string, CRT_ActorInstance*> m_mapCreateChar = {};  //创人
     //
-    std::map<DWORD, CRT_ActorInstance*> m_mapCreateActor;
+    std::map<DWORD, CRT_ActorInstance*> m_mapCreateActor = {};
 
-    int m_HeadModelIndex[4] = {};  //头模型数组
-    int m_HeadImageIndex[4] = {};  //头像数组 待删除
-
-    std::string m_strCharPassword;  //角色密码 待删除
-
-    int   iAnimalIndex;
-    short headModelID;
-    short headImageID;
-    bool  bRandom;  //随机创建
-    int   iRandomAnimalIndex;
-    short headRandomModelID;
-    short headRandomImageID;
-    int   m_ePrevHeadID;
-    int   m_eNextHeadID;
-    long  m_iLastServer;       //记录上一个选中的服务器
-    bool  bSelectUserWithPwd;  //密码登入游戏
-    int   m_nDisconnectCause;  //网络断开原因
-    bool  bSaveAccount;        //是否保存账号
+    int         m_HeadModelIndex[4] = {};  //头模型数组
+    int         m_HeadImageIndex[4] = {};  //头像数组 待删除
+    std::string m_strCharPassword = "";    //角色密码 待删除
+    int         iAnimalIndex = 0;
+    short       headModelID = 0;
+    short       headImageID = 0;
+    bool        bRandom = false;  //是否随机创建
+    int         iRandomAnimalIndex = 0;
+    short       headRandomModelID = 0;
+    short       headRandomImageID = 0;
+    int         m_ePrevHeadID = 0;
+    int         m_eNextHeadID = 0;
+    long        m_iLastServer = -1;          //记录上一个选中的服务器
+    bool        bSelectUserWithPwd = false;  //密码登入游戏
+    int         m_nDisconnectCause = 0;      //网络断开原因
+    bool        bSaveAccount = false;        //是否保存账号
    public:
     //直接public了 原则上要封装 实际懒得
-    int m_selectFaction = -1;  //阵营 1商 2周 -1代表没选  用于判断二阶段返回 by lyy
+    //角色选择
+    std::unordered_map<uint32_t, int>      m_selectChar_IDMapIndex = {};
+    std::unordered_map<uint32_t, GcActor*> m_selectChar_IDMapGcActor = {};
+    int                                    m_curSelCharIndex = -1;
+
+    enum Faction { None = 0, Shang = 1, Zhou = 2 };
+
+    int m_selectFaction = None;  //阵营  None代表没选  用于判断二阶段返回 by lyy
     std::vector<std::string> creatTray = {"bon1", "bno2", "bno3"};  //创建人物的托盘
 };
-
-#endif  // _INC_GC_LOGIN_H_
 
 /*----------------------------------------------------------------------------
 -   End.
