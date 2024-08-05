@@ -119,44 +119,42 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
 
     inline bool GetSaveAccount() const { return bSaveAccount; }
 
-    //人物角色左旋
+    // 人物角色左旋
     void OnLeftRotation();
     void OnLeftRotationDown();
     void OnLeftRotationUp();
-    //人物角色右旋
+    // 人物角色右旋
     void OnRightRotation();
     // 确定选角后进入游戏
     void OnSelectUserDone();
     void OnSelectUserWithPwd();
-    //恢复角色
+    //恢复角色 废弃
     void OnRestoreChar();
     void OnRestoreCharSuccess();
     //删除角色
     void OnDeleteUser();
     //角色删除回调 用于删除本地图形
     void OnNetDeleteUser(long id, char hasDel);
-    //随机创建角色
-    void OnRandomCreateUser();
-    void OnCreateUser();
-    //设置角色密码
+    void OnRandomCreateUser();  //随机创建角色 废弃
+    void OnCreateUser();        //创人回调
+    //设置角色密码 废弃
     void OnSetCharPassword(const char* password);
     void OnChangeCharPassword(const char* old, const char* newpassword);
     void OnDelCharPassword(const char* password);
     void OnCharPasswordConfirm(const char* password);
-    //设置登录状态
-    void SetLoginState(EStatus eState);
-    //更新选中角色
-    void UpdateSelectChar();
-    //选择商或者周  lyy  2024.8.3
-    void SetSelectShangOrZhou(int iSei);
-    bool LoadModel(const std::string& modelName, CRT_ActorInstance** model,
-                    std::string linkName = "", CRT_ActorInstance** parent = nullptr);
-    void SetSelectUser(int iSel);
 
-    //密码进入游戏
+    //输入角色密码进入游戏 废弃
     inline bool GetSelectUserWithPwd() { return bSelectUserWithPwd; }
 
     inline void SetSelectUserWithPwd(bool bSel) { bSelectUserWithPwd = bSel; }
+
+    //设置登录状态
+    void SetLoginState(EStatus eState);
+    //选择商或者周  lyy  2024.8.3
+    void SetSelectShangOrZhou(int iSei);
+    void UpdateCreateChar();  //更新创建界面角色
+    void UpdateSelectChar();  //更新选人界面角色
+    void SetSelectUser(int iSel);
 
     virtual void OnConnect(bool bSucceeded);
     virtual void OnDisconnect();
@@ -215,24 +213,26 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     // 登陆界面
     void EnterLogin();
     bool LeaveLogin();
-    // 选人界面，包括删除任务
+    // 选人界面，包括删除角色
     void EnterSelectChar();
     bool LeaveSelectChar();
     // 创建人物界面
-    void               EnterCreateChar();
-    bool               LeaveCreateChar();
-    void               OnEnterCreateChar();
-    void               OnLeaveCreateChar();
+    void EnterCreateChar();
+    bool LeaveCreateChar();
+    void ChangeCharHead(int charCsvId, int headIndex);
+    bool LoadModel(const std::string& modelName, CRT_ActorInstance** model,
+                   std::string linkName = "", CRT_ActorInstance** parent = nullptr);
+
     int                GetCharIndexByActorID(short actorID);
     CRT_ActorInstance* GetSelectedActorByActorID(short actorID);
 
-   public:
+   public:  //图形相关
     void        Lyy_UpdateCameraPos();
     void        OnLoading();
     void        OnRenderMask(RTGRenderMask mask, float fSecond);
     void        UpdateGraphConfig(const char* szName);
     static bool DetectIntersection(const int& x, const int& y, CRT_ActorInstance* actor);
-    // 在当前m_mapActor寻找指定name的actor
+    // 在当前m_mapActor寻找指定name的actor实例
     CRT_ActorInstance* FindModel(const std::string& szName);
     virtual void       OnPoseBegin(SRT_Pose* pose);
     virtual void       OnPoseEnd(SRT_Pose* pose);
@@ -240,21 +240,20 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     virtual void       OnPoseBreak(SRT_Pose* oldPose, SRT_Pose* newPose);
     void               ChangeCharHair(bool bNext);  //改变人物角色发型名称
    private:
-    EStatus m_eCurrentStatus = GLS_NONE;  //当前状态
-
+    EStatus           m_eCurrentStatus = GLS_NONE;   //当前状态
     CGameClientFrame* m_pGameClientFrame = nullptr;  //游戏客户端指针
     int               m_iCurSelectChar = -1;         //当前选中的人物
     bool              m_bSelCharNetSucceed = false;  //判断选角服务器响应是否成功
     bool m_bCanInput = false;  //是否允许鼠标键盘输入 这里不包括输入框UI类 只是当前类
     //环境光特效之类的
-    bool                  m_bLight2;
-    RtgLightItem          m_lightDirect;
-    RtgLightItem          m_lightDirect2;
-    long                  m_lSkyFog;
-    RtIni                 m_ini;                       //ini文件读取
-    std::string           m_szGameWorldServerName;     // 当前选择的游戏世界服务器
-    std::string           m_szGameWorldServerIP;       //IP
-    long                  m_lGameWorldServerPort;      //端口
+    bool         m_bLight2;
+    RtgLightItem m_lightDirect;
+    RtgLightItem m_lightDirect2;
+    long         m_lSkyFog;
+    RtIni        m_ini;                                //ini文件读取
+    std::string  m_szGameWorldServerName;              // 当前选择的游戏世界服务器
+    std::string  m_szGameWorldServerIP;                //IP
+    long         m_lGameWorldServerPort;               //端口
     std::vector<CRT_ActorInstance*> m_creatActorList;  // 创人界面人物
     std::vector<short> m_selectUserCharIds;  // 可选的人物，这里保存数据表里的唯一id
     char m_bSex = SEX_MALE;                  //0男,1女
@@ -273,7 +272,6 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     std::unordered_map<std::string, CRT_ActorInstance*> m_mapLogin = {};       //登入
     std::unordered_map<std::string, CRT_ActorInstance*> m_mapSelectChar = {};  //选人
     std::unordered_map<std::string, CRT_ActorInstance*> m_mapCreateChar = {};  //创人
-
     //用于存入上面的场景 做替换
     std::unordered_map<std::string, CRT_ActorInstance*> m_mapActor = {};
 
@@ -294,7 +292,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     int         m_nDisconnectCause = 0;      //网络断开原因
     bool        bSaveAccount = false;        //是否保存账号
    public:
-    //直接public了 原则上要封装 实际懒得
+    //直接public了 原则上要封装 实际懒得  add by lyy
     //角色选择
     std::unordered_map<uint32_t, int>      m_selectChar_IDMapIndex = {};
     std::unordered_map<uint32_t, GcActor*> m_selectChar_IDMapGcActor = {};
@@ -303,14 +301,11 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     //角色创建
     enum Faction { None = 0, Shang = 1, Zhou = 2 };
 
-    int m_selectFaction = None;  //阵营  None代表没选  用于判断二阶段返回 by lyy
-    std::unordered_map<uint32_t, int>                m_crtChar_csvIdMapIndex = {};
-    std::unordered_map<uint32_t, CRT_ActorInstance*> m_crtChar_csvIdMapActIns = {};
-    int                                              m_curCrtCharIndex = -1;
-    std::unordered_map<int, vector<SHeadModel>>      m_crtChar_heads= {};
-    std::vector<std::string> creatTray = {};  //创建人物的托盘排序
+    int m_selectFaction = None;  //阵营  None代表没选  用于判断二阶段返回
+    std::unordered_map<int, CRT_ActorInstance*> m_crtChar_csvIdMapActIns = {};
+    std::unordered_map<int, vector<SHeadModel>> m_crtChar_csvIdMapHeads = {};
+    int                                         headIndex = 0;
+    int                                         m_curCrtCharCsvID = -1;
+    std::vector<int>                            actSoltInTray = {3, 2, 1};
+    int                                         charAct[4] = {};  //数组索引作角色排序
 };
-
-/*----------------------------------------------------------------------------
--   End.
-----------------------------------------------------------------------------*/

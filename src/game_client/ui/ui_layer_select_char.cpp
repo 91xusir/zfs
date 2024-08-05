@@ -7,20 +7,20 @@ UILayerSelectChar::UILayerSelectChar() {
     g_workspace.Load("ui/2.selectChar.xml");
     //三个人物按钮
     for (std::size_t i = 0; i < MaxUserCharBtn; i++) {
-        m_charBtnArray[i] = LOAD_UI_T(CUiCheckButton, "Pnbutton.btnuser" + std::to_string(i));
+        m_charBtnArray[i] = LOAD_UI_T(CUiCheckButton, "roleBtn.role" + std::to_string(i));
         m_charBtnArray[i]->EvLClick +=
             RTW_CALLBACK_1(this, UILayerSelectChar, OnClicked_SelectChar, (void*)i);
     }
     //进入游戏
-    LOAD_UI("btnenter")
+    LOAD_UI("enterBtn")
         ->EvLClick.ClearAndSetDelegate(RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Enter));
     //返回上级 创建人物时有两阶段需要判断
     LOAD_UI("btnback")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Back);
     //创建人物
-    LOAD_UI("btncreaterole")->EvLClick +=
+    LOAD_UI("crtRoleBtn")->EvLClick +=
         RTW_CALLBACK(this, UILayerSelectChar, OnClicked_EngterCreateChar);
     //删除人物
-    LOAD_UI("btndeletechar")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Delete);
+    LOAD_UI("delRoleBtn")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Delete);
 
     //人物角色性别
     //人物左旋按钮
@@ -32,9 +32,9 @@ UILayerSelectChar::UILayerSelectChar() {
 
     //创建人物角色界面
 
-    LOAD_UI("fmorder.btnshang")->EvLClick +=
+    LOAD_UI("fmShangZhou.btnshang")->EvLClick +=
         RTW_CALLBACK_1(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)1);
-    LOAD_UI("fmorder.btnzhou")->EvLClick +=
+    LOAD_UI("fmShangZhou.btnzhou")->EvLClick +=
         RTW_CALLBACK_1(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)2);
 
     m_charname = LOAD_UI_T(RtwTextBox, "fmcreatid1.fmname.txtname");
