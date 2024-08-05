@@ -699,7 +699,7 @@ void GcLogin::EnterCreateChar() {
                     break;
                 case ShuShi:
                     pActor->LinkParent(m_pBody, "bno3");
-                 /*   LoadModel("ss_fj", &m_pSsJianPath);
+                    /*   LoadModel("ss_fj", &m_pSsJianPath);
                     LoadModel("iw0501jian_04", &m_pSsJian, "Blink0", &m_pSsJianPath);
                     pActor->LinkParent(m_pBody, "bno3");
                     WeaponMatrix = WorldMatrix;
@@ -708,24 +708,27 @@ void GcLogin::EnterCreateChar() {
                     m_pSsJianPath->LinkParent(pActor);*/
                     m_pSsJianPath = RtcGetActorManager()->CreateActor("ss_fj", true);
                     m_pSsJian = RtcGetActorManager()->CreateActor("iw0501jian_04", true);
-                    m_pSsJian->LinkParent(m_pSsJianPath, "Blink0");
-                    m_pSsJianPath->LinkParent(pActor);
+                    WeaponMatrix._32 += 15.f;
                     WeaponMatrix = WorldMatrix;
                     m_pSsJianPath->SetMatrix(WeaponMatrix);
+                    m_pSsJian->LinkParent(m_pSsJianPath, "Blink0");
+                    m_pSsJianPath->LinkParent(pActor);
                     break;
                 case DaoShi:
                     LoadModel("iw0401huan_04", &m_pDsLun);
                     LoadModel("ss_fl", &m_pDsLunPath);
                     pActor->LinkParent(m_pBody, "root");
                     WeaponMatrix = WorldMatrix;
-                    m_pDsLunPath->SetMatrix(WeaponMatrix);
                     m_pDsLun->LinkParent(m_pDsLunPath, "Blink0");
+                    m_pDsLunPath->SetMatrix(WeaponMatrix);
                     m_pDsLunPath->LinkParent(pActor);
                     break;
             }
             m_crtChar_csvIdMapActIns[csvID] = pActor;
+          
         }
     }
+
     int index = 0;
     for (auto& it : m_crtChar_csvIdMapActIns) {
         m_crtChar_csvIdMapIndex[index++] = it.first;
@@ -1134,6 +1137,7 @@ void GcLogin::OnRun(float fSecond) {
             if (!m_pDsLunPath->IsPlayingPose()) {
                 m_pDsLunPath->PlayPose("waiting_l1", false, 0.5f);
             }
+
             for (auto& [csvID, actInstance] : m_crtChar_csvIdMapActIns) {
                 if (!actInstance)
                     continue;
@@ -1291,12 +1295,11 @@ void GcLogin::OnRenderMask(RTGRenderMask mask, float fSecond) {
                 actor->Render(*GetDevice(), mask);
         }
     } else if (m_eCurrentStatus == GLS_CREATE_CHAR) {
-        for (int i = 0; i < m_creatActorList.size(); i++) {
-            pActor = m_creatActorList[i];
-            if (pActor) {
-                pActor->Render(GetDevice(), mask, true, true);
-            }
+        for (auto& [csvId, actorIns] : m_crtChar_csvIdMapActIns) {
+            if (actorIns)
+                actorIns->Render(GetDevice(), mask, true, true);
         }
+
         if (m_pZsDao) {
             m_pZsDao->Render(GetDevice(), mask);
         }
@@ -2012,7 +2015,7 @@ void GcLogin::OnPoseEnd(SRT_Pose* pose) {
             LOAD_UI("fmcreatid2.fmhead.lbpichead")->SetBackgroundImage(pImage);
 
             //播放人物动画
-            m_pSsJianPath->PlayPose("login_l0", false);
+            // m_pSsJianPath->PlayPose("login_l0", false);
 
             CRT_ActorInstance* shActor = GetSelectedActorByActorID(ShuShi);
             if (shActor)
