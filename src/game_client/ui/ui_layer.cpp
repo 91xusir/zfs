@@ -181,7 +181,6 @@ void UILayer::OnSetCursor(void*, void*)
 void UILayer::LeaveLoading()
 {
 	g_LoadingMapRenderer.SetRenderFlag(false);
-
 	if (g_workspace.GetLayer(2))
 		g_workspace.CloseLayer(2);
 }

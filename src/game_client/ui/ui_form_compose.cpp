@@ -81,7 +81,7 @@ UIFormItemCompose::UIFormItemCompose()
 	char tmp[128];
 	for (int i=1;i<ICT_Count-1;i++)
 	{
-		rt2_sprintf(tmp,"fssj_texture/compose%d.tga",i);
+		rt2_sprintf(tmp,"zfs_texture/compose%d.tga",i);
 		m_pBackImage[i] = g_workspace.getImageFactory()->createImage(tmp);
 		m_pBackImage[i]->SetBlend(true);
 	}

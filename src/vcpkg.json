@@ -1,11 +1,9 @@
 {
-  "name": "your-project-name",
+  "name": "zfs",
   "version": "1.0",
   "dependencies": [
     {
-      "name": "cryptopp",
-      "default-features": false,
-      "features": []
+      "name": "nlohmann-json"
     }
   ]
 }

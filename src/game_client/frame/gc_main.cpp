@@ -559,38 +559,39 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         g_pGameClientFrame->Close();
 
         // 场景系统退出
-        LOG("Exit Pre Scene\n");
+        P_LOGINFO("Exit Pre Scene\n");
         rtScenePreExit();
 
-        LOG("Exit Scene\n");
+        P_LOGINFO("Exit Scene\n");
         rtSceneExit();
 
         // 人物系统退出
-        LOG("Exit Actor\n");
+        //LOG("Exit Actor\n");
+        P_LOGINFO("Exit Actor\n");
         ActorExit();
 
         g_pMusicThread->Terminate(0);
         DEL_ONE(g_pMusicThread);
-        g_pMusicThread = NULL;
+        g_pMusicThread = nullptr;
 
         // 声音系统退出
-        LOG("Exit Pre Audio\n");
+        P_LOGINFO("Exit Pre Audio\n");
         rtAudioPreExit();
-        LOG("Exit Audio\n");
+        P_LOGINFO("Exit Audio\n");
         rtAudioExit();
 
         // 图形系统退出
-        LOG("Exit Graph\n");
+        P_LOGINFO("Exit Graph\n");
         rtGraphExit();
 
         // 删除应用程序框架
-        LOG("Exit Frame\n");
+        P_LOGINFO("Exit Frame\n");
         DEL_ONE(g_pGameClientFrame);
 
         ClearMapString();
 
         // 核心库退出
-        LOG("Exit Core\n");
+        P_LOGINFO("Exit Core\n");
         rtCoreExit();
         P_CLOSE_CONSOLE();
     }
