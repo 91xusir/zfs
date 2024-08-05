@@ -294,18 +294,56 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
    public:
     //直接public了 原则上要封装 实际懒得  add by lyy
     //角色选择
-    std::unordered_map<uint32_t, int>      m_selectChar_IDMapIndex = {};
-    std::unordered_map<uint32_t, GcActor*> m_selectChar_IDMapGcActor = {};
-    int                                    m_curSelCharIndex = -1;
+    std::unordered_map<uint32_t, int>      m_selRole_IDMapIndex = {};
+    std::unordered_map<uint32_t, GcActor*> m_selRole_IDMapGcActor = {};
+    int                                    m_curSelRoleIndex = -1;
 
     //角色创建
     enum Faction { None = 0, Shang = 1, Zhou = 2 };
 
+    enum CreateChatIds { ZhanShi = 1, FengWu = 4, ShuShi = 7, DaoShi = 10 };
+
+    struct CharSkinInfo {
+        std::string act;
+        std::string body;
+        std::string hand;
+        std::string leg;
+    };
+
+    //皮肤这里写死先 模型 身体 头 手 脚
+    static inline std::unordered_map<int, CharSkinInfo> s_mCharSkinInfo = {
+        {ZhanShi, {"pf", "bpf011", "hpf011", "lpf011"}},
+        {FengWu, {"ph", "bph001", "hph001", "lph001"}},
+        {ShuShi, {"pn", "bpn011", "hpn011", "lpn011"}},
+        {DaoShi, {"pt", "bpt008", "hpt008", "lpt008"}}};
+    static inline int s_CreatActIds_FromCsv[4] = {ZhanShi, FengWu, ShuShi, DaoShi};
     int m_selectFaction = None;  //阵营  None代表没选  用于判断二阶段返回
-    std::unordered_map<int, CRT_ActorInstance*> m_crtChar_csvIdMapActIns = {};
-    std::unordered_map<int, vector<SHeadModel>> m_crtChar_csvIdMapHeads = {};
-    int                                         headIndex = 0;
-    int                                         m_curCrtCharCsvID = -1;
-    std::vector<int>                            actSoltInTray = {3, 2, 1};
-    int                                         charAct[4] = {};  //数组索引作角色排序
+    std::unordered_map<int, CRT_ActorInstance*> m_crtRole_csvIdMapActIns = {};
+    std::unordered_map<int, vector<SHeadModel>> m_crtRole_csvIdMapHeads = {};
+    int                                         headIndex = 0;  //脑袋
+    int              m_curCrtRoleCsvID = -1;                    //模型表ID 不是模型ID
+    std::vector<int> actSoltInTray = {3, 2, 1};                 //托盘排序
+    //固定位置 和上面对应
+    std::unordered_map<int, int> m_crtRole_csvIdMapTrayIndex = {{ZhanShi, 0},
+                                                                {FengWu, 1},
+                                                                {ShuShi, 2},
+                                                                {DaoShi, 2}};
+
+   public:
+    //由于模型骨骼矩阵是 4x3 矩阵（RtgMatrix12）,而相机矩阵是 4x4 矩阵（RtgMatrix16），需要一个转换函数
+    inline static void Lyy_AdjustCameraMatrix(RtgMatrix16* matOut, RtgMatrix12* matIn) {
+        RTASSERT(matOut);
+        RTASSERT(matIn);
+        RtgVertex3 x = *(RtgVertex3*)&matIn->_00;
+        RtgVertex3 y = *(RtgVertex3*)&matIn->_10;
+        RtgVertex3 z = *(RtgVertex3*)&matIn->_20;
+        x.Normalize();
+        y.Normalize();
+        z.Normalize();
+        matOut->Identity();
+        matOut->SetRow(0, x);
+        matOut->SetRow(1, y);
+        matOut->SetRow(2, z);
+        matOut->SetRow(3, (float*)&matIn->_30);
+    }
 };

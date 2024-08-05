@@ -109,9 +109,9 @@ void UILayerSelectChar::OnClicked_SelectChar(RtwWidget* sender, RtwEventDelegate
     if (gc_login) {
         if (gc_login->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
             int iSel = (int)e->param1;
-            if (iSel == gc_login->m_curSelCharIndex)
+            if (iSel == gc_login->m_curSelRoleIndex)
                 return;
-            gc_login->m_curSelCharIndex = iSel;
+            gc_login->m_curSelRoleIndex = iSel;
             gc_login->UpdateSelectChar();
         }
     }
@@ -144,7 +144,7 @@ void UILayerSelectChar::OnClicked_Delete(void*, void*) {
         return;
     if (gc_login->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
 
-        if (gc_login->m_curSelCharIndex != -1) {
+        if (gc_login->m_curSelRoleIndex != -1) {
             gc_login->OnCharPasswordConfirm("");
         } else {
             UIFormMsg::ShowStatic(R(LMSG_PLS_CHOOSE_CHAR), UIFormMsg::TYPE_OK);
@@ -167,7 +167,7 @@ void UILayerSelectChar::OnReceivePasswordConfirm(char lRet) {
         gc_login->OnSelectUserWithPwd();
     } else {
         const GcAccountInfo& info = gc_login->GetAccountInfo();
-        int                  iSel = gc_login->m_curSelCharIndex;
+        int                  iSel = gc_login->m_curSelRoleIndex;
         if (info.users[iSel].attributes.level >= 30) {
             UIFormMsg* pFrm = UIFormMsg::ShowStatic(R(LMSG_CONFIRM_DELETE_CHAR_THIRTY),
                                                     UIFormMsg::TYPE_OK_CANCEL);
