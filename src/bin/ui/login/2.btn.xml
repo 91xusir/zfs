@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+   <!-- 选角页面左下角按钮 -->
+    <Button Anchor="right,bottom"  Inherit="PushButton" Location="698,380,80,20" Name="enterBtn" Show="true" Text="进入游戏">
+      <Anchors>
+        <Anchor offset="0,-204" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+    <Button Anchor="right,bottom"  Inherit="PushButton" Location="698,406,80,20" Name="rmbBtn" Show="true" Text="充值点数">
+      <Anchors>
+        <Anchor offset="0,-178" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+    <Button Anchor="right,bottom" Inherit="PushButton" Location="698,432,80,20" Name="crtRoleBtn" Show="true" Text="创建角色">
+      <Anchors>
+        <Anchor offset="0,-152" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+    <Button Anchor="right,bottom"  Inherit="PushButton" Location="698,458,80,20" Name="btnsetcharpwd" Show="true" Text="角色密码">
+      <Anchors>
+        <Anchor offset="0,-126" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+    <Button Anchor="right,bottom"  Inherit="PushButton" Location="698,484,80,20" Name="delRoleBtn" Show="true" Text="删除角色">
+      <Anchors>
+        <Anchor offset="0,-100" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+    <Button Anchor="right,bottom"  Inherit="PushButton" Location="698,510,80,20" Name="btnback" Show="true" Text="返回" Sound="ui_exitbt.wav">
+      <Anchors>
+        <Anchor offset="0,-74" point="BOTTOM"/>
+        <Anchor offset="-20,0" point="RIGHT"/>
+      </Anchors>
+    </Button>
+  </Layer>
+</Ui>

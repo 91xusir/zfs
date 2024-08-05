@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer DefaultLayer="true" Height="600" Index="1" Name="layworld" Show="true" Width="800">
+    <!-- 角色选择按钮 -->
+    <Form Inherit="NoTitleBarForm" Location="0,548,1035,52" Name="roleBtn" Show="false" Text="">
+      <Button Inherit="PushButton" Location="230,12,112,30" Name="role1" Show="false" Text="无"/>
+      <Button Inherit="PushButton" Location="430,12,112,30" Name="role0" Show="false" Text="无"/>
+      <Button Inherit="PushButton" Location="630,12,112,30" Name="role2" Show="false" Text="无"/>
+      <Anchors>
+        <Anchor point="BOTTOM"/>
+      </Anchors>
+    </Form>
+    <!-- 角色信息 -->
+    <Form Inherit="NoTitleBarForm" Location="10,100,128,100" Name="RoleInfo" show="false">
+      <Label Location="5,10,50,20" Name="rName" Text="角色："/>
+      <Label Location="50,10,80,20" Name="RoleName"/>
+      <Label Location="5,32,50,20" Name="rlev" Text="等级："/>
+      <Label Location="50,32,70,20" Name="Lev"/>
+      <Label Location="5,53,50,20" Name="rFaction" Text="阵营："/>
+      <Label Location="50,53,70,20" Name="Faction"/>
+      <Label Location="5,73,50,20" Name="rMiter" Text="职业："/>
+      <Label Location="50,73,70,20" Name="Miter"/>
+    </Form>
+  </Layer>
+</Ui>

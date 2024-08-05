@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Anchor="center" Inherit="VoidTitleBarForm1" Location="306,280,234,160" Movable="true" Name="fmbankpass" Show="false" StartPosition1="centerParent">
+      <Label Location="19,4,230,16" Name="lbinfo" Text="仓库密码设置(8位以下数字和字母)"/>
+      <Label FontSize="12" Location="15,27,53,16" Name="lbpass1" Show="true" Text="原有密码" TextColor="#fffffec8" TextFont="宋体"/>
+      <EditBox Inherit="" Location="73,27,126,16" Name="txtpass1" PasswordChar="*" Show="true" Text="1234567890123456"/>
+      <Label FontSize="12" Location="21,54,48,16" Name="lbpass2" Show="true" Text="新密码" TextColor="#fffffec8" TextFont="宋体"/>
+      <EditBox Inherit="" Location="74,54,126,16" Name="txtpass2" PasswordChar="*" Show="true" Text="BBBWAA333UI"/>
+      <Label FontSize="12" Location="15,79,56,16" Name="lbpass3" Show="true" Text="确认密码" TextColor="#fffffec8" TextFont="宋体"/>
+      <EditBox Inherit="" Location="74,78,126,16" Name="txtpass3" PasswordChar="*" Show="true" Text="BBBWAA333UI"/>
+      <Button FontSize="12" GrabKeyboard="true" Inherit="NewButton2" Location="29,108,67,20" Name="btnok" Sound="ui_normalbt.wav" Text="确认" TextColor="#fffbff66" TextFont="宋体"/>
+      <Button FontSize="12" GrabKeyboard="true" Inherit="NewButton2" Location="144,108,67,20" Name="btnback" Sound="ui_normalbt.wav" Text="返回" TextColor="#fffbff66" TextFont="宋体"/>
+      <Label Inherit="" Location="10,26,60,18" Name="lbtbc1" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,64,60,18"/>
+      </Label>
+      <Label Inherit="" Location="11,53,60,18" Name="lbtbc2" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,64,60,18"/>
+      </Label>
+      <Label Inherit="" Location="11,77,60,18" Name="lbtbc3" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,64,60,18"/>
+      </Label>
+      <Label Inherit="" Location="7,24,6,22" Name="lbtitle1" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+      </Label>
+      <Label Inherit="" Location="14,24,182,22" Name="lbtitle2" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+      </Label>
+      <Label Inherit="" Location="197,24,6,22" Name="lbtitle3" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+      </Label>
+      <Label Inherit="" Location="8,51,6,22" Name="lbtitle4" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+      </Label>
+      <Label Inherit="" Location="15,51,182,22" Name="lbtitle5" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+      </Label>
+      <Label Inherit="" Location="197,51,6,22" Name="lbtitle6" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+      </Label>
+      <Label Inherit="" Location="8,75,6,22" Name="lbtitle7" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+      </Label>
+      <Label Inherit="" Location="15,75,182,22" Name="lbtitle8" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+      </Label>
+      <Label Inherit="" Location="197,75,6,22" Name="lbtitle9" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+      </Label>
+      <Anchors>
+        <Anchor offset="-80,0" point="CENTERV"/>
+        <Anchor offset="0,-25" point="CENTERH"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Anchor="center" Inherit="TitleBarForm" Location="308,196,234,162" Name="fmcard" Show="false" StartPosition1="centerParent">
+      <Label Location="24,4,180,16" Name="lbinfo" Text="请输入道具码"/>
+      <EditBox Inherit="EditBox" Location="64,28,126,16" Name="txtcard" Text="1234567890123456"/>
+      <Label Location="23,28,40,16" Name="lbcardno" Text="道具码"/>
+      <Label Location="24,48,48,16" Name="lbcardpass" Show="false" Text="密码"/>
+      <EditBox Inherit="EditBox" Location="64,50,126,16" Name="txtpass" Show="false" Text=""/>
+      <Button GrabKeyboard="true" Inherit="PushButton" Location="40,82,64,20" Name="btnok" Text="确认"/>
+      <Button GrabKeyboard="true" Inherit="PushButton" Location="126,82,64,20" Name="btnback" Text="返回"/>
+    </Form>
+  </Layer>
+</Ui>

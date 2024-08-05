@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="VoidTitleBarForm1" Location="326,209,250,150" Movable="true" Name="fmseparate" Show="false">
+      <Button DragSewer="true" Inherit="" Location="109,53,32,32" Name="btntbc1" Show="true"/>
+      <Button FontSize="12" Inherit="NewButton1" Location="161,99,60,21" Name="btntbc2" Show="true" Sound="ui_normalbt.wav" Text="取消" TextColor="#fffbff66" TextFont="宋体"/>
+      <Button FontSize="12" Inherit="NewButton1" Location="35,99,60,21" Name="btntbc3" Show="true" Sound="ui_normalbt.wav" Text="分解" TextColor="#fffbff66" TextFont="宋体"/>
+      <Label DragSewer="true" Inherit="" Location="106,50,38,38" Name="lbxmm" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+      </Label>
+      <Label FontSize="12" Inherit="" Location="33,10,200,18" Name="lbword1" Show="true" Text="将武器、防具、戒指、项链放入，" TextColor="#fffcffc6" TextFont="宋体"/>
+      <Label FontSize="12" Inherit="" Location="33,29,180,18" Name="lbword2" Show="true" Text="可分解装备必须绿色品质以上。" TextColor="#fffcffc6" TextFont="宋体"/>
+      <Anchors>
+        <Anchor offset="-60,0" point="CENTERV"/>
+        <Anchor offset="0,-100" point="CENTERH"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>

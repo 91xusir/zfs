@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form Inherit="TitleBarForm" Location="374,165,240,368" Name="fmitem" Show="false">
+      <TabCtrl Dock="fill" Location="9,126,216,162" Name="tabitem">
+        <TabItem>
+          <CheckButton Inherit="SelectButton" Location="1,0,60,18" Name="btnnormalitem" TargetID="fmnormalitem" Text="道具"/>
+          <Form FadeIn="true" Inherit="" Location="1,19,219,147" Name="fmnormalitem">
+            <BackgroundImage Blend="true" Border="1,1,1,1" BorderBlend="true" BorderFile="zfs_texture/bd.tga" BorderSource="11,41,6,6" File="" Source="0,52,24,23"/>
+            <Button BackgroundColor="#00000000" BorderCorlor="#227b6129" BorderSize="2" Name="itembutton"/>
+          </Form>
+        </TabItem>
+        <TabItem>
+          <CheckButton Inherit="SelectButton" Location="61,0,60,18" Name="btntaskitem" TargetID="fmtaskitem" Text="任务"/>
+          <Form BackgroundTransparent="0.3" BorderCorlor="#227b6129" BorderSize="2" FadeIn="true" Inherit="" Location="1,19,219,147" Name="fmtaskitem">
+            <BackgroundImage Blend="true" Border="1,1,1,1" BorderBlend="true" BorderFile="zfs_texture/bd.tga" BorderSource="11,41,6,6" File="" Source="0,52,24,23"/>
+          </Form>
+        </TabItem>
+      </TabCtrl>
+      <Form BackgroundTransparent="0.75" Location="10,3,220,122" Movable="false" Name="panItem">
+        <BackgroundImage Blend="true" File="zfs_texture/ui_4.tga" Source="20,0,220,167" Transparency="0.75"/>
+        <Button Location="45,1,34,34" Name="btnNecklace">
+          <BackgroundImage Blend="true" File="" Source="0,135,34,34"/>
+        </Button>
+        <Button Location="132,2,34,34" Name="btnCharm">
+          <BackgroundImage Blend="true" File="" Source="73,135,34,34"/>
+        </Button>
+        <Button Location="5,33,34,34" Name="btnRightHand">
+          <BackgroundImage Blend="true" File="" Source="222,135,34,34"/>
+        </Button>
+        <Button Location="42,59,34,34" Name="btnGlove">
+          <BackgroundImage Blend="true" File="" Source="35,95,34,34"/>
+        </Button>
+        <Button Location="87,29,35,34" Name="btnCloth">
+          <BackgroundImage Blend="true" File="" Source="35,135,34,34"/>
+        </Button>
+        <Button Location="91,-450,0,0" Name="btnPants">
+          <BackgroundImage Blend="true" File="" Source="110,135,34,34"/>
+        </Button>
+        <Button Location="139,60,34,34" Name="btnRing">
+          <BackgroundImage Blend="true" File="" Source="185,135,34,34"/>
+        </Button>
+        <Button Location="177,33,34,34" Name="btnLeftHand">
+          <BackgroundImage Blend="true" File="" Source="0,95,34,34"/>
+        </Button>
+        <Button Location="89,84,35,34" Name="btnShoes">
+          <BackgroundImage Blend="true" File="" Source="147,135,34,34"/>
+        </Button>
+      </Form>
+      <Button Location="194,294,32,32" Name="btnTrash">
+        <NormalImage Blend="true" File="zfs_texture/ui_3.tga" Source="223,56,32,32"/>
+        <PushedImage Blend="true" File="zfs_texture/ui_3.tga" Source="223,129,32,32"/>
+        <HighlightImage Blend="true" File="zfs_texture/ui_3.tga" Source="223,89,32,32"/>
+        <Hint Text="把东西拉到这里可以销毁"/>
+      </Button>
+      <Button Location="14,294,34,35" Name="btnPass">
+        <NormalImage Blend="true" File="zfs_texture/ui_7.tga" Source="0,0,32,32"/>
+        <PushedImage Blend="true" File="zfs_texture/ui_7.tga" Source="91,1,32,32"/>
+        <HighlightImage Blend="true" File="zfs_texture/ui_7.tga" Source="43,1,32,32"/>
+        <Hint Text="把道具拖到这里可以进行密码绑定与解除"/>
+      </Button>
+      <Button BorderCorlor="#ff94825a" BorderSize="10,10,10,10" Location="136,295,12,16" Name="btnitemleft">
+        <NormalImage Blend="true" File="zfs_texture/ui_3.tga" Source="158,62,14,17"/>
+        <PushedImage Blend="true" File="zfs_texture/ui_3.tga" Source="159,97,14,18"/>
+        <HighlightImage Blend="true" File="zfs_texture/ui_3.tga" Source="97,97,14,17"/>
+        <BackgroundImage Blend="true" Border="1,1,1,1" BorderFile="" BorderSource="0,0,10,10"/>
+      </Button>
+      <Button BorderCorlor="#ff94825a" BorderSize="10,10,10,10" Location="175,295,12,16" Name="btnitemright">
+        <NormalImage Blend="true" File="zfs_texture/ui_3.tga" Source="196,62,14,18"/>
+        <PushedImage Blend="true" File="zfs_texture/ui_3.tga" Source="196,96,14,18"/>
+        <HighlightImage Blend="true" File="zfs_texture/ui_3.tga" Source="135,96,14,18"/>
+        <BackgroundImage Blend="true" Border="1,1,1,1" BorderFile="" BorderSource="0,0,10,10"/>
+      </Button>
+      <Label Location="53,295,16,16" Name="lbgold">
+        <BackgroundImage Blend="true" File="zfs_texture/ui_3.tga" Source="133,61,18,18"/>
+      </Label>
+      <Label Alignment="far" Location="71,295,62,16" Name="lbgoldnum" Text="300000000">
+        <BackgroundImage Blend="true" Border="1,1,1,1" BorderFile="zfs_texture/bd.tga" BorderSource="72,12,2,2"/>
+      </Label>
+      <Label Alignment="center" Location="149,295,25,16" Name="lbpage" Text="1/2"/>
+    </Form>
+  </Layer>
+</Ui>

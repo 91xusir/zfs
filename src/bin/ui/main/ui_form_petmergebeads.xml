@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer Name="layworld" Show="true">
+    <Form EscapeHide="true" Inherit="" Location="59,148,310,454" Movable="true" Name="fmmergebeads" Show="false">
+      <Form BackgroundColor="" Inherit="" Location="9,44,294,155" Name="fmtext" Show="true">
+        <ScrollBarV Inherit="Scroll1" Location="283,-1,11,155" Name="sbvmm" Show="true"/>
+        <Form Inherit="" Location="287,0,2,145" Name="fmmm" Show="true">
+          <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="486,148,2,24"/>
+        </Form>
+        <Label Inherit="" Location="5,3,278,18" Name="1563" Show="true" Text="帮助说明：" TextColor="#FFD700"/>
+        <Label Inherit="" Location="5,18,278,18" Name="1643" Show="true" Text="融阴  ：幽鬼类宠物镶嵌阴魂珠提升融阴等级。"/>
+        <Label Inherit="" Location="5,33,278,18" Name="1689" Show="true" Text="限制  ：必须是幽鬼类宠物。"/>
+        <Label Inherit="" Location="5,48,278,18" Name="1794" Show="true" Text="阴魂珠：宠物融阴必须的物品。"/>
+        <Label Inherit="" Location="5,64,278,18" Name="1838" Show="true" Text="小提示：融阴必定会成功，但会发生覆盖和替换。" TextColor="#FF0000"/>
+        <Label Inherit="" Location="53,79,220,18" Name="1883" Show="true" Text="阴魂珠品质越高，融阴等级越升越明显。" TextColor="#FF0000"/>
+        <Label Inherit="" Location="53,96,220,18" Name="1929" Show="true" Text="融阴等级越高，附体后主人得到属性加成" TextColor="#FF0000"/>
+        <Label Inherit="" Location="53,111,220,18" Name="1976" Show="true" Text="越多。" TextColor="#FF0000"/>
+        <Label BackgroundColor="#A50E593A" Inherit="" Location="0,-1,290,155" Name="lbtext" Show="true">
+          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="469,83,18,20"/>
+        </Label>
+      </Form>
+      <Label Inherit="" Location="0,-1,310,50" Name="lbborder1" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,1,310,50"/>
+        <Label Alignment="center" FontSize="18" Location="69,4,175,18" Name="lbxmm" Show="true" Text="宠物融阴" TextColor="#ffdfde9b" TextFont="隶书"/>
+      </Label>
+      <CloseButton Location="284,14,20,20" Move="btnswitch" padding="0,22,5,0">
+        <NormalImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="359,83,20,20"/>
+      </CloseButton>
+      <Label Inherit="" Location="0,432,310,23" Name="lbborder3" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,65,310,23"/>
+      </Label>
+      <Form BackgroundColor="#A50E593A" Inherit="" Location="9,202,290,240" Name="fmbaby" Show="true">
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+        <Label FontSize="12" Inherit="" Location="14,208,40,18" Name="1085" Show="true" Text="成功率" TextFont="宋体"/>
+        <Label FontSize="12" Inherit="" Location="187,55,44,18" Name="lbtext1" Show="true" Text="阴魂珠" TextColor="#fffcffc6" TextFont="宋体"/>
+        <Button DragSewer="true" Inherit="" Location="234,58,32,32" Name="btnitem1" Show="true"/>
+        <Label Inherit="" Location="184,54,44,18" Name="lbtbc1" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="421,64,62,18"/>
+        </Label>
+        <Label DragSewer="true" Inherit="" Location="232,54,38,38" Name="lbmm1" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+        </Label>
+        <Button FontSize="12" Inherit="NewButton1" Location="186,104,40,20" Name="btncompose" Show="true" Sound="ui_normalbt.wav" Text="融阴" TextColor="#fffbff66" TextFont="宋体"/>
+        <Label Inherit="" Location="12,208,46,18" Name="754" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,64,60,18"/>
+        </Label>
+        <Label Inherit="" Location="62,209,30,18" Name="lbmoney" Show="true" Text="100"/>
+        <Label Inherit="" Location="16,206,82,22" Name="lbwlk2" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        </Label>
+        <Label Inherit="" Location="99,206,6,22" Name="lbwlk3" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        </Label>
+        <Label Inherit="" Location="9,206,6,22" Name="lbwlk1" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        </Label>
+        <ComboBox Inherit="ComboBox" Location="10,28,110,18" Name="cbtlist1" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,64,60,18"/>
+        </ComboBox>
+        <D3DView Inherit="" Location="0,52,124,140" Name="fmmianpet" Show="true">
+          <Label Inherit="" Location="7,5,110,130" Name="lbpet" Show="true">
+            <BackgroundImage Blend="true" File="ui\textures\9_a.tga" Source="1,132,163,166"/>
+          </Label>
+        </D3DView>
+        <Label DragSewer="true" Inherit="" Location="126,151,34,34" Name="lbJewelry1" Show="true"/>
+        <Label DragSewer="true" Inherit="" Location="164,151,34,34" Name="lbJewelry2" Show="true"/>
+        <Label DragSewer="true" Inherit="" Location="202,151,34,34" Name="lbJewelry3" Show="true"/>
+        <Label DragSewer="true" Inherit="" Location="240,151,34,34" Name="lbJewelry4" Show="true"/>
+        <Label DragSewer="true" Inherit="" Location="124,149,38,38" Name="lbJewelry11" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+        </Label>
+        <Label DragSewer="true" Inherit="" Location="162,149,38,38" Name="lbJewelry12" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+        </Label>
+        <Label DragSewer="true" Inherit="" Location="200,149,38,38" Name="lbJewelry13" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+        </Label>
+        <Label DragSewer="true" Inherit="" Location="238,149,38,38" Name="lbJewelry14" Show="true">
+          <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+        </Label>
+      </Form>
+      <Label BackgroundColor="#A016712C" Inherit="" Location="0,50,310,381" Name="lbborder2" Show="true">
+        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,53,310,10"/>
+      </Label>
+      <Anchors>
+        <Anchor offset="-295,0" point="CENTERV"/>
+        <Anchor offset="0,-10" point="CENTERH"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>

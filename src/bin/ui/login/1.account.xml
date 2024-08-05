@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="GBK"?>
+<Ui>
+  <Layer DefaultIndex="true" Height="600" Index="1" Name="layworld" Show="true" Width="800">
+    <Form Anchor="right,bottom" Inherit="TitleBarForm" Location="578,196,214,150" Name="loginForm" Show="false" StartPosition1="centerParent">
+      <CloseButton Show="false"/>
+      <TitleBar Text="登     陆"/>
+      <Label Location="45,3,50,16" Name="ttServerName" Text="当前服" />
+      <Label Location="95,3,70,16" Name="selectServerName" Text=""/>
+      <Label Location="54,26,30,16" Name="lbAccout" Text="帐号"/>
+      <EditBox Inherit="EditBox" Location="90,26,86,16" Name="txtAccout"/>
+      <Label Location="54,48,30,16" Name="lbPwd" Text="密码"/>
+      <EditBox Inherit="EditBox" Location="90,48,86,16" Name="txtPwd" PasswordChar="*" Password="true"/>
+      <Label Location="90,68,100,16" Name="lbSaveAcc" Text="保存帐号"/>
+      <CheckButton Inherit="CheckButton" Location="62,70,12,12" Name="ckSaveAcc" MouseMove="true" how="true" Sound="ui_softb_bt.wav" />
+      <Button GrabKeyboard="true" Inherit="PushButton" Location="32,90,64,20" Name="btnOk" Text="确认"/>
+      <Button GrabKeyboard="true" Inherit="PushButton" Location="118,90,64,20" Name="btnBack" Text="返回" Sound="ui_exitbt.wav"/>
+      <Anchors>
+        <Anchor offset="-15,0" point="RIGHT"/>
+        <Anchor offset="0,-300" point="BOTTOM"/>
+      </Anchors>
+    </Form>
+  </Layer>
+</Ui>
