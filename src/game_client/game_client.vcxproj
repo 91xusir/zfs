@@ -79,11 +79,19 @@
     <VcpkgUseStatic>true</VcpkgUseStatic>
     <VcpkgUseMD>false</VcpkgUseMD>
   </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
+    <VcpkgUseMD>false</VcpkgUseMD>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <VcpkgUseStatic>true</VcpkgUseStatic>
+    <VcpkgUseMD>false</VcpkgUseMD>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include\atl;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;_HAS_STD_BYTE=0;WIN32;_DEBUG;_WINDOWS;USE_D3DX9;_WIN32_WINNT=0x0601;LUA_OPNAMES;DO_CONSOLE;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;ENABLE_OPERATOR_NEW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CPPHTTPLIB_OPENSSL_SUPPORT;WIN32_LEAN_AND_MEAN;NOMINMAX;_HAS_STD_BYTE=0;WIN32;_DEBUG;_WINDOWS;USE_D3DX9;_WIN32_WINNT=0x0603;LUA_OPNAMES;DO_CONSOLE;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;ENABLE_OPERATOR_NEW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -115,7 +123,7 @@
       <AdditionalOptions>/Oy- %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include\atl;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;_HAS_STD_BYTE=0;WIN32;NDEBUG;_WINDOWS;USE_D3DX9;LUA_OPNAMES;USE_D3D9;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CPPHTTPLIB_OPENSSL_SUPPORT;WIN32_LEAN_AND_MEAN;NOMINMAX;_HAS_STD_BYTE=0;WIN32;NDEBUG;_WINDOWS;USE_D3DX9;LUA_OPNAMES;USE_D3D9;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -125,6 +133,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
     </ClCompile>
     <Link>
       <AdditionalDependencies>d3dx9.lib;d3d9.lib;graph_mt.lib;net_mt.lib;core_mt.lib;audio_mt.lib;libjpeg_MT.lib;ddraw.lib;dsound.lib;dinput8.lib;dxguid.lib;dxerr8.lib;timidity_mt.lib;mikmod_mt.lib;native_midi_mt.lib;character_mt.lib;scene_mt.lib;filepack_mt.lib;ui_mt.lib;gdi32.lib;user32.lib;Shell32.lib;Advapi32.lib;Ole32.lib</AdditionalDependencies>

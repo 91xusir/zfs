@@ -194,7 +194,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">
     <ClCompile>
-      <Optimization>Disabled</Optimization>
+      <Optimization>MaxSpeed</Optimization>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\engine\head;$(ProjectDir)..\..\sdk\include\dxsdk</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;GAME_CLIENT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>

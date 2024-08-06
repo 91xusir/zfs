@@ -180,29 +180,20 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
     RtIni graphIni;
     if (!graphIni.OpenFile(szGraphIni))
         return false;
+
     if (szUserIni)
     {
         RtIni userIni;
-		if (!userIni.OpenFile(szUserIni))
-		{
-			if (!graphIni.OpenFile(szGraphIni))
-				return false;
-		}
-		else
-		{
-			if (Init(hInst, pEventClass, pCameraClass, &graphIni, &userIni))
-			{
-				return true;
-			}
-			else
-			{
-				if (!graphIni.OpenFile(szGraphIni))
-					return false;
-			}
-		}
+        if (userIni.OpenFile(szUserIni))
+        {
+            if (Init(hInst, pEventClass, pCameraClass, &graphIni, &userIni))
+                return true;
+        }
+        // 如果用户配置文件打开失败或者初始化失败，继续使用图形配置文件
     }
-    return Init(hInst, pEventClass, pCameraClass, &graphIni, NULL);
+    return Init(hInst, pEventClass, pCameraClass, &graphIni, nullptr);
 }
+
 
 bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeClass* pCameraClass, RtIni* pGraphIni, RtIni* pUserIni)
 {
@@ -213,8 +204,9 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
 
     m_hAppInstance = hInst;
 
-    m_pEvent = (RtgDeviceEvent*)(pEventClass->CreateObject());
-    SetCamera((RtgCamera*)(pCameraClass->CreateObject()));
+
+    m_pEvent = static_cast<RtgDeviceEvent*>(pEventClass->CreateObject());
+    SetCamera(static_cast<RtgCamera*>(pCameraClass->CreateObject()));
 
 
     DEVMODE devMode;
@@ -227,10 +219,7 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
     s_ResumeDefaultDisplayMode.dwRefreshRate  = devMode.dmDisplayFrequency;
     ReadGraphIni(pGraphIni);
     ReadUserIni(pUserIni);
-    //lyymark 默认取消全屏
-    m_userConfig.bFullscreen = false;
     ApplyConfig();
-
     RtgImage::StaticInit();
 
     if (!OnPreCreate3DDevice())

@@ -253,7 +253,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
             RT_NEW             CRtPackAndAnsiManager(pPackManager, &RtCoreFile());
         RtCore::Instance().pFileManager = pAllManager;
 
-        long sizePack = pPackManager->FileSize("clt_engine.ini");
+    
 
         //游戏的最开始的配置文件
         string ErrorString;
@@ -394,7 +394,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
             ShowMessage(R(MSG_CANNOTINIT_GRAPH));
             return FALSE;
         }
-
+        //lyytodo 替换json
         //lyymark 1.Game.Init 整个游戏的初始化入口 图形标题配置加载
         if (!GetDevice()->Init(
                 hInstance, RT_RUNTIME_CLASS(CGameClientFrame), RT_RUNTIME_CLASS(GcCamera),

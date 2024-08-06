@@ -72,7 +72,7 @@ static bool  bShowFps = false;
 
 static float dwShowTime = 0.f;  //新手提示显示时间
 static int   hitCount = 0;      //新手连续点击数
-
+//lyytodo clt_graph.ini替换json
 void GetHideConfig() {
     RtIni iniGame;
     if (!iniGame.OpenFile("clt_graph.ini")) {

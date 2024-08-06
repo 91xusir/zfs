@@ -39,26 +39,26 @@ namespace rt_graph {
             DeleteTexture(*i);
         }
 
-#ifdef _DEBUG
-		// Comment by Wayne Wong 2010-11-11 
-        //RTASSERT(m_mapText.empty());
-        RTASSERT(m_setText.empty());
-#else
-        for (map<string, RtgTextItem*>::iterator i = m_mapText.begin();
-             i != m_mapText.end(); ++i)
-        {
-            RtgTextItem* texItem = i->second;
-            RtCoreLog().Error("texture unrelease(ref = %d) : %s\n", texItem->Ref, texItem->fileName);
-        }
+    #ifdef _DEBUG
+		    // Comment by Wayne Wong 2010-11-11 
+            //RTASSERT(m_mapText.empty());
+            RTASSERT(m_setText.empty());
+    #else
+            for (map<string, RtgTextItem*>::iterator i = m_mapText.begin();
+                 i != m_mapText.end(); ++i)
+            {
+                RtgTextItem* texItem = i->second;
+                RtCoreLog().Error("texture unrelease(ref = %d) : %s\n", texItem->Ref, texItem->fileName);
+            }
 
-        for (set<RtgTextItem*>::iterator i = m_setText.begin();
-            i != m_setText.end(); ++i)
-        {
-            RtgTextItem* texItem = *i;
-            RtCoreLog().Error("texture unrelease(ref = %d) : %s\n", texItem->Ref, texItem->fileName);
+            for (set<RtgTextItem*>::iterator i = m_setText.begin();
+                i != m_setText.end(); ++i)
+            {
+                RtgTextItem* texItem = *i;
+                RtCoreLog().Error("texture unrelease(ref = %d) : %s\n", texItem->Ref, texItem->fileName);
+            }
+    #endif
         }
-#endif
-    }
 
     bool RtgTextureManager::Init()
     {
