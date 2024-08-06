@@ -3,7 +3,7 @@
 #define uimain_h__
 
 #include "ui/rtw_ui.h"
-#include "../preConsole.h"
+#include "../PreConsole.h"
 #include <string>
 
 #define LOAD_UI(name) LoadUI(name)

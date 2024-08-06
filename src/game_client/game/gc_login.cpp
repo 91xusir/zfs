@@ -9,7 +9,7 @@
 #include "ui_form_textMsg.h"
 #include <net/g_tcpsession.h>
 #include <unordered_map>
-#include "../preConsole.h"
+#include "../PreConsole.h"
 #include <graph/rtg_matrix.h>
 #include <string>
 #include <cstdio>

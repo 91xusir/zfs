@@ -1356,22 +1356,22 @@
     <ClInclude Include="game\NesClient.h">
       <Filter>frame\nes</Filter>
     </ClInclude>
-    <ClInclude Include="preConsole.h">
+    <ClInclude Include="PreConsole.h">
       <Filter>refactor-重构代码放这里\utils</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>other</Filter>
     </ClInclude>
-    <ClInclude Include="lyyUtils.h">
+    <ClInclude Include="LyyUtils.h">
       <Filter>refactor-重构代码放这里\utils</Filter>
     </ClInclude>
-    <ClInclude Include="fpsLimit.h">
+    <ClInclude Include="FpsLimit.h">
       <Filter>refactor-重构代码放这里\utils</Filter>
     </ClInclude>
     <ClInclude Include="game\gc_login.h">
       <Filter>refactor-重构代码放这里\login</Filter>
     </ClInclude>
-    <ClInclude Include="httpReq.h">
+    <ClInclude Include="HttpReq.h">
       <Filter>refactor-重构代码放这里\utils</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1996,16 +1996,16 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>other</Filter>
     </ClCompile>
-    <ClCompile Include="fpsLimit.cpp">
+    <ClCompile Include="FpsLimit.cpp">
       <Filter>refactor-重构代码放这里\utils</Filter>
     </ClCompile>
-    <ClCompile Include="preConsole.cpp">
+    <ClCompile Include="PreConsole.cpp">
       <Filter>refactor-重构代码放这里\utils</Filter>
     </ClCompile>
     <ClCompile Include="game\gc_login.cpp">
       <Filter>refactor-重构代码放这里\login</Filter>
     </ClCompile>
-    <ClCompile Include="httpReq.cpp">
+    <ClCompile Include="HttpReq.cpp">
       <Filter>refactor-重构代码放这里\utils</Filter>
     </ClCompile>
   </ItemGroup>

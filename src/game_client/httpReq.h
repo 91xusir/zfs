@@ -12,8 +12,7 @@ class HttpReq {
     using Callback = std::function<void(const nlohmann::json&)>;
     static std::shared_ptr<HttpReq> getInstance();
     void                            asyncGet(const std::string& url, Callback callback);
-    static std::string              GbkToUtf8(const char* src_str);
-    static std::string              Utf8ToGbk(const char* src_str);
+
 
    private:
     HttpReq::HttpReq() : m_client(nullptr){}

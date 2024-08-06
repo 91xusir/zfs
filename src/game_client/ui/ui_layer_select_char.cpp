@@ -1,11 +1,11 @@
 #include "gc_include.h"
 #include "gc_login.h"
 #include "ui_form_msg.h"
-#include "../httpReq.h"
 #include <nlohmann/json.hpp>
 #include "ui_layer_select_char.h"
 #include <ui/rtw_workspace.h>
-
+#include "../HttpReq.h"
+#include "../LyyUtils.h"
 /*
 lyy 2024.8.6 重构
 */
@@ -229,7 +229,7 @@ void UILayerSelectChar::OnSetRandName(const nlohmann::json& json_response) {
         return;
     }
     std::string name = json_response["data"]["word"];
-    m_usrRoleName->SetText(HttpReq::Utf8ToGbk(name.c_str()));
+    m_usrRoleName->SetText(LyyUtils::Utf8ToGbk(name.c_str()));
 }
 
 //上一个发型

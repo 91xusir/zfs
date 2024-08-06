@@ -1,16 +1,75 @@
 # game client  (gc) 文档
 
-## 一、开发计划与日志
+## 一、开发日志
 
 - [x] 修改登录动画
 - [x] 修复材质帧动画
 - [x] 添加登录流程锁帧逻辑 优化cpu占用
-- [ ] 修改登录页面UI
-- [ ] 确定游戏主题总共几个线程
+- [x] 修改登录页面UI
+- [x] 修复超链接BU
 
-## 二、流程分析
+## 二、整体流程概述
+1.读取命令行配置信息
 
-![ImageToStl.com_游戏主循环流程图](client/ImageToStl.com_游戏主循环流程图.png)
+2.初始化核心库读取外部引擎配置文件clt_engine.ini。
+
+3.添加打包管理并解包game_client.pak游戏未打包的话也不会产生异常。
+
+4.读取语言版本配置文件游戏版本配置文件为version_config.ini，一般会读取version\chinese_gb\config_boot.ini，此为中国大陆简体中文版的配置文件。同时这里还读入了游戏基本规则外部配置文件version\chinese_gb\config\game_rule.ini
+
+5.读取Strmap.csv文件所在目录language\english\Strmap.csv
+
+6.读取游戏配置文件，并设置配置信息所在目录：version/chinese_gb/config/game.ini，设置如下配置信息，全屏模式、贴图质量、特效质量、阴影质量、全屏抗锯齿、环境反射、反射人物、后期处理、后期加强、音乐音量、音效音量、用3D音效。完成后如有用户自己的配置信息，则还重新读取用户配置文件。
+
+7.取得向导服务器的IP地址和端口，并且去取得GameWorld服务器列表。先从命令行配置中读取IP，如没有读取到再从game.ini中获取相关信息
+
+8.取得Log Server的IP地址和端口，并初始化LogSender 先从命令行配置中读取IP，如没有读取到再从game.ini中获取相关信息
+
+9.读取游戏版本信息所在目录：version\chinese_gb\config\version.ini
+
+10. ~~更新注册表如果是第一次运行，就发送PC Info~~
+
+11.初始化图形系统，在此创建并初始化了图形绘制设备，并为其注册了相关的应用程序框架类CGameClientFrame。同时在CGameClientFrame:: OnFrameInit中加载大量与游戏相关的excel表格
+
+12.初使化声音系统，并打开背景音乐在此要设置游戏中所有声音存放的路径，背景音乐播放的是登录画面的音乐。
+
+13.创建应用程序框架
+
+14.初使化场景系统同时要注册场景模型，材质，特效的存放路径。
+
+15.初使化人物系统同时要注册人物模型，材质，特效的存放路径。
+
+16.进入登录系统
+
+17.用户ini初始化
+
+18.应用程序框架初始化
+
+19.读取登录服务器IP与端口暂时从命令行中读取
+
+20.进入游戏主循环
+首先由绘制设备调用run()函数，其中调用了其父类CD3DApplication的run()函数进入消息循环。
+
+如果没接受到退出消息，将一直执行Render3DEnvironment()，
+
+其中主要用到两个函数，逻辑处理FrameMove()与游戏渲染Render()。
+
+FrameMove()中调用了框架类CGameClientFrame中的OnFrameMove()，其中主要调用了游戏登录GcLogin或游戏进行GcWorld流程处理类的OnRun()进行逻辑处理，网络同步等。
+
+同样Render ()中调用了框架类CGameClientFrame中的OnRender ()，其中主要更新摄像机，并调用了游戏登录GcLogin或游戏进行GcWorld流程处理类的OnRender ()进行场景中所有物件的渲染处理，之后还要UI的绘制。 
+
+21.应用程序框架退出
+22.删除摄像机
+23.人物系统退出
+24.场景系统退出
+25.声音系统退出
+26.图形系统退出
+27.删除应用程序框架
+28.核心库退出
+
+## 三、登录流程细节分析
+
+![img](client/wpsB5D1.tmp.png)
 
 ```c++
 //应用程序的进入点
@@ -563,3 +622,7 @@ rtCoreExit();
 
 
 ```
+
+## 四、键盘鼠标输入事件
+
+[客户端键盘鼠标事件分析](./client/客户端鼠标键盘输入事件分析.md)
