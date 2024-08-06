@@ -1,6 +1,6 @@
 #include "gc_include.h"
 #include "ui_form_gm.h"
-
+#include <mmsystem.h> 
 #define MAX_MESSAGE_BYTES		128
 #define MAX_TITLE_BYTES			64
 

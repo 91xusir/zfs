@@ -1,10 +1,10 @@
 #include "gc_include.h"
 #include "ui_layer.h"
 #include "gc_login.h"
-#include "ui_form_msg.h"
+//#include "ui_form_msg.h"
 #include <algorithm>
 #include <cctype>
-
+#include "shellapi.h"
 extern void global_closeApp(void*, void*, void*);
 
 static bool IsValidAccountName(const string& name) {
@@ -165,7 +165,7 @@ void UILayerLogin::onTab(RtwWidget* sender, RtwEventDelegate* e) {
 }
 
 void UILayerLogin::OnUpdateText(RtwWidget* sender, RtwEventDelegate* e) {
-    OnClicked_Login(NULL, NULL);
+   
 }
 
 //lyymark 2.GcLogin.UI.OnClicked_EnterUserLogin 进入用户登录页面

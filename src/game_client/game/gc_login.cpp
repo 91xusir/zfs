@@ -14,12 +14,16 @@
 #include <string>
 #include <cstdio>
 #include <type_traits>
-
-std::string GcLogin::m_szAccountUsername = "";  //类外静态变量初始化
-std::string GcLogin::m_szAccountPassword = "";
+#include <gc_frame.h>
+/*
+lyy  2024 8.1-8.4  重构 添加注释  删除约1500行垃圾代码
+*/
+//类外静态变量初始化
+std::string GcLogin::m_szAccountUsername = "";  //账户名
+std::string GcLogin::m_szAccountPassword = "";  //密码
 
 GcLogin::GcLogin(CGameClientFrame* pGameClientFrame) : m_ini(true) {
-    m_pGameClientFrame = pGameClientFrame;
+    m_pGameClientFrame = pGameClientFrame;  //客户端句柄？
 }
 
 GcLogin::~GcLogin() {}
@@ -130,9 +134,7 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
     guard;
     RtString           szLink, szName;
     CRT_ActorInstance *pBody = nullptr, *pActor = nullptr;
-    // 查找INI文件中指定名称的节
     pIni->FindSection(szSectionName.c_str());
-    // 获取第一个条目
     if (pIni->FirstEntry(&szLink, &szName)) {
         do {
             pActor = RtcGetActorManager()->CreateActor(szName, true);  // 创建一个actor实例
@@ -141,9 +143,6 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
             // 如果不是CreateChar，则播放动画 CreateChar后面单独播放
             if (szSectionName != "CreateChar") {
                 pActor->PlayPose(true);
-            }
-            if (szLink == "yangguang") {
-                pActor->PlayPose("scene", true);
             }
             mapActor[std::string(szLink)] = pActor;  // 将actor实例添加到映射中
             if (szLink == "Body") {  // 如果链接名称为"Body"，则将当前actor实例设为主体
@@ -160,9 +159,7 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
 }
 
 bool GcLogin::InitOnce() {
-    guard;
     return true;
-    unguard;
 }
 
 bool GcLogin::ClearOnce() {
@@ -258,12 +255,10 @@ void GcLogin::SetLoginState(EStatus eState) {
 }
 
 CRT_ActorInstance* GcLogin::FindModel(const std::string& szName) {
-    guard;
     auto it = m_mapActor.find(szName);
     if (it != m_mapActor.end())
         return it->second;
     return nullptr;
-    unguard;
 }
 
 // lyymark 2.GcLogin 修复相机位置矩阵 by lyy 2024-07-30
@@ -289,7 +284,7 @@ void GcLogin::EnterSelectGameWorldServer() {
     g_layerLogin->mp_layerServer->Show();  //显示服务器列表
 }
 
-bool GcLogin::LeaveSelectGameWorldServer() {
+bool GcLogin::LeaveSelectGameWorldServer() const {
     CHECK(m_eCurrentStatus == GLS_SELECT_GAMEWORLD_SERVER);
     g_layerLogin->mp_layerServer->Hide();
     EndGetGameWorldServer();  //结束获取游戏世界服务器
@@ -337,7 +332,7 @@ void GcLogin::EnterLogin() {
     g_layerLogin->Show();
 }
 
-bool GcLogin::LeaveLogin() {
+bool GcLogin::LeaveLogin() const {
     guard;
     CHECK(m_eCurrentStatus == GLS_LOGIN);
     g_layerLogin->Hide();
@@ -345,7 +340,6 @@ bool GcLogin::LeaveLogin() {
     unguard;
 }
 
-// edit by lyy  2024.8.5
 void GcLogin::EnterSelectChar() {
     guard;
     DXUtil_Timer(TIMER_RESET);  //用于解除帧数限制快速加载
@@ -493,38 +487,9 @@ bool GcLogin::LeaveSelectChar() {
     LOAD_UI("btnsetcharpwd")->Hide();
     LOAD_UI("rmbBtn")->Hide();
     LOAD_UI("RoleInfo")->Hide();
-    //人物旋转按钮
-    //LOAD_UI("btnuserleft")->Hide();
-    //LOAD_UI("btnuserright")->Hide();
     m_selectUserCharIds.clear();
     return true;
     unguard;
-}
-
-void GcLogin::SetSelectUser(int iSel) {
-    if (iSel == m_iCurSelectChar) {
-        return;
-    }
-    switch (m_eCurrentStatus) {
-        case GLS_SELECT_CHAR: {
-            m_iCurSelectChar = iSel;
-            UpdateSelectChar();
-        } break;
-        case GLS_CREATE_CHAR: {
-            m_iCurSelectChar = iSel;
-            vector<SHeadModel> heads;
-            if (!g_TableHeadModel.GetHeadModel(s_CreatActIds_FromCsv[m_iCurSelectChar], heads))
-                return;
-
-            //m_creatActorList[m_iCurSelectChar]->UnloadSkin(heads[m_ePrevHeadID].skin.c_str());
-            //m_creatActorList[m_iCurSelectChar]->LoadSkin(heads[0].skin.c_str(), true);
-            LOAD_UI("fmcreatid2.fmhair.lbhairname")->SetText(heads[0].name);
-            LOAD_UI("fmcreatid2.fmface.lbfacename")->SetText("暂不开放");
-            m_ePrevHeadID = m_eNextHeadID = 0;
-        } break;
-        default:
-            break;
-    }
 }
 
 bool GcLogin::LoadModel(const std::string& modelName, CRT_ActorInstance** model,
@@ -542,8 +507,9 @@ bool GcLogin::LoadModel(const std::string& modelName, CRT_ActorInstance** model,
     return true;
 }
 
-// 创建角色 begin  add by lyy 2024.8.3
+// --------------------创建角色---------------------  add by lyy 2024.8.3
 void GcLogin::SetSelectShangOrZhou(int iSei) {
+    m_curCrtRoleCsvID = -1;  //初始化选角色为空
     m_selectFaction = iSei;
     auto* door = FindModel("Door");
     if (!door || !m_pBody)
@@ -551,7 +517,7 @@ void GcLogin::SetSelectShangOrZhou(int iSei) {
     if (iSei == None) {
         door->PlayPose("close");  //关门
         LOAD_UI("fmShangZhou")->Show();
-        LOAD_UI("fmCreatChar")->Hide();
+        LOAD_UI("fmCreatRole")->Hide();
         return;
     }
     if (iSei != Shang && iSei != Zhou)
@@ -577,7 +543,7 @@ void GcLogin::SetSelectShangOrZhou(int iSei) {
     //开门
     door->PlayPose("open");
     LOAD_UI("fmShangZhou")->Hide();
-    LOAD_UI("fmCreatChar")->Show();
+    LOAD_UI("fmCreatRole")->Show();
 }
 
 //lyymark 3.Gclogin 进入角色创建
@@ -589,20 +555,10 @@ void GcLogin::EnterCreateChar() {
     //初始关门
     if (auto door = FindModel("Door")) {
         door->RealUseFrame(13);  //初始化门的状态为第13帧  关闭状态
-        door->RegisterNotify(nullptr);
     }
     m_bCanInput = true;
     LOAD_UI("fmShangZhou")->Show();
-    LOAD_UI("fmCreatChar")->Hide();
-    LOAD_UI("fmmingwang")->Show();
-    LOAD_UI("fmshengwu")->Show();
-    LOAD_UI("lbmiaojiangtext")->Show();
-    LOAD_UI("lbwutaitext")->Show();
-    LOAD_UI("fmhuajian")->Show();
-    LOAD_UI("fmshushan")->Show();
-    LOAD_UI("lbshushantext")->Show();
-    LOAD_UI("lbhuajiantext")->Show();
-
+    LOAD_UI("fmCreatRole")->Hide();
     UpdateCreateChar();
     unguard;
 }
@@ -611,20 +567,7 @@ bool GcLogin::LeaveCreateChar() {
     guard;
     m_bCanInput = false;
     LOAD_UI("fmShangZhou")->Hide();
-    LOAD_UI("fmCreatChar")->Hide();
-    LOAD_UI("fmcreatid1")->Hide();
-    LOAD_UI("fmcreatid2")->Hide();
-    LOAD_UI("fmcreatid3")->Hide();
-    LOAD_UI("fmmingwang")->Hide();
-    LOAD_UI("fmhuajian")->Hide();
-    LOAD_UI("fmshushan")->Hide();
-    LOAD_UI("fmshengwu")->Hide();
-    LOAD_UI("btnmale")->Hide();
-    LOAD_UI("btnfemale")->Hide();
-    LOAD_UI("lbshushantext")->Hide();
-    LOAD_UI("lbhuajiantext")->Hide();
-    LOAD_UI("lbmiaojiangtext")->Hide();
-    LOAD_UI("lbwutaitext")->Hide();
+    LOAD_UI("fmCreatRole")->Hide();
     return true;
     unguard;
 }
@@ -632,8 +575,13 @@ bool GcLogin::LeaveCreateChar() {
 void GcLogin::UpdateCreateChar() {
     if (!m_pBody)
         return;
-    m_iCurSelectChar = -1;
-    m_curCrtRoleCsvID = -1;
+    if (m_curCrtRoleCsvID < 0) {
+        LOAD_UI("fmCreatRole.txtjob")->SetText("请选择");
+        LOAD_UI("fmCreatRole.lbJobInfo")->SetText("请选择");
+        LOAD_UI("crtRoleBtn")->Disable();
+    } else {
+        LOAD_UI("crtRoleBtn")->Enable();
+    }
     CRT_ActorInstance* pActor;
     const SUserActor*  p_userActCsv;
     RtgMatrix12        WeaponMatrix;
@@ -674,7 +622,7 @@ void GcLogin::UpdateCreateChar() {
                     break;
                 case DaoShi:
                     LoadModel("ss_fl", &m_pDsLunPath);
-                    LoadModel("iw0601lun_04", &m_pDsLun, "Blink0", &m_pDsLunPath);
+                    LoadModel("w_ssl_m_04_03", &m_pDsLun, "Blink0", &m_pDsLunPath);
                     WeaponMatrix = WorldMatrix;
                     m_pDsLunPath->SetMatrix(WeaponMatrix);
                     m_pDsLunPath->LinkParent(pActor);
@@ -706,14 +654,13 @@ void GcLogin::UpdateCreateChar() {
             }
         }
     }
-    m_crtRole_csvIdMapActIns.at(charAct[3])->LinkParent(m_pBody, "bbg");
 }
 
 void GcLogin::ChangeCharHead(int charCsvId, int headIndex) {}
 
-// 角色创建end
+// -------------------角色创建end------------------
 
-//loading页面加载
+//进入loading页面加载
 void GcLogin::EnterLoading() {
     guard;
     UILayer::EnterLoading();
@@ -734,7 +681,7 @@ bool GcLogin::LeaveLoading() {
     unguard;
 }
 
-//renderloding
+//加载scene/login.ini 并进入登录界面
 void GcLogin::OnLoading() {
     guard;
     const char* szLoginConfigName = "scene/login.ini";
@@ -828,7 +775,7 @@ void GcLogin::UpdateGraphConfig(const char* szName) {
     m_lightDirect2.eMode = RTG_LIGHT_DIRECTION;
 }
 
-//人物角色左旋
+//人物角色旋转 暂时没用 保留
 void GcLogin::OnLeftRotation() {
     // m_selectUserCharActs[m_iCurSelectChar]->GetGraph()->p()->RotateLZ(DegreeToRadian(30.f));
 }
@@ -842,9 +789,51 @@ void GcLogin::OnLeftRotationDown() {
 
 void GcLogin::OnLeftRotationUp() {}
 
-//人物角色右旋
 void GcLogin::OnRightRotation() {
     //m_selectUserCharActs[m_iCurSelectChar]->GetGraph()->p()->RotateLZ(DegreeToRadian(-30.f));
+}
+
+void GcLogin::SelectGameWorld(int iIdx) {
+    guard;
+    if (iIdx < 0 || iIdx >= ms_pGameWorldServerList.size())
+        return;
+    m_szGameWorldServerName = ms_pGameWorldServerList[iIdx].szName;
+    m_szGameWorldServerIP = ms_pGameWorldServerList[iIdx].szIP;
+    m_lGameWorldServerPort = ms_pGameWorldServerList[iIdx].lPort;
+    g_layerLogin->mp_selectServerName->SetText(m_szGameWorldServerName);  //显示当前服务器名称
+    SetLoginState(GLS_LOGIN);
+    unguard;
+}
+
+//改变人物角色发型
+void GcLogin::ChangeCharHair(bool bNext) {
+   /* if (m_iCurSelectChar < 0)
+        return;
+    int                iCharIndex = GetCharIndexByActorID(m_selectUserCharIds[m_iCurSelectChar]);
+    vector<SHeadModel> heads;
+    if (!g_TableHeadModel.GetHeadModel(s_CreatActIds_FromCsv[iCharIndex], heads))
+        return;
+
+    if (m_HeadModelIndex[iCharIndex] > (int)heads.size() || m_HeadModelIndex[iCharIndex] < 0)
+        m_HeadModelIndex[iCharIndex] = 0;
+
+    int indexPre = m_HeadModelIndex[iCharIndex];
+
+    if (bNext) {
+        m_HeadModelIndex[iCharIndex]++;
+        if (m_HeadModelIndex[iCharIndex] >= heads.size())
+            m_HeadModelIndex[iCharIndex] = 0;
+    } else {
+        m_HeadModelIndex[iCharIndex]--;
+        if (m_HeadModelIndex[iCharIndex] < 0)
+            m_HeadModelIndex[iCharIndex] = heads.size() - 1;
+    }*/
+
+ /*   m_creatActorList[m_iCurSelectChar]->UnloadSkin(heads[indexPre].skin.c_str());
+    m_creatActorList[m_iCurSelectChar]->LoadSkin(heads[m_HeadModelIndex[iCharIndex]].skin.c_str(),
+                                                 true);
+
+    LOAD_UI("fmcreatid2.fmhair.lbhairname")->SetText(heads[m_HeadModelIndex[iCharIndex]].name);*/
 }
 
 //进入游戏
@@ -889,7 +878,6 @@ void GcLogin::OnDeleteUser() {
     unguard;
 }
 
-//设置角色密码
 void GcLogin::OnSetCharPassword(const char* password) {
     guard;
     if (m_curSelRoleIndex >= 0 && m_curSelRoleIndex < UILayerSelectChar::MaxUserCharBtn) {
@@ -938,27 +926,18 @@ void GcLogin::OnRandomCreateUser() {}
 void GcLogin::OnCreateUser() {
     guard;
     CHECK(m_eCurrentStatus == GLS_CREATE_CHAR);
-
-    if (m_iCurSelectChar == -1) {
+    if (m_curCrtRoleCsvID == -1) {
         ShowMessage(R(LMSG_PLS_CHOOSE_CHAR));
+        return;
     }
-    if (LOAD_UI("fmcreatid1.fmname.txtname")->GetText().length() < 4 ||
-        LOAD_UI("fmcreatid1.fmname.txtname")->GetText().length() > 14) {
+    if (g_layerSelectChar->m_usrRoleName->GetText().length() < 4 ||
+        g_layerSelectChar->m_usrRoleName->GetText().length() > 14) {
         ShowMessage(R(MSG_USERNAME_INVALID));
         return;
     }
-
-    if (!LOAD_UI_T(CUiCheckButton, "btnmale")->GetChecked() &&
-        !LOAD_UI_T(CUiCheckButton, "btnfemale")->GetChecked()) {
-        ShowMessage(R(MSG_CHARACTER_SELECTSEXUAL));
-        return;
-    }
-    std::string sUsername = LOAD_UI("fmcreatid1.fmname.txtname")->GetText().c_str();
-    const char* szUsername = sUsername.c_str();
-    if (m_iCurSelectChar < 0)
-        return;
-    char               cActorID = (char)m_selectUserCharIds[m_iCurSelectChar];
-    int                iCharIndex = GetCharIndexByActorID(m_selectUserCharIds[m_iCurSelectChar]);
+    std::string tmp = g_layerSelectChar->m_usrRoleName->GetText();
+    const char* szUsername = tmp.c_str();
+    /* int                iCharIndex = m_curCrtRoleCsvID;
     vector<SHeadModel> heads;
     if (g_TableHeadModel.GetHeadModel(s_CreatActIds_FromCsv[iCharIndex], heads)) {
         if (m_HeadModelIndex[iCharIndex] < (int)heads.size()) {
@@ -968,17 +947,14 @@ void GcLogin::OnCreateUser() {
                 headModelID = heads[m_HeadModelIndex[iCharIndex]].id;
             }
         }
-    }
-    if (bRandom) {
-        this->CreateChar(szUsername, cActorID, FACTION_NEUTRAL, m_bSex, headRandomModelID,
-                         m_strCharPassword.c_str(), iRandomAnimalIndex, headRandomImageID);
-    } else {
-        this->CreateChar(szUsername, cActorID, FACTION_NEUTRAL, m_bSex, headModelID,
-                         m_strCharPassword.c_str(), iAnimalIndex, headImageID);
-    }
+    }*/
+    char m_bSex = m_curCrtRoleCsvID == FengWu ? 1 : 0;
+    this->CreateChar(szUsername, m_curCrtRoleCsvID, m_selectFaction, m_bSex, headModelID,
+                     m_strCharPassword.c_str());
     unguard;
 }
 
+//--------------------------------渲染 和 逻辑帧--------------------------------
 //lyymark 2.GcLogin.OnRun GcLogin帧主循环入口
 void GcLogin::OnRun(float fSecond) {
     //lyytodo 锁帧 改为引擎graph主循环入口里面统一设定
@@ -995,18 +971,16 @@ void GcLogin::OnRun(float fSecond) {
     for (auto& pair : m_mapActor) {
         auto& act = pair.second;
         if (act) {
-            act->Tick(fSecond * 1000.f, false);
+            act->Tick(fSecond * 1000.f);
         }
     }
-    //判断网络
-    if (m_eCurrentStatus == GLS_SELECT_GAMEWORLD_SERVER) {
-        OnGuideNetProcess(fSecond);  // 向导的网络
+    if (m_eCurrentStatus == GLS_SELECT_GAMEWORLD_SERVER) {  //判断网络
+        OnGuideNetProcess(fSecond);                         // 向导的网络
     } else {
         this->Process();  // 登陆的网络
     }
-    //更新场景人物动画
-    switch (m_eCurrentStatus) {
-        case GcLogin::GLS_SELECT_CHAR:
+    if (m_eCurrentStatus == GLS_SELECT_CHAR || m_eCurrentStatus == GLS_CREATE_CHAR) {
+        if (m_selRole_IDMapGcActor.size() != 0) {
             for (auto& [ID, GcActor] : m_selRole_IDMapGcActor) {
                 if (!GcActor)
                     continue;
@@ -1015,14 +989,15 @@ void GcLogin::OnRun(float fSecond) {
                 }
                 GcActor->Run(fSecond);
             }
-            break;
-        case GcLogin::GLS_CREATE_CHAR:
+        }
+        if (m_crtRole_csvIdMapActIns.size() != 0) {
             if (!m_pSsJianPath->IsPlayingPose()) {
                 m_pSsJianPath->PlayPose("wait_j0", false, 0.5f);
             }
             if (!m_pDsLunPath->IsPlayingPose()) {
                 m_pDsLunPath->PlayPose("waiting_l1", false, 0.5f);
             }
+
             for (auto& [csvID, actIns] : m_crtRole_csvIdMapActIns) {
                 if (!actIns)
                     continue;
@@ -1038,7 +1013,7 @@ void GcLogin::OnRun(float fSecond) {
                 }
                 actIns->Tick(fSecond * 1000.f);  //重要
             }
-            break;
+        }
     }
     //UI渲染
     g_workspace.Run(fSecond * 1000);
@@ -1127,6 +1102,29 @@ void GcLogin::OnRender(float fSecond) {
     unguard;
 }
 
+// -----------------------------鼠标键盘响应回调------------------------------
+// 封装的鼠标射线检测函数     add by lyy 2024.8.5
+// x,y是鼠标的坐标   actor是要检测的物体  用来简单判断物体是否被鼠标点击
+bool GcLogin::DetectIntersection(const int& x, const int& y, CRT_ActorInstance* actor) {
+    if (actor == nullptr)
+        return false;
+    const RtgAABB* pAABB = actor->GetStaticBoundingBox();  // 获取AABB
+    if (pAABB == nullptr)
+        return false;
+    RtgVertex3  vOrig, vDir, v0, v1, vMin, vMax;
+    float       r1, r2;
+    RtgMatrix16 m16;
+    GetDevice()->GetPickRayFromScreen(x, y, vOrig, vDir);  // 获取射线
+    m16.Set4X3Matrix(*actor->GetWorldMatrix());            // 设置矩阵并求逆
+    m16.Invert();
+    v0 = vOrig * m16;                         // 转换射线到对象局部坐标系
+    v1 = v1 = (vOrig + vDir * 1000.f) * m16;  // 只判断1000距离远的物体
+    vMin = pAABB->Min();
+    vMax = pAABB->Max();
+    // 判断射线与AABB是否相交
+    return rtgIsLineIntersectAABB(v0, v1, vMin, vMax, &r1, &r2);
+}
+
 void GcLogin::OnRenderMask(RTGRenderMask mask, float fSecond) {
     guard;
     CRT_ActorInstance* pActor;
@@ -1155,19 +1153,15 @@ void GcLogin::OnRenderMask(RTGRenderMask mask, float fSecond) {
             GetDevice()->SetFogEnable(TRUE);
         }
     }
-
     if (m_eCurrentStatus == GLS_SELECT_CHAR) {
-        for (auto& [id, actor] : m_selRole_IDMapGcActor) {
+        for (const auto& [id, actor] : m_selRole_IDMapGcActor) {
             if (actor)
                 actor->Render(*GetDevice(), mask);
         }
     } else if (m_eCurrentStatus == GLS_CREATE_CHAR) {
-        for (auto& [csvId, actorIns] : m_crtRole_csvIdMapActIns) {
+        for (const auto& [csvId, actorIns] : m_crtRole_csvIdMapActIns) {
             if (actorIns)
                 actorIns->Render(GetDevice(), mask, true, true);
-        }
-        if (m_pSsJian) {
-            m_pSsJian->Render(GetDevice(), mask);
         }
     }
     unguard;
@@ -1196,7 +1190,6 @@ void GcLogin::OnMouseWheel(int iButton, long vDelta) {
 static inline void moveToIndex(std::vector<int>& vec, int targetElement, int targetIndex) {
     auto it = std::find(vec.begin(), vec.end(), targetElement);
     if (it == vec.end()) {
-        std::cerr << "Error: Target element not found in the vector." << std::endl;
         return;
     }
     int currentIndex = std::distance(vec.begin(), it);
@@ -1212,7 +1205,19 @@ static inline void moveToIndex(std::vector<int>& vec, int targetElement, int tar
     vec = std::move(temp);
 }
 
-static int turnFlag = 0;
+static inline void moveToLeft(std::vector<int>& vec) {
+    if (!vec.empty()) {
+        std::rotate(vec.begin(), vec.begin() + 1, vec.end());
+    }
+}
+
+static inline void moveToRight(std::vector<int>& vec) {
+    if (!vec.empty()) {
+        std::rotate(vec.rbegin(), vec.rbegin() + 1, vec.rend());
+    }
+}
+
+static int turnFlag = 0;  //托盘状态 别删
 
 void GcLogin::OnMouseLDown(int iButton, int x, int y) {
     guard;
@@ -1245,7 +1250,6 @@ void GcLogin::OnMouseLDown(int iButton, int x, int y) {
                     if (_pose && _pose->Name != "waiting_login") {
                         actIns->PlayPose("waiting_login");
                     }
-                    int          trayIndex = m_crtRole_csvIdMapTrayIndex[csvID];
                     std::string& soltName = actIns->m_parentSlot;
                     if (turnFlag != 1 && soltName == "bno3") {
                         m_pBody->PlayPose("right");
@@ -1254,10 +1258,10 @@ void GcLogin::OnMouseLDown(int iButton, int x, int y) {
                     if (soltName == "bno2") {
                         if (turnFlag == 1) {
                             m_pBody->PlayPose("right");
-                            moveToIndex(actSoltInTray, 3, trayIndex);
+                            moveToRight(actSoltInTray);
                         } else if (turnFlag == 0) {
                             m_pBody->PlayPose("left");
-                            moveToIndex(actSoltInTray, 1, trayIndex);
+                            moveToLeft(actSoltInTray);
                         }
                     }
                     if (turnFlag == 1 && soltName == "bno1") {
@@ -1265,6 +1269,9 @@ void GcLogin::OnMouseLDown(int iButton, int x, int y) {
                         turnFlag = 0;
                     }
                     UpdateCreateChar();
+                    auto actInfo = g_TableUserActor.FindUserActor(csvID);
+                    LOAD_UI("fmCreatRole.txtjob")->SetText(actInfo->MetierName);
+                    LOAD_UI("fmCreatRole.lbJobInfo")->SetText(actInfo->Desc);
                     break;
                 }
             }
@@ -1274,17 +1281,13 @@ void GcLogin::OnMouseLDown(int iButton, int x, int y) {
 }
 
 void GcLogin::OnMouseLDClick(int iButton, int x, int y) {
-    guard;
     if (!m_bCanInput)
         return;
-    unguard;
 }
 
 void GcLogin::OnMouseRDown(int iButton, int x, int y) {
-    guard;
     if (!m_bCanInput)
         return;
-    unguard;
 }
 
 void GcLogin::OnMouseRDrag(int iButton, int x, int y, int increaseX, int increaseY) {
@@ -1327,18 +1330,8 @@ void GcLogin::OnKeyUp(int iButton, int iKey) {
     unguard;
 }
 
-void GcLogin::SelectGameWorld(int iIdx) {
-    guard;
-    if (iIdx < 0 || iIdx >= ms_pGameWorldServerList.size())
-        return;
-    m_szGameWorldServerName = ms_pGameWorldServerList[iIdx].szName;
-    m_szGameWorldServerIP = ms_pGameWorldServerList[iIdx].szIP;
-    m_lGameWorldServerPort = ms_pGameWorldServerList[iIdx].lPort;
-    g_layerLogin->mp_selectServerName->SetText(m_szGameWorldServerName);  //显示当前服务器名称
-    SetLoginState(GLS_LOGIN);
-    unguard;
-}
-
+//----------------------网络相关-----------------------
+//登录
 void GcLogin::Login(const std::string& szUsername, const std::string& szPassword) {
     guard;
     m_szAccountUsername = szUsername;
@@ -1490,41 +1483,10 @@ void GcLogin::OnNetSelectCharDone() {
     m_bSelCharNetSucceed = true;
 }
 
-//改变人物角色发型
-void GcLogin::ChangeCharHair(bool bNext) {
-    if (m_iCurSelectChar < 0)
-        return;
-    int                iCharIndex = GetCharIndexByActorID(m_selectUserCharIds[m_iCurSelectChar]);
-    vector<SHeadModel> heads;
-    if (!g_TableHeadModel.GetHeadModel(s_CreatActIds_FromCsv[iCharIndex], heads))
-        return;
-
-    if (m_HeadModelIndex[iCharIndex] > (int)heads.size() || m_HeadModelIndex[iCharIndex] < 0)
-        m_HeadModelIndex[iCharIndex] = 0;
-
-    int indexPre = m_HeadModelIndex[iCharIndex];
-
-    if (bNext) {
-        m_HeadModelIndex[iCharIndex]++;
-        if (m_HeadModelIndex[iCharIndex] >= heads.size())
-            m_HeadModelIndex[iCharIndex] = 0;
-    } else {
-        m_HeadModelIndex[iCharIndex]--;
-        if (m_HeadModelIndex[iCharIndex] < 0)
-            m_HeadModelIndex[iCharIndex] = heads.size() - 1;
-    }
-
-    m_creatActorList[m_iCurSelectChar]->UnloadSkin(heads[indexPre].skin.c_str());
-    m_creatActorList[m_iCurSelectChar]->LoadSkin(heads[m_HeadModelIndex[iCharIndex]].skin.c_str(),
-                                                 true);
-
-    LOAD_UI("fmcreatid2.fmhair.lbhairname")->SetText(heads[m_HeadModelIndex[iCharIndex]].name);
-    //LOAD_UI("fmcreatid2.fmface.lbfacename")->SetText(heads[m_HeadModelIndex[iCharIndex]].name);
-}
-
 /*----------------------------------------------------------------------------
 -   Guide Net
 ----------------------------------------------------------------------------*/
+
 class GcsGuideSession : public CG_TCPSession {
    public:
     GcsGuideSession(const char* szIP, int iPort) {
@@ -1654,13 +1616,11 @@ float GcLogin::OnGuideGetGameWorldServerList(CG_CmdPacket* pPacket) {
 
     // 更新 vector 大小
     ms_pGameWorldServerList.resize(sCnt);
-
     for (int i = 0; i < sCnt; ++i) {
         pPacket->ReadString(&pName);
         pPacket->ReadString(&pIP);
         pPacket->ReadShort(&sPort);
         pPacket->ReadByte(&cEvaluation);
-
         if (pName && pIP) {
             ms_pGameWorldServerList[i].lPort = sPort;
             ms_pGameWorldServerList[i].szName = pName;
@@ -1678,11 +1638,9 @@ float GcLogin::OnGuideGetGameWorldServerList(CG_CmdPacket* pPacket) {
     unguard;
 }
 
-// 这里有需要再重写
+// 这里有需要再写
 int GcLogin::GetPing(char* zIP) {
-    guard;
     return 1;
-    unguard;
 }
 
 //lyymark 2.GcLogin.UI.OnUIUpdateGameWorldServerList 更新游戏世界服务器列表
@@ -1731,42 +1689,3 @@ void GcLogin::OnPoseEnd(SRT_Pose* pose) {}
 void GcLogin::OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event) {}
 
 void GcLogin::OnPoseBreak(SRT_Pose* oldPose, SRT_Pose* newPose) {}
-
-int GcLogin::GetCharIndexByActorID(short actorID) {
-
-    for (size_t i = 0; i < sizeof(s_CreatActIds_FromCsv) / sizeof(s_CreatActIds_FromCsv[0]); ++i) {
-        if (s_CreatActIds_FromCsv[i] == actorID)
-            return i;
-    }
-    return -1;
-}
-
-CRT_ActorInstance* GcLogin::GetSelectedActorByActorID(short actorID) {
-    for (size_t index = 0; index < m_selectUserCharIds.size(); ++index) {
-        if (m_selectUserCharIds[index] == actorID)
-            return m_creatActorList[index];
-    }
-    return NULL;
-}
-
-// 封装的鼠标射线检测函数     add by lyy 2024.8.5
-// x,y是鼠标的坐标   actor是要检测的物体  用来简单判断物体是否被鼠标点击
-bool GcLogin::DetectIntersection(const int& x, const int& y, CRT_ActorInstance* actor) {
-    if (actor == nullptr)
-        return false;
-    const RtgAABB* pAABB = actor->GetStaticBoundingBox();  // 获取AABB
-    if (pAABB == nullptr)
-        return false;
-    RtgVertex3  vOrig, vDir, v0, v1, vMin, vMax;
-    float       r1, r2;
-    RtgMatrix16 m16;
-    GetDevice()->GetPickRayFromScreen(x, y, vOrig, vDir);  // 获取射线
-    m16.Set4X3Matrix(*actor->GetWorldMatrix());            // 设置矩阵并求逆
-    m16.Invert();
-    v0 = vOrig * m16;                         // 转换射线到对象局部坐标系
-    v1 = v1 = (vOrig + vDir * 1000.f) * m16;  // 只判断1000距离远的物体
-    vMin = pAABB->Min();
-    vMax = pAABB->Max();
-    // 判断射线与AABB是否相交
-    return rtgIsLineIntersectAABB(v0, v1, vMin, vMax, &r1, &r2);
-}

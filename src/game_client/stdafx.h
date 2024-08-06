@@ -17,6 +17,7 @@
 #include <map>
 #include <math.h>
 #include <memory>
+#include <mmsystem.h>
 #include <ostream>
 #include <queue>
 #include <set>
@@ -30,6 +31,7 @@
 #include <stdlib.h>
 #include <string>
 #include <strstream>
+#include "shellapi.h"
 #include <time.h>
 #include <tlhelp32.h>
 #include <typeinfo>

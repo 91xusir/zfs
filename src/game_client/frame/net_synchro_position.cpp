@@ -2,7 +2,7 @@
 #include "gc_include.h"
 #include "region_client.h"
 #include "ui_form_msg.h"
-
+#include <mmsystem.h> 
 /*------------------------------------------------------------------------
 -   Class NetSynchroPosition.
 ------------------------------------------------------------------------*/

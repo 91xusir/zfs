@@ -9,6 +9,7 @@ hurt_non
 die
 get_mine
 wait_02_login
+jump_02_login
 wait_login
 wait_non
 waiting_sin
@@ -20,7 +21,7 @@ walk_shield
 walk_sin
 walk_sin_r
 walk_t
-walk_t_sin
+walk_t_sin 
 wave
 well
 skill01
@@ -28,3 +29,4 @@ skill02
 skill02 _1 _2 _3 _4
 ...31
 
+waiting_login

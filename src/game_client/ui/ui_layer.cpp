@@ -1,6 +1,5 @@
 #include "gc_include.h"
 #include "ui_layer.h"
-
 #include "gc_cursor.h"
 #include "ui_form_textMsg.h"
 #include "ui_form_msg.h"

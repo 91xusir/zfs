@@ -235,11 +235,10 @@ BEGIN_CMD_FUNC(cmd_g2c_delete_char_ret) {
                 m_account.users[n - 1] = m_account.users[n];
             }
             m_account.chatCount--;
-
-            GetLogin()->SetSelectUser(-1);
+            GetLogin()->m_curSelRoleIndex = -1;
+            GetLogin()->UpdateSelectChar();
         } else {
-            int iSel = GetLogin()->GetCurSelectChar();
-            GetLogin()->SetCurSelectChar(-1);
+            GetLogin()->m_curSelRoleIndex = -1;
         }
         GetLogin()->OnNetDeleteUser(charID, hasDelete);
     }

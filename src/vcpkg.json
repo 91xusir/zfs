@@ -2,8 +2,8 @@
   "name": "zfs",
   "version": "1.0",
   "dependencies": [
-    {
-      "name": "nlohmann-json"
-    }
+    "nlohmann-json",
+	"cpp-httplib",
+	"openssl"
   ]
 }

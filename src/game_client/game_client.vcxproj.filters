@@ -1371,6 +1371,9 @@
     <ClInclude Include="game\gc_login.h">
       <Filter>refactor-重构代码放这里\login</Filter>
     </ClInclude>
+    <ClInclude Include="httpReq.h">
+      <Filter>refactor-重构代码放这里\utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\engine\head\core\rtc2_thread.inl">
@@ -2001,6 +2004,9 @@
     </ClCompile>
     <ClCompile Include="game\gc_login.cpp">
       <Filter>refactor-重构代码放这里\login</Filter>
+    </ClCompile>
+    <ClCompile Include="httpReq.cpp">
+      <Filter>refactor-重构代码放这里\utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

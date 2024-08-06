@@ -33,7 +33,6 @@ Device 是整个图形系统的中心,它也是对d3d设备的抽象和封装,�
 ![rtgdevice](graph/rtgdevice.png)
 
 
-
 #### 函数接口及类的说明
 
 ##### 1.全局接口
@@ -855,133 +854,133 @@ class RtgBuffer
 
 public:
 
-​    RtgBuffer();
+    RtgBuffer();
 
-​    ~RtgBuffer();
+    ~RtgBuffer();
 
  
 
 // 获取缓冲存储类型（系统内存或者物理显存）
 
-​    RTGMemoryType GetMemoryType(void) { return m_eMType; }
+    RTGMemoryType GetMemoryType(void) { return m_eMType; }
 
  
 
 // 获取缓冲区类型（顶点缓冲或者索引缓冲）
 
-​    RTGBufferType GetBufferType(void) { return m_eVType; }
+    RTGBufferType GetBufferType(void) { return m_eVType; }
 
  
 
 // 设置顶点缓冲格式（位置坐标维度，是否有法线，是否有颜色，纹理坐标数，纹理坐标）
 
-​    int SetVertexFormat(int vsize, int normal, int color, int numtex, int *texcoords = NULL);
+    int SetVertexFormat(int vsize, int normal, int color, int numtex, int *texcoords = NULL);
 
-​    // 设置顶点缓冲格式
+    // 设置顶点缓冲格式
 
 void SetVertexFormat(RTGVertexFormat fmt);
 
-​    void SetVertexFormat(RtgVertexSpec fmt);
+    void SetVertexFormat(RtgVertexSpec fmt);
 
  
 
 // 设置缓冲类型和储存类型
 
-​    void SetResourceType(RTGMemoryType mtype, RTGBufferType vtype);
+    void SetResourceType(RTGMemoryType mtype, RTGBufferType vtype);
 
  
 
 // 分配esize个单元
 
-​    void *AllocateElements(RtgDevice* pDevice, int esize);
+    void *AllocateElements(RtgDevice* pDevice, int esize);
 
  
 
 // 分配size大小的缓冲区
 
-​    void *AllocateBuffer(RtgDevice* pDevice, int size);
+    void *AllocateBuffer(RtgDevice* pDevice, int size);
 
  
 
 // 释放
 
-​    int ReleaseBuffer(RtgDevice* pDevice);
+    int ReleaseBuffer(RtgDevice* pDevice);
 
  
 
 // 锁定/解锁（锁定了才可以修改）
 
-​    void *LockBuffer(RtgDevice* pDevice);
+    void *LockBuffer(RtgDevice* pDevice);
 
-​    int UnLockBuffer(RtgDevice* pDevice);
+    int UnLockBuffer(RtgDevice* pDevice);
 
  
 
 // 获取缓冲区数据指针
 
-​    void *GetBuffer(void) { return m_pBuffer; }
+    void *GetBuffer(void) { return m_pBuffer; }
 
  
 
 // 修改/获取顶点位置
 
-​    int SetVertex(int index, RtgVertex3 &vertex);
+    int SetVertex(int index, RtgVertex3 &vertex);
 
-​    int SetVertex(int index, float x, float y, float z);
+    int SetVertex(int index, float x, float y, float z);
 
-​    int GetVertex(int index, RtgVertex3 &vertex);
+    int GetVertex(int index, RtgVertex3 &vertex);
 
-​    RtgVertex3 *GetVertex(int index);
+    RtgVertex3 *GetVertex(int index);
 
  
 
 // 修改/获取顶点法线
 
-​    int SetNormal(int index, RtgVertex3 &normal);
+    int SetNormal(int index, RtgVertex3 &normal);
 
-​    int SetNormal(int index, float x, float y, float z);
+    int SetNormal(int index, float x, float y, float z);
 
-​    int GetNormal(int index, RtgVertex3 &normal);
+    int GetNormal(int index, RtgVertex3 &normal);
 
-​    RtgVertex3 *GetNormal(int index);
+    RtgVertex3 *GetNormal(int index);
 
  
 
 // 修改/获取顶点颜色
 
-​    int SetColor(int index, int color);
+    int SetColor(int index, int color);
 
-​    int SetColor(int index, float r, float g, float b, float a=1.0f);
+    int SetColor(int index, float r, float g, float b, float a=1.0f);
 
-​    void *GetColor(int index);
+    void *GetColor(int index);
 
  
 
 // 修改/获取顶点纹理坐标
 
-​    int SetTexCoord(int index, float *coord);
+    int SetTexCoord(int index, float *coord);
 
-​    int SetTexCoord(int index, float x, float y, int channel = -1);
+    int SetTexCoord(int index, float x, float y, int channel = -1);
 
-​    int SetTexCoord(int index, float x, float y, float z, int channel = -1);
+    int SetTexCoord(int index, float x, float y, float z, int channel = -1);
 
-​    int GetTexCoord(int index, float &s, float &t, int channel = 0);
+    int GetTexCoord(int index, float &s, float &t, int channel = 0);
 
-​    void *GetTexCoord(int index);
+    void *GetTexCoord(int index);
 
  
 
 // 修改/获取顶点索引
 
-​    int SetIndex(int index, int value);
+    int SetIndex(int index, int value);
 
-​    int GetIndex(int index, int &value);
+    int GetIndex(int index, int &value);
 
  
 
 // 获取顶点格式描述
 
-​    RtgVertexSpec GetVertexFormat(void) { return m_VertexSpec; }
+    RtgVertexSpec GetVertexFormat(void) { return m_VertexSpec; }
 
  
 
@@ -989,23 +988,20 @@ protected:
 
   RtgDevice*   m_pDevice;
 
-​    RTGMemoryType  m_eMType;
+    RTGMemoryType  m_eMType;
 
-​    RTGBufferType  m_eVType;
+    RTGBufferType  m_eVType;
 
-​    void      *m_pBuffer;
+    void      *m_pBuffer;
 
-​    unsigned char  *m_pLockedBuffer;
+    unsigned char  *m_pLockedBuffer;
 
-​    RtgVertexSpec  m_VertexSpec;
+    RtgVertexSpec  m_VertexSpec;
 
-​    int       m_iNumElements;
+    int       m_iNumElements;
 
 };
 
- 
-
- 
 
 // 动态流管理器(管理若干缓冲区,每个缓冲区分成若干的块进行管理)
 
@@ -1021,11 +1017,11 @@ public:
 
   {
 
-​    DWORD    dwTotalSize;  // 这个Buffer的内存大小
+    DWORD    dwTotalSize;  // 这个Buffer的内存大小
 
-​    DWORD    dwFreeSize;   // 剩下没有使用的空间的大小
+    DWORD    dwFreeSize;   // 剩下没有使用的空间的大小
 
-​    DWORD    dwActiveEntry; // 在这个空间中有多少块 (只是统计用)
+    DWORD    dwActiveEntry; // 在这个空间中有多少块 (只是统计用)
 
   };
 
@@ -1033,19 +1029,14 @@ public:
 
 public:
 
- 
-
   SDynamicStream*   m_pBuffers;     // 缓冲区
 
- 
 
   DWORD        m_dwTotalStream;   // 总共的缓冲区数
 
   DWORD        m_dwTotalMemory;  // 总共内存大小
 
   DWORD        m_dwUsedMemory;  // 总共使用内存大小
-
- 
 
   DWORD        m_dwActiveEntry;  // 总共块数
 
@@ -1059,39 +1050,33 @@ public:
 
 // 初始化(缓冲区数,缓冲区大小)
 
-​    void InitStreamManager(DWORD dwTotalStream, DWORD* pdwSize);
+    void InitStreamManager(DWORD dwTotalStream, DWORD* pdwSize);
 
- 
 
 // 查询是否有合适大小的块
 
 BOOL QuerySpace(DWORD dwInSize, DWORD& dwOutBufferID, DWORD& dwOutOffset);
 
- 
 
 // 清空一个缓冲区
 
 DWORD ClearOneBuffer();
 
- 
 
 // 清空一个合适大小的缓冲区
 
 DWORD ClearSizeBuffer(DWORD dwMinSize);
 
- 
 
 // 清空所有缓冲区
 
   void ClearAllBuffer();
 
- 
 
 // 获取缓冲区
 
   SDynamicStream* GetBuffer(DWORD dwBufferID);
 
- 
 
    // 加入一个块,返回False表示没有加进去, 否则是成功
 
@@ -1099,7 +1084,6 @@ DWORD ClearSizeBuffer(DWORD dwMinSize);
 
 };
 
- 
 
 // 图形系统渲染数据流管理器
 
@@ -1112,7 +1096,6 @@ DWORD ClearSizeBuffer(DWORD dwMinSize);
 // 提供lock修改缓冲区的功能
 
 // 整个图形系统有两个RtgRenderStreamManager,分别用来管理所有的顶点缓冲和索引缓冲
-
  
 
 class GRAPH_API RtgRenderStreamManager
@@ -1133,12 +1116,6 @@ public:
 
   BOOL InitStreamManager(DWORD nTotalDynamicStream, DWORD* nDynamicSize, DWORD nTotalStaticStream, DWORD* nStaticSize, DWORD nTotalDynamicEntry, DWORD nTotalStaticEntry);
 
- 
-
- 
-
- 
-
    // 开始上传数据
 
   // wResID   为资源的ID
@@ -1154,7 +1131,6 @@ public:
 void* BeginUpload(DWORD& dwResID, DWORD dwSize, BOOL bResident, DWORD dwStride);
 
  
-
 // 结束上传数据
 
 BOOL EndUpload(DWORD& dwResID);
@@ -1178,7 +1154,6 @@ BOOL EndUpload(DWORD& dwResID);
 void ClearAll();
 
  
-
   void OnBeginRender();
 
   void OnEndRender();
@@ -1217,13 +1192,11 @@ virtual void* LockStream(DWORD dwBufferID, DWORD dwOffset, DWORD dwSize, DWORD b
 
   virtual BOOL UnlockStream(DWORD dwBufferID)=0;
 
- 
 
 protected:
 
 };
 
- 
 
 // 图形系统的顶点缓冲管理器
 
@@ -1245,13 +1218,12 @@ class RtgCamera : public RtObject
 
 public:
 
- 
 
 public:
 
-​    RtgVertex3 m_vEyePt;    // 镜头(眼睛)位置
+  RtgVertex3 m_vEyePt;    // 镜头(眼睛)位置
 
-​    RtgVertex3 m_vLookatPt;  // 目标(观察点)位置
+  RtgVertex3 m_vLookatPt;  // 目标(观察点)位置
 
   RtgVertex3 m_vAxisY;    // 镜头上方向
 
@@ -1263,9 +1235,9 @@ public:
 
  
 
-​    RtgMatrix16 m_matView;   // 视矩阵
+  RtgMatrix16 m_matView;   // 视矩阵
 
-​    RtgMatrix16 m_matBillboard;  // 公告板矩阵
+  RtgMatrix16 m_matBillboard;  // 公告板矩阵
 
  
 
@@ -1289,7 +1261,6 @@ public:
 
   float    m_fTop;
 
- 
 
   int     m_bUpdate;    // 是否需要更新
 
@@ -1299,7 +1270,6 @@ public:
 
 public:
 
- 
 
 // 镜头参数设置/获取
 
@@ -1313,8 +1283,6 @@ public:
 
   RtgVertex3 GetCross()      { return m_vAxisX; }
 
- 
-
   float   GetFOV()       { return m_fFOV; }
 
   float   GetAspect()      { return m_fAspect; }
@@ -1322,8 +1290,6 @@ public:
   float   GetNearPlane()    { return m_fNearPlane; }
 
   float   GetFarPlane()     { return m_fFarPlane; }
-
- 
 
   void   SetFOV(float f)    { m_fFOV = f; }
 
@@ -1333,21 +1299,18 @@ public:
 
   void   SetFarPlane(float f) { m_fFarPlane = f; }
 
- 
-
   RtgMatrix16 GetViewMatrix()   { return m_matView; }
 
   RtgMatrix16 GetBillboardMatrix() { return m_matBillboard; }
 
   RtgMatrix16 GetProjMatrix()   { return m_matProj; }
 
- 
 
   void ReUpdate();
 
-​    void Identity(void);
+  void Identity(void);
 
-​    void SetViewParams( float fx, float fy, float fz, float cx, float cy, float cz, float ux, float uy, float uz );
+  void SetViewParams( float fx, float fy, float fz, float cx, float cy, float cz, float ux, float uy, float uz );
 
   void SetViewParams( RtgVertex3 &vEyePt, RtgVertex3 &vLookatPt, RtgVertex3 &vUpVec );
 
@@ -1359,7 +1322,7 @@ public:
 
   void SetMatrix(RtgMatrix16& ma);
 
-​    void UpdateMatrix(void);
+    void UpdateMatrix(void);
 
  
 
@@ -1375,13 +1338,10 @@ public:
 
 void RestoreDevice();
 
- 
-
 // 切换投影模式(正交,透视)
 
 void ToggleProjectType();
 
- 
 
 // 设置投影模式
 
@@ -1397,17 +1357,15 @@ void SetProjectType(BOOL bPerspective);
 
   void AddPitch(float amount);  // 倾斜
 
-​    void AddYaw(float amount);  // 偏移
+  void AddYaw(float amount);  // 偏移
 
-​    void AddRoll(float amount);  // 滚动
+  void AddRoll(float amount);  // 滚动
 
-​    void MoveForward(float fAmount); // 前进
+  void MoveForward(float fAmount); // 前进
 
-​    void MoveRight(float fAmount); // 右移
+  void MoveRight(float fAmount); // 右移
 
-​    void MoveUp(float fAmount);  // 上移
-
- 
+  void MoveUp(float fAmount);  // 上移
 
   void SetPitch(float fValue);
 
@@ -1429,8 +1387,6 @@ void SetProjectType(BOOL bPerspective);
 
   void UpdateFrustrumClipPlanes();
 
- 
-
 // 相交检测
 
   bool ViewCheckAABB(const RtgVertex3 &min, const RtgVertex3 &max); // AABB View check
@@ -1441,23 +1397,15 @@ void SetProjectType(BOOL bPerspective);
 
   bool ViewCheckBound(const RtgAABB &aabb, const RtgMatrix16 &m16);
 
- 
-
 // 把当前状态写入缓冲
 
 virtual int SaveToBuffer(char* szBuffer){return 0;}
-
- 
 
 // 从缓冲读取
 
   virtual int LoadFromBuffer(char* szBuffer){return 0;}
 
- 
-
 protected:
-
- 
 
 // 相机状态改变响应
 
@@ -1465,21 +1413,19 @@ protected:
 
   virtual void OnSetProjParams();
 
-​    virtual void OnUpdateMatrix();
-
- 
+  virtual void OnUpdateMatrix();
 
   virtual BOOL OnAddPitch(float amount)    {return FALSE;}
 
-​    virtual BOOL OnAddYaw(float amount)     {return FALSE;}
+  virtual BOOL OnAddYaw(float amount)     {return FALSE;}
 
-​    virtual BOOL OnAddRoll(float amount)    {return FALSE;}
+  virtual BOOL OnAddRoll(float amount)    {return FALSE;}
 
-​    virtual BOOL OnMoveForward(float fAmount)  {return FALSE;}
+  virtual BOOL OnMoveForward(float fAmount)  {return FALSE;}
 
-​    virtual BOOL OnMoveRight(float fAmount)   {return FALSE;}
+  virtual BOOL OnMoveRight(float fAmount)   {return FALSE;}
 
-​    virtual BOOL OnMoveUp(float fAmount)    {return FALSE;}
+  virtual BOOL OnMoveUp(float fAmount)    {return FALSE;}
 
   virtual BOOL OnSetPitch(float fValue)    {return FALSE;}
 
@@ -1495,17 +1441,13 @@ protected:
 
   virtual BOOL OnSetPosition(RtgVertex3 &vPos){return FALSE;}
 
- 
-
 public:
 
 // 镜头震动
 
-  // 振动, fScope幅度, fTime时间(秒)
+// 振动, fScope幅度, fTime时间(秒)
 
 void Tremble(float fScope=20.f, float fCycle=0.3f, float fTime=0.6f);
-
- 
 
 // 镜头贴花
 
@@ -1515,13 +1457,9 @@ void Tremble(float fScope=20.f, float fCycle=0.3f, float fTime=0.6f);
 
 };
 
- 
-
 ###### 3.5 碰撞检测辅助
 
 相关文件 rtg_collision.h
-
- 
 
 //   AABB ( Axis-Aligned Bounding Box ) 与坐标轴平行的Bounding Box
 
@@ -1553,9 +1491,9 @@ void Tremble(float fScope=20.f, float fCycle=0.3f, float fTime=0.6f);
 
 //   线段是否与矩形相交 rtgIsLineIntersectSquareXY   该矩形与 Z 轴垂直
 
-//             rtgIsLineIntersectSquareXZ   该矩形与 Y 轴垂直
+//   rtgIsLineIntersectSquareXZ   该矩形与 Y 轴垂直
 
-//             rtgIsLineIntersectSquareYZ   该矩形与 Z 轴垂直
+//   rtgIsLineIntersectSquareYZ   该矩形与 Z 轴垂直
 
 //   AABB是否在AABB内部 rtgIsAABBInAABB
 
@@ -1583,19 +1521,12 @@ void Tremble(float fScope=20.f, float fCycle=0.3f, float fTime=0.6f);
 
 //   三角形与三角形相交 rtgIsTriangleIntersectTriangle
 
-//
-
 //   用AABB裁剪直线 rtgAABBCutLine 返回裁剪出来的线段
 
- 
-
- 
 
 ###### 3.6 3D数学相关
 
 相关文件 rtg_vertex.h rtg_math.h rtg_matrix.h rtg_triangle.h
-
- 
 
 // 向量
 
@@ -1791,25 +1722,9 @@ class RtgMatrix16
 
 class RtgMatrix2D9
 
- 
 
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
 
 // 包围盒
-
- 
 
 class RtgRangeAABB
 
@@ -1871,23 +1786,19 @@ public:
 
   {
 
-​    EIT_UNKNOWE, // 未知
+    EIT_UNKNOWE, // 未知
 
-​    EIT_DXT, // dds
+    EIT_DXT, // dds
 
-​    EIT_BMP, // bmp
+    EIT_BMP, // bmp
 
-​    EIT_TGA, // tga
+    EIT_TGA, // tga
 
-​    EIT_JPG, // jpg
+    EIT_JPG, // jpg
 
-​       EIT_RLE, // rle
+       EIT_RLE, // rle
 
 };
-
- 
-
- 
 
 // 像素格式
 
@@ -1895,39 +1806,37 @@ public:
 
   {
 
-​    EPF_ARGB,
+    EPF_ARGB,
 
-​    EPF_RGB,
+    EPF_RGB,
 
-​    EPF_DXT1,
+    EPF_DXT1,
 
-​    EPF_DXT2,
+    EPF_DXT2,
 
-​    EPF_DXT3,
+    EPF_DXT3,
 
-​    EPF_DXT4,
+    EPF_DXT4,
 
-​    EPF_DXT5,
+    EPF_DXT5,
 
-​    EPF_UNKNOWN
+    EPF_UNKNOWN
 
   };
-
- 
 
   struct SInfo
 
   {
 
-​    int iWidth, iHeight; // 长宽
+    int iWidth, iHeight; // 长宽
 
-​    int iSizeOfData;  // 数据大小
+    int iSizeOfData;  // 数据大小
 
-​    int iDxtcFormat; // dds格式
+    int iDxtcFormat; // dds格式
 
-​    bool bAlpha;   // 是否有a通道
+    bool bAlpha;   // 是否有a通道
 
-​    bool bDDS;   // 是否是dds图片
+    bool bDDS;   // 是否是dds图片
 
 }info;
 
@@ -1939,7 +1848,7 @@ public:
 
   {
 
-​    unsigned char* pData;
+unsigned char* pData;
 
   }data;
 
@@ -1967,7 +1876,6 @@ bool m_bUseColorKey;
 
 EImgType m_eImageType;
 
- 
 
 public:
 
@@ -1991,7 +1899,7 @@ static int m_iMaxWidth, m_iMaxHeight;
 
 // 图像质量(其实就是一个缩放比例,越大,图像分辨率越低)
 
-  static int m_iTextureQuality;
+static int m_iTextureQuality;
 
  
 
@@ -2001,7 +1909,7 @@ static void StaticInit();
 
 // 检测是否是24位图片
 
-  static bool Check24bBmpFormat(const char* szFilename, int& iWidth, int& iHeight);
+static bool Check24bBmpFormat(const char* szFilename, int& iWidth, int& iHeight);
 
 static bool Check24bBmpFormat(void* pBits, int iDataSize, int& iWidth, int& iHeight);
 
@@ -2009,18 +1917,11 @@ static bool Check24bBmpFormat(void* pBits, int iDataSize, int& iWidth, int& iHei
 
   static void SetSaveJpegQuality(int iQuality);
 
- 
 
 public:
-
- 
-
 // 创建
 
   bool Create(int iWidth, int iHeight, bool bAlpha);
-
- 
-
 // 加载
 
   bool Load(const char *szImage, const char *szAlpha=NULL);
@@ -2029,13 +1930,9 @@ public:
 
   bool LoadFromMemory(void *bits, int size, void *abits=0, int asize=0);
 
- 
-
 // 改变质量
 
-  void FixTextureQuality(bool bQualityManage);
-
- 
+void FixTextureQuality(bool bQualityManage);
 
 // 获取图像数据大小
 
@@ -2047,21 +1944,19 @@ int GetMipMapCount(void);
 
 // 获取原始图像数据
 
-  void *GetRawData(int level=0);
+void *GetRawData(int level=0);
 
-  void ResizeCanvas(int width, int height); // 缩放画布，不会缩放图片，如果撑大就用白色填充，如果缩小就截取
+void ResizeCanvas(int width, int height); // 缩放画布，不会缩放图片，如果撑大就用白色填充，如果缩小就截取
 
 void Resize(int width, int height); // 图像缩放
 
 // 创建相应的HBITMAP
 
-  void *CreateBitmap(void* hDC);
+void *CreateBitmap(void* hDC);
 
- 
+void Flip(bool bForce=false);   // 上下翻转, bForce为true的时候表示强制进行，不管m_bLoad的标记。注意：使用这个参数可能引发访问非法内存
 
-  void Flip(bool bForce=false);   // 上下翻转, bForce为true的时候表示强制进行，不管m_bLoad的标记。注意：使用这个参数可能引发访问非法内存
-
-  void Mirror(bool bForce=false);  // 左右翻转, bForce为true的时候表示强制进行，不管m_bLoad的标记。注意：使用这个参数可能引发访问非法内存
+void Mirror(bool bForce=false);  // 左右翻转, bForce为true的时候表示强制进行，不管m_bLoad的标记。注意：使用这个参数可能引发访问非法内存
 
  
 
@@ -2115,9 +2010,6 @@ rtg_image_tga..h rtg_image_tga.cpp
 
 TextureRLE.h TextureRLE.cpp
 
- 
-
- 
 
 // _TexItem为单张纹理
 
@@ -2217,13 +2109,13 @@ public:
 
   {
 
-​    ALREADY_LOAD,
+    ALREADY_LOAD,
 
-​    ALREADY_DELETE,
+    ALREADY_DELETE,
 
-​    LOAD_NEW,
+    LOAD_NEW,
 
-​    FULL
+    FULL
 
 };
 
@@ -2235,15 +2127,15 @@ public:
 
   {
 
-​    unsigned int  dwTexID;  // 锁定纹理id
+    unsigned int  dwTexID;  // 锁定纹理id
 
-​    int       iWidth;   // 宽
+    int       iWidth;   // 宽
 
-​    int       iHeight;   // 高
+    int       iHeight;   // 高
 
-​    int       iPitch;   // 行对齐大小
+    int       iPitch;   // 行对齐大小
 
-​    void*      pBits;   // 数据
+    void*      pBits;   // 数据
 
   };
 
@@ -2341,7 +2233,7 @@ int GetTextureQuality();
 
   unsigned int CreateTextureFromMemory(void *pMemoryTextureFile, int iLength, RTGTexBitType eTexBitType, int iMipmap=1, BYTE cFormat=0);
 
-​    unsigned int CreateTextureFromArchive(RtArchive *pArc,int iLength, RTGTexBitType eTexBitType,int iMipmap,BYTE cFormat,bool bflip=false);
+    unsigned int CreateTextureFromArchive(RtArchive *pArc,int iLength, RTGTexBitType eTexBitType,int iMipmap,BYTE cFormat,bool bflip=false);
 
   unsigned int CreateTextureDynamic(int iWidth, int iHeight, bool bCreateNow=false);
 
@@ -2471,17 +2363,17 @@ bool ReleaseID(unsigned int dwRes);
 
   {
 
-​    EXT_SPACE::hash_map<unsigned int, unsigned int>::iterator it = m_mapRes.find(dwRes);
+    EXT_SPACE::hash_map<unsigned int, unsigned int>::iterator it = m_mapRes.find(dwRes);
 
-​    if (it!=m_mapRes.end())
+    if (it!=m_mapRes.end())
 
-​    {
+    {
 
-​      return (*it).second;
+      return (*it).second;
 
-​    }
+    }
 
-​    return 0;
+    return 0;
 
   }
 
@@ -2539,7 +2431,7 @@ RtgDevice*   m_pDevice;
 
 // IFL纹理列表
 
-​    _TexIFL*     m_IFLTextureList;
+    _TexIFL*     m_IFLTextureList;
 
  
 
@@ -2549,7 +2441,7 @@ RtgDevice*   m_pDevice;
 
   bool      m_bGenerateDXT;     // 是否生成DXT格式
 
-​    bool      m_bLoad;         // 是否从文件中载入贴图
+    bool      m_bLoad;         // 是否从文件中载入贴图
 
  
 
@@ -2690,16 +2582,8 @@ public:
   void SetTexture(unsigned int dwTexID);
 
   unsigned int GetTexture()        { return dwTextureID; }
-
- 
-
-  
-
 };
 
- 
-
- 
 
 // 渲染材质
 
@@ -2871,7 +2755,7 @@ int       iVertexCnt;
 
 // 绘制
 
-​    void Draw(RtgDevice* pDevice);
+    void Draw(RtgDevice* pDevice);
 
  
 
@@ -2897,15 +2781,15 @@ public:
 
   {
 
-​    TCM_DEFAULT,   // 默认
+    TCM_DEFAULT,   // 默认
 
-​    TCM_BOX,    // Box
+    TCM_BOX,    // Box
 
-​    TCM_PLANE,    // Plane
+    TCM_PLANE,    // Plane
 
-​    TCM_COLUMN,   // 圆柱
+    TCM_COLUMN,   // 圆柱
 
-​    TCM_SPHERE,   // 球
+    TCM_SPHERE,   // 球
 
   };
 
@@ -2983,141 +2867,141 @@ class RtgGeometry
 
 public:
 
-​    static int m_iPieces;         // 对圆和球进行质量控制,参数的含义可以参看3dsmax
+    static int m_iPieces;         // 对圆和球进行质量控制,参数的含义可以参看3dsmax
 
-​    static int m_iStacks;               // 对圆和球进行质量控制,参数的含义可以参看3dsmax
+    static int m_iStacks;               // 对圆和球进行质量控制,参数的含义可以参看3dsmax
 
  
 
 // 设置几何图形质量等级,主要是控制 iPieces 和 iStacks
 
-​    static void SetGeometryQuality(int quality);
+    static void SetGeometryQuality(int quality);
 
  
 
 public:
 
-​    RtgGeometry();
+    RtgGeometry();
 
-​    RtgGeometry(RtgDevice* pDevice);
+    RtgGeometry(RtgDevice* pDevice);
 
-​    ~RtgGeometry();
+    ~RtgGeometry();
 
-​                 
+                 
 
   // 获取顶点和索引缓冲
 
-​    RtgBuffer *GetVertices(void) { return &m_Vertices; }
+    RtgBuffer *GetVertices(void) { return &m_Vertices; }
 
-​    RtgBuffer *GetIndices(void) { return &m_Indices; }
+    RtgBuffer *GetIndices(void) { return &m_Indices; }
 
  
 
 // 释放资源
 
-​    void ReleaseResource(void);
+    void ReleaseResource(void);
 
 // 设置资源内存类型
 
-​    void SetResourceType(RTGMemoryType mtype);
+    void SetResourceType(RTGMemoryType mtype);
 
 // 偏移所有顶点位置
 
-​    void OffsetVertices(float x, float y, float z);
+    void OffsetVertices(float x, float y, float z);
 
  
 
 // 设置顶点格式
 
-​    void SetVertexFormat(RTGVertexFormat fmt);
+    void SetVertexFormat(RTGVertexFormat fmt);
 
-​    //int SetVertexFormat(int vsize, int normal, int color, int numtex, int *texlist = NULL);
+    //int SetVertexFormat(int vsize, int normal, int color, int numtex, int *texlist = NULL);
 
-​    //void SetVertexFormat(RtgVertexSpec fmt);
+    //void SetVertexFormat(RtgVertexSpec fmt);
 
  
 
 // 创建几何体需要的资源(顶点和索引缓冲)
 
-​    int CreateResource(int vertices, int faces, int indices);
+    int CreateResource(int vertices, int faces, int indices);
 
  
 
 // 创建矩形
 
-​    int CreateRect(float w, float h);
+    int CreateRect(float w, float h);
 
 int CreateRect(float w, float h, int iSegmentX, int iSegmentY);
 
 // 创建梯形
 
-​    int CreateTrape(float t, float b, float h);
+    int CreateTrape(float t, float b, float h);
 
 // 创建立方体
 
-​    int CreateBox(float w, float h, float d);
+    int CreateBox(float w, float h, float d);
 
 // 创建部分圆
 
-​    int CreateParticalCircle(float r, float rs, float es);
+    int CreateParticalCircle(float r, float rs, float es);
 
 // 创建圆
 
-​    int CreateCircle(float r);
+    int CreateCircle(float r);
 
 // 创建圆锥体
 
-​    int CreateCone(float w, float h);
+    int CreateCone(float w, float h);
 
 // 创建圆台体(截面是扇形)
 
-​    int CreateParticalCylinder(float ts, float te, float radius1, float radius2, float height);
+    int CreateParticalCylinder(float ts, float te, float radius1, float radius2, float height);
 
 // 创建圆台体
 
-​    int CreateCylinder(float r1, float r2, float h);
+    int CreateCylinder(float r1, float r2, float h);
 
 // 创建部分球体
 
-​    int CreateParticalSphere(float radius, float ts, float te, float ps, float pe);
+    int CreateParticalSphere(float radius, float ts, float te, float ps, float pe);
 
  
 
 // 创建球体
 
-​    int CreateSphere(float r);
+    int CreateSphere(float r);
 
 // 创建部分圆环
 
-​    int CreateParticalDonut(float InnerRadius, float OuterRadius, float ts, float te, float ps, float pe);
+    int CreateParticalDonut(float InnerRadius, float OuterRadius, float ts, float te, float ps, float pe);
 
 // 创建圆环
 
-​    int CreateDonut(float or, float ir);
+    int CreateDonut(float or, float ir);
 
 // 创建甜甜圈
 
-​    int CreateSegment(int grids, float xext, float yext);
+    int CreateSegment(int grids, float xext, float yext);
 
  
 
 // 改变顶点色
 
-​    void ChangeVertexColor(float r, float g, float b, float a);
+    void ChangeVertexColor(float r, float g, float b, float a);
 
-​    void ChangeVertexColor(int r, int g, int b, int a);
+    void ChangeVertexColor(int r, int g, int b, int a);
 
  
 
 // 计算且空间坐标
 
-​    int GetTangentSpace(int iIdx, RtgVertex3 vec[3]);
+    int GetTangentSpace(int iIdx, RtgVertex3 vec[3]);
 
-​                  
+                  
 
   // 设置顶点格式
 
-​    RtgVertexSpec GetVertexFormat(void) { return m_VertexSpec; }
+    RtgVertexSpec GetVertexFormat(void) { return m_VertexSpec; }
 
 void SetFVF();
 
@@ -3125,37 +3009,37 @@ void SetFVF();
 
 // 设置bumpmap光照
 
-​    void SetBumpmapLight(RtgVertex3 &light, RTGLightMode mode = RTG_LIGHT_POINT );
+    void SetBumpmapLight(RtgVertex3 &light, RTGLightMode mode = RTG_LIGHT_POINT );
 
  
 
 // 改变贴图坐标
 
-​    void ChangeTexcoord(float s, float t, int index = 0);
+    void ChangeTexcoord(float s, float t, int index = 0);
 
-​    void ChangeVertexPosition(RtgMatrix16 matrix);
+    void ChangeVertexPosition(RtgMatrix16 matrix);
 
  
 
 // 渲染
 
-​    void Render(RTGPrimitive primitive = RTG_TRIANGLES);
+    void Render(RTGPrimitive primitive = RTG_TRIANGLES);
 
  
 
   // 这个函数之前要调用 SetFVF()
 
-​    void DrawIndexPrimitive(RTGPrimitive primitive, int vstart, int vcount, int istart, int icount, int pcount);
+    void DrawIndexPrimitive(RTGPrimitive primitive, int vstart, int vcount, int istart, int icount, int pcount);
 
 // 废弃
 
-​    void UpdateNode(int node, int mask);
+    void UpdateNode(int node, int mask);
 
  
 
 // 拷贝
 
-​    void Copy(RtgGeometry &src);
+    void Copy(RtgGeometry &src);
 
 };
 
@@ -3207,47 +3091,47 @@ Dump
 
   public:
 
-​    CConsole(CRtgAppFrame* pAppFrame)    { m_pAppFrame=pAppFrame; }
+    CConsole(CRtgAppFrame* pAppFrame)    { m_pAppFrame=pAppFrame; }
 
-​    virtual ~CConsole() {}
+    virtual ~CConsole() {}
 
 // 初始化
 
-​    virtual void Init() {}
+    virtual void Init() {}
 
 // 关闭
 
-​    virtual void Close(RtgDevice* pDevice) {}
+    virtual void Close(RtgDevice* pDevice) {}
 
  
 
 // 添加一条字符串
 
-​    virtual void AddConsoleString(const char* szString) {}
+    virtual void AddConsoleString(const char* szString) {}
 
 // 清空
 
-​    virtual void ClearConsole() {}
+    virtual void ClearConsole() {}
 
  
 
 // 显示控制台
 
-​    virtual void ShowConsole(RtgDevice* pDevice, bool bShowConsole) {}
+    virtual void ShowConsole(RtgDevice* pDevice, bool bShowConsole) {}
 
 // 执行命令
 
-​    virtual void DoCommand(const char* szCommand) {}
+    virtual void DoCommand(const char* szCommand) {}
 
  
 
-​    virtual void OnKeyChar(int iChar, bool bAltDown) {}
+    virtual void OnKeyChar(int iChar, bool bAltDown) {}
 
-​    virtual void ShowConsole(bool bShow){}
+    virtual void ShowConsole(bool bShow){}
 
   protected:
 
-​    CRtgAppFrame*  m_pAppFrame;
+    CRtgAppFrame*  m_pAppFrame;
 
 };
 
@@ -3339,7 +3223,7 @@ protected:
 
   virtual void OnRender() {}
 
-​    virtual void OnRender2D() {}
+    virtual void OnRender2D() {}
 
   virtual void OnFrameMove(float fDifTime) {}
 
@@ -3373,9 +3257,9 @@ public:
 
   virtual void OnMouseMove(int x, int y, int increaseX, int increaseY);
 
-​    virtual void OnMouseWheel(long vDelta,int x,int y);
+    virtual void OnMouseWheel(long vDelta,int x,int y);
 
-​    virtual void MouseWheel( long vDelta,int x,int y);
+    virtual void MouseWheel( long vDelta,int x,int y);
 
  
 

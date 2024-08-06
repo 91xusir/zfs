@@ -49,7 +49,7 @@ class GcLoginSession : protected CG_TCPSession {
 
     //人物角色创建
     bool CreateChar(const char* name, char metier, char bIsS, char bSex, short headModelID,
-                    const char* password, short iAnimal, short iImage);
+                    const char* password, short iAnimal=0, short iImage=0);
 
     ///
     bool DeleteChar(long id);

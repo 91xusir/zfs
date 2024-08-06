@@ -8,7 +8,7 @@
 #include "filepack/memory_buffer.h"
 #include "game_team_share_const.h"
 #include "ui_form_textMsg.h"
-
+#include <mmsystem.h> 
 const char LOCAL_BLACKLIST_DIRECTORY[]="m_data";
 const char LOCAL_BLACKLIST_PREFIX[]="bl_";
 const int LOCATION_BLACKLIST_NO_CLOSE		=0;					//本地黑名单信息没有正常退出[正常应该非零]

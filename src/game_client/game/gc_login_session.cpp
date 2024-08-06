@@ -26,12 +26,8 @@ bool GcLoginSession::ConnectServer(const char* host, int port) {
 }
 
 //end
-bool GcLoginSession::Login(
-    const char* username,
-    const char* password,
-    char code,
-    bool ishall,
-    bool bForceLogin) {
+bool GcLoginSession::Login(const char* username, const char* password, char code, bool ishall,
+                           bool bForceLogin) {
     //1.没有加密的用户名  2.pubwin加密过的用户名   3.是不是pubwin大厅登陆  4.MD5加密后的密码   5.大厅key   6.code = 0
     //2.pubwin加密过的用户名
     std::string pwname = username;
@@ -93,8 +89,8 @@ bool GcLoginSession::Login(
 }
 
 bool GcLoginSession::CreateChar(const char* name, char metier, char bIsS, char bSex,
-                                short headModelID, const char* password, short iAnimal,
-                                short iImage) {
+                                short headModelID, const char* password, short iAnimal /*=0*/,
+                                short iImage /*=0*/) {
     CG_CmdPacket& cmd = BeginSend();
 
     if (!cmd.WriteShort(c2g_create_char))

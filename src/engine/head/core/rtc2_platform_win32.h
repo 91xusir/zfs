@@ -71,7 +71,7 @@ typedef HANDLE              RtThreadHandle;
 /*-----------------------------------------------------------------------------
 -   函数名转换 (把一些不同平台有相同功能，但是名字不同的函数名进行转换)
 -----------------------------------------------------------------------------*/
-#define     snprintf                _snprintf
+//#define     snprintf                _snprintf //vc2015后已经直接支持snprintf
 #define     snscanf                 _snscanf
 #define     vsnprintf               _vsnprintf
 

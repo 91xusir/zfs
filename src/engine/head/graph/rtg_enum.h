@@ -1,4 +1,4 @@
-
+#pragma once
 // 下面是被文件中所有类型的说明
 //
 // enum RTGDeviceType           3D设备类型，区分为D3D7, 8, 9 或者 OpenGL

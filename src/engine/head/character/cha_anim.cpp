@@ -1201,9 +1201,9 @@ void CRT_ActorInstance::RealUseFrame(float frame) {
     //lyymark 疑似标准材质渲染重复了
     //推测是类型识别不正确，无法判断子类类型，
     //先注释后续出问题再修改 by lyy
- /*   for (int i = 0; i < m_skinList.size(); i++)
+    for (int i = 0; i < m_skinList.size(); i++)
         if (m_skinList[i]->ResourceReady())
-            m_skinList[i]->GetMaterialLib()->UseFrame(frame);*/
+            m_skinList[i]->GetMaterialLib()->UseFrame(frame);
 
     DWORD ruEfft = rtMilliseconds();
     for (int i = 0; i < m_effectList.size(); i++)

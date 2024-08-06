@@ -1,7 +1,14 @@
 #include "gc_include.h"
 #include "gc_login.h"
 #include "ui_form_msg.h"
+#include "../httpReq.h"
+#include <nlohmann/json.hpp>
+#include "ui_layer_select_char.h"
+#include <ui/rtw_workspace.h>
 
+/*
+lyy 2024.8.6 重构
+*/
 UILayerSelectChar::UILayerSelectChar() {
     guard;
     g_workspace.Load("ui/2.selectChar.xml");
@@ -21,55 +28,26 @@ UILayerSelectChar::UILayerSelectChar() {
         RTW_CALLBACK(this, UILayerSelectChar, OnClicked_EngterCreateChar);
     //删除人物
     LOAD_UI("delRoleBtn")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_Delete);
-
-    //人物角色性别
-    //人物左旋按钮
-    //LOAD_UI("btnuserleft")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_LeftRotation);
-    //LOAD_UI("btnuserleft")->EvMouseLDown += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_LMouseDown);
-    //LOAD_UI("btnuserleft")->EvMouseLUp += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_LMouseUp);
-    //人物右旋按钮
-    //LOAD_UI("btnuserright")->EvLClick += RTW_CALLBACK(this, UILayerSelectChar, OnClicked_RightRotation);
-
     //创建人物角色界面
-
     LOAD_UI("fmShangZhou.btnshang")->EvLClick +=
-        RTW_CALLBACK_1(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)1);
+        RTW_CALLBACK_1(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)FACTION_SHANG);
     LOAD_UI("fmShangZhou.btnzhou")->EvLClick +=
-        RTW_CALLBACK_1(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)2);
-
-    m_charname = LOAD_UI_T(RtwTextBox, "fmcreatid1.fmname.txtname");
-    m_charname->SetCapacity(14);
-
+        RTW_CALLBACK_1(this, UILayerSelectChar, OnClicked_SelectShangOrZhou, (void*)FACTION_ZHOU);
+    m_usrRoleName = LOAD_UI_T(RtwTextBox, "fmCreatRole.txtRoleName");
+    m_usrRoleName->SetCapacity(14);
+    LOAD_UI("fmCreatRole.btnNameRand")->EvLClick +=
+        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_RandName);
     //人物角色发型
-    LOAD_UI("fmcreatid2.btnhairleft")->EvLClick +=
+    LOAD_UI("fmCreatRole.btnHeadLeft")->EvLClick +=
         RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevHair);
-    LOAD_UI("fmcreatid2.btnhairright")->EvLClick +=
+    LOAD_UI("fmCreatRole.btnHeadRight")->EvLClick +=
         RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextHair);
-
-    //随机创建
-    LOAD_UI("fmcreatid3.btnrandom")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_RandomCreate);
-    //完成创建
-    LOAD_UI("fmcreatid3.btncreate")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_CreateChar);
-
-    //四大门派---------蜀山派,花间门,苗疆,五台山
-    LOAD_UI("fmshushan.btnshushan")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectShushan);
-    LOAD_UI("fmhuajian.btnhuajian")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectHuajian);
-    LOAD_UI("fmshengwu.btnshengwu")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectShenwu);
-    LOAD_UI("fmmingwang.btnmingwang")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_SelectMingwang);
-
-    LOAD_UI("fmcreatid1")->Hide();
-    LOAD_UI("fmcreatid2")->Hide();
-    LOAD_UI("fmcreatid3")->Hide();
     unguard;
 }
 
 UILayerSelectChar::~UILayerSelectChar() {}
+
+//---------------选角界面----------------
 
 //进入游戏
 void UILayerSelectChar::OnClicked_Enter(void*, void*) {
@@ -89,9 +67,9 @@ void UILayerSelectChar::OnClicked_Back(void*, void*) {
     if (!gc_login)
         return;
     const auto& status = gc_login->GetStatus();
-
     if (status == GcLogin::GLS_CREATE_CHAR) {
         if (gc_login->m_selectFaction != GcLogin::None) {
+            LOAD_UI("crtRoleBtn")->Disable();
             gc_login->SetSelectShangOrZhou(GcLogin::None);
         } else {
             gc_login->SetLoginState(GcLogin::GLS_SELECT_CHAR);
@@ -120,24 +98,17 @@ void UILayerSelectChar::OnClicked_SelectChar(RtwWidget* sender, RtwEventDelegate
 //创建人物
 void UILayerSelectChar::OnClicked_EngterCreateChar(void*, void*) {
     const auto& gc_login = GetLogin();
-    if (gc_login) {
-        if (gc_login->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
-            gc_login->SetLoginState(GcLogin::GLS_CREATE_CHAR);
-        }
+    if (!gc_login)
+        return;
+    if (gc_login->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
+        gc_login->SetLoginState(GcLogin::GLS_CREATE_CHAR);
+    } else if (gc_login->GetStatus() == GcLogin::GLS_CREATE_CHAR &&
+               gc_login->m_curCrtRoleCsvID > 0) {
+        GetLogin()->OnCreateUser();
     }
 }
 
-//商 周
-void UILayerSelectChar::OnClicked_SelectShangOrZhou(RtwWidget* sender, RtwEventDelegate* e) {
-    const auto& gc_login = GetLogin();
-    if (gc_login) {
-        if (gc_login->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-            gc_login->SetSelectShangOrZhou((int)e->param1);
-        }
-    }
-}
-
-//删除人物
+//删除人物 begin
 void UILayerSelectChar::OnClicked_Delete(void*, void*) {
     const auto& gc_login = GetLogin();
     if (!gc_login)
@@ -188,6 +159,8 @@ void UILayerSelectChar::OnConfirm_Delete(void*, void*) {
     }
 }
 
+//删除人物 end
+
 //人物左旋按钮
 void UILayerSelectChar::OnClicked_LeftRotation(void*, void*) {
     guard;
@@ -230,10 +203,36 @@ void UILayerSelectChar::OnClicked_RightRotation(void*, void*) {
     unguard;
 }
 
-//创建人物角色界面
+//---------------创建人物角色界面------------
 
-//人物角色发型
-//上一个发型名称
+//选择阵营
+void UILayerSelectChar::OnClicked_SelectShangOrZhou(RtwWidget* sender, RtwEventDelegate* e) {
+    const auto& gc_login = GetLogin();
+    if (gc_login) {
+        if (gc_login->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
+            gc_login->SetSelectShangOrZhou((int)e->param1);
+        }
+    }
+}
+
+//随机昵称
+void UILayerSelectChar::OnClicked_RandName(void*, void*) {
+    HttpReq::getInstance()->asyncGet(
+        "https://www.mxnzp.com/api/idiom/"
+        "random?app_id=gclqdinyhywepkpo&app_secret=VUFtSDBXY3l6U2MremF3NDlxNUtzdz09",
+        [this](const nlohmann::json& response) { this->OnSetRandName(response); });
+}
+
+void UILayerSelectChar::OnSetRandName(const nlohmann::json& json_response) {
+    if (json_response.contains("error")) {
+        m_usrRoleName->SetText("请不要点击过快");
+        return;
+    }
+    std::string name = json_response["data"]["word"];
+    m_usrRoleName->SetText(HttpReq::Utf8ToGbk(name.c_str()));
+}
+
+//上一个发型
 void UILayerSelectChar::OnClicked_PrevHair(void*, void*) {
     guard;
     if (GetLogin()) {
@@ -244,7 +243,7 @@ void UILayerSelectChar::OnClicked_PrevHair(void*, void*) {
     unguard;
 }
 
-//下一个发型名称
+//下一个发型
 void UILayerSelectChar::OnClicked_NextHair(void*, void*) {
     guard;
     if (GetLogin()) {
@@ -255,88 +254,14 @@ void UILayerSelectChar::OnClicked_NextHair(void*, void*) {
     unguard;
 }
 
-//随机创建
-void UILayerSelectChar::OnClicked_RandomCreate(void*, void*) {
-    guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-            GetLogin()->OnRandomCreateUser();
-        }
-    }
-    unguard;
-}
-
-//完成创建人物角色
-void UILayerSelectChar::OnClicked_CreateChar(void*, void*) {
-    guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-            GetLogin()->OnCreateUser();
-        }
-    }
-    unguard;
-}
-
-//四大门派---------蜀山派,花间门,苗疆,五台山
-//蜀山派
-void UILayerSelectChar::OnClicked_SelectShushan(void*, void*) {
-    guard;
-    if (LOAD_UI("fmshushan.btnshushan")->getEnable()) {
-        if (GetLogin()) {
-            if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-                GetLogin()->SetSelectUser(2);
-            }
-        }
-    }
-    unguard;
-}
-
-//花间门
-void UILayerSelectChar::OnClicked_SelectHuajian(void*, void*) {
-    guard;
-    if (LOAD_UI("fmhuajian.btnhuajian")->getEnable()) {
-        if (GetLogin()) {
-            if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-                GetLogin()->SetSelectUser(1);
-            }
-        }
-    }
-    unguard;
-}
-
-//苗疆
-void UILayerSelectChar::OnClicked_SelectShenwu(void*, void*) {
-    guard;
-    if (LOAD_UI("fmshengwu.btnshengwu")->getEnable()) {
-        if (GetLogin()) {
-            if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-                GetLogin()->SetSelectUser(3);
-            }
-        }
-    }
-    unguard;
-}
-
-//五台山
-void UILayerSelectChar::OnClicked_SelectMingwang(void*, void*) {
-    guard;
-    if (LOAD_UI("fmmingwang.btnmingwang")->getEnable()) {
-        if (GetLogin()) {
-            if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-                GetLogin()->SetSelectUser(0);
-            }
-        }
-    }
-    unguard;
-}
-
+//----------------------废弃但保留--------------------
 //设置密码
 void UILayerSelectChar::OnReceiveSetPassword(char lRet) {
     guard;
     if (GetLogin()) {
         if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
             if (lRet == 0) {
-                GetLogin()->GetAccountInfo().users[GetLogin()->GetCurSelectChar()].hasCharPwd =
+                GetLogin()->GetAccountInfo().users[GetLogin()->m_curSelRoleIndex].hasCharPwd =
                     true;
                 GetLogin()->UpdateSelectChar();
                 UIFormMsg::ShowStatic(R(MSG_CLIENT_SETPASSWORDSUCCESS), UIFormMsg::TYPE_OK);
@@ -354,7 +279,7 @@ void UILayerSelectChar::OnReceiveDelPassword(char lRet) {
     if (GetLogin()) {
         if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
             if (lRet == 0) {
-                GetLogin()->GetAccountInfo().users[GetLogin()->GetCurSelectChar()].hasCharPwd =
+                GetLogin()->GetAccountInfo().users[GetLogin()->m_curSelRoleIndex].hasCharPwd =
                     false;
                 GetLogin()->UpdateSelectChar();
                 UIFormMsg::ShowStatic(R(MSG_CLIENT_REMOVEPASSWORDSUCCESS), UIFormMsg::TYPE_OK);

@@ -2,7 +2,7 @@
 #include "ui_form_minimap.h"
 #include "ui_form_task.h"
 #include "UIForm_MiddleMap.h"
-
+#include <mmsystem.h> 
 CUIForm_MiddleMap::CUIForm_MiddleMap(void):
 m_frmMiddleMap(NULL),
 m_pcomComboBox(NULL),

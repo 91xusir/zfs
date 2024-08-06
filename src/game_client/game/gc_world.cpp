@@ -52,7 +52,7 @@
 #include "ui_form_skill.h"
 #include "ui_form_setting.h"
 #include <string>
-
+#include <mmsystem.h> 
 extern RtsPathFind* g_pPathFind;
 extern BOOL         bRenderUI;
 
