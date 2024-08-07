@@ -1837,9 +1837,6 @@
     <ClCompile Include="frame\gc_importlib.cpp">
       <Filter>frame\win_main</Filter>
     </ClCompile>
-    <ClCompile Include="frame\gc_main.cpp">
-      <Filter>frame\win_main</Filter>
-    </ClCompile>
     <ClCompile Include="frame\gc_timer.cpp">
       <Filter>frame\win_main</Filter>
     </ClCompile>
@@ -2007,6 +2004,9 @@
     </ClCompile>
     <ClCompile Include="HttpReq.cpp">
       <Filter>refactor-重构代码放这里\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="frame\gc_main.cpp">
+      <Filter>refactor-重构代码放这里</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -14,7 +14,6 @@ void global_closeApp(void*, void*, void*) {
 }
 
 
-
 UILayerLogin*		g_layerLogin;
 UILayerSelectChar*	g_layerSelectChar;
 UILayerMain*		g_layerMain;

@@ -48,11 +48,7 @@ git clone https://github.com/reniao69/zfs.git
 
 #### 1.2 编译
 
-```
-打开各个vs解决方案，编译game_engine—>编译其他
-```
-
-- [ ] TODO: cmake编译脚本
+详见[编译指南](./doc/编译指南.md)
 
 #### 1.3 项目说明
 
