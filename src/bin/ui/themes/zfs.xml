@@ -10,7 +10,7 @@
                 <Border color="#99999999" size="1"/>
             </EditBox>
             <EditBox Name="EditBox">
-                <BackgroundImage Border="1,1,1,1" BorderFile="zfs_texture/bd.png" BorderSource="10,47,1,1" Blend="true"/>
+                <BackgroundImage Border="1,1,1,1" BorderFile="ui/zfs_texture/bd.png" BorderSource="10,47,1,1" Blend="true"/>
             </EditBox>
             <EditBox Name="NoBorderEditBox">
                 <BackgroundImage Border="1,1,1,1" BorderFile="" BorderSource="10,47,1,1" Blend="true"/>
@@ -18,27 +18,27 @@
             <!-- Form -->
             <!-- 默认form 后续需要修复透明的问题 -->
             <Form Name="TitleBarForm" padding="0,30,0,0" Movable="true" BackgroundColor="#b5000000">
-                <BackgroundImage BorderBlend="true" Border="2,2,2,2" BorderFile="zfs_texture/bd.png" BorderSource="10,40,6,6"/>
-                <!-- <BackgroundImage File="zfs_texture/mi.tga" Source="50,5,1,1" Blend="true" Transparency="0.7" /> -->
+                <BackgroundImage BorderBlend="true" Border="2,2,2,2" BorderFile="ui/zfs_texture/bd.png" BorderSource="10,40,6,6"/>
+                <!-- <BackgroundImage File="ui/zfs_texture/mi.tga" Source="50,5,1,1" Blend="true" Transparency="0.7" /> -->
                 <TitleBar Height="30" Show="true">
-                    <TitleImage Blend="true" File="zfs_texture/ui_4.tga" Source="0,169,240,31" />
+                    <TitleImage Blend="true" File="ui/zfs_texture/ui_4.tga" Source="0,169,240,31" />
                 </TitleBar>
                 <CloseButton Location="20,20,20,20" Name="$hide" Show="true" Text="" Blend="true" padding="0,10,2,0">
-                    <NormalImage Blend="true" File="zfs_texture/ui_4.tga" Source="194,206,20,20"/>
-                    <HighlightImage Blend="true" File="zfs_texture/ui_4.tga" Source="215,206,20,20"/>
-                    <PushedImage Blend="true" File="zfs_texture/ui_4.tga" Source="236,206,20,20"/>
+                    <NormalImage Blend="true" File="ui/zfs_texture/ui_4.tga" Source="194,206,20,20"/>
+                    <HighlightImage Blend="true" File="ui/zfs_texture/ui_4.tga" Source="215,206,20,20"/>
+                    <PushedImage Blend="true" File="ui/zfs_texture/ui_4.tga" Source="236,206,20,20"/>
                 </CloseButton>
             </Form>
             <!-- 确认框form -->
             <Form Name="confirmTitleBarForm" padding="0,20,0,0" BackgroundColor="#60000000">
-                <BackgroundImage BorderBlend="true" Border="2,2,2,2" BorderFile="zfs_texture/bd.png" BorderSource="10,40,6,6"/>
+                <BackgroundImage BorderBlend="true" Border="2,2,2,2" BorderFile="ui/zfs_texture/bd.png" BorderSource="10,40,6,6"/>
                 <TitleBar Height="20" Show="true">
-                    <TitleImage Blend="true" File="zfs_texture/ui_4.tga" Source="0,169,240,31" />
+                    <TitleImage Blend="true" File="ui/zfs_texture/ui_4.tga" Source="0,169,240,31" />
                 </TitleBar>
             </Form>
             <!-- 无标题 -->
             <Form Name="NoTitleBarForm" BackgroundColor="#b5000000">
-                <BackgroundImage Border="1,1,1,1" BorderFile="zfs_texture/bd.png" BorderSource="17,39,2,2" Blend="true"/>
+                <BackgroundImage Border="1,1,1,1" BorderFile="ui/zfs_texture/bd.png" BorderSource="17,39,2,2" Blend="true"/>
                 <TitleBar Show="false"/>
             </Form>
             <!-- ////////////////////////////////////////// -->
@@ -70,7 +70,7 @@
                 <TitleBar Show="false"/>
             </Form>
             <Form Name="FormHp">
-                <BackgroundImage File="zfs_texture/tool.tga" Source="0,0,225,102" Blend="true"/>
+                <BackgroundImage File="ui/zfs_texture/tool.tga" Source="0,0,225,102" Blend="true"/>
             </Form>
             <Form Name="TitleLabel" Text="" Movable="false">
                 <BackgroundImage Border="3,3,3,3" BorderFile="" BorderSource="11,11,19,19" File="" Source="10,5,1,1" Blend="true" Transparency="0.7"/>
@@ -90,16 +90,16 @@
             </Form>
             <!-- Button -->
             <Button Name="PushButton" Text="PushButton" Sound="ui_softb_bt.wav">
-                <NormalImage Blend="true" File="zfs_texture/gw_b1.png" Source="0,0,128,30"/>
-                <HighlightImage Blend="true" File="zfs_texture/gw_b4.png" Source="0,0,128,30"/>
-                <PushedImage Blend="true" File="zfs_texture/gw_b2.png" Source="0,0,128,30"/>
-                <DisabledImage Blend="true" File="zfs_texture/gw_b3.png" Source="0,0,128,30"/>
+                <NormalImage Blend="true" File="ui/zfs_texture/gw_b1.png" Source="0,0,128,30"/>
+                <HighlightImage Blend="true" File="ui/zfs_texture/gw_b4.png" Source="0,0,128,30"/>
+                <PushedImage Blend="true" File="ui/zfs_texture/gw_b2.png" Source="0,0,128,30"/>
+                <DisabledImage Blend="true" File="ui/zfs_texture/gw_b3.png" Source="0,0,128,30"/>
             </Button>
             <Button Name="SmallPushButton" Text="PushButton" Sound="ui_softb_bt.wav">
-                <NormalImage Blend="true" File="zfs_texture/gw_b1.png" Source="0,0,128,30"/>
-                <HighlightImage Blend="true" File="zfs_texture/gw_b4.png" Source="0,0,128,30"/>
-                <PushedImage Blend="true" File="zfs_texture/gw_b2.png" Source="0,0,128,30"/>
-                <DisabledImage Blend="true" File="zfs_texture/gw_b3.png" Source="0,0,128,30"/>
+                <NormalImage Blend="true" File="ui/zfs_texture/gw_b1.png" Source="0,0,128,30"/>
+                <HighlightImage Blend="true" File="ui/zfs_texture/gw_b4.png" Source="0,0,128,30"/>
+                <PushedImage Blend="true" File="ui/zfs_texture/gw_b2.png" Source="0,0,128,30"/>
+                <DisabledImage Blend="true" File="ui/zfs_texture/gw_b3.png" Source="0,0,128,30"/>
             </Button>
             <Button Name="BigPushButton" Text="PushButton" Sound="ui_softb_bt.wav">
                 <NormalImage Blend="true" File="ui/textures/5.tga" Source="315,2,65,19"/>
@@ -126,30 +126,30 @@
                 <DisabledImage Blend="true" File="ui/textures/5.tga" Source="321,116,35,16"/>
             </Button>
             <Button Name="ChatButton">
-                <NormalImage File="zfs_texture/gw_b1.tga" Source="0,6,128,24"/>
-                <HighlightImage File="zfs_texture/gw_b1.tga" Source="0,6,128,24"/>
-                <PushedImage File="zfs_texture/gw_b2.tga" Source="0,6,128,24"/>
+                <NormalImage File="ui/zfs_texture/gw_b1.tga" Source="0,6,128,24"/>
+                <HighlightImage File="ui/zfs_texture/gw_b1.tga" Source="0,6,128,24"/>
+                <PushedImage File="ui/zfs_texture/gw_b2.tga" Source="0,6,128,24"/>
             </Button>
             <Button Name="LPushButton" Text="PushButton" Sound="mbutton.wav">
                 <!-- <BackgroundImage Border="23,0,23,0" BorderFile="ui/textures/gw_b1.bmp" BorderSource="0,37,64,25" Blend="true"/> -->
-                <NormalImage Blend="true" File="zfs_texture/gw_b1.png" Source="0,6,128,24"/>
-                <HighlightImage Blend="true" File="zfs_texture/gw_b4.png" Source="0,6,128,24"/>
-                <PushedImage Blend="true" File="zfs_texture/gw_b2.png" Source="0,6,128,24"/>
-                <DisabledImage Blend="true" File="zfs_texture/gw_b3.png" Source="0,6,128,24"/>
+                <NormalImage Blend="true" File="ui/zfs_texture/gw_b1.png" Source="0,6,128,24"/>
+                <HighlightImage Blend="true" File="ui/zfs_texture/gw_b4.png" Source="0,6,128,24"/>
+                <PushedImage Blend="true" File="ui/zfs_texture/gw_b2.png" Source="0,6,128,24"/>
+                <DisabledImage Blend="true" File="ui/zfs_texture/gw_b3.png" Source="0,6,128,24"/>
             </Button>
             <Button Name="AddButton">
-                <NormalImage Blend="true" File="zfs_texture/ui_add.tga" Source="16,0,16,16"/>
-                <HighlightImage Blend="true" File="zfs_texture/ui_add.tga" Source="16,0,16,16"/>
-                <PushedImage Blend="true" File="zfs_texture/ui_add.tga" Source="0,0,16,16"/>
+                <NormalImage Blend="true" File="ui/zfs_texture/ui_add.tga" Source="16,0,16,16"/>
+                <HighlightImage Blend="true" File="ui/zfs_texture/ui_add.tga" Source="16,0,16,16"/>
+                <PushedImage Blend="true" File="ui/zfs_texture/ui_add.tga" Source="0,0,16,16"/>
             </Button>
             <Button Name="InfoButton">
-                <NormalImage Blend="true" File="zfs_texture/notify_normal.tga" Source="0,0,32,32"/>
-                <HighlightImage Blend="true" File="zfs_texture/notify_hover.tga" Source="0,0,32,32"/>
-                <PushedImage Blend="true" File="zfs_texture/notify_normal.tga" Source="0,0,32,32"/>
+                <NormalImage Blend="true" File="ui/zfs_texture/notify_normal.tga" Source="0,0,32,32"/>
+                <HighlightImage Blend="true" File="ui/zfs_texture/notify_hover.tga" Source="0,0,32,32"/>
+                <PushedImage Blend="true" File="ui/zfs_texture/notify_normal.tga" Source="0,0,32,32"/>
             </Button>
             <!--	  <Column Name="Column"><BackgroundImage Border="3,3,3,3" BorderFile="" BorderSource="0,11,19,19" File="" Source="10,5,1,1" Blend="true" Transparency="0.7"/></Column>  -->
             <Button Name="Column">
-                <BackgroundImage Border="2,2,2,2" BorderFile="zfs_texture/bd.tga" BorderSource="11,11,19,19" File="zfs_texture/mi.tga" Source="10,5,1,1" Blend="true" Transparency="0.7"/>
+                <BackgroundImage Border="2,2,2,2" BorderFile="ui/zfs_texture/bd.tga" BorderSource="11,11,19,19" File="ui/zfs_texture/mi.tga" Source="10,5,1,1" Blend="true" Transparency="0.7"/>
             </Button>
             <Button Name="Column1">
                 <BackgroundImage Border="" BorderFile="" BorderSource="" File="ui/textures/10.tga" Source="143,189,128,25" Blend="true" Transparency="0.7"/>
@@ -166,12 +166,12 @@
             <Button Inherit="PushButton" Name="HaHaBtn" Text="HaHa"/>
             <!-- CheckButton -->
             <CheckButton Name="CheckButton" BackgroundColor="#b5000000" Transparency="0.5" Sound="ui_softb_bt.wav">
-                <BackgroundImage File="zfs_texture/single.tga" Source="200,214,14,14" />
-                <CheckedImage File="zfs_texture/single.tga" Source="200,200,14,14" CheckedColorKey="true" Style="check"/>
+                <BackgroundImage File="ui/zfs_texture/single.tga" Source="200,214,14,14" />
+                <CheckedImage File="ui/zfs_texture/single.tga" Source="200,200,14,14" CheckedColorKey="true" Style="check"/>
             </CheckButton>
              <CheckButton Name="BigCheckButton" Text="PushButton" Sound="ui_softb_bt.wav">
-                <BackgroundImage Blend="true" File="zfs_texture/gw_b1.png" Source="0,0,128,30"/>
-                <CheckedImage Blend="true" File="zfs_texture/gw_b2.png" Source="0,0,128,30"/>
+                <BackgroundImage Blend="true" File="ui/zfs_texture/gw_b1.png" Source="0,0,128,30"/>
+                <CheckedImage Blend="true" File="ui/zfs_texture/gw_b2.png" Source="0,0,128,30"/>
             </CheckButton>
             <CheckButton Name="NewCheckButton1">
                 <NormalImage Blend="true" File="ui/textures/5.tga" Source="384,2,57,20"/>
@@ -264,7 +264,7 @@
             </ProgressBar>
             <ProgressBar Name="RAGEBar">
                 <BackgroundImage Blend="true" File="" Source="165,220,79,13"/>
-                <ProgressBarImage Blend="true" File="zfs_texture/ui_2.tga" Source="1,178,84,12"/>
+                <ProgressBarImage Blend="true" File="ui/zfs_texture/ui_2.tga" Source="1,178,84,12"/>
             </ProgressBar>
             <ProgressBar Name="FBBar1">
                 <BackgroundImage Blend="true" File="" Source=""/>
@@ -313,7 +313,7 @@
             </ScrollBarH>
 
             <ScrollBarH Name="DefaultSbh" BorderCorlor="#ffd6c384" BorderSize="1" EnableLRBtn="False">
-                <BackgroundImage Border="2,2,2,2" BorderFile="" BorderSource="10,40,6,6" Blend="true" File="zfs_texture/form.tga" Source="0,52,24,23"/>
+                <BackgroundImage Border="2,2,2,2" BorderFile="" BorderSource="10,40,6,6" Blend="true" File="ui/zfs_texture/form.tga" Source="0,52,24,23"/>
                 <HandleImage File="" Source="50,142,16,14"/>
             </ScrollBarH>
 
@@ -370,7 +370,7 @@
 
             <!-- PopupMenu -->
             <PopupMenu Name="Border" Text="">
-                <BackgroundImage File="zfs_texture/form.tga" Source="154,110,2,2" Border="2,2,2,2" Blend="true"/>
+                <BackgroundImage File="ui/zfs_texture/form.tga" Source="154,110,2,2" Border="2,2,2,2" Blend="true"/>
             </PopupMenu>
 
             <!-- ListBox -->

@@ -16,7 +16,7 @@
       <Label Inherit="" Location="30,3,128,16" Name="wxtext" Text="真封神·浴火重生"/>
       <Label Inherit="" Location="100,80,128,16" Name="wxtext" Text="by:鸿钧"/>
       <Label Inherit="" Location="1,40,128,149" Name="wxlogo" Text="">
-        <BackgroundImage File="zfs_texture/xxn.tga" Source="0,0,128,149" Blend="true" />
+        <BackgroundImage File="ui/zfs_texture/xxn.tga" Source="0,0,128,149" Blend="true" />
       </Label>
     </Form>
 

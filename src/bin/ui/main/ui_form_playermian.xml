@@ -38,7 +38,7 @@
               <DisabledImage Blend="true" File="ui\textures\8.tga" Source="340,309,40,30"/>
             </Button>
             <Label Inherit="" Location="4,49,38,38" Name="lbCloth" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnCloth.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnCloth.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="8,53,31,31" Name="btnCloth" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,355,39,39"/>
@@ -47,86 +47,86 @@
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="41,433,38,39"/>
             </Button>
             <Label Inherit="" Location="250,49,38,38" Name="lbKits" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnKits.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnKits.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="8,95,31,31" Name="btnGlove" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,394,39,39"/>
             </Button>
             <Label Inherit="" Location="4,91,38,38" Name="lbGlove" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnGlove.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnGlove.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="8,137,31,31" Name="btnRing" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="41,394,38,39"/>
             </Button>
             <Label Inherit="" Location="4,133,38,38" Name="lbRing" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnRing.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnRing.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="8,179,31,31" Name="btnCaestus" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="80,394,38,39"/>
             </Button>
             <Label Inherit="" Location="4,175,38,38" Name="lbCaestus" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnCaestus.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnCaestus.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="8,221,31,31" Name="btnShoes" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,433,39,39"/>
             </Button>
             <Label Inherit="" Location="4,217,38,38" Name="lbShoes" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnShoes.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnShoes.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="254,95,31,31" Name="btnNecklace" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="41,355,38,39"/>
             </Button>
             <Label Inherit="" Location="250,91,38,38" Name="lbNecklace" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnNecklace.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnNecklace.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="254,137,31,31" Name="btnRing2" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="41,394,38,39"/>
             </Button>
             <Label Inherit="" Location="250,133,38,38" Name="lbRing2" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnRing.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnRing.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="254,179,31,31" Name="btnBook" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="41,472,38,39"/>
             </Button>
             <Button Inherit="" Location="250,175,38,38" Name="lbBook" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnBook.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnBook.tga" Source=""/>
             </Button>
             <Button Inherit="" Location="254,263,31,31" Name="btnFashion" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,472,39,39"/>
             </Button>
             <Label Inherit="" Location="250,259,38,38" Name="lbFashion" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnFashion.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnFashion.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="133,302,31,31" Name="btnTrump" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="80,355,38,39"/>
             </Button>
             <Label Inherit="" Location="129,298,38,38" Name="lbTrump" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnTrump.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnTrump.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="254,221,31,31" Name="btnCharm" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="80,433,38,39"/>
             </Button>
             <Label Inherit="" Location="250,217,38,38" Name="lbCharm" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnCharm.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnCharm.tga" Source=""/>
             </Label>
             <Button FontSize="12" Inherit="NewButton1" Location="231,340,60,21" Name="btnupdate" Show="true" Text="Êô ÐÔ" TextColor="#fffbff66" TextFont="ËÎÌå"/>
             <Button Inherit="" Location="51,302,31,31" Name="btnRightHand" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="119,472,39,39"/>
             </Button>
             <Label Inherit="" Location="47,298,38,38" Name="lbRightHand" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnHand.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnHand.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="209,302,31,31" Name="btnLeftHand" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="119,472,38,39"/>
             </Button>
             <Label Inherit="" Location="205,298,38,38" Name="lbLeftHand" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnHand.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnHand.tga" Source=""/>
             </Label>
             <Button Inherit="" Location="8,263,31,31" Name="btnFly" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="80,472,38,39"/>
             </Button>
             <Label Inherit="" Location="4,259,38,38" Name="lbFly" Show="true">
-              <BackgroundImage Blend="true" File="zfs_texture/btnFly.tga" Source=""/>
+              <BackgroundImage Blend="true" File="ui/zfs_texture/btnFly.tga" Source=""/>
             </Label>
             <Label Inherit="" Location="4,2,50,43" Name="lbMeter" Show="true">
               <BackgroundImage Blend="true" File="ui\textures\9.tga" Source="0,216,50,43"/>

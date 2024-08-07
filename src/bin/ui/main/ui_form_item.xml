@@ -127,52 +127,52 @@
           <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="41,472,38,39"/>
         </Button>
         <Label Location="217,5,38,38" Name="lbNecklace">
-          <BackgroundImage Blend="true" File="zfs_texture/btnNecklace.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnNecklace.tga" Source=""/>
         </Label>
         <Label Location="259,122,38,38" Name="lbCharm">
-          <BackgroundImage Blend="true" File="zfs_texture/btnCharm.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnCharm.tga" Source=""/>
         </Label>
         <Label Location="15,161,38,38" Name="lbRightHand">
-          <BackgroundImage Blend="true" File="zfs_texture/btnHand.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnHand.tga" Source=""/>
         </Label>
         <Label Location="15,44,38,38" Name="lbGlove">
-          <BackgroundImage Blend="true" File="zfs_texture/btnGlove.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnGlove.tga" Source=""/>
         </Label>
         <Label Location="15,5,38,38" Name="lbCloth">
-          <BackgroundImage Blend="true" File="zfs_texture/btnCloth.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnCloth.tga" Source=""/>
         </Label>
         <Label Location="91,-450,0,0" Name="lbPants">
           <BackgroundImage Blend="true" File="" Source=""/>
         </Label>
         <Label Location="217,44,38,38" Name="lbRing">
-          <BackgroundImage Blend="true" File="zfs_texture/btnRing.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnRing.tga" Source=""/>
         </Label>
         <Label Location="217,161,38,38" Name="lbLeftHand">
-          <BackgroundImage Blend="true" File="zfs_texture/btnHand.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnHand.tga" Source=""/>
         </Label>
         <Label Location="15,122,38,38" Name="lbShoes">
-          <BackgroundImage Blend="true" File="zfs_texture/btnShoes.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnShoes.tga" Source=""/>
         </Label>
         <Label Location="259,161,38,38" Name="lbFly">
-          <BackgroundImage Blend="true" File="zfs_texture/btnFly.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnFly.tga" Source=""/>
         </Label>
         <Label Location="259,83,38,38" Name="lbFashion">
-          <BackgroundImage Blend="true" File="zfs_texture/btnFashion.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnFashion.tga" Source=""/>
         </Label>
         <Label Location="259,5,38,38" Name="lbTrump">
-          <BackgroundImage Blend="true" File="zfs_texture/btnTrump.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnTrump.tga" Source=""/>
         </Label>
         <Label Location="259,44,38,38" Name="lbRing2">
-          <BackgroundImage Blend="true" File="zfs_texture/btnRing.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnRing.tga" Source=""/>
         </Label>
         <Label Location="217,83,38,38" Name="lbBook">
-          <BackgroundImage Blend="true" File="zfs_texture/btnBook.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnBook.tga" Source=""/>
         </Label>
         <Label Location="15,83,38,38" Name="lbCaestus">
-          <BackgroundImage Blend="true" File="zfs_texture/btnCaestus.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnCaestus.tga" Source=""/>
         </Label>
         <Button Location="217,122,38,38" Name="lbKits">
-          <BackgroundImage Blend="true" File="zfs_texture/btnKits.tga" Source=""/>
+          <BackgroundImage Blend="true" File="ui/zfs_texture/btnKits.tga" Source=""/>
         </Button>
         <Label Inherit="" Location="59,5,154,195" Name="lbPhotos" Show="true">
           <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="357,199,154,195"/>

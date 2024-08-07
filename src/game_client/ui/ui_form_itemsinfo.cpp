@@ -54,24 +54,24 @@ UIFormItemsInfo::UIFormItemsInfo()
 		m_btnParts[nPart]->EvHint += RTW_CALLBACK(this, UIFormItemsInfo, OnGetHintText_Parts);
     }
 
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::WEAPON_1], "zfs_texture/btnHand.tga", PATH_STRING_LEN);
-	//strncpy(m_iconUnquip[CItemContainerBase::WEAPON_2], "zfs_texture/btnHand.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::NECKLACE], "zfs_texture/btnNecklace.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::GLOVE], "zfs_texture/btnGlove.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::RING], "zfs_texture/btnRing.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::BODY], "zfs_texture/btnCloth.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::CHARM], "zfs_texture/btnCharm.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::FOOT], "zfs_texture/btnShoes.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::WEAPON_1], "ui/zfs_texture/btnHand.tga", PATH_STRING_LEN);
+	//strncpy(m_iconUnquip[CItemContainerBase::WEAPON_2], "ui/zfs_texture/btnHand.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::NECKLACE], "ui/zfs_texture/btnNecklace.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::GLOVE], "ui/zfs_texture/btnGlove.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::RING], "ui/zfs_texture/btnRing.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::BODY], "ui/zfs_texture/btnCloth.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::CHARM], "ui/zfs_texture/btnCharm.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::FOOT], "ui/zfs_texture/btnShoes.tga", PATH_STRING_LEN);
 
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::CAESTUS], "zfs_texture/btnCaestus.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::RING2], "zfs_texture/btnRing.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::NECKLACE], "zfs_texture/btnNecklace.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::KITS], "zfs_texture/btnKits.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::TRUMP], "zfs_texture/btnTrump.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::FASHION], "zfs_texture/btnFashion.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::SEALEDBOOK], "zfs_texture/btnBook.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::AEROCRAFT], "zfs_texture/btnFly.tga", PATH_STRING_LEN);
-	rt2_strncpy(m_iconUnquip[CItemContainerBase::WEAPON_3], "zfs_texture/btnHand.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::CAESTUS], "ui/zfs_texture/btnCaestus.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::RING2], "ui/zfs_texture/btnRing.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::NECKLACE], "ui/zfs_texture/btnNecklace.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::KITS], "ui/zfs_texture/btnKits.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::TRUMP], "ui/zfs_texture/btnTrump.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::FASHION], "ui/zfs_texture/btnFashion.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::SEALEDBOOK], "ui/zfs_texture/btnBook.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::AEROCRAFT], "ui/zfs_texture/btnFly.tga", PATH_STRING_LEN);
+	rt2_strncpy(m_iconUnquip[CItemContainerBase::WEAPON_3], "ui/zfs_texture/btnHand.tga", PATH_STRING_LEN);
 
 	m_PlayerID = 0;
 	m_PlayerName = "";
