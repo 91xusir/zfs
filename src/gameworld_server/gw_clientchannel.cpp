@@ -144,14 +144,14 @@ GW_BEGIN_CMD(cmd_c2g_select_char)
 	}
 	else
 	{
-		g_server.KickAccount(lc->info.accountId,0,"select char"); // 如果需要在选人后显示下面的信息，就要注释这条语句
+		//g_server.KickAccount(lc->info.accountId,0,"select char"); // 如果需要在选人后显示下面的信息，就要注释这条语句
 		g_sendCmd->BeginWrite();
 		g_sendCmd->WriteShort(g2c_select_char_ret);
         g_sendCmd->WriteLong(0);
         //g_sendCmd->WriteString("服务器暂时不可用");//by fox for string
 		g_sendCmd->WriteString((char*)R(MSG_SERVER_LOST_1));
         lc->SendPacket(g_sendCmd);
-        return eInvalidData; // 如果需要在选人后显示下面的信息，就要注释这条语句
+       // return eInvalidData; // 如果需要在选人后显示下面的信息，就要注释这条语句
 	}
 
 	g_server.UpdateUserIsOnLine(1,user->userID);

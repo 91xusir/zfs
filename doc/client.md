@@ -376,7 +376,7 @@ void UILayer::EnterLogin()
 	unguard;
 /*
 当玩家点击进入游戏按钮时,回调命令响应函数OnClicked_Enter()
-在OnClicked_Enter()函数内部调用OnSelectUser()
+在OnClicked_Enter()函数内部调用OnSelectUserDone()
 而OnSelectUser()里实现加载状态图片的显示和向网络发包
 网络代理类GcLoginSession将会响应g2c_select_char命令
 在该命令响应函数中会调用ChangeGameFlow()来改变游戏顺序

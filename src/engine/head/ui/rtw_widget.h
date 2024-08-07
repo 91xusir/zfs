@@ -12,6 +12,7 @@
 namespace ui {
 class RtwWidget;
 typedef std::list<RtwWidget*> UiWidgetList;
+
 /* 最基本的窗口部件类
 	 从RtwWidget继承的类都要做到：    
 	 (RtwRefObject)重载OnBeforeDestroy
@@ -509,6 +510,12 @@ class RtwWidget : public RtwRefObject, public IUiEventReceiver {
     RtwEventDispatcher EvMouseCapture;  // 控件被鼠标左健选中，但是没有右健释放的状态
 
     static RtwEventDispatcher EvClass_Hint;
+
+   public:
+    static void
+    ChangeDrawUIName();  //开启绘制UI名字 鼠标悬浮显示 add by lyy 2024.8.7
+   private:
+    static bool isDrawUIName;
 };
 
 class CUiWidgetFactory {

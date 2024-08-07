@@ -18,15 +18,21 @@
 #include <thread>
 #include <unordered_map>
 #include <windows.h>
+#include <ui/rtw_widget.h>
+#include "gc_include.h"  
 
 std::unordered_map<std::string, std::function<void()>> preConsole::commandMap = {
-    {"openfps",
+    {"fps",
      []() {
-         RtGetRender()->EnableDrawPref(true, 5.f, 120.f);
+         RtGetRender()->ChangeDrawPref();
      }},
-    {"closefps",
+    {"uiname",
      []() {
-         RtGetRender()->EnableDrawPref(false, 5.f, 120.f);
+         ui::RtwWidget::ChangeDrawUIName();
+     }},
+    {"mousexy",
+     []() {
+         CGameClientFrame::ChangeDrawMouseXY();
      }},
 };
 

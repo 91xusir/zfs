@@ -1,3 +1,4 @@
+#include <region_client.h>
 #ifndef _GC_PLAYER_ITEM
 #define _GC_PLAYER_ITEM
 

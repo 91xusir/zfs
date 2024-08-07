@@ -6,6 +6,8 @@
 #include <ui/rtw_workspace.h>
 #include "../HttpReq.h"
 #include "../LyyUtils.h"
+#include <vector>
+
 /*
 lyy 2024.8.6 重构
 */
@@ -39,9 +41,9 @@ UILayerSelectChar::UILayerSelectChar() {
         RTW_CALLBACK(this, UILayerSelectChar, OnClicked_RandName);
     //人物角色发型
     LOAD_UI("fmCreatRole.btnHeadLeft")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_PrevHair);
+        RTW_CALLBACK_1(this, UILayerSelectChar, OnClicked_ChangeHide, (void*)0);
     LOAD_UI("fmCreatRole.btnHeadRight")->EvLClick +=
-        RTW_CALLBACK(this, UILayerSelectChar, OnClicked_NextHair);
+        RTW_CALLBACK_1(this, UILayerSelectChar, OnClicked_ChangeHide, (void*)1);
     unguard;
 }
 
@@ -232,26 +234,39 @@ void UILayerSelectChar::OnSetRandName(const nlohmann::json& json_response) {
     m_usrRoleName->SetText(LyyUtils::Utf8ToGbk(name.c_str()));
 }
 
-//上一个发型
-void UILayerSelectChar::OnClicked_PrevHair(void*, void*) {
-    guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-            GetLogin()->ChangeCharHair(false);
-        }
+template <typename T>
+static inline void moveToLeft(std::vector<T>& vec) {
+    if (!vec.empty()) {
+        std::rotate(vec.begin(), vec.begin() + 1, vec.end());
     }
-    unguard;
 }
 
-//下一个发型
-void UILayerSelectChar::OnClicked_NextHair(void*, void*) {
-    guard;
-    if (GetLogin()) {
-        if (GetLogin()->GetStatus() == GcLogin::GLS_CREATE_CHAR) {
-            GetLogin()->ChangeCharHair(true);
-        }
+template <typename T>
+static inline void moveToRight(std::vector<T>& vec) {
+    if (!vec.empty()) {
+        std::rotate(vec.rbegin(), vec.rbegin() + 1, vec.rend());
     }
-    unguard;
+}
+
+//切换发型
+void UILayerSelectChar::OnClicked_ChangeHide(RtwWidget* sender, RtwEventDelegate* e) {
+    const auto& gc_login = GetLogin();
+    if (!gc_login || gc_login->GetStatus() != GcLogin::GLS_CREATE_CHAR)
+        return;
+    const auto& curRoleCsvId = gc_login->m_curCrtRoleCsvID;
+    auto&       headMap = gc_login->m_crtRole_csvIdMapHeads;
+    if (!headMap[curRoleCsvId].size())
+        return;
+    const bool  left = (int)e->param1 == 0;
+    const auto& ActIns = gc_login->m_crtRole_csvIdMapActIns[curRoleCsvId];
+    const auto& head = headMap[curRoleCsvId][0];
+    ActIns->UnloadSkin(head.skin.c_str());
+    if (left)
+        moveToLeft(gc_login->m_crtRole_csvIdMapHeads[gc_login->m_curCrtRoleCsvID]);
+    else
+        moveToRight(gc_login->m_crtRole_csvIdMapHeads[gc_login->m_curCrtRoleCsvID]);
+    LOAD_UI("fmCreatRole.txtHead")->SetText(head.name);
+    ActIns->LoadSkin(head.skin.c_str());
 }
 
 //----------------------废弃但保留--------------------
@@ -261,8 +276,7 @@ void UILayerSelectChar::OnReceiveSetPassword(char lRet) {
     if (GetLogin()) {
         if (GetLogin()->GetStatus() == GcLogin::GLS_SELECT_CHAR) {
             if (lRet == 0) {
-                GetLogin()->GetAccountInfo().users[GetLogin()->m_curSelRoleIndex].hasCharPwd =
-                    true;
+                GetLogin()->GetAccountInfo().users[GetLogin()->m_curSelRoleIndex].hasCharPwd = true;
                 GetLogin()->UpdateSelectChar();
                 UIFormMsg::ShowStatic(R(MSG_CLIENT_SETPASSWORDSUCCESS), UIFormMsg::TYPE_OK);
             } else {

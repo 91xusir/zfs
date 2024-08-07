@@ -4,6 +4,7 @@
 #include <string>
 #include <ui/rtw_button.h>
 #include <ui/rtw_textbox.h>
+
 class UILayerSelectChar {
    private:
     //选人界面
@@ -25,21 +26,19 @@ class UILayerSelectChar {
     void OnClicked_LMouseUp(void*, void*);
     //人物右旋按钮
     void OnClicked_RightRotation(void*, void*);
-    void OnClicked_PrevHair(void*, void*);
-    void OnClicked_NextHair(void*, void*);
-    //完成创建
-    void OnClicked_CreateChar(void*, void*);
+    void OnClicked_ChangeHide(RtwWidget* sender, RtwEventDelegate* e);
+
    public:
     UILayerSelectChar();
     ~UILayerSelectChar();
-    void OnReceivePasswordConfirm(char lRet);//角色删除密码确认回调
+    void OnReceivePasswordConfirm(char lRet);  //角色删除密码确认回调
     void OnReceiveSetPassword(char lRet);
     void OnReceiveDelPassword(char lRet);
     void OnUpdateText(RtwWidget* sender, RtwEventDelegate*);
 
    public:
     constexpr static int                   MaxUserCharBtn = 3;
-    std::unordered_map<short, std::string> m_faction = {{1, "商"}, {2, "周"}, {3, "中立"}};
+    std::unordered_map<short, std::string> m_faction = {{0, "周"}, {1, "商"}, {3, "中立"}};
     CUiCheckButton*                        m_charBtnArray[MaxUserCharBtn];
     RtwTextBox*                            m_usrRoleName;  //创建角色名称
 };

@@ -4,11 +4,9 @@
 #include <regex>
 #include <stringapiset.h>
 
-//判断字符串是否包含中文
-
 class LyyUtils {
    public:
-    // 静态成员函数声明
+    //判断字符串是否包含中文
     static inline bool containsChinese(const std::string& str) {
         std::regex chinese_regex("[\\u4e00-\\u9fff]");
         return std::regex_search(str, chinese_regex);

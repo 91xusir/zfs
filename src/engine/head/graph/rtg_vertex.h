@@ -1,4 +1,4 @@
-
+#pragma once
 namespace rt_graph {
 
 struct Int2 {

@@ -4,6 +4,7 @@
 #include "gc_login_session.h"
 #include "ui_form_msg.h"
 #include "ui_layer_select_char.h"
+#include "../preConsole.h"
 
 using namespace gc_net;
 
@@ -300,8 +301,11 @@ BEGIN_CMD_FUNC(cmd_g2c_query_account_ret) {
         m_account.users[n].deleteDate = delDate;
         //检测模型和头像匹配
         SHeadModel headModel;
-        if (!g_TableHeadModel.GetHeadModelByID(headModelID, headModel))
+        if (!g_TableHeadModel.GetHeadModelByID(headModelID, headModel)){
+            P_LOGWARN("没有找到模型" + std::to_string(headModelID));
             return false;
+        }
+         
         if (headModel.actorModelID == m_account.users[n].attributes.actorID) {
             m_account.users[n].headModelID = headModelID;
         } else {
@@ -310,7 +314,7 @@ BEGIN_CMD_FUNC(cmd_g2c_query_account_ret) {
                 return false;
             m_account.users[n].headModelID = heads[0].id;
         }
-
+        
         m_account.users[n].hasCharPwd = hasCharPwd;
         m_account.users[n].isFrozen = isFrozen;
     }
@@ -357,6 +361,8 @@ BEGIN_CMD_FUNC(cmd_g2c_select_char_ret) {
 
         UILayer::LeaveLoading();
         ShowMessage(szErrMsg);
+        //lyytodo 这里和服务器交互有问题 先直接退出
+        GetLogin()->SetLoginState(GetLogin()->GLS_SELECT_GAMEWORLD_SERVER);
     }
 }
 

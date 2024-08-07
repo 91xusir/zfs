@@ -10,6 +10,8 @@
 #include <character/cha_basic.h>
 #include "gc_actor.h"
 #include <region_client.h>
+#include <cstdint>
+#include <graph/rtg_vertex.h>
 /*
 lyy 2024.8.4 重构
 */
@@ -118,7 +120,6 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
 
     //是否保存帐号
     inline void SetSaveAccount(bool bSave) { bSaveAccount = bSave; }
-
     inline bool GetSaveAccount() const { return bSaveAccount; }
 
     // 人物角色左旋
@@ -236,12 +237,10 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     virtual void       OnPoseEnd(SRT_Pose* pose);
     virtual void       OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event);
     virtual void       OnPoseBreak(SRT_Pose* oldPose, SRT_Pose* newPose);
-    void               ChangeCharHair(bool bNext);  //改变人物角色发型名称
    private:
     EStatus           m_eCurrentStatus = GLS_NONE;   //当前状态
     bool              m_bLoading = false;            //判断是否初始化加载
     CGameClientFrame* m_pGameClientFrame = nullptr;  //游戏客户端指针
-    int               m_iCurSelectChar = -1;         //当前选中的人物
     bool              m_bSelCharNetSucceed = false;  //判断选角服务器响应是否成功
     bool m_bCanInput = false;  //是否允许鼠标键盘输入 这里不包括输入框UI类 只是当前类
     //环境光特效之类的
@@ -249,7 +248,8 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     RtgLightItem m_lightDirect;
     RtgLightItem m_lightDirect2;
     long         m_lSkyFog;
-    RtIni        m_ini;                                //ini文件读取
+    //ini文件读取
+    RtIni        m_ini;                             
     //网络相关
     std::string  m_szGameWorldServerName;              // 当前选择的游戏世界服务器
     std::string  m_szGameWorldServerIP;                //IP
@@ -273,18 +273,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     //用于存入上面的场景 做替换
     std::unordered_map<std::string, CRT_ActorInstance*> m_mapActor = {};
 
-    int         m_HeadModelIndex[4] = {};  //头模型数组
-    int         m_HeadImageIndex[4] = {};  //头像数组 待删除
     std::string m_strCharPassword = "";    //角色密码 无用但保留
-    int         iAnimalIndex = 0;
-    short       headModelID = 0;
-    short       headImageID = 0;
-    bool        bRandom = false;  //是否随机创建
-    int         iRandomAnimalIndex = 0;
-    short       headRandomModelID = 0;
-    short       headRandomImageID = 0;
-    int         m_ePrevHeadID = 0;
-    int         m_eNextHeadID = 0;
     long        m_iLastServer = -1;          //记录上一个选中的服务器
     bool        bSelectUserWithPwd = false;  //密码登入游戏
     int         m_nDisconnectCause = 0;      //网络断开原因
@@ -329,8 +318,6 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
    public:
     //由于模型骨骼矩阵是 4x3 矩阵（RtgMatrix12）,而相机矩阵是 4x4 矩阵（RtgMatrix16），需要一个转换函数
     inline static void Lyy_AdjustCameraMatrix(RtgMatrix16* matOut, RtgMatrix12* matIn) {
-        RTASSERT(matOut);
-        RTASSERT(matIn);
         RtgVertex3 x = *(RtgVertex3*)&matIn->_00;
         RtgVertex3 y = *(RtgVertex3*)&matIn->_10;
         RtgVertex3 z = *(RtgVertex3*)&matIn->_20;

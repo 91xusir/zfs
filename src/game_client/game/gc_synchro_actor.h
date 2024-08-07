@@ -15,9 +15,11 @@
 #include "gc_enums.h"
 #include "game_listener.h"
 
-using fox::CListenerManager;
 
+using fox::CListenerManager;
+class RtScene;
 class GcSynchroActor;
+
 class GcSynchroActorManager
 {
 public:

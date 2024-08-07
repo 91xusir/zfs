@@ -11,6 +11,12 @@ RT_IMPLEMENT_DYNAMIC(RtwWidget, RtwRefObject, 0, "ui")
 
 RtwEventDispatcher RtwWidget::EvClass_Hint;
 
+bool RtwWidget::isDrawUIName = false;
+
+void ui::RtwWidget::ChangeDrawUIName() {
+    isDrawUIName = !isDrawUIName;
+}
+
 RtwWidget::RtwWidget()
     : mnRenderTargetIndex(INVALIDE_RENDERTARGET), mbClearRenderTaget(false),
       mlBackBufferDiffuse(0x000000), m_bIsUseSystemFont(false), mbNoClipRect(true),
@@ -1143,7 +1149,7 @@ void RtwWidget::PrintToConsole(const std::string& prefix /* = ""*/) {
 void RtwWidget::DrawForeground(const RtwRect* pClipRect /* = NULL*/) {
     //lyytodo 这里添加所有组件显示名称方便开发使用 后续删掉
 
-    if (g_workspace.getMouseHover() == this) {
+    if (isDrawUIName && g_workspace.getMouseHover() == this) {
         RtwRect temp;
         temp.left = m_rcFrame.left;
         temp.right = m_rcFrame.right;

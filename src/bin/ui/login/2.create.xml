@@ -22,9 +22,9 @@
       <Label Inherit="LabelTitle" Location="20,28,30,16" Name="lbJob" Text="职业选择"/>
       <Button Inherit="PushButton" Location="56,28,28,16" Name="btnJobLeft" Text=""/>
       <Button Inherit="PushButton" Location="162,28,28,16" Name="btnJobRight" Text=""/>
-      <EditBox Disable="true" Inherit="EditBox" Location="88,28,70,16" Name="txtjob" Text="邪灵术士"/>
+      <EditBox Disable="true" Inherit="EditBox" Location="88,28,70,16" Name="txtJob" Text="邪灵术士"/>
       <Label Inherit="LabelTitle" Location="20,52,30,16" Name="lbHead" Text="头型"/>
-      <EditBox Disable="true" Inherit="EditBox" Location="88,52,70,16" Name="txthead" Text="头型A"/>
+      <EditBox Disable="true" Inherit="EditBox" Location="88,52,70,16" Name="txtHead" Text="头型A"/>
       <Button Inherit="PushButton" Location="56,52,28,16" Name="btnHeadLeft" Text=""/>
       <Button Inherit="PushButton" Location="162,52,28,16" Name="btnHeadRight" Text=""/>
       <Label BorderSize="0,1,0,0" Inherit="NoTitleBarForm" Location="15,126,190,100" Multiline="true" Name="lbJobInfo" Show="true" Text="商纣末年出生,17岁的术士,出生时候由于体弱,被遗弃在乡间,为截教仙人所收养,缺乏对人世间温暖的体验,性格冷酷,对世俗充满怨气,身穿飘逸的袍服,外表俊美,持有暗黑力量环绕的强力法宝" TextMargin="8,8,12,8"/>
