@@ -45,7 +45,7 @@ UIFormBank::UIFormBank()
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
 //    m_ptrHoverImage = new RtwImage("highlight_button.tga");// change [3/17/2009 tooth.shi]
-	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 
 	RtwRect rc = m_pFrmGridsUp->GetFrameRect();
 	int left = rc.Left() +1;

@@ -81,7 +81,7 @@ UIFormMiniMap::UIFormMiniMap()
 	m_pBtnWarView		= LOAD_UI_T(RtwButton, "fmminimap.btnwar");
 	//保存列表的指针
 	/*m_pUIPlayerList		= LOAD_UI_T(RtwListBox,"fmteam.fmcontent.tbcteam.fmprep.lbxmembers");*/
-	m_pImage			= g_workspace.getImageFactory()->createImage("ui\\textures\\10.tga");
+	m_pImage			= g_workspace.getImageFactory()->createImage("ui\\x_textures\\10.tga");
 	m_pLockCamera		= LOAD_UI_T(RtwButton, "fmminimap.btnperspective");
 
 	m_pLockCamera->EvLClick			+= RTW_CALLBACK(this,UIFormMiniMap,OnButtonLockCamera);
@@ -747,7 +747,7 @@ void UIFormMiniMap::DrawMiniMap(int iScreenX, int iScreenY, int iScreenWidth, in
 		RtwLabel* lbTaskdesc;
 		if(Taskdescnum >= m_vectorTaskLabel.size())
 		{
-			RtwImage* tmpImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_d_icon02.gif");
+			RtwImage* tmpImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_d_icon02.gif");
 			lbTaskdesc = (RtwLabel*)g_workspace.getWidgetFactory()->createWidget(wtLabel);
 			rt2_sprintf(strId, "lbTaskdesc_%d",Taskdescnum);
  			lbTaskdesc->SetName(strId);
@@ -1108,7 +1108,7 @@ bool UIFormMiniMap::MapIsShow()
 void UIFormMiniMap::OnButtonShowHideClick(ui::RtwWidget* sender, RtwEventDelegate* e)
 {
     guard;
-	static RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui\\textures\\10.tga");
+	static RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui\\x_textures\\10.tga");
 	static bool firstRun = true;
 	static RtwRect showRect = RtwRect(320,297,511,332);
 	static RtwRect hideRect = RtwRect(320,259,511,294);
@@ -1214,8 +1214,8 @@ void UIFormMiniMap::OnButtonShowWorldMap(ui::RtwWidget* sender, RtwEventDelegate
     float fWidth = 256*fScale;
     float fHeight = 256*fScale;
 
-    static string s_LoadingFiles[] = {"ui_texture/map-1.bmp",  "ui_texture/map-2.bmp", "ui_texture/map-3.bmp", "ui_texture/map-4.bmp", "ui_texture/map-5.bmp", "ui_texture/map-6.bmp", \
-        "ui_texture/map-7.bmp", "ui_texture/map-8.bmp", "ui_texture/map-9.bmp", "ui_texture/map-10.bmp", "ui_texture/map-11.bmp", "ui_texture/map-12.bmp"};
+    static string s_LoadingFiles[] = {"ui/ui_texture/map-1.bmp",  "ui/ui_texture/map-2.bmp", "ui/ui_texture/map-3.bmp", "ui/ui_texture/map-4.bmp", "ui/ui_texture/map-5.bmp", "ui/ui_texture/map-6.bmp", \
+        "ui/ui_texture/map-7.bmp", "ui/ui_texture/map-8.bmp", "ui/ui_texture/map-9.bmp", "ui/ui_texture/map-10.bmp", "ui/ui_texture/map-11.bmp", "ui/ui_texture/map-12.bmp"};
 
     string *arrFiles = s_LoadingFiles;
     vector<SequenceImageItem> arrImages;
@@ -1478,7 +1478,7 @@ void UIFormMiniMap::OnReceiveLineInfo(CG_CmdPacket *pvPacket)
 		}
 		imgRc.top			-= 6;
 		imgRc.bottom		+= 5;
-		RtwImage* pImage	= g_workspace.getImageFactory()->createImage("ui\\textures\\10.tga");
+		RtwImage* pImage	= g_workspace.getImageFactory()->createImage("ui\\x_textures\\10.tga");
 		pImage->SetSourceRect(imgRc);
 		pImage->SetBlend(true);
 		m_plstLineContent->SetLineItemImage(i, 1, pImage);

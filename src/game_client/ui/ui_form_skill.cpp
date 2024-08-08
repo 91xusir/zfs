@@ -66,22 +66,22 @@ UIFormSkill::UIFormSkill()
 	m_lbMeter2					= LOAD_UI_T(RtwLabel,"fmborder_skill.fmskillall.tabskillall.fmsecond.lbshowweapon");
 	m_lbMetertree2				= LOAD_UI_T(RtwLabel,"fmborder_skill.fmskillall.tabskillall.fmsecond.lbskilltree");
 
-	m_imgImage1 = g_workspace.getImageFactory()->createImage("ui\\textures\\24.tga");
+	m_imgImage1 = g_workspace.getImageFactory()->createImage("ui\\x_textures\\24.tga");
 	if(m_imgImage1)
 		m_imgImage1->SetBlend(true);
 	m_lbMeter1->SetBackgroundImage(m_imgImage1);
 
-	m_imgImage3 = g_workspace.getImageFactory()->createImage("ui\\textures\\24.tga");
+	m_imgImage3 = g_workspace.getImageFactory()->createImage("ui\\x_textures\\24.tga");
 	if(m_imgImage3)
 		m_imgImage3->SetBlend(true);
 	m_lbMeter2->SetBackgroundImage(m_imgImage3);
 
-	m_imgImage2 = g_workspace.getImageFactory()->createImage("ui\\textures\\25.tga");
+	m_imgImage2 = g_workspace.getImageFactory()->createImage("ui\\x_textures\\25.tga");
 	if(m_imgImage2)
 		m_imgImage2->SetBlend(true);
 	m_lbMetertree1->SetBackgroundImage(m_imgImage2);
 
-	m_imgImage4 = g_workspace.getImageFactory()->createImage("ui\\textures\\25.tga");
+	m_imgImage4 = g_workspace.getImageFactory()->createImage("ui\\x_textures\\25.tga");
 	if(m_imgImage4)
 		m_imgImage4->SetBlend(true);
 	m_lbMetertree2->SetBackgroundImage(m_imgImage4);
@@ -127,7 +127,7 @@ UIFormSkill::UIFormSkill()
 //	m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
 // change [3/20/2009 tooth.shi]    m_ptrImage = new RtwImage("passive_mask");
-	m_ptrImage = g_workspace.getImageFactory()->createImage("ui_texture/passive_mask.dds");
+	m_ptrImage = g_workspace.getImageFactory()->createImage("ui/ui_texture/passive_mask.dds");
     m_ptrImage->SetBlend(true);
 	m_ptrImage->getRenderImage()->GetImage()->m_Transparency = 100;
 	m_ptrImage->getRenderImage()->GetImage()->m_BackTransparency = 155;

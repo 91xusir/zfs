@@ -285,7 +285,7 @@ void CChat::Initfacebtn()
 	for (int i=0; i<5; i++)
 		for (int j=0; j<8; j++)
 		{	
-			rt2_sprintf(strId, "face\\%d.gif", i*8+j);
+			rt2_sprintf(strId, "ui\\face\\%d.gif", i*8+j);
 			faceImage[i][j] = g_workspace.getImageFactory()->createImage(strId);
 			faceImage[i][j]->SetSourceRect(RtwRect(0, 0, 32, 32));
 			rt2_sprintf(strId, "face%02d_%02d", i, j);

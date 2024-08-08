@@ -4,38 +4,38 @@
     <Form EscapeHide="true" Inherit="" Location="93,148,310,454" Movable="true" Name="fmplayershop" Show="false">
       <Button FontSize="12" Inherit="NewButton1" Location="20,419,60,20" Name="btnshopinfo" Show="true" Sound="ui_normalbt.wav" Text="摊位信息" TextColor="#ffdfde9b" TextFont="宋体"/>
       <CloseButton Location="284,14,20,20" padding="0,22,5,0">
-        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <Form Inherit="" Location="22,34,256,50" Name="lbinput" Show="true">
         <EditBox Alignment="" Inherit="" Location="63,5,130,18" Name="tbxshopname" Show="true" Text=""/>
         <Label Inherit="" Location="7,5,46,18" Name="lbshoptextback" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,64,60,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,64,60,18"/>
           <Label Alignment="center" FontSize="12" Inherit="" Location="2,1,40,18" Name="lbshopnametext" Show="true" Text="摊位名" TextColor="#ffdfde9b" TextFont="隶书"/>
         </Label>
         <Label Inherit="" Location="7,29,46,18" Name="lbplayertextback" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,64,60,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,64,60,18"/>
           <Label Alignment="center" FontSize="12" Inherit="" Location="2,1,40,18" Name="lbplayernametext" Show="true" Text="摊  主" TextColor="#ffdfde9b" TextFont="隶书"/>
         </Label>
         <Label Inherit="" Location="5,3,6,22" Name="lbshopname1" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="11,3,180,22" Name="lbshopname2" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
         </Label>
         <Label Inherit="" Location="192,3,6,22" Name="lbshopname3" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,6,22"/>
         </Label>
         <Label Inherit="" Location="5,27,6,22" Name="lbpalyername1" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="10,27,240,22" Name="lbpalyername2" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
           <Label Inherit="" Location="51,2,185,18" Name="lbplayername" Show="true"/>
         </Label>
         <Label Inherit="" Location="250,27,6,22" Name="lbpalyername3" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,6,22"/>
         </Label>
         <Button Alignment="CENTER" FontSize="12" Inherit="NewButton3" Location="212,5,35,18" Name="btnStart1" Show="true" Text="更改" TextColor="#fffbff66" TextFont="宋体"/>
       </Form>
@@ -43,71 +43,71 @@
         <TabCtrl Inherit="" Location="0,0,280,216" Name="tabsell" Show="true">
           <TabItem>
             <CheckButton Inherit="" Location="6,3,57,19" Name="btnitem" Show="true" Text="道具" TextColor="#ffdfde9b">
-              <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="384,2,57,20"/>
-              <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="384,23,57,20"/>
-              <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="384,44,57,20"/>
-              <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="445,396,67,20"/>
+              <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="384,2,57,20"/>
+              <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="384,23,57,20"/>
+              <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="384,44,57,20"/>
+              <CheckedImage Blend="true" File="ui/x_textures/5.tga" Source="445,396,67,20"/>
             </CheckButton>
             <Form Inherit="" Location="5,23,270,193" Name="frmitem" Show="true">
-              <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,20,20"/>
+              <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,20,20"/>
             </Form>
           </TabItem>
           <TabItem>
             <CheckButton Inherit="" Location="64,3,57,19" Name="btnpet" Show="true" Text="宠物" TextColor="#ffdfde9b">
-              <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="384,2,57,20"/>
-              <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="384,23,57,20"/>
-              <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="384,44,57,20"/>
-              <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="445,396,67,20"/>
+              <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="384,2,57,20"/>
+              <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="384,23,57,20"/>
+              <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="384,44,57,20"/>
+              <CheckedImage Blend="true" File="ui/x_textures/5.tga" Source="445,396,67,20"/>
             </CheckButton>
             <Form Inherit="" Location="5,23,270,193" Name="frmpet" Show="true">
-              <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,20,20"/>
+              <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,20,20"/>
               <Form BackgroundColor="#A50E593A" EscapeHide="false" Inherit="" Location="5,20,110,130" Name="conjureform01" Show="true">
-                <BackgroundImage Blend="true" File="ui\new_textures\9_a.tga" Source="1,132,163,166"/>
+                <BackgroundImage Blend="true" File="ui\x_textures\9_a.tga" Source="1,132,163,166"/>
                 <ListBox BackgroundColor="" Inherit="" Location="-1,1,110,130" Name="obpetlist" Show="true"/>
               </Form>
               <Form BackgroundColor="#A50E593A" EscapeHide="false" Inherit="" Location="155,20,110,130" Name="conjureform02" Show="true">
-                <BackgroundImage Blend="true" File="ui\new_textures\9_a.tga" Source="1,132,163,166"/>
+                <BackgroundImage Blend="true" File="ui\x_textures\9_a.tga" Source="1,132,163,166"/>
                 <ListBox BackgroundColor="" Inherit="" Location="0,1,110,130" Name="mywithlist" Show="true"/>
               </Form>
               <Button FontSize="12" Inherit="NewButton1" Location="115,54,38,23" Name="petsellblt" Show="true" Text="上架" TextColor="#ff000000" TextFont="宋体">
-                <NormalImage Blend="true" File="ui\new_textures\9_a.tga" Source="164,164,56,30"/>
-                <PushedImage Blend="true" File="ui\new_textures\9_a.tga" Source="228,165,56,30"/>
-                <HighlightImage Blend="true" File="ui\new_textures\9_a.tga" Source="164,223,56,30"/>
-                <DisabledImage Blend="true" File="ui\new_textures\9_a.tga" Source="228,164,56,30"/>
+                <NormalImage Blend="true" File="ui\x_textures\9_a.tga" Source="164,164,56,30"/>
+                <PushedImage Blend="true" File="ui\x_textures\9_a.tga" Source="228,165,56,30"/>
+                <HighlightImage Blend="true" File="ui\x_textures\9_a.tga" Source="164,223,56,30"/>
+                <DisabledImage Blend="true" File="ui\x_textures\9_a.tga" Source="228,164,56,30"/>
               </Button>
               <Button FontSize="12" Inherit="NewButton1" Location="115,92,38,23" Name="petreturnblt" Show="true" Text="下架" TextColor="#ff000000" TextFont="宋体">
-                <NormalImage Blend="true" File="ui\new_textures\9_a.tga" Source="164,135,56,30"/>
-                <PushedImage Blend="true" File="ui\new_textures\9_a.tga" Source="228,135,56,30"/>
-                <HighlightImage Blend="true" File="ui\new_textures\9_a.tga" Source="164,195,56,30"/>
-                <DisabledImage Blend="true" File="ui\new_textures\9_a.tga" Source="228,135,56,27"/>
+                <NormalImage Blend="true" File="ui\x_textures\9_a.tga" Source="164,135,56,30"/>
+                <PushedImage Blend="true" File="ui\x_textures\9_a.tga" Source="228,135,56,30"/>
+                <HighlightImage Blend="true" File="ui\x_textures\9_a.tga" Source="164,195,56,30"/>
+                <DisabledImage Blend="true" File="ui\x_textures\9_a.tga" Source="228,135,56,27"/>
               </Button>
             </Form>
           </TabItem>
         </TabCtrl>
         <Label Inherit="" Location="207,0,6,22" Name="lbmoney1" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="214,0,50,22" Name="lbmoney2" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
           <Label Alignment="center" Inherit="" Location="0,3,50,16" Name="lbsell" Show="true" Text="出售"/>
         </Label>
         <Label Inherit="" Location="265,0,6,22" Name="lbmoney3" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,6,22"/>
         </Label>
       </Form>
       <Form Inherit="" Location="16,304,280,111" Name="frmbuy" Show="true">
         <Form Inherit="" Location="5,26,270,82" Name="frmcontent" Show="true">
-          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,20,20"/>
+          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,20,20"/>
         </Form>
         <Label Inherit="" Location="207,0,6,22" Name="lbmoney1" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="214,0,50,22" Name="lbmoney2" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
           <Label Alignment="center" Inherit="" Location="0,3,50,16" Name="lbsell" Show="true" Text="收购"/>
         </Label>
         <Label Inherit="" Location="265,0,6,22" Name="lbmoney3" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,6,22"/>
         </Label>
       </Form>
       <Label Alignment="center" FontSize="18" Location="71,3,169,18" Name="lbtitle" Show="true" Text="小货摊" TextColor="#ffdfde9b" TextFont="隶书"/>
@@ -120,31 +120,31 @@
       </Form>
       <Form Inherit="" Location="20,299,200,30" Name="fmtotalprice" Show="true">
         <Label Inherit="" Location="7,6,46,18" Name="lbpricetextback" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,64,60,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,64,60,18"/>
           <Label Alignment="center" FontSize="12" Inherit="" Location="2,1,40,18" Name="lbpricetext" Show="true" Text="总价" TextColor="#ffdfde9b" TextFont="隶书"/>
         </Label>
         <Label Inherit="" Location="5,4,6,22" Name="lbprice1" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="11,4,140,22" Name="lbprice2" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
           <EditBox Alignment="" Inherit="" Location="51,2,90,18" Name="tbxshopname" Show="true" Text=""/>
         </Label>
         <Label Inherit="" Location="152,4,6,22" Name="lbprice3" NoMouseClip="true" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,6,22"/>
         </Label>
         <Label Inherit="" Location="165,4,29,27" Name="lbmoney4" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\10.tga" Source="113,316,29,28"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\10.tga" Source="113,316,29,28"/>
         </Label>
       </Form>
       <Label Location="0,-1,310,50" Name="lbborder1" NoMouseClip="true" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,1,310,50"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,1,310,50"/>
       </Label>
       <Label BackgroundColor="#A016712C" Location="0,50,310,381" Name="lbborder2" NoMouseClip="true" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,53,310,10"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,53,310,10"/>
       </Label>
       <Label Inherit="" Location="0,432,310,23" Name="lbborder3" NoMouseClip="true" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,65,310,23"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,65,310,23"/>
       </Label>
       <Anchors>
         <Anchor offset="-295,0" point="CENTERV"/>
@@ -157,27 +157,27 @@
       <Button Alignment="CENTER" FontSize="12" Inherit="NewButton3" Location="265,164,35,18" Name="btnchange" Show="true" Text="更改" TextColor="#fffbff66" TextFont="宋体"/>
       <Label Alignment="center" FontSize="15" Inherit="" Location="71,29,169,18" Name="lbtitle" Show="true" Text="摊位信息" TextColor="#ffdfde9b" TextFont="宋体"/>
       <CloseButton Location="284,14,20,20" padding="0,22,5,0">
-        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <EditBox Inherit="" Location="10,54,290,105" Name="tbxmessage1" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="367,127,5,13"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="367,127,5,13"/>
       </EditBox>
       <EditBox Inherit="" Location="10,187,290,200" Name="tbxmessage2" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="367,127,5,13"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="367,127,5,13"/>
       </EditBox>
       <EditBox Inherit="" Location="23,399,190,22" Name="tbxmessage3" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="367,127,5,13"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="367,127,5,13"/>
       </EditBox>
       <Label Inherit="" Location="-1,-1,310,50" Name="lbborder1" NoMouseClip="true" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,1,310,50"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,1,310,50"/>
       </Label>
       <Label BackgroundColor="#A016712C" Inherit="" Location="-1,50,310,381" Name="lbborder2" NoMouseClip="true" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,53,310,10"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,53,310,10"/>
       </Label>
       <Label Inherit="" Location="-1,432,310,23" Name="lbborder3" NoMouseClip="true" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,65,310,23"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,65,310,23"/>
       </Label>
       <Anchors>
         <Anchor offset="15,0" point="CENTERV"/>
@@ -207,13 +207,13 @@
           </List>
         </ComboBox>
         <Label Inherit="" Location="0,0,6,22" Name="lblist1" Show="true">
-          <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui/x_textures/5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="6,0,111,22" Name="lblist2" Show="true">
-          <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui/x_textures/5.tga" Source="366,124,6,22"/>
         </Label>
         <Label Inherit="" Location="117,0,6,22" Name="lblist3" Show="true">
-          <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="374,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui/x_textures/5.tga" Source="374,124,6,22"/>
         </Label>
       </Form>
       <Form BorderSize="" Inherit="" Location="6,51,238,155" Name="fmitem" Show="true"/>

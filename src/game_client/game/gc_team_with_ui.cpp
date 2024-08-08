@@ -517,7 +517,7 @@ void CTeamWithUI::TeamDataChange()
 			vector<SCharImage> images;RtwRect Rect;RtwImage *pHead = NULL;
 			if (!g_TableCharImage.GetCharImage(mData[i].mActorID, images))
 			{
-				pHead = g_workspace.getImageFactory()->createImage("ui\\textures\\4.tga");
+				pHead = g_workspace.getImageFactory()->createImage("ui\\x_textures\\4.tga");
 				if (pHead)
 				{
 					Rect = RtwRect(270,457,324,511);
@@ -528,7 +528,7 @@ void CTeamWithUI::TeamDataChange()
 			}
 			else
 			{
-				std::string strImage = "ui_texture\\";
+				std::string strImage = "ui\\ui_texture\\";
 				strImage += images[mData[i].mHead].imageGame;
 				strImage += ".dds";
 				pHead = g_workspace.getImageFactory()->createImage(strImage);

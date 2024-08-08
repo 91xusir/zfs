@@ -147,7 +147,7 @@ bool CUiDesktop::Create(IUiRenderDevice* pRenderer, IUiImageFactory* pImageFacto
 	m_pGarbageContainer->grab();
 	UI_ENSURE_B(m_pModalWidgetContainer && m_pDefaultWidgetContainer && m_pTopRenderWidgetContainer && m_pGarbageContainer);
 	//lyymark 1.UI.Init 注册ui默认图片路径和xml路径
-	RegisterTexturePath("ui/textures/");
+	RegisterTexturePath("ui/x_textures/");
 	RegisterXmlPath("ui/");
 
 	std::string strFontName = "宋体";

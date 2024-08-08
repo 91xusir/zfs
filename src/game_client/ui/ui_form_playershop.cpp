@@ -31,13 +31,13 @@ m_itemListBag(BUY_ITEM_LINE_COUNT,BUY_ITEM_COLUMN_COUNT,1,GetWorld()->m_pItemMan
 
 	m_btnShopChat->Disable();
 	LOAD_UI("fmplayershop.frmsell.tabsell.btnpet")->Disable();
-	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);
 	m_ptrHoverImage->getRenderImage()->eBlendDstFunc = RTGBLEND_ONE;
 	m_ptrHoverImage->getRenderImage()->eBlendSrcFunc = RTGBLEND_SRCALPHA;
 	m_ptrHoverImage->getRenderImage()->SetBlend(true);
 
-	m_ptrMaskImage = g_workspace.getImageFactory()->createImage("ui_texture/passive_mask.dds");
+	m_ptrMaskImage = g_workspace.getImageFactory()->createImage("ui/ui_texture/passive_mask.dds");
 	m_ptrMaskImage->SetBlend(true);
 	m_ptrMaskImage->getRenderImage()->GetImage()->m_Transparency = 100;
 	m_ptrMaskImage->getRenderImage()->GetImage()->m_BackTransparency = 155;
@@ -63,7 +63,7 @@ m_itemListBag(BUY_ITEM_LINE_COUNT,BUY_ITEM_COLUMN_COUNT,1,GetWorld()->m_pItemMan
 #define GRID_ITEMSIZE_X		31
 #define GRID_ITEMSIZE_Y		31
 	RtwButton* widget = NULL;
-	RtwImage* pImagegrids = g_workspace.getImageFactory()->createImage("ui/textures/gridsitem.tga");
+	RtwImage* pImagegrids = g_workspace.getImageFactory()->createImage("ui/x_textures/gridsitem.tga");
 	for (int i=0; i<PSHOP_GRID_LINE_COUNT; i++)
 		for (int j=0; j<PSHOP_GRID_COLUMN_COUNT; j++)
 		{

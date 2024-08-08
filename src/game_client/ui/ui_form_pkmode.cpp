@@ -8,20 +8,20 @@ UIFormPkMode::UIFormPkMode()
 	m_plstPKmode		= LOAD_UI_T(RtwListBox,"fmpk.lstPKmode");
 	m_plstPKmode->AddItem();
 	m_plstPKmode->SetItemText(0,1,"练级模式");
-	RtwImage* pImage0 = g_workspace.getImageFactory()->createImage("ui\\textures\\5.tga");
+	RtwImage* pImage0 = g_workspace.getImageFactory()->createImage("ui\\x_textures\\5.tga");
 	pImage0->SetSourceRect(RtwRect(79,250,98,269));
 	pImage0->SetBlend(true);
 	m_plstPKmode->SetLineItemImage(0, 0, pImage0);
 
 	m_plstPKmode->AddItem();
 	m_plstPKmode->SetItemText(1,1,"善恶模式");
-	RtwImage* pImage1 = g_workspace.getImageFactory()->createImage("ui\\textures\\5.tga");;
+	RtwImage* pImage1 = g_workspace.getImageFactory()->createImage("ui\\x_textures\\5.tga");;
 	pImage1->SetSourceRect(RtwRect(79,270,98,289));
 	pImage1->SetBlend(true);
 	m_plstPKmode->SetLineItemImage(1, 0, pImage1);
 
 	m_plstPKmode->AddItem();
-	RtwImage* pImage2 = g_workspace.getImageFactory()->createImage("ui\\textures\\5.tga");;
+	RtwImage* pImage2 = g_workspace.getImageFactory()->createImage("ui\\x_textures\\5.tga");;
 	m_plstPKmode->SetItemText(2,1,"自由模式");
 	pImage2->SetSourceRect(RtwRect(79,290,98,309));
 	pImage2->SetBlend(true);
@@ -108,7 +108,7 @@ void UIFormPkMode::OnChangePkModeImage(EPkMode mode)
 		m_dwSwitchFreeTime = rtGetMilliseconds() + 60000;
 		break;
 	}
-	static RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui\\textures\\5.tga");
+	static RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui\\x_textures\\5.tga");
 	pImage->SetSourceRect(imgTmp);
 	pImage->SetBlend(true);
 	LOAD_UI("fmhp.btnPKmode")->SetHintText(m_plstPKmode->GetItemText(iSelect,1));
@@ -156,7 +156,7 @@ void UIFormPkMode::OnChangePkMode(RtwWidget* sender, void*)
 		m_dwSwitchFreeTime = rtGetMilliseconds() + 60000;
 		break;
 	}
-	static RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui\\textures\\5.tga");
+	static RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui\\x_textures\\5.tga");
 	pImage->SetSourceRect(imgTmp);
 	pImage->SetBlend(true);
 	LOAD_UI("fmhp.btnPKmode")->SetHintText(m_plstPKmode->GetItemText(iSelect,1));

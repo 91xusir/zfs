@@ -260,7 +260,7 @@ UILayerMain::UILayerMain()
 	//通用一级界面和二级界面
 	m_formHelp = LOAD_UI("fmhtmlhelp");
     LOAD_UI("lbrequest")->ModifyFlag(wfInput,0);
-	RtwImage *img = g_workspace.getImageFactory()->createImage("ui_texture\\Tips_request.gif");
+	RtwImage *img = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\Tips_request.gif");
 	if(img)
 		LOAD_UI("lbrequest")->SetBackgroundImage(img);
 	LOAD_UI("lbrequest")->Hide();

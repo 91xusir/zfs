@@ -77,20 +77,17 @@ bool CGameClientFrame::OnDeviceInit() {
 
     GetDevice()->GetTextMgr()->AddTextSearchPath("creature/texture");
     GetDevice()->GetTextMgr()->AddTextSearchPath("scene/texture");
-    //GetDevice()->GetTextMgr()->AddTextSearchPath("ui_texture");
     GetDevice()->GetTextMgr()->AddTextSearchPath("ui/ui_texture");
-    GetDevice()->GetTextMgr()->AddTextSearchPath(R(RES_LANGUAGE_TEXTURE_PATH));
+    GetDevice()->GetTextMgr()->AddTextSearchPath("ui/x_texture");
     GetDevice()->GetTextMgr()->AddTextSearchPath("scene/texture/sm");
 
     //GetDevice()->m_Texture.SetTexturePath("creature\\texture", 2);
     //GetDevice()->m_Texture.SetTexturePath("scene\\texture", 1);
-    //GetDevice()->m_Texture.SetTexturePath("ui_texture", 3);
-    //GetDevice()->m_Texture.SetTexturePath(R(RES_LANGUAGE_TEXTURE_PATH), 4);
+    //GetDevice()->m_Texture.SetTexturePath("ui/ui_texture", 3);
     //GetDevice()->m_Texture.SetTexturePath("scene\\texture\\sm", 5);
     GetDevice()->m_dwClearColor = 0xFF000000;
 
-    // 注释 [3/16/2009 tooth.shi]
-    //RtwXmlLoader::SetSearchPath(0, R(RES_LANGUAGE_UI_PATH));
+
 
     return true;
     unguard;
@@ -211,6 +208,7 @@ void CGameClientFrame::OnLeaveLogin() {
 
 //lyymark 3.Frame.OnEnterLogin 进入开始游戏逻辑帧
 bool CGameClientFrame::OnEnterGame() {
+    DXUtil_Timer(TIMER_RESET);//解除帧率限制1秒
     guard;
 
     CHECK(m_pWorld == NULL);

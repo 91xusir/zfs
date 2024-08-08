@@ -79,7 +79,7 @@ void GcRenderActorBase::AgentRenderShader() {
         } else  // monster
         {
             int userLev = GetWorld()->m_pPlayer->m_core.Lev;
-            int tarLev = m_pGraph->m_pMaster->GetMonsterLevel();
+            int tarLev  = m_pGraph->m_pMaster->GetMonsterLevel();
             if (tarLev > userLev + 5) {
                 color.Set(1, 0, 0);
             } else if (tarLev > userLev) {
@@ -103,11 +103,11 @@ CRT_ActorInstance* GcRenderActorBase::GetActor() {
 RT_IMPLEMENT_DYNAMIC(GcStateOverHead, RtsRenderAgent, 0, "gc")
 
 GcStateOverHead::GcStateOverHead() {
-    m_pTaskGraph1 = NULL;
-    m_pTaskGraph2 = NULL;
-    m_pTaskGraph3 = NULL;
-    m_pActor = NULL;
-    m_pRender = NULL;
+    m_pTaskGraph1     = NULL;
+    m_pTaskGraph2     = NULL;
+    m_pTaskGraph3     = NULL;
+    m_pActor          = NULL;
+    m_pRender         = NULL;
     m_dwLastQueryTime = 0;
 }
 
@@ -161,7 +161,7 @@ void GcStateOverHead::Run(float fSecond) {
     // Update Graphics
 
     // Query New State
-    //fox by 跑环任务//头顶提示
+    // fox by 跑环任务//头顶提示
     DWORD tick = rtGetMilliseconds();
 
     if (m_pRender)
@@ -169,9 +169,11 @@ void GcStateOverHead::Run(float fSecond) {
 
     if (tick - m_dwLastQueryTime >= TASK_OVERHEAD_QUERY_PERIOD) {
         m_dwLastQueryTime = tick;
-        long nTemp = m_pActor->ID();
+        long nTemp        = m_pActor->ID();
         NetSend_c2r_query_task_overhead(nTemp);
-        //if( m_pActor && m_pActor->m_pNpc && (!m_pActor->m_pNpc->FinishTaskId.empty() || !m_pActor->m_pNpc->GetTaskId.empty()) )
+        // if( m_pActor && m_pActor->m_pNpc &&
+        // (!m_pActor->m_pNpc->FinishTaskId.empty() ||
+        // !m_pActor->m_pNpc->GetTaskId.empty()) )
         //{
         //	//在这个NPC处可完成的任务
         //          for(int i=0; i<m_pActor->m_pNpc->FinishTaskId.size(); i++)
@@ -179,8 +181,8 @@ void GcStateOverHead::Run(float fSecond) {
         //		if(GetWorld()->m_pPlayer->m_task.IsTaskAccept(m_pActor->m_pNpc->FinishTaskId[i]))
         //		{
         //			//RefreshGraph(TOH_HaveAccept);//by fox for run task
-        //			NetSend_c2r_query_task_overhead(m_pActor->ID());//add fox for run task
-        //			return;
+        //			NetSend_c2r_query_task_overhead(m_pActor->ID());//add
+        // fox for run task 			return;
         //		}
         //	}
         //	//在这个NPC处可接受的任务
@@ -193,23 +195,24 @@ void GcStateOverHead::Run(float fSecond) {
         //			continue;
 
         //		// check if can accept,do some extra check to save cpu
-        //		if((nPlayerLevel >= pTaskDesc->reqMinLev) && (nPlayerLevel <= pTaskDesc->reqMaxLev))
+        //		if((nPlayerLevel >= pTaskDesc->reqMinLev) && (nPlayerLevel <=
+        // pTaskDesc->reqMaxLev))
         //		{
         //			NetSend_c2r_query_task_overhead(m_pActor->ID());
         //			return;
         //		}
         //	}
     }
-    //RefreshGraph(TOH_Unknown);
+    // RefreshGraph(TOH_Unknown);
     //}
 }
 
 void GcStateOverHead::RefreshGraph(ETaskOverHead state) {
     guard;
 
-    static std::string strAccept = "pic_f_icon11.act";  //可接受的
-    static std::string strDoing = "pic_f_icon12.act";   //正在进行中
-    static std::string strFinish = "pic_f_icon13.act";  //可完成的
+    static std::string strAccept = "pic_f_icon11.act";  // 可接受的
+    static std::string strDoing  = "pic_f_icon12.act";  // 正在进行中
+    static std::string strFinish = "pic_f_icon13.act";  // 可完成的
 
     if (state == TOH_AcceptAndFinish) {
         if (!m_pTaskGraph2) {
@@ -260,13 +263,13 @@ void GcStateOverHead::Clear() {
     m_pRender = NULL;
 }
 
-//添加NPC头顶动态提示
+// 添加NPC头顶动态提示
 RT_IMPLEMENT_DYNAMIC(GcActorOverHead, RtsRenderAgent, 0, "gc")
 
 GcActorOverHead::GcActorOverHead() {
     m_pActorGraph = NULL;
-    m_pActor = NULL;
-    m_pRender = NULL;
+    m_pActor      = NULL;
+    m_pRender     = NULL;
 }
 
 GcActorOverHead::~GcActorOverHead() {}
@@ -332,13 +335,13 @@ void GcActorOverHead::NewActorOverHead(std::string strHint) {
                 ERR1("[GcActor::Render] 无法载入人物头顶指示模型，name=%s.\n", strHint.c_str());
                 return;
             }
-            //if (!m_pActorGraph->Create())
+            // if (!m_pActorGraph->Create())
             //{
-            //	ERR1("[GcActor::Render] 无法创建人物头顶指示模型，name=%s.\n", strHint.c_str());
-            //	UnloadActorInstance(m_pActorGraph);
+            //	ERR1("[GcActor::Render] 无法创建人物头顶指示模型，name=%s.\n",
+            // strHint.c_str()); 	UnloadActorInstance(m_pActorGraph);
             //	DEL_ONE(m_pActorGraph);
             //	return;
-            //}
+            // }
         }
         m_pRender = m_pActorGraph;
     }
@@ -363,36 +366,36 @@ GcBaseActor::GcBaseActor(GcActor* vpMaster)
       mAttackTargetID(0) {
     CM_MEMPROTECTOR(m_poseName, 50)
     CM_MEMPROTECTOR(m_szLastPoseName, 40)
-    m_fMoveSpeed = DEFAULT_WALK_SPEED;
+    m_fMoveSpeed             = DEFAULT_WALK_SPEED;
     m_bMoveToPositionNewMove = TRUE;
-    m_fMoveToPositionOldX = 0.f;
-    m_fMoveToPositionOldY = 0.f;
-    m_fMoveToPositionTime = 0.f;
-    m_fMoveToPositionSpeed = 0.f;
-    m_fMoveToPositionSpeedX = 0.f;
-    m_fMoveToPositionSpeedY = 0.f;
-    m_bPutOnPathFinder = 0;
+    m_fMoveToPositionOldX    = 0.f;
+    m_fMoveToPositionOldY    = 0.f;
+    m_fMoveToPositionTime    = 0.f;
+    m_fMoveToPositionSpeed   = 0.f;
+    m_fMoveToPositionSpeedX  = 0.f;
+    m_fMoveToPositionSpeedY  = 0.f;
+    m_bPutOnPathFinder       = 0;
     m_Render.SetGraph(this);
     m_Matrix.Unit();
-    m_pPathNode = NULL;
-    m_pTrump = NULL;
-    m_pWeapon = NULL;
-    m_bLastLoop = false;
+    m_pPathNode         = NULL;
+    m_pTrump            = NULL;
+    m_pWeapon           = NULL;
+    m_bLastLoop         = false;
     m_szLastPoseName[0] = 0;
-    m_pStateOverHead = NULL;
-    m_pActorOverHead = NULL;
-    m_fLastDistance = 1000000.f;
-    m_isDrawPathLine = 0;
-    RtIni iniUser;  //tim.yang  读取是否绘制路线的配置文件变量
+    m_pStateOverHead    = NULL;
+    m_pActorOverHead    = NULL;
+    m_fLastDistance     = 1000000.f;
+    m_isDrawPathLine    = 0;
+    RtIni iniUser;  // tim.yang  读取是否绘制路线的配置文件变量
     if (iniUser.OpenFile(R(INI_GAME))) {
         iniUser.GetEntry("pathline", "pathline", &m_isDrawPathLine);
     }
-    //LOG("==>创建GcBaseActor\n");
-    m_pPathFind = 0;
-    m_vPoseID = POSE_IDLE;
-    m_pItemEffect = NULL;
-    m_bRender = true;
-    m_blockType = PB_UNBLOCK;
+    // LOG("==>创建GcBaseActor\n");
+    m_pPathFind      = 0;
+    m_vPoseID        = POSE_IDLE;
+    m_pItemEffect    = NULL;
+    m_bRender        = true;
+    m_blockType      = PB_UNBLOCK;
     m_fLastMoveSpeed = 0.f;
 }
 
@@ -406,7 +409,7 @@ GcBaseActor::~GcBaseActor() {
     if (m_pPathNode) {
         ERR("GcBaseActor::~GcBaseActor 没有从PathFind中清除干净\n");
     }
-    //LOG("==>销毁GcBaseActor\n");
+    // LOG("==>销毁GcBaseActor\n");
     unguard;
 }
 
@@ -416,19 +419,20 @@ bool GcBaseActor::CreateGraphData(SCreModel* vpModel, short HeadModelID) {
     if (m_pMaster && m_pMaster->m_pNpc &&
         (!m_pMaster->m_pNpc->GetTaskId.empty() || !m_pMaster->m_pNpc->FinishTaskId.empty())) {
         if (!m_pStateOverHead) {
-            m_pStateOverHead = RT_NEW GcStateOverHead();
+            m_pStateOverHead           = RT_NEW GcStateOverHead();
             m_pStateOverHead->m_pActor = m_pMaster;
         }
     }
 
     if (!m_pActorOverHead) {
-        m_pActorOverHead = RT_NEW GcActorOverHead();
+        m_pActorOverHead           = RT_NEW GcActorOverHead();
         m_pActorOverHead->m_pActor = m_pMaster;
     }
-    m_bLastLoop = false;
+    m_bLastLoop         = false;
     m_szLastPoseName[0] = 0;
 
-    //LOG1("==>CreateGraphData %s\n", (vpModel==NULL)?"==================异常==============":"OK");
+    // LOG1("==>CreateGraphData %s\n",
+    // (vpModel==NULL)?"==================异常==============":"OK");
     if (mpModel && mpModel != vpModel)
         UnLoadAllSkin();
     mpModel = vpModel;
@@ -442,20 +446,16 @@ bool GcBaseActor::SetGraph(short HeadModelID, const char* vpActorName) {
     unguard;
 }
 
-//lyymark 1.base.actor.setgraph actor基本图形加载
 bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vpActorName) {
-    // 将图形中的actor替换为 vpActorName 对应的演员
     mGraph.ReplaceActor(vpActorName);
-    // 如果模型是复合对象的，并且宿主对象 m_pMaster 没有变身 (m_cShapeshiftNet)
+
     if (vpModel->bComplex && !m_pMaster->m_cShapeshiftNet) {
         // Modified by Wayne Wong 2010-12-29 for temp demo
-        //mGraph.UnloadAllSkin();
-        if (mGraph.p())  // 检查 mGraph 是否有效
-        {
-            // 删除所有加载子项命令中，类型为加载skin的命令
+        // mGraph.UnloadAllSkin();
+        if (mGraph.p()) {
             {
                 list<void*>&          listCommand = mGraph.p()->m_listCommand;
-                list<void*>::iterator _it = listCommand.begin();
+                list<void*>::iterator _it         = listCommand.begin();
 
                 while (_it != listCommand.end()) {
                     Rac_CmdType* _cmd = (Rac_CmdType*)(*_it);
@@ -464,33 +464,33 @@ bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vp
                         ((Rac_LoadSub*)_cmd)->stype == Rac_LoadSub::_sub_skin &&
                         ((Rac_LoadSub*)_cmd)->otype == Rac_LoadSub::_load) {
                         if (((Rac_LoadSub*)_cmd)->sname != "")
-                            _it = listCommand.erase(_it);  // 删除skin加载命令
+                            _it = listCommand.erase(_it);
                         else
                             ++_it;
                     }
                 }
             }
-            // 从皮肤列表中删除skin实例
+
             {
                 vector<CRT_SkinInstance*>&          skinList = mGraph.p()->m_skinList;
-                vector<CRT_SkinInstance*>::iterator _it = skinList.begin();
+                vector<CRT_SkinInstance*>::iterator _it      = skinList.begin();
                 while (_it != skinList.end()) {
                     CRT_SkinInstance* skinInstance = *_it;
                     if (skinInstance->m_Name != "") {
-                        _it = skinList.erase(_it);  // 从列表中删除皮肤实例
-                        RtcGetActorManager()->ReleaseSkin(skinInstance);  // 释放皮肤实例
+                        _it = skinList.erase(_it);
+                        RtcGetActorManager()->ReleaseSkin(skinInstance);
                     } else {
                         ++_it;
                     }
                 }
             }
         }
-        // 获取头部模型的皮肤名称
+
         string headModelStr;
 
         if (HeadModelID) {
             SHeadModel headModel;
-            // 从表格中获取头部模型的信息
+
             if (g_TableHeadModel.GetHeadModelByID(HeadModelID, headModel))
                 headModelStr = headModel.skin;
             else
@@ -498,14 +498,14 @@ bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vp
         } else {
             headModelStr = vpModel->HeadSkin;
         }
-        // 处理头部皮肤
+
         if (m_strComplexHead != headModelStr) {
             if (!m_strComplexHead.empty())
                 mGraph.UnloadSkin(m_strComplexHead.c_str());
             m_strComplexHead = headModelStr;
             mGraph.LoadSkin(m_strComplexHead.c_str(), true);
         }
-        // 处理身体、手部和脚部皮肤
+
         if (m_strComplexBody != vpModel->BodySkin) {
             if (!m_strComplexBody.empty())
                 mGraph.UnloadSkin(m_strComplexBody.c_str());
@@ -526,21 +526,20 @@ bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vp
             m_strComplexFoot = vpModel->FootSkin;
             mGraph.LoadSkin(m_strComplexFoot.c_str(), false);
         }
-    } else {  // 如果模型有附加的皮肤，加载附加皮肤
+    } else {
         if (!vpModel->AddedSkin.empty())
             mGraph.LoadSkin(vpModel->AddedSkin.c_str(), false);
-        // 如果 mGraph 有效，并且模型有替换材质，进行材质替换
+
         if (mGraph.p())
             if (!vpModel->ReplaceMtl.empty())
                 mGraph.p()->ChangeMaterial(0, vpModel->ReplaceMtl.c_str());
     }
-    // 设置绘制的缩放比例
+
     if (mGraph.p()) {
         RtgVertex3 vScale(vpModel->ModelScale);
         mGraph.p()->SetDrawScale(vScale);
 
 #ifdef KICK_CHEAT
-        // 如果主演员 ID 是 21 的倍数，禁用渲染效果、设置偏移量、禁用阴影，并删除 HUD
         if (m_pMaster->ID() && m_pMaster->ID() % 21 == 0) {
             GetGraph()->p()->m_bRenderEffect = false;
             GetGraph()->p()->SetOffset(RtgVertex3(0, 0, -10000));
@@ -548,7 +547,6 @@ bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vp
             m_pMaster->DelHUD();
             m_pMaster->m_bRenderSelect = false;
         } else {
-            // 播放链接效果
             if (vpModel->LinkEffect.length() > 0)
                 PlayEffect(vpModel->LinkEffect.c_str(), true, vpModel->LinkPoint.c_str(),
                            RtgVertex3(0, 0, 0), true);
@@ -559,7 +557,7 @@ bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vp
                        RtgVertex3(0, 0, 0), true);
 #endif
     }
-    // 注册演员通知并更新
+
     mGraph.RegisterActorNotify(this);
     Update();
 
@@ -629,7 +627,7 @@ bool GcBaseActor::MoveInTile(float vX, float vY) {
     Point2Tile(vX, vY, TileX, TileY);
     if (TileX != m_LastTileX || TileY != m_LastTileY) {
         char cBlock = '0';
-        //if (m_pMaster && m_pMaster == GetPlayer())
+        // if (m_pMaster && m_pMaster == GetPlayer())
         cBlock = (char)m_blockType;
         if (pPathFind->MoveTo(m_pPathNode, TileX, TileY, cBlock)) {
             m_LastTileX = TileX;
@@ -642,7 +640,7 @@ bool GcBaseActor::MoveInTile(float vX, float vY) {
     unguard;
 }
 
-void GcBaseActor::Update()  //将位置和方向更新到图形部分
+void GcBaseActor::Update()  // 将位置和方向更新到图形部分
 {
     mGraph.SetPosition(m_Matrix._30, m_Matrix._31, m_Matrix._32);
     mGraph.SetRotation(m_Matrix);
@@ -663,7 +661,7 @@ void GcBaseActor::FaceTo(float vX, float vY) {
 
 bool GcBaseActor::SetPosition(float vX, float vY) {
     guard;
-    if (!MoveInTile(vX, vY))  //逻辑格子的位置
+    if (!MoveInTile(vX, vY))  // 逻辑格子的位置
     {
         m_bMoveToPositionNewMove = TRUE;
         return false;
@@ -703,7 +701,7 @@ bool GcBaseActor::HitTest(RtgVertex3& vOrg, RtgVertex3& vDir, float& fOutMinDist
                           bool bHitTestTouch) {
     guard;
     if (m_CurrentState == READY_BORN_STATE || m_CurrentState == BORN_STATE) {
-        //LOG("该物体正在出生中或者还未出生的状态\n");
+        // LOG("该物体正在出生中或者还未出生的状态\n");
         return false;
     }
 
@@ -722,16 +720,16 @@ bool GcBaseActor::HitTest(RtgVertex3& vOrg, RtgVertex3& vDir, float& fOutMinDist
     v0 = vOrg;
     v1 = v0 + vDir * 1000.f;  // 只判断1000距离远的物体
 
-    bool        bGetBound = false;
-    RtgMatrix16 mInvMat = m_Matrix;
+    bool        bGetBound  = false;
+    RtgMatrix16 mInvMat    = m_Matrix;
     const float fMinSelect = g_fSceneTerrainTileWidth * 0.5f;
     const float fMaxSelect = g_fSceneTerrainTileWidth * 0.75f;
     if (mGraph.p()) {
         RtgAABB* pAABB = mGraph.p()->GetStaticBoundingBox();
-        //RtgAABB* pAABB = mGraph.p()->GetBoundingBox();
+        // RtgAABB* pAABB = mGraph.p()->GetBoundingBox();
         if (mGraph.p()->m_Name == "mon062.act") {
             RtgAABB* pAABB1 = mGraph.p()->GetBoundingBox();
-            pAABB = pAABB1;
+            pAABB           = pAABB1;
         }
         if (pAABB) {
             vMax = pAABB->vExt;
@@ -748,18 +746,18 @@ bool GcBaseActor::HitTest(RtgVertex3& vOrg, RtgVertex3& vDir, float& fOutMinDist
                 else if (vMax.y > fMaxSelect)
                     vMax.y = fMaxSelect;
             }
-            //mInvMat._30 += pAABB->vPos.x;
-            //mInvMat._31 += pAABB->vPos.y;
-            //mInvMat._32 += pAABB->vPos.z;
+            // mInvMat._30 += pAABB->vPos.x;
+            // mInvMat._31 += pAABB->vPos.y;
+            // mInvMat._32 += pAABB->vPos.z;
             mInvMat.Invert();
             vMin.x = -vMax.x;
             vMin.y = -vMax.y;
             vMax.z = pAABB->vPos.z + pAABB->vExt.z;
-            vMin.z = 0;  //pAABB->vPos.z-pAABB->vExt.z;
-            //if (vMax.z<20.f) vMax.z = 20.f;
-            //else if (vMax.z>50.f) vMax.z=50.f;
-            v0 = v0 * mInvMat;
-            v1 = v1 * mInvMat;
+            vMin.z = 0;  // pAABB->vPos.z-pAABB->vExt.z;
+            // if (vMax.z<20.f) vMax.z = 20.f;
+            // else if (vMax.z>50.f) vMax.z=50.f;
+            v0        = v0 * mInvMat;
+            v1        = v1 * mInvMat;
             bGetBound = true;
         }
     }
@@ -780,12 +778,12 @@ bool GcBaseActor::HitTest(RtgVertex3& vOrg, RtgVertex3& vDir, float& fOutMinDist
             vMax.y = fMinSelect;
         }
         vMax.z = 20.f;
-        vMin = vMax;
+        vMin   = vMax;
         vMin.x = -vMin.x;
         vMin.y = -vMin.y;
         vMin.z = -vMin.z;
-        v0 = v0 * mInvMat;
-        v1 = v1 * mInvMat;
+        v0     = v0 * mInvMat;
+        v1     = v1 * mInvMat;
     }
 
     if (rtgIsLineIntersectAABB(v0, v1, vMin, vMax, &r1, &r2)) {
@@ -798,36 +796,36 @@ bool GcBaseActor::HitTest(RtgVertex3& vOrg, RtgVertex3& vDir, float& fOutMinDist
     }
 
     /*
-    RtgVertex3 v0, v1, vMin, vMax;
-    float r1, r2;
-    float fX, fY;
-    int iTx, iTy;
+  RtgVertex3 v0, v1, vMin, vMax;
+  float r1, r2;
+  float fX, fY;
+  int iTx, iTy;
 
-    g_pScene->GetTerrainByPosFast(m_Matrix._30, m_Matrix._31, iTx, iTy);
-    g_pScene->GetPosByTerrainXY(iTx, iTy, fX, fY);
+  g_pScene->GetTerrainByPosFast(m_Matrix._30, m_Matrix._31, iTx, iTy);
+  g_pScene->GetPosByTerrainXY(iTx, iTy, fX, fY);
 
-    vMin.x = fX - g_fSceneTerrainTileWidth*0.5f;
-    vMin.y = fY - g_fSceneTerrainTileWidth*0.5f;
-    vMin.z = m_Matrix._32;
-    vMax.x = vMin.x + g_fSceneTerrainTileWidth;
-    vMax.y = vMin.y + g_fSceneTerrainTileWidth;
-    vMax.z = vMin.z + 40.f;
+  vMin.x = fX - g_fSceneTerrainTileWidth*0.5f;
+  vMin.y = fY - g_fSceneTerrainTileWidth*0.5f;
+  vMin.z = m_Matrix._32;
+  vMax.x = vMin.x + g_fSceneTerrainTileWidth;
+  vMax.y = vMin.y + g_fSceneTerrainTileWidth;
+  vMax.z = vMin.z + 40.f;
 
-    v0 = vOrg;
-    v1 = v0 + vDir * 1000.f; // 只判断1000距离远的物体
+  v0 = vOrg;
+  v1 = v0 + vDir * 1000.f; // 只判断1000距离远的物体
 
-    if (rtgIsLineIntersectAABB(v0, v1, vMin, vMax, &r1, &r2))
-    {
-        if (r1>=0.f)
-        {
-            fOutMinDist = r1;
-        }else
-        {
-            fOutMinDist = 0.f;
-        }
-        return true;
-    }
-    */
+  if (rtgIsLineIntersectAABB(v0, v1, vMin, vMax, &r1, &r2))
+  {
+      if (r1>=0.f)
+      {
+          fOutMinDist = r1;
+      }else
+      {
+          fOutMinDist = 0.f;
+      }
+      return true;
+  }
+  */
     return false;
     unguard;
 }
@@ -926,14 +924,14 @@ void GcBaseActor::Render(RtgDevice& inDevice, RTGRenderMask eMask) {
         RtgMatrix16 m16;
         RtgShader   nullShader;
         nullShader.iNumStage = 0;
-        DWORD dwLighting = GetDevice()->GetRenderState(RTGRS_LIGHTING);
+        DWORD dwLighting     = GetDevice()->GetRenderState(RTGRS_LIGHTING);
         GetDevice()->SetRenderState(RTGRS_LIGHTING, FALSE);
         GetDevice()->SetShader(&nullShader);
         m16.Unit();
         GetDevice()->SetMatrix(RTGTS_WORLD, &m16);
         if (g_pScene->GetTerrainByPos(m_Matrix._30, m_Matrix._31, iTx, iTy)) {
-            bool        bGetBound = false;
-            RtgMatrix16 mInvMat = m_Matrix;
+            bool        bGetBound  = false;
+            RtgMatrix16 mInvMat    = m_Matrix;
             const float fMinSelect = g_fSceneTerrainTileWidth * 0.5f;
             const float fMaxSelect = g_fSceneTerrainTileWidth * 0.75f;
             if (mGraph.p()) {
@@ -953,13 +951,13 @@ void GcBaseActor::Render(RtgDevice& inDevice, RTGRenderMask eMask) {
                         else if (vMax.y > fMaxSelect)
                             vMax.y = fMaxSelect;
                     }
-                    //mInvMat._30 += pAABB->vPos.x;
-                    //mInvMat._31 += pAABB->vPos.y;
-                    //mInvMat._32 += pAABB->vPos.z;
+                    // mInvMat._30 += pAABB->vPos.x;
+                    // mInvMat._31 += pAABB->vPos.y;
+                    // mInvMat._32 += pAABB->vPos.z;
                     vMin.x = -vMax.x;
                     vMin.y = -vMax.y;
                     vMax.z = pAABB->vPos.z + pAABB->vExt.z;
-                    vMin.z = 0;  //pAABB->vPos.z-pAABB->vExt.z;
+                    vMin.z = 0;  // pAABB->vPos.z-pAABB->vExt.z;
                     if (vMax.z < 20.f)
                         vMax.z = 20.f;
                     else if (vMax.z > 50.f)
@@ -978,7 +976,7 @@ void GcBaseActor::Render(RtgDevice& inDevice, RTGRenderMask eMask) {
                 vMax.x = fMinSelect;
                 vMax.y = fMinSelect;
                 vMax.z = 20.f;
-                vMin = vMax;
+                vMin   = vMax;
                 vMin.x = -vMin.x;
                 vMin.y = -vMin.y;
                 vMin.z = -vMin.z;
@@ -989,13 +987,13 @@ void GcBaseActor::Render(RtgDevice& inDevice, RTGRenderMask eMask) {
         pAABB = mGraph.GetBoundingBox();
         if (pAABB) {
             m16 = m_Matrix;
-            //m16._30 += pAABB->vPos.x;
-            //m16._31 += pAABB->vPos.y;
+            // m16._30 += pAABB->vPos.x;
+            // m16._31 += pAABB->vPos.y;
             m16._32 += pAABB->vPos.z;
             dwColor = 0xFF0000FF;
             GetDevice()->DrawBox(pAABB->vExt, m16, &dwColor);
             if (m_pMaster->NpcType() == GcActor::ENT_MONSTER) {
-                //static char szOutputString[1024];
+                // static char szOutputString[1024];
                 S_MEMDEF(szOutputString, 1024)
                 S_MEMPROTECTOR(szOutputString, 1024, bDefined)
 
@@ -1015,8 +1013,8 @@ void GcBaseActor::Render(RtgDevice& inDevice, RTGRenderMask eMask) {
         pAABB = mGraph.p()->GetStaticBoundingBox();
         if (pAABB) {
             m16 = m_Matrix;
-            //m16._30 += pAABB->vPos.x;
-            //m16._31 += pAABB->vPos.y;
+            // m16._30 += pAABB->vPos.x;
+            // m16._31 += pAABB->vPos.y;
             m16._32 += pAABB->vPos.z;
             dwColor = 0xFF00FF00;
             GetDevice()->DrawBox(pAABB->vExt, m16, &dwColor);
@@ -1047,7 +1045,7 @@ void GcBaseActor::Render(RtgDevice& inDevice, RTGRenderMask eMask) {
     // Render path find  //tim.yang   根据配置文件变量来绘制路线
     if (m_isDrawPathLine && m_pMaster == GetPlayer() && m_pPathNode) {
         int iPathCnt = m_pPathNode->PathCount();
-        //if (iPathCnt)
+        // if (iPathCnt)
         {
             RtgVertex3 vPos, vT1(0.f, -10.f, 5.f), vT2(7.f, 3.f, 5.f), vT3(-7.f, 3.f, 5.f), v1, v2,
                 v3, v4, v5;
@@ -1081,10 +1079,10 @@ void GcBaseActor::Render(RtgDevice& inDevice, RTGRenderMask eMask) {
                 m16._30 = vPos.x;
                 m16._31 = vPos.y;
                 m16._32 = vPos.z;
-                v1 = vT1 * m16;
-                v2 = vT2 * m16;
-                v3 = vT3 * m16;
-                v5 = vPoint * m16;
+                v1      = vT1 * m16;
+                v2      = vT2 * m16;
+                v3      = vT3 * m16;
+                v5      = vPoint * m16;
                 GetDevice()->DrawTriangle(v1, v2, v3, &dwColor);
                 GetDevice()->DrawLine(v4, v5, &dwColor);
                 v4 = vPoint * m16;
@@ -1097,7 +1095,7 @@ void GcBaseActor::Render(RtgDevice& inDevice, RTGRenderMask eMask) {
             GetDevice()->SetRenderState(RTGRS_LIGHTING, dwLighting);
         }
     }
-    //end
+    // end
 
     unguard;
 }
@@ -1195,16 +1193,16 @@ bool GcBaseActor::MoveToPosition(float fX, float fY, float fDistance, float fNee
     if (m_pPathNode == NULL) {
         return AddSelfFind(fX, fY);
     }
-    //tim.yang  automove  如果是玩家，角色类型为1
+    // tim.yang  automove  如果是玩家，角色类型为1
     int actortype = 0;
-    m_pPathFind = GetWorld()->GetPathFind();
+    m_pPathFind   = GetWorld()->GetPathFind();
     if (!m_pPathFind) {
         return false;
     }
     if (GcActor::ENT_USER == m_pMaster->NpcType()) {
         actortype = 1;
     }
-    //end
+    // end
     int iTileX, iTileY;
     int iFinalTileX, iFinalTileY;
     g_pScene->GetTerrainByPosFast(fX, fY, iFinalTileX, iFinalTileY);
@@ -1215,7 +1213,7 @@ bool GcBaseActor::MoveToPosition(float fX, float fY, float fDistance, float fNee
         m_bMoveToPositionNewMove = TRUE;
         return false;  // 已经走到了目的地
     } else if (1 == actortype && fD > 10000.f &&
-               fNeedTime >= 0.f)  //tim.yang automove  add search path distance of player
+               fNeedTime >= 0.f)  // tim.yang automove  add search path distance of player
     {
 #ifdef _DEBUG
         MSG1("距离过远 %.2f\n", fD);
@@ -1236,17 +1234,19 @@ bool GcBaseActor::MoveToPosition(float fX, float fY, float fDistance, float fNee
 
     if (fX != m_fMoveToPositionOldX || fY != m_fMoveToPositionOldY ||
         m_fMoveToPositionTime != fNeedTime || m_bMoveToPositionNewMove) {
-        //if(actortype == 1)
-        //	RtCoreLog().Info("moveto %f,%f -- old %f,%f, needtime %f,%f, bNewmove %d\n", fX, fY, m_fMoveToPositionOldX, m_fMoveToPositionOldY, m_fMoveToPositionTime, fNeedTime, m_bMoveToPositionNewMove);
+        // if(actortype == 1)
+        //	RtCoreLog().Info("moveto %f,%f -- old %f,%f, needtime %f,%f, bNewmove
+        //%d\n", fX, fY, m_fMoveToPositionOldX, m_fMoveToPositionOldY,
+        // m_fMoveToPositionTime, fNeedTime, m_bMoveToPositionNewMove);
 
-        m_fMoveToPositionOldX = fX;
-        m_fMoveToPositionOldY = fY;
-        m_fMoveToPositionTime = fNeedTime;
+        m_fMoveToPositionOldX    = fX;
+        m_fMoveToPositionOldY    = fY;
+        m_fMoveToPositionTime    = fNeedTime;
         m_bMoveToPositionNewMove = false;
 
         g_pScene->GetTerrainByPosFast(fX, fY, iTileX, iTileY);
 
-        if (FindPath(iTileX, iTileY, IgonreActor, bTarget))  //目的地的路径已经找到
+        if (FindPath(iTileX, iTileY, IgonreActor, bTarget))  // 目的地的路径已经找到
         {
             if (fNeedTime <= 0.f) {
                 if (m_pMaster->m_eRideState == GcActor::ERS_ACTOR) {
@@ -1261,7 +1261,8 @@ bool GcBaseActor::MoveToPosition(float fX, float fY, float fDistance, float fNee
                 m_fMoveToPositionSpeed = fD / fNeedTime;
                 if (m_fMoveToPositionSpeed > DEFAULT_WALK_SPEED * 2.f) {
                     m_fMoveToPositionSpeed = DEFAULT_WALK_SPEED * 2.f;
-                    LOG("GcBaseActor::MoveToPosition 移动速度太快，被调整成普通速度的2倍.\n");
+                    LOG("GcBaseActor::MoveToPosition "
+                        "移动速度太快，被调整成普通速度的2倍.\n");
                 } else if (m_fMoveToPositionSpeed < 0.f) {
                     m_fMoveToPositionSpeed = 0.f;
                 }
@@ -1289,7 +1290,7 @@ bool GcBaseActor::MoveToPosition(float fX, float fY, float fDistance, float fNee
             FaceTo(m_vMoveToPosition.x, m_vMoveToPosition.y);
         } else {
             m_bMoveToPositionNewMove = TRUE;
-            return false;  //没找到目的地，可能是被阻挡，走不过去
+            return false;  // 没找到目的地，可能是被阻挡，走不过去
         }
     }
 
@@ -1303,14 +1304,14 @@ bool GcBaseActor::MoveToPosition(float fX, float fY, float fDistance, float fNee
     if (fD < m_fLastDistance) {
         m_fLastDistance = fD;
     } else {
-        if (1 != actortype)  //tim.yang  automove  玩家寻路不做此判断
+        if (1 != actortype)  // tim.yang  automove  玩家寻路不做此判断
         {
             // 如果越走越远，就停止走路
             LOG2("越走越远了 %.2f , %.2f\n", m_fLastDistance, fD);
             m_bMoveToPositionNewMove = TRUE;
             return false;  // 路径已经结束
         } else {
-            //RtCoreLog().Info("越走越远了 %.2f , %.2f\n", m_fLastDistance, fD);
+            // RtCoreLog().Info("越走越远了 %.2f , %.2f\n", m_fLastDistance, fD);
             m_fMoveToPositionSpeedX =
                 m_fMoveToPositionSpeed * (m_vMoveToPosition.x - m_Matrix._30) / fD;
             m_fMoveToPositionSpeedY =
@@ -1330,7 +1331,7 @@ bool GcBaseActor::MoveToPosition(float fX, float fY, float fDistance, float fNee
                               actortype))  // 还有下一段
         {
 
-            //RtCoreLog().Info("nextnode %d,%d\n", iTileX, iTileY);
+            // RtCoreLog().Info("nextnode %d,%d\n", iTileX, iTileY);
 
             m_fLastDistance = 1000000.f;
             if (iTileX == iFinalTileX && iTileY == iFinalTileY) {
@@ -1354,7 +1355,7 @@ bool GcBaseActor::MoveToPosition(float fX, float fY, float fDistance, float fNee
 
     if (m_fLastMoveSpeed != m_fMoveToPositionSpeed && m_pMaster->m_pCurCmd) {
         m_fLastMoveSpeed = m_fMoveToPositionSpeed;
-        float fSpeed = 1.f;
+        float fSpeed     = 1.f;
         if (m_pMaster->m_pModel) {
             if (m_pMaster == GetPlayer()) {
                 if (m_pMaster->GetRideState() == GcActor::ERS_ACTOR) {
@@ -1398,9 +1399,9 @@ bool GcBaseActor::FindPath(int vX, int vY, bool vIgnoreActor, bool vIgnoreTarget
     if (!m_pPathFind) {
         return false;
     }
-    //tim.yang
-    int actorType = 0;
-    m_drawLineStartMatrix = m_Matrix;  //tim.yang  记录角色移动前的位置
+    // tim.yang
+    int actorType         = 0;
+    m_drawLineStartMatrix = m_Matrix;  // tim.yang  记录角色移动前的位置
     if (GcActor::ENT_USER == m_pMaster->NpcType()) {
         actorType = 1;
     }
@@ -1411,7 +1412,7 @@ bool GcBaseActor::FindPath(int vX, int vY, bool vIgnoreActor, bool vIgnoreTarget
     }
 
     return false;
-    //if (GcActor::ENT_USER == m_pMaster->NpcType())
+    // if (GcActor::ENT_USER == m_pMaster->NpcType())
     //{
     //	actorType = 1;//player  如果是玩家
     //	m_pPathFind->InitAStar();  //初始化参数
@@ -1429,15 +1430,16 @@ bool GcBaseActor::FindPath(int vX, int vY, bool vIgnoreActor, bool vIgnoreTarget
     //	}
     //	else
     //	{
-    //		if (m_pPathFind->FindPathFromWP(m_pPathNode,startX,startY,vX,vY,vIgnoreActor,vIgnoreTarget,actorType))
+    //		if
+    //(m_pPathFind->FindPathFromWP(m_pPathNode,startX,startY,vX,vY,vIgnoreActor,vIgnoreTarget,actorType))
     //		{
     //			m_pPathFind->SmoothPath(m_pPathNode,vIgnoreActor);
     //			return true;
     //		}
     //		return false;
     //	}
-    //}
-    //else
+    // }
+    // else
     //{
     //	if(m_pPathFind->FindPathEx(m_pPathNode,vX,vY,vIgnoreActor,vIgnoreTarget,actorType))
     //	{
@@ -1445,8 +1447,8 @@ bool GcBaseActor::FindPath(int vX, int vY, bool vIgnoreActor, bool vIgnoreTarget
     //		return true;
     //	}
     //	return false;
-    //}
-    //return false;
+    // }
+    // return false;
     unguard;
 }
 
@@ -1459,7 +1461,8 @@ bool GcBaseActor::AddSelfFind(int vX, int vY) {
     }
 
     CHECK(m_bPutOnPathFinder == 0);
-    //	 if (GetWorld()->GetPathFind()->FindSpace(vX, vY, vX, vY))// 注释 [3/16/2009 tooth.shi]
+    //	 if (GetWorld()->GetPathFind()->FindSpace(vX, vY, vX, vY))// 注释
+    //[3/16/2009 tooth.shi]
     int actorType = 1;
     if (m_pMaster->NpcType() == GcActor::ENT_USER) {
         m_blockType = PB_UNBLOCK;
@@ -1479,7 +1482,9 @@ bool GcBaseActor::AddSelfFind(int vX, int vY) {
         m_blockType = PB_UNBLOCK;
     }
     if (GetWorld()->GetPathFind()->CanAdd(this->m_pMaster->ID(), actorType, vX, vY, m_blockType)) {
-        //        if (m_pPathNode=(RtsPathPath*)GetWorld()->GetPathFind()->AddActor(this,vX,vY,true,true))// 注释 [3/16/2009 tooth.shi]
+        //        if
+        //        (m_pPathNode=(RtsPathPath*)GetWorld()->GetPathFind()->AddActor(this,vX,vY,true,true))//
+        //        注释 [3/16/2009 tooth.shi]
         if (m_pPathNode = (RtsPathPath*)GetWorld()->GetPathFind()->AddActor(
                 this->m_pMaster->ID(), actorType, vX, vY, vX, vY, true, m_blockType)) {
             m_bPutOnPathFinder++;
@@ -1522,7 +1527,8 @@ bool GcBaseActor::AddSelf(int vX, int vY) {
     if (m_pMaster->NpcType() == GcActor::ENT_CALLNPC) {
         m_blockType = PB_UNBLOCK;
     }
-    //	m_pPathNode=(RtsPathPath*)GetWorld()->GetPathFind()->AddActor(this,vX,vY,true,true);// 注释 [3/16/2009 tooth.shi]
+    //	m_pPathNode=(RtsPathPath*)GetWorld()->GetPathFind()->AddActor(this,vX,vY,true,true);//
+    // 注释 [3/16/2009 tooth.shi]
     m_pPathNode = (RtsPathPath*)GetWorld()->GetPathFind()->AddActor(
         this->m_pMaster->ID(), actorType, vX, vY, vX, vY, true, m_blockType);
     if (m_pPathNode) {
@@ -1600,7 +1606,7 @@ bool GcBaseActor::IsPosition(int vX, int vY) {
     return false;
 }
 
-//const int STRING_LENGTH=1024;
+// const int STRING_LENGTH=1024;
 
 bool GcBaseActor::PlayPose(char vpPoseName[], bool vLoop) {
     guard;
@@ -1611,15 +1617,15 @@ bool GcBaseActor::PlayPose(char vpPoseName[], bool vLoop) {
     bool bResult;
     if (m_pMaster->m_eRideState == GcActor::ERS_ACTOR) {
         bResult = m_pMaster->m_pRidePet->mBaseActor.mGraph.PlayPose(vpPoseName, vLoop);
-        rt2_core::rt2_strncpy(m_pMaster->m_pRidePet->mBaseActor.m_szLastPoseName, vpPoseName, 40);
+        rt2_strncpy(m_pMaster->m_pRidePet->mBaseActor.m_szLastPoseName, vpPoseName, 40);
     } else {
         bResult = mGraph.PlayPose(vpPoseName, vLoop);
-        rt2_core::rt2_strncpy(m_szLastPoseName, vpPoseName, 40);
+        rt2_strncpy(m_szLastPoseName, vpPoseName, 40);
     }
-    //if (!bResult)
+    // if (!bResult)
     //{
     //	ERR1("GcBaseActor::PlayPose 播放动作失败[%s]\n",vpPoseName);
-    //}
+    // }
     return bResult;
 
     unguard;
@@ -1629,7 +1635,6 @@ bool GcBaseActor::IsPlayer() {
     return (&(GetWorld()->m_pPlayer->mBaseActor) == this);
 }
 
-//弓箭
 const char* BowPoseName[] = {
     "wait_bow",    // 0 默认站立动作
     "attack_bow",  // 1 默认攻击动作
@@ -1887,15 +1892,15 @@ const char* BasicPoseName[] = {
 
 // 人物动作武器连接名
 const char* WeaponPoseName[] = {
-    //空手-n
-    //（蜀山派）飞轮-l
-    //（蜀山派）剑-j
-    //（花间门）丝带-s
-    //（花间门）双环-h
-    //（五台山）斧-f
-    //（五台山）杵-c
-    //（苗疆）短杖-z
-    //（苗疆）法球-q
+    // 空手-n
+    // （蜀山派）飞轮-l
+    // （蜀山派）剑-j
+    // （花间门）丝带-s
+    // （花间门）双环-h
+    // （五台山）斧-f
+    // （五台山）杵-c
+    // （苗疆）短杖-z
+    // （苗疆）法球-q
     "n",  // 0 空手
     "c",  // 1 杵
     "f",  // 2 斧
@@ -1912,7 +1917,7 @@ char* GcBaseActor::GetPoseByNPC(EPoses Pose) {
 
     // 动作基础名
     const char* basic = NULL;
-    basic = pDefaultPoseNameSimple[Pose];
+    basic             = pDefaultPoseNameSimple[Pose];
     if (!basic || Pose <= POSE_NONE)
         return NULL;
 
@@ -1939,8 +1944,8 @@ char* GcBaseActor::GetPoseByWeapon(EPoses Pose, SItemID& item) {
 
     // 动作基础名
     const char* basic = NULL;
-    basic = BasicPoseName[Pose];
-    if (!basic || Pose <= POSE_NONE)  //非法动作
+    basic             = BasicPoseName[Pose];
+    if (!basic || Pose <= POSE_NONE)
         return NULL;
 
     // 武器名
@@ -2065,39 +2070,34 @@ const char* GcBaseActor::GetPoseByWeapon(EPoses PoseId, SItemID& item1, SItemID&
 
 const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, float fSpeed) {
     guard;
-    m_vPoseID = vPoseID;  // 设置当前姿态ID
-    // 检查姿态ID是否有效
+    m_vPoseID = vPoseID;
     if (vPoseID < POSE_NONE || vPoseID >= POSE_MAX) {
-        return "";  // 如果姿态ID无效，返回空字符串
+        return "";
     }
-    // 如果当前角色处于骑乘状态，委托骑宠处理
+
     if (m_pMaster->m_eRideState == GcActor::ERS_ACTOR) {
         return m_pMaster->m_pRidePet->mBaseActor.PlayPose(vPoseID, vLoop, pSkill, fSpeed);
     }
-    // 如果模型信息未创建，输出错误日志并返回NULL
+
     if (mpModel == NULL) {
         LOG("GcBaseActor::PlayPose 试图播放一个模型信息还没有创建的人物动作.\n");
         return NULL;
     }
     const char* pPoseName = NULL;
-    // 根据模型复杂性选择姿态名称数组
     if (mpModel->bComplex)
         pPoseName = pDefaultPoseName[vPoseID];
     else
-        pPoseName = pDefaultPoseName[vPoseID];
-    //pPoseName = pDefaultPoseNameSimple[vPoseID];
+        pPoseName = pDefaultPoseNameSimple[vPoseID];
 
     SItemID  Item1, Item2;
     SWeapon *pWeaClass1, *pWeaClass2 = NULL;
-    // 获取当前装备的武器
     Item1 = m_pMaster->mItem.GetEquipItem(CItemContainer::WEAPON_1, true);
-    //Item2 = m_pMaster->mItem.GetEquipItem(CItemContainer::WEAPON_2, true);
+    // Item2 = m_pMaster->mItem.GetEquipItem(CItemContainer::WEAPON_2, true);
     pWeaClass1 = (SWeapon*)(((CGameClientFrame*)GetApp())->m_pItemManager->GetItem(Item1.type));
-    //pWeaClass2 = (SWeapon*)( ((CGameClientFrame*)GetApp())->m_pItemManager->GetItem(Item2.type) );
+    // pWeaClass2 = (SWeapon*)(
+    // ((CGameClientFrame*)GetApp())->m_pItemManager->GetItem(Item2.type) );
 
     int iSkillTime = 0;
-    //判断当前是否复杂模型
-
     if (!mpModel->bComplex) {
         if (vPoseID == POSE_IDLE) {
             pPoseName = GetPoseByNPC(vPoseID);
@@ -2108,7 +2108,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
             else
                 pPoseName = pSkill->szRAction1;
 
-            iSkillTime = pSkill->iRTime;
+            iSkillTime                                   = pSkill->iRTime;
             CActorSkill::SActorPassive* pStrengthenSkill = NULL;
             ////Tianh 修改加强型技能
             if (!(pSkill->wManyStrSkillSub.empty())) {
@@ -2117,10 +2117,10 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                     pStrengthenSkill = m_pMaster->m_Skill.FindPassiveSkillBySubID(*(it));
 
                     if (pStrengthenSkill) {
-                        //if (pStrengthenSkill->pAttr->iRMinDest)
+                        // if (pStrengthenSkill->pAttr->iRMinDest)
                         //{
                         //	iMyRMinDest += pStrengthenSkill->pAttr->iRMinDest;
-                        //}
+                        // }
                         if (pStrengthenSkill->pAttr->iRMaxDest) {
                             iSkillTime += pStrengthenSkill->pAttr->iRTime;
                         }
@@ -2128,11 +2128,11 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                 }
             }
         }
-    } else if (m_pMaster->m_cShapeshift == 2) {  // 如果角色变身状态为2
+    } else if (m_pMaster->m_cShapeshift == 2) {
         if (vPoseID == POSE_IDLE) {
             pPoseName = GetPoseByNPC(vPoseID);
         } else if (vPoseID == POSE_WALK) {
-            vPoseID = POSE_RUN;
+            vPoseID   = POSE_RUN;
             pPoseName = pShapeshiftPoseName[vPoseID];
         } else if (vPoseID == POSE_ATTACK && pSkill) {
             pPoseName = pSkill->szRAction1;
@@ -2146,22 +2146,23 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                 if (pSkill) {
                     if ((pWeaClass1 && pWeaClass1->bBothHands) ||
                         (pWeaClass1 && pWeaClass2 && !ItemIsShield(Item2) && !ItemIsShield(Item1)))
-                        pPoseName = pSkill->szRAction2;  // 双手
+                        pPoseName = pSkill->szRAction2;
                     else
-                        pPoseName = pSkill->szRAction1;  //单手
-                    iSkillTime = pSkill->iRTime;         // 获取技能释放时间
+                        pPoseName = pSkill->szRAction1;
+                    iSkillTime                                   = pSkill->iRTime;
                     CActorSkill::SActorPassive* pStrengthenSkill = NULL;
-                    //if(pSkill->wStrSkillSub)
+                    // if(pSkill->wStrSkillSub)
                     //{
-                    //	pStrengthenSkill = m_pMaster->m_Skill.FindPassiveSkillBySubID(pSkill->wStrSkillSub);
-                    //}
-                    //if (pStrengthenSkill)
+                    //	pStrengthenSkill =
+                    // m_pMaster->m_Skill.FindPassiveSkillBySubID(pSkill->wStrSkillSub);
+                    // }
+                    // if (pStrengthenSkill)
                     //{
                     //	if (pStrengthenSkill->pAttr->iRTime)
                     //	{
                     //		iSkillTime = pStrengthenSkill->pAttr->iRTime;
                     //	}
-                    //}
+                    // }
                     /*iMyRMaxDest = pSkill->iRMaxDest*/;
                     ////Tianh 修改加强型技能
                     if (!(pSkill->wManyStrSkillSub.empty())) {
@@ -2170,10 +2171,10 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                             pStrengthenSkill = m_pMaster->m_Skill.FindPassiveSkillBySubID(*(it));
 
                             if (pStrengthenSkill) {
-                                //if (pStrengthenSkill->pAttr->iRMinDest)
+                                // if (pStrengthenSkill->pAttr->iRMinDest)
                                 //{
                                 //	iMyRMinDest += pStrengthenSkill->pAttr->iRMinDest;
-                                //}
+                                // }
                                 if (pStrengthenSkill->pAttr->iRMaxDest) {
                                     iSkillTime += pStrengthenSkill->pAttr->iRTime;
                                 }
@@ -2181,7 +2182,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                         }
                     }
                 } else {
-                    //pPoseName = GetPoseByWeapon(vPoseID, Item1, Item2);
+                    // pPoseName = GetPoseByWeapon(vPoseID, Item1, Item2);
                     pPoseName = GetPoseByWeapon(vPoseID, Item1);
                 }
                 break;
@@ -2193,12 +2194,12 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
             case POSE_HURT:
             case POSE_GUARD:
             default:
-                //pPoseName = GetPoseByWeapon(vPoseID, Item1, Item2);
+                // pPoseName = GetPoseByWeapon(vPoseID, Item1, Item2);
                 pPoseName = GetPoseByWeapon(vPoseID, Item1);
                 break;
         }
     }
-    //else if (!pWeaClass1 && pWeaClass2 && ItemIsShield(Item2.type))
+    // else if (!pWeaClass1 && pWeaClass2 && ItemIsShield(Item2.type))
     //{
     //	switch(vPoseID)
     //	{
@@ -2211,7 +2212,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
     //	default:
     //		break;
     //	}
-    //}
+    // }
     else  // 没有武器
     {
         // if (vPoseID==POSE_ATTACK && pSkill) pPoseName = pSkill->szRAction;
@@ -2220,24 +2221,18 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
         if (vPoseID == POSE_ATTACK && pSkill) {
             pPoseName = pSkill->szRAction1;
         }
-        if (vPoseID == POSE_STAND) {
-            pPoseName = "wait_non";
-        }
-        if (vPoseID == POSE_WALK) {
-            pPoseName = "walk_non";
-        }
     }
 
     if (vPoseID == POSE_FUNACTION) {
         DWORD dwIdx = (DWORD)pSkill;
         char  cDir;
-        cDir = dwIdx & 0x0FF;
+        cDir  = dwIdx & 0x0FF;
         dwIdx = (dwIdx >> 16) & 0x0FFFF;
         if (dwIdx < 1 || dwIdx > 7) {
             dwIdx = 1;
         }
         pPoseName = pFunActionPoseName[dwIdx - 1];
-        vLoop = false;
+        vLoop     = false;
     }
 
     if (pPoseName == 0 || pPoseName[0] == 0) {
@@ -2246,19 +2241,14 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
     }
 
     if (m_bLastLoop == vLoop && m_bLastLoop == true && strcmp(m_szLastPoseName, pPoseName) == 0) {
-        std::string CurrentPose = mGraph.p()->GetCurrentPose().Name;
-        std::string m_szLastPose = m_szLastPoseName;
-        std::string l =
-            "Last is " + m_szLastPose + ",but GetCurrentPose() == " + CurrentPose + "\n";
-        if (!mGraph.p()->IsPlayingPose()) {
-            ERR(l.c_str());
-        }
+        if (!mGraph.p()->IsPlayingPose())
+            ERR("Last is a loop cmd, but GetCurrentPose()==NULL!\n");
         return m_szLastPoseName;
     }
 
     m_bLastLoop = vLoop;
-    rt2_core::rt2_strncpy(m_szLastPoseName, pPoseName, 40);
-    //m_szLastPoseName[39] = 0;
+    rt2_strncpy(m_szLastPoseName, pPoseName, 40);
+    // m_szLastPoseName[39] = 0;
 
     SRT_Pose* tpose = mGraph.p()->GetPose(m_szLastPoseName);
 
@@ -2278,13 +2268,12 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
 
     m_fLastPoseSpeed = fSpeed;
     if (!mGraph.PlayPose(m_szLastPoseName, vLoop, fSpeed)) {
-        if (GetWorld() && IsPlayer())
-            ERR2("播放动作失败,模型文件[%s] 动作[%s] id[%d]\n", mGraph.FileName(), m_szLastPoseName,
-                 vPoseID);
+        // ERR2("播放动作失败,模型文件[%s] 动作[%s] \n", mGraph.FileName(),
+        // m_szLastPoseName);
         const SRT_Pose* pActorPose = &mGraph.p()->GetCurrentPose();
         if (pActorPose && pActorPose->IsVaild()) {
-            rt2_core::rt2_strncpy(m_szLastPoseName, pActorPose->Name.c_str(), 40);
-            //m_szLastPoseName[39] = 0;
+            rt2_strncpy(m_szLastPoseName, pActorPose->Name.c_str(), 40);
+            // m_szLastPoseName[39] = 0;
         }
         return NULL;
     }
@@ -2315,7 +2304,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                 Safe_ReleaseActor(m_pWeapon->m_skillEffect);
 
             } else {
-                //m_way->PlayPoseInTime(skill->szWayName,skill->iRTime,false);
+                // m_way->PlayPoseInTime(skill->szWayName,skill->iRTime,false);
                 if (!m_pWeapon->PlayPose(pSkill->szWayName, vLoop, fSpeed))
                     m_pWeapon->PlayPose(m_szLastPoseName, vLoop, fSpeed);
             }
@@ -2376,12 +2365,15 @@ void GcBaseActor::PlayDropItemEffect(const char* file /* = "skill_hit1"*/,
 
     m_pItemEffect->SetMatrix(RtgMatrix12::matIdentity);
     if (m_pItemEffect) {
-        //m_pItemEffect->Create();
+        // m_pItemEffect->Create();
         m_pItemEffect->LinkParent(GetGraph()->p(), link);
         m_pItemEffect->PlayPose("effect", true);
-        //m_pItemEffect->SetDrawScale(RtgVertex3(GetGraph()->GetBoundingBox()->vExt.x / m_pItemEffect->GetBoundingBox()->vExt.x,
-        //	GetGraph()->GetBoundingBox()->vExt.y / m_pItemEffect->GetBoundingBox()->vExt.y,
-        //	GetGraph()->GetBoundingBox()->vExt.z / m_pItemEffect->GetBoundingBox()->vExt.z));
+        // m_pItemEffect->SetDrawScale(RtgVertex3(GetGraph()->GetBoundingBox()->vExt.x
+        // / m_pItemEffect->GetBoundingBox()->vExt.x,
+        //	GetGraph()->GetBoundingBox()->vExt.y /
+        // m_pItemEffect->GetBoundingBox()->vExt.y,
+        //	GetGraph()->GetBoundingBox()->vExt.z /
+        // m_pItemEffect->GetBoundingBox()->vExt.z));
     }
     unguard;
 }
@@ -2486,7 +2478,7 @@ bool GcBaseActor::FindEffect(const char* file) {
 
             return true;
         }
-        //end
+        // end
     }
 
     return false;
@@ -2538,30 +2530,31 @@ void GcBaseActor::OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event) {
         // 发射物体
 
         // Param
-        // link effect file name(may be "null")					//buf[0]
-        // missile target act file name(may be "null")			//buf[1]
+        // link effect file name(may be "null")
+        // //buf[0] missile target act file name(may be "null")
+        // //buf[1]
         if (sscanf(event->Param.c_str(), "%s %s", buf[0], buf[1]) != 2) {
             ShowErr("throw parameter error");
             return;
         }
 
-        //SItem*	pItem=NULL;
-        //byte	Level=0;
-        //m_pMaster->mItem.GetItem(CItemContainer::WEAPON_1,pItem);
-        //if(pItem==NULL)
+        // SItem*	pItem=NULL;
+        // byte	Level=0;
+        // m_pMaster->mItem.GetItem(CItemContainer::WEAPON_1,pItem);
+        // if(pItem==NULL)
         //{//没有武器
         //	return;
-        //}
-        //Level = pItem->id.level;
+        // }
+        // Level = pItem->id.level;
 
-        //源的ID
+        // 源的ID
         DWORD SourceID = m_pMaster->ID();
 
         // new　一个抛掷型的Missile
         {
-            char*          pMissileName = "";  //pItem->pWea->Act[Level];
+            char*          pMissileName = "";  // pItem->pWea->Act[Level];
             CWhirlMissile* pMissile = RT_NEW CWhirlMissile(SourceID, mAttackTargetID, pMissileName);
-            if (strcmp(buf[1], "null") != 0) {  //目标特效名称
+            if (strcmp(buf[1], "null") != 0) {  // 目标特效名称
                 pMissile->SetTargetEffect(buf[1]);
             }
         }
@@ -2578,13 +2571,13 @@ void GcBaseActor::OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event) {
         OffsetRotation.Zero();
 
         // parent bone(may be "null")					//buf[0]
-        // use parent rotation(true,false)				//UseParentRotation
-        // offset position(x,y,z)						//OffsetPosition
-        // offset rotation(x,y,z)						//OffsetRotation
-        // missile act file name						//buf[1]
-        // missile fly speed							//MissileSpeed
-        // track/beeline								//buf[2]
-        // missile target act file name(may be "null")	//buf[3]
+        // use parent rotation(true,false) //UseParentRotation offset
+        // position(x,y,z)						//OffsetPosition
+        // offset rotation(x,y,z)
+        // //OffsetRotation missile act file name
+        // //buf[1] missile fly speed
+        // //MissileSpeed track/beeline
+        // //buf[2] missile target act file name(may be "null")	//buf[3]
 
         if (sscanf(event->Param.c_str(), "%s %d %f %f %f %f %f %f %s %f %s %s", buf[0],
                    &UseParentRotation, &OffsetPosition.x, &OffsetPosition.y, &OffsetPosition.z,
@@ -2594,7 +2587,7 @@ void GcBaseActor::OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event) {
             return;
         }
 
-        //源的矩阵
+        // 源的矩阵
         const RtgMatrix12* pSourceMatrix;
         const RtgMatrix12* pBaseMatrix = pActor->GetWorldMatrix();
         if ((strcmp(buf[0], "null") == 0)) {
@@ -2606,7 +2599,7 @@ void GcBaseActor::OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event) {
                 pSourceMatrix = pBaseMatrix;
             else {
                 RtgMatrix12 Matrix = (*pBaseMatrix) * _mat;
-                pSourceMatrix = &Matrix;
+                pSourceMatrix      = &Matrix;
             }
         }
 
@@ -2616,26 +2609,29 @@ void GcBaseActor::OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event) {
         Source.z = pSourceMatrix->_32;
 
         /*还未处理这个参数
-		if(UseParentRotation)
-		{//要使用link点的旋转
-			//还未处理好
-		}
-		else
-		{//只使用位置信息
-		}
-		*/
+    if(UseParentRotation)
+    {//要使用link点的旋转
+            //还未处理好
+    }
+    else
+    {//只使用位置信息
+    }
+    */
 
-        // offset position(x,y,z)						//OffsetPosition
+        // offset position(x,y,z)
+        // //OffsetPosition
         Source += OffsetPosition;
 
-        // offset rotation(x,y,z)						//OffsetRotation
-        // 该参数还未处理
+        // offset rotation(x,y,z)
+        // //OffsetRotation 该参数还未处理
 
-        // track/beeline								//buf[2]
+        // track/beeline
+        // //buf[2]
         if (strcmp(buf[2], "track") == 0) {
-            //跟踪类型
-            // missile act file name						//buf[1]
-            // missile fly speed							//MissileSpeed
+            // 跟踪类型
+            //  missile act file name						//buf[1]
+            // missile fly speed
+            // //MissileSpeed
             CTrackMissile* pMissile =
                 RT_NEW     CTrackMissile(Source, mAttackTargetID, buf[1], NULL, MissileSpeed);
 
@@ -2645,8 +2641,8 @@ void GcBaseActor::OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event) {
             }
 
         } else if (strcmp(buf[2], "beeline") == 0) {
-            //直线型
-            //目标
+            // 直线型
+            // 目标
             GcActor* pA = FindActor(mAttackTargetID);
             if (pA == NULL) {
                 return;
@@ -2663,7 +2659,8 @@ void GcBaseActor::OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event) {
             Target.z += p->p()->m_matrix._32;
 
             // missile act file name						//buf[1]
-            // missile fly speed							//MissileSpeed
+            // missile fly speed
+            // //MissileSpeed
             CBeelineMissile* pMissile =
                 RT_NEW       CBeelineMissile(Source, Target, buf[1], NULL, MissileSpeed);
 
@@ -2691,10 +2688,12 @@ void GcBaseActor::OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event) {
                 PlayPose("wait", true);
             } else {
                 if (GetProb(0.5)) {
-                    //					GetGraph()->PlayPose("waiting01", true);
+                    //					GetGraph()->PlayPose("waiting01",
+                    // true);
                     PlayPose("waiting01", true);
                 } else {
-                    //					GetGraph()->PlayPose("waiting02", true);
+                    //					GetGraph()->PlayPose("waiting02",
+                    // true);
                     PlayPose("waiting02", true);
                 }
             }

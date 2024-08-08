@@ -607,7 +607,7 @@ void GcPlayer::OnSetTarget(DWORD vID)
 						if (!g_TableCharImage.GetCharImage(pTargetActor->m_actorID, images))
 							return;
 					}
-					std::string strImage = "ui_texture/";
+					std::string strImage = "ui/ui_texture/";
 					if ( pTargetActor->m_core.HeadImageID < 0 || pTargetActor->m_core.HeadImageID > images.size())
 					{
 						pTargetActor->m_core.HeadImageID = 0;

@@ -7,7 +7,7 @@
       <ListBox Inherit="" Location="3,4,243,100" Name="ltbservers" Show="true">
         <Column Inherit="Column" Text="服务器名称" TextColor="#fffcffc6" Width="119"/>
         <Column Inherit="Column" Text="服务器承载" TextColor="#fffcffc6" Width="119"/>
-        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/new_textures/5.tga" BorderSource="469,83,18,20"/>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/x_textures/5.tga" BorderSource="469,83,18,20"/>
       </ListBox>
       <Label BackgroundColor="#ff153723" Inherit="" Location="5,24,118,77" Name="lbhemline1" Show="true"/>
       <Label BackgroundColor="#ff153723" Inherit="" Location="125,24,118,77" Name="lbhemline2" Show="true"/>

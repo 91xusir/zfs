@@ -100,7 +100,7 @@ void UIFormMainTask::OnTreeNodeSelect(RtwWidget* pSender, RtwEventDelegate* pEve
 		if(m_pTreeList->getSelectItem()->text == (*itLine).strDataName)
 		{
 			ShowTaskDesc();
-			std::string strImage = "ui_texture/";
+			std::string strImage = "ui/ui_texture/";
 			if ((*itLine).nDataID < section)
 			{
 				strImage += (*itLine).strImage1;
@@ -201,7 +201,7 @@ void UIFormMainTask::SetSelectedSectionID(int sectionId)
 	if (data)
 	{
 		ShowTaskDesc();
-		std::string strImage = "ui_texture/";
+		std::string strImage = "ui/ui_texture/";
 		strImage += data->strImage1;
 		strImage += ".tga";
 

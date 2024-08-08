@@ -64,7 +64,7 @@ bool RtwHUD::Init()
 	m_pStall->Hide();
 	m_partylogo->Hide();
 
-	RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui/textures/1.tga");
+	RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui/x_textures/1.tga");
 	if(pImage)
 	{
 		pImage->SetSourceRect(RtwRect(1, 216, 147,226));

@@ -14,7 +14,7 @@ m_iNowPage(0)
 	m_pbtnDownpage->EvLClick		+= RTW_CALLBACK(this,CUIForm_Pickup,OnBtnOtherDown);
 	m_pbtnAllPickup->EvLClick		+=RTW_CALLBACK(this,CUIForm_Pickup,OnBtnOtherDown);
 	m_pfrmPickup->EvHide			+= RTW_CALLBACK(this,CUIForm_Pickup,InHide);
-	m_ptrHoverImage					= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage					= g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 	char name[80];
 	for(int i= 0;i <4;++i)
 	{

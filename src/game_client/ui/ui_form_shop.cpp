@@ -43,7 +43,7 @@ UIFormShop::UIFormShop()
 	m_pScrollUp			=	LOAD_UI_T(RtwVScrollBar, "fmnewshop.fmshop.fmsellitem.scrollUp");
 	m_pScrollDown1		=	LOAD_UI_T(RtwVScrollBar, "fmnewshop.fmshop.tbctrading.fmcontent1.fmselfitem.scrollUp");
 	m_pScrollDown2		=	LOAD_UI_T(RtwVScrollBar, "fmnewshop.fmshop.tbctrading.fmcontent2.fmsellitem.scrollUp");
-	m_ptrHoverImage		=	g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage		=	g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 
 	m_pFrmThis->EvRClick							+=	RTW_CALLBACK(this, UIFormShop, OnRClickRepair);
 	m_btnOK->EvLClick								+=	RTW_CALLBACK(this, UIFormShop, OnOK);
@@ -524,7 +524,7 @@ void UIFormShop::Show(bool bBuyFromNpc, DWORD npcID)
 			m_lbWindowsTitle->SetText("商   店");
 			m_lbWindowsTitle->SetTextFont("隶书");
 			m_lbWindowsTitle->SetFontSize(18);
-			BackImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_t_jinqian2.dds");
+			BackImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_t_jinqian2.dds");
 			m_iSellType = 1;
 			break;
 		case 8:
@@ -532,7 +532,7 @@ void UIFormShop::Show(bool bBuyFromNpc, DWORD npcID)
 			m_lbWindowsTitle->SetText("帮贡商店");
 			m_lbWindowsTitle->SetTextFont("隶书");
 			m_lbWindowsTitle->SetFontSize(18);
-			BackImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_t_banggong.dds");
+			BackImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_t_banggong.dds");
 			m_iSellType = 8;
 			break;
 		case 9:
@@ -540,7 +540,7 @@ void UIFormShop::Show(bool bBuyFromNpc, DWORD npcID)
 			m_lbWindowsTitle->SetText("门贡商店");
 			m_lbWindowsTitle->SetTextFont("隶书");
 			m_lbWindowsTitle->SetFontSize(18);
-			BackImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_t_mengong.dds");
+			BackImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_t_mengong.dds");
 			m_iSellType = 9;
 			break;
 		case 10:
@@ -548,7 +548,7 @@ void UIFormShop::Show(bool bBuyFromNpc, DWORD npcID)
 			m_lbWindowsTitle->SetText("仙誉商店");
 			m_lbWindowsTitle->SetTextFont("隶书");
 			m_lbWindowsTitle->SetFontSize(18);
-			BackImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_t_xianyu.dds");
+			BackImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_t_xianyu.dds");
 			m_iSellType = 10;
 			break;
 		case 11:
@@ -556,7 +556,7 @@ void UIFormShop::Show(bool bBuyFromNpc, DWORD npcID)
 			m_lbWindowsTitle->SetText("军功商店");
 			m_lbWindowsTitle->SetTextFont("隶书");
 			m_lbWindowsTitle->SetFontSize(18);
-			BackImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_t_jungong.dds");
+			BackImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_t_jungong.dds");
 			m_iSellType = 11;
 			break;
 		case 12:
@@ -564,7 +564,7 @@ void UIFormShop::Show(bool bBuyFromNpc, DWORD npcID)
 			m_lbWindowsTitle->SetText("俗名商店");
 			m_lbWindowsTitle->SetTextFont("隶书");
 			m_lbWindowsTitle->SetFontSize(18);
-			BackImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_t_suming.dds");
+			BackImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_t_suming.dds");
 			m_iSellType = 12;
 			break;
 		case 13:
@@ -572,12 +572,12 @@ void UIFormShop::Show(bool bBuyFromNpc, DWORD npcID)
 			m_lbWindowsTitle->SetText("积分商店");
 			m_lbWindowsTitle->SetTextFont("隶书");
 			m_lbWindowsTitle->SetFontSize(18);
-			BackImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_t_jifen.dds");
+			BackImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_t_jifen.dds");
 			m_iSellType = 13;
 			break;
 		/*default:
 			m_lbMoneyName1->SetText("支出金钱");
-			BackImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_t_jinqian1.dds");
+			BackImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_t_jinqian1.dds");
 			m_iSellType = 1;
 			break;*/
 		}

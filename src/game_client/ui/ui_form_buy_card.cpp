@@ -35,7 +35,7 @@ UIFormBuyCard::UIFormBuyCard()
 	m_pFrmThis->EvHide += RTW_CALLBACK(this, UIFormBuyCard, OnCancel);
 
     //m_ptrHoverImage = new RtwImage("highlight_button.tga");// change [3/17/2009 tooth.shi]
-	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
     m_lLastRefreshTime = 0;
 
 #define GRID_SIZE_X		34

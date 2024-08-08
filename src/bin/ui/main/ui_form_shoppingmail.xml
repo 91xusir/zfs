@@ -4,61 +4,61 @@
     <Form EscapeHide="true" Inherit="" Location="65,94,635,474" Name="fmshoppingmail" Show="false">
       <Label Inherit="" Location="207,28,400,18" Name="lbcircle" Show="true" Text="Ñ­»·²¥·Å"/>
       <CloseButton Location="284,14,20,20" padding="0,22,5,0">
-        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <Label Alignment="center" FontSize="18" Inherit="" Location="70,2,495,18" Name="lbname" Show="true" Text="Ôª ±¦ ÉÌ ³Ç" TextColor="#ffdfde9b" TextFont="Á¥Êé"/>
       <Label BackgroundColor="#A016712C" Location="6,50,623,400" Name="b"/>
       <Label Location="0,-1,317,50" Name="tl">
-        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="1,92,318,51"/>
+        <BackgroundImage Blend="true" File="ui/x_textures/5.tga" Source="1,92,318,51"/>
       </Label>
       <Label Location="318,-1,317,50" Name="tr">
-        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="2,147,318,51"/>
+        <BackgroundImage Blend="true" File="ui/x_textures/5.tga" Source="2,147,318,51"/>
       </Label>
       <Label Inherit="" Location="0,449,318,23" Name="bl" Show="true">
-        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="0,199,319,23"/>
+        <BackgroundImage Blend="true" File="ui/x_textures/5.tga" Source="0,199,319,23"/>
       </Label>
       <Label Inherit="" Location="317,450,318,23" MouseEvent="false" Name="br" Show="true">
-        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="1,224,319,23"/>
+        <BackgroundImage Blend="true" File="ui/x_textures/5.tga" Source="1,224,319,23"/>
       </Label>
       <Label Inherit="" Location="1,50,4,400" Name="cl" Show="true">
-        <BackgroundImage File="ui/new_textures/5.tga" Source="2,54,6,9"/>
+        <BackgroundImage File="ui/x_textures/5.tga" Source="2,54,6,9"/>
       </Label>
       <Label Inherit="" Location="630,50,4,400" Name="cr" Show="true">
-        <BackgroundImage File="ui/new_textures/5.tga" Source="306,53,7,9"/>
+        <BackgroundImage File="ui/x_textures/5.tga" Source="306,53,7,9"/>
       </Label>
       <Button FontSize="12" Inherit="" Location="44,53,111,26" Name="btentergive" Show="false" Sound="ui_normalbt.wav" Text="" TextColor="#fffbff66" TextFont="ËÎÌå">
-        <NormalImage Blend="true" File="ui\new_textures\8.tga" Source="2,346,111,26"/>
-        <PushedImage Blend="true" File="ui\new_textures\8.tga" Source="2,372,111,26"/>
-        <HighlightImage Blend="true" File="ui\new_textures\8.tga" Source="2,372,111,26"/>
-        <DisabledImage Blend="true" File="ui\new_textures\8.tga" Source="2,398,111,26"/>
+        <NormalImage Blend="true" File="ui\x_textures\8.tga" Source="2,346,111,26"/>
+        <PushedImage Blend="true" File="ui\x_textures\8.tga" Source="2,372,111,26"/>
+        <HighlightImage Blend="true" File="ui\x_textures\8.tga" Source="2,372,111,26"/>
+        <DisabledImage Blend="true" File="ui\x_textures\8.tga" Source="2,398,111,26"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="44,53,111,26" Name="btentermoney" Show="true" Sound="ui_normalbt.wav" Text="" TextColor="#fffbff66" TextFont="ËÎÌå">
-        <NormalImage Blend="true" File="ui\new_textures\8.tga" Source="310,428,111,26"/>
-        <PushedImage Blend="true" File="ui\new_textures\8.tga" Source="310,454,111,26"/>
-        <HighlightImage Blend="true" File="ui\new_textures\8.tga" Source="310,454,111,26"/>
-        <DisabledImage Blend="true" File="ui\new_textures\8.tga" Source="310,480,111,26"/>
+        <NormalImage Blend="true" File="ui\x_textures\8.tga" Source="310,428,111,26"/>
+        <PushedImage Blend="true" File="ui\x_textures\8.tga" Source="310,454,111,26"/>
+        <HighlightImage Blend="true" File="ui\x_textures\8.tga" Source="310,454,111,26"/>
+        <DisabledImage Blend="true" File="ui\x_textures\8.tga" Source="310,480,111,26"/>
       </Button>
       <Form Inherit="" Location="10,86,185,245" Name="fmitemact" Show="true">
-        <BackgroundImage File="ui/new_textures/8.tga" Source="299,1,185,245"/>
+        <BackgroundImage File="ui/x_textures/8.tga" Source="299,1,185,245"/>
         <Button FontSize="12" Inherit="" Location="64,216,60,18" Name="btupdate" Show="true" Sound="ui_normalbt.wav" Text="»¹  Ô­" TextColor="#ffffffff" TextFont="ËÎÌå">
-          <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-          <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-          <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-          <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+          <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+          <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+          <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+          <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
         </Button>
         <Button FontSize="12" Inherit="" Location="17,205,39,29" Name="btleft" Show="true" Sound="ui_normalbt.wav">
-          <NormalImage Blend="true" File="ui\new_textures\8.tga" Source="299,249,40,30"/>
-          <PushedImage Blend="true" File="ui\new_textures\8.tga" Source="299,279,40,30"/>
-          <HighlightImage Blend="true" File="ui\new_textures\8.tga" Source="299,279,40,30"/>
-          <DisabledImage Blend="true" File="ui\new_textures\8.tga" Source="299,309,40,30"/>
+          <NormalImage Blend="true" File="ui\x_textures\8.tga" Source="299,249,40,30"/>
+          <PushedImage Blend="true" File="ui\x_textures\8.tga" Source="299,279,40,30"/>
+          <HighlightImage Blend="true" File="ui\x_textures\8.tga" Source="299,279,40,30"/>
+          <DisabledImage Blend="true" File="ui\x_textures\8.tga" Source="299,309,40,30"/>
         </Button>
         <Button FontSize="12" Inherit="" Location="131,206,39,29" Name="btright" Show="true" Sound="ui_normalbt.wav">
-          <NormalImage Blend="true" File="ui\new_textures\8.tga" Source="340,249,40,30"/>
-          <PushedImage Blend="true" File="ui\new_textures\8.tga" Source="340,279,40,30"/>
-          <HighlightImage Blend="true" File="ui\new_textures\8.tga" Source="340,279,40,30"/>
-          <DisabledImage Blend="true" File="ui\new_textures\8.tga" Source="340,309,40,30"/>
+          <NormalImage Blend="true" File="ui\x_textures\8.tga" Source="340,249,40,30"/>
+          <PushedImage Blend="true" File="ui\x_textures\8.tga" Source="340,279,40,30"/>
+          <HighlightImage Blend="true" File="ui\x_textures\8.tga" Source="340,279,40,30"/>
+          <DisabledImage Blend="true" File="ui\x_textures\8.tga" Source="340,309,40,30"/>
         </Button>
         <Label Inherit="" Location="1,1,182,243" Name="lbitemact" Show="true"/>
       </Form>
@@ -66,41 +66,41 @@
         <Label FontSize="12" Inherit="" Location="72,6,100,18" Name="lblmoney1" Show="true"/>
         <Label FontSize="12" Inherit="" Location="72,31,100,18" Name="lblmoney2" Show="true"/>
         <Button FontSize="12" Inherit="" Location="44,60,92,24" Name="bttrademoney" Show="true" Sound="ui_normalbt.wav">
-          <NormalImage Blend="true" File="ui\new_textures\8.tga" Source="2,427,93,24"/>
-          <PushedImage Blend="true" File="ui\new_textures\8.tga" Source="2,450,93,24"/>
-          <HighlightImage Blend="true" File="ui\new_textures\8.tga" Source="2,450,93,24"/>
-          <DisabledImage Blend="true" File="ui\new_textures\8.tga" Source="2,474,93,24"/>
+          <NormalImage Blend="true" File="ui\x_textures\8.tga" Source="2,427,93,24"/>
+          <PushedImage Blend="true" File="ui\x_textures\8.tga" Source="2,450,93,24"/>
+          <HighlightImage Blend="true" File="ui\x_textures\8.tga" Source="2,450,93,24"/>
+          <DisabledImage Blend="true" File="ui\x_textures\8.tga" Source="2,474,93,24"/>
         </Button>
-        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
         <Button FontSize="12" Inherit="" Location="44,91,92,24" Name="btgetmoney" Show="true" Sound="ui_normalbt.wav">
-          <NormalImage Blend="true" File="ui\new_textures\8.tga" Source="95,427,93,24"/>
-          <PushedImage Blend="true" File="ui\new_textures\8.tga" Source="95,450,93,24"/>
-          <HighlightImage Blend="true" File="ui\new_textures\8.tga" Source="95,450,93,24"/>
-          <DisabledImage Blend="true" File="ui\new_textures\8.tga" Source="95,474,93,24"/>
+          <NormalImage Blend="true" File="ui\x_textures\8.tga" Source="95,427,93,24"/>
+          <PushedImage Blend="true" File="ui\x_textures\8.tga" Source="95,450,93,24"/>
+          <HighlightImage Blend="true" File="ui\x_textures\8.tga" Source="95,450,93,24"/>
+          <DisabledImage Blend="true" File="ui\x_textures\8.tga" Source="95,474,93,24"/>
         </Button>
         <Label FontSize="12" Location="6,7,60,18" Name="lblmoneynum" Text="  ¹Ù  Òø" TextColor="#fffbff66" TextFont="ËÎÌå">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="422,64,62,20"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="422,64,62,20"/>
         </Label>
         <Label FontSize="12" Location="6,32,60,18" Name="lblgivenmoney" Text=" ÏµÍ³Ôöµã" TextColor="#fffbff66" TextFont="ËÎÌå">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="422,64,62,20"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="422,64,62,20"/>
         </Label>
         <Label Inherit="" Location="4,5,6,20" Name="lbwlk1" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,131,5,18"/>
         </Label>
         <Label Inherit="" Location="9,5,165,20" Name="lbwlk2" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="430,131,4,18"/>
         </Label>
         <Label Inherit="" Location="175,5,5,20" Name="lbwlk3" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="437,131,5,18"/>
         </Label>
         <Label Inherit="" Location="4,30,6,20" Name="lbwlk4" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,131,5,18"/>
         </Label>
         <Label Inherit="" Location="9,30,165,20" Name="lbwlk5" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="430,131,4,18"/>
         </Label>
         <Label Inherit="" Location="175,30,5,20" Name="lbwlk6" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="437,131,5,18"/>
         </Label>
       </Form>
       <TabCtrl Inherit="" Location="201,44,420,420" Name="tabitem" Show="true">
@@ -110,19 +110,19 @@
             <Form Inherit="" Location="1,18,420,375" Name="fmitem" Show="true">
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,5,200,80" Name="fmiteminfo1" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -137,19 +137,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -164,19 +164,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -191,19 +191,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -218,19 +218,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -245,19 +245,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -272,19 +272,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -299,19 +299,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -333,32 +333,32 @@
               <Label Inherit="" Location="155,259,60,20" Name="lbltoken7" Show="true"/>
               <Label Inherit="" Location="360,259,60,20" Name="lbltoken8" Show="true"/>
               <Button FontSize="12" Inherit="" Location="85,349,46,18" Name="btfirstpage" Show="true" Sound="ui_normalbt.wav" Text="Ê× Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="139,349,46,18" Name="btuppage" Show="true" Sound="ui_normalbt.wav" Text="ÉÏ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="231,349,46,18" Name="btdownpage" Show="true" Sound="ui_normalbt.wav" Text="ÏÂ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="285,349,46,18" Name="btendpage" Show="true" Sound="ui_normalbt.wav" Text="Î² Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Label Inherit="" Location="189,347,40,20" Name="lblpagenum" Show="true"/>
             </Form>
-            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
             <CheckButton Inherit="" Location="12,4,40,20" Name="bttype1" Show="true" Text="È«²¿"/>
             <CheckButton Inherit="" Location="69,4,40,20" Name="bttype2" Show="true" Text="ÈÈÂô"/>
             <CheckButton Inherit="" Location="121,4,40,20" Name="bttype3" Show="true" Text="ÐÂÆ·"/>
@@ -371,19 +371,19 @@
             <Form Inherit="" Location="1,18,420,375" Name="fmitem" Show="true">
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,5,200,80" Name="fmiteminfo1" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -398,19 +398,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -425,19 +425,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -452,19 +452,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -479,19 +479,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -506,19 +506,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -533,19 +533,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -560,19 +560,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -594,36 +594,36 @@
               <Label Inherit="" Location="155,259,60,20" Name="lbltoken7" Show="true"/>
               <Label Inherit="" Location="360,259,60,20" Name="lbltoken8" Show="true"/>
               <Button FontSize="12" Inherit="" Location="85,349,46,18" Name="btfirstpage" Show="true" Sound="ui_normalbt.wav" Text="Ê× Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="139,349,46,18" Name="btuppage" Show="true" Sound="ui_normalbt.wav" Text="ÉÏ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="285,349,46,18" Name="btendpage" Show="true" Sound="ui_normalbt.wav" Text="Î² Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Label Inherit="" Location="189,347,40,20" Name="lblpagenum" Show="true"/>
               <Button FontSize="12" Inherit="" Location="231,349,46,18" Name="btdownpage" Show="true" Sound="ui_normalbt.wav" Text="ÏÂ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
             </Form>
             <CheckButton Inherit="" Location="12,4,40,20" Name="bttype1" Show="true" Text="È«²¿"/>
             <CheckButton Inherit="" Location="69,4,40,20" Name="bttype2" Show="true" Text="ÈÈÂô"/>
             <CheckButton Inherit="" Location="121,4,40,20" Name="bttype3" Show="true" Text="ÐÂÆ·"/>
             <CheckButton Inherit="" Location="178,4,40,20" Name="bttype4" Show="true" Text="Àñ°ü"/>
-            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
           </Form>
         </TabItem>
         <TabItem>
@@ -632,19 +632,19 @@
             <Form Inherit="" Location="1,18,420,375" Name="fmitem" Show="true">
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,5,200,80" Name="fmiteminfo1" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -659,19 +659,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -686,19 +686,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -713,19 +713,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -740,19 +740,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -767,19 +767,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -794,19 +794,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -821,19 +821,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -855,36 +855,36 @@
               <Label Inherit="" Location="155,259,60,20" Name="lbltoken7" Show="true"/>
               <Label Inherit="" Location="360,259,60,20" Name="lbltoken8" Show="true"/>
               <Button FontSize="12" Inherit="" Location="85,349,46,18" Name="btfirstpage" Show="true" Sound="ui_normalbt.wav" Text="Ê× Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="139,349,46,18" Name="btuppage" Show="true" Sound="ui_normalbt.wav" Text="ÉÏ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="285,349,46,18" Name="btendpage" Show="true" Sound="ui_normalbt.wav" Text="Î² Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Label Inherit="" Location="189,347,40,20" Name="lblpagenum" Show="true"/>
               <Button FontSize="12" Inherit="" Location="231,349,46,18" Name="btdownpage" Show="true" Sound="ui_normalbt.wav" Text="ÏÂ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
             </Form>
             <CheckButton Inherit="" Location="12,4,40,20" Name="bttype1" Show="true" Text="È«²¿"/>
             <CheckButton Inherit="" Location="69,4,40,20" Name="bttype2" Show="true" Text="ÈÈÂô"/>
             <CheckButton Inherit="" Location="121,4,40,20" Name="bttype3" Show="true" Text="ÐÂÆ·"/>
             <CheckButton Inherit="" Location="178,4,40,20" Name="bttype4" Show="true" Text="Àñ°ü"/>
-            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
           </Form>
         </TabItem>
         <TabItem>
@@ -893,19 +893,19 @@
             <Form Inherit="" Location="1,18,420,375" Name="fmitem" Show="true">
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,5,200,80" Name="fmiteminfo1" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -920,19 +920,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -947,19 +947,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -974,19 +974,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1001,19 +1001,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1028,19 +1028,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1055,19 +1055,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1082,19 +1082,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1116,36 +1116,36 @@
               <Label Inherit="" Location="155,259,60,20" Name="lbltoken7" Show="true"/>
               <Label Inherit="" Location="360,259,60,20" Name="lbltoken8" Show="true"/>
               <Button FontSize="12" Inherit="" Location="85,349,46,18" Name="btfirstpage" Show="true" Sound="ui_normalbt.wav" Text="Ê× Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="139,349,46,18" Name="btuppage" Show="true" Sound="ui_normalbt.wav" Text="ÉÏ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="285,349,46,18" Name="btendpage" Show="true" Sound="ui_normalbt.wav" Text="Î² Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Label Inherit="" Location="189,347,40,20" Name="lblpagenum" Show="true"/>
               <Button FontSize="12" Inherit="" Location="231,349,46,18" Name="btdownpage" Show="true" Sound="ui_normalbt.wav" Text="ÏÂ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
             </Form>
             <CheckButton Inherit="" Location="12,4,40,20" Name="bttype1" Show="true" Text="È«²¿"/>
             <CheckButton Inherit="" Location="69,4,40,20" Name="bttype2" Show="true" Text="ÈÈÂô"/>
             <CheckButton Inherit="" Location="121,4,40,20" Name="bttype3" Show="true" Text="ÐÂÆ·"/>
             <CheckButton Inherit="" Location="178,4,40,20" Name="bttype4" Show="true" Text="Àñ°ü"/>
-            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
           </Form>
         </TabItem>
         <TabItem>
@@ -1154,19 +1154,19 @@
             <Form Inherit="" Location="1,18,420,375" Name="fmitem" Show="true">
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,5,200,80" Name="fmiteminfo1" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1181,19 +1181,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1208,19 +1208,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1235,19 +1235,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1262,19 +1262,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1289,19 +1289,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1316,19 +1316,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1343,19 +1343,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1377,36 +1377,36 @@
               <Label Inherit="" Location="155,259,60,20" Name="lbltoken7" Show="true"/>
               <Label Inherit="" Location="360,259,60,20" Name="lbltoken8" Show="true"/>
               <Button FontSize="12" Inherit="" Location="85,349,46,18" Name="btfirstpage" Show="true" Sound="ui_normalbt.wav" Text="Ê× Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="139,349,46,18" Name="btuppage" Show="true" Sound="ui_normalbt.wav" Text="ÉÏ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="285,349,46,18" Name="btendpage" Show="true" Sound="ui_normalbt.wav" Text="Î² Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Label Inherit="" Location="189,347,40,20" Name="lblpagenum" Show="true"/>
               <Button FontSize="12" Inherit="" Location="231,349,46,18" Name="btdownpage" Show="true" Sound="ui_normalbt.wav" Text="ÏÂ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
             </Form>
             <CheckButton Inherit="" Location="12,4,40,20" Name="bttype1" Show="true" Text="È«²¿"/>
             <CheckButton Inherit="" Location="69,4,40,20" Name="bttype2" Show="true" Text="ÈÈÂô"/>
             <CheckButton Inherit="" Location="121,4,40,20" Name="bttype3" Show="true" Text="ÐÂÆ·"/>
             <CheckButton Inherit="" Location="178,4,40,20" Name="bttype4" Show="true" Text="Àñ°ü"/>
-            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
           </Form>
         </TabItem>
         <TabItem>
@@ -1415,19 +1415,19 @@
             <Form Inherit="" Location="1,18,420,375" Name="fmitem" Show="true">
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,5,200,80" Name="fmiteminfo1" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1442,19 +1442,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true"/>
@@ -1469,19 +1469,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1496,19 +1496,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1523,19 +1523,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1550,19 +1550,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1577,19 +1577,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1604,19 +1604,19 @@
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
                 <Button FontSize="12" Inherit="" Location="141,58,50,18" Name="btbuyitem" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Button FontSize="12" Inherit="" Location="66,58,50,18" Name="btgiveitem" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-                  <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                  <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+                  <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+                  <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+                  <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
                 </Button>
                 <Label Inherit="" Location="5,12,52,52" Name="lblitemiconback" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
                 </Label>
                 <Label Inherit="" Location="7,14,48,48" Name="lblitemicon" Show="true"/>
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1638,36 +1638,36 @@
               <Label Inherit="" Location="155,259,60,20" Name="lbltoken7" Show="true"/>
               <Label Inherit="" Location="360,259,60,20" Name="lbltoken8" Show="true"/>
               <Button FontSize="12" Inherit="" Location="85,349,46,18" Name="btfirstpage" Show="true" Sound="ui_normalbt.wav" Text="Ê× Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="139,349,46,18" Name="btuppage" Show="true" Sound="ui_normalbt.wav" Text="ÉÏ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Button FontSize="12" Inherit="" Location="285,349,46,18" Name="btendpage" Show="true" Sound="ui_normalbt.wav" Text="Î² Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
               <Label Inherit="" Location="189,347,40,20" Name="lblpagenum" Show="true"/>
               <Button FontSize="12" Inherit="" Location="231,349,46,18" Name="btdownpage" Show="true" Sound="ui_normalbt.wav" Text="ÏÂ Ò³" TextColor="#ffffffff" TextFont="ËÎÌå">
-                <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,85,21"/>
-                <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,85,21"/>
-                <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,85,21"/>
-                <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+                <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,85,21"/>
+                <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,85,21"/>
+                <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,85,21"/>
+                <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
               </Button>
             </Form>
             <CheckButton Inherit="" Location="12,4,40,20" Name="bttype1" Show="true" Text="È«²¿"/>
             <CheckButton Inherit="" Location="69,4,40,20" Name="bttype2" Show="true" Text="ÈÈÂô"/>
             <CheckButton Inherit="" Location="121,4,40,20" Name="bttype3" Show="true" Text="ÐÂÆ·"/>
             <CheckButton Inherit="" Location="178,4,40,20" Name="bttype4" Show="true" Text="Àñ°ü"/>
-            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
           </Form>
         </TabItem>
       </TabCtrl>
@@ -1679,65 +1679,65 @@
     </Form>
     <Form Inherit="VoidTitleBarForm1" Location="652,302,220,204" Movable="true" Name="fmbuyitem" Show="false">
       <Button FontSize="12" Inherit="" Location="140,156,60,21" Name="btclose" Show="true" Sound="ui_normalbt.wav" Text="¹Ø  ±Õ" TextColor="#fffbff66" TextFont="ËÎÌå">
-        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-        <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+        <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+        <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+        <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+        <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="20,156,60,21" Name="btbuy" Show="true" Sound="ui_normalbt.wav" Text="¹º  Âò" TextColor="#fffbff66" TextFont="ËÎÌå">
-        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-        <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+        <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+        <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+        <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+        <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
       </Button>
       <Form BackgroundColor="#A50E593A" Inherit="" Location="10,119,200,30" Name="fmpay" Show="true">
-        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
         <Label Inherit="" Location="57,3,6,22" Name="lblxmm7" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="152,3,6,22" Name="lblxmm5" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,7,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,7,22"/>
         </Label>
         <Label Inherit="" Location="4,6,60,20" Name="lbtext" Show="true" Text="Ö§¸¶¼Û¸ñ"/>
         <Label Inherit="" Location="63,3,90,22" Name="lblcenter" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
         </Label>
         <Label Inherit="" Location="166,4,18,18" Name="lblicon" Show="true">
           <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
         </Label>
       </Form>
       <Form BackgroundColor="#A50E593A" Inherit="" Location="10,84,200,30" Name="fmnumber" Show="true">
-        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
         <Label Inherit="" Location="64,3,6,22" Name="lblxmm7" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="120,3,6,22" Name="lblxmm5" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,7,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,7,22"/>
         </Label>
         <Label Inherit="" Location="4,6,60,20" Name="lbltext" Show="true" Text="¹ºÂò¸öÊý"/>
         <EditBox Inherit="" Location="70,3,50,22" Name="ebcenter" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
         </EditBox>
         <Button Inherit="" Location="130,1,12,12" Name="btnup" Show="true">
-          <NormalImage Blend="true" File="ui\new_textures\1.tga" Source="338,145,12,12"/>
-          <HighlightImage Blend="true" File="ui\new_textures\1.tga" Source="350,145,12,12"/>
-          <DisabledImage Blend="true" File="ui\new_textures\1.tga" Source="362,145,12,12"/>
+          <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="338,145,12,12"/>
+          <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="350,145,12,12"/>
+          <DisabledImage Blend="true" File="ui\x_textures\1.tga" Source="362,145,12,12"/>
         </Button>
         <Button Inherit="" Location="130,15,12,12" Name="btndown" Show="true">
-          <NormalImage Blend="true" File="ui\new_textures\1.tga" Source="338,157,12,12"/>
-          <HighlightImage Blend="true" File="ui\new_textures\1.tga" Source="350,157,12,12"/>
-          <DisabledImage Blend="true" File="ui\new_textures\1.tga" Source="362,157,12,12"/>
+          <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="338,157,12,12"/>
+          <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="350,157,12,12"/>
+          <DisabledImage Blend="true" File="ui\x_textures\1.tga" Source="362,157,12,12"/>
         </Button>
         <Button FontSize="12" Inherit="" Location="152,4,35,20" Name="btclose" Show="true" Sound="ui_normalbt.wav" Text="MAX" TextColor="#fffbff66" TextFont="ËÎÌå">
-          <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-          <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-          <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-          <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+          <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+          <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+          <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+          <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
         </Button>
       </Form>
       <Form BackgroundColor="#ff153723" Inherit="" Location="10,9,200,66" Name="fmiteminfo" Show="true">
         <Label Inherit="" Location="5,7,52,52" Name="lblitemiconback" Show="true">
-          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
         </Label>
         <Label Inherit="" Location="7,9,48,48" Name="lblitemicon" Show="true"/>
         <Label Alignment="center" FontSize="14" Inherit="" Location="66,12,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1753,79 +1753,79 @@
     </Form>
     <Form Inherit="VoidTitleBarForm1" Location="151,296,220,240" Movable="true" Name="fmsenditem" Show="false">
       <Button FontSize="12" Inherit="" Location="140,189,60,21" Name="btclose" Show="true" Sound="ui_normalbt.wav" Text="¹Ø  ±Õ" TextColor="#fffbff66" TextFont="ËÎÌå">
-        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-        <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+        <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+        <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+        <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+        <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="20,189,60,21" Name="btbuy" Show="true" Sound="ui_normalbt.wav" Text="Ôù  ËÍ" TextColor="#fffbff66" TextFont="ËÎÌå">
-        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-        <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+        <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+        <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+        <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+        <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
       </Button>
       <Form BackgroundColor="#A50E593A" Inherit="" Location="10,154,200,30" Name="fmgive" Show="true">
-        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
         <Label Inherit="" Location="57,3,6,22" Name="lblxmm7" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="152,3,6,22" Name="lblxmm5" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,7,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,7,22"/>
         </Label>
         <Button Alignment="CENTER" FontSize="12" Inherit="NewButton3" Location="161,5,35,18" Name="btnStart1" Show="true" Text="ºÃÓÑ" TextColor="#fffbff66" TextFont="ËÎÌå"/>
         <Label Location="4,6,60,20" Name="lbltext" Show="true" Text="ÔùËÍ¶ÔÏó"/>
         <EditBox Inherit="" Location="63,3,90,22" Name="ebcenter" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
         </EditBox>
       </Form>
       <Form BackgroundColor="#A50E593A" Inherit="" Location="10,119,200,30" Name="fmpay" Show="true">
-        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
         <Label Inherit="" Location="57,3,6,22" Name="lblxmm7" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="152,3,6,22" Name="lblxmm5" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,7,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,7,22"/>
         </Label>
         <Label Location="4,6,60,20" Name="lbtext" Show="true" Text="Ö§¸¶¼Û¸ñ"/>
         <Label Inherit="" Location="63,3,90,22" Name="lblcenter" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
         </Label>
         <Label Inherit="" Location="166,4,18,18" Name="lblicon" Show="true">
           <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
         </Label>
       </Form>
       <Form BackgroundColor="#A50E593A" Inherit="" Location="10,84,200,30" Name="fmnumber" Show="true">
-        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
         <Label Inherit="" Location="64,3,6,22" Name="lblxmm7" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="120,3,6,22" Name="lblxmm5" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,7,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,7,22"/>
         </Label>
         <Label Location="4,6,60,20" Name="lbltext" Show="true" Text="¹ºÂò¸öÊý"/>
         <EditBox Inherit="" Location="70,3,50,22" Name="ebcenter" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
         </EditBox>
         <Button Inherit="" Location="130,1,12,12" Name="btnup" Show="true">
-          <NormalImage Blend="true" File="ui\new_textures\1.tga" Source="338,145,12,12"/>
-          <HighlightImage Blend="true" File="ui\new_textures\1.tga" Source="350,145,12,12"/>
-          <DisabledImage Blend="true" File="ui\new_textures\1.tga" Source="362,145,12,12"/>
+          <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="338,145,12,12"/>
+          <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="350,145,12,12"/>
+          <DisabledImage Blend="true" File="ui\x_textures\1.tga" Source="362,145,12,12"/>
         </Button>
         <Button Inherit="" Location="130,15,12,12" Name="btndown" Show="true">
-          <NormalImage Blend="true" File="ui\new_textures\1.tga" Source="338,157,12,12"/>
-          <HighlightImage Blend="true" File="ui\new_textures\1.tga" Source="350,157,12,12"/>
-          <DisabledImage Blend="true" File="ui\new_textures\1.tga" Source="362,157,12,12"/>
+          <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="338,157,12,12"/>
+          <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="350,157,12,12"/>
+          <DisabledImage Blend="true" File="ui\x_textures\1.tga" Source="362,157,12,12"/>
         </Button>
         <Button FontSize="12" Inherit="" Location="152,4,35,20" Name="btclose" Show="true" Sound="ui_normalbt.wav" Text="MAX" TextColor="#fffbff66" TextFont="ËÎÌå">
-          <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="266,320,84,21"/>
-          <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="266,374,84,21"/>
-          <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="266,347,84,21"/>
-          <DisabledImage Blend="true" File="ui\new_textures\5.tga" Source="266,401,84,21"/>
+          <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="266,320,84,21"/>
+          <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="266,374,84,21"/>
+          <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="266,347,84,21"/>
+          <DisabledImage Blend="true" File="ui\x_textures\5.tga" Source="266,401,84,21"/>
         </Button>
       </Form>
       <Form BackgroundColor="#ff153723" Inherit="" Location="10,9,200,66" Name="fmiteminfo" Show="true">
         <Label Inherit="" Location="5,7,52,52" Name="lblitemiconback" Show="true">
-          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\8.tga" BorderSource="188,348,52,52"/>
+          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\8.tga" BorderSource="188,348,52,52"/>
         </Label>
         <Label Inherit="" Location="7,9,48,48" Name="lblitemicon" Show="true"/>
         <Label Alignment="center" FontSize="14" Inherit="" Location="66,12,90,18" Name="lblitemname" Show="true" TextFont="ËÎÌå"/>
@@ -1841,7 +1841,7 @@
     </Form>
     <Form BackgroundColor="#ff153723" Inherit="" Location="232,438,120,200" Name="fmfriendlist" Show="false">
       <ListBox Inherit="" Location="5,5,110,190" Name="lbfriendlist" Show="true"/>
-      <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
+      <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,19,20"/>
       <Anchors>
         <Anchor point="LEFT" relativePoint="RIGHT" relativeTo="layworld.fmsenditem"/>
         <Anchor offset="0,-65" point="TOP" relativePoint="BOTTOM" relativeTo="layworld.fmsenditem"/>

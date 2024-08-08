@@ -90,7 +90,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include\atl;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>CPPHTTPLIB_OPENSSL_SUPPORT;WIN32_LEAN_AND_MEAN;NOMINMAX;_HAS_STD_BYTE=0;WIN32;_DEBUG;_WINDOWS;USE_D3DX9;_WIN32_WINNT=0x0603;LUA_OPNAMES;DO_CONSOLE;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;ENABLE_OPERATOR_NEW;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <ExceptionHandling>Async</ExceptionHandling>
@@ -122,7 +122,7 @@
     <ClCompile>
       <AdditionalOptions>/Oy- %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\sdk\include\atl;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>CPPHTTPLIB_OPENSSL_SUPPORT;WIN32_LEAN_AND_MEAN;NOMINMAX;_HAS_STD_BYTE=0;WIN32;NDEBUG;_WINDOWS;USE_D3DX9;LUA_OPNAMES;USE_D3D9;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>

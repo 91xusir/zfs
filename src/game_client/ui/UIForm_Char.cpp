@@ -29,7 +29,7 @@ m_iAllpoint(0)
 	m_pFromThis			= LOAD_UI("fmplaymain");
 	m_pFromThis->EvHide	+=RTW_CALLBACK(this,CUIForm_Char,OnHide);
 	m_ptabThis			= LOAD_UI_T(RtwTab,"fmplaymain.tabitem");
-	m_ptrHoverImage		= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage		= g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 	m_eNowShow			= NOSELECT;
 
 	m_ptabThis->EvChangeSelected	+= RTW_CALLBACK(this,CUIForm_Char,OnChangeTab);
@@ -88,8 +88,8 @@ m_iAllpoint(0)
 		m_btnParts[i]->EvHint			+= RTW_CALLBACK(this, CUIForm_Char, OnGetHintText_Parts);
 	}
 
-	m_imgAnimal		= g_workspace.getImageFactory()->createImage("ui/textures/9.tga");
-	m_imgMetier		= g_workspace.getImageFactory()->createImage("ui/textures/9.tga");
+	m_imgAnimal		= g_workspace.getImageFactory()->createImage("ui/x_textures/9.tga");
+	m_imgMetier		= g_workspace.getImageFactory()->createImage("ui/x_textures/9.tga");
 	m_imgAnimal->SetBlend(true);
 	m_imgMetier->SetBlend(true);
 	m_btnAttribute->EvLClick		+= RTW_CALLBACK(this, CUIForm_Char, OnLClick_BtnAttribute);
@@ -283,10 +283,10 @@ m_iAllpoint(0)
 	m_plbPk				= LOAD_UI("fmnewchar.tabctrl.fmxmm1.lbwlk7");*/
 	LOAD_UI("fmplaymain.tabitem.btnname")->Disable();
 
-	m_imgCharNormal = g_workspace.getImageFactory()->createImage("ui\\textures\\1.tga");
+	m_imgCharNormal = g_workspace.getImageFactory()->createImage("ui\\x_textures\\1.tga");
 	m_imgCharNormal->SetSourceRect(RtwRect(119,352,161,394));
 	m_imgCharNormal->SetBlend(true);
-	m_imgCharAnimation = g_workspace.getImageFactory()->createImage("ui_texture/xinshou_07.gif");
+	m_imgCharAnimation = g_workspace.getImageFactory()->createImage("ui/ui_texture/xinshou_07.gif");
 	m_bShowAnimation = false;
 
 	RtwRect imgRect[12]={RtwRect(3,130,47,170),RtwRect(48,130,92,170),RtwRect(91,130,132,170),RtwRect(133,130,175,170),
@@ -484,7 +484,7 @@ void CUIForm_Char::OnShowEquip()
 					break;
 				case ItemColor_Green:
 					{
-						RtwImage* m_ptrHoverGreenImage = LoadSequenceImage("ui_texture/Pic_range_green.dds");
+						RtwImage* m_ptrHoverGreenImage = LoadSequenceImage("ui/ui_texture/Pic_range_green.dds");
 						if (m_ptrHoverGreenImage)
 						{
 							m_btnParts[part]->SetMaskImage(m_ptrHoverGreenImage);
@@ -493,7 +493,7 @@ void CUIForm_Char::OnShowEquip()
 					}
 				case ItemColor_Blue:
 					{
-						RtwImage* m_ptrHoverBlueImage = LoadSequenceImage("ui_texture/Pic_range_blue.dds");
+						RtwImage* m_ptrHoverBlueImage = LoadSequenceImage("ui/ui_texture/Pic_range_blue.dds");
 						if (m_ptrHoverBlueImage)
 						{
 							m_btnParts[part]->SetMaskImage(m_ptrHoverBlueImage);
@@ -502,7 +502,7 @@ void CUIForm_Char::OnShowEquip()
 					}
 				case ItemColor_Golden:
 					{
-						RtwImage* m_ptrHoverGoldImage = LoadSequenceImage("ui_texture/Pic_range_golden.dds");
+						RtwImage* m_ptrHoverGoldImage = LoadSequenceImage("ui/ui_texture/Pic_range_golden.dds");
 						if (m_ptrHoverGoldImage)
 						{
 							m_btnParts[part]->SetMaskImage(m_ptrHoverGoldImage);
@@ -931,7 +931,7 @@ void CUIForm_Char::OnShowAttribute()
 	//if (!g_TableCharImage.GetCharImage(cre->actorID, images))
 	//	return;
 
-	//std::string strImage = "ui_texture/";
+	//std::string strImage = "ui/ui_texture/";
 	//strImage += images[cre->HeadImageID].imageGame;
 	//strImage += ".dds";
 

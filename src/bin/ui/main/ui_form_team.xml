@@ -4,38 +4,38 @@
     <Form EscapeHide="true" Inherit="" Location="59,148,310,454" Movable="true" Name="fmteam" Show="false">
       <Label Alignment="center" FontSize="18" Location="71,3,169,18" Name="lbtitle" Show="true" Text="组队信息" TextColor="#ffdfde9b" TextFont="隶书"/>
       <CloseButton Location="284,14,20,20" Name="btnclose" padding="0,22,5,0">
-        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <Form Inherit="" Location="0,41,310,414" Name="fmteaminfo" Show="true">
         <Label Inherit="" Location="11,381,213,18" Name="lbtext" Show="true" Text="组队3人以上在打怪时会有意外收获哦！"/>
         <Label Inherit="" Location="10,0,5,18" Name="lbiconleft" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,131,5,18"/>
         </Label>
         <Label AlignLine="CENTER" Alignment="center" Inherit="" Location="15,0,48,18" Name="lbiconcenter" Show="true" Text="头像" TextColor="#fffcffc6" TextFont="宋体">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="430,131,4,18"/>
         </Label>
         <Label Inherit="" Location="63,0,5,18" Name="lbiconright" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="437,131,5,18"/>
         </Label>
         <Label Inherit="" Location="67,0,5,18" Name="lbinfoleft" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,131,5,18"/>
         </Label>
         <Label AlignLine="CENTER" Alignment="center" Inherit="" Location="72,0,223,18" Name="lbinfocenter" Show="true" Text="信      息" TextColor="#fffcffc6" TextFont="宋体">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="430,131,4,18"/>
         </Label>
         <Label Inherit="" Location="295,0,5,18" Name="lbinforight" Show="true">
-          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
+          <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="437,131,5,18"/>
         </Label>
         <Form BackgroundColor="#A50E593A" Inherit="" Location="10,19,290,295" Name="fmmember" Show="true">
-          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,20,20"/>
+          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,20,20"/>
           <Label Inherit="" Location="1,0,289,64" Name="lbhighlight" Show="true">
-            <BackgroundImage Blend="true" File="ui\new_textures\24.tga" Source="14,386,285,58"/>
+            <BackgroundImage Blend="true" File="ui\x_textures\24.tga" Source="14,386,285,58"/>
           </Label>
           <Form BackgroundColor="#ff153723" Inherit="" Location="5,5,280,54" Name="fmmember1" Show="true">
             <Label Inherit="" Location="2,3,20,20" Name="lbcaption" Show="true">
-              <BackgroundImage Blend="true" File="ui\new_textures\4.tga" Source="101,437,20,20"/>
+              <BackgroundImage Blend="true" File="ui\x_textures\4.tga" Source="101,437,20,20"/>
             </Label>
             <Label Inherit="" Location="1,1,52,52" Name="lbicon" Show="true"/>
             <Label Inherit="" Location="56,3,48,48" Name="lbanimal" Show="true"/>
@@ -45,7 +45,7 @@
             <Label Alignment="center" Inherit="" Location="209,-52,50,18" Name="lbnumber" Show="false1" Text=""/>
             <Label Inherit="" Location="239,1,40,51" Name="lbunion" Show="true"/>
             <Label Inherit="" Location="1,1,52,52" Name="lb" Show="true">
-              <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="473,3,36,36"/>
+              <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
             </Label>
           </Form>
           <Form BackgroundColor="#ff153723" Inherit="" Location="5,63,280,54" Name="fmmember2" Show="true">
@@ -57,7 +57,7 @@
             <Label Alignment="center" Inherit="" Location="355,14,50,18" Name="lbnumber" Show="false1" Text=""/>
             <Label Inherit="" Location="239,1,40,51" Name="lbunion" Show="true"/>
             <Label Inherit="" Location="1,1,52,52" Name="lb" Show="true">
-              <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="473,3,36,36"/>
+              <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
             </Label>
           </Form>
           <Form BackgroundColor="#ff153723" Inherit="" Location="5,122,280,54" Name="fmmember3" Show="true">
@@ -69,7 +69,7 @@
             <Label Alignment="center" Inherit="" Location="354,29,50,18" Name="lbnumber" Show="false1" Text=""/>
             <Label Inherit="" Location="239,1,40,51" Name="lbunion" Show="true"/>
             <Label Inherit="" Location="1,1,52,52" Name="lb" Show="true">
-              <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="473,3,36,36"/>
+              <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
             </Label>
           </Form>
           <Form BackgroundColor="#ff153723" Inherit="" Location="5,181,280,54" Name="fmmember4" Show="true">
@@ -81,7 +81,7 @@
             <Label Alignment="center" Inherit="" Location="357,17,50,18" Name="lbnumber" Show="false1" Text=""/>
             <Label Inherit="" Location="239,1,40,51" Name="lbunion" Show="true"/>
             <Label Inherit="" Location="1,1,52,52" Name="lb" Show="true">
-              <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="473,3,36,36"/>
+              <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
             </Label>
           </Form>
           <Form BackgroundColor="#ff153723" Inherit="" Location="5,240,280,54" Name="fmmember5" Show="true">
@@ -93,15 +93,15 @@
             <Label Alignment="center" Inherit="" Location="370,10,50,18" Name="lbnumber" Show="false1" Text=""/>
             <Label Inherit="" Location="239,1,40,51" Name="lbunion" Show="true"/>
             <Label Inherit="" Location="1,1,52,52" Name="lb" Show="true">
-              <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="473,3,36,36"/>
+              <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
             </Label>
           </Form>
         </Form>
         <Form BackgroundColor="#A50E593A" Inherit="" Location="10,317,290,60" Name="fmbtns" Show="true">
-          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,20,20"/>
+          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\5.tga" BorderSource="381,109,20,20"/>
           <Form Inherit="" Location="6,6,137,22" Name="fmdistribute" Show="true">
             <Label AlignLine="CENTER" Alignment="center" Inherit="" Location="2,2,60,18" MouseEvent="true" MouseMove="true" Name="lbdistribute" Show="true" Text="分配方式" TextColor="#fffcffc6" TextFont="宋体">
-              <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,64,60,18"/>
+              <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,64,60,18"/>
             </Label>
             <ComboBox Inherit="ComboBox" Location="67,0,75,22" Name="cbxlist" Show="true">
               <List>
@@ -111,13 +111,13 @@
               </List>
             </ComboBox>
             <Label Inherit="" Location="0,0,6,22" Name="lblist1" Show="true">
-              <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="359,124,6,22"/>
+              <BackgroundImage Blend="true" File="ui/x_textures/5.tga" Source="359,124,6,22"/>
             </Label>
             <Label Inherit="" Location="6,0,125,22" Name="lblist2" Show="true">
-              <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="366,124,6,22"/>
+              <BackgroundImage Blend="true" File="ui/x_textures/5.tga" Source="366,124,6,22"/>
             </Label>
             <Label Inherit="" Location="131,0,6,22" Name="lblist3" Show="true">
-              <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="374,124,6,22"/>
+              <BackgroundImage Blend="true" File="ui/x_textures/5.tga" Source="374,124,6,22"/>
             </Label>
           </Form>
           <Button FontSize="12" Inherit="NewButton2" Location="147,6,67,20" Name="btn1" Show="true" Sound="ui_normalbt.wav" Text="密  语" TextColor="#fffbff66" TextFont="宋体"/>
@@ -130,13 +130,13 @@
         <Button FontSize="12" Inherit="NewButton2" Location="230,380,67,20" Name="btnaddition" Show="true" Sound="ui_normalbt.wav" Text="组队加成" TextColor="#fffbff66" TextFont="宋体"/>
       </Form>
       <Label Inherit="" Location="0,-1,310,50" Name="lbborder1" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,1,310,50"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,1,310,50"/>
       </Label>
       <Label BackgroundColor="#A016712C" Inherit="" Location="0,50,310,381" Name="lbborder2" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,53,310,10"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,53,310,10"/>
       </Label>
       <Label Inherit="" Location="0,432,310,23" Name="lbborder3" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,65,310,23"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,65,310,23"/>
       </Label>
       <Anchors>
         <Anchor offset="-295,0" point="CENTERV"/>
@@ -146,25 +146,25 @@
     <Form Inherit="" Location="371,148,310,454" Movable="true" Name="fmaddition" Show="false">
       <Label Alignment="center" FontSize="18" Inherit="" Location="71,3,169,18" Name="lbtitle" Show="true" Text="组队加成" TextColor="#ffdfde9b" TextFont="隶书"/>
       <CloseButton Location="284,14,20,20" Name="btnclose" padding="0,22,5,0">
-        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <Form Inherit="" Location="0,41,310,414" Name="fmadditioninfo" Show="true">
         <Form Inherit="" Location="5,0,300,250" Name="fmanimal" Show="true">
           <Label Inherit="" Location="5,0,5,18" Name="lbleft" Show="true">
-            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
+            <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,131,5,18"/>
           </Label>
           <Label AlignLine="CENTER" Inherit="" Location="10,0,282,18" Name="lbcenter" Show="true" Text="生肖堪舆加成" TextColor="#fffcffc6" TextFont="宋体">
-            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
+            <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="430,131,4,18"/>
           </Label>
           <Label Inherit="" Location="292,0,5,18" Name="lbright" Show="true">
-            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
+            <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="437,131,5,18"/>
           </Label>
           <Form Inherit="" Location="5,19,290,230" Name="fmanimal" Show="true">
-            <BackgroundImage Blend="true" File="ui\new_textures\26.tga" Source="2,3,290,229"/>
+            <BackgroundImage Blend="true" File="ui\x_textures\26.tga" Source="2,3,290,229"/>
             <Label Inherit="" Location="128,97,36,36" Name="lbicon" Show="false">
-              <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="473,3,36,36"/>
+              <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
             </Label>
             <Button Alignment="CENTER" FontSize="12" Inherit="NewButton3" Location="248,208,35,18" Name="btnillustrate" Show="true" Text="说明" TextColor="#fffbff66" TextFont="宋体"/>
             <Label Inherit="" Location="127,7,36,36" Name="lb12" Show="true"/>
@@ -183,13 +183,13 @@
         </Form>
         <Form Inherit="" Location="5,252,300,60" Name="fmexperience" Show="true">
           <Label Inherit="" Location="5,0,5,18" Name="lbleft" Show="true">
-            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
+            <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,131,5,18"/>
           </Label>
           <Label AlignLine="CENTER" Inherit="" Location="10,0,282,18" Name="lbcenter" Show="true" Text="组队经验加成" TextColor="#fffcffc6" TextFont="宋体">
-            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
+            <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="430,131,4,18"/>
           </Label>
           <Label Inherit="" Location="292,0,5,18" Name="lbright" Show="true">
-            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
+            <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="437,131,5,18"/>
           </Label>
           <Form BackgroundColor="#ff153723" Inherit="" Location="5,20,290,40" Name="fmexperience1" Show="true">
             <Label Alignment="center" Inherit="" Location="6,11,64,18" Name="lb1" Show="true" Text="附近队友："/>
@@ -200,13 +200,13 @@
         </Form>
         <Form Inherit="" Location="5,316,300,60" Name="fmfriend" Show="true">
           <Label Inherit="" Location="5,0,5,18" Name="lbleft" Show="true">
-            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
+            <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,131,5,18"/>
           </Label>
           <Label AlignLine="CENTER" Inherit="" Location="10,0,282,18" Name="lbcenter" Show="true" Text="好友组队加成" TextColor="#fffcffc6" TextFont="宋体">
-            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
+            <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="430,131,4,18"/>
           </Label>
           <Label Inherit="" Location="292,0,5,18" Name="lbright" Show="true">
-            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
+            <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="437,131,5,18"/>
           </Label>
           <Form BackgroundColor="#ff153723" Inherit="" Location="5,20,290,40" Name="fmfriend1" Show="true">
             <Label Alignment="center" Inherit="" Location="4,11,154,18" Name="lb1" Show="true" Text="好友度达到500以上的队友："/>
@@ -217,13 +217,13 @@
         </Form>
       </Form>
       <Label Inherit="" Location="0,-1,310,50" Name="lbborder1" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,1,310,50"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,1,310,50"/>
       </Label>
       <Label BackgroundColor="#A016712C" Inherit="" Location="0,50,310,381" Name="lbborder2" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,53,310,10"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,53,310,10"/>
       </Label>
       <Label Inherit="" Location="0,432,310,23" Name="lbborder3" Show="true">
-        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,65,310,23"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="2,65,310,23"/>
       </Label>
       <Anchors>
         <Anchor offset="15,0" point="CENTERV"/>

@@ -62,14 +62,14 @@ void UILayer::EnterLoading()
     float fWidth = 256*fScale;
     float fHeight = 256*fHScale;
 
-    static string s_LoadingFiles1[] = {"ui_texture/loading/1",  "ui_texture/loading/2", "ui_texture/loading/3", "ui_texture/loading/4", "ui_texture/loading/5", "ui_texture/loading/6", \
-                        "ui_texture/loading/7", "ui_texture/loading/8", "ui_texture/loading/9", "ui_texture/loading/10", "ui_texture/loading/11", "ui_texture/loading/12"};
-    static string s_LoadingFiles2[] = {"ui_texture/loading/b01",  "ui_texture/loading/b02", "ui_texture/loading/b03", "ui_texture/loading/b04", "ui_texture/loading/b05", "ui_texture/loading/b06", \
-                        "ui_texture/loading/b07", "ui_texture/loading/b08", "ui_texture/loading/b09", "ui_texture/loading/b10", "ui_texture/loading/b11", "ui_texture/loading/b12"};
-    static string s_LoadingFiles3[] = {"ui_texture/loading/g01",  "ui_texture/loading/g02", "ui_texture/loading/g03", "ui_texture/loading/g04", "ui_texture/loading/g05", "ui_texture/loading/g06", \
-                        "ui_texture/loading/g07", "ui_texture/loading/g08", "ui_texture/loading/g09", "ui_texture/loading/g10", "ui_texture/loading/g11", "ui_texture/loading/g12"};
-    static string s_LoadingFiles4[] = {"ui_texture/loading/y01",  "ui_texture/loading/y02", "ui_texture/loading/y03", "ui_texture/loading/y04", "ui_texture/loading/y05", "ui_texture/loading/y06", \
-                        "ui_texture/loading/y07", "ui_texture/loading/y08", "ui_texture/loading/y09", "ui_texture/loading/y10", "ui_texture/loading/y11", "ui_texture/loading/y12"};
+    static string s_LoadingFiles1[] = {"ui/ui_texture/loading/1",  "ui/ui_texture/loading/2", "ui/ui_texture/loading/3", "ui/ui_texture/loading/4", "ui/ui_texture/loading/5", "ui/ui_texture/loading/6", \
+                        "ui/ui_texture/loading/7", "ui/ui_texture/loading/8", "ui/ui_texture/loading/9", "ui/ui_texture/loading/10", "ui/ui_texture/loading/11", "ui/ui_texture/loading/12"};
+    static string s_LoadingFiles2[] = {"ui/ui_texture/loading/b01",  "ui/ui_texture/loading/b02", "ui/ui_texture/loading/b03", "ui/ui_texture/loading/b04", "ui/ui_texture/loading/b05", "ui/ui_texture/loading/b06", \
+                        "ui/ui_texture/loading/b07", "ui/ui_texture/loading/b08", "ui/ui_texture/loading/b09", "ui/ui_texture/loading/b10", "ui/ui_texture/loading/b11", "ui/ui_texture/loading/b12"};
+    static string s_LoadingFiles3[] = {"ui/ui_texture/loading/g01",  "ui/ui_texture/loading/g02", "ui/ui_texture/loading/g03", "ui/ui_texture/loading/g04", "ui/ui_texture/loading/g05", "ui/ui_texture/loading/g06", \
+                        "ui/ui_texture/loading/g07", "ui/ui_texture/loading/g08", "ui/ui_texture/loading/g09", "ui/ui_texture/loading/g10", "ui/ui_texture/loading/g11", "ui/ui_texture/loading/g12"};
+    static string s_LoadingFiles4[] = {"ui/ui_texture/loading/y01",  "ui/ui_texture/loading/y02", "ui/ui_texture/loading/y03", "ui/ui_texture/loading/y04", "ui/ui_texture/loading/y05", "ui/ui_texture/loading/y06", \
+                        "ui/ui_texture/loading/y07", "ui/ui_texture/loading/y08", "ui/ui_texture/loading/y09", "ui/ui_texture/loading/y10", "ui/ui_texture/loading/y11", "ui/ui_texture/loading/y12"};
 
 	static string* s_LoadingFiles[] = { s_LoadingFiles1, s_LoadingFiles2, s_LoadingFiles3, s_LoadingFiles4 };
 	string* arrFiles = s_LoadingFiles[iIndex];

@@ -19,7 +19,7 @@ UIFormItemDecompound::UIFormItemDecompound(void)
 	m_pFrmThis = LOAD_UI("fmseparate");
 	m_pFrmThis->EvFocus		+= RTW_CALLBACK(this,UIFormItemDecompound,OnGetFocus);
 	m_pFrmThis->EvHide		+= RTW_CALLBACK(this,UIFormItemDecompound,OnHide);
-	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);
 	m_ptrHoverImage->getRenderImage()->eBlendDstFunc = RTGBLEND_ONE;
 	m_ptrHoverImage->getRenderImage()->eBlendSrcFunc = RTGBLEND_SRCALPHA;

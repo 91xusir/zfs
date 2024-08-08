@@ -205,27 +205,27 @@ void UIFormTask::ParseFixReward(STaskDesc* desc)
 	m_FixItem4->Hide();
 
 	//小图标
-	std::string strGoldName = "ui_texture/pic_t_jinqian1.dds";
-	std::string strExpName = "ui_texture/pic_t_jingyan.dds";
-	std::string strLingName = "ui_texture/pic_t_lingli.dds";
-	std::string strXiuName = "ui_texture/pic_t_xiuwei.dds";
+	std::string strGoldName = "ui/ui_texture/pic_t_jinqian1.dds";
+	std::string strExpName = "ui/ui_texture/pic_t_jingyan.dds";
+	std::string strLingName = "ui/ui_texture/pic_t_lingli.dds";
+	std::string strXiuName = "ui/ui_texture/pic_t_xiuwei.dds";
 	//大图标
-	std::string strMengName = "ui_texture/pic_t_mengong.dds";
-	std::string strBangName = "ui_texture/pic_t_banggong.dds";
-	std::string strSuiName = "ui_texture/pic_t_suming.dds";
-	std::string strXianName = "ui_texture/pic_t_xianyu.dds";
-	std::string strSjgfName = "ui_texture/pic_t_sjgf.dds";
-	std::string strFqmzName = "ui_texture/pic_t_fqmz.dds";
-	std::string strZyysName = "ui_texture/pic_t_zyys.dds";
-	std::string strFsyjName = "ui_texture/pic_t_fsyj.dds";
-	std::string strXmlmName = "ui_texture/pic_t_xmlm.dds";
-	std::string strTaskName = "ui_texture/pic_t_renwu.dds";
-	std::string strSkillName = "ui_texture/pic_t_sp.dds";
-	std::string strYuanName = "ui_texture/pic_t_yuanbao.dds";
-	std::string strZengName = "ui_texture/pic_t_zengdian.dds";
-	std::string strJiName = "ui_texture/pic_t_jifen.dds";
-	std::string strZhuanName = "ui_texture/pic_t_zhuanzhi.dds";
-	std::string strJunName = "ui_texture/pic_t_jungong.dds";
+	std::string strMengName = "ui/ui_texture/pic_t_mengong.dds";
+	std::string strBangName = "ui/ui_texture/pic_t_banggong.dds";
+	std::string strSuiName = "ui/ui_texture/pic_t_suming.dds";
+	std::string strXianName = "ui/ui_texture/pic_t_xianyu.dds";
+	std::string strSjgfName = "ui/ui_texture/pic_t_sjgf.dds";
+	std::string strFqmzName = "ui/ui_texture/pic_t_fqmz.dds";
+	std::string strZyysName = "ui/ui_texture/pic_t_zyys.dds";
+	std::string strFsyjName = "ui/ui_texture/pic_t_fsyj.dds";
+	std::string strXmlmName = "ui/ui_texture/pic_t_xmlm.dds";
+	std::string strTaskName = "ui/ui_texture/pic_t_renwu.dds";
+	std::string strSkillName = "ui/ui_texture/pic_t_sp.dds";
+	std::string strYuanName = "ui/ui_texture/pic_t_yuanbao.dds";
+	std::string strZengName = "ui/ui_texture/pic_t_zengdian.dds";
+	std::string strJiName = "ui/ui_texture/pic_t_jifen.dds";
+	std::string strZhuanName = "ui/ui_texture/pic_t_zhuanzhi.dds";
+	std::string strJunName = "ui/ui_texture/pic_t_jungong.dds";
 
 	std::vector<STaskKey>& table = desc->fixReward;
 

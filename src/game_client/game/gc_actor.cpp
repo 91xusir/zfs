@@ -5562,7 +5562,7 @@ RtwImage* GcActor::GetHeadImage(char index) {
 
     char filename[32];
     rt2_sprintf(filename, "%d", (int)index);
-    return g_workspace.getImageFactory()->createImage("ui_texture\\pic_role_ss_m_01_f");
+    return g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_role_ss_m_01_f");
 }
 
 void GcActor::DoTrumpSkill(SCmd cmd) {

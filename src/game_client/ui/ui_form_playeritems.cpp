@@ -44,7 +44,7 @@ UIFormPlayerItems::UIFormPlayerItems()
 	LOAD_UI("fmitem.tabitem.btnitembag6")->Disable();
 
     //m_ptrHoverImage = new RtwImage("highlight_button.tga");// change [3/17/2009 tooth.shi]
-	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);
 	m_ptrHoverImage->getRenderImage()->eBlendDstFunc = RTGBLEND_ONE;
@@ -124,7 +124,7 @@ UIFormPlayerItems::UIFormPlayerItems()
 #define GRID_ITEMSIZE_X		31
 #define GRID_ITEMSIZE_Y		31
 	RtwButton* widget = NULL;
-	RtwImage* pImagegrids = g_workspace.getImageFactory()->createImage("ui/textures/gridsitem.tga");
+	RtwImage* pImagegrids = g_workspace.getImageFactory()->createImage("ui/x_textures/gridsitem.tga");
 	for(int k= 0;k< ITEM_PLAYER_INVENTORY_PAGE;k++)
 	{
 		tmp.Format("fmitem.tabitem.fmitembag%d",k+1);
@@ -357,7 +357,7 @@ void UIFormPlayerItems::OnPreDraw()
 	//				break;
 	//			case ItemColor_Green:
 	//				{
-	//					RtwImage* m_ptrHoverGreenImage = LoadSequenceImage("ui_texture/Pic_range_green.dds");
+	//					RtwImage* m_ptrHoverGreenImage = LoadSequenceImage("ui/ui_texture/Pic_range_green.dds");
 	//					if (m_ptrHoverGreenImage)
 	//					{
 	//						m_btnParts[part]->SetMaskImage(m_ptrHoverGreenImage);
@@ -366,7 +366,7 @@ void UIFormPlayerItems::OnPreDraw()
 	//				}
 	//			case ItemColor_Blue:
 	//				{
-	//					RtwImage* m_ptrHoverBlueImage = LoadSequenceImage("ui_texture/Pic_range_blue.dds");
+	//					RtwImage* m_ptrHoverBlueImage = LoadSequenceImage("ui/ui_texture/Pic_range_blue.dds");
 	//					if (m_ptrHoverBlueImage)
 	//					{
 	//						m_btnParts[part]->SetMaskImage(m_ptrHoverBlueImage);
@@ -375,7 +375,7 @@ void UIFormPlayerItems::OnPreDraw()
 	//				}
 	//			case ItemColor_Golden:
 	//				{
-	//					RtwImage* m_ptrHoverGoldImage = LoadSequenceImage("ui_texture/Pic_range_golden.dds");
+	//					RtwImage* m_ptrHoverGoldImage = LoadSequenceImage("ui/ui_texture/Pic_range_golden.dds");
 	//					if (m_ptrHoverGoldImage)
 	//					{
 	//						m_btnParts[part]->SetMaskImage(m_ptrHoverGoldImage);
@@ -491,7 +491,7 @@ void UIFormPlayerItems::OnPreDraw()
 					//任务道具的序列图
 					if (ItemIsOther_Task(item.type))
 					{
-						RtwImage* m_ptrHoverTaskImage = LoadSequenceImage("ui_texture/Pic_range_task.dds");
+						RtwImage* m_ptrHoverTaskImage = LoadSequenceImage("ui/ui_texture/Pic_range_task.dds");
 						if (m_ptrHoverTaskImage)
 						{
 							m_btnGridsCommon[iSelect][i][j]->SetMaskImage(m_ptrHoverTaskImage);
@@ -504,7 +504,7 @@ void UIFormPlayerItems::OnPreDraw()
 						break;
 					case ItemColor_Green:
 						{
-							RtwImage* m_ptrHoverGreenImage = LoadSequenceImage("ui_texture/Pic_range_green.dds");
+							RtwImage* m_ptrHoverGreenImage = LoadSequenceImage("ui/ui_texture/Pic_range_green.dds");
 							if (m_ptrHoverGreenImage)
 							{
 								m_btnGridsCommon[iSelect][i][j]->SetMaskImage(m_ptrHoverGreenImage);
@@ -513,7 +513,7 @@ void UIFormPlayerItems::OnPreDraw()
 						}
 					case ItemColor_Blue:
 						{
-							RtwImage* m_ptrHoverBlueImage = LoadSequenceImage("ui_texture/Pic_range_blue.dds");
+							RtwImage* m_ptrHoverBlueImage = LoadSequenceImage("ui/ui_texture/Pic_range_blue.dds");
 							if (m_ptrHoverBlueImage)
 							{
 								m_btnGridsCommon[iSelect][i][j]->SetMaskImage(m_ptrHoverBlueImage);
@@ -522,7 +522,7 @@ void UIFormPlayerItems::OnPreDraw()
 						}
 					case ItemColor_Golden:
 						{
-							RtwImage* m_ptrHoverGoldImage = LoadSequenceImage("ui_texture/Pic_range_golden.dds");
+							RtwImage* m_ptrHoverGoldImage = LoadSequenceImage("ui/ui_texture/Pic_range_golden.dds");
 							if (m_ptrHoverGoldImage)
 							{
 								m_btnGridsCommon[iSelect][i][j]->SetMaskImage(m_ptrHoverGoldImage);

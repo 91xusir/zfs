@@ -30,7 +30,7 @@ UIFormItemUpdate::UIFormItemUpdate()
 	m_pBtnOK = LOAD_UI_T(RtwButton, "fmcombine.btnok");
 	m_pBtnCancel = LOAD_UI_T(RtwButton, "fmcombine.btncancel");
 
-	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);
 	m_ptrHoverImage->getRenderImage()->eBlendDstFunc = RTGBLEND_ONE;
 	m_ptrHoverImage->getRenderImage()->eBlendSrcFunc = RTGBLEND_SRCALPHA;

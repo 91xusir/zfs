@@ -2,11 +2,11 @@
 <Ui>
   <Layer Name="layworld" Show="true">
     <Form EscapeHide="true" Inherit="" Location="207,165,219,456" Movable="true" Name="fmtaskline" Show="false">
-      <BackgroundImage Blend="true" File="ui/new_textures/15.tga" Source="27,30,219,454"/>
+      <BackgroundImage Blend="true" File="ui/x_textures/15.tga" Source="27,30,219,454"/>
       <CloseButton Location="284,14,20,20" Name="$hide" padding="0,3,16,0">
-        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <Tree AutoScrollH="false" AutoScrollV="true" BackgroundColor="" Inherit="" Location="28,33,160,386" Name="treetask" Show="true"/>
       <Anchors>
@@ -16,9 +16,9 @@
     </Form>
     <Form EscapeHide="true" Inherit="" Location="426,176,429,432" Movable="true" Name="fmtasklinedesc" Show="false">
       <CloseButton Location="284,14,20,20" Name="$hide" padding="0,8,5,0">
-        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <Label Inherit="" Location="0,0,429,432" Name="lbtasklinedesc" Show="true"/>
       <Anchors>

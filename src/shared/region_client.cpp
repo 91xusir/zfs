@@ -4495,7 +4495,7 @@ RtIni* gGameRule;
 
 bool LoadConfig(std::string& vrError)
 {
-	RtIni VersionConfig;
+	/*RtIni VersionConfig;
 	if(VersionConfig.OpenFile("version_config.ini"))
 	{
 		VersionConfig.CloseFile();
@@ -4512,18 +4512,18 @@ bool LoadConfig(std::string& vrError)
 	{
 		vrError = "Error: \"ConfigBootFile\" is no exit in [version_config.ini]!";
 		return false;
-	}
+	}*/
 	// Convert path to right slash.HACK,HACK,HACK
-	GetRightPath((char*)pConfigBootFileName);
+	//GetRightPath((char*)pConfigBootFileName);
 	gConfigBoot = RT_NEW RtIni();
-	if(gConfigBoot->OpenFile(pConfigBootFileName))
+    if (gConfigBoot->OpenFile("config_boot.ini"))
 	{
 		gConfigBoot->CloseFile();
 	}
 	else
 	{
 		vrError = "Error: [";
-		vrError += pConfigBootFileName;
+        vrError += "config_boot.ini";
 		vrError += "] is no find!";
 		return false;
 	}

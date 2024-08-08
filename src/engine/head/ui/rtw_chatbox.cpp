@@ -454,7 +454,7 @@ void RtwChatBox::Add(int mask, DWORD color, const char* description, char* fromn
 				continue;
 			}
 
-			rt2_sprintf(szFackToken, "face\\%d.gif", x*8+y);
+			rt2_sprintf(szFackToken, "ui\\face\\%d.gif", x*8+y);
 			pFaceImage[x][y] = g_workspace.getImageFactory()->createImage(szFackToken);
 
 			if (!pFaceImage[x][y])

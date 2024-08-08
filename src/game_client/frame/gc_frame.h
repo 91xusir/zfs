@@ -1,7 +1,6 @@
 #pragma once
 #include "gc_timer.h"
 
-
 class GcLogin;
 // add [3/14/2009 tooth.shi]
 // 获取渲染设备
@@ -110,14 +109,13 @@ class CGameClientFrame : public CRtgAppFrame {
     int         m_iMouseCaptureID;    // 自定义的ID，用来标示是谁截获了消息
     void*       m_pMouseCaptureData;  // 自定义的数据
     std::string m_szMouseCaptureMsg;  // 显示的消息
-
-    bool m_bCanCaptureVideo;
-    bool m_bShowStatScene;
-    bool m_bShowStatChar;
-    bool m_bShowStatClient;
-    bool m_bShowStatFile;
-    bool m_bShowStatAudio;
-    bool m_bShowStatNet;
+    bool        m_bCanCaptureVideo;
+    bool        m_bShowStatScene;
+    bool        m_bShowStatChar;
+    bool        m_bShowStatClient;
+    bool        m_bShowStatFile;
+    bool        m_bShowStatAudio;
+    bool        m_bShowStatNet;
 
     static DWORD m_sTimerEvent;
     static DWORD m_sTimerRender;

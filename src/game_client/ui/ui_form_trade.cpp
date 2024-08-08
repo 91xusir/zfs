@@ -36,7 +36,7 @@ UIFormTrade::UIFormTrade()
 	//	LOAD_UI("fmtrade.$hide")->EvLClick += RTW_CALLBACK(this, UIFormTrade, OnClose);
 	m_pFrmThis->EvHide += RTW_CALLBACK(this, UIFormTrade, OnClose);
 
-	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui\\textures\\highlight_button.tga");
+	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui\\x_textures\\highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);
 	m_ptrHoverImage->getRenderImage()->eBlendDstFunc = RTGBLEND_ONE;
 	m_ptrHoverImage->getRenderImage()->eBlendSrcFunc = RTGBLEND_SRCALPHA;
@@ -555,7 +555,7 @@ void UIFormTrade::OnPreDraw()
 
 	char szTmp[64];
 
-	RtwImage* pImagegrids = g_workspace.getImageFactory()->createImage("ui/textures/gridsitem.tga");
+	RtwImage* pImagegrids = g_workspace.getImageFactory()->createImage("ui/x_textures/gridsitem.tga");
 	// 自己的道具
 
 	for (int i=0; i<TRADE_GRID_LINE_COUNT; i++)

@@ -23,7 +23,7 @@ UIFormSelectReward::UIFormSelectReward()
 	m_pCancel = LOAD_UI_T(RtwButton, "fmtaskitem.btncancel");
 	m_pTitle = LOAD_UI("fmtaskitem.lbinfo");
 
-	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 	for (int i=0; i<UI_FORM_SELECT_REWARD_MAX_COUNT; i++)
 	{
 		m_ptrHoverImage->getRenderImage()->SetTransparency(0.4);

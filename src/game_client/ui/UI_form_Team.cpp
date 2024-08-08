@@ -124,10 +124,10 @@ void CUI_form_Team::Init()
 	}
 	
 
-	m_imgTeamNormal = g_workspace.getImageFactory()->createImage("ui\\textures\\1.tga");
+	m_imgTeamNormal = g_workspace.getImageFactory()->createImage("ui\\x_textures\\1.tga");
 	m_imgTeamNormal->SetSourceRect(RtwRect(357,355,399,397));
 	m_imgTeamNormal->SetBlend(true);
-	m_imgTeamAnimation = g_workspace.getImageFactory()->createImage("ui_texture/xinshou_10.gif");
+	m_imgTeamAnimation = g_workspace.getImageFactory()->createImage("ui/ui_texture/xinshou_10.gif");
 	m_bShowAnimation = false;
 	m_pTeamBuff->Hide();
 	m_pPickMode->SetSelectedItem(0);
@@ -475,13 +475,13 @@ bool CUI_form_Team::GetTeamImage(short ModelID, int HeadImageID,vector<SCharImag
 	RtwRect Rect;
 	if (!g_TableCharImage.GetCharImage(ModelID, models))
 	{
-		(*HeadImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\4.tga");
+		(*HeadImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\4.tga");
 		Rect = RtwRect(270,457,324,511);
 		(*HeadImage)->SetSourceRect(Rect);
 	}
 	else
 	{
-		std::string strImage = "ui_texture\\";
+		std::string strImage = "ui\\ui_texture\\";
 		strImage += models[HeadImageID].imageGame;
 		strImage += ".dds";
 		(*HeadImage) = g_workspace.getImageFactory()->createImage(strImage);
@@ -490,7 +490,7 @@ bool CUI_form_Team::GetTeamImage(short ModelID, int HeadImageID,vector<SCharImag
 		return false;
 	(*HeadImage)->SetBlend(true);
 
-	(*ProfessionImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\4.tga");
+	(*ProfessionImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\4.tga");
 	if (!*ProfessionImage)
 		return false;
 	
@@ -522,43 +522,43 @@ bool CUI_form_Team::GetTeamImage(short ModelID, int HeadImageID,vector<SCharImag
 	switch(Animal)
 	{
 	case 0:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal1.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal1.tga");
 		break;
 	case 1:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal2.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal2.tga");
 		break;
 	case 2:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal3.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal3.tga");
 		break;
 	case 3:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal4.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal4.tga");
 		break;
 	case 4:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal5.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal5.tga");
 		break;
 	case 5:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal6.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal6.tga");
 		break;
 	case 6:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal7.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal7.tga");
 		break;
 	case 7:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal8.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal8.tga");
 		break;
 	case 8:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal9.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal9.tga");
 		break;
 	case 9:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal10.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal10.tga");
 		break;
 	case 10:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal11.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal11.tga");
 		break;
 	case 11:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\animal12.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\animal12.tga");
 		break;
 	default:
-		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\textures\\4.tga");
+		(*AnimalImage) = g_workspace.getImageFactory()->createImage("ui\\x_textures\\4.tga");
 		Rect = RtwRect(215,463,264,511 );
 		(*AnimalImage)->SetSourceRect(Rect);
 		break;
@@ -826,7 +826,7 @@ void CUI_form_Team::OnShowAnimalBuff()//组队加成显示
 		for (int i = 0;i < 12;++i)
 		{
 			RtwImage* strImage = NULL;RtwRect Rect;
-			strImage = g_workspace.getImageFactory()->createImage("ui\\textures\\26.tga");
+			strImage = g_workspace.getImageFactory()->createImage("ui\\x_textures\\26.tga");
 			if (strImage)
 			{
 				strImage->SetBlend(true);

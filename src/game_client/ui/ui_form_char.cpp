@@ -981,7 +981,7 @@ bool UIFormCharSimple::Init()
 
 	RtwImage *pImage;
 	char szBufTemp[128];
-	rt2_sprintf(szBufTemp, "ui\\textures\\power\\PowerEffect.dds");
+	rt2_sprintf(szBufTemp, "ui\\x_textures\\power\\PowerEffect.dds");
 
 	for (int i=0; i<10; ++i)
 	{
@@ -1004,7 +1004,7 @@ bool UIFormCharSimple::Init()
 	m_ImageSequence->Pause();
  	m_lblPowerSequence->Hide();
 
-	rt2_sprintf(szBufTemp, "ui\\textures\\power\\Power.dds");
+	rt2_sprintf(szBufTemp, "ui\\x_textures\\power\\Power.dds");
 
 	for (int i=0; i<2; i++)
 	{
@@ -1360,7 +1360,7 @@ bool UIFormCharSimple::Update()
 
 	if(bUpdateImage)
 	{
-		std::string strImage = "ui_texture/";
+		std::string strImage = "ui/ui_texture/";
 		strImage += images[cre->HeadImageID].imageGame;
 		strImage += ".dds";
 
@@ -1858,7 +1858,7 @@ bool UIFormRecoverPet::Init()
 	m_yes   = LOAD_UI_T(RtwButton,"fmpet.btnok");
 	m_no    = LOAD_UI_T(RtwButton,"fmpet.btncancel");
 	m_icon  = LOAD_UI_T(RtwButton,"fmpet.aliasCombpet");
-	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);
 	m_ptrHoverImage->getRenderImage()->eBlendDstFunc = RTGBLEND_ONE;
 	m_ptrHoverImage->getRenderImage()->eBlendSrcFunc = RTGBLEND_SRCALPHA;

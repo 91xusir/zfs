@@ -17,7 +17,7 @@ UIFormItemsInfo::UIFormItemsInfo()
 	//m_pFrmThis->EvKey += RTW_CALLBACK(m_pFrmThis, RtwWidget, DefaultKeyDown);
 
     //m_ptrHoverImage = new RtwImage("highlight_button.tga");// change [3/17/2009 tooth.shi]
-	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage = g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 
 	m_btnParts[CItemContainerBase::WEAPON_1] = LOAD_UI_T(RtwButton, "fmseeitem.btnRightHand");
 	//m_btnParts[CItemContainerBase::WEAPON_2] = LOAD_UI_T(RtwButton, "fmseeitem.btnLeftHand");

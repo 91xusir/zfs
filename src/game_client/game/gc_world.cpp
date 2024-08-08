@@ -4550,7 +4550,7 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
 
     if (g_layerMain->m_formHelp)
         g_layerMain->m_formHelp->Show();
-    std::string taskPicture = "ui_texture/";
+    std::string taskPicture = "ui/ui_texture/";
     SNpc*       pNpc = g_TableNpc.FindNpc(GetWorld()->GetActualNPCId());
     taskPicture += pNpc->taskPic;
 
@@ -4900,7 +4900,7 @@ bool GcWorld::TranslateTaskMacro(string& result, const char* text, void* data) {
 
         result = "";
         result += "<p>";
-        result += "<img src=\"ui/textures/28_b.tga\" width=\"420\" height=\"18\" source=\"\"/>";
+        result += "<img src=\"ui/x_textures/28_b.tga\" width=\"420\" height=\"18\" source=\"\"/>";
         result += "</p>";
 
         int                            bDoing = 0;

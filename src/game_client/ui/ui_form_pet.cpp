@@ -6,17 +6,17 @@
 #include "gc_pet.h"
 #include "ui_form_msg.h"
 
-char PET_SOMELEV_IMAGE_1[] = "ui_texture/pic_petlev01.gif";
-char PET_SOMELEV_IMAGE_2[] = "ui_texture/pic_petlev.gif";
+char PET_SOMELEV_IMAGE_1[] = "ui/ui_texture/pic_petlev01.gif";
+char PET_SOMELEV_IMAGE_2[] = "ui/ui_texture/pic_petlev.gif";
 
-char PET_BEADS_IMAGE_1[] = "ui_texture/pic_petyhz.dds";
-char PET_BEADS_IMAGE_2[] = "ui_texture/pic_petyhz_1.dds";
-char PET_BEADS_IMAGE_3[] = "ui_texture/pic_petyhz_2.dds";
-char PET_BEADS_IMAGE_4[] = "ui_texture/pic_petyhz_3.dds";
+char PET_BEADS_IMAGE_1[] = "ui/ui_texture/pic_petyhz.dds";
+char PET_BEADS_IMAGE_2[] = "ui/ui_texture/pic_petyhz_1.dds";
+char PET_BEADS_IMAGE_3[] = "ui/ui_texture/pic_petyhz_2.dds";
+char PET_BEADS_IMAGE_4[] = "ui/ui_texture/pic_petyhz_3.dds";
 
-char PET_NORMAL_IMAGE[] = "ui_texture/pic_pettype_01.dds";
-char PET_FAIRY_IMAGE[] = "ui_texture/pic_pettype_02.dds";
-char PET_SPECTRE_IMAGE[] = "ui_texture/pic_pettype_03.dds";
+char PET_NORMAL_IMAGE[] = "ui/ui_texture/pic_pettype_01.dds";
+char PET_FAIRY_IMAGE[] = "ui/ui_texture/pic_pettype_02.dds";
+char PET_SPECTRE_IMAGE[] = "ui/ui_texture/pic_pettype_03.dds";
 
 UIFromPetMain::UIFromPetMain(void)
 {

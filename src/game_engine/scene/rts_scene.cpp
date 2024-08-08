@@ -206,15 +206,15 @@ bool RtScene::OnceInit(RtgDevice* pDevice)
     OptionSetWaterCatoptricSky(TRUE);
 
     CXmlFileMapTexture xmlMapTexture(this);
-    xmlMapTexture.ParserFile("scene/scene_maptexlist.xml");
+    xmlMapTexture.ParserFile("scene/other/scene_maptexlist.xml");
 
     CXmlFileWater xmlWater(this);
-    xmlWater.ParserFile("scene/scene_water.xml");
+    xmlWater.ParserFile("scene/other/scene_water.xml");
 
     CXmlFileLightSet xmlLightSet(this);
     xmlLightSet.ParserFile("scene/lights/light_default.xml");
 
-    m_GrassRender.LoadGrassTexture("scene/scene_grass_texlist.xml");
+    m_GrassRender.LoadGrassTexture("scene/other/scene_grass_texlist.xml");
 
 #ifndef USE_OLD_TO_LOADUNLOADOBJECT
     mpkSceneManager = RT_NEW RtSceneManager();

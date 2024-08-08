@@ -30,7 +30,7 @@ CUIForm_Gem::CUIForm_Gem(void)
 		rt2_sprintf(fullName,"fmgem.pansource.btnmineitem%d",i);
 		m_pBtnItem[i]		= LOAD_UI(fullName);
 	}
-	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/textures/highlight_button.tga");
+	m_ptrHoverImage	= g_workspace.getImageFactory()->createImage("ui/x_textures/highlight_button.tga");
 	m_ptrHoverImage->getRenderImage()->SetTransparency(0.5);
 	m_ptrHoverImage->getRenderImage()->eBlendDstFunc = RTGBLEND_ONE;
 	m_ptrHoverImage->getRenderImage()->eBlendSrcFunc = RTGBLEND_SRCALPHA;

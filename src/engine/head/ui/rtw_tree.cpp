@@ -192,15 +192,15 @@ bool RtwTree::Create(DWORD Id)
 	EvMouseRDown	+= RTW_CALLBACK(this, RtwTree, OnMouseRDown_This);
 	//EvMouseMove		+= RTW_CALLBACK(this, RtwTree, OnMouseMove_This);
 
-	m_pExpandImage = g_workspace.getImageFactory()->createImage("ui/textures/tree_icon2.tga");
+	m_pExpandImage = g_workspace.getImageFactory()->createImage("ui/x_textures/tree_icon2.tga");
 	m_pExpandImage->SetSourceRect(RtwRect(0,0,16,16)); 
 	m_pExpandImage->SetBlend(true);
 
-	m_pShrinkImage = g_workspace.getImageFactory()->createImage("ui/textures/tree_icon1.tga");
+	m_pShrinkImage = g_workspace.getImageFactory()->createImage("ui/x_textures/tree_icon1.tga");
 	m_pShrinkImage->SetSourceRect(RtwRect(0,0,16,16)); 
 	m_pShrinkImage->SetBlend(true);
 
-	m_pCoverImage = g_workspace.getImageFactory()->createImage("ui/textures/ui_lightBar.tga");
+	m_pCoverImage = g_workspace.getImageFactory()->createImage("ui/x_textures/ui_lightBar.tga");
 	m_pCoverImage->SetBlend(true);	
 
 	return true;

@@ -3,614 +3,614 @@
   <Layer DefaultIndex="true" Height="600" Index="1" Name="layworld" Show="true" Width="800">
     <Form Anchor="CEMTERV,CENTERH" Inherit="" Location="271,110,298,115" Name="fmkeyboard" Show="false" EscapeHide="false">
       <Button FontSize="11" Inherit="" Location="255,23,41,23" Name="btnkeyLock" Show="true" Text="大小写" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="468,230,41,25"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="468,255,41,25"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="468,205,41,25"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="468,230,41,25"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="468,255,41,25"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="468,205,41,25"/>
       </Button>
       <Button FontSize="11" Inherit="" Location="255,1,41,23" Name="btnkeybackspace" Show="true" Text="后 退" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="468,230,41,25"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="468,255,41,25"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="468,205,41,25"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="468,230,41,25"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="468,255,41,25"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="468,205,41,25"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="140,23,22,23" Name="btnkeyu" Show="true" Text="u" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="2,45,22,23" Name="btnkeya" Show="true" Text="a" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="25,45,22,23" Name="btnkeys" Show="true" Text="s" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="186,45,22,23" Name="btnkeyl" Show="true" Text="l" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="209,45,22,23" Name="btnkey[" Show="true" Text="[" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button Alignment="center" FontSize="12" Inherit="" Location="186,23,22,23" Name="btnkeyo" Show="true" Text="o" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="117,45,22,23" Name="btnkeyh" Show="true" Text="h" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="140,45,22,23" Name="btnkeyj" Show="true" Text="j" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="163,45,22,23" Name="btnkeyk" Show="true" Text="k" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="94,45,22,23" Name="btnkeyg" Show="true" Text="g" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="163,1,22,23" Name="btnkey7" Show="true" Text="7" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="140,1,22,23" Name="btnkey6" Show="true" Text="6" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="117,1,22,23" Name="btnkey5" Show="true" Text="5" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="232,23,22,23" Name="btnkey:" Show="true" Text=":" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="94,1,22,23" Name="btnkey4" Show="true" Text="4" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="71,1,22,23" Name="btnkey3" Show="true" Text="3" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="48,1,22,23" Name="btnkey2" Show="true" Text="2" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="25,1,22,23" Name="btnkey1" Show="true" Text="1" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="163,23,22,23" Name="btnkeyi" Show="true" Text="i" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="48,45,22,23" Name="btnkeyd" Show="true" Text="d" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="71,45,22,23" Name="btnkeyf" Show="true" Text="f" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="2,1,22,23" Name="btnkey0" Show="true" Text="0" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="94,67,22,23" Name="btnkeyb" Show="true" Text="b" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="117,67,22,23" Name="btnkeyn" Show="true" Text="n" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="140,67,22,23" Name="btnkeym" Show="true" Text="m" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="163,67,22,23" Name="btnkey<" Show="true" Text="<" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="186,67,22,23" Name="btnkey>" Show="true" Text=">" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="209,67,22,23" Name="btnkey(" Show="true" Text="(" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="2,89,22,23" Name="btnkey!" Show="true" Text="!" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="25,89,22,23" Name="btnkey@" Show="true" Text="@" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="48,89,22,23" Name="btnkey#" Show="true" Text="#" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="2,23,22,23" Name="btnkeyq" Show="true" Text="q" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="25,23,22,23" Name="btnkeye" Show="true" Text="e" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="71,89,22,23" Name="btnkey$" Show="true" Text="$" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="94,89,22,23" Name="btnkey%" Show="true" Text="%" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="117,89,22,23" Name="btnkey^" Show="true" Text="^" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="140,89,22,23" Name="btnkey*" Show="true" Text="*" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="163,89,22,23" Name="btnkey~" Show="true" Text="~" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="186,89,22,23" Name="btnkey," Show="true" Text="," TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="209,89,22,23" Name="btnkey?" Show="true" Text="?" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="232,89,22,23" Name="btnkey|" Show="true" Text="|" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="94,23,22,23" Name="btnkeyt" Show="true" Text="t" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="48,23,22,23" Name="btnkeyw" Show="true" Text="w" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="2,67,22,23" Name="btnkeyz" Show="true" Text="z" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="25,67,22,23" Name="btnkeyx" Show="true" Text="x" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="48,67,22,23" Name="btnkeyc" Show="true" Text="c" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="71,67,22,23" Name="btnkeyv" Show="true" Text="v" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="232,45,22,23" Name="btnkey]" Show="true" Text="]" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="232,67,22,23" Name="btnkey)" Show="true" Text=")" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="71,23,22,23" Name="btnkeyr" Show="true" Text="r" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="209,23,22,23" Name="btnkeyp" Show="true" Text="p" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="11" Inherit="" Location="186,1,22,23" Name="btnkey8" Show="true" Text="8" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="209,1,22,23" Name="btnkey9" Show="true" Text="9" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="11" Inherit="" Location="232,1,22,23" Name="btnkey-" Show="true" Text="-" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="11" Inherit="" Location="255,45,41,23" Name="btnkeyenter" Show="true" Text="确 定" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="468,230,41,25"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="468,255,41,25"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="468,205,41,25"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="468,230,41,25"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="468,255,41,25"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="468,205,41,25"/>
       </Button>
       <Anchors>
         <Anchor offset="0,0" point="CENTERV"/>
         <Anchor offset="0,140" point="CENTERH"/>
       </Anchors>
       <Button FontSize="12" Inherit="" Location="117,23,22,23" Name="btnkeyy" Show="true" Text="y" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="11" Inherit="" Location="255,89,41,23" Name="btnkey=" Show="true" Text="=" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="468,230,41,25"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="468,255,41,25"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="468,205,41,25"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="468,230,41,25"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="468,255,41,25"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="468,205,41,25"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="255,67,41,23" Name="btnkeyand" Show="true" Text="＆" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="468,230,41,25"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="468,255,41,25"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="468,205,41,25"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="468,230,41,25"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="468,255,41,25"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="468,205,41,25"/>
       </Button>
     </Form>
     <Form Anchor="CEMTERV,CENTERH" Inherit="" Location="271,110,298,115" Name="fmkeyboard1" Show="false" EscapeHide="false" EscapeHide="false">
       <Button FontSize="11" Inherit="" Location="255,23,41,23" Name="btnkeyLock" Show="true" Text="大小写" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="468,230,41,25"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="468,255,41,25"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="468,205,41,25"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="468,230,41,25"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="468,255,41,25"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="468,205,41,25"/>
       </Button>
       <Button FontSize="11" Inherit="" Location="255,1,41,23" Name="btnkeybackspace" Show="true" Text="后 退" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="468,230,41,25"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="468,255,41,25"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="468,205,41,25"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="468,230,41,25"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="468,255,41,25"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="468,205,41,25"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="140,23,22,23" Name="btnkeyU" Show="true" Text="U" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="2,45,22,23" Name="btnkeyA" Show="true" Text="A" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="25,45,22,23" Name="btnkeyS" Show="true" Text="S" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="186,45,22,23" Name="btnkeyL" Show="true" Text="L" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="209,45,22,23" Name="btnkey[" Show="true" Text="[" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button Alignment="center" FontSize="12" Inherit="" Location="186,23,22,23" Name="btnkeyO" Show="true" Text="O" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="117,45,22,23" Name="btnkeyH" Show="true" Text="H" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="140,45,22,23" Name="btnkeyJ" Show="true" Text="J" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="163,45,22,23" Name="btnkeyK" Show="true" Text="K" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="94,45,22,23" Name="btnkeyG" Show="true" Text="G" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="163,1,22,23" Name="btnkey7" Show="true" Text="7" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="140,1,22,23" Name="btnkey6" Show="true" Text="6" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="117,1,22,23" Name="btnkey5" Show="true" Text="5" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="232,23,22,23" Name="btnkey:" Show="true" Text=":" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="94,1,22,23" Name="btnkey4" Show="true" Text="4" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="71,1,22,23" Name="btnkey3" Show="true" Text="3" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="48,1,22,23" Name="btnkey2" Show="true" Text="2" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="25,1,22,23" Name="btnkey1" Show="true" Text="1" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="163,23,22,23" Name="btnkeyI" Show="true" Text="I" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="48,45,22,23" Name="btnkeyD" Show="true" Text="D" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="71,45,22,23" Name="btnkeyF" Show="true" Text="F" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="2,1,22,23" Name="btnkey0" Show="true" Text="0" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="94,67,22,23" Name="btnkeyB" Show="true" Text="B" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="117,67,22,23" Name="btnkeyN" Show="true" Text="N" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="140,67,22,23" Name="btnkeyM" Show="true" Text="M" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="163,67,22,23" Name="btnkey<" Show="true" Text="＜" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="186,67,22,23" Name="btnkey>" Show="true" Text="＞" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="209,67,22,23" Name="btnkey(" Show="true" Text="(" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="2,89,22,23" Name="btnkey!" Show="true" Text="!" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="25,89,22,23" Name="btnkey@" Show="true" Text="@" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="48,89,22,23" Name="btnkey#" Show="true" Text="#" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="2,23,22,23" Name="btnkeyQ" Show="true" Text="Q" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="25,23,22,23" Name="btnkeyE" Show="true" Text="E" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="71,89,22,23" Name="btnkey$" Show="true" Text="$" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="94,89,22,23" Name="btnkey%" Show="true" Text="%" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="117,89,22,23" Name="btnkey^" Show="true" Text="^" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="140,89,22,23" Name="btnkey*" Show="true" Text="*" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="163,89,22,23" Name="btnkey~" Show="true" Text="~" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="186,89,22,23" Name="btnkey," Show="true" Text="," TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="209,89,22,23" Name="btnkey?" Show="true" Text="?" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="232,89,22,23" Name="btnkey|" Show="true" Text="|" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="94,23,22,23" Name="btnkeyT" Show="true" Text="T" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="48,23,22,23" Name="btnkeyW" Show="true" Text="W" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="2,67,22,23" Name="btnkeyZ" Show="true" Text="Z" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="25,67,22,23" Name="btnkeyX" Show="true" Text="X" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="48,67,22,23" Name="btnkeyC" Show="true" Text="C" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="71,67,22,23" Name="btnkeyV" Show="true" Text="V" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="232,45,22,23" Name="btnkey]" Show="true" Text="]" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="232,67,22,23" Name="btnkey)" Show="true" Text=")" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="71,23,22,23" Name="btnkeyR" Show="true" Text="R" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="209,23,22,23" Name="btnkeyP" Show="true" Text="P" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="11" Inherit="" Location="186,1,22,23" Name="btnkey8" Show="true" Text="8" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="209,1,22,23" Name="btnkey9" Show="true" Text="9" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="11" Inherit="" Location="232,1,22,23" Name="btnkey-" Show="true" Text="-" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="11" Inherit="" Location="255,45,41,23" Name="btnkeyenter" Show="true" Text="确 定" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="468,230,41,25"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="468,255,41,25"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="468,205,41,25"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="468,230,41,25"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="468,255,41,25"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="468,205,41,25"/>
       </Button>
       <Anchors>
         <Anchor offset="0,0" point="CENTERV"/>
         <Anchor offset="0,140" point="CENTERH"/>
       </Anchors>
       <Button FontSize="12" Inherit="" Location="117,23,22,23" Name="btnkeyY" Show="true" Text="Y" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="336,19,19,20"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="452,19,19,20"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="394,19,19,20"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="336,19,19,20"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="452,19,19,20"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="394,19,19,20"/>
       </Button>
       <Button FontSize="11" Inherit="" Location="255,89,41,23" Name="btnkey=" Show="true" Text="=" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="468,230,41,25"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="468,255,41,25"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="468,205,41,25"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="468,230,41,25"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="468,255,41,25"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="468,205,41,25"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="255,67,41,23" Name="btnkeyand" Show="true" Text="＆" TextFont="宋体" Sound="ui_softb_bt.wav">
-        <NormalImage Blend="true" File="ui\new_textures\3.tga" Source="468,230,41,25"/>
-        <PushedImage Blend="true" File="ui\new_textures\3.tga" Source="468,255,41,25"/>
-        <HighlightImage Blend="true" File="ui\new_textures\3.tga" Source="468,205,41,25"/>
+        <NormalImage Blend="true" File="ui\x_textures\3.tga" Source="468,230,41,25"/>
+        <PushedImage Blend="true" File="ui\x_textures\3.tga" Source="468,255,41,25"/>
+        <HighlightImage Blend="true" File="ui\x_textures\3.tga" Source="468,205,41,25"/>
       </Button>
     </Form>
   </Layer>

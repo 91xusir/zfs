@@ -336,7 +336,7 @@ void CUIForm_MiddleMap::Init()
 {
 	guard;
 	RtwImage* tmpImage;
-	tmpImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_d_icon10.gif");
+	tmpImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_d_icon10.gif");
 	m_lbPlayer = (RtwLabel*)g_workspace.getWidgetFactory()->createWidget(wtLabel);
 	m_lbPlayer->ModifyFlag(wfGrabMouse|wfMouseMove|wfHint,0);
 	if(tmpImage)
@@ -356,7 +356,7 @@ void CUIForm_MiddleMap::Init()
 	}
 	m_lbPlayerpreview->SetName("PlayerPreview");
 	
-	tmpImage = g_workspace.getImageFactory()->createImage("ui_texture\\outlinedrag.tga");
+	tmpImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\outlinedrag.tga");
 	m_lbPreviwRect = (RtwLabel*)g_workspace.getWidgetFactory()->createWidget(wtLabel);
 	m_lbPreviwRect->ModifyFlag(wfGrabMouse|wfMouseMove|wfHint,0);
 	if(tmpImage)
@@ -366,7 +366,7 @@ void CUIForm_MiddleMap::Init()
 	}
 	m_lbPreviwRect->SetName("PreviwRect");
 
-	tmpImage = g_workspace.getImageFactory()->createImage("ui_texture\\minimap_array.dds");
+	tmpImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\minimap_array.dds");
 	m_lbPet = (RtwLabel*)g_workspace.getWidgetFactory()->createWidget(wtLabel);
 	m_lbPet->ModifyFlag(wfGrabMouse|wfMouseMove|wfHint,0);
 	if(tmpImage)
@@ -383,7 +383,7 @@ void CUIForm_MiddleMap::Init()
 	char szBufTemp[128];
 	for (int i=0; i<23; ++i)
 	{
-		rt2_sprintf(szBufTemp, "ui_texture\\1_%d.dds", i);
+		rt2_sprintf(szBufTemp, "ui\\ui_texture\\1_%d.dds", i);
 
 		pImage = g_workspace.getImageFactory()->createImage();
 		if(pImage->LoadFromFile(szBufTemp))
@@ -393,7 +393,7 @@ void CUIForm_MiddleMap::Init()
 		}
 	}
 
-	//tmpImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_d_icon101.gif");
+	//tmpImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_d_icon101.gif");
 	m_lbAutoFlag = (RtwLabel*)g_workspace.getWidgetFactory()->createWidget(wtLabel);
 	m_lbAutoFlag->ModifyFlag(0,wfGrabMouse|wfMouseMove|wfHint);
 	if(m_ImageAutoFlag)
@@ -532,7 +532,7 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
 				ShowSystemMessage(R(MSG_PICTURE_NOTHASANAME));
 				return;
 			}
-			rt2_sprintf(szName,"ui\\textures\\%s.dds",(*it).second.szSceneMiddleMapFileName.c_str());
+			rt2_sprintf(szName,"ui\\x_textures\\%s.dds",(*it).second.szSceneMiddleMapFileName.c_str());
 			m_pPreviewImage = g_workspace.getImageFactory()->createImage(szName);;
 			/* gao 2010.1.21
 			先从map中去查找，看是否已经创建图片
@@ -676,9 +676,9 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
 				{
 					RtwImage* tmpImage = NULL;
 					if (GetWorld()->m_Team.mData.GetCaptain() == GetPlayer()->DBID())
-						tmpImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_d_icon04.gif");
+						tmpImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_d_icon04.gif");
 					else
-						tmpImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_d_icon05.gif");
+						tmpImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_d_icon05.gif");
 					lbTeam = (RtwLabel*)g_workspace.getWidgetFactory()->createWidget(wtLabel);
 					rt2_sprintf(strId, "lbTeam_%d",teamActor);
 					lbTeam->SetName(strId);
@@ -748,7 +748,7 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
 		RtwLabel* lbTaskdesc;
 		if(Taskdescnum >= m_vectorTaskLabel.size())
 		{
-			RtwImage* tmpImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_d_icon02.gif");
+			RtwImage* tmpImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_d_icon02.gif");
 			lbTaskdesc = (RtwLabel*)g_workspace.getWidgetFactory()->createWidget(wtLabel);
 			rt2_sprintf(strId, "lbTaskdesc_%d",Taskdescnum);
 //			lbTaskdesc->CloneFrom(m_lbPet);
@@ -798,7 +798,7 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
 			RtwLabel* lbNPCName;
 			if(NPCnum >= m_vectorNPCLabel.size())
 			{
-				RtwImage* tmpImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_d_icon01.dds");
+				RtwImage* tmpImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_d_icon01.dds");
 				lbNPC = (RtwLabel*)g_workspace.getWidgetFactory()->createWidget(wtLabel);
 				rt2_sprintf(strId, "lbNPC_%d",NPCnum);
 				lbNPC->SetName(strId);
@@ -861,7 +861,7 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
 			RtwLabel* lbMonsterName;
 			if(Monsternum >= m_vectorMonsterLabel.size())
 			{
-				RtwImage* tmpImage = g_workspace.getImageFactory()->createImage("ui_texture\\pic_d_icon03.dds");
+				RtwImage* tmpImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_d_icon03.dds");
 				lbMonster = (RtwLabel*)g_workspace.getWidgetFactory()->createWidget(wtLabel);
 				rt2_sprintf(strId, "lbMonster_%d",Monsternum);
 				lbMonster->SetName(strId);
@@ -952,7 +952,7 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
 		RtwLabel* lbPoint;
 		if (pointnum >= m_vectorPatchPoint.size())
 		{
-			RtwImage* tmpImage = g_workspace.getImageFactory()->createImage("ui_texture\\seekingpoint.dds");
+			RtwImage* tmpImage = g_workspace.getImageFactory()->createImage("ui\\ui_texture\\seekingpoint.dds");
 			lbPoint = (RtwLabel*)g_workspace.getWidgetFactory()->createWidget(wtLabel);
 			rt2_sprintf(strId, "lbPoint_%d",pointnum);
 			lbPoint->SetName(strId);

@@ -247,14 +247,14 @@ void CMailWithUI::Init()
 	LOAD_UI("fmmail1.fmcontent.btnback")->EvLClick	+= RTW_CALLBACK(this, CMailWithUI, UserInterfaceEvent);
 	LOAD_UI("fmmail2.fmcontent.btnxmm4")->EvLClick	+= RTW_CALLBACK(this, CMailWithUI, UserInterfaceEvent);
 	Initface();
-	m_imgAlreadyOpen = g_workspace.getImageFactory()->createImage("ui_texture/ReadedMessage.tga");
+	m_imgAlreadyOpen = g_workspace.getImageFactory()->createImage("ui/ui_texture/ReadedMessage.tga");
 	m_imgAlreadyOpen->SetBlend(true);
-	m_imgNotOpen = g_workspace.getImageFactory()->createImage("ui_texture/NewMessage.tga");
+	m_imgNotOpen = g_workspace.getImageFactory()->createImage("ui/ui_texture/NewMessage.tga");
 	m_imgNotOpen->SetBlend(true);
-	m_imgMailNormal = g_workspace.getImageFactory()->createImage("ui\\textures\\1.tga");
+	m_imgMailNormal = g_workspace.getImageFactory()->createImage("ui\\x_textures\\1.tga");
 	m_imgMailNormal->SetSourceRect(RtwRect(164,399,206,441));
-	m_imgMailNormal->SetBlend(true);
-	m_imgMailAnimation = g_workspace.getImageFactory()->createImage("ui_texture/xinshou_12.gif");
+	m_imgMailNormal->SetBlend(true);    
+	m_imgMailAnimation = g_workspace.getImageFactory()->createImage("ui/ui_texture/xinshou_12.gif");
 	m_bShowAnimation = false;
 	 unguard;
 }
@@ -304,7 +304,7 @@ void CMailWithUI::Initface()
 	for (int i=0; i<5; i++)
 		for (int j=0; j<8; j++)
 		{	
-			rt2_sprintf(strId, "face\\%d.gif", i*8+j);
+			rt2_sprintf(strId, "ui\\face\\%d.gif", i*8+j);
 			faceImage[i][j] = g_workspace.getImageFactory()->createImage(strId);
 			rt2_sprintf(strId, "face%02d_%02d", i, j);
 			faceImage[i][j]->m_Name=strId;

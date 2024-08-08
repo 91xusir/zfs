@@ -8,7 +8,8 @@ AccessModifierOffset: -1
 AlignAfterOpenBracket: Align
 SortIncludes: Never
 AlignConsecutiveDeclarations: true
-AlignConsecutiveAssignments: None
+AlignTrailingComments: true
+AlignConsecutiveAssignments: true
 AlignOperands: Align
 AllowAllArgumentsOnNextLine: true
 AllowAllConstructorInitializersOnNextLine: true

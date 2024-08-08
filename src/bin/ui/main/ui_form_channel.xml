@@ -14,7 +14,7 @@
       <Label Alignment="center" Inherit="" Location="20,71,60,16" Name="lbguildcl" Text="帮派频道"/>
       <CheckButton ActivateParent="true" Inherit="CheckButton1" Location="6,90,12,12" Name="ckcountrycl" PushLike="true" Sound="ui_normalbt.wav"/>
       <Label Alignment="center" Inherit="" Location="20,87,60,16" Name="lbcountrycl" Text="战场频道"/>
-      <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\1.tga" BorderSource="358,71,20,20"/>
+      <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\x_textures\1.tga" BorderSource="358,71,20,20"/>
       <Anchors>
         <Anchor offset="0,-105" point="BOTTOM"/>
         <Anchor offset="18,0" point="LEFT"/>
