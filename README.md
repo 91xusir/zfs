@@ -40,24 +40,15 @@ Windows SDk 10.0.22000.0
 [Vcpkg](https://learn.microsoft.com/zh-cn/vcpkg/get_started/overview)
 [Git lfs](https://git-lfs.com/)
 
-#### 1.1 Clone
+#### 1.1[编译指南](./doc/编译指南.md)
 
-```
-git clone https://github.com/reniao69/zfs.git
-```
+#### 1.2项目说明
 
-#### 1.2 编译
-
-详见[编译指南](./doc/编译指南.md)
-
-#### 1.3 项目说明
-
-##### 1.3.1 目录结构
+##### 1.2.1 目录结构
 
 ```
 ├─bin    					编译生成的二进制文件 可以将客户端内容放在这里，方便调试gc
 ├─temp						编译生成的临时文件
-├─docs						旧docs文档，将采用md重构
 ├─runtime					游戏运行时需要的dll等
 ├─SQL						游戏数据库文件
 -------------------------
@@ -69,26 +60,17 @@ git clone https://github.com/reniao69/zfs.git
 ├─gameworld_server 			游戏世界服务器W
 ├─login_server 				游戏登录服务器L  
 ├─region_server 			游戏逻辑服务器R  
-├─tool_character			模型编辑
-├─tool_crashreport			崩溃日志工具
-├─tool_files_packet			PAK打包解包工具
-├─tool_max9_utility			3dmax9插件
-├─tool_max_utility			3dmax插件
-├─tool_scene				地图工具
-└─tool_ui					ui工具
 -------------------------
 客户端 服务端 工具  
 │      │      │  
 └─── 引擎 ────┘
 ```
 
-##### 1.3.2 命名方式
+##### 1.2.2 命名方式
 
 lib库的命名方式，根据不同的运行库命名，
 
 ![image-20240719174731386](README/image-20240719174731386.png) 
-
-![image-20240719172836181](README/image-20240719172836181.png) 
 
 exe命名方式：
 
@@ -96,7 +78,7 @@ xxx_Release.exe
 
 xxx_Debug.exe 
 
-##### 1.3.3 引擎工程
+##### 1.2.3 工程简介
 
 ```
 Engine共分为8大模块：
@@ -117,70 +99,38 @@ Scene模块处理地形,场景物件,事件触发,环境因素等内容；
 
 Character是角色模块,封装与角色相关的动画,材质,特效,骨骼,皮肤等等内容；
 -------------------------------------------------------------------
-
-Engine项目需要生成四种版本的库文件
+Engine项目需要生成2种版本的库文件
 Multi-Threaded 				*_mt.lib
 Multi-Threaded Debug		*_mtd.lib
-Multi-Threaded DLL 			*_md.lib
-Multi-Threaded DLL Debug	*_mdd.lib
-工具使用md版本
-客户端和服务器端使用mt版本
 ```
 
-##### 1.3.4 客户端工程
-
 ```
-游戏客户端工程由于历史原因,存在多种配置,但目前只需要Debug和Release版本配置,其它配置无效。
-生成采用Multi-Threaded的运行库方式,故Debug和Release版本均依赖于相应MT的运行库方式的engine库。
-```
-
-##### 1.3.5 服务端工程
-
-```
-生成采用Multi-Threaded的运行库方式,
-故Debug和Release版本均依赖于相应Multi-Threaded的运行库方式的net库（是engine库的一个组件）。
+游戏客户端和服务端只需要Debug和Release版本配置
+Release版本使用*_mt.lib库
+Debug版本使用*_mtd.lib库
+例如net_mt.lib（是engine库的一个网络通信组件）
 ```
 
-##### 1.3.6 工具工程
-
-```
-tool_character			目录下存放着角色编辑器的源文件
-tool_max_utility		目录下存放着max导出插件的源文件
-tool_scene				目录下存放着场景编辑器的源文件
-tool_ui					目录下存放着UI编辑器的源文件
-
-由于历史原因,存在多种配置,但目前只需要Debug和Release版本配置,其它配置无效。
-生成采用Multi-Threaded DLL的运行库方式
-故Debug和Release版本均依赖于相应Multi-Threaded DLL的运行库方式的engine库。
-```
-
-##### 1.3.7 第三方库依赖
+##### 1.2.4 第三方库依赖
 
 ```c++
-atl
-boost
-cppunit
+//旧的库有:
 curl
-gperftools
-ToolkitPro1850
-max8
-max9
-mysql
+mysql 
 python25 //TODO 替换为py3
 sdl
+//其他新的库用vcpkg管理
 ```
-
-
 
 ------
 
 ### 2.详细开发文档
 
-[1.引擎](./doc/engine.md)
+#### 2.1[游戏引擎](./doc/engine.md)
 
-2.客户端
+#### 2.2[客户端](./doc/client.md)
 
-3.服务端
+#### 2.3服务端
 
 ...
 
@@ -224,15 +174,22 @@ sdl
   }
   ```
 
-  
-
-- [ ] 阅读引擎源代码，重写md文档
+- [ ] 阅读引擎源代码，重构代码，重写md文档 
 
   ```
-  
+  当前完成进度约 0%
   ```
 
-- [ ] 阅读客户端代码，重写md文档
+- [ ] 阅读客户端代码，重构代码，重写md文档
 
-- [ ] 整理服务端API文档
+  ```
+  当前完成进度约 30%
+  ```
 
+其他具体开发细节和进度查看各工程开发文档。
+
+------
+
+### 4.编码规范
+
+详见[goole c++ 项目风格指南](https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents.html)
