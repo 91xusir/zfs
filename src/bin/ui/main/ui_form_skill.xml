@@ -4,9 +4,9 @@
     <Form EscapeHide="true" Inherit="" Location="59,148,310,454" Movable="true" Name="fmborder_skill" Show="true">
       <Label FontSize="18" Inherit="" Location="138,2,50,18" Name="lbxmm1" Show="true" Text="技能" TextColor="#ffdfde9b" TextFont="隶书"/>
       <CloseButton Location="284,14,20,20" Name="btnclose" padding="0,22,5,0">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <Form Inherit="" Location="0,24,310,454" Name="fmskillall" Show="true">
         <TabCtrl Inherit="" Location="0,0,310,454" Name="tabskillall" Show="true">
@@ -14,343 +14,343 @@
           <Label Inherit="" Location="246,405,40,18" Name="lbspnum1" Show="false" Text="100" TextColor=""/>
           <Label FontSize="12" Inherit="" Location="21,405,68,18" Name="lbsp" Show="true" Text="剩余技能点" TextColor="#fffbfe93" TextFont="宋体"/>
           <Label Inherit="" Location="15,404,6,18" Name="lbwlk1" Show="true">
-            <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,131,5,18"/>
+            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
           </Label>
           <Label Inherit="" Location="21,404,269,18" Name="lbwlk2" Show="true">
-            <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="430,131,4,18"/>
+            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
           </Label>
           <Label Inherit="" Location="291,404,6,18" Name="lbwlk3" Show="true">
-            <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="437,131,5,18"/>
+            <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
           </Label>
           <TabItem>
             <CheckButton FontSize="12" Inherit="NewCheckButton1" Location="42,4,57,19" Name="btnfirst" Show="true" Sound="ui_changepg.wav" Text="飞剑" TextColor="#fffbff66" TextFont="宋体"/>
             <Form Inherit="" Location="21,23,272,378" Name="fmfirst" Show="true">
               <Form Inherit="" Location="44,20,38,38" Name="panskill01" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,20,38,38" Name="panskill02" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2" TextColor="#fffbff66"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,20,38,38" Name="panskill03" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,20,38,38" Name="panskill04" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,63,38,38" Name="panskill05" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,63,38,38" Name="panskill06" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,63,38,38" Name="panskill07" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="2,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,106,38,38" Name="panskill09" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,149,38,38" Name="panskill13" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,192,38,38" Name="panskill17" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,235,38,38" Name="panskill21" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,278,38,38" Name="panskill25" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,321,38,38" Name="panskill29" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,321,38,38" Name="panskill30" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,278,38,38" Name="panskill26" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,235,38,38" Name="panskill22" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,192,38,38" Name="panskill18" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,149,38,38" Name="panskill14" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,106,38,38" Name="panskill10" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,106,38,38" Name="panskill11" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,149,38,38" Name="panskill15" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,192,38,38" Name="panskill19" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,235,38,38" Name="panskill23" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,278,38,38" Name="panskill27" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,321,38,38" Name="panskill31" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,63,38,38" Name="panskill08" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,106,38,38" Name="panskill12" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,149,38,38" Name="panskill16" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,192,38,38" Name="panskill20" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,235,38,38" Name="panskill24" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,278,38,38" Name="panskill28" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,321,38,38" Name="panskill32" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
-              <BackgroundImage Blend="true" File="ui\textures\24.tga" Source="4,2,269,375"/>
+              <BackgroundImage Blend="true" File="ui\new_textures\24.tga" Source="4,2,269,375"/>
               <Label Location="4,4,53,62" Name="lbshowweapon" Show="true">
-                <BackgroundImage Blend="true" File="ui\textures\24.tga" Source="297,3,53,62"/>
+                <BackgroundImage Blend="true" File="ui\new_textures\24.tga" Source="297,3,53,62"/>
               </Label>
               <Label Inherit="" Location="60,57,170,265" Name="lbskilltree" Show="true">
-                <BackgroundImage Blend="true" File="ui\textures\25.tga" Source="15,37,170,265"/>
+                <BackgroundImage Blend="true" File="ui\new_textures\25.tga" Source="15,37,170,265"/>
               </Label>
             </Form>
           </TabItem>
@@ -358,559 +358,559 @@
             <CheckButton FontSize="12" Inherit="NewCheckButton1" Location="101,4,57,19" Name="btnsecond" Show="true" Sound="ui_changepg.wav" Text="飞轮" TextColor="#fffbff66" TextFont="宋体"/>
             <Form Inherit="" Location="21,23,272,378" Name="fmsecond" Show="true">
               <Form Inherit="" Location="44,20,38,38" Name="panskill01" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,20,38,38" Name="panskill02" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2" TextColor="#fffbff66"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,20,38,38" Name="panskill03" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,20,38,38" Name="panskill04" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,63,38,38" Name="panskill05" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,63,38,38" Name="panskill06" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,63,38,38" Name="panskill07" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="2,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,106,38,38" Name="panskill09" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,149,38,38" Name="panskill13" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,192,38,38" Name="panskill17" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,235,38,38" Name="panskill21" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,278,38,38" Name="panskill25" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="44,321,38,38" Name="panskill29" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,321,38,38" Name="panskill30" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,278,38,38" Name="panskill26" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,235,38,38" Name="panskill22" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,192,38,38" Name="panskill18" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,149,38,38" Name="panskill14" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="99,106,38,38" Name="panskill10" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,106,38,38" Name="panskill11" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,149,38,38" Name="panskill15" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,192,38,38" Name="panskill19" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,235,38,38" Name="panskill23" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,278,38,38" Name="panskill27" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="154,321,38,38" Name="panskill31" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,63,38,38" Name="panskill08" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,106,38,38" Name="panskill12" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,149,38,38" Name="panskill16" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,192,38,38" Name="panskill20" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,235,38,38" Name="panskill24" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,278,38,38" Name="panskill28" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="209,321,38,38" Name="panskill32" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
-              <BackgroundImage Blend="true" File="ui\textures\24.tga" Source="4,2,269,375"/>
+              <BackgroundImage Blend="true" File="ui\new_textures\24.tga" Source="4,2,269,375"/>
               <Label Location="4,4,53,62" Name="lbshowweapon" Show="true">
-                <BackgroundImage Blend="true" File="ui\textures\24.tga" Source="350,3,53,62"/>
+                <BackgroundImage Blend="true" File="ui\new_textures\24.tga" Source="350,3,53,62"/>
               </Label>
               <Label Inherit="" Location="60,57,170,265" Name="lbskilltree" Show="true">
-                <BackgroundImage Blend="true" File="ui\textures\25.tga" Source="831,20,170,265"/>
+                <BackgroundImage Blend="true" File="ui\new_textures\25.tga" Source="831,20,170,265"/>
               </Label>
             </Form>
           </TabItem>
           <TabItem>
             <CheckButton FontSize="12" Inherit="NewCheckButton1" Location="159,4,57,19" Name="btnthird" Show="true" Sound="ui_changepg.wav" Text="综合" TextColor="#fffbff66" TextFont="宋体"/>
             <Form BackgroundColor="#A50E593A" Inherit="" Location="19,23,272,380" Name="fmthird" Show="true">
-              <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+              <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
               <Form Inherit="" Location="20,20,38,38" Name="panskill01" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="20,57,38,38" Name="panskill06" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="20,94,38,38" Name="panskill11" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="19,151,38,38" Name="panskill16" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="19,188,38,38" Name="panskill21" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="19,225,38,38" Name="panskill26" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="20,282,38,38" Name="panskill31" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="20,338,38,38" Name="panskill36" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="68,20,38,38" Name="panskill02" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="118,20,38,38" Name="panskill03" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="167,20,38,38" Name="panskill04" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="216,20,38,38" Name="panskill05" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="68,57,38,38" Name="panskill07" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="118,57,38,38" Name="panskill08" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="167,57,38,38" Name="panskill09" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="216,57,38,38" Name="panskill10" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="69,94,38,38" Name="panskill12" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="118,94,38,38" Name="panskill13" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="167,94,38,38" Name="panskill14" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="216,94,38,38" Name="panskill15" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="118,151,38,38" Name="panskill18" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="69,151,38,38" Name="panskill17" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="167,151,38,38" Name="panskill19" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="216,151,38,38" Name="panskill20" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="167,188,38,38" Name="panskill24" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="216,188,38,38" Name="panskill25" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="118,188,38,38" Name="panskill23" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="69,188,38,38" Name="panskill22" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="167,225,38,38" Name="panskill29" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="216,225,38,38" Name="panskill30" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="118,225,38,38" Name="panskill28" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="69,225,38,38" Name="panskill27" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="167,282,38,38" Name="panskill34" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="216,282,38,38" Name="panskill35" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="118,282,38,38" Name="panskill33" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="69,282,38,38" Name="panskill32" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="167,338,38,38" Name="panskill39" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="216,338,38,38" Name="panskill40" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="118,338,38,38" Name="panskill38" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
               </Form>
               <Form Inherit="" Location="69,338,38,38" Name="panskill37" Show="true">
-                <BackgroundImage Blend="true" DragSewer="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                <BackgroundImage Blend="true" DragSewer="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                 <Button Inherit="" Location="22,23,12,12" Name="btnstradd" Show="true" Sound="ui_normalbt.wav">
-                  <NormalImage Blend="true" File="ui\textures\5.tga" Source="403,88,12,12"/>
-                  <PushedImage Blend="true" File="ui\textures\5.tga" Source="403,114,12,12"/>
-                  <HighlightImage Blend="true" File="ui\textures\5.tga" Source="403,101,12,12"/>
+                  <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="403,88,12,12"/>
+                  <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="403,114,12,12"/>
+                  <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="403,101,12,12"/>
                 </Button>
                 <Button Inherit="" Location="22,3,12,12" Name="lbskilllev" Show="true" Text="2"/>
                 <Button Inherit="" Location="3,3,32,32" Name="btnskill" Show="true"/>
@@ -918,49 +918,49 @@
               <Form Inherit="" Location="0,2,294,18" Name="fmxmm1" Show="true">
                 <Label FontSize="12" Inherit="" Location="25,1,145,18" Name="lbxmm" Show="true" Text="通用技能" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="20,0,6,18" Name="lbwlk1" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="26,0,222,18" Name="lbwlk2" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="430,131,4,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
                 </Label>
                 <Label Inherit="" Location="249,0,6,18" Name="lbwlk3" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
               <Form Inherit="" Location="0,133,272,18" Name="fmxmm2" Show="true">
                 <Label FontSize="12" Inherit="" Location="25,1,145,18" Name="lbxmm" Show="true" Text="表情技能" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="20,0,6,18" Name="lbwlk1" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="26,0,222,18" Name="lbwlk2" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="430,131,4,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
                 </Label>
                 <Label Inherit="" Location="249,0,6,18" Name="lbwlk3" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
               <Form Inherit="" Location="-1,264,272,18" Name="fmxmm3" Show="true">
                 <Label FontSize="12" Inherit="" Location="25,1,145,18" Name="lbxmm" Show="true" Text="天书技能" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="20,0,6,18" Name="lbwlk1" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="26,0,222,18" Name="lbwlk2" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="430,131,4,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
                 </Label>
                 <Label Inherit="" Location="249,0,6,18" Name="lbwlk3" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
               <Form Inherit="" Location="-1,321,272,18" Name="fmxmm4" Show="true">
                 <Label FontSize="12" Inherit="" Location="26,1,145,18" Name="lbxmm" Show="true" Text="法宝技能" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="20,0,6,18" Name="lbwlk1" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="26,0,222,18" Name="lbwlk2" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="430,131,4,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
                 </Label>
                 <Label Inherit="" Location="249,0,6,18" Name="lbwlk3" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
             </Form>
@@ -968,25 +968,25 @@
           <TabItem>
             <CheckButton FontSize="12" Inherit="NewCheckButton1" Location="218,4,57,19" Name="btnother" Show="true" Sound="ui_changepg.wav" Text="生活" TextColor="#fffbff66" TextFont="宋体"/>
             <Form BackgroundColor="#A50E593A" Inherit="" Location="19,23,272,378" Name="fmhemline" Show="true">
-              <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+              <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
               <Form Inherit="" Location="-10,4,272,18" Name="lbtitle" Show="true">
                 <Label FontSize="12" Inherit="" Location="35,1,145,18" Name="lbxmm" Show="true" Text="生活技能" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="30,0,6,18" Name="lbwlk1" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="36,0,222,18" Name="lbwlk2" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="430,131,4,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="430,131,4,18"/>
                 </Label>
                 <Label Inherit="" Location="259,0,6,18" Name="lbwlk3" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
               <ScrollBarV Inherit="Scroll1" Location="245,25,11,342" Name="scrolldialg" Show="true"/>
               <Form Inherit="" Location="249,25,2,342" Name="fmmm" Show="false1">
-                <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="486,148,2,24"/>
+                <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="486,148,2,24"/>
               </Form>
               <Form Inherit="" Location="20,22,224,346" Name="fmother" Show="true">
-                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="469,83,18,20"/>
+                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/new_textures/5.tga" BorderSource="469,83,18,20"/>
                 <Form BackgroundColor="#ff153723" Inherit="" Location="2,2,220,47" Name="panskill01" Show="true">
                   <Button Inherit="" Location="10,7,32,32" Name="btnskill" Show="true"/>
                   <Label FontSize="12" Inherit="" Location="55,11,70,18" Name="lbskillname" Show="true" Text="技能名称" TextFont="宋体"/>
@@ -997,16 +997,16 @@
                   <Label Inherit="" Location="55,30,30,18" Name="lbxmm2" Show="true" Text="EXP"/>
                   <Label FontSize="12" Inherit="" Location="111,17,52,18" Name="lbxmm3" Show="true" Text="" TextFont="宋体"/>
                   <Button FontSize="12" Inherit="" Location="178,10,35,16" Name="lbok" Show="true" Sound="ui_normalbt.wav" Text="遗忘" TextColor="#fffbff66" TextFont="宋体">
-                    <NormalImage Blend="true" File="ui\textures\5.tga" Source="321,65,35,16"/>
-                    <PushedImage Blend="true" File="ui\textures\5.tga" Source="321,99,35,16"/>
-                    <HighlightImage Blend="true" File="ui\textures\5.tga" Source="321,82,36,16"/>
+                    <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="321,65,35,16"/>
+                    <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="321,99,35,16"/>
+                    <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="321,82,36,16"/>
                   </Button>
                   <ProgressBar Inherit="EXPBar" Location="81,36,134,7" Name="barexp" Show="true"/>
                   <Label Inherit="" Location="7,3,38,38" Name="lbbackground" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                   </Label>
                   <Label Inherit="" Location="79,34,138,11" Name="lbflower" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="3,481,138,11"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\2.tga" Source="3,481,138,11"/>
                   </Label>
                 </Form>
                 <Form BackgroundColor="#ff153723" Inherit="" Location="2,51,220,47" Name="panskill02" Show="true">
@@ -1017,18 +1017,18 @@
                   <Label Inherit="" Location="120,11,30,18" Name="lbxmm1" Show="true" Text="等级"/>
                   <Label Inherit="" Location="55,30,30,18" Name="lbxmm2" Show="true" Text="EXP"/>
                   <Button FontSize="12" Inherit="" Location="178,11,35,16" Name="lbok" Show="true" Sound="ui_normalbt.wav" Text="遗忘" TextColor="#fffbff66" TextFont="宋体">
-                    <NormalImage Blend="true" File="ui\textures\5.tga" Source="321,65,35,16"/>
-                    <PushedImage Blend="true" File="ui\textures\5.tga" Source="321,99,35,16"/>
-                    <HighlightImage Blend="true" File="ui\textures\5.tga" Source="321,82,36,16"/>
+                    <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="321,65,35,16"/>
+                    <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="321,99,35,16"/>
+                    <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="321,82,36,16"/>
                   </Button>
                   <ProgressBar Inherit="EXPBar" Location="81,36,134,7" Name="barexp" Show="true"/>
                   <Label Inherit="" Location="7,3,38,38" Name="lbbackground" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                   </Label>
                   <Label FontSize="12" Inherit="" Location="111,17,52,18" Name="lbxmm3" Show="true" Text="" TextFont="宋体"/>
                   <Label Inherit="" Location="10,17,45,18" Name="lbskillinfo2" Show="true" Text="24"/>
                   <Label Inherit="" Location="79,34,138,11" Name="lbflower" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="3,481,138,11"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\2.tga" Source="3,481,138,11"/>
                   </Label>
                 </Form>
                 <Form BackgroundColor="#ff153723" Inherit="" Location="2,100,220,47" Name="panskill03" Show="true">
@@ -1039,18 +1039,18 @@
                   <Label Inherit="" Location="121,11,30,18" Name="lbxmm1" Show="true" Text="等级"/>
                   <Label Inherit="" Location="55,30,30,18" Name="lbxmm2" Show="true" Text="EXP"/>
                   <Button FontSize="12" Inherit="" Location="178,10,35,16" Name="lbok" Show="true" Sound="ui_normalbt.wav" Text="遗忘" TextColor="#fffbff66" TextFont="宋体">
-                    <NormalImage Blend="true" File="ui\textures\5.tga" Source="321,65,35,16"/>
-                    <PushedImage Blend="true" File="ui\textures\5.tga" Source="321,99,35,16"/>
-                    <HighlightImage Blend="true" File="ui\textures\5.tga" Source="321,82,36,16"/>
+                    <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="321,65,35,16"/>
+                    <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="321,99,35,16"/>
+                    <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="321,82,36,16"/>
                   </Button>
                   <ProgressBar Inherit="EXPBar" Location="81,36,134,7" Name="barexp" Show="true"/>
                   <Label Inherit="" Location="7,3,38,38" Name="lbbackground" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                   </Label>
                   <Label FontSize="12" Inherit="" Location="111,17,52,18" Name="lbxmm3" Show="true" Text="" TextFont="宋体"/>
                   <Label Inherit="" Location="9,17,45,18" Name="lbskillinfo2" Show="true" Text="24"/>
                   <Label Inherit="" Location="79,34,138,11" Name="lbflower" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="3,481,138,11"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\2.tga" Source="3,481,138,11"/>
                   </Label>
                 </Form>
                 <Form BackgroundColor="#ff153723" Inherit="" Location="2,149,220,47" Name="panskill04" Show="true">
@@ -1061,18 +1061,18 @@
                   <Label Inherit="" Location="121,11,30,18" Name="lbxmm1" Show="true" Text="等级"/>
                   <Label Inherit="" Location="55,30,30,18" Name="lbxmm2" Show="true" Text="EXP"/>
                   <Button FontSize="12" Inherit="" Location="178,11,35,16" Name="lbok" Show="true" Sound="ui_normalbt.wav" Text="遗忘" TextColor="#fffbff66" TextFont="宋体">
-                    <NormalImage Blend="true" File="ui\textures\5.tga" Source="321,65,35,16"/>
-                    <PushedImage Blend="true" File="ui\textures\5.tga" Source="321,99,35,16"/>
-                    <HighlightImage Blend="true" File="ui\textures\5.tga" Source="321,82,36,16"/>
+                    <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="321,65,35,16"/>
+                    <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="321,99,35,16"/>
+                    <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="321,82,36,16"/>
                   </Button>
                   <ProgressBar Inherit="EXPBar" Location="81,36,134,7" Name="barexp" Show="true"/>
                   <Label Inherit="" Location="7,3,38,38" Name="lbbackground" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                   </Label>
                   <Label FontSize="12" Inherit="" Location="111,17,52,18" Name="lbxmm3" Show="true" Text="" TextFont="宋体"/>
                   <Label Inherit="" Location="9,17,45,18" Name="lbskillinfo2" Show="true" Text="24"/>
                   <Label Inherit="" Location="79,34,138,11" Name="lbflower" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="3,481,138,11"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\2.tga" Source="3,481,138,11"/>
                   </Label>
                 </Form>
                 <Form BackgroundColor="#ff153723" Inherit="" Location="2,198,220,47" Name="panskill05" Show="true">
@@ -1083,18 +1083,18 @@
                   <Label Inherit="" Location="122,11,30,18" Name="lbxmm1" Show="true" Text="等级"/>
                   <Label Inherit="" Location="55,30,30,18" Name="lbxmm2" Show="true" Text="EXP"/>
                   <Button FontSize="12" Inherit="" Location="178,11,35,16" Name="lbok" Show="true" Sound="ui_normalbt.wav" Text="遗忘" TextColor="#fffbff66" TextFont="宋体">
-                    <NormalImage Blend="true" File="ui\textures\5.tga" Source="321,65,35,16"/>
-                    <PushedImage Blend="true" File="ui\textures\5.tga" Source="321,99,35,16"/>
-                    <HighlightImage Blend="true" File="ui\textures\5.tga" Source="321,82,36,16"/>
+                    <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="321,65,35,16"/>
+                    <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="321,99,35,16"/>
+                    <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="321,82,36,16"/>
                   </Button>
                   <ProgressBar Inherit="EXPBar" Location="81,36,134,7" Name="barexp" Show="true"/>
                   <Label Inherit="" Location="7,3,38,38" Name="lbbackground" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                   </Label>
                   <Label FontSize="12" Inherit="" Location="111,16,52,18" Name="lbxmm3" Show="true" Text="" TextFont="宋体"/>
                   <Label Inherit="" Location="9,17,45,18" Name="lbskillinfo2" Show="true" Text="24"/>
                   <Label Inherit="" Location="79,34,138,11" Name="lbflower" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="3,481,138,11"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\2.tga" Source="3,481,138,11"/>
                   </Label>
                 </Form>
                 <Form BackgroundColor="#ff153723" Inherit="" Location="2,247,220,47" Name="panskill06" Show="true">
@@ -1105,18 +1105,18 @@
                   <Label Inherit="" Location="122,9,30,18" Name="lbxmm1" Show="true" Text="等级"/>
                   <Label Inherit="" Location="55,30,30,18" Name="lbxmm2" Show="true" Text="EXP"/>
                   <Button FontSize="12" Inherit="" Location="178,10,35,16" Name="lbok" Show="true" Sound="ui_normalbt.wav" Text="遗忘" TextColor="#fffbff66" TextFont="宋体">
-                    <NormalImage Blend="true" File="ui\textures\5.tga" Source="321,65,35,16"/>
-                    <PushedImage Blend="true" File="ui\textures\5.tga" Source="321,99,35,16"/>
-                    <HighlightImage Blend="true" File="ui\textures\5.tga" Source="321,82,36,16"/>
+                    <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="321,65,35,16"/>
+                    <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="321,99,35,16"/>
+                    <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="321,82,36,16"/>
                   </Button>
                   <ProgressBar Inherit="EXPBar" Location="81,36,134,7" Name="barexp" Show="true"/>
                   <Label Inherit="" Location="7,3,38,38" Name="lbbackground" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                   </Label>
                   <Label FontSize="12" Inherit="" Location="111,17,52,18" Name="lbxmm3" Show="true" Text="" TextFont="宋体"/>
                   <Label Inherit="" Location="9,17,45,18" Name="lbskillinfo2" Show="true" Text="24"/>
                   <Label Inherit="" Location="79,34,138,11" Name="lbflower" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="3,481,138,11"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\2.tga" Source="3,481,138,11"/>
                   </Label>
                 </Form>
                 <Form BackgroundColor="#ff153723" Inherit="" Location="2,296,220,47" Name="panskill07" Show="true">
@@ -1127,18 +1127,18 @@
                   <Label Inherit="" Location="122,10,30,18" Name="lbxmm1" Show="true" Text="等级"/>
                   <Label Inherit="" Location="55,30,30,18" Name="lbxmm2" Show="true" Text="EXP"/>
                   <Button FontSize="12" Inherit="" Location="179,10,35,16" Name="lbok" Show="true" Sound="ui_normalbt.wav" Text="遗忘" TextColor="#fffbff66" TextFont="宋体">
-                    <NormalImage Blend="true" File="ui\textures\5.tga" Source="321,65,35,16"/>
-                    <PushedImage Blend="true" File="ui\textures\5.tga" Source="321,99,35,16"/>
-                    <HighlightImage Blend="true" File="ui\textures\5.tga" Source="321,82,36,16"/>
+                    <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="321,65,35,16"/>
+                    <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="321,99,35,16"/>
+                    <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="321,82,36,16"/>
                   </Button>
                   <ProgressBar Inherit="EXPBar" Location="81,36,134,7" Name="barexp" Show="true"/>
                   <Label Inherit="" Location="7,3,38,38" Name="lbbackground" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="472,1,38,39"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\1.tga" Source="472,1,38,39"/>
                   </Label>
                   <Label FontSize="12" Inherit="" Location="111,17,52,18" Name="lbxmm3" Show="true" Text="" TextFont="宋体"/>
                   <Label Inherit="" Location="9,17,45,18" Name="lbskillinfo2" Show="true" Text="24"/>
                   <Label Inherit="" Location="79,34,138,11" Name="lbflower" Show="true">
-                    <BackgroundImage Blend="true" File="ui\textures\2.tga" Source="3,481,138,11"/>
+                    <BackgroundImage Blend="true" File="ui\new_textures\2.tga" Source="3,481,138,11"/>
                   </Label>
                 </Form>
               </Form>
@@ -1147,13 +1147,13 @@
         </TabCtrl>
       </Form>
       <Label Inherit="" Location="0,-1,310,50" Name="lbborder1" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,1,310,50"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,1,310,50"/>
       </Label>
       <Label BackgroundColor="#A016712C" Inherit="" Location="0,50,310,381" Name="lbborder2" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,53,310,10"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,53,310,10"/>
       </Label>
       <Label Inherit="" Location="0,432,310,23" Name="lbborder3" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,65,310,23"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,65,310,23"/>
       </Label>
       <Anchors>
         <Anchor offset="-295,0" point="CENTERV"/>

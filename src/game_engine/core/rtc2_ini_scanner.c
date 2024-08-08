@@ -510,28 +510,36 @@ char* azini_scanner_get_filename()
 	return gIniFilename;
 }
 
-int azini_open_file_for_scanning(s_azoth_file* pFile)
-{
-	if (pFile->bInitFilename==0)
-	{
-		return 0;
-	}
-	if (pFile->pArc==0)
-	{
-		pFile->pArc = ArchiveOpen(pFile->szFilename, 1);
-		if (pFile->pArc==0)
-		{
-			return 0;
-		}
-	}
+int azini_open_file_for_scanning(s_azoth_file* pFile) {
+    // 检查文件名是否已初始化。如果未初始化，则返回 0 表示失败。
+    if (pFile->bInitFilename == 0) {
+        return 0;
+    }
 
-	yyin = (FILE*)pFile->pArc;
-	gIniFilename = pFile->szFilename;
-	azini_scanner_init();
-	yy_switch_to_buffer(yy_create_buffer(yyin, YY_BUF_SIZE));
+    // 如果文件指针为空，则尝试打开文件。
+    if (pFile->pArc == 0) {
+        pFile->pArc = ArchiveOpen(pFile->szFilename, 1);  // 调用 ArchiveOpen 打开文件
+        if (pFile->pArc == 0)                             // 如果文件打开失败，则返回 0
+        {
+            return 0;
+        }
+    }
 
-	return 1;
+    // 设置全局的输入文件流指针 yyin。
+    yyin = (FILE*)pFile->pArc;
+
+    // 设置全局的文件名指针。
+    gIniFilename = pFile->szFilename;
+
+    // 初始化扫描器。
+    azini_scanner_init();
+
+    // 切换到新的扫描缓冲区。
+    yy_switch_to_buffer(yy_create_buffer(yyin, YY_BUF_SIZE));
+
+    return 1;  // 返回 1 表示成功
 }
+
 
 void azini_close_file(s_azoth_file* pFile)
 {

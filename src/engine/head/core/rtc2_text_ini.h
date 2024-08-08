@@ -2,7 +2,7 @@
 * @file rtc2_text_ini.h INIÎÄ¼þ²Ù×÷
 * @author janhail
 */
-
+#pragma once
 namespace rt2_core {
 
 /*------------------------------------------------------------------------

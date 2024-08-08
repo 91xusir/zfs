@@ -6,7 +6,7 @@
         <Column Inherit="" Text="" Width="17"/>
         <Column Alignment="left" Inherit="" Text="" Width="76"/>
       </ListBox>
-      <BackgroundImage Blend="true" File="ui\textures\10.tga" Source="92,422,114,84"/>
+      <BackgroundImage Blend="true" File="ui\new_textures\10.tga" Source="92,422,114,84"/>
     </Form>
   </Layer>
 </Ui>

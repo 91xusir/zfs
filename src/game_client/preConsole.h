@@ -42,6 +42,10 @@ class preConsole {
    public:
     static void OpenConsole();
     static void CloseConsole();
+    // ÷ÿ‘ÿ << ≤Ÿ◊˜∑˚
+    friend preConsole& operator<<(preConsole& console, const std::string& message);
+    friend preConsole& operator<<(preConsole& console, const char* message);
+    friend preConsole& operator<<(preConsole& console, std::ostream& (*func)(std::ostream&));
 
     static void logInfo(const std::string& message);
     static void logWarn(const std::string& message, const std::string& file, int line);
@@ -49,4 +53,7 @@ class preConsole {
 
     static void log(const std::string& levelStr, const std::string& message, const WORD& color,
                     const std::string& file = "", int line = 0);
+    void        clearBuffer();
+   private:
+    std::string buffer;
 };

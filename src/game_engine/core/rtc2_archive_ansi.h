@@ -238,28 +238,31 @@ public:
         if(access(pFilename , 0)== -1) return FALSE;
         return TRUE;
     }
-	RtArchive* CreateFileReader( const char* pFilename, DWORD dwFlags)
-	{
-        if (stricmp(pFilename, "stdin")==0)
-        {
-            //freopen("CONIN$","r+t",stdin);
+
+    RtArchive* CreateFileReader(const char* pFilename, DWORD dwFlags) {
+        // 检查文件名是否为 "stdin"，如果是，则创建一个 RtArchiveFileReader 对象读取标准输入
+        if (stricmp(pFilename, "stdin") == 0) {
+            // 创建 RtArchiveFileReader 对象读取标准输入，设置缓冲区大小为 1024
             return RT_NEW RtArchiveFileReader(stdin, 1024);
-        }else
-        {
-            char szFlag[3] = "rb";
-		    FILE* fp = fopen(pFilename,szFlag);
-		    if( !fp )
-		    {
-                if( (dwFlags & RtFileManager::FR_NoFail)==0 )
-                {
+        } else {
+            char szFlag[3] = "rb";  // 文件打开模式，"rb" 表示以二进制模式读取文件
+            // 打开文件
+            FILE* fp = fopen(pFilename, szFlag);
+            if (!fp)  // 如果文件打开失败
+            {
+                // 如果未设置 "FR_NoFail" 标志，则记录错误信息
+                if ((dwFlags & RtFileManager::FR_NoFail) == 0) {
                     RtCoreLog().Error("RtFileManagerAnsi: fopen Failed: %s\n", pFilename);
                 }
-			    return NULL;
-		    }
-		    fseek( fp, 0, SEEK_END );
-		    return RT_NEW RtArchiveFileReader(fp, ftell(fp));
+                return NULL;  // 返回 NULL 表示打开文件失败
+            }
+            // 移动文件指针到文件末尾，以确定文件大小
+            fseek(fp, 0, SEEK_END);
+            // 创建 RtArchiveFileReader 对象以读取文件，并返回该对象
+            return RT_NEW RtArchiveFileReader(fp, ftell(fp));
         }
-	}
+    }
+
 	RtArchive* CreateFileWriter( const char* pPackageName, const char* pFilename, DWORD dwFlags)
 	{
         if (stricmp(pFilename, "stdout")==0)

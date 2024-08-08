@@ -3,17 +3,17 @@
   <Layer Name="layworld" Show="true">
     <Form Alignment="center" EscapeHide="true" Inherit="VoidTitleBarForm1" Location="97,202,250,155" Name="fmspeaker" Show="false" Text="玄天号角">
       <EditBox Inherit="" Location="26,17,200,75" Name="ebcontent" Show="true">
-        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
       </EditBox>
       <Button FontSize="12" Inherit="" Location="38,105,59,19" Name="btntok" Show="true" Sound="ui_normalbt.wav" Text="确定" TextColor="#fffbfe93" TextFont="宋体">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="384,2,58,20"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="384,44,57,19"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="384,23,57,19"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="384,2,58,20"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="384,44,57,19"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="384,23,57,19"/>
       </Button>
       <Button FontSize="12" Inherit="" Location="153,105,59,19" Name="btntcancel" Show="true" Sound="ui_normalbt.wav" Text="取消" TextColor="#fffbfe93" TextFont="宋体">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="384,2,58,20"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="384,44,57,19"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="384,23,57,19"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="384,2,58,20"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="384,44,57,19"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="384,23,57,19"/>
       </Button>
       <Anchors>
         <Anchor offset="-290,0" point="CENTERV"/>

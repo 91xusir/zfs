@@ -151,7 +151,7 @@
     <ClCompile>
       <AdditionalOptions>/Oy- %(AdditionalOptions)</AdditionalOptions>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)frame;$(ProjectDir)game;$(ProjectDir)ui;$(ProjectDir)luasource\include;$(ProjectDir)luasource\src;$(ProjectDir)..\shared;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include\sdl;$(ProjectDir)..\sdk\include\dxsdk;$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>CPPHTTPLIB_OPENSSL_SUPPORT;WIN32_LEAN_AND_MEAN;NOMINMAX;_HAS_STD_BYTE=0;_PREVIEW;WIN32;NDEBUG;_WINDOWS;USE_D3DX9;LUA_OPNAMES;USE_D3D9;GAME_CLIENT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -401,6 +401,7 @@
     <ClInclude Include="..\shared\item_pshop.h" />
     <ClInclude Include="..\shared\item_trade.h" />
     <ClInclude Include="FpsLimit.h" />
+    <ClInclude Include="GlobalConfig.h" />
     <ClInclude Include="HttpReq.h" />
     <ClInclude Include="PreConsole.h" />
     <ClInclude Include="LyyUtils.h" />
@@ -623,6 +624,7 @@
     <ClCompile Include="..\shared\item_pshop.cpp" />
     <ClCompile Include="..\shared\item_trade.cpp" />
     <ClCompile Include="FpsLimit.cpp" />
+    <ClCompile Include="GlobalConfig.cpp" />
     <ClCompile Include="HttpReq.cpp" />
     <ClCompile Include="iob_func.cpp" />
     <ClCompile Include="PreConsole.cpp" />

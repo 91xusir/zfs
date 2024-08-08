@@ -80,28 +80,28 @@
             <Button Inherit="AddButton" Location="58,197,12,12" Name="btnwisadd" Show="true"/>
             <Button Inherit="AddButton" Location="58,169,12,12" Name="btnhitadd" Show="true"/>
             <Button Inherit="AddButton" Location="58,155,12,12" Name="btnhealadd" Show="true"/>
-            <Button HoverBlend="true" HoverImage="ui/textures/ui_strpower.tga" Inherit="" Location="82,142,14,14" Name="btnstrpower" NormalBlend="true" NormalImage="ui/textures/ui_strpower.tga" PressedBlend="true" PressedImage="ui/textures/ui_strpower.tga" Show="true">
-              <NormalImage Blend="true" File="ui/textures/ui_strpower.tga" Source="0,0,16,16"/>
+            <Button HoverBlend="true" HoverImage="ui/new_textures/ui_strpower.tga" Inherit="" Location="82,142,14,14" Name="btnstrpower" NormalBlend="true" NormalImage="ui/new_textures/ui_strpower.tga" PressedBlend="true" PressedImage="ui/new_textures/ui_strpower.tga" Show="true">
+              <NormalImage Blend="true" File="ui/new_textures/ui_strpower.tga" Source="0,0,16,16"/>
               <Hint Text="力量强度"/>
             </Button>
             <Label Location="102,140,78,16" Name="lbstrpowernum" Text="150" TextColor=""/>
-            <Button HoverImage="ui/textures/ui_dexpower.tga" Inherit="" Location="82,184,14,14" Name="btndexpower" NormalImage="ui/textures/ui_dexpower.tga" PressedImage="ui/textures/ui_dexpower.tga" Show="true">
-              <NormalImage Blend="true" File="ui/textures/ui_dexpower.tga" Source="0,0,16,16"/>
+            <Button HoverImage="ui/new_textures/ui_dexpower.tga" Inherit="" Location="82,184,14,14" Name="btndexpower" NormalImage="ui/new_textures/ui_dexpower.tga" PressedImage="ui/new_textures/ui_dexpower.tga" Show="true">
+              <NormalImage Blend="true" File="ui/new_textures/ui_dexpower.tga" Source="0,0,16,16"/>
               <Hint Text="敏捷强度"/>
             </Button>
             <Label Location="102,182,78,16" Name="lbdexpowernum" Text="151" TextColor=""/>
-            <Button HoverImage="ui/textures/ui_intpower.tga" Inherit="" Location="82,197,14,14" Name="btnintpower" NormalImage="ui/textures/ui_intpower.tga" PressedImage="ui/textures/ui_intpower.tga" Show="true">
-              <NormalImage Blend="true" File="ui/textures/ui_intpower.tga" Source="0,0,16,16"/>
+            <Button HoverImage="ui/new_textures/ui_intpower.tga" Inherit="" Location="82,197,14,14" Name="btnintpower" NormalImage="ui/new_textures/ui_intpower.tga" PressedImage="ui/new_textures/ui_intpower.tga" Show="true">
+              <NormalImage Blend="true" File="ui/new_textures/ui_intpower.tga" Source="0,0,16,16"/>
               <Hint Text="智力强度"/>
             </Button>
             <Label Location="102,195,78,16" Name="lbintpowernum" Text="1520" TextColor=""/>
-            <Button HoverImage="ui/textures/ui_hitpower.tga" Inherit="" Location="82,170,14,14" Name="btnhitpower" NormalImage="ui/textures/ui_hitpower.tga" PressedImage="ui/textures/ui_hitpower.tga" Show="true">
-              <NormalImage Blend="true" File="ui/textures/ui_hitpower.tga" Source="0,0,16,16"/>
+            <Button HoverImage="ui/new_textures/ui_hitpower.tga" Inherit="" Location="82,170,14,14" Name="btnhitpower" NormalImage="ui/new_textures/ui_hitpower.tga" PressedImage="ui/new_textures/ui_hitpower.tga" Show="true">
+              <NormalImage Blend="true" File="ui/new_textures/ui_hitpower.tga" Source="0,0,16,16"/>
               <Hint Text="精准强度"/>
             </Button>
             <Label Location="102,168,78,16" Name="lbhitpowernum" Text="153" TextColor=""/>
-            <Button HoverImage="ui/textures/ui_conpower.tga" Inherit="" Location="82,155,14,14" Name="btnconpower" NormalImage="ui/textures/ui_conpower.tga" PressedImage="ui/textures/ui_conpower.tga" Show="true">
-              <NormalImage Blend="true" File="ui/textures/ui_conpower.tga" Source="0,0,16,16"/>
+            <Button HoverImage="ui/new_textures/ui_conpower.tga" Inherit="" Location="82,155,14,14" Name="btnconpower" NormalImage="ui/new_textures/ui_conpower.tga" PressedImage="ui/new_textures/ui_conpower.tga" Show="true">
+              <NormalImage Blend="true" File="ui/new_textures/ui_conpower.tga" Source="0,0,16,16"/>
               <Hint Text="体质强度"/>
             </Button>
             <Label Location="102,154,78,16" Name="lbconpowernum" Text="154" TextColor=""/>
@@ -181,63 +181,63 @@
               <Label Location="5,3,100,20" Name="1" Text="心情动作"/>
             </Form>
             <Button DragServer="true" Inherit="" Location="34,40,34,34" Name="btntrade">
-              <BackgroundImage Blend="true" File="ui/textures/trade.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/trade.tga"/>
               <Hint Text="交易"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="78,40,34,34" Name="btnfriend">
-              <BackgroundImage Blend="true" File="ui/textures/friend.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/friend.tga"/>
               <Hint Text="好友"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="122,40,34,34" Name="btnguild">
-              <BackgroundImage Blend="true" File="ui/textures/country.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/country.tga"/>
               <Hint Text="诸侯"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="166,40,34,34" Name="btnshop">
-              <BackgroundImage Blend="true" File="ui/textures/pshop.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/pshop.tga"/>
               <Hint Text="商店"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="34,100,34,34" Name="btninvite">
-              <BackgroundImage Blend="true" File="ui/textures/invite.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/invite.tga"/>
               <Hint Text="邀请"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="78,100,34,34" Name="btnleave">
-              <BackgroundImage Blend="true" File="ui/textures/teamleave.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/teamleave.tga"/>
               <Hint Text="脱离"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="122,100,34,34" Name="btndivid">
-              <BackgroundImage Blend="true" File="ui/textures/teamkick.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/teamkick.tga"/>
               <Hint Text="驱逐"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="166,100,34,34" Name="btnteamclose">
-              <BackgroundImage Blend="true" File="ui/textures/teamover.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/teamover.tga"/>
               <Hint Text="解散"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="34,160,34,34" Name="btnwell">
-              <BackgroundImage Blend="true" File="ui/textures/well.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/well.tga"/>
               <Hint Text="爽"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="78,160,34,34" Name="btnsmile">
-              <BackgroundImage Blend="true" File="ui/textures/smile.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/smile.tga"/>
               <Hint Text="笑"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="122,160,34,34" Name="btnnod">
-              <BackgroundImage Blend="true" File="ui/textures/nod.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/nod.tga"/>
               <Hint Text="同意"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="166,160,34,34" Name="btnno">
-              <BackgroundImage Blend="true" File="ui/textures/no.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/no.tga"/>
               <Hint Text="否定"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="34,200,34,34" Name="btncry">
-              <BackgroundImage Blend="true" File="ui/textures/cry.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/cry.tga"/>
               <Hint Text="哭泣"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="78,200,34,34" Name="btncheer">
-              <BackgroundImage Blend="true" File="ui/textures/cheer.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/cheer.tga"/>
               <Hint Text="欢呼"/>
             </Button>
             <Button DragServer="true" Inherit="" Location="122,200,34,34" Name="btnwave">
-              <BackgroundImage Blend="true" File="ui/textures/wave.tga"/>
+              <BackgroundImage Blend="true" File="ui/new_textures/wave.tga"/>
               <Hint Text="挥手"/>
             </Button>
           </Form>

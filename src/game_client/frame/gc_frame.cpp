@@ -77,7 +77,8 @@ bool CGameClientFrame::OnDeviceInit() {
 
     GetDevice()->GetTextMgr()->AddTextSearchPath("creature/texture");
     GetDevice()->GetTextMgr()->AddTextSearchPath("scene/texture");
-    GetDevice()->GetTextMgr()->AddTextSearchPath("ui_texture");
+    //GetDevice()->GetTextMgr()->AddTextSearchPath("ui_texture");
+    GetDevice()->GetTextMgr()->AddTextSearchPath("ui/ui_texture");
     GetDevice()->GetTextMgr()->AddTextSearchPath(R(RES_LANGUAGE_TEXTURE_PATH));
     GetDevice()->GetTextMgr()->AddTextSearchPath("scene/texture/sm");
 

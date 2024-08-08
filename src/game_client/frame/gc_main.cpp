@@ -4,9 +4,9 @@
 //#include "gc_log_msg.h"            // 包含游戏日志消息相关的头文件
 #include "filepack/memory_file.h"  // 包含文件打包和内存文件相关的头文件
 #include "gc_login.h"              // 包含游戏登录相关的头文件
+#include "../GlobalConfig.h"
 //#include "resource.h"              // 包含资源相关的头文件
 //#include <CrashReport/Export.h>    // 包含崩溃报告导出功能相关的头文件
-
 // 全局场景指针
 extern RtScene* g_pScene;
 
@@ -252,8 +252,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         CRtPackAndAnsiManager* pAllManager =
             RT_NEW             CRtPackAndAnsiManager(pPackManager, &RtCoreFile());
         RtCore::Instance().pFileManager = pAllManager;
-
-    
 
         //游戏的最开始的配置文件
         string ErrorString;

@@ -72,8 +72,8 @@ typedef HANDLE              RtThreadHandle;
 -   函数名转换 (把一些不同平台有相同功能，但是名字不同的函数名进行转换)
 -----------------------------------------------------------------------------*/
 //#define     snprintf                _snprintf //vc2015后已经直接支持snprintf
-#define     snscanf                 _snscanf
-#define     vsnprintf               _vsnprintf
+//#define     snscanf                 _snscanf
+//#define     vsnprintf               _vsnprintf
 
 //#if (_MSC_VER >= 1400)	//1000 VC5.0 1200 VC6.0 1201 EVC4.2 1300 VC2002 1310 VC2003 1400 VC2005
 //#define     EXT_SPACE               stdext

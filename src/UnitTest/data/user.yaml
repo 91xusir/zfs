@@ -1,0 +1,57 @@
+graph:
+  fullscreen: 0
+  width: 1024
+  height: 768
+  color: 32
+  fsaa: 1
+  EdgeAntialias: 0
+  posteffect: 1
+  objeffect: 1
+  MultiSampleWnd: 0
+  MultiSampleFsc: 0
+  LockFps: 30
+  Vsync: 0
+  TextureQuality: 0
+  GeometryQuality: 0
+  texture: 0
+  effect: "1"
+  shadow: "1"
+  envref: "1"
+  objref: "1"
+  capture: "1"
+audio:
+  music: "75"
+  BackGroundMusicIsSlience: "0"
+  sound: "75"
+  SoundIsSlience: "0"
+  use3d: "1"
+login:
+  username: "admin2"
+  password: "123456"
+person:
+  input: "ENTER_KEY_TO_CHAT"
+  show: "NORMAL_SHOW"
+setting_show:
+  ShowSelfName: "1"
+  ShowBlood: "0"
+  ShowDegree: "1"
+  ShowDamage: "1"
+  ShowUnionName: "1"
+  ShowEXP: "1"
+  ShowOtherName: "1"
+  ShowNPCName: "1"
+  OtherSpeak: "1"
+  ShowActionName: "1"
+  ShowSelfSpeak: "1"
+  ShowSkillShotcut: "0"
+setting_refuse:
+  RefuseTeam: "0"
+  RefuseAction: "0"
+  RefuseMail: "0"
+  RefuseDuel: "0"
+  RefuseFriend: "0"
+  RefuseMonster: "0"
+account:
+  save: "1"
+game:
+  log: "1" 

@@ -4,9 +4,9 @@
     <Form Inherit="" Location="187,171,635,454" Movable="true" Name="fmhelpsys" Show="false">
       <Label Alignment="center" FontSize="18" Inherit="" Location="70,2,495,18" Name="lbname" Show="true" Text="ÓÎÏ·°ïÖú" TextColor="#ffdfde9b" TextFont="Á¥Êé"/>
       <CloseButton Blend="true" Location="20,20,20,20" Name="$hide" Show="true" Text="" padding="0,25,5,0">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="360,65,18,17"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="360,103,18,17"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="360,84,18,17"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="360,65,18,17"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="360,103,18,17"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="360,84,18,17"/>
       </CloseButton>
       <Form Inherit="panTitle" Location="0,-30,502,32" Name="panTitle"/>
       <Tree AutoScrollV="true" Inherit="ListBox" Item1="first" Location="16,55,160,380" Name="treelist" Title="ui_texture/tree_icon1.bmp">
@@ -189,30 +189,30 @@
 		</Node>
       </Tree>
       <Label BackgroundColor="#ff153723" Inherit="" Location="13,51,166,388" Name="1116" Show="true">
-        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
       </Label>
       <Form Anchor="none" BackgroundColor="#ff165c38" Inherit="" Location="187,51,430,388" Name="fmhelpright">
-        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+        <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
         <HtmlView Dock="fill" Inherit="" Location="0,0,430,388" Name="viewright"/>
-        <BackgroundImage Blend="true" File="ui/textures/12.tga"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/12.tga"/>
       </Form>
       <Label Location="0,-1,317,50" Name="tl">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="1,92,318,51"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="1,92,318,51"/>
       </Label>
       <Label Location="318,-1,317,50" Name="tr">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="2,147,318,51"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="2,147,318,51"/>
       </Label>
       <Label Inherit="" Location="0,431,318,23" Name="bl" Show="true">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="0,199,319,25"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="0,199,319,25"/>
       </Label>
       <Label Inherit="" Location="317,430,318,23" Name="br" Show="true">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="1,224,319,23"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="1,224,319,23"/>
       </Label>
       <Label Inherit="" Location="1,50,4,382" Name="cl" Show="true">
-        <BackgroundImage File="ui/textures/5.tga" Source="2,54,6,9"/>
+        <BackgroundImage File="ui/new_textures/5.tga" Source="2,54,6,9"/>
       </Label>
       <Label Inherit="" Location="630,50,4,380" Name="cr" Show="true">
-        <BackgroundImage File="ui/textures/5.tga" Source="306,53,7,9"/>
+        <BackgroundImage File="ui/new_textures/5.tga" Source="306,53,7,9"/>
       </Label>
       <Label BackgroundColor="#a31e6946" Inherit="" Location="6,431,311,1" Name="bt" Show="true"/>
       <Label BackgroundColor="#A016712C" Location="6,50,623,380" Name="b"/>

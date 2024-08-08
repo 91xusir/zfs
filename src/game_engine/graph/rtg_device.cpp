@@ -1,5 +1,6 @@
 
 #include "rtg_graph_inter.h"
+#include <core/rtc2_text_ini.h>
 
 namespace rt_graph {
 

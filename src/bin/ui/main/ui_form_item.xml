@@ -6,125 +6,125 @@
       <Label Inherit="" Location="70,419,80,16" Name="lbgoldnum" Show="true" Text="000000000"/>
       <Button FontSize="12" Inherit="NewButton1" Location="191,416,60,21" Name="btnupdate" Text="整 理" TextColor="#fffbff66" TextFont="宋体"/>
       <Button Location="265,416,25,28" Name="btnTrash">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="32,428,25,28"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="61,428,25,28"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="38,466,25,28"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="32,428,25,28"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="61,428,25,28"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="38,466,25,28"/>
         <Hint Text="把东西拉到这里可以销毁"/>
       </Button>
       <Button Inherit="" Location="16,375,11,11" Name="btnitemleft" Show="true" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="127,473,9,9"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="147,473,9,9"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="137,473,9,9"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="127,473,9,9"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="147,473,9,9"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="137,473,9,9"/>
       </Button>
       <Button Inherit="" Location="16,389,11,11" Name="btnitemright" Show="true" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="127,483,9,9"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="147,483,9,9"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="137,483,9,9"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="127,483,9,9"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="147,483,9,9"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="137,483,9,9"/>
       </Button>
       <Label Inherit="" Location="0,-1,310,50" Name="lbborder1" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,1,310,50"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,1,310,50"/>
       </Label>
       <CloseButton Location="284,14,20,20" padding="0,22,5,0">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <Label BackgroundColor="#A016712C" Inherit="" Location="0,50,310,381" Name="lbborder2" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,53,310,10"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,53,310,10"/>
         <Label Inherit="" Location="65,365,6,22" Name="lbmoney1" Show="true">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
         </Label>
         <Label Inherit="" Location="72,365,92,22" Name="lbmoney2" Show="true">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
         </Label>
         <Label Inherit="" Location="165,365,6,22" Name="lbmoney3" Show="true">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,6,22"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,6,22"/>
         </Label>
         <Label Inherit="" Location="34,364,29,27" Name="lbmoney4" Show="true">
-          <BackgroundImage Blend="true" File="ui\textures\10.tga" Source="113,316,29,28"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\10.tga" Source="113,316,29,28"/>
         </Label>
       </Label>
       <Label Inherit="" Location="0,432,310,23" Name="lbborder3" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,65,310,23"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,65,310,23"/>
       </Label>
       <TabCtrl Dock="fill" Location="2,247,305,165" Name="tabitem">
         <TabItem>
           <CheckButton FontSize="12" Inherit="" Location="10,5,19,57" Name="btnnormalitem" Show="true" Sound="ui_changepg.wav">
-            <NormalImage Blend="true" File="ui\textures\5.tga" Source="127,251,19,57"/>
-            <PushedImage Blend="true" File="ui\textures\5.tga" Source="193,251,19,57"/>
-            <HighlightImage Blend="true" File="ui\textures\5.tga" Source="149,251,19,57"/>
-            <CheckedImage Blend="true" File="ui\textures\5.tga" Source="171,251,19,57"/>
+            <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="127,251,19,57"/>
+            <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="193,251,19,57"/>
+            <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="149,251,19,57"/>
+            <CheckedImage Blend="true" File="ui\new_textures\5.tga" Source="171,251,19,57"/>
           </CheckButton>
           <Form FadeIn="true" Inherit="" Location="31,-1,270,164" Name="fmnormalitem">
-            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,20,20"/>
+            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,20,20"/>
             <Button BackgroundColor="#00000000" BorderCorlor="#227b6129" BorderSize="2" Name="itembutton" Show="1">
-              <NormalImage Blend="true" File="ui\textures\5.tga" Source="119,472,38,39"/>
+              <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="119,472,38,39"/>
             </Button>
           </Form>
         </TabItem>
         <TabItem>
           <CheckButton FontSize="12" Inherit="" Location="10,64,19,57" Name="btntaskitem" Show="true" Sound="ui_changepg.wav">
-            <NormalImage Blend="true" File="ui\textures\5.tga" Source="215,251,19,57"/>
-            <PushedImage Blend="true" File="ui\textures\5.tga" Source="281,251,19,57"/>
-            <HighlightImage Blend="true" File="ui\textures\5.tga" Source="237,251,19,57"/>
-            <CheckedImage Blend="true" File="ui\textures\5.tga" Source="259,251,19,57"/>
+            <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="215,251,19,57"/>
+            <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="281,251,19,57"/>
+            <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="237,251,19,57"/>
+            <CheckedImage Blend="true" File="ui\new_textures\5.tga" Source="259,251,19,57"/>
           </CheckButton>
           <Form Inherit="" Location="31,-1,270,164" Name="fmtaskitem" Show="true">
-            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,20,20"/>
+            <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,20,20"/>
             <Button BackgroundColor="#00000000" BorderCorlor="#227b6129" BorderSize="2" Name="itembutton" Show="1">
-              <NormalImage Blend="true" File="ui\textures\5.tga" Source="119,472,38,39"/>
+              <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="119,472,38,39"/>
             </Button>
           </Form>
         </TabItem>
       </TabCtrl>
       <Form BackgroundTransparent="0.75" Location="0,40,310,206" Name="panItem">
         <Button Location="221,9,31,31" Name="btnNecklace">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="41,355,38,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="41,355,38,39"/>
         </Button>
         <Button Location="263,126,31,31" Name="btnCharm">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="80,433,38,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="80,433,38,39"/>
         </Button>
         <Button Location="19,165,31,31" Name="btnRightHand">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="119,472,39,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="119,472,39,39"/>
         </Button>
         <Button Location="19,48,31,31" Name="btnGlove">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,394,39,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,394,39,39"/>
         </Button>
         <Button Location="19,9,31,31" Name="btnCloth">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,355,39,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,355,39,39"/>
         </Button>
         <Button Location="91,-450,0,0" Name="btnPants">
           <BackgroundImage Blend="true" File="" Source="110,135,34,34"/>
         </Button>
         <Button Location="221,48,31,31" Name="btnRing">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="41,394,38,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="41,394,38,39"/>
         </Button>
         <Button Location="221,165,31,31" Name="btnLeftHand">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="119,472,38,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="119,472,38,39"/>
         </Button>
         <Button Location="19,126,31,31" Name="btnShoes">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,433,39,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,433,39,39"/>
         </Button>
         <Button Location="263,165,31,31" Name="btnFly">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="80,472,38,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="80,472,38,39"/>
         </Button>
         <Button Location="263,87,31,31" Name="btnFashion">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,472,39,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,472,39,39"/>
         </Button>
         <Button Location="263,9,31,31" Name="btnTrump">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="80,355,38,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="80,355,38,39"/>
         </Button>
         <Button Location="263,48,31,31" Name="btnRing2">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="41,394,38,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="41,394,38,39"/>
         </Button>
         <Button Location="221,87,31,31" Name="btnBook">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="41,433,38,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="41,433,38,39"/>
         </Button>
         <Button Location="19,87,31,31" Name="btnCaestus">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="80,394,38,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="80,394,38,39"/>
         </Button>
         <Button Location="221,126,31,31" Name="btnKits">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="41,472,38,39"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="41,472,38,39"/>
         </Button>
         <Label Location="217,5,38,38" Name="lbNecklace">
           <BackgroundImage Blend="true" File="ui/zfs_texture/btnNecklace.tga" Source=""/>
@@ -175,7 +175,7 @@
           <BackgroundImage Blend="true" File="ui/zfs_texture/btnKits.tga" Source=""/>
         </Button>
         <Label Inherit="" Location="59,5,154,195" Name="lbPhotos" Show="true">
-          <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="357,199,154,195"/>
+          <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="357,199,154,195"/>
         </Label>
       </Form>
     </Form>

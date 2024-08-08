@@ -19,7 +19,7 @@
 #include <unordered_map>
 #include <windows.h>
 #include <ui/rtw_widget.h>
-#include "gc_include.h"  
+#include "gc_include.h"
 
 std::unordered_map<std::string, std::function<void()>> preConsole::commandMap = {
     {"fps",
@@ -113,4 +113,28 @@ void preConsole::log(const std::string& levelStr, const std::string& message, co
     }
     std::cout << std::endl;
     SetConsoleTextAttribute(hConsole, WHITE_COLOR);  // ÖØÖÃÑÕÉ«
+}
+
+void preConsole::clearBuffer() {
+    log("INFO", buffer, WHITE_COLOR);
+    buffer.clear();
+}
+
+preConsole& operator<<(preConsole& console, const std::string& message) {
+    console.buffer += message; 
+    return console;
+}
+
+preConsole& operator<<(preConsole& console, const char* message) {
+    console.buffer += message;  
+    return console;
+}
+
+preConsole& operator<<(preConsole& console, std::ostream& (*func)(std::ostream&)) {
+    if (func == static_cast<std::ostream& (*)(std::ostream&)>(std::endl)) {
+        console.clearBuffer(); 
+    } else {
+        func(std::cout);  
+    }
+    return console;
 }

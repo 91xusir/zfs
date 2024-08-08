@@ -3,9 +3,9 @@
   <Layer Name="layworld" Show="true">
     <Form EscapeHide="true" Inherit="" Location="59,148,310,454" Movable="true" Name="fmnewfriendlist" Show="false">
       <CloseButton Location="284,14,20,20" Name="btnswitch" padding="0,22,5,0">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <Label Alignment="center" FontSize="18" Location="71,3,169,18" Name="lbtitle" Show="true" Text="好友" TextColor="#ffdfde9b" TextFont="隶书"/>
       <Form Inherit="" Location="0,41,310,414" Name="fmfriendlist" Show="true">
@@ -24,7 +24,7 @@
                 <Column Inherit="Column" Text="亲密度" TextColor="#fffcffc6" Width="43"/>
               </ListBox>
               <Label Inherit="" Location="2,19,297,335" Name="lbborder" Show="true">
-                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="469,83,18,20"/>
+                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/new_textures/5.tga" BorderSource="469,83,18,20"/>
               </Label>
               <Label BackgroundColor="#ff153723" Inherit="" Location="2,20,88,332" Name="lbhemline1" Show="true"/>
               <Label BackgroundColor="#ff153723" Inherit="" Location="92,20,40,332" Name="lbhemline2" Show="true"/>
@@ -44,7 +44,7 @@
                 <Column Inherit="Column" Text="亲密度" TextColor="#fffcffc6" Width="43"/>
               </ListBox>
               <Label Inherit="" Location="2,19,297,335" Name="lbborder" Show="true">
-                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="469,83,18,20"/>
+                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/new_textures/5.tga" BorderSource="469,83,18,20"/>
               </Label>
               <Label BackgroundColor="#ff153723" Inherit="" Location="2,20,88,332" Name="lbhemline1" Show="true"/>
               <Label BackgroundColor="#ff153723" Inherit="" Location="92,20,40,332" Name="lbhemline2" Show="true"/>
@@ -64,7 +64,7 @@
                 <Column Inherit="Column" Text="亲密度" TextColor="#fffcffc6" Width="43"/>
               </ListBox>
               <Label Inherit="" Location="2,19,297,335" Name="lbborder" Show="true">
-                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="469,83,18,20"/>
+                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/new_textures/5.tga" BorderSource="469,83,18,20"/>
               </Label>
               <Label BackgroundColor="#ff153723" Inherit="" Location="2,20,88,332" Name="lbhemline1" Show="true"/>
               <Label BackgroundColor="#ff153723" Inherit="" Location="92,20,40,332" Name="lbhemline2" Show="true"/>
@@ -76,13 +76,13 @@
         </TabCtrl>
       </Form>
       <Label Inherit="" Location="0,-1,310,50" Name="lbborder1" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,1,310,50"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,1,310,50"/>
       </Label>
       <Label BackgroundColor="#A016712C" Inherit="" Location="0,50,310,381" Name="lbborder2" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,53,310,10"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,53,310,10"/>
       </Label>
       <Label Inherit="" Location="0,432,310,23" Name="lbborder3" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,65,310,23"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,65,310,23"/>
       </Label>
       <Anchors>
         <Anchor offset="-295,0" point="CENTERV"/>
@@ -94,13 +94,13 @@
       <Button FontSize="12" Inherit="NewButton1" Location="113,53,60,21" Name="btnok" Show="true" Sound="ui_close.wav" Text="确定" TextColor="#fffbff66" TextFont="宋体"/>
       <Button FontSize="12" Inherit="NewButton1" Location="177,53,60,21" Name="btncancel" Show="true" Sound="ui_normalbt.wav" Text="取消" TextColor="#fffbff66" TextFont="宋体"/>
       <Label Inherit="" Location="232,26,6,22" Name="lbxmm1" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,7,22"/>
       </Label>
       <Label Inherit="" Location="19,26,212,22" Name="lbxmm2" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
       </Label>
       <Label Inherit="" Location="12,26,6,22" Name="lbxmm3" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
       </Label>
       <Label Alignment="center" FontSize="12" Inherit="" Location="45,7,161,18" Name="lbContent" Show="true" Text="请输入欲添加的好友名称" TextFont="宋体"/>
       <Anchors>
@@ -122,23 +122,23 @@
       <Button FontSize="12" Inherit="NewButton1" Location="111,53,60,21" Name="btncancel" Show="true" Sound="ui_normalbt.wav" Text="取消" TextColor="#fffbff66" TextFont="宋体"/>
       <Button Inherit="NewButton1" Location="134,28,30,20" Name="btnmax" Show="true" Text="MAX"/>
       <Button Inherit="" Location="120,27,11,11" Name="upbutton" Show="true">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="127,473,9,9"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="137,473,9,9"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="147,473,9,9"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="127,473,9,9"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="137,473,9,9"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="147,473,9,9"/>
       </Button>
       <Button Inherit="" Location="120,38,11,11" Name="downbutton" Show="true">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="127,483,9,9"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="137,483,9,9"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="147,483,9,9"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="127,483,9,9"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="137,483,9,9"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="147,483,9,9"/>
       </Button>
       <Label Inherit="" Location="114,26,6,22" Name="lbbackgroundright" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="374,124,7,22"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="374,124,7,22"/>
       </Label>
       <Label Inherit="" Location="38,26,75,22" Name="lbbackgroundmiddle" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="366,124,6,22"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="366,124,6,22"/>
       </Label>
       <Label Inherit="" Location="31,26,6,22" Name="lbbackgroundleft" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="359,124,6,22"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="359,124,6,22"/>
       </Label>
       <Anchors>
         <Anchor offset="-40,393" point="CENTERV"/>

@@ -157,9 +157,6 @@
     <Filter Include="game\ui\ui_lyyFix">
       <UniqueIdentifier>{4d437c3e-1aad-4a26-a4ad-27dde1b14cb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="other">
-      <UniqueIdentifier>{e53ae7c9-1e11-4025-82a0-147fc9a13aac}</UniqueIdentifier>
-    </Filter>
     <Filter Include="engine_sdk">
       <UniqueIdentifier>{56d08249-702e-4a07-a9a6-6faedd024680}</UniqueIdentifier>
     </Filter>
@@ -226,14 +223,20 @@
     <Filter Include="engine_sdk\file_pack\interface">
       <UniqueIdentifier>{a83a4063-3933-413d-a777-8885490eabd9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="refactor-重构代码放这里">
+    <Filter Include="other">
+      <UniqueIdentifier>{e53ae7c9-1e11-4025-82a0-147fc9a13aac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor">
       <UniqueIdentifier>{a4d67ef6-8025-4a44-a058-e1f11e12435c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="refactor-重构代码放这里\utils">
+    <Filter Include="refactor\utils">
       <UniqueIdentifier>{51a62569-c5d0-4dd0-8077-48f05ee95332}</UniqueIdentifier>
     </Filter>
-    <Filter Include="refactor-重构代码放这里\login">
+    <Filter Include="refactor\login">
       <UniqueIdentifier>{15604f31-eb3c-4b19-b468-4c51cda45bc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor\config_tool">
+      <UniqueIdentifier>{bb6146cb-2797-431d-bc19-413041bdb6ec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -916,10 +919,10 @@
       <Filter>game\ui\ui_union</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_layer_login.h">
-      <Filter>refactor-重构代码放这里\login</Filter>
+      <Filter>refactor\login</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_layer_select_char.h">
-      <Filter>refactor-重构代码放这里\login</Filter>
+      <Filter>refactor\login</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_form_castlewar.h">
       <Filter>game\ui\ui_feod_castlewar</Filter>
@@ -1357,22 +1360,25 @@
       <Filter>frame\nes</Filter>
     </ClInclude>
     <ClInclude Include="PreConsole.h">
-      <Filter>refactor-重构代码放这里\utils</Filter>
+      <Filter>refactor\utils</Filter>
     </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>other</Filter>
     </ClInclude>
     <ClInclude Include="LyyUtils.h">
-      <Filter>refactor-重构代码放这里\utils</Filter>
+      <Filter>refactor\utils</Filter>
     </ClInclude>
     <ClInclude Include="FpsLimit.h">
-      <Filter>refactor-重构代码放这里\utils</Filter>
+      <Filter>refactor\utils</Filter>
     </ClInclude>
     <ClInclude Include="game\gc_login.h">
-      <Filter>refactor-重构代码放这里\login</Filter>
+      <Filter>refactor\login</Filter>
     </ClInclude>
     <ClInclude Include="HttpReq.h">
-      <Filter>refactor-重构代码放这里\utils</Filter>
+      <Filter>refactor\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalConfig.h">
+      <Filter>refactor\config_tool</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1574,10 +1580,10 @@
       <Filter>game\ui\ui_union</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_layer_login.cpp">
-      <Filter>refactor-重构代码放这里\login</Filter>
+      <Filter>refactor\login</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_layer_select_char.cpp">
-      <Filter>refactor-重构代码放这里\login</Filter>
+      <Filter>refactor\login</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_castlewar.cpp">
       <Filter>game\ui\ui_feod_castlewar</Filter>
@@ -1985,7 +1991,7 @@
       <Filter>frame\resource</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_server.cpp">
-      <Filter>refactor-重构代码放这里\login</Filter>
+      <Filter>refactor\login</Filter>
     </ClCompile>
     <ClCompile Include="iob_func.cpp">
       <Filter>other</Filter>
@@ -1994,19 +2000,22 @@
       <Filter>other</Filter>
     </ClCompile>
     <ClCompile Include="FpsLimit.cpp">
-      <Filter>refactor-重构代码放这里\utils</Filter>
+      <Filter>refactor\utils</Filter>
     </ClCompile>
     <ClCompile Include="PreConsole.cpp">
-      <Filter>refactor-重构代码放这里\utils</Filter>
+      <Filter>refactor\utils</Filter>
     </ClCompile>
     <ClCompile Include="game\gc_login.cpp">
-      <Filter>refactor-重构代码放这里\login</Filter>
+      <Filter>refactor\login</Filter>
     </ClCompile>
     <ClCompile Include="HttpReq.cpp">
-      <Filter>refactor-重构代码放这里\utils</Filter>
+      <Filter>refactor\utils</Filter>
     </ClCompile>
     <ClCompile Include="frame\gc_main.cpp">
-      <Filter>refactor-重构代码放这里</Filter>
+      <Filter>refactor</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalConfig.cpp">
+      <Filter>refactor\config_tool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

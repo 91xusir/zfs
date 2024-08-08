@@ -5,8 +5,8 @@ namespace rt2_core {
 
 BEGIN_EXTERN_C()
 
-int* ArchiveOpen(char* pFilename, int bRead)
-{
+int* ArchiveOpen(char* pFilename, int bRead) {
+    // 调用 RtCoreFile().CreateFileReader 打开文件，并返回创建的 RtArchive 指针强制转换为 int* 类型
     return (int*)(RtCoreFile().CreateFileReader(pFilename, 0));
 }
 

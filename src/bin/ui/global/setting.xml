@@ -7,68 +7,68 @@
         <TabCtrl BackgroundColor="" Location="1,0,308,390" Name="tabsystem">
           <TabItem>
             <CheckButton FontSize="12" Inherit="" Location="73,2,75,17" Name="btnphoto" Sound="ui_changepg.wav" TargetID="fmphoto" Text="画音设置" TextColor="#fffbff66" TextFont="宋体">
-              <NormalImage Blend="true" File="ui/textures/6.tga" Source="299,398,75,17"/>
-              <PushedImage Blend="true" File="ui/textures/6.tga" Source="299,455,75,17"/>
-              <HighlightImage Blend="true" File="ui/textures/6.tga" Source="299,417,75,17"/>
-              <CheckedImage Blend="true" File="ui/textures/6.tga" Source="299,436,75,17"/>
+              <NormalImage Blend="true" File="ui/new_textures/6.tga" Source="299,398,75,17"/>
+              <PushedImage Blend="true" File="ui/new_textures/6.tga" Source="299,455,75,17"/>
+              <HighlightImage Blend="true" File="ui/new_textures/6.tga" Source="299,417,75,17"/>
+              <CheckedImage Blend="true" File="ui/new_textures/6.tga" Source="299,436,75,17"/>
             </CheckButton>
             <Form FadeIn="true" FadeOut="true" Inherit="" Location="0,19,308,371" Name="fmphoto" Show="true">
               <Label Alignment="center" FontSize="12" Inherit="" Location="8,2,60,18" Name="lbtitle1" Show="true" Text="画面设置" TextColor="#fffcffc6" TextFont="宋体">
-                <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+                <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
               </Label>
               <Form BackgroundColor="#A50E593A" Inherit="" Location="8,23,294,229" Name="fmhemline1" Show="true">
-                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
                 <Button FontSize="12" Inherit="NewButton2" Location="86,96,67,20" Name="btncustomize" Show="true" Sound="ui_normalbt.wav" Text="自定义" TextColor="#fffbff66" TextFont="宋体"/>
                 <CheckButton Inherit="NewCheckButton3" Location="30,30,18,18" Name="btnwindow" Show="true" Sound="ui_normalbt.wav"/>
                 <CheckButton Inherit="NewCheckButton3" Location="30,58,18,18" Name="btnscreen" Show="true" Sound="ui_normalbt.wav"/>
                 <CheckButton Inherit="NewCheckButton5" Location="37,203,18,18" Name="btnlighting1" Show="true" Sound="ui_normalbt.wav"/>
                 <CheckButton Inherit="NewCheckButton5" Location="179,203,18,18" Name="btnlighting2" Show="true" Sound="ui_normalbt.wav"/>
                 <Label Alignment="center" FontSize="12" Inherit="" Location="19,4,60,18" Name="lbtitle1" Show="true" Text="显示模式" TextColor="#fffcffc6" TextFont="宋体">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
                 </Label>
                 <Label Alignment="center" FontSize="12" Inherit="" Location="19,96,60,18" Name="lbtitle2" Show="true" Text="智能配置" TextColor="#fffcffc6" TextFont="宋体">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
                 </Label>
                 <Label Alignment="center" FontSize="12" Inherit="" Location="50,30,60,18" Name="lbwindow" Show="true" Text="窗口模式" TextColor="#FFFFAC3" TextFont="宋体"/>
                 <Label Alignment="center" FontSize="12" Inherit="" Location="50,58,60,18" Name="lbscreen" Show="true" Text="全屏模式" TextColor="#FFFFAC3" TextFont="宋体"/>
                 <Label Alignment="center" FontSize="12" Inherit="" Location="58,203,60,18" Name="lblighting1" Show="true" Text="光影效果" TextColor="#FFFFAC3" TextFont="宋体"/>
                 <Label Alignment="center" FontSize="12" Inherit="" Location="200,203,60,18" Name="lblighting2" Show="true" Text="全屏泛光" TextColor="#FFFFAC3" TextFont="宋体"/>
                 <ListBox BackgroundColor="#ff153723" Inherit="" Location="165,4,104,115" Name="lbresolution" Show="true">
-                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="469,83,18,20"/>
+                  <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/new_textures/5.tga" BorderSource="469,83,18,20"/>
                   <Column Text="分辨率" Width="100"/>
                 </ListBox>
                 <ScrollBarV Inherit="Scroll1" Location="269,4,11,115" Name="Pull" Show="true"/>
                 <Label Inherit="" Location="273,5,2,113" Name="lbcalibration" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="486,148,2,24"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="486,148,2,24"/>
                 </Label>
                 <Label Inherit="" Location="41,141,208,35" Name="lbbottom1" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\6.tga" Source="296,351,205,33"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\6.tga" Source="296,351,205,33"/>
                 </Label>
                 <Label Inherit="" Location="15,138,21,42" Name="lbbottom2" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\6.tga" Source="376,419,21,42"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\6.tga" Source="376,419,21,42"/>
                 </Label>
                 <Label Inherit="" Location="254,138,21,42" Name="lbbottom3" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\6.tga" Source="398,418,21,42"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\6.tga" Source="398,418,21,42"/>
                 </Label>
                 <Label Inherit="" Location="75,125,46,14" Name="lbbottom4" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\6.tga" Source="420,421,46,14"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\6.tga" Source="420,421,46,14"/>
                 </Label>
                 <Label Inherit="" Location="201,125,46,15" Name="lbbottom5" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\6.tga" Source="420,435,46,15"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\6.tga" Source="420,435,46,15"/>
                 </Label>
                 <Label Inherit="" Location="47,179,46,14" Name="lbbottom6" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\6.tga" Source="451,406,46,14"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\6.tga" Source="451,406,46,14"/>
                 </Label>
                 <Label Inherit="" Location="165,179,44,14" Name="lbbottom7" Show="true">
-                  <BackgroundImage Blend="true" File="ui\textures\6.tga" Source="467,421,44,14"/>
+                  <BackgroundImage Blend="true" File="ui\new_textures\6.tga" Source="467,421,44,14"/>
                 </Label>
                 <ScrollBarH Inherit="Scroll3" Location="53,145,185,26" Name="Scroll1" Show="true"/>
               </Form>
               <Label Alignment="center" FontSize="12" Inherit="" Location="8,254,60,18" Name="lbtitle2" Show="true" Text="声音设置" TextColor="#fffcffc6" TextFont="宋体">
-                <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+                <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
               </Label>
               <Form BackgroundColor="#A50E593A" Inherit="" Location="8,273,294,98" Name="fmhemline2" Show="true">
-                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
                 <CheckButton Inherit="NewCheckButton5" Location="236,14,18,18" Name="btnaudio1" Show="true" Sound="ui_normalbt.wav"/>
                 <CheckButton Inherit="NewCheckButton5" Location="236,41,18,18" Name="btnaudio2" Show="true" Sound="ui_normalbt.wav"/>
                 <CheckButton Inherit="NewCheckButton5" Location="6,72,18,18" Name="btnaudio3" Show="true" Sound="ui_normalbt.wav"/>
@@ -78,30 +78,30 @@
                 <Label Alignment="center" FontSize="12" Inherit="" Location="256,41,30,18" Name="lbaudio2" Show="true" Text="静音" TextColor="#FFFFAC3" TextFont="宋体"/>
                 <Label Alignment="center" FontSize="12" Inherit="" Location="26,73,70,18" Name="lbaudio3" Show="true" Text="3D环境音效" TextColor="#FFFFAC3" TextFont="宋体"/>
                 <Label Alignment="center" FontSize="12" Inherit="" Location="10,14,60,18" Name="lbtitle1" Show="true" Text="音乐音量" TextColor="#fffcffc6" TextFont="宋体">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
                 </Label>
                 <Label Alignment="center" FontSize="12" Inherit="" Location="10,41,60,18" Name="lbtitle2" Show="true" Text="音效音量" TextColor="#fffcffc6" TextFont="宋体">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
                 </Label>
                 <Label Inherit="" Location="73,17,159,11" Name="lbbottom1" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/6.tga" Source="304,385,159,12"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/6.tga" Source="304,385,159,12"/>
                 </Label>
                 <Label Inherit="" Location="73,45,159,11" Name="lbbottom2" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/6.tga" Source="304,385,159,12"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/6.tga" Source="304,385,159,12"/>
                 </Label>
               </Form>
             </Form>
           </TabItem>
           <TabItem>
             <CheckButton FontSize="12" Inherit="" Location="168,2,75,17" Name="btnaudio" Sound="ui_changepg.wav" TargetID="fmaudio" Template="TabItem" Text="游戏设置" TextColor="#fffbff66" TextFont="宋体">
-              <NormalImage Blend="true" File="ui/textures/6.tga" Source="299,398,75,17"/>
-              <PushedImage Blend="true" File="ui/textures/6.tga" Source="299,455,75,17"/>
-              <HighlightImage Blend="true" File="ui/textures/6.tga" Source="299,417,75,17"/>
-              <CheckedImage Blend="true" File="ui/textures/6.tga" Source="299,436,75,17"/>
+              <NormalImage Blend="true" File="ui/new_textures/6.tga" Source="299,398,75,17"/>
+              <PushedImage Blend="true" File="ui/new_textures/6.tga" Source="299,455,75,17"/>
+              <HighlightImage Blend="true" File="ui/new_textures/6.tga" Source="299,417,75,17"/>
+              <CheckedImage Blend="true" File="ui/new_textures/6.tga" Source="299,436,75,17"/>
             </CheckButton>
             <Form FadeIn="true" FadeOut="true" Inherit="" Location="0,19,308,371" Name="fmaudio" Show="false">
               <Form BackgroundColor="#A50E593A" Inherit="" Location="8,22,294,155" Name="fmhemline1" Show="true">
-                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
                 <CheckButton Inherit="NewCheckButton5" Location="20,8,18,18" Name="btnshow1" Show="true" Sound="ui_normalbt.wav"/>
                 <CheckButton Inherit="NewCheckButton5" Location="20,30,18,18" Name="btnshow2" Show="true" Sound="ui_normalbt.wav"/>
                 <CheckButton Inherit="NewCheckButton5" Location="20,52,18,18" Name="btnshow3" Show="true" Sound="ui_normalbt.wav"/>
@@ -126,7 +126,7 @@
                 <Label Alignment="center" FontSize="12" Inherit="" Location="198,118,80,18" Name="lbshow11" Show="true" Text="显示说话气泡" TextColor="#FFFFAC3" TextFont="宋体"/>
               </Form>
               <Form BackgroundColor="#A50E593A" Inherit="" Location="8,203,294,41" Name="fmhemline2" Show="true">
-                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
                 <CheckButton Inherit="NewCheckButton5" Location="20,8,18,18" Name="btnoperating1" Show="true" Sound="ui_normalbt.wav"/>
                 <Label Alignment="center" FontSize="12" Inherit="" Location="42,8,55,18" Name="lboperating1" Show="true" Text="锁定视角" TextColor="#FFFFAC3" TextFont="宋体"/>
                 <Button FontSize="12" Inherit="NewButton2" Location="95,7,67,20" Name="btndefault" Show="true" Sound="ui_normalbt.wav" Text="默认视角" TextColor="#fffbff66" TextFont="宋体"/>
@@ -134,7 +134,7 @@
                 <Label Alignment="center" FontSize="12" Inherit="" Location="200,8,88,18" Name="lboperating2" Show="true" Text="显示附加动作条" TextColor="#FFFFAC3" TextFont="宋体"/>
               </Form>
               <Form BackgroundColor="#A50E593A" Inherit="" Location="8,271,294,98" Name="fmhemline3" Show="true">
-                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\textures\5.tga" BorderSource="381,109,19,20"/>
+                <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui\new_textures\5.tga" BorderSource="381,109,19,20"/>
                 <CheckButton Inherit="NewCheckButton5" Location="20,10,18,18" Name="btninteraction1" Show="true" Sound="ui_normalbt.wav"/>
                 <CheckButton Inherit="NewCheckButton5" Location="20,39,18,18" Name="btninteraction2" Show="true" Sound="ui_normalbt.wav"/>
                 <CheckButton Inherit="NewCheckButton5" Location="20,68,18,18" Name="btninteraction3" Show="true" Sound="ui_normalbt.wav"/>
@@ -149,13 +149,13 @@
                 <Label Alignment="center" FontSize="12" Inherit="" Location="200,68,80,18" Name="lbinteraction6" Show="true" Text="拒绝师徒关系" TextColor="#FFFFAC3" TextFont="宋体"/>
               </Form>
               <Label Alignment="center" FontSize="12" Inherit="" Location="7,1,60,18" Name="lbtitle1" Show="true" Text="显示设置" TextColor="#fffcffc6" TextFont="宋体">
-                <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+                <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
               </Label>
               <Label Alignment="center" FontSize="12" Inherit="" Location="7,181,60,18" Name="lbtitle2" Show="true" Text="界面设置" TextColor="#fffcffc6" TextFont="宋体">
-                <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+                <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
               </Label>
               <Label Alignment="center" FontSize="12" Inherit="" Location="7,248,60,18" Name="lbtitle3" Show="true" Text="交互设置" TextColor="#fffcffc6" TextFont="宋体">
-                <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+                <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
               </Label>
             </Form>
           </TabItem>
@@ -164,18 +164,18 @@
         <Button FontSize="12" Inherit="NewButton2" Location="187,396,67,20" Name="btncancel" Sound="ui_normalbt.wav" Text="关闭" TextColor="#fffbff66" TextFont="宋体"/>
       </Form>
       <Label Inherit="" Location="0,-1,310,50" Name="lbborder1" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,1,310,50"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,1,310,50"/>
       </Label>
       <CloseButton Location="284,14,20,20" padding="0,22,5,0">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <Label BackgroundColor="#A016712C" Inherit="" Location="0,50,310,381" Name="lbborder2" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,53,310,10"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,53,310,10"/>
       </Label>
       <Label Inherit="" Location="0,432,310,23" Name="lbborder3" Show="true">
-        <BackgroundImage Blend="true" File="ui\textures\5.tga" Source="2,65,310,23"/>
+        <BackgroundImage Blend="true" File="ui\new_textures\5.tga" Source="2,65,310,23"/>
       </Label>
       <Anchors>
         <Anchor offset="-295,0" point="CENTERV"/>
@@ -203,13 +203,13 @@
     </Form>
     <Form Anchor="none" EscapeHide="true" Inherit="VoidTitleBarForm1" Location="272,324,250,126" Movable="true" Name="fmexpertsetting" Show="false" StartPosition="centerScreen">
       <Label Alignment="center" FontSize="12" Inherit="" Location="11,8,60,18" Name="lbtitle1" Show="true" Text="贴图精度" TextColor="#fffcffc6" TextFont="宋体">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
       </Label>
       <Label Alignment="center" FontSize="12" Inherit="" Location="11,31,60,18" Name="lbtitle2" Show="true" Text="特效效果" TextColor="#fffcffc6" TextFont="宋体">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
       </Label>
       <Label Alignment="center" FontSize="12" Inherit="" Location="11,54,60,18" Name="lbtitle3" Show="true" Text="窗口模式" TextColor="#fffcffc6" TextFont="宋体">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
       </Label>
       <CheckButton Inherit="NewCheckButton3" Location="106,8,18,18" Name="btnlow1" Show="true" Sound="ui_normalbt.wav"/>
       <CheckButton Inherit="NewCheckButton3" Location="106,31,18,18" Name="btnlow2" Show="true" Sound="ui_normalbt.wav"/>
@@ -238,76 +238,76 @@
     </Form>
     <Form EscapeHide="true" Inherit="VoidTitleBarForm1" Location="372,214,251,150" Movable="true" Name="fmreborn" Show="false">
       <CheckButton Inherit="" Location="19,141,18,18" Name="ckbpick" Show="false" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <CheckButton Inherit="" Location="19,22,18,18" Name="ckbbattle" Show="true" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <CheckButton Inherit="" Location="19,169,18,18" Name="ckbsellwhite" Show="false" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <CheckButton Inherit="" Location="19,197,18,18" Name="ckbsellblue" Show="false" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <CheckButton Inherit="" Location="135,170,18,18" Name="ckbsellgreen" Show="false" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <CheckButton Inherit="" Location="135,197,18,18" Name="ckbsellgolden" Show="false" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <CheckButton Inherit="" Location="138,52,18,18" Name="ckbmana" Show="true" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <CheckButton Inherit="" Location="19,52,18,18" Name="ckbblood" Show="true" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <CheckButton Inherit="" Location="19,83,18,18" Name="ckb30hp" Show="true" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <CheckButton Inherit="" Location="97,82,18,18" Name="ckb60hp" Show="true" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <CheckButton Inherit="" Location="173,82,18,18" Name="ckb90hp" Show="true" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <CheckButton Inherit="" Location="134,141,18,18" Name="ckbautobattle" Show="false">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <CheckedImage Blend="true" File="ui/textures/5.tga" Source="491,178,18,18"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="471,178,18,18"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <CheckedImage Blend="true" File="ui/new_textures/5.tga" Source="491,178,18,18"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="471,178,18,18"/>
       </CheckButton>
       <Label FontSize="12" Inherit="" Location="47,24,70,18" Name="779" Show="true" Text="自动战斗" TextColor="#fffcffc6" TextFont="宋体"/>
       <Label FontSize="12" Inherit="" Location="167,53,70,18" Name="788" Show="true" Text="自动补蓝" TextColor="#fffcffc6" TextFont="宋体"/>
@@ -316,18 +316,18 @@
       <Label FontSize="12" Inherit="" Location="120,84,30,18" Name="786" Show="true" Text="60%" TextColor="#fffcffc6" TextFont="宋体"/>
       <Label FontSize="12" Inherit="" Location="198,83,30,18" Name="787" Show="true" Text="90%" TextColor="#fffcffc6" TextFont="宋体"/>
       <Label Inherit="" Location="43,22,60,18" Name="lbhemline2" Show="true">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
       </Label>
       <Label Inherit="" Location="163,52,60,18" Name="lbhemline7" Show="true">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
       </Label>
       <Label Inherit="" Location="43,52,60,18" Name="lbhemline8" Show="true">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,64,60,18"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,64,60,18"/>
       </Label>
       <CloseButton Location="284,5,20,20" padding="0,0,2,0">
-        <NormalImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
-        <PushedImage Blend="true" File="ui\textures\5.tga" Source="359,64,20,20"/>
-        <HighlightImage Blend="true" File="ui\textures\5.tga" Source="359,83,20,20"/>
+        <NormalImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
+        <PushedImage Blend="true" File="ui\new_textures\5.tga" Source="359,64,20,20"/>
+        <HighlightImage Blend="true" File="ui\new_textures\5.tga" Source="359,83,20,20"/>
       </CloseButton>
       <Anchors>
         <Anchor offset="-13,0" point="CENTERV"/>

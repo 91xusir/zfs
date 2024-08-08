@@ -9,12 +9,13 @@
 #include "ui_form_textMsg.h"
 #include <net/g_tcpsession.h>
 #include <unordered_map>
-#include "../PreConsole.h"
 #include <graph/rtg_matrix.h>
 #include <string>
 #include <cstdio>
 #include <type_traits>
 #include <gc_frame.h>
+#include "PreConsole.h"
+#include "GlobalConfig.h"
 /*
 lyy  2024 8.1-8.4  重构 添加注释  删除约1500行垃圾代码
 */
@@ -292,8 +293,17 @@ bool GcLogin::LeaveSelectGameWorldServer() const {
 }
 
 void GcLogin::ReadAccountFromFile() {
+    GlobalConfig config;  // 创建 先试用新配置类 对象
+    if (config.OpenFile(R(INI_USER))) {
+        const bool isSave = config["account"]["save"].at<bool>();
+        g_layerLogin->mp_ckSaveAcc->SetChecked(isSave);
+        if (isSave) {
+            m_szAccountUsername = config["login"]["username"].at<std::string>();
+            m_szAccountPassword = config["login"]["password"].at<std::string>();
+        }
+    }
     // 读取用户名
-    RtIni       iniUser;
+    /* RtIni       iniUser;
     const char* szIniUsername = "";
     const char* szIniPassword = "";
     if (iniUser.OpenFile(R(INI_USER))) {
@@ -305,18 +315,12 @@ void GcLogin::ReadAccountFromFile() {
             szIniPassword = iniUser.GetEntry("login", "password");
         }
         iniUser.CloseFile();
-    }
-    // 赋值用户名
-    m_szAccountUsername = szIniUsername ? szIniUsername : "";
-    m_szAccountPassword = szIniPassword ? szIniPassword : "";
+    }*/
 
     g_layerLogin->mp_txtAccout->Enable();
     g_layerLogin->mp_txtPwd->Enable();
-    // 设置控件值
     g_layerLogin->mp_txtAccout->SetText(m_szAccountUsername);
     g_layerLogin->mp_txtPwd->SetText(m_szAccountPassword);
-
-    // 设置输入焦点
     if (m_szAccountUsername.empty()) {
         g_layerLogin->mp_txtAccout->SetFocus();
     } else {
@@ -470,7 +474,7 @@ void GcLogin::UpdateSelectChar() {
             LOAD_UI("RoleInfo.Lev")->SetText(Lev);
             LOAD_UI("RoleInfo.Faction")->SetText(Faction);
             LOAD_UI("RoleInfo.Miter")->SetText(Miter);
-       /*     P_LOGINFO("当前选择的角色id为:" + std::to_string(user.id) +
+            /*     P_LOGINFO("当前选择的角色id为:" + std::to_string(user.id) +
                       "，索引为 :" + std::to_string(m_curSelRoleIndex));*/
         }
     }
@@ -1030,7 +1034,6 @@ void GcLogin::OnBeginRender() {
     guard;
     unguard;
 }
-
 
 void GcLogin::OnEndRender() {}
 

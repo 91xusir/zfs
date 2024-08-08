@@ -4,6 +4,8 @@
   "dependencies": [
     "nlohmann-json",
 	"cpp-httplib",
-	"openssl"
+    "yaml-cpp",
+	"openssl",
+	"doctest"
   ]
 }

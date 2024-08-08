@@ -4,15 +4,15 @@
     <Form EscapeHide="true" Inherit="" Location="187,171,635,454" Movable="true" Name="fmnewlist" Show="false">
       <Label Alignment="center" FontSize="18" Inherit="" Location="71,3,493,18" Name="lbtitle" Show="true" Text="排行榜" TextColor="#ffdfde9b" TextFont="隶书"/>
       <CloseButton Blend="true" Location="20,20,20,20" Name="$hide" Show="true" Text="" padding="0,25,5,0">
-        <NormalImage Blend="true" File="ui/textures/5.tga" Source="360,65,18,17"/>
-        <PushedImage Blend="true" File="ui/textures/5.tga" Source="360,103,18,17"/>
-        <HighlightImage Blend="true" File="ui/textures/5.tga" Source="360,84,18,17"/>
+        <NormalImage Blend="true" File="ui/new_textures/5.tga" Source="360,65,18,17"/>
+        <PushedImage Blend="true" File="ui/new_textures/5.tga" Source="360,103,18,17"/>
+        <HighlightImage Blend="true" File="ui/new_textures/5.tga" Source="360,84,18,17"/>
       </CloseButton>
       <Label BackgroundColor="#A016712C" Location="6,50,623,380" Name="b"/>
       <Label BackgroundColor="#a31e6946" Inherit="" Location="6,431,311,1" Name="bt" Show="true"/>
       <Form Inherit="" Location="0,25,635,413" Name="fmlist" Show="true">
         <Label BackgroundColor="#A50E593A" Inherit="" Location="7,38,88,347" Name="lbcklist" Show="true">
-          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/textures/5.tga" BorderSource="381,109,19,20"/>
+          <BackgroundImage Border="2,2,2,2" BorderBlend="true" BorderFile="ui/new_textures/5.tga" BorderSource="381,109,19,20"/>
         </Label>
         <TabCtrl Dock="fill" Inherit="" Location="-2,0,635,454" Name="tablist" Show="true">
           <TabItem>
@@ -21,13 +21,13 @@
               <Form Inherit="" Location="27,12,466,18" Name="fmtitlebar" Show="true">
                 <Label FontSize="12" Inherit="" Location="199,1,70,18" Name="lbtxt" Show="true" Text="傲视群雄" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="0,0,5,18" Name="lbleft" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="5,0,456,20" Name="lbcenter" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="431,131,3,20"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="431,131,3,20"/>
                 </Label>
                 <Label Inherit="" Location="462,0,5,18" Name="lbright" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
               <ListBox Inherit="" Location="0,38,528,347" Name="listaoshi" Show="true">
@@ -48,13 +48,13 @@
               <Form Inherit="" Location="27,12,466,18" Name="fmtitlebar" Show="true">
                 <Label FontSize="12" Inherit="" Location="199,1,70,18" Name="lbtxt" Show="true" Text="仙宠之王" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="0,0,5,18" Name="lbleft" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="5,0,456,20" Name="lbcenter" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="431,131,3,20"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="431,131,3,20"/>
                 </Label>
                 <Label Inherit="" Location="462,0,5,18" Name="lbright" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
               <ListBox Inherit="" Location="0,38,528,347" Name="listaoshi" Show="true">
@@ -79,13 +79,13 @@
               <Form Inherit="" Location="27,12,466,18" Name="fmtitlebar" Show="true">
                 <Label FontSize="12" Inherit="" Location="199,1,70,18" Name="lbtxt" Show="true" Text="水滴石穿" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="0,0,5,18" Name="lbleft" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="5,0,456,20" Name="lbcenter" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="431,131,3,20"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="431,131,3,20"/>
                 </Label>
                 <Label Inherit="" Location="462,0,5,18" Name="lbright" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
               <ListBox Inherit="" Location="0,38,528,347" Name="listaoshi" Show="true">
@@ -108,13 +108,13 @@
               <Form Inherit="" Location="27,12,466,18" Name="fmtitlebar" Show="true">
                 <Label FontSize="12" Inherit="" Location="199,1,70,18" Name="lbtxt" Show="true" Text="富甲一方" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="0,0,5,18" Name="lbleft" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="5,0,456,20" Name="lbcenter" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="431,131,3,20"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="431,131,3,20"/>
                 </Label>
                 <Label Inherit="" Location="462,0,5,18" Name="lbright" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
               <ListBox Inherit="" Location="0,38,528,347" Name="listaoshi" Show="true">
@@ -137,13 +137,13 @@
               <Form Inherit="" Location="27,12,466,18" Name="fmtitlebar" Show="true">
                 <Label FontSize="12" Inherit="" Location="199,1,70,18" Name="lbtxt" Show="true" Text="元宝大亨" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="0,0,5,18" Name="lbleft" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="5,0,456,20" Name="lbcenter" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="431,131,3,20"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="431,131,3,20"/>
                 </Label>
                 <Label Inherit="" Location="462,0,5,18" Name="lbright" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
               <ListBox Inherit="" Location="0,38,528,347" Name="listaoshi" Show="true">
@@ -166,13 +166,13 @@
               <Form Inherit="" Location="27,12,466,18" Name="fmtitlebar" Show="true">
                 <Label FontSize="12" Inherit="" Location="199,1,70,18" Name="lbtxt" Show="true" Text="龙盘虎踞" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="0,0,5,18" Name="lbleft" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="5,0,456,20" Name="lbcenter" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="431,131,3,20"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="431,131,3,20"/>
                 </Label>
                 <Label Inherit="" Location="462,0,5,18" Name="lbright" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
               <ListBox Inherit="" Location="0,38,528,347" Name="listaoshi" Show="true">
@@ -195,13 +195,13 @@
               <Form Inherit="" Location="27,12,466,18" Name="fmtitlebar" Show="true">
                 <Label FontSize="12" Inherit="" Location="199,1,70,18" Name="lbtxt" Show="true" Text="地府常客" TextColor="#fffcffc6" TextFont="宋体"/>
                 <Label Inherit="" Location="0,0,5,18" Name="lbleft" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="423,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="423,131,5,18"/>
                 </Label>
                 <Label Inherit="" Location="5,0,456,20" Name="lbcenter" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="431,131,3,20"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="431,131,3,20"/>
                 </Label>
                 <Label Inherit="" Location="462,0,5,18" Name="lbright" Show="true">
-                  <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="437,131,5,18"/>
+                  <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="437,131,5,18"/>
                 </Label>
               </Form>
               <ListBox Inherit="" Location="0,38,528,347" Name="listaoshi" Show="true">
@@ -222,22 +222,22 @@
         </TabCtrl>
       </Form>
       <Label Location="318,-1,317,50" Name="tr">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="2,147,318,51"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="2,147,318,51"/>
       </Label>
       <Label Inherit="" Location="0,431,318,23" Name="bl" Show="true">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="0,199,319,25"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="0,199,319,25"/>
       </Label>
       <Label Location="0,-1,317,50" Name="tl">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="1,92,318,51"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="1,92,318,51"/>
       </Label>
       <Label Inherit="" Location="1,50,4,382" Name="cl" Show="true">
-        <BackgroundImage File="ui/textures/5.tga" Source="2,54,6,9"/>
+        <BackgroundImage File="ui/new_textures/5.tga" Source="2,54,6,9"/>
       </Label>
       <Label Inherit="" Location="630,50,4,380" Name="cr" Show="true">
-        <BackgroundImage File="ui/textures/5.tga" Source="306,53,7,9"/>
+        <BackgroundImage File="ui/new_textures/5.tga" Source="306,53,7,9"/>
       </Label>
       <Label Inherit="" Location="317,430,318,23" Name="br" Show="true">
-        <BackgroundImage Blend="true" File="ui/textures/5.tga" Source="1,224,319,23"/>
+        <BackgroundImage Blend="true" File="ui/new_textures/5.tga" Source="1,224,319,23"/>
       </Label>
       <Anchors>
         <Anchor offset="0,0" point="CENTERV"/>
