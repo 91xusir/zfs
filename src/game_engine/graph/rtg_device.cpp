@@ -143,7 +143,7 @@ RtgDevice::RtgDevice() {
     m_userConfig.bObjEffect                     = 1;  // 后期加强   关
     m_userConfig.dwMaxMultiSampleTypeWindowed   = 0;
     m_userConfig.dwMaxMultiSampleTypeFullscreen = 0;
-    m_userConfig.lMillisecondPerFrame           = 16;     // 1000/16 = 60
+    m_userConfig.lMillisecondPerFrame           = 30;     // 1000/16 = 60
     m_userConfig.bvsync                         = false;  // 垂直同步   关
 
     rt2_strcpy(m_config.szWindowTitle, "rtgGraph 3D App");
@@ -233,8 +233,8 @@ void RtgDevice::ReadGraphIni(SConfig& gameIni) {
 }
 
 //lyymark 1.Core.ReadGraphIni加载User.ini配置
-void RtgDevice::ReadUserIni(SUserConfig& m_userConfig) {
-    m_userConfig = m_userConfig;
+void RtgDevice::ReadUserIni(SUserConfig& userIni) {
+    m_userConfig = userIni;
 }
 
 void RtgDevice::ApplyConfig() {

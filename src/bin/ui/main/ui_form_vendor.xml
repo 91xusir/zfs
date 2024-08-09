@@ -4,7 +4,7 @@
     <Form Inherit="BTitleBarForm" Location="120,120,632,377" Name="fmVendor" Show="false">
       <Form Inherit="" Location="0,-29,616,32" Name="panTitle"/>
       <Label Location="34,6,120,18" Name="lblist" Text="分类浏览"/>
-      <Tree Inherit="ListBox" Item1="first" Location="16,26,106,284" Name="panItem" Title="ui_texture/tree_icon1.bmp">
+      <Tree Inherit="ListBox" Item1="first" Location="16,26,106,284" Name="panItem" Title="ui/ui_texture/tree_icon1.bmp">
         <Button Inherit="" Location="10,10,80,24" Name="btn1" Show="true" Text="战士"/>
         <Button Inherit="" Location="10,40,80,24" Name="btn2" Show="true" Text="风舞者"/>
         <Button Inherit="" Location="10,70,80,24" Name="btn3" Show="true" Text="神传道士"/>

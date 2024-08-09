@@ -681,7 +681,7 @@ PyObject* CPythonRegionCreature::Talk(region_object_python* self, PyObject* args
 	if(channel == CHAT_CHANNEL_SYSTEM)
 	{
 		char szMessage[256] = {0};
-		rt2_snprintf(szMessage, 256, "<localfile://face/%s.tgalocalfile/> %s",
+		rt2_snprintf(szMessage, 256, "<localfile://ui/face/%s.tgalocalfile/> %s",
 			(picName && picName[0] != 0) ? picName : "sysmsg", msg);
 		selfCreature->SendSystemMessage(szMessage, NULL);
 	}

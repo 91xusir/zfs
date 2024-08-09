@@ -154,6 +154,30 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
                 pActor->LinkParent(pBody, szLink.c_str());  // 链接pBody
             }
 
+            if (pActor->m_Name == "pn01.act"||pActor->m_Name == "pt01.act"||pActor->m_Name == "ph01.act"||pActor->m_Name == "pf01.act") {
+                auto& m_poseMap = pActor->GetCore()->m_poseMap;
+                m_poseMap["waiting_n0"] = m_poseMap["waiting_non"];
+                m_poseMap["waiting_n1"] = m_poseMap["waiting_non"];
+                m_poseMap["run_n0"] = m_poseMap["walk_non"];
+                m_poseMap["wait_n0"] = m_poseMap["wait_non"];
+                m_poseMap["wait_a_n0"] = m_poseMap["wait_non"];
+                m_poseMap["attack_n0"] = m_poseMap["attack_non"];
+                m_poseMap["attack_n1"] = m_poseMap["attack_non"];
+                m_poseMap["attack_n2"] = m_poseMap["attack_non"];
+                m_poseMap["attack_l0"] = m_poseMap["attack_non_flysword"];
+                m_poseMap["attack_l1"] = m_poseMap["attack_non_flysword"];
+                m_poseMap["attack_l2"] = m_poseMap["attack_non_flysword"];
+                m_poseMap["hurt_n0"] = m_poseMap["hurt_non"];
+                m_poseMap["critical_n0"] = m_poseMap["attack_non"];
+            }
+            if (pActor->m_Name == "pn01.act") {
+                auto& m_poseMap = pActor->GetCore()->m_poseMap;
+                for (auto& [name, pose] : m_poseMap) {
+
+                    P_LOGINFO(name);
+            
+                }
+            }
         } while (pIni->NextEntry(&szLink, &szName));
     }
     unguard;
@@ -394,8 +418,8 @@ void GcLogin::UpdateSelectChar() {
         g_layerSelectChar->m_charBtnArray[i]->Enable();
     }
 
-    GcActor*          pGcActor = nullptr;
-    const SUserActor* pUserActorInCsv = nullptr;
+    GcActor*          pGcActor         = nullptr;
+    const SUserActor* pUserActorInCsv  = nullptr;
     const SCreModel*  pActorModelInCsv = nullptr;
     // 遍历用户角色列表,创建对应模型，已经创建的会跳过
     for (std::size_t i = 0; i < accountInfo.chatCount; i++) {
@@ -422,7 +446,7 @@ void GcLogin::UpdateSelectChar() {
         }
         // 设置角色的职业和性别属性
         pGcActor->m_core.Metier = userInfo.attributes.metier;
-        pGcActor->m_core.Sex = userInfo.attributes.Sex;
+        pGcActor->m_core.Sex    = userInfo.attributes.Sex;
         // 加载角色的物品信息
         CItemManager* pItemMgr = ((CGameClientFrame*)GetApp())->m_pItemManager;
         if (pItemMgr) {
@@ -450,13 +474,13 @@ void GcLogin::UpdateSelectChar() {
     size_t      maxCount = std::min(accountInfo.chatCount, (long)UILayerSelectChar::MaxUserCharBtn);
     //实际上只有删除或添加角色才需要重新更新位置，不过懒得写了 by lyy 2024.8.5
     for (std::size_t i = 0; i < maxCount; ++i) {
-        auto&       user = accountInfo.users[i];
+        auto&       user     = accountInfo.users[i];
         std::string boneName = "bno" + std::to_string(i + 1);
-        auto*       gcActor = m_selRole_IDMapGcActor[user.id];
+        auto*       gcActor  = m_selRole_IDMapGcActor[user.id];
         gcActor->mBaseActor.GetGraph()->p()->LinkParent(m_pBody, boneName.c_str());
         std::string roleName = user.name;
-        SUserActor* pActor = g_TableUserActor.FindUserActor(user.attributes.metier,        //职业
-                                                            user.attributes.metierLevel);  //几转
+        SUserActor* pActor   = g_TableUserActor.FindUserActor(user.attributes.metier,  //职业
+                                                              user.attributes.metierLevel);  //几转
         if (!pActor)
             P_LOGERROR("user_actor表读取错误，职业为：" + user.attributes.metier);
         //设置对应按键上的角色名称
@@ -466,9 +490,9 @@ void GcLogin::UpdateSelectChar() {
             g_layerSelectChar->m_charBtnArray[m_curSelRoleIndex]->SetTextColor(0xffff0000);  //红色
             LOAD_UI("enterBtn")->Enable();
             LOAD_UI("delRoleBtn")->Enable();
-            std::string Lev = "Lv: " + std::to_string(user.attributes.level);
+            std::string Lev     = "Lv: " + std::to_string(user.attributes.level);
             std::string Faction = g_layerSelectChar->m_faction[user.attributes.faction];
-            std::string Miter = pActor->MetierName;
+            std::string Miter   = pActor->MetierName;
             LOAD_UI("RoleInfo")->Show();
             LOAD_UI("RoleInfo.RoleName")->SetText(roleName);
             LOAD_UI("RoleInfo.Lev")->SetText(Lev);
@@ -534,8 +558,8 @@ void GcLogin::EnterCreateChar() {
 void GcLogin::SetSelectShangOrZhou(int iSei) {
     //初始化选角色为空
     m_curCrtRoleCsvID = -1;
-    m_selectFaction = iSei;
-    auto* door = FindModel("Door");
+    m_selectFaction   = iSei;
+    auto* door        = FindModel("Door");
     if (!door || !m_pBody)
         return;
     if (iSei == None) {
@@ -547,15 +571,15 @@ void GcLogin::SetSelectShangOrZhou(int iSei) {
     if (iSei != Shang && iSei != Zhou)
         return;
     auto* Tray_Shang = FindModel("Tray_Shang");
-    auto* Tray_Zhou = FindModel("Tray_Zhou");
-    auto* BG_Shang = FindModel("BG_Shang");
-    auto* BG_Zhou = FindModel("BG_Zhou");
+    auto* Tray_Zhou  = FindModel("Tray_Zhou");
+    auto* BG_Shang   = FindModel("BG_Shang");
+    auto* BG_Zhou    = FindModel("BG_Zhou");
     if (!Tray_Shang || !Tray_Zhou || !BG_Shang || !BG_Zhou || !m_pBody)
         return;
     Tray_Shang->m_bDisplay = iSei == Shang;
-    BG_Shang->m_bDisplay = iSei == Shang;
-    Tray_Zhou->m_bDisplay = iSei == Zhou;
-    BG_Zhou->m_bDisplay = iSei == Zhou;
+    BG_Shang->m_bDisplay   = iSei == Shang;
+    Tray_Zhou->m_bDisplay  = iSei == Zhou;
+    BG_Zhou->m_bDisplay    = iSei == Zhou;
     if (iSei == Shang) {
         Tray_Shang->LinkParent(m_pBody, "btray");
         BG_Shang->LinkParent(m_pBody, "bbg");
@@ -603,7 +627,7 @@ void GcLogin::UpdateCreateChar() {
     if (m_crtRole_csvIdMapActIns.size() == 0) {
         for (const auto& csvID : s_CreatActIds_FromCsv) {
             const auto& usrActData = s_mCharSkinInfo.at(csvID);
-            p_userActCsv = g_TableUserActor.FindUserActor(csvID);
+            p_userActCsv           = g_TableUserActor.FindUserActor(csvID);
             if (!p_userActCsv || (!p_userActCsv->bZCreate && !p_userActCsv->bSCreate))
                 continue;
             if (m_crtRole_csvIdMapActIns.find(csvID) != m_crtRole_csvIdMapActIns.end())
@@ -655,11 +679,11 @@ void GcLogin::UpdateCreateChar() {
     charAct[3] = m_selectFaction == Shang ? DaoShi : ShuShi;
     m_crtRole_csvIdMapActIns.at(charAct[2])->m_bDisplay = true;
     m_crtRole_csvIdMapActIns.at(charAct[3])->m_bDisplay = false;
-    m_pSsJian->m_bDisplay = m_selectFaction == Shang;
-    m_pDsLun->m_bDisplay = m_selectFaction == Zhou;
+    m_pSsJian->m_bDisplay                               = m_selectFaction == Shang;
+    m_pDsLun->m_bDisplay                                = m_selectFaction == Zhou;
     for (std::size_t i = 0; i < 3; i++) {
         auto  soltName = "bno" + std::to_string(actSoltInTray[i]);
-        auto& it = m_crtRole_csvIdMapActIns.find(charAct[i]);
+        auto& it       = m_crtRole_csvIdMapActIns.find(charAct[i]);
         if (it != m_crtRole_csvIdMapActIns.end()) {
             auto* ActIns = it->second;
             if (ActIns) {
@@ -713,18 +737,18 @@ void GcLogin::OnLoading() {
 }
 
 void GcLogin::UpdateGraphConfig(const char* szName) {
-    float fCameraFOV = 45.0f;         // 摄像机的视场角度（Field of View），单位为度
-    float fCameraAspect = 4.f / 3.f;  // 渲染视口的宽高比，例如4:3
-    float fCameraNear = 10.0f;        //近截面
-    float fCameraFar = 30000.0f;      //远截面
-    float fFogNear = 1000.f;          //雾效果开始的距离
-    float fFogFar = 8000.f;           //雾效果结束的距离
-    long  lFogEnable = 0;             //雾效果开关
-    long  lSkyLight = 0xFF888888;     //天空光的颜色，这里设置为深灰色
-    float fLightR = 70.f;             //主光源的红色分量强度
-    float fLightW = 0.f;              //主光源的宽度，0表示点光源
-    float fLight2R = 70.f;            //辅助光源的红色分量强度
-    float fLight2W = 0.f;             //辅助光源的宽度，0表示点光源
+    float fCameraFOV    = 45.0f;       // 摄像机的视场角度（Field of View），单位为度
+    float fCameraAspect = 4.f / 3.f;   // 渲染视口的宽高比，例如4:3
+    float fCameraNear   = 10.0f;       //近截面
+    float fCameraFar    = 30000.0f;    //远截面
+    float fFogNear      = 1000.f;      //雾效果开始的距离
+    float fFogFar       = 8000.f;      //雾效果结束的距离
+    long  lFogEnable    = 0;           //雾效果开关
+    long  lSkyLight     = 0xFF888888;  //天空光的颜色，这里设置为深灰色
+    float fLightR       = 70.f;        //主光源的红色分量强度
+    float fLightW       = 0.f;         //主光源的宽度，0表示点光源
+    float fLight2R      = 70.f;        //辅助光源的红色分量强度
+    float fLight2W      = 0.f;         //辅助光源的宽度，0表示点光源
 
     m_lSkyFog = false;
     RtgVertex3 vSkyLight(0.5f, 0.5f, 0.5f);
@@ -761,7 +785,7 @@ void GcLogin::UpdateGraphConfig(const char* szName) {
                &(m_lightDirect2.vDiffuse.z));
         m_lightDirect2.vDiffuse /= 255.f;
         m_lightDirect2.vSpecular = m_lightDirect2.vDiffuse;
-        m_bLight2 = true;
+        m_bLight2                = true;
     } else {
         m_bLight2 = false;
     }
@@ -812,8 +836,8 @@ void GcLogin::SelectGameWorld(int iIdx) {
     if (iIdx < 0 || iIdx >= ms_pGameWorldServerList.size())
         return;
     m_szGameWorldServerName = ms_pGameWorldServerList[iIdx].szName;
-    m_szGameWorldServerIP = ms_pGameWorldServerList[iIdx].szIP;
-    m_lGameWorldServerPort = ms_pGameWorldServerList[iIdx].lPort;
+    m_szGameWorldServerIP   = ms_pGameWorldServerList[iIdx].szIP;
+    m_lGameWorldServerPort  = ms_pGameWorldServerList[iIdx].lPort;
     g_layerLogin->mp_selectServerName->SetText(m_szGameWorldServerName);  //显示当前服务器名称
     SetLoginState(GLS_LOGIN);
     unguard;
@@ -918,9 +942,9 @@ void GcLogin::OnCreateUser() {
         ShowMessage(R(MSG_USERNAME_INVALID));
         return;
     }
-    std::string  tmp = g_layerSelectChar->m_usrRoleName->GetText();
-    const char*  szUsername = tmp.c_str();
-    const char   m_bSex = m_curCrtRoleCsvID == FengWu ? 1 : 0;
+    std::string  tmp         = g_layerSelectChar->m_usrRoleName->GetText();
+    const char*  szUsername  = tmp.c_str();
+    const char   m_bSex      = m_curCrtRoleCsvID == FengWu ? 1 : 0;
     const short& headModelID = m_crtRole_csvIdMapHeads[m_curCrtRoleCsvID][0].id;
     this->CreateChar(szUsername, m_curCrtRoleCsvID, m_selectFaction, m_bSex, headModelID,
                      m_strCharPassword.c_str());
@@ -1081,8 +1105,8 @@ bool GcLogin::DetectIntersection(const int& x, const int& y, CRT_ActorInstance* 
     m16.Invert();
     v0 = vOrig * m16;                         // 转换射线到对象局部坐标系
     v1 = v1 = (vOrig + vDir * 1000.f) * m16;  // 只判断1000距离远的物体
-    vMin = pAABB->Min();
-    vMax = pAABB->Max();
+    vMin    = pAABB->Min();
+    vMax    = pAABB->Max();
     // 判断射线与AABB是否相交
     return rtgIsLineIntersectAABB(v0, v1, vMin, vMax, &r1, &r2);
 }
@@ -1161,7 +1185,7 @@ static inline void moveToIndex(std::vector<int>& vec, int targetElement, int tar
     int              steps = (targetIndex - currentIndex + vec.size()) % vec.size();
     std::vector<int> temp(vec.size());
     for (int i = 0; i < vec.size(); ++i) {
-        int newPos = (i + steps) % vec.size();
+        int newPos   = (i + steps) % vec.size();
         temp[newPos] = vec[i];
     }
     vec = std::move(temp);
@@ -1207,7 +1231,7 @@ void GcLogin::OnMouseLDown(int iButton, int x, int y) {
                 if (actIns == nullptr)
                     continue;
                 if (DetectIntersection(x, y, actIns)) {
-                    m_curCrtRoleCsvID = csvID;
+                    m_curCrtRoleCsvID     = csvID;
                     const SRT_Pose* _pose = &actIns->GetCurrentPose();
                     if (_pose && _pose->Name != "waiting_login") {
                         actIns->PlayPose("waiting_login");
@@ -1449,8 +1473,8 @@ void GcLogin::OnNetSelectCharDone() {
 class GcsGuideSession : public CG_TCPSession {
    public:
     GcsGuideSession(const char* szIP, int iPort) {
-        m_szIP = szIP;
-        m_iPort = iPort;
+        m_szIP           = szIP;
+        m_iPort          = iPort;
         m_fReConnectTime = 0.f;
         this->EnableCompress(false);
     }
@@ -1568,7 +1592,7 @@ float GcLogin::OnGuideGetGameWorldServerList(CG_CmdPacket* pPacket) {
     short sTimeSecond = 10, sCnt, sPort;
     char  cEvaluation;
     char* pName = NULL;
-    char* pIP = NULL;
+    char* pIP   = NULL;
     // 先取得下次更新的时间，再取得服务器列表
     pPacket->ReadShort(&sTimeSecond);
     pPacket->ReadShort(&sCnt);
@@ -1581,9 +1605,9 @@ float GcLogin::OnGuideGetGameWorldServerList(CG_CmdPacket* pPacket) {
         pPacket->ReadShort(&sPort);
         pPacket->ReadByte(&cEvaluation);
         if (pName && pIP) {
-            ms_pGameWorldServerList[i].lPort = sPort;
-            ms_pGameWorldServerList[i].szName = pName;
-            ms_pGameWorldServerList[i].szIP = pIP;
+            ms_pGameWorldServerList[i].lPort       = sPort;
+            ms_pGameWorldServerList[i].szName      = pName;
+            ms_pGameWorldServerList[i].szIP        = pIP;
             ms_pGameWorldServerList[i].lEvaluation = cEvaluation;
             // ms_pGameWorldServerList[i].ping = GetPing(pIP);
         } else {

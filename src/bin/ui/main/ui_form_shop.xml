@@ -55,7 +55,7 @@
               <Button FontSize="12" Inherit="NewButton1" Location="153,157,67,20" Name="btnok" Show="true" Sound="ui_Dealbt.wav" Text="出售" TextColor="#fffbff66" TextFont="宋体"/>
               <Button FontSize="12" Inherit="NewButton1" Location="224,157,67,20" Name="btncancel" Show="true" Sound="ui_normalbt.wav" Text="取消" TextColor="#fffbff66" TextFont="宋体"/>
               <Label Inherit="" Location="118,125,16,16" Name="lbmoney" Show="true">
-                <BackgroundImage Blend="true" File="ui_texture\pic_t_jinqian2.dds"/>
+                <BackgroundImage Blend="true" File="ui/ui_texture\pic_t_jinqian2.dds"/>
               </Label>
               <Label AlignLine="CENTER" Alignment="center" FontSize="12" Inherit="" Location="143,124,60,18" Name="lbtbc2" Show="true" Text="获得金钱" TextColor="#fffcffc6" TextFont="宋体">
                 <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="423,64,60,18"/>

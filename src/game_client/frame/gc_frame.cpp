@@ -78,7 +78,7 @@ bool CGameClientFrame::OnDeviceInit() {
     GetDevice()->GetTextMgr()->AddTextSearchPath("creature/texture");
     GetDevice()->GetTextMgr()->AddTextSearchPath("scene/texture");
     GetDevice()->GetTextMgr()->AddTextSearchPath("ui/ui_texture");
-    GetDevice()->GetTextMgr()->AddTextSearchPath("ui/x_texture");
+    GetDevice()->GetTextMgr()->AddTextSearchPath("ui/x_textures");
     GetDevice()->GetTextMgr()->AddTextSearchPath("scene/texture/sm");
 
     //GetDevice()->m_Texture.SetTexturePath("creature\\texture", 2);

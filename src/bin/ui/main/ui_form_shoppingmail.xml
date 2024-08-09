@@ -128,11 +128,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
@@ -155,11 +155,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
@@ -182,11 +182,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
@@ -209,11 +209,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
@@ -236,11 +236,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
@@ -263,11 +263,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
@@ -290,11 +290,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
@@ -317,11 +317,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Label Inherit="" Location="155,4,60,20" Name="lbltoken1" Show="true"/>
@@ -389,11 +389,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
@@ -416,11 +416,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
@@ -443,11 +443,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
@@ -470,11 +470,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
@@ -497,11 +497,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
@@ -524,11 +524,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
@@ -551,11 +551,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
@@ -578,11 +578,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Label Inherit="" Location="155,4,60,20" Name="lbltoken1" Show="true"/>
@@ -650,11 +650,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
@@ -677,11 +677,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
@@ -704,11 +704,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
@@ -731,11 +731,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
@@ -758,11 +758,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
@@ -785,11 +785,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
@@ -812,11 +812,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
@@ -839,11 +839,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Label Inherit="" Location="155,4,60,20" Name="lbltoken1" Show="true"/>
@@ -911,11 +911,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
@@ -938,11 +938,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
@@ -965,11 +965,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
@@ -992,11 +992,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
@@ -1019,11 +1019,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
@@ -1046,11 +1046,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
@@ -1073,11 +1073,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
@@ -1100,11 +1100,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Label Inherit="" Location="155,4,60,20" Name="lbltoken1" Show="true"/>
@@ -1172,11 +1172,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
@@ -1199,11 +1199,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
@@ -1226,11 +1226,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
@@ -1253,11 +1253,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
@@ -1280,11 +1280,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
@@ -1307,11 +1307,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
@@ -1334,11 +1334,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
@@ -1361,11 +1361,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Label Inherit="" Location="155,4,60,20" Name="lbltoken1" Show="true"/>
@@ -1433,11 +1433,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,5,200,80" Name="fmiteminfo2" Show="true">
@@ -1460,11 +1460,11 @@
                 <Label Alignment="center" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,90,200,80" Name="fmiteminfo3" Show="true">
@@ -1487,11 +1487,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,90,200,80" Name="fmiteminfo4" Show="true">
@@ -1514,11 +1514,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,175,200,80" Name="fmiteminfo5" Show="true">
@@ -1541,11 +1541,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,175,200,80" Name="fmiteminfo6" Show="true">
@@ -1568,11 +1568,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="5,260,200,80" Name="fmiteminfo7" Show="true">
@@ -1595,11 +1595,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Form BackgroundColor="#ff153723" Inherit="" Location="210,260,200,80" Name="fmiteminfo8" Show="true">
@@ -1622,11 +1622,11 @@
                 <Label Alignment="center" FontSize="14" Inherit="" Location="66,2,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
                 <Label Inherit="" Location="66,18,90,18" Name="lblprice" Show="true"/>
                 <Label Inherit="" Location="160,18,18,18" Name="lblmoneyicon1" Show="true">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
                 <Label Inherit="" Location="66,37,90,18" Name="lbloffsale" Show="false"/>
                 <Label Inherit="" Location="160,38,18,18" Name="lblmoneyicon2" Show="false">
-                  <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+                  <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
                 </Label>
               </Form>
               <Label Inherit="" Location="155,4,60,20" Name="lbltoken1" Show="true"/>
@@ -1703,7 +1703,7 @@
           <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
         </Label>
         <Label Inherit="" Location="166,4,18,18" Name="lblicon" Show="true">
-          <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+          <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
         </Label>
       </Form>
       <Form BackgroundColor="#A50E593A" Inherit="" Location="10,84,200,30" Name="fmnumber" Show="true">
@@ -1743,7 +1743,7 @@
         <Label Alignment="center" FontSize="14" Inherit="" Location="66,12,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
         <Label Inherit="" Location="67,36,90,18" Name="1625" Show="true"/>
         <Label Inherit="" Location="165,36,18,18" Name="lblicon" Show="true">
-          <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+          <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
         </Label>
       </Form>
       <Anchors>
@@ -1791,7 +1791,7 @@
           <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="366,124,6,22"/>
         </Label>
         <Label Inherit="" Location="166,4,18,18" Name="lblicon" Show="true">
-          <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+          <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
         </Label>
       </Form>
       <Form BackgroundColor="#A50E593A" Inherit="" Location="10,84,200,30" Name="fmnumber" Show="true">
@@ -1831,7 +1831,7 @@
         <Label Alignment="center" FontSize="14" Inherit="" Location="66,12,90,18" Name="lblitemname" Show="true" TextFont="宋体"/>
         <Label Inherit="" Location="67,36,90,18" Name="1625" Show="true"/>
         <Label Inherit="" Location="165,36,18,18" Name="lblicon" Show="true">
-          <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+          <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
         </Label>
       </Form>
       <Anchors>

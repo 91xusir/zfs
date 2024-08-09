@@ -1350,7 +1350,7 @@ bool UIFormCharSimple::Update()
 	tmp.Format("%d/%d",cre->Exp,g_TableExp.GetNextLevExp(cre->Lev));
 	m_expRate->SetText((char*)tmp);
 
-	//人物头像
+	//人物头像  
 	vector<SCharImage> images;
 	if (!g_TableCharImage.GetCharImage(cre->actorID, images))
 	{

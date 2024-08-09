@@ -149,7 +149,7 @@
             </Button>
             <!--	  <Column Name="Column"><BackgroundImage Border="3,3,3,3" BorderFile="" BorderSource="0,11,19,19" File="" Source="10,5,1,1" Blend="true" Transparency="0.7"/></Column>  -->
             <Button Name="Column">
-                <BackgroundImage Border="2,2,2,2" BorderFile="ui/zfs_texture/bd.tga" BorderSource="11,11,19,19" File="ui/zfs_texture/mi.tga" Source="10,5,1,1" Blend="true" Transparency="0.7"/>
+                <BackgroundImage Border="2,2,2,2" BorderFile="ui/zfs_texture/bd.png" BorderSource="11,11,19,19" File="ui/zfs_texture/mi.tga" Source="10,5,1,1" Blend="true" Transparency="0.7"/>
             </Button>
             <Button Name="Column1">
                 <BackgroundImage Border="" BorderFile="" BorderSource="" File="ui/x_textures/10.tga" Source="143,189,128,25" Blend="true" Transparency="0.7"/>
@@ -386,30 +386,30 @@
                     <BackgroundImage Blend="true" File="ui/x_textures/highlight_button.tga"/>
                 </Label>
                 <ScrollBarV Name="$AutoSbv" Show="false" Text="">
-                    <BackgroundImage Blend="true" File="ui_texture/ui_5.tga" Source="0,69,17,133"/>
-                    <HandleImage Blend="true" File="ui_texture/ui_5.tga" Source="21,92,16,10"/>
+                    <BackgroundImage Blend="true" File="ui/zfs_texture/ui_5.tga" Source="0,69,17,133"/>
+                    <HandleImage Blend="true" File="ui/zfs_texture/ui_5.tga" Source="21,92,16,10"/>
                     <TopButton Name="$TopBtn">
-                        <NormalImage File="ui_texture/ui_5.tga" Source="21,72,17,12"/>
-                        <HighlightImage File="ui_texture/ui_5.tga" Source="21,72,17,12"/>
-                        <PushedImage File="ui_texture/ui_5.tga" Source="21,72,17,12"/>
+                        <NormalImage File="ui/zfs_texture/ui_5.tga" Source="21,72,17,12"/>
+                        <HighlightImage File="ui/zfs_texture/ui_5.tga" Source="21,72,17,12"/>
+                        <PushedImage File="ui/zfs_texture/ui_5.tga" Source="21,72,17,12"/>
                     </TopButton>
                     <BottomButton Name="$BottomBtn">
-                        <NormalImage File="ui_texture/ui_5.tga" Source="21,110,17,12"/>
-                        <HighlightImage File="ui_texture/ui_5.tga" Source="21,110,17,12"/>
-                        <PushedImage File="ui_texture/ui_5.tga" Source="21,110,17,12"/>
+                        <NormalImage File="ui/zfs_texture/ui_5.tga" Source="21,110,17,12"/>
+                        <HighlightImage File="ui/zfs_texture/ui_5.tga" Source="21,110,17,12"/>
+                        <PushedImage File="ui/zfs_texture/ui_5.tga" Source="21,110,17,12"/>
                     </BottomButton>
                 </ScrollBarV>
                 <ScrollBarH Name="$AutoSbh" Show="false" Text="">
-                    <HandleImage File="ui_texture/tmp.bmp" Source="80,160,130,210"/>
+                    <HandleImage File="tmp.bmp" Source="80,160,130,210"/>
                     <LeftButton Name="$LeftBtn">
-                        <NormalImage File="ui_texture/tmp.bmp" Source="30,120,130,210"/>
-                        <HighlightImage File="ui_texture/tmp.bmp" Source="30,120,130,210"/>
-                        <PushedImage File="ui_texture/tmp.bmp" Source="27,118,127,208"/>
+                        <NormalImage File="tmp.bmp" Source="30,120,130,210"/>
+                        <HighlightImage File="tmp.bmp" Source="30,120,130,210"/>
+                        <PushedImage File="tmp.bmp" Source="27,118,127,208"/>
                     </LeftButton>
                     <RightButton Name="$RightBtn">
-                        <NormalImage File="ui_texture/tmp.bmp" Source="30,120,130,210"/>
-                        <HighlightImage File="ui_texture/tmp.bmp" Source="30,120,130,210"/>
-                        <PushedImage File="ui_texture/tmp.bmp" Source="27,118,127,208"/>
+                        <!-- <NormalImage File="tmp.bmp" Source="30,120,130,210"/>
+                        <HighlightImage File="tmp.bmp" Source="30,120,130,210"/>
+                        <PushedImage File="tmp.bmp" Source="27,118,127,208"/> -->
                     </RightButton>
                 </ScrollBarH>
                 <PopupMenu BackgroundColor="#bb222222" Location="0,0,100,200" Name="$PopupMenu" Show="false"/>
@@ -424,7 +424,7 @@
                     <Label AlignCol="CENTER" Inherit="" Location="115,10,90,18" Name="$MessageTitle" Show="true" TextColor="#FFFFFF00"/>
                 </Form>
                 <Form BackgroundColor="#ff381000" Location="200,150,300,160" Name="$InputBox" Show="false">
-                    <BackgroundImage Border="63,63,63,63" BorderFile="ui\x_textures\UITexture3.tga" BorderSource="0,0,192,192"/>
+                    <!-- <BackgroundImage Border="63,63,63,63" BorderFile="ui\x_textures\UITexture3.tga" BorderSource="0,0,192,192"/> -->
                     <Button Inherit="PushButton" Location="34,114,80,24" Name="$Ok" Text="?  " TextColor="#ff000000"/>
                     <Button Inherit="PushButton" Location="186,114,80,24" Name="$Cancel" Text="?  " TextColor="#ff000000"/>
                     <Label Location="30,40,220,70" Name="$Message"/>
@@ -434,7 +434,7 @@
                     <Label AlignCol="CENTER" Inherit="" Location="100,10,70,18" Name="$MessageName" Show="true" Text="TEST" TextColor="#FFFEF00"/>
                 </Form>
                 <EditBox Name="$DefaultHint" Show="false" Location="0,0,60,16">
-                    <BackgroundImage Border="2,2,2,2" BorderFile="ui_texture/bd.tga" BorderSource="10,40,6,6" Blend="true" File="ui_texture/mi.tga" Source="50,5,1,1" Transparency="0.5"/>
+                    <BackgroundImage Border="2,2,2,2" BorderFile="ui/zfs_texture/bd.png" BorderSource="10,40,6,6" Blend="true" File="ui/zfs_texture/mi.tga" Source="50,5,1,1" Transparency="0.5"/>
                 </EditBox>
             </Layer>
         </SystemWidgets>

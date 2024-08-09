@@ -252,7 +252,7 @@
           <Label Alignment="center" Inherit="" Location="49,5,55,15" Name="text1" Show="true" Text=""/>
           <Label Inherit="" Location="54,25,64,15" Name="text2" Show="true" Text=""/>
           <Label Inherit="" Location="36,24,18,18" Name="lbmoney" Show="true">
-            <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+            <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
           </Label>
         </Form>
         <Form BackgroundColor="#ff153723" Inherit="" Location="120,0,118,44" Name="fmbtn2" Show="true">
@@ -263,7 +263,7 @@
           <Label Alignment="center" Inherit="" Location="49,5,55,15" Name="text1" Show="true" Text=""/>
           <Label Inherit="" Location="54,25,64,15" Name="text2" Show="true" Text=""/>
           <Label Inherit="" Location="36,24,18,18" Name="lbmoney" Show="true">
-            <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+            <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
           </Label>
         </Form>
         <Form BackgroundColor="#ff153723" Inherit="" Location="0,47,118,44" Name="fmbtn3" Show="true">
@@ -274,7 +274,7 @@
           <Label Alignment="center" Inherit="" Location="49,5,55,15" Name="text1" Show="true" Text=""/>
           <Label Inherit="" Location="54,25,64,15" Name="text2" Show="true" Text=""/>
           <Label Inherit="" Location="36,24,18,18" Name="lbmoney" Show="true">
-            <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+            <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
           </Label>
         </Form>
         <Form BackgroundColor="#ff153723" Inherit="" Location="120,47,118,44" Name="fmbtn4" Show="true">
@@ -285,7 +285,7 @@
           <Label Alignment="center" Inherit="" Location="49,5,55,15" Name="text1" Show="true" Text=""/>
           <Label Inherit="" Location="54,25,64,15" Name="text2" Show="true" Text=""/>
           <Label Inherit="" Location="36,24,18,18" Name="lbmoney" Show="true">
-            <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+            <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
           </Label>
         </Form>
         <Form BackgroundColor="#ff153723" Inherit="" Location="0,94,118,44" Name="fmbtn5" Show="true">
@@ -296,7 +296,7 @@
           <Label Alignment="center" Inherit="" Location="49,5,55,15" Name="text1" Show="true" Text=""/>
           <Label Inherit="" Location="54,25,64,15" Name="text2" Show="true" Text=""/>
           <Label Inherit="" Location="36,24,18,18" Name="lbmoney" Show="true">
-            <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+            <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
           </Label>
         </Form>
         <Form BackgroundColor="#ff153723" Inherit="" Location="120,94,118,44" Name="fmbtn6" Show="true">
@@ -307,7 +307,7 @@
           <Label Alignment="center" Inherit="" Location="49,5,55,15" Name="text1" Show="true" Text=""/>
           <Label Inherit="" Location="54,25,64,15" Name="text2" Show="true" Text=""/>
           <Label Inherit="" Location="36,24,18,18" Name="lbmoney" Show="true">
-            <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+            <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
           </Label>
         </Form>
         <Form BackgroundColor="#ff153723" Inherit="" Location="0,141,118,44" Name="fmbtn7" Show="true">
@@ -318,7 +318,7 @@
           <Label Alignment="center" Inherit="" Location="49,5,55,15" Name="text1" Show="true" Text=""/>
           <Label Inherit="" Location="54,25,64,15" Name="text2" Show="true" Text=""/>
           <Label Inherit="" Location="36,24,18,18" Name="lbmoney" Show="true">
-            <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+            <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
           </Label>
         </Form>
         <Form BackgroundColor="#ff153723" Inherit="" Location="120,141,118,44" Name="fmbtn8" Show="true">
@@ -329,7 +329,7 @@
           <Label Alignment="center" Inherit="" Location="49,5,55,15" Name="text1" Show="true" Text=""/>
           <Label Inherit="" Location="54,25,64,15" Name="text2" Show="true" Text=""/>
           <Label Inherit="" Location="36,24,18,18" Name="lbmoney" Show="true">
-            <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+            <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
           </Label>
         </Form>
       </Form>

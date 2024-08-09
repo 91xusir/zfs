@@ -4,7 +4,7 @@
     <Form Inherit="BTitleBarForm" Location="120,120,632,377" Name="fmAuction" Show="false">
       <Form Inherit="" Location="0,-30,620,32" Name="panTitle"/>
       <Label Location="34,6,120,18" Name="lblist" Text="ÅÄÂôÎïÆ·"/>
-      <Form Inherit="Border" Location="16,26,106,293" Name="panOrder" Title="ui_texture/tree_icon1.bmp">
+      <Form Inherit="Border" Location="16,26,106,293" Name="panOrder" Title="ui/ui_texture/tree_icon1.bmp">
         <Form Inherit="" Location="0,2,100,58" Name="pansource01" Show="true">
           <Button DragServer="false" Inherit="" Location="28,2,34,34" Name="btnskill">
             <BackgroundImage Border="1,1,1,1" BorderFile="" BorderSource="95,10,4,4"/>

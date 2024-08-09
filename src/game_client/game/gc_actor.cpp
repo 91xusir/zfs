@@ -3596,7 +3596,7 @@ void GcActor::OnAttackArrive(SAttack* pAttack, bool bSucceed) {
                 g_layerMain->UpDateUIBlood();
             }
 
-            // 头上冒血(数字)处理
+            // lyymark 头上冒血(数字)处理
             if (g_layerMain->m_eSetting.m_bShowDamage) {
                 bool lasthit = false;
                 if (pActor->m_pNpc == NULL ||

@@ -6,14 +6,14 @@
         <TabItem>
           <CheckButton Inherit="SelectButton" Location="1,0,60,18" Name="btnnormalitem" TargetID="fmnormalitem" Text="道具"/>
           <Form FadeIn="true" Inherit="" Location="1,19,219,147" Name="fmnormalitem">
-            <BackgroundImage Blend="true" Border="1,1,1,1" BorderBlend="true" BorderFile="ui/zfs_texture/bd.tga" BorderSource="11,41,6,6" File="" Source="0,52,24,23"/>
+            <BackgroundImage Blend="true" Border="1,1,1,1" BorderBlend="true" BorderFile="ui/zfs_texture/bd.png" BorderSource="11,41,6,6" File="" Source="0,52,24,23"/>
             <Button BackgroundColor="#00000000" BorderCorlor="#227b6129" BorderSize="2" Name="itembutton"/>
           </Form>
         </TabItem>
         <TabItem>
           <CheckButton Inherit="SelectButton" Location="61,0,60,18" Name="btntaskitem" TargetID="fmtaskitem" Text="任务"/>
           <Form BackgroundTransparent="0.3" BorderCorlor="#227b6129" BorderSize="2" FadeIn="true" Inherit="" Location="1,19,219,147" Name="fmtaskitem">
-            <BackgroundImage Blend="true" Border="1,1,1,1" BorderBlend="true" BorderFile="ui/zfs_texture/bd.tga" BorderSource="11,41,6,6" File="" Source="0,52,24,23"/>
+            <BackgroundImage Blend="true" Border="1,1,1,1" BorderBlend="true" BorderFile="ui/zfs_texture/bd.png" BorderSource="11,41,6,6" File="" Source="0,52,24,23"/>
           </Form>
         </TabItem>
       </TabCtrl>
@@ -75,7 +75,7 @@
         <BackgroundImage Blend="true" File="ui/zfs_texture/ui_3.tga" Source="133,61,18,18"/>
       </Label>
       <Label Alignment="far" Location="71,295,62,16" Name="lbgoldnum" Text="300000000">
-        <BackgroundImage Blend="true" Border="1,1,1,1" BorderFile="ui/zfs_texture/bd.tga" BorderSource="72,12,2,2"/>
+        <BackgroundImage Blend="true" Border="1,1,1,1" BorderFile="ui/zfs_texture/bd.png" BorderSource="72,12,2,2"/>
       </Label>
       <Label Alignment="center" Location="149,295,25,16" Name="lbpage" Text="1/2"/>
     </Form>

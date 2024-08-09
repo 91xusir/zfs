@@ -1183,7 +1183,7 @@
       <background borderImage="" borderSize="2" borderSource="10,40,6,6" borderTransparent="" fillMode="" image="" source="5,5,2,2" transparent="0.40"/>
       <title borderImage="" borderSize="" borderSource="" borderTransparent="" fillMode="" image="" source="50,5,10,2" titleDock="left" titleSize="12" transparent="1"/>
       <aliasButton Name="lbhotkeyenable" alignment="center" disable="" dragClient="false" dragServer="false" geometry="16,5,34,34" hint="" text="" textColor="ffffffff">
-        <background borderImage="" borderSize="1" borderSource="95,10,4,4" borderTransparent="0.6" fillMode="" image="ui_texture/mi.tga" source="16,5,2,2" transparent="0.6"/>
+        <background borderImage="" borderSize="1" borderSource="95,10,4,4" borderTransparent="0.6" fillMode="" image="ui/zfs_texture/mi.tga" source="16,5,2,2" transparent="0.6"/>
       </aliasButton>
       <button Name="btnhotkeyleft" disable="" geometry="54,3,16,14" hint="" hintText="" text="">
         <normal borderImage="" borderSize="1" borderSource="95,10,4,4" borderTransparent="0.7" fillMode="" image="" source="130,100,14,16" textColor="ffffffff" transparent="1"/>

@@ -16,14 +16,14 @@
     <Form Anchor="right" Inherit="TitleBarForm" Location="584,132,214,282" Name="fmCreatRole" Show="false">
       <CloseButton Show="false"/>
       <TitleBar Text="角 色 信 息"/>
-      <Label Inherit="LabelTitle" Location="20,4,30,16" Name="lbRoleName" Text="姓名"/>
+      <Label Inherit="" Location="20,4,30,16" Name="lbRoleName" Text="姓名"/>
       <EditBox Inherit="EditBox" Location="56,4,102,16" Name="txtRoleName" Text="鸿钧"/>
       <Button Inherit="PushButton" Location="162,4,28,16" Name="btnNameRand" Text="随机"/>
-      <Label Inherit="LabelTitle" Location="20,28,30,16" Name="lbJob" Text="职业选择"/>
+      <Label Inherit="" Location="20,28,30,16" Name="lbJob" Text="职业选择"/>
       <Button Inherit="PushButton" Location="56,28,28,16" Name="btnJobLeft" Text=""/>
       <Button Inherit="PushButton" Location="162,28,28,16" Name="btnJobRight" Text=""/>
       <EditBox Disable="true" Inherit="EditBox" Location="88,28,70,16" Name="txtJob" Text="邪灵术士"/>
-      <Label Inherit="LabelTitle" Location="20,52,30,16" Name="lbHead" Text="头型"/>
+      <Label Inherit="" Location="20,52,30,16" Name="lbHead" Text="头型"/>
       <EditBox Disable="true" Inherit="EditBox" Location="88,52,70,16" Name="txtHead" Text="头型A"/>
       <Button Inherit="PushButton" Location="56,52,28,16" Name="btnHeadLeft" Text=""/>
       <Button Inherit="PushButton" Location="162,52,28,16" Name="btnHeadRight" Text=""/>

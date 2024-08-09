@@ -146,9 +146,8 @@ G_MEMDEF(s_szDetechUsername, 40)
 
 std::vector<std::string> commands;  // 存储所有命令的列表
 
-void ParseCommandLine(LPSTR lpCmdLine) {
-    std::string       cmdLine(lpCmdLine);
-    std::stringstream ss(cmdLine);
+void ParseCommandLine(const std::string& lpCmdLine) {
+    std::stringstream ss(lpCmdLine);
     std::string       command;
     while (std::getline(ss, command, ';')) {
         commands.push_back(command);
@@ -182,14 +181,15 @@ bool IsValidIpAddress(const std::string& ipAddress) {
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 
     P_OPEN_CONSOLE();
-    ParseCommandLine(lpCmdLine);  //解析命令行
+ 
+    ParseCommandLine(std::string(lpCmdLine));  //解析命令行
 
     int iResult = FALSE;
     rtRandomSeed(time(NULL));
     char* szMemoffset = RT_NEW char[((rtRandom() % 10) + 1) * 32];
     {
-        // 命令行配置
-        RtTextConfig cfgCommandLine(lpCmdLine);
+        // 旧命令行配置
+        // RtTextConfig cfgCommandLine(lpCmdLine);
 
 #ifdef _DEBUG
         if (!rtCoreInit("config/game.ini")) {
@@ -347,9 +347,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         m_userConfig.lGeometryQuality               = GeometryQuality;
 
 #ifndef _DEBUG
-        //请执行 update_client.exe 来进行游戏 开发中暂时不用
-        /* if (std::string::npos == ((std::string)lpCmdLine).find("tooth.updaterun")) {
-            MessageBox(NULL, R(MSG_RUNEXE_FSO), R(G_INFO), MB_OK | MB_ICONINFORMATION);
+        //开发中暂时不用
+        /*if (!commands.size()) {
+            MessageBox(NULL, R(MSG_RUNEXE_FSO), R(G_INFO), MB_OK | MB_ICONINFORMATION);//请执行 zfs.exe 来进行游戏 
             DEL_ARRAY(szMemoffset);
             return 0;
         }*/
@@ -363,10 +363,10 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
             strGuidePort = netConfig["net"]["GuidePort"].at<int>();
         }
         if (commands.size() > 0 && commands[0] == "tooth.updaterun") {
-            if (!commands[1].empty()) {
+            if (commands.size() > 1 && !commands[1].empty()) {
                 strGuideIP = commands[1];
             }
-            if (!commands[2].empty()) {
+            if (commands.size() > 2 && !commands[2].empty()) {
                 try {
                     strGuidePort = std::stoi(commands[2]);
                 } catch (const std::invalid_argument& e) {

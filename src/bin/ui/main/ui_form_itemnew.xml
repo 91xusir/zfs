@@ -42,7 +42,7 @@
         <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,6,22"/>
       </Label>
       <Label Inherit="" Location="20,350,16,16" Name="lbmoney4" Show="true">
-        <BackgroundImage Blend="true" File="ui_texture\pic_t_jinqian2.dds"/>
+        <BackgroundImage Blend="true" File="ui/ui_texture\pic_t_jinqian2.dds"/>
       </Label>
       <Label Inherit="" Location="42,375,6,22" Name="lbstone1" Show="true">
         <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="359,124,6,22"/>
@@ -66,7 +66,7 @@
         <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="374,124,6,22"/>
       </Label>
       <Label Inherit="" Location="20,406,16,16" Name="lbgmoney4" Show="true">
-        <BackgroundImage Blend="true" File="ui_texture\pic_t_yuanbao.dds"/>
+        <BackgroundImage Blend="true" File="ui\ui_texture\pic_t_yuanbao.dds"/>
       </Label>
       <TabCtrl Dock="fill" Location="2,44,305,300" Name="tabitem">
         <TabItem>

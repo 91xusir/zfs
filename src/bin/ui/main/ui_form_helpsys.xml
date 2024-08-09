@@ -9,7 +9,7 @@
         <HighlightImage Blend="true" File="ui/x_textures/5.tga" Source="360,84,18,17"/>
       </CloseButton>
       <Form Inherit="panTitle" Location="0,-30,502,32" Name="panTitle"/>
-      <Tree AutoScrollV="true" Inherit="ListBox" Item1="first" Location="16,55,160,380" Name="treelist" Title="ui_texture/tree_icon1.bmp">
+      <Tree AutoScrollV="true" Inherit="ListBox" Item1="first" Location="16,55,160,380" Name="treelist" Title="ui/ui_texture/tree_icon1.bmp">
 	    <Node Text="成长指南">
 		  <Node Link="help/growthhelp/growthhelp.html" Text="成长指南"/>
         </Node> 

@@ -2270,6 +2270,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
     if (!mGraph.PlayPose(m_szLastPoseName, vLoop, fSpeed)) {
         // ERR2("播放动作失败,模型文件[%s] 动作[%s] \n", mGraph.FileName(),
         // m_szLastPoseName);
+        P_LOGINFO("播放动作失败"+std::string(mGraph.FileName())+"动作"+std::string(m_szLastPoseName));
         const SRT_Pose* pActorPose = &mGraph.p()->GetCurrentPose();
         if (pActorPose && pActorPose->IsVaild()) {
             rt2_strncpy(m_szLastPoseName, pActorPose->Name.c_str(), 40);
