@@ -144,10 +144,45 @@ class CCcxyCoreFactory : public RtCoreFactory {
 RT_IMPLEMENT_DYNCREATE(CCcxyCoreFactory, RtCoreFactory, 0, "RtCore")
 G_MEMDEF(s_szDetechUsername, 40)
 
+std::vector<std::string> commands;  // 存储所有命令的列表
+
+void ParseCommandLine(LPSTR lpCmdLine) {
+    std::string       cmdLine(lpCmdLine);
+    std::stringstream ss(cmdLine);
+    std::string       command;
+    while (std::getline(ss, command, ';')) {
+        commands.push_back(command);
+    }
+}
+
+bool IsValidIpAddress(const std::string& ipAddress) {
+    std::vector<std::string> parts;
+    std::stringstream        ss(ipAddress);
+    std::string              part;
+    while (std::getline(ss, part, '.')) {
+        parts.push_back(part);
+    }
+    if (parts.size() != 4) {
+        return false;
+    }
+
+    for (const std::string& part : parts) {
+        if (part.empty() || part.size() > 3 || !std::all_of(part.begin(), part.end(), ::isdigit)) {
+            return false;
+        }
+        int num = std::stoi(part);
+        if (num < 0 || num > 255) {
+            return false;
+        }
+    }
+    return true;
+}
+
 //lyymark 1.Game.Init 程序main函数入口
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 
     P_OPEN_CONSOLE();
+    ParseCommandLine(lpCmdLine);  //解析命令行
 
     int iResult = FALSE;
     rtRandomSeed(time(NULL));
@@ -320,12 +355,24 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         }*/
 #endif
         // 取得向导服务器的IP地址和端口，并且去取得GameWorld服务器列表
-        std::string strGuideIP   = "127.0.0.1";
-        int         strGuidePort = 6620;
+        std::string  strGuideIP   = "127.0.0.1";
+        int          strGuidePort = 6620;
         GlobalConfig netConfig;
         if (netConfig.OpenFile("config/game.ini")) {
             strGuideIP   = netConfig["net"]["GuideIP"].at<std::string>();
             strGuidePort = netConfig["net"]["GuidePort"].at<int>();
+        }
+        if (commands.size() > 0 && commands[0] == "tooth.updaterun") {
+            if (!commands[1].empty()) {
+                strGuideIP = commands[1];
+            }
+            if (!commands[2].empty()) {
+                try {
+                    strGuidePort = std::stoi(commands[2]);
+                } catch (const std::invalid_argument& e) {
+                    P_LOGINFO(e.what());
+                }
+            }
         }
         rt2_strncpy(g_szGuideServerHostIP, strGuideIP.c_str(), 40);
         g_iGuideServerHostPort = strGuidePort;
