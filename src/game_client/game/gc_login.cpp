@@ -303,6 +303,44 @@ void GcLogin::Lyy_UpdateCameraPos() {
     }
 }
 
+//加载scene/login.ini 并进入登录界面
+void GcLogin::OnRenderLoading() {
+    guard;
+    const char* szLoginConfigName = "scene/login.ini";
+    if (!m_ini.OpenFile(szLoginConfigName)) {
+        ERR1("错误: 不能登录界面配置文件[%s].\n", szLoginConfigName);
+        return;
+    }
+    m_ini.CloseFile();
+    LoadLoginSection(&m_ini, "Login", m_mapLogin);
+    LoadLoginSection(&m_ini, "SelectChar", m_mapSelectChar);
+    LoadLoginSection(&m_ini, "CreateChar", m_mapCreateChar);
+    // 打开登陆界面
+    UILayer::EnterLogin();
+    unguard;
+}
+
+//进入loading页面加载
+void GcLogin::EnterLoading() {
+    guard;
+    UILayer::EnterLoading();
+    m_bLoading = false;
+    unguard;
+}
+
+bool GcLogin::LeaveLoading() {
+    guard;
+    // 打开背景音乐
+    const char* szMusicFileName = GetGameIni()->GetEntry("Audio", "LoginMusic");
+    if (szMusicFileName) {
+        g_pBackMusic->Play(szMusicFileName, true);
+    }
+    UILayer::LeaveLoading();
+
+    return true;
+    unguard;
+}
+
 void GcLogin::EnterSelectGameWorldServer() {
     DXUtil_Timer(TIMER_RESET);  //用于解除帧数限制快速加载
     if (g_layerLogin == nullptr) {
@@ -475,7 +513,7 @@ void GcLogin::UpdateSelectChar() {
         return;
     RtgMatrix12 _SlotMatrix;
     size_t      maxCount = std::min(accountInfo.chatCount, (long)UILayerSelectChar::MaxUserCharBtn);
-    //实际上只有删除或添加角色才需要重新更新位置，不过懒得写了 by lyy 2024.8.5
+    //实际上只有删除或添加角色才需要重新更新位置，不过懒得写判断了 by lyy 2024.8.5
     for (std::size_t i = 0; i < maxCount; ++i) {
         auto&       user     = accountInfo.users[i];
         std::string boneName = "bno" + std::to_string(i + 1);
@@ -506,6 +544,13 @@ void GcLogin::UpdateSelectChar() {
         }
     }
     unguard;
+}
+
+void GcLogin::ClearSelectRoleOnce() {
+    for (auto it = m_selRole_IDMapGcActor.begin(); it != m_selRole_IDMapGcActor.end();) {
+        DEL_ONE(it->second);
+        it = m_selRole_IDMapGcActor.erase(it);
+    }
 }
 
 bool GcLogin::LeaveSelectChar() {
@@ -700,44 +745,6 @@ void GcLogin::UpdateCreateChar() {
 void GcLogin::ChangeCharHead(int charCsvId, int headIndex) {}
 
 // -------------------角色创建end------------------
-
-//进入loading页面加载
-void GcLogin::EnterLoading() {
-    guard;
-    UILayer::EnterLoading();
-    m_bLoading = false;
-    unguard;
-}
-
-bool GcLogin::LeaveLoading() {
-    guard;
-    // 打开背景音乐
-    const char* szMusicFileName = GetGameIni()->GetEntry("Audio", "LoginMusic");
-    if (szMusicFileName) {
-        g_pBackMusic->Play(szMusicFileName, true);
-    }
-    UILayer::LeaveLoading();
-
-    return true;
-    unguard;
-}
-
-//加载scene/login.ini 并进入登录界面
-void GcLogin::OnLoading() {
-    guard;
-    const char* szLoginConfigName = "scene/login.ini";
-    if (!m_ini.OpenFile(szLoginConfigName)) {
-        ERR1("错误: 不能登录界面配置文件[%s].\n", szLoginConfigName);
-        return;
-    }
-    m_ini.CloseFile();
-    LoadLoginSection(&m_ini, "Login", m_mapLogin);
-    LoadLoginSection(&m_ini, "SelectChar", m_mapSelectChar);
-    LoadLoginSection(&m_ini, "CreateChar", m_mapCreateChar);
-    // 打开登陆界面
-    UILayer::EnterLogin();
-    unguard;
-}
 
 void GcLogin::UpdateGraphConfig(const char* szName) {
     float fCameraFOV    = 45.0f;       // 摄像机的视场角度（Field of View），单位为度
@@ -1077,7 +1084,7 @@ void GcLogin::OnRender(float fSecond) {
     }
     if (m_eCurrentStatus == GLS_LOADING) {
         if (m_bLoading) {
-            OnLoading();
+            OnRenderLoading();
             SetLoginState(GLS_SELECT_GAMEWORLD_SERVER);
         } else {
             m_bLoading = true;

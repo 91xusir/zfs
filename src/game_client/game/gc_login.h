@@ -122,7 +122,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     inline void SetSaveAccount(bool bSave) { bSaveAccount = bSave; }
     inline bool GetSaveAccount() const { return bSaveAccount; }
 
-    // 人物角色左旋
+    // 人物角色左旋 废弃
     void OnLeftRotation();
     void OnLeftRotationDown();
     void OnLeftRotationUp();
@@ -157,6 +157,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     void SetSelectShangOrZhou(int iSei);
     void UpdateCreateChar();  //更新创建界面角色
     void UpdateSelectChar();  //更新选人界面角色
+    void ClearSelectRoleOnce();
 
     virtual void OnConnect(bool bSucceeded);
     virtual void OnDisconnect();
@@ -227,7 +228,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
 
    public:  //图形相关
     void        Lyy_UpdateCameraPos();
-    void        OnLoading();
+    void        OnRenderLoading();
     void        OnRenderMask(RTGRenderMask mask, float fSecond);
     void        UpdateGraphConfig(const char* szName);
     static bool DetectIntersection(const int& x, const int& y, CRT_ActorInstance* actor);
@@ -239,7 +240,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     virtual void       OnPoseBreak(SRT_Pose* oldPose, SRT_Pose* newPose);
    private:
     EStatus           m_eCurrentStatus = GLS_NONE;   //当前状态
-    bool              m_bLoading = false;            //判断是否初始化加载
+    bool              m_bLoading = false;            //判断是否初始化加载login.ini文件
     CGameClientFrame* m_pGameClientFrame = nullptr;  //游戏客户端指针
     bool              m_bSelCharNetSucceed = false;  //判断选角服务器响应是否成功
     bool m_bCanInput = false;  //是否允许鼠标键盘输入 这里不包括输入框UI类 只是当前类

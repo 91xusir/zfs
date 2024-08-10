@@ -78,6 +78,7 @@ void UILayerSelectChar::OnClicked_Back(void*, void*) {
         }
     } else if (status == GcLogin::GLS_SELECT_CHAR) {
         gc_login->NetClose();
+        gc_login->ClearSelectRoleOnce();
         gc_login->SetLoginState(GcLogin::GLS_LOGIN);
     }
     unguard;
