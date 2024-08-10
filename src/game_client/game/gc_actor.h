@@ -252,7 +252,7 @@ public:
     //技能部分
 	void ShowDamageNumber(int ret,short sDamage,short eleDmg[MAX_ELEMENT_ATTR],bool spec=false,char eleSpe=0);
 	/*void ShowHeadNotify(char *type,bool spec = false);*/
-	void ShowHeadNotify(char *type, short sDamage, bool spec = false);
+	void ShowHeadNotify(const char *type, short sDamage, bool spec = false);
 	void EquipTrump(bool Active,const char *Model, SItemID &item, STrump *pTrump=NULL);
 	void EquipWeapon(bool Active,const char *Model, SWeapon *weapon, SItemID &item);
 

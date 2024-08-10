@@ -225,6 +225,7 @@ void RegionExit()
 	DEL_ONE(g_sendCmdWG);
 	DEL_ONE(g_region);
     ClearMapString();
+
 	DEL_ONE(g_factory);
 }
 

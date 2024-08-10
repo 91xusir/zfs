@@ -52,7 +52,8 @@
 #include "ui_form_skill.h"
 #include "ui_form_setting.h"
 #include <string>
-#include <mmsystem.h> 
+#include <mmsystem.h>
+#include <preConsole.h>
 extern RtsPathFind* g_pPathFind;
 extern BOOL         bRenderUI;
 
@@ -60,18 +61,19 @@ static RT_TYPE_CS m_csCheckProcess;
 static HANDLE     s_hGetProcessModuleThread = NULL;  // 线程句柄
 //static char s_strCheckProcessName[200];
 G_MEMDEF(s_strCheckProcessName, 200)
-static bool  s_bFoundData = false;
+static bool  s_bFoundData    = false;
 static bool  s_bFoundProcess = false;
 int          m_lastTouchCursor;
 static float fMouseSpeed = 10.0f;
 /* gao 2009.12.2 */
-static float nowY = 45;
-static float fps = 0.0;
+static float nowY       = 45;
+static float fps        = 0.0;
 static bool  bCanHideUI = false;
-static bool  bShowFps = false;
+static bool  bShowFps   = false;
 
 static float dwShowTime = 0.f;  //新手提示显示时间
-static int   hitCount = 0;      //新手连续点击数
+static int   hitCount   = 0;    //新手连续点击数
+
 //lyytodo clt_graph.ini替换json
 void GetHideConfig() {
     RtIni iniGame;
@@ -259,56 +261,56 @@ bool cbTranslateTextFunc(string& result, const char* text, void* data) {
 
 GcWorld::GcWorld(CGameClientFrame* pGameClientFrame) : m_Camera(0.0, 0.0, 0.0) {
     guard;
-    m_bUsePlayerLight = false;
-    m_bRun = false;
+    m_bUsePlayerLight  = false;
+    m_bRun             = false;
     m_nDisconnectCause = NET_DISCONNECT_CAUSE_UNKNOWN;
-    m_bSwitchRegion = false;
+    m_bSwitchRegion    = false;
 
-    m_bInit = false;
+    m_bInit     = false;
     m_cUserJhWg = 0;
     //m_bImmeInput = true; // 默认为直接输入模式
     m_pGameClientFrame = pGameClientFrame;
-    m_iGameDate = 0;
-    m_iGameMinute = 0;
-    m_bLockCamera = true;
+    m_iGameDate        = 0;
+    m_iGameMinute      = 0;
+    m_bLockCamera      = true;
 #if DO_CONSOLE
     mDebugBlockTerrain = false;
 #endif
-    m_pPlayer = NULL;
-    m_dwPetID = 0;
-    m_pPet = NULL;
-    m_pMissileManager = NULL;
+    m_pPlayer           = NULL;
+    m_dwPetID           = 0;
+    m_pPet              = NULL;
+    m_pMissileManager   = NULL;
     m_bStateChangeFrame = false;
-    m_bKeyAlt = false;
-    m_bKeyCtrl = false;
-    m_bKeyShift = false;
-    m_bLogined = false;
-    m_tLogoutTime = 0;
-    m_iCheckPlayerSeed = (int)this;
+    m_bKeyAlt           = false;
+    m_bKeyCtrl          = false;
+    m_bKeyShift         = false;
+    m_bLogined          = false;
+    m_tLogoutTime       = 0;
+    m_iCheckPlayerSeed  = (int)this;
 
-    m_szLastSceneFile[0] = 0;
-    m_szSceneFile[0] = 0;
+    m_szLastSceneFile[0]   = 0;
+    m_szSceneFile[0]       = 0;
     m_iCheckPlayerSeedSave = (int)this;
 
     // 平行光
-    m_lightPlayer.eMode = RTG_LIGHT_POINT;
+    m_lightPlayer.eMode  = RTG_LIGHT_POINT;
     m_lightPlayer.fRange = 250.f;
     m_lightPlayer.SetAttenuation(0.f, 0.01f, 0.f);
     m_lightPlayer.vDiffuse.Set(0.5f, 0.5f, 0.f);
     m_lightPlayer.vSpecular.Set(0.5f);
     m_lightPlayer.vPosition.Set(0.f);
-    m_bHackChecked = false;
+    m_bHackChecked     = false;
     m_bIsMovableCursor = false;
-    m_selectedActor = 0;
+    m_selectedActor    = 0;
     //m_pAliasButton = NULL; //gao 2009.12.18 去除原右键技能框
     m_lastTouchCursor = GAME_CURSOR_NORMAL;
 
     m_dwInteractiveNPCID = 0;
-    m_dwActualNPCID = 0;
-    m_upTaskId = 0;
+    m_dwActualNPCID      = 0;
+    m_upTaskId           = 0;
     m_InteractiveNPCName = "";
-    bMainLine = false;
-    m_szSceneFileName = "";
+    bMainLine            = false;
+    m_szSceneFileName    = "";
 
     bCurOperate = false;  //新手指引
 
@@ -320,7 +322,7 @@ GcWorld::GcWorld(CGameClientFrame* pGameClientFrame) : m_Camera(0.0, 0.0, 0.0) {
     //------------add start by tony 05.06.10-------------------------------------//
     m_iTmpPacketSize = 0;
     m_pTmpPacketData = 0;
-    m_bOnlyShowNPC = false;
+    m_bOnlyShowNPC   = false;
 
     m_bCheckProcess = false;
     INIT_CS(&m_csCheckProcess);
@@ -330,9 +332,9 @@ GcWorld::GcWorld(CGameClientFrame* pGameClientFrame) : m_Camera(0.0, 0.0, 0.0) {
     /* gao 2010.2.26
 	用于控制用户按键，用两个变量来控制，最多只能实现两个按键的组合
 	*/
-    m_iKey1 = -1;
-    m_iKey2 = -1;
-    m_bKeyBoardMoving = false;
+    m_iKey1                = -1;
+    m_iKey2                = -1;
+    m_bKeyBoardMoving      = false;
     m_bIsControlByKeyBoard = false;
 
     RtIni iniUser;  //tim.yang  读取是否绘制路线的配置文件变量
@@ -340,10 +342,10 @@ GcWorld::GcWorld(CGameClientFrame* pGameClientFrame) : m_Camera(0.0, 0.0, 0.0) {
         iniUser.GetEntry("drawterrainblock", "drawterrainblock", &m_drawTerrainBlock);
     }
 
-    m_iDeadport = 0;
+    m_iDeadport   = 0;
     m_bFreeCamera = false;
-    m_pGcPet = NULL;
-    m_pDungeon = NULL;
+    m_pGcPet      = NULL;
+    m_pDungeon    = NULL;
 
     GetHideConfig();
 
@@ -368,7 +370,7 @@ GcWorld::~GcWorld() {
     }
     DELETE_CS(&m_csCheckProcess);
     m_bInit = false;
-    m_bRun = false;
+    m_bRun  = false;
     if (m_pTmpPacketData)
         DEL_ARRAY(m_pTmpPacketData);
     m_pTmpPacketData = 0;
@@ -440,8 +442,8 @@ vector<CRT_SkinInstance*>  SkinCacheList;
 
 bool GcWorld::EnterGame() {
     guard;
-    m_dNPCID = 0;
-    m_dNPCNameColor = 0xFFFFFFFF;
+    m_dNPCID                = 0;
+    m_dNPCNameColor         = 0xFFFFFFFF;
     RtScene::m_bRenderScene = TRUE;
 
     UILayer::EnterMain();
@@ -471,17 +473,17 @@ bool GcWorld::EnterGame() {
     //m_Mail.Reset();
 
     // 设置默认摄像机属性
-    float fFOV = 45.0f;
-    float fAspect = 4.f / 3.f;
+    float fFOV        = 45.0f;
+    float fAspect     = 4.f / 3.f;
     float fCameraNear = 10.0f;
-    float fCameraFar = 1000.0f;
+    float fCameraFar  = 1000.0f;
 
-    m_fCameraDefaultYaw = -45.f;
-    m_fCameraDefaultDegree = 38.f;
-    m_fCameraMinDistance = 100.f;
-    m_fCameraMaxDistance = 100.f;
+    m_fCameraDefaultYaw      = -45.f;
+    m_fCameraDefaultDegree   = 38.f;
+    m_fCameraMinDistance     = 100.f;
+    m_fCameraMaxDistance     = 100.f;
     m_fCameraDefaultDistance = 100.f;
-    m_bIsMovableCursor = false;
+    m_bIsMovableCursor       = false;
 
     GetGameIni()->GetEntry("Camera", "FOV", &fFOV);
     GetGameIni()->GetEntry("Camera", "Aspect", &fAspect);
@@ -689,12 +691,12 @@ GcActor* GcWorld::HitTest(RtgVertex3& vOrig, RtgVertex3& vDir, int iStyle) {
     guard;
     if (m_pPlayer->m_bIsDead)
         return NULL;
-    float    fDist = 0.f, fMinDist;
+    float    fDist         = 0.f, fMinDist;
     GcActor* pNearestActor = NULL;
     if (iStyle & 0x01) {
         if (m_pPlayer->mBaseActor.HitTest(vOrig, vDir, fDist, false)) {
             pNearestActor = m_pPlayer;
-            fMinDist = fDist;
+            fMinDist      = fDist;
         }
     }
     if (iStyle & 0xFC) {
@@ -704,7 +706,7 @@ GcActor* GcWorld::HitTest(RtgVertex3& vOrig, RtgVertex3& vDir, int iStyle) {
                 return NULL;
             if (pNearestActor == NULL || fDist < fMinDist) {
                 pNearestActor = pActor;
-                fMinDist = fDist;
+                fMinDist      = fDist;
             }
         }
     }
@@ -713,7 +715,7 @@ GcActor* GcWorld::HitTest(RtgVertex3& vOrig, RtgVertex3& vDir, int iStyle) {
             if (m_pPet->mBaseActor.HitTest(vOrig, vDir, fDist, false)) {
                 if (pNearestActor == NULL || fDist < fMinDist) {
                     pNearestActor = m_pPet;
-                    fMinDist = fDist;
+                    fMinDist      = fDist;
                 }
             }
         }
@@ -726,7 +728,7 @@ GcActor* HitTestTouch(GcWorld* pWorld, RtgVertex3& vOrig, int& iSum, RtgVertex3&
     if (GetPlayer()->m_bIsDead)
         return NULL;
     float    fDist = 0.f, fMinDist = 0.f;
-    GcActor* pNearestActor = NULL;
+    GcActor* pNearestActor    = NULL;
     int      eLastTouchCursor = GAME_CURSOR_NORMAL;
 
     //     if (m_pPlayer)
@@ -746,8 +748,8 @@ GcActor* HitTestTouch(GcWorld* pWorld, RtgVertex3& vOrig, int& iSum, RtgVertex3&
                 return NULL;
             }
             if (pNearestActor == NULL || fDist < fMinDist) {
-                pNearestActor = pActor;
-                fMinDist = fDist;
+                pNearestActor    = pActor;
+                fMinDist         = fDist;
                 eLastTouchCursor = m_lastTouchCursor;
             }
         }
@@ -757,8 +759,8 @@ GcActor* HitTestTouch(GcWorld* pWorld, RtgVertex3& vOrig, int& iSum, RtgVertex3&
     if (pWorld->m_pPet && pWorld->m_pPet->m_pNpc) {
         if (pWorld->m_pPet->mBaseActor.HitTest(vOrig, vDir, fDist, true)) {
             if (pNearestActor == NULL || fDist < fMinDist) {
-                pNearestActor = pWorld->m_pPet;
-                fMinDist = fDist;
+                pNearestActor    = pWorld->m_pPet;
+                fMinDist         = fDist;
                 eLastTouchCursor = m_lastTouchCursor;
             }
         }
@@ -768,9 +770,9 @@ GcActor* HitTestTouch(GcWorld* pWorld, RtgVertex3& vOrig, int& iSum, RtgVertex3&
     if (bSum) {
         if (pNearestActor) {
             //Lua()->CallLFunc("nk","i:i",pNearestActor->ID(), &iSum);
-            int iRand = rtRandom() & 0x7fff;
+            int iRand  = rtRandom() & 0x7fff;
             int iValue = (((iRand * 8561849L + 586468622L) >> 16) & 0x7fff);
-            iSum = (((iRand ^ pNearestActor->ID()) << 16) & 0xFFFF0000) | iValue;
+            iSum       = (((iRand ^ pNearestActor->ID()) << 16) & 0xFFFF0000) | iValue;
         }
     }
 #endif
@@ -1278,16 +1280,16 @@ void GcWorld::UseSkill(SSkill* pAttr, int x, int y) {
         return;
     }
 
-    m_bKeyAlt = (GetKeyState(VK_MENU) & 0xFF00) != 0;
+    m_bKeyAlt   = (GetKeyState(VK_MENU) & 0xFF00) != 0;
     m_bKeyShift = (GetKeyState(VK_SHIFT) & 0xFF00) != 0;
-    m_bKeyCtrl = (GetKeyState(VK_CONTROL) & 0xFF00) != 0;
+    m_bKeyCtrl  = (GetKeyState(VK_CONTROL) & 0xFF00) != 0;
 
     int             iSum1 = 0, iSum2;
     float           fPos[3], fDist = 0.f;
     CSkillInstance* pSkill = NULL;
 
     pSkill = (pAttr == 0) ? NULL : (m_pPlayer->m_Skill.FindActiveSkillByName(pAttr->szName));
-    pAttr = (pSkill == 0) ? NULL : (pSkill->m_pAttr);
+    pAttr  = (pSkill == 0) ? NULL : (pSkill->m_pAttr);
 
     pActor = FindActor(GetPlayer()->OnGetTarget());
 
@@ -1623,7 +1625,7 @@ void GcWorld::CheckSkill() {
             if (!pDWord)
                 return;
             unsigned short wSkillID = pDWord[1];
-            SSkill*        pAttr = Skill()->FindSkill(wSkillID);
+            SSkill*        pAttr    = Skill()->FindSkill(wSkillID);
             if (pAttr == NULL)
                 break;
             if ((long)pAttr->iMP > GetPlayer()->m_core.GetMp()) {
@@ -1654,7 +1656,7 @@ void GcWorld::OnRun(float fSecond) {
 
     if (m_bStateChangeFrame) {
         m_bStateChangeFrame = false;
-        fSecond = 0.f;
+        fSecond             = 0.f;
     }
 
     fps = (float)1.0 / fSecond;
@@ -1709,7 +1711,7 @@ void GcWorld::OnRun(float fSecond) {
         }
     }
 
-    static float fDiffSecondSaveConfig = 0.f;
+    static float fDiffSecondSaveConfig   = 0.f;
     static float fDiffSecondSaveShortcut = 0.f;
     fDiffSecondSaveConfig += fSecond;
     fDiffSecondSaveShortcut += fSecond;
@@ -2037,8 +2039,8 @@ DWORD WINAPI GetProcessModules(DWORD dwProcessID) {
     HMODULE hPsapi;
     BOOL    bNT;
     if (bNT = (GetVersion() < 0x80000000)) {
-        hPsapi = LoadLibrary("psapi.dll");
-        PTR1    EnumProcessModules = (PTR1)GetProcAddress(hPsapi, "EnumProcessModules");
+        hPsapi                      = LoadLibrary("psapi.dll");
+        PTR1    EnumProcessModules  = (PTR1)GetProcAddress(hPsapi, "EnumProcessModules");
         PTR2    GetModuleFileNameEx = (PTR2)GetProcAddress(hPsapi, "GetModuleFileNameExA");
         HANDLE  hProcess;
         HMODULE hModules[1024];
@@ -2076,7 +2078,7 @@ DWORD WINAPI GetProcessModules(DWORD dwProcessID) {
     if (bNT)
         FreeLibrary(hPsapi);
     LOCK_CS(&m_csCheckProcess);
-    s_bFoundData = true;
+    s_bFoundData              = true;
     s_hGetProcessModuleThread = NULL;
     UNLOCK_CS(&m_csCheckProcess);
     return 0;
@@ -2094,8 +2096,8 @@ void FindProcessInfo() {
     }
     LOCK_CS(&m_csCheckProcess);
     DWORD dwID;
-    s_bFoundData = false;
-    s_bFoundProcess = false;
+    s_bFoundData              = false;
+    s_bFoundProcess           = false;
     s_hGetProcessModuleThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)GetProcessModules,
                                              (LPVOID)dwProcessID, 0, &dwID);
     UNLOCK_CS(&m_csCheckProcess);
@@ -2190,11 +2192,11 @@ GcActor* LocalSkillTouch(GcWorld* pWorld, SSkill* pAttr, RtgVertex3& vOrig, int&
                          RtgVertex3& vDir, float fDist) {
     GcActor *pActor, *pNearestActor = NULL;
     float    fMinDist = 0.f;
-    pActor = pWorld->m_ActorManager.HitTest(vOrig, vDir, fDist, false);
+    pActor            = pWorld->m_ActorManager.HitTest(vOrig, vDir, fDist, false);
     if (pActor) {
         if (pNearestActor == NULL || fDist < fMinDist) {
             pNearestActor = pActor;
-            fMinDist = fDist;
+            fMinDist      = fDist;
         }
     }
 #ifdef USE_LUA_CHECK
@@ -2205,7 +2207,7 @@ GcActor* LocalSkillTouch(GcWorld* pWorld, SSkill* pAttr, RtgVertex3& vOrig, int&
             if (pWorld->m_pPet->mBaseActor.HitTest(vOrig, vDir, fDist, false)) {
                 if (pNearestActor == NULL || fDist < fMinDist) {
                     pNearestActor = pWorld->m_pPet;
-                    fMinDist = fDist;
+                    fMinDist      = fDist;
                 }
             }
         }
@@ -2213,7 +2215,7 @@ GcActor* LocalSkillTouch(GcWorld* pWorld, SSkill* pAttr, RtgVertex3& vOrig, int&
             if (pWorld->m_pPlayer->mBaseActor.HitTest(vOrig, vDir, fDist, false)) {
                 if (pNearestActor == NULL || fDist < fMinDist) {
                     pNearestActor = pWorld->m_pPlayer;
-                    fMinDist = fDist;
+                    fMinDist      = fDist;
                 }
             }
         }
@@ -2255,9 +2257,9 @@ void GcWorld::OnMouseLDClick(int iButton, int x, int y) {
         return;
     }
 
-    m_bKeyAlt = (GetKeyState(VK_MENU) & 0xFF00) != 0;
+    m_bKeyAlt   = (GetKeyState(VK_MENU) & 0xFF00) != 0;
     m_bKeyShift = (GetKeyState(VK_SHIFT) & 0xFF00) != 0;
-    m_bKeyCtrl = (GetKeyState(VK_CONTROL) & 0xFF00) != 0;
+    m_bKeyCtrl  = (GetKeyState(VK_CONTROL) & 0xFF00) != 0;
 
     if (!m_bKeyAlt) {
         RtwPopupMenu* pPopupMenu = ((RtwPopupMenu*)g_workspace.LookupWidget("UserMenu"));
@@ -2270,7 +2272,7 @@ void GcWorld::OnMouseLDClick(int iButton, int x, int y) {
         if (pActor) {
             ///* 1 采集技能的判断 */
             CSkillInstance* pSkill = NULL;
-            SSkill*         pAttr = NULL;
+            SSkill*         pAttr  = NULL;
             //if (pActor->m_pNpc && pActor->m_pNpc->Type==4)//max
             //{
             //	pSkill=m_pPlayer->m_Skill.FindActiveSkillByName("采药术");
@@ -2380,7 +2382,7 @@ void GcWorld::OnMouseLDClick(int iButton, int x, int y) {
 
 void GcWorld::OnMouseMove(int iButton, int x, int y, int increaseX, int increaseY) {
     guard;
-    RtwRect chatRect = GetWorld()->m_Chat.m_tabChat->GetFrameRect();
+    RtwRect chatRect  = GetWorld()->m_Chat.m_tabChat->GetFrameRect();
     RtwRect inputRect = LOAD_UI("fmdialg")->GetFrameRect();
     if (!chatRect.IsContain(x, y) && !inputRect.IsContain(x, y))
         m_Chat.SetNeedChangeBackground(false);
@@ -2392,7 +2394,7 @@ void GcWorld::OnMouseHoverMove(int iButton, int x, int y, int increaseX, int inc
     guard;
     g_layerMain->OnMouseMoveOnSkillShotcut();
     RtwRect inputRect = LOAD_UI("fmdialg")->GetFrameRect();
-    RtwRect chatRect = GetWorld()->m_Chat.m_tabChat->GetFrameRect();
+    RtwRect chatRect  = GetWorld()->m_Chat.m_tabChat->GetFrameRect();
 
     if (!chatRect.IsContain(x, y) && !inputRect.IsContain(x, y))
         m_Chat.SetNeedChangeBackground(false);
@@ -2481,9 +2483,9 @@ void GcWorld::OnMouseLDown(int iButton, int x, int y) {
         return;
     }
 
-    m_bKeyAlt = (GetKeyState(VK_MENU) & 0xFF00) != 0;
+    m_bKeyAlt   = (GetKeyState(VK_MENU) & 0xFF00) != 0;
     m_bKeyShift = (GetKeyState(VK_SHIFT) & 0xFF00) != 0;
-    m_bKeyCtrl = (GetKeyState(VK_CONTROL) & 0xFF00) != 0;
+    m_bKeyCtrl  = (GetKeyState(VK_CONTROL) & 0xFF00) != 0;
 
     if (m_iCheckPlayerSeedSave != m_iCheckPlayerSeed) {
         // 出问题了, 检查到可能使用外挂
@@ -2513,7 +2515,7 @@ void GcWorld::OnMouseLDown(int iButton, int x, int y) {
                     // 如果当前先中的目标跟原来选中的目标相同，那么就进行攻击
                     /* 1 采集技能的判断 */
                     CSkillInstance* pSkill = NULL;
-                    SSkill*         pAttr = NULL;
+                    SSkill*         pAttr  = NULL;
                     if (pAttr) {
                         UseSkill(pAttr, x, y);
                         return;
@@ -2597,7 +2599,7 @@ void GcWorld::OnMouseLDown(int iButton, int x, int y) {
                     char cTmp128[128];
                     rt2_sprintf(cTmp128, R(MSG_PICK_WILLBIND), pItemClass->name);
                     UIFormMsg* pFrm = UIFormMsg::ShowStatic(cTmp128, UIFormMsg::TYPE_OK_CANCEL);
-                    pFrm->EvOK = RTW_CALLBACK_1(this, UIFormPlayerItems, OnPickItem, pFrm);
+                    pFrm->EvOK      = RTW_CALLBACK_1(this, UIFormPlayerItems, OnPickItem, pFrm);
                 } else {
                     g_layerMain->m_fromPlayerItems->OnPickItem(NULL, NULL);
                 }
@@ -2714,7 +2716,7 @@ void GcWorld::OnMouseRDown(int iButton, int x, int y) {
          pActor->NpcType() == GcActor::ENT_NPC_COMBATIVE) &&
         pActor->m_cIsDeadNet == 1) {
         GetPlayer()->m_lPickActorID = pActor->ID();
-        GetPlayer()->m_cPickType = 1;
+        GetPlayer()->m_cPickType    = 1;
         m_pPlayer->PickItemAdd(pActor->ID());
         //GetPlayer()->SendPickItemId(ItemID_CreateInvalid(),1);
     }
@@ -2725,7 +2727,7 @@ void GcWorld::OnMouseRDown(int iButton, int x, int y) {
 void GcWorld::OnKeyDown(int iButton, int iKey) {
     guard;
     static int  PetScale = 100 /*should be same as region_client.cpp*/, Delta = 20;
-    static bool Flag = false;
+    static bool Flag         = false;
     bool        bCanUseSkill = CanUseShortcut();
 
     switch (iButton) {
@@ -2737,7 +2739,7 @@ void GcWorld::OnKeyDown(int iButton, int iKey) {
             }
             break;
         case VK_HOME: {
-            float vDelta = 1.f;
+            float vDelta  = 1.f;
             float fAmount = -1.6 * vDelta * fMouseSpeed;
             m_fCameraCurrentDistance += fAmount;
             if (m_fCameraCurrentDistance < m_fCameraMinDistance) {
@@ -2751,7 +2753,7 @@ void GcWorld::OnKeyDown(int iButton, int iKey) {
         } break;
 
         case VK_END: {
-            float vDelta = -1.f;
+            float vDelta  = -1.f;
             float fAmount = -1.6 * vDelta * fMouseSpeed;
             m_fCameraCurrentDistance += fAmount;
             if (m_fCameraCurrentDistance < m_fCameraMinDistance) {
@@ -3082,7 +3084,7 @@ void GcWorld::OnNetConnect(bool bSucceed) {
         pPacket->WriteLong(lRegionCharID);
         pPacket->WriteLong(lRegionSeed);
         NetSendEx(pPacket);
-        m_bLogined = false;
+        m_bLogined    = false;
         m_tLogoutTime = time(NULL);
     }
     unguard;
@@ -3122,7 +3124,7 @@ void GcWorld::SetDefaultCamerasetting()  //max
     GetDevice()->m_pCamera->SetUp(150.f);
     GetDevice()->m_pCamera->SetForward(m_fCameraDefaultDistance);
     m_fCameraCurrentDistance = m_fCameraDefaultDistance;
-    nowY = m_fCameraDefaultDegree;
+    nowY                     = m_fCameraDefaultDegree;
     unguard;
 }
 
@@ -3218,14 +3220,14 @@ void GcWorld::OnNetDownloadCreateChar(CG_CmdPacket* pPacket)  //主角的初始化
     m_pPlayer->m_Skill.StartupSkill();
 
     m_pPlayer->SetUnionID(unionID);
-    m_pPlayer->m_unionName = pUnionName;
+    m_pPlayer->m_unionName     = pUnionName;
     m_pPlayer->m_unionNickName = pUnionNickName;
-    m_pPlayer->m_unionIcon = pUnionIcon;
+    m_pPlayer->m_unionIcon     = pUnionIcon;
     g_layerMain->m_formUnion->OnRecvActorUnionData(m_pPlayer);
 
     m_pPlayer->m_core.Faction = cFaction = 3;
-    m_pPlayer->m_core.HeadModelId = HeadModelID;
-    m_pPlayer->m_core.ModelId = ObjectModelID;
+    m_pPlayer->m_core.HeadModelId        = HeadModelID;
+    m_pPlayer->m_core.ModelId            = ObjectModelID;
 
     m_pPlayer->SetDBID(ObjectDBID);
     m_pPlayer->SetName(pName);
@@ -3416,7 +3418,7 @@ unsigned a_rtDoLzwCops(unsigned char* in, unsigned in_len, unsigned char* out, u
                 *lzwa++ = (unsigned char)(lzwt - 3);
             else {
                 unsigned tt = lzwt - 18;
-                *lzwa++ = 0;
+                *lzwa++     = 0;
                 while (tt > 255) {
                     tt -= 255;
                     *lzwa++ = 0;
@@ -3448,7 +3450,7 @@ unsigned a_rtDoLzwCops(unsigned char* in, unsigned in_len, unsigned char* out, u
         } else {
             {
                 unsigned char* end = lzwn;
-                unsigned char* m = lzwd + 9;
+                unsigned char* m   = lzwd + 9;
                 while (lzwi < end && *m == *lzwi)
                     m++, lzwi++;
                 lzwf = (lzwi - lzwb);
@@ -3508,7 +3510,7 @@ int artLzwComp(void* in, unsigned in_len, void* out) {
             *lzwa++ = (unsigned char)(lzwt - 3);
         else {
             unsigned tt = lzwt - 18;
-            *lzwa++ = 0;
+            *lzwa++     = 0;
             while (tt > 255) {
                 tt -= 255;
                 *lzwa++ = 0;
@@ -3569,16 +3571,16 @@ int artLzwComp(void* in, unsigned in_len, void* out) {
             return;                                                                                \
         }                                                                                          \
         *(m_pTmpPacketData + m_curByte + len - 1) = '\0';                                          \
-        d = m_pTmpPacketData + m_curByte;                                                          \
+        d                                         = m_pTmpPacketData + m_curByte;                  \
         m_curByte += len;                                                                          \
     }
 #else
-#define EXREAD_string(d)                                                                           \
-    {                                                                                              \
-        short len;                                                                                 \
-        EXREAD_short(len) * (m_pTmpPacketData + m_curByte + len - 1) = '\0';                       \
-        d = m_pTmpPacketData + m_curByte;                                                          \
-        m_curByte += len;                                                                          \
+#define EXREAD_string(d)                                                                             \
+    {                                                                                                \
+        short len;                                                                                   \
+        EXREAD_short(len) * (m_pTmpPacketData + m_curByte + len - 1) = '\0';                         \
+        d                                                            = m_pTmpPacketData + m_curByte; \
+        m_curByte += len;                                                                            \
     }
 #endif
 #define EXREAD_shortex(d)                                                                          \
@@ -3627,9 +3629,9 @@ void GcWorld::OnNetDownloadSnapshot(CG_CmdPacket* pvPacket, DWORD dwServerTime,
     short    x, y, z = 0;
     short    wID;
     DWORD    wTime;  // gao buff时间读取
-    char     wHeadModelID = 0;
+    char     wHeadModelID     = 0;
     BYTE     ModelChangeCount = 0;  // 模型变换次数
-    char     cFaction = 0;
+    char     cFaction         = 0;
     long     cFlag;
     BYTE     cMoveFlag;
     BYTE     cHpRate;
@@ -3641,10 +3643,10 @@ void GcWorld::OnNetDownloadSnapshot(CG_CmdPacket* pvPacket, DWORD dwServerTime,
 
     BYTE cObjectType;    // 物体类型（道具，生物）
     BYTE Direction = 0;  // 方向
-    BYTE bTrace = 0;     // 是否追踪
-    long bDead = 0;      // 是否死亡
-    long lCombat = 0;    // 是否战斗状态
-    long lIsClose = 0;   // 是否关闭(机关)
+    BYTE bTrace    = 0;  // 是否追踪
+    long bDead     = 0;  // 是否死亡
+    long lCombat   = 0;  // 是否战斗状态
+    long lIsClose  = 0;  // 是否关闭(机关)
     long triggerID = 0;  // 所属机关ID
                          //long IsHiding = 0;          //遁地 隐身另作处理
     //long IsUltimateChange = 0;  //超级变身
@@ -3688,8 +3690,8 @@ void GcWorld::OnNetDownloadSnapshot(CG_CmdPacket* pvPacket, DWORD dwServerTime,
     unsigned char *lzwa, *lzwi, *lzwd;
     unsigned       lzwt;
     unsigned char* lzwp = (unsigned char*)pPacketData + lPacketSize;
-    lzwa = (unsigned char*)m_pTmpPacketData;
-    lzwi = (unsigned char*)pPacketData;
+    lzwa                = (unsigned char*)m_pTmpPacketData;
+    lzwi                = (unsigned char*)pPacketData;
     if (*lzwi > 17) {
         lzwt = *lzwi++ - 17;
         if (lzwt < 4)
@@ -3832,7 +3834,7 @@ eof_found:
     }
 #else
     long          lObjectID = 0;  // 物体ID
-    CG_CmdPacket* pPacket = pvPacket;
+    CG_CmdPacket* pPacket   = pvPacket;
 #endif
 
     // 解压缩完成，现在开始读入数据
@@ -3858,7 +3860,7 @@ eof_found:
     */
 
     int  iTestCnt = 0;
-    bool bError = false;
+    bool bError   = false;
 
 #ifdef COMPRESS_SNAPSHOT
     while (m_curByte + 4 < lPacketSize)
@@ -3866,10 +3868,10 @@ eof_found:
     while (pPacket->ReadLong(&lObjectID))
 #endif
     {
-        wNpcID = 0;
-        lBossHp = 0;
+        wNpcID     = 0;
+        lBossHp    = 0;
         lBossMaxHp = 0;
-        cHpRate = 0;
+        cHpRate    = 0;
 
         iTestCnt++;
 #ifdef COMPRESS_SNAPSHOT
@@ -3961,7 +3963,7 @@ eof_found:
 
                 if (lObjectID != m_pPlayer->ID()) {
                     bool bBeforBorn = (cMoveFlag & MOVE_STATE_STATIC) ? true : false;
-                    pActor = FindAllActor(lObjectID);
+                    pActor          = FindAllActor(lObjectID);
                     PushCallStack(csn_GcActor_AddCommandMoveTo);
 
                     // 如果没有找到创建人
@@ -3971,7 +3973,7 @@ eof_found:
                                                          bBeforBorn, wNpcID);
                         if (pActor != NULL) {
                             //						pActor->m_aiStateForDebug = aiState;
-                            pActor->m_bIsDead = bDead;
+                            pActor->m_bIsDead    = bDead;
                             pActor->m_cIsDeadNet = bDead;
                             /*pActor->SkillHideModel(IsHiding);*/
                             //pActor->m_fVisible = IsHiding;
@@ -3985,8 +3987,8 @@ eof_found:
 
                             if (cFlag & SYNC_FLAG_TRIGGER) {
                                 pActor->m_lTriggerCloseNet = lIsClose;
-                                pActor->m_bTriggerClose = pActor->m_lTriggerCloseNet;
-                                pActor->triggerID = triggerID;
+                                pActor->m_bTriggerClose    = pActor->m_lTriggerCloseNet;
+                                pActor->triggerID          = triggerID;
                             }
 
                             switch (cObjectType) {
@@ -4127,8 +4129,8 @@ eof_found:
                             //rtgDecodeUprightDirection(*(pActor->Matrix()),Direction);
                         }
 
-                        pActor->m_cInTeam = bInTeam;
-                        pActor->m_bIsCombat = lCombat;
+                        pActor->m_cInTeam    = bInTeam;
+                        pActor->m_bIsCombat  = lCombat;
                         pActor->m_cIsDeadNet = bDead;
                         /*pActor->SkillHideModel(IsHiding);*/
                         //pActor->m_fVisible = IsHiding;
@@ -4146,7 +4148,7 @@ eof_found:
 
                         if (cFlag & SYNC_FLAG_TRIGGER) {
                             pActor->m_lTriggerCloseNet = lIsClose;
-                            pActor->triggerID = triggerID;
+                            pActor->triggerID          = triggerID;
                         }
 
                         if ((cMoveFlag & MOVE_STATE_STATIC) == 0) {
@@ -4200,8 +4202,8 @@ eof_found:
                     }
 
                     bool          bRequestModelInfo = false;
-                    static string strUnionID = "-1";
-                    static DWORD  nOldTime = GetTickCount();
+                    static string strUnionID        = "-1";
+                    static DWORD  nOldTime          = GetTickCount();
                     // 设置模型信息
                     if (cFlag & SYNC_FLAG_COMPLEX_MODEL) {
                         if (pActor == NULL)  //该物体不曾创建过
@@ -4212,11 +4214,11 @@ eof_found:
                                 ModelChangeCount)  //检查物体的更新物体次数是否相符
                             {
                                 pActor->mItemChangeCount = ModelChangeCount;
-                                bRequestModelInfo = true;
+                                bRequestModelInfo        = true;
                             }
 
                             if (pActor->m_unionIcon != strUnionID.c_str()) {
-                                strUnionID = pActor->m_unionIcon;
+                                strUnionID        = pActor->m_unionIcon;
                                 bRequestModelInfo = true;
                             }
                         }
@@ -4224,7 +4226,7 @@ eof_found:
                         if (GetTickCount() - nOldTime > 5000)  //5秒获取一次
                         {
                             bRequestModelInfo = true;
-                            nOldTime = GetTickCount();
+                            nOldTime          = GetTickCount();
                         }
 
                         if (bRequestModelInfo) {
@@ -4264,7 +4266,7 @@ eof_found:
                             }
                         }
                         if (cFlag & SYNC_FLAG_BOSS) {
-                            pActor->m_lBossHp = lBossHp;
+                            pActor->m_lBossHp    = lBossHp;
                             pActor->m_lBossMaxHp = lBossMaxHp;
                             if (g_layerMain->m_formCreInfo->m_nActorID == pActor->ID()) {
                                 g_layerMain->m_formCreInfo->m_nHpRemain = lBossHp;
@@ -4281,10 +4283,10 @@ eof_found:
                                     pActor->m_lLev = lLev;        // 等级
                                 }
                             } else {
-                                pActor->m_cHpRate = cHpRate;
-                                pActor->m_cMpRate = cMpRate;
-                                pActor->m_actorID = actorID;
-                                pActor->m_lLev = lLev;
+                                pActor->m_cHpRate     = cHpRate;
+                                pActor->m_cMpRate     = cMpRate;
+                                pActor->m_actorID     = actorID;
+                                pActor->m_lLev        = lLev;
                                 pActor->m_HeadImageID = HeadImageID;
                             }
                         }
@@ -4300,9 +4302,9 @@ eof_found:
                         //----------add end   by tony 05.06.29----------------//
                     }
                 } else {
-                    m_pPlayer->m_bIsDead = bDead;
-                    m_pPlayer->m_cInTeam = bInTeam;
-                    m_pPlayer->m_bIsCombat = lCombat;
+                    m_pPlayer->m_bIsDead    = bDead;
+                    m_pPlayer->m_cInTeam    = bInTeam;
+                    m_pPlayer->m_bIsCombat  = lCombat;
                     m_pPlayer->m_cIsDeadNet = bDead;
                     /*m_pPlayer->SkillHideModel(IsHiding);*/
                     if (cFlag & SYNC_FLAG_METIER_TAOIST) {
@@ -4426,7 +4428,7 @@ void GcWorld::OnNetDownloadEvent(CG_CmdPacket* pPacket, DWORD dwClientTime) {
                 if (pActor) {
                     if (pActor->IsIdel()) {
                         DWORD       dwIdx = sIdx << 16 | (cDir & 0x0000FFFF);
-                        RtgMatrix16 _m16 = *pActor->GetMatrix();
+                        RtgMatrix16 _m16  = *pActor->GetMatrix();
                         rtgDecodeUprightDirection(_m16, (BYTE)cDir);
                         pActor->SetMatrix(_m16);
                         pActor->mBaseActor.PlayPose(GcBaseActor::POSE_FUNACTION, false,
@@ -4521,7 +4523,7 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
     if (dwNpcID == 74) {
         CTaskInfo task = m_pPlayer->m_task;
         if (!task.IsDoneGuild(eUsePet2) && task.IsDoneGuild(eUsePet1)) {
-            RtwRect rectSrc = g_layerMain->m_formGuide3->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide3->GetClientRect();
             RtwRect rectDest = g_layerMain->m_btnAccept->GetClientRect();
             rectDest.left -= rectSrc.getWidth() / 2 + 110;
             rectDest.top += (rectDest.getHeight() / 2 - 70);
@@ -4551,7 +4553,7 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
     if (g_layerMain->m_formHelp)
         g_layerMain->m_formHelp->Show();
     std::string taskPicture = "ui/ui_texture/";
-    SNpc*       pNpc = g_TableNpc.FindNpc(GetWorld()->GetActualNPCId());
+    SNpc*       pNpc        = g_TableNpc.FindNpc(GetWorld()->GetActualNPCId());
     taskPicture += pNpc->taskPic;
 
     RtwImage* pImage = NULL;
@@ -4612,8 +4614,8 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
                         if (strrchr(cTmp1024, '/')) {
                             g_layerMain->m_viewDesc->ClearPath();
                             std::string s1, s2;
-                            s1 = cTmp1024;
-                            s2 = strrchr(cTmp1024, '/');
+                            s1  = cTmp1024;
+                            s2  = strrchr(cTmp1024, '/');
                             sep = s1.size() - s2.size();
                             //sep = strcspn(cTmp1024,strrchr(cTmp1024,'/'));
                             path[0] = '\0';
@@ -4630,8 +4632,8 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
                         if (strrchr(cTmp1024, '/')) {
                             g_layerMain->m_viewHelp->ClearPath();
                             std::string s1, s2;
-                            s1 = cTmp1024;
-                            s2 = strrchr(cTmp1024, '/');
+                            s1  = cTmp1024;
+                            s2  = strrchr(cTmp1024, '/');
                             sep = s1.size() - s2.size();
                             //sep = strcspn(cTmp1024,strrchr(cTmp1024,'/'));
                             path[0] = '\0';
@@ -4678,8 +4680,8 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
                             if (strrchr(cTmp1024, '/')) {
                                 g_layerMain->m_viewDesc->ClearPath();
                                 std::string s1, s2;
-                                s1 = cTmp1024;
-                                s2 = strrchr(cTmp1024, '/');
+                                s1  = cTmp1024;
+                                s2  = strrchr(cTmp1024, '/');
                                 sep = s1.size() - s2.size();
                                 //sep = strcspn(cTmp1024,strrchr(cTmp1024,'/'));
                                 path[0] = '\0';
@@ -4698,7 +4700,7 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
                         if (g_layerMain->m_formGuide4->IsVisible()) {
                             g_layerMain->m_formGuide4->Hide();
                         }
-                        RtwRect rectSrc = g_layerMain->m_formGuide3->GetClientRect();
+                        RtwRect rectSrc  = g_layerMain->m_formGuide3->GetClientRect();
                         RtwRect rectDest = g_layerMain->m_btnAccept->GetClientRect();
                         rectDest.left -= rectSrc.getWidth() / 2 + 110;
                         rectDest.top += (rectDest.getHeight() / 2 - 70);
@@ -4708,7 +4710,7 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
                         std::string fileName = "task\\xinshouyindao\\xinshou_03_02.html";
                         g_layerMain->m_viewGuide3->LoadFromFile(fileName);
                         ResetHideTime();
-                        bCurOperate = true;
+                        bCurOperate       = true;
                         CG_CmdPacket* cmd = NetBeginWrite();
                         cmd->WriteShort(c2r_Guide);
                         cmd->WriteShort(eNPCAcceptTask);
@@ -4732,8 +4734,8 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
                             if (strrchr(cTmp1024, '/')) {
                                 g_layerMain->m_viewHelp->ClearPath();
                                 std::string s1, s2;
-                                s1 = cTmp1024;
-                                s2 = strrchr(cTmp1024, '/');
+                                s1  = cTmp1024;
+                                s2  = strrchr(cTmp1024, '/');
                                 sep = s1.size() - s2.size();
                                 //sep = strcspn(cTmp1024,strrchr(cTmp1024,'/'));
                                 path[0] = '\0';
@@ -4771,8 +4773,8 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
                             if (strrchr(cTmp1024, '/')) {
                                 g_layerMain->m_viewDesc->ClearPath();
                                 std::string s1, s2;
-                                s1 = cTmp1024;
-                                s2 = strrchr(cTmp1024, '/');
+                                s1  = cTmp1024;
+                                s2  = strrchr(cTmp1024, '/');
                                 sep = s1.size() - s2.size();
                                 //sep = strcspn(cTmp1024,strrchr(cTmp1024,'/'));
                                 path[0] = '\0';
@@ -4803,8 +4805,8 @@ void GcWorld::OnNetDownloadDialogHTML(DWORD dwNpcID, const char* szString, const
                             if (strrchr(cTmp1024, '/')) {
                                 g_layerMain->m_viewHelp->ClearPath();
                                 std::string s1, s2;
-                                s1 = cTmp1024;
-                                s2 = strrchr(cTmp1024, '/');
+                                s1  = cTmp1024;
+                                s2  = strrchr(cTmp1024, '/');
                                 sep = s1.size() - s2.size();
                                 //sep = strcspn(cTmp1024,strrchr(cTmp1024,'/'));
                                 path[0] = '\0';
@@ -4839,9 +4841,9 @@ void GcWorld::OnNetDownloadDialogScript(short sType, char* sShowText, char* sCom
                     if (strrchr(cTmp1024, '/')) {
                         g_layerMain->m_viewMessage1->ClearPath();
                         std::string s1, s2;
-                        s1 = cTmp1024;
-                        s2 = strrchr(cTmp1024, '/');
-                        sep = s1.size() - s2.size();
+                        s1      = cTmp1024;
+                        s2      = strrchr(cTmp1024, '/');
+                        sep     = s1.size() - s2.size();
                         path[0] = '\0';
                         rt2_strncpy2(path, cTmp1024, sep);
                         path[sep] = '\0';
@@ -4866,9 +4868,9 @@ void GcWorld::OnNetDownloadDialogScript(short sType, char* sShowText, char* sCom
                     if (strrchr(cTmp1024, '/')) {
                         g_layerMain->m_viewMessage2->ClearPath();
                         std::string s1, s2;
-                        s1 = cTmp1024;
-                        s2 = strrchr(cTmp1024, '/');
-                        sep = s1.size() - s2.size();
+                        s1      = cTmp1024;
+                        s2      = strrchr(cTmp1024, '/');
+                        sep     = s1.size() - s2.size();
                         path[0] = '\0';
                         rt2_strncpy2(path, cTmp1024, sep);
                         path[sep] = '\0';
@@ -4894,7 +4896,7 @@ bool GcWorld::TranslateTaskMacro(string& result, const char* text, void* data) {
         return true;
     } else if (strcmp(text, "GOAL") == 0) {
         int        task_id = g_layerMain->m_formTask->GetSelectedTaskID();
-        STaskDesc* desc = g_TableTask.FindTask(task_id);
+        STaskDesc* desc    = g_TableTask.FindTask(task_id);
         if (!desc)
             return false;
 
@@ -4904,7 +4906,7 @@ bool GcWorld::TranslateTaskMacro(string& result, const char* text, void* data) {
         result += "</p>";
 
         int                            bDoing = 0;
-        CTaskInfo*                     task = &GetWorld()->m_pPlayer->m_task;
+        CTaskInfo*                     task   = &GetWorld()->m_pPlayer->m_task;
         std::list<STaskInfo>::iterator it;
         for (it = task->m_taskList.begin(); it != task->m_taskList.end(); it++) {
             if ((*it).Id == task_id) {
@@ -4972,7 +4974,7 @@ bool GcWorld::TranslateTaskMacro(string& result, const char* text, void* data) {
         result = "";
         return true;
         int        task_id = g_layerMain->m_formTask->GetSelectedTaskID();
-        STaskDesc* desc = g_TableTask.FindTask(task_id);
+        STaskDesc* desc    = g_TableTask.FindTask(task_id);
         if (!desc)
             return false;
 
@@ -4984,21 +4986,21 @@ bool GcWorld::TranslateTaskMacro(string& result, const char* text, void* data) {
         result += "]</font></p>";
 
         for (size_t i = 0; i < table.size(); ++i) {
-            int         gold = 0;
-            int         exp = 0;
-            DWORD       taskId = 0;
-            DWORD       itemId = 0;
-            int         itemNum = 0;
-            DWORD       skillId = 0;
-            std::string wenReward = "";
+            int         gold       = 0;
+            int         exp        = 0;
+            DWORD       taskId     = 0;
+            DWORD       itemId     = 0;
+            int         itemNum    = 0;
+            DWORD       skillId    = 0;
+            std::string wenReward  = "";
             std::string gongReward = "";
-            int         jobReward = 0;
+            int         jobReward  = 0;
             int         creditNum1;
             int         creditNum2;
-            int         credit0 = 0;
-            int         credit1 = 0;
-            int         credit2 = 0;
-            int         credit3 = 0;
+            int         credit0  = 0;
+            int         credit1  = 0;
+            int         credit2  = 0;
+            int         credit3  = 0;
             int         credit40 = 0;
             int         credit41 = 0;
             int         credit42 = 0;
@@ -5027,7 +5029,7 @@ bool GcWorld::TranslateTaskMacro(string& result, const char* text, void* data) {
                     }
                 }
             } else if (table[i].key == "item") {
-                itemId = atol(table[i].param[0].c_str());
+                itemId  = atol(table[i].param[0].c_str());
                 itemNum = atol(table[i].param[1].c_str());
                 if (itemId != 0) {
                     SItemBase* pItemClass = m_pItemManager->GetItemFromIndex(itemId);
@@ -5062,45 +5064,45 @@ bool GcWorld::TranslateTaskMacro(string& result, const char* text, void* data) {
                 creditNum1 = atol(table[i].param[0].c_str());
                 if (creditNum1 == 0) {
                     credit0 = atol(table[i].param[1].c_str());
-                    result = result + "<p>" + R(MSG_TASK_REWARDBANGGONG) +
+                    result  = result + "<p>" + R(MSG_TASK_REWARDBANGGONG) +
                              std::string(rtFormatNumber(credit0)) + "</p>";
                 } else if (creditNum1 == 1) {
                     credit1 = atol(table[i].param[1].c_str());
-                    result = result + "<p>" + R(MSG_TASK_REWARDSUMING) +
+                    result  = result + "<p>" + R(MSG_TASK_REWARDSUMING) +
                              std::string(rtFormatNumber(credit1)) + "</p>";
                 } else if (creditNum1 == 2) {
                     credit2 = atol(table[i].param[1].c_str());
-                    result = result + "<p>" + R(MSG_TASK_REWARDSOUL) +
+                    result  = result + "<p>" + R(MSG_TASK_REWARDSOUL) +
                              std::string(rtFormatNumber(credit2)) + "</p>";
                 } else if (creditNum1 == 3) {
                     credit3 = atol(table[i].param[1].c_str());
-                    result = result + "<p>" + R(MSG_TASK_REWARDXIUWEI) +
+                    result  = result + "<p>" + R(MSG_TASK_REWARDXIUWEI) +
                              std::string(rtFormatNumber(credit3)) + "</p>";
                 } else if (creditNum1 == 4) {
                     creditNum2 = atol(table[i].param[1].c_str());
                     if (creditNum2 == 0) {
                         credit40 = atol(table[i].param[2].c_str());
-                        result = result + "<p>" + R(MSG_TASK_REWARDXIANYU) +
+                        result   = result + "<p>" + R(MSG_TASK_REWARDXIANYU) +
                                  std::string(rtFormatNumber(credit40)) + "</p>";
                     } else if (creditNum2 == 1) {
                         credit41 = atol(table[i].param[2].c_str());
-                        result = result + "<p>" + R(MSG_TASK_REWARDGUANFUSHENGWANG) +
+                        result   = result + "<p>" + R(MSG_TASK_REWARDGUANFUSHENGWANG) +
                                  std::string(rtFormatNumber(credit41)) + "</p>";
                     } else if (creditNum2 == 2) {
                         credit42 = atol(table[i].param[2].c_str());
-                        result = result + "<p>" + R(MSG_TASK_REWARDQIANGMANSHENGWANG) +
+                        result   = result + "<p>" + R(MSG_TASK_REWARDQIANGMANSHENGWANG) +
                                  std::string(rtFormatNumber(credit42)) + "</p>";
                     } else if (creditNum2 == 3) {
                         credit43 = atol(table[i].param[2].c_str());
-                        result = result + "<p>" + R(MSG_TASK_REWARDZHENYAOSHENGWANG) +
+                        result   = result + "<p>" + R(MSG_TASK_REWARDZHENYAOSHENGWANG) +
                                  std::string(rtFormatNumber(credit43)) + "</p>";
                     } else if (creditNum2 == 4) {
                         credit44 = atol(table[i].param[2].c_str());
-                        result = result + "<p>" + R(MSG_TASK_REWARDFANSUISHENGWANG) +
+                        result   = result + "<p>" + R(MSG_TASK_REWARDFANSUISHENGWANG) +
                                  std::string(rtFormatNumber(credit44)) + "</p>";
                     } else if (creditNum2 == 5) {
                         credit45 = atol(table[i].param[2].c_str());
-                        result = result + "<p>" + R(MSG_TASK_REWARDXIANMOSHENGWANG) +
+                        result   = result + "<p>" + R(MSG_TASK_REWARDXIANMOSHENGWANG) +
                                  std::string(rtFormatNumber(credit45)) + "</p>";
                     }
                 }
@@ -5229,58 +5231,60 @@ void GcWorld::OnNetDownloadSwitchRegion(CG_CmdPacket* pPacket) {
 }
 
 void GcWorld::OnNetDownloadAttack(CG_CmdPacket* pPacket, DWORD dwServerTime, DWORD dwClientTime) {
-    guard;
-    long  lAttackerID;          // 发动者ID
-    long  lUnderAttackerID;     // 目标ID
-    long  lSubUnderAttackerID;  // 受击者ID (应用于攻击多人的时候)
-    long  lPos[3];
-    short sAttackID;
-    short sSkillID;     // 技能ID(包括普通攻击)
-    short sDamage = 0;  // 伤害值
+    guard;  // 进入保护区，防止多线程冲突
+
+    // 定义各种攻击和受击者的信息变量
+    long  lAttackerID;                   // 发动者ID
+    long  lUnderAttackerID;              // 目标ID
+    long  lSubUnderAttackerID;           // 受击者ID（应用于攻击多人的时候）
+    long  lPos[3];                       // 攻击位置（如果目标是位置的话）
+    short sAttackID;                     // 攻击ID
+    short sSkillID;                      // 技能ID（包括普通攻击）
+    short sDamage                  = 0;  // 伤害值
     short eleDmg[MAX_ELEMENT_ATTR] = {0, 0, 0};
-    char  ret;
-    char  IsAddHPSkill = 0;
+    char  ret                      = 0;
+    char  IsAddHPSkill             = 0;
     //BYTE	    cUnderAttackerCnt;      // 被攻击者数量
     char              cAttackTarget;
     GcActor*          pAttacker;
     GcActor*          pActor;
-    GcActor::SAttack* pAttack = NULL;
-    long              dead = 0;
-    long              bCriDamage = 0;
+    GcActor::SAttack* pAttack     = NULL;
+    long              dead        = 0;
+    long              bCriDamage  = 0;
     char              cIsIntonate = 0;
-    char              cIsBreak = 0;
+    char              cIsBreak    = 0;
 
-    // LOG1("attack packet size = %d",pPacket->GetByteDataSize());
+    // 读取数据包中的攻击信息
     READ_long(lAttackerID);
     READ_short(sAttackID);
     READ_short(sSkillID);
     READ_byte(cAttackTarget);
     READ_byte(cIsIntonate);  // 是否吟唱
+
+    // 根据攻击目标类型处理目标信息
     switch (cAttackTarget) {
         case SKILL_TARGET_TYPE_NONE:
             break;
-        case SKILL_TARGET_TYPE_ACTOR:
-            READ_long(lUnderAttackerID);
+        case SKILL_TARGET_TYPE_ACTOR:     //人物目标
+            READ_long(lUnderAttackerID);  // 读取目标ID
             break;
         case SKILL_TARGET_TYPE_POSITION:
             READ_long(lPos[0]);
             READ_long(lPos[1]);
-            READ_long(lPos[2]);
+            READ_long(lPos[2]);  // 读取目标位置
             break;
     }
-    //READ_byte(cUnderAttackerCnt);
-
     //MSG2("Attack ID = %d, Skill = %d\n", lAttackerID, sSkillID);
-
+    // 查找发起攻击的角色
     pAttacker = FindActor(lAttackerID);
     if (pAttacker) {
         if (pAttacker->GetRideState() == GcActor::ERS_PET) {
-            pAttacker = pAttacker->GetMaster();
+            pAttacker = pAttacker->GetMaster();  // 如果发起者是坐骑，则使用坐骑的主人
         }
     }
 
-    if (pAttacker == m_pPlayer) {
-        pAttack = pAttacker->FindAttackByAttackID(sAttackID);
+    if (pAttacker == m_pPlayer) {                              // 如果发起者是玩家
+        pAttack = pAttacker->FindAttackByAttackID(sAttackID);  // 查找攻击事件
         if (pAttack) {
             if (pAttack->cAnswer == 0)
                 pAttack->cAnswer = 1;
@@ -5288,45 +5292,45 @@ void GcWorld::OnNetDownloadAttack(CG_CmdPacket* pPacket, DWORD dwServerTime, DWO
                 pAttack->cAnswer = 3;
             if (pAttack->pSkill) {
                 if (pAttack->pSkill->wSubID == SKILL_HIDE_SUBID) {
-                    //pAttacker->SkillHideModel();
+                    // pAttacker->SkillHideModel();  // 隐藏模型（被注释掉）
                 } else if (pAttack->pSkill->wSubID == SKILL_LURKER_SUBID) {
                     if (pAttack->pSkill->szChangModel) {
-                        pAttacker->ChangeActorToEffect(pAttack->pSkill->szChangModel);
+                        pAttacker->ChangeActorToEffect(pAttack->pSkill->szChangModel);  // 更换模型
                     }
                 }
             }
         }
-    } else {
+    } else {  // 如果发起者不是玩家
         if (pAttacker) {
-            pAttack = RT_NEW GcActor::SAttack;
+            pAttack            = RT_NEW GcActor::SAttack;  // 创建新的攻击事件
             pAttack->wAttackID = sAttackID;
-            pAttack->pSkill = Skill()->FindSkill(sSkillID);
-            pAttack->cTarget = cAttackTarget;
+            pAttack->pSkill    = Skill()->FindSkill(sSkillID);  // 查找技能
+            pAttack->cTarget   = cAttackTarget;
             if (pAttack->cTarget == SKILL_TARGET_TYPE_ACTOR) {
-                pAttack->dwTargetID = lUnderAttackerID;
+                pAttack->dwTargetID = lUnderAttackerID;  // 目标ID
             } else if (pAttack->cTarget == SKILL_TARGET_TYPE_POSITION) {
                 pAttack->f[0] = lPos[0];
                 pAttack->f[1] = lPos[1];
-                pAttack->f[2] = lPos[2];
+                pAttack->f[2] = lPos[2];  // 目标位置
             } else if (pAttack->cTarget == SKILL_TARGET_TYPE_NONE) {
                 pAttack->dwTargetID = lAttackerID;
                 if (pAttack->pSkill->wSubID == SKILL_HIDE_SUBID) {
-                    //pAttacker->SkillHideModel();
+                    // pAttacker->SkillHideModel();  // 隐藏模型（被注释掉）
                 } else if (pAttack->pSkill->wSubID == SKILL_LURKER_SUBID) {
                     if (pAttack->pSkill->szChangModel) {
-                        pAttacker->ChangeActorToEffect(pAttack->pSkill->szChangModel);
+                        pAttacker->ChangeActorToEffect(pAttack->pSkill->szChangModel);  // 更换模型
                     }
                 }
             } else {
-                CHECKEX("error");
+                CHECKEX("error");  // 检查错误
             }
-            pAttack->fTime = (dwServerTime - dwClientTime) / 1000.f;
-            if (cIsIntonate == 0)  //不是吟唱
+            pAttack->fTime = (dwServerTime - dwClientTime) / 1000.f;  // 计算攻击时间
+            if (cIsIntonate == 0)                                     // 如果不是吟唱
             {
                 pAttacker->m_bIntonate = false;
                 pAttacker->ClearCommand();
-                pAttacker->AttackAdd(pAttack);
-            } else if (cIsIntonate == 1) {  // 吟唱
+                pAttacker->AttackAdd(pAttack);  // 添加攻击事件
+            } else if (cIsIntonate == 1) {      // 如果是吟唱
                 pAttacker->m_bIntonate = true;
                 pAttacker->ClearCommand();
                 pAttacker->UseIntonate(pAttack->wAttackID, sSkillID, pAttack->dwTargetID, 1,
@@ -5335,50 +5339,50 @@ void GcWorld::OnNetDownloadAttack(CG_CmdPacket* pPacket, DWORD dwServerTime, DWO
         }
     }
 
-    bool criHit = false;
-    long eleSpe = 0;
+    bool criHit = false;  // 暴击标记
+    long eleSpe = 0;      // 元素特殊标记
     if (sSkillID == 0) {
+        // 这里被注释掉的代码用于读取是否暴击和元素特殊值
         /*
-		long tmp = 0;
-		pPacket->SerializeBit(tmp,1);
-		if(tmp)
-			criHit = true;
-		pPacket->SerializeBit(eleSpe,4);
-		*/
+        long tmp = 0;
+        pPacket->SerializeBit(tmp,1);
+        if(tmp)
+            criHit = true;
+        pPacket->SerializeBit(eleSpe,4);
+        */
     }
-    while (pPacket->ReadLong(&lSubUnderAttackerID))  // 受击者ID
+    while (pPacket->ReadLong(&lSubUnderAttackerID))  // 读取受击者ID
     {
         READ_byte(ret);
-        if (ret == 5)  //无效的保护
+        if (ret == 5)  // 无效的保护
         {
             return;
         }
         READ_byte(cIsBreak);  // 是否吟唱被打断	0表示无吟唱,1表示被吟唱被打断,2表示未被打断.
 
         if (ret == USE_SKILL_OK) {
-            pPacket->SerializeBit(dead, 3);
-            pPacket->SerializeBit(bCriDamage, 1);
+            pPacket->SerializeBit(dead, 3);        // 读取死亡状态
+            pPacket->SerializeBit(bCriDamage, 1);  // 读取暴击状态
             if (bCriDamage)
                 criHit = true;
-            READ_short(sDamage);                        // 伤害
-            for (int j = 0; j < MAX_ELEMENT_ATTR; ++j)  // 元素伤害
+            READ_short(sDamage);                        // 读取伤害值
+            for (int j = 0; j < MAX_ELEMENT_ATTR; ++j)  // 读取元素伤害
             {
                 READ_short(eleDmg[j]);
             }
         }
 
-        if (pAttacker == NULL || pAttack == NULL) {
+        if (pAttacker == NULL || pAttack == NULL) {  // 如果发起者或攻击事件为空
             pActor = FindActor(lSubUnderAttackerID);
             if (pActor) {
-                if (cIsBreak == 1) {
+                if (cIsBreak == 1) {  // 如果吟唱被打断
                     pActor->ClearCommand();
                     pActor->m_bIntonate = false;
                     OnNetUploadBreakIntonate();
                     pActor->AddCommand(GcActor::ACMD_UNDER_ATTACK);
                 }
-
-                pActor->ShowDamageNumber(ret, sDamage, eleDmg, criHit, eleSpe);
-                pActor->m_bIsDead = Max((char)dead, pActor->m_cIsDeadNet);
+                pActor->ShowDamageNumber(ret, sDamage, eleDmg, criHit, eleSpe);  // lyymark 显示伤害数字
+                pActor->m_bIsDead = Max((char)dead, pActor->m_cIsDeadNet);  // 更新死亡状态
                 RtgVertex3 pos;
                 if (dead) {
                     if (pAttacker) {
@@ -5388,8 +5392,8 @@ void GcWorld::OnNetDownloadAttack(CG_CmdPacket* pPacket, DWORD dwServerTime, DWO
                     //GetWorld()->m_ActorManager.ActorDie(lSubUnderAttackerID,dead);
                     GetWorld()->m_ActorManager.HideHudHp(lSubUnderAttackerID);
                 }
-                //if(criHit)
-                //	g_pSoundMgr->PlayOnce("cri_hit_2.wav",false,0,pos);
+                // if(criHit)  // 暴击音效被注释掉
+                // g_pSoundMgr->PlayOnce("cri_hit_2.wav",false,0,pos);
             }
         } else {
             switch (cIsBreak) {
@@ -5409,10 +5413,11 @@ void GcWorld::OnNetDownloadAttack(CG_CmdPacket* pPacket, DWORD dwServerTime, DWO
             }
             if (lSubUnderAttackerID == GetPlayer()->ID() && pAttacker &&
                 pAttacker->NpcType() == GcActor::ENT_USER) {
-                GetPlayer()->AddPkTempUser(lAttackerID);
+                GetPlayer()->AddPkTempUser(lAttackerID);  // 添加PK临时用户
             }
             pAttack->AddDamage(lSubUnderAttackerID, ret, sDamage, eleDmg, criHit, eleSpe,
-                               dead != 0);
+                               dead != 0);  // 添加伤害数据
+
             //ac.ma			血条延迟消失的临时解决方法
             if (dead) {
                 //pActor = FindActor(lSubUnderAttackerID);
@@ -5425,11 +5430,23 @@ void GcWorld::OnNetDownloadAttack(CG_CmdPacket* pPacket, DWORD dwServerTime, DWO
                     pAttacker->m_bIsIdle = true;
                 }
                 //GetWorld()->m_ActorManager.ActorDie(lSubUnderAttackerID,dead);
-                GetWorld()->m_ActorManager.HideHudHp(lSubUnderAttackerID);
+                GetWorld()->m_ActorManager.HideHudHp(lSubUnderAttackerID);  //隐藏
             }
             //end
         }
     }
+    P_LOGINFO(std::string("\n收到攻击数据: ") + "\n发动者ID: " + std::to_string(lAttackerID) +
+              "\n攻击ID: " + std::to_string(sAttackID) + "\n技能ID: " + std::to_string(sSkillID) +
+              "\n攻击目标类型: " + std::to_string(cAttackTarget) + "\n是否吟唱: " +
+              std::to_string(cIsIntonate) + "\n目标ID: " + std::to_string(lUnderAttackerID) +
+              "\n副目标ID: " + std::to_string(lSubUnderAttackerID) + "\n攻击位置: (" +
+              std::to_string(lPos[0]) + ", " + std::to_string(lPos[1]) + ", " +
+              std::to_string(lPos[2]) + ")" + "\n伤害值: " + std::to_string(sDamage) +
+              "\n元素伤害: (" + std::to_string(eleDmg[0]) + ", " + std::to_string(eleDmg[1]) +
+              ", " + std::to_string(eleDmg[2]) + ")" + "\n是否暴击: " + std::to_string(bCriDamage) +
+              "\n是否治疗技能: " + std::to_string(IsAddHPSkill) +
+              "\n攻击结果: " + std::to_string(ret) + "\n是否被打断: " + std::to_string(cIsBreak) +
+              "\n是否死亡: " + std::to_string(dead));
     unguard;
 }
 
@@ -5459,7 +5476,7 @@ void GcWorld::OnNetUploadPosition(DWORD dwClientTime) {
     }
     //end
 
-    const RtgMatrix16* pM16 = m_pPlayer->GetMatrix();
+    const RtgMatrix16* pM16    = m_pPlayer->GetMatrix();
     CG_CmdPacket*      pPacket = NetBeginWrite();
 
     pPacket->WriteShort(c2r_update_position);
@@ -5571,9 +5588,13 @@ void GcWorld::OnNetUploadBreakIntonate() {
     unguard;
 }
 
+//lyymark 攻击命令发送
 void GcWorld::OnNetUploadAttackTarget(WORD wSkillID, WORD wAttackID, DWORD dwObjectID,
                                       GcActor::SCmd* pCmd, int sum) {
     guard;
+
+    P_LOGINFO("正在发送攻击命令 skillId: " + std::to_string(wSkillID) + " attackID: " +
+              std::to_string(wAttackID) + " objectID: " + std::to_string(dwObjectID));
 
     /*
 	unsigned short crcvalue = CRC16_INIT_VALUE;
@@ -5780,7 +5801,7 @@ void GcWorld::SetCamera() {
 
 void GcWorld::OnPetActive(DWORD dwPetID, DWORD itemid) {
     guard;
-    m_dwPetID = dwPetID;
+    m_dwPetID                                = dwPetID;
     g_layerMain->m_fromPlayerItems->m_pet.id = itemid;
     if (m_dwPetID == 0 && m_pPet) {
         GetPlayerPet()->CallBackPet();
@@ -5836,14 +5857,14 @@ void GcWorld::OnLocalSaveShortcut() {
 }
 
 enum ESaveConfigData {
-    Config_Camera = 1,
+    Config_Camera        = 1,
     Config_MaxActorCount = 2,
-    Config_HUD = 3,
-    Config_InputMode = 4,
-    Config_ChatPlan = 5,
-    Config_PkMode = 6,
-    Hacker_checked = 7,   // 用来检查是否可能使用外挂
-    Hacker_checked2 = 8,  // 用来检查是否可能使用外挂
+    Config_HUD           = 3,
+    Config_InputMode     = 4,
+    Config_ChatPlan      = 5,
+    Config_PkMode        = 6,
+    Hacker_checked       = 7,  // 用来检查是否可能使用外挂
+    Hacker_checked2      = 8,  // 用来检查是否可能使用外挂
 };
 
 void GcWorld::OnNetDownloadConfigData(CG_CmdPacket* pPacket) {
@@ -5943,8 +5964,8 @@ void GcWorld::OnNetDownloadConfigData(CG_CmdPacket* pPacket) {
         return;
 
     char* config = strdup(data);
-    char  sep[] = ",";
-    char* k = strtok(config, sep);
+    char  sep[]  = ",";
+    char* k      = strtok(config, sep);
 
     if (!k)
         return;
@@ -6313,7 +6334,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType) {
                 g_layerMain->m_formGuide1->Hide();
             }
             //首次打开当前有可接受任务NPC对话页面之后的UI提示
-            RtwRect rectSrc = g_layerMain->m_formGuide4->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide4->GetClientRect();
             RtwRect rectDest = g_layerMain->m_formHelp->GetClientRect();
             rectDest.left -= rectSrc.getWidth();
             rectDest.top += rectDest.getHeight() / 2 + 30;
@@ -6334,7 +6355,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType) {
                 g_layerMain->m_formGuide2->Hide();
             }
             //首次打开完成任务NPC对话页面之后的UI提示
-            RtwRect rectSrc = g_layerMain->m_formGuide3->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide3->GetClientRect();
             RtwRect rectDest = g_layerMain->m_btnFinished->GetClientRect();
             rectDest.left -= (rectSrc.getWidth() / 2 + 110);
             rectDest.top -= (rectDest.getHeight() / 2 + 50);
@@ -6355,7 +6376,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType) {
             if (g_layerMain->m_formGuide3->IsVisible()) {
                 g_layerMain->m_formGuide3->Hide();
             }
-            RtwRect rectSrc = g_layerMain->m_formGuide4->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide4->GetClientRect();
             RtwRect rectDest = LOAD_UI("fmsystem.btnsyschar")->GetClientRect();
             rectDest.left -= rectSrc.getWidth();
             rectDest.top += (rectDest.getHeight() / 2 - 10);
@@ -6373,7 +6394,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType) {
         } break;
         case eFirstAttackMonster: {
             //玩家首次攻击怪物的新手提示
-            RtwRect rectSrc = g_layerMain->m_formGuide2->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide2->GetClientRect();
             RtwRect rectDest = LOAD_UI("fmmonhp")->GetClientRect();
             rectDest.left += 30;
             rectDest.top += rectDest.getHeight() / 2;
@@ -6391,7 +6412,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType) {
         } break;
         case eEatHP: {
             //玩家首次hp低于50%
-            RtwRect rectSrc = g_layerMain->m_formGuide2->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide2->GetClientRect();
             RtwRect rectDest = LOAD_UI("fmhp")->GetClientRect();
             rectDest.left += 40;
             rectDest.top += rectDest.getHeight() / 2 + 40;
@@ -6409,7 +6430,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType) {
         } break;
         case eEatMP: {
             //玩家首次mp低于50%
-            RtwRect rectSrc = g_layerMain->m_formGuide2->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide2->GetClientRect();
             RtwRect rectDest = LOAD_UI("fmhp")->GetClientRect();
             rectDest.top += rectDest.getHeight() / 2 + 40;
             g_layerMain->m_formGuide2->Move(SPoint(rectDest.left, rectDest.top));
@@ -6426,7 +6447,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType) {
         } break;
         case eUsePet1: {
             //玩家接受任务11001，并且背包中有ID16000为的物品
-            RtwRect rectSrc = g_layerMain->m_formGuide4->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide4->GetClientRect();
             RtwRect rectDest = LOAD_UI("fmsystem.btnpet")->GetClientRect();
             rectDest.left -= rectSrc.getWidth();
             rectDest.top += (rectDest.getHeight() / 2 - 10);
@@ -6444,7 +6465,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType) {
         } break;
         case eBuyItem1: {
             //接受任务11004，玩家打开npc郭实的一级对话页面之后
-            RtwRect rectSrc = g_layerMain->m_formGuide3->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide3->GetClientRect();
             RtwRect rectDest = g_layerMain->m_formHelp->GetClientRect();
             rectDest.left -= (rectSrc.getWidth() / 2 + 110);
             rectDest.top += 190;
@@ -6463,7 +6484,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType) {
         } break;
         case eFaBao1: {
             //接受任务11005之后,技能按钮闪烁
-            RtwRect rectSrc = g_layerMain->m_formGuide4->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide4->GetClientRect();
             RtwRect rectDest = LOAD_UI("fmsystem.btnsyschar")->GetClientRect();
             rectDest.left -= rectSrc.getWidth();
             rectDest.top += (rectDest.getHeight() / 2 - 10);
@@ -6481,7 +6502,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType) {
         } break;
         case eMail1: {
             //接到新邮件，打开邮箱
-            RtwRect rectSrc = g_layerMain->m_formGuide4->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide4->GetClientRect();
             RtwRect rectDest = LOAD_UI("fmsystem.btnsysmail")->GetClientRect();
             rectDest.left -= rectSrc.getWidth();
             rectDest.top += (rectDest.getHeight() / 2 - 10);
@@ -6499,7 +6520,7 @@ void GcWorld::OnNetDownloadCharGuide(short sType) {
         } break;
         case eLifeSkill1: {
             //玩家首次打开npc鲁忠的一级对话页面之后
-            RtwRect rectSrc = g_layerMain->m_formGuide4->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide4->GetClientRect();
             RtwRect rectDest = g_layerMain->m_formHelp->GetClientRect();
             rectDest.left -= rectSrc.getWidth();
             rectDest.top += rectDest.getHeight() / 2 + 55;
@@ -6718,7 +6739,7 @@ void GcWorld::ShowTaskGuide() {
         cmd->WriteShort(eMoveToNPC);
         NetSend(cmd);
         //弹出接受任务的UI提示
-        RtwRect rectSrc = g_layerMain->m_formGuide3->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide3->GetClientRect();
         RtwRect rectDest = g_layerMain->m_formCharSimple->m_dynTaskTrack->GetClientRect();
         rectDest.left -= rectDest.getWidth() / 2 + 120;
         rectDest.top += (rectDest.getHeight() / 2 - 140);
@@ -6757,7 +6778,7 @@ void GcWorld::ShowAttrPoint() {
             g_layerMain->m_formGuide4->Hide();
         }
         //弹出接受任务的UI提示
-        RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide5->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmnewchar.fmproperty1.fmxmm3.btnhitadd")->GetClientRect();
         rectDest.left += 20;
         rectDest.top += rectDest.getHeight() / 2;
@@ -6781,7 +6802,7 @@ void GcWorld::ShowAttrPointAllocate() {
     CTaskInfo task = m_pPlayer->m_task;
     if (!task.IsDoneGuild(eFinishAddAttr) && task.IsDoneGuild(eAddAttr)) {
         //弹出接受任务的UI提示
-        RtwRect rectSrc = g_layerMain->m_formGuide3->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide3->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmnewchar.fmproperty1.fmxmm6.btnok")->GetClientRect();
         rectDest.left -= rectSrc.getWidth() / 2 + 120;
         rectDest.top += (rectDest.getHeight() / 2 - 60);
@@ -6855,7 +6876,7 @@ void GcWorld::ShowCallPet() {
     CTaskInfo task = m_pPlayer->m_task;
     if (!task.IsDoneGuild(eUsePet2) && task.IsDoneGuild(eUsePet1)) {
         //玩家召唤宠物
-        RtwRect rectSrc = g_layerMain->m_formGuide2->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide2->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmconjure.fightblt")->GetClientRect();
         rectDest.left += rectSrc.getWidth() / 2 - 140;
         rectDest.top += (rectDest.getHeight() / 2 + 5);
@@ -6879,7 +6900,7 @@ void GcWorld::ShowPetInfo() {
     CTaskInfo task = m_pPlayer->m_task;
     if (!task.IsDoneGuild(eUsePet3) && task.IsDoneGuild(eUsePet2)) {
         //玩家当前召唤出宠物
-        RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide5->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmhpc")->GetClientRect();
         rectDest.left += 140;
         rectDest.top += 20;
@@ -6902,7 +6923,7 @@ void GcWorld::ShowShopUI() {
     CTaskInfo task = m_pPlayer->m_task;
     if (!task.IsDoneGuild(eBuyItem2) && task.IsDoneGuild(eBuyItem1)) {
         //玩家打开商店页面
-        RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide5->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmnewshop.fmshop.fmsellitem")->GetClientRect();
         rectDest.left += 3 * 36;
         rectDest.top += 2 * 36;
@@ -6926,7 +6947,7 @@ void GcWorld::ShowShopTrade() {
     CTaskInfo task = m_pPlayer->m_task;
     if (!task.IsDoneGuild(eBuyItem3) && task.IsDoneGuild(eBuyItem2)) {
         //玩家点击物品出现购买页面
-        RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide5->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmnewshop.fmshop.tbctrading.fmcontent1.btnok")->GetClientRect();
         rectDest.left -= 120;
         rectDest.top -= 55;
@@ -6950,7 +6971,7 @@ void GcWorld::ShowLifePage() {
     if (!task.IsDoneGuild(eFaBao2) && task.IsDoneGuild(eFaBao1)) {
         HideGuideForm();
         //玩家点击物品出现购买页面
-        RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide5->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmplaymain.tabitem.btnfabao")->GetClientRect();
         rectDest.left += rectDest.getWidth();
         rectDest.top += 5;
@@ -6974,7 +6995,7 @@ void GcWorld::ShowViewMail() {
     CTaskInfo task = m_pPlayer->m_task;
     if (!task.IsDoneGuild(eMail3) && task.IsDoneGuild(eMail1)) {
         //玩家查看邮件
-        RtwRect rectSrc = g_layerMain->m_formGuide5->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide5->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmmail2.fmcontent.btnxmm3")->GetClientRect();
         rectDest.left += 70;
         rectDest.top -= 0;
@@ -6998,7 +7019,7 @@ void GcWorld::ShowExtraMail() {
     CTaskInfo task = m_pPlayer->m_task;
     if (!task.IsDoneGuild(eMail5) && task.IsDoneGuild(eMail3)) {
         //玩家查看附件
-        RtwRect rectSrc = g_layerMain->m_formGuide3->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide3->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmmail1.fmcontent.btnview")->GetClientRect();
         rectDest.left -= 260;
         rectDest.top -= 55;
@@ -7022,7 +7043,7 @@ void GcWorld::ShowStudySkill() {
     CTaskInfo task = m_pPlayer->m_task;
     if (!task.IsDoneGuild(eLifeSkill2) && task.IsDoneGuild(eLifeSkill1)) {
         //玩家查看附件
-        RtwRect rectSrc = g_layerMain->m_formGuide3->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide3->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmlearn.fmcontent.fmzoning1.btulearn1")->GetClientRect();
         rectDest.left -= 130;
         rectDest.top -= 60;
@@ -7062,7 +7083,7 @@ void GcWorld::ShowFriendUI() {
             }
         }
         if (bFirstFriend) {
-            RtwRect rectSrc = g_layerMain->m_formGuide2->GetClientRect();
+            RtwRect rectSrc  = g_layerMain->m_formGuide2->GetClientRect();
             RtwRect rectDest = LOAD_UI("fmmonhp")->GetClientRect();
             rectDest.left -= 30;
             rectDest.top += rectDest.getHeight() / 2 + 30;
@@ -7086,7 +7107,7 @@ void GcWorld::ShowMiddleMap() {
     CTaskInfo task = m_pPlayer->m_task;
     if (!task.IsDoneGuild(eMidMap1)) {
         //玩家查看附件
-        RtwRect rectSrc = g_layerMain->m_formGuide1->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide1->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmsysmap")->GetClientRect();
         rectDest.left += 100;
         rectDest.top -= 110;
@@ -7110,7 +7131,7 @@ void GcWorld::ShowMiddleMapAI() {
     CTaskInfo task = m_pPlayer->m_task;
     if (!task.IsDoneGuild(eMidMap2) && task.IsDoneGuild(eMidMap1)) {
         //玩家查看附件
-        RtwRect rectSrc = g_layerMain->m_formGuide1->GetClientRect();
+        RtwRect rectSrc  = g_layerMain->m_formGuide1->GetClientRect();
         RtwRect rectDest = LOAD_UI("fmsysmap")->GetClientRect();
         rectDest.left += 100;
         rectDest.top -= 110;
@@ -7266,8 +7287,8 @@ bool LuaInit() {
     REG_CFUNC(*Lua(), get_table_value);
     //REG_CFUNC(*Lua(), table_print);
 
-    RtArchive* ar = RtCoreFile().CreateFileReader(R(RES_LUA_INIT_HTML));
-    int        total = ar->TotalSize();
+    RtArchive* ar     = RtCoreFile().CreateFileReader(R(RES_LUA_INIT_HTML));
+    int        total  = ar->TotalSize();
     char*      tmpBuf = RT_NEW char[total + 1];
     ar->Serialize(tmpBuf, total);
     tmpBuf[total] = 0;
@@ -7466,8 +7487,8 @@ void GcWorld::UseKeyBoardMove() {
     m_pPlayer->GetMatrix()->GetRow(3, pPos);
     RtgMatrix16 playerMatrix = *m_pPlayer->GetMatrix();
     RtgVertex3  eyeDirection = GetDevice()->m_pCamera->GetViewDir();
-    playerMatrix._10 = eyeDirection.x;
-    playerMatrix._11 = eyeDirection.y;
+    playerMatrix._10         = eyeDirection.x;
+    playerMatrix._11         = eyeDirection.y;
     if (m_iKey1 != -1 && m_iKey2 == -1) {
         // 玩家以前的时候没有按下按键
         switch (m_iKey1) {
@@ -7494,7 +7515,7 @@ void GcWorld::UseKeyBoardMove() {
         float Z;
         GetScene()->GetTerrainHeight(X, Y, Z);
         m_pPlayer->AddCommandMoveTo(X, Y, Z, -1.f, 0.f);
-        m_bIsMovableCursor = true;
+        m_bIsMovableCursor     = true;
         m_iCheckPlayerSeedSave = GetWorld()->m_iCheckPlayerSeed;
     } else if (m_iKey2 != -1 && m_iKey1 != -1) {
         // 判断是否有效的组合
@@ -7570,7 +7591,7 @@ void GcWorld::UseKeyBoardMove() {
         float Z;
         GetScene()->GetTerrainHeight(X, Y, Z);
         m_pPlayer->AddCommandMoveTo(X, Y, Z, -1.f, 0.f);
-        m_bIsMovableCursor = true;
+        m_bIsMovableCursor     = true;
         m_iCheckPlayerSeedSave = m_iCheckPlayerSeed;
     }
     lLastMoveTime = rtGetMilliseconds();
@@ -7606,7 +7627,7 @@ void GcWorld::OnMoveKeyDown(int direction) {
             default:
                 return;
         }
-        m_iKey1 = direction;
+        m_iKey1           = direction;
         m_bKeyBoardMoving = true;
     } else if (m_iKey2 == -1 || m_iKey2 == direction) {
         // 判断是否有效的组合
@@ -7670,11 +7691,11 @@ void GcWorld::OnMoveKeyDown(int direction) {
             default:
                 break;
         }
-        m_iKey2 = direction;
+        m_iKey2           = direction;
         m_bKeyBoardMoving = true;
     } else {
-        m_iKey1 = m_iKey2;
-        m_iKey2 = direction;
+        m_iKey1           = m_iKey2;
+        m_iKey2           = direction;
         m_bKeyBoardMoving = true;
     }
     g_layerMain->m_formMiddleMap->m_bNeedShowPoint = false;
@@ -7690,7 +7711,7 @@ void GcWorld::OnMoveKeyUp(int direction) {
         m_iKey2 = -1;
     }
     if (m_iKey1 == -1) {
-        m_bKeyBoardMoving = false;
+        m_bKeyBoardMoving      = false;
         m_bIsControlByKeyBoard = true;
     }
     unguard;
@@ -7718,8 +7739,8 @@ void GcWorld::OnSetFocus() {
 void GcWorld::OnSetTabSelectTarget() {
     guard;
     GcActor* pLastTargetActor = NULL;
-    GcActor* pTargetActor = NULL;
-    int      iDistance = 999999;
+    GcActor* pTargetActor     = NULL;
+    int      iDistance        = 999999;
     if (g_layerMain->m_formMonInfo->GetActorID()) {
         pLastTargetActor =
             GetWorld()->m_ActorManager.FindAll(g_layerMain->m_formMonInfo->GetActorID());
@@ -7740,7 +7761,7 @@ void GcWorld::OnSetTabSelectTarget() {
                 if (pActor->m_pNpc->Type == 4 || pActor->m_pNpc->Type == 5)
                     continue;
                 pTargetActor = pActor;
-                iDistance = GetPlayer()->Distance(pActor);
+                iDistance    = GetPlayer()->Distance(pActor);
             }
         }
     }
@@ -7792,7 +7813,7 @@ void GcWorld::EnterDungon(DWORD UID, DWORD TID, DWORD process) {
 
     m_pDungeon->lDungeonUID = UID;
     m_pDungeon->lDungeonTID = TID;
-    m_pDungeon->process = process;
+    m_pDungeon->process     = process;
 
     if (m_pDungeon) {
         std::map<int, STrigger>&          triggerMap = g_TableFB.m_trigger;

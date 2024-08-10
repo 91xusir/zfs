@@ -187,7 +187,7 @@ void NetSession::Process(float fSecond)
             if (m_iMaxReConnect>0)
             {
                 m_iMaxReConnect --;
-                m_fNextConnectTime = 1.f; // 没秒只能连一次
+                m_fNextConnectTime = 1.f; // 每秒只能连一次
                 GetRegionConnectInfo();
                 LOG3("网络: 连接游戏服务器 IP=[%s] Port=[%d] (%d)...\n", m_szHost, m_sPort, m_iMaxReConnect);
                 this->EnableCompress(false);

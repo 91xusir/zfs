@@ -2680,7 +2680,7 @@ void GcBaseActor::OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event) {
             g_pScene->m_FootPrint.Add(m16, 0);
         }
 
-        // ½Å²½ÉùÒô
+        // lyymark ½Å²½ÉùÒô
         m_pMaster->OnPlayFootfall();
     } else if (event->Action == "pose_end") {
         if (m_pMaster->IsNPC() && m_pMaster->IsIdel()) {

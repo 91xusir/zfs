@@ -7,13 +7,14 @@
 /*
 add by lyy2024.8.8
 原来的配置类不方便，因此自己实现一个
-暂时支持ini和yaml 只支持键值对方式
-ini由原来的core提供 所以依赖core的包管理器，不能单独读取
+暂时支持ini和yaml 读取值的API相同 但都只支持键值对方式
+ini由原来的core提供，所以依赖core的包管理器，不能单独使用
+yaml是后面给服务端准备的，可以直接使用
 使用示例:
 
 GlobalConfig configa;
-configa.openFile("config.ini");
-configa["section"]["item"]=value;
+configa.openFile("config.ini")//configa.openFile("config.yaml");
+configa["section"]["item"]=xxx;
 
 */
 class GlobalConfig {

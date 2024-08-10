@@ -190,6 +190,7 @@ public:
     void OnNetDownloadCreateChar(CG_CmdPacket* vpPacket);//主角的初始化
     void OnNetDownloadSnapshot(CG_CmdPacket *pPacket, DWORD dwServerTime, DWORD dwClientTime);
     void OnNetDownloadEvent(CG_CmdPacket *pPacket, DWORD dwClientTime);
+    //lyymark 下载攻击命令
     void OnNetDownloadAttack(CG_CmdPacket *pPacket, DWORD dwServerTime, DWORD dwClientTime);
 	void OnNetDownloadHelp(CG_CmdPacket *pPacket, DWORD dwServerTime, DWORD dwClientTime);
     void OnNetDownloadShowInfo(CG_CmdPacket *pPacket);

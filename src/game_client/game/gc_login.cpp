@@ -154,28 +154,31 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
                 pActor->LinkParent(pBody, szLink.c_str());  // Á´½ÓpBody
             }
 
-            if (pActor->m_Name == "pn01.act"||pActor->m_Name == "pt01.act"||pActor->m_Name == "ph01.act"||pActor->m_Name == "pf01.act") {
-                auto& m_poseMap = pActor->GetCore()->m_poseMap;
-                m_poseMap["waiting_n0"] = m_poseMap["waiting_non"];
-                m_poseMap["waiting_n1"] = m_poseMap["waiting_non"];
-                m_poseMap["run_n0"] = m_poseMap["walk_non"];
-                m_poseMap["wait_n0"] = m_poseMap["wait_non"];
-                m_poseMap["wait_a_n0"] = m_poseMap["wait_non"];
-                m_poseMap["attack_n0"] = m_poseMap["attack_non"];
-                m_poseMap["attack_n1"] = m_poseMap["attack_non"];
-                m_poseMap["attack_n2"] = m_poseMap["attack_non"];
-                m_poseMap["attack_l0"] = m_poseMap["attack_non_flysword"];
-                m_poseMap["attack_l1"] = m_poseMap["attack_non_flysword"];
-                m_poseMap["attack_l2"] = m_poseMap["attack_non_flysword"];
-                m_poseMap["hurt_n0"] = m_poseMap["hurt_non"];
-                m_poseMap["critical_n0"] = m_poseMap["attack_non"];
+            if (pActor->m_Name == "pn01.act" || pActor->m_Name == "pt01.act" ||
+                pActor->m_Name == "ph01.act" || pActor->m_Name == "pf01.act") {
+                auto& m_poseMap             = pActor->GetCore()->m_poseMap;
+                m_poseMap["waiting_n0"]     = m_poseMap["waiting_non"];
+                m_poseMap["waiting_n1"]     = m_poseMap["waiting_non"];
+                m_poseMap["run_n0"]         = m_poseMap["walk_non"];
+                m_poseMap["wait_n0"]        = m_poseMap["wait_non"];
+                m_poseMap["wait_a_n0"]      = m_poseMap["wait_non"];
+                m_poseMap["attack_n0"]      = m_poseMap["attack_non"];
+                m_poseMap["attack_n0"].Name = "attack_n0";
+                m_poseMap["attack_n1"]      = m_poseMap["attack_non"];
+                m_poseMap["attack_n1"].Name = "attack_n1";
+                m_poseMap["attack_n2"]      = m_poseMap["attack_non"];
+                m_poseMap["attack_n2"].Name = "attack_n2";
+                m_poseMap["attack_l0"]      = m_poseMap["attack_non_flysword"];
+                m_poseMap["attack_l1"]      = m_poseMap["attack_non_flysword"];
+                m_poseMap["attack_l2"]      = m_poseMap["attack_non_flysword"];
+                m_poseMap["hurt_n0"]        = m_poseMap["hurt_non"];
+                m_poseMap["critical_n0"]    = m_poseMap["attack_non"];
             }
             if (pActor->m_Name == "pn01.act") {
                 auto& m_poseMap = pActor->GetCore()->m_poseMap;
                 for (auto& [name, pose] : m_poseMap) {
 
                     P_LOGINFO(name);
-            
                 }
             }
         } while (pIni->NextEntry(&szLink, &szName));

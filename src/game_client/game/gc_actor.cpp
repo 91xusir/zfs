@@ -119,106 +119,106 @@ GcActor::GcActor()
     guard;
     if (!m_bLoadPRI)
         LoadPRI();
-    m_wAttackID = 1;
-    mpTrump = NULL;
-    m_pRidePet = NULL;
-    m_dwID = 0;
-    m_pCurCmd = NULL;
-    m_bIsIdle = true;
-    m_eNpcType = ENT_UNKNOWN;
-    m_eRideState = ERS_NONE;
-    mItemChangeCount = 0;
-    m_eBlockPosPKAttr = PKA_NONE;
-    m_bDeleteSelf = false;
-    m_iCurrentBlockY = -1;
+    m_wAttackID             = 1;
+    mpTrump                 = NULL;
+    m_pRidePet              = NULL;
+    m_dwID                  = 0;
+    m_pCurCmd               = NULL;
+    m_bIsIdle               = true;
+    m_eNpcType              = ENT_UNKNOWN;
+    m_eRideState            = ERS_NONE;
+    mItemChangeCount        = 0;
+    m_eBlockPosPKAttr       = PKA_NONE;
+    m_bDeleteSelf           = false;
+    m_iCurrentBlockY        = -1;
     s_strActorNameMap[this] = R(G_NONAME);
-    m_pModel = NULL;
+    m_pModel                = NULL;
     m_Skill.Init(this);
-    m_bIsAttack = false;
-    m_pHUD = NULL;
-    m_unionID = 0;
-    m_bPShop = 0;
-    m_iCheckSeed = 0;
-    m_eCurPosPKAttr = PKA_NONE;
-    m_iCurrentBlockX = -1;
-    m_bHideHUD = false;
+    m_bIsAttack       = false;
+    m_pHUD            = NULL;
+    m_unionID         = 0;
+    m_bPShop          = 0;
+    m_iCheckSeed      = 0;
+    m_eCurPosPKAttr   = PKA_NONE;
+    m_iCurrentBlockX  = -1;
+    m_bHideHUD        = false;
     m_bWantStopAttack = false;
-    m_pNpc = NULL;
-    m_bShowHUD = true;
+    m_pNpc            = NULL;
+    m_bShowHUD        = true;
 
     m_CallNpcCount = 0;
 
     m_PkMode = PK_Monster;
     //-------------add start by tony 05.06.13--------------------------------//
-    m_feod_name = "";
+    m_feod_name   = "";
     m_is_attacker = (BYTE)0;
     //-------------add end   by tony 05.06.13--------------------------------//
 
-    m_dwState = 0xffffffff;
-    m_lBossMaxHp = 0;
-    m_lBossHp = 0;
+    m_dwState       = 0xffffffff;
+    m_lBossMaxHp    = 0;
+    m_lBossHp       = 0;
     m_bRenderSelect = true;
-    m_cHpRate = 100 / 3;
-    m_HeadImageID = 0;
-    m_cMpRate = 100 / 3;  // 剩余MP的比率(值为0到100)
-    m_actorID = 0;        // 人物ID
-    m_lLev = 0;           // 等级
+    m_cHpRate       = 100 / 3;
+    m_HeadImageID   = 0;
+    m_cMpRate       = 100 / 3;  // 剩余MP的比率(值为0到100)
+    m_actorID       = 0;        // 人物ID
+    m_lLev          = 0;        // 等级
 
-    m_pLastTargetID = 0;
-    m_bTrace = false;
-    m_dwIntonateTime = 0;
+    m_pLastTargetID     = 0;
+    m_bTrace            = false;
+    m_dwIntonateTime    = 0;
     m_iNeedIntonateTime = 0;
-    m_bIntonate = false;
-    m_bIsDead = 0;
-    m_iRebirthTime = 0;
-    m_cRebirthType = 0;
-    m_cInTeam = 0;
-    m_bTeamOnOff = true;
-    m_lPickActorID = 0xffffffff;
-    m_bIsCombat = false;
-    m_bIsCollect = false;
-    bActivity = false;
-    m_lPlayIdleTime = 0;
-    m_cPickType = 0;
-    m_lLastDeadval = 0;
-    m_pChangeEffect = NULL;
+    m_bIntonate         = false;
+    m_bIsDead           = 0;
+    m_iRebirthTime      = 0;
+    m_cRebirthType      = 0;
+    m_cInTeam           = 0;
+    m_bTeamOnOff        = true;
+    m_lPickActorID      = 0xffffffff;
+    m_bIsCombat         = false;
+    m_bIsCollect        = false;
+    bActivity           = false;
+    m_lPlayIdleTime     = 0;
+    m_cPickType         = 0;
+    m_lLastDeadval      = 0;
+    m_pChangeEffect     = NULL;
 
     CM_MEMPROTECTOR(m_pCollectTool, 20)
-    m_pCollectTool[0] = 0;
-    m_bTriggerOver = false;
-    m_bTriggerStart = false;
-    triggerID = 0;
-    triggerMain = 0;
-    triggerOpen = 0;
-    m_bTriggerClose = 1;
+    m_pCollectTool[0]  = 0;
+    m_bTriggerOver     = false;
+    m_bTriggerStart    = false;
+    triggerID          = 0;
+    triggerMain        = 0;
+    triggerOpen        = 0;
+    m_bTriggerClose    = 1;
     m_lTriggerCloseNet = 2;
-    m_bInDungeon = false;
-    m_bInCallPet = false;
-    m_dungeonUID = 0;
-    m_dungeonTID = 0;
-    m_cIsDeadNet = 0;
-    bTaskCollect = false;
-    m_fVisible = 1.f;
-    m_eIdlePose = GcBaseActor::POSE_IDLE;
+    m_bInDungeon       = false;
+    m_bInCallPet       = false;
+    m_dungeonUID       = 0;
+    m_dungeonTID       = 0;
+    m_cIsDeadNet       = 0;
+    bTaskCollect       = false;
+    m_fVisible         = 1.f;
+    m_eIdlePose        = GcBaseActor::POSE_IDLE;
     m_mapSetEffect.clear();
-    m_bDoMoveCmd = false;
-    m_cShapeshift = 0;
+    m_bDoMoveCmd          = false;
+    m_cShapeshift         = 0;
     m_dwShapeshiftModelID = 0;
-    m_cShapeshiftNet = 0;
-    m_SkillSeries = 0;
+    m_cShapeshiftNet      = 0;
+    m_SkillSeries         = 0;
 
     CM_MEMPROTECTOR(m_linkName, 20)
 
-    m_dwCatchPet = 0;
-    m_dwCatchMe = 0;
-    m_bTeleEvent = false;
-    m_bDisplay = true;
-    m_linkName[0] = 0;
-    m_ePetType = PET_TYPE_NULL;
-    m_dwPetMasterID = 0;
-    m_dwPetFuseLev = 0;
+    m_dwCatchPet      = 0;
+    m_dwCatchMe       = 0;
+    m_bTeleEvent      = false;
+    m_bDisplay        = true;
+    m_linkName[0]     = 0;
+    m_ePetType        = PET_TYPE_NULL;
+    m_dwPetMasterID   = 0;
+    m_dwPetFuseLev    = 0;
     m_dwPetAbilityLev = 0;
-    m_dwDeadTime = 0;
+    m_dwDeadTime      = 0;
     unguard;
 }
 
@@ -439,11 +439,11 @@ void GcActor::Run(float fSecond)  //逻辑循环
 
         GetGraph()->SetVisible(m_fVisible);
 
-    if (m_bIsDead != m_cIsDeadNet) {     // 处理角色死亡状态
-        m_dwDeadTime += fSecond * 1000;  // 增加死亡时间
-        if (m_dwDeadTime > 3000) {       // 如果死亡时间超过 3000 毫秒
-            m_dwDeadTime = 0;            // 重置死亡时间
-            m_bIsDead = m_cIsDeadNet;    // 更新死亡状态
+    if (m_bIsDead != m_cIsDeadNet) {      // 处理角色死亡状态
+        m_dwDeadTime += fSecond * 1000;   // 增加死亡时间
+        if (m_dwDeadTime > 3000) {        // 如果死亡时间超过 3000 毫秒
+            m_dwDeadTime = 0;             // 重置死亡时间
+            m_bIsDead    = m_cIsDeadNet;  // 更新死亡状态
         }
     } else if (m_dwDeadTime != 0) {
         m_dwDeadTime = 0;  // 如果死亡时间不为零，重置死亡时间
@@ -452,14 +452,14 @@ void GcActor::Run(float fSecond)  //逻辑循环
 
 bool GcActor::RunCommand(float fSecond) {
     guard;
-    const float g_fClientDieTime = 5.f;
-    const float g_fClientDieFlyHeight = 60.f;
+    const float g_fClientDieTime       = 5.f;
+    const float g_fClientDieFlyHeight  = 60.f;
     const float g_fClientDieSinkHeight = -100.f;
 
     if (m_pCurCmd) {
         CRT_ActorInstance* pGraph;
         GcActor*           pTarget;
-        const RtgMatrix16* pM16 = NULL;
+        const RtgMatrix16* pM16   = NULL;
         float              fSpeed = -1.f;
 
         m_pCurCmd->fRunTime += fSecond;
@@ -694,7 +694,7 @@ void GcActor::RunBody(float fSecond) {
         if (m_bIsDead == 1 && (m_eNpcType == ENT_MONSTER || m_eNpcType == ENT_NPC_COMBATIVE)) {
             if (!mBaseActor.m_pItemEffect) {
                 const char* effect = "linghun";
-                const char* link = "root";
+                const char* link   = "root";
                 ////#ifndef _DEBUG
                 //				if (m_pNpc && m_pNpc->szDeadEffect.c_str() && strlen(m_pNpc->szDeadEffect.c_str()) < 32)
                 //				{
@@ -771,7 +771,7 @@ void GcActor::RunIdle(float fSecond) {
         //mBaseActor.PlayPose(GcBaseActor::POSE_STAND, true);
         if (!m_bIsCombat) {
             if (rtGetMilliseconds() > m_lPlayIdleTime) {
-                vPose = GcBaseActor::POSE_IDLE;
+                vPose           = GcBaseActor::POSE_IDLE;
                 m_lPlayIdleTime = rtGetMilliseconds() + 10 * 1000;
             } else {
                 vPose = GcBaseActor::POSE_STAND;
@@ -789,7 +789,7 @@ void GcActor::RunIdle(float fSecond) {
             if (!pG->IsPlayingPose()) {
                 if (!m_bIsCombat) {
                     if (rtGetMilliseconds() > m_lPlayIdleTime) {
-                        vPose = GcBaseActor::POSE_IDLE;
+                        vPose           = GcBaseActor::POSE_IDLE;
                         m_lPlayIdleTime = rtGetMilliseconds() + 10 * 1000;
                     } else {
                         vPose = GcBaseActor::POSE_STAND;
@@ -827,7 +827,7 @@ void GcActor::DebugInfo() {
             SCmd*                     pCmd;
             std::list<SCmd>::iterator it;
             for (it = m_listCmd.begin(); it != m_listCmd.end(); it++) {
-                pCmd = &(*it);
+                pCmd    = &(*it);
                 strInfo = strInfo + GetCmdName(pCmd->eCmd) + "\n  ";
             }
         } else {
@@ -1032,12 +1032,12 @@ RtgVertex3 GcActor::GetHUDPos() {
     RtgVertex3         vPos(mBaseActor.GetMatrix()->Position());
     CRT_ActorInstance* pActor = mBaseActor.GetGraph()->p();
     if (pActor) {
-        vPos = pActor->GetWorldMatrix()->Position();
+        vPos           = pActor->GetWorldMatrix()->Position();
         RtgAABB* pAABB = pActor->GetStaticBoundingBox();
         if (pActor->m_Name == "mon062.act") {
             RtgAABB* pAABB1 = pActor->GetBoundingBox();
-            pAABB->vPos.z = pAABB1->vPos.z;
-            pAABB->vExt.z = pAABB1->vExt.z;
+            pAABB->vPos.z   = pAABB1->vPos.z;
+            pAABB->vExt.z   = pAABB1->vExt.z;
         }
         if (NpcType() == ENT_NPC_SERVICE) {
             if (pAABB->vPos.z > 14.0f && pAABB->vPos.z < 15.0f) {
@@ -1113,14 +1113,14 @@ void GcActor::AddCommandMoveTo(float fX, float fY, float fZ, float fTime, float 
     }
 
     SCmd cmd;
-    cmd.eCmd = ACMD_MOVETO;
-    cmd.f[0] = fX;
-    cmd.f[1] = fY;
-    cmd.f[2] = fZ;
+    cmd.eCmd      = ACMD_MOVETO;
+    cmd.f[0]      = fX;
+    cmd.f[1]      = fY;
+    cmd.f[2]      = fZ;
     cmd.fDistance = fDistance;
-    cmd.fTime = fTime + extraTime;
+    cmd.fTime     = fTime + extraTime;
     AddCommand(cmd);
-    m_iCheckSeed = m_iCheckSeed * 203014L + 3521051L;
+    m_iCheckSeed    = m_iCheckSeed * 203014L + 3521051L;
     m_pLastTargetID = 0;
     unguard;
 }
@@ -1128,9 +1128,9 @@ void GcActor::AddCommandMoveTo(float fX, float fY, float fZ, float fTime, float 
 void GcActor::AddCommandTeleport(int iX, int iY, float fDistance) {
     guard;
     SCmd cmd;
-    cmd.eCmd = ACMD_TELEPORT;
-    cmd.i[0] = iX;
-    cmd.i[1] = iY;
+    cmd.eCmd      = ACMD_TELEPORT;
+    cmd.i[0]      = iX;
+    cmd.i[1]      = iY;
     cmd.fDistance = fDistance;
     AddCommand(cmd);
     unguard;
@@ -1250,14 +1250,14 @@ void GcActor::AddCommand(SCmd& vCmd) {
         {
             //CommandFinished();
             m_pCurCmd = NULL;
-            bInsert = true;
+            bInsert   = true;
             break;
         } else if (
             iPRI ==
             3)  // 根据子命令进行排挤，如果这个命令是当前命令就根据当前子命令进行判断，否则直接挤掉
         {
             CHECK(pLast->cSubType == 2);  // 必须是组合命令
-            std::list<SCmd>::iterator it = --m_listCmd.end();
+            std::list<SCmd>::iterator it      = --m_listCmd.end();
             bool                      bCurCmd = false;
 
             if (it == m_listCmd.begin()) {
@@ -1294,7 +1294,7 @@ deadbug:
     if (m_listCmd.size() > 6) {
 #ifdef _DEBUG
         LOG1("GcActor::AddCommand 积累的命令已经太多了[%d个], 前6个命令为:\n", m_listCmd.size());
-        int                       iCmd = 0;
+        int                       iCmd  = 0;
         std::list<SCmd>::iterator itCmd = m_listCmd.begin();
         while (itCmd != m_listCmd.end()) {
             LOG3("    %d: %s [%d]\n", iCmd + 1, GetCmdName((*itCmd).eCmd), (*itCmd).cSubType);
@@ -1304,7 +1304,7 @@ deadbug:
 #endif
         if (this == GetPlayer()) {
             int  movecount = 0;
-            SCmd cmd = m_listCmd.front();
+            SCmd cmd       = m_listCmd.front();
             m_listCmd.clear();
             m_listCmd.push_back(cmd);
             m_pCurCmd = &m_listCmd.front();
@@ -1328,78 +1328,78 @@ deadbug:
     switch (vCmd.eCmd) {
         case ACMD_TALKNPC:
             cmd.cSubType = 1;
-            cmd.eCmd = ACMD_FOLLOW;
+            cmd.eCmd     = ACMD_FOLLOW;
             m_listCmd.push_back(cmd);
             cmd.bLoop = false;
-            cmd.eCmd = ACMD_TALKNPC;
+            cmd.eCmd  = ACMD_TALKNPC;
             m_listCmd.push_back(cmd);
             break;
         case ACMD_PICKITEM:
             cmd.cSubType = 1;
-            cmd.eCmd = ACMD_FOLLOW;
+            cmd.eCmd     = ACMD_FOLLOW;
             m_listCmd.push_back(cmd);
             cmd.bLoop = false;
-            cmd.eCmd = ACMD_PICKITEM;
+            cmd.eCmd  = ACMD_PICKITEM;
             m_listCmd.push_back(cmd);
             break;
         case ACMD_CATCHPET:
             cmd.cSubType = 1;
-            cmd.eCmd = ACMD_FOLLOW;
+            cmd.eCmd     = ACMD_FOLLOW;
             m_listCmd.push_back(cmd);
             cmd.bLoop = false;
-            cmd.eCmd = ACMD_CATCHPET;
+            cmd.eCmd  = ACMD_CATCHPET;
             m_listCmd.push_back(cmd);
             break;
         case ACMD_COLLECT:
             cmd.cSubType = 1;
-            cmd.eCmd = ACMD_COLLECT;
+            cmd.eCmd     = ACMD_COLLECT;
             m_listCmd.push_back(cmd);
             break;
         case ACMD_PLAYTASKITEM:
             cmd.cSubType = 1;
-            cmd.eCmd = ACMD_PLAYTASKITEM;
+            cmd.eCmd     = ACMD_PLAYTASKITEM;
             m_listCmd.push_back(cmd);
             break;
         case ACMD_ATTACK_SOMEBODY: {
             cmd.wSkillID = 0;
             cmd.cSubType = 1;
-            cmd.eCmd = ACMD_FOLLOW;
+            cmd.eCmd     = ACMD_FOLLOW;
             m_listCmd.push_back(cmd);
             cmd.eCmd = ACMD_ATTACK;
             m_listCmd.push_back(cmd);
-            cmd.eCmd = ACMD_ATTACK_SOMEBODY;
+            cmd.eCmd     = ACMD_ATTACK_SOMEBODY;
             cmd.cSubType = 2;
             m_listCmd.push_back(cmd);
         } break;
         case ACMD_SKILL_SOMEWHERE:
             cmd.cSubType = 1;
-            cmd.bLoop = false;
-            cmd.eCmd = ACMD_MOVETO;
+            cmd.bLoop    = false;
+            cmd.eCmd     = ACMD_MOVETO;
             m_listCmd.push_back(cmd);
             cmd.bLoop = false;
-            cmd.eCmd = ACMD_USESKILL;
+            cmd.eCmd  = ACMD_USESKILL;
             m_listCmd.push_back(cmd);
-            cmd.eCmd = ACMD_SKILL_SOMEWHERE;
+            cmd.eCmd     = ACMD_SKILL_SOMEWHERE;
             cmd.cSubType = 2;
             m_listCmd.push_back(cmd);
             break;
         case ACMD_SKILL_SOMEBODY: {
-            int actorid = cmd.dw[0];
+            int actorid  = cmd.dw[0];
             cmd.cSubType = 1;
-            cmd.bLoop = false;
-            cmd.eCmd = ACMD_FOLLOW;
+            cmd.bLoop    = false;
+            cmd.eCmd     = ACMD_FOLLOW;
             m_listCmd.push_back(cmd);
             cmd.bLoop = false;
-            cmd.eCmd = ACMD_USESKILL;
+            cmd.eCmd  = ACMD_USESKILL;
             m_listCmd.push_back(cmd);
             SSkill* skill = Skill()->FindSkill(cmd.wSkillID);
             if (skill && skill->bABad && !(skill->IsAddHpSkill)) {
-                cmd.bLoop = true;
-                cmd.eCmd = ACMD_ATTACK_SOMEBODY;
+                cmd.bLoop    = true;
+                cmd.eCmd     = ACMD_ATTACK_SOMEBODY;
                 cmd.cSubType = 2;
 #ifdef USE_LUA_CHECK
-                int iRand = rtRandom() & 0x7fff;
-                int iValue = (((iRand * 8561849L + 586468622L) >> 16) & 0x7fff);
+                int iRand     = rtRandom() & 0x7fff;
+                int iValue    = (((iRand * 8561849L + 586468622L) >> 16) & 0x7fff);
                 cmd.iNetCheck = (((iRand ^ actorid) << 16) & 0xFFFF0000) | iValue;
 #endif
                 m_listCmd.push_back(cmd);
@@ -1408,7 +1408,7 @@ deadbug:
         case ACMD_DEATH:
             ClearCommand();
             if (m_eNpcType == ENT_USER) {
-                cmd.eCmd = ACMD_PLAY_POSE;
+                cmd.eCmd  = ACMD_PLAY_POSE;
                 cmd.dw[0] = GcBaseActor::POSE_DEAD;
                 m_listCmd.push_back(cmd);
                 break;
@@ -1418,12 +1418,12 @@ deadbug:
                     if (m_pNpc) {
                         if (m_lLastDeadval == 0 && NpcType() != ENT_SPIRIT) {
                             cmd.cSubType = 1;
-                            cmd.eCmd = ACMD_PLAY_POSE;
-                            cmd.dw[0] = GcBaseActor::POSE_DEAD;
+                            cmd.eCmd     = ACMD_PLAY_POSE;
+                            cmd.dw[0]    = GcBaseActor::POSE_DEAD;
                             m_listCmd.push_back(cmd);
                         }
                     }
-                    cmd.eCmd = ACMD_DEATH_ACT;  // dw[0]半透明, dw[1]飞, dw[2]入地
+                    cmd.eCmd           = ACMD_DEATH_ACT;  // dw[0]半透明, dw[1]飞, dw[2]入地
                     m_pModel->DeadType = GetRand(MODEL_DEAD_TYPE_SINK, MODEL_DEAD_TYPE_TRANS_FLY);
                     switch (m_pModel->DeadType) {
                         default:
@@ -1453,11 +1453,11 @@ deadbug:
                     m_listCmd.push_back(cmd);
                 } else if (NpcType() != ENT_SPIRIT) {
                     cmd.cSubType = 1;
-                    cmd.eCmd = ACMD_PLAY_POSE;
-                    cmd.dw[0] = GcBaseActor::POSE_DEAD;
+                    cmd.eCmd     = ACMD_PLAY_POSE;
+                    cmd.dw[0]    = GcBaseActor::POSE_DEAD;
                     m_listCmd.push_back(cmd);
                 }
-                cmd.eCmd = ACMD_DEATH;
+                cmd.eCmd     = ACMD_DEATH;
                 cmd.cSubType = 2;
                 m_listCmd.push_back(cmd);
                 m_lLastDeadval = m_cIsDeadNet;
@@ -1466,15 +1466,15 @@ deadbug:
         case ACMD_BORN:
             if (m_pModel) {
                 cmd.cSubType = 1;
-                cmd.eCmd = ACMD_PLAY_POSE;
-                cmd.dw[0] = GcBaseActor::POSE_BORN;
+                cmd.eCmd     = ACMD_PLAY_POSE;
+                cmd.dw[0]    = GcBaseActor::POSE_BORN;
                 m_listCmd.push_back(cmd);
                 if (strcmp(m_pModel->Act.c_str(), m_pModel->BornAct.c_str())) {
-                    cmd.eCmd = ACMD_CHANGE_ACTOR;
+                    cmd.eCmd    = ACMD_CHANGE_ACTOR;
                     cmd.pStr[0] = m_pModel->Act.c_str();
                     m_listCmd.push_back(cmd);
                 }
-                cmd.eCmd = ACMD_BORN;
+                cmd.eCmd     = ACMD_BORN;
                 cmd.cSubType = 2;
                 m_listCmd.push_back(cmd);
             }
@@ -1496,12 +1496,12 @@ deadbug:
         } break;
         case ACMD_SHAPESHIFT: {
             cmd.cSubType = 1;
-            cmd.eCmd = ACMD_PLAY_POSE;
-            cmd.pStr[0] = "skill_q3";
+            cmd.eCmd     = ACMD_PLAY_POSE;
+            cmd.pStr[0]  = "skill_q3";
             m_listCmd.push_back(cmd);
 
             cmd.cSubType = 1;
-            cmd.eCmd = ACMD_SHAPESHIFT;
+            cmd.eCmd     = ACMD_SHAPESHIFT;
             m_listCmd.push_back(cmd);
             m_cShapeshift = 1;
         } break;
@@ -1583,15 +1583,15 @@ void GcActor::AttackSomebody(WORD wAttackID, DWORD dwTargetID, int iNetCheck, fl
     //if(GetWorld()->m_pPlayer != this)
     //	SubmitCurMoveCommand();
 
-    cmd.dw[0] = dwTargetID;
+    cmd.dw[0]       = dwTargetID;
     cmd.cTargetType = SKILL_TARGET_TYPE_ACTOR;
-    cmd.wAttackID = wAttackID;
+    cmd.wAttackID   = wAttackID;
     if (this == GetPlayer())
         cmd.fTime = -1.f;
     else
         cmd.fTime = fTime;
-    cmd.eCmd = ACMD_ATTACK_SOMEBODY;
-    cmd.bLoop = true;
+    cmd.eCmd      = ACMD_ATTACK_SOMEBODY;
+    cmd.bLoop     = true;
     cmd.iNetCheck = iNetCheck;
     //   if(GetWorld()->m_pPlayer == this)
     //       cmd.bLoop = true;
@@ -1652,16 +1652,16 @@ void GcActor::UseIntonate(WORD wAttackID, WORD wSkillID, float fX, float fY, flo
     cmd.fDistance = iMyRMaxDest;  // 距离
     if (cmd.fDistance < 0.f)
         cmd.fDistance = 0.f;
-    cmd.f[0] = fX;
-    cmd.f[1] = fY;
-    cmd.f[2] = fZ;
+    cmd.f[0]        = fX;
+    cmd.f[1]        = fY;
+    cmd.f[2]        = fZ;
     cmd.cTargetType = SKILL_TARGET_TYPE_POSITION;
-    cmd.wSkillID = wSkillID;
-    cmd.wAttackID = wAttackID;
-    cmd.fTime = fTime;
-    cmd.eCmd = ACMD_INTONATE;
-    cmd.bLoop = false;
-    cmd.iNetCheck = iNetCheck;
+    cmd.wSkillID    = wSkillID;
+    cmd.wAttackID   = wAttackID;
+    cmd.fTime       = fTime;
+    cmd.eCmd        = ACMD_INTONATE;
+    cmd.bLoop       = false;
+    cmd.iNetCheck   = iNetCheck;
     AddCommand(cmd);
     unguard;
 }
@@ -1728,14 +1728,14 @@ void GcActor::UseIntonate(WORD wAttackID, WORD wSkillID, DWORD dwTargetID, int i
     cmd.fDistance = iMyRMaxDest;  // 距离
     if (cmd.fDistance < 0.f)
         cmd.fDistance = 0.f;
-    cmd.dw[0] = dwTargetID;
+    cmd.dw[0]       = dwTargetID;
     cmd.cTargetType = SKILL_TARGET_TYPE_ACTOR;
-    cmd.wSkillID = wSkillID;
-    cmd.wAttackID = wAttackID;
-    cmd.fTime = fTime;
-    cmd.eCmd = ACMD_INTONATE;
-    cmd.bLoop = false;
-    cmd.iNetCheck = iNetCheck;
+    cmd.wSkillID    = wSkillID;
+    cmd.wAttackID   = wAttackID;
+    cmd.fTime       = fTime;
+    cmd.eCmd        = ACMD_INTONATE;
+    cmd.bLoop       = false;
+    cmd.iNetCheck   = iNetCheck;
     AddCommand(cmd);
     unguard;
 }
@@ -1792,16 +1792,16 @@ void GcActor::UsePositionSkill(WORD wAttackID, WORD wSkillID, float fX, float fY
     cmd.fDistance = iMyRMaxDest;  // 距离
     if (cmd.fDistance < 0.f)
         cmd.fDistance = 0.f;
-    cmd.f[0] = fX;
-    cmd.f[1] = fY;
-    cmd.f[2] = fZ;
+    cmd.f[0]        = fX;
+    cmd.f[1]        = fY;
+    cmd.f[2]        = fZ;
     cmd.cTargetType = SKILL_TARGET_TYPE_POSITION;
-    cmd.wSkillID = wSkillID;
-    cmd.wAttackID = wAttackID;
-    cmd.fTime = fTime;
-    cmd.eCmd = ACMD_SKILL_SOMEWHERE;
-    cmd.bLoop = false;
-    cmd.iNetCheck = iNetCheck;
+    cmd.wSkillID    = wSkillID;
+    cmd.wAttackID   = wAttackID;
+    cmd.fTime       = fTime;
+    cmd.eCmd        = ACMD_SKILL_SOMEWHERE;
+    cmd.bLoop       = false;
+    cmd.iNetCheck   = iNetCheck;
 
     if (pSkill->wClass == 13)
         DoTrumpSkill(cmd);
@@ -1825,9 +1825,9 @@ void GcActor::UseTargetSkill(WORD wAttackID, WORD wSkillID, DWORD dwTargetID, in
     if (wSkillID == SKILL_NOLMAL_ATTACK) {
         int iSum = 0;
 #ifdef USE_LUA_CHECK
-        int iRand = rtRandom() & 0x7fff;
+        int iRand  = rtRandom() & 0x7fff;
         int iValue = (((iRand * 8561849L + 586468622L) >> 16) & 0x7fff);
-        iSum = (((iRand ^ dwTargetID) << 16) & 0xFFFF0000) | iValue;
+        iSum       = (((iRand ^ dwTargetID) << 16) & 0xFFFF0000) | iValue;
 #endif
         PushCallStack(csn_GcActor_AttackSomebody);
         AttackSomebody(0, dwTargetID, iSum, fTime);
@@ -1885,14 +1885,14 @@ void GcActor::UseTargetSkill(WORD wAttackID, WORD wSkillID, DWORD dwTargetID, in
     cmd.fDistance = iMyRMaxDest;  // 距离
     if (cmd.fDistance < 0.f)
         cmd.fDistance = 0.f;
-    cmd.dw[0] = dwTargetID;
+    cmd.dw[0]       = dwTargetID;
     cmd.cTargetType = SKILL_TARGET_TYPE_ACTOR;
-    cmd.wSkillID = wSkillID;
-    cmd.wAttackID = wAttackID;
-    cmd.fTime = fTime;
-    cmd.eCmd = ACMD_SKILL_SOMEBODY;
-    cmd.bLoop = false;
-    cmd.iNetCheck = iNetCheck;
+    cmd.wSkillID    = wSkillID;
+    cmd.wAttackID   = wAttackID;
+    cmd.fTime       = fTime;
+    cmd.eCmd        = ACMD_SKILL_SOMEBODY;
+    cmd.bLoop       = false;
+    cmd.iNetCheck   = iNetCheck;
 
     if (pSkill->wClass == 13)
         DoTrumpSkill(cmd);
@@ -1951,14 +1951,14 @@ void GcActor::UseSelfSkill(WORD wAttackID, WORD wSkillID, int iNetCheck, float f
     cmd.fDistance = iMyRMaxDest;  // 距离
     if (cmd.fDistance < 0.f)
         cmd.fDistance = 0.f;
-    cmd.dw[0] = this->ID();
+    cmd.dw[0]       = this->ID();
     cmd.cTargetType = SKILL_TARGET_TYPE_NONE;
-    cmd.wSkillID = pSkill->wID;
-    cmd.wAttackID = wAttackID;
-    cmd.fTime = fTime;
-    cmd.bLoop = false;
-    cmd.eCmd = ACMD_USESKILL;
-    cmd.iNetCheck = iNetCheck;
+    cmd.wSkillID    = pSkill->wID;
+    cmd.wAttackID   = wAttackID;
+    cmd.fTime       = fTime;
+    cmd.bLoop       = false;
+    cmd.eCmd        = ACMD_USESKILL;
+    cmd.iNetCheck   = iNetCheck;
 
     if (pSkill->wClass == 13)
         DoTrumpSkill(cmd);
@@ -2014,7 +2014,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
             }
         }
     }
-    pCmd->fRunTime = 0.f;
+    pCmd->fRunTime          = 0.f;
     const RtgMatrix16* pM16 = NULL;
     SSkill*            pSkill;
     const char*        pPoseName = NULL;
@@ -2037,11 +2037,11 @@ void GcActor::DoCommand(SCmd* pCmd) {
             fD = 0;
             if (pActor) {
                 const RtgMatrix16 *pm1, *pm2;
-                pm1 = GetMatrix();
-                pm2 = pActor->GetMatrix();
+                pm1       = GetMatrix();
+                pm2       = pActor->GetMatrix();
                 float dis = ((pm1->_30 - pm2->_30) * (pm1->_30 - pm2->_30) +
                              (pm1->_31 - pm2->_31) * (pm1->_31 - pm2->_31));
-                fD = sqrt(dis);
+                fD        = sqrt(dis);
             }
             if (fD <= m_pCurCmd->fDistance + 10) {
                 if (this == GetPlayer()) {
@@ -2067,7 +2067,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
                     char npcFaction = pActor->m_pNpc->Faction;
                     // 如果是NPC就[触发]
                     ClearCommand();
-                    GetWorld()->m_dwActualNPCID = pActor->m_pNpc->Id;
+                    GetWorld()->m_dwActualNPCID      = pActor->m_pNpc->Id;
                     GetWorld()->m_dwInteractiveNPCID = pActor->ID();
                     GetWorld()->m_InteractiveNPCName = pActor->GetName();
                     GetWorld()->OnNetUploadInteractiveNpc(pActor->ID(), "default");  // first
@@ -2083,10 +2083,10 @@ void GcActor::DoCommand(SCmd* pCmd) {
                 RemoveCurCommand();
                 return;
             }
-            char* pose = "scene01";
+            char* pose      = "scene01";
             m_bTriggerClose = 0;
             if (pCmd->dw[0]) {  // 关闭
-                pose = "scene02";
+                pose            = "scene02";
                 m_bTriggerClose = 1;
             }
             mBaseActor.PlayPose(pose, false);
@@ -2122,7 +2122,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
                 CPetNetHelper::NetSend_c2r_catch_pet_start(pActor->ID());
             }
 
-            m_dwCatchPet = pActor->ID();
+            m_dwCatchPet        = pActor->ID();
             pActor->m_dwCatchMe = ID();
             mBaseActor.PlayPose(GcBaseActor::POSE_MAKE, true);
         } break;
@@ -2132,7 +2132,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
                 return;
             }
             m_bInCallPet = false;
-            fD = m_pCurCmd->fDistance;
+            fD           = m_pCurCmd->fDistance;
             if (Distance2(pActor) < (fD * fD) &&
                 (pActor->m_bIsDead == 1 || pActor->m_bIsDead == 2 || pActor->m_bIsDead == 3)) {
                 mBaseActor.FaceTo(pActor->GetMatrix()->_30, pActor->GetMatrix()->_31);
@@ -2154,7 +2154,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
         } break;
         case ACMD_COLLECT: {
             m_bInCallPet = false;
-            fD = m_pCurCmd->fDistance + 10.f;
+            fD           = m_pCurCmd->fDistance + 10.f;
             if (pActor && Distance2(pActor) < (fD * fD) && pActor->m_bIsDead == 2 && m_bIsCollect) {
                 if (m_pCurCmd == NULL) {
                     break;
@@ -2204,10 +2204,10 @@ void GcActor::DoCommand(SCmd* pCmd) {
                 return;
             }
             if (pCmd->cTargetType == SKILL_TARGET_TYPE_POSITION) {
-                m_SCmd = *pCmd;
+                m_SCmd      = *pCmd;
                 m_SCmd.eCmd = ACMD_SKILL_SOMEWHERE;
             } else {
-                m_SCmd = *pCmd;
+                m_SCmd      = *pCmd;
                 m_SCmd.eCmd = ACMD_SKILL_SOMEBODY;
             }
 
@@ -2219,10 +2219,10 @@ void GcActor::DoCommand(SCmd* pCmd) {
                 }
                 WORD wCurAttackID = 0;
                 bool bCanUseSkill = true;
-                bool bIsLocalCmd = (pCmd->fTime < 0.f);
+                bool bIsLocalCmd  = (pCmd->fTime < 0.f);
 
                 m_iNeedIntonateTime = pSkill->iIntonateTime;
-                m_dwIntonateTime = rtGetMilliseconds();
+                m_dwIntonateTime    = rtGetMilliseconds();
                 //m_dwIntonateTime = pSkill->iIntonateTime;
 
                 if (m_pCurCmd->cTargetType == SKILL_TARGET_TYPE_ACTOR) {
@@ -2267,7 +2267,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
                     SAttack* pAttack = NewAttack();
 
                     pAttack->cAnswer = 1;
-                    pAttack->pSkill = pSkill;
+                    pAttack->pSkill  = pSkill;
                     pAttack->cTarget = pCmd->cTargetType;
                     if (pAttack->cTarget == SKILL_TARGET_TYPE_ACTOR) {
                         pAttack->dwTargetID = pCmd->dw[0];
@@ -2276,11 +2276,11 @@ void GcActor::DoCommand(SCmd* pCmd) {
                         pAttack->f[1] = pCmd->f[1];
                         pAttack->f[2] = pCmd->f[2];
                     }
-                    wCurAttackID = m_wAttackID++;
+                    wCurAttackID       = m_wAttackID++;
                     pAttack->wAttackID = wCurAttackID;
                     if (m_pCurCmd->cTargetType == SKILL_TARGET_TYPE_ACTOR) {
                         unsigned short crcvalue = CRC16_INIT_VALUE;
-                        crcvalue = (crcvalue << 8) ^
+                        crcvalue                = (crcvalue << 8) ^
                                    crctableWorld[(crcvalue >> 8) ^ (pCmd->wSkillID & 0x00FF)];
                         crcvalue =
                             (crcvalue << 8) ^
@@ -2304,11 +2304,11 @@ void GcActor::DoCommand(SCmd* pCmd) {
                         pCmd->wCheck = crcvalue ^ CRC16_XOR_VALUE;
                     } else if (m_pCurCmd->cTargetType == SKILL_TARGET_TYPE_POSITION) {
                         DWORD dw1, dw2, dw3;
-                        dw1 = pCmd->f[0];
-                        dw2 = pCmd->f[1];
-                        dw3 = pCmd->f[2];
+                        dw1                     = pCmd->f[0];
+                        dw2                     = pCmd->f[1];
+                        dw3                     = pCmd->f[2];
                         unsigned short crcvalue = CRC16_INIT_VALUE;
-                        crcvalue = (crcvalue << 8) ^
+                        crcvalue                = (crcvalue << 8) ^
                                    crctableWorld[(crcvalue >> 8) ^ (pCmd->wSkillID & 0x00FF)];
                         crcvalue =
                             (crcvalue << 8) ^
@@ -2342,13 +2342,13 @@ void GcActor::DoCommand(SCmd* pCmd) {
                                    crctableWorld[(crcvalue >> 8) ^ ((dw3 & 0x00FF0000) >> 16)];
                         crcvalue = (crcvalue << 8) ^
                                    crctableWorld[(crcvalue >> 8) ^ ((dw3 & 0xFF000000) >> 24)];
-                        pCmd->dw[0] = dw1;
-                        pCmd->dw[1] = dw2;
-                        pCmd->dw[2] = dw3;
+                        pCmd->dw[0]  = dw1;
+                        pCmd->dw[1]  = dw2;
+                        pCmd->dw[2]  = dw3;
                         pCmd->wCheck = crcvalue ^ CRC16_XOR_VALUE;
                     } else {
                         unsigned short crcvalue = CRC16_INIT_VALUE;
-                        crcvalue = (crcvalue << 8) ^
+                        crcvalue                = (crcvalue << 8) ^
                                    crctableWorld[(crcvalue >> 8) ^ (pCmd->wSkillID & 0x00FF)];
                         crcvalue =
                             (crcvalue << 8) ^
@@ -2450,11 +2450,11 @@ void GcActor::DoCommand(SCmd* pCmd) {
                 ChangeCollectTool(false);
             }
             pM16 = mBaseActor.GetMatrix();
-            fD = fsqrt((m_pCurCmd->f[0] - pM16->_30) * (m_pCurCmd->f[0] - pM16->_30) +
-                       (m_pCurCmd->f[1] - pM16->_31) * (m_pCurCmd->f[1] - pM16->_31));
+            fD   = fsqrt((m_pCurCmd->f[0] - pM16->_30) * (m_pCurCmd->f[0] - pM16->_30) +
+                         (m_pCurCmd->f[1] - pM16->_31) * (m_pCurCmd->f[1] - pM16->_31));
             if (fD > m_pCurCmd->fDistance) {
                 m_bDoMoveCmd = true;
-                fSpeed = 1.f;
+                fSpeed       = 1.f;
                 if (m_pModel) {
                     if (m_pCurCmd->fTime < 0) {
                         if (m_eRideState == GcActor::ERS_ACTOR) {
@@ -2502,11 +2502,11 @@ void GcActor::DoCommand(SCmd* pCmd) {
             fD = 0;
             if (pActor) {
                 const RtgMatrix16 *pm1, *pm2;
-                pm1 = GetMatrix();
-                pm2 = pActor->GetMatrix();
+                pm1       = GetMatrix();
+                pm2       = pActor->GetMatrix();
                 float dis = ((pm1->_30 - pm2->_30) * (pm1->_30 - pm2->_30) +
                              (pm1->_31 - pm2->_31) * (pm1->_31 - pm2->_31));
-                fD = sqrt(dis);
+                fD        = sqrt(dis);
             }
             if (fD > m_pCurCmd->fDistance) {
                 fSpeed = 1.f;
@@ -2550,7 +2550,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
                 break;
             }
             m_bInCallPet = false;
-            fD = m_pCurCmd->fDistance + 10.f;
+            fD           = m_pCurCmd->fDistance + 10.f;
             if (Distance2(pActor) < (fD * fD) && pActor->m_bIsDead == 0) {
                 mBaseActor.FaceTo(pActor->GetMatrix()->_30, pActor->GetMatrix()->_31);
                 if (GetProb(0.01f))
@@ -2562,11 +2562,11 @@ void GcActor::DoCommand(SCmd* pCmd) {
                 }
                 if (this == GetPlayer()) {
                     // 如果是玩家控制的角色，就添加一个攻击命令，这个命令会再PoseBreak或者PoseEnd中删除
-                    SAttack* pAttack = NewAttack();  //new SAttack;
-                    pAttack->cAnswer = 1;
-                    pAttack->pSkill = 0;
+                    SAttack* pAttack   = NewAttack();  //new SAttack;
+                    pAttack->cAnswer   = 1;
+                    pAttack->pSkill    = 0;
                     pAttack->pPoseName = pPoseName;
-                    pAttack->cTarget = pCmd->cTargetType;
+                    pAttack->cTarget   = pCmd->cTargetType;
                     if (pAttack->cTarget == SKILL_TARGET_TYPE_ACTOR) {
                         pAttack->dwTargetID = pCmd->dw[0];
                     } else if (pAttack->cTarget == SKILL_TARGET_TYPE_POSITION) {
@@ -2579,7 +2579,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
                         m_wAttackID = 1;
 
                     unsigned short crcvalue = CRC16_INIT_VALUE;
-                    crcvalue = (crcvalue << 8) ^
+                    crcvalue                = (crcvalue << 8) ^
                                crctableWorld[(crcvalue >> 8) ^ (pCmd->wSkillID & 0x00FF)];
                     crcvalue = (crcvalue << 8) ^
                                crctableWorld[(crcvalue >> 8) ^ ((pCmd->wSkillID & 0x0FF00) >> 8)];
@@ -2604,7 +2604,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
                              "攻击缓冲区中的缓冲数据太多了[%d个].将会直接清除一部分\n",
                              m_listAttack.size());
                     }
-                    m_bIsAttack = true;
+                    m_bIsAttack       = true;
                     m_bWantStopAttack = false;
 
                     // update position first
@@ -2656,7 +2656,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
                 //    break;
                 //}
             } else if (m_pCurCmd->cTargetType == SKILL_TARGET_TYPE_POSITION) {
-                fD = m_pCurCmd->fDistance;
+                fD   = m_pCurCmd->fDistance;
                 pM16 = mBaseActor.GetMatrix();
                 if (((m_pCurCmd->f[0] - pM16->_30) * (m_pCurCmd->f[0] - pM16->_30) +
                      (m_pCurCmd->f[1] - pM16->_31) * (m_pCurCmd->f[1] - pM16->_31)) > (fD * fD)) {
@@ -2673,7 +2673,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
                 }
                 WORD wCurAttackID = 0;
                 bool bCanUseSkill = true;
-                bool bIsLocalCmd = (pCmd->fTime < 0.f);
+                bool bIsLocalCmd  = (pCmd->fTime < 0.f);
 
                 //// 自己MP不够时自动喝蓝瓶
                 //if (this == GetWorld()->m_pPlayer)
@@ -2782,7 +2782,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
 
                 m_vTelePoint.x = GetMatrix()->_30;
                 m_vTelePoint.y = GetMatrix()->_31;
-                m_bTeleEvent = true;
+                m_bTeleEvent   = true;
 
                 if (bIsLocalCmd)  // 如果时间为-1就是本地发出来的命令，本地发出的命令就需要上传到服务器
                 {
@@ -2839,10 +2839,10 @@ void GcActor::DoCommand(SCmd* pCmd) {
 
                     SAttack* pAttack = NewAttack();
 
-                    pAttack->cAnswer = 1;
-                    pAttack->pSkill = pSkill;
+                    pAttack->cAnswer   = 1;
+                    pAttack->pSkill    = pSkill;
                     pAttack->pPoseName = pPoseName;
-                    pAttack->cTarget = pCmd->cTargetType;
+                    pAttack->cTarget   = pCmd->cTargetType;
                     if (pAttack->cTarget == SKILL_TARGET_TYPE_ACTOR) {
 #ifdef USE_LUA_CHECK
                         //Lua()->CallLFunc("scc","i",pAttack);
@@ -2853,11 +2853,11 @@ void GcActor::DoCommand(SCmd* pCmd) {
                         pAttack->f[1] = pCmd->f[1];
                         pAttack->f[2] = pCmd->f[2];
                     }
-                    wCurAttackID = m_wAttackID++;
+                    wCurAttackID       = m_wAttackID++;
                     pAttack->wAttackID = wCurAttackID;
                     if (m_pCurCmd->cTargetType == SKILL_TARGET_TYPE_ACTOR) {
                         unsigned short crcvalue = CRC16_INIT_VALUE;
-                        crcvalue = (crcvalue << 8) ^
+                        crcvalue                = (crcvalue << 8) ^
                                    crctableWorld[(crcvalue >> 8) ^ (pCmd->wSkillID & 0x00FF)];
                         crcvalue =
                             (crcvalue << 8) ^
@@ -2881,11 +2881,11 @@ void GcActor::DoCommand(SCmd* pCmd) {
                         pCmd->wCheck = crcvalue ^ CRC16_XOR_VALUE;
                     } else if (m_pCurCmd->cTargetType == SKILL_TARGET_TYPE_POSITION) {
                         DWORD dw1, dw2, dw3;
-                        dw1 = pCmd->f[0];
-                        dw2 = pCmd->f[1];
-                        dw3 = pCmd->f[2];
+                        dw1                     = pCmd->f[0];
+                        dw2                     = pCmd->f[1];
+                        dw3                     = pCmd->f[2];
                         unsigned short crcvalue = CRC16_INIT_VALUE;
-                        crcvalue = (crcvalue << 8) ^
+                        crcvalue                = (crcvalue << 8) ^
                                    crctableWorld[(crcvalue >> 8) ^ (pCmd->wSkillID & 0x00FF)];
                         crcvalue =
                             (crcvalue << 8) ^
@@ -2919,13 +2919,13 @@ void GcActor::DoCommand(SCmd* pCmd) {
                                    crctableWorld[(crcvalue >> 8) ^ ((dw3 & 0x00FF0000) >> 16)];
                         crcvalue = (crcvalue << 8) ^
                                    crctableWorld[(crcvalue >> 8) ^ ((dw3 & 0xFF000000) >> 24)];
-                        pCmd->dw[0] = dw1;
-                        pCmd->dw[1] = dw2;
-                        pCmd->dw[2] = dw3;
+                        pCmd->dw[0]  = dw1;
+                        pCmd->dw[1]  = dw2;
+                        pCmd->dw[2]  = dw3;
                         pCmd->wCheck = crcvalue ^ CRC16_XOR_VALUE;
                     } else {
                         unsigned short crcvalue = CRC16_INIT_VALUE;
-                        crcvalue = (crcvalue << 8) ^
+                        crcvalue                = (crcvalue << 8) ^
                                    crctableWorld[(crcvalue >> 8) ^ (pCmd->wSkillID & 0x00FF)];
                         crcvalue =
                             (crcvalue << 8) ^
@@ -3080,7 +3080,7 @@ void GcActor::DoCommand(SCmd* pCmd) {
             break;
         case ACMD_DELETE_SELF:
             m_bDeleteSelf = true;
-            m_bInCallPet = false;
+            m_bInCallPet  = false;
             CommandFinished();  // 当场完成
             break;
         default:
@@ -3109,17 +3109,17 @@ void GcActor::SubmitCurMoveCommand() {
         vTarget = m_pCurCmd->f;
     }
     vSource = GetMatrix()->Position();
-    vDif = vTarget - vSource;
+    vDif    = vTarget - vSource;
     // vTarget = vSource + vDif * (m_pCurCmd->fDistance / vDif.Length());
     mBaseActor.MoveToTerrainNow(vTarget.x, vTarget.y, true);
     CommandFinished();
 }
 
 float GcActor::Distance(float x, float y) {
-    float              fD = 0.f;
+    float              fD  = 0.f;
     const RtgMatrix16* pm1 = GetMatrix();
     float              dis = ((pm1->_30 - x) * (pm1->_30 - x) + (pm1->_31 - y) * (pm1->_31 - y));
-    fD = sqrt(dis);
+    fD                     = sqrt(dis);
     return fD;
 }
 
@@ -3132,7 +3132,7 @@ float GcActor::Distance(GcActor* pActor) {
 
     float dis = ((pm1->_30 - pm2->_30) * (pm1->_30 - pm2->_30) +
                  (pm1->_31 - pm2->_31) * (pm1->_31 - pm2->_31));
-    dis = sqrt(dis) - pActor->m_pModel->ModelRadius;
+    dis       = sqrt(dis) - pActor->m_pModel->ModelRadius;
     if (dis < 0)
         dis = 0;
     return dis;
@@ -3143,8 +3143,8 @@ float GcActor::Distance2(GcActor* pActor) {
     guard;
     const RtgMatrix16 *pm1, *pm2;
     CHECK(pActor != NULL);
-    pm1 = GetMatrix();
-    pm2 = pActor->GetMatrix();
+    pm1       = GetMatrix();
+    pm2       = pActor->GetMatrix();
     float dis = ((pm1->_30 - pm2->_30) * (pm1->_30 - pm2->_30) +
                  (pm1->_31 - pm2->_31) * (pm1->_31 - pm2->_31));
     if (dis < 0 || pActor->m_pModel == NULL)
@@ -3219,7 +3219,7 @@ void GcActor::OnPoseEnd(SRT_Pose* pPose) {
         std::list<SAttack*>::iterator it, itNext;
         for (it = m_listAttack.begin(); it != m_listAttack.end(); it = itNext) {
             pAttack = *it;
-            itNext = it;
+            itNext  = it;
             itNext++;
             if (pAttack->pPoseName && strcmp(pPose->Name.c_str(), pAttack->pPoseName) == 0) {
                 m_bIsAttack = false;
@@ -3267,7 +3267,7 @@ void GcActor::OnPoseBreak(SRT_Pose* pOldPose, SRT_Pose* pNewPose) {
         std::list<SAttack*>::iterator it, itNext;
         for (it = m_listAttack.begin(); it != m_listAttack.end(); it = itNext) {
             pAttack = *it;
-            itNext = it;
+            itNext  = it;
             itNext++;
             if (pAttack->pPoseName && strcmp(pOldPose->Name.c_str(), pAttack->pPoseName) == 0) {
                 m_bIsAttack = false;
@@ -3292,51 +3292,51 @@ CActorMissileListener s_ActorMissileListener;
 
 void GcActor::OnPoseEvent(SRT_Pose* pPose, SRT_PoseEvent* pEvent) {
     guard;
+    // 如果角色处于骑乘状态并骑乘的是宠物，则由主角色处理姿态事件
     if (GetRideState() == ERS_PET) {
         m_pMaster->OnPoseEvent(pPose, pEvent);
         return;
     }
-
-    if (m_listAttack.size()) {
-        RtgVertex3                    vPos;
-        SAttack*                      pAttack;
-        std::list<SAttack*>::iterator it;
-        for (it = m_listAttack.begin(); it != m_listAttack.end();) {
-            pAttack = *it;
-            if (pAttack->pPoseName && strcmp(pPose->Name.c_str(), pAttack->pPoseName) == 0) {
-                if (pAttack->pSkill)  // 技能攻击
-                {
-                    //CHECK(pPose->Name==pAttack->pSkill->szRAction);
-                    if (pEvent->Action == pAttack->pSkill->szREvent) {
-                        OnAttackEvent(pAttack);  // 技能使用事件
-                    } else if (strcmp(pAttack->pSkill->szREvent, "shapeshift") == 0) {
-                        DelAttack(pAttack);
-                        it = m_listAttack.erase(it);
-                        SCmd cmd;
-                        cmd.cSubType = 1;
-                        cmd.eCmd = ACMD_SHAPESHIFT;
-                        m_listCmd.push_back(cmd);
-                        return;
-                    }
-                    //else if (strcmp(pAttack->pSkill->szREvent,"teleport") == 0)
-                    //{
-                    //	DelAttack(pAttack);
-                    //	it = m_listAttack.erase(it);
-                    //	mBaseActor.MoveToTerrainNow(m_vTelePoint.x, m_vTelePoint.y, true);
-                    //	m_dwDummyID = rtRandom();
-                    //	m_bTeleEvent = false;
-                    //	return;
-                    //}
-                } else  // 普通攻击
-                {
-                    if (pEvent->Action == "hit") {
-                        OnAttackEvent(pAttack);  // 普通攻击
-                    }
-                }
-            }
-            it++;
-        }
+    // 提前检查是否有待处理的攻击
+    if (m_listAttack.empty()) {
+        // 没有攻击需要处理，退出
+        return;
     }
+
+    for (auto it = m_listAttack.begin(); it != m_listAttack.end();) {
+        SAttack* pAttack = *it;
+        if (pAttack->pPoseName && pPose->Name == pAttack->pPoseName) {//lyymark 判断动作映射名称和动作事件名称是否匹配
+            if (pAttack->pSkill)  // 技能攻击
+            {
+                //CHECK(pPose->Name==pAttack->pSkill->szRAction);
+                if (pEvent->Action == pAttack->pSkill->szREvent) {
+                    OnAttackEvent(pAttack);  // 技能使用事件
+
+                } else if (strcmp(pAttack->pSkill->szREvent, "shapeshift") == 0) {
+                    DelAttack(pAttack);
+                    it = m_listAttack.erase(it);
+                    SCmd cmd;
+                    cmd.cSubType = 1;
+                    cmd.eCmd     = ACMD_SHAPESHIFT;
+                    m_listCmd.push_back(cmd);
+                    return;
+                }
+                //else if (strcmp(pAttack->pSkill->szREvent,"teleport") == 0)
+                //{
+                //	DelAttack(pAttack);
+                //	it = m_listAttack.erase(it);
+                //	mBaseActor.MoveToTerrainNow(m_vTelePoint.x, m_vTelePoint.y, true);
+                //	m_dwDummyID = rtRandom();
+                //	m_bTeleEvent = false;
+                //	return;
+                //}
+            } else if (pEvent->Action == "hit") {
+                OnAttackEvent(pAttack);  // 普通攻击
+            }
+        }
+        it++;
+    }
+
     unguard;
 }
 
@@ -3355,40 +3355,47 @@ void GcActor::OnAttackEvent(WORD wAttackID) {
 }
 
 void GcActor::OnAttackEvent(SAttack* pAttack) {
-    guard;
-    GcActor* pCtrl = this;
+    guard;                  // 进入临界区，保护代码块中的数据
+    GcActor* pCtrl = this;  // 当前对象指针
+    // 如果角色骑乘了宠物，将控制指针指向宠物
     if (GetRideState() == ERS_ACTOR) {
         pCtrl = this->m_pRidePet;
     }
 
+    // 如果 NPC 类型是宠物，记录攻击 ID 和当前攻击 ID 的日志
     if (NpcType() == ENT_PET) {
         RtCoreLog().Debug("pet pAttack->wAttackID:%d, m_curAttackId: %d", pAttack->wAttackID,
                           m_curAttackId);
     }
-    // test
+
+    // 测试：如果攻击 ID 与当前攻击 ID 匹配，增加攻击事件计数器
     if (pAttack->wAttackID == m_curAttackId) {
         m_curAttackEvent++;
     }
 
     CRT_ActorInstance *pInstS, *pInstT;
     GcActor*           pTarget;
-    //RtgMatrix12* pMat;
-    RtgVertex3       vPos, TargetVertex3;
-    char             cTmp128[128];
-    CBeelineMissile* pMissile;
-    if (pAttack->pSkill)  // 技能攻击
-    {
+    // RtgMatrix12* pMat; // 未使用的变量
+    RtgVertex3       vPos, TargetVertex3;  // 攻击位置和目标位置
+    char             cTmp128[128];         // 临时字符串用于存储子弹模型名称
+    CBeelineMissile* pMissile;             // 子弹对象
+
+    // 如果攻击有技能
+    if (pAttack->pSkill) {
         if (NpcType() == ENT_PET) {
             RtCoreLog().Debug("pet pSkill:%s", pAttack->pSkill->szName);
         }
-        guard_name(GcActor::OnAttackEvent::skill);
-        // 技能使用事件
-        CHECK(pAttack->cAnswer != 0);
-        pAttack->cAnswer = 2;
-        if (pAttack->pSkill->bFly) {
-            pInstT = pCtrl->mBaseActor.GetGraph()->p();  // mBaseActor.GetGraph() 是不可能为空的
+        guard_name(GcActor::OnAttackEvent::skill);  // 进入技能处理的临界区
+        // 技能使用事件处理
+        CHECK(pAttack->cAnswer != 0);  // 确保 cAnswer 不为 0
+        pAttack->cAnswer = 2;          // 设置攻击的回答标志
+
+        // 如果技能需要飞行
+        if (pAttack->pSkill->bFly) {  // mBaseActor.GetGraph() 是不可能为空的
+            pInstT = pCtrl->mBaseActor.GetGraph()->p();  // 获取基础演员图形
             if (pInstT) {
                 RtgMatrix12 _mat;
+                // 获取“左手”的骨骼矩阵位置
                 if (pInstT->GetBoneMat(&_mat, "Bip01 L Hand"))
                     vPos = _mat.Position();
                 else
@@ -3396,17 +3403,19 @@ void GcActor::OnAttackEvent(SAttack* pAttack) {
             } else {
                 vPos.Set(0.f);
             }
-            vPos = vPos * *(pCtrl->GetMatrix());
+            vPos = vPos * *(pCtrl->GetMatrix());  // 计算攻击位置
 
-            pInstT = NULL;
-            pTarget = FindActor(pAttack->dwTargetID);
+            pInstT  = NULL;
+            pTarget = FindActor(pAttack->dwTargetID);  // 查找目标角色
             if (pTarget) {
                 pInstT = pTarget->mBaseActor.GetGraph()->p();
                 if (pInstT) {
+                    // 获取目标位置
                     TargetVertex3 = pInstT->GetBoundingBox()->vPos;
                     TargetVertex3.x += pInstT->GetWorldMatrix()->_30;
                     TargetVertex3.y += pInstT->GetWorldMatrix()->_31;
                     TargetVertex3.z += pInstT->GetWorldMatrix()->_32;
+                    // 创建并设置子弹
                     pMissile = RT_NEW CBeelineMissile(
                         vPos, TargetVertex3, (char*)pAttack->pSkill->szFlyEffect,
                         &s_ActorMissileListener, pAttack->pSkill->wFlySpeed,
@@ -3415,24 +3424,24 @@ void GcActor::OnAttackEvent(SAttack* pAttack) {
                 }
             }
             if (pInstT == NULL) {
-                OnAttackArrive(pAttack->wAttackID, false);
+                OnAttackArrive(pAttack->wAttackID, false);  // 无目标，攻击失败
             } else {
-                OnAttackArrive(pAttack->wAttackID, true);
+                OnAttackArrive(pAttack->wAttackID, true);  // 有目标，攻击成功
             }
         } else {
-            OnAttackArrive(pAttack->wAttackID, false);
+            OnAttackArrive(pAttack->wAttackID, false);  // 不需要飞行的技能攻击，攻击失败
         }
-        unguard;
-    } else  // 普通攻击
-    {
-        guard_name(GcActor::OnAttackEvent::normal);
-        CHECK(pAttack->cAnswer != 0);
-        //pAttack->cAnswer = 2;
-        SItemID item = pCtrl->mItem.GetEquipItem(CItemContainer::WEAPON_1, true);
-        if (ItemIsWeapon_Riband(item)) {  // 普通攻击，弓
-            // 直接攻击
-            OnAttackArrive(pAttack->wAttackID, true);
+        unguard;                                     // 离开技能处理的临界区
+    } else {                                         // 普通攻击
+        guard_name(GcActor::OnAttackEvent::normal);  // 进入普通攻击处理的临界区
+        CHECK(pAttack->cAnswer != 0);                // 确保 cAnswer 不为 0
+        SItemID item = pCtrl->mItem.GetEquipItem(CItemContainer::WEAPON_1, true);  // 获取装备的物品
+
+        // 检查装备是否是弓
+        if (ItemIsWeapon_Riband(item)) {
+            OnAttackArrive(pAttack->wAttackID, true);  // 弓直接攻击，攻击成功
         }
+        // 其他攻击处理（代码被注释掉了）
         //else if (ItemIsWeapon_Ball(item))
         //{	// 术士用法宝
         //	SItemBase *pItemClass = GetWorld()->m_pItemManager->GetItem(item.type);
@@ -3471,28 +3480,30 @@ void GcActor::OnAttackEvent(SAttack* pAttack) {
         //		}
         //	}
         //}
-        else if (ItemIsWeapon_Wand(item.type) && m_cShapeshiftNet == 0) {  // 法杖
+        else if (ItemIsWeapon_Wand(item.type) && m_cShapeshiftNet == 0) {  // 法杖攻击
             SItemBase* pItemClass = GetWorld()->m_pItemManager->GetItem(item.type);
             if (pItemClass) {
                 pInstS = pCtrl->mBaseActor.GetGraph()->p();
 
                 RtgMatrix12 _mat;
-
+                // 获取“左手”的骨骼矩阵位置
                 if (pInstS && pInstS->GetBoneMat(&_mat, "Bip01 L Hand"))
                     vPos = _mat.Position();
                 else
                     vPos.Set(0.f);
-                vPos = vPos * *(pCtrl->GetMatrix());
+                vPos = vPos * *(pCtrl->GetMatrix());  // 计算攻击位置
 
-                pInstT = NULL;
-                pTarget = FindActor(pAttack->dwTargetID);
+                pInstT  = NULL;
+                pTarget = FindActor(pAttack->dwTargetID);  // 查找目标角色
                 if (pTarget) {
                     pInstT = pTarget->mBaseActor.GetGraph()->p();
                     if (pInstT) {
+                        // 获取目标位置
                         TargetVertex3 = pInstT->GetBoundingBox()->vPos;
                         TargetVertex3.x += pInstT->GetWorldMatrix()->_30;
                         TargetVertex3.y += pInstT->GetWorldMatrix()->_31;
                         TargetVertex3.z += pInstT->GetWorldMatrix()->_32;
+                        // 创建并设置子弹
                         rt2_strncpy(cTmp128, "bullet_mj", 128);
                         pMissile = RT_NEW CBeelineMissile(vPos, TargetVertex3, cTmp128,
                                                           &s_ActorMissileListener, 300);
@@ -3500,118 +3511,137 @@ void GcActor::OnAttackEvent(SAttack* pAttack) {
                     }
                 }
                 if (pInstT == NULL) {
-                    OnAttackArrive(pAttack->wAttackID, false);
+                    OnAttackArrive(pAttack->wAttackID, false);  // 无目标，攻击失败
                 }
             }
-        } else {  // 直接攻击
-            OnAttackArrive(pAttack->wAttackID, true);
+        } else {                                       // 其他普通攻击
+            OnAttackArrive(pAttack->wAttackID, true);  // 直接攻击，攻击成功
         }
-        unguard;
+        unguard;  // 离开普通攻击处理的临界区
     }
-    unguard;
+    unguard;  // 离开整个方法的临界区
 }
 
 bool GcActor::OnAttackArrive(WORD wAttackID, bool bSucceed) {
-    guard;
+    guard;  // 进入临界区，保护代码块中的数据
+
+    // 如果攻击列表为空，记录日志并返回 false
     if (m_listAttack.size() == 0) {
         LOG("GcActor::OnAttackArrive 当前缓冲区没有任何攻击数据，却收到攻击结束消息.\n");
         return false;
     }
 
-    bool                          bResult = false;
-    RtgVertex3                    vPos;
-    SAttack*                      pAttack;
-    std::list<SAttack*>::iterator it, itNext;
+    bool                          bResult = false;  // 初始化结果为 false
+    RtgVertex3                    vPos;             // 攻击位置（虽然未使用）
+    SAttack*                      pAttack;          // 当前攻击
+    std::list<SAttack*>::iterator it, itNext;       // 攻击列表的迭代器
+
+    // 遍历攻击列表
     for (it = m_listAttack.begin(); it != m_listAttack.end(); it = itNext) {
-        pAttack = *it;
-        itNext = it;
-        itNext++;
+        pAttack = *it;  // 获取当前攻击
+        itNext  = it;   // 保存当前迭代器的位置
+        itNext++;       // 移动到下一个迭代器位置
+
+        // 如果攻击 ID 匹配
         if (pAttack->wAttackID == wAttackID) {
-            OnAttackArrive(pAttack, bSucceed);
-            bResult = true;
+            OnAttackArrive(pAttack, bSucceed);  // 调用处理函数
+            bResult = true;                     // 设置结果为 true
         }
     }
-    return bResult;
-    unguard;
+
+    return bResult;  // 返回结果
+    unguard;         // 离开临界区，解除对数据的保护
 }
-
+// 处理攻击到达
 void GcActor::OnAttackArrive(SAttack* pAttack, bool bSucceed) {
-    guard;
-    GcActor* pActor;
+    guard;  // 进入保护代码块，确保在异常情况下能正确处理
 
-    SItemID item = mItem.GetEquipItem(CItemContainerBase::WEAPON_1, true);
+    GcActor* pActor;  // 用于保存受击的角色指针
+
+    // 获取角色装备的主武器和副武器信息
+    SItemID item  = mItem.GetEquipItem(CItemContainerBase::WEAPON_1, true);
     SItemID item2 = mItem.GetEquipItem(CItemContainerBase::WEAPON_2, true);
 
+    // 遍历攻击造成的所有伤害记录
     std::vector<SAttack::SDamage>::iterator itDamage = pAttack->listDamage.begin();
     for (; itDamage != pAttack->listDamage.end(); itDamage++) {
+        // 查找受击角色
         pActor = FindActor((*itDamage).dwActorID, true);
-        if (pActor) {
-            // 添加受击动作
+        if (pActor) {  // 如果找到角色
+            // 如果攻击技能有效且不是“坏”技能
             if (!pAttack->pSkill || pAttack->pSkill->bABad) {
                 if (itDamage->ret == USE_SKILL_OK && GetProb(0.03f)) {
-                    // 如果当前命令是使用技能，就不能被中断
+                    // 如果角色有当前命令且该命令不是使用技能命令
                     if (pActor->m_pCurCmd) {
                         if (pActor->m_pCurCmd->eCmd != ACMD_USESKILL) {
-                            pActor->AddCommand(ACMD_UNDER_ATTACK);
+                            pActor->AddCommand(ACMD_UNDER_ATTACK);  // 添加受击命令
                         }
                     } else {
-                        pActor->AddCommand(ACMD_UNDER_ATTACK);
-                        pActor->mBaseActor.FaceTo(GetMatrix()->_30, GetMatrix()->_31);
+                        pActor->AddCommand(ACMD_UNDER_ATTACK);  // 添加受击命令
+                        pActor->mBaseActor.FaceTo(GetMatrix()->_30,
+                                                  GetMatrix()->_31);  // 角色面朝攻击来源
                     }
                 }
             }
 
-            const char* szHitEffect = NULL;  // 默认
-            const char* szHitLink = NULL;
-            if (itDamage->criHit)
-                szHitEffect = "bisha";
+            // 设置受击特效和链接
+            const char* szHitEffect = NULL;  // 默认受击特效
+            const char* szHitLink   = NULL;  // 默认特效链接
+            if (itDamage->criHit)            // 如果是暴击
+                szHitEffect = "bisha";       // 设置暴击特效
             else
-                szHitEffect = "beiji";
+                szHitEffect = "beiji";  // 设置普通受击特效
+
+            // 如果攻击回合数小于3，进行特效播放
             if (pAttack->cAnswer < 3) {
-                pAttack->cAnswer = 3;
-                // 播放受击特效等
-                if (pAttack->pSkill /* && pAttack->pSkill->bAType == 1*/)  // 技能攻击
-                {
+                pAttack->cAnswer = 3;  // 更新攻击回合数为3
+                // 播放技能特效
+                if (pAttack->pSkill) {  // 如果是技能攻击
                     if (pAttack->pSkill->szUEffect[0]) {
-                        szHitEffect = pAttack->pSkill->szUEffect;
+                        szHitEffect = pAttack->pSkill->szUEffect;  // 使用技能特效
                     }
                     if (pAttack->pSkill->szUEfLink[0]) {
-                        szHitLink = pAttack->pSkill->szUEfLink;
+                        szHitLink = pAttack->pSkill->szUEfLink;  // 使用技能特效链接
                     }
                 } else {
+                    // 非技能攻击的特效处理
                     if (itDamage->criHit)
-                        szHitEffect = "bisha";
+                        szHitEffect = "bisha";  // 暴击特效
                     else
-                        szHitEffect = "beiji";
+                        szHitEffect = "beiji";  // 普通受击特效
                 }
+
+                // 播放特效
                 if (szHitLink && (*itDamage).ret != USE_SKILL_MISS) {
                     pActor->mBaseActor.PlayEffect(szHitEffect, true, szHitLink,
-                                                  RtgVertex3(0, 0, 0));
+                                                  RtgVertex3(0, 0, 0));  // 播放特效链接
                 } else {
                     if (pActor->IsValid() && (*itDamage).ret != USE_SKILL_MISS)
                         pActor->mBaseActor.PlayEffect(
                             szHitEffect, false, NULL,
-                            RtgVertex3(0, 0, pActor->GetGraph()->p()->GetBoundingBox()->vPos.z));
+                            RtgVertex3(
+                                0, 0,
+                                pActor->GetGraph()->p()->GetBoundingBox()->vPos.z));  // 播放特效
                 }
-                g_layerMain->UpDateUIBlood();
+                g_layerMain->UpDateUIBlood();  // 更新血条显示
             }
 
-            // lyymark 头上冒血(数字)处理
+            // 显示伤害数字
             if (g_layerMain->m_eSetting.m_bShowDamage) {
                 bool lasthit = false;
+                // 处理非NPC角色的伤害显示
                 if (pActor->m_pNpc == NULL ||
                     (pActor->m_pNpc->Type != 4 && pActor->m_pNpc->Type != 5)) {
                     if (!m_pCurCmd) {
                         lasthit = true;
 
+                        // 显示伤害数字
                         pActor->ShowDamageNumber((*itDamage).ret, (*itDamage).sDamage,
                                                  (*itDamage).eleDmg, (*itDamage).criHit,
                                                  itDamage->eleSpe);
-
                     } else {
                         if (m_pCurCmd->eCmd == ACMD_ATTACK) {
-                            if (ItemIsWeapon_Hoop(item.type))  //双环的普通攻击
-                            {
+                            if (ItemIsWeapon_Hoop(item.type)) {  // 双环武器处理
                                 //if(itDamage->hits == 1)
                                 //{
                                 //	for(int i=0; i<MAX_ELEMENT_ATTR; i++)
@@ -3620,34 +3650,39 @@ void GcActor::OnAttackArrive(SAttack* pAttack, bool bSucceed) {
                                 if (itDamage->criHit) {
                                     if (itDamage->sDamage) {
                                         pActor->ShowHeadNotify(CHAR_BAOJIPUTONG,
-                                                               itDamage->sDamage / 2);
+                                                               itDamage->sDamage /
+                                                                   2);  // 显示暴击伤害
                                     }
                                 } else {
                                     pActor->ShowDamageNumber(itDamage->ret, itDamage->sDamage / 2,
                                                              itDamage->eleDmg, itDamage->criHit,
-                                                             itDamage->eleSpe);
+                                                             itDamage->eleSpe);  // 显示普通伤害
                                 }
                             } else {
-                                lasthit = true;
+                                lasthit = true;  // 标记这是最后一次处理的伤害
 
-                                if (itDamage->criHit) {
-                                    if (itDamage->sDamage) {
-                                        pActor->ShowHeadNotify(CHAR_BAOJIPUTONG, itDamage->sDamage);
+                                if (itDamage->criHit) {       // 如果这是一次暴击
+                                    if (itDamage->sDamage) {  // 如果伤害值存在
+                                        // 调用 pActor 的 ShowHeadNotify 方法显示暴击伤害
+                                        pActor->ShowHeadNotify(
+                                            CHAR_BAOJIPUTONG,  // 调用 pActor 的 ShowHeadNotify 方法显示暴击伤害
+                                            itDamage->sDamage);  // 显示暴击伤害
                                     }
                                 } else {
                                     pActor->ShowDamageNumber(itDamage->ret, itDamage->sDamage,
                                                              itDamage->eleDmg, itDamage->criHit,
-                                                             itDamage->eleSpe);
+                                                             itDamage->eleSpe);  // 显示普通伤害
                                 }
                             }
                         } else {
-                            // find skill hit info
+                            // 处理技能攻击的伤害信息
                             SSkill* skill =
                                 pAttack->pSkill /*Skill()->FindSkill(m_pCurCmd->wSkillID)*/;
+                            ;
                             if (skill) {
                                 int total = 0;
                                 for (int i = 0; i <= skill->wHits; i++)
-                                    total += i;
+                                    total += i;  // 计算总命中次数
                                 if (total == 0)
                                     total = 1;
 
@@ -3655,68 +3690,76 @@ void GcActor::OnAttackArrive(SAttack* pAttack, bool bSucceed) {
                                 while (itDamage->hits < m_curAttackEvent && safe++ < 10) {
                                     short eleDmg[MAX_ELEMENT_ATTR];
                                     for (int i = ELEMENT_WATER; i < MAX_ELEMENT_ATTR; i++) {
-                                        eleDmg[i] =
-                                            itDamage->eleDmg[i] * (itDamage->hits + 1) / total;
+                                        eleDmg[i] = itDamage->eleDmg[i] * (itDamage->hits + 1) /
+                                                    total;  // 计算元素伤害
                                     }
 
                                     if (itDamage->criHit) {
                                         if (itDamage->sDamage) {
-                                            pActor->ShowHeadNotify(
-                                                CHAR_BAOJIPUTONG,
-                                                itDamage->sDamage * (itDamage->hits + 1) / total);
+                                            pActor->ShowHeadNotify(CHAR_BAOJIPUTONG,
+                                                                   itDamage->sDamage *
+                                                                       (itDamage->hits + 1) /
+                                                                       total);  // 显示暴击伤害
                                         }
                                         if (itDamage->eleDmg[ELEMENT_WATER]) {
-                                            pActor->ShowHeadNotify(CHAR_BAOJISHUI,
-                                                                   eleDmg[ELEMENT_WATER]);
+                                            pActor->ShowHeadNotify(
+                                                CHAR_BAOJISHUI,
+                                                eleDmg[ELEMENT_WATER]);  // 显示水元素伤害
                                         }
                                         if (itDamage->eleDmg[ELEMENT_FIRE]) {
-                                            pActor->ShowHeadNotify(CHAR_BAOJIHUO,
-                                                                   eleDmg[ELEMENT_FIRE]);
+                                            pActor->ShowHeadNotify(
+                                                CHAR_BAOJIHUO,
+                                                eleDmg[ELEMENT_FIRE]);  // 显示火元素伤害
                                         }
                                         if (itDamage->eleDmg[ELEMENT_POISON]) {
-                                            pActor->ShowHeadNotify(CHAR_BAOJIDU,
-                                                                   eleDmg[ELEMENT_POISON]);
+                                            pActor->ShowHeadNotify(
+                                                CHAR_BAOJIDU,
+                                                eleDmg[ELEMENT_POISON]);  // 显示毒元素伤害
                                         }
                                     } else {
-                                        pActor->ShowDamageNumber(
-                                            itDamage->ret,
-                                            itDamage->sDamage * (itDamage->hits + 1) / total,
-                                            eleDmg, itDamage->criHit, itDamage->eleSpe);
+                                        pActor->ShowDamageNumber(itDamage->ret,
+                                                                 itDamage->sDamage *
+                                                                     (itDamage->hits + 1) / total,
+                                                                 eleDmg, itDamage->criHit,
+                                                                 itDamage->eleSpe);  // 显示普通伤害
                                     }
 
-                                    itDamage->hits++;
-                                    // LOG1("hits = %d\n",itDamage->hits);
+                                    itDamage->hits++;  // 增加击中次数
+                                                       // LOG1("hits = %d\n",itDamage->hits);
                                 }
                                 if (itDamage->hits == skill->wHits)
-                                    lasthit = true;
+                                    lasthit = true;  // 标记最后一次击中
                             }
                         }
                     }
                 }
             }
 
-            // 必杀音效
-            RtgVertex3 pos;
+            // 播放必杀音效
+            RtgVertex3 pos;  // 音效播放位置
             if (itDamage->criHit) {
-                g_pSoundMgr->PlayOnce("cri_hit_2.wav", false, 0, pos);
+                g_pSoundMgr->PlayOnce("cri_hit_2.wav", false, 0, pos);  // 播放暴击音效
             }
 
-            // 死亡
+            // 处理角色死亡
             if (itDamage->dead)  // && lasthit)
             {
                 LOG("actor die\n");
-                GetWorld()->m_ActorManager.ActorDie(itDamage->dwActorID, itDamage->dead);
-                GetWorld()->m_ActorManager.HideHudHp(itDamage->dwActorID);
+                GetWorld()->m_ActorManager.ActorDie(itDamage->dwActorID,
+                                                    itDamage->dead);        // 角色死亡处理
+                GetWorld()->m_ActorManager.HideHudHp(itDamage->dwActorID);  // 隐藏角色血条
             }
         }
     }
+
+    // 注释掉的代码用于释放攻击特效资源
     //if ( PoolEffect )
     //{
     //	ActorUncache(PoolEffect);
     //}
-    //pAttack->listDamage.clear();
+    //pAttack->listDamage.clear(); // 清空伤害列表（注释掉的代码）
 
-    unguard;
+    unguard;  // 退出保护代码块
 }
 
 void GcActor::PickItemAdd(long pActorID) {
@@ -3724,11 +3767,11 @@ void GcActor::PickItemAdd(long pActorID) {
         return;
     }
     SCmd cmd;
-    cmd.fDistance = 34.f;
-    cmd.dw[0] = pActorID;
+    cmd.fDistance   = 34.f;
+    cmd.dw[0]       = pActorID;
     cmd.cTargetType = SKILL_TARGET_TYPE_ACTOR;
-    cmd.eCmd = ACMD_PICKITEM;
-    cmd.bLoop = true;
+    cmd.eCmd        = ACMD_PICKITEM;
+    cmd.bLoop       = true;
     if (this == GetPlayer())
         cmd.fTime = -1.f;
     else
@@ -3781,11 +3824,11 @@ void GcActor::CatchPetAdd(GcActor* pActor) {
         return;
 
     SCmd cmd;
-    cmd.fDistance = 34.f;
-    cmd.dw[0] = pActor->ID();
+    cmd.fDistance   = 34.f;
+    cmd.dw[0]       = pActor->ID();
     cmd.cTargetType = SKILL_TARGET_TYPE_ACTOR;
-    cmd.eCmd = ACMD_CATCHPET;
-    cmd.bLoop = false;
+    cmd.eCmd        = ACMD_CATCHPET;
+    cmd.bLoop       = false;
     if (this == GetPlayer())
         cmd.fTime = -1.f;
     else
@@ -3829,10 +3872,10 @@ void GcActor::TalkNpcAdd(long pActorID) {
         } else
             cmd.fDistance = 20.f;
     }
-    cmd.dw[0] = pActorID;
+    cmd.dw[0]       = pActorID;
     cmd.cTargetType = SKILL_TARGET_TYPE_ACTOR;
-    cmd.eCmd = ACMD_TALKNPC;
-    cmd.bLoop = true;
+    cmd.eCmd        = ACMD_TALKNPC;
+    cmd.bLoop       = true;
     if (this == GetPlayer())
         cmd.fTime = -1.f;
     else
@@ -3846,11 +3889,11 @@ void GcActor::CollectAdd(long pActorID) {
         return;
     }
     SCmd cmd;
-    cmd.fDistance = 40.f + 300.f;
-    cmd.dw[0] = pActorID;
+    cmd.fDistance   = 40.f + 300.f;
+    cmd.dw[0]       = pActorID;
     cmd.cTargetType = SKILL_TARGET_TYPE_ACTOR;
-    cmd.eCmd = ACMD_COLLECT;
-    cmd.bLoop = true;
+    cmd.eCmd        = ACMD_COLLECT;
+    cmd.bLoop       = true;
     if (this == GetPlayer())
         cmd.fTime = -1.f;
     else
@@ -3863,7 +3906,7 @@ void GcActor::CollectAdd(long pActorID) {
 
     if (this == GetPlayer()) {
         GcActor* pActor = FindAllActor(m_lPickActorID);
-        m_lCollectTime = pActor->m_pNpc->dwGetSkinTime * 1000;  // 毫秒计时
+        m_lCollectTime  = pActor->m_pNpc->dwGetSkinTime * 1000;  // 毫秒计时
     }
 
     unguard;
@@ -3874,11 +3917,11 @@ void GcActor::PlayCollectTask(long pActorID) {
         return;
     }
     SCmd cmd;
-    cmd.fDistance = 40.f + 300.f;
-    cmd.dw[0] = pActorID;
+    cmd.fDistance   = 40.f + 300.f;
+    cmd.dw[0]       = pActorID;
     cmd.cTargetType = SKILL_TARGET_TYPE_ACTOR;
-    cmd.eCmd = ACMD_PLAYTASKITEM;
-    cmd.bLoop = true;
+    cmd.eCmd        = ACMD_PLAYTASKITEM;
+    cmd.bLoop       = true;
     if (this == GetPlayer())
         cmd.fTime = -1.f;
     else
@@ -3886,7 +3929,7 @@ void GcActor::PlayCollectTask(long pActorID) {
 
     AddCommand(cmd);
 
-    m_bIsCollect = true;
+    m_bIsCollect   = true;
     m_lCollectTime = 5000;
 }
 
@@ -3895,11 +3938,11 @@ void GcActor::PlayActivityProgressBar(long lActorID, long lTime) {
     g_layerMain->m_fromPlayerItems->PlayActivityProgressBar(lTime);
 
     SCmd cmd;
-    cmd.fDistance = 40.f + 300.f;
-    cmd.dw[0] = lActorID;
+    cmd.fDistance   = 40.f + 300.f;
+    cmd.dw[0]       = lActorID;
     cmd.cTargetType = SKILL_TARGET_TYPE_NONE;
-    cmd.eCmd = ACMD_PLAYTASKITEM;
-    cmd.bLoop = true;
+    cmd.eCmd        = ACMD_PLAYTASKITEM;
+    cmd.bLoop       = true;
     if (this == GetPlayer())
         cmd.fTime = -1.f;
     else
@@ -3931,16 +3974,16 @@ void GcActor::AttackAdd(SAttack* pAttack) {
             pSkill = Skill()->FindSkill(pAttack->pSkill->wID);
             if (pSkill == NULL)
                 return;
-            cmd.fDistance = pSkill->iRMaxDest + fDistanceOffset;  // 距离
-            cmd.f[0] = pAttack->f[0];
-            cmd.f[1] = pAttack->f[1];
-            cmd.f[2] = pAttack->f[2];
+            cmd.fDistance   = pSkill->iRMaxDest + fDistanceOffset;  // 距离
+            cmd.f[0]        = pAttack->f[0];
+            cmd.f[1]        = pAttack->f[1];
+            cmd.f[2]        = pAttack->f[2];
             cmd.cTargetType = SKILL_TARGET_TYPE_POSITION;
-            cmd.wSkillID = pAttack->pSkill->wID;
-            cmd.wAttackID = pAttack->wAttackID;
-            cmd.fTime = pAttack->fTime;
-            cmd.eCmd = ACMD_SKILL_SOMEWHERE;
-            cmd.bLoop = false;
+            cmd.wSkillID    = pAttack->pSkill->wID;
+            cmd.wAttackID   = pAttack->wAttackID;
+            cmd.fTime       = pAttack->fTime;
+            cmd.eCmd        = ACMD_SKILL_SOMEWHERE;
+            cmd.bLoop       = false;
             AddCommand(cmd);
         } else {
             //UseTargetSkill(pAttack->wAttackID, pAttack->pSkill->wID, pAttack->dwTargetID, pAttack->fTime);
@@ -3953,14 +3996,14 @@ void GcActor::AttackAdd(SAttack* pAttack) {
             pSkill = Skill()->FindSkill(pAttack->pSkill->wID);
             if (pSkill == NULL)
                 return;
-            cmd.fDistance = pSkill->iRMaxDest + fDistanceOffset;  // 距离
-            cmd.dw[0] = pAttack->dwTargetID;
+            cmd.fDistance   = pSkill->iRMaxDest + fDistanceOffset;  // 距离
+            cmd.dw[0]       = pAttack->dwTargetID;
             cmd.cTargetType = SKILL_TARGET_TYPE_ACTOR;
-            cmd.wSkillID = pAttack->pSkill->wID;
-            cmd.wAttackID = pAttack->wAttackID;
-            cmd.fTime = pAttack->fTime;
-            cmd.eCmd = ACMD_USESKILL;
-            cmd.bLoop = false;
+            cmd.wSkillID    = pAttack->pSkill->wID;
+            cmd.wAttackID   = pAttack->wAttackID;
+            cmd.fTime       = pAttack->fTime;
+            cmd.eCmd        = ACMD_USESKILL;
+            cmd.bLoop       = false;
             AddCommand(cmd);
         }
     } else {  // 普通攻击
@@ -3972,7 +4015,7 @@ void GcActor::AttackAdd(SAttack* pAttack) {
             }
         }
 
-        SWeapon* pWeapon = NULL;
+        SWeapon* pWeapon  = NULL;
         SItemID  itemWea1 = mItem.GetEquipItem(CItemContainerBase::WEAPON_1, true);
         if (ItemID_IsValid(itemWea1))
             pWeapon = (SWeapon*)(GetItemMgr()->GetItem(itemWea1.type));
@@ -3981,12 +4024,12 @@ void GcActor::AttackAdd(SAttack* pAttack) {
             cmd.fDistance = pWeapon->nAttRange + fDistanceOffset;
         else
             cmd.fDistance = 40.f + fDistanceOffset;
-        cmd.dw[0] = pAttack->dwTargetID;
+        cmd.dw[0]       = pAttack->dwTargetID;
         cmd.cTargetType = SKILL_TARGET_TYPE_ACTOR;
-        cmd.wAttackID = pAttack->wAttackID;
-        cmd.fTime = pAttack->fTime;
-        cmd.eCmd = ACMD_ATTACK;
-        cmd.bLoop = true;
+        cmd.wAttackID   = pAttack->wAttackID;
+        cmd.fTime       = pAttack->fTime;
+        cmd.eCmd        = ACMD_ATTACK;
+        cmd.bLoop       = true;
         AddCommand(cmd);
     }
 
@@ -4099,7 +4142,7 @@ void GcActor::AttackEnd(unsigned short wAttackID) {
     unguard;
 }
 
-void GcActor::ShowHeadNotify(char* type, short sDamage, bool spec /* = false*/) {
+void GcActor::ShowHeadNotify(const char* type, short sDamage, bool spec /* = false*/) {
     char cDir = 0;
     char szStr[20];
     if (this == GetPlayer())
@@ -4120,108 +4163,144 @@ void GcActor::ShowHeadNotify(char* type, short sDamage, bool spec /* = false*/) 
 //	else cDir = DIR_LEFTUP;
 //	GetWorld()->m_dynamicNumber.AddString(type, GetHUDPos(), 2.f,true,cDir,PIC_CHAR);
 //}
-
 void GcActor::ShowDamageNumber(int ret, short sDamage, short eleDmg[MAX_ELEMENT_ATTR], bool criHit,
                                char eleSpe) {
-    guard;
-    char szStr[20];
-    char cDir = 0;
+    guard;  // 锁定，确保线程安全
 
+    P_LOGINFO(std::string("调用 ShowDamageNumber 函数: ") + "\n返回值: " + std::to_string(ret) +
+              "\n伤害值: " + std::to_string(sDamage) + "\n元素伤害: (" + std::to_string(eleDmg[0]) +
+              ", " + std::to_string(eleDmg[1]) + ", " + std::to_string(eleDmg[2]) + ")" +
+              "\n暴击命中: " + std::to_string(criHit) + "\n元素特性: " + std::to_string(eleSpe));
+
+    char szStr[20];  // 存储要显示的伤害文本
+    char cDir = 0;   // 伤害文本的显示方向
+
+    // 如果技能未命中
     if (ret == USE_SKILL_MISS) {
+        // 根据是否为玩家决定显示方向
         if (this == GetPlayer())
             cDir = DIR_RIGHTUP;
         else
             cDir = DIR_LEFTUP;
+        // 显示未命中的提示
         GetWorld()->m_dynamicNumber.AddString(CHAR_SHANBI, GetHUDPos(), 2.f, true, cDir, PIC_CHAR);
-        return;
-    } else if (ret == USE_SKILL_OK) {
+        return;  // 返回，结束函数
+    }
+    // 如果技能命中
+    else if (ret == USE_SKILL_OK) {
+        // 如果伤害值为0，则不显示任何伤害
         if (sDamage == 0) {
-
-        } else if (sDamage >= 0) {
+            // 这里可以添加代码来处理伤害为0的情况（如果有需要的话）
+        }
+        // 如果伤害值为正数
+        else if (sDamage >= 0) {
+            // 根据是否为玩家决定显示方向
             if (this == GetPlayer())
                 cDir = DIR_LEFTUP;
             else
                 cDir = DIR_RIGHTUP;
+
+            // 格式化伤害值为字符串
             rt2_sprintf(szStr, "-%d", sDamage);
+
+            // 如果是暴击，显示暴击效果
             if (criHit) {
                 GetWorld()->m_dynamicNumber.AddString(CHAR_BAOJIPUTONG, GetHUDPos(), 2.f, true,
                                                       cDir, PIC_CHAR);
             }
+            // 显示实际的伤害值
             GetWorld()->m_dynamicNumber.AddString(szStr, GetHUDPos(), 0xFF00FF00, 1.f, true,
                                                   PIC_NORMAL);
-        } else {
+        }
+        // 如果伤害值为负数（通常表示恢复）
+        else {
+            // 格式化伤害值为字符串（正数形式）
             rt2_sprintf(szStr, "+%d", -sDamage);
+            // 显示实际的恢复值
             GetWorld()->m_dynamicNumber.AddString(szStr, GetHUDPos(), 0xFF00FF00, 1.f, true,
                                                   PIC_NOBAD);
         }
 
-        // shwo ele autopfm effect
+        // 显示元素伤害特效
         RtgVertex3 vPos(mBaseActor.GetMatrix()->Position());
 
+        // 根据元素特效类型播放相应的效果（注释掉的代码段可以根据需求启用）
         /*
-		string elePfm;
-		switch(eleSpe)
-		{
-		case ELEMENT_AUTOPFM_WATER:
-		mBaseActor.PlayEffect("eff_water_at",false,NULL,RtgVertex3(0,0,0));
-		break;
-		case ELEMENT_AUTOPFM_FIRE:
-		mBaseActor.PlayEffect("eff_bomb_at",false,NULL,RtgVertex3(0,0,0));
-		break;
-		case ELEMENT_AUTOPFM_ICE:
-		mBaseActor.PlayEffect("eff_ice_at",false,NULL,RtgVertex3(0,0,0));
-		break;
-		case ELEMENT_AUTOPFM_POISON:
-		mBaseActor.PlayEffect("eff_posion_dot",false,NULL,RtgVertex3(0,0,0));
-		break;
-		}
-		*/
+        string elePfm;
+        switch(eleSpe)
+        {
+        case ELEMENT_AUTOPFM_WATER:
+            mBaseActor.PlayEffect("eff_water_at",false,NULL,RtgVertex3(0,0,0));
+            break;
+        case ELEMENT_AUTOPFM_FIRE:
+            mBaseActor.PlayEffect("eff_bomb_at",false,NULL,RtgVertex3(0,0,0));
+            break;
+        case ELEMENT_AUTOPFM_ICE:
+            mBaseActor.PlayEffect("eff_ice_at",false,NULL,RtgVertex3(0,0,0));
+            break;
+        case ELEMENT_AUTOPFM_POISON:
+            mBaseActor.PlayEffect("eff_posion_dot",false,NULL,RtgVertex3(0,0,0));
+            break;
+        }
+        */
 
-        // show ele damage number
+        // 显示元素伤害数字
         if (this == GetPlayer())
             cDir = DIR_LEFTUP;
         else
             cDir = DIR_RIGHTUP;
-        float offset = 10;
+        float offset = 10;  // 元素伤害显示的起始偏移
+
+        // 如果水元素伤害大于0
         if (eleDmg[ELEMENT_WATER] > 0) {
+            // 如果是暴击，显示暴击效果
             if (criHit) {
                 GetWorld()->m_dynamicNumber.AddString(
                     CHAR_BAOJISHUI,
                     RtgVertex3(GetHUDPos().x, GetHUDPos().y, GetHUDPos().z + offset), 2.f, true,
                     cDir, PIC_CHAR);
             }
+            // 显示实际的水元素伤害值
             rt2_sprintf(szStr, "-%d", eleDmg[ELEMENT_WATER]);
             GetWorld()->m_dynamicNumber.AddString(
                 szStr, RtgVertex3(GetHUDPos().x, GetHUDPos().y, GetHUDPos().z + offset), 0xFF00FFFF,
                 1, true, PIC_WATER);
-            offset += 10;
+            offset += 10;  // 更新偏移
         }
+
+        // 如果火元素伤害大于0
         if (eleDmg[ELEMENT_FIRE] > 0) {
+            // 如果是暴击，显示暴击效果
             if (criHit) {
                 GetWorld()->m_dynamicNumber.AddString(
                     CHAR_BAOJIHUO, RtgVertex3(GetHUDPos().x, GetHUDPos().y, GetHUDPos().z + offset),
                     2.f, true, cDir, PIC_CHAR);
             }
+            // 显示实际的火元素伤害值
             rt2_sprintf(szStr, "-%d", eleDmg[ELEMENT_FIRE]);
             GetWorld()->m_dynamicNumber.AddString(
                 szStr, RtgVertex3(GetHUDPos().x, GetHUDPos().y, GetHUDPos().z + offset), 0xFFFF00FF,
                 1, true, PIC_FIRE);
-            offset += 10;
+            offset += 10;  // 更新偏移
         }
+
+        // 如果毒元素伤害大于0
         if (eleDmg[ELEMENT_POISON] > 0) {
+            // 如果是暴击，显示暴击效果
             if (criHit) {
                 GetWorld()->m_dynamicNumber.AddString(
                     CHAR_BAOJIDU, RtgVertex3(GetHUDPos().x, GetHUDPos().y, GetHUDPos().z + offset),
                     2.f, true, cDir, PIC_CHAR);
             }
+            // 显示实际的毒元素伤害值
             rt2_sprintf(szStr, "-%d", eleDmg[ELEMENT_POISON]);
             GetWorld()->m_dynamicNumber.AddString(
                 szStr, RtgVertex3(GetHUDPos().x, GetHUDPos().y, GetHUDPos().z + offset), 0xFF00FF00,
                 1, true, PIC_POISON);
-            offset += 10;
+            offset += 10;  // 更新偏移
         }
     }
-    unguard;
+    unguard;  // 解锁，确保线程安全
 }
 
 void GcActor::UpdateFromServer(CG_CmdPacket* cmd) {
@@ -4237,9 +4316,9 @@ void GcActor::UpdateFromServerDelta(CG_CmdPacket* cmd) {
     guard;
 
     // LOG2("update_delta: %d,%d\n",cmd->GetByteDataSize(),cmd->GetBitDataSize());
-    SCreature old = m_core;
+    SCreature old     = m_core;
     char      faction = m_core.Faction;
-    long      lSP = m_core.SkillPoint;
+    long      lSP     = m_core.SkillPoint;
     // LOG1("old lev = %d\n",old.Lev);
     m_core.SerializeDelta(*cmd, old);
     // LOG1("new lev = %d\n",m_core.Lev);
@@ -4567,7 +4646,7 @@ void GcActor::Ride(GcActor* pPet, bool useUserPos /* = false*/) {
     mBaseActor.PlayPose((char*)ridePose.c_str(), true);
 
     if (!useUserPos) {
-        RtgMatrix16 matrix = mBaseActor.m_Matrix;
+        RtgMatrix16 matrix  = mBaseActor.m_Matrix;
         mBaseActor.m_Matrix = *(pPet->mBaseActor.GetMatrix());
         mBaseActor.Update();
         if (!mBaseActor.AddSelfFind(mBaseActor.m_Matrix._30, mBaseActor.m_Matrix._31)) {
@@ -4576,7 +4655,7 @@ void GcActor::Ride(GcActor* pPet, bool useUserPos /* = false*/) {
             mBaseActor.AddSelfFind(mBaseActor.m_Matrix._30, mBaseActor.m_Matrix._31);
         }
     } else {
-        pPet->mBaseActor.m_Matrix = mBaseActor.m_Matrix;
+        pPet->mBaseActor.m_Matrix       = mBaseActor.m_Matrix;
         pPet->GetGraph()->p()->m_matrix = mBaseActor.m_Matrix;
         pPet->mBaseActor.Update();
         pPet->mBaseActor.AddSelfFind(mBaseActor.m_Matrix._30, mBaseActor.m_Matrix._31);
@@ -4585,10 +4664,10 @@ void GcActor::Ride(GcActor* pPet, bool useUserPos /* = false*/) {
     GetGraph()->p()->LinkParent(pPet->GetGraph()->p(), "Box");  //图象link到野兽上
     GetGraph()->p()->SetMatrix(RtgMatrix12::matIdentity);
 
-    m_eRideState = ERS_ACTOR;
-    m_pRidePet = pPet;
+    m_eRideState             = ERS_ACTOR;
+    m_pRidePet               = pPet;
     m_pRidePet->m_eRideState = ERS_PET;
-    m_pRidePet->m_pMaster = this;
+    m_pRidePet->m_pMaster    = this;
 
     if (this == GetPlayer() && g_layerMain->m_formChar->IsVisible() &&
         g_layerMain->m_formChar->GetNowShowType() == CUIForm_Char::EQUIP) {
@@ -4611,9 +4690,9 @@ void GcActor::UnRide() {
     GcActor* pPet = m_pRidePet;
 
     m_pRidePet->m_eRideState = ERS_NONE;
-    m_pRidePet->m_pMaster = NULL;
-    m_eRideState = ERS_NONE;
-    m_pRidePet = NULL;
+    m_pRidePet->m_pMaster    = NULL;
+    m_eRideState             = ERS_NONE;
+    m_pRidePet               = NULL;
 
     GetGraph()->p()->UnlinkParent();
     mBaseActor.m_Matrix = *(pPet->mBaseActor.GetMatrix());
@@ -4676,7 +4755,7 @@ void GcActor::OnPositionChanged(float fX, float fY) {
     RtsSceneBlockMap::SArea*        pArea = g_pScene->FindFirstArea(fX, fY);
     for (i = 0; i < 9 && pArea; i++) {
         s_pArea[i] = pArea;
-        pArea = g_pScene->FindNextArea();
+        pArea      = g_pScene->FindNextArea();
     }
     std::list<RtsSceneBlockMap::SArea*>::iterator it, itNext;
     iCnt = i;
@@ -4782,7 +4861,7 @@ void GcActor::UpdateAreaPKAttr() {
     m_eCurPosPKAttr = m_eBlockPosPKAttr;
     for (it = m_listArea.begin(); it != m_listArea.end(); it++) {
         pArea = (*it);
-        pStr = strstr(const_cast<char*>(pArea->szData), const_cast<char*>(s_szPKArea));
+        pStr  = strstr(const_cast<char*>(pArea->szData), const_cast<char*>(s_szPKArea));
         if (pStr) {
             pStr += strlen(s_szPKArea);
             pValue = strchr(pStr, ';');
@@ -4866,7 +4945,7 @@ void GcActor::SendPickItemType(GcActor* pActor) {
     float fD = 34.f;
     if (Distance2(pActor) < (fD * fD)) {
         m_lPickActorID = pActor->ID();
-        char type = pActor->m_bIsDead;
+        char type      = pActor->m_bIsDead;
         // 1,为捡物品,2,为扒皮
         if (type != 1 && type != 2 && type != 3) {
             return;
@@ -4940,7 +5019,7 @@ void GcActor::SendPickItemType(GcActor* pActor) {
                     return;
                 } else {
                     SSkill* pSkill = m_Skill.FindSkillBySubID(SKILL_DIG_SKIN_SUBID);
-                    int     level = pActor->m_pNpc->Level / 10 + 1;
+                    int     level  = pActor->m_pNpc->Level / 10 + 1;
                     if (pSkill->iLevel < level) {
                         rt2_snprintf(str, 199, R(MSG_SKILL_BOPILOW), pActor->m_pNpc->Name.c_str(),
                                      level, pSkill->szName);
@@ -5202,7 +5281,8 @@ int GcActor::GetDungeonMissionItemNum(DWORD typeId, int difficulty) {
 
     int count = 0;
     if (!ItemIsOther_Dungeon(pItemClass->type)) {
-        ERR1("[GcActor::GetDungeonMissionItemNum] Item is NOT a dungeon mission item(index=%d)\n",
+        ERR1("[GcActor::GetDungeonMissionItemNum] Item is NOT a dungeon mission "
+             "item(index=%d)\n",
              typeId);
         return 0;
     }
@@ -5231,52 +5311,52 @@ void GcActor::ProcessFixedTaskReward(STaskKey& key, int& goldRew, int& expRew, i
                                      float& percent, int& itemId, int& itemNum, int& itemColor,
                                      int& skillID) {
     if (key.key == "gold") {
-        goldRew = atol(key.param[0].c_str());
-        expRew = 0;
-        lev = 0;
-        percent = 0;
-        itemId = 0;
-        itemNum = 0;
+        goldRew   = atol(key.param[0].c_str());
+        expRew    = 0;
+        lev       = 0;
+        percent   = 0;
+        itemId    = 0;
+        itemNum   = 0;
         itemColor = 0;
-        skillID = 0;
+        skillID   = 0;
     } else if (key.key == "exp") {
-        expRew = atol(key.param[0].c_str());
-        lev = 0;
-        percent = 0;
-        goldRew = 0;
-        itemId = 0;
-        itemNum = 0;
+        expRew    = atol(key.param[0].c_str());
+        lev       = 0;
+        percent   = 0;
+        goldRew   = 0;
+        itemId    = 0;
+        itemNum   = 0;
         itemColor = 0;
-        skillID = 0;
+        skillID   = 0;
     } else if (key.key == "lvlexpsm") {
         lev = atol(key.param[0].c_str());
         if (lev == 0)
             lev = m_core.Lev;
-        percent = (float)100 * atof(key.param[1].c_str());
-        goldRew = 0;
-        expRew = 0;
-        itemId = 0;
-        itemNum = 0;
+        percent   = (float)100 * atof(key.param[1].c_str());
+        goldRew   = 0;
+        expRew    = 0;
+        itemId    = 0;
+        itemNum   = 0;
         itemColor = 0;
-        skillID = 0;
+        skillID   = 0;
     } else if (key.key == "item") {
-        itemId = atol(key.param[0].c_str());
-        itemNum = atol(key.param[1].c_str());
+        itemId    = atol(key.param[0].c_str());
+        itemNum   = atol(key.param[1].c_str());
         itemColor = atol(key.param[2].c_str());
-        goldRew = 0;
-        expRew = 0;
-        lev = 0;
-        percent = 0;
-        skillID = 0;
+        goldRew   = 0;
+        expRew    = 0;
+        lev       = 0;
+        percent   = 0;
+        skillID   = 0;
     } else if (key.key == "skill") {
-        goldRew = 0;
-        expRew = 0;
-        lev = 0;
-        percent = 0;
-        itemId = 0;
-        itemNum = 0;
+        goldRew   = 0;
+        expRew    = 0;
+        lev       = 0;
+        percent   = 0;
+        itemId    = 0;
+        itemNum   = 0;
         itemColor = 0;
-        skillID = atol(key.param[0].c_str());
+        skillID   = atol(key.param[0].c_str());
     }
 }
 
@@ -5311,7 +5391,7 @@ void GcActor::ProcessRandomTaskReward(STaskKey& key, int* id, int len) {
 //}
 
 void GcActor::FbTaskState(int taskId, bool& bFinished, bool& bCanFinishNow) {
-    bFinished = false;
+    bFinished     = false;
     bCanFinishNow = false;
 
     SFbTask* task = g_TableTask.FindFbTask(taskId);
@@ -5326,7 +5406,7 @@ void GcActor::FbTaskState(int taskId, bool& bFinished, bool& bCanFinishNow) {
         return;
 
     if (info->IsTaskFinished(taskId)) {
-        bFinished = true;
+        bFinished     = true;
         bCanFinishNow = false;
     } else {
         bFinished = false;
@@ -5572,15 +5652,15 @@ void GcActor::DoTrumpSkill(SCmd cmd) {
         return;
 
     SSkill*            pSkill = NULL;
-    float              fD = 0.f;
-    const RtgMatrix16* pM16 = NULL;
+    float              fD     = 0.f;
+    const RtgMatrix16* pM16   = NULL;
     GcActor*           pActor = FindAllActor(cmd.dw[0]);
 
     if (cmd.cTargetType == SKILL_TARGET_TYPE_ACTOR) {
         if (!pActor || pActor->m_bIsDead > 0)
             return;
     } else if (cmd.cTargetType == SKILL_TARGET_TYPE_POSITION) {
-        fD = cmd.fDistance;
+        fD   = cmd.fDistance;
         pM16 = mBaseActor.GetMatrix();
         if (((cmd.f[0] - pM16->_30) * (cmd.f[0] - pM16->_30) +
              (cmd.f[1] - pM16->_31) * (cmd.f[1] - pM16->_31)) > (fD * fD)) {
@@ -5594,7 +5674,7 @@ void GcActor::DoTrumpSkill(SCmd cmd) {
         }
         WORD wCurAttackID = 0;
         bool bCanUseSkill = true;
-        bool bIsLocalCmd = (cmd.fTime < 0.f);
+        bool bIsLocalCmd  = (cmd.fTime < 0.f);
 
         if (bIsLocalCmd)  // 如果时间为-1就是本地发出来的命令，本地发出的命令就需要上传到服务器
         {
@@ -5627,7 +5707,7 @@ void GcActor::DoTrumpSkill(SCmd cmd) {
 
         SItemID  Item1;
         SWeapon* pWeaClass1;
-        Item1 = mItem.GetEquipItem(CItemContainer::TRUMP, true);
+        Item1      = mItem.GetEquipItem(CItemContainer::TRUMP, true);
         pWeaClass1 = (SWeapon*)(((CGameClientFrame*)GetApp())->m_pItemManager->GetItem(Item1.type));
 
         if (pWeaClass1 && mBaseActor.m_pTrump) {
@@ -5645,10 +5725,10 @@ void GcActor::DoTrumpSkill(SCmd cmd) {
         {
             SAttack* pAttack = NewAttack();
 
-            pAttack->cAnswer = 1;
-            pAttack->pSkill = pSkill;
+            pAttack->cAnswer   = 1;
+            pAttack->pSkill    = pSkill;
             pAttack->pPoseName = pSkill->szWayName;
-            pAttack->cTarget = cmd.cTargetType;
+            pAttack->cTarget   = cmd.cTargetType;
             if (pAttack->cTarget == SKILL_TARGET_TYPE_ACTOR) {
                 pAttack->dwTargetID = cmd.dw[0];
             } else if (pAttack->cTarget == SKILL_TARGET_TYPE_POSITION) {
@@ -5656,7 +5736,7 @@ void GcActor::DoTrumpSkill(SCmd cmd) {
                 pAttack->f[1] = cmd.f[1];
                 pAttack->f[2] = cmd.f[2];
             }
-            wCurAttackID = m_wAttackID++;
+            wCurAttackID       = m_wAttackID++;
             pAttack->wAttackID = wCurAttackID;
             if (cmd.cTargetType == SKILL_TARGET_TYPE_ACTOR) {
                 unsigned short crcvalue = CRC16_INIT_VALUE;
@@ -5679,9 +5759,9 @@ void GcActor::DoTrumpSkill(SCmd cmd) {
                 cmd.wCheck = crcvalue ^ CRC16_XOR_VALUE;
             } else if (cmd.cTargetType == SKILL_TARGET_TYPE_POSITION) {
                 DWORD dw1, dw2, dw3;
-                dw1 = cmd.f[0];
-                dw2 = cmd.f[1];
-                dw3 = cmd.f[2];
+                dw1                     = cmd.f[0];
+                dw2                     = cmd.f[1];
+                dw3                     = cmd.f[2];
                 unsigned short crcvalue = CRC16_INIT_VALUE;
                 crcvalue =
                     (crcvalue << 8) ^ crctableWorld[(crcvalue >> 8) ^ (cmd.wSkillID & 0x00FF)];
@@ -5712,9 +5792,9 @@ void GcActor::DoTrumpSkill(SCmd cmd) {
                     (crcvalue << 8) ^ crctableWorld[(crcvalue >> 8) ^ ((dw3 & 0x00FF0000) >> 16)];
                 crcvalue =
                     (crcvalue << 8) ^ crctableWorld[(crcvalue >> 8) ^ ((dw3 & 0xFF000000) >> 24)];
-                cmd.dw[0] = dw1;
-                cmd.dw[1] = dw2;
-                cmd.dw[2] = dw3;
+                cmd.dw[0]  = dw1;
+                cmd.dw[1]  = dw2;
+                cmd.dw[2]  = dw3;
                 cmd.wCheck = crcvalue ^ CRC16_XOR_VALUE;
             } else {
                 unsigned short crcvalue = CRC16_INIT_VALUE;
@@ -5733,7 +5813,8 @@ void GcActor::DoTrumpSkill(SCmd cmd) {
             m_listAttack.push_back(pAttack);
 
             if (m_listAttack.size() > 10) {
-                LOG1("GcActor::DoCommand 攻击缓冲区中的缓冲数据太多了[%d个].将会直接清除一部分\n",
+                LOG1("GcActor::DoCommand "
+                     "攻击缓冲区中的缓冲数据太多了[%d个].将会直接清除一部分\n",
                      m_listAttack.size());
             }
             if (cmd.cTargetType == SKILL_TARGET_TYPE_ACTOR) {
@@ -5747,7 +5828,7 @@ void GcActor::DoTrumpSkill(SCmd cmd) {
             }
 
             // 记录攻击参数，本地累加关键帧
-            m_curAttackId = pAttack->wAttackID;
+            m_curAttackId    = pAttack->wAttackID;
             m_curAttackEvent = 0;
         } else {
             // 如果非玩家控制角色就说明这是一个网络攻击命令，
@@ -5758,7 +5839,7 @@ void GcActor::DoTrumpSkill(SCmd cmd) {
                 LOG("DoCommand:ACMD_ATTACK "
                     "响应攻击事件的时候没有找到该事件，该事件可能已经被删除.\n");
             }
-            m_curAttackId = cmd.wAttackID;
+            m_curAttackId    = cmd.wAttackID;
             m_curAttackEvent = 0;
         }
         if (!pSkill->szWayName && wCurAttackID != 0) {
@@ -5839,9 +5920,9 @@ void GcActor::OnSetWeaponShow(bool bNeed) {
         if (!mBaseActor.m_pWeapon)
             return;
         if (ItemID_IsValid(mBaseActor.m_pWeapon->m_item)) {
-            char       Sex = m_core.Sex;
+            char       Sex        = m_core.Sex;
             SItemBase* pItemClass = NULL;
-            SWeapon*   pWeapon = NULL;
+            SWeapon*   pWeapon    = NULL;
             pItemClass = GetWorld()->m_pItemManager->GetItem(mBaseActor.m_pWeapon->m_item.type);
             if (!pItemClass)
                 return;
@@ -5893,7 +5974,7 @@ void GcActor::SetPetHUD() {
     string szPetMaster;
     DWORD  dwPetFuseLevColor = 0xFFFFFFFF;
     DWORD  dwPetAbilityColor = 0xFF99FF33;
-    DWORD  dwPetMasterColor = 0xFF63B8FF;
+    DWORD  dwPetMasterColor  = 0xFF63B8FF;
 
     switch (m_ePetType) {
         case PET_TYPE_NORMAL: {
