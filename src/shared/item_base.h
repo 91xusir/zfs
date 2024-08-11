@@ -16,6 +16,7 @@ extern G_MEMDEF(g_strItemBuffer256, 256)
 extern G_MEMDEF(g_strItemBufferBD, 256)
 
 /// Item Type (32 bit)   如有变动，要修改LoadResource()中的相应内容
+//名称	类型子类型	神兽ID	分解ID	可锻造	可交易	可商店	可删除	可丢弃	可重叠摆放	
 //	-------------------------------------------------------------------------------------------------------------------
 //	(name)	|type	|subtype	|index	|bMissionItem	|bCanDelete	|bCanDrop	|bCanTrade	|bCanPile	|bCanUpdate	|bCanNPC
 //	(bit)	| 4		| 4			| 16	| 1				| 1			| 1			| 1			| 1			| 1			| 1
@@ -24,16 +25,16 @@ extern G_MEMDEF(g_strItemBufferBD, 256)
 #define ITEM_MASK_SUBTYPE				0xFF000000
 #define ITEM_MASK_INDEX					0x00FFFF00
 
-#define ITEM_MASK_WEAPON				0x10000000
-#define ITEM_MASK_ARMOR					0x20000000
-#define ITEM_MASK_SHIPIN				0x30000000
-#define ITEM_MASK_YAOPING				0x40000000
-#define ITEM_MASK_GEM					0x50000000
-#define ITEM_MASK_SCROLL				0x60000000
-#define ITEM_MASK_OTHER					0x70000000
-#define ITEM_MASK_PET					0x80000000
-#define ITEM_MASK_SKILL					0x90000000
-#define ITEM_MASK_OTHER2                0xa0000000
+#define ITEM_MASK_WEAPON				0x10000000 //武器
+#define ITEM_MASK_ARMOR					0x20000000 //衣服
+#define ITEM_MASK_SHIPIN				0x30000000 //饰品
+#define ITEM_MASK_YAOPING				0x40000000 //药品
+#define ITEM_MASK_GEM					0x50000000 //不知道
+#define ITEM_MASK_SCROLL				0x60000000 //卷轴
+#define ITEM_MASK_OTHER					0x70000000 //任务
+#define ITEM_MASK_PET					0x80000000 //宝宝
+#define ITEM_MASK_SKILL					0x90000000 //技能
+#define ITEM_MASK_OTHER2                0xa0000000 //任务
 
 #define ITEM_MASK_TRUMP					0xb0000000					// 新法宝
 #define ITEM_MASK_FASHION				0xc0000000					// 时装
@@ -41,26 +42,26 @@ extern G_MEMDEF(g_strItemBufferBD, 256)
 #define ITEM_MASK_SORPTION				0xe0000000					// 吸附类型道具
 //#define ITEM_TYPE_COUNT					13
 
-#define ITEM_MASK_MISSION_ITEM			0x00000080
-#define ITEM_MASK_CAN_DELETE			0x00000040
-#define ITEM_MASK_CAN_DROP				0x00000020
-#define ITEM_MASK_CAN_TRADE				0x00000010
-#define ITEM_MASK_CAN_PILE				0x00000008
-#define ITEM_MASK_CAN_UPDATE			0x00000004
-#define ITEM_MASK_CAN_NPCTRADE			0x00000002
+#define ITEM_MASK_MISSION_ITEM			0x00000080 //任务道具
+#define ITEM_MASK_CAN_DELETE			0x00000040 //可以删除
+#define ITEM_MASK_CAN_DROP				0x00000020 //可以丢弃
+#define ITEM_MASK_CAN_TRADE				0x00000010 //可以交易
+#define ITEM_MASK_CAN_PILE				0x00000008 //可以堆叠
+#define ITEM_MASK_CAN_UPDATE			0x00000004 //可以升级
+#define ITEM_MASK_CAN_NPCTRADE			0x00000002 //可以NPC交易
 
 
 /// 武器(SubType)
 
 
-#define ITEM_MASK_WEAPON_AXE			0x11000000					// 斧
-#define ITEM_MASK_WEAPON_PESTLE			0x12000000					// 杵
+#define ITEM_MASK_WEAPON_AXE			0x11000000					// 斧 
+#define ITEM_MASK_WEAPON_PESTLE			0x12000000					// 杵 //改回双刀
 #define ITEM_MASK_WEAPON_HOOP			0x13000000					// 环
-#define ITEM_MASK_WEAPON_RIBAND			0x14000000					// 绫
+#define ITEM_MASK_WEAPON_RIBAND			0x14000000					// 绫 //就是鞭子
 #define ITEM_MASK_WEAPON_WHEEL			0x15000000					// 轮
-#define ITEM_MASK_WEAPON_SWORD			0x16000000					// 剑
-#define ITEM_MASK_WEAPON_WAND			0x17000000					// 杖
-#define ITEM_MASK_WEAPON_BALL			0x18000000					// 球
+#define ITEM_MASK_WEAPON_SWORD			0x16000000					// 剑 
+#define ITEM_MASK_WEAPON_WAND			0x17000000					// 杖 
+#define ITEM_MASK_WEAPON_BALL			0x18000000					// 球 
 
 //#define ITEM_MASK_WEAPON_PESTLE			0x11000000					// 刀剑
 //

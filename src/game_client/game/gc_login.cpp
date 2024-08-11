@@ -160,7 +160,10 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
                 m_poseMap["waiting_n0"]     = m_poseMap["waiting_non"];
                 m_poseMap["waiting_n1"]     = m_poseMap["waiting_non"];
                 m_poseMap["run_n0"]         = m_poseMap["walk_non"];
+                m_poseMap["run_f0"]         = m_poseMap["walk_non"];
                 m_poseMap["wait_n0"]        = m_poseMap["wait_non"];
+                m_poseMap["wait_f0"]        = m_poseMap["wait_non"];
+                m_poseMap["wait_a_f0"]        = m_poseMap["wait_non"];
                 m_poseMap["wait_a_n0"]      = m_poseMap["wait_non"];
                 m_poseMap["attack_n0"]      = m_poseMap["attack_non"];
                 m_poseMap["attack_n0"].Name = "attack_n0";
@@ -168,6 +171,14 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
                 m_poseMap["attack_n1"].Name = "attack_n1";
                 m_poseMap["attack_n2"]      = m_poseMap["attack_non"];
                 m_poseMap["attack_n2"].Name = "attack_n2";
+
+                m_poseMap["attack_f0"]      = m_poseMap["attack_t"];
+                m_poseMap["attack_f0"].Name  = "attack_f0";
+                m_poseMap["attack_f1"]      = m_poseMap["attack_t"];
+                m_poseMap["attack_f1"].Name  = "attack_f1";
+                m_poseMap["attack_f2"]       = m_poseMap["attack_t_critical"];
+                m_poseMap["attack_f2"].Name  = "attack_f2";
+
                 m_poseMap["attack_l0"]      = m_poseMap["attack_non_flysword"];
                 m_poseMap["attack_l1"]      = m_poseMap["attack_non_flysword"];
                 m_poseMap["attack_l2"]      = m_poseMap["attack_non_flysword"];

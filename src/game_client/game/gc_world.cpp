@@ -442,6 +442,7 @@ vector<CRT_SkinInstance*>  SkinCacheList;
 
 bool GcWorld::EnterGame() {
     guard;
+    DXUtil_Timer(TIMER_RESET);  //解除帧率限制1秒
     m_dNPCID                = 0;
     m_dNPCNameColor         = 0xFFFFFFFF;
     RtScene::m_bRenderScene = TRUE;

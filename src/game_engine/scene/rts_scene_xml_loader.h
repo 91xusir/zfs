@@ -2,84 +2,121 @@
 /*------------------------------------------------------------------------
 -   Class CXmlFileMapTexture.
 ------------------------------------------------------------------------*/
-
+// CXmlFileMapTexture 类继承自 RtScriptXML 类，用于解析 XML 文件中与纹理映射相关的节点和属性
 class CXmlFileMapTexture : public RtScriptXML
 {
 public:
+    // 构造函数，初始化成员变量
     CXmlFileMapTexture(RtScene* pScene)
     {
-        m_pScene=pScene;
-        m_iNodeType = 0;
+        m_pScene = pScene; // 将传入的场景指针保存到成员变量
+        m_iNodeType = 0;   // 初始化节点类型为 0
     }
+
+    // 虚析构函数，确保派生类的资源能够正确释放
     virtual ~CXmlFileMapTexture()
     {
     }
+
+    // 错误处理函数，在 XML 解析过程中发生错误时调用
     virtual void OnError(const char* szFilename, const char* szErrMsg, long lLineNo)
     {
+        // 记录错误信息，包括错误消息、文件名和行号
         RtCoreLog().Error("XML ERROR: \"%s\", File '%s', line %d\n", szErrMsg, szFilename, lLineNo);
+        // 抛出错误异常
         CHECKEX("XML ERROR");
     }
+
+    // XML 标签开始处理函数，当解析器遇到标签的开始部分时调用
     virtual void OnTagStart(const char *pTag)
-    {   // <pTag
-        if (stricmp(pTag, "map")==0)
+    {
+        // 如果标签是 "map"，将节点类型设置为 1
+        if (stricmp(pTag, "map") == 0)
         {
             m_iNodeType = 1;
-        }else if (stricmp(pTag, "scene_map_texture_list")==0)
+        }
+        // 如果标签是 "scene_map_texture_list"，将节点类型设置为 0
+        else if (stricmp(pTag, "scene_map_texture_list") == 0)
         {
             m_iNodeType = 0;
-        }else
+        }
+        // 其他未知标签，记录错误并抛出异常
+        else
         {
             m_iNodeType = 0;
             RtCoreLog().Error("XML ERROR: Unknown Tag \"%s\"\n", pTag);
             CHECKEX("XML ERROR");
         }
+        // 重置属性计数器、索引、类型以及名称和文件名字符串
         m_iAttrCnt = 0;
         m_iIdx = 0;
         m_iType = 0;
         m_strName = "";
         m_strFile = "";
     }
+
+    // XML 属性处理函数，当解析器遇到标签的属性时调用
     virtual void OnAttribute(const char *pAttribute, const char *pValue)
-    {   // pAttribute=pValue
-        if (m_iNodeType!=1) return;
-        if (stricmp(pAttribute, "name")==0)
+    {
+        // 如果当前节点不是 "map" 节点，直接返回
+        if (m_iNodeType != 1) return;
+
+        // 处理不同的属性名称，根据属性名称设置相应的成员变量
+        if (stricmp(pAttribute, "name") == 0)
         {
-            m_strName = pValue;
-        }else if (stricmp(pAttribute, "idx")==0)
+            m_strName = pValue; // 保存纹理的名称
+        }
+        else if (stricmp(pAttribute, "idx") == 0)
         {
-            m_iIdx = atoi(pValue);
-        }else if (stricmp(pAttribute, "type")==0)
+            m_iIdx = atoi(pValue); // 将索引字符串转换为整数并保存
+        }
+        else if (stricmp(pAttribute, "type") == 0)
         {
-            m_iType = atoi(pValue);
-        }else if (stricmp(pAttribute, "file")==0)
+            m_iType = atoi(pValue); // 将类型字符串转换为整数并保存
+        }
+        else if (stricmp(pAttribute, "file") == 0)
         {
-            m_strFile = pValue;
-        }else
+            m_strFile = pValue; // 保存纹理文件的名称
+        }
+        // 处理未知属性，记录错误并抛出异常
+        else
         {
             RtCoreLog().Error("XML ERROR: Unknown Attribute \"%s\"\n", pAttribute);
             CHECKEX("XML ERROR");
         }
-        m_iAttrCnt ++;
+
+        // 增加属性计数器
+        m_iAttrCnt++;
     }
+
+    // XML 标签结束处理函数，当解析器遇到标签的结束部分时调用
     virtual void OnTagEnd()
-    {   // >
-        if (m_iNodeType!=1) return;
-        CHECK(m_iIdx>=0 && m_iIdx<RtScene::MAX_MAP_COUNT && m_iAttrCnt==4);
+    {
+        // 如果当前节点不是 "map" 节点，直接返回
+        if (m_iNodeType != 1) return;
+
+        // 检查索引和属性数量是否符合要求，确保数据正确
+        CHECK(m_iIdx >= 0 && m_iIdx < RtScene::MAX_MAP_COUNT && m_iAttrCnt == 4);
+
+        // 将解析到的纹理信息保存到场景对象的纹理映射数组中
         m_pScene->m_texMaps[m_iIdx].szName = m_strName;
         m_pScene->m_texMaps[m_iIdx].szFile = m_strFile;
-        m_pScene->m_texMaps[m_iIdx].iType  = m_iType;
-        m_pScene->m_texMaps[m_iIdx].texItem = NULL;
+        m_pScene->m_texMaps[m_iIdx].iType = m_iType;
+        m_pScene->m_texMaps[m_iIdx].texItem = NULL; // 初始化纹理项为空
     }
-    virtual void OnTagEndImme() { OnTagEnd(); }
-private:
-    RtScene*    m_pScene;
 
-    int         m_iNodeType;
-    int         m_iAttrCnt;
-    int         m_iIdx;
-    int         m_iType;
-    RtString    m_strName;
-    RtString    m_strFile;
+    // XML 标签立即结束处理函数，与 OnTagEnd 相同
+    virtual void OnTagEndImme() { OnTagEnd(); }
+
+private:
+    RtScene*    m_pScene;    // 场景指针，用于访问场景的纹理映射数据
+
+    int         m_iNodeType; // 当前节点类型
+    int         m_iAttrCnt;  // 属性计数器
+    int         m_iIdx;      // 纹理映射的索引
+    int         m_iType;     // 纹理的类型
+    RtString    m_strName;   // 纹理的名称
+    RtString    m_strFile;   // 纹理文件的名称
 };
 
 /*------------------------------------------------------------------------

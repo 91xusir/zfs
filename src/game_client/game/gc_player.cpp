@@ -1437,29 +1437,40 @@ SItemID GcPlayer::_find_item_in_bag_by_types(std::vector<DWORD>& typeArray)
 	unguard
 }
 
-void GcPlayer::AddCommandMoveTo(float fX, float fY, float fZ, float fTime, float fDistance)
-{
-	if (m_dwCatchPet)
-	{
-		m_dwCatchPet = 0;
-		CPetNetHelper::NetSend_c2r_catch_pet_stop();
-		RemoveCurCommand();
-	}
-	if (g_layerMain->m_formChar->m_bIsRifine)
-	{
-		g_layerMain->m_formChar->OnFinishRifineTrump(false);
-		SendTrumpRifine(0,true);
-		RemoveCurCommand();
-	}
+void GcPlayer::AddCommandMoveTo(float fX, float fY, float fZ, float fTime, float fDistance) {
+    // 检查玩家是否正在抓取宠物
+    if (m_dwCatchPet) {
+        // 如果正在抓取宠物，重置抓取标志并发送停止抓取的网络消息
+        m_dwCatchPet = 0;
+        CPetNetHelper::NetSend_c2r_catch_pet_stop();
+        // 移除当前命令
+        RemoveCurCommand();
+    }
 
-	const RtSceneBlockTerrain::STileAttr* pAttr = g_pScene->GetTerrainAttr(fX / 20, fY / 20);
-	if ( pAttr && pAttr->bWalk && !GetWorld()->CanMove())
-	{
-		PlayerFailOperate(R(MSG_CANNOT_MOVE));
-		return;
-	}
-	GcActor::AddCommandMoveTo(fX,fY,fZ,fTime,fDistance);
+    // 检查是否正在进行精炼操作
+    if (g_layerMain->m_formChar->m_bIsRifine) {
+        // 结束精炼操作
+        g_layerMain->m_formChar->OnFinishRifineTrump(false);
+        // 发送精炼结束的消息
+        SendTrumpRifine(0, true);
+        // 移除当前命令
+        RemoveCurCommand();
+    }
+
+    // 获取目标位置在地形中的属性
+    const RtSceneBlockTerrain::STileAttr* pAttr = g_pScene->GetTerrainAttr(fX / 20, fY / 20);
+
+    // 如果地形属性存在且允许行走，且当前世界状态允许移动
+    if (pAttr && pAttr->bWalk && !GetWorld()->CanMove()) {
+        // 如果不能移动，则显示操作失败消息
+        PlayerFailOperate(R(MSG_CANNOT_MOVE));
+        return;
+    }
+
+    // 调用基类的移动命令添加函数
+    GcActor::AddCommandMoveTo(fX, fY, fZ, fTime, fDistance);
 }
+
 
 bool GcPlayer::OnGetPlayerIsMoving()
 {

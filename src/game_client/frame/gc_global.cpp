@@ -7,7 +7,7 @@
 ----------------------------------------------------------------------------*/
 
 int s_isHacker = 0; // 1 加速器, 2 按键拦截, 3 窗口消息拦截
-std::list<int>  s_listCallStack;
+std::list<int>  s_listCallStack;// 保存调用堆栈用于调试
 
 static long s_lRegionCharID;
 static long s_lRegionSeed;

@@ -35,6 +35,7 @@
 #if DO_CONSOLE
 bool GcActor::mDebug = false;
 #endif  //DO_CONSOLE
+#include <preConsole.h>
 
 // Removed Unused Code by Wayne Wong 2010-12-14
 //std::list<GcActor::SAttack*> m_attackUnused;
@@ -1053,17 +1054,32 @@ RtgVertex3 GcActor::GetHUDPos() {
     unguard;
 }
 
-//tim.yang   自动寻路到某地
+//自动寻路到某地
 void GcActor::GotoThere(int x, int y) {
+    // 将地图移动到指定的 x, y 坐标
     g_layerMain->m_formMiddleMap->SetOnMoveto(x, y);
+
+    // 定义两个浮点数 X 和 Y，用于存储转换后的坐标
     float X = 0, Y = 0;
+
+    // 根据地形的 XY 坐标获取实际的场景坐标，并存储在 X 和 Y 中
     g_pScene->GetPosByTerrainXY(x, y, X, Y);
+
+    // 将当前函数的标识符压入调用堆栈中，以便跟踪调用链
     PushCallStack(csn_GcActor_AddCommandMoveTo);
+
+    // 更新玩家的随机种子，通过一个数学表达式生成新的种子值
     (((GetWorld()->m_iCheckPlayerSeed = GetWorld()->m_iCheckPlayerSeed * 203014L + 3521051L) >>
       16) &
      0x7fff);
+
+    // 将移动命令添加到玩家的指令列表中，移动到 X, Y 坐标，其他参数用作方向和速度
     GetWorld()->m_pPlayer->AddCommandMoveTo(X, Y, 0, -1.0f, 0);
+
+    // 保存当前的随机种子值，以备将来使用
     GetWorld()->m_iCheckPlayerSeedSave = GetWorld()->m_iCheckPlayerSeed;
+
+    // 从调用堆栈中弹出当前函数的标识符，表示此函数执行完毕
     PopCallStack();
 }
 
@@ -1092,7 +1108,7 @@ void GcActor::GotoNpcFront(SNpc* pNpc) {
 void GcActor::AddCommandMoveTo(float fX, float fY, float fZ, float fTime, float fDistance) {
 
     guard;
-    // 网络物体有可能重叠有多个MoveTo指令
+    // 检查是否有当前命令，如果是 "MoveTo" 类型，则记录当前命令的时间
     int extraTime = 0;
     if (m_pCurCmd) {
         if (m_pCurCmd->eCmd == ACMD_MOVETO) {
@@ -1100,9 +1116,11 @@ void GcActor::AddCommandMoveTo(float fX, float fY, float fZ, float fTime, float 
         }
     }
 
+    // 如果当前命令是 "MoveTo" 类型，则将其标记为完成
     if (m_pCurCmd && m_pCurCmd->eCmd == ACMD_MOVETO)
         CommandFinished();
 
+    // 遍历命令列表，删除所有 "MoveTo" 类型的命令
     std::list<SCmd>::iterator it;
     for (it = m_listCmd.begin(); it != m_listCmd.end();) {
         if ((*it).eCmd == ACMD_MOVETO) {
@@ -1112,16 +1130,23 @@ void GcActor::AddCommandMoveTo(float fX, float fY, float fZ, float fTime, float 
         }
     }
 
+    // 创建一个新的 "MoveTo" 命令并设置其参数
     SCmd cmd;
-    cmd.eCmd      = ACMD_MOVETO;
-    cmd.f[0]      = fX;
-    cmd.f[1]      = fY;
-    cmd.f[2]      = fZ;
-    cmd.fDistance = fDistance;
-    cmd.fTime     = fTime + extraTime;
+    cmd.eCmd      = ACMD_MOVETO;        // 设置命令类型为 "MoveTo"
+    cmd.f[0]      = fX;                 // 设置目标 X 坐标
+    cmd.f[1]      = fY;                 // 设置目标 Y 坐标
+    cmd.f[2]      = fZ;                 // 设置目标 Z 坐标
+    cmd.fDistance = fDistance;          // 设置移动距离
+    cmd.fTime     = fTime + extraTime;  // 设置移动时间，考虑到之前命令的额外时间
+
+    // 将新命令添加到命令列表中
     AddCommand(cmd);
-    m_iCheckSeed    = m_iCheckSeed * 203014L + 3521051L;
+
+    // 更新检查种子值
+    m_iCheckSeed = m_iCheckSeed * 203014L + 3521051L;
+    // 重置目标 ID
     m_pLastTargetID = 0;
+
     unguard;
 }
 
@@ -1479,10 +1504,14 @@ deadbug:
                 m_listCmd.push_back(cmd);
             }
             break;
-        case ACMD_MOVETO: {
-            const float* pPos = GetMatrix()->Position();
-            if (fabs(pPos[0] - cmd.f[0]) < 10.f && fabs(pPos[1] - cmd.f[1]) < 10.f &&
-                fabs(pPos[1] - cmd.f[1]) < 10.f) {
+        case ACMD_MOVETO: {                               // 处理 'ACMD_MOVETO' 类型的命令
+            const float* pPos = GetMatrix()->Position();  // 获取当前位置的坐标
+            // 检查当前位置是否接近目标位置
+            // fabs 用于计算浮点数的绝对值
+            // 比较当前位置和目标位置的 X 和 Y 坐标
+            // 如果当前位置接近目标位置（误差小于 10），则跳过该命令
+          
+            if (fabs(pPos[0] - cmd.f[0]) < 10.f && fabs(pPos[1] - cmd.f[1]) < 10.f) {
                 break;
             }
 
@@ -3305,7 +3334,8 @@ void GcActor::OnPoseEvent(SRT_Pose* pPose, SRT_PoseEvent* pEvent) {
 
     for (auto it = m_listAttack.begin(); it != m_listAttack.end();) {
         SAttack* pAttack = *it;
-        if (pAttack->pPoseName && pPose->Name == pAttack->pPoseName) {//lyymark 判断动作映射名称和动作事件名称是否匹配
+        if (pAttack->pPoseName &&
+            pPose->Name == pAttack->pPoseName) {  //lyymark 判断动作映射名称和动作事件名称是否匹配
             if (pAttack->pSkill)  // 技能攻击
             {
                 //CHECK(pPose->Name==pAttack->pSkill->szRAction);
@@ -3552,6 +3582,7 @@ bool GcActor::OnAttackArrive(WORD wAttackID, bool bSucceed) {
     return bResult;  // 返回结果
     unguard;         // 离开临界区，解除对数据的保护
 }
+
 // 处理攻击到达
 void GcActor::OnAttackArrive(SAttack* pAttack, bool bSucceed) {
     guard;  // 进入保护代码块，确保在异常情况下能正确处理
@@ -3678,7 +3709,7 @@ void GcActor::OnAttackArrive(SAttack* pAttack, bool bSucceed) {
                             // 处理技能攻击的伤害信息
                             SSkill* skill =
                                 pAttack->pSkill /*Skill()->FindSkill(m_pCurCmd->wSkillID)*/;
-                            ;
+                           
                             if (skill) {
                                 int total = 0;
                                 for (int i = 0; i <= skill->wHits; i++)
@@ -4515,6 +4546,7 @@ void GcActor::Serialize(char type, CG_CmdPacket* cmd) {
 // Model - 字符串，表示武器的模型名称，用于在图形中显示武器。
 // weapon - 指向 SWeapon 结构的指针，包含了武器的详细信息（如模型路径等）。
 // item - 传入的 SItemID 结构，包含了武器的 ID 和其他相关信息，用于识别和处理武器。
+// lyymark 武器装备link点
 void GcActor::EquipWeapon(bool Active, const char* Model, SWeapon* weapon, SItemID& item) {
     guard;
 
@@ -4528,7 +4560,9 @@ void GcActor::EquipWeapon(bool Active, const char* Model, SWeapon* weapon, SItem
                     GetGraph()->UnLink("Bip01 R Hand");
                     GetGraph()->UnLink("Bip01 L Hand");
                 } else {
-                    GetGraph()->UnLink("Box01");
+                    GetGraph()->UnLink("Bip01 R Hand");
+
+                    // GetGraph()->UnLink("Box01");
                 }
             }
 
@@ -4545,7 +4579,9 @@ void GcActor::EquipWeapon(bool Active, const char* Model, SWeapon* weapon, SItem
                 GetGraph()->Link("Bip01 R Hand", Model);
                 GetGraph()->Link("Bip01 L Hand", Model);
             } else {
-                GetGraph()->Link("Box01", Model);
+                GetGraph()->Link("Bip01 R Hand", Model);
+
+                //GetGraph()->Link("Box01", Model);
             }
         }
 
@@ -5913,56 +5949,82 @@ bool GcActor::CheckCanStartTrigger(DWORD triggerID, bool checkRemove /* = false 
 }
 
 void GcActor::OnSetWeaponShow(bool bNeed) {
-    guard;
+    guard;  // 开始保护块，用于调试或错误处理
+
+    // 调用基类或其他模块的武器显示处理函数
     mBaseActor.OnSetWeaponShow(bNeed);
-    //选择武器Link点
+
+    // 如果不需要显示武器（bNeed 为 false）
     if (!bNeed) {
+        // 如果没有武器，则返回
         if (!mBaseActor.m_pWeapon)
             return;
+
+        // 如果武器的 ID 有效
         if (ItemID_IsValid(mBaseActor.m_pWeapon->m_item)) {
-            char       Sex        = m_core.Sex;
-            SItemBase* pItemClass = NULL;
-            SWeapon*   pWeapon    = NULL;
+            char       Sex        = m_core.Sex;  // 获取角色的性别
+            SItemBase* pItemClass = NULL;        // 用于存储物品类指针
+            SWeapon*   pWeapon    = NULL;        // 用于存储武器指针
+
+            // 根据武器的类型获取物品类
             pItemClass = GetWorld()->m_pItemManager->GetItem(mBaseActor.m_pWeapon->m_item.type);
             if (!pItemClass)
                 return;
+
+            // 将物品类转换为武器类
             pWeapon = (SWeapon*)pItemClass;
+
+            // 根据性别选择对应的武器模型路径
             if (Sex) {
                 // 女模型
-                //m_pMaster->EquipWeapon(true,pWeapon->Models1[mBaseActor.m_pWeapon->m_item.level],pWeapon,item);
+                // m_pMaster->EquipWeapon(true, pWeapon->Models1[mBaseActor.m_pWeapon->m_item.level], pWeapon, item);
                 rt2_strncpy(m_linkName, pWeapon->Models1[mBaseActor.m_pWeapon->m_item.level], 20);
             } else {
                 // 男模型
-                //m_pMaster->EquipWeapon(true,pWeapon->Models2[mBaseActor.m_pWeapon->m_item.level],pWeapon,item);
+                // m_pMaster->EquipWeapon(true, pWeapon->Models2[mBaseActor.m_pWeapon->m_item.level], pWeapon, item);
                 rt2_strncpy(m_linkName, pWeapon->Models2[mBaseActor.m_pWeapon->m_item.level], 20);
             }
         }
+
+        // 根据武器类型解除与角色模型的绑定
         if (ItemIsWeapon_Riband(mBaseActor.m_pWeapon->m_item)) {
-            //rt2_strncpy(linkName,GetGraph()->GetLinkActorName("Box03"), 20);
+            // 解除绑定 "Box03"
+            // rt2_strncpy(linkName, GetGraph()->GetLinkActorName("Box03"), 20);
             GetGraph()->UnLink("Box03");
         } else if (ItemIsWeapon_Hoop(mBaseActor.m_pWeapon->m_item)) {
-            //rt2_strncpy(linkName,GetGraph()->GetLinkActorName("Bip01 R Hand"), 20);
+            // 解除绑定 "Bip01 R Hand" 和 "Bip01 L Hand"
+            // rt2_strncpy(linkName, GetGraph()->GetLinkActorName("Bip01 R Hand"), 20);
             GetGraph()->UnLink("Bip01 R Hand");
             GetGraph()->UnLink("Bip01 L Hand");
         } else {
-            //rt2_strncpy(linkName,GetGraph()->GetLinkActorName("Box01"), 20);
+            // 解除绑定 "Box01"
+            // rt2_strncpy(linkName, GetGraph()->GetLinkActorName("Box01"), 20);
             GetGraph()->UnLink("Box01");
         }
     } else {
+        // 如果需要显示武器（bNeed 为 true）
         if (m_linkName[0] && mBaseActor.m_pWeapon) {
+            // 根据武器类型进行绑定
             if (ItemIsWeapon_Riband(mBaseActor.m_pWeapon->m_item)) {
                 GetGraph()->Link("Box03", m_linkName);
             } else if (ItemIsWeapon_Hoop(mBaseActor.m_pWeapon->m_item)) {
                 GetGraph()->Link("Bip01 R Hand", m_linkName);
                 GetGraph()->Link("Bip01 L Hand", m_linkName);
             } else {
+                //lyymark 2024.8.11 修改武器 斧头 link点
                 GetGraph()->Link("Box01", m_linkName);
+                //GetGraph()->Link("Bip01 R Hand", m_linkName);
             }
+
+            // 调用武器的恢复绑定模型方法
             mBaseActor.m_pWeapon->RevertLinkModel();
+
+            // 清空 m_linkName
             ZeroMemory(m_linkName, strlen(m_linkName));
         }
     }
-    unguard;
+
+    unguard;  // 结束保护块
 }
 
 void GcActor::SetPetHUD() {
