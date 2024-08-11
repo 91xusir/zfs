@@ -304,7 +304,7 @@ void Ctool_characterView::OnInitialUpdate()
 
 
 	RtGetRender()->SetCustomWndHandle(m_hWnd);
-	if(!RtGetRender()->Init(NULL, RT_RUNTIME_CLASS(CEditorFrame), RT_RUNTIME_CLASS(RtgCameraGame), "tool_character.ini", "tool_character.ini"))
+	if(!RtGetRender()->Init(NULL, RT_RUNTIME_CLASS(CEditorFrame), RT_RUNTIME_CLASS(RtgCameraGame)))
 	{
 		return;
 	}

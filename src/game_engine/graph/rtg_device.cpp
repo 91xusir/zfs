@@ -3,14 +3,13 @@
 
 namespace rt_graph {
 
-RtPerformance g_GraphPref;
+RtPerformance   g_GraphPref;
 RtgRenderOption g_RenderOption;
-string _call_create_buffer_func_name;
-string _call_create_buffer_func_line;
+string          _call_create_buffer_func_name;
+string          _call_create_buffer_func_line;
 
 //lyymark 1.Core.RtgDevice 默认配置
-RtgDevice::RtgDevice()
-{
+RtgDevice::RtgDevice() {
     int i;
 
     m_bDeviceReady = FALSE;
@@ -86,10 +85,10 @@ RtgDevice::RtgDevice()
     m_bGray = false;
     m_bUsePostProcessEffectOnoff = false;
     m_dwPostProcessObjectHLColorSpe = 0x00FFFFFF;
-	m_fPostProcessObjectHLColorSpePower = 8;
+    m_fPostProcessObjectHLColorSpePower = 8;
     m_fPostProcessObjectHLScale = 1.f;
-	m_dwPostProcessObjectHLColorEmi = 0x00222222;
-	m_dwPostProcessObjectHLColorDif = 0x00555555;
+    m_dwPostProcessObjectHLColorEmi = 0x00222222;
+    m_dwPostProcessObjectHLColorDif = 0x00555555;
 
     m_bUsePostProcessObjectHighLight = false;
     m_bUsePostProcessObjectHighLightOnoff = false;
@@ -97,10 +96,9 @@ RtgDevice::RtgDevice()
     m_fPostProcessEffectContrast = 0;
     m_fPostProcessEffectIntensity = 0.5f;
 
-   // m_iRenderTargetStackSize = 0;
+    // m_iRenderTargetStackSize = 0;
 
-    for (i=0; i<8; i++)
-    {
+    for (i = 0; i < 8; i++) {
         m_bTexture[0] = FALSE;
         m_bUseTextureMatrix[i] = FALSE;
         m_dwTexTransformFlag[i] = RTGTTF_COUNT2;
@@ -108,8 +106,7 @@ RtgDevice::RtgDevice()
     m_mTextureDefaultMatrix.Identity();
 
     m_eCurrentViewWindowMode = RTGVWM_WINDOWED;
-    for (i=0; i<RTGVWM_MAX; i++)
-    {
+    for (i = 0; i < RTGVWM_MAX; i++) {
         m_ViewWnd[i].bEnable = FALSE;
         m_ViewWnd[i].hWnd = NULL;
     }
@@ -119,7 +116,7 @@ RtgDevice::RtgDevice()
     m_Ability.bEnvBumpmap = false;              // 是否支持Bumpmap
     m_Ability.bDynamicTextures = false;         // 是否支持动态贴图
     m_Ability.bDot3ProductBumpmap = false;      // 是否支持Dot3ProductBumpmap
-    m_Ability.bTextureOpMultiplyAdd = false;    // 
+    m_Ability.bTextureOpMultiplyAdd = false;    //
     m_Ability.iMaxTextureWidth = 0;             // 最大贴图宽度
     m_Ability.iMaxTextureHeight = 0;            // 最大贴图高度
     m_Ability.iMaxMultiTextures = 0;            // 一次渲染最多的贴图层数
@@ -132,80 +129,70 @@ RtgDevice::RtgDevice()
     m_Ability.bVertexShader = false;            // 是否支持VertexShader
     m_Ability.bPixelShader = false;             // 是否支持PixelShader
 
-    m_userConfig.bFullscreen            = false;        // 全屏模式   关
-    m_userConfig.bFSAA                  = false;        // 全屏抗锯齿 关
-    m_userConfig.bEdgeAntialias         = false;        // 全屏抗锯齿 关
-    m_userConfig.bEnableConsole         = false;
-    m_userConfig.lWndWidth              = 1024;
-    m_userConfig.lWndHeight             = 768;
-    m_userConfig.lWndColorDepth         = 32;
-    m_userConfig.lTextureQuality        = 0;            // 贴图质量   高
-    m_userConfig.lGeometryQuality       = 0;            // 贴图质量   高
-    m_userConfig.bPosteffect            = 1;            // 后期处理   关
-    m_userConfig.bObjEffect             = 1;            // 后期加强   关
-    m_userConfig.dwMaxMultiSampleTypeWindowed   = 0;
+    m_userConfig.bFullscreen = false;     // 全屏模式   关
+    m_userConfig.bFSAA = false;           // 全屏抗锯齿 关
+    m_userConfig.bEdgeAntialias = false;  // 全屏抗锯齿 关
+    m_userConfig.bEnableConsole = false;
+    m_userConfig.lWndWidth = 1024;
+    m_userConfig.lWndHeight = 768;
+    m_userConfig.lWndColorDepth = 32;
+    m_userConfig.lTextureQuality = 0;   // 贴图质量   高
+    m_userConfig.lGeometryQuality = 0;  // 贴图质量   高
+    m_userConfig.bPosteffect = 1;       // 后期处理   关
+    m_userConfig.bObjEffect = 1;        // 后期加强   关
+    m_userConfig.dwMaxMultiSampleTypeWindowed = 0;
     m_userConfig.dwMaxMultiSampleTypeFullscreen = 0;
-    m_userConfig.lMillisecondPerFrame   = 16;           // 1000/16 = 60
-    m_userConfig.bvsync = false;                        // 垂直同步   关
+    m_userConfig.lMillisecondPerFrame = 16;  // 1000/16 = 60
+    m_userConfig.bvsync = false;             // 垂直同步   关
 
     rt2_strcpy(m_config.szWindowTitle, "rtgGraph 3D App");
-    m_config.iDefaultStartX          = CW_USEDEFAULT;   // 开始窗口的X位置
-    m_config.iDefaultStartY          = CW_USEDEFAULT;   // 开始窗口的Y位置
-    m_config.hCustomWndHandle        = 0;               // 开始窗口的Y位置
-    m_config.fCameraFOV              = 45;              //
-    m_config.fCameraAspect           = 1.333333333;     // 4/3, 16/9
-    m_config.fCameraNear             = 3;               //
-    m_config.fCameraFar              = 5000;            //
-    m_config.bEnableFog              = true;
-
+    m_config.iDefaultStartX = CW_USEDEFAULT;  // 开始窗口的X位置
+    m_config.iDefaultStartY = CW_USEDEFAULT;  // 开始窗口的Y位置
+    m_config.hCustomWndHandle = 0;            // 开始窗口的Y位置
+    m_config.fCameraFOV = 45;                 //
+    m_config.fCameraAspect = 1.333333333;     // 4/3, 16/9
+    m_config.fCameraNear = 3;                 //
+    m_config.fCameraFar = 5000;               //
+    m_config.bEnableFog = true;
 }
 
-RtgDevice::~RtgDevice()
-{
-}
+RtgDevice::~RtgDevice() {}
 
-struct SResumeDefaultDisplayMode
-{
+struct SResumeDefaultDisplayMode {
     DWORD dwColorDepth;
     DWORD dwScreenWidth;
     DWORD dwScreenHeight;
     DWORD dwRefreshRate;
 };
 
-SResumeDefaultDisplayMode   s_ResumeDefaultDisplayMode;
+SResumeDefaultDisplayMode s_ResumeDefaultDisplayMode;
 
 //lyymark 1.Device.Init Device初始化
-bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeClass* pCameraClass, const char* szGraphIni, const char* szUserIni)
-{
-    RtIni graphIni;
-    if (!graphIni.OpenFile(szGraphIni))
-        return false;
-    if (szUserIni)
-    {
-        RtIni userIni;
-		if (!userIni.OpenFile(szUserIni))
-		{
-			if (!graphIni.OpenFile(szGraphIni))
-				return false;
-		}
-		else
-		{
-			if (Init(hInst, pEventClass, pCameraClass, &graphIni, &userIni))
-			{
-				return true;
-			}
-			else
-			{
-				if (!graphIni.OpenFile(szGraphIni))
-					return false;
-			}
-		}
-    }
-    return Init(hInst, pEventClass, pCameraClass, &graphIni, NULL);
-}
+//bool RtgDevice::Init(
+//    RTHINSTANCE hInst, RtRuntimeClass* pEventClass,
+//    RtRuntimeClass* pCameraClass /*, const char* szGraphIni, const char* szUserIni*/) {
+//    RtIni graphIni;
+//    if (!graphIni.OpenFile(szGraphIni))
+//        return false;
+//    if (szUserIni) {
+//        RtIni userIni;
+//        if (!userIni.OpenFile(szUserIni)) {
+//            if (!graphIni.OpenFile(szGraphIni))
+//                return false;
+//        } else {
+//            if (Init(hInst, pEventClass, pCameraClass, &graphIni, &userIni)) {
+//                return true;
+//            } else {
+//                if (!graphIni.OpenFile(szGraphIni))
+//                    return false;
+//            }
+//        }
+//    }
+//    return Init(hInst, pEventClass, pCameraClass, &graphIni, NULL);
+//}
 
-bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeClass* pCameraClass, RtIni* pGraphIni, RtIni* pUserIni)
-{
+bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass,
+                     RtRuntimeClass* pCameraClass /*, RtIni* pGraphIni, RtIni* pUserIni*/) {
     RTASSERT(pEventClass);
 
     if (!pEventClass->IsDerivedFrom(RT_RUNTIME_CLASS(CRtgAppFrame)))
@@ -216,17 +203,16 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
     m_pEvent = (RtgDeviceEvent*)(pEventClass->CreateObject());
     SetCamera((RtgCamera*)(pCameraClass->CreateObject()));
 
-
     DEVMODE devMode;
     memset(&devMode, 0, sizeof(DEVMODE));
     devMode.dmSize = sizeof(DEVMODE);
     EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &devMode);
-    s_ResumeDefaultDisplayMode.dwScreenWidth  = devMode.dmPelsWidth;
+    s_ResumeDefaultDisplayMode.dwScreenWidth = devMode.dmPelsWidth;
     s_ResumeDefaultDisplayMode.dwScreenHeight = devMode.dmPelsHeight;
-    s_ResumeDefaultDisplayMode.dwColorDepth   = devMode.dmBitsPerPel;
-    s_ResumeDefaultDisplayMode.dwRefreshRate  = devMode.dmDisplayFrequency;
-    ReadGraphIni(pGraphIni);
-    ReadUserIni(pUserIni);
+    s_ResumeDefaultDisplayMode.dwColorDepth = devMode.dmBitsPerPel;
+    s_ResumeDefaultDisplayMode.dwRefreshRate = devMode.dmDisplayFrequency;
+    ReadGraphIni(/*pGraphIni*/);
+    ReadUserIni(/*pUserIni*/);
     //lyymark 默认取消全屏
     m_userConfig.bFullscreen = false;
     ApplyConfig();
@@ -256,113 +242,100 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
     return true;
 }
 
-RTHWND RtgDevice::GetWndHandle(RTGViewWindowMode eMode)
-{
-    if (eMode<RTGVWM_WINDOWED || eMode>=RTGVWM_MAX)
+RTHWND RtgDevice::GetWndHandle(RTGViewWindowMode eMode) {
+    if (eMode < RTGVWM_WINDOWED || eMode >= RTGVWM_MAX)
         eMode = RTGVWM_WINDOWED;
     return m_ViewWnd[eMode].hWnd;
 }
 
-
 //lyymark 1.Core.ReadGraphIni加载Graph.ini配置
-void RtgDevice::ReadGraphIni(RtIni* pGraphIni)
-{
-    long lTotalTextureMem = 8*1024*1024;
+void RtgDevice::ReadGraphIni(RtIni* pGraphIni) {
+    long lTotalTextureMem = 8 * 1024 * 1024;
 
-    const char* szWndSection = "Window";
-    pGraphIni->GetEntry(szWndSection, "Fullscreen",          &(m_userConfig.bFullscreen));
-    pGraphIni->GetEntry(szWndSection, "WndWidth",            &(m_userConfig.lWndWidth));
-    pGraphIni->GetEntry(szWndSection, "WndHeight",           &(m_userConfig.lWndHeight));
-    pGraphIni->GetEntry(szWndSection, "ColorDepth",          &(m_userConfig.lWndColorDepth));
-    pGraphIni->GetEntry(szWndSection, "StartX",              &(m_config.iDefaultStartX));
-    pGraphIni->GetEntry(szWndSection, "StartY",              &(m_config.iDefaultStartY));
-    pGraphIni->GetEntry(szWndSection, "Title",               m_config.szWindowTitle, 256);
+    m_userConfig.bFullscreen = 0;
+    m_userConfig.lWndWidth = 1024;
+    m_userConfig.lWndHeight = 728;
+    m_userConfig.lWndColorDepth = 32;
+    m_config.iDefaultStartX = -1;
+    m_config.iDefaultStartY = -1;
+    rt2_strncpy(m_config.szWindowTitle, "sence", 256);
+    m_userConfig.bEnableConsole = 1;
+    m_userConfig.bFSAA = 0;
+    m_userConfig.bEdgeAntialias = 0;
+    m_userConfig.bPosteffect = 0;
+    m_userConfig.bObjEffect = 0;
+    m_userConfig.dwMaxMultiSampleTypeWindowed = 0;
+    m_userConfig.dwMaxMultiSampleTypeFullscreen = 0;
+    m_userConfig.lMillisecondPerFrame = 16;
+    m_userConfig.bvsync = 0;
+    m_config.fCameraFOV = 45;
+    m_config.fCameraAspect = 1.33333333;
+    m_config.fCameraNear = 3;
+    m_config.fCameraFar = 5000;
+    m_config.bEnableFog = 1;
+    m_userConfig.lTextureQuality = 0;
+    m_userConfig.lGeometryQuality = 0;
 
-    const char* szGraphSection = "Graph";
-    pGraphIni->GetEntry(szGraphSection, "EnableConsole",     &(m_userConfig.bEnableConsole));
-    pGraphIni->GetEntry(szGraphSection, "FSAA",              &(m_userConfig.bFSAA));
-    pGraphIni->GetEntry(szGraphSection, "EdgeAntialias",     &(m_userConfig.bEdgeAntialias));
-    pGraphIni->GetEntry(szGraphSection, "PostEffect",        &(m_userConfig.bPosteffect));
-    pGraphIni->GetEntry(szGraphSection, "ObjEffect",         &(m_userConfig.bObjEffect));
-    pGraphIni->GetEntry(szGraphSection, "MultiSampleWnd",    &(m_userConfig.dwMaxMultiSampleTypeWindowed));
-    pGraphIni->GetEntry(szGraphSection, "MultiSampleFsc",    &(m_userConfig.dwMaxMultiSampleTypeFullscreen));
-    pGraphIni->GetEntry(szGraphSection, "LockFps",           &(m_userConfig.lMillisecondPerFrame));
-    pGraphIni->GetEntry(szGraphSection, "Vsync",             &(m_userConfig.bvsync));
-
-    const char* szTextureSection = "Texture";
-    pGraphIni->GetEntry(szTextureSection, "TotalTextureMem", &(lTotalTextureMem));
-
-    const char* szQualitySection = "Quality";
-    pGraphIni->GetEntry(szQualitySection, "TextureQuality",  &(m_userConfig.lTextureQuality));
-    pGraphIni->GetEntry(szQualitySection, "GeometryQuality", &(m_userConfig.lGeometryQuality));
-
-    const char* szCameraSection = "Camera";
-    pGraphIni->GetEntry(szCameraSection, "FOV",              &(m_config.fCameraFOV));
-    pGraphIni->GetEntry(szCameraSection, "Aspect",           &(m_config.fCameraAspect));
-    pGraphIni->GetEntry(szCameraSection, "Near",             &(m_config.fCameraNear));
-    pGraphIni->GetEntry(szCameraSection, "Far",              &(m_config.fCameraFar));
-    pGraphIni->GetEntry(szCameraSection, "EnableFog",        &(m_config.bEnableFog));
-
-    if (m_config.iDefaultStartX==-1) m_config.iDefaultStartX = CW_USEDEFAULT;
-    if (m_config.iDefaultStartY==-1) m_config.iDefaultStartY = CW_USEDEFAULT;
+    if (m_config.iDefaultStartX == -1)
+        m_config.iDefaultStartX = CW_USEDEFAULT;
+    if (m_config.iDefaultStartY == -1)
+        m_config.iDefaultStartY = CW_USEDEFAULT;
 }
+
 //lyymark 1.Core.ReadGraphIni加载User.ini配置
-void RtgDevice::ReadUserIni(RtIni* pUserIni)
-{
-//Heten
-    const char* szUserSection = "graph";
-    pUserIni->GetEntry(szUserSection, "fullscreen",       &(m_userConfig.bFullscreen));
-    pUserIni->GetEntry(szUserSection, "width",            &(m_userConfig.lWndWidth));
-    pUserIni->GetEntry(szUserSection, "height",           &(m_userConfig.lWndHeight));
-    pUserIni->GetEntry(szUserSection, "color",            &(m_userConfig.lWndColorDepth));
-//end
-    pUserIni->GetEntry(szUserSection, "FSAA",             &(m_userConfig.bFSAA));
-    pUserIni->GetEntry(szUserSection, "EdgeAntialias",    &(m_userConfig.bEdgeAntialias));
-    pUserIni->GetEntry(szUserSection, "PostEffect",       &(m_userConfig.bPosteffect));
-    pUserIni->GetEntry(szUserSection, "ObjEffect",        &(m_userConfig.bObjEffect));
-    pUserIni->GetEntry(szUserSection, "MultiSampleWnd",   &(m_userConfig.dwMaxMultiSampleTypeWindowed));
-    pUserIni->GetEntry(szUserSection, "MultiSampleFsc",   &(m_userConfig.dwMaxMultiSampleTypeFullscreen));
-    pUserIni->GetEntry(szUserSection, "LockFps",          &(m_userConfig.lMillisecondPerFrame));
-    pUserIni->GetEntry(szUserSection, "Vsync",           &(m_userConfig.bvsync));
-    pUserIni->GetEntry(szUserSection, "TextureQuality",   &(m_userConfig.lTextureQuality));
-    pUserIni->GetEntry(szUserSection, "GeometryQuality",  &(m_userConfig.lGeometryQuality));
+void RtgDevice::ReadUserIni(RtIni* pUserIni) {
+    ////Heten
+    //const char* szUserSection = "graph";
+    //pUserIni->GetEntry(szUserSection, "fullscreen", &(m_userConfig.bFullscreen));
+    //pUserIni->GetEntry(szUserSection, "width", &(m_userConfig.lWndWidth));
+    //pUserIni->GetEntry(szUserSection, "height", &(m_userConfig.lWndHeight));
+    //pUserIni->GetEntry(szUserSection, "color", &(m_userConfig.lWndColorDepth));
+    ////end
+    //pUserIni->GetEntry(szUserSection, "FSAA", &(m_userConfig.bFSAA));
+    //pUserIni->GetEntry(szUserSection, "EdgeAntialias", &(m_userConfig.bEdgeAntialias));
+    //pUserIni->GetEntry(szUserSection, "PostEffect", &(m_userConfig.bPosteffect));
+    //pUserIni->GetEntry(szUserSection, "ObjEffect", &(m_userConfig.bObjEffect));
+    //pUserIni->GetEntry(szUserSection, "MultiSampleWnd",
+    //                   &(m_userConfig.dwMaxMultiSampleTypeWindowed));
+    //pUserIni->GetEntry(szUserSection, "MultiSampleFsc",
+    //                   &(m_userConfig.dwMaxMultiSampleTypeFullscreen));
+    //pUserIni->GetEntry(szUserSection, "LockFps", &(m_userConfig.lMillisecondPerFrame));
+    //pUserIni->GetEntry(szUserSection, "Vsync", &(m_userConfig.bvsync));
+    //pUserIni->GetEntry(szUserSection, "TextureQuality", &(m_userConfig.lTextureQuality));
+    //pUserIni->GetEntry(szUserSection, "GeometryQuality", &(m_userConfig.lGeometryQuality));
 }
 
-void RtgDevice::ApplyConfig()
-{
+void RtgDevice::ApplyConfig() {
     DWORD dwScreenW = (DWORD)::GetSystemMetrics(SM_CXSCREEN);
     DWORD dwScreenH = (DWORD)::GetSystemMetrics(SM_CYSCREEN);
 
     // 绑定窗口如果为NULL，就是自己创建窗口
     BindViewWindow(RTGVWM_WINDOWED, m_config.hCustomWndHandle);
     BindViewWindow(RTGVWM_TOPWINDOW, m_config.hCustomWndHandle);
-    SetViewWindowInfo(RTGVWM_WINDOWED, m_userConfig.lWndWidth, m_userConfig.lWndHeight, m_userConfig.lWndColorDepth, 0);
-    SetViewWindowInfo(RTGVWM_TOPWINDOW, m_userConfig.lWndWidth, m_userConfig.lWndHeight, m_userConfig.lWndColorDepth, 0);
+    SetViewWindowInfo(RTGVWM_WINDOWED, m_userConfig.lWndWidth, m_userConfig.lWndHeight,
+                      m_userConfig.lWndColorDepth, 0);
+    SetViewWindowInfo(RTGVWM_TOPWINDOW, m_userConfig.lWndWidth, m_userConfig.lWndHeight,
+                      m_userConfig.lWndColorDepth, 0);
     LockFps(m_userConfig.lMillisecondPerFrame);
-
 
     //m_pEvent->EnableConsole(m_config.bEnableConsole);
 }
 
-void RtgDevice::SetCustomWndHandle(HWND hWnd)
-{
+void RtgDevice::SetCustomWndHandle(HWND hWnd) {
     m_config.hCustomWndHandle = hWnd;
 }
 
-void RtgDevice::Close()
-{
-    if (m_pEvent && m_pCamera)
-    {
+void RtgDevice::Close() {
+    if (m_pEvent && m_pCamera) {
         //((CRtgAppFrame*)m_pEvent)->Close();
         this->OnClose();
         ResumeDefaultDisplayMode();
         DEL_ONE(m_pCamera);
-       // DEL_ONE(m_pEvent);
+        // DEL_ONE(m_pEvent);
     }
 }
 
-void RtgDevice::ResumeDefaultDisplayMode()
-{
+void RtgDevice::ResumeDefaultDisplayMode() {
     /*
     DEVMODE devMode;
     memset(&devMode, 0, sizeof(DEVMODE));
@@ -385,79 +358,71 @@ void RtgDevice::ResumeDefaultDisplayMode()
     }
     */
     RtCoreLog().Info("ResumeDefaultDisplayMode.\n");
-    if (ChangeDisplaySettings(NULL, 0)!=DISP_CHANGE_SUCCESSFUL)
-    {
+    if (ChangeDisplaySettings(NULL, 0) != DISP_CHANGE_SUCCESSFUL) {
         RtCoreLog().Info("RtgDevice: 切换分辨率失败.\n");
     }
 }
 
-int RtgDevice::RunEngine()
-{
+int RtgDevice::RunEngine() {
     return this->OnRun();
 }
 
-void RtgDevice::BindViewWindow(RTGViewWindowMode eMode, RTHWND hWnd, bool bResize)
-{
-    m_ViewWnd[eMode].eViewMode      = eMode;
-    m_ViewWnd[eMode].bEnable        = true;
-    m_ViewWnd[eMode].bResize        = bResize;
-    m_ViewWnd[eMode].bFullscreen    = false;
-    m_ViewWnd[eMode].bTopwindow     = false;
-    m_ViewWnd[eMode].iPosX          = 0;
-    m_ViewWnd[eMode].iPosY          = 0;
-    m_ViewWnd[eMode].dwWidth        = 800;
-    m_ViewWnd[eMode].dwHeight       = 600;
-    m_ViewWnd[eMode].dwDepth        = 16;
-    m_ViewWnd[eMode].dwRefreshRate  = 60;
-    m_ViewWnd[eMode].hWnd           = hWnd;
-    m_ViewWnd[eMode].dwWndStyle     = GetWindowLong((HWND)hWnd, GWL_STYLE);
+void RtgDevice::BindViewWindow(RTGViewWindowMode eMode, RTHWND hWnd, bool bResize) {
+    m_ViewWnd[eMode].eViewMode = eMode;
+    m_ViewWnd[eMode].bEnable = true;
+    m_ViewWnd[eMode].bResize = bResize;
+    m_ViewWnd[eMode].bFullscreen = false;
+    m_ViewWnd[eMode].bTopwindow = false;
+    m_ViewWnd[eMode].iPosX = 0;
+    m_ViewWnd[eMode].iPosY = 0;
+    m_ViewWnd[eMode].dwWidth = 800;
+    m_ViewWnd[eMode].dwHeight = 600;
+    m_ViewWnd[eMode].dwDepth = 16;
+    m_ViewWnd[eMode].dwRefreshRate = 60;
+    m_ViewWnd[eMode].hWnd = hWnd;
+    m_ViewWnd[eMode].dwWndStyle = GetWindowLong((HWND)hWnd, GWL_STYLE);
 
-
-	switch (eMode)
-    {
-    case RTGVWM_TOPWINDOW:
-        m_ViewWnd[eMode].dwWndStyle = WS_POPUP | WS_BORDER | WS_VISIBLE;
-        m_ViewWnd[eMode].bTopwindow = true;
-        break;
-    case RTGVWM_WINDOWED://alter by tim.yang  20080724注释掉可以让鼠标拖拽窗口的参数
-		m_ViewWnd[eMode].dwWndStyle = WS_OVERLAPPED| WS_CAPTION | WS_MINIMIZEBOX| WS_SYSMENU /*| WS_THICKFRAME */| WS_VISIBLE;//WS_CAPTION |WS_MINIMIZEBOX| WS_VISIBLE;
-        break;
-    case RTGVWM_FULLSCREEN:
-        m_ViewWnd[eMode].bFullscreen = true;
-        break;
+    switch (eMode) {
+        case RTGVWM_TOPWINDOW:
+            m_ViewWnd[eMode].dwWndStyle = WS_POPUP | WS_BORDER | WS_VISIBLE;
+            m_ViewWnd[eMode].bTopwindow = true;
+            break;
+        case RTGVWM_WINDOWED:  //alter by tim.yang  20080724注释掉可以让鼠标拖拽窗口的参数
+            m_ViewWnd[eMode].dwWndStyle = WS_OVERLAPPED | WS_CAPTION | WS_MINIMIZEBOX |
+                                          WS_SYSMENU /*| WS_THICKFRAME */ |
+                                          WS_VISIBLE;  //WS_CAPTION |WS_MINIMIZEBOX| WS_VISIBLE;
+            break;
+        case RTGVWM_FULLSCREEN:
+            m_ViewWnd[eMode].bFullscreen = true;
+            break;
     }
 }
 
-void RtgDevice::SetViewWindowInfo(RTGViewWindowMode eMode, DWORD dwWidth, DWORD dwHeight, DWORD dwDepth, DWORD dwRefreshRate)
-{
-    if (!m_ViewWnd[eMode].bEnable) return;
-    m_ViewWnd[eMode].dwWidth        = dwWidth;
-    m_ViewWnd[eMode].dwHeight       = dwHeight;
-    m_ViewWnd[eMode].dwDepth        = dwDepth;
-    m_ViewWnd[eMode].dwRefreshRate  = dwRefreshRate;
+void RtgDevice::SetViewWindowInfo(RTGViewWindowMode eMode, DWORD dwWidth, DWORD dwHeight,
+                                  DWORD dwDepth, DWORD dwRefreshRate) {
+    if (!m_ViewWnd[eMode].bEnable)
+        return;
+    m_ViewWnd[eMode].dwWidth = dwWidth;
+    m_ViewWnd[eMode].dwHeight = dwHeight;
+    m_ViewWnd[eMode].dwDepth = dwDepth;
+    m_ViewWnd[eMode].dwRefreshRate = dwRefreshRate;
 }
 
-bool RtgDevice::SetViewMode(RTGViewWindowMode eMode, bool bStype)
-{
+bool RtgDevice::SetViewMode(RTGViewWindowMode eMode, bool bStype) {
     DWORD dwWidth = m_ViewWnd[eMode].dwWidth;
     DWORD dwHeight = m_ViewWnd[eMode].dwHeight;
     DWORD dwDepth = m_ViewWnd[eMode].dwDepth;
     DWORD dwRefreshRate = m_ViewWnd[eMode].dwRefreshRate;
 
-    if (eMode == RTGVWM_TOPWINDOW)
-    {
+    if (eMode == RTGVWM_TOPWINDOW) {
         dwWidth = (DWORD)::GetSystemMetrics(SM_CXSCREEN);
         dwHeight = (DWORD)::GetSystemMetrics(SM_CYSCREEN);
     }
 
     bool bResult = false;
 
-    if (m_eCurrentViewWindowMode == eMode
-        && m_iWndWidth      == dwWidth
-        && m_iWndHeight     == dwHeight
-        && m_iWndColorBits  == dwDepth
-        && m_dwRefreshRate  == dwRefreshRate
-        )
+    if (m_eCurrentViewWindowMode == eMode && m_iWndWidth == dwWidth && m_iWndHeight == dwHeight &&
+        m_iWndColorBits == dwDepth && m_dwRefreshRate == dwRefreshRate)
         return true;
 
     // 保存最后一次窗口的位置信息
@@ -498,57 +463,46 @@ bool RtgDevice::SetViewMode(RTGViewWindowMode eMode, bool bStype)
     //}
 
     // 设置当前的窗口风格
-    if (bStype && m_ViewWnd[eMode].dwWndStyle!=GetWindowLong((HWND)m_ViewWnd[eMode].hWnd, GWL_STYLE))
-    {
+    if (bStype &&
+        m_ViewWnd[eMode].dwWndStyle != GetWindowLong((HWND)m_ViewWnd[eMode].hWnd, GWL_STYLE)) {
         SetWindowLong((HWND)m_ViewWnd[eMode].hWnd, GWL_STYLE, m_ViewWnd[eMode].dwWndStyle);
-    }
-    else
-    {
+    } else {
         m_ViewWnd[eMode].dwWndStyle = GetWindowLong((HWND)m_ViewWnd[eMode].hWnd, GWL_STYLE);
     }
 
     // 取得窗口位置
-    if (m_ViewWnd[eMode].bTopwindow)
-    {
+    if (m_ViewWnd[eMode].bTopwindow) {
         rc.left = 0;
-        rc.top  = 0;
-    }else
-    {
+        rc.top = 0;
+    } else {
         rc.left = m_ViewWnd[eMode].iPosX;
-        rc.top  = m_ViewWnd[eMode].iPosY;
+        rc.top = m_ViewWnd[eMode].iPosY;
     }
 
     // 如果这次或者上次有一次是全屏幕模式，就要切换全屏/窗口模式
-    if (eMode==RTGVWM_FULLSCREEN || m_eCurrentViewWindowMode==RTGVWM_FULLSCREEN)
-    {
+    if (eMode == RTGVWM_FULLSCREEN || m_eCurrentViewWindowMode == RTGVWM_FULLSCREEN) {
         // 如果两个模式不同，就需要切换，否则只需要调整
-        if (eMode!=m_eCurrentViewWindowMode)
-        {
-            if (eMode==RTGVWM_FULLSCREEN)
-            {
+        if (eMode != m_eCurrentViewWindowMode) {
+            if (eMode == RTGVWM_FULLSCREEN) {
                 SetFullScreenInfo(dwWidth, dwHeight, dwDepth);
             }
             bResult = FullscreenToggle();
-        }else
-        {
+        } else {
             bResult = ResetDevice(TRUE, dwWidth, dwHeight, dwDepth);
         }
-    }else
-    {
-        if (m_ViewWnd[eMode].bResize)
-        {
+    } else {
+        if (m_ViewWnd[eMode].bResize) {
             rc.right = rc.left + dwWidth;
             rc.bottom = rc.top + dwHeight;
             AdjustWindowRect(&rc, m_ViewWnd[eMode].dwWndStyle, FALSE);
-            if (GetParent(hWnd))
-            {
+            if (GetParent(hWnd)) {
                 RECT prc;
                 GetClientRect(GetParent(hWnd), &prc);
                 ClientToScreen(GetParent(hWnd), (LPPOINT)&prc);
-                rc.left     -= prc.left;
-                rc.top      -= prc.top;
-                rc.right    -= prc.left;
-                rc.bottom   -= prc.top;
+                rc.left -= prc.left;
+                rc.top -= prc.top;
+                rc.right -= prc.left;
+                rc.bottom -= prc.top;
             }
             MoveWindow(hWnd, rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top, true);
         }
@@ -558,147 +512,127 @@ bool RtgDevice::SetViewMode(RTGViewWindowMode eMode, bool bStype)
     return bResult;
 }
 
-int RtgDevice::GetAvailableTextureMem()
-{
+int RtgDevice::GetAvailableTextureMem() {
     return 0;
 }
 
-BOOL RtgDevice::SaveRenderTargetToFile(const char* szFileName, bool bJPG)
-{
+BOOL RtgDevice::SaveRenderTargetToFile(const char* szFileName, bool bJPG) {
     RtCoreLog().Warn("错误: 当前设备不支持保存渲染对象到文件的功能.\n");
     return FALSE;
 }
 
-BOOL RtgDevice::SaveRenderTargetToArchive(RtArchive* pArc, bool bJPG)
-{
+BOOL RtgDevice::SaveRenderTargetToArchive(RtArchive* pArc, bool bJPG) {
     RtCoreLog().Warn("错误: 当前设备不支持保存渲染对象到流的功能.\n");
     return FALSE;
 }
 
-bool RtgDevice::OnErrorMessage(const char* szMsg, int iType)
-{
-    CHECK(m_pEvent!=NULL);
+bool RtgDevice::OnErrorMessage(const char* szMsg, int iType) {
+    CHECK(m_pEvent != NULL);
     return m_pEvent->OnErrorMessage(szMsg, iType);
 }
 
-void RtgDevice::RenderScene()
-{
+void RtgDevice::RenderScene() {
     CHECKEX("没有初始化图形引擎");
 }
 
-bool RtgDevice::OnPreCreate3DDevice()
-{
-	CHECK(m_pEvent!=NULL);
+bool RtgDevice::OnPreCreate3DDevice() {
+    CHECK(m_pEvent != NULL);
 
-	const DWORD dwVBDTotal = 1;
-	DWORD dwVBDSize[dwVBDTotal] = {500*1024};
-	const DWORD dwVBSTotal = 0;
-	//DWORD dwVBSSize[dwVBSTotal] = {1*1024*1024};
+    const DWORD dwVBDTotal = 1;
+    DWORD       dwVBDSize[dwVBDTotal] = {500 * 1024};
+    const DWORD dwVBSTotal = 0;
+    //DWORD dwVBSSize[dwVBSTotal] = {1*1024*1024};
 
-	if (!m_pVB->InitStreamManager(dwVBDTotal, dwVBDSize, dwVBSTotal, NULL, 1000, 0))
-	{
-		RtCoreLog().Warn("ERROR: 创建顶点缓冲区失败.\n");
-	}
+    if (!m_pVB->InitStreamManager(dwVBDTotal, dwVBDSize, dwVBSTotal, NULL, 1000, 0)) {
+        RtCoreLog().Warn("ERROR: 创建顶点缓冲区失败.\n");
+    }
 
-	//const DWORD dwIBDTotal = 1;
-	//DWORD dwIBDSize[dwIBDTotal] = {100*1024};
-	//const DWORD dwIBSTotal = 0;
-	////DWORD dwIBSSize[dwIBSTotal] = {1*1024*1024};
-	//if (!m_pIB->InitStreamManager(dwIBDTotal, dwIBDSize, dwIBSTotal, NULL, 3000, 0))
-	//{
-	//	RtCoreLog().Warn("ERROR: 创建索引缓冲区失败.\n");
-	//}
+    //const DWORD dwIBDTotal = 1;
+    //DWORD dwIBDSize[dwIBDTotal] = {100*1024};
+    //const DWORD dwIBSTotal = 0;
+    ////DWORD dwIBSSize[dwIBSTotal] = {1*1024*1024};
+    //if (!m_pIB->InitStreamManager(dwIBDTotal, dwIBDSize, dwIBSTotal, NULL, 3000, 0))
+    //{
+    //	RtCoreLog().Warn("ERROR: 创建索引缓冲区失败.\n");
+    //}
 
     RTASSERT(m_pEvent);
     return m_pEvent->OnPreCreate3DDevice();
 }
 
-bool RtgDevice::OnAfterCreate3DDevice()
-{
+bool RtgDevice::OnAfterCreate3DDevice() {
     RTASSERT(m_pEvent);
     return m_pEvent->OnAfterCreate3DDevice();
 }
 
-bool RtgDevice::OnInit()
-{
+bool RtgDevice::OnInit() {
     RTASSERT(m_pEvent);
     return m_pEvent->OnDeviceInit();
 }
 
-void RtgDevice::OnClose()
-{
+void RtgDevice::OnClose() {
     RTASSERT(m_pEvent);
     m_pEvent->OnDeviceClose();
 }
 
-RtgDeviceEvent* RtgDevice::GetEvent()
-{
+RtgDeviceEvent* RtgDevice::GetEvent() {
     return m_pEvent;
 }
 
-bool RtgDevice::OnRestoreDevice()
-{
-    CHECK(m_pEvent!=NULL);
+bool RtgDevice::OnRestoreDevice() {
+    CHECK(m_pEvent != NULL);
     m_pVB->OnCreateStreamManager();
     //m_pIB->OnCreateStreamManager();
     //m_Texture.OnRestoreDevice();
     return m_pEvent->OnRestoreDevice();
 }
 
-bool RtgDevice::OnInvalidateDevice()
-{
-    CHECK(m_pEvent!=NULL);
+bool RtgDevice::OnInvalidateDevice() {
+    CHECK(m_pEvent != NULL);
     m_pVB->OnReleaseStreamManager();
     //m_pIB->OnReleaseStreamManager();
     //m_Texture.OnInvalidateDevice();
     return m_pEvent->OnInvalidateDevice();
 }
 
-void RtgDevice::SetMatrixFromCamera()
-{
+void RtgDevice::SetMatrixFromCamera() {
     // Camera
-    CHECK(m_pCamera!=NULL);
+    CHECK(m_pCamera != NULL);
     SetMatrix(RTGTS_VIEW, &(m_pCamera->m_matView));
     SetMatrix(RTGTS_PROJECTION, &(m_pCamera->m_matProj));
 }
 
-void RtgDevice::OnBeginRender()
-{
-    CHECK(m_pEvent!=NULL);
+void RtgDevice::OnBeginRender() {
+    CHECK(m_pEvent != NULL);
     //m_Texture.OnBeginRender();
     m_pVB->OnBeginRender();
     //m_pIB->OnBeginRender();
     m_pEvent->OnBeginRender();
 }
 
-void RtgDevice::OnEndRender()
-{
-    CHECK(m_pEvent!=NULL);
+void RtgDevice::OnEndRender() {
+    CHECK(m_pEvent != NULL);
     m_pEvent->OnEndRender();
     m_pVB->OnEndRender();
     //m_pIB->OnEndRender();
     //m_Texture.OnEndRender();
 }
 
-void RtgDevice::OnRender()
-{
+void RtgDevice::OnRender() {
     if (m_pEvent)
         m_pEvent->OnRender();
 }
 
-void RtgDevice::OnRender2D()
-{
+void RtgDevice::OnRender2D() {
     if (m_pEvent)
-	    m_pEvent->OnRender2D();
+        m_pEvent->OnRender2D();
 }
 
-void RtgDevice::OnClearZRender()
-{
+void RtgDevice::OnClearZRender() {
     m_pEvent->OnClearZRender();
 }
 
-void RtgDevice::OnFrameMove(float fDifTime)
-{
+void RtgDevice::OnFrameMove(float fDifTime) {
     m_pCamera->UpdateMatrix();
     SetMatrixFromCamera();
 
@@ -707,28 +641,27 @@ void RtgDevice::OnFrameMove(float fDifTime)
 }
 
 // 设置Camera，这里只是设置，没有负责删除
-void RtgDevice::SetCamera(RtgCamera* pCamera)
-{
+void RtgDevice::SetCamera(RtgCamera* pCamera) {
     m_pCamera = pCamera;
-  /*  CHECK(m_pCamera!=NULL);
+    /*  CHECK(m_pCamera!=NULL);
     if (m_pCamera)
     {
         m_pCamera->SetDevice(this);
     }*/
 }
 
-void RtgDevice::SetEvent(RtgDeviceEvent* pEvent)
-{
+void RtgDevice::SetEvent(RtgDeviceEvent* pEvent) {
     m_pEvent = pEvent;
 }
 
-void RtgDevice::DrawPoint( RtgVertex3&  vPos, DWORD *pColor )
-{
+void RtgDevice::DrawPoint(RtgVertex3& vPos, DWORD* pColor) {
     RtgVertexVCT p;
     p.v = vPos;
-    if ( pColor ) p.c = *pColor;
-    else          p.c = m_dwCurrentColor;
-    p.t.Set(0.0f,0.0f);
+    if (pColor)
+        p.c = *pColor;
+    else
+        p.c = m_dwCurrentColor;
+    p.t.Set(0.0f, 0.0f);
 
     this->SetShader(&m_nullShader);
     RTGVertexFormat eFVF = GetVertexFormat();
@@ -738,28 +671,28 @@ void RtgDevice::DrawPoint( RtgVertex3&  vPos, DWORD *pColor )
     this->RestoreShader(&m_nullShader);
 }
 
-void RtgDevice::DrawLine( RtgVertex3&  vStart, RtgVertex3 &vEnd, DWORD *pColor )
-{
+void RtgDevice::DrawLine(RtgVertex3& vStart, RtgVertex3& vEnd, DWORD* pColor) {
     RtgVertexVC p[2];
     p[0].v = vStart;
-    if (pColor) p[0].c = *pColor;
-    else        p[0].c = m_dwCurrentColor;
+    if (pColor)
+        p[0].c = *pColor;
+    else
+        p[0].c = m_dwCurrentColor;
     p[1] = p[0];
     p[1].v = vEnd;
 
-	DWORD dwLighting = GetRenderState(RTGRS_LIGHTING);
-	SetRenderState(RTGRS_LIGHTING, FALSE);
+    DWORD dwLighting = GetRenderState(RTGRS_LIGHTING);
+    SetRenderState(RTGRS_LIGHTING, FALSE);
     this->SetShader(&m_nullShader);
     RTGVertexFormat eFVF = GetVertexFormat();
     SetVertexFormat(RTG_VC);
     DrawPrimitiveUP(D3DPT_LINELIST, &p, sizeof(RtgVertexVC), 1);
     SetVertexFormat(eFVF);
     this->RestoreShader(&m_nullShader);
-	SetRenderState(RTGRS_LIGHTING, dwLighting);
+    SetRenderState(RTGRS_LIGHTING, dwLighting);
 }
 
-void RtgDevice::DrawAxis( RtgMatrix16& m16, float fLen )
-{
+void RtgDevice::DrawAxis(RtgMatrix16& m16, float fLen) {
     RtgVertexVC p[6];
     p[0].v = p[2].v = p[4].v = m16.Position();
     p[0].c = RtgGetColor(255, 0, 0, 0);
@@ -770,12 +703,15 @@ void RtgDevice::DrawAxis( RtgMatrix16& m16, float fLen )
     p[5] = p[4];
 
     RtgMatrix16 mm;
-    mm = m16; mm.TranslateX(fLen);
-    p[1].v  = mm.Position();
-    mm = m16; mm.TranslateY(fLen);
-    p[3].v  = mm.Position();
-    mm = m16; mm.TranslateZ(fLen);
-    p[5].v  = mm.Position();
+    mm = m16;
+    mm.TranslateX(fLen);
+    p[1].v = mm.Position();
+    mm = m16;
+    mm.TranslateY(fLen);
+    p[3].v = mm.Position();
+    mm = m16;
+    mm.TranslateZ(fLen);
+    p[5].v = mm.Position();
 
     this->SetShader(&m_nullShader);
     RTGVertexFormat eFVF = GetVertexFormat();
@@ -785,37 +721,82 @@ void RtgDevice::DrawAxis( RtgMatrix16& m16, float fLen )
     this->RestoreShader(&m_nullShader);
 }
 
-void RtgDevice::DrawAABBox(const RtgAABB* _aabbox, DWORD _color)
-{
+void RtgDevice::DrawAABBox(const RtgAABB* _aabbox, DWORD _color) {
     RTASSERT(_aabbox);
 
-    RtgVertexVC v[] = 
-    {
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z - _aabbox->vExt.z), _color},
-        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y, _aabbox->vPos.z + _aabbox->vExt.z), _color}
-    };
+    RtgVertexVC v[] = {
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y - _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x - _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z - _aabbox->vExt.z),
+         _color},
+        {RtgVertex3(_aabbox->vPos.x + _aabbox->vExt.x, _aabbox->vPos.y + _aabbox->vExt.y,
+                    _aabbox->vPos.z + _aabbox->vExt.z),
+         _color}};
 
     DWORD dwLighting = GetRenderState(RTGRS_LIGHTING);
     SetRenderState(RTGRS_LIGHTING, FALSE);
@@ -824,37 +805,47 @@ void RtgDevice::DrawAABBox(const RtgAABB* _aabbox, DWORD _color)
     DrawPrimitiveUP(D3DPT_LINELIST, v, sizeof(RtgVertexVC), sizeof(v) / sizeof(RtgVertexVC) / 2);
     RestoreShader(&m_nullShader);
     SetRenderState(RTGRS_LIGHTING, dwLighting);
-
 }
 
-void RtgDevice::DrawBox( RtgVertex3& vHalfExt, RtgMatrix16& m16, DWORD *pColor )
-{
-    DWORD c;
-    RtgVertex3 p[8];
+void RtgDevice::DrawBox(RtgVertex3& vHalfExt, RtgMatrix16& m16, DWORD* pColor) {
+    DWORD       c;
+    RtgVertex3  p[8];
     RtgVertexVC v[24];
 
     rtgGetBox(vHalfExt, m16, p);
-    if (pColor) c = *pColor;
-    else        c = m_dwCurrentColor;
-    for (int i=0; i<24; i++)
-    {
+    if (pColor)
+        c = *pColor;
+    else
+        c = m_dwCurrentColor;
+    for (int i = 0; i < 24; i++) {
         v[i].c = c;
     }
-    v[ 0].v = p[0];  v[ 1].v = p[1];
-    v[ 2].v = p[1];  v[ 3].v = p[2];
-    v[ 4].v = p[2];  v[ 5].v = p[3];
-    v[ 6].v = p[3];  v[ 7].v = p[0];
+    v[0].v = p[0];
+    v[1].v = p[1];
+    v[2].v = p[1];
+    v[3].v = p[2];
+    v[4].v = p[2];
+    v[5].v = p[3];
+    v[6].v = p[3];
+    v[7].v = p[0];
 
-    v[ 8].v = p[4];  v[ 9].v = p[5];
-    v[10].v = p[5];  v[11].v = p[6];
-    v[12].v = p[6];  v[13].v = p[7];
-    v[14].v = p[7];  v[15].v = p[4];
+    v[8].v = p[4];
+    v[9].v = p[5];
+    v[10].v = p[5];
+    v[11].v = p[6];
+    v[12].v = p[6];
+    v[13].v = p[7];
+    v[14].v = p[7];
+    v[15].v = p[4];
 
-    v[16].v = p[0];  v[17].v = p[4];
-    v[18].v = p[1];  v[19].v = p[5];
-    v[20].v = p[2];  v[21].v = p[6];
-    v[22].v = p[3];  v[23].v = p[7];
-
+    v[16].v = p[0];
+    v[17].v = p[4];
+    v[18].v = p[1];
+    v[19].v = p[5];
+    v[20].v = p[2];
+    v[21].v = p[6];
+    v[22].v = p[3];
+    v[23].v = p[7];
 
     DWORD dwLighting = GetRenderState(RTGRS_LIGHTING);
     SetRenderState(RTGRS_LIGHTING, FALSE);
@@ -882,22 +873,23 @@ void RtgDevice::DrawBox( RtgVertex3& vHalfExt, RtgMatrix16& m16, DWORD *pColor )
     */
 }
 
-void RtgDevice::DrawBox( RtgVertex3& mMin, RtgVertex3& mMax, DWORD *pColor )
-{
-    RtgVertex3 center = 0.5f * (mMin + mMax);
-    RtgVertex3 halfext = mMax - center;
-    RtgMatrix16 ma; ma.Identity();
+void RtgDevice::DrawBox(RtgVertex3& mMin, RtgVertex3& mMax, DWORD* pColor) {
+    RtgVertex3  center = 0.5f * (mMin + mMax);
+    RtgVertex3  halfext = mMax - center;
+    RtgMatrix16 ma;
+    ma.Identity();
     ma.SetRow(3, center);
     DrawBox(halfext, ma, pColor);
 }
 
-void RtgDevice::DrawTriangle( RtgVertex3&  v1, RtgVertex3& v2, RtgVertex3& v3, DWORD *pColor )
-{
+void RtgDevice::DrawTriangle(RtgVertex3& v1, RtgVertex3& v2, RtgVertex3& v3, DWORD* pColor) {
     RtgVertexVCT p[3];
     p[0].v = v1;
-    if (pColor) p[0].c = *pColor;
-    else        p[0].c = m_dwCurrentColor;
-    p[0].t.Set(0.0f,0.0f);
+    if (pColor)
+        p[0].c = *pColor;
+    else
+        p[0].c = m_dwCurrentColor;
+    p[0].t.Set(0.0f, 0.0f);
     p[2] = p[1] = p[0];
     p[1].v = v2;
     p[2].v = v3;
@@ -908,34 +900,31 @@ void RtgDevice::DrawTriangle( RtgVertex3&  v1, RtgVertex3& v2, RtgVertex3& v3, D
     SetVertexFormat(eFVF);
 }
 
-RTGVertexFormat RtgDevice::GetVertexFormat()
-{
+RTGVertexFormat RtgDevice::GetVertexFormat() {
     return m_eVertexFormat;
 }
 
-DWORD RtgDevice::GetVertexStride()
-{
+DWORD RtgDevice::GetVertexStride() {
     return m_dwVertexStride;
 }
 
-void RtgDevice::SetVertexFormat(RTGVertexFormat eVF, const char* pVertexShader)
-{
+void RtgDevice::SetVertexFormat(RTGVertexFormat eVF, const char* pVertexShader) {
     m_eVertexFormat = eVF;
     OnSetFVF();
 }
 
-BOOL RtgDevice::SetDefaultMaterial(float fR, float fG, float fB, float fA)
-{
+BOOL RtgDevice::SetDefaultMaterial(float fR, float fG, float fB, float fA) {
     m_vMaterialDiffuse.Set(fR, fG, fB, fA);
     m_vMaterialAmbient.Set(fR, fG, fB, fA);
     m_vMaterialSpecular.Set(0.f);
     m_vMaterialEmissive.Set(0.f);
-    return SetMaterial(m_vMaterialDiffuse, m_vMaterialAmbient, m_vMaterialSpecular, m_vMaterialEmissive, 0.f);
+    return SetMaterial(m_vMaterialDiffuse, m_vMaterialAmbient, m_vMaterialSpecular,
+                       m_vMaterialEmissive, 0.f);
 }
 
-BOOL RtgDevice::SetHighlightPower(float fPower)
-{
-    return SetMaterial(m_vMaterialDiffuse, m_vMaterialAmbient, m_vMaterialSpecular, m_vMaterialEmissive, fPower);
+BOOL RtgDevice::SetHighlightPower(float fPower) {
+    return SetMaterial(m_vMaterialDiffuse, m_vMaterialAmbient, m_vMaterialSpecular,
+                       m_vMaterialEmissive, fPower);
 }/*
 BOOL RtgDevice::GetBackBufferRenderTarget2(DWORD dwRenderTargetRes,DWORD dwZStencilRes)
 {
@@ -1039,84 +1028,79 @@ BOOL RtgDevice::SetRenderTarget2(DWORD dwRenderTargetRes, DWORD dwZStencilRes)
 //        return ResetDefaultRenderTarget();
 //    }*/
 //}
-void RtgDevice::GetScreenPos(RtgVertex3 &vWorldPos, int &nOutX, int &nOutY, float &nOutZ)
-{
-	RtgVertex4 vPos(vWorldPos.x, vWorldPos.y, vWorldPos.z, 1.f);
-	RtgVertex4 vOut = vPos * m_pCamera->m_matViewProj;
-	nOutX = int( (float) m_iWndWidth   * (vOut.x / vOut.w*0.5f+0.5f));
-	nOutY = int(((float)(m_iWndHeight))* (0.5f - vOut.y / vOut.w * 0.5f));
-	nOutZ = vOut.z / vOut.w;
-}
-void RtgDevice::GetScreenPos(RtgVertex3 &vWorldPos, int &nOutX, int &nOutY)
-{
+void RtgDevice::GetScreenPos(RtgVertex3& vWorldPos, int& nOutX, int& nOutY, float& nOutZ) {
     RtgVertex4 vPos(vWorldPos.x, vWorldPos.y, vWorldPos.z, 1.f);
     RtgVertex4 vOut = vPos * m_pCamera->m_matViewProj;
-    nOutX = int( (float) m_iWndWidth   * (vOut.x / vOut.w*0.5f+0.5f));
-    nOutY = int(((float)(m_iWndHeight))* (0.5f - vOut.y / vOut.w * 0.5f));
+    nOutX = int((float)m_iWndWidth * (vOut.x / vOut.w * 0.5f + 0.5f));
+    nOutY = int(((float)(m_iWndHeight)) * (0.5f - vOut.y / vOut.w * 0.5f));
+    nOutZ = vOut.z / vOut.w;
 }
 
-void RtgDevice::GetPickRayFromScreen(int sx, int sy, RtgVertex3 &vOrig, RtgVertex3 &vDir)
-{
+void RtgDevice::GetScreenPos(RtgVertex3& vWorldPos, int& nOutX, int& nOutY) {
+    RtgVertex4 vPos(vWorldPos.x, vWorldPos.y, vWorldPos.z, 1.f);
+    RtgVertex4 vOut = vPos * m_pCamera->m_matViewProj;
+    nOutX = int((float)m_iWndWidth * (vOut.x / vOut.w * 0.5f + 0.5f));
+    nOutY = int(((float)(m_iWndHeight)) * (0.5f - vOut.y / vOut.w * 0.5f));
+}
+
+void RtgDevice::GetPickRayFromScreen(int sx, int sy, RtgVertex3& vOrig, RtgVertex3& vDir) {
 #if 1
     RtgMatrix16 matProj = m_pCamera->GetProjMatrix();
 
     // Compute the vector of the pick ray in screen space
     RtgVertex3 v;
-    v.x =  ( ( ( 2.f * sx ) / m_iWndWidth  ) - 1.f ) / matProj._00;
-    v.y = -( ( ( 2.f * sy ) / m_iWndHeight ) - 1.f ) / matProj._11;
+    v.x = (((2.f * sx) / m_iWndWidth) - 1.f) / matProj._00;
+    v.y = -(((2.f * sy) / m_iWndHeight) - 1.f) / matProj._11;
 
 #ifdef RTG_LEFT_HANDED
-    v.z =  1.0f;
+    v.z = 1.0f;
 #else
-    v.z =  -1.0f;
+    v.z = -1.0f;
 #endif
 
     // Get the inverse view matrix
     RtgMatrix16 m = m_pCamera->GetViewMatrix().Inverse();
 
     // Transform the screen space pick ray into 3D space
-    vDir.x  = v.x*m._00 + v.y*m._10 + v.z*m._20;
-    vDir.y  = v.x*m._01 + v.y*m._11 + v.z*m._21;
-    vDir.z  = v.x*m._02 + v.y*m._12 + v.z*m._22;
+    vDir.x = v.x * m._00 + v.y * m._10 + v.z * m._20;
+    vDir.y = v.x * m._01 + v.y * m._11 + v.z * m._21;
+    vDir.z = v.x * m._02 + v.y * m._12 + v.z * m._22;
     vDir.Normalize();
     vOrig.x = m._30;
     vOrig.y = m._31;
     vOrig.z = m._32;
 #else
-    RtgVertex3 vOut, v;
+    RtgVertex3  vOut, v;
     RtgMatrix16 matInvProj;
     matInvProj = m_pCamera->m_matViewProj.Inverse();
 
-    v.x = float(sx)/(float)m_iWndWidth-0.5f;
+    v.x = float(sx) / (float)m_iWndWidth - 0.5f;
     v.x += v.x;
-    v.y = 0.5f-float(sy)/((float)(m_iWndHeight));
+    v.y = 0.5f - float(sy) / ((float)(m_iWndHeight));
     v.y += v.y;
     v.z = 0.0f;
 
     vOut = v * matInvProj;
-    vOrig.Set(vOut.x/vOut.w,vOut.y/vOut.w,vOut.z/vOut.w);
+    vOrig.Set(vOut.x / vOut.w, vOut.y / vOut.w, vOut.z / vOut.w);
 
     v.z = 1.0f;
     vOut = v * matInvProj;
-    vDir.Set(vOut.x/vOut.w,vOut.y/vOut.w,vOut.z/vOut.w);
+    vDir.Set(vOut.x / vOut.w, vOut.y / vOut.w, vOut.z / vOut.w);
 
     // get dir
-    vDir = vDir-vOrig;
+    vDir = vDir - vOrig;
     vDir.Normalize();
 #endif
 }
 
-void Ava(BYTE *b1,BYTE *b2,BYTE *b3,BYTE *b4,BYTE *b5,
-         BYTE *b6,BYTE *b7,BYTE *b8,BYTE *b9,BYTE *dest)
-{
-    for(int i=0; i<3; i++)
-    {
-        dest[i] = (b1[i] + b2[i] + b3[i] + b4[i] + b5[i]
-        + b6[i] + b7[i] + b8[i] + b9[i])/9;
+void Ava(BYTE* b1, BYTE* b2, BYTE* b3, BYTE* b4, BYTE* b5, BYTE* b6, BYTE* b7, BYTE* b8, BYTE* b9,
+         BYTE* dest) {
+    for (int i = 0; i < 3; i++) {
+        dest[i] = (b1[i] + b2[i] + b3[i] + b4[i] + b5[i] + b6[i] + b7[i] + b8[i] + b9[i]) / 9;
         // if(Abs(dest[i] - b1[i]) < 10)
         //	dest[i] = b1[i];
-        long ret = dest[i]*1.1;
-        if(ret > 255)
+        long ret = dest[i] * 1.1;
+        if (ret > 255)
             ret = 255;
         dest[i] = ret;
         /*
@@ -1130,37 +1114,34 @@ void Ava(BYTE *b1,BYTE *b2,BYTE *b3,BYTE *b4,BYTE *b5,
     }
 }
 
-void GetFinalPix(int i,int j,int w,int h,BYTE *b,BYTE *dest)
-{
+void GetFinalPix(int i, int j, int w, int h, BYTE* b, BYTE* dest) {
     BYTE *b1, *b2, *b3, *b4, *b5, *b6, *b7, *b8, *b9, *d;
-    int o = i*w, c, ret;
-    if(i==0 || j==0 || i==w-1 || j==h-1)
-    {
-        dest[(o+j)*4]   = b[(o+j)*4];
-        dest[(o+j)*4+1] = b[(o+j)*4+1];
-        dest[(o+j)*4+2] = b[(o+j)*4+2];
-        dest[(o+j)*4+3] = b[(o+j)*4+3];
+    int   o = i * w, c, ret;
+    if (i == 0 || j == 0 || i == w - 1 || j == h - 1) {
+        dest[(o + j) * 4] = b[(o + j) * 4];
+        dest[(o + j) * 4 + 1] = b[(o + j) * 4 + 1];
+        dest[(o + j) * 4 + 2] = b[(o + j) * 4 + 2];
+        dest[(o + j) * 4 + 3] = b[(o + j) * 4 + 3];
         return;
     }
 
-    b1 = &b[(o+j)*4];
-    b2 = &b[(o-w+j)*4];
-    b3 = &b[(o+w+j)*4];
-    b4 = &b[(i*w+j-1)*4];
-    b5 = &b[(o+j+1)*4];
-    b6 = &b[(o-w+j+1)*4];
-    b7 = &b[(o-w+j-1)*4];
-    b8 = &b[(o+w+j+1)*4];
-    b9 = &b[(o+w+j-1)*4];
-    d  = &dest[(o+j)*4];
+    b1 = &b[(o + j) * 4];
+    b2 = &b[(o - w + j) * 4];
+    b3 = &b[(o + w + j) * 4];
+    b4 = &b[(i * w + j - 1) * 4];
+    b5 = &b[(o + j + 1) * 4];
+    b6 = &b[(o - w + j + 1) * 4];
+    b7 = &b[(o - w + j - 1) * 4];
+    b8 = &b[(o + w + j + 1) * 4];
+    b9 = &b[(o + w + j - 1) * 4];
+    d = &dest[(o + j) * 4];
 
-    for(c=0; c<3; c++)
-    {
-        d[c] = (b1[c] + b2[c] + b3[c] + b4[c] + b5[c] + b6[c] + b7[c] + b8[c] + b9[c])/9;
+    for (c = 0; c < 3; c++) {
+        d[c] = (b1[c] + b2[c] + b3[c] + b4[c] + b5[c] + b6[c] + b7[c] + b8[c] + b9[c]) / 9;
         // if(Abs(dest[c] - b1[c]) < 10)
         //	d[c] = b1[c];
-        ret = d[c]*1.1;
-        d[c] = (ret>255) ? 255 : ret;
+        ret = d[c] * 1.1;
+        d[c] = (ret > 255) ? 255 : ret;
         /*
         ret = d[c] + (d[c]-128)*m_fPostProcessEffectContrast;
         if(ret > 255)
@@ -1176,83 +1157,88 @@ void GetFinalPix(int i,int j,int w,int h,BYTE *b,BYTE *dest)
 // gaussian blur
 // take from dx9 sdk
 // ----------------------------------------------------------------------------
-inline float GaussianDistribution( float x, float y, float rho )
-{
-    float g = 1.0f / sqrtf( 2.0f * PI * rho * rho );
-    g *= expf( -(x*x + y*y)/(2*rho*rho) );
+inline float GaussianDistribution(float x, float y, float rho) {
+    float g = 1.0f / sqrtf(2.0f * PI * rho * rho);
+    g *= expf(-(x * x + y * y) / (2 * rho * rho));
 
     return g;
 }
 
-bool GetSampleOffsets_Bloom(DWORD dwD3DTexSize,float *afTexCoordOffset,
-                            float *avColorWeight,float fDeviation, float fMultiplier )
-{
-    int i=0;
+bool GetSampleOffsets_Bloom(DWORD dwD3DTexSize, float* afTexCoordOffset, float* avColorWeight,
+                            float fDeviation, float fMultiplier) {
+    int   i = 0;
     float tu = 1.0f / (float)dwD3DTexSize;
     tu = 1.0f;
 
     // Fill the center texel
-    float weight = 1.0f * GaussianDistribution( 0, 0, fDeviation );
+    float weight = 1.0f * GaussianDistribution(0, 0, fDeviation);
     avColorWeight[0] = weight;
 
     afTexCoordOffset[0] = 0.0f;
 
     // Fill the right side
-    for( i=1; i < 8; i++ )
-    {
-        weight = fMultiplier * GaussianDistribution( (float)i, 0, fDeviation );
+    for (i = 1; i < 8; i++) {
+        weight = fMultiplier * GaussianDistribution((float)i, 0, fDeviation);
         afTexCoordOffset[i] = i * tu;
         avColorWeight[i] = weight;
     }
 
     // Copy to the left side
-    for( i=8; i < 15; i++ )
-    {
-        avColorWeight[i] = avColorWeight[i-7];
-        afTexCoordOffset[i] = -afTexCoordOffset[i-7];
+    for (i = 8; i < 15; i++) {
+        avColorWeight[i] = avColorWeight[i - 7];
+        afTexCoordOffset[i] = -afTexCoordOffset[i - 7];
     }
 
     return true;
 }
 
-inline void GetPix(BYTE *src,int u,int v,BYTE *dest)
-{
-    if(u < 0) u = 0;
-    if(v < 0) v = 0;
-    if(u > 255) u = 255;
-    if(v > 255) v = 255;
+inline void GetPix(BYTE* src, int u, int v, BYTE* dest) {
+    if (u < 0)
+        u = 0;
+    if (v < 0)
+        v = 0;
+    if (u > 255)
+        u = 255;
+    if (v > 255)
+        v = 255;
 
-    dest[0] = src[(v*256 + u)*4+0];
-    dest[1] = src[(v*256 + u)*4+1];
-    dest[2] = src[(v*256 + u)*4+2];
-    dest[3] = src[(v*256 + u)*4+3];
+    dest[0] = src[(v * 256 + u) * 4 + 0];
+    dest[1] = src[(v * 256 + u) * 4 + 1];
+    dest[2] = src[(v * 256 + u) * 4 + 2];
+    dest[3] = src[(v * 256 + u) * 4 + 3];
 }
 
-inline void GaussianBlur(BYTE *src,int u,int v,BYTE *d,float *offset,float *weight)
-{
-    BYTE tmp[4];
+inline void GaussianBlur(BYTE* src, int u, int v, BYTE* d, float* offset, float* weight) {
+    BYTE  tmp[4];
     float final[4];
-    memset(tmp,0,4*sizeof(char));
-    memset(final,0,4*sizeof(float));
-    for(int i=0; i<15; i++)
-    {
-        GetPix(src, u+offset[i], v, tmp);
-        final[0] += weight[i]*tmp[0];
-        final[1] += weight[i]*tmp[1];
-        final[2] += weight[i]*tmp[2];
-        final[3] += weight[i]*tmp[3];
+    memset(tmp, 0, 4 * sizeof(char));
+    memset(final, 0, 4 * sizeof(float));
+    for (int i = 0; i < 15; i++) {
+        GetPix(src, u + offset[i], v, tmp);
+        final[0] += weight[i] * tmp[0];
+        final[1] += weight[i] * tmp[1];
+        final[2] += weight[i] * tmp[2];
+        final[3] += weight[i] * tmp[3];
     }
-    if(final[0]>255) final[0] = 255;
-    if(final[0]<0) final[0] = 0;
+    if (final[0] > 255)
+        final[0] = 255;
+    if (final[0] < 0)
+        final[0] = 0;
 
-    if(final[1]>255) final[1] = 255;
-    if(final[1]<0) final[1] = 0;
+    if (final[1] > 255)
+        final[1] = 255;
+    if (final[1] < 0)
+        final[1] = 0;
 
-    if(final[2]>255) final[2] = 255;
-    if(final[2]<0) final[2] = 0;
+    if (final[2] > 255)
+        final[2] = 255;
+    if (final[2] < 0)
+        final[2] = 0;
 
-    if(final[3]>255) final[3] = 255;
-    if(final[3]<0) final[3] = 0;
+    if (final[3] > 255)
+        final[3] = 255;
+    if (final[3] < 0)
+        final[3] = 0;
 
     d[0] = final[0];
     d[1] = final[1];
@@ -1267,11 +1253,8 @@ inline void GaussianBlur(BYTE *src,int u,int v,BYTE *d,float *offset,float *weig
     */
 }
 
+}  // namespace rt_graph
 
-
-
-
-} // namespace rt_graph
 /*----------------------------------------------------------------------------
 -   The End.
 ----------------------------------------------------------------------------*/

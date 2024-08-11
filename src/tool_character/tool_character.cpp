@@ -7,8 +7,7 @@
 #include "tool_characterDoc.h"
 #include "tool_characterView.h"
 #include "EditorFrame.h"
-#include <CrashReport/Export.h>
-
+//#include <CrashReport/Export.h>
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -35,7 +34,7 @@ Ctool_characterApp theApp;
 // Ctool_characterApp 初始化
 BOOL Ctool_characterApp::InitInstance()
 {
-    CrashRP::Start();
+   // CrashRP::Start();
 
 	RT_STATIC_REGISTRATION_CLASS(CEditorFrame);
 	if(!rtCoreInit("tool_character.ini"))
@@ -106,7 +105,7 @@ int Ctool_characterApp::ExitInstance()
     ActorExit();
 	rtGraphExit();
 	rtCoreExit();
-    CrashRP::Stop();
+  //  CrashRP::Stop();
 	DEL_ONE(g_pAppCase); // Event 必须在 rtGraphExit 之后Delete
 
 	return 0;

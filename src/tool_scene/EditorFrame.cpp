@@ -251,6 +251,11 @@ void CEditorFrame::OnFrameClose()
 
 void CEditorFrame::OnFrameMove(float fDifSecond)
 {
+    
+   // lyymark 简单限制帧率
+    int millisecondsPerFrame = 1000 / 30;  // 30 FPS  
+    Sleep(millisecondsPerFrame);  
+
     CHECK(RtGetRender()->m_pCamera!=NULL);
     static float fLastTime = 0.f;
     float fCurTime = RtGetRender()->GetAppTime();

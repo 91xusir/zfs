@@ -1245,6 +1245,12 @@ LRESULT CMainFrame::OnDockingPaneNotify(WPARAM wParam, LPARAM lParam)
 #define C_COLOR(x) ((GetRValue(x)<<16)|(GetGValue(x)<<8)|GetBValue(x))
 LRESULT CMainFrame::OnGridNotify(WPARAM wParam, LPARAM lParam)
 {
+    ASSERT(this != nullptr);
+    if (!this) {
+        TRACE("OnGridNotify called with NULL this pointer.\n");
+        return 0;
+    }
+
 	CString tmp;
 	CEditorFrame* pEditor = (CEditorFrame*)g_pAppCase;
 	CXTPPropertyGridItem* pItem = (CXTPPropertyGridItem*)lParam;
@@ -1302,67 +1308,73 @@ LRESULT CMainFrame::OnGridNotify(WPARAM wParam, LPARAM lParam)
 		}
 	}
 
-	//CXTPPropertyGridItem* find = pItem;
-	//while (find->GetParentItem())
-	//	find = find->GetParentItem();
+	CXTPPropertyGridItem* find = pItem;
 
-	//switch (find->GetID())
-	//{
-	//case ID_GRID_MTLLIB:
-	//	if (GetSelectedMtlLib())
-	//		m_bRebuildGridMtlLib = GetSelectedMtlLib()->OnGridNotify(wParam, lParam);
-	//	break;
+    while (find) {
+        CXTPPropertyGridItem* parent = find->GetParentItem();
+        if (!parent)
+            break;
+        find = parent;
+    }
 
-	//case ID_GRID_ACTOR:
-	//	if (!g_activeActor) break;
-	//	if (g_activeActor->OnGridNotify(wParam, lParam))
-	//	{
-	//		m_bRebuildGridActor = true;
-	//		m_bRebuildGridPose = true;
-	//		m_bRebuildGridLinkBox = true;
-	//	}
-	//	break;
 
-	//case ID_GRID_POSE:
-	//	if (!g_activeActor) break;
-	//	if (g_activeActor->OnPoseGridNotify(wParam, lParam))
-	//		m_bRebuildGridPose = true;
-	//	break;
+	switch (find->GetID())
+	{
+	case ID_GRID_MTLLIB:
+		if (GetSelectedMtlLib())
+			m_bRebuildGridMtlLib = GetSelectedMtlLib()->OnGridNotify(wParam, lParam);
+		break;
 
-	//case ID_GRID_LINKBOX:
-	//	if (!g_activeActor) break;
-	//	if (g_activeActor->OnLinkBoxGridNotify(wParam, lParam))
-	//		m_bRebuildGridLinkBox = true;
-	//	break;
+	case ID_GRID_ACTOR:
+		if (!g_activeActor) break;
+		if (g_activeActor->OnGridNotify(wParam, lParam))
+		{
+			m_bRebuildGridActor = true;
+			m_bRebuildGridPose = true;
+			m_bRebuildGridLinkBox = true;
+		}
+		break;
 
-	//case ID_GRID_CHANNEL_PROP:
-	//	if (m_selectedChannel == 0) break;
-	//	RtObject* ob = (RtObject*)m_selectedChannel;
-	//	if (ob->IsKindOf(RT_RUNTIME_CLASS(CRT_Material)))
-	//	{
-	//		CRT_Material* mtl = (CRT_Material*)ob;
-	//		if (mtl->OnPropGridNotify(wParam, lParam))
-	//		{
-	//			m_bRebuildGridProp = true;
-	//		}
-	//	}
-	//	else if (ob->IsKindOf(RT_RUNTIME_CLASS(CRT_Effect)))
-	//	{
-	//		CRT_Effect* eft = (CRT_Effect*)ob;
-	//		if (eft->OnPropGridNotify(wParam, lParam))
-	//		{
-	//			m_bRebuildGridProp = true;
-	//		}
-	//	}
-	//	break;
+	case ID_GRID_POSE:
+		if (!g_activeActor) break;
+		if (g_activeActor->OnPoseGridNotify(wParam, lParam))
+			m_bRebuildGridPose = true;
+		break;
 
-	//	/*
-	//	case ID_GRID_EFFECT:
-	//		if(GetSelectedEffect())
-	//			m_bRebuildGridEft = GetSelectedEffect()->OnGridNotify(wParam,lParam));
-	//		break;
-	//	*/
-	//}
+	case ID_GRID_LINKBOX:
+		if (!g_activeActor) break;
+		if (g_activeActor->OnLinkBoxGridNotify(wParam, lParam))
+			m_bRebuildGridLinkBox = true;
+		break;
+
+	case ID_GRID_CHANNEL_PROP:
+		if (m_selectedChannel == 0) break;
+		RtObject* ob = (RtObject*)m_selectedChannel;
+		if (ob->IsKindOf(RT_RUNTIME_CLASS(CRT_Material)))
+		{
+			CRT_Material* mtl = (CRT_Material*)ob;
+			if (mtl->OnPropGridNotify(wParam, lParam))
+			{
+				m_bRebuildGridProp = true;
+			}
+		}
+		else if (ob->IsKindOf(RT_RUNTIME_CLASS(CRT_Effect)))
+		{
+			CRT_Effect* eft = (CRT_Effect*)ob;
+			if (eft->OnPropGridNotify(wParam, lParam))
+			{
+				m_bRebuildGridProp = true;
+			}
+		}
+		break;
+
+		/*
+		case ID_GRID_EFFECT:
+			if(GetSelectedEffect())
+				m_bRebuildGridEft = GetSelectedEffect()->OnGridNotify(wParam,lParam));
+			break;
+		*/
+	}
 	return 0;
 }
 

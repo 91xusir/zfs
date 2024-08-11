@@ -205,6 +205,10 @@ void CEditorFrame::OnFrameClose()
 
 void CEditorFrame::OnFrameMove(float fDifTime)
 {
+    // lyymark 简单限制帧率
+    int millisecondsPerFrame = 1000 / 30;  // 30 FPS
+    Sleep(millisecondsPerFrame);
+
 	if(fDifTime > 0.1)
 		fDifTime = 0.1;
 	//TODO: Where to tick????

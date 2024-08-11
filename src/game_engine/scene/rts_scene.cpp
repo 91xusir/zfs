@@ -1706,7 +1706,8 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock)
 
     if (m_listRenderGrid.empty()) 
         return true;
-
+    //ÐÂµØÍ¼idxÆ«ÒÆ
+    const int offset = strcmp(this->m_szMapSetName, "scene04") == 0 ? 100 : 0;
     for (gridlist_t::iterator it = m_listRenderGrid.begin(); it != m_listRenderGrid.end(); ++it)
     {
         RtsSGrid* pGrid = (*it);
@@ -1734,7 +1735,7 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock)
                     while (j < tileMap->mapCnt)
                     {
                         int rmId = ((tileMap->dwSortMapIdx >> (j << 3)) & 0x0ff);
-
+                        rmId += offset;  //add by lyy
                         if (!m_texMaps[rmId].texItem)
                         {
                             m_texMaps[rmId].texItem = 

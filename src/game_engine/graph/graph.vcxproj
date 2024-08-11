@@ -222,7 +222,7 @@
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
-    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+    <VcpkgEnableManifest>false</VcpkgEnableManifest>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">
     <ClCompile>
@@ -480,6 +480,7 @@
     <ClCompile Include="rtg_vertex.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='md|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TextureRLE.cpp" />
     <ClCompile Include="TextureRLEWrapper.cpp" />

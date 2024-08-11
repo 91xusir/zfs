@@ -198,7 +198,7 @@ void CSceneEditorView::InitRtEngine()
     }
 
 	RtGetRender()->SetCustomWndHandle(m_hWnd);
-	if (!RtGetRender()->Init(NULL, RT_RUNTIME_CLASS(CEditorFrame), RT_RUNTIME_CLASS(RtgCameraEditor), "clt_engine.ini", "user.ini"))
+	if (!RtGetRender()->Init(NULL, RT_RUNTIME_CLASS(CEditorFrame), RT_RUNTIME_CLASS(RtgCameraEditor)/*, "clt_engine.ini", "user.ini"*/))
 	{
         RtCoreLog().Error("Device initialise fail :(\n");
 		return;

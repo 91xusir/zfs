@@ -551,7 +551,7 @@ CBrushTool::~CBrushTool()
     funguard;
     for (int i=0; i<BT_BRUSH_MAX; i++)
     {
-        DEL_ONE(m_pBrusherList[BT_NONE])
+       DEL_ONE(m_pBrusherList[BT_NONE]);
     }
     fununguard;
 }

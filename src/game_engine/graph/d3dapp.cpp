@@ -1399,6 +1399,8 @@ HRESULT CD3DApplication::UserSelectNewDevice() {
 // Name: Run()
 //lyymark 1.d3dapp.CD3DApplication äÖÈ¾Ö÷Ñ­»·
 //-----------------------------------------------------------------------------
+
+
 INT CD3DApplication::Run() {
     //lyymark fps limit
     //LockFpsPerFrame(1000 / 60);
