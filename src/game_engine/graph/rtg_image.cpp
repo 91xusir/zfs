@@ -326,7 +326,7 @@ bool RtgImage::Load(const char *szImage, const char *szAlpha)
 		{
 //#ifdef _DEBUG
 //			RtCoreLog().Warn("Load bmp [%s] failed.\n", szImage);
-//			CHECKEX("ËΩΩÂÖ•BMPÂ§±Ë¥•");
+//			CHECKEX("‘ÿ»ÎBMP ß∞‹");
 //#endif
 			return false;
 		}
@@ -336,7 +336,7 @@ bool RtgImage::Load(const char *szImage, const char *szAlpha)
 		{
 //#ifdef _DEBUG
 //			RtCoreLog().Warn("Load tga [%s] failed.\n", szImage);
-//			CHECKEX("ËΩΩÂÖ•TGAÂ§±Ë¥•");
+//			CHECKEX("‘ÿ»ÎTGA ß∞‹");
 //#endif
 			return false;
 		}
@@ -346,7 +346,7 @@ bool RtgImage::Load(const char *szImage, const char *szAlpha)
 		{
 //#ifdef _DEBUG
 //			RtCoreLog().Warn("Load dds [%s] failed.\n", szImage);
-//			CHECKEX("ËΩΩÂÖ•DDSÂ§±Ë¥•");
+//			CHECKEX("‘ÿ»ÎDDS ß∞‹");
 //#endif
 			return false;
 		}
@@ -356,7 +356,7 @@ bool RtgImage::Load(const char *szImage, const char *szAlpha)
 		{
 //#ifdef _DEBUG
 //			RtCoreLog().Warn("Load jpg [%s] failed.\n", szImage);
-//			CHECKEX("ËΩΩÂÖ•JPGÂ§±Ë¥•");
+//			CHECKEX("‘ÿ»ÎJPG ß∞‹");
 //#endif
 			return false;
 		}

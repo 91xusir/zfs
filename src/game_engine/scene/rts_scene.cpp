@@ -1557,22 +1557,20 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock) {
     if (m_listRenderGrid.empty())
         return true;
 
+    //ÐÂµØÍ¼idxÆ«ÒÆ
+    const int offset = strcmp(this->m_szMapSetName, "scene04") == 0 ? 100 : 0;
     for (gridlist_t::iterator it = m_listRenderGrid.begin(); it != m_listRenderGrid.end(); ++it) {
         RtsSGrid* pGrid = (*it);
-
         //
         // tile
         //
         if (SupportTerrainRender_PP()) {
-
-            // P_LOGINFO(this->m_szMapSetName);
-
             for (int y = 0; y < RTS_BLOCK_GRID_SIZE; ++y) {
                 for (int x = 0; x < RTS_BLOCK_GRID_SIZE; ++x) {
                     RtgTextItem* texMap[5] = {};
-                    int          i        = 0;
-                    int          tileId  = ((y + pGrid->y) * g_iSceneTileCntX + (x + pGrid->x));
-                    RtsSTileMap* tileMap = pGrid->pBlock->m_pTileMapIdx + tileId;
+                    int          i         = 0;
+                    int          tileId    = ((y + pGrid->y) * g_iSceneTileCntX + (x + pGrid->x));
+                    RtsSTileMap* tileMap   = pGrid->pBlock->m_pTileMapIdx + tileId;
 
                     if (pGrid->pBlock->HasSM())
                         texMap[i++] = pGrid->pBlock->m_texItemSM;
@@ -1580,6 +1578,7 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock) {
                     RTASSERT(tileMap->mapCnt <= 4);
                     for (int j = 0; j < tileMap->mapCnt; ++j) {
                         int rmId = (tileMap->dwSortMapIdx >> (j << 3)) & 0x0ff;
+                        rmId += offset;  //add by lyy
                         if (!m_texMaps[rmId].texItem) {
                             m_texMaps[rmId].texItem =
                                 RtGetRender()->GetTextMgr()->CreateTextureFromFile(
@@ -1613,8 +1612,8 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock) {
                 for (int x = 0; x < RTS_BLOCK_GRID_SIZE; ++x) {
                     RtgTextItem* texMap[] = {nullptr};
                     int          i        = 0;
-                    int          tileId  = ((y + pGrid->y) * g_iSceneTileCntX + (x + pGrid->x));
-                    RtsSTileMap* tileMap = pGrid->pBlock->m_pTileMapIdx + tileId;
+                    int          tileId   = ((y + pGrid->y) * g_iSceneTileCntX + (x + pGrid->x));
+                    RtsSTileMap* tileMap  = pGrid->pBlock->m_pTileMapIdx + tileId;
 
                     while (i < tileMap->mapCnt) {
                         int rmId = ((tileMap->dwSortMapIdx >> (i << 3)) & 0x0ff);

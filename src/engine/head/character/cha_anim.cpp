@@ -433,7 +433,7 @@ void CRT_ActorInstance::ClearComnandList() {
 
 // lyymark CRT_ActorInstance 主帧动画处理
 void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */) {
-    DWORD tkTick = rtMilliseconds();
+    const DWORD tkTick = rtMilliseconds();
 
     if (!m_bUpdate || GetState() != Object_State_Ready)
         return;
@@ -444,13 +444,13 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */) {
 
     ProcessComnandList();
 
-    float OldFrame = m_oldFrame;
-
-    // 更新当前帧
-    m_curFrame += (deltaMill / 1000.f * 30.f * m_animSpeed);
-    m_oldFrame = m_curFrame;
+   
     // 如果当前动作有效且资源准备好
     if (m_curPose.IsVaild() && m_curPose.ResourceReady()) {
+        const float OldFrame = m_oldFrame;
+        // 更新当前帧
+        m_curFrame += (deltaMill / 1000.f * 30.f * m_animSpeed);
+        m_oldFrame = m_curFrame;
         // 如果当前帧超过动作结束帧
         if (m_curFrame >= m_curPose.EndFrm) {
             // 处理动作事件
@@ -476,7 +476,7 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */) {
             RealUseFrame(m_curFrame);
         }
     }
-    DWORD ruSkin = rtMilliseconds();
+   const DWORD ruSkin = rtMilliseconds();
     for (size_t i = 0; i < m_skinList.size(); ++i)
         if (m_skinList[i])
             //lyymark 这里是CRT_SkinInstance
