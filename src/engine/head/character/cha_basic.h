@@ -155,10 +155,10 @@ struct SRT_Pose {
     SRT_Pose() : pParentAct(NULL) {}
 
     SRT_Pose(const SRT_Pose& _Pose) {
-        Name = _Pose.Name;
-        StartFrm = _Pose.StartFrm;
-        EndFrm = _Pose.EndFrm;
-        EventList = _Pose.EventList;
+        Name       = _Pose.Name;
+        StartFrm   = _Pose.StartFrm;
+        EndFrm     = _Pose.EndFrm;
+        EventList  = _Pose.EventList;
         pParentAct = NULL;
     }
 
@@ -174,23 +174,23 @@ struct SRT_Pose {
     void Invalid() {
         Name.clear();
         StartFrm = 1;
-        EndFrm = 0;
+        EndFrm   = 0;
     }
 
     void InitFrom(const SRT_Pose* _pose) {
-        Name = _pose->Name;
-        StartFrm = _pose->StartFrm;
-        EndFrm = _pose->EndFrm;
+        Name      = _pose->Name;
+        StartFrm  = _pose->StartFrm;
+        EndFrm    = _pose->EndFrm;
         EventList = _pose->EventList;
         vecTagActs.clear();
         pParentAct = NULL;
     }
 
     SRT_Pose& operator=(const SRT_Pose& _Pose) {
-        Name = _Pose.Name;
-        StartFrm = _Pose.StartFrm;
-        EndFrm = _Pose.EndFrm;
-        EventList = _Pose.EventList;
+        Name       = _Pose.Name;
+        StartFrm   = _Pose.StartFrm;
+        EndFrm     = _Pose.EndFrm;
+        EventList  = _Pose.EventList;
         pParentAct = _Pose.pParentAct;
         return *this;
     }
@@ -319,33 +319,33 @@ struct SRT_Bone {
     SRT_Bone() : isPaint(false) {}
 
     SRT_Bone(const SRT_Bone& _Bone) {
-        Name = _Bone.Name;
-        ParentName = _Bone.ParentName;
-        aryTrans = _Bone.aryTrans;
-        aryRotas = _Bone.aryRotas;
-        AbsMode = _Bone.AbsMode;
+        Name            = _Bone.Name;
+        ParentName      = _Bone.ParentName;
+        aryTrans        = _Bone.aryTrans;
+        aryRotas        = _Bone.aryRotas;
+        AbsMode         = _Bone.AbsMode;
         ExportTranslate = _Bone.ExportTranslate;
-        isPaint = _Bone.isPaint;
-        childList = _Bone.childList;
-        maxRibbonDis = _Bone.maxRibbonDis;
-        ribbonFrame = _Bone.ribbonFrame;
-        skinMat = _Bone.skinMat;
-        normMat = _Bone.normMat;
+        isPaint         = _Bone.isPaint;
+        childList       = _Bone.childList;
+        maxRibbonDis    = _Bone.maxRibbonDis;
+        ribbonFrame     = _Bone.ribbonFrame;
+        skinMat         = _Bone.skinMat;
+        normMat         = _Bone.normMat;
     }
 
     SRT_Bone& operator=(const SRT_Bone& _Bone) {
-        Name = _Bone.Name;
-        ParentName = _Bone.ParentName;
-        aryTrans = _Bone.aryTrans;
-        aryRotas = _Bone.aryRotas;
-        AbsMode = _Bone.AbsMode;
+        Name            = _Bone.Name;
+        ParentName      = _Bone.ParentName;
+        aryTrans        = _Bone.aryTrans;
+        aryRotas        = _Bone.aryRotas;
+        AbsMode         = _Bone.AbsMode;
         ExportTranslate = _Bone.ExportTranslate;
-        isPaint = _Bone.isPaint;
-        childList = _Bone.childList;
-        maxRibbonDis = _Bone.maxRibbonDis;
-        ribbonFrame = _Bone.ribbonFrame;
-        skinMat = _Bone.skinMat;
-        normMat = _Bone.normMat;
+        isPaint         = _Bone.isPaint;
+        childList       = _Bone.childList;
+        maxRibbonDis    = _Bone.maxRibbonDis;
+        ribbonFrame     = _Bone.ribbonFrame;
+        skinMat         = _Bone.skinMat;
+        normMat         = _Bone.normMat;
 
         return *this;
     }
@@ -417,10 +417,10 @@ struct SRT_DynamicVtx {
     }
 };
 
-const char Pool_Type_None = 1;    // c++ new,should not appear,can delete
-const char Pool_Type_File = 2;    // load from diskfile,delete by check ref
+const char Pool_Type_None   = 1;  // c++ new,should not appear,can delete
+const char Pool_Type_File   = 2;  // load from diskfile,delete by check ref
 const char Pool_Type_Memory = 3;  // load from memory,clone or copy,delete direct
-const char Pool_Type_Dummy = 4;   // dummy object,use master ref,don't delete
+const char Pool_Type_Dummy  = 4;  // dummy object,use master ref,don't delete
 
 class CRT_PoolObject : public RtObject {
    public:
@@ -428,7 +428,7 @@ class CRT_PoolObject : public RtObject {
 
     CRT_PoolObject() : m_poRef(0), m_poType(Pool_Type_None) {
         SetState(Object_State_Ready);
-        m_poTag = "";
+        m_poTag    = "";
         m_diskFile = "";
     }
 
@@ -473,21 +473,21 @@ class CRT_Effect : public CRT_PoolObject
 
     virtual ~CRT_Effect() {}
 
-    virtual void OnLoadFinish() = 0;
-    virtual bool Create() = 0;
-    virtual void Reset() = 0;
+    virtual void OnLoadFinish()                       = 0;
+    virtual bool Create()                             = 0;
+    virtual void Reset()                              = 0;
     virtual void LinkActor(CRT_ActorInstance* _actor) = 0;
-    virtual void Destroy() = 0;
+    virtual void Destroy()                            = 0;
 
-    virtual bool RequestTick() = 0;
-    virtual void Tick(float deltaMill) = 0;
-    virtual bool RequestUseFrame() = 0;
-    virtual void UseFrame(unsigned long frame) = 0;
+    virtual bool RequestTick()                              = 0;
+    virtual void Tick(float deltaMill)                      = 0;
+    virtual bool RequestUseFrame()                          = 0;
+    virtual void UseFrame(unsigned long frame)              = 0;
     virtual void Render(RtgDevice* dev, RTGRenderMask mask) = 0;
 
     virtual void ResetRibbonDynamic() {}
 
-    virtual const char* GetName() = 0;
+    virtual const char* GetName()                 = 0;
     virtual void        SetName(const char* name) = 0;
 
     virtual bool Recreate() {
@@ -500,9 +500,9 @@ class CRT_Effect : public CRT_PoolObject
     virtual const char* GetName2() const { return m_Name.c_str(); }
 
 #ifdef CHAR_VIEWER
-    virtual void AttachPropGrid(void* p) = 0;
-    virtual void AttachKeyGrid(int key, void* p) = 0;
-    virtual bool OnPropGridNotify(WPARAM wParam, LPARAM lParam) = 0;
+    virtual void AttachPropGrid(void* p)                                = 0;
+    virtual void AttachKeyGrid(int key, void* p)                        = 0;
+    virtual bool OnPropGridNotify(WPARAM wParam, LPARAM lParam)         = 0;
     virtual bool OnKeyGridNotify(int key, WPARAM wParam, LPARAM lParam) = 0;
 #endif
 
@@ -556,33 +556,33 @@ class CRT_Material : public CRT_PoolObject
 
     virtual ~CRT_Material() {}
 
-    virtual bool RequestTick() = 0;
-    virtual void Tick(float deltaMill) = 0;
-    virtual bool RequestUseFrame() = 0;
+    virtual bool RequestTick()                 = 0;
+    virtual void Tick(float deltaMill)         = 0;
+    virtual bool RequestUseFrame()             = 0;
     virtual void UseFrame(unsigned long frame) = 0;
-    virtual bool ResourceReady() = 0;
+    virtual bool ResourceReady()               = 0;
 
-    virtual bool Create() = 0;
+    virtual bool Create()  = 0;
     virtual void Destroy() = 0;
-    virtual void Reset() = 0;
+    virtual void Reset()   = 0;
 
-    virtual bool Apply(RtgDevice* _Dev) = 0;
+    virtual bool Apply(RtgDevice* _Dev)   = 0;
     virtual void Restore(RtgDevice* _Dev) = 0;
 
-    virtual bool IsTransparent() = 0;
+    virtual bool IsTransparent()                 = 0;
     virtual void SetVisibleGlobal(float visible) = 0;
-    virtual void SetVisibleLocal(float visible) = 0;
-    virtual bool RequestUpdateNormal() = 0;
+    virtual void SetVisibleLocal(float visible)  = 0;
+    virtual bool RequestUpdateNormal()           = 0;
     virtual bool SetBaseColor(RtgVertex3& color) = 0;
     virtual bool GetBaseColor(RtgVertex3& color) = 0;
 
-    virtual string& GetName() = 0;
+    virtual string& GetName()             = 0;
     virtual void    SetName(string& name) = 0;
 
     virtual bool         GetGeometry(int& alphaMode, RtgTextItem*& texItem) = 0;
-    virtual int          GetAlphaMdoe() = 0;
-    virtual RtgTextItem* GetBaseText() = 0;
-    virtual string       TextureName(int _index) = 0;
+    virtual int          GetAlphaMdoe()                                     = 0;
+    virtual RtgTextItem* GetBaseText()                                      = 0;
+    virtual string       TextureName(int _index)                            = 0;
 
     virtual bool Recreate() {
         Destroy();
@@ -593,11 +593,11 @@ class CRT_Material : public CRT_PoolObject
     virtual void OnLoadFinish() {}
 
 #ifdef CHAR_VIEWER
-    virtual void AttachPropGrid(void* p) = 0;
-    virtual void AttachKeyGrid(int key, void* p) = 0;
-    virtual bool OnPropGridNotify(WPARAM wParam, LPARAM lParam) = 0;
+    virtual void AttachPropGrid(void* p)                                = 0;
+    virtual void AttachKeyGrid(int key, void* p)                        = 0;
+    virtual bool OnPropGridNotify(WPARAM wParam, LPARAM lParam)         = 0;
     virtual bool OnKeyGridNotify(int key, WPARAM wParam, LPARAM lParam) = 0;
-    virtual bool CopyFrom(CRT_Material* pMat) = 0;
+    virtual bool CopyFrom(CRT_Material* pMat)                           = 0;
 #endif
 };
 
@@ -624,8 +624,8 @@ class CRT_MaterialLib : public CRT_PoolObject {
         if (!_mtl)
             return false;
         vector<CRT_Material*> _mtllist = m_mtlList;
-        m_mtlList = _mtl->m_mtlList;
-        _mtl->m_mtlList = _mtllist;
+        m_mtlList                      = _mtl->m_mtlList;
+        _mtl->m_mtlList                = _mtllist;
         return true;
     }
 
@@ -909,8 +909,8 @@ class CRT_SkelSkin : public CRT_Skin {
 };
 
 const char                                         ACTOR_ANIM_STATIC = 0;
-const char                                         ACTOR_ANIM_VA = 1;
-const char                                         ACTOR_ANIM_SKEL = 2;
+const char                                         ACTOR_ANIM_VA     = 1;
+const char                                         ACTOR_ANIM_SKEL   = 2;
 typedef EXT_SPACE::unordered_map<string, SRT_Pose> TPoseMap;
 
 typedef struct _CRT_Slot {
@@ -983,15 +983,17 @@ class CRT_Actor : public CRT_PoolObject {
     TPoseMap m_poseMap;    // 动画姿势映射。存储不同动画姿势的数据。
     long     m_frameNum;   // 当前动画的帧数。用于跟踪动画播放的位置。
     bool m_bUseLight;  // 是否启用光照。布尔值，决定是否在渲染时应用光照。
-    bool m_bUseVC;
-    bool m_bZTest;
-    bool m_bDynamicShadow;
-    char m_animType;
-    boneArray_t         m_bones;    // 骨骼数组。存储角色的骨骼数据。
-    bonemap_t           m_boneMap;  // 骨骼索引映射。用于快速查找骨骼。
-    vector<CRT_Skin*>   m_skinList;
-    vector<CRT_Effect*> m_eftList;
-    vector<RtgAABB>     m_boundBoxList;
+    bool m_bUseVC;  // 是否使用 VC（可能是虚拟摄像机？）。布尔值，决定是否启用虚拟摄像机功能。
+    bool m_bZTest;  // 是否进行深度测试。布尔值，决定是否在渲染时进行深度测试。
+    bool m_bDynamicShadow;  // 是否启用动态阴影。布尔值，决定是否应用动态阴影效果。
+    char                m_animType;  // 动画类型。存储动画的类型标识。
+    boneArray_t         m_bones;     // 骨骼数组。存储角色的骨骼数据。
+    bonemap_t           m_boneMap;   // 骨骼索引映射。用于快速查找骨骼。
+    vector<CRT_Skin*>   m_skinList;  // 皮肤列表。存储角色的皮肤对象。
+    vector<CRT_Effect*> m_eftList;   // 特效列表。存储与角色相关的特效对象。
+    vector<RtgAABB>     m_boundBoxList = {
+        RtgAABB(RtgVertex3(1.0f, 1.0f, 1.0f), RtgVertex3(2.0f, 2.0f, 2.0f))};
+    // 边界盒列表。存储角色的边界盒信息。
 
     CM_MEMDEF(m_szVersion, 10)
 };
@@ -1017,11 +1019,11 @@ class keyframe {
         for (unsigned long i = 1; i < m_keyList.size(); i++) {
             if (m_keyList[i].frame >= frame && m_keyList[i - 1].frame <= frame) {
                 unsigned long f1, f2;
-                T&            prev = m_keyList[i - 1].data;  // 前一个关键帧的数据
-                f1 = m_keyList[i - 1].frame;                 // 前一个关键帧的帧号
-                T& next = m_keyList[i].data;                 // 当前关键帧的数据
-                f2 = m_keyList[i].frame;                     // 当前关键帧的帧号
-                key.Interpolate(frame, f1, prev, f2, next);  //插值计算
+                T&            prev = m_keyList[i - 1].data;   // 前一个关键帧的数据
+                f1                 = m_keyList[i - 1].frame;  // 前一个关键帧的帧号
+                T& next            = m_keyList[i].data;       // 当前关键帧的数据
+                f2                 = m_keyList[i].frame;      // 当前关键帧的帧号
+                key.Interpolate(frame, f1, prev, f2, next);   //插值计算
                 return true;
             }
         }
@@ -1033,7 +1035,7 @@ class keyframe {
         vector<SKeyFrame>::iterator it;
         if (m_keyList.size() == 0) {
             k.frame = frame;
-            k.data = key;
+            k.data  = key;
             m_keyList.push_back(k);
             return true;
         }
@@ -1042,13 +1044,13 @@ class keyframe {
         for (it = m_keyList.begin(); it != m_keyList.end(); it++) {
             if (frame < (*it).frame) {
                 k.frame = frame;
-                k.data = key;
+                k.data  = key;
                 m_keyList.insert(it, k);
                 return true;
             }
         }
         k.frame = frame;
-        k.data = key;
+        k.data  = key;
         m_keyList.insert(it, k);
         return true;
     }
@@ -1111,10 +1113,10 @@ class keyframe {
 };
 
 const long ALPHA_COLOR_KEY = -2;
-const long ALPHA_NULL = -1;
-const long ALPHA_BLEND = 0;
-const long ALPHA_ADD = 1;
-const long ALPHA_SUB = 2;
-const long ALPHA_MODULATE = 3;
+const long ALPHA_NULL      = -1;
+const long ALPHA_BLEND     = 0;
+const long ALPHA_ADD       = 1;
+const long ALPHA_SUB       = 2;
+const long ALPHA_MODULATE  = 3;
 
 #endif

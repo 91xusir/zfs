@@ -1,3 +1,4 @@
+#include "../../game_client/preConsole.h"
 
 /*------------------------------------------------------------------------
 -   Class CXmlFileMapTexture.
@@ -68,6 +69,7 @@ public:
         }
         else if (stricmp(pAttribute, "idx") == 0)
         {
+            
             m_iIdx = atoi(pValue); // 将索引字符串转换为整数并保存
         }
         else if (stricmp(pAttribute, "type") == 0)
@@ -76,6 +78,7 @@ public:
         }
         else if (stricmp(pAttribute, "file") == 0)
         {
+
             m_strFile = pValue; // 保存纹理文件的名称
         }
         // 处理未知属性，记录错误并抛出异常

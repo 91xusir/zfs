@@ -1556,8 +1556,7 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock) {
 
     if (m_listRenderGrid.empty())
         return true;
-
-    //新地图idx偏移
+    //lyymark 新地图idx偏移
     const int offset = strcmp(this->m_szMapSetName, "scene04") == 0 ? 200 : 0;
     for (gridlist_t::iterator it = m_listRenderGrid.begin(); it != m_listRenderGrid.end(); ++it) {
         RtsSGrid* pGrid = (*it);
@@ -1567,17 +1566,19 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock) {
         if (SupportTerrainRender_PP()) {
             for (int y = 0; y < RTS_BLOCK_GRID_SIZE; ++y) {
                 for (int x = 0; x < RTS_BLOCK_GRID_SIZE; ++x) {
-                    RtgTextItem* texMap[5] = {};
-                    int          i         = 0;
-                    int          tileId    = ((y + pGrid->y) * g_iSceneTileCntX + (x + pGrid->x));
-                    RtsSTileMap* tileMap   = pGrid->pBlock->m_pTileMapIdx + tileId;
+                    RtgTextItem* texMap[] = {NULL, NULL, NULL, NULL, NULL};
+                    int          i = 0;
+                    int          j = 0;
+
+                    int          tileId = ((y + pGrid->y) * g_iSceneTileCntX + (x + pGrid->x));
+                    RtsSTileMap* tileMap = pGrid->pBlock->m_pTileMapIdx + tileId;
 
                     if (pGrid->pBlock->HasSM())
                         texMap[i++] = pGrid->pBlock->m_texItemSM;
 
                     RTASSERT(tileMap->mapCnt <= 4);
-                    for (int j = 0; j < tileMap->mapCnt; ++j) {
-                        int rmId = (tileMap->dwSortMapIdx >> (j << 3)) & 0x0ff;
+                    while (j < tileMap->mapCnt) {
+                        int rmId = ((tileMap->dwSortMapIdx >> (j << 3)) & 0x0ff);
                         rmId += offset;  //add by lyy
                         if (!m_texMaps[rmId].texItem) {
                             m_texMaps[rmId].texItem =
@@ -1590,7 +1591,9 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock) {
                                 m_texMaps[rmId].texItem->Ref++;
                             }
                         }
+
                         texMap[i++] = m_texMaps[rmId].texItem;
+                        ++j;
                     }
 
                     m_SceneRender.Insert(pGrid->pBlock, tileId, texMap);

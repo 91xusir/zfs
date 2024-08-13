@@ -14,10 +14,10 @@ RT_IMPLEMENT_DYNCREATE(CRT_ActorInstance, RtObject, NULL, "")
 RT_IMPLEMENT_DYNCREATE(CRT_SkinInstance, RtObject, NULL, "")
 
 const int     BOUND_MIN = 10;
-EActorQuality QuaActor = QUALITY_HIGH;
-EActorQuality QuaSkin = QUALITY_HIGH;
-EActorQuality QuaMtl = QUALITY_HIGH;
-EActorQuality QuaEft = QUALITY_HIGH;
+EActorQuality QuaActor  = QUALITY_HIGH;
+EActorQuality QuaSkin   = QUALITY_HIGH;
+EActorQuality QuaMtl    = QUALITY_HIGH;
+EActorQuality QuaEft    = QUALITY_HIGH;
 
 //char fileNameBuf[512];
 //G_MEMDEF(fileNameBuf, 512)
@@ -29,16 +29,16 @@ EActorQuality QuaEft = QUALITY_HIGH;
 void ActorSetQuality(EActorQuality& actor, EActorQuality& skin, EActorQuality& mtl,
                      EActorQuality& effect) {
     QuaActor = actor;
-    QuaSkin = skin;
-    QuaMtl = mtl;
-    QuaEft = effect;
+    QuaSkin  = skin;
+    QuaMtl   = mtl;
+    QuaEft   = effect;
 }
 
 void ActorGetQuality(EActorQuality& actor, EActorQuality& skin, EActorQuality& mtl,
                      EActorQuality& effect) {
-    actor = QuaActor;
-    skin = QuaSkin;
-    mtl = QuaMtl;
+    actor  = QuaActor;
+    skin   = QuaSkin;
+    mtl    = QuaMtl;
     effect = QuaEft;
 }
 
@@ -109,7 +109,7 @@ void TagPoseNotify::OnPoseEnd(SRT_Pose* pose) {
     pose->pParentAct->Enable(false, false);
 }
 
-bool CRT_ActorInstance::m_bGlobalRenderActor = true;
+bool CRT_ActorInstance::m_bGlobalRenderActor  = true;
 bool CRT_ActorInstance::m_bGlobalRenderShadow = true;
 
 CRT_ActorInstance::CRT_ActorInstance()
@@ -145,8 +145,8 @@ bool CRT_ActorInstance::CoreLinkParent(CRT_ActorInstance* parent,
 
     // 创建一个用于链接的命令并添加到命令列表
     Rac_ActorLink* _cmd = CreateActorCommand<Rac_ActorLink>();
-    _cmd->ltype = Rac_ActorLink::_link;
-    _cmd->_parent = parent;
+    _cmd->ltype         = Rac_ActorLink::_link;
+    _cmd->_parent       = parent;
     if (slot)
         _cmd->_slot = slot;
     m_listCommand.push_back(_cmd);
@@ -161,7 +161,7 @@ void CRT_ActorInstance::CoreUnlinkParent() {
         return CoreUnlinkParentImpl();
     // 创建一个用于解除链接的命令并添加到命令列表
     Rac_ActorLink* _cmd = CreateActorCommand<Rac_ActorLink>();
-    _cmd->ltype = Rac_ActorLink::_unlink;
+    _cmd->ltype         = Rac_ActorLink::_unlink;
     m_listCommand.push_back(_cmd);
 }
 
@@ -273,13 +273,13 @@ bool CRT_ActorInstance::PlayPoseImpl(SRT_Pose* pose, bool loop, float speed,
         speed = (pose->EndFrm - pose->StartFrm) / 30.0f * 1000.0f / static_cast<int>(speed);
     // 设置动画参数
 
-    m_animSpeed = speed;
-    m_bLoop = loop;
-    m_curFrame = pose->StartFrm;
-    m_oldFrame = pose->StartFrm;
-    m_lastFrame = -1;
+    m_animSpeed        = speed;
+    m_bLoop            = loop;
+    m_curFrame         = pose->StartFrm;
+    m_oldFrame         = pose->StartFrm;
+    m_lastFrame        = -1;
     m_curPose.StartFrm = pose->StartFrm;
-    m_curPose.EndFrm = pose->EndFrm;
+    m_curPose.EndFrm   = pose->EndFrm;
 
     if (bNeedActive) {
         m_curPose.InitFrom(pose);
@@ -325,13 +325,13 @@ bool CRT_ActorInstance::SetVCImpl(vcArray_t* aryVc) {
 
 void CRT_ActorInstance::ProcessComnandList() {
     if (!m_listCommand.empty()) {
-        Rac_CmdType* _cmd = (Rac_CmdType*)m_listCommand.front();
+        Rac_CmdType* _cmd       = (Rac_CmdType*)m_listCommand.front();
         bool         bprocessed = false;
 
         switch (GetActorCmdtype(_cmd)) {
             case Ractype_PlayPose: {
                 Rac_PlayPose* _cmdp = (Rac_PlayPose*)_cmd;
-                SRT_Pose*     pose = GetPose(_cmdp->pname.c_str());
+                SRT_Pose*     pose  = GetPose(_cmdp->pname.c_str());
 
                 if (pose) {
                     if (pose->ResourceReady()) {
@@ -444,7 +444,6 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */) {
 
     ProcessComnandList();
 
-   
     // 如果当前动作有效且资源准备好
     if (m_curPose.IsVaild() && m_curPose.ResourceReady()) {
         const float OldFrame = m_oldFrame;
@@ -461,7 +460,7 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */) {
                 m_oldFrame = m_curFrame;
             } else {
                 // 否则，停止动作
-                m_prePose = m_curPose;
+                m_prePose  = m_curPose;
                 m_curFrame = m_curPose.EndFrm;
                 m_oldFrame = m_curFrame;
                 StopPose();
@@ -476,7 +475,7 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */) {
             RealUseFrame(m_curFrame);
         }
     }
-   const DWORD ruSkin = rtMilliseconds();
+    const DWORD ruSkin = rtMilliseconds();
     for (size_t i = 0; i < m_skinList.size(); ++i)
         if (m_skinList[i])
             //lyymark 这里是CRT_SkinInstance
@@ -510,7 +509,7 @@ void CRT_ActorInstance::ProcessPoseEvent(float oldFrame, float curFrame, SRT_Pos
 
     for (size_t i = 0; i < evnNum; ++i) {
         SRT_PoseEvent* event = &curPose->EventList[i];
-        long           key = event->KeyFrame;
+        long           key   = event->KeyFrame;
 
         if (oldFrame <= key && curFrame > key) {
             char  buf[32];
@@ -534,7 +533,7 @@ void CRT_ActorInstance::ProcessPoseEvent(float oldFrame, float curFrame, SRT_Pos
                 int ran = rand() << 16;
 
                 if (ran % 1000000 < rate * 1000000) {
-                    int len = strlen(buf);
+                    int len    = strlen(buf);
                     buf[len++] = '.';
                     buf[len++] = 'w';
                     buf[len++] = 'a';
@@ -584,9 +583,9 @@ void CRT_ActorInstance::LoadSkin(const char* name, bool bdisableMip /* = false *
         return LoadSkinImpl(name, bdisableMip);
 
     Rac_LoadSub* _cmd = CreateActorCommand<Rac_LoadSub>();
-    _cmd->stype = Rac_LoadSub::_sub_skin;
-    _cmd->otype = Rac_LoadSub::_load;
-    _cmd->sname = name;
+    _cmd->stype       = Rac_LoadSub::_sub_skin;
+    _cmd->otype       = Rac_LoadSub::_load;
+    _cmd->sname       = name;
     _cmd->bdisableMip = bdisableMip;
     m_listCommand.push_back(_cmd);
 }
@@ -599,9 +598,9 @@ void CRT_ActorInstance::UnloadSkin(const char* name) {
         return UnloadSkinImpl(name);
 
     Rac_LoadSub* _cmd = CreateActorCommand<Rac_LoadSub>();
-    _cmd->stype = Rac_LoadSub::_sub_skin;
-    _cmd->otype = Rac_LoadSub::_unload;
-    _cmd->sname = name;
+    _cmd->stype       = Rac_LoadSub::_sub_skin;
+    _cmd->otype       = Rac_LoadSub::_unload;
+    _cmd->sname       = name;
     m_listCommand.push_back(_cmd);
 }
 
@@ -705,9 +704,9 @@ bool CRT_ActorInstance::ApplyEffect(const char* name) {
         return ApplyEffectImpl(name);
 
     Rac_LoadSub* _cmd = CreateActorCommand<Rac_LoadSub>();
-    _cmd->stype = Rac_LoadSub::_sub_efft;
-    _cmd->otype = Rac_LoadSub::_load;
-    _cmd->sname = name;
+    _cmd->stype       = Rac_LoadSub::_sub_efft;
+    _cmd->otype       = Rac_LoadSub::_load;
+    _cmd->sname       = name;
     m_listCommand.push_back(_cmd);
 
     return true;
@@ -721,9 +720,9 @@ bool CRT_ActorInstance::RemoveEffect(const char* name) {
         return RemoveEffectImpl(name);
 
     Rac_LoadSub* _cmd = CreateActorCommand<Rac_LoadSub>();
-    _cmd->stype = Rac_LoadSub::_sub_efft;
-    _cmd->otype = Rac_LoadSub::_unload;
-    _cmd->sname = name;
+    _cmd->stype       = Rac_LoadSub::_sub_efft;
+    _cmd->otype       = Rac_LoadSub::_unload;
+    _cmd->sname       = name;
     m_listCommand.push_back(_cmd);
 
     return true;
@@ -776,6 +775,9 @@ void CRT_ActorInstance::OnLoadFinish() {
     }
 
     for (size_t i = 0; i < m_core->m_eftList.size(); ++i) {
+        //lyymark fix null pointer
+        if (!m_core->m_eftList[i])
+            continue;
         CRT_Effect* efft = (CRT_Effect*)m_core->m_eftList[i]->NewObject();
         efft->LinkActor(this);
         efft->OnLoadFinish();
@@ -792,18 +794,18 @@ void CRT_ActorInstance::Reset() {
     Unregister_ActorNotify();
     ClearComnandList();
 
-    m_visible = 1.f;
-    m_oldFrame = 0;
-    m_animSpeed = 1.f;
-    m_linkCount = 0;
-    m_bDrawScale = false;
-    m_lastFrame = -1;
+    m_visible       = 1.f;
+    m_oldFrame      = 0;
+    m_animSpeed     = 1.f;
+    m_linkCount     = 0;
+    m_bDrawScale    = false;
+    m_lastFrame     = -1;
     m_lastTickFrame = -1;
-    m_bDisplay = true;
-    m_bUpdate = true;
-    m_bLoop = false;
-    m_curFrame = 0;
-    m_oldFrame = 0;
+    m_bDisplay      = true;
+    m_bUpdate       = true;
+    m_bLoop         = false;
+    m_curFrame      = 0;
+    m_oldFrame      = 0;
 
     m_curPose.Invalid();
     m_drawScale.Set(1.f, 1.f, 1.f);
@@ -862,7 +864,7 @@ void CRT_ActorInstance::Destroy() {
 
     for (size_t i = 0; i < m_childs.size(); ++i) {
         CRT_ActorInstance* _child = m_childs[i];
-        _child->m_parent = NULL;
+        _child->m_parent          = NULL;
         _child->m_parentSlot.clear();
     }
     m_childs.clear();
@@ -873,7 +875,7 @@ void CRT_ActorInstance::SetDrawScale(RtgVertex3 scale) {
         return SetDrawScaleImpl(scale);
 
     Rac_Setscale* _cmd = CreateActorCommand<Rac_Setscale>();
-    _cmd->scale = scale;
+    _cmd->scale        = scale;
     m_listCommand.push_back(_cmd);
 
     return;
@@ -881,13 +883,13 @@ void CRT_ActorInstance::SetDrawScale(RtgVertex3 scale) {
 
 void CRT_ActorInstance::SetDrawScaleImpl(RtgVertex3 scale) {
     m_bDrawScale = true;
-    m_drawScale = scale;
+    m_drawScale  = scale;
 
     RtgMatrix16 mat;
     mat.Unit();
-    mat._00 = scale.x;
-    mat._11 = scale.y;
-    mat._22 = scale.z;
+    mat._00                  = scale.x;
+    mat._11                  = scale.y;
+    mat._22                  = scale.z;
     m_staticBoundingBox.vExt = m_core->m_boundBoxList[0].vExt * mat;
     m_staticBoundingBox.vPos = m_core->m_boundBoxList[0].vPos * mat;
 }
@@ -908,7 +910,7 @@ void CRT_ActorInstance::Render(RtgDevice* dev, RTGRenderMask mask, bool bEffect,
         scale._00 = m_drawScale.x;
         scale._11 = m_drawScale.y;
         scale._22 = m_drawScale.z;
-        world = scale * world;
+        world     = scale * world;
     }
 
     world._30 += m_offset.x;
@@ -1014,7 +1016,7 @@ void CRT_ActorInstance::RenderShadow(RtgDevice* dev, bool bRenderchild /* = true
         scale._00 = m_drawScale.x;
         scale._11 = m_drawScale.y;
         scale._22 = m_drawScale.z;
-        world = scale * world;
+        world     = scale * world;
     }
     dev->SetMatrix(RTGTS_WORLD, &world);
 
@@ -1041,7 +1043,7 @@ void CRT_ActorInstance::RenderFrame(RtgDevice* dev, RtgVertex3& color, RtgVertex
         scale1._00 = m_drawScale.x;
         scale1._11 = m_drawScale.y;
         scale1._22 = m_drawScale.z;
-        world = scale1 * world;
+        world      = scale1 * world;
     }
 
     RtgMatrix16 t;
@@ -1069,7 +1071,7 @@ void CRT_ActorInstance::RenderHighLight(RtgDevice* dev, RtgVertex3& color, RtgVe
         scale1._00 = m_drawScale.x;
         scale1._11 = m_drawScale.y;
         scale1._22 = m_drawScale.z;
-        world = scale1 * world;
+        world      = scale1 * world;
     }
 
     RtgMatrix16 t;
@@ -1122,7 +1124,7 @@ bool CRT_ActorInstance::SetVC(vcArray_t& aryVc) {
         return SetVCImpl(&aryVc);
 
     Rac_Setvc* _cmd = CreateActorCommand<Rac_Setvc>();
-    _cmd->_vc = &aryVc;
+    _cmd->_vc       = &aryVc;
     m_listCommand.push_back(_cmd);
 
     return true;
@@ -1133,8 +1135,8 @@ void CRT_ActorInstance::SetBaseColor(RtgVertex3& color, bool bSetchild /* = fals
         return SetBaseColorImpl(color, bSetchild);
 
     Rac_Setbasecolor* _cmd = CreateActorCommand<Rac_Setbasecolor>();
-    _cmd->color = color;
-    _cmd->bchild = bSetchild;
+    _cmd->color            = color;
+    _cmd->bchild           = bSetchild;
     m_listCommand.push_back(_cmd);
 
     return;
@@ -1170,9 +1172,9 @@ void CRT_ActorInstance::RealUseFrame(float frame) {
         if (m_bDrawScale) {
             RtgMatrix16 mat;
             mat.Unit();
-            mat._00 = m_drawScale.x;
-            mat._11 = m_drawScale.y;
-            mat._22 = m_drawScale.z;
+            mat._00            = m_drawScale.x;
+            mat._11            = m_drawScale.y;
+            mat._22            = m_drawScale.z;
             m_boundingBox.vExt = m_core->m_boundBoxList[frame].vExt * mat;
             m_boundingBox.vPos = m_core->m_boundBoxList[frame].vPos * mat;
             if (m_boundingBox.vExt.x < BOUND_MIN)
@@ -1185,7 +1187,7 @@ void CRT_ActorInstance::RealUseFrame(float frame) {
             m_boundingBox = m_core->m_boundBoxList[frame];
         }
 
-        m_curFrame = frame;
+        m_curFrame   = frame;
         DWORD ruSkin = rtMilliseconds();
         for (int i = 0; i < m_skinList.size(); i++)
             //更新网格 网格就是皮肤mesh
@@ -1217,7 +1219,7 @@ void CRT_ActorInstance::SetVisible(float visible) {
         return SetVisibleImpl(visible);
 
     Rac_Setvisible* _cmd = CreateActorCommand<Rac_Setvisible>();
-    _cmd->_visible = visible;
+    _cmd->_visible       = visible;
     m_listCommand.push_back(_cmd);
 }
 
@@ -1256,7 +1258,7 @@ void CRT_ActorInstance::ChangeMaterial(size_t _skinIndex, const char _mtlName[])
 
     Rac_Setmtl* _cmd = CreateActorCommand<Rac_Setmtl>();
     _cmd->_skinIndex = _skinIndex;
-    _cmd->mtlname = _mtlName;
+    _cmd->mtlname    = _mtlName;
     m_listCommand.push_back(_cmd);
 }
 
@@ -1316,7 +1318,7 @@ bool CRT_ActorInstance::Save(RtArchive* ar) {
     bool ret = true;
 
     vector<CRT_Skin*>        tmpSkinList = m_core->m_skinList;
-    vector<CRT_Effect*>      tmpEftList = m_core->m_eftList;
+    vector<CRT_Effect*>      tmpEftList  = m_core->m_eftList;
     vector<CRT_MaterialLib*> tmpMtlLib;
 
     m_core->m_skinList.clear();
@@ -1345,7 +1347,7 @@ bool CRT_ActorInstance::Save(RtArchive* ar) {
         m_core->m_skinList[i]->m_mtlLib = tmpMtlLib[i];
 
     m_core->m_skinList = tmpSkinList;
-    m_core->m_eftList = tmpEftList;
+    m_core->m_eftList  = tmpEftList;
 
     return ret;
 }
@@ -1430,7 +1432,7 @@ void CRT_ActorInstance::AttachLinkBoxGrid(void* p) {
     std::vector<SRT_Bone>::iterator it;
     for (it = m_core->m_bones.begin(); it != m_core->m_bones.end(); it++) {
         std::string name = it->Name;
-        pItem = pRoot->AddChildItem(new CCustomItemString("LinkPoint", &name));
+        pItem            = pRoot->AddChildItem(new CCustomItemString("LinkPoint", &name));
         pItem->SetFlags(xtpGridItemHasExpandButton);
         pItem->Expand();
     }
@@ -1454,8 +1456,8 @@ bool CRT_ActorInstance::OnPoseGridNotify(WPARAM wParam, LPARAM lParam) {
                     return false;
                 SRT_Pose pose;
                 pose.StartFrm = 0;
-                pose.EndFrm = 0;
-                pose.Name = tmp;
+                pose.EndFrm   = 0;
+                pose.Name     = tmp;
                 // check if pose exist
                 if (GetPose(tmp))
                     return false;
@@ -1477,7 +1479,7 @@ bool CRT_ActorInstance::OnPoseGridNotify(WPARAM wParam, LPARAM lParam) {
                     return false;
                 CDlgPose dlg;
                 dlg.m_pose = pose;
-                dlg.m_act = this;
+                dlg.m_act  = this;
                 dlg.DoModal();
                 CString tmp;
                 tmp.Format("%d", pose->EventList.size());
@@ -1605,7 +1607,7 @@ void CRT_ActorInstance::AttachGrid(void* p) {
     pSubItem = pItem->AddChildItem(RT_NEW CCustomItemV3("偏移(不存盘!)", &m_offset));
     pItem->Expand();
 
-    pItem = pRoot->AddChildItem(new CXTPPropertyGridItem("操作"));
+    pItem    = pRoot->AddChildItem(new CXTPPropertyGridItem("操作"));
     pSubItem = pItem->AddChildItem(new CXTPPropertyGridItem("Import Skin"));
     pSubItem->SetDescription("从已有文件中导入一个Skin。");
     pSubItem->SetFlags(xtpGridItemHasExpandButton);
@@ -1914,10 +1916,10 @@ bool CRT_SkinInstance::Create() {
 }
 
 void CRT_SkinInstance::Reset() {
-    m_visible = 1.f;
-    m_frameVisible = 1.f;
+    m_visible         = 1.f;
+    m_frameVisible    = 1.f;
     m_oldFrameVisible = 1.f;
-    m_fadeOut = 1.f;
+    m_fadeOut         = 1.f;
 
     if (m_mtlLib)
         m_mtlLib->Reset();
@@ -1940,7 +1942,7 @@ void CRT_SkinInstance::Render(RtgDevice* _Dev, RTGRenderMask _Mask) {
         dev->SetTextureFilterMip(RTGTEXF_NONE);
 
     DWORD _Offset = 0;
-    DWORD _Size = 0;
+    DWORD _Size   = 0;
 
     RtgBufferItem* vb = m_core->RequestVB(this, &_Offset, &_Size);
     RtgBufferItem* ib = NULL;
@@ -1957,7 +1959,7 @@ void CRT_SkinInstance::Render(RtgDevice* _Dev, RTGRenderMask _Mask) {
         boardMat = dev->m_pCamera->m_matBillboard;
         m_core->GetBoardPos(pos);
 
-        pos = pos * oldMat;
+        pos          = pos * oldMat;
         boardMat._30 = pos.x;
         boardMat._31 = pos.y;
         boardMat._32 = pos.z;
@@ -2018,7 +2020,7 @@ void CRT_SkinInstance::RenderShadow() {
     RTASSERT(m_core->m_mtlLib);
 
     DWORD _Offset = 0;
-    DWORD _Size = 0;
+    DWORD _Size   = 0;
 
     RtgBufferItem* vb = m_core->RequestVB(this, &_Offset, &_Size);
     RtgBufferItem* ib = NULL;
@@ -2048,12 +2050,12 @@ void CRT_SkinInstance::RenderShadow() {
 
         switch (mtl->GetAlphaMdoe()) {
             case ALPHA_NULL:
-                _shader.iNumStage = 1;
+                _shader.iNumStage       = 1;
                 _shader.dwTextureFactor = RtgVectorToColor(RtgVertex3(0.5f, 0.5f, 0.5f), 1.f);
                 _shader.Shaders[0].SetTexture(0);
-                _shader.Shaders[0].eColorOp = RTGTOP_SELECTARG1;
+                _shader.Shaders[0].eColorOp   = RTGTOP_SELECTARG1;
                 _shader.Shaders[0].eColorArg1 = RTGTA_TFACTOR;
-                _shader.Shaders[0].eAlphaOp = RTGTOP_DISABLE;
+                _shader.Shaders[0].eAlphaOp   = RTGTOP_DISABLE;
             case ALPHA_COLOR_KEY:
                 _shader.Shaders[0].SetTexture(mtl->GetBaseText());
                 _shader.bColorKey = true;
@@ -2077,16 +2079,16 @@ void CRT_SkinInstance::RenderShadow() {
                 break;
 
             case ALPHA_BLEND:
-                _shader.iNumStage = 1;
+                _shader.iNumStage       = 1;
                 _shader.dwTextureFactor = RtgVectorToColor(RtgVertex3(0.5f, 0.5f, 0.5f), 1.f);
                 _shader.Shaders[0].SetTexture(mtl->GetBaseText());
-                _shader.Shaders[0].eColorOp = RTGTOP_SELECTARG1;
+                _shader.Shaders[0].eColorOp   = RTGTOP_SELECTARG1;
                 _shader.Shaders[0].eColorArg1 = RTGTA_TFACTOR;
-                _shader.Shaders[0].eAlphaOp = RTGTOP_SELECTARG1;
+                _shader.Shaders[0].eAlphaOp   = RTGTOP_SELECTARG1;
                 _shader.Shaders[0].eAlphaArg1 = RTGTA_TEXTURE;
-                _shader.bEnableBlendFunc = true;
-                _shader.eBlendSrcFunc = RTGBLEND_SRCALPHA;
-                _shader.eBlendDstFunc = RTGBLEND_ONE;
+                _shader.bEnableBlendFunc      = true;
+                _shader.eBlendSrcFunc         = RTGBLEND_SRCALPHA;
+                _shader.eBlendDstFunc         = RTGBLEND_ONE;
                 break;
         }
 
@@ -2112,7 +2114,7 @@ void CRT_SkinInstance::RenderHLight() {
     RTASSERT(m_core->m_mtlLib);
 
     DWORD _Offset = 0;
-    DWORD _Size = 0;
+    DWORD _Size   = 0;
 
     RtgBufferItem* vb = m_core->RequestVB(this, &_Offset, &_Size);
     RtgBufferItem* ib = NULL;
@@ -2157,14 +2159,14 @@ void CRT_SkinInstance::RenderHLight() {
             case ALPHA_NULL:
                 _shader.iNumStage = 1;
                 _shader.Shaders[0].SetTexture(0);
-                _shader.Shaders[0].eColorOp = RTGTOP_MODULATE;
+                _shader.Shaders[0].eColorOp   = RTGTOP_MODULATE;
                 _shader.Shaders[0].eColorArg1 = RTGTA_TFACTOR;
                 _shader.Shaders[0].eColorArg2 = RTGTA_DIFFUSE;
-                _shader.Shaders[0].eAlphaOp = RTGTOP_SELECTARG1;
+                _shader.Shaders[0].eAlphaOp   = RTGTOP_SELECTARG1;
                 _shader.Shaders[0].eAlphaArg1 = RTGTA_TEXTURE;
-                _shader.bEnableBlendFunc = true;
-                _shader.eBlendSrcFunc = RTGBLEND_ONE;
-                _shader.eBlendDstFunc = RTGBLEND_ONE;
+                _shader.bEnableBlendFunc      = true;
+                _shader.eBlendSrcFunc         = RTGBLEND_ONE;
+                _shader.eBlendDstFunc         = RTGBLEND_ONE;
             case ALPHA_COLOR_KEY:
                 _shader.Shaders[0].SetTexture(mtl->GetBaseText());
                 _shader.bColorKey = true;
@@ -2201,7 +2203,7 @@ void CRT_SkinInstance::RenderFrame(const RtgVertex3& _color) {
     RTASSERT(m_core->m_mtlLib);
 
     DWORD _Offset = 0;
-    DWORD _Size = 0;
+    DWORD _Size   = 0;
 
     RtgBufferItem* vb = m_core->RequestVB(this, &_Offset, &_Size);
     RtgBufferItem* ib = NULL;
@@ -2233,15 +2235,15 @@ void CRT_SkinInstance::RenderFrame(const RtgVertex3& _color) {
 
         switch (mtl->GetAlphaMdoe()) {
             case ALPHA_NULL:
-                _shader.iNumStage = 1;
+                _shader.iNumStage       = 1;
                 _shader.dwTextureFactor = RtgVectorToColor(_color, 1.f);
                 _shader.Shaders[0].SetTexture(0);
-                _shader.Shaders[0].eColorOp = RTGTOP_SELECTARG1;
+                _shader.Shaders[0].eColorOp   = RTGTOP_SELECTARG1;
                 _shader.Shaders[0].eColorArg1 = RTGTA_TFACTOR;
-                _shader.Shaders[0].eAlphaOp = RTGTOP_DISABLE;
-                _shader.bEnableBlendFunc = true;
-                _shader.eBlendSrcFunc = RTGBLEND_ONE;
-                _shader.eBlendDstFunc = RTGBLEND_ONE;
+                _shader.Shaders[0].eAlphaOp   = RTGTOP_DISABLE;
+                _shader.bEnableBlendFunc      = true;
+                _shader.eBlendSrcFunc         = RTGBLEND_ONE;
+                _shader.eBlendDstFunc         = RTGBLEND_ONE;
                 break;
 
             case ALPHA_SUB:
@@ -2266,7 +2268,7 @@ void CRT_SkinInstance::RenderFrame(const RtgVertex3& _color) {
 
 void CRT_SkinInstance::RenderNormal() {
     RtgDeviceD3D9* dev = RtGetRender();
-    verArray_t*    va = Get_VertexArray();
+    verArray_t*    va  = Get_VertexArray();
 
     RTASSERT(dev);
 
@@ -2299,7 +2301,7 @@ void CRT_SkinInstance::SetVisible(float visible) {
         return SetVisibleImpl(visible);
 
     Rac_Setvisible* _cmd = CreateActorCommand<Rac_Setvisible>();
-    _cmd->_visible = visible;
+    _cmd->_visible       = visible;
     m_listCommand.push_back(_cmd);
 }
 
@@ -2308,7 +2310,7 @@ void CRT_SkinInstance::SetVisibleImpl(float visible) {
 
     if (Abs(m_visible - visible) > FLT_EPSILON ||
         Abs(m_frameVisible - m_oldFrameVisible) > FLT_EPSILON) {
-        m_visible = visible;
+        m_visible         = visible;
         m_oldFrameVisible = m_frameVisible;
 
         for (int i = 0; i < GetMaterialLib()->m_mtlList.size(); ++i) {
@@ -2335,7 +2337,7 @@ void CRT_SkinInstance::UseFrame(float frame) {
 
 void CRT_SkinInstance::ProcessComnandList() {
     if (!m_listCommand.empty()) {
-        Rac_CmdType* _cmd = (Rac_CmdType*)m_listCommand.front();
+        Rac_CmdType* _cmd       = (Rac_CmdType*)m_listCommand.front();
         bool         bprocessed = false;
 
         switch (GetActorCmdtype(_cmd)) {
@@ -2412,7 +2414,7 @@ void CRT_SkinInstance::SetBaseColor(RtgVertex3& color) {
     }
 
     Rac_Setbasecolor* _cmd = CreateActorCommand<Rac_Setbasecolor>();
-    _cmd->color = color;
+    _cmd->color            = color;
     m_listCommand.push_back(_cmd);
 }
 
@@ -2425,9 +2427,9 @@ void CRT_SkinInstance::SetBaseColorImpl(RtgVertex3& color) {
 
 bool CRT_SkinInstance::ComputeVC(RtgMatrix16& world, vcArray_t& aryVc, int offset,
                                  RtgVertex3 vSkyLight, RtgLightItem* pLights) {
-    DWORD       vc = 0;
+    DWORD       vc        = 0;
     verArray_t& aryVertex = *Get_VertexArray();
-    RtgMatrix16 nor = world;
+    RtgMatrix16 nor       = world;
     RtgVertex3  v;
     RtgVertex3  n;
     RtgVertex4  amb_v4;
@@ -2456,7 +2458,7 @@ bool CRT_SkinInstance::ComputeVC(RtgMatrix16& world, vcArray_t& aryVc, int offse
         dif_v3.Set(dif_v4.x, dif_v4.y, dif_v4.z);
         emi_v3.Set(emi_v4.x, emi_v4.y, emi_v4.z);
 
-        vc = RtgComputeVertexColor(v, n, amb_v3, dif_v3, emi_v3, vSkyLight, pLights);
+        vc                = RtgComputeVertexColor(v, n, amb_v3, dif_v3, emi_v3, vSkyLight, pLights);
         aryVc[i + offset] = vc;
     }
 
@@ -2464,7 +2466,7 @@ bool CRT_SkinInstance::ComputeVC(RtgMatrix16& world, vcArray_t& aryVc, int offse
 }
 
 bool CRT_SkinInstance::SetVC(vcArray_t& aryVc, int offset) {
-    m_aryVc = &aryVc;
+    m_aryVc    = &aryVc;
     m_vcOffset = offset;
 
     RtgReleaseBuffer(m_pvc);
@@ -2481,7 +2483,7 @@ bool CRT_SkinInstance::SetVC(vcArray_t& aryVc, int offset) {
 }
 
 bool CRT_SkinInstance::Save(RtArchive* ar) {
-    bool       ret = true;
+    bool       ret   = true;
     RtArchive* local = ar;
 
     if (!local)
