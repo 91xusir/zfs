@@ -730,19 +730,19 @@ bool CRegionServer::RegionWaittingForGWS() {
 }
 
 // -----------------------------------------------------------------------
-// region server main loop,only exit loop when server shutdown
+// 区域服务器主循环，只有在服务器关闭时才退出循环
 // -----------------------------------------------------------------------
 void CRegionServer::Run() {
-    if (!StartUp())
+    if (!StartUp())  // 启动失败，直接返回
         return;
-    m_eState = ssRun;
+    m_eState = ssRun;  // 将服务器状态设置为运行中
 
-    ULONG        dwLastUpdateStatInfo = 0;
-    ULONG        dwLastUpdateTimer    = 0;
-    ULONG        dtime, eudemonTime = 0;
-    ULONG        dwPlayerTime = 0;
-    static ULONG syncTime = 0, frame = 0;
-    LOG1("fd_setsize = %d\n", FD_SETSIZE);
+    ULONG        dwLastUpdateStatInfo = 0;  // 上次更新状态信息的时间
+    ULONG        dwLastUpdateTimer    = 0;  // 上次更新计时器的时间
+    ULONG        dtime, eudemonTime = 0;    // 运行时间，灵兽时间
+    ULONG        dwPlayerTime = 0;          // 玩家时间
+    static ULONG syncTime = 0, frame = 0;   // 同步时间，帧
+    LOG1("fd_setsize = %d\n", FD_SETSIZE);  // 打印文件描述符集合的大小
     /*
 #ifdef LINUX	
 	LOG1("max = %d\n",OPEN_MAX);
@@ -750,88 +750,93 @@ void CRegionServer::Run() {
 */
     // ULONG endTime = rtGetMilliseconds() + 30 * 1000;
     while (m_eState == ssRun) {
+        // 处理网络日志
         // if(rtGetMilliseconds() > endTime) break;
         //const unsigned long c_nSetp = 20000;
         //static unsigned long s_NextTime = rtGetMilliseconds() + c_nSetp;
         //static int s_nNum = 0;
-
         if (m_pNetLog) {
             m_pNetLog->Process();
         }
 
+        // 处理静态服务器
         if (m_bJhWgServer && m_pJhWgServer) {
             m_pJhWgServer->ProcessNet();
         }
 
-        // set region time
-        m_time = rtGetMilliseconds();
-        m_sec  = time(NULL);
-        m_gwt.Update();
+        // 设置区域时间
+        m_time = rtGetMilliseconds();  // 获取当前时间
+        m_sec  = time(NULL);           // 获取当前秒数
+        m_gwt.Update();                // 更新全局时间
 
-        // check if time to sync with client
+        // 检查是否需要与客户端同步
         int syncUsed = rtGetMilliseconds();
         if (m_time - syncTime >= (ULONG)g_cfg.listenClient.r2c_interval) {
-            SyncToClient();
+            SyncToClient();  // 同步到客户端
             syncTime = m_time;
             // LOG1("sync time = %d\n",rtGetMilliseconds() - syncUsed);
             // LOG1("id = %d\n",g_factory->PeekNextObjectId());
         }
-        syncUsed = rtGetMilliseconds() - syncUsed;
+        syncUsed = rtGetMilliseconds() - syncUsed;  // 计算同步所用时间
 
+        // 处理其他任务
         int procUsed = rtGetMilliseconds();
-        Process();
-        procUsed = rtGetMilliseconds() - procUsed;
+        Process();                                  // 处理区域服务器的主要逻辑
+        procUsed = rtGetMilliseconds() - procUsed;  // 计算处理所用时间
 
+        // 执行其他运行时任务
         g_AntiRobot.Run();
         g_ItemSaleStat.Run();
         if (m_mc)
-            m_mc->Run();  //tim.yang  MC
+            m_mc->Run();  // 执行MC任务
+
+        // 更新计时器对象
         int timerUsed = 0;
         if (m_time - dwLastUpdateTimer > 100) {
             timerUsed = rtGetMilliseconds();
-            CRegionObject::UpdateTimerObject();
-            timerUsed         = rtGetMilliseconds() - timerUsed;
+            CRegionObject::UpdateTimerObject();                   // 更新计时器对象
+            timerUsed         = rtGetMilliseconds() - timerUsed;  // 计算计时器所用时间
             dwLastUpdateTimer = m_time;
         }
-
         //if(m_time - dwPlayerTime > 30000)
         //{
         //          m_cmdGiver->PlayTime();
 
         //	dwPlayerTime = m_time;
         //}
-
+        // 处理未完成的玩家数据
         g_factory->RealDestroyObject();
-        dtime = rtGetMilliseconds() - m_time;
+        dtime = rtGetMilliseconds() - m_time;  // 计算当前循环的总时间
 
         if (dtime > 100)
-            m_stat.busyFrameNum++;
-        m_stat.frameNum++;
-        m_stat.totalTime += dtime;
-        m_stat.syncTime += syncUsed;
-        m_stat.processTime += procUsed;
-        m_stat.timerTime += timerUsed;
+            m_stat.busyFrameNum++;       // 增加忙碌帧计数
+        m_stat.frameNum++;               // 增加总帧计数
+        m_stat.totalTime += dtime;       // 累加总时间
+        m_stat.syncTime += syncUsed;     // 累加同步时间
+        m_stat.processTime += procUsed;  // 累加处理时间
+        m_stat.timerTime += timerUsed;   // 累加计时器时间
 
+        // 检查日期是否变化
         time_t     tNow = time(NULL);
         struct tm* pTm  = localtime(&tNow);
         if (m_yDay != pTm->tm_yday) {
-            OnDayChange();
+            OnDayChange();  // 处理日期变化
             m_yDay = pTm->tm_yday;
         }
 
-        // give cpu time to other app
+        // 让CPU有时间处理其他应用
         if (dtime < 50) {
-            rtSleep(20);
+            rtSleep(20);  // 如果循环时间少于50毫秒，休眠20毫秒
         } else if (dtime > 100) {
-            if (dtime > 30 * 1000) {
+            if (dtime > 30 * 1000) {  // 如果循环时间超过30秒，打印日志
                 NOTICE("RegionServer: frame time = %d,timer = %d,object = %d\n", dtime,
                        CRegionObject::m_timerCalled, g_factory->GetObjectNum());
                 NOTICE("RegionServer: sync = %d, process = %d, timer = %d\n", syncUsed, procUsed,
                        timerUsed);
             }
-            rtSleep(10);
+            rtSleep(10);  // 休眠10毫秒
         } else {
-            rtSleep(10);
+            rtSleep(10);  // 休眠10毫秒
         }
 
         // 如果运行后3秒钟内没有接收到ItemID，就退出
@@ -839,9 +844,10 @@ void CRegionServer::Run() {
         DWORD        nowTick      = rtGetMilliseconds();
         if (!g_ItemIDFactory.HaveGotIDFromDB() && (nowTick - dwRuningTick > 30000)) {
             ERR("Region Server Can NOT get ItemID init data from GWServer! Now Exit!\n");
-            Reboot();
+            Reboot();  // 重启服务器
         }
-        //PZH
+
+        // 扩展逻辑
         CRSLogicExt::GetRSLogicExt().OnRun(nowTick);
         //
         //if (rtGetMilliseconds() >= s_NextTime)
@@ -864,10 +870,10 @@ void CRegionServer::Run() {
         //}
     }
 
-    // 提交未存盘的数据, 最多提交10次
+    // 提交未存盘的数据，最多提交10次
     int i;
     for (i = 0; i < 10 && g_region->m_gws.CommitPendingData(); i++) {
-        rtSleep(10);
+        rtSleep(10);  // 休眠10毫秒
     }
 
     // 保存所有的玩家数据
@@ -875,7 +881,7 @@ void CRegionServer::Run() {
     time_t                                                  tExitTime = time(NULL);
     EXT_SPACE::unordered_map<ULONG, CRegionUser*>::iterator user      = m_userMap.begin();
     for (; user != m_userMap.end();) {
-        // 15秒内才需要处理存盘，超过15秒就不存盘直接退出
+        // 15秒内处理存盘，超过15秒直接退出
         if ((time(NULL) - tExitTime) <= 15) {
             if (user->second->m_dummy) {
                 if (user->second->m_dummy->m_pet)
@@ -889,19 +895,20 @@ void CRegionServer::Run() {
                 }
             }
         }
-        m_gws.Logout(user->first, false);
-        DEL_ONE(user->second);
+        m_gws.Logout(user->first, false);  // 注销用户
+        DEL_ONE(user->second);             // 删除用户对象
         user++;
     }
-    m_userMap.clear();
+    m_userMap.clear();  // 清空用户映射
     LOG1("                    time = %d seconds\n", (int)time(NULL) - tExitTime);
 
+    // 发送退出命令到游戏世界
     LOG("CRegionServer::Run(): Send quited command to gameworld\n");
     CG_CmdPacket& cmd = m_gws.BeginSend();
     cmd.WriteShort(r2g_safe_quited);
     m_gws.EndSend();
 
-    // 等待GameWorld的可以关闭命令, 20秒后强制关机
+    // 等待GameWorld的关闭命令，20秒后强制关机
     dtime = rtGetMilliseconds() + 20 * 1000;
     while (m_gws.GetState() == NET_STATE_CONNECTED && rtGetMilliseconds() < dtime &&
            !m_gws.m_bSafeQuited) {
@@ -909,16 +916,16 @@ void CRegionServer::Run() {
         m_gwt.Update();
         m_gws.Process();
         if (m_canAcceptNewLink)
-            ProcessNewLink();  // 这里执行这个是为了拒绝新的网络连接
-        rtSleep(10);
+            ProcessNewLink();  // 拒绝新的网络连接
+        rtSleep(10);           // 休眠10毫秒
     }
     LOG1("CRegionServer::Run(): Region safe shutdown [%s]\n",
          m_gws.m_bSafeQuited ? "SAFE" : "FORCE");
 
-    // region exit
+    // 区域退出
     Exit();
     if (g_cfgRs.eudemon.enable) {
-        m_udpEudemonSession.Close();
+        m_udpEudemonSession.Close();  // 关闭灵兽UDP会话
     }
 }
 

@@ -407,3 +407,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /src/SQL/mysql_5.0
+/策划文档
+/旧文档

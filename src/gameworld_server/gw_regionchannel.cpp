@@ -672,9 +672,9 @@ GW_BEGIN_CMD(cmd_r2g_log_event)
 	char *userIpAddress;
 	long longParam1 = 0, longParam2 = 0, longParam3 = 0;
 	char *strParam1 = BlankString, *strParam2 = BlankString, *strParam3 = BlankString;
-	if ( !packet->ReadByte(&logType) )			return eOkay;
-	if ( !packet->ReadLong(&userID) )			return eOkay;
-	if ( !packet->ReadString(&userIpAddress))	return eOkay;
+	if ( !packet->ReadByte(&logType) )			return eOkay;//写入日志类型
+	if ( !packet->ReadLong(&userID) )			return eOkay;// 写入用户ID
+	if ( !packet->ReadString(&userIpAddress))	return eOkay;// 写入用户IP
 	switch (logType)
 	{
 	case PLT_Trade:

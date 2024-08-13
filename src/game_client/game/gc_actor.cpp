@@ -4344,58 +4344,60 @@ void GcActor::UpdateFromServer(CG_CmdPacket* cmd) {
 }
 
 void GcActor::UpdateFromServerDelta(CG_CmdPacket* cmd) {
-    guard;
-
+    guard;  // 进入保护区，可能是线程同步或其他保护机制
     // LOG2("update_delta: %d,%d\n",cmd->GetByteDataSize(),cmd->GetBitDataSize());
-    SCreature old     = m_core;
-    char      faction = m_core.Faction;
-    long      lSP     = m_core.SkillPoint;
+    // 记录更新前的状态
+    SCreature old     = m_core;             // 保存角色的旧状态
+    char      faction = m_core.Faction;     // 保存角色的阵营信息
+    long      lSP     = m_core.SkillPoint;  // 保存角色的技能点数
     // LOG1("old lev = %d\n",old.Lev);
+    // 使用增量序列化来更新角色数据
     m_core.SerializeDelta(*cmd, old);
     // LOG1("new lev = %d\n",m_core.Lev);
 
+    // 更新血量比率
     if (GetWorld()->m_pPlayer == this && GetRideState() != GcActor::ERS_ACTOR) {
         m_cHpRate = (((float)m_core.GetHp()) / m_core.GetMaxHp()) * 100;
         if (m_cHpRate < 0)
-            m_cHpRate = 0;
+            m_cHpRate = 0;  // 确保血量比率不低于 0
         else if (m_cHpRate > 100)
-            m_cHpRate = 100;
+            m_cHpRate = 100;  // 确保血量比率不超过 100
     }
 
+    // 如果角色是玩家或宠物，更新相关界面
     if (GetWorld()->m_pPlayer == this || (GetWorld()->m_pPet == this)) {
         if (g_layerMain) {
             if (g_layerMain->m_formChar)
-                g_layerMain->m_formChar->Refresh();
+                g_layerMain->m_formChar->Refresh();  // 刷新角色界面
             if (g_layerMain->m_formPetProp)
                 g_layerMain->m_formPetProp->Update();  //tim.yang  神兽系统
             if (g_layerMain->m_formCharSimple) {
-                g_layerMain->m_formCharSimple->Update();
-                g_layerMain->m_formCharSimple->UpdateTaskTrackList();
+                g_layerMain->m_formCharSimple->Update();               // 更新简化角色界面
+                g_layerMain->m_formCharSimple->UpdateTaskTrackList();  // 更新任务追踪列表
             }
             if (g_layerMain->m_formPetSimple)
-                g_layerMain->m_formPetSimple->Update();
+                g_layerMain->m_formPetSimple->Update();  // 更新简化宠物界面
             if (g_layerMain->m_formTrump)
-                g_layerMain->m_formTrump->Refresh();
+                g_layerMain->m_formTrump->Refresh();  // 刷新界面
             if (m_core.SkillPoint != lSP && g_layerMain->m_fromSkill) {
                 if (g_layerMain->m_fromSkill->IsShowing()) {
-                    g_layerMain->m_fromSkill->Refresh();
+                    g_layerMain->m_fromSkill->Refresh();  // 刷新技能界面
                 }
             }
         }
     }
-
     /*GetWorld()->m_pPlayer->_auto_eat_red();
 	GetWorld()->m_pPlayer->_auto_eat_blue();*/
-
-    //change by yz : 角色在自动状态下才能自动吃药
+    // 如果角色处于自动状态，自动吃药
     GcPlayer* pTmpPlayer = GetWorld()->m_pPlayer;
     if (pTmpPlayer->GetAutoState()) {
-        pTmpPlayer->_auto_eat_red();
-        pTmpPlayer->_auto_eat_blue();
+        pTmpPlayer->_auto_eat_red();   // 自动使用红药水
+        pTmpPlayer->_auto_eat_blue();  // 自动使用蓝药水
     }
-    //end
-    unguard;
+
+    unguard;  // 退出保护区
 }
+
 
 const char* GcActor::GetCmdName(GcActor::ECommands eCmd) {
     switch (eCmd) {
