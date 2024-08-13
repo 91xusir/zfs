@@ -179,6 +179,7 @@ bool IsValidIpAddress(const std::string& ipAddress) {
 
 //lyymark 1.Game.Init 程序main函数入口
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+    _putenv_s("MALLOC_CONF", "oversize_threshold:1,background_thread:true");
 
     P_OPEN_CONSOLE();
  
@@ -415,11 +416,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         }
         g_pBackMusic->SetMusicPath("music");
         g_pSoundMgr->SetAudioPath("audio");
-        // lyymark 1.Game.Init 创建音乐线程
-        g_pMusicThread = RT_NEW CSceneMusicApp();
-        if (g_pMusicThread) {
-            g_pMusicThread->Start();
-        }
 
         // 创建程序框架
         g_pGameClientFrame = ((CGameClientFrame*)GetDevice()->GetEvent());
@@ -427,6 +423,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         if (g_pGameClientFrame == NULL) {
             ShowMessage(R(MSG_MEMORY_FAIL));
             return FALSE;
+        }
+        // lyymark 1.Game.Init 创建音乐线程
+        g_pMusicThread = RT_NEW CSceneMusicApp();
+        if (g_pMusicThread) {
+            g_pMusicThread->Start();
         }
 
         if (lCaptureVideo) {

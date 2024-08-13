@@ -130,16 +130,19 @@ class CGameClientFrame : public CRtgAppFrame {
 
 class CSceneMusicApp : public RtThread {
    public:
-    CM_MEMDEF(m_szMusicName, 40)
-    bool m_bChangeMusic;
-    bool m_bloop;
-    int  m_nLoopTime;
-    long m_lNextLoopTime;
     CSceneMusicApp();
     ~CSceneMusicApp();
+
     void Play(const char* filename, bool loop = false, int looptime = 0);
     void Stop();
+    char m_szMusicName[40] = {};
 
    protected:
-    virtual int OnRun();
+    virtual int OnRun() override;
+
+   private:
+    bool m_bChangeMusic  = 0;
+    bool m_bloop         = 0;
+    int  m_nLoopTime     = 0;
+    long m_lNextLoopTime = 0;
 };

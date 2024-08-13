@@ -1558,7 +1558,7 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock) {
         return true;
 
     //ÐÂµØÍ¼idxÆ«ÒÆ
-    const int offset = strcmp(this->m_szMapSetName, "scene04") == 0 ? 100 : 0;
+    const int offset = strcmp(this->m_szMapSetName, "scene04") == 0 ? 200 : 0;
     for (gridlist_t::iterator it = m_listRenderGrid.begin(); it != m_listRenderGrid.end(); ++it) {
         RtsSGrid* pGrid = (*it);
         //

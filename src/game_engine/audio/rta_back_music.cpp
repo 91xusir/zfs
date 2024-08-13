@@ -201,13 +201,13 @@ bool RtaBackMusic::Play(const char* szFileName, bool bLoop)
     {
         Mix_FreeMusic((Mix_Music*)m_pMusic);
         m_bPlaying = false;
-        m_pMusic = NULL;
+        m_pMusic = nullptr;
     }
     m_bLoop = bLoop;
     m_strFilename = m_strPathname * szFileName;
     //m_pMusic = Mix_LoadMUS(m_strFilename);
     m_pMusic = Mix_LoadMUS_RW(rta_RWFromCore(m_strFilename));
-    if (m_pMusic==NULL)
+    if (m_pMusic == nullptr)
     {
         RtCoreLog().Error("“Ù¿÷¥ÌŒÛ: ≤ªƒ‹‘ÿ»Î“Ù¿÷ [%s].\n", m_strFilename);
         return false;

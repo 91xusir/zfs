@@ -9,24 +9,24 @@
 #include <time.h>
 
 DWORD CGameClientFrame::m_sTimerRender = 0;
-DWORD CGameClientFrame::m_sTimerRun = 0;
-DWORD CGameClientFrame::m_sTimerUI = 0;
-DWORD CGameClientFrame::m_sTimerEvent = 0;
+DWORD CGameClientFrame::m_sTimerRun    = 0;
+DWORD CGameClientFrame::m_sTimerUI     = 0;
+DWORD CGameClientFrame::m_sTimerEvent  = 0;
 
 static float s_fClientSleepPreFrame = 0;
-BOOL         bRenderUI = TRUE;
-static float g_SecondsPerCycle = 0.0;
+BOOL         bRenderUI              = TRUE;
+static float g_SecondsPerCycle      = 0.0;
 
 RT_IMPLEMENT_DYNCREATE(CGameClientFrame, CRtgAppFrame, NULL, "")
 
 void CGameClientFrame::ResetTimer() {
     guard;
-    m_sTimerRender = 0;
-    m_sTimerRun = 0;
-    m_sTimerUI = 0;
-    m_sTimerEvent = 0;
+    m_sTimerRender     = 0;
+    m_sTimerRun        = 0;
+    m_sTimerUI         = 0;
+    m_sTimerEvent      = 0;
     m_bCanCaptureVideo = false;
-    m_bMouseCapture = false;
+    m_bMouseCapture    = false;
     unguard;
 }
 
@@ -38,18 +38,18 @@ void CGameClientFrame::ChangeDrawMouseXY() {
 
 CGameClientFrame::CGameClientFrame() {
     guard;
-    m_bNextGameFlow = -1;
-    m_bUIInit = false;
-    m_bShowStatNet = false;
-    m_bShowStatAudio = false;
-    m_bShowStatFile = false;
-    m_bShowStatScene = false;
-    m_bShowStatChar = false;
-    m_bShowStatClient = false;
-    m_pLogin = NULL;
-    m_pWorld = NULL;
-    m_pItemManager = NULL;
-    m_pCurrentProcess = NULL;
+    m_bNextGameFlow            = -1;
+    m_bUIInit                  = false;
+    m_bShowStatNet             = false;
+    m_bShowStatAudio           = false;
+    m_bShowStatFile            = false;
+    m_bShowStatScene           = false;
+    m_bShowStatChar            = false;
+    m_bShowStatClient          = false;
+    m_pLogin                   = NULL;
+    m_pWorld                   = NULL;
+    m_pItemManager             = NULL;
+    m_pCurrentProcess          = NULL;
     m_bChangeGameFlowNextFrame = FALSE;
     unguard;
 }
@@ -86,8 +86,6 @@ bool CGameClientFrame::OnDeviceInit() {
     //GetDevice()->m_Texture.SetTexturePath("ui/ui_texture", 3);
     //GetDevice()->m_Texture.SetTexturePath("scene\\texture\\sm", 5);
     GetDevice()->m_dwClearColor = 0xFF000000;
-
-
 
     return true;
     unguard;
@@ -208,7 +206,7 @@ void CGameClientFrame::OnLeaveLogin() {
 
 //lyymark 3.Frame.OnEnterLogin 进入开始游戏逻辑帧
 bool CGameClientFrame::OnEnterGame() {
-    DXUtil_Timer(TIMER_RESET);//解除帧率限制1秒
+    DXUtil_Timer(TIMER_RESET);  //解除帧率限制1秒
     guard;
 
     CHECK(m_pWorld == NULL);
@@ -462,8 +460,8 @@ void CGameClientFrame::OnMouseRDClick(/*int iButton,*/ int x, int y) {
 bool CGameClientFrame::SetMouseCapture(int iID, enum GameCursor eCursor, void* pData,
                                        const char* szMsg) {
     //if (m_bMouseCapture==true) return false;
-    m_bMouseCapture = true;
-    m_iMouseCaptureID = iID;
+    m_bMouseCapture     = true;
+    m_iMouseCaptureID   = iID;
     m_pMouseCaptureData = pData;
     m_szMouseCaptureMsg = szMsg;
     if (iID != 2) {
@@ -476,7 +474,7 @@ bool CGameClientFrame::SetMouseCapture(int iID, enum GameCursor eCursor, void* p
 void CGameClientFrame::CancelMouseCapture() {
     if (m_bMouseCapture) {
         m_iMouseCaptureID = -1;
-        m_bMouseCapture = false;
+        m_bMouseCapture   = false;
         GameSetCursor(GAME_CURSOR_NORMAL);
     }
 }
@@ -503,7 +501,7 @@ void CGameClientFrame::OnKeyDown(/*int iButton,*/ int iKey, bool bAltDown) {
 // lyymark 3.Frame.GameScreenSnapShot 截屏
 void GameScreenSnapShot() {
     guard;
-    static bool bFirst = true;
+    static bool bFirst  = true;
     static int  iCurCnt = 0;
 
     //change by yz 2010-6-11
@@ -539,7 +537,7 @@ void GameScreenSnapShot() {
 }
 
 #if DO_CONSOLE
-static bool bCaptureVideo = false;
+static bool bCaptureVideo    = false;
 static int  iVideoFrameCount = 0;
 //static char szVideoDir[20];
 G_MEMDEF(szVideoDir, 20)
@@ -954,20 +952,20 @@ bool CGameClientFrame::OnConsoleCommand(const char* szCommand) {
                 m_bShowStatNet = !m_bShowStatNet;
                 return true;
             } else if (stricmp(token, "allon") == 0) {
-                m_bShowStatScene = true;
-                m_bShowStatChar = true;
+                m_bShowStatScene  = true;
+                m_bShowStatChar   = true;
                 m_bShowStatClient = true;
-                m_bShowStatFile = true;
-                m_bShowStatAudio = true;
-                m_bShowStatNet = true;
+                m_bShowStatFile   = true;
+                m_bShowStatAudio  = true;
+                m_bShowStatNet    = true;
                 return true;
             } else if (stricmp(token, "alloff") == 0) {
-                m_bShowStatScene = false;
-                m_bShowStatChar = false;
+                m_bShowStatScene  = false;
+                m_bShowStatChar   = false;
                 m_bShowStatClient = false;
-                m_bShowStatFile = false;
-                m_bShowStatAudio = false;
-                m_bShowStatNet = false;
+                m_bShowStatFile   = false;
+                m_bShowStatAudio  = false;
+                m_bShowStatNet    = false;
                 return true;
             }
         }
@@ -1011,7 +1009,7 @@ bool CGameClientFrame::OnConsoleCommand(const char* szCommand) {
         return true;
     } else if (stricmp(token, "ui") == 0) {
         size_t length = strlen(token) + 1;
-        token = (char*)szCommand + length;
+        token         = (char*)szCommand + length;
         if (*token) {
             //			RTW_WIDGET_MANAGER()->ExecCommand(token);
             return true;
@@ -1239,7 +1237,7 @@ bool CGameClientFrame::OnConsoleCommand(const char* szCommand) {
         int x, y;
         token = strtok(NULL, seps);
         if (token) {
-            x = atoi(token);
+            x     = atoi(token);
             token = strtok(NULL, seps);
             if (token) {
                 y = atoi(token);
@@ -1320,12 +1318,12 @@ void CGameClientFrame::OnSetFocus() {
     }
 }
 
-CSceneMusicApp::CSceneMusicApp() {
+CSceneMusicApp::CSceneMusicApp(){
     if (!rtMusicInit()) {
         CHECKEX("初始化背景音乐失败");
     }
     g_pBackMusic->SetMusicPath("music");
-    m_nLoopTime = 0;
+    m_nLoopTime     = 0;
     m_lNextLoopTime = 0;
     CM_MEMPROTECTOR(m_szMusicName, 40)
 }
@@ -1339,7 +1337,7 @@ void CSceneMusicApp::Play(const char* filename, bool loop, int looptime) {
     m_bloop = false;
     rt2_sprintf(m_szMusicName, filename);
     m_bChangeMusic = true;
-    m_nLoopTime = looptime;
+    m_nLoopTime    = looptime;
     //if ( m_nLoopTime != 0 )
     m_bloop = loop;
     //UnlockThread();
@@ -1358,13 +1356,16 @@ int CSceneMusicApp::OnRun() {
             g_pBackMusic->Play(m_szMusicName, m_bloop);
             m_bChangeMusic = false;
         }
+        // 如果循环播放时间已设置，且音乐未播放，则设置下次循环的时间
         if (!m_bloop && m_nLoopTime && !m_lNextLoopTime && !g_pBackMusic->IsPlaying()) {
             m_lNextLoopTime = rtGetMilliseconds() + m_nLoopTime * 1000;
         }
+        // 检查是否到达下次循环播放的时间
         if (m_lNextLoopTime != 0 && m_lNextLoopTime <= rtGetMilliseconds()) {
             m_lNextLoopTime = 0;
             Play(m_szMusicName, m_bloop, m_nLoopTime);
         }
+
         Sleep(1);
     }
 

@@ -343,8 +343,9 @@ bool GcLogin::LeaveLoading() {
     guard;
     // ´ò¿ª±³¾°ÒôÀÖ
     const char* szMusicFileName = GetGameIni()->GetEntry("Audio", "LoginMusic");
-    if (szMusicFileName) {
-        g_pBackMusic->Play(szMusicFileName, true);
+    if (szMusicFileName && g_pMusicThread) {
+        g_pMusicThread->Play(szMusicFileName, true);
+       // g_pBackMusic->Play(szMusicFileName, true);
     }
     UILayer::LeaveLoading();
 
