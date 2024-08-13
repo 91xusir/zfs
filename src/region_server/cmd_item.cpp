@@ -386,18 +386,18 @@ ITEM_CMD_FUNCTION(cmd_c2r_player_throwitem)
 
 	if (item.cBind==IB_Binded)
 		return CMD_ERROR_NONE;
-
-	//CRegionItem *rgItem = (CRegionItem*)g_factory->CreateObject(OBJECT_TYPE_ITEM);
-	//rgItem->m_item = item;
-	//rgItem->m_masterKeepTime = rtGetMilliseconds() + ITEM_MASTER_KEEP_TIME;
-	//rgItem->m_masterId = 0;//CmdGiver->m_oId;
-	//rgItem->m_dropUserID = cre->m_userInfo->m_userId;
-	//if(!CmdGiver->m_scene->AddItem(rgItem,cre->m_pos,0))
-	//{
-	//	g_factory->DestroyObject(rgItem);
-	//	return CMD_ERROR_NONE;
-	//}
-
+    ////////////////lyytodo 物品丢弃在地上
+	CRegionItem *rgItem = (CRegionItem*)g_factory->CreateObject(OBJECT_TYPE_ITEM);
+	rgItem->m_item = item;
+	rgItem->m_masterKeepTime = rtGetMilliseconds() + ITEM_MASTER_KEEP_TIME;
+	rgItem->m_masterId = 0;//CmdGiver->m_oId;
+	rgItem->m_dropUserID = cre->m_userInfo->m_userId;
+	if(!CmdGiver->m_scene->AddItem(rgItem,cre->m_pos,0))
+	{
+		g_factory->DestroyObject(rgItem);
+		return CMD_ERROR_NONE;
+	}
+    ///////////////////
 	// 通知Player，去掉此物品
 	CItemCmdBuilder_Svr::Build_r2c_bag_removeitem((EItemContainer)container, page, i, j, ITEM_REASON_THROW);
 	CmdGiver->RecvCmd(g_sendCmd);

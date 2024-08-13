@@ -128,8 +128,9 @@
       <PrecompiledHeader>
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <AdditionalDependencies>legacy_stdio_definitions.lib;libmysql.lib;core_mt.lib;libcurl_mt.lib;Ws2_32.lib;Wldap32.lib;net_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
