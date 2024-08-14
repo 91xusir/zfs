@@ -881,7 +881,6 @@ global	:	m_nWireProvider		服务商类型
 *****************************************/
 bool CWsdlWrapper::SetWireProviderDomain()
 {
-	int nWireProvider;
 	char const *strDomainFormat="http://%s.yqidea.com/";
 	char szTmpBuf[100];
 	RtIni config;

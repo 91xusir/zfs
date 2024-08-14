@@ -225,7 +225,7 @@ bool CGameWorldStub::ParseCmd(CG_CmdPacket* pPacket) {
                     newCmd.userLogin.bPowerLogin = bPower;
 
                     // 将命令添加到接收命令列表
-                    if (!g_recvCmdList.AddCmd(&newCmd)) {
+                    if (!g_recvCmdList.AddCmd(newCmd)) {
                         ERR("ERROR: Add Login cmd failed\n");  // 添加命令失败，记录错误
                     }
                     lRetUser = LOGIN_RET_SUCCESS;  // 登录成功
@@ -480,7 +480,7 @@ bool CGameWorldStub::ParseCmd(CG_CmdPacket* pPacket) {
                 strcpy(newCmd.chargePoint.cUserIp, pUserInfo->info.ip.c_str());
             } else
                 newCmd.chargePoint.cUserIp[0] = '\0';
-            if (!g_recvCmdList.AddCmd(&newCmd)) {
+            if (!g_recvCmdList.AddCmd(newCmd)) {
                 ERR("ERROR: Add chargePoint cmd failed\n");
             }
 
@@ -498,7 +498,7 @@ bool CGameWorldStub::ParseCmd(CG_CmdPacket* pPacket) {
             newCmd.GWSId = (short)m_lGameworldID;
             newCmd.VIPRegionTime = time;
             newCmd.userId = lUserId;
-            if (!g_recvCmdList.AddCmd(&newCmd)) {
+            if (!g_recvCmdList.AddCmd(newCmd)) {
                 ERR("ERROR: Add chargePoint cmd failed\n");
             }
         } break;
@@ -536,7 +536,7 @@ bool CGameWorldStub::ParseCmd(CG_CmdPacket* pPacket) {
             newCmd.chargePoint.param = lUserParam;  //lSn
             newCmd.chargePoint.tTime = sTime;
             newCmd.chargePoint.sServer = (short)m_lGameworldID;
-            if (!g_recvCmdList.AddCmd(&newCmd)) {
+            if (!g_recvCmdList.AddCmd(newCmd)) {
                 ERR("ERROR: Add card_trade cmd failed\n");
             }
 
@@ -596,7 +596,7 @@ bool CGameWorldStub::ParseCmd(CG_CmdPacket* pPacket) {
             newCmd.chargePoint.lUserID = lUserID;
             newCmd.chargePoint.lDeductOrderID = lDeductOrderID;
             newCmd.chargePoint.sPoint = sPoint;
-            if (!g_recvCmdList.AddCmd(&newCmd)) {
+            if (!g_recvCmdList.AddCmd(newCmd)) {
                 ERR("ERROR: Add chargePoint cmd failed\n");
             }
         } break;
@@ -624,7 +624,7 @@ bool CGameWorldStub::ParseCmd(CG_CmdPacket* pPacket) {
             newCmd.chargePoint.sPoint = sPoint;
             newCmd.chargePoint.event = event;
             newCmd.chargePoint.lAuctionId = lAuctionId;
-            if (!g_recvCmdList.AddCmd(&newCmd)) {
+            if (!g_recvCmdList.AddCmd(newCmd)) {
                 ERR("ERROR: Add chargePoint cmd failed\n");
             }
         } break;
@@ -717,7 +717,7 @@ bool CGameWorldStub::ParseCmd(CG_CmdPacket* pPacket) {
             pPacket->ReadString(&szCardIdMd5);
             SListCmd newCmd(NULL, LIST_CMD_CARD_TRADE_FAILD);
             strcpy(newCmd.chargePoint.szCardID, szCardIdMd5);
-            if (!g_recvCmdList.AddCmd(&newCmd)) {
+            if (!g_recvCmdList.AddCmd(newCmd)) {
                 ERR("ERROR: Add cardtrade failed cmd failed\n");
             }
         } break;
@@ -735,7 +735,7 @@ bool CGameWorldStub::ParseCmd(CG_CmdPacket* pPacket) {
             newCmd.chargePoint.lAccountID = lAccountID;
             newCmd.chargePoint.lUserID = lUserID;
             newCmd.chargePoint.sPoint = sPoint;
-            if (!g_recvCmdList.AddCmd(&newCmd)) {
+            if (!g_recvCmdList.AddCmd(newCmd)) {
                 ERR("ERROR: Add chargePoint cmd failed\n");
             }
 

@@ -473,7 +473,7 @@ TypeContainer::printContentModel(std::ostream & os)
         if( sParser_->getBasicContentType(ci->first.e->getType()) == Schema::XSD_INVALID &&
 	    TypeContainer::printTypeNames_) 
 	 // os<<std::endl; //if its a complex type ..print the contents in a new line
-	 ;
+	 
 	
 	os<<*tmp;//<<std::endl;
 	

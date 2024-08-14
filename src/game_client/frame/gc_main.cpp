@@ -2,7 +2,7 @@
 #include "gc_camera.h"             // 包含游戏中摄像机相关的头文件
 #include "filepack/memory_file.h"  // 包含文件打包和内存文件相关的头文件
 #include "gc_login.h"              // 包含游戏登录相关的头文件
-#include "GlobalConfig.h"
+
 
 // 全局场景指针
 extern RtScene* g_pScene;
@@ -358,11 +358,10 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         // 取得向导服务器的IP地址和端口，并且去取得GameWorld服务器列表
         std::string  strGuideIP   = "127.0.0.1";
         int          strGuidePort = 6620;
-        GlobalConfig netConfig;
-        if (netConfig.OpenFile("config/game.ini")) {
-            strGuideIP   = netConfig["net"]["GuideIP"].at<std::string>();
-            strGuidePort = netConfig["net"]["GuidePort"].at<int>();
-        }
+
+        strGuideIP = (std::string)(*g_iniConfig)["net"]["GuideIP"];
+        strGuidePort = (int)(*g_iniConfig)["net"]["GuidePort"];
+
         if (commands.size() > 0 && commands[0] == "tooth.updaterun") {
             if (commands.size() > 1 && !commands[1].empty()) {
                 strGuideIP = commands[1];

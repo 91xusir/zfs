@@ -235,9 +235,6 @@
     <Filter Include="refactor\login">
       <UniqueIdentifier>{15604f31-eb3c-4b19-b468-4c51cda45bc4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="refactor\config_tool">
-      <UniqueIdentifier>{bb6146cb-2797-431d-bc19-413041bdb6ec}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\engine\head\core\rt2_core.h">
@@ -1377,9 +1374,6 @@
     <ClInclude Include="HttpReq.h">
       <Filter>refactor\utils</Filter>
     </ClInclude>
-    <ClInclude Include="GlobalConfig.h">
-      <Filter>refactor\config_tool</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\engine\head\core\rtc2_thread.inl">
@@ -2013,9 +2007,6 @@
     </ClCompile>
     <ClCompile Include="frame\gc_main.cpp">
       <Filter>refactor</Filter>
-    </ClCompile>
-    <ClCompile Include="GlobalConfig.cpp">
-      <Filter>refactor\config_tool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

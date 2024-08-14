@@ -136,7 +136,7 @@ void UILayerLogin::OnClicked_ForceLogin(void*, void*) {
 }
 
 void UILayerLogin::OnClicked_ForceLoginCancel(void*, void*) {
-    LOAD_UI("loginForm.txtPwd")->SetText("");
+    //LOAD_UI("loginForm.txtPwd")->SetText("");
     GetLogin()->SetForceLogin(false);
 }
 

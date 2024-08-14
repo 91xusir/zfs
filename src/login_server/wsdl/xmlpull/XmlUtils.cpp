@@ -269,7 +269,6 @@ XmlUtils::winPost(const std::string uri,const std::string username,
                   const std::string password,const std::string data,
 		  std::string action,char* &results)
 {
-  unsigned long nread;
   W3Client w3;
   const char* d = data.c_str()   ;       
   if(w3.Connect(uri.c_str())){

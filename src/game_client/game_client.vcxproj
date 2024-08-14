@@ -401,7 +401,6 @@
     <ClInclude Include="..\shared\item_pshop.h" />
     <ClInclude Include="..\shared\item_trade.h" />
     <ClInclude Include="FpsLimit.h" />
-    <ClInclude Include="GlobalConfig.h" />
     <ClInclude Include="HttpReq.h" />
     <ClInclude Include="PreConsole.h" />
     <ClInclude Include="LyyUtils.h" />
@@ -624,7 +623,6 @@
     <ClCompile Include="..\shared\item_pshop.cpp" />
     <ClCompile Include="..\shared\item_trade.cpp" />
     <ClCompile Include="FpsLimit.cpp" />
-    <ClCompile Include="GlobalConfig.cpp" />
     <ClCompile Include="HttpReq.cpp" />
     <ClCompile Include="iob_func.cpp" />
     <ClCompile Include="PreConsole.cpp" />

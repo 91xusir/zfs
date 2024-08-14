@@ -15,7 +15,7 @@
 #include <type_traits>
 #include <gc_frame.h>
 #include "PreConsole.h"
-#include "GlobalConfig.h"
+
 /*
 lyy  2024 8.1-8.4  重构 添加注释  删除约1500行垃圾代码
 */
@@ -163,7 +163,7 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
                 m_poseMap["run_f0"]         = m_poseMap["walk_non"];
                 m_poseMap["wait_n0"]        = m_poseMap["wait_non"];
                 m_poseMap["wait_f0"]        = m_poseMap["wait_non"];
-                m_poseMap["wait_a_f0"]        = m_poseMap["wait_non"];
+                m_poseMap["wait_a_f0"]      = m_poseMap["wait_non"];
                 m_poseMap["wait_a_n0"]      = m_poseMap["wait_non"];
                 m_poseMap["attack_n0"]      = m_poseMap["attack_non"];
                 m_poseMap["attack_n0"].Name = "attack_n0";
@@ -173,17 +173,17 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
                 m_poseMap["attack_n2"].Name = "attack_n2";
 
                 m_poseMap["attack_f0"]      = m_poseMap["attack_t"];
-                m_poseMap["attack_f0"].Name  = "attack_f0";
+                m_poseMap["attack_f0"].Name = "attack_f0";
                 m_poseMap["attack_f1"]      = m_poseMap["attack_t"];
-                m_poseMap["attack_f1"].Name  = "attack_f1";
-                m_poseMap["attack_f2"]       = m_poseMap["attack_t_critical"];
-                m_poseMap["attack_f2"].Name  = "attack_f2";
+                m_poseMap["attack_f1"].Name = "attack_f1";
+                m_poseMap["attack_f2"]      = m_poseMap["attack_t_critical"];
+                m_poseMap["attack_f2"].Name = "attack_f2";
 
-                m_poseMap["attack_l0"]      = m_poseMap["attack_non_flysword"];
-                m_poseMap["attack_l1"]      = m_poseMap["attack_non_flysword"];
-                m_poseMap["attack_l2"]      = m_poseMap["attack_non_flysword"];
-                m_poseMap["hurt_n0"]        = m_poseMap["hurt_non"];
-                m_poseMap["critical_n0"]    = m_poseMap["attack_non"];
+                m_poseMap["attack_l0"]   = m_poseMap["attack_non_flysword"];
+                m_poseMap["attack_l1"]   = m_poseMap["attack_non_flysword"];
+                m_poseMap["attack_l2"]   = m_poseMap["attack_non_flysword"];
+                m_poseMap["hurt_n0"]     = m_poseMap["hurt_non"];
+                m_poseMap["critical_n0"] = m_poseMap["attack_non"];
             }
             if (pActor->m_Name == "pn01.act") {
                 auto& m_poseMap = pActor->GetCore()->m_poseMap;
@@ -345,7 +345,7 @@ bool GcLogin::LeaveLoading() {
     const char* szMusicFileName = GetGameIni()->GetEntry("Audio", "LoginMusic");
     if (szMusicFileName && g_pMusicThread) {
         g_pMusicThread->Play(szMusicFileName, true);
-       // g_pBackMusic->Play(szMusicFileName, true);
+        // g_pBackMusic->Play(szMusicFileName, true);
     }
     UILayer::LeaveLoading();
 
@@ -370,30 +370,15 @@ bool GcLogin::LeaveSelectGameWorldServer() const {
 }
 
 void GcLogin::ReadAccountFromFile() {
-    GlobalConfig config;  // 创建 先试用新配置类 对象
+    RtIni config;  // 创建 先试用新配置类 对象
     if (config.OpenFile(R(INI_USER))) {
-        const bool isSave = config["account"]["save"].at<bool>();
+        const bool isSave = (bool)config["account"]["save"];
         g_layerLogin->mp_ckSaveAcc->SetChecked(isSave);
         if (isSave) {
-            m_szAccountUsername = config["login"]["username"].at<std::string>();
-            m_szAccountPassword = config["login"]["password"].at<std::string>();
+            m_szAccountUsername = (std::string)config["login"]["username"];
+            m_szAccountPassword = (std::string)config["login"]["password"];
         }
     }
-    // 读取用户名
-    /* RtIni       iniUser;
-    const char* szIniUsername = "";
-    const char* szIniPassword = "";
-    if (iniUser.OpenFile(R(INI_USER))) {
-        const char* szSave = iniUser.GetEntry("account", "save");
-        bool        isSave = (szSave && atol(szSave) > 0);
-        g_layerLogin->mp_ckSaveAcc->SetChecked(isSave);
-        if (isSave) {
-            szIniUsername = iniUser.GetEntry("login", "username");
-            szIniPassword = iniUser.GetEntry("login", "password");
-        }
-        iniUser.CloseFile();
-    }*/
-
     g_layerLogin->mp_txtAccout->Enable();
     g_layerLogin->mp_txtPwd->Enable();
     g_layerLogin->mp_txtAccout->SetText(m_szAccountUsername);
@@ -1418,9 +1403,9 @@ void GcLogin::OnNetLogin(int result, const char* szRetStr, short sRetCode, char 
                 break;  //帐号被锁定
         }
 
-        if (result == LOGIN_RET_FAILED_NEW_CARD || result == LOGIN_RET_FAILED_USER_ONLINE) {
+       /* if (result == LOGIN_RET_FAILED_NEW_CARD || result == LOGIN_RET_FAILED_USER_ONLINE) {
             LOAD_UI("loginForm.txtPwd")->SetText("");
-        }
+        }*/
         LoginErrMsg(err, szRetStr, sRetCode);
         m_bSelCharNetSucceed = true;
     }

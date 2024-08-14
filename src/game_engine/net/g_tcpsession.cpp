@@ -232,29 +232,33 @@ void CG_TCPSession::Attach(SOCKET socket)
 bool CG_TCPSession::SendPacket(CG_CmdPacket *packet,bool flush,bool sys)
 {
 	//PROFILE("CG_TCPSession_SendPacket");
+    // 如果当前连接状态不是已连接，则直接返回 false，表示发送失败
 	if (m_state != NET_STATE_CONNECTED) 
 		return false;
-
+    // 将命令包添加到发送网络包中
 	m_sendNetPkt.AddCmdPacket(packet);
+    // 设置发送序列号
 	m_sendNetPkt.SetSeq(m_sendSeq);
-	
+    // 获取数据包的总大小（在压缩和加密之前）
 	const int row = m_sendNetPkt.GetTotalSize();
 
-	// dont's encrypt sys packet 
+	// 系统包不需要加密
 	if(sys)
 	{
+        // 设置系统包标记
 		m_sendNetPkt.SetSysPacket();
 	}
 	else
 	{
-		// check if need encrypt and compress 
+        // 如果需要压缩，则对数据包进行压缩
 		if(m_bCompress) m_sendNetPkt.Compress();
+        // 如果需要加密，则对数据包进行加密
 		if(m_bEncrypt) m_sendNetPkt.Encrypt(m_seed,m_seedLen);
 	}
 
-	// add to send buffer 
-	// if push data failed,don't set state to NET_STATE_DEAD
-	// the app layer decide if should close net,not net layer 
+	// 将数据包推送到发送缓冲区中
+    // 如果推送数据失败，则不设置状态为 NET_STATE_DEAD
+    // 由应用层决定是否关闭网络连接，而不是网络层
 	if(!PushData(m_sendNetPkt.GetBuffer(),m_sendNetPkt.GetTotalSize())) 
 	{
 		// new added,need test
@@ -262,13 +266,13 @@ bool CG_TCPSession::SendPacket(CG_CmdPacket *packet,bool flush,bool sys)
 		// m_state = NET_STATE_DEAD;
 		return false;
 	}
-
+    // 统计发送的字节数
 	m_rowSendBytes += row;
-	// compute next seq number 
+    // 计算下一个序列号
 	m_sendSeq++;
 	if(m_sendSeq > MAX_NET_PACKET_SEQ) m_sendSeq = 1;
 
-	// flush data 
+	// 如果 flush 为 true，则刷新数据，立即发送
 	if(flush) FlushData();
 	return true;
 }

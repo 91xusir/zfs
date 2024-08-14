@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="config_tool">
+      <UniqueIdentifier>{cdda9fb8-9b73-44c8-9ed8-f156cc63b713}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UnitTest.cpp">
@@ -21,7 +24,7 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="..\game_client\GlobalConfig.cpp">
+    <ClCompile Include="test_src\GlobalConfig.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -31,6 +34,9 @@
     </ClInclude>
     <ClInclude Include="..\game_client\GlobalConfig.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="test_src\GlobalConfig.h">
+      <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

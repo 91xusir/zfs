@@ -979,20 +979,20 @@ class CRT_Actor : public CRT_PoolObject {
     }
 
    public:
-    float    m_animSpeed;  // 动画速度的倍率。控制动画播放的速度。
-    TPoseMap m_poseMap;    // 动画姿势映射。存储不同动画姿势的数据。
-    long     m_frameNum;   // 当前动画的帧数。用于跟踪动画播放的位置。
-    bool m_bUseLight;  // 是否启用光照。布尔值，决定是否在渲染时应用光照。
-    bool m_bUseVC;  // 是否使用 VC（可能是虚拟摄像机？）。布尔值，决定是否启用虚拟摄像机功能。
-    bool m_bZTest;  // 是否进行深度测试。布尔值，决定是否在渲染时进行深度测试。
+    float m_animSpeed;  // 动画速度的倍率。控制动画播放的速度。
+    char  m_animType;   // 动画类型。存储动画的类型标识。
     bool m_bDynamicShadow;  // 是否启用动态阴影。布尔值，决定是否应用动态阴影效果。
-    char                m_animType;  // 动画类型。存储动画的类型标识。
-    boneArray_t         m_bones;     // 骨骼数组。存储角色的骨骼数据。
-    bonemap_t           m_boneMap;   // 骨骼索引映射。用于快速查找骨骼。
-    vector<CRT_Skin*>   m_skinList;  // 皮肤列表。存储角色的皮肤对象。
-    vector<CRT_Effect*> m_eftList;   // 特效列表。存储与角色相关的特效对象。
-    vector<RtgAABB>     m_boundBoxList = {
+    boneArray_t     m_bones;  // 骨骼数组。存储角色的骨骼数据。
+    vector<RtgAABB> m_boundBoxList = {
         RtgAABB(RtgVertex3(1.0f, 1.0f, 1.0f), RtgVertex3(2.0f, 2.0f, 2.0f))};
+    bool m_bUseVC;  // 是否使用 VC（可能是虚拟摄像机？）。布尔值，决定是否启用虚拟摄像机功能。
+    bool m_bUseLight;  // 是否启用光照。布尔值，决定是否在渲染时应用光照。
+    bool m_bZTest;  // 是否进行深度测试。布尔值，决定是否在渲染时进行深度测试。
+    vector<CRT_Effect*> m_eftList;   // 特效列表。存储与角色相关的特效对象。
+    long                m_frameNum;  // 当前动画的帧数。用于跟踪动画播放的位置。
+    bonemap_t           m_boneMap;   // 骨骼索引映射。用于快速查找骨骼。
+    TPoseMap            m_poseMap;   // 动画姿势映射。存储不同动画姿势的数据。
+    vector<CRT_Skin*>   m_skinList;  // 皮肤列表。存储角色的皮肤对象。
     // 边界盒列表。存储角色的边界盒信息。
 
     CM_MEMDEF(m_szVersion, 10)

@@ -1,98 +1,72 @@
 #ifndef __THREAD_SAFE_LIST_H__
 #define __THREAD_SAFE_LIST_H__
 
-#include "core/rt2_core.h"
 #include <list>
-using namespace std;
+#include <mutex>
 
-template<class T> 
-class CThreadSafeList  
-{
-public:
-	CThreadSafeList();
-	virtual ~CThreadSafeList();
+template <class T>
+class CThreadSafeList {
+   public:
+    CThreadSafeList();
+    virtual ~CThreadSafeList();
 
-	int  GetCmdNum();
-	bool AddCmd(T *cmd);
-	bool GetCmd(T *cmd);
-	bool SetMaxCmdNum(int num);
+    int  GetCmdNum() const;
+    bool AddCmd(const T& cmd);
+    bool GetCmd(T& cmd);
+    bool SetMaxCmdNum(int num);
 
-private:
-	RT_TYPE_CS		m_cs;
-	list<T>		m_cmdList;
-	int			m_maxCmd;
-	int			m_cmdNum;
+   private:
+    mutable std::mutex m_mutex;  // 互斥锁
+    std::list<T>       m_cmdList;
+    int                m_maxCmd;
+    std::atomic<int>   m_cmdNum;
 };
 
-template<class T>
-CThreadSafeList<T>::CThreadSafeList()
-{
-	m_cmdList.clear();
-	INIT_CS(&m_cs);
-	m_maxCmd = 1000;
-	m_cmdNum = 0;
-}
-
-template<class T>
-CThreadSafeList<T>::~CThreadSafeList()
-{
-	DELETE_CS(&m_cs);
-	m_cmdList.clear();
-}
-
-template<class T>
-bool CThreadSafeList<T>::SetMaxCmdNum(int num)
-{
-	m_maxCmd = num;
-	return true;
-}
-
-template<class T>
-bool CThreadSafeList<T>::GetCmd(T *cmd)
-{
-	LOCK_CS(&m_cs);
-	if(m_cmdNum<=0)
-	{
-		UNLOCK_CS(&m_cs);
-		return false;
-	}
-	*cmd = m_cmdList.front();
-	m_cmdList.pop_front();
-	m_cmdNum--;
-	UNLOCK_CS(&m_cs);
-	return true;
+template <class T>
+CThreadSafeList<T>::CThreadSafeList() : m_maxCmd(1000), m_cmdNum(0) {
+    // 初始化成员变量
 }
 
 template <class T>
-bool CThreadSafeList<T>::AddCmd(T* cmd) {
-    // 锁定互斥量（临界区）以确保线程安全
-    LOCK_CS(&m_cs);
+CThreadSafeList<T>::~CThreadSafeList() {
+    // 不再需要手动清理，因为std::list会自动管理内存
+}
 
-    // 检查当前命令数是否超过最大命令数限制
-    if (m_cmdNum >= m_maxCmd) {
-        // 释放互斥量并返回 false，表示添加命令失败
-        UNLOCK_CS(&m_cs);
-        return false;
-    }
-
-    // 将命令添加到命令列表中
-    m_cmdList.push_back(*cmd);
-
-    // 增加命令数量计数
-    m_cmdNum++;
-
-    // 释放互斥量
-    UNLOCK_CS(&m_cs);
-
-    // 返回 true，表示命令添加成功
+template <class T>
+bool CThreadSafeList<T>::SetMaxCmdNum(int num) {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    m_maxCmd = num;
     return true;
 }
 
-
-template<class T>
-int CThreadSafeList<T>::GetCmdNum()
-{
-	return m_cmdNum;
+template <class T>
+bool CThreadSafeList<T>::GetCmd(T& cmd) {
+    std::lock_guard<std::mutex> lock(m_mutex);
+    if (m_cmdNum <= 0) {
+        return false;
+    }
+    cmd = std::move(m_cmdList.front());
+    m_cmdList.pop_front();
+    m_cmdNum--;
+    return true;
 }
 
-#endif 
+template <class T>
+bool CThreadSafeList<T>::AddCmd(const T& cmd) {
+    std::lock_guard<std::mutex> lock(m_mutex);
+
+    if (m_cmdNum >= m_maxCmd) {
+        return false;
+    }
+
+    m_cmdList.emplace_back(cmd);
+    m_cmdNum++;
+    return true;
+}
+
+template <class T>
+int CThreadSafeList<T>::GetCmdNum() const {
+    return m_cmdNum.load();  // 读取原子变量的值
+}
+
+#endif

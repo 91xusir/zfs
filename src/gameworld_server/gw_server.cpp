@@ -681,6 +681,7 @@ bool GWServer::Startup()
     // 这里要检查Region的个数是否和他匹配
 
     m_login.InitChannel();
+    m_login.m_bCompress=false;
 
     //m_reboot.Create("reboot", CreateRebootChannel(), "localhost", 6300, 2, NULL, 0, false, true);
 
