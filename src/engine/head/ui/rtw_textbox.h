@@ -493,7 +493,7 @@ class RtwTextBox : public RtwWidget {
     void SetAutoSizeH(bool bAutoSizeH) { m_bAutoSizeH = bAutoSizeH; }
 
     void SelectAll();     // 选取所有
-    void RemoveSelect();  // 删除选取
+    void RemoveSelect();  // 删除选取内容
 
     void ScrollToTop();
     void ScrollToBottom();
@@ -550,6 +550,8 @@ class RtwTextBox : public RtwWidget {
     bool   PickItem(SPoint& point, int& outLine, int& outCol, int& outItemIndex, bool& bDoubleByte,
                     bool& outNear);  // 从一个点来选取行、列、Item位置、是否双字节字符、靠近左右
     SItem* PickItem(const SPoint& point);
+
+
 
     void CalcLinePosition(int LineIndex, const SPoint& StartPoint);
     void CalcLinePosition(int LineIndex);
@@ -646,7 +648,8 @@ class RtwTextBox : public RtwWidget {
     void OnKeyChar_This(RtwWidget* pWidget, RtwEventDelegate* pEvent);
     void OnLClick_This(RtwWidget* pWidget, RtwEventDelegate* pEvent);
     void OnEvHyperLink(RtwWidget* pWidget, RtwEventDelegate* pEvent);
-
+    void OnEvUnFocus(RtwWidget* pWidget, RtwEventDelegate* pEvent);
+    void OnEvLDClick(RtwWidget* pWidget, RtwEventDelegate* pEvent);
    protected:
     RtwVScrollBar* m_pScrollBarV;  // 垂直滚动条
 

@@ -1,4 +1,5 @@
 #include "ui/rtw_ui.h"
+#include "../../../game_client/preConsole.h"
 //********************************************************************
 //	created:	2010.04.08 10:00
 //	filename: 	rtw_text.cpp
@@ -69,14 +70,14 @@ bool RtwTextBox::SLine::InsertItem(RtwTextBox::SItem& item, int index /* = -1*/)
         return false;
 
     int iHeight = item.rect.getHeight();
-    int iWidth = 0;
+    int iWidth  = 0;
 
     if (item.imgSize.height == 0) {
         iHeight = item.nFontSize;
-        iWidth = (int)item.text.size() * item.nFontSize;
+        iWidth  = (int)item.text.size() * item.nFontSize;
     } else {
         iHeight = item.imgSize.height;
-        iWidth = item.imgSize.width;
+        iWidth  = item.imgSize.width;
     }
 
     //调整行的高度
@@ -138,9 +139,9 @@ RtwTextBox::RtwTextBox()
       m_SelStartLine(0), m_SelStartCol(0), m_SelEndLine(0), m_SelEndCol(0),
       m_Password_ShowChar('*'), m_nLineNum(200), m_bNameColorChange(true) {
     m_bAutoScrollV = false;
-    m_WidgetType = wtEditBox;
-    m_FontSize = 12;
-    m_FontType = "";
+    m_WidgetType   = wtEditBox;
+    m_FontSize     = 12;
+    m_FontType     = "";
 
     m_pRichTextLoader = RT_NEW CUiRichText();
     m_pHtmlTextLoader = RT_NEW CUiHtmlText();
@@ -193,7 +194,8 @@ bool RtwTextBox::Create(DWORD Id) {
     EvKeyChar += RTW_CALLBACK(this, RtwTextBox, OnKeyChar_This);
     EvLClick += RTW_CALLBACK(this, RtwTextBox, OnLClick_This);
     EvHyperLink += RTW_CALLBACK(this, RtwTextBox, OnEvHyperLink);
-
+    EvUnFocus += RTW_CALLBACK(this, RtwTextBox, OnEvUnFocus);
+    EvLDClick += RTW_CALLBACK(this, RtwTextBox, OnEvLDClick);
     return true;
 }
 
@@ -223,19 +225,19 @@ void RtwTextBox::Run(DWORD dwDelta) {
                 item.colorChangeOwe[3] += item.colorDelta.a * (Real)dwDelta / 1000;
                 RtwPixel tmpColor(0, 0, 0, 0);
                 if (item.colorChangeOwe[0] >= 1) {
-                    tmpColor.r = item.colorChangeOwe[0];
+                    tmpColor.r             = item.colorChangeOwe[0];
                     item.colorChangeOwe[0] = item.colorChangeOwe[0] - tmpColor.r;
                 }
                 if (item.colorChangeOwe[1] >= 1) {
-                    tmpColor.g = item.colorChangeOwe[1];
+                    tmpColor.g             = item.colorChangeOwe[1];
                     item.colorChangeOwe[1] = item.colorChangeOwe[1] - tmpColor.g;
                 }
                 if (item.colorChangeOwe[2] >= 1) {
-                    tmpColor.b = item.colorChangeOwe[2];
+                    tmpColor.b             = item.colorChangeOwe[2];
                     item.colorChangeOwe[2] = item.colorChangeOwe[2] - tmpColor.b;
                 }
                 if (item.colorChangeOwe[3] >= 1) {
-                    tmpColor.a = item.colorChangeOwe[3];
+                    tmpColor.a             = item.colorChangeOwe[3];
                     item.colorChangeOwe[3] = item.colorChangeOwe[3] - tmpColor.a;
                 }
                 item.color += tmpColor;
@@ -301,25 +303,25 @@ bool RtwTextBox::CloneFrom(const RtwWidget* pWidget) {
 
     m_pScrollBarV->CloneFrom(pOther->m_pScrollBarV);
     m_bEnableInput = pOther->m_bEnableInput;
-    m_bWordWrap = pOther->m_bWordWrap;
-    m_bMultiLine = pOther->m_bMultiLine;
+    m_bWordWrap    = pOther->m_bWordWrap;
+    m_bMultiLine   = pOther->m_bMultiLine;
     m_bAutoScrollV = pOther->m_bAutoScrollV;
 
     RemoveAllItems(false);
     m_Lines = pOther->m_Lines;
 
-    m_ViewOffsetLine = pOther->m_ViewOffsetLine;
-    m_ViewOffsetCol = pOther->m_ViewOffsetCol;
-    m_ViewLastLine = pOther->m_ViewLastLine;
-    m_CursorPosLine = pOther->m_CursorPosLine;
-    m_CursorPosCol = pOther->m_CursorPosCol;
+    m_ViewOffsetLine  = pOther->m_ViewOffsetLine;
+    m_ViewOffsetCol   = pOther->m_ViewOffsetCol;
+    m_ViewLastLine    = pOther->m_ViewLastLine;
+    m_CursorPosLine   = pOther->m_CursorPosLine;
+    m_CursorPosCol    = pOther->m_CursorPosCol;
     m_CursorPosColBak = pOther->m_CursorPosColBak;
-    m_SelStartLine = pOther->m_SelStartLine;
-    m_SelStartCol = pOther->m_SelStartCol;
-    m_SelEndLine = pOther->m_SelEndLine;
-    m_SelEndCol = pOther->m_SelEndCol;
-    m_SelText = pOther->m_SelText;
-    m_nLineNum = pOther->m_nLineNum;
+    m_SelStartLine    = pOther->m_SelStartLine;
+    m_SelStartCol     = pOther->m_SelStartCol;
+    m_SelEndLine      = pOther->m_SelEndLine;
+    m_SelEndCol       = pOther->m_SelEndCol;
+    m_SelText         = pOther->m_SelText;
+    m_nLineNum        = pOther->m_nLineNum;
 
     m_CursorRect = pOther->m_CursorRect;
 
@@ -344,27 +346,27 @@ void RtwTextBox::SetCursorPos(int line, int col) {
 void RtwTextBox::SetText(const std::string& text) {
     // 删除所有行，并重置相关标志
     RemoveAllItems(false);
-    m_ViewOffsetLine = 0;
-    m_ViewOffsetCol = 0;
-    m_ViewLastLine = 0;
-    m_CursorPosLine = 0;
-    m_CursorPosCol = 0;
+    m_ViewOffsetLine  = 0;
+    m_ViewOffsetCol   = 0;
+    m_ViewLastLine    = 0;
+    m_CursorPosLine   = 0;
+    m_CursorPosCol    = 0;
     m_CursorPosColBak = 0;
-    m_SelStartLine = 0;
-    m_SelStartCol = 0;
-    m_SelEndLine = 0;
-    m_SelEndCol = 0;
-    m_SelText = "";
+    m_SelStartLine    = 0;
+    m_SelStartCol     = 0;
+    m_SelEndLine      = 0;
+    m_SelEndCol       = 0;
+    m_SelText         = "";
 
     // 添加新行
     SLine line;
     line.height = g_workspace.getFontManager()->getDefaultFont()->getFontSize();
     SItem item;
-    item.type = eit_Text;
-    item.color = m_TextColor;
-    item.text = text;
+    item.type        = eit_Text;
+    item.color       = m_TextColor;
+    item.text        = text;
     item.strFontName = m_FontType;
-    item.nFontSize = m_FontSize;
+    item.nFontSize   = m_FontSize;
 
     line.lineitems.push_back(item);
     InsertLine(line, -1);
@@ -379,21 +381,21 @@ void RtwTextBox::AddText(const std::string& text, RtwPixel color) {
     SLine* pLine = getLine(m_CursorPosLine);
     if (!pLine) {
         RemoveAllItems(false);
-        m_ViewOffsetLine = 0;
-        m_ViewOffsetCol = 0;
-        m_ViewLastLine = 0;
-        m_CursorPosLine = 0;
-        m_CursorPosCol = 0;
+        m_ViewOffsetLine  = 0;
+        m_ViewOffsetCol   = 0;
+        m_ViewLastLine    = 0;
+        m_CursorPosLine   = 0;
+        m_CursorPosCol    = 0;
         m_CursorPosColBak = 0;
-        m_SelStartLine = 0;
-        m_SelStartCol = 0;
-        m_SelEndLine = 0;
-        m_SelEndCol = 0;
-        m_SelText = "";
+        m_SelStartLine    = 0;
+        m_SelStartCol     = 0;
+        m_SelEndLine      = 0;
+        m_SelEndCol       = 0;
+        m_SelText         = "";
         SItem item;
-        item.type = eit_Text;
+        item.type  = eit_Text;
         item.color = color;
-        item.text = text;
+        item.text  = text;
 
         SLine line;
         line.lineitems.push_back(item);
@@ -407,9 +409,9 @@ void RtwTextBox::AddText(const std::string& text, RtwPixel color) {
     }
 
     SItem item;
-    item.type = eit_Text;
+    item.type  = eit_Text;
     item.color = color;
-    item.text = text;
+    item.text  = text;
     pLine->lineitems.push_back(item);
     m_CursorPosCol += (int)text.size();
     SetCursorPos(0, (int)text.size());
@@ -434,21 +436,21 @@ void RtwTextBox::AddHyperLinkText(const std::string& text, const SHyperLink& hyp
     SLine* pLine = getLine(m_CursorPosLine);
     if (!pLine) {
         RemoveAllItems(false);
-        m_ViewOffsetLine = 0;
-        m_ViewOffsetCol = 0;
-        m_ViewLastLine = 0;
-        m_CursorPosLine = 0;
-        m_CursorPosCol = 0;
+        m_ViewOffsetLine  = 0;
+        m_ViewOffsetCol   = 0;
+        m_ViewLastLine    = 0;
+        m_CursorPosLine   = 0;
+        m_CursorPosCol    = 0;
         m_CursorPosColBak = 0;
-        m_SelStartLine = 0;
-        m_SelStartCol = 0;
-        m_SelEndLine = 0;
-        m_SelEndCol = 0;
-        m_SelText = "";
+        m_SelStartLine    = 0;
+        m_SelStartCol     = 0;
+        m_SelEndLine      = 0;
+        m_SelEndCol       = 0;
+        m_SelText         = "";
         SItem item;
-        item.type = eit_Text;
-        item.color = color;
-        item.text = text;
+        item.type      = eit_Text;
+        item.color     = color;
+        item.text      = text;
         item.hyperLink = hyperLink;
 
         SLine line;
@@ -463,9 +465,9 @@ void RtwTextBox::AddHyperLinkText(const std::string& text, const SHyperLink& hyp
     }
 
     SItem item;
-    item.type = eit_Text;
-    item.color = color;
-    item.text = text;
+    item.type      = eit_Text;
+    item.color     = color;
+    item.text      = text;
     item.hyperLink = hyperLink;
     pLine->lineitems.push_back(item);
 
@@ -482,52 +484,52 @@ void RtwTextBox::AddHyperLinkText(const std::string& text, const SHyperLink& hyp
 
 void RtwTextBox::SetTextnew(const std::string& text) {
     RemoveAllItems(false);
-    m_ViewOffsetLine = 0;
-    m_ViewOffsetCol = 0;
-    m_ViewLastLine = 0;
-    m_CursorPosLine = 0;
-    m_CursorPosCol = 0;
+    m_ViewOffsetLine  = 0;
+    m_ViewOffsetCol   = 0;
+    m_ViewLastLine    = 0;
+    m_CursorPosLine   = 0;
+    m_CursorPosCol    = 0;
     m_CursorPosColBak = 0;
-    m_SelStartLine = 0;
-    m_SelStartCol = 0;
-    m_SelEndLine = 0;
-    m_SelEndCol = 0;
-    m_SelText = "";
+    m_SelStartLine    = 0;
+    m_SelStartCol     = 0;
+    m_SelEndLine      = 0;
+    m_SelEndCol       = 0;
+    m_SelText         = "";
 
     static const RtwPixel itemColorList[] = {0xffffffff, 0xff30e512, 0xff00aaff,
                                              0xffffd851};  //道具颜色列表
 
-    int         color = 0xffffffff;
+    int         color      = 0xffffffff;
     std::string strMessage = text;
 
-    int nWordsNum = 0;   //字符数
-    int nImageNum = 0;   //图片数量
+    int nWordsNum  = 0;  //字符数
+    int nImageNum  = 0;  //图片数量
     int nLineWidth = 0;  //单行长度
-    int nChart = 0;      //单字符
-    int nDouble = 0;     //双字符
-    int nHight = 0;      //chatbox的高度
+    int nChart     = 0;  //单字符
+    int nDouble    = 0;  //双字符
+    int nHight     = 0;  //chatbox的高度
 
     int nTaskNameNum = 0;  //任务名字长度
     int nItemNameNum = 0;  //道具名字长度
 
     size_t nPos = 0;  //遍历
 
-    bool bTwo = false;            //是否是双字节
+    bool bTwo           = false;  //是否是双字节
     bool bItemLinkBegin = false;  //item链接开始
-    bool bItemLinkEnd = false;    //item链接结束
+    bool bItemLinkEnd   = false;  //item链接结束
 
     bool bTaskLinkBegin = false;  //任务链接开始
-    bool bTaskLinkEnd = false;    //任务链接结束
+    bool bTaskLinkEnd   = false;  //任务链接结束
 
     bool   bClientMoveToBegin = false;
-    bool   bClientMoveToEnd = false;
-    string strMoveToLink = "";
-    int    nMoveToNum = 0;
-    int    nMoveX = 0;
-    int    nMoveY = 0;
+    bool   bClientMoveToEnd   = false;
+    string strMoveToLink      = "";
+    int    nMoveToNum         = 0;
+    int    nMoveX             = 0;
+    int    nMoveY             = 0;
 
     bool bLocalImageBegin = false;  //本地文件开始
-    bool bLocalImageEnd = false;    //本地文件结束
+    bool bLocalImageEnd   = false;  //本地文件结束
 
     char szLinkInfo[1024];  //超链接内容
     char szFackToken[128];
@@ -544,22 +546,22 @@ void RtwTextBox::SetTextnew(const std::string& text) {
 
     SLine lineTemp;  //临时line
 
-    std::string strItemLink = "";    //道具超链接内容
-    std::string strmTaskLink = "";   //任务超链接内容
-    std::string strTempMsg = "";     //临时用
+    std::string strItemLink   = "";  //道具超链接内容
+    std::string strmTaskLink  = "";  //任务超链接内容
+    std::string strTempMsg    = "";  //临时用
     std::string strLocalImage = "";  //本地文件
 
-    itemName.type = eit_Name;
-    itemTemp.type = eit_Text;
+    itemName.type  = eit_Name;
+    itemTemp.type  = eit_Text;
     itemImage.type = eit_Text;
 
     itemName.strFontName = m_FontType;
-    itemName.nFontSize = m_FontSize;
+    itemName.nFontSize   = m_FontSize;
     itemTemp.strFontName = m_FontType;
-    itemTemp.nFontSize = m_FontSize;
+    itemTemp.nFontSize   = m_FontSize;
 
     nLineWidth = m_rcFrame.getWidth() - 10;
-    nHight = m_rcFrame.getHeight() - 10;
+    nHight     = m_rcFrame.getHeight() - 10;
     InsertLine(lineTemp);  //插入临时行
 
     while (nPos < strMessage.size()) {
@@ -644,8 +646,8 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                     CalcLinePosition((int)m_Lines.size() - 1);
 
                     strTempMsg = "";
-                    nImageNum = 0;
-                    nWordsNum = 0;
+                    nImageNum  = 0;
+                    nWordsNum  = 0;
                 }
             } else {
                 pLastLine->InsertItem(itemImage);
@@ -660,7 +662,7 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                 strMessage[nPos + 8] == 'e' && strMessage[nPos + 9] == '/' &&
                 strMessage[nPos + 10] == '>' && !bLocalImageEnd) {
                 //本地图片
-                bLocalImageEnd = true;
+                bLocalImageEnd   = true;
                 bLocalImageBegin = false;
                 nPos += 11;
             }
@@ -704,8 +706,8 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                         CalcLinePosition((int)m_Lines.size() - 1);
 
                         strTempMsg = "";
-                        nImageNum = 0;
-                        nWordsNum = 0;
+                        nImageNum  = 0;
+                        nWordsNum  = 0;
                     }
                 } else {
                     pLastLine->InsertItem(itemImage);
@@ -713,7 +715,7 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                 }
                 CalcLinePosition((int)m_Lines.size() - 1);
                 bItemLinkEnd = false;
-                strItemLink = "";
+                strItemLink  = "";
             }
         } else if (bItemLinkBegin) {
             //道具链接
@@ -721,7 +723,7 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                 strMessage[nPos + 2] == 'e' && strMessage[nPos + 3] == 't' &&
                 strMessage[nPos + 4] == 'i' && bItemLinkBegin) {
                 //道具链接结束
-                bItemLinkEnd = true;
+                bItemLinkEnd   = true;
                 bItemLinkBegin = false;
                 nPos += 5;
             }
@@ -747,7 +749,7 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                 }
 
                 bool bIsName = true;
-                int  i = 0;
+                int  i       = 0;
 
                 std::string tmpItemName = "";
                 std::string tmpLinkInfo = "";
@@ -771,7 +773,7 @@ void RtwTextBox::SetTextnew(const std::string& text) {
 
                 //道具链接
                 tmpLink.childType = hlinkItem;
-                tmpLink.Type = hlinkClient;
+                tmpLink.Type      = hlinkClient;
 
                 rt2_sprintf(szLinkInfo, "//showItemInfo %s", tmpLinkInfo.c_str());
                 tmpLink.Text = szLinkInfo;
@@ -780,7 +782,7 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                 itemLink.text = "[";
                 itemLink.text += tmpItemName.c_str();
                 itemLink.text += "]";
-                itemLink.color = itemColorList[nItemColor % 4];
+                itemLink.color     = itemColorList[nItemColor % 4];
                 itemLink.hyperLink = tmpLink;
                 nWordsNum += (int)itemLink.text.size();
 
@@ -789,7 +791,7 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                          ((int)itemLink.text.size() * itemLink.nFontSize) / 2 >
                      nLineWidth)) {
                     string strTemp = itemLink.text;
-                    int    num = (nLineWidth - pLastLine->rect.getWidth()) /
+                    int    num     = (nLineWidth - pLastLine->rect.getWidth()) /
                               itemLink.nFontSize;  //得到不需要换行的个数
                     num <<= 1;
 
@@ -807,17 +809,17 @@ void RtwTextBox::SetTextnew(const std::string& text) {
 
                     SLine lineNew;
                     InsertLine(lineNew);  //插入空行
-                    itemLink.text = strTemp.substr(num);
+                    itemLink.text    = strTemp.substr(num);
                     SLine* pLastLine = getLine((int)m_Lines.size() - 1);
                     pLastLine->InsertItem(itemLink);
 
-                    strTempMsg = "";
-                    nWordsNum = nItemNameNum;
+                    strTempMsg   = "";
+                    nWordsNum    = nItemNameNum;
                     nItemNameNum = 0;
                 } else {
                     pLastLine->InsertItem(itemLink);
                     nItemNameNum = 0;
-                    nWordsNum = 0;
+                    nWordsNum    = 0;
                 }
 
                 CalcLinePosition((int)m_Lines.size() - 1);
@@ -834,7 +836,7 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                 strMessage[nPos + 6] == 'o' && strMessage[nPos + 7] == 'm' &&
                 strMessage[nPos + 8] == '>' && bClientMoveToBegin) {
                 //寻路链接结束
-                bClientMoveToEnd = true;
+                bClientMoveToEnd   = true;
                 bClientMoveToBegin = false;
                 nPos += 9;
             }
@@ -861,7 +863,7 @@ void RtwTextBox::SetTextnew(const std::string& text) {
 
                 //道具链接
                 tmpLink.childType = hlinkItem;
-                tmpLink.Type = hlinkClient;
+                tmpLink.Type      = hlinkClient;
 
                 rt2_sprintf(szLinkInfo, "//clientmoveto %d %d", nMoveX, nMoveY);
                 tmpLink.Text = szLinkInfo;
@@ -870,9 +872,9 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                 itemLink.text = "[";
                 itemLink.text += buf;
                 itemLink.text += "]";
-                itemLink.color = 0xaabbcc00;
+                itemLink.color      = 0xaabbcc00;
                 itemLink.bUnderLine = true;
-                itemLink.hyperLink = tmpLink;
+                itemLink.hyperLink  = tmpLink;
 
                 nWordsNum += strlen(buf);
 
@@ -881,7 +883,7 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                          ((int)itemLink.text.size() * itemLink.nFontSize) / 2 >
                      nLineWidth)) {
                     string strTemp = itemLink.text;
-                    int    num = (nLineWidth - pLastLine->rect.getWidth()) /
+                    int    num     = (nLineWidth - pLastLine->rect.getWidth()) /
                               itemLink.nFontSize;  //得到不需要换行的个数
                     num <<= 1;
 
@@ -899,17 +901,17 @@ void RtwTextBox::SetTextnew(const std::string& text) {
 
                     SLine lineNew;
                     InsertLine(lineNew);  //插入空行
-                    itemLink.text = strTemp.substr(num);
+                    itemLink.text    = strTemp.substr(num);
                     SLine* pLastLine = getLine((int)m_Lines.size() - 1);
                     pLastLine->InsertItem(itemLink);
 
                     strTempMsg = "";
-                    nWordsNum = nItemNameNum;
+                    nWordsNum  = nItemNameNum;
                     nMoveToNum = 0;
                 } else {
                     pLastLine->InsertItem(itemLink);
                     nMoveToNum = 0;
-                    nWordsNum = 0;
+                    nWordsNum  = 0;
                 }
 
                 CalcLinePosition((int)m_Lines.size() - 1);
@@ -937,8 +939,8 @@ void RtwTextBox::SetTextnew(const std::string& text) {
 
             if (pLastLine->rect.getWidth() + (int)strTempMsg.size() * 6 > nLineWidth) {
                 SItem itemText;
-                itemText.text = strTempMsg;
-                itemText.type = eit_Text;
+                itemText.text  = strTempMsg;
+                itemText.type  = eit_Text;
                 itemText.color = RtwPixel(color);
 
                 pLastLine->InsertItem(itemText);
@@ -948,7 +950,7 @@ void RtwTextBox::SetTextnew(const std::string& text) {
                 SLine lineTemp;
                 InsertLine(lineTemp);
 
-                nWordsNum = 0;
+                nWordsNum  = 0;
                 strTempMsg = "";
             }
         }
@@ -956,8 +958,8 @@ void RtwTextBox::SetTextnew(const std::string& text) {
         if (!strTempMsg.empty()) {
             SLine* pLastLine = getLine((int)m_Lines.size() - 1);
 
-            itemTemp.text = strTempMsg;
-            itemTemp.type = eit_Text;
+            itemTemp.text  = strTempMsg;
+            itemTemp.type  = eit_Text;
             itemTemp.color = RtwPixel(color);
             pLastLine->InsertItem(itemTemp);
             nWordsNum = 0;
@@ -981,7 +983,7 @@ std::string RtwTextBox::getText() const {
 
 std::string RtwTextBox::GetText() const {
     char        szBuf[1024] = "\0";
-    std::string str = "";
+    std::string str         = "";
     for (std::list<SLine>::const_iterator iterLine = m_Lines.begin(); iterLine != m_Lines.end();
          iterLine++) {
         const SLine& line = *iterLine;
@@ -1067,9 +1069,9 @@ void RtwTextBox::DrawForeground(const RtwRect* pClipRect /* = NULL*/) {
                     // 绘制文本选中区域
                     RtwRect _rcSelect = item.rcSelect;
                     _rcSelect.ClipBy(rcAfterClip);
-                    g_workspace.getRenderDevice()->DrawRectangle(_rcSelect, RtwPixel(0xff2233dd));
+                    g_workspace.getRenderDevice()->DrawRectangle(_rcSelect, RtwPixel(0xff3950BA));
 
-                     // 创建字体
+                    // 创建字体
                     RtwFont* pFont = NULL;
                     if (item.strFontName != "" || item.nFontSize > 0) {
                         pFont = g_workspace.getFontManager()->CreateFont(
@@ -1134,7 +1136,7 @@ void RtwTextBox::DrawForeground(const RtwRect* pClipRect /* = NULL*/) {
                 case eit_Image: {
                     //图片
                     rcRender.bottom = rcRender.top + item.imgSize.height;
-                    rcRender.right = rcRender.left + item.imgSize.width;
+                    rcRender.right  = rcRender.left + item.imgSize.width;
                     //   					rcRender.ClipBy(rcAfterClip);
 
                     RtwImage* pCurrentImage = item.image;
@@ -1203,9 +1205,9 @@ void RtwTextBox::CalcClient() {
         m_rcClient.right -= g_workspace.getDefaultScrollVWidth() + 2;
     }
 
-    m_ViewRect.left = m_rcClient.left + m_LeftSpace + m_LeftMargin;
-    m_ViewRect.right = m_rcClient.right - m_LeftSpace - m_RightMargin;
-    m_ViewRect.top = m_rcClient.top + m_LineSpace + m_TopMargin;
+    m_ViewRect.left   = m_rcClient.left + m_LeftSpace + m_LeftMargin;
+    m_ViewRect.right  = m_rcClient.right - m_LeftSpace - m_RightMargin;
+    m_ViewRect.top    = m_rcClient.top + m_LineSpace + m_TopMargin;
     m_ViewRect.bottom = m_rcClient.bottom - m_LineSpace - m_BottomMargin;
 
     if (m_pScrollBarV) {
@@ -1230,7 +1232,7 @@ void RtwTextBox::AutoAdjectCursor() {
             } else {
                 m_CursorPosLine -= 1;
                 m_CursorPosLine = m_CursorPosLine < 0 ? 0 : m_CursorPosLine;
-                m_CursorPosCol = 0;
+                m_CursorPosCol  = 0;
                 RefreshCursorPosition();
             }
         } else if (m_ViewRect.right <= m_CursorRect.left) {
@@ -1260,8 +1262,8 @@ bool RtwTextBox::_DivideTextItem(SItem& ItemToDivide, int DivideIndexFrom, SItem
     UI_ENSURE_B(ItemToDivide.type == eit_Text);
     UI_ENSURE_B(DivideIndexFrom >= 0 && DivideIndexFrom < (int)ItemToDivide.text.size());
 
-    outNewItem = ItemToDivide;
-    outNewItem.text = outNewItem.text.substr(DivideIndexFrom);
+    outNewItem        = ItemToDivide;
+    outNewItem.text   = outNewItem.text.substr(DivideIndexFrom);
     ItemToDivide.text = ItemToDivide.text.substr(0, DivideIndexFrom);
 
     return true;
@@ -1296,7 +1298,7 @@ bool RtwTextBox::_MergeWrapedLine(int line) {
     SLine* pLine = getLine(line);
 
     int    MergeLineIndex = line + 1;
-    SLine* pNextLine = getLine(MergeLineIndex);
+    SLine* pNextLine      = getLine(MergeLineIndex);
 
     if (!pLine || pLine->lineitems.empty()          //存在此行,且内容不是空
         || !pNextLine || !pNextLine->bWordWrapTail  //存在下一行,
@@ -1335,13 +1337,13 @@ bool RtwTextBox::RemoveLine(int line) {
 
     //行高
     int LineHeight = 0;
-    int LineIndex = 0;
+    int LineIndex  = 0;
 
     std::list<SLine>::iterator iterLine = m_Lines.begin();
     for (; iterLine != m_Lines.end(); iterLine++, ++LineIndex) {
         if (LineIndex == line) {
             SLine& _Line = *iterLine;
-            LineHeight = _Line.rect.getHeight();
+            LineHeight   = _Line.rect.getHeight();
             break;
         }
     }
@@ -1413,8 +1415,8 @@ bool RtwTextBox::InsertCharacterToCurrentCursor(const char character) {
     if (pLine->lineitems.empty()) {
         //默认字体
         SItem item;
-        item.text = character;
-        item.type = eit_Text;
+        item.text  = character;
+        item.type  = eit_Text;
         item.color = m_TextColor;
         pLine->InsertItem(item, 0);
         bProcessed = true;
@@ -1424,7 +1426,7 @@ bool RtwTextBox::InsertCharacterToCurrentCursor(const char character) {
             pItem.type = eit_Text;
             pItem.text.insert(0, 1, character);
             getLine(m_CursorPosLine)->InsertItem(pItem);
-            m_addface = false;
+            m_addface  = false;
             bProcessed = true;
         } else {
             SItem* _pItem = pLine->getItem((int)pLine->lineitems.size() - 1);
@@ -1443,8 +1445,8 @@ bool RtwTextBox::InsertCharacterToCurrentCursor(const char character) {
                 _pItem->text.insert(_InsertIndex, 1, character);
             } else {
                 SItem item;
-                item.text = character;
-                item.type = eit_Text;
+                item.text  = character;
+                item.type  = eit_Text;
                 item.color = m_TextColor;
                 pLine->InsertItem(item);
             }
@@ -1470,12 +1472,12 @@ bool RtwTextBox::InsertItemToCurrentCursor(SItem& item) {
 //捡取item
 bool RtwTextBox::PickItem(SPoint& point, int& outLine, int& outCol, int& outItemIndex,
                           bool& bDoubleByte, bool& outNear) {
-    outLine = 0;
+    outLine                             = 0;
     std::list<SLine>::iterator iterLine = m_Lines.begin();
     for (; iterLine != m_Lines.end(); ++iterLine) {
         SLine& line = *iterLine;
-        int    j = 0;
-        outCol = 0;
+        int    j    = 0;
+        outCol      = 0;
 
         // 根据高度判断
         if ((point.y >= line.rect.top) && (point.y <= line.rect.bottom)) {
@@ -1486,7 +1488,7 @@ bool RtwTextBox::PickItem(SPoint& point, int& outLine, int& outCol, int& outItem
                         case eit_Name:
                         case eit_Text: {
                             int  iIndex = 0;
-                            bool bNear = true;
+                            bool bNear  = true;
 
                             RtwFont* pkFont = g_workspace.getFontManager()->CreateFont(
                                 item.strFontName, item.nFontSize);
@@ -1545,10 +1547,105 @@ RtwTextBox::SItem* RtwTextBox::PickItem(const SPoint& point) {
     return NULL;
 }
 
+void RtwTextBox::OnEvUnFocus(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
+    _SetSelectionStart(0, 0);
+    _SetSelectionEnd(0, 0);
+    RefreshSelectionRect();
+}
+
+void RtwTextBox::OnEvLDClick(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
+    if (!getEnableInput())
+        return;
+    if (m_Lines.empty())
+        return;
+    int  line, col, itemIndex;
+    bool bDoubleByte;
+    bool bNear;
+
+    if (!m_Lines.empty()) {
+        //捡取item
+        if (PickItem(SPoint(pEvent->mouse.x, pEvent->mouse.y), line, col, itemIndex, bDoubleByte,
+                     bNear)) {
+            SelectAll();
+        }
+    }
+}
+
 //mousemove
 void RtwTextBox::OnMouseMove_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
     if (!getEnableInput())
         return;
+    static bool wasMouseIn = false;      // 记录鼠标上次是否在输入框内
+    static int  startX = 0, startY = 0;  // 记录鼠标按下时的位置
+    int         mouseX = pEvent->mouse.x;
+    int         mouseY = pEvent->mouse.y;
+
+    // 获取输入框的区域
+    RtwRect inputRect = getRect();
+
+    if (pEvent->mouse.button == 1) {  // 如果左键仍然按下
+        if (inputRect.IsContain(SPoint(mouseX, mouseY))) {
+            // 鼠标在输入框内
+            wasMouseIn = true;
+
+            int  line, col, itemIndex;
+            bool bDoubleByte;
+            bool bNear;
+
+            bool isPicked =
+                PickItem(SPoint(mouseX, mouseY), line, col, itemIndex, bDoubleByte, bNear);
+
+            if (isPicked) {
+                m_CursorPosLine = line;
+                m_CursorPosCol  = col;
+                if (!bNear) {
+                    if (bDoubleByte)
+                        m_CursorPosCol += 2;
+                    else
+                        m_CursorPosCol += 1;
+                }
+                SetCursorPos(m_CursorPosLine, m_CursorPosCol);
+                _SetSelectionEnd(m_CursorPosLine, m_CursorPosCol);
+            }
+
+            RefreshSelectionRect();
+        } else {
+            // 鼠标离开输入框
+            if (wasMouseIn) {
+                // 计算鼠标移动量
+                int dx = mouseX - startX;
+                int dy = mouseY - startY;
+
+                // 以鼠标移动量调整光标位置
+                // 这里假设光标移动的像素量对应一定的列数移动
+                int colMove = dx / (m_FontSize >> 2);  // 假设每列的宽度
+                int rowMove = dy / m_FontSize;         // 假设每行的高度
+
+                m_CursorPosCol += colMove;
+                m_CursorPosLine += rowMove;
+
+                // 限制光标位置在文本框内
+                if (m_CursorPosLine < 0)
+                    m_CursorPosLine = 0;
+                if (m_CursorPosCol < 0)
+                    m_CursorPosCol = 0;
+
+                // 更新选择区域的结束位置
+                SetCursorPos(m_CursorPosLine, m_CursorPosCol);
+                _SetSelectionEnd(m_CursorPosLine, m_CursorPosCol);
+
+                // 刷新选择区域
+                RefreshSelectionRect();
+            }
+        }
+    } else {
+        // 鼠标左键抬起，重置状态
+        wasMouseIn = false;
+    }
+
+    // 更新记录的鼠标位置
+    startX = mouseX;
+    startY = mouseY;
 }
 
 //点击事件
@@ -1575,7 +1672,7 @@ void RtwTextBox::OnMouseLDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent)
                      bNear)) {
             // 光标
             m_CursorPosLine = line;
-            m_CursorPosCol = col;
+            m_CursorPosCol  = col;
             if (!bNear) {
                 if (bDoubleByte)
                     m_CursorPosCol += 2;
@@ -1584,10 +1681,10 @@ void RtwTextBox::OnMouseLDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent)
             }
         } else {
             //没捡取到,默认位置
-            int textsize = 0;
+            int textsize  = 0;
             int imagesize = 0;
 
-            m_CursorPosLine = (int)m_Lines.size() - 1;
+            m_CursorPosLine  = (int)m_Lines.size() - 1;
             SLine* pLastLine = getLine((int)m_Lines.size() - 1);
 
             if (pLastLine && !pLastLine->lineitems.empty()) {
@@ -1623,10 +1720,10 @@ void RtwTextBox::OnKeyDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
         case vkLeft: {
             //移动
             if (m_CursorPosCol > 0) {
-                SItem* pItemIn = NULL;
-                SItem* pItemBetweenLeft = NULL;
+                SItem* pItemIn           = NULL;
+                SItem* pItemBetweenLeft  = NULL;
                 SItem* pItemBetweenRight = NULL;
-                int    nItemIndex = 0;
+                int    nItemIndex        = 0;
                 if (_GetItemByLineCol(m_CursorPosLine, m_CursorPosCol, &pItemIn, &nItemIndex,
                                       &pItemBetweenLeft, &pItemBetweenRight)) {
                     if (pItemIn) {
@@ -1690,9 +1787,9 @@ void RtwTextBox::OnKeyDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
             }
         } break;
         case vkRight: {
-            SItem* pItemIn = NULL;
-            int    nItemIndex = 0;
-            SItem* pItemBetweenLeft = NULL;
+            SItem* pItemIn           = NULL;
+            int    nItemIndex        = 0;
+            SItem* pItemBetweenLeft  = NULL;
             SItem* pItemBetweenRight = NULL;
             if (_GetItemByLineCol(m_CursorPosLine, m_CursorPosCol, &pItemIn, &nItemIndex,
                                   &pItemBetweenLeft, &pItemBetweenRight)) {
@@ -1738,9 +1835,9 @@ void RtwTextBox::OnKeyDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
         } break;
         case vkUp:
             if (m_CursorPosLine > 0) {
-                SItem* pItemIn = NULL;
-                int    nItemIndex = 0;
-                SItem* pItemBetweenLeft = NULL;
+                SItem* pItemIn           = NULL;
+                int    nItemIndex        = 0;
+                SItem* pItemBetweenLeft  = NULL;
                 SItem* pItemBetweenRight = NULL;
                 if (_GetItemByLineCol(m_CursorPosLine, m_CursorPosCol, &pItemIn, &nItemIndex,
                                       &pItemBetweenLeft, &pItemBetweenRight)) {
@@ -1767,9 +1864,9 @@ void RtwTextBox::OnKeyDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
             break;
         case vkDown:
             if (m_CursorPosLine < (int)m_Lines.size() - 1) {
-                SItem* pItemIn = NULL;
-                int    nItemIndex = 0;
-                SItem* pItemBetweenLeft = NULL;
+                SItem* pItemIn           = NULL;
+                int    nItemIndex        = 0;
+                SItem* pItemBetweenLeft  = NULL;
                 SItem* pItemBetweenRight = NULL;
                 if (_GetItemByLineCol(m_CursorPosLine, m_CursorPosCol, &pItemIn, &nItemIndex,
                                       &pItemBetweenLeft, &pItemBetweenRight)) {
@@ -1811,7 +1908,7 @@ void RtwTextBox::OnKeyDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
         case vkEnd: {
             SLine* pLine = getLine(m_CursorPosLine);
             if (pLine && !pLine->lineitems.empty()) {
-                SItem* pItem = pLine->getItem(0);
+                SItem* pItem   = pLine->getItem(0);
                 m_CursorPosCol = pItem->getColCount();
 
                 // 重置选中字符
@@ -1828,9 +1925,9 @@ void RtwTextBox::OnKeyDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
             if (m_SelStartLine == m_SelEndLine && m_SelStartCol == m_SelEndCol) {
                 SLine* pLine = getLine(m_CursorPosLine);
                 UI_ENSURE(pLine);
-                SItem* pItemIn = NULL;
-                int    nItemIndex = 0;
-                SItem* pItemBetweenLeft = NULL;
+                SItem* pItemIn           = NULL;
+                int    nItemIndex        = 0;
+                SItem* pItemBetweenLeft  = NULL;
                 SItem* pItemBetweenRight = NULL;
                 if (_GetItemByLineCol(m_CursorPosLine, m_CursorPosCol, &pItemIn, &nItemIndex,
                                       &pItemBetweenLeft, &pItemBetweenRight)) {
@@ -1867,15 +1964,15 @@ void RtwTextBox::OnKeyDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
 
             if (m_bWordWrap) {
                 int         nSavePosLine = m_CursorPosLine;
-                int         nSavePosCol = m_CursorPosCol;
-                std::string sStringTemp = getText();
+                int         nSavePosCol  = m_CursorPosCol;
+                std::string sStringTemp  = getText();
                 RemoveAllLines();
                 SetText(sStringTemp);
                 SLine* kLine = getLine(nSavePosLine);
                 if (NULL == kLine) {
                     kLine = getLine(nSavePosLine - 1);
                     if (kLine) {
-                        nSavePosLine = nSavePosLine - 1;
+                        nSavePosLine  = nSavePosLine - 1;
                         SItem* pkItem = kLine->getItem(0);
                         if (pkItem) {
                             nSavePosCol = (int)pkItem->text.size();
@@ -1895,9 +1992,9 @@ void RtwTextBox::OnKeyDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
             if (m_SelStartLine == m_SelEndLine && m_SelStartCol == m_SelEndCol) {
                 SLine* pLine = getLine(m_CursorPosLine);
                 UI_ENSURE(pLine);
-                SItem* pItemIn = NULL;
-                int    nItemIndex = 0;
-                SItem* pItemBetweenLeft = NULL;
+                SItem* pItemIn           = NULL;
+                int    nItemIndex        = 0;
+                SItem* pItemBetweenLeft  = NULL;
                 SItem* pItemBetweenRight = NULL;
                 if (_GetItemByLineCol(m_CursorPosLine, m_CursorPosCol, &pItemIn, &nItemIndex,
                                       &pItemBetweenLeft, &pItemBetweenRight)) {
@@ -1969,15 +2066,15 @@ void RtwTextBox::OnKeyDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
             AutoAdjectCursor();
             if (m_bWordWrap) {
                 int         nSavePosLine = m_CursorPosLine;
-                int         nSavePosCol = m_CursorPosCol;
-                std::string sStringTemp = getText();
+                int         nSavePosCol  = m_CursorPosCol;
+                std::string sStringTemp  = getText();
                 RemoveAllLines();
                 SetText(sStringTemp);
                 SLine* kLine = getLine(nSavePosLine);
                 if (NULL == kLine) {
                     kLine = getLine(nSavePosLine - 1);
                     if (kLine) {
-                        nSavePosLine = nSavePosLine - 1;
+                        nSavePosLine  = nSavePosLine - 1;
                         SItem* pkItem = kLine->getItem(0);
                         if (pkItem) {
                             nSavePosCol = (int)pkItem->text.size();
@@ -2016,8 +2113,8 @@ void RtwTextBox::OnKeyDown_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
                         }
 
                         RemoveSelect();
-                        AddText(strClipboard);
-                        //  					InsertStringToCurrentCursor(strClipboard);
+                        //AddText(strClipboard);
+                        InsertStringToCurrentCursor(strClipboard);
                         AutoAdjectCursor();
                     }
                 }
@@ -2135,24 +2232,24 @@ void RtwTextBox::OnKeyChar_This(RtwWidget* pWidget, RtwEventDelegate* pEvent) {
 
 //重置
 void RtwTextBox::_ResetSelf() {
-    m_WidgetType = wtEditBox;
-    m_Flag = m_DefaultFlag;
-    m_TextAlign = SUiTextAlignment(alignNear, alignNear);
-    m_bEnableInput = true;
-    m_bWordWrap = false;
-    m_bMultiLine = false;
-    m_bAutoScrollV = false;
+    m_WidgetType     = wtEditBox;
+    m_Flag           = m_DefaultFlag;
+    m_TextAlign      = SUiTextAlignment(alignNear, alignNear);
+    m_bEnableInput   = true;
+    m_bWordWrap      = false;
+    m_bMultiLine     = false;
+    m_bAutoScrollV   = false;
     m_ViewOffsetLine = 0;
-    m_ViewOffsetCol = 0;
-    m_CursorPosLine = 0;
-    m_CursorPosCol = 0;
-    m_SelStartLine = 0;
-    m_SelStartCol = 0;
-    m_SelEndLine = 0;
-    m_SelEndCol = 0;
-    m_SelText = "";
-    m_bAutoSizeV = false;
-    m_bAutoSizeH = false;
+    m_ViewOffsetCol  = 0;
+    m_CursorPosLine  = 0;
+    m_CursorPosCol   = 0;
+    m_SelStartLine   = 0;
+    m_SelStartCol    = 0;
+    m_SelEndLine     = 0;
+    m_SelEndCol      = 0;
+    m_SelText        = "";
+    m_bAutoSizeV     = false;
+    m_bAutoSizeH     = false;
     m_Lines.clear();
     m_bNeedRefreshPosition = true;
 }
@@ -2210,39 +2307,39 @@ int RtwTextBox::getItemIndex(SLine* pLine, SItem* pItem) {
 //获取某行某列的item
 bool RtwTextBox::_GetItemByLineCol(int line, int col, SItem** ppItemIn, int* pTextItemIndex,
                                    SItem** ppItemBetweenLeft, SItem** ppItemBetweenRight) {
-    *ppItemIn = NULL;
-    *pTextItemIndex = 0;
-    *ppItemBetweenLeft = NULL;
+    *ppItemIn           = NULL;
+    *pTextItemIndex     = 0;
+    *ppItemBetweenLeft  = NULL;
     *ppItemBetweenRight = NULL;
 
     SLine* pLine = getLine(line);
     UI_ENSURE_B(pLine);
 
     if (col == 0) {
-        *ppItemIn = NULL;
-        *pTextItemIndex = 0;
-        *ppItemBetweenLeft = NULL;
+        *ppItemIn           = NULL;
+        *pTextItemIndex     = 0;
+        *ppItemBetweenLeft  = NULL;
         *ppItemBetweenRight = pLine->lineitems.empty() ? NULL : &(pLine->lineitems.front());
         return true;
     }
 
     bool bFound = false;
-    int  index = 0;
+    int  index  = 0;
     foreach (std::list<SItem>, iterItem, pLine->lineitems) {
         SItem& item = *iterItem;
         switch (item.type) {
             case eit_Text:
                 if (index + (int)item.text.size() > col) {
-                    bFound = true;
-                    int delta = col - index;
-                    *ppItemIn = &item;
-                    *pTextItemIndex = delta;
-                    *ppItemBetweenLeft = NULL;
+                    bFound              = true;
+                    int delta           = col - index;
+                    *ppItemIn           = &item;
+                    *pTextItemIndex     = delta;
+                    *ppItemBetweenLeft  = NULL;
                     *ppItemBetweenRight = NULL;
                 } else if (index + (int)item.text.size() == col) {
-                    bFound = true;
-                    *ppItemIn = NULL;
-                    *pTextItemIndex = 0;
+                    bFound             = true;
+                    *ppItemIn          = NULL;
+                    *pTextItemIndex    = 0;
                     *ppItemBetweenLeft = &item;
                     iterItem++;
                     if (iterItem == pLine->lineitems.end())
@@ -2256,9 +2353,9 @@ bool RtwTextBox::_GetItemByLineCol(int line, int col, SItem** ppItemIn, int* pTe
             case eit_Image:
             case eit_ImageSequence:
                 if (index + 1 == col) {
-                    bFound = true;
-                    *ppItemIn = NULL;
-                    *pTextItemIndex = 0;
+                    bFound             = true;
+                    *ppItemIn          = NULL;
+                    *pTextItemIndex    = 0;
                     *ppItemBetweenLeft = &item;
                     iterItem++;
                     if (iterItem == pLine->lineitems.end())
@@ -2290,7 +2387,7 @@ void RtwTextBox::OnScroll_ScrollBarV(RtwWidget* pWidget, RtwEventDelegate* pEven
                       pFirstLine->rect.top - DefaultStartPoint.y);
 
     int OrigValue = -OrigOffset.height;
-    int value = m_pScrollBarV->getValue();
+    int value     = m_pScrollBarV->getValue();
 
     OffsetItemPosition(SSize(0, OrigValue - value), 0);
 }
@@ -2327,13 +2424,13 @@ bool RtwTextBox::_Intercept(int line, int itemIndex, int itemCol, bool bWordWrap
         case eit_Text: {
             int _StartItemIndex = 0;
 
-            SLine* pNewLine = NULL;
+            SLine* pNewLine        = NULL;
             SItem* pItemInsertInto = NULL;
             if (bWordWrap) {
                 SLine* pNextLine = getLine(line + 1);
                 if (pNextLine && pNextLine->bWordWrapTail) {
                     pItemInsertInto = pNextLine->getItem(0);
-                    pNewLine = pNextLine;
+                    pNewLine        = pNextLine;
                 }
             }
 
@@ -2355,16 +2452,16 @@ bool RtwTextBox::_Intercept(int line, int itemIndex, int itemCol, bool bWordWrap
                     itemCol = (int)pItem->text.size();
                 }
                 std::string textLeft = pItem->text.substr(itemCol);
-                pItem->text = pItem->text.substr(0, itemCol);
+                pItem->text          = pItem->text.substr(0, itemCol);
                 if (pItemInsertInto) {
                     pItemInsertInto->text.insert(0, textLeft);
                 } else {
                     SItem NewItem;
-                    NewItem.type = eit_Text;
-                    NewItem.color = pItem->color;
+                    NewItem.type       = eit_Text;
+                    NewItem.color      = pItem->color;
                     NewItem.bUnderLine = pItem->bUnderLine;
                     NewItem.colorDelta = pItem->colorDelta;
-                    NewItem.text = textLeft;
+                    NewItem.text       = textLeft;
                     pNewLine->InsertItem(NewItem, 0);
                 }
             }
@@ -2400,14 +2497,14 @@ bool RtwTextBox::_Intercept(int line, int col) {
         itemIndex = pLine->getItemIndex(pItemIn);
 
         std::string textLeft = pItemIn->text.substr(itemCol);
-        pItemIn->text = pItemIn->text.substr(0, itemCol);
+        pItemIn->text        = pItemIn->text.substr(0, itemCol);
 
         SItem NewItem;
-        NewItem.type = eit_Text;
-        NewItem.color = pItemIn->color;
+        NewItem.type       = eit_Text;
+        NewItem.color      = pItemIn->color;
         NewItem.bUnderLine = pItemIn->bUnderLine;
         NewItem.colorDelta = pItemIn->colorDelta;
-        NewItem.text = textLeft;
+        NewItem.text       = textLeft;
         pLine->InsertItem(NewItem, itemIndex + 1);
 
         CalcLinePosition(line);
@@ -2430,15 +2527,15 @@ bool RtwTextBox::_Intercept_Enter(int line, int col) {
         itemIndex = pLine->getItemIndex(pItemIn);
 
         std::string textLeft = pItemIn->text.substr(itemCol);
-        pItemIn->text = pItemIn->text.substr(0, itemCol);
+        pItemIn->text        = pItemIn->text.substr(0, itemCol);
 
         SLine NewLine;
         SItem NewItem;
-        NewItem.type = eit_Text;
-        NewItem.color = pItemIn->color;
+        NewItem.type       = eit_Text;
+        NewItem.color      = pItemIn->color;
         NewItem.bUnderLine = pItemIn->bUnderLine;
         NewItem.colorDelta = pItemIn->colorDelta;
-        NewItem.text = textLeft;
+        NewItem.text       = textLeft;
         NewLine.InsertItem(NewItem);
         InsertLine(NewLine, line + 1);
 
@@ -2488,7 +2585,7 @@ void RtwTextBox::_DoSwapWordWrap() {
 //计算item中选择的矩形
 void RtwTextBox::_CalcItemSelectionRect(SItem* pItem) {
     int _SelBegin = pItem->SelectBegin - m_ViewOffsetCol;
-    int _SelEnd = pItem->SelectEnd - m_ViewOffsetCol;
+    int _SelEnd   = pItem->SelectEnd - m_ViewOffsetCol;
 
     if (_SelBegin >= 0 && _SelEnd <= (int)pItem->text.size()) {
         pItem->rcSelect.left =
@@ -2505,7 +2602,7 @@ void RtwTextBox::_CalcItemSelectionRect(SItem* pItem) {
                 pItem->rect.left + g_workspace.getFontManager()
                                        ->CreateFont(pItem->strFontName, pItem->nFontSize)
                                        ->GetStringWidth(pItem->text);
-        pItem->rcSelect.top = pItem->rect.top;
+        pItem->rcSelect.top    = pItem->rect.top;
         pItem->rcSelect.bottom = pItem->rect.bottom;
     }
 }
@@ -2532,13 +2629,13 @@ RtwTextBox::SItem* RtwTextBox::getNextItem(SLine* pLine, SItem* pItem) {
 //设置开始选择的位置;
 void RtwTextBox::_SetSelectionStart(int line, int col) {
     m_SelStartLine = line;
-    m_SelStartCol = col;
+    m_SelStartCol  = col;
 }
 
-//设置结束开始的位置
+//设置结束的位置
 void RtwTextBox::_SetSelectionEnd(int line, int col) {
     m_SelEndLine = line;
-    m_SelEndCol = col;
+    m_SelEndCol  = col;
 }
 
 //获取被选中的行,列,起始位置
@@ -2546,14 +2643,14 @@ void RtwTextBox::_getSelectionStartEnd(int& lineStart, int& colStart, int& lineE
     if (m_SelEndLine < m_SelStartLine ||
         ((m_SelEndLine == m_SelStartLine) && (m_SelEndCol < m_SelStartCol))) {
         lineStart = m_SelEndLine;
-        colStart = m_SelEndCol;
-        lineEnd = m_SelStartLine;
-        colEnd = m_SelStartCol;
+        colStart  = m_SelEndCol;
+        lineEnd   = m_SelStartLine;
+        colEnd    = m_SelStartCol;
     } else {
         lineStart = m_SelStartLine;
-        colStart = m_SelStartCol;
-        lineEnd = m_SelEndLine;
-        colEnd = m_SelEndCol;
+        colStart  = m_SelStartCol;
+        lineEnd   = m_SelEndLine;
+        colEnd    = m_SelEndCol;
     }
 }
 
@@ -2563,6 +2660,7 @@ void RtwTextBox::SelectAll() {
         SLine* pLastLine = &(m_Lines.back());
         _SetSelectionStart(0, 0);
         _SetSelectionEnd((int)m_Lines.size() - 1, pLastLine->getColCount());
+        RefreshSelectionRect();
     }
 }
 
@@ -2586,7 +2684,7 @@ void RtwTextBox::RemoveSelect() {
             continue;
 
         int _SelStart = 0;
-        int _SelEnd = (int)pFirstItem->text.size();
+        int _SelEnd   = (int)pFirstItem->text.size();
         if (lineIndex == SelStartLine) {
             if (SelStartCol >= 0 && SelStartCol <= (int)pFirstItem->text.size())
                 _SelStart = SelStartCol;
@@ -2622,7 +2720,7 @@ void RtwTextBox::RemoveSelect() {
     RefreshSelectionRect();
 
     m_CursorPosLine = SelStartLine;
-    m_CursorPosCol = SelStartCol;
+    m_CursorPosCol  = SelStartCol;
     RefreshCursorPosition();
 }
 
@@ -2693,11 +2791,11 @@ void RtwTextBox::SetHtmlText(const std::string& htmltext) {
     // 删除所有行，并重置相关标志
     RemoveAllLines();
     m_CursorPosLine = 0;
-    m_CursorPosCol = 0;
-    m_SelStartLine = 0;
-    m_SelStartCol = 0;
-    m_SelEndLine = 0;
-    m_SelEndCol = 0;
+    m_CursorPosCol  = 0;
+    m_SelStartLine  = 0;
+    m_SelStartCol   = 0;
+    m_SelEndLine    = 0;
+    m_SelEndCol     = 0;
 
     SetMultiLine(true);
     SetWordWrap(true);
@@ -2734,17 +2832,17 @@ void RtwTextBox::CalcLinePosition(int LineIndex, const SPoint& StartPoint) {
     RtwRect OrigLineRect = pLine->rect;
     if (pLine->m_type == 1) {
         pLine->rect.left = StartPoint.x + pLine->slleft;
-        pLine->rect.top = StartPoint.y + pLine->sltop;
+        pLine->rect.top  = StartPoint.y + pLine->sltop;
     } else {
         pLine->rect.left = StartPoint.x;
-        pLine->rect.top = StartPoint.y;
+        pLine->rect.top  = StartPoint.y;
     }
-    pLine->rect.right = pLine->rect.left - 1;
+    pLine->rect.right  = pLine->rect.left - 1;
     pLine->rect.bottom = pLine->rect.top - 1;
 
     if (pLine->lineitems.empty()) {
         pLine->rect.bottom = pLine->rect.top + m_FontSize - 1;
-        pLine->rect.right = pLine->rect.left + 1;
+        pLine->rect.right  = pLine->rect.left + 1;
     }
 
     SPoint CurrPoint(pLine->rect.left + m_ViewOffsetCol, pLine->rect.top);
@@ -2776,16 +2874,16 @@ void RtwTextBox::CalcLinePosition(int LineIndex, const SPoint& StartPoint) {
         SItem& item = *iterItem;
         ItemIndex++;
 
-        item.rect.left = CurrPoint.x;
-        item.rect.top = CurrPoint.y;
-        item.rect.right = item.rect.left - 1;
+        item.rect.left   = CurrPoint.x;
+        item.rect.top    = CurrPoint.y;
+        item.rect.right  = item.rect.left - 1;
         item.rect.bottom = item.rect.top - 1;
 
         bool bWrapped = false;  // 是否已经做过自动换行操作了
 
         switch (item.type) {
             case eit_Image: {
-                int width = item.getImage() ? item.imgSize.width : 0;
+                int width  = item.getImage() ? item.imgSize.width : 0;
                 int height = item.getImage() ? item.imgSize.height : 0;
 
                 item.rect.right += width;
@@ -2815,7 +2913,7 @@ void RtwTextBox::CalcLinePosition(int LineIndex, const SPoint& StartPoint) {
                     if (m_bWordWrap) {
                         bWrapped = true;
 
-                        item.rect.right = item.rect.left - 1;
+                        item.rect.right  = item.rect.left - 1;
                         item.rect.bottom = item.rect.top - 1;
 
                         _MoveTailItemToNextLine(LineIndex, ItemIndex);
@@ -2891,16 +2989,16 @@ void RtwTextBox::CalcLinePosition(int LineIndex, const SPoint& StartPoint) {
     // 对其方式
     SSize _AlignDelta;
     if (pLine->SlAlign.align == alignCenter && pLine->m_type == 1) {
-        int _Width = pLine->rect.getWidth();
-        int _LeftFrom = m_ViewRect.getCenter().x - (_Width >> 1);
+        int _Width        = pLine->rect.getWidth();
+        int _LeftFrom     = m_ViewRect.getCenter().x - (_Width >> 1);
         _AlignDelta.width = _LeftFrom - pLine->rect.left;
     }
     switch (m_TextAlign.align) {
         case alignNear:
             break;
         case alignCenter: {
-            int _Width = pLine->rect.getWidth();
-            int _LeftFrom = m_ViewRect.getCenter().x - (_Width >> 1);
+            int _Width        = pLine->rect.getWidth();
+            int _LeftFrom     = m_ViewRect.getCenter().x - (_Width >> 1);
             _AlignDelta.width = _LeftFrom - pLine->rect.left;
         } break;
         case alignFar: {
@@ -2945,9 +3043,9 @@ void RtwTextBox::CalcLinePosition(int LineIndex, const SPoint& StartPoint) {
     // 处理自动调整大小
     if (m_bAutoSizeV || m_bAutoSizeH) {
         RtwRect rcAuto;
-        rcAuto.left = m_rcFrame.left;
-        rcAuto.top = m_rcFrame.top;
-        rcAuto.right = m_rcFrame.left;
+        rcAuto.left   = m_rcFrame.left;
+        rcAuto.top    = m_rcFrame.top;
+        rcAuto.right  = m_rcFrame.left;
         rcAuto.bottom = m_rcFrame.top;
         for (std::list<SLine>::iterator iterTmp = m_Lines.begin(); iterTmp != m_Lines.end();
              ++iterTmp) {
@@ -2964,11 +3062,11 @@ void RtwTextBox::CalcLinePosition(int LineIndex, const SPoint& StartPoint) {
 
         if (!m_bAutoSizeV) {
             rcAuto.bottom = m_rcFrame.bottom;
-            rcAuto.top = m_rcFrame.top;
+            rcAuto.top    = m_rcFrame.top;
         }
         if (!m_bAutoSizeH) {
             rcAuto.right = m_rcFrame.right;
-            rcAuto.left = m_rcFrame.left;
+            rcAuto.left  = m_rcFrame.left;
         }
 
         if (m_rcFrame != rcAuto) {
@@ -3079,7 +3177,7 @@ void RtwTextBox::RefreshPosition() {
 
         LineIndex++;
         StartPoint.y = pLine->rect.bottom + m_LineSpace;
-        pLine = getLine(LineIndex);
+        pLine        = getLine(LineIndex);
     }
 
     RefreshCursorPosition();
@@ -3108,26 +3206,26 @@ void RtwTextBox::RefreshCursorPosition() {
 
     SLine* pLine = getLine(m_CursorPosLine);
     if (!pLine) {
-        m_CursorRect.left = m_ViewRect.left;
-        m_CursorRect.right = m_CursorRect.left + 1;
-        m_CursorRect.top = m_ViewRect.top;
+        m_CursorRect.left   = m_ViewRect.left;
+        m_CursorRect.right  = m_CursorRect.left + 1;
+        m_CursorRect.top    = m_ViewRect.top;
         m_CursorRect.bottom = m_CursorRect.top + m_FontSize;
         return;
     } else if (pLine->lineitems.empty()) {
-        m_CursorRect.left = m_ViewRect.left;
-        m_CursorRect.right = m_CursorRect.left + 1;
-        m_CursorRect.top = pLine->rect.top;
+        m_CursorRect.left   = m_ViewRect.left;
+        m_CursorRect.right  = m_CursorRect.left + 1;
+        m_CursorRect.top    = pLine->rect.top;
         m_CursorRect.bottom = m_CursorRect.top + m_FontSize;
         return;
     }
 
-    int    num = 0;
-    int    textsize = 0;
-    int    linenum = 0;
-    int    oldnum = 0;
-    SItem* pItem = 0;
+    int    num         = 0;
+    int    textsize    = 0;
+    int    linenum     = 0;
+    int    oldnum      = 0;
+    SItem* pItem       = 0;
     int    Image_Width = 0;
-    int    Imagenum = 0;
+    int    Imagenum    = 0;
 
     if (g_workspace.GetMouseLDown()) {
         foreach (std::list<SItem>, iterItem, pLine->lineitems) {
@@ -3178,9 +3276,9 @@ void RtwTextBox::RefreshCursorPosition() {
     int _Count = m_CursorPosCol - Imagenum;
     int _Width = _Count * (m_FontSize >> 1);
 
-    m_CursorRect.left = pLine->rect.left + _Width + Image_Width;
-    m_CursorRect.right = m_CursorRect.left + 1;
-    m_CursorRect.top = pLine->rect.top;
+    m_CursorRect.left   = pLine->rect.left + _Width + Image_Width;
+    m_CursorRect.right  = m_CursorRect.left + 1;
+    m_CursorRect.top    = pLine->rect.top;
     m_CursorRect.bottom = m_CursorRect.top + m_FontSize;
 }
 
@@ -3199,7 +3297,7 @@ void RtwTextBox::RefreshSelectionRect() {
             continue;
 
         pItem->SelectBegin = 0;
-        pItem->SelectEnd = pItem->getColCount();
+        pItem->SelectEnd   = pItem->getColCount();
         if (LineIndex == SelStartLine) {
             if (SelStartCol >= 0 && SelStartCol <= pItem->getColCount())
                 pItem->SelectBegin = SelStartCol;
@@ -3224,9 +3322,9 @@ void RtwTextBox::RefreshSelectionRect() {
                 pItem->SelectEnd *
                 (m_FontSize >>
                  1);  //g_workspace.getFontManager()->GetStringWidth(pItem->text, pItem->SelectEnd);
-            pItem->rcSelect.left = pItem->rect.left + _width1;
-            pItem->rcSelect.right = pItem->rect.left + _width2;
-            pItem->rcSelect.top = pItem->rect.top;
+            pItem->rcSelect.left   = pItem->rect.left + _width1;
+            pItem->rcSelect.right  = pItem->rect.left + _width2;
+            pItem->rcSelect.top    = pItem->rect.top;
             pItem->rcSelect.bottom = pItem->rect.bottom;
         }
 
@@ -3272,8 +3370,8 @@ void RtwTextBox::InsertImage(RtwImage* image) {
     SItem item;
     item.type = eit_Image;
     item.SetImage(image);
-    item.text = "^-";
-    item.text = item.text + image->m_Name;
+    item.text    = "^-";
+    item.text    = item.text + image->m_Name;
     item.imgSize = SSize(m_FontSize, m_FontSize);
     if (!getLine(m_CursorPosLine)) {
         SLine line;
