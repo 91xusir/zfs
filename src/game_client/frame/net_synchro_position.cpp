@@ -136,7 +136,7 @@ void NetSynchroPosition::DownloadNetSnapshot(CG_CmdPacket* pPacket, bool event) 
 void NetSynchroPosition::DownloadNetEvent(CG_CmdPacket* pPacket) {
     DownloadNetSnapshot(pPacket, true);
 }
-
+//lmk NetSynchroPosition::Render ÍøÂçÍ¬²½
 void NetSynchroPosition::Render(DWORD dwDifMillisecond) {
     if (m_bPileSnapshot == 0) {
         return;

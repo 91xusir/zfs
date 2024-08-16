@@ -20,6 +20,10 @@
 #include <windows.h>
 #include <ui/rtw_widget.h>
 #include "gc_include.h"
+#include <filesystem>
+
+std::mutex    preConsole::mutex;
+std::ofstream preConsole::logFile;
 
 std::unordered_map<std::string, std::function<void()>> preConsole::commandMap = {
     {"fps",
@@ -39,12 +43,13 @@ std::unordered_map<std::string, std::function<void()>> preConsole::commandMap = 
 std::atomic<bool> preConsole::console_running{false};
 std::thread       preConsole::console_thread;
 
-std::string preConsole::getCurrentTime() {
-    auto               now = std::chrono::system_clock::now();
+std::string preConsole::getCurrentTime(int type) {
+    auto               now      = std::chrono::system_clock::now();
     std::time_t        now_time = std::chrono::system_clock::to_time_t(now);
-    std::tm            now_tm = *std::localtime(&now_time);
+    std::tm            now_tm   = *std::localtime(&now_time);
     std::ostringstream oss;
-    oss << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S");
+    type == 0 ? oss << std::put_time(&now_tm, "%H:%M:%S")
+              : oss << std::put_time(&now_tm, "%Y-%m-%d_%H-%M-%S");
     return oss.str();
 }
 
@@ -74,8 +79,17 @@ void preConsole::OpenConsole() {
         freopen_s(&fp, "CONIN$", "r", stdin);
         freopen_s(&fp, "CONOUT$", "w", stderr);
         std::cout << "Preview控制台已打开" << std::endl;
+        std::string logFolder = "log";
+        if (!std::filesystem::exists(logFolder)) {
+            if (!std::filesystem::create_directory(logFolder))
+                std::cerr << "无法创建日志文件夹" << std::endl;
+        }
+        logFile.open("log/Pre_Client_" + getCurrentTime(1) + ".txt", std::ios_base::app);
+        if (!logFile.is_open()) {
+            std::cerr << "无法打开日志文件" << std::endl;
+        }
         console_running = true;
-        console_thread = std::thread(&preConsole::ConsoleHandler);
+        console_thread  = std::thread(&preConsole::ConsoleHandler);
         console_thread.detach();
     } else {
         std::cerr << "无法分配控制台" << std::endl;
@@ -86,6 +100,9 @@ void preConsole::CloseConsole() {
     console_running = false;
     if (console_thread.joinable()) {
         console_thread.join();
+    }
+    if (logFile.is_open()) {
+        logFile.close();
     }
     FreeConsole();
 }
@@ -105,6 +122,8 @@ void preConsole::logError(const std::string& message, const std::string& file, i
 
 void preConsole::log(const std::string& levelStr, const std::string& message, const WORD& color,
                      const std::string& file, int line) {
+    std::lock_guard<std::mutex> lock(mutex);  // 确保线程安全
+
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, color);
     std::cout << "[" << getCurrentTime() << "] [" << levelStr << "] " << message;
@@ -113,6 +132,14 @@ void preConsole::log(const std::string& levelStr, const std::string& message, co
     }
     std::cout << std::endl;
     SetConsoleTextAttribute(hConsole, WHITE_COLOR);  // 重置颜色
+                                                     // 输出到文件
+    if (logFile.is_open()) {
+        logFile << "[" << getCurrentTime() << "] [" << levelStr << "] " << message;
+        if (!file.empty()) {
+            logFile << " at " << file << ":" << line;
+        }
+        logFile << std::endl;
+    }
 }
 
 void preConsole::clearBuffer() {
@@ -121,20 +148,20 @@ void preConsole::clearBuffer() {
 }
 
 preConsole& operator<<(preConsole& console, const std::string& message) {
-    console.buffer += message; 
+    console.buffer += message;
     return console;
 }
 
 preConsole& operator<<(preConsole& console, const char* message) {
-    console.buffer += message;  
+    console.buffer += message;
     return console;
 }
 
 preConsole& operator<<(preConsole& console, std::ostream& (*func)(std::ostream&)) {
     if (func == static_cast<std::ostream& (*)(std::ostream&)>(std::endl)) {
-        console.clearBuffer(); 
+        console.clearBuffer();
     } else {
-        func(std::cout);  
+        func(std::cout);
     }
     return console;
 }

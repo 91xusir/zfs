@@ -333,10 +333,11 @@ void CRegionSpawnMgr::Spawn() {
 void CRegionSpawnMgr::SpawnCheat() {
     int cnt = 0;
     while (cnt++ < 100) {
+        // 检查当前迭代器是否在范围内
         if (m_cheatIt != m_cheatSpawns.end()) {
             ++m_cheatIt;
             ++m_nCheatIndex;
-            if (m_nCheatIndex >= m_cheatSpawns.size()) {
+            if (m_nCheatIndex >= m_cheatSpawns.size()) {  // 如果索引超出范围，则重置迭代器
                 ERR("[Check spawn] cheat IT spawn error over the size.\nSize:%d, Index:%d\n",
                     m_cheatSpawns.size(), m_nCheatIndex);
                 m_cheatIt = m_cheatSpawns.end();
@@ -346,6 +347,7 @@ void CRegionSpawnMgr::SpawnCheat() {
             m_cheatIt     = m_cheatSpawns.begin();
             m_nCheatIndex = 0;
         }
+        // 获取当前的 CRegionSpawn 对象
         CRegionSpawn* spawn = &(*m_cheatIt);
         if (spawn->m_curNpcCount >= spawn->m_maxNpcCount)
             continue;
@@ -465,10 +467,10 @@ void CRegionSpawn::Init(short id, short npcID, int maxNpcCount, int spawnInterva
 
     CHECK(lair == m_npc.end());
 }
-
+//lmk r崩溃
 void CRegionSpawn::KillNpc(CRegionCreature* npc) {
-    std::cout << "CRegionSpawn::KillNpc:" << npc->m_npcId << std::endl;
-    std::cout << "Cm_curNpcCount:" << m_curNpcCount << std::endl;
+    RtCoreLog().Info("[CRegionSpawn::KillNpc] %d \n", npc->m_npcId);
+    RtCoreLog().Info("[CRegionSpawn::Cm_curNpcCount] %d \n", m_curNpcCount);
     CHECK(m_curNpcCount > 0);
     stlforeach(std::vector<SpawnLair>, lair, m_npc) {
         if (lair->npc == npc) {

@@ -539,6 +539,7 @@ long CRT_Actor::Serialize(RtArchive& Ar) {
     bool nouse1 = false;
 
     char szVersion[] = "tooth0708";
+    //lmk 模型序列化添加异常捕捉
     try {
         if (Ar.IsLoading()) {
             int pos = Ar.Tell();

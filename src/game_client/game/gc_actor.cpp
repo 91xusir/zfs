@@ -412,7 +412,7 @@ void GcActor::UpdateHUD() {
     }
     unguard;
 }
-
+//lmk GcActor::Run 逻辑循环
 void GcActor::Run(float fSecond)  //逻辑循环
 {  // 如果角色正在吟唱且不是当前玩家，则播放吟唱动画
     if (m_bIntonate && GetPlayer() != this)
@@ -4548,7 +4548,7 @@ void GcActor::Serialize(char type, CG_CmdPacket* cmd) {
 // Model - 字符串，表示武器的模型名称，用于在图形中显示武器。
 // weapon - 指向 SWeapon 结构的指针，包含了武器的详细信息（如模型路径等）。
 // item - 传入的 SItemID 结构，包含了武器的 ID 和其他相关信息，用于识别和处理武器。
-// lyymark 武器装备link点
+// lmk 武器装备link点
 void GcActor::EquipWeapon(bool Active, const char* Model, SWeapon* weapon, SItemID& item) {
     guard;
 

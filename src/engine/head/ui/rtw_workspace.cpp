@@ -37,7 +37,7 @@ CUiDesktop::CUiDesktop()
 	m_pModalWidgetContainer(NULL),
 	m_pDefaultWidgetContainer(NULL),
 	m_pTopRenderWidgetContainer(NULL),
-	m_rTransparent(1.0),
+	m_rTransparent(1.0),//lmk ×ÀÃæÍ¸Ã÷¶È£¿
 	m_bDebugMode(false),
 	m_bModeWnd(false),
 	m_bMouseLDown(false),
@@ -207,7 +207,7 @@ bool CUiDesktop::_InitSystemWidgets()
 	UI_ENSURE_B(FindLayer(g_SystemWidgetName[sw_SystemLayer], (CUiLayer**)&m_pSystemLayer));
 
 	UI_ENSURE_B(FindWidget(g_SystemWidgetName[sw_DefaultHint], (RtwWidget**)&m_pDefaultHint));
-	m_pDefaultHint->SetTransparency(0.7);
+	m_pDefaultHint->SetTransparency(1.0);
 	AddTopRenderWidget(m_pDefaultHint);
 
 	UI_ENSURE_B(FindWidget(g_SystemWidgetName[sw_DefaultHL], (RtwWidget**)&m_pDefaultHLWidget));

@@ -645,7 +645,7 @@ struct SCreature {
     float PhyDmgAbsorbRate;  // 吸收百分比伤害
     //float     AbsorbMpRate;		// 吸收百分比的mp
 
-    //存盘数据 begin
+    //lmk 存盘数据 begin
     std::string Name;        // 名字
     char        Metier;      // 职业
     char        MetierLev;   // 职业等级
@@ -1561,6 +1561,7 @@ class CRS_Npc {
 };
 
 #include "pet_base.h"
+#include <unordered_map>
 
 //-----------------------Add LeiJun NPC Random Talk----------------------------//
 class CRS_NPCTalkText {
@@ -1860,8 +1861,8 @@ struct SSceneInfo {
     /* gao 2010.1.20
 	二级地图的加载相关数据
 	*/
-    std::string szSceneMiddleMapFileName;  // 二级地图加载名称
-    std::string szMiddleMapName;           // 二级地图名称
+    std::string szSceneMiddleMapFileName;  // 二级地图文件名
+    std::string szMiddleMapName;           // 二级地图区域名
     int         iMiddleMapHeight;          // 二级地图高度方向上的地图块数
     int         iMiddleMapWidth;           // 二级地图宽度方向上的地图块数
     int         iMiddleMapHeightOffset;    // 二级地图高度方向上的当前block的偏移
@@ -1882,7 +1883,7 @@ class CRS_SceneInfo {
     void        GetAllMiddleMapName(map<string, SSceneInfo>& lstName);
 
    private:
-    HASH_MULTISTR(std::string, SSceneInfo) m_table;
+    std::unordered_multimap<std::string, SSceneInfo> m_table;
 };
 
 // -------------------------------------------------------------------

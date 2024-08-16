@@ -582,7 +582,7 @@ void GcPlayer::OnSetTarget(DWORD vID)
 			}
 			else 
 			{
-				
+				//lmk 显血
 				/*********************** gao 2009.11.5 显血方式修改 改为UI显血方式*****************************/
 				//if (!pTargetActor->m_pHUD.IsEmpty())
 				//{
@@ -1152,7 +1152,7 @@ void GcPlayer::_auto_battle()			//		ac.ma
 
 				GcSynchroActor* pIMon = NULL;
 
-				EXT_SPACE::unordered_map<DWORD, GcSynchroActor *>::iterator iter;
+				std::unordered_map<DWORD, GcSynchroActor *>::iterator iter;
 				for(iter = GetWorld()->m_ActorManager.m_ActorMap.begin(); iter != GetWorld()->m_ActorManager.m_ActorMap.end() ; ++iter)
 				{
 					pIMon = iter->second;

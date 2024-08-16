@@ -7,6 +7,7 @@
 #include <thread>
 #include <unordered_map>
 #include <Windows.h>
+#include <mutex>
 
 // 预览模式控制台输出宏定义
 #ifdef _PREVIEW
@@ -36,7 +37,7 @@ class preConsole {
     static std::thread                                            console_thread;
 
     // 静态函数
-    static std::string getCurrentTime();
+    static std::string getCurrentTime(int type = 0);
     static void        ConsoleHandler();
 
    public:
@@ -55,5 +56,7 @@ class preConsole {
                     const std::string& file = "", int line = 0);
     void        clearBuffer();
    private:
+    static std::ofstream logFile;
+    static std::mutex    mutex;
     std::string buffer;
 };

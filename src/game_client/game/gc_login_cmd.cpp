@@ -305,7 +305,7 @@ BEGIN_CMD_FUNC(cmd_g2c_query_account_ret) {
             P_LOGWARN("没有找到模型" + std::to_string(headModelID));
             return false;
         }
-         
+        // lmk 登陆后选角需要校验模型         
         if (headModel.actorModelID == m_account.users[n].attributes.actorID) {
             m_account.users[n].headModelID = headModelID;
         } else {

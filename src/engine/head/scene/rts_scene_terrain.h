@@ -3,20 +3,20 @@
 
 enum {RTS_BLOCK_GRID_SIZE = 5};
 
-const DWORD RT_SCENE_BLOCK_HEADER = 0x0ADFC3;
+const DWORD RT_SCENE_BLOCK_HEADER = 0x0ADFC3;// 场景区块头的常量值，用于标识区块数据
 const float g_fSceneTileWidth = 40.f;   // 每一个显示网格的宽度
-const int   g_iSceneTileRate = 2;
-const float g_fSceneTerrainTileWidth = g_fSceneTileWidth / g_iSceneTileRate; // 行走网格的宽度
-const float g_fSceneHeightStep = 4.f;   // 每格对应的高度(格数为0-255, 地平线为128)
+const int   g_iSceneTileRate = 2;// 网格的缩放比例，用于计算行走网格的宽度
+const float g_fSceneTerrainTileWidth = g_fSceneTileWidth / g_iSceneTileRate; // 行走网格的宽度 = 显示网格宽度 / 缩放比例
+const float g_fSceneHeightStep = 4.f;  // 每格对应的高度（用于地形高度计算），格数范围为0-255，地平线高度为128
 const int   g_iSceneTileCntX = 100;     // 网格宽度 (网格的个数)
-const int   g_iSceneTileCntY = 100;
-const int   g_iSceneTerrainCntX = g_iSceneTileCntX * g_iSceneTileRate;     // 行走网格宽度 (行走网格的个数)
-const int   g_iSceneTerrainCntY = g_iSceneTileCntY * g_iSceneTileRate;
+const int   g_iSceneTileCntY = 100;     // 网格的高度（网格的个数）
+const int   g_iSceneTerrainCntX = g_iSceneTileCntX * g_iSceneTileRate;      // 行走网格的宽度 = 显示网格宽度 * 缩放比例
+const int   g_iSceneTerrainCntY = g_iSceneTileCntY * g_iSceneTileRate;      // 行走网格的高度 = 显示网格高度 * 缩放比例
 const int   g_iSceneBlockFaceSize = g_iSceneTileCntX * g_iSceneTileCntY * 2; // 显示面数 = 网格数*2 (索引缓冲区m_pIndices的大小)
 const int   g_iSceneGridCntX = g_iSceneTileCntX / RTS_BLOCK_GRID_SIZE;       // 格子块宽度 (用于优化碰撞和显示的网格)
 const int   g_iSceneGridCntY = g_iSceneTileCntY / RTS_BLOCK_GRID_SIZE;
-const float g_fSceneBlockWidth  = g_fSceneTileWidth * g_iSceneTileCntX;
-const float g_fSceneBlockHeight = g_fSceneTileWidth * g_iSceneTileCntY;
+const float g_fSceneBlockWidth  = g_fSceneTileWidth * g_iSceneTileCntX;// 场景区块的宽度 = 显示网格宽度 * 网格数量
+const float g_fSceneBlockHeight = g_fSceneTileWidth * g_iSceneTileCntY;// 场景区块的高度 = 显示网格宽度 * 网格数量
 
 // 内存统计
 class RtsPathContainer;

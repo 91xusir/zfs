@@ -3041,34 +3041,37 @@ void RtwTextBox::CalcLinePosition(int LineIndex, const SPoint& StartPoint) {
     RefreshScrollBarVData();
 
     // 处理自动调整大小
+    // 检查是否需要自动调整尺寸
     if (m_bAutoSizeV || m_bAutoSizeH) {
+        // 创建一个矩形来存储自动调整后的区域
         RtwRect rcAuto;
-        rcAuto.left   = m_rcFrame.left;
-        rcAuto.top    = m_rcFrame.top;
-        rcAuto.right  = m_rcFrame.left;
-        rcAuto.bottom = m_rcFrame.top;
-        for (std::list<SLine>::iterator iterTmp = m_Lines.begin(); iterTmp != m_Lines.end();
-             ++iterTmp) {
-            SLine& line = *iterTmp;
-            rcAuto.Expand(line.rect);
-            // 			if (line.rect.right > rcAuto.right)
-            // 				rcAuto.right = line.rect.right+pLine->slright;
-            // 			if (line.rect.bottom > rcAuto.bottom)
-            // 				rcAuto.bottom = line.rect.bottom+pLine->slbottom;
+        rcAuto.left   = m_rcFrame.left;  // 初始化左边界
+        rcAuto.top    = m_rcFrame.top;   // 初始化上边界
+        rcAuto.right  = m_rcFrame.left;  // 初始化右边界（稍后会调整）
+        rcAuto.bottom = m_rcFrame.top;   // 初始化下边界（稍后会调整）
+
+        // 遍历所有行以调整矩形大小
+        for (const SLine& line : m_Lines) {
+            rcAuto.Expand(line.rect);  // 扩展矩形以包含当前行的矩形
         }
 
+        // 根据间隔和边距调整矩形大小
         rcAuto.right += m_LeftSpace + m_LeftMargin;
-        rcAuto.bottom += m_LineSpace + m_BottomMargin;
+        rcAuto.bottom += m_LineSpace + m_BottomMargin + 2; //lmk 修正文字下边界 + 2
 
+        // 如果不需要垂直自动调整，则设置矩形的下边界为原始框架的下边界
         if (!m_bAutoSizeV) {
             rcAuto.bottom = m_rcFrame.bottom;
             rcAuto.top    = m_rcFrame.top;
         }
+
+        // 如果不需要水平自动调整，则设置矩形的右边界为原始框架的右边界
         if (!m_bAutoSizeH) {
             rcAuto.right = m_rcFrame.right;
             rcAuto.left  = m_rcFrame.left;
         }
 
+        // 如果调整后的矩形与原始矩形不同，则进行移动操作
         if (m_rcFrame != rcAuto) {
             Move(rcAuto, true);
         }

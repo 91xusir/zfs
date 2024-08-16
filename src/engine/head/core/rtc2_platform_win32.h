@@ -102,13 +102,7 @@ typedef HANDLE              RtThreadHandle;
 */
 #define HASH_STR(key, val) std::unordered_map<key, val>
 
-/** HASH_MULTISTR 是哈希多个字符串的简写方式.
-*/
-#define HASH_MULTISTR(key, val) std::unordered_multimap<key, val>
-
 #define HASH_QWORD(key, val) std::unordered_map<key, val>
-
-#define HASH_MULTIQWORD(key, val) std::unordered_multimap<key, val>
 
 namespace rt2_core {
 

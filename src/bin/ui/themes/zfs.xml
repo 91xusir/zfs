@@ -433,8 +433,8 @@
                     </EditBox>
                     <Label AlignCol="CENTER" Inherit="" Location="100,10,70,18" Name="$MessageName" Show="true" Text="TEST" TextColor="#FFFEF00"/>
                 </Form>
-                <EditBox Name="$DefaultHint" Show="false" Location="0,0,60,16">
-                    <BackgroundImage Border="2,2,2,2" BorderFile="ui/zfs_texture/bd.png" BorderSource="10,40,6,6" Blend="true" File="ui/zfs_texture/mi.tga" Source="50,5,1,1" Transparency="0.5"/>
+                <EditBox Name="$DefaultHint" Show="false" Location="0,0,60,16" BackgroundColor="#40000000">
+                    
                 </EditBox>
             </Layer>
         </SystemWidgets>

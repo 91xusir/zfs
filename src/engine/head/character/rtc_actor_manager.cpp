@@ -715,7 +715,7 @@ CRT_PoolObject* RtcAcotrManager::LoadDirect(const char _name[], const char _full
     RtObject* tmp = ar->ReadObject(NULL);
     // RtObject* tmp = ar->ReadObject(_Request);
     DEL_ONE(ar);
-
+    //lmk fix null pointer
     if (!tmp)
         return NULL;
 

@@ -6578,6 +6578,7 @@ void CRegionCreature::AddCulExp(int Cul) {
 //
 // add exp to user,then add to pet and magic weapon
 //
+//lmk 增加经验
 void CRegionCreature::AddExp(int Exp, int SP) {
     //if(m_core.Lev >= 90) return;//rem by fox
 

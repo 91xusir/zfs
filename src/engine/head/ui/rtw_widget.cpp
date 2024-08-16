@@ -859,7 +859,7 @@ void RtwWidget::SetHint(RtwWidget* pHint) {
         m_pHint->ModifyFlag(0, wfGrabMouse | wfMouseMove);
     }
 }
-
+//没有使用
 void RtwWidget::SetOwnHint(RtwWidget* pHint)  // add by chib 2006-11-14 pHint must be editbox point
 {
     if (NULL == pHint) {
@@ -1130,7 +1130,7 @@ void RtwWidget::Render(const RtwRect* pClipRect /* = NULL*/, bool bAlwaysRender 
     EvPostDraw(this, etPostDraw);
 }
 
-//组件结构打印
+//lmk 组件结构打印
 void RtwWidget::PrintToConsole(const std::string& prefix /* = ""*/) {
     RtCoreLog().Info("%s[%s] %s(0x%x)\n", prefix.c_str(),
                      g_WidgetTypeShortName[m_WidgetType].c_str(), getName().c_str(), GetFlags());
@@ -1150,15 +1150,15 @@ void RtwWidget::DrawForeground(const RtwRect* pClipRect /* = NULL*/) {
     //lyytodo 这里添加所有组件显示名称方便开发使用 后续删掉
 
     if (isDrawUIName && g_workspace.getMouseHover() == this) {
-        RtwRect temp;
-        temp.left = m_rcFrame.left;
-        temp.right = m_rcFrame.right;
-        temp.top = m_rcFrame.top -
-                   20;  // 将矩形的顶部位置设置为组件的顶部减去偏移量（20 是示例值，根据需要调整）
-        temp.bottom = m_rcFrame.top;  // 矩形的底部与顶部对齐
-        g_workspace.getFontManager()->DrawString(m_Name, temp, 0xffff0000, true,
+        //RtwRect temp;
+        //temp.left = m_rcFrame.left;
+        //temp.right = m_rcFrame.right;
+        //temp.top = m_rcFrame.top -
+        //           20;  // 将矩形的顶部位置设置为组件的顶部减去偏移量（20 是示例值，根据需要调整）
+        //temp.bottom = m_rcFrame.top;  // 矩形的底部与顶部对齐
+        g_workspace.getFontManager()->DrawString(m_Name, m_rcFrame, 0xffff0000, true,
                                                  SUiTextAlignment(alignFar, alignFar), true,
-                                                 pClipRect, "", 15);
+                                                 pClipRect, "", 12);
     }
 
     //
@@ -1612,7 +1612,7 @@ void RtwWidget::ResetHint(bool bShow) {
     }
 }
 
-//hint事件
+//lmk hint事件 html xml解析
 void RtwWidget::OnHint() {
     RtwEventDelegate e(etHint);
     EvHint(this, e);

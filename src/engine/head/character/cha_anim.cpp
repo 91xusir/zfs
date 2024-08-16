@@ -775,7 +775,7 @@ void CRT_ActorInstance::OnLoadFinish() {
     }
 
     for (size_t i = 0; i < m_core->m_eftList.size(); ++i) {
-        //lyymark fix null pointer
+        //lmk fix null pointer
         if (!m_core->m_eftList[i])
             continue;
         CRT_Effect* efft = (CRT_Effect*)m_core->m_eftList[i]->NewObject();

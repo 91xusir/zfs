@@ -5,6 +5,7 @@
 #ifdef GAME_CLIENT
 #include "gc_include.h"
 #endif
+#include <unordered_map>
 
 //char var[100] = {
 //	1,2,3,4,5,6,7,8,9,10,
@@ -845,7 +846,7 @@ CRS_Exp::CRS_Exp() {}
 
 CRS_Exp::~CRS_Exp() {}
 
-// 加载经验数据表
+//lmk 加载经验数据表
 bool CRS_Exp::Load(const char* file) {
     int   j;    // 用于循环和存储找到的标题行的索引
     RtCsv csv;  // 创建一个 CSV 文件处理对象
@@ -2806,24 +2807,23 @@ bool CRS_SceneInfo::Load(const char* File) {
         /* end */
         RtCoreLog().Info("SceneFile (%s,%d,%d)\n", tmp.szSceneFileName.c_str(), iFaction,
                          tmp.sceneFaction);
-        m_table.insert(EXT_SPACE::unordered_map<std::string, SSceneInfo>::value_type(
-            tmp.szSceneFileName, tmp));
+        m_table.insert(
+            std::unordered_map<std::string, SSceneInfo>::value_type(tmp.szSceneFileName, tmp));
     }
     return true;
 }
 
 SSceneInfo* CRS_SceneInfo::FindScene(std::string& szBlockName) {
-    HASH_MULTISTR(std::string, SSceneInfo)::iterator it;
-    it = m_table.find(szBlockName);
+    auto it = m_table.find(szBlockName);
     if (it != m_table.end()) {
-        return &((*it).second);
+        return &it->second;
     }
-    return NULL;
+    return nullptr;
 }
 
 void CRS_SceneInfo::GetAllMiddleMapName(map<string, SSceneInfo>& lstName) {
-    HASH_MULTISTR(std::string, SSceneInfo)::iterator it;
-    map<string, SSceneInfo>::iterator                mapit;
+    std::unordered_multimap<std::string, SSceneInfo>::iterator it;
+    map<string, SSceneInfo>::iterator                          mapit;
     for (it = m_table.begin(); it != m_table.end(); ++it) {
         mapit = lstName.find((*it).second.szMiddleMapName);
         if (mapit == lstName.end() && (*it).second.szMiddleMapName != "") {

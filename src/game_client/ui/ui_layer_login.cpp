@@ -20,7 +20,7 @@ UILayerLogin::UILayerLogin() {
     //lyymark 2.GcLogin.XML 加载用户登录UI
     g_workspace.Load("ui/1.login.xml");
     //用户登录form
-    mp_loginForm = LOAD_UI_T(RtwForm, "loginForm");
+    mp_loginForm        = LOAD_UI_T(RtwForm, "loginForm");
     mp_selectServerName = LOAD_UI("loginForm.selectServerName");
     //用户名输入框
     mp_txtAccout = LOAD_UI_T(RtwTextBox, "loginForm.txtAccout");
@@ -121,7 +121,7 @@ void UILayerLogin::OnClicked_Login(void*, void*) {
             if (!iniUser.FindSection("login")) {
                 iniUser.AddSection("login");
             }
-            iniUser.SetEntry("login", "username", username.c_str());
+            iniUser["login"]["username"] = username.c_str();
         } else {
             iniUser.DelEntry("login", "username");
         }
@@ -164,9 +164,7 @@ void UILayerLogin::onTab(RtwWidget* sender, RtwEventDelegate* e) {
     }
 }
 
-void UILayerLogin::OnUpdateText(RtwWidget* sender, RtwEventDelegate* e) {
-   
-}
+void UILayerLogin::OnUpdateText(RtwWidget* sender, RtwEventDelegate* e) {}
 
 //lyymark 2.GcLogin.UI.OnClicked_EnterUserLogin 进入用户登录页面
 void UILayerLogin::OnClicked_EnterUserLogin(const int& currentSelectServerIndex) {
