@@ -212,6 +212,7 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
     if (!((CRtgAppFrame*)m_pEvent)->OnFrameInit())
         return false;
 
+
     m_bDeviceReady = TRUE;
 
     return true;
@@ -249,7 +250,6 @@ void RtgDevice::ApplyConfig() {
     SetViewWindowInfo(RTGVWM_TOPWINDOW, m_userConfig.lWndWidth, m_userConfig.lWndHeight,
                       m_userConfig.lWndColorDepth, 0);
     LockFps(m_userConfig.lMillisecondPerFrame);
-
     //m_pEvent->EnableConsole(m_config.bEnableConsole);
 }
 

@@ -206,7 +206,7 @@ void CGameClientFrame::OnLeaveLogin() {
 
 //lyymark 3.Frame.OnEnterLogin 进入开始游戏逻辑帧
 bool CGameClientFrame::OnEnterGame() {
-    DXUtil_Timer(TIMER_RESET);  //解除帧率限制1秒
+    DXUtil_Timer(TIMER_RESET);  //解除帧率限制3秒
     guard;
 
     CHECK(m_pWorld == NULL);

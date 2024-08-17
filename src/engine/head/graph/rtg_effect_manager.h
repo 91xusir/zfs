@@ -17,31 +17,28 @@
 
 namespace rt_graph {
 
-    class RtgEffectManager
-    {
-    public :
-        bool Init();
-        void Clear();
-        ID3DXEffect* LoadEffect(const char fileName[], RtgEffectType _Type);
+class RtgEffectManager {
+   public:
+    bool                 Init();
+    void                 Clear();
+    virtual ID3DXEffect* LoadEffect(const char fileName[], RtgEffectType _Type);
+    virtual ID3DXEffect* LoadEffectFromCode(const char* shaderCode, RtgEffectType _Type);
 
-        void OnLostDevice();
-        void OnResetDevice();
+    void OnLostDevice();
+    void OnResetDevice();
 
-    public :
-        RtgEffectManager(IDirect3DDevice9* pd3d9Device);
-        virtual ~RtgEffectManager();
+   public:
+    RtgEffectManager(IDirect3DDevice9* pd3d9Device);
+    virtual ~RtgEffectManager();
 
-    public :
-        ID3DXEffect* GetEffect(RtgEffectType _Type)
-        {
-            return m_ppEffect[_Type];
-        }
+   public:
+    ID3DXEffect* GetEffect(RtgEffectType _Type) { return m_ppEffect[_Type]; }
 
-    private :
-        IDirect3DDevice9* m_pDevice;
-        ID3DXEffect* m_ppEffect[Rtg_Effect_Count];
-    };
+   private:
+    IDirect3DDevice9* m_pDevice;
+    ID3DXEffect*      m_ppEffect[Rtg_Effect_Count];
+};
 
-}
+}  // namespace rt_graph
 
 #endif

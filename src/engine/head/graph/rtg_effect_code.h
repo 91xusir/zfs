@@ -43,6 +43,7 @@ namespace rt_graph {
     };
 
     const char* GetEffectCodeFile(RtgEffectType _Type);
+    const char* GetEffectCodeChars(RtgEffectType _Type);
 
 }
 

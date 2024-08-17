@@ -442,7 +442,7 @@ vector<CRT_SkinInstance*>  SkinCacheList;
 
 bool GcWorld::EnterGame() {
     guard;
-    DXUtil_Timer(TIMER_RESET);  //解除帧率限制1秒
+    DXUtil_Timer(TIMER_RESET);  //解除帧率限制3秒
     m_dNPCID                = 0;
     m_dNPCNameColor         = 0xFFFFFFFF;
     RtScene::m_bRenderScene = TRUE;
@@ -486,22 +486,23 @@ bool GcWorld::EnterGame() {
     m_fCameraDefaultDistance = 100.f;
     m_bIsMovableCursor       = false;
 
-    GetGameIni()->GetEntry("Camera", "FOV", &fFOV);
-    GetGameIni()->GetEntry("Camera", "Aspect", &fAspect);
-    GetGameIni()->GetEntry("Camera", "Near", &fCameraNear);
-    GetGameIni()->GetEntry("Camera", "Far", &fCameraFar);
-    GetGameIni()->GetEntry("Camera", "DefaultYaw", &m_fCameraDefaultYaw);
-    GetGameIni()->GetEntry("Camera", "Degree", &m_fCameraDefaultDegree);
-    GetGameIni()->GetEntry("Camera", "MinDistance", &m_fCameraMinDistance);
-    GetGameIni()->GetEntry("Camera", "MaxDistance", &m_fCameraMaxDistance);
-    GetGameIni()->GetEntry("Camera", "DefaultDistance", &m_fCameraDefaultDistance);
-    GetGameIni()->GetEntry("Camera", "MouseSpeed", &fMouseSpeed);
+
+    const char* szSection   = "Camera";
+    GetGameIni()->GetEntry(szSection, "FOV", &fFOV);
+    GetGameIni()->GetEntry(szSection, "Aspect", &fAspect);
+    GetGameIni()->GetEntry(szSection, "Near", &fCameraNear);
+    GetGameIni()->GetEntry(szSection, "Far", &fCameraFar);
+    GetGameIni()->GetEntry(szSection, "DefaultYaw", &m_fCameraDefaultYaw);
+    GetGameIni()->GetEntry(szSection, "Degree", &m_fCameraDefaultDegree);
+    GetGameIni()->GetEntry(szSection, "MinDistance", &m_fCameraMinDistance);
+    GetGameIni()->GetEntry(szSection, "MaxDistance", &m_fCameraMaxDistance);
+    GetGameIni()->GetEntry(szSection, "DefaultDistance", &m_fCameraDefaultDistance);
+    GetGameIni()->GetEntry(szSection, "MouseSpeed", &fMouseSpeed);
 
     GetDevice()->m_pCamera->SetProjParams(DegreeToRadian(fFOV), GetDevice()->m_pCamera->m_fAspect,
                                           fCameraNear, fCameraFar);
     SetDefaultCamera();
     m_eCameraMode = CAMERA_MODE_TURN;
-    GetDevice()->SetFogEnable(FALSE);  // Temporarily Modified by Wayne Wong 2010-11-25
 
     nowY = m_fCameraDefaultDegree;
     //m_pAliasButton = (RtwAliasButton*)g_workspace.LookupWidget("fmhotkey.lbhotkeyenable"); //gao 2009.12.18 去除原右键技能框
@@ -2115,8 +2116,8 @@ void GcWorld::OnRender(float fSecond) {
         m_lightPlayer.vPosition -= v3;
         GetDevice()->SetLight(0, &m_lightPlayer);
     }
-
-    GetDevice()->SetFogEnable(FALSE);  // Temporarily Modified by Wayne Wong 2010-11-25
+    // 雾效
+    GetDevice()->SetFogEnable(GetDevice()->m_config.bEnableFog);
 
     m16.Unit();
     GetDevice()->SetMatrix(RTGTS_WORLD, &m16);
@@ -2724,6 +2725,7 @@ void GcWorld::OnMouseRDown(int iButton, int x, int y) {
     m_iCheckPlayerSeedSave = m_iCheckPlayerSeed;
     unguard;
 }
+
 //lmk 主世界键盘按键监听
 void GcWorld::OnKeyDown(int iButton, int iKey) {
     guard;
@@ -2780,8 +2782,8 @@ void GcWorld::OnKeyDown(int iButton, int iKey) {
         case VK_INSERT: {
             CItemNetHelper::NetSend_c2r_check_item();
         } break;
-        case VK_RETURN://lmk 取消全屏
-           /* if (m_bKeyAlt) {
+        case VK_RETURN:  //lmk 取消全屏
+                         /* if (m_bKeyAlt) {
                 if (!g_layerMain->m_formSetting)
                     g_layerMain->m_formSetting = RT_NEW UIFormSetting;
                 g_layerMain->m_formSetting->SetGemeFullScreenOrNo();
@@ -5382,7 +5384,8 @@ void GcWorld::OnNetDownloadAttack(CG_CmdPacket* pPacket, DWORD dwServerTime, DWO
                     OnNetUploadBreakIntonate();
                     pActor->AddCommand(GcActor::ACMD_UNDER_ATTACK);
                 }
-                pActor->ShowDamageNumber(ret, sDamage, eleDmg, criHit, eleSpe);  // lyymark 显示伤害数字
+                pActor->ShowDamageNumber(ret, sDamage, eleDmg, criHit,
+                                         eleSpe);  // lyymark 显示伤害数字
                 pActor->m_bIsDead = Max((char)dead, pActor->m_cIsDeadNet);  // 更新死亡状态
                 RtgVertex3 pos;
                 if (dead) {
