@@ -516,7 +516,8 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
                 ShowSystemMessage(R(MSG_PICTURE_NOTHASANAME));
                 return;
             }
-            rt2_sprintf(szName, "ui\\x_textures\\%s.dds",
+            //lmk 中地图加载路径
+            rt2_sprintf(szName, "scene\\middlemap\\%s.dds",
                         it->second.szSceneMiddleMapFileName.c_str());
             m_pPreviewImage = g_workspace.getImageFactory()->createImage(szName);
 
