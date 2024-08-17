@@ -2180,14 +2180,12 @@ SNpc* CRS_Npc::FindNpc(int Id) {
     return NULL;
 }
 
-void CRS_Npc::GetNpcForMiddleMap(vector<vector<SNpc*>*>& vectorSNpc,
-                                 map<string, int>&       stringToInt) {
+void CRS_Npc::GetNpcForMiddleMap(vector<vector<SNpc*>*>& vectorSNpc, map<string, int>& nameToIdx) {
     guard;
-    map<string, int>::iterator it;
-    for (unsigned int i = 0; i < m_table.size(); i++) {
-        it = stringToInt.find(m_table[i].AtMiddleMap);
-        if (it != stringToInt.end()) {
-            vectorSNpc[it->second]->push_back(&m_table[i]);
+    for (auto& npc : m_table) {
+        auto it = nameToIdx.find(npc.AtMiddleMap);
+        if (it != nameToIdx.end()) {
+            vectorSNpc[it->second]->push_back(&npc);
         }
     }
     unguard;
@@ -2822,15 +2820,13 @@ SSceneInfo* CRS_SceneInfo::FindScene(std::string& szBlockName) {
 }
 
 void CRS_SceneInfo::GetAllMiddleMapName(map<string, SSceneInfo>& lstName) {
-    std::unordered_multimap<std::string, SSceneInfo>::iterator it;
-    map<string, SSceneInfo>::iterator                          mapit;
-    for (it = m_table.begin(); it != m_table.end(); ++it) {
-        mapit = lstName.find((*it).second.szMiddleMapName);
-        if (mapit == lstName.end() && (*it).second.szMiddleMapName != "") {
-            SSceneInfo tmp            = (*it).second;
-            string     sMiddleMapName = (*it).second.szMiddleMapName;
 
-            lstName.insert(make_pair(sMiddleMapName, tmp));
+    for (const auto& item : m_table) {
+        const string& sMiddleMapName = item.second.szMiddleMapName;
+        // 确保 sMiddleMapName 非空，并且不在 lstName 中
+        if (!sMiddleMapName.empty()) {
+            // 使用 emplace 插入键值对，避免重复查找
+            lstName.emplace(sMiddleMapName, item.second);
         }
     }
 }

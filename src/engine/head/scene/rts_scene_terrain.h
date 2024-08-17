@@ -15,8 +15,8 @@ const int   g_iSceneTerrainCntY = g_iSceneTileCntY * g_iSceneTileRate;      // Ğ
 const int   g_iSceneBlockFaceSize = g_iSceneTileCntX * g_iSceneTileCntY * 2; // ÏÔÊ¾ÃæÊı = Íø¸ñÊı*2 (Ë÷Òı»º³åÇøm_pIndicesµÄ´óĞ¡)
 const int   g_iSceneGridCntX = g_iSceneTileCntX / RTS_BLOCK_GRID_SIZE;       // ¸ñ×Ó¿é¿í¶È (ÓÃÓÚÓÅ»¯Åö×²ºÍÏÔÊ¾µÄÍø¸ñ)
 const int   g_iSceneGridCntY = g_iSceneTileCntY / RTS_BLOCK_GRID_SIZE;
-const float g_fSceneBlockWidth  = g_fSceneTileWidth * g_iSceneTileCntX;// ³¡¾°Çø¿éµÄ¿í¶È = ÏÔÊ¾Íø¸ñ¿í¶È * Íø¸ñÊıÁ¿
-const float g_fSceneBlockHeight = g_fSceneTileWidth * g_iSceneTileCntY;// ³¡¾°Çø¿éµÄ¸ß¶È = ÏÔÊ¾Íø¸ñ¿í¶È * Íø¸ñÊıÁ¿
+const float g_fSceneBlockWidth  = g_fSceneTileWidth * g_iSceneTileCntX;// ³¡¾°Çø¿éµÄ¿í¶È = ÏÔÊ¾Íø¸ñ¿í¶È * Íø¸ñÊıÁ¿ 4000
+const float g_fSceneBlockHeight = g_fSceneTileWidth * g_iSceneTileCntY;// ³¡¾°Çø¿éµÄ¸ß¶È = ÏÔÊ¾Íø¸ñ¿í¶È * Íø¸ñÊıÁ¿ 4000
 
 // ÄÚ´æÍ³¼Æ
 class RtsPathContainer;

@@ -2724,7 +2724,7 @@ void GcWorld::OnMouseRDown(int iButton, int x, int y) {
     m_iCheckPlayerSeedSave = m_iCheckPlayerSeed;
     unguard;
 }
-
+//lmk 主世界键盘按键监听
 void GcWorld::OnKeyDown(int iButton, int iKey) {
     guard;
     static int  PetScale = 100 /*should be same as region_client.cpp*/, Delta = 20;
@@ -2780,12 +2780,12 @@ void GcWorld::OnKeyDown(int iButton, int iKey) {
         case VK_INSERT: {
             CItemNetHelper::NetSend_c2r_check_item();
         } break;
-        case VK_RETURN:
-            if (m_bKeyAlt) {
+        case VK_RETURN://lmk 取消全屏
+           /* if (m_bKeyAlt) {
                 if (!g_layerMain->m_formSetting)
                     g_layerMain->m_formSetting = RT_NEW UIFormSetting;
                 g_layerMain->m_formSetting->SetGemeFullScreenOrNo();
-            }
+            }*/
             break;
             /* gao 2009.12.26
 		此处技能释放更改到keychar事件中，此处功能已无

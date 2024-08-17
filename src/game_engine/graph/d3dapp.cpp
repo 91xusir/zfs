@@ -33,44 +33,44 @@ static CD3DApplication* g_pD3DApp = NULL;
 // Desc: Constructor
 //-----------------------------------------------------------------------------
 CD3DApplication::CD3DApplication() {
-    g_pD3DApp = this;
+    g_pD3DApp   = this;
     m_pAppFrame = NULL;
 
-    m_pD3D = NULL;
-    m_pd3dDevice = NULL;
-    m_hWnd = NULL;
-    m_hWndFocus = NULL;
-    m_hMenu = NULL;
-    m_bWindowed = true;
-    m_bActive = false;
-    m_bReady = true;
-    m_bHasFocus = true;  // default=false, janhail change
-    m_bDeviceLost = false;
-    m_bMinimized = false;
-    m_bMaximized = false;
-    m_bIgnoreSizeChange = false;
-    m_bDeviceObjectsInited = false;
+    m_pD3D                   = NULL;
+    m_pd3dDevice             = NULL;
+    m_hWnd                   = NULL;
+    m_hWndFocus              = NULL;
+    m_hMenu                  = NULL;
+    m_bWindowed              = true;
+    m_bActive                = false;
+    m_bReady                 = true;
+    m_bHasFocus              = true;  // default=false, janhail change
+    m_bDeviceLost            = false;
+    m_bMinimized             = false;
+    m_bMaximized             = false;
+    m_bIgnoreSizeChange      = false;
+    m_bDeviceObjectsInited   = false;
     m_bDeviceObjectsRestored = false;
-    m_dwCreateFlags = 0;
+    m_dwCreateFlags          = 0;
 
-    m_bFrameMoving = true;
-    m_bSingleStep = false;
-    m_fTime = 0.0f;
-    m_fElapsedTime = 0.0f;
-    m_dwElapsedMS = 0;
-    m_fFPS = 0.0f;
+    m_bFrameMoving      = true;
+    m_bSingleStep       = false;
+    m_fTime             = 0.0f;
+    m_fElapsedTime      = 0.0f;
+    m_dwElapsedMS       = 0;
+    m_fFPS              = 0.0f;
     m_strDeviceStats[0] = _T('\0');
-    m_strFrameStats[0] = _T('\0');
+    m_strFrameStats[0]  = _T('\0');
 
-    m_strWindowTitle = _T("D3D9 Application");
-    m_dwCreationWidth = 400;
-    m_dwCreationHeight = 300;
+    m_strWindowTitle            = _T("D3D9 Application");
+    m_dwCreationWidth           = 400;
+    m_dwCreationHeight          = 300;
     m_bShowCursorWhenFullscreen = false;
-    m_bStartFullscreen = false;
-    m_isAdapter16 = false;
-    m_deviceThread = 0;
-    m_uRenderFrame = 0;
-    m_bvsync = false;
+    m_bStartFullscreen          = false;
+    m_isAdapter16               = false;
+    m_deviceThread              = 0;
+    m_uRenderFrame              = 0;
+    m_bvsync                    = false;
 
     Pause(true);  // Pause until we're ready to render
 
@@ -91,13 +91,6 @@ CD3DApplication::CD3DApplication() {
 // Desc: Static msg handler which passes messages to the application class.
 //-----------------------------------------------------------------------------
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-    switch (uMsg) {
-        case WM_CLOSE:
-            global_closeApp(nullptr, nullptr, nullptr);
-            return 0;
-        default:
-            break;
-    }
     return g_pD3DApp->MsgProc(hWnd, uMsg, wParam, lParam);
 }
 
@@ -204,15 +197,15 @@ HRESULT CD3DApplication::Create(HINSTANCE hInstance) {
         // lyymark 窗口居中
         RECT screenRect;
         GetWindowRect(GetDesktopWindow(), &screenRect);
-        const int screenWidth = screenRect.right - screenRect.left;
+        const int screenWidth  = screenRect.right - screenRect.left;
         const int screenHeight = screenRect.bottom - screenRect.top;
         RECT      windowRect;
         SetRect(&windowRect, 0, 0, m_dwCreationWidth, m_dwCreationHeight);
         AdjustWindowRect(&windowRect, m_dwWindowStyle, false);
-        const int     windowWidth = windowRect.right - windowRect.left;
+        const int     windowWidth  = windowRect.right - windowRect.left;
         const int     windowHeight = windowRect.bottom - windowRect.top;
-        const int     x = (screenWidth - windowWidth) / 2;
-        constexpr int y = 1;
+        const int     x            = (screenWidth - windowWidth) / 2;
+        constexpr int y            = 1;
 
         // lyymark 1.Device.CreateWindow 创建窗口
         m_hWnd = CreateWindow(
@@ -235,8 +228,8 @@ HRESULT CD3DApplication::Create(HINSTANCE hInstance) {
                                                   "DwmSetWindowAttribute");
 
     if (DwmSetWindowAttribute) {
-        constexpr DWORD dwAttribute = 20;  // 设置暗色模式属性
-        constexpr BOOL  bValue = TRUE;     // 启用暗色模式
+        constexpr DWORD dwAttribute = 20;    // 设置暗色模式属性
+        constexpr BOOL  bValue      = TRUE;  // 启用暗色模式
         DwmSetWindowAttribute(m_hWnd, dwAttribute, &bValue, sizeof(bValue));  // 设置窗口属性
     }
 
@@ -290,7 +283,7 @@ bool CD3DApplication::FindBestWindowedMode(bool bRequireHAL, bool bRequireREF) {
     m_pD3D->GetAdapterDisplayMode(0, &primaryDesktopDisplayMode);
 
     D3DAdapterInfo* pBestAdapterInfo = NULL;
-    D3DDeviceInfo*  pBestDeviceInfo = NULL;
+    D3DDeviceInfo*  pBestDeviceInfo  = NULL;
     D3DDeviceCombo* pBestDeviceCombo = NULL;
 
     for (UINT iai = 0; iai < m_d3dEnumeration.m_pAdapterInfoList->Count(); iai++) {
@@ -319,7 +312,7 @@ bool CD3DApplication::FindBestWindowedMode(bool bRequireHAL, bool bRequireREF) {
                         pDeviceCombo->DevType == D3DDEVTYPE_HAL ||
                     pDeviceCombo->DevType == D3DDEVTYPE_HAL && bAdapterMatchesBB) {
                     pBestAdapterInfo = pAdapterInfo;
-                    pBestDeviceInfo = pDeviceInfo;
+                    pBestDeviceInfo  = pDeviceInfo;
                     pBestDeviceCombo = pDeviceCombo;
                     if (pDeviceCombo->DevType == D3DDEVTYPE_HAL && bAdapterMatchesBB) {
                         // This windowed device combo looks great -- take it
@@ -351,12 +344,12 @@ EndWindowedDeviceComboSearch:
 			}*/
 
     m_d3dSettings.pWindowed_AdapterInfo = pBestAdapterInfo;
-    m_d3dSettings.pWindowed_DeviceInfo = pBestDeviceInfo;
+    m_d3dSettings.pWindowed_DeviceInfo  = pBestDeviceInfo;
     m_d3dSettings.pWindowed_DeviceCombo = pBestDeviceCombo;
-    m_d3dSettings.IsWindowed = true;
-    m_d3dSettings.Windowed_DisplayMode = primaryDesktopDisplayMode;
-    m_d3dSettings.Windowed_Width = m_rcWindowClient.right - m_rcWindowClient.left;
-    m_d3dSettings.Windowed_Height = m_rcWindowClient.bottom - m_rcWindowClient.top;
+    m_d3dSettings.IsWindowed            = true;
+    m_d3dSettings.Windowed_DisplayMode  = primaryDesktopDisplayMode;
+    m_d3dSettings.Windowed_Width        = m_rcWindowClient.right - m_rcWindowClient.left;
+    m_d3dSettings.Windowed_Height       = m_rcWindowClient.bottom - m_rcWindowClient.top;
     if (m_d3dEnumeration.AppUsesDepthBuffer)
         m_d3dSettings.Windowed_DepthStencilBufferFormat =
             *(D3DFORMAT*)pBestDeviceCombo->pDepthStencilFormatList->GetPtr(0);
@@ -384,13 +377,13 @@ bool CD3DApplication::FindBestFullscreenMode(bool bRequireHAL, bool bRequireREF)
     D3DDISPLAYMODE adapterDesktopDisplayMode;
     D3DDISPLAYMODE bestAdapterDesktopDisplayMode;
     D3DDISPLAYMODE bestDisplayMode;
-    bestAdapterDesktopDisplayMode.Width = 0;
-    bestAdapterDesktopDisplayMode.Height = 0;
-    bestAdapterDesktopDisplayMode.Format = D3DFMT_UNKNOWN;
+    bestAdapterDesktopDisplayMode.Width       = 0;
+    bestAdapterDesktopDisplayMode.Height      = 0;
+    bestAdapterDesktopDisplayMode.Format      = D3DFMT_UNKNOWN;
     bestAdapterDesktopDisplayMode.RefreshRate = 0;
 
     D3DAdapterInfo* pBestAdapterInfo = NULL;
-    D3DDeviceInfo*  pBestDeviceInfo = NULL;
+    D3DDeviceInfo*  pBestDeviceInfo  = NULL;
     D3DDeviceCombo* pBestDeviceCombo = NULL;
 
     for (UINT iai = 0; iai < m_d3dEnumeration.m_pAdapterInfoList->Count(); iai++) {
@@ -424,9 +417,9 @@ bool CD3DApplication::FindBestFullscreenMode(bool bRequireHAL, bool bRequireREF)
                     pDeviceCombo->DevType == D3DDEVTYPE_HAL && bAdapterMatchesDesktop &&
                         bAdapterMatchesBB) {
                     bestAdapterDesktopDisplayMode = adapterDesktopDisplayMode;
-                    pBestAdapterInfo = pAdapterInfo;
-                    pBestDeviceInfo = pDeviceInfo;
-                    pBestDeviceCombo = pDeviceCombo;
+                    pBestAdapterInfo              = pAdapterInfo;
+                    pBestDeviceInfo               = pDeviceInfo;
+                    pBestDeviceCombo              = pDeviceCombo;
                     if (pDeviceInfo->DevType == D3DDEVTYPE_HAL && bAdapterMatchesDesktop &&
                         bAdapterMatchesBB) {
                         // This fullscreen device combo looks great -- take it
@@ -443,9 +436,9 @@ EndFullscreenDeviceComboSearch:
 
     // Need to find a display mode on the best adapter that uses pBestDeviceCombo->AdapterFormat
     // and is as close to bestAdapterDesktopDisplayMode's res as possible
-    bestDisplayMode.Width = 0;
-    bestDisplayMode.Height = 0;
-    bestDisplayMode.Format = D3DFMT_UNKNOWN;
+    bestDisplayMode.Width       = 0;
+    bestDisplayMode.Height      = 0;
+    bestDisplayMode.Format      = D3DFMT_UNKNOWN;
     bestDisplayMode.RefreshRate = 0;
     for (UINT idm = 0; idm < pBestAdapterInfo->pDisplayModeList->Count(); idm++) {
         D3DDISPLAYMODE* pdm = (D3DDISPLAYMODE*)pBestAdapterInfo->pDisplayModeList->GetPtr(idm);
@@ -473,10 +466,10 @@ EndFullscreenDeviceComboSearch:
     }
 
     m_d3dSettings.pFullscreen_AdapterInfo = pBestAdapterInfo;
-    m_d3dSettings.pFullscreen_DeviceInfo = pBestDeviceInfo;
+    m_d3dSettings.pFullscreen_DeviceInfo  = pBestDeviceInfo;
     m_d3dSettings.pFullscreen_DeviceCombo = pBestDeviceCombo;
-    m_d3dSettings.IsWindowed = false;
-    m_d3dSettings.Fullscreen_DisplayMode = bestDisplayMode;
+    m_d3dSettings.IsWindowed              = false;
+    m_d3dSettings.Fullscreen_DisplayMode  = bestDisplayMode;
     if (m_d3dEnumeration.AppUsesDepthBuffer)
         m_d3dSettings.Fullscreen_DepthStencilBufferFormat =
             *(D3DFORMAT*)pBestDeviceCombo->pDepthStencilFormatList->GetPtr(0);
@@ -495,7 +488,7 @@ EndFullscreenDeviceComboSearch:
 //-----------------------------------------------------------------------------
 HRESULT CD3DApplication::ChooseInitialD3DSettings() {
     bool bFoundFullscreen = FindBestFullscreenMode(false, false);
-    bool bFoundWindowed = FindBestWindowedMode(false, false);
+    bool bFoundWindowed   = FindBestWindowedMode(false, false);
 
     if (m_bStartFullscreen && bFoundFullscreen)
         m_d3dSettings.IsWindowed = false;
@@ -542,7 +535,7 @@ LRESULT CD3DApplication::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPa
             break;
         case WM_KEYDOWN:
         case WM_SYSKEYDOWN:
-            bAltDown = ((lParam & (1 << 29)) != 0);
+            bAltDown = ((lParam & (1 << 29)));
             m_pAppFrame->m_bKeys[(BYTE)(wParam & 0xFF)] = true;
             if (m_pAppFrame->GetEnableConsole()) {
                 if (wParam == VK_OEM_3 && m_pAppFrame->m_bKeys[VK_CONTROL]) {
@@ -559,7 +552,7 @@ LRESULT CD3DApplication::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPa
             break;
         case WM_KEYUP:
         case WM_SYSKEYUP:
-            bAltDown = ((lParam & (1 << 29)) != 0);
+            bAltDown                                    = ((lParam & (1 << 29)) != 0);
             m_pAppFrame->m_bKeys[(BYTE)(wParam & 0xFF)] = false;
             m_pAppFrame->OnKeyUp((int)wParam, bAltDown);  // ( int iChar, bool bAltDown )
             break;
@@ -575,9 +568,9 @@ LRESULT CD3DApplication::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPa
         case WM_RBUTTONUP:
         case WM_RBUTTONDBLCLK:
         case WM_MOUSEMOVE: {
-            xPos = (short)LOWORD(lParam);
-            yPos = (short)HIWORD(lParam);
-            int nMouseButtonState = LOWORD(wParam);
+            xPos                            = (short)LOWORD(lParam);
+            yPos                            = (short)HIWORD(lParam);
+            int nMouseButtonState           = LOWORD(wParam);
             m_pAppFrame->m_bMouseButtons[0] = ((nMouseButtonState & MK_LBUTTON) != 0);
             m_pAppFrame->m_bMouseButtons[1] = ((nMouseButtonState & MK_MBUTTON) != 0);
             m_pAppFrame->m_bMouseButtons[2] = ((nMouseButtonState & MK_RBUTTON) != 0);
@@ -662,8 +655,8 @@ LRESULT CD3DApplication::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPa
             pt.x = xPos;
             pt.y = yPos;
             ScreenToClient(hWnd, &pt);
-            xPos = pt.x;
-            yPos = pt.y;
+            xPos                 = pt.x;
+            yPos                 = pt.y;
             int nMouseWheelDelta = (short)HIWORD(wParam);
             m_pAppFrame->OnMouseWheel(nMouseWheelDelta / WHEEL_DELTA, xPos, yPos);
             m_pAppFrame->m_iLastMousePos[0] = xPos;
@@ -696,10 +689,10 @@ LRESULT CD3DApplication::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPa
             break;
 
         case WM_SIZING: {
-            int   wmId = LOWORD(wParam);
-            int   wmEvent = HIWORD(wParam);
-            RECT* pkRect = (RECT FAR*)lParam;
-            pkRect->right = pkRect->left + m_dwCreationWidth;
+            int   wmId     = LOWORD(wParam);
+            int   wmEvent  = HIWORD(wParam);
+            RECT* pkRect   = (RECT FAR*)lParam;
+            pkRect->right  = pkRect->left + m_dwCreationWidth;
             pkRect->bottom = pkRect->top + m_dwCreationHeight;
         } break;
 
@@ -753,7 +746,7 @@ LRESULT CD3DApplication::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPa
                     // size, so the 3D structures must be changed accordingly.
                     m_bReady = FALSE;
 
-                    m_d3dpp.BackBufferWidth = m_rcWindowClient.right - m_rcWindowClient.left;
+                    m_d3dpp.BackBufferWidth  = m_rcWindowClient.right - m_rcWindowClient.left;
                     m_d3dpp.BackBufferHeight = m_rcWindowClient.bottom - m_rcWindowClient.top;
 
                     // Resize the 3D environment
@@ -816,8 +809,8 @@ LRESULT CD3DApplication::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPa
                 case SC_MAXIMIZE:
                 case SC_KEYMENU:
                 case SC_MONITORPOWER:
-                    if (FALSE == m_bWindowed)
-                        return 1;
+                    // if (FALSE == m_bWindowed)
+                    return 1;
                     break;
             }
             break;
@@ -897,12 +890,13 @@ LRESULT CD3DApplication::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPa
 			}
 			break;
 			*/
-
-        case WM_CLOSE:
-            //Cleanup3DEnvironment();
+        case WM_USER_QUIT:
             DestroyMenu(GetMenu(hWnd));
             DestroyWindow(hWnd);
             PostQuitMessage(0);
+        case WM_CLOSE:
+            //Cleanup3DEnvironment();
+            global_closeApp(hWnd, nullptr, nullptr);
             return 0;
     }
 
@@ -938,7 +932,7 @@ HRESULT CD3DApplication::HandlePossibleSizeChange() {
         // size, so the 3D structures must be changed accordingly.
         Pause(true);
 
-        m_d3dpp.BackBufferWidth = m_rcWindowClient.right - m_rcWindowClient.left;
+        m_d3dpp.BackBufferWidth  = m_rcWindowClient.right - m_rcWindowClient.left;
         m_d3dpp.BackBufferHeight = m_rcWindowClient.bottom - m_rcWindowClient.top;
 
         if (m_pd3dDevice != NULL) {
@@ -962,7 +956,7 @@ HRESULT CD3DApplication::Initialize3DEnvironment() {
     HRESULT hr;
 
     D3DAdapterInfo* pAdapterInfo = m_d3dSettings.PAdapterInfo();
-    D3DDeviceInfo*  pDeviceInfo = m_d3dSettings.PDeviceInfo();
+    D3DDeviceInfo*  pDeviceInfo  = m_d3dSettings.PDeviceInfo();
 
     m_bWindowed = m_d3dSettings.IsWindowed;
     AdjustWindowForChange();
@@ -1092,7 +1086,7 @@ HRESULT CD3DApplication::Initialize3DEnvironment() {
             DeleteDeviceObjects();
         } else {
             m_bDeviceObjectsInited = true;
-            hr = RestoreDeviceObjects();
+            hr                     = RestoreDeviceObjects();
             if (FAILED(hr)) {
                 InvalidateDeviceObjects();
             } else {
@@ -1130,33 +1124,33 @@ HRESULT CD3DApplication::Initialize3DEnvironment() {
 // Desc:
 //-----------------------------------------------------------------------------
 void CD3DApplication::BuildPresentParamsFromSettings() {
-    m_d3dpp.Windowed = m_d3dSettings.IsWindowed;
-    m_d3dpp.BackBufferCount = 1;
-    m_d3dpp.MultiSampleType = m_d3dSettings.MultisampleType();
-    m_d3dpp.MultiSampleQuality = m_d3dSettings.MultisampleQuality();
-    m_d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
+    m_d3dpp.Windowed               = m_d3dSettings.IsWindowed;
+    m_d3dpp.BackBufferCount        = 1;
+    m_d3dpp.MultiSampleType        = m_d3dSettings.MultisampleType();
+    m_d3dpp.MultiSampleQuality     = m_d3dSettings.MultisampleQuality();
+    m_d3dpp.SwapEffect             = D3DSWAPEFFECT_DISCARD;
     m_d3dpp.EnableAutoDepthStencil = m_d3dEnumeration.AppUsesDepthBuffer;
-    m_d3dpp.hDeviceWindow = m_hWnd;
-    m_d3dpp.Flags = 0;
+    m_d3dpp.hDeviceWindow          = m_hWnd;
+    m_d3dpp.Flags                  = 0;
 
     if (m_d3dEnumeration.AppUsesDepthBuffer)
         m_d3dpp.AutoDepthStencilFormat = m_d3dSettings.DepthStencilBufferFormat();
 
     if (m_bWindowed) {
-        m_d3dpp.BackBufferWidth = m_rcWindowClient.right - m_rcWindowClient.left;
-        m_d3dpp.BackBufferHeight = m_rcWindowClient.bottom - m_rcWindowClient.top;
-        m_d3dpp.BackBufferFormat = m_d3dSettings.PDeviceCombo()->BackBufferFormat;
+        m_d3dpp.BackBufferWidth            = m_rcWindowClient.right - m_rcWindowClient.left;
+        m_d3dpp.BackBufferHeight           = m_rcWindowClient.bottom - m_rcWindowClient.top;
+        m_d3dpp.BackBufferFormat           = m_d3dSettings.PDeviceCombo()->BackBufferFormat;
         m_d3dpp.FullScreen_RefreshRateInHz = 0;
         if (m_bvsync)
             m_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_DEFAULT;
         else
             m_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
     } else {
-        m_d3dpp.BackBufferWidth = m_d3dSettings.DisplayMode().Width;
-        m_d3dpp.BackBufferHeight = m_d3dSettings.DisplayMode().Height;
-        m_d3dpp.BackBufferFormat = m_d3dSettings.PDeviceCombo()->BackBufferFormat;
+        m_d3dpp.BackBufferWidth            = m_d3dSettings.DisplayMode().Width;
+        m_d3dpp.BackBufferHeight           = m_d3dSettings.DisplayMode().Height;
+        m_d3dpp.BackBufferFormat           = m_d3dSettings.PDeviceCombo()->BackBufferFormat;
         m_d3dpp.FullScreen_RefreshRateInHz = m_d3dSettings.Fullscreen_DisplayMode.RefreshRate;
-        m_d3dpp.PresentationInterval = m_d3dSettings.PresentInterval();
+        m_d3dpp.PresentationInterval       = m_d3dSettings.PresentInterval();
     }
 }
 
@@ -1230,13 +1224,13 @@ HRESULT CD3DApplication::Reset3DEnvironment() {
 HRESULT CD3DApplication::ToggleFullscreen() {
     HRESULT    hr;
     int        AdapterOrdinalOld = m_d3dSettings.AdapterOrdinal();
-    D3DDEVTYPE DevTypeOld = m_d3dSettings.DevType();
+    D3DDEVTYPE DevTypeOld        = m_d3dSettings.DevType();
 
     Pause(true);
     m_bIgnoreSizeChange = true;
 
     // Toggle the windowed state
-    m_bWindowed = !m_bWindowed;
+    m_bWindowed              = !m_bWindowed;
     m_d3dSettings.IsWindowed = m_bWindowed;
 
     // Prepare window for windowed/fullscreen change
@@ -1266,7 +1260,7 @@ HRESULT CD3DApplication::ToggleFullscreen() {
         m_bIgnoreSizeChange = false;
         if (!m_bWindowed) {
             // Restore window type to windowed mode
-            m_bWindowed = !m_bWindowed;
+            m_bWindowed              = !m_bWindowed;
             m_d3dSettings.IsWindowed = m_bWindowed;
             AdjustWindowForChange();
             SetWindowPos(m_hWnd, HWND_NOTOPMOST, m_rcWindowBounds.left, m_rcWindowBounds.top,
@@ -1386,7 +1380,7 @@ HRESULT CD3DApplication::UserSelectNewDevice() {
             hr = D3DAPPERR_RESETFAILED;
         if (!m_bWindowed) {
             // Restore window type to windowed mode
-            m_bWindowed = !m_bWindowed;
+            m_bWindowed              = !m_bWindowed;
             m_d3dSettings.IsWindowed = m_bWindowed;
             AdjustWindowForChange();
             SetWindowPos(m_hWnd, HWND_NOTOPMOST, m_rcWindowBounds.left, m_rcWindowBounds.top,
@@ -1519,9 +1513,9 @@ HRESULT CD3DApplication::Render3DEnvironment() {
     // 如果帧在移动或单步模式
     if (m_bFrameMoving || m_bSingleStep) {
         // 更新时间变量
-        m_fTime = fAppTime;
+        m_fTime        = fAppTime;
         m_fElapsedTime = fElapsedAppTime;
-        m_dwElapsedMS = (unsigned long)(fElapsedAppTime * 1000.f);
+        m_dwElapsedMS  = (unsigned long)(fElapsedAppTime * 1000.f);
 
         // 调用 FrameMove 并检查返回值
         if (FAILED(hr = FrameMove()))
@@ -1558,15 +1552,15 @@ HRESULT CD3DApplication::Render3DEnvironment() {
 void CD3DApplication::UpdateStats() {
     // Keep track of the frame count
     static FLOAT fLastTime = 0.0f;
-    static DWORD dwFrames = 0;
-    FLOAT        fTime = DXUtil_Timer(TIMER_GETABSOLUTETIME);
+    static DWORD dwFrames  = 0;
+    FLOAT        fTime     = DXUtil_Timer(TIMER_GETABSOLUTETIME);
     ++dwFrames;
 
     // Update the scene stats once per second
     if (fTime - fLastTime > 1.0f) {
-        m_fFPS = dwFrames / (fTime - fLastTime);
+        m_fFPS    = dwFrames / (fTime - fLastTime);
         fLastTime = fTime;
-        dwFrames = 0;
+        dwFrames  = 0;
 
         TCHAR     strFmt[100];
         D3DFORMAT fmtAdapter = m_d3dSettings.DisplayMode().Format;

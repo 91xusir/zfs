@@ -3,7 +3,6 @@
 #include "filepack/memory_file.h"  // 包含文件打包和内存文件相关的头文件
 #include "gc_login.h"              // 包含游戏登录相关的头文件
 
-
 // 全局场景指针
 extern RtScene* g_pScene;
 
@@ -182,7 +181,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     _putenv_s("MALLOC_CONF", "oversize_threshold:1,background_thread:true");
 
     P_OPEN_CONSOLE();
- 
+
     ParseCommandLine(std::string(lpCmdLine));  //解析命令行
 
     int iResult = FALSE;
@@ -356,10 +355,10 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         }*/
 #endif
         // 取得向导服务器的IP地址和端口，并且去取得GameWorld服务器列表
-        std::string  strGuideIP   = "127.0.0.1";
-        int          strGuidePort = 6620;
+        std::string strGuideIP   = "127.0.0.1";
+        int         strGuidePort = 6620;
 
-        strGuideIP = (std::string)(*g_iniConfig)["net"]["GuideIP"];
+        strGuideIP   = (std::string)(*g_iniConfig)["net"]["GuideIP"];
         strGuidePort = (int)(*g_iniConfig)["net"]["GuidePort"];
 
         if (commands.size() > 0 && commands[0] == "tooth.updaterun") {
@@ -382,17 +381,14 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         ReadVersionFile(R(INI_VERSION));
 
         // 图形系统初始化
-        RTGDeviceType eDeviceType;
-        eDeviceType = RTG_DEVICE_D3D9;
-
-        if (!rtGraphInit(/*"RT3D-Engine", 0, eDeviceType*/)) {
+        if (!rtGraphInit()) {
             ShowMessage(R(MSG_CANNOTINIT_GRAPH));
-            return FALSE;
+            return 0;
         }
 
         if (!GetDevice()) {
             ShowMessage(R(MSG_CANNOTINIT_GRAPH));
-            return FALSE;
+            return 0;
         }
         //lyytodo 替换yaml
         //lyymark 1.Game.Init 整个游戏的初始化入口 图形标题配置加载
@@ -407,11 +403,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         // 声音系统初始化,图形系统的初始化中要使用到声音系统
         if (!rtSoundInit("RT3D-Audio", (HWND)GetDevice()->GetWndHandle())) {
             ShowMessage(R(MSG_CANNOTINIT_AUDIO));
-            return FALSE;
+            return 0;
         }
         if (!rtMusicInit()) {
             ShowMessage(R(MSG_CANNOTINIT_AUDIO));
-            return FALSE;
+            return 0;
         }
         g_pBackMusic->SetMusicPath("music");
         g_pSoundMgr->SetAudioPath("audio");
@@ -421,7 +417,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         g_pGameClientFrame->EnableNotifyOnMouseMove(true);
         if (g_pGameClientFrame == NULL) {
             ShowMessage(R(MSG_MEMORY_FAIL));
-            return FALSE;
+            return 0;
         }
         // lyymark 1.Game.Init 创建音乐线程
         g_pMusicThread = RT_NEW CSceneMusicApp();

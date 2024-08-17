@@ -3,9 +3,10 @@
 #include "gc_cursor.h"
 #include "ui_form_textMsg.h"
 #include "ui_form_msg.h"
+#include <WinUser.h>
 
 static void Quit() {
-    PostQuitMessage(0);
+    PostMessage(GetDevice()->GetHWND(), WM_USER_QUIT, 0, 0);
 }
 
 void global_closeApp(void*, void*, void*) {

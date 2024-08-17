@@ -621,16 +621,21 @@ bool GcBaseActor::DestroyGraphData() {
 bool GcBaseActor::MoveInTile(float vX, float vY) {
     guard;
     CHECK(m_bPutOnPathFinder != 0);
-    RtsPathFind* pPathFind = GetWorld()->GetPathFind();
+    RtsPathFind* pPathFind = GetWorld()->GetPathFind();  // 获取当前世界的路径查找器
     int          TileX, TileY;
 
-    Point2Tile(vX, vY, TileX, TileY);
+    Point2Tile(vX, vY, TileX, TileY);  // 将世界坐标 vX, vY 转换为逻辑格子坐标 TileX, TileY
+    // 检查角色是否移动到了新的格子
+
     if (TileX != m_LastTileX || TileY != m_LastTileY) {
         char cBlock = '0';
         // if (m_pMaster && m_pMaster == GetPlayer())
-        cBlock = (char)m_blockType;
+        cBlock = (char)m_blockType;  // 将阻挡类型设置为角色的阻挡类型
+        // 使用路径查找器尝试将角色移动到新格子
+
         if (pPathFind->MoveTo(m_pPathNode, TileX, TileY, cBlock)) {
-            m_LastTileX = TileX;
+            m_LastTileX = TileX;  // 如果移动成功，更新最后所在的逻辑格子坐标
+
             m_LastTileY = TileY;
         } else {
             return false;
@@ -661,14 +666,18 @@ void GcBaseActor::FaceTo(float vX, float vY) {
 
 bool GcBaseActor::SetPosition(float vX, float vY) {
     guard;
+    // 调用 MoveInTile 函数将角色移动到指定的逻辑格子位置
     if (!MoveInTile(vX, vY))  // 逻辑格子的位置
     {
         m_bMoveToPositionNewMove = TRUE;
         return false;
     }
+    // 更新角色矩阵的平移分量，即角色在世界中的 X 和 Y 坐标
     m_Matrix._30 = vX;
     m_Matrix._31 = vY;
+    // 获取并更新角色在当前 X, Y 位置上的高度 (Z 坐标)
     g_pScene->GetTerrainHeight(m_Matrix._30, m_Matrix._31, m_Matrix._32);
+    // 如果角色正在骑乘状态，将宠物的矩阵与角色矩阵同步
     if (m_pMaster->m_eRideState == GcActor::ERS_ACTOR) {
         m_pMaster->m_pRidePet->mBaseActor.m_Matrix = m_Matrix;
         m_pMaster->m_pRidePet->mBaseActor.mGraph.SetPosition(m_Matrix._30, m_Matrix._31,
@@ -1190,65 +1199,64 @@ bool GcBaseActor::MoveToTerrainNow(float fX, float fY, bool bFindSpace) {
 bool GcBaseActor::MoveToPosition(float fX, float fY, float fDistance, float fNeedTime,
                                  float fDiffTime, bool bTarget) {
     guard;
+    // 如果路径节点为空，调用添加自我查找的方法并返回
     if (m_pPathNode == NULL) {
         return AddSelfFind(fX, fY);
     }
-    // tim.yang  automove  如果是玩家，角色类型为1
-    int actortype = 0;
-    m_pPathFind   = GetWorld()->GetPathFind();
+
+    m_pPathFind = GetWorld()->GetPathFind();  // 获取路径查找器
     if (!m_pPathFind) {
-        return false;
+        return false;  // 如果没有路径查找器，返回 false
     }
+    //  如果是玩家，角色类型为1
+    int actortype = 0;
     if (GcActor::ENT_USER == m_pMaster->NpcType()) {
         actortype = 1;
     }
-    // end
-    int iTileX, iTileY;
-    int iFinalTileX, iFinalTileY;
-    g_pScene->GetTerrainByPosFast(fX, fY, iFinalTileX, iFinalTileY);
 
+    int iTileX, iTileY;                                               // 当前瓦片坐标
+    int iFinalTileX, iFinalTileY;                                     // 目标瓦片坐标
+    g_pScene->GetTerrainByPosFast(fX, fY, iFinalTileX, iFinalTileY);  // 获取目标位置的瓦片坐标
+        // 计算目标点与当前位置的距离
     float fD =
         sqrt((fX - m_Matrix._30) * (fX - m_Matrix._30) + (fY - m_Matrix._31) * (fY - m_Matrix._31));
     if (fD <= fDistance) {
+        // 如果距离小于等于允许误差距离，认为已经到达目标点
         m_bMoveToPositionNewMove = TRUE;
-        return false;  // 已经走到了目的地
-    } else if (1 == actortype && fD > 10000.f &&
-               fNeedTime >= 0.f)  // tim.yang automove  add search path distance of player
-    {
-#ifdef _DEBUG
-        MSG1("距离过远 %.2f\n", fD);
-#endif
+        return false;
+    } else if (1 == actortype && fD > 10000.f && fNeedTime >= 0.f) {
+        P_LOGINFO("距离过远:" + std::to_string(fD));
         SetPosition(fX, fY);
         m_bMoveToPositionNewMove = TRUE;
-        return false;  // 已经走到了目的地
+        return false;
     } else if (1 != actortype && fD > 500.f && fNeedTime >= 0.f) {
-#ifdef _DEBUG
-        MSG1("距离过远 %.2f\n", fD);
-#endif
+        P_LOGINFO("距离过远:" + std::to_string(fD));
         SetPosition(fX, fY);
         m_bMoveToPositionNewMove = TRUE;
-        return false;  // 已经走到了目的地
+        return false;
     }
 
     bool IgonreActor = /* m_pMaster == GetPlayer() ? false : */ false;
 
+    // 如果目标位置或时间与之前的记录不同，或是新的移动请求
     if (fX != m_fMoveToPositionOldX || fY != m_fMoveToPositionOldY ||
         m_fMoveToPositionTime != fNeedTime || m_bMoveToPositionNewMove) {
         // if(actortype == 1)
         //	RtCoreLog().Info("moveto %f,%f -- old %f,%f, needtime %f,%f, bNewmove
         //%d\n", fX, fY, m_fMoveToPositionOldX, m_fMoveToPositionOldY,
         // m_fMoveToPositionTime, fNeedTime, m_bMoveToPositionNewMove);
-
+        //
+        // 记录新的目标位置和时间
         m_fMoveToPositionOldX    = fX;
         m_fMoveToPositionOldY    = fY;
         m_fMoveToPositionTime    = fNeedTime;
         m_bMoveToPositionNewMove = false;
-
+        // 获取当前位置的瓦片坐标
         g_pScene->GetTerrainByPosFast(fX, fY, iTileX, iTileY);
-
+        // 查找路径，如果找到了路径
         if (FindPath(iTileX, iTileY, IgonreActor, bTarget))  // 目的地的路径已经找到
         {
-            if (fNeedTime <= 0.f) {
+            if (fNeedTime <= 0.f) {  // 如果需要时间小于等于 0，设定速度为默认速度或宠物速度
                 if (m_pMaster->m_eRideState == GcActor::ERS_ACTOR) {
                     // m_fMoveToPositionSpeed = DEFAULT_WALK_SPEED;
                     m_fMoveToPositionSpeed = GetWorld()->m_pPet->m_core.MovSpeed.GetValue();
@@ -1267,9 +1275,9 @@ bool GcBaseActor::MoveToPosition(float fX, float fY, float fDistance, float fNee
                     m_fMoveToPositionSpeed = 0.f;
                 }
             }
-            m_fLastDistance = 1000000.f;
+            m_fLastDistance = 1000000.f;  // 初始化最后距离为很大值
             if (m_pPathNode->Next(iTileX, iTileY, m_pPathFind, IgonreActor, bTarget,
-                                  actortype))  // 还有下一段
+                                  actortype))  // 如果路径还有下一段，更新目标位置
             {
                 if (iTileX == iFinalTileX && iTileY == iFinalTileY) {
                     m_vMoveToPosition.x = fX;
@@ -1278,11 +1286,14 @@ bool GcBaseActor::MoveToPosition(float fX, float fY, float fDistance, float fNee
                     g_pScene->GetPosByTerrain(iTileX, iTileY, m_vMoveToPosition);
                 }
             } else {
+                // 如果没有下一段，直接设定目标位置为最终位置
                 m_vMoveToPosition.x = fX;
                 m_vMoveToPosition.y = fY;
             }
+            // 计算从当前位置到目标点的距离
             fD = sqrt((m_vMoveToPosition.x - m_Matrix._30) * (m_vMoveToPosition.x - m_Matrix._30) +
                       (m_vMoveToPosition.y - m_Matrix._31) * (m_vMoveToPosition.y - m_Matrix._31));
+            // 计算X和Y方向上的速度分量
             m_fMoveToPositionSpeedX =
                 m_fMoveToPositionSpeed * (m_vMoveToPosition.x - m_Matrix._30) / fD;
             m_fMoveToPositionSpeedY =
@@ -2270,7 +2281,8 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
     if (!mGraph.PlayPose(m_szLastPoseName, vLoop, fSpeed)) {
         // ERR2("播放动作失败,模型文件[%s] 动作[%s] \n", mGraph.FileName(),
         // m_szLastPoseName);
-        P_LOGINFO("播放动作失败"+std::string(mGraph.FileName())+"动作"+std::string(m_szLastPoseName));
+        P_LOGINFO("播放动作失败" + std::string(mGraph.FileName()) + "动作" +
+                  std::string(m_szLastPoseName));
         const SRT_Pose* pActorPose = &mGraph.p()->GetCurrentPose();
         if (pActorPose && pActorPose->IsVaild()) {
             rt2_strncpy(m_szLastPoseName, pActorPose->Name.c_str(), 40);

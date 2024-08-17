@@ -471,7 +471,7 @@ void CRegionSpawn::Init(short id, short npcID, int maxNpcCount, int spawnInterva
 void CRegionSpawn::KillNpc(CRegionCreature* npc) {
     RtCoreLog().Info("[CRegionSpawn::KillNpc] %d \n", npc->m_npcId);
     RtCoreLog().Info("[CRegionSpawn::Cm_curNpcCount] %d \n", m_curNpcCount);
-    CHECK(m_curNpcCount > 0);
+    //CHECK(m_curNpcCount > 0);
     stlforeach(std::vector<SpawnLair>, lair, m_npc) {
         if (lair->npc == npc) {
             lair->npc = NULL;

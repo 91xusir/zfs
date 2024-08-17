@@ -1311,7 +1311,7 @@ void UILayerMain::ClientMoveto(std::string szHref) {
 //	return NetSend(pPacket);
 //}
 ////end
-
+//lmk 超链接解析对应动作
 void UILayerMain::OnHtmlAction_HtmlHelpView(RtwWidget* sender, void* pParam) {
     guard;
     //     if (m_viewHelp->GetUserData()==0) return;

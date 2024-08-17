@@ -154,13 +154,13 @@ class CUIForm_MiddleMap {
 
     int    m_iOffsetX;             // 地图 X 方向偏移量
     int    m_iOffsetY;             // 地图 Y 方向偏移量
-    string m_strNowPlayerRealMap;  // 当前玩家所在的实际地图名称
-    string m_strRealMapOld;        // 上一张实际地图名称
-    string m_strNowShowMap;        // 当前显示的地图名称
-    string m_strNextShowMap;       // 下一张显示的地图名称
+    string m_strNowPlayerRealMapName;  // 当前玩家所在的实际地图名称
+    string m_strRealMapOldName;        // 上一张实际地图名称
+    string m_strNowShowMapName;        // 当前显示的地图名称
+    string m_strNextShowMapName;       // 下一张显示的地图名称
 
     map<string, SSceneInfo>     m_mapMiddleMapName;       // 地图名称到场景信息的映射
-    map<string, int>            m_mapStringToInt;         // 字符串到整数的映射
+    map<string, int>            m_mapNameToIdx;           // 地图名称到索引的映射
     map<string, IMAGEINFO*>     m_mapMiddleMapImageinfo;  // 地图名称到图像信息的映射
     map<string, STaskDesc*>     m_mapTaskInfo;            // 任务名称到任务描述的映射
     vector<vector<STaskDesc*>*> m_vectorTaskDesc;         // 任务描述的二维向量

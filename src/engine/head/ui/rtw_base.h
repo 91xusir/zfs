@@ -43,25 +43,25 @@ constexpr Real UI_PI = 3.1415926535;  //π的值
 //控件显示关闭方式
 enum EWidgetShowType {
     esNormal = 1 << 0,  //正常模式
-    esTrans = 1 << 1,   //透明模式
-    esZoom = 1 << 2     //缩放模式
+    esTrans  = 1 << 1,  //透明模式
+    esZoom   = 1 << 2   //缩放模式
 };
 
 enum EWidgetFlag {
     wfVisible = 1 << 0,  // 是否可见
     wfGrabMouse =
         1 << 1,  // 是否相应鼠标事件(MouseDown,MouseUp,MouseClick,MouseEnter,MouseLeave,MouseWheel)
-    wfMouseMove = 1 << 2,      // 是否相应鼠标Move事件
-    wfDClick = 1 << 3,         // 鼠标双击事件
+    wfMouseMove     = 1 << 2,  // 是否相应鼠标Move事件
+    wfDClick        = 1 << 3,  // 鼠标双击事件
     wfKeyboardEvent = 1 << 4,  // 是否相应键盘事件
     //wfMove			= 1 << 5,   // 是否可以移动
     //wfResize			= 1 << 6,   // 是否可以缩放
-    wfEnable = 1 << 7,       // 是否有效
-    wfFocus = 1 << 8,        // 是否能被激活
-    wfHint = 1 << 9,         // 是否显示hint
-    wfDragOut = 1 << 10,     // 是否响应鼠标托出
-    wfDragIn = 1 << 11,      // 是否响应鼠标托入
-    wfPick = 1 << 12,        // 是否阻挡鼠标
+    wfEnable     = 1 << 7,   // 是否有效
+    wfFocus      = 1 << 8,   // 是否能被激活
+    wfHint       = 1 << 9,   // 是否显示hint
+    wfDragOut    = 1 << 10,  // 是否响应鼠标托出
+    wfDragIn     = 1 << 11,  // 是否响应鼠标托入
+    wfPick       = 1 << 12,  // 是否阻挡鼠标
     wfDragServer = 1 << 13,  // change [3/17/2009 tooth.shi]
     wfDragClient = 1 << 14,
     //wfActivateParent	= 1 << 7,
@@ -115,42 +115,42 @@ struct SUiTextAlignment {
     EAlignment align : 16;
     EAlignment lineAlign : 16;
 
-    SUiTextAlignment(){
-        align = alignNear;
+    SUiTextAlignment() {
+        align     = alignNear;
         lineAlign = alignCenter;
     }
 
     SUiTextAlignment(EAlignment _align, EAlignment _lineAlign) {
-        align = _align;
+        align     = _align;
         lineAlign = _lineAlign;
     }
 };
 
 enum EWidgetType  //控件类型
 {
-    wtUnknown = 1,
-    wtWidget = 2,         // wgt
-    wtLayer = 3,          // lyr
-    wtLabel = 4,          // lab
-    wtButton = 5,         // btn
-    wtForm = 6,           // frm
-    wtEditBox = 7,        // edt
-    wtScrollBarV = 8,     // sbv
-    wtScrollBarH = 9,     // sbh
-    wtListBox = 10,       // lst
-    wtProgressBar = 11,   // pgb
-    wtComboBox = 12,      // cmb
-    wtTabCtrl = 13,       // tab
-    wtCheckButton = 14,   // chk
-    wtTree = 15,          // tre
-    wtPopupMenu = 16,     // mnu
-    wtMediaFrame = 17,    // mfm
-    wtAliasButton = 18,   // ali
-    wtHtmlView = 19,      // hvw
+    wtUnknown      = 1,
+    wtWidget       = 2,   // wgt
+    wtLayer        = 3,   // lyr
+    wtLabel        = 4,   // lab
+    wtButton       = 5,   // btn
+    wtForm         = 6,   // frm
+    wtEditBox      = 7,   // edt
+    wtScrollBarV   = 8,   // sbv
+    wtScrollBarH   = 9,   // sbh
+    wtListBox      = 10,  // lst
+    wtProgressBar  = 11,  // pgb
+    wtComboBox     = 12,  // cmb
+    wtTabCtrl      = 13,  // tab
+    wtCheckButton  = 14,  // chk
+    wtTree         = 15,  // tre
+    wtPopupMenu    = 16,  // mnu
+    wtMediaFrame   = 17,  // mfm
+    wtAliasButton  = 18,  // ali
+    wtHtmlView     = 19,  // hvw
     wtChatInputBox = 20,  // chi
-    wtChatBox = 21,       // chb
-    wtHud = 22,           // hud
-    wt3dview = 23,        // 3dview
+    wtChatBox      = 21,  // chb
+    wtHud          = 22,  // hud
+    wt3dview       = 23,  // 3dview
     wtCount
 };
 
@@ -170,9 +170,9 @@ class RtwRefObject : public RtObject {
 
    public:
     RtwRefObject() {
-        m_RefCounter = 0;
+        m_RefCounter     = 0;
         m_bCallDestroyed = false;
-        m_bIsDestroying = false;
+        m_bIsDestroying  = false;
     }
 
     virtual ~RtwRefObject() {
@@ -235,10 +235,10 @@ struct RtwPixel {
     RtwPixel() { *(DWORD*)this = 0xffffffff; }
 
     RtwPixel(unsigned char _r, unsigned char _g, unsigned char _b, unsigned char _a) {
-        r = _r;
-        g = _g;
-        b = _b;
-        a = _a;
+        r     = _r;
+        g     = _g;
+        b     = _b;
+        a     = _a;
         rBack = r;
         gBack = g;
         bBack = b;
@@ -247,19 +247,19 @@ struct RtwPixel {
 
     RtwPixel(DWORD color) {
         *(DWORD*)this = color;
-        rBack = r;
-        gBack = g;
-        bBack = b;
-        aBack = a;
+        rBack         = r;
+        gBack         = g;
+        bBack         = b;
+        aBack         = a;
     }
 
     //从字符串转换到颜色
     RtwPixel(const char* str) {
         *(DWORD*)this = strtoul(str, NULL, 16);
-        rBack = r;
-        gBack = g;
-        bBack = b;
-        aBack = a;
+        rBack         = r;
+        gBack         = g;
+        bBack         = b;
+        aBack         = a;
     }
 
     operator const DWORD&() const { return *(DWORD*)this; }
@@ -311,14 +311,14 @@ struct SSize {
     int width, height;
 
     void Reset() {
-        width = 0;
+        width  = 0;
         height = 0;
     }
 
     SSize() { Reset(); }
 
     SSize(int _width, int _height) {
-        width = _width;
+        width  = _width;
         height = _height;
     }
 
@@ -379,9 +379,9 @@ struct SMargin {
     int left, top, right, bottom;
 
     void Set(int l, int t, int r, int b) {
-        left = l;
-        top = t;
-        right = r;
+        left   = l;
+        top    = t;
+        right  = r;
         bottom = b;
     }
 
@@ -403,15 +403,15 @@ struct SMargin {
 struct RtwRect {
     enum ERectMouseHover  //点在矩形中的方向
     {
-        rmhLeft = 1 << 0,                       //左边缘
-        rmhTop = 1 << 1,                        //顶边缘
-        rmhRight = 1 << 2,                      //右边缘
-        rmhBottom = 1 << 3,                     //底边缘
-        rmhLeftTop = rmhLeft | rmhTop,          //左上角
-        rmhLeftBottom = rmhLeft | rmhBottom,    //左下角
-        rmhRightTop = rmhRight | rmhTop,        //右上角
+        rmhLeft        = 1 << 0,                //左边缘
+        rmhTop         = 1 << 1,                //顶边缘
+        rmhRight       = 1 << 2,                //右边缘
+        rmhBottom      = 1 << 3,                //底边缘
+        rmhLeftTop     = rmhLeft | rmhTop,      //左上角
+        rmhLeftBottom  = rmhLeft | rmhBottom,   //左下角
+        rmhRightTop    = rmhRight | rmhTop,     //右上角
         rmhRightBottom = rmhRight | rmhBottom,  //右下角
-        rmhUnknow = 0
+        rmhUnknow      = 0
     };
 
     int left, top, right, bottom;
@@ -419,9 +419,9 @@ struct RtwRect {
     RtwRect() { left = top = right = bottom = 0; }
 
     RtwRect(int _left, int _top, int _right, int _bottom) {
-        left = _left;
-        top = _top;
-        right = _right;
+        left   = _left;
+        top    = _top;
+        right  = _right;
         bottom = _bottom;
     }
 
@@ -612,9 +612,9 @@ struct RtwRect {
     std::string ToString();
 
     inline RtwRect& operator=(const RtwRect& t) {
-        left = t.left;
-        right = t.right;
-        top = t.top;
+        left   = t.left;
+        right  = t.right;
+        top    = t.top;
         bottom = t.bottom;
         return *this;
     }
@@ -664,10 +664,10 @@ struct SUiAnchor {
 
     SUiAnchor(EAnchorPoint _Point, const std::string& _RelativeWidgetName,
               EAnchorPoint _RelativePoint, const SSize& _Offset) {
-        Point = _Point;
+        Point              = _Point;
         RelativeWidgetName = _RelativeWidgetName;
-        RelativePoint = _RelativePoint;
-        Offset = _Offset;
+        RelativePoint      = _RelativePoint;
+        Offset             = _Offset;
     }
 };
 
@@ -675,12 +675,12 @@ struct SUiAnchor {
 enum EHyperLinkType {
     hlinkInvalid,  // 无效
     hlinkFile,     // 链接到文件
-    hlinkWidget,   // 链接到目标Widget的所有儿子
+    hlinkWidget,   // 表示超链接指向一个UI Widget及其所有子元素
     hlinkString,   // 链接到一个字符串
     hlinkClient,   // ui_layer_main中处理超链接用
-    hlinkRServer,
-    hlinkURL,  // 打开URL
-    hlinkNpc
+    hlinkRServer,  //可能是指向服务器的超链接
+    hlinkURL,      // 打开URL
+    hlinkNpc       //可能是指向游戏中的NPC
 };
 
 enum EChildHyperLinkType {
@@ -718,22 +718,22 @@ struct SHyperLink {
           pushedColor(other.pushedColor), vecParam(other.vecParam) {}
 
     void Reset() noexcept {
-        Type = hlinkInvalid;
-        childType = hlinkChildInvalid;
-        Text = "";
+        Type        = hlinkInvalid;
+        childType   = hlinkChildInvalid;
+        Text        = "";
         normalColor = hilghtColor = pushedColor = -1;
         vecParam.clear();
     }
 
     SHyperLink& operator=(const SHyperLink& other) {
         if (this != &other) {  // 防止自赋值
-            Type = other.Type;
-            childType = other.childType;
-            Text = other.Text;
+            Type        = other.Type;
+            childType   = other.childType;
+            Text        = other.Text;
             normalColor = other.normalColor;
             hilghtColor = other.hilghtColor;
             pushedColor = other.pushedColor;
-            vecParam = other.vecParam;  // 直接赋值，避免重复拷贝
+            vecParam    = other.vecParam;  // 直接赋值，避免重复拷贝
         }
         return *this;
     }

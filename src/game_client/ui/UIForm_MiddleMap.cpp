@@ -80,17 +80,16 @@ CUIForm_MiddleMap::CUIForm_MiddleMap(void)
     // 从g_TableScene中去读取所有地图名字，并存储在m_mapMiddleMapName
     g_TableScene.GetAllMiddleMapName(m_mapMiddleMapName);
     m_pcomComboBox->RemoveAllItems();
-    map<string, SSceneInfo>::iterator it;
-    int                               i = 0;
-    for (it = m_mapMiddleMapName.begin(); it != m_mapMiddleMapName.end(); ++it) {
-        m_pcomComboBox->AddItem((*it).first);
-        m_mapStringToInt.insert(make_pair((*it).first, i));
+    int i = 0;
+    for (const auto& [key, value] : m_mapMiddleMapName) {
+        m_pcomComboBox->AddItem(key);
+        m_mapNameToIdx.emplace(key, i++);
         m_vectorSNpc.push_back(RT_NEW vector<SNpc*>);
         m_vectorTaskDesc.push_back(RT_NEW vector<STaskDesc*>);
-        i++;
     }
-    g_TableNpc.GetNpcForMiddleMap(m_vectorSNpc, m_mapStringToInt);
-    g_TableTask.GetTaskDescForMiddleMap(m_vectorTaskDesc, m_mapStringToInt);
+
+    g_TableNpc.GetNpcForMiddleMap(m_vectorSNpc, m_mapNameToIdx);
+    g_TableTask.GetTaskDescForMiddleMap(m_vectorTaskDesc, m_mapNameToIdx);
 
     m_bChangeMap     = false;
     m_bMouseRDown    = false;
@@ -147,26 +146,30 @@ void CUIForm_MiddleMap::Show() {
 void CUIForm_MiddleMap::SetReferencePoint() {
     guard;
     // 获取当前选中地图的 NPC 列表迭代器
-    auto it = m_vectorSNpc[m_iSelectMapNum]->begin();
+
+    auto& selectedNpcVector = m_vectorSNpc[m_iSelectMapNum];  // 获取选中地图的 vector
 
     // 如果当前选中地图没有 NPC，则直接返回
-    if (it == m_vectorSNpc[m_iSelectMapNum]->end())
+    if (selectedNpcVector->empty())
         return;
 
     // 初始化地图指针和地图区域矩形
     RtsSceneBlockMap* pMap = nullptr;
     RtwRect           RealMapRect(0, 0, 512, 512);
     // 获取 NPC 的位置坐标 (X, Y)
-    const long* pPos = (*it)->Pos;
+    const long* pPos = (*selectedNpcVector).at(0)->Pos;
+
     // 计算中心点坐标，坐标分段为 4000 的倍数，并加上 2000 作为偏移量
     float fCenterX = std::floor(static_cast<float>(pPos[0]) / 4000.f) * 4000.f + 2000.f;
     float fCenterY = std::floor(static_cast<float>(pPos[1]) / 4000.f) * 4000.f + 2000.f;
     g_pScene->OffsetToMap(fCenterX, fCenterY);
-    // 计算出周围四个点的位置，并且察看分割方案，同时计算出分割线位置
+
+    // 计算区域的边界
     float fMinX = fCenterX - m_fSceneWidth / 2.f;
     float fMaxX = fCenterX + m_fSceneWidth / 2.f;
     float fMinY = fCenterY - m_fSceneWidth / 2.f;
     float fMaxY = fCenterY + m_fSceneWidth / 2.f;
+
     // 计算区块索引 (iBx, iBy)
     int iBx = (int)(fMinX / m_fSceneWidth);
     int iBy = (int)(fMinY / m_fSceneWidth);
@@ -200,8 +203,8 @@ void CUIForm_MiddleMap::SetReferencePoint() {
 
 void CUIForm_MiddleMap::OnPreDraw() {
     guard;
-    map<string, int>::iterator it = m_mapStringToInt.find(m_strNowShowMap);
-    if (it != m_mapStringToInt.end())
+    auto it = m_mapNameToIdx.find(m_strNowShowMapName);
+    if (it != m_mapNameToIdx.end())
         m_iSelectMapNum = it->second;
     else
         return;
@@ -220,7 +223,7 @@ void CUIForm_MiddleMap::OnPreDraw() {
         //	char name[50];
         //	STaskDesc *desc = &(*it);
         //	if(!desc) continue;
-        //	if(desc->m_TaskSencenID != m_strNowShowMap)
+        //	if(desc->m_TaskSencenID != m_strNowShowMapName)
         //		continue;
         //	else
         //	{
@@ -265,7 +268,7 @@ void CUIForm_MiddleMap::OnPreDraw() {
             desc = *it;
             if (!desc)
                 continue;
-            if (desc->m_TaskSencenID != m_strNowShowMap)
+            if (desc->m_TaskSencenID != m_strNowShowMapName)
                 continue;
             m_pTaskListUI->AddItem(desc->name.c_str());
             if (GetPlayer()->m_core.Lev - desc->reqMinLev >= 5)
@@ -426,6 +429,7 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
     m_iScreenHeight = mapRect.getHeight();                           // 设置屏幕高度
     const float* pPos = &(GetWorld()->m_pPlayer->GetMatrix()->_30);  // 获取玩家位置矩阵中的位置
     // 计算玩家当前位置的中心 X 坐标，按 4000 为单位进行对齐
+
     float fCenterX = floor(pPos[0] / 4000) * 4000 + 2000;
     float fCenterY = floor(pPos[1] / 4000) * 4000 + 2000;
 
@@ -436,8 +440,10 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
     // 玩家坐标转化
     float m_fPlayerX = pPos[0];
     float m_fPlayerY = pPos[1];
+
     // 调用场景对象的 OffsetToMap 方法，将玩家坐标 (m_fPlayerX, m_fPlayerY) 转换为地图坐标
     g_pScene->OffsetToMap(m_fPlayerX, m_fPlayerY);
+
     if (m_wShowFlag & UIFormMiniMap::EMMSF_SHOW_MAP) {
         g_pScene->OffsetToMap(fCenterX, fCenterY);
         // 计算出周围四个点的位置，并且察看分割方案，同时计算出分割线位置
@@ -455,11 +461,12 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
             SSceneInfo* pSceneInfo = g_TableScene.FindScene(std::string(pMap->m_szFileName));
             if (pSceneInfo->szSceneMiddleMapFileName[0] != 0) {  //如果表里的中地图名不为空
                 // 将玩家实际所处的地图记录下来，以便于跟玩家要查看的地图进行区分
-                m_strNowPlayerRealMap = pSceneInfo->szMiddleMapName;  //区域名
-                if (m_strRealMapOld != m_strNowPlayerRealMap) {  // 如果当前地图与之前的地图不同
-                    m_strRealMapOld = m_strNowPlayerRealMap;  // 更新旧地图名称
-                    m_strNextShowMap = m_strNowPlayerRealMap;  // 设置下一个要显示的地图名称
-                    m_pcomComboBox->RemoveAllItems();          // 清空下拉框
+                m_strNowPlayerRealMapName = pSceneInfo->szMiddleMapName;  //区域名
+                if (m_strRealMapOldName !=
+                    m_strNowPlayerRealMapName) {  // 如果当前地图与之前的地图不同
+                    m_strRealMapOldName = m_strNowPlayerRealMapName;  // 更新旧地图名称
+                    m_strNextShowMapName = m_strNowPlayerRealMapName;  // 设置下一个要显示的地图名称
+                    m_pcomComboBox->RemoveAllItems();                  // 清空下拉框
                     // 遍历中间地图名称映射表
                     for (auto it = m_mapMiddleMapName.begin(); it != m_mapMiddleMapName.end();
                          ++it) {
@@ -482,8 +489,9 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
                 if (m_bOpenMapFirst ||
                     GetFocusParentWidget(g_workspace.GetFocusWidget()) != m_frmMiddleMap) {
                     m_bOpenMapFirst = false;
-                    m_strNextShowMap = pSceneInfo->szMiddleMapName;  // 设置下一个要显示的地图名称
-                    m_pcomComboBox->SetText(m_strNextShowMap);  // 更新下拉框的文本
+                    m_strNextShowMapName =
+                        pSceneInfo->szMiddleMapName;  // 设置下一个要显示的地图名称
+                    m_pcomComboBox->SetText(m_strNextShowMapName);  // 更新下拉框的文本
 
                     // 将地图偏移到以玩家为中心的地点
                     m_iOffsetX = (int)(m_fPlayerX - mapRect.getWidth() / 2);  // 计算 X 偏移量
@@ -496,9 +504,9 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
             }
         }
         // 只进行渲染地图，而不进行判断玩家位置的操作
-        auto it = m_mapMiddleMapName.find(m_strNextShowMap);
+        auto it = m_mapMiddleMapName.find(m_strNextShowMapName);
         // 未能在地图里面查找到要加载的地图
-        if (it == m_mapMiddleMapName.end() || m_strNextShowMap == "")
+        if (it == m_mapMiddleMapName.end() || m_strNextShowMapName == "")
             return;
         else {
             char szName[50];
@@ -516,9 +524,9 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
 			先从map中去查找，看是否已经创建图片
 			*/
             // 先判断当前地图名是否是要加载的如果是，那么就不进行下面的操作
-            if (m_strNextShowMap != m_strNowShowMap) {
-                m_bChangeMap    = true;
-                m_strNowShowMap = it->second.szMiddleMapName;
+            if (m_strNextShowMapName != m_strNowShowMapName) {
+                m_bChangeMap        = true;
+                m_strNowShowMapName = it->second.szMiddleMapName;
             }
             map<string, IMAGEINFO*>::iterator itSI;
             itSI = m_mapMiddleMapImageinfo.find(szName);
@@ -574,7 +582,7 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
     int   iX, iY;
     float fX, fY;
     // 如果当前显示的地图跟实际显示的地图相同，那么就进行人物以及怪物的标记渲染
-    if (m_strNowPlayerRealMap == m_strNowShowMap &&
+    if (m_strNowPlayerRealMapName == m_strNowShowMapName &&
         (m_wShowFlag & UIFormMiniMap::EMMSF_SHOW_PLAYER)) {
         iX          = m_fPlayerX;
         iY          = m_fPlayerY;
@@ -618,8 +626,8 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
 
     char strId[32];
     // 以下是NPC图片的加载
-    map<string, int>::iterator it = m_mapStringToInt.find(m_strNowShowMap);
-    if (it != m_mapStringToInt.end())
+    map<string, int>::iterator it = m_mapNameToIdx.find(m_strNowShowMapName);
+    if (it != m_mapNameToIdx.end())
         m_iSelectMapNum = it->second;
     else
         return;
@@ -629,7 +637,7 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
         int teamActor = 0;
         for (; teamActor < GetWorld()->m_Team.mData.Size(); ++teamActor) {
 
-            /*if (teamData[teamActor].mRegion == m_strNowShowMap)
+            /*if (teamData[teamActor].mRegion == m_strNowShowMapName)
 			{*/
             fX = teamData[teamActor].X;
             fY = teamData[teamActor].Y;
@@ -693,7 +701,7 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
         desc = *itTaskdesc;
         if (!desc)
             continue;
-        if (desc->m_TaskSencenID != m_strNowShowMap)
+        if (desc->m_TaskSencenID != m_strNowShowMapName)
             continue;
         fX = (*itTaskdesc)->m_posTaskBegin[0] /**0.05*/;
         fY = (*itTaskdesc)->m_posTaskBegin[1] /**0.05*/;
@@ -808,7 +816,8 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
         } else {
             RtwLabel* lbMonster;
             RtwLabel* lbMonsterName;
-            if (Monsternum >= m_vectorMonsterLabel.size()) {// 检查当前的怪物数量是否大于已创建的标签数量
+            if (Monsternum >=
+                m_vectorMonsterLabel.size()) {  // 检查当前的怪物数量是否大于已创建的标签数量
                 RtwImage* tmpImage =
                     g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_d_icon03.dds");
                 lbMonster = (RtwLabel*)g_workspace.getWidgetFactory()->createWidget(wtLabel);
@@ -1005,7 +1014,7 @@ void CUIForm_MiddleMap::OnSelectComboBox(RtwWidget* sender, RtwEventDelegate* e)
     guard;
     int iselect = m_pcomComboBox->GetSelectedItem();
     if (iselect != -1) {
-        m_strNextShowMap = m_pcomComboBox->getSelectItem();
+        m_strNextShowMapName = m_pcomComboBox->getSelectItem();
     }
     unguard;
 }

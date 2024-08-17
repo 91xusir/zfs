@@ -3,6 +3,12 @@
 #include "filepack/ansi_file.h"
 // #include "game_string_assistant.h"
 #include "filepack/profile.h"
+#include <cstdio>
+#include <cstring>
+#include <string>
+#include <minwindef.h>
+#include <fileapi.h>
+#include <core/rt2_core.h>
 
 const int DEFAULT_BUFFER_SIZE=1024;
 

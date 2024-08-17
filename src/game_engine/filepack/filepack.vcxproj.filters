@@ -60,6 +60,9 @@
     <ClInclude Include="..\..\engine\head\filepack\file_error.h">
       <Filter>sdk</Filter>
     </ClInclude>
+    <ClInclude Include="..\ui\stdafx.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ansi_file.cpp">
@@ -90,6 +93,9 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="unpack_file.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ui\stdafx.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>

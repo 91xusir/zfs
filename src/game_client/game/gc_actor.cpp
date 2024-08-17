@@ -1056,7 +1056,7 @@ RtgVertex3 GcActor::GetHUDPos() {
 
 //自动寻路到某地
 void GcActor::GotoThere(int x, int y) {
-    // 将地图移动到指定的 x, y 坐标
+    // 将地图设置为x, y 坐标
     g_layerMain->m_formMiddleMap->SetOnMoveto(x, y);
 
     // 定义两个浮点数 X 和 Y，用于存储转换后的坐标

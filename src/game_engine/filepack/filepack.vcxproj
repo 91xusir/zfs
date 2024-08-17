@@ -131,11 +131,11 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\engine\head;</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_PREVIEW;WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Lib>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
@@ -162,9 +162,15 @@
     <ClInclude Include="..\..\engine\head\filepack\profile_result.h" />
     <ClInclude Include="..\..\engine\head\filepack\rt_async_file.h" />
     <ClInclude Include="..\..\engine\head\filepack\unpack_file.h" />
+    <ClInclude Include="..\ui\stdafx.h" />
     <ClInclude Include="blow_fish.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\ui\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='mtd|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="ansi_file.cpp" />
     <ClCompile Include="blow_fish.cpp" />
     <ClCompile Include="game_pack.cpp" />
