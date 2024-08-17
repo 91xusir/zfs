@@ -4154,7 +4154,7 @@ eof_found:
                             pActor->triggerID          = triggerID;
                         }
 
-                        if ((cMoveFlag & MOVE_STATE_STATIC) == 0) {
+                        if ((cMoveFlag & MOVE_STATE_STATIC) == 0) {//npcÒÆ¶¯
                             if (pActor != m_pPlayer && pActor->GetRideState() != GcActor::ERS_PET) {
                                 pActor->m_bTrace = bTrace ? true : false;
                                 pActor->AddCommandMoveTo(
@@ -4192,6 +4192,7 @@ eof_found:
                                                          (dwServerTime - dwClientTime) / 1000.f,
                                                          0.f);
                             }
+                          
                         }
                         if (cMoveFlag & (PK_STATE_RED_NAME | PK_STATE_YELLOW_NAME)) {
                             if (cMoveFlag & PK_STATE_RED_NAME) {

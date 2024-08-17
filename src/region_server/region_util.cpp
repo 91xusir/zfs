@@ -71,7 +71,7 @@ bool RunScriptFunction(CRegionCreature *cmdGiver, char* szSendCmd, const char se
 	return true;
 }
 
-// 执行客户端上传的命令字符串, 如果被解释就返回true, 否则返回false
+// lmk gm命令执行客户端上传的命令字符串, 如果被解释就返回true, 否则返回false
 const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, bool bPyGMOP, long pyGmAccount)
 {
     //static char szCmdCopy[512];
@@ -262,7 +262,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 
 			return R(MSG_CLIENT_COMMAND_MOVING);
 		}
-		else if (stricmp(token, "moveto")==0)
+		else if (stricmp(token, "moveto")==0)//移动到指定坐标
 		{
 			CHECK_PRIVILEGES(EUP_FastMove, R(MSG_CLIENT_COMMAND_NOT_FAST_MOVE), bPyGMOP);
 			int x, y;
@@ -1433,7 +1433,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 				int expAdd = 0;
 				int count = atoi(token);
 				if (count<0 || count>MAX_LEVEL)
-					return "level must in[1,99]";
+					return ("level must in[1,"+std::to_string(MAX_LEVEL)+"]").c_str();
 				if (count+cmdGiver->m_core.Lev > MAX_LEVEL)
 					count = MAX_LEVEL - cmdGiver->m_core.Lev;
 				for (int i=0; i<count; i++)

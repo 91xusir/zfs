@@ -5592,8 +5592,8 @@ bool CItemContainerBase::CheckUse(SItemID& item, SCreature& cre) const {
     GetItemAttribRequirement(m_pItemManager, item, iReqStr, iReqDex, iReqInt, iReqHit, iReqCon,
                              iReqLevel, iReqMaxLevel);
 
-    if (cre.Lev > iReqMaxLevel)  //增加最大使用等级
-        return false;
+    //if (cre.Lev > iReqMaxLevel)  //lmk取消 增加最大使用等级
+    //    return false;
     if (cre.Lev < iReqLevel)
         return false;
     if (cre.Str.GetValue() < iReqStr)

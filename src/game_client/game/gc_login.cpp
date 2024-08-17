@@ -360,6 +360,23 @@ void GcLogin::EnterSelectGameWorldServer() {
     }
     StartGetGameWorldServer();             //开始获取游戏世界服务器
     g_layerLogin->mp_layerServer->Show();  //显示服务器列表
+
+    auto pBar =
+        (RtwProgressBar*)g_workspace.getWidgetFactory()->createWidget(wtProgressBar, "LoadingBar");
+    CUiLayer* tmpl;
+    g_workspace.FindLayer("layworld", &tmpl);
+    tmpl->AddWidget(pBar);
+    pBar->Show();
+    RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui/x_textures/1.tga");
+    if (pImage) {
+        pImage->SetSourceRect(RtwRect(1, 216, 147, 226));
+        pImage->SetBlend(true);
+    }
+    SSize      s    = {1024, 10};
+    pBar->SetWidgetSize(s);
+    pBar->SetBarImage(pImage);
+    DROP_RTUI_OBJECT(pImage);
+    LOAD_UI("LoadingBar")->Show();
 }
 
 bool GcLogin::LeaveSelectGameWorldServer() const {
@@ -969,6 +986,7 @@ void GcLogin::OnRun(float fSecond) {
     POINT              cursorPt;
     const RtgMatrix12* oldWorldMatrix;
     RtgMatrix12        newWorldMatrix;
+    static double      oldTime = 0.0;
     //lyymark 2.GcLogin 更新声音
     g_pSoundMgr->UpdateAll(NULL, GetDevice()->GetAppTime());
     //更新场景物件
@@ -979,7 +997,12 @@ void GcLogin::OnRun(float fSecond) {
         }
     }
     if (m_eCurrentStatus == GLS_SELECT_GAMEWORLD_SERVER) {  //判断网络
-        OnGuideNetProcess(fSecond);                         // 向导的网络
+        auto pBar = (RtwProgressBar*)LOAD_UI("LoadingBar");
+        if (pBar) {
+            pBar->SetValue(oldTime);
+            oldTime += 0.001;
+        }
+        OnGuideNetProcess(fSecond);  // 向导的网络
     } else {
         this->Process();  // 登陆的网络
     }
@@ -1403,7 +1426,7 @@ void GcLogin::OnNetLogin(int result, const char* szRetStr, short sRetCode, char 
                 break;  //帐号被锁定
         }
 
-       /* if (result == LOGIN_RET_FAILED_NEW_CARD || result == LOGIN_RET_FAILED_USER_ONLINE) {
+        /* if (result == LOGIN_RET_FAILED_NEW_CARD || result == LOGIN_RET_FAILED_USER_ONLINE) {
             LOAD_UI("loginForm.txtPwd")->SetText("");
         }*/
         LoginErrMsg(err, szRetStr, sRetCode);
