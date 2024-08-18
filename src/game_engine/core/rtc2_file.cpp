@@ -43,7 +43,8 @@ RtObject* RtArchive::ReadObject(const RtRuntimeClass* pClass) {
         pRefClass = (RtRuntimeClass*)pClass;
     }
     if (pRefClass == 0) {
-        RtCoreLog().Warn("Warning: Cannot call ReadObject.\n");
+        
+        RtCoreLog().Warn("Warning: Cannot call ReadObject.%s\n", this->m_sPathFileName);
         return 0;
     }
     RtObject* pObj;

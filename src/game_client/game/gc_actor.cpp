@@ -4196,12 +4196,12 @@ void GcActor::ShowHeadNotify(const char* type, short sDamage, bool spec /* = fal
 //}
 void GcActor::ShowDamageNumber(int ret, short sDamage, short eleDmg[MAX_ELEMENT_ATTR], bool criHit,
                                char eleSpe) {
-    guard;  // 锁定，确保线程安全
+    guard;
 
-    P_LOGINFO(std::string("调用 ShowDamageNumber 函数: ") + "\n返回值: " + std::to_string(ret) +
+   /* P_LOGINFO(std::string("调用 ShowDamageNumber 函数: ") + "\n返回值: " + std::to_string(ret) +
               "\n伤害值: " + std::to_string(sDamage) + "\n元素伤害: (" + std::to_string(eleDmg[0]) +
               ", " + std::to_string(eleDmg[1]) + ", " + std::to_string(eleDmg[2]) + ")" +
-              "\n暴击命中: " + std::to_string(criHit) + "\n元素特性: " + std::to_string(eleSpe));
+              "\n暴击命中: " + std::to_string(criHit) + "\n元素特性: " + std::to_string(eleSpe));*/
 
     char szStr[20];  // 存储要显示的伤害文本
     char cDir = 0;   // 伤害文本的显示方向
@@ -4280,7 +4280,7 @@ void GcActor::ShowDamageNumber(int ret, short sDamage, short eleDmg[MAX_ELEMENT_
             cDir = DIR_LEFTUP;
         else
             cDir = DIR_RIGHTUP;
-        float offset = 10;  // 元素伤害显示的起始偏移
+        float offset = 15;  // 元素伤害显示的起始偏移
 
         // 如果水元素伤害大于0
         if (eleDmg[ELEMENT_WATER] > 0) {
@@ -4296,7 +4296,7 @@ void GcActor::ShowDamageNumber(int ret, short sDamage, short eleDmg[MAX_ELEMENT_
             GetWorld()->m_dynamicNumber.AddString(
                 szStr, RtgVertex3(GetHUDPos().x, GetHUDPos().y, GetHUDPos().z + offset), 0xFF00FFFF,
                 1, true, PIC_WATER);
-            offset += 10;  // 更新偏移
+            offset += 15;  // 更新偏移
         }
 
         // 如果火元素伤害大于0
@@ -4312,7 +4312,7 @@ void GcActor::ShowDamageNumber(int ret, short sDamage, short eleDmg[MAX_ELEMENT_
             GetWorld()->m_dynamicNumber.AddString(
                 szStr, RtgVertex3(GetHUDPos().x, GetHUDPos().y, GetHUDPos().z + offset), 0xFFFF00FF,
                 1, true, PIC_FIRE);
-            offset += 10;  // 更新偏移
+            offset += 15;  // 更新偏移
         }
 
         // 如果毒元素伤害大于0
@@ -4328,10 +4328,10 @@ void GcActor::ShowDamageNumber(int ret, short sDamage, short eleDmg[MAX_ELEMENT_
             GetWorld()->m_dynamicNumber.AddString(
                 szStr, RtgVertex3(GetHUDPos().x, GetHUDPos().y, GetHUDPos().z + offset), 0xFF00FF00,
                 1, true, PIC_POISON);
-            offset += 10;  // 更新偏移
+            offset += 15;  // 更新偏移
         }
     }
-    unguard;  // 解锁，确保线程安全
+    unguard;
 }
 
 void GcActor::UpdateFromServer(CG_CmdPacket* cmd) {

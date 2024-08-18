@@ -33,7 +33,8 @@ namespace {
                 RTASSERT(_actor);
                 RTASSERT(model->m_pChar == NULL|| model->m_pChar == _actor);
                 model->m_pChar = _actor;
-
+                //if (model->m_fileName == "cd001_001")
+                //    __debugbreak(); 
                 model->m_pChar->PlayPose("scene", true);
 
                 if (model->m_aryVc.size())

@@ -6,7 +6,7 @@
 GcDynamicNumber::GcDynamicNumber() {
     // 设置数字或符号面板的宽度和高度
     m_fSizeX = 3.f;  // 面板的宽度
-    m_fSizeY = 4.f;  // 面板的高度
+    m_fSizeY = 5.f;  // 面板的高度
 
     // 设置字符面板的宽度和高度
     m_fSizeCharX = 5;  // 字符面板的宽度
@@ -19,8 +19,8 @@ GcDynamicNumber::GcDynamicNumber() {
     m_iCntChar = 0;  // 字符计数
 
     // 初始化速度和时间参数
-    m_fSpeed = 20.f;  // 动画速度
-    m_fTime  = 2.f;   // 动画持续时间
+    m_fSpeed = 30.f;  // 动画速度
+    m_fTime  = 1.f;   // 动画持续时间
 
     // 清空数字节点数组，将所有元素设置为 0
     memset(m_Node, 0, sizeof(SNumNode) * MAX_NUM_NODE);

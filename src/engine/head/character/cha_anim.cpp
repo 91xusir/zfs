@@ -437,7 +437,8 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */) {
 
     if (!m_bUpdate || GetState() != Object_State_Ready)
         return;
-
+    /*  if (this->m_Name == "cd001_001.act")
+        __debugbreak(); */
     if (m_lastTickFrame == RtGetRender()->GetRenderFrame())
         return;
     m_lastTickFrame = RtGetRender()->GetRenderFrame();
@@ -458,6 +459,7 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */) {
                 // 如果是循环动作，重置为起始帧
                 m_curFrame = m_curPose.StartFrm;
                 m_oldFrame = m_curFrame;
+                RealUseFrame(m_curFrame);
             } else {
                 // 否则，停止动作
                 m_prePose  = m_curPose;
@@ -474,6 +476,7 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */) {
             // 使用当前帧进行骨骼动画
             RealUseFrame(m_curFrame);
         }
+      
     }
     const DWORD ruSkin = rtMilliseconds();
     for (size_t i = 0; i < m_skinList.size(); ++i)
