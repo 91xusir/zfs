@@ -1899,9 +1899,10 @@ void CRT_ActorInstance::AttachGrid(void *p)
 bool CRT_ActorInstance::OnGridNotify(WPARAM wParam, LPARAM lParam)
 {
 	CXTPPropertyGridItem* pItem = (CXTPPropertyGridItem*)lParam;
+    std::cout << std::to_string(wParam) << std::endl;
 	switch(wParam)
 	{
-		case XTP_PGN_ITEMVALUE_CHANGED:
+		case 2:
 			if(pItem->GetCaption()=="Material")
 			{
 				for(int i=0; i<m_skinList.size(); i++)
@@ -1918,7 +1919,7 @@ bool CRT_ActorInstance::OnGridNotify(WPARAM wParam, LPARAM lParam)
 			}
 			break;
 
-		case XTP_PGN_INPLACEBUTTONDOWN:
+		case 8:
 			if(pItem->GetCaption() == "Import Skin")
 			{
 				char filter[] = "Skin Files (*.ski)|*.ski||";

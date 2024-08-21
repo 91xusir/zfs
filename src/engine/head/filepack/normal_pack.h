@@ -16,7 +16,8 @@ const int	PACK_TYPE_LENGTH=32;
 //const int	NORMAL_PACK_VERSION_101=101;
 //const int	NORMAL_PACK_VERSION_102=102;
 //const int   LAST_NORMAL_PACK_VERSION=103;//旧，不含包的时间
-const int   LAST_NORMAL_PACK_VERSION=104;
+//const int   LAST_NORMAL_PACK_VERSION=104;
+constexpr int   LAST_NORMAL_PACK_VERSION=110;
 
 
 extern CThreadCriticalSection gRealReadFile;

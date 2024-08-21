@@ -4,6 +4,7 @@
 #include "character/actor.h"
 #include "graph/rt_graph.h"
 
+
 bool  FogEnable;
 DWORD FogColor;
 void SetFogWithAdd(RtgDevice* dev)

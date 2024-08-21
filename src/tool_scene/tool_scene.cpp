@@ -179,9 +179,10 @@ BOOL CSceneEditorApp::OnIdle(LONG lCount)
 
     CWinApp::OnIdle(lCount);
 
-    if( AfxGetApp()->m_pMainWnd->IsIconic() )
-        return TRUE;
     if(RtGetRender())RtGetRender()->RenderScene();
 
+    //// lyymark 简单限制帧率
+    //int millisecondsPerFrame = 1000 / 30;  // 30 FPS
+    //Sleep(millisecondsPerFrame);  
     return TRUE;
 }

@@ -66,13 +66,15 @@ public:
 			rt2_strncpy(mMD5, object.mMD5, 16);
 		}
 		~SFileInfo(){CM_MEMUNPROTECTOR(mMD5)}
-
-		string			mName;				//文件名
-		int				mOffset;			//文件的偏移量
-		int				mSizeInPack;		//文件在包中的大小
-		int				mOriginSize;		//文件原来的大小
-		ECompressMode	mCompressMode;		//压缩方式
-		int				mCompressVersion;	//压缩方式的版本
+        //4
+        //4
+		string			mName;				//文件名 clt_core.ini
+        //4
+		int				mOffset;			//文件的偏移量 45
+		int				mSizeInPack;		//文件在包中的大小113 89
+		int				mOriginSize;		//文件原来的大小113 113
+		ECompressMode	mCompressMode;		//压缩方式1 3
+		int				mCompressVersion;	//压缩方式的版本0 0
 		long			mWriteTime;			//文件的修改时间
 		//char			mMD5[16];			//压缩前的，原始内容的，MD5值
 		CM_MEMDEF(mMD5, 16)
@@ -121,7 +123,9 @@ public:
 
 		friend CPackFile& operator>>( CPackFile& vrPackFile, SFileInfo& vrFileInfo)
 		{
+            //vrPackFile.Seek(8, SEEK_CUR);
 			vrPackFile>>vrFileInfo.mName;
+           // vrPackFile.Seek(4, SEEK_CUR);
 			vrPackFile>>vrFileInfo.mOffset;
 			vrPackFile>>vrFileInfo.mSizeInPack;
 			vrPackFile>>vrFileInfo.mOriginSize;

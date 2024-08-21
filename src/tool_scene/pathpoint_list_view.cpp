@@ -411,6 +411,7 @@ void CPathPointListView::RenderTips(RtgDevice& inDevice)
 
 void CPathPointListView::LoadWaypointFile(LPCTSTR szFileName)
 {
+    return;
     begin_log_tick(0);
 
 	FILE *fp = fopen(szFileName, "r");

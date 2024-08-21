@@ -232,7 +232,7 @@ bool CEditorFrame::OnFrameInit()
     g_pSceneTool->m_lightTerrainAmbient.z = GetBValue(m_dwTerrainAmbient)/255.f;
 
     this->m_bFog = RtGetRender()->GetFogEnable();
-
+    RtGetRender()->LockFps(1000/20);
     return true;
     //unguard;
 }
@@ -252,10 +252,6 @@ void CEditorFrame::OnFrameClose()
 void CEditorFrame::OnFrameMove(float fDifSecond)
 {
     
-   // lyymark 简单限制帧率
-    int millisecondsPerFrame = 1000 / 30;  // 30 FPS  
-    Sleep(millisecondsPerFrame);  
-
     CHECK(RtGetRender()->m_pCamera!=NULL);
     static float fLastTime = 0.f;
     float fCurTime = RtGetRender()->GetAppTime();

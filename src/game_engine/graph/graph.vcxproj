@@ -481,6 +481,7 @@
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='mt|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='md|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='mdd|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TextureRLE.cpp" />
     <ClCompile Include="TextureRLEWrapper.cpp" />

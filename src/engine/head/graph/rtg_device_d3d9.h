@@ -422,7 +422,7 @@ namespace rt_graph {
         virtual int GetAvailableTextureMem();
         virtual BOOL SaveRenderTargetToFile(const char* szFileName,bool bJPG = true);
 
-        virtual void SetFogEnable(BOOL bEnable);
+        virtual void SetFogEnable(BOOL );
         virtual void SetFogParameter(DWORD dwColor, float fNear, float fFar);
         virtual void SetFogColor(DWORD dwColor);
         virtual void SetFogNear(float fNear);
