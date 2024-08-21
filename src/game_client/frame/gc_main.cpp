@@ -5,7 +5,7 @@
 #include <preConsole.h>
 #include <minwindef.h>
 
-// 全局变量：
+// -------------------------全局变量------------------------------
 extern RtScene*      g_pScene;                // 全局场景指针
 static CRtgAppFrame* g_pGameClientFrame = 0;  // 游戏客户端框架指针
 static RtIni* g_iniConfig;  // 配置文件指针，指向 "game.ini"，此指针不会被删除
@@ -15,6 +15,11 @@ bool g_bLogEnable = false;  // release模式模式下cmd读取命令判断是否开启log，在这
 GcTimer*        g_pTimer       = 0;  // 计时器指针
 CSceneMusicApp* g_pMusicThread = 0;  // 音乐线程指针
 
+G_MEMDEF(g_szGuideServerHostIP, 40) // 向导服务器IP
+static int g_iGuideServerHostPort = 6620; 
+
+
+//-------------------------全局函数------------------------------
 //自动调整大小
 bool AutoResize(void* sender, int i) {
     guard;
@@ -57,8 +62,8 @@ RtgDeviceD3D9* GetDevice() {
 
 GcTimer* GetTimer() {
     if (g_pTimer == NULL)
-        g_pTimer = RT_NEW GcTimer();  // 如果计时器为空，则创建一个新的GcTimer实例
-    return g_pTimer;                  // 返回计时器实例
+        g_pTimer = RT_NEW GcTimer();
+    return g_pTimer;                 
 }
 
 CRtgAppFrame* GetApp() {
@@ -122,9 +127,7 @@ void ChangeGameFlow(bool bGame) {
     }
 }
 
-G_MEMDEF(g_szGuideServerHostIP, 40)
-static int g_iGuideServerHostPort = 6620;
-
+// 获取向导服务器的IP和端口
 void GetGuideHostInfo(char** ppIP, int* piPort) {
     *ppIP   = g_szGuideServerHostIP;
     *piPort = g_iGuideServerHostPort;
@@ -176,12 +179,11 @@ static bool IsValidIpAddress(const std::string& ipAddress) {
 //lyymark 1.Game.Init 程序main函数入口
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 
-    // 获取开始时间点
     auto start         = std::chrono::high_resolution_clock::now();
     auto printDuration = [start]() {
-        auto end = std::chrono::high_resolution_clock::now();                 // 记录结束时间
-        std::chrono::duration<double> duration = end - start;                 // 计算持续时间
-        std::cout << "运行时间: " << duration.count() << " 秒" << std::endl;  // 输出结果
+        auto end = std::chrono::high_resolution_clock::now(); 
+        std::chrono::duration<double> duration = end - start; 
+        std::cout << "加载用时: " << duration.count() << " 秒" << std::endl; 
     };
 
     ParseCommandLine(std::string(lpCmdLine));  //解析命令行
@@ -481,11 +483,14 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         g_pSoundMgr->SetUse3dAudio(lUse3DAudio != 0);
     }
 
-    //设置场景为登录
-    if (!((CGameClientFrame*)g_pGameClientFrame)->OnEnterLogin()) {
-        return false;
-    }
-    {  //lyymark 1.Game.Init 启动游戏引擎，客户端主循环入口
+  
+
+    {
+        //设置场景为登录
+        if (!((CGameClientFrame*)g_pGameClientFrame)->OnEnterLogin()) {
+            return false;
+        }
+        //lyymark 1.Game.Init 启动游戏引擎，客户端主循环入口
         GetDevice()->RunEngine();
     }
 

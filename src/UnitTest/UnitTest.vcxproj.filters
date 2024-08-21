@@ -13,8 +13,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="config_tool">
-      <UniqueIdentifier>{cdda9fb8-9b73-44c8-9ed8-f156cc63b713}</UniqueIdentifier>
+    <Filter Include="预编译">
+      <UniqueIdentifier>{0ccc857a-f2f8-4775-9a74-96867bccf65e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -22,21 +22,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
-      <Filter>源文件</Filter>
+      <Filter>预编译</Filter>
     </ClCompile>
-    <ClCompile Include="test_src\GlobalConfig.cpp">
+    <ClCompile Include="packtool.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="..\game_client\GlobalConfig.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="test_src\GlobalConfig.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="pch.h">
+      <Filter>预编译</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -185,9 +185,12 @@ HRESULT CD3DApplication::Create(HINSTANCE hInstance) {
         // 注册窗口类
         RegisterClassEx(&wndClass);
 
-        // 设置窗口样式 //alter by tim.yang  20080725  login对话框会缩小
-        m_dwWindowStyle = WS_OVERLAPPED | WS_CAPTION | WS_MINIMIZEBOX | WS_EX_LAYERED |
-                          WS_SYSMENU | WS_THICKFRAME;
+        // 设置窗口样式
+        // WS_OVERLAPPED - 创建一个重叠窗口，通常有标题栏和边框
+        // WS_CAPTION    - 添加标题栏到窗口
+        // WS_MINIMIZEBOX - 在标题栏添加最小化按钮
+        // WS_SYSMENU    - 在标题栏添加系统菜单图标（最小化、最大化、关闭等）
+        m_dwWindowStyle = WS_OVERLAPPED | WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU;
 
         // 设置窗口大小
         /*	RECT rc;
@@ -1419,10 +1422,7 @@ INT CD3DApplication::Run() {
     {
         // 检索消息，如果有消息则从消息队列中移除
         bGotMsg = PeekMessage(&msg, NULL, 0U, 0U, PM_REMOVE);
-        /*if (!m_bActive)
-			{
-				Sleep(m_dwFpsLocked);
-			}*/
+
         if (bGotMsg)  // 如果有消息
         {
             // 如果消息不是加速器消息，则进行翻译和分发

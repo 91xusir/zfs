@@ -202,7 +202,6 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
     if (!OnCreate3DDevice())
         return false;
 
-
     if (!OnAfterCreate3DDevice())
         return false;
 
@@ -212,13 +211,11 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
     if (!OnInit())
         return false;
 
-    if (!((CRtgAppFrame*)m_pEvent)->OnFramePreInit()) //UI初始化 这里分开是为了提前加载lodeing图片
+    if (!((CRtgAppFrame*)m_pEvent)->OnFramePreInit())  //UI初始化 这里分开是为了提前加载lodeing图片
         return false;
-
 
     if (!((CRtgAppFrame*)m_pEvent)->OnFrameInit())  //其他初始化
         return false;
-
 
     m_bDeviceReady = TRUE;
 
@@ -246,14 +243,16 @@ void RtgDevice::ReadUserIni(SUserConfig& userIni) {
 }
 
 void RtgDevice::ApplyConfig() {
-    // 获取屏幕分辨率
-    /* DWORD dwScreenW = (DWORD)::GetSystemMetrics(SM_CXSCREEN);
-    DWORD dwScreenH = (DWORD)::GetSystemMetrics(SM_CYSCREEN);*/
+    // 获取屏幕宽度和高度
+    DWORD dwScreenW = (DWORD)::GetSystemMetrics(SM_CXSCREEN);
+    DWORD dwScreenH = (DWORD)::GetSystemMetrics(SM_CYSCREEN);
     // 绑定窗口
-    //SetViewWindowInfo(RTGVWM_WINDOWED, m_userConfig.lWndWidth, m_userConfig.lWndHeight,
-    //                  m_userConfig.lWndColorDepth, 0);
-    //SetViewWindowInfo(RTGVWM_TOPWINDOW, m_userConfig.lWndWidth, m_userConfig.lWndHeight,
-    //                  m_userConfig.lWndColorDepth, 0);
+    BindViewWindow(RTGVWM_WINDOWED, m_config.hCustomWndHandle);
+    BindViewWindow(RTGVWM_TOPWINDOW, m_config.hCustomWndHandle);
+    SetViewWindowInfo(RTGVWM_WINDOWED, m_userConfig.lWndWidth, m_userConfig.lWndHeight,
+                      m_userConfig.lWndColorDepth, 0);
+    SetViewWindowInfo(RTGVWM_TOPWINDOW, m_userConfig.lWndWidth, m_userConfig.lWndHeight,
+                      m_userConfig.lWndColorDepth, 0);
     // 设置帧率
     LockFps(m_userConfig.lMillisecondPerFrame);
 }
@@ -273,27 +272,7 @@ void RtgDevice::Close() {
 }
 
 void RtgDevice::ResumeDefaultDisplayMode() {
-    /*
-    DEVMODE devMode;
-    memset(&devMode, 0, sizeof(DEVMODE));
-    devMode.dmSize = sizeof(DEVMODE);
-    EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &devMode);
-    if (   s_ResumeDefaultDisplayMode.dwScreenWidth==devMode.dmPelsWidth
-        && s_ResumeDefaultDisplayMode.dwScreenHeight==devMode.dmPelsHeight
-        && s_ResumeDefaultDisplayMode.dwColorDepth==devMode.dmBitsPerPel
-        && s_ResumeDefaultDisplayMode.dwRefreshRate==devMode.dmDisplayFrequency)
-        return;
 
-    devMode.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT | (s_ResumeDefaultDisplayMode.dwRefreshRate?DM_DISPLAYFREQUENCY:0);
-    devMode.dmPelsWidth         = s_ResumeDefaultDisplayMode.dwScreenWidth;
-    devMode.dmPelsHeight        = s_ResumeDefaultDisplayMode.dwScreenHeight;
-    devMode.dmBitsPerPel        = s_ResumeDefaultDisplayMode.dwColorDepth;
-    devMode.dmDisplayFrequency  = s_ResumeDefaultDisplayMode.dwRefreshRate;
-    if (ChangeDisplaySettings(&devMode, CDS_RESET)!=DISP_CHANGE_SUCCESSFUL)
-    {
-        LOG("RtgDevice: 切换分辨率失败.\n");
-    }
-    */
     RtCoreLog().Info("ResumeDefaultDisplayMode.\n");
     if (ChangeDisplaySettings(NULL, 0) != DISP_CHANGE_SUCCESSFUL) {
         RtCoreLog().Info("RtgDevice: 切换分辨率失败.\n");
@@ -314,20 +293,19 @@ void RtgDevice::BindViewWindow(RTGViewWindowMode eMode, RTHWND hWnd, bool bResiz
     m_ViewWnd[eMode].iPosY         = 0;
     m_ViewWnd[eMode].dwWidth       = 800;
     m_ViewWnd[eMode].dwHeight      = 600;
-    m_ViewWnd[eMode].dwDepth       = 16;
+    m_ViewWnd[eMode].dwDepth       = 32;
     m_ViewWnd[eMode].dwRefreshRate = 60;
     m_ViewWnd[eMode].hWnd          = hWnd;
     m_ViewWnd[eMode].dwWndStyle    = GetWindowLong((HWND)hWnd, GWL_STYLE);
 
     switch (eMode) {
-        case RTGVWM_TOPWINDOW:
-            m_ViewWnd[eMode].dwWndStyle = WS_POPUP | WS_BORDER | WS_VISIBLE;
+        case RTGVWM_TOPWINDOW:  // 设置为弹出式窗口，有边框，且可见
+            m_ViewWnd[eMode].dwWndStyle = WS_POPUP | WS_BORDER /*| WS_VISIBLE*/;
             m_ViewWnd[eMode].bTopwindow = true;
             break;
-        case RTGVWM_WINDOWED:  //alter by tim.yang  20080724注释掉可以让鼠标拖拽窗口的参数
-            m_ViewWnd[eMode].dwWndStyle = WS_OVERLAPPED | WS_CAPTION | WS_MINIMIZEBOX |
-                                          WS_SYSMENU /*| WS_THICKFRAME */ |
-                                          WS_VISIBLE;  //WS_CAPTION |WS_MINIMIZEBOX| WS_VISIBLE;
+        case RTGVWM_WINDOWED:  // 假全屏 设置为重叠窗口，有标题栏、最小化按钮、系统菜单，以及可见
+            m_ViewWnd[eMode].dwWndStyle =
+                WS_OVERLAPPED | WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU /*| WS_VISIBLE*/;
             break;
         case RTGVWM_FULLSCREEN:
             m_ViewWnd[eMode].bFullscreen = true;
@@ -369,35 +347,6 @@ bool RtgDevice::SetViewMode(RTGViewWindowMode eMode, bool bStype) {
     ClientToScreen(hWnd, (LPPOINT)&rc);
     m_ViewWnd[m_eCurrentViewWindowMode].iPosX = rc.left;
     m_ViewWnd[m_eCurrentViewWindowMode].iPosY = rc.top;
-
-    // 切换分辨率
-    //if (m_ViewWnd[eMode].bTopwindow || m_ViewWnd[m_eCurrentViewWindowMode].bTopwindow)
-    //{
-    //    if (m_ViewWnd[eMode].bTopwindow)
-    //    {
-    //        DEVMODE devMode;
-    //        memset(&devMode, 0, sizeof(DEVMODE));
-    //        devMode.dmSize = sizeof(DEVMODE);
-    //        devMode.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT | (m_ViewWnd[eMode].dwRefreshRate?DM_DISPLAYFREQUENCY:0);
-    //        devMode.dmPelsWidth         = dwWidth;
-    //        devMode.dmPelsHeight        = dwHeight;
-    //        devMode.dmBitsPerPel        = dwDepth;
-    //        devMode.dmDisplayFrequency  = dwRefreshRate;
-    //        //if (ChangeDisplaySettings(&devMode, CDS_RESET)!=DISP_CHANGE_SUCCESSFUL)
-    //        //RtCoreLog().Info("RtgDevice: 切换分辨率 %dx%dx%dx%d.\n", m_ViewWnd[eMode].dwWidth, m_ViewWnd[eMode].dwHeight, m_ViewWnd[eMode].dwDepth,m_ViewWnd[eMode].dwRefreshRate);
-    //       /* if (ChangeDisplaySettings(&devMode, 0)!=DISP_CHANGE_SUCCESSFUL)
-    //        {
-    //            RtCoreLog().Warn("RtgDevice: 切换分辨率失败.\n");
-    //            return false;
-    //        }*/
-    //        //SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 10, 10, SWP_NOMOVE);
-    //        SetWindowPos(hWnd, HWND_TOP, 0, 0, 10, 10, SWP_NOMOVE);
-    //    }else
-    //    {
-    //        //SetWindowPos(hWnd, HWND_NOTOPMOST, 0, 0, 10, 10, SWP_NOMOVE);
-    //        ResumeDefaultDisplayMode();
-    //    }
-    //}
 
     // 设置当前的窗口风格
     if (bStype &&
