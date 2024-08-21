@@ -40,7 +40,6 @@ CUiImageRegister* IUiImageFactory::mpkRegister = NULL;
 RtwImage* IUiImageFactory::createImage(const std::string& filename) {
     if (filename.empty())  //空文件
         return NULL;
-
     //if (_access(filename.c_str(), 0) == -1) //找不到文件
     //{
     //	return NULL;

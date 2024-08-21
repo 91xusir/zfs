@@ -122,7 +122,7 @@ private:
 	RtwWidget*	m_pwdtMapTitle;
     RtwWidget*  m_pWidgetPosition;
     RtwWidget*  m_pWidgetSceneName;
-	RtsSceneBlockMap* m_pblockmap;
+	RtsSceneBlockRtb* m_pblockmap;
 	//RtwListBox*	m_pUIPlayerList;	//Íæ¼ÒÁÐ±í
 	RtwImage*	m_pImage;
 	RtwButton*	m_pLockCamera;

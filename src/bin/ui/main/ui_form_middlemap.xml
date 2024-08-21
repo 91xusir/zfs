@@ -2,6 +2,13 @@
 <Ui>
   <Layer Name="layworld" Show="true">
     <Form EscapeHide="true" Inherit="" Location="6,130,705,454" Movable="true" Name="fmsysmap" Show="false">
+      <BackgroundImage Blend="true" File="ui\textures\1.tga" Source="0,2,769,576"/>
+      
+      
+      
+      
+      
+      
       <Label Inherit="" Location="265,37,6,22" Name="mapxright" Show="true">
         <BackgroundImage Blend="true" File="ui/x_textures/5.tga" Source="374,124,6,22"/>
       </Label>

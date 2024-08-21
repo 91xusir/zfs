@@ -402,7 +402,7 @@ void GcPlayer::OnRemoveCreature()
     GcActor::OnRemoveCreature();
 }
 
-void GcPlayer::OnBlockChanged(RtsSceneBlockMap* pNewBlock, RtsSceneBlockMap* pOldBlock)
+void GcPlayer::OnBlockChanged(RtsSceneBlockRtb* pNewBlock, RtsSceneBlockRtb* pOldBlock)
 {
     GcActor::OnBlockChanged(pNewBlock, pOldBlock);
     if (pNewBlock==NULL)
@@ -441,7 +441,7 @@ void GcPlayer::OnBlockChanged(RtsSceneBlockMap* pNewBlock, RtsSceneBlockMap* pOl
 const char* s_szKeyShowFlag = "ShowFlag:";
 const char* s_szKeyName = "Name:";
 
-void GcPlayer::OnAreaEnter(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock)
+void GcPlayer::OnAreaEnter(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock)
 {
     guard;
     GcActor::OnAreaEnter(pArea, pBlock);
@@ -472,7 +472,7 @@ void GcPlayer::OnAreaEnter(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBl
     unguard;
 }
 
-void GcPlayer::OnAreaExit(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock)
+void GcPlayer::OnAreaExit(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock)
 {
     guard;
     GcActor::OnAreaExit(pArea, pBlock);
@@ -1510,7 +1510,7 @@ void GcPlayer::Run(float fSecond)
 	{
 		playCombatMusic = true;
 		switchMusicTime = 0;
-		RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX<0)?(NULL):(g_pScene->GetBlockMap(m_iCurrentBlockX-g_pScene->GetCenterX(), m_iCurrentBlockY-g_pScene->GetCenterY()));
+		RtsSceneBlockRtb* pBlockMap = (m_iCurrentBlockX<0)?(NULL):(g_pScene->GetBlockMap(m_iCurrentBlockX-g_pScene->GetCenterX(), m_iCurrentBlockY-g_pScene->GetCenterY()));
 		// 如果在地图中，播放战斗音乐
 		if (pBlockMap)
 		{
@@ -1551,7 +1551,7 @@ void GcPlayer::Run(float fSecond)
 	{
 		if ( switchMusicTime < rtGetMilliseconds() )
 		{
-			RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX<0)?(NULL):(g_pScene->GetBlockMap(m_iCurrentBlockX-g_pScene->GetCenterX(), m_iCurrentBlockY-g_pScene->GetCenterY()));
+			RtsSceneBlockRtb* pBlockMap = (m_iCurrentBlockX<0)?(NULL):(g_pScene->GetBlockMap(m_iCurrentBlockX-g_pScene->GetCenterX(), m_iCurrentBlockY-g_pScene->GetCenterY()));
 			// 如果在地图中，播放背景音乐
 			if (pBlockMap)
 			{

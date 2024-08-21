@@ -441,7 +441,7 @@ bool CUiDesktop::FindLayer(const std::string& Name, CUiLayer** ppLayer/* = NULL*
 }
 
 //Ìí¼Ó²ã
-bool CUiDesktop::AddLayer(CUiLayer* pLayer, bool bAddToFront/* = false*/)
+bool CUiDesktop::AddLayer(CUiLayer* pLayer, bool bAddToFront/* = true*/)
 {
 	if (FindLayer(pLayer->getId()))
 		return false;

@@ -35,16 +35,10 @@
       <!-- <Label Inherit="" Location="18,184,164,16" Name="lbnews10"Text="公告10"/> -->
     </Form>
 
-    <Form Inherit="NoTitleBarForm" Location="0,548,1920,52" Name="kaiyuan" Show="true">
-      <Label Location="200,20,420,50" Name="lbbutton" Text="真封神 | 开源版 | 点击查看开发进度 ->">
+    <Form Inherit="NoTitleBarForm" Location="0,548,1920,52" Name="banquan" Show="true">
+      <Label Location="250,20,400,50" HyperLink="url:gitee.com/chuangxxt/zfs" Name="lbbutton" Text="真封神 | www.xxx.cn |  精品打造 | 源码品牌 | 个性化定制开发">
         <Anchors>
           <Anchor point="CENTERV"/>
-          <Anchor offset="0,15" point="BOTTOM"/>
-        </Anchors>
-      </Label>
-      <Label HyperLink="url:gitee.com/chuangxxt/zfs" Location="250,20,200,50" Name="srcUrl" Text="https://gitee.com/chuangxxt/zfs ">
-        <Anchors>
-          <Anchor offset="120,0" point="CENTERV"/>
           <Anchor offset="0,15" point="BOTTOM"/>
         </Anchors>
       </Label>

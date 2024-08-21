@@ -59,7 +59,7 @@ namespace rt_graph_dx9 {
 
 	//-----------------------------------------------------------------------------
 	// Name: DXUtil_Timer()
-	// Desc: Performs timer opertations. Use the following commands:
+	// Desc: Performs timer opertations. Use the following cmdLines:
 	//          TIMER_RESET           - to reset the timer
 	//          TIMER_START           - to start the timer
 	//          TIMER_STOP            - to stop (or pause) the timer

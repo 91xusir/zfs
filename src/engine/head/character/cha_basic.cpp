@@ -609,7 +609,7 @@ long CRT_Actor::Serialize(RtArchive& Ar) {
 void CRT_Actor::OnLoadFinish() {
     if (GetState() >= Object_State_Creating)
         return;
-
+            
     for (size_t i = 0; i < m_skinList.size(); ++i)
         m_skinList[i]->OnLoadFinish();
 

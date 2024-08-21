@@ -1,6 +1,7 @@
 
 #include "rtg_graph_inter.h"
 #include <core/rtc2_text_ini.h>
+#include <chrono>
 
 namespace rt_graph {
 
@@ -171,6 +172,7 @@ SResumeDefaultDisplayMode s_ResumeDefaultDisplayMode;
 //lyymark 1.Device.Init Device初始化
 bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeClass* pCameraClass,
                      SConfig& gameIni, SUserConfig& userIni) {
+
     RTASSERT(pEventClass);
 
     if (!pEventClass->IsDerivedFrom(RT_RUNTIME_CLASS(CRtgAppFrame)))
@@ -200,6 +202,7 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
     if (!OnCreate3DDevice())
         return false;
 
+
     if (!OnAfterCreate3DDevice())
         return false;
 
@@ -209,7 +212,11 @@ bool RtgDevice::Init(RTHINSTANCE hInst, RtRuntimeClass* pEventClass, RtRuntimeCl
     if (!OnInit())
         return false;
 
-    if (!((CRtgAppFrame*)m_pEvent)->OnFrameInit())
+    if (!((CRtgAppFrame*)m_pEvent)->OnFramePreInit()) //UI初始化 这里分开是为了提前加载lodeing图片
+        return false;
+
+
+    if (!((CRtgAppFrame*)m_pEvent)->OnFrameInit())  //其他初始化
         return false;
 
 
@@ -239,18 +246,16 @@ void RtgDevice::ReadUserIni(SUserConfig& userIni) {
 }
 
 void RtgDevice::ApplyConfig() {
-    DWORD dwScreenW = (DWORD)::GetSystemMetrics(SM_CXSCREEN);
-    DWORD dwScreenH = (DWORD)::GetSystemMetrics(SM_CYSCREEN);
-
-    // 绑定窗口如果为NULL，就是自己创建窗口
-    BindViewWindow(RTGVWM_WINDOWED, m_config.hCustomWndHandle);
-    BindViewWindow(RTGVWM_TOPWINDOW, m_config.hCustomWndHandle);
-    SetViewWindowInfo(RTGVWM_WINDOWED, m_userConfig.lWndWidth, m_userConfig.lWndHeight,
-                      m_userConfig.lWndColorDepth, 0);
-    SetViewWindowInfo(RTGVWM_TOPWINDOW, m_userConfig.lWndWidth, m_userConfig.lWndHeight,
-                      m_userConfig.lWndColorDepth, 0);
+    // 获取屏幕分辨率
+    /* DWORD dwScreenW = (DWORD)::GetSystemMetrics(SM_CXSCREEN);
+    DWORD dwScreenH = (DWORD)::GetSystemMetrics(SM_CYSCREEN);*/
+    // 绑定窗口
+    //SetViewWindowInfo(RTGVWM_WINDOWED, m_userConfig.lWndWidth, m_userConfig.lWndHeight,
+    //                  m_userConfig.lWndColorDepth, 0);
+    //SetViewWindowInfo(RTGVWM_TOPWINDOW, m_userConfig.lWndWidth, m_userConfig.lWndHeight,
+    //                  m_userConfig.lWndColorDepth, 0);
+    // 设置帧率
     LockFps(m_userConfig.lMillisecondPerFrame);
-    //m_pEvent->EnableConsole(m_config.bEnableConsole);
 }
 
 void RtgDevice::SetCustomWndHandle(HWND hWnd) {
@@ -567,7 +572,6 @@ void RtgDevice::OnClearZRender() {
 void RtgDevice::OnFrameMove(float fDifTime) {
     m_pCamera->UpdateMatrix();
     SetMatrixFromCamera();
-
     if (m_pEvent)
         m_pEvent->OnFrameMove(fDifTime);
 }

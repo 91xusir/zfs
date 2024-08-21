@@ -525,12 +525,12 @@ public:
 	bool TestSetPosition(long x,long y,long z);
 	bool CanMove();
     int m_iCurrentBlockX, m_iCurrentBlockY;
-    std::list<RtsSceneBlockMap::SArea*> m_listArea;
+    std::list<RtsSceneBlockRtb::SArea*> m_listArea;
     void OnPositionChanged(float fX, float fY);
     void OnRemoveCreature();
-    void OnBlockChanged(RtsSceneBlockMap* pNewBlock, RtsSceneBlockMap* pOldBlock);
-    void OnAreaEnter(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock); // 当进入某个区域
-    void OnAreaExit(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock);  // 当离开某个区域
+    void OnBlockChanged(RtsSceneBlockRtb* pNewBlock, RtsSceneBlockRtb* pOldBlock);
+    void OnAreaEnter(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock); // 当进入某个区域
+    void OnAreaExit(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock);  // 当离开某个区域
     void UpdateAreaPKAttr();
     char GetPKState();
 

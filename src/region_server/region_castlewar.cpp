@@ -1204,7 +1204,7 @@ bool CRegionCastleWarMgr::IsCastleWarTime(CRegionCreature* p_cre)
 
 	if(p_cre == NULL) return false;
 	
-	std::list<RtsSceneBlockMap::SArea*>::iterator it;
+	std::list<RtsSceneBlockRtb::SArea*>::iterator it;
 
 	//如果处在城战区域内
 	for(it = p_cre->m_listArea.begin(); it != p_cre->m_listArea.end(); it++)
@@ -1245,7 +1245,7 @@ bool CRegionCastleWarMgr::InCastleWarArea(CRegionCreature* p_cre)
 {
 	if(p_cre == NULL) return false;
 
-	RtsSceneBlockMap* bmap = g_region->m_defScene->FindBlockByPos(p_cre->m_pos);
+	RtsSceneBlockRtb* bmap = g_region->m_defScene->FindBlockByPos(p_cre->m_pos);
 	std::string map;
 	if(bmap)
 	{
@@ -1255,7 +1255,7 @@ bool CRegionCastleWarMgr::InCastleWarArea(CRegionCreature* p_cre)
 	    map = "scene01_001.rtb";
     }
 
-	std::list<RtsSceneBlockMap::SArea*>::iterator it;
+	std::list<RtsSceneBlockRtb::SArea*>::iterator it;
 
 	if(p_cre->m_core.Faction == FACTION_ZHOU)
 	{
@@ -2166,7 +2166,7 @@ void CRegionCastleWarMgr::OnUserOnline(DWORD user_db_id, bool b_flag)
 		//城战时期
 		if(IsCastleWarTime(p_cre))
 		{				
-			std::list<RtsSceneBlockMap::SArea*>::iterator it;
+			std::list<RtsSceneBlockRtb::SArea*>::iterator it;
 
 			for(it = p_cre->m_listArea.begin(); it != p_cre->m_listArea.end(); it++)
 			{	
@@ -2628,7 +2628,7 @@ bool CRegionCastleWarMgr::SetStartTime(string name, short week_day)
 //			if(!p_cre->IsUser()) continue;
 //
 //			//查找玩家所处的所有区域
-//			std::list<RtsSceneBlockMap::SArea*>::iterator it;
+//			std::list<RtsSceneBlockRtb::SArea*>::iterator it;
 //
 //			for(it = p_cre->m_listArea.begin(); it != p_cre->m_listArea.end(); it++)
 //			{									
@@ -2848,7 +2848,7 @@ bool CRegionCastleWarMgr::TransUser(string feod_name)
 
 			if((p_war_info != NULL) && (b_side == false)) continue;
 			
-			std::list<RtsSceneBlockMap::SArea*>::iterator it;
+			std::list<RtsSceneBlockRtb::SArea*>::iterator it;
 
 			for(it = p_cre->m_listArea.begin(); it != p_cre->m_listArea.end(); it++)
 			{	

@@ -324,42 +324,46 @@ void RtScene::OnFrameMove(float _elapsedTime) {
 }
 
 void RtScene::RequestBlockReady(const RtgVertex3& _Pos, bool bForcePreLoad /* = false */) {
+    // 如果场景块在 X 或 Y 方向的数量为 0，则直接返回，什么都不做
     if (m_iBlockXCnt == 0 || m_iBlockYCnt == 0)
         return;
 
-    RtsSceneBlockMap* blockMap = NULL;
-    RtgVertex4        _range;
-    int               _Indexx = 0;
-    int               _Indexy = 0;
+    RtsSceneBlockRtb* blockMap = NULL;  // 定义指向场景块的指针，初始为空
+    int               _Indexx  = 0;
+    int               _Indexy  = 0;
     Int2              _plIndex[8];
     bool              _plForce[8];
     int               _plIndexNum = 0;
-
+    // 获取当前坐标点对应的块信息，包括块的索引和是否强制加载标志
     GetBlockInfo(RtgVertex2(_Pos.x, _Pos.y), _Indexx, _Indexy, _plIndex, _plForce, _plIndexNum);
-
+    // 获取当前索引位置对应的场景块，如果块存在且可以加载
     if ((blockMap = GetBlockMapbyIndex(_Indexx, _Indexy)) && blockMap->Check_CanLoad()) {
         begin_log_tick(0);
+        // 创建场景块并强制加载
         m_SceneBlockManager.CreateSceneBlock(blockMap, m_szFilePath, _Indexx - m_iCenterPosX,
                                              _Indexy - m_iCenterPosY, true);
         end_log_tick2(0, "force load scene block", blockMap->m_szFileName);
     }
-
+    // 遍历所有可能需要加载的周边块
     for (size_t i = 0; i < _plIndexNum; ++i) {
+        // 获取索引对应的场景块，并检查其是否可以加载
         if ((blockMap = GetBlockMapbyIndex(_plIndex[i].x, _plIndex[i].y)) &&
             blockMap->Check_CanLoad()) {
+            // 创建场景块，预加载时根据 bForcePreLoad 变量决定是否强制加载
             m_SceneBlockManager.CreateSceneBlock(blockMap, m_szFilePath,
                                                  _plIndex[i].x - m_iCenterPosX,
                                                  _plIndex[i].y - m_iCenterPosY, bForcePreLoad);
             RtCoreLog().Info("preloading scene block : %s\n", blockMap->m_szFileName);
         }
     }
-
+    // 请求块对象加载，例如物体、角色等
     RequestBlockObject(_Pos);
-
+    // 如果不在小地图模式，更新环境（如光照、天气等）
     if (!m_bRenderMiniMapMode)
         RequestEnvUpdate(_Pos);
 
-#if !defined(_DLL)
+#ifndef _DLL
+    // 释放距离当前块较远的资源，以节省内存
     m_SceneBlockManager.EvictResources(Int2(_Indexx - m_iCenterPosX, _Indexy - m_iCenterPosY));
 #endif
 }
@@ -396,7 +400,7 @@ void RtScene::RequestBlockObject(const RtgVertex3& _Pos) {
 void RtScene::RequestEnvUpdate(const RtgVertex3& _Pos) {
     int               _blockx   = 0;
     int               _blocky   = 0;
-    RtsSceneBlockMap* _blockMap = GetBlockMapbyPos(RtgVertex2(_Pos.x, _Pos.y), _blockx, _blocky);
+    RtsSceneBlockRtb* _blockMap = GetBlockMapbyPos(RtgVertex2(_Pos.x, _Pos.y), _blockx, _blocky);
 
     if (!_blockMap || _blockMap->GetState() != Object_State_Ready)
         return;
@@ -407,9 +411,9 @@ void RtScene::RequestEnvUpdate(const RtgVertex3& _Pos) {
     if (!_block)
         return;
 
-    RtsSceneBlockMap* _horBlock = NULL;
-    RtsSceneBlockMap* _velBlock = NULL;
-    RtsSceneBlockMap* _adjBlock = NULL;
+    RtsSceneBlockRtb* _horBlock = NULL;
+    RtsSceneBlockRtb* _velBlock = NULL;
+    RtsSceneBlockRtb* _adjBlock = NULL;
     bool              bleft     = false;
     bool              brigt     = false;
     bool              btop      = false;
@@ -587,7 +591,7 @@ void RtScene::RequestEnvUpdate(const RtgVertex3& _Pos) {
 }
 
 void RtScene::RequestBlockReadyForSM(const Int2& _blockIndex) {
-    RtsSceneBlockMap* _blockMap = GetBlockMapbyIndex(_blockIndex.x, _blockIndex.y);
+    RtsSceneBlockRtb* _blockMap = GetBlockMapbyIndex(_blockIndex.x, _blockIndex.y);
 
     if (!_blockMap)
         return;
@@ -601,7 +605,7 @@ void RtScene::RequestBlockReadyForSM(const Int2& _blockIndex) {
 
     for (int y = _miny; y < _maxy; ++y) {
         for (int x = _minx; x < _maxx; ++x) {
-            RtsSceneBlockMap* _bmap = GetBlockMapbyIndex(x, y);
+            RtsSceneBlockRtb* _bmap = GetBlockMapbyIndex(x, y);
 
             if (_bmap && _bmap->Check_CanLoad()) {
                 m_SceneBlockManager.CreateSceneBlock(_bmap, m_szFilePath, x - GetCenterX(),
@@ -615,7 +619,7 @@ void RtScene::RequestBlockReadyForSM(const Int2& _blockIndex) {
 }
 
 void RtScene::RequestBlockObjectForSM(const Int2& _blockIndex) {
-    RtsSceneBlockMap* _blockMap = GetBlockMapbyIndex(_blockIndex.x, _blockIndex.y);
+    RtsSceneBlockRtb* _blockMap = GetBlockMapbyIndex(_blockIndex.x, _blockIndex.y);
     RTASSERT(_blockMap);
     RTASSERT(_blockMap->GetState() == Object_State_Ready);
 
@@ -641,7 +645,7 @@ void RtScene::RequestBlockObjectForSM(const Int2& _blockIndex) {
     }
 }
 
-void RtScene::OnBlockLoadFinish(RtsSceneBlockMap* _blockMap) {
+void RtScene::OnBlockLoadFinish(RtsSceneBlockRtb* _blockMap) {
 #ifdef RT_SCENE_ONLY_LOAD_TERRAIN
     return;
 #endif
@@ -1151,7 +1155,7 @@ void RtScene::BuildShadowMap_ForCurrBlock() {
 }
 
 void RtScene::BuildShadowMap(const Int2& _blockIndex) {
-    RtsSceneBlockMap* _blockMap = GetBlockMapbyIndex(_blockIndex.x, _blockIndex.y);
+    RtsSceneBlockRtb* _blockMap = GetBlockMapbyIndex(_blockIndex.x, _blockIndex.y);
 
     if (!_blockMap || !(*_blockMap->m_szFileName))
         return;
@@ -1401,7 +1405,7 @@ void RtScene::CreateGrass(RtsSTileMap* tile, RtSceneBlock* block, RtsSVertex* v,
     tile->aspectW      = aspect;
     tile->grassDensity = density;
 
-    RtsSceneBlockMap* blockMap = GetBlockMap(block->m_iBlockPosX, block->m_iBlockPosY);
+    RtsSceneBlockRtb* blockMap = GetBlockMap(block->m_iBlockPosX, block->m_iBlockPosY);
 
     if (!blockMap)
         return;
@@ -1497,7 +1501,7 @@ void RtScene::UpdateRenderGridList(RtgCamera& _cam) {
     if (m_iBlockXCnt == 0 || m_iBlockYCnt == 0)
         return;
 
-    RtsSceneBlockMap* blockMap = NULL;
+    RtsSceneBlockRtb* blockMap = NULL;
     RtgVertex3        _Pos     = _cam.GetEyePt();
     int               _Indexx  = 0;
     int               _Indexy  = 0;
@@ -1567,10 +1571,10 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock) {
             for (int y = 0; y < RTS_BLOCK_GRID_SIZE; ++y) {
                 for (int x = 0; x < RTS_BLOCK_GRID_SIZE; ++x) {
                     RtgTextItem* texMap[] = {NULL, NULL, NULL, NULL, NULL};
-                    int          i = 0;
-                    int          j = 0;
+                    int          i        = 0;
+                    int          j        = 0;
 
-                    int          tileId = ((y + pGrid->y) * g_iSceneTileCntX + (x + pGrid->x));
+                    int          tileId  = ((y + pGrid->y) * g_iSceneTileCntX + (x + pGrid->x));
                     RtsSTileMap* tileMap = pGrid->pBlock->m_pTileMapIdx + tileId;
 
                     if (pGrid->pBlock->HasSM())
@@ -2654,7 +2658,7 @@ RtSceneBlock* RtScene::GetBlockByPos(float fPosX, float fPosY) {
     iBy = (int)(fPosY / (g_fSceneBlockHeight));
     if (iBx >= m_iBlockXCnt || iBy >= m_iBlockYCnt)
         return NULL;
-    RtsSceneBlockMap* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
+    RtsSceneBlockRtb* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
     if (pBlockMap->GetState() != Object_State_Ready)
         return NULL;
     return (RtSceneBlock*)pBlockMap->m_pBlock;
@@ -2673,7 +2677,7 @@ RtSceneBlock* RtScene::GetTerrainByPos(float fPosX, float fPosY, int& iTx, int& 
     iBy = (int)(fPosY / (g_fSceneBlockHeight));
     if (iBx >= m_iBlockXCnt || iBy >= m_iBlockYCnt)
         return NULL;
-    RtsSceneBlockMap* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
+    RtsSceneBlockRtb* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
     if (pBlockMap->GetState() != Object_State_Ready)
         return NULL;
     iTx = (int)(fPosX / g_fSceneTerrainTileWidth);
@@ -2692,7 +2696,7 @@ RtSceneBlock* RtScene::GetTileByPos(float fPosX, float fPosY, int& iTx, int& iTy
     iBy = (int)(fPosY / (g_fSceneBlockHeight));
     if (iBx >= m_iBlockXCnt || iBy >= m_iBlockYCnt)
         return NULL;
-    RtsSceneBlockMap* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
+    RtsSceneBlockRtb* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
     if (pBlockMap->GetState() != Object_State_Ready)
         return NULL;
     iTx = (int)(fPosX / g_fSceneTileWidth);
@@ -2723,7 +2727,7 @@ RtsSVertexValue* RtScene::GetVertexValue(int x, int y, bool bEdit) {
     iBy = y / g_iSceneTileCntY;
     if (iBx >= m_iBlockXCnt || iBy >= m_iBlockYCnt)
         return NULL;
-    RtsSceneBlockMap* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
+    RtsSceneBlockRtb* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
     if (pBlockMap->GetState() != Object_State_Ready)
         return NULL;
     if (bEdit)
@@ -2762,7 +2766,7 @@ RtsSVertex* RtScene::GetBlockVertex(int x, int y) {
     iBy = y / g_iSceneTileCntY;
     if (iBx >= m_iBlockXCnt || iBy >= m_iBlockYCnt)
         return NULL;
-    RtsSceneBlockMap* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
+    RtsSceneBlockRtb* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
     if (pBlockMap->GetState() != Object_State_Ready)
         return NULL;
     return ((RtSceneBlock*)pBlockMap->m_pBlock)->m_pVertices +
@@ -2778,7 +2782,7 @@ RtSceneBlock* RtScene::GetBlockByTile(int iX, int iY, int* pBx, int* pBy) {
     iBy = iY / g_iSceneTileCntY;
     if (iBx >= m_iBlockXCnt || iBy >= m_iBlockYCnt)
         return NULL;
-    RtsSceneBlockMap* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
+    RtsSceneBlockRtb* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
     if (pBlockMap->GetState() != Object_State_Ready)
         return NULL;
     if (pBx)
@@ -2863,7 +2867,7 @@ void RtScene::SetTileWaterType(int iX, int iY, BYTE cWaterType) {
 }
 
 RtSceneBlock* RtScene::GetBlock(int iX, int iY) {
-    RtsSceneBlockMap* pMap = GetBlockMap(iX, iY);
+    RtsSceneBlockRtb* pMap = GetBlockMap(iX, iY);
     if (pMap == NULL)
         return NULL;
     return (RtSceneBlock*)pMap->m_pBlock;
@@ -3139,7 +3143,7 @@ bool RtScene::TakeGeometry(const RtgAABB& inAABB, RtgVertex3* pVertices, int& iV
     int               iVB, iIB, iCnt;
     short             pIdx[6] = {0, 1, 2, 1, 3, 2};
     float             fPosMinX, fPosMinY, fPosMaxX, fPosMaxY;
-    RtsSceneBlockMap* pBlockMap;
+    RtsSceneBlockRtb* pBlockMap;
     RtSceneBlock*     pBlock;
 
     fPosMinX = inAABB.vPos.x - inAABB.vExt.x;
@@ -3515,7 +3519,7 @@ void RtScene::DrawMiniMap(int iScreenX, int iScreenY, int iScreenWidth, int iScr
             if (fTexBx > fMaxX)
                 fTexBx = fMaxX;
 
-            RtsSceneBlockMap* pMap    = GetBlockMap(iBx / 2 - GetCenterX(), iBy / 2 - GetCenterY());
+            RtsSceneBlockRtb* pMap    = GetBlockMap(iBx / 2 - GetCenterX(), iBy / 2 - GetCenterY());
             RtgTextItem*      texItem = NULL;
 
             if (pMap && pMap->GetState() == Object_State_Ready)

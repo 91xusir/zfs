@@ -173,6 +173,7 @@ class RtwRefObject : public RtObject {
         m_RefCounter     = 0;
         m_bCallDestroyed = false;
         m_bIsDestroying  = false;
+        m_base_name="";
     }
 
     virtual ~RtwRefObject() {
@@ -200,6 +201,9 @@ class RtwRefObject : public RtObject {
     int  m_RefCounter;
     bool m_bCallDestroyed;
     bool m_bIsDestroying;
+
+   protected:
+    std::string m_base_name;
 };
 
 //丢弃对象(对象使用完毕)

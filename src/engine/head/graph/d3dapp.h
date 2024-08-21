@@ -178,6 +178,8 @@ class CD3DApplication {
 
     inline HWND& GetHWND() { return m_hWnd; }  // The main app window
 
+    inline LPDIRECT3DDEVICE9& GetD3dDevice() { return m_pd3dDevice; }
+
     void LockFpsPerFrame(DWORD dwMillisecondPerFrame) { m_dwFpsLocked = dwMillisecondPerFrame; }
 
     float GetFps() const { return m_fFPS; }

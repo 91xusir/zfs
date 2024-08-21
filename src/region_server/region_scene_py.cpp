@@ -171,7 +171,7 @@ PyObject* CPythonRegionScene::ActivationAreaByName(region_object_python* self, P
 	_CHECK_SCENE_TYPE(0);
 	if(sAreaName && sAreaName[0] != 0 && selfScene->m_pTerrain)
 	{
-		RtsSceneBlockMap *pBlockMap = selfScene->m_pTerrain->FindSceneBlockMapByAreaName(sAreaName);
+		RtsSceneBlockRtb *pBlockMap = selfScene->m_pTerrain->FindSceneBlockMapByAreaName(sAreaName);
 		if(pBlockMap)
 			pBlockMap->ActivationBlockArea(sAreaName, lActivation != 0 ? true : false);
 	}

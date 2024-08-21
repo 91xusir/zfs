@@ -70,6 +70,7 @@ protected:
     virtual void OnFrameMove(float fDifTime) {}
 
     // Other
+    virtual bool OnFramePreInit() { return true; }
     virtual bool OnFrameInit() { return true; }
     virtual void OnFrameClose(){}
 

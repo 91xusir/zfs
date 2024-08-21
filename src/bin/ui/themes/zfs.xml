@@ -101,6 +101,12 @@
                 <PushedImage Blend="true" File="ui/zfs_texture/gw_b2.png" Source="0,0,128,30"/>
                 <DisabledImage Blend="true" File="ui/zfs_texture/gw_b3.png" Source="0,0,128,30"/>
             </Button>
+              <Button Name="NewButton1" Text="PushButton" Sound="ui_softb_bt.wav">
+                <NormalImage Blend="true" File="ui/zfs_texture/gw_b1.png" Source="0,0,128,30"/>
+                <HighlightImage Blend="true" File="ui/zfs_texture/gw_b4.png" Source="0,0,128,30"/>
+                <PushedImage Blend="true" File="ui/zfs_texture/gw_b2.png" Source="0,0,128,30"/>
+                <DisabledImage Blend="true" File="ui/zfs_texture/gw_b3.png" Source="0,0,128,30"/>
+            </Button>
             <Button Name="BigPushButton" Text="PushButton" Sound="ui_softb_bt.wav">
                 <NormalImage Blend="true" File="ui/x_textures/5.tga" Source="315,2,65,19"/>
                 <HighlightImage Blend="true" File="ui/x_textures/5.tga" Source="315,23,65,19"/>

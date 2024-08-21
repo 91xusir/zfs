@@ -3177,7 +3177,7 @@ bool CRegionCreature::AtAreaByName(const char* sAreaName) {
     if (!sAreaName)
         return false;
 
-    std::list<RtsSceneBlockMap::SArea*>::iterator itArea = m_listArea.begin();
+    std::list<RtsSceneBlockRtb::SArea*>::iterator itArea = m_listArea.begin();
     for (; itArea != m_listArea.end(); itArea++) {
         if (strcmp((*itArea)->szName, sAreaName) == 0)
             return true;
@@ -3446,7 +3446,7 @@ void CRegionCreature::OnBePked(CRegionCreature* killer) {
 
         std::string       ignoreMapName = "scene01_019.rtb";
         std::string       map;
-        RtsSceneBlockMap* bmap = g_region->m_defScene->FindBlockByPos(m_pos);
+        RtsSceneBlockRtb* bmap = g_region->m_defScene->FindBlockByPos(m_pos);
         if (bmap) {
             map = bmap->m_szFileName;
         } else {
@@ -3494,7 +3494,7 @@ void CRegionCreature::Rebirth() {
     // rebirth 重生
     char              ePKState = GetPKState();
     float             fRebirthX, fRebirthY;
-    RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX < 0)
+    RtsSceneBlockRtb* pBlockMap = (m_iCurrentBlockX < 0)
                                       ? (NULL)
                                       : (m_scene->m_pTerrain->GetBlockMap(
                                             m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(),
@@ -3885,7 +3885,7 @@ void CRegionCreature::Rebirth(char type, int iHPrate, int iMPrate) {
     // rebirth 重生
     char              ePKState = GetPKState();
     float             fRebirthX, fRebirthY;
-    RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX < 0)
+    RtsSceneBlockRtb* pBlockMap = (m_iCurrentBlockX < 0)
                                       ? (NULL)
                                       : (m_scene->m_pTerrain->GetBlockMap(
                                             m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(),
@@ -4147,7 +4147,7 @@ long CRegionCreature::Die(CRegionCreature* killer) {
 
             //-----------发送系统新闻 ------------------  Tianh
             if (true == m_npcInfo->isPrompt) {
-                RtsSceneBlockMap* pMap   = m_scene->FindBlockByPos(m_pos);
+                RtsSceneBlockRtb* pMap   = m_scene->FindBlockByPos(m_pos);
                 string            strone = pMap->m_szBlockName;
                 string            str    = m_npcInfo->Name;
                 string            str1   = killer->m_core.Name.c_str();
@@ -4196,7 +4196,7 @@ long CRegionCreature::Die(CRegionCreature* killer) {
             //
             //得到玩家场景
             if (killer && killer->IsUser()) {
-                RtsSceneBlockMap* pMap   = m_scene->FindBlockByPos(m_pos);
+                RtsSceneBlockRtb* pMap   = m_scene->FindBlockByPos(m_pos);
                 string            strone = pMap->m_szBlockName;
 
                 string str  = killer->m_core.Name.c_str();
@@ -4395,7 +4395,7 @@ int CRegionCreature::CheckCanMove(int page, int gridI, int gridJ, SItemID item) 
     //天牢中无法使用传送
     int bx, by;
     m_scene->m_pTerrain->GetBlockByPos((float)m_pos[0], (float)m_pos[1], bx, by);
-    RtsSceneBlockMap* pBlockMap = 0;
+    RtsSceneBlockRtb* pBlockMap = 0;
     if (bx >= 0 && bx < m_scene->m_pTerrain->GetBlockCntX() && by >= 0 &&
         by < m_scene->m_pTerrain->GetBlockCntY()) {
         pBlockMap = m_scene->m_pTerrain->GetBlockMap(bx - m_scene->m_pTerrain->GetCenterX(),
@@ -4483,9 +4483,9 @@ bool CRegionCreature::SetPosition(long x, long y, long z) {
     if (bx >= 0 && bx < m_scene->m_pTerrain->GetBlockCntX() && by >= 0 &&
         by < m_scene->m_pTerrain->GetBlockCntY()) {
         if (bx != m_iCurrentBlockX || by != m_iCurrentBlockY) {
-            RtsSceneBlockMap* pBlockMap = m_scene->m_pTerrain->GetBlockMap(
+            RtsSceneBlockRtb* pBlockMap = m_scene->m_pTerrain->GetBlockMap(
                 bx - m_scene->m_pTerrain->GetCenterX(), by - m_scene->m_pTerrain->GetCenterY());
-            RtsSceneBlockMap* pOldBlockMap =
+            RtsSceneBlockRtb* pOldBlockMap =
                 (m_iCurrentBlockX < 0) ? (NULL)
                                        : (m_scene->m_pTerrain->GetBlockMap(
                                              m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(),
@@ -4582,13 +4582,13 @@ bool CRegionCreature::ForceSetPosition(long x, long y, long z, bool bBroadcast /
 void CRegionCreature::OnPositionChanged(float fX, float fY) {
     // 区域进入和离开事件
     int                             i, iCnt;
-    static RtsSceneBlockMap::SArea* s_pArea[10];  // 一次最多10个块
-    RtsSceneBlockMap::SArea*        pArea = m_scene->m_pTerrain->FindFirstArea(fX, fY);
+    static RtsSceneBlockRtb::SArea* s_pArea[10];  // 一次最多10个块
+    RtsSceneBlockRtb::SArea*        pArea = m_scene->m_pTerrain->FindFirstArea(fX, fY);
     for (i = 0; i < 9 && pArea; i++) {
         s_pArea[i] = pArea;
         pArea      = m_scene->m_pTerrain->FindNextArea();
     }
-    std::list<RtsSceneBlockMap::SArea*>::iterator it, itNext;
+    std::list<RtsSceneBlockRtb::SArea*>::iterator it, itNext;
     iCnt = i;
     for (it = m_listArea.begin(); it != m_listArea.end(); it = itNext) {
         itNext = it;
@@ -4620,7 +4620,7 @@ void CRegionCreature::OnRemoveCreature() {
         }
     }
 
-    RtsSceneBlockMap* pBlockMap =
+    RtsSceneBlockRtb* pBlockMap =
         m_scene->m_pTerrain->GetBlockMap(m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(),
                                          m_iCurrentBlockY - m_scene->m_pTerrain->GetCenterY());
     OnBlockChanged(NULL, pBlockMap);
@@ -4628,7 +4628,7 @@ void CRegionCreature::OnRemoveCreature() {
     m_iCurrentBlockX = -1;
     m_iCurrentBlockY = -1;
 
-    std::list<RtsSceneBlockMap::SArea*>::iterator it, itNext;
+    std::list<RtsSceneBlockRtb::SArea*>::iterator it, itNext;
     for (it = m_listArea.begin(); it != m_listArea.end(); it = itNext) {
         itNext = it;
         itNext++;
@@ -6185,7 +6185,7 @@ void CRegionCreature::OnTreasureDiscover(CRegionCreature* discover) {
         //全服公告
 
         if (true == m_npcInfo->isPrompt) {
-            RtsSceneBlockMap* pMap   = m_scene->FindBlockByPos(m_pos);
+            RtsSceneBlockRtb* pMap   = m_scene->FindBlockByPos(m_pos);
             string            strone = "";
             if (pMap) {
                 strone = pMap->m_szBlockName;
@@ -6236,7 +6236,7 @@ void CRegionCreature::OnTreasureDiscover(CRegionCreature* discover) {
     //		{
     //			/*rt2_sprintf(cTmp512, "玩家%s挖宝惊动了恶鬼缠身，坐标在(%d,%d)，击败恶鬼有可能获得五光宝石和刑天宝石!!!",discover->m_core.Name.c_str(), m_pos[0]/20,m_pos[1]/20);
     //			g_region->m_gws.BroadcastBulletin(cTmp512);*/
-    //			RtsSceneBlockMap* pMap = m_scene->FindBlockByPos(m_pos);
+    //			RtsSceneBlockRtb* pMap = m_scene->FindBlockByPos(m_pos);
     //			string strone = pMap->m_szFileName;
 
     //			string str = "玩家[";
@@ -7631,7 +7631,7 @@ bool CRegionCreature::UseItem(
             g_region->m_gws.EndSend();
         } else {
             // 参考Dead()函数中的代码：
-            RtsSceneBlockMap* pBlockMap =
+            RtsSceneBlockRtb* pBlockMap =
                 (m_iCurrentBlockX < 0) ? (NULL)
                                        : (m_scene->m_pTerrain->GetBlockMap(
                                              m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(),
@@ -9873,7 +9873,7 @@ void CRegionCreature::GmChat(const char* msg, const char* title /*=""*/) {
     unguard;
 }
 
-void CRegionCreature::OnBlockChanged(RtsSceneBlockMap* pNewBlock, RtsSceneBlockMap* pOldBlock) {
+void CRegionCreature::OnBlockChanged(RtsSceneBlockRtb* pNewBlock, RtsSceneBlockRtb* pOldBlock) {
     if (!IsUser())
         return;
 
@@ -9944,8 +9944,8 @@ const char* s_szPKArea = "PK:";
 void CRegionCreature::UpdateAreaPKAttr() {
     int                                           iLen;
     char *                                        pStr, *pValue;
-    RtsSceneBlockMap::SArea*                      pArea;
-    std::list<RtsSceneBlockMap::SArea*>::iterator it;
+    RtsSceneBlockRtb::SArea*                      pArea;
+    std::list<RtsSceneBlockRtb::SArea*>::iterator it;
     m_eCurPosPKAttr = m_eBlockPosPKAttr;
     for (it = m_listArea.begin(); it != m_listArea.end(); it++) {
         pArea = (*it);
@@ -9978,7 +9978,7 @@ void CRegionCreature::UpdateAreaPKAttr() {
     }
 }
 
-void CRegionCreature::OnAreaEnter(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock) {
+void CRegionCreature::OnAreaEnter(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock) {
     if (!IsUser()) {
         return;
     }
@@ -9989,7 +9989,7 @@ void CRegionCreature::OnAreaEnter(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockM
     m_scene->CallScript(functionName, true, this);
 }
 
-void CRegionCreature::OnAreaExit(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock) {
+void CRegionCreature::OnAreaExit(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock) {
     if (!IsUser()) {
         return;
     }
@@ -12914,7 +12914,7 @@ void CRegionCreature::ToCreatureInfo(SCreatureInfo* pInfo) {
     pInfo->petLevel  = (m_pet ? m_pet->m_core.Lev : 0);
     pInfo->petHP     = (m_pet ? m_pet->m_core.GetHp() : 0);
 
-    RtsSceneBlockMap* pBlockMap = (m_iCurrentBlockX < 0)
+    RtsSceneBlockRtb* pBlockMap = (m_iCurrentBlockX < 0)
                                       ? (NULL)
                                       : (m_scene->m_pTerrain->GetBlockMap(
                                             m_iCurrentBlockX - m_scene->m_pTerrain->GetCenterX(),
@@ -13269,7 +13269,7 @@ bool CRegionCreature::Save(SUserData& data) {
     if (!m_userInfo->m_bSaveData)
         return false;
 
-    RtsSceneBlockMap* bmap = g_region->m_defScene->FindBlockByPos(m_pos);
+    RtsSceneBlockRtb* bmap = g_region->m_defScene->FindBlockByPos(m_pos);
     if (bmap) {
         data.scene = bmap->m_szFileName;
     } else {

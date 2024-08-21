@@ -43,8 +43,6 @@ private:
     bool m_bRenderFlag;
 };
 
-
-extern GcSequenceImage		g_LoadingMapRenderer;
 extern GcSequenceImage		g_WorldMapRenderer;
 
 

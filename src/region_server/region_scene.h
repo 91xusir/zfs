@@ -132,8 +132,8 @@ public:
 	int GetAroundObjectByGrid(CRegionObject* pFindCreature[SCENE_MAX_FIND_OBJECT], long *pos, long range, int maxFind); // 返回找到的个数
 
 	// Block access
-	RtsSceneBlockMap* FindBlockByFileName(const char* filename);
-	RtsSceneBlockMap* FindBlockByPos(const long* pos);
+	RtsSceneBlockRtb* FindBlockByFileName(const char* filename);
+	RtsSceneBlockRtb* FindBlockByPos(const long* pos);
 
 	// Item
 	bool AddItem(CRegionItem *item,long *pos,char dir);

@@ -2,7 +2,7 @@
 #define RTS_SCENE_DOC
 
 class RtsSceneDoc;
-struct RtsSceneBlockMap;
+struct RtsSceneBlockRtb;
 
 enum 
 {
@@ -10,7 +10,7 @@ enum
 };
 
 
-struct RtsSceneBlockMap
+struct RtsSceneBlockRtb
 {
 
 public:
@@ -39,8 +39,8 @@ private :
 #else
 public :
 #endif
-    RtsSceneBlockMap();
-    ~RtsSceneBlockMap();
+    RtsSceneBlockRtb();
+    ~RtsSceneBlockRtb();
 
 public :
 
@@ -200,7 +200,7 @@ public:
     virtual bool SaveMap(const char* szMapFileName);
     virtual bool SaveAllMap(const char* szMapFileName);
     bool AddMapBlock(int iPosX, int iPosY);
-	bool AddMapBlock(int iPosX, int iPosY,RtsSceneBlockMap* pMap);
+	bool AddMapBlock(int iPosX, int iPosY,RtsSceneBlockRtb* pMap);
     void LoadAllBlock();
 
 #ifndef REGION_SERVER
@@ -217,11 +217,11 @@ public:
 
     // 找到指定点的第一个区域信息
     //     找不到就返回NULL
-    RtsSceneBlockMap::SArea* FindFirstArea(float fPosX, float fPosY);
+    RtsSceneBlockRtb::SArea* FindFirstArea(float fPosX, float fPosY);
 
     // 找到下一个区域信息，点就根据FindFirstArea提供的点的位置，所以在使用这个函数之前一定要调用FindFirstArea
     //     找不到就返回NULL
-    RtsSceneBlockMap::SArea* FindNextArea();
+    RtsSceneBlockRtb::SArea* FindNextArea();
 
     // 其他信息
 
@@ -384,7 +384,7 @@ public:
         RTASSERT(_adjnum < 8);
     }
 
-    RtsSceneBlockMap* GetBlockMapbyPos(const RtgVertex2& _Pos, int& _blockx, int& _blocky)
+    RtsSceneBlockRtb* GetBlockMapbyPos(const RtgVertex2& _Pos, int& _blockx, int& _blocky)
     {
         float fPosX = _Pos.x;
         float fPosY = _Pos.y;
@@ -400,14 +400,14 @@ public:
 
 #endif
 
-    RtsSceneBlockMap* GetBlockMapbyIndex(int _blockx, int _bloxky)
+    RtsSceneBlockRtb* GetBlockMapbyIndex(int _blockx, int _bloxky)
     {
         if (_blockx >= 0 && _bloxky >= 0 && _blockx < m_iBlockXCnt && _bloxky < m_iBlockYCnt)
             return &m_blockMapArray[_bloxky * m_iBlockXCnt + _blockx];
         return NULL;
     }
 
-    RtsSceneBlockMap* GetBlockMap(int x, int y)
+    RtsSceneBlockRtb* GetBlockMap(int x, int y)
     {
         int iBx = x + m_iCenterPosX;
         int iBy = y + m_iCenterPosY;
@@ -497,7 +497,7 @@ public:
     void ClearPathFindIncreaseFlag();
     RtSceneBlockTerrain::STileAttr* GetTerrainPathAttr(int iTerrainX, int iTerrainY);// x, y 为Terrain格的索引
  
-	RtsSceneBlockMap* FindSceneBlockMapByAreaName(const char *sAreaName);
+	RtsSceneBlockRtb* FindSceneBlockMapByAreaName(const char *sAreaName);
 
 private:
     bool OnSerializeMapInfo(RtArchive* pFile);
@@ -530,7 +530,7 @@ protected:
     RtsSceneBlockManager    m_SceneBlockManager;
 #endif
 
-    RtsSceneBlockMap::SArea*    m_pAreas;
+    RtsSceneBlockRtb::SArea*    m_pAreas;
     int                         m_iAreaCount;
     char**                      m_ppAreaStringBuffer;
     int                         m_iAreaStringBufferCount;

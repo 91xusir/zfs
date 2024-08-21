@@ -299,8 +299,11 @@ void RtwWidget::SetText(const std::string& text) {
 }
 
 void RtwWidget::SetName(const std::string& name, const std::string& replacedName /* = ""*/) {
+    /////////////////////
+    m_base_name = name;
+    /////////////////////
     // 只能设置一次，不可以改变
-    // [父窗口名字.]自己名字
+    // [父窗口名字.]自己名字/
 
     std::string _Replaced;
     std::string OldName = m_Name;
@@ -2337,7 +2340,7 @@ void RtwWidget::MoveResize(const RtwRect& rect, bool bAbs /* = false */) {
     Move(rect, bAbs);
     SetWidgetSize(SSize(rect.getWidth(), rect.getHeight()));
 }
-
+// 左上角和右下角坐标
 void RtwWidget::MoveResize(int x, int y, int height, int bottom, bool bAbs /* = false */) {
     Move(RtwRect(x, y, height, bottom), bAbs);
     SetWidgetSize(SSize(height - x, bottom - y));
@@ -2466,8 +2469,9 @@ RtwWidget* CUiWidgetFactory::createWidget(EWidgetType type, const std::string& n
     }
 
     //创建成功
-    if (pWidget)
+    if (pWidget){
         pWidget->grab();
+    }
 
     if (pWidget) {
         if (!pWidget->Create(grabNextId())) {

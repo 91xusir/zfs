@@ -1648,9 +1648,13 @@ RtwComplexImage* RtwXmlLoader::_Process_ComplexImage(RtsXmlDoc::NodePtr* pNode) 
                 pImage->SetSourceRect(rcSource);  //modify by fox
             }
         }
-        pImage->SetBlend(bBlend);
+    /*    pImage->SetBlend(bBlend);
         pImage->SetTransparency(transparency);
+        pOutputImage = (RtwComplexImage*)pImage;*/
+        //lmk 修复透明的问题 
         pOutputImage = (RtwComplexImage*)pImage;
+        pOutputImage->SetBlend(bBlend);
+        pOutputImage->SetTransparency(transparency);
     }
 
     bBlend = false;

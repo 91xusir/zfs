@@ -154,7 +154,7 @@ void CUIForm_MiddleMap::SetReferencePoint() {
         return;
 
     // 初始化地图指针和地图区域矩形
-    RtsSceneBlockMap* pMap = nullptr;
+    RtsSceneBlockRtb* pMap = nullptr;
     RtwRect           RealMapRect(0, 0, 512, 512);
     // 获取 NPC 的位置坐标 (X, Y)
     const long* pPos = (*selectedNpcVector).at(0)->Pos;
@@ -420,7 +420,7 @@ void CUIForm_MiddleMap::OnDrawMiddleMap(ui::RtwWidget* sender, RtwEventDelegate*
 
     RtwRect           mapRect = sender->GetClientRect();
     RtwRect           imgRect = RtwRect(0, 0, mapRect.getWidth(), mapRect.getHeight());
-    RtsSceneBlockMap* pMap;
+    RtsSceneBlockRtb* pMap;
     float             fMinX, fMinY, fMaxX, fMaxY;
 
     m_iScreenX      = mapRect.left;                                  // 设置屏幕 X 坐标

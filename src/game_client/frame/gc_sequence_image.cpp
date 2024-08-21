@@ -3,7 +3,7 @@
 #include "gc_include.h"
 #include "gc_sequence_image.h"
 // 登录页面加载图片
-GcSequenceImage		g_LoadingMapRenderer;
+
 GcSequenceImage		g_WorldMapRenderer;
 
 
@@ -16,20 +16,15 @@ GcSequenceImage::~GcSequenceImage()
 {
 }
 
-void GcSequenceImage::SetRenderFlag(bool bRender)
-{
+void GcSequenceImage::SetRenderFlag(bool bRender) {
     m_bRenderFlag = bRender;
 
-    if (!bRender && !m_listTex.empty())
-    {
-
-        map<string, RtgTextItem*>::iterator iter = m_listTex.begin();
-        for (; iter!=m_listTex.end(); iter++)
-        {
-            RtgTextItem* texItem = iter->second;
+    if (!bRender && !m_listTex.empty()) {
+        // 释放纹理资源
+        for (auto& iter : m_listTex) {
+            RtgTextItem* texItem = iter.second;
             GetDevice()->GetTextMgr()->ReleaseTexture(texItem);
         }
-
         m_listTex.clear();
     }
 }

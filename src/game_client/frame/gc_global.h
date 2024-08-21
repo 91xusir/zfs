@@ -50,19 +50,17 @@ GcPet*        GetPlayerPet();
 NetSession*   GetNet();
 bool          AutoResize(void* sender, int i);
 
-bool        ReadVersionFile(const char* szFilename);
-const char* GetPrimaryVersion();
-const char* GetSecondaryVersion();
-int         GetVersionNumFirst();
-int         GetVersionNumSecondly();
+bool        VersionInit();
+bool        isVersionOlderThan(const std::string& v1, const std::string& v2);
 const char* GetGameVersion();
+const std::string& GetGameVersionNum();
 
 void ChangeGameFlow(bool bGame);  // bGame=trueµ½ÓÎÏ·×´Ì¬,bGame=falseµ½µÇÂ¼×´Ì¬
 void SetRegionServerInfo(long lCharID, long lSeed, const char* szRegionHost, short sRegionPort);
 void GetRegionServerInfo(long& lCharID, long& lSeed, char** szRegionHost, short& sRegionPort);
 
 bool WorldIsInited();
-bool UIIsInited();
+bool IsUIInited();
 
 void ShowErr(const char* szContent);
 void ShowErr(const char* szContent1, short vContent2);

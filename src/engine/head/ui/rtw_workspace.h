@@ -59,7 +59,7 @@ namespace ui
 
 		bool FindLayer(DWORD LayerId, CUiLayer** ppLayer = NULL);
 		bool FindLayer(const std::string& Name, CUiLayer** ppLayer = NULL);
-		bool AddLayer(CUiLayer* pLayer, bool bAddToFront = false);
+		bool AddLayer(CUiLayer* pLayer, bool bAddToFront = true);
 		bool RemoveLayer(DWORD LayerId);
 		bool RemoveLayer(const std::string& Name);
 

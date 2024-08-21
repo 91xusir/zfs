@@ -296,9 +296,9 @@ public:
 	void SetUnionID(DWORD unionID)	{ m_unionID = unionID; }
     virtual void OnPositionChanged(float fX, float fY);
     virtual void OnRemoveCreature();
-    virtual void OnBlockChanged(RtsSceneBlockMap* pNewBlock, RtsSceneBlockMap* pOldBlock);
-    virtual void OnAreaEnter(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock); // 当进入某个区域
-    virtual void OnAreaExit(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock);  // 当离开某个区域
+    virtual void OnBlockChanged(RtsSceneBlockRtb* pNewBlock, RtsSceneBlockRtb* pOldBlock);
+    virtual void OnAreaEnter(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock); // 当进入某个区域
+    virtual void OnAreaExit(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock);  // 当离开某个区域
     virtual void UpdateAreaPKAttr();
     void OnMapChanged();
 
@@ -444,7 +444,7 @@ public:
 
 	RtString			m_unionName;						// 诸侯国名字
     int m_iCurrentBlockX, m_iCurrentBlockY;
-    std::list<RtsSceneBlockMap::SArea*> m_listArea;
+    std::list<RtsSceneBlockRtb::SArea*> m_listArea;
 
     EPKAttr             m_eCurPosPKAttr;                    // 当前位置的PK属性
     EPKAttr             m_eBlockPosPKAttr;                  // 当前场景块的PK属性

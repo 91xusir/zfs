@@ -1586,7 +1586,7 @@ int CPlayerLogic::UseTaskItem(int page, int gridI, int gridJ)
 				continue;
 			}
 
-			RtsSceneBlockMap::SArea* pArea = m_rPlayer.m_scene->m_pTerrain->FindFirstArea(m_rPlayer.m_pos[0], m_rPlayer.m_pos[1]);
+			RtsSceneBlockRtb::SArea* pArea = m_rPlayer.m_scene->m_pTerrain->FindFirstArea(m_rPlayer.m_pos[0], m_rPlayer.m_pos[1]);
 			int i;
 			for (i = 0; i < 9 && pArea; i++)
 			{

@@ -1,4 +1,6 @@
 #include "ui/rtw_ui.h"
+#include "../../../game_client/preConsole.h"
+
 //********************************************************************
 //	created:	2010.04.06 17:00
 //	filename: 	rtw_base.cpp.
@@ -33,7 +35,11 @@ void RtwRefObject::drop() {
 
     if (m_RefCounter <= 0)  //引用计数已经为0，错误的使用了引用计数
     {
-        UI_CHECKEX("[UI] 错误的使用了引用计数，或者UiObject已经被释放");
+
+        UI_CHECKEX(("[UI] 错误的使用了引用计数，或者UiObject已经被释放" + m_base_name).c_str() );
+
+        P_LOGWARN("错误的使用了引用计数: "+m_base_name);
+            
         return;
     }
 

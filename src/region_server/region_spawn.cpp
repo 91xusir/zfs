@@ -153,11 +153,11 @@ bool CRegionSpawnMgr::LoadSpawnTable(const char* filename) {
         r1[3] = area->lMaxY;
 
         bool                                            bIntersect = false;
-        RtsSceneBlockMap*                               pMap;
+        RtsSceneBlockRtb*                               pMap;
         EXT_SPACE::unordered_map<ULONG, long>::iterator it;
         for (it = g_region->m_regionMap.begin(); it != g_region->m_regionMap.end(); it++) {
             if ((*it).second == g_region->m_lCurRegionID) {
-                pMap  = (RtsSceneBlockMap*)((*it).first);
+                pMap  = (RtsSceneBlockRtb*)((*it).first);
                 r2[0] = (pMap->m_pBlock->m_iBlockPosX) * g_fSceneBlockWidth;
                 r2[1] = (pMap->m_pBlock->m_iBlockPosY) * g_fSceneBlockHeight;
                 r2[2] = r2[0] + g_fSceneBlockWidth;

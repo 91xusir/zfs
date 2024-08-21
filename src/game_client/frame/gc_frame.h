@@ -73,7 +73,7 @@ class CGameClientFrame : public CRtgAppFrame {
     virtual void OnKillFocus();
     virtual void OnSetFocus();
 
-    // Other
+    virtual bool OnFramePreInit();
     virtual bool OnFrameInit();
     virtual void OnFrameClose();
     // 进入登录逻辑
@@ -94,7 +94,6 @@ class CGameClientFrame : public CRtgAppFrame {
     BOOL         m_bChangeGameFlowNextFrame;  // 标志是否在下一帧更改游戏流程
     BOOL         m_bNextGameFlow;             // 标志是否存在下一个游戏流程
 
-    BOOL m_bUIInit;
 
     GcLogin*      m_pLogin;
     GcWorld*      m_pWorld;
@@ -116,6 +115,7 @@ class CGameClientFrame : public CRtgAppFrame {
     bool        m_bShowStatFile;
     bool        m_bShowStatAudio;
     bool        m_bShowStatNet;
+    bool        m_bUIInit;
 
     static DWORD m_sTimerEvent;
     static DWORD m_sTimerRender;

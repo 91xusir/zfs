@@ -533,7 +533,7 @@ bool GcWorld::EnterGame() {
 
 bool GcWorld::LeaveGame() {
     guard;
-
+    UILayer::EnterLoading(0.05);
     m_Bulletin.Clear();
 
     OnNetUploadShortcut();
@@ -638,7 +638,7 @@ bool GcWorld::IsCastleWarTime(GcActor* p_actor) {
     if (p_actor == NULL)
         return false;
 
-    std::list<RtsSceneBlockMap::SArea*>::iterator it;
+    std::list<RtsSceneBlockRtb::SArea*>::iterator it;
 
     for (it = p_actor->m_listArea.begin(); it != p_actor->m_listArea.end(); it++) {
         for (int i = 0; i < FEOD_COUNT; ++i) {
@@ -5440,7 +5440,7 @@ void GcWorld::OnNetDownloadAttack(CG_CmdPacket* pPacket, DWORD dwServerTime, DWO
             //end
         }
     }
-    P_LOGINFO(std::string("\n收到攻击数据: ") + "\n发动者ID: " + std::to_string(lAttackerID) +
+ /*   P_LOGINFO(std::string("\n收到攻击数据: ") + "\n发动者ID: " + std::to_string(lAttackerID) +
               "\n攻击ID: " + std::to_string(sAttackID) + "\n技能ID: " + std::to_string(sSkillID) +
               "\n攻击目标类型: " + std::to_string(cAttackTarget) + "\n是否吟唱: " +
               std::to_string(cIsIntonate) + "\n目标ID: " + std::to_string(lUnderAttackerID) +
@@ -5451,7 +5451,7 @@ void GcWorld::OnNetDownloadAttack(CG_CmdPacket* pPacket, DWORD dwServerTime, DWO
               ", " + std::to_string(eleDmg[2]) + ")" + "\n是否暴击: " + std::to_string(bCriDamage) +
               "\n是否治疗技能: " + std::to_string(IsAddHPSkill) +
               "\n攻击结果: " + std::to_string(ret) + "\n是否被打断: " + std::to_string(cIsBreak) +
-              "\n是否死亡: " + std::to_string(dead));
+              "\n是否死亡: " + std::to_string(dead));*/
     unguard;
 }
 

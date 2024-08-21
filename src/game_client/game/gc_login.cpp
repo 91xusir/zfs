@@ -24,7 +24,7 @@ std::string GcLogin::m_szAccountUsername = "";  //账户名
 std::string GcLogin::m_szAccountPassword = "";  //密码
 
 GcLogin::GcLogin(CGameClientFrame* pGameClientFrame) : m_ini(true) {
-    m_pGameClientFrame = pGameClientFrame;  //客户端句柄？
+    m_pGameClientFrame = pGameClientFrame; 
 }
 
 GcLogin::~GcLogin() {}
@@ -315,9 +315,9 @@ void GcLogin::Lyy_UpdateCameraPos() {
 }
 
 //加载scene/login.ini 并进入登录界面
-void GcLogin::OnRenderLoading() {
+void GcLogin::OnLoginInit() {
     guard;
-    const char* szLoginConfigName = "scene/login.ini";
+    const char* szLoginConfigName = "ui/login/login.ini";
     if (!m_ini.OpenFile(szLoginConfigName)) {
         ERR1("错误: 不能登录界面配置文件[%s].\n", szLoginConfigName);
         return;
@@ -326,29 +326,24 @@ void GcLogin::OnRenderLoading() {
     LoadLoginSection(&m_ini, "Login", m_mapLogin);
     LoadLoginSection(&m_ini, "SelectChar", m_mapSelectChar);
     LoadLoginSection(&m_ini, "CreateChar", m_mapCreateChar);
-    // 打开登陆界面
-    UILayer::EnterLogin();
     unguard;
 }
 
-//进入loading页面加载
 void GcLogin::EnterLoading() {
     guard;
-    UILayer::EnterLoading();
+    OnLoginInit();
     m_bLoading = false;
     unguard;
 }
 
 bool GcLogin::LeaveLoading() {
     guard;
-    // 打开背景音乐
-    const char* szMusicFileName = GetGameIni()->GetEntry("Audio", "LoginMusic");
-    if (szMusicFileName && g_pMusicThread) {
-        g_pMusicThread->Play(szMusicFileName, true);
-        // g_pBackMusic->Play(szMusicFileName, true);
-    }
+      // 打开背景音乐
+      const char* szMusicFileName = GetGameIni()->GetEntry("Audio", "LoginMusic");
+      if (szMusicFileName && g_pMusicThread) {
+          g_pMusicThread->Play(szMusicFileName, true);
+      }
     UILayer::LeaveLoading();
-
     return true;
     unguard;
 }
@@ -360,23 +355,6 @@ void GcLogin::EnterSelectGameWorldServer() {
     }
     StartGetGameWorldServer();             //开始获取游戏世界服务器
     g_layerLogin->mp_layerServer->Show();  //显示服务器列表
-
-    auto pBar =
-        (RtwProgressBar*)g_workspace.getWidgetFactory()->createWidget(wtProgressBar, "LoadingBar");
-    CUiLayer* tmpl;
-    g_workspace.FindLayer("layworld", &tmpl);
-    tmpl->AddWidget(pBar);
-    pBar->Show();
-    RtwImage* pImage = g_workspace.getImageFactory()->createImage("ui/x_textures/1.tga");
-    if (pImage) {
-        pImage->SetSourceRect(RtwRect(1, 216, 147, 226));
-        pImage->SetBlend(true);
-    }
-    SSize      s    = {1024, 10};
-    pBar->SetWidgetSize(s);
-    pBar->SetBarImage(pImage);
-    DROP_RTUI_OBJECT(pImage);
-    LOAD_UI("LoadingBar")->Show();
 }
 
 bool GcLogin::LeaveSelectGameWorldServer() const {
@@ -871,7 +849,9 @@ void GcLogin::SelectGameWorld(int iIdx) {
 void GcLogin::OnSelectUserDone() {
     guard;
     if (m_curSelRoleIndex >= 0 && m_curSelRoleIndex < UILayerSelectChar::MaxUserCharBtn) {
-        UILayer::EnterLoading();
+        LOAD_UI("btnback")->Hide();
+        LOAD_UI("crtRoleBtn")->Hide();
+        UILayer::EnterLoading(0.02);
         SelectChar(GetAccountInfo().users[m_curSelRoleIndex].id);
     } else {
         ShowMessage(R(LMSG_PLS_CHOOSE_CHAR));
@@ -978,15 +958,13 @@ void GcLogin::OnCreateUser() {
 //--------------------------------渲染 和 逻辑帧--------------------------------
 //lyymark 2.GcLogin.OnRun GcLogin帧主循环入口
 void GcLogin::OnRun(float fSecond) {
-    //lyytodo 锁帧 改为引擎graph主循环入口里面统一设定
-    //CLockFrame lockFrame(1000.0 / 60);
+
     static RtgVertex3  highColor(1.0, 1.0, 1.0);
     static RtgVertex3  normalColor(0.0, 0.0, 0.0);
     int                i = 0, j = 0;
     POINT              cursorPt;
     const RtgMatrix12* oldWorldMatrix;
     RtgMatrix12        newWorldMatrix;
-    static double      oldTime = 0.0;
     //lyymark 2.GcLogin 更新声音
     g_pSoundMgr->UpdateAll(NULL, GetDevice()->GetAppTime());
     //更新场景物件
@@ -997,11 +975,6 @@ void GcLogin::OnRun(float fSecond) {
         }
     }
     if (m_eCurrentStatus == GLS_SELECT_GAMEWORLD_SERVER) {  //判断网络
-        auto pBar = (RtwProgressBar*)LOAD_UI("LoadingBar");
-        if (pBar) {
-            pBar->SetValue(oldTime);
-            oldTime += 0.001;
-        }
         OnGuideNetProcess(fSecond);  // 向导的网络
     } else {
         this->Process();  // 登陆的网络
@@ -1094,7 +1067,7 @@ void GcLogin::OnEndRender() {}
 //lyymark 2.GcLogin.模型渲染
 void GcLogin::OnRender(float fSecond) {
     guard;
-    GameSetCursor();  //设置鼠标为游戏鼠标
+    GameSetCursor();
     GetDevice()->SetLight(0, &m_lightDirect);
     if (m_bLight2) {
         GetDevice()->SetLight(1, &m_lightDirect2);
@@ -1104,7 +1077,6 @@ void GcLogin::OnRender(float fSecond) {
     }
     if (m_eCurrentStatus == GLS_LOADING) {
         if (m_bLoading) {
-            OnRenderLoading();
             SetLoginState(GLS_SELECT_GAMEWORLD_SERVER);
         } else {
             m_bLoading = true;

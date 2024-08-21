@@ -11,7 +11,7 @@
 #ifndef _Rts_SceneBlockManager_H_
 #define _Rts_SceneBlockManager_H_
 
-struct RtsSceneBlockMap;
+struct RtsSceneBlockRtb;
 
 class RtsSceneBlockManager
 {
@@ -20,18 +20,18 @@ public :
     bool Init();
     void FrameMove();
 
-    bool CreateSceneBlock(RtsSceneBlockMap* _block, 
+    bool CreateSceneBlock(RtsSceneBlockRtb* _block, 
                           const char szPath[], 
                           int blockPosx, 
                           int blockPosy, 
                           bool bForceLoad = false);
-    bool InitSceneBlock(RtsSceneBlockMap* _block, 
+    bool InitSceneBlock(RtsSceneBlockRtb* _block, 
                         const char szPath[], 
                         int blockPosx,
                         int blockPosy);
     
 
-    void ReleaseSceneBlock(RtsSceneBlockMap* _block);
+    void ReleaseSceneBlock(RtsSceneBlockRtb* _block);
     void EvictResources(const Int2& _centerBlock);
 
     SceneBlockArray CreateSceneBlockArray(size_t _size);
@@ -49,15 +49,15 @@ public :
 
 private :
     static void Load_Thread(void* _ptMgr);
-    bool CreateSceneBlockImpl(RtsSceneBlockMap* _block);
-    void ReleaseSceneBlockImpl(RtsSceneBlockMap* _block);
+    bool CreateSceneBlockImpl(RtsSceneBlockRtb* _block);
+    void ReleaseSceneBlockImpl(RtsSceneBlockRtb* _block);
 
 protected :
-    list<RtsSceneBlockMap*> m_loadQueue;
-    set<RtsSceneBlockMap*>  m_releaseQueue;
-    list<RtsSceneBlockMap*> m_creatQueue;
-    set<Int2>               m_blockLoad;
-    vector<SceneBlockArray> m_DelectBlockArray;
+    list<RtsSceneBlockRtb*> m_loadQueue;//存储正在等待加载的场景块
+    set<RtsSceneBlockRtb*>  m_releaseQueue;//存储待释放的 RtsSceneBlockRtb 对象
+    list<RtsSceneBlockRtb*> m_creatQueue;//存储创建完成的 RtsSceneBlockRtb 对象
+    set<Int2>               m_blockLoad;//存储已经加载的块的位置坐标
+    vector<SceneBlockArray> m_DelectBlockArray;//存储多个 待删除的 RtsSceneBlockArray 对象
 
     thread_lock m_loadLock;
     thread_lock m_cratLock;

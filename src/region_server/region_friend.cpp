@@ -593,8 +593,8 @@ void CServerFriend::SendToClient(BYTE vOperation,DWORD vParameter,const std::str
 					CRegionCreature* pCreature = mpMaster->m_scene->FindUserByName(It->second.mName.c_str());
 					if (pCreature)
 					{
-						RtsSceneBlockMap* pMap = pCreature->m_scene->FindBlockByPos(pCreature->m_pos);
-						/*RtsSceneBlockMap* FindBlockByFileName(const char* filename);*/
+						RtsSceneBlockRtb* pMap = pCreature->m_scene->FindBlockByPos(pCreature->m_pos);
+						/*RtsSceneBlockRtb* FindBlockByFileName(const char* filename);*/
 						string strone = pMap->m_szBlockName;
 						g_sendCmd->WriteByte((char)It->second.mOnline);
 						g_sendCmd->WriteLong((long)It->second.mConnection);
@@ -626,8 +626,8 @@ void CServerFriend::SendToClient(BYTE vOperation,DWORD vParameter,const std::str
 				CRegionCreature* pCreature = mpMaster->m_scene->FindUserByName(It->second.mName.c_str());
 				if (pCreature)
 				{
-					RtsSceneBlockMap* pMap = pCreature->m_scene->FindBlockByPos(pCreature->m_pos);
-					/*RtsSceneBlockMap* FindBlockByFileName(const char* filename);*/
+					RtsSceneBlockRtb* pMap = pCreature->m_scene->FindBlockByPos(pCreature->m_pos);
+					/*RtsSceneBlockRtb* FindBlockByFileName(const char* filename);*/
 					string strone = pMap->m_szBlockName;
 					g_sendCmd->BeginWrite();
 					g_sendCmd->WriteShort(r2c_subsystem_mail);
@@ -892,7 +892,7 @@ void CServerFriend::ReceiveOneRefreshServerID(long SenderID,byte Type)
 	}
 	if (mpMaster->m_scene)
 	{
-		RtsSceneBlockMap* pMap = mpMaster->m_scene->FindBlockByPos(mpMaster->m_pos);
+		RtsSceneBlockRtb* pMap = mpMaster->m_scene->FindBlockByPos(mpMaster->m_pos);
 		if (pMap)
 		{
 			SceneName = pMap->m_szBlockName;

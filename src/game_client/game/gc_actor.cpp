@@ -4775,9 +4775,9 @@ void GcActor::OnPositionChanged(float fX, float fY) {
         return;
 
     if (bx != m_iCurrentBlockX || by != m_iCurrentBlockY) {
-        RtsSceneBlockMap* pBlockMap =
+        RtsSceneBlockRtb* pBlockMap =
             g_pScene->GetBlockMap(bx - g_pScene->GetCenterX(), by - g_pScene->GetCenterY());
-        RtsSceneBlockMap* pOldBlockMap =
+        RtsSceneBlockRtb* pOldBlockMap =
             (m_iCurrentBlockX < 0)
                 ? (NULL)
                 : (g_pScene->GetBlockMap(m_iCurrentBlockX - g_pScene->GetCenterX(),
@@ -4789,13 +4789,13 @@ void GcActor::OnPositionChanged(float fX, float fY) {
 
     // 区域进入和离开事件
     int                             i, iCnt;
-    static RtsSceneBlockMap::SArea* s_pArea[10];  // 一次最多10个块
-    RtsSceneBlockMap::SArea*        pArea = g_pScene->FindFirstArea(fX, fY);
+    static RtsSceneBlockRtb::SArea* s_pArea[10];  // 一次最多10个块
+    RtsSceneBlockRtb::SArea*        pArea = g_pScene->FindFirstArea(fX, fY);
     for (i = 0; i < 9 && pArea; i++) {
         s_pArea[i] = pArea;
         pArea      = g_pScene->FindNextArea();
     }
-    std::list<RtsSceneBlockMap::SArea*>::iterator it, itNext;
+    std::list<RtsSceneBlockRtb::SArea*>::iterator it, itNext;
     iCnt = i;
     for (it = m_listArea.begin(); it != m_listArea.end(); it = itNext) {
         itNext = it;
@@ -4823,7 +4823,7 @@ void GcActor::OnPositionChanged(float fX, float fY) {
 
 void GcActor::OnMapChanged() {
     guard;
-    std::list<RtsSceneBlockMap::SArea*>::iterator it;
+    std::list<RtsSceneBlockRtb::SArea*>::iterator it;
     for (it = m_listArea.begin(); it != m_listArea.end(); it++) {
         OnAreaExit(*it, NULL);
     }
@@ -4833,7 +4833,7 @@ void GcActor::OnMapChanged() {
 
 void GcActor::OnRemoveCreature() {
     guard;
-    RtsSceneBlockMap* pBlockMap =
+    RtsSceneBlockRtb* pBlockMap =
         (m_iCurrentBlockX < 0) ? (NULL)
                                : (g_pScene->GetBlockMap(m_iCurrentBlockX - g_pScene->GetCenterX(),
                                                         m_iCurrentBlockY - g_pScene->GetCenterY()));
@@ -4842,8 +4842,8 @@ void GcActor::OnRemoveCreature() {
     m_iCurrentBlockX = -1;
     m_iCurrentBlockY = -1;
 
-    RtsSceneBlockMap::SArea*                      pArea;
-    std::list<RtsSceneBlockMap::SArea*>::iterator it, itNext;
+    RtsSceneBlockRtb::SArea*                      pArea;
+    std::list<RtsSceneBlockRtb::SArea*>::iterator it, itNext;
     for (it = m_listArea.begin(); it != m_listArea.end(); it = itNext) {
         itNext = it;
         itNext++;
@@ -4855,7 +4855,7 @@ void GcActor::OnRemoveCreature() {
     unguard;
 }
 
-void GcActor::OnBlockChanged(RtsSceneBlockMap* pNewBlock, RtsSceneBlockMap* pOldBlock) {
+void GcActor::OnBlockChanged(RtsSceneBlockRtb* pNewBlock, RtsSceneBlockRtb* pOldBlock) {
     guard;
     if (pNewBlock == NULL || pNewBlock->m_pBlock == NULL)
         return;
@@ -4894,8 +4894,8 @@ void GcActor::UpdateAreaPKAttr() {
     guard;
     int                                           iLen;
     char *                                        pStr, *pValue;
-    RtsSceneBlockMap::SArea*                      pArea;
-    std::list<RtsSceneBlockMap::SArea*>::iterator it;
+    RtsSceneBlockRtb::SArea*                      pArea;
+    std::list<RtsSceneBlockRtb::SArea*>::iterator it;
     m_eCurPosPKAttr = m_eBlockPosPKAttr;
     for (it = m_listArea.begin(); it != m_listArea.end(); it++) {
         pArea = (*it);
@@ -4927,13 +4927,13 @@ void GcActor::UpdateAreaPKAttr() {
     unguard;
 }
 
-void GcActor::OnAreaEnter(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock) {
+void GcActor::OnAreaEnter(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock) {
     guard;
     UpdateAreaPKAttr();
     unguard;
 }
 
-void GcActor::OnAreaExit(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock) {
+void GcActor::OnAreaExit(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock) {
     guard;
     UpdateAreaPKAttr();
     unguard;
@@ -5227,7 +5227,7 @@ bool GcActor::InCastleWarArea() {
     const std::string SceneNameShang[] = {"scene01_029.rtb", "scene01_030.rtb", "scene01_035.rtb",
                                           "scene01_036.rtb"};
 
-    RtsSceneBlockMap* pBlockMap =
+    RtsSceneBlockRtb* pBlockMap =
         (m_iCurrentBlockX < 0) ? (NULL)
                                : (g_pScene->GetBlockMap(m_iCurrentBlockX - g_pScene->GetCenterX(),
                                                         m_iCurrentBlockY - g_pScene->GetCenterY()));

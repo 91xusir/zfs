@@ -13,9 +13,8 @@ DWORD CGameClientFrame::m_sTimerRun    = 0;
 DWORD CGameClientFrame::m_sTimerUI     = 0;
 DWORD CGameClientFrame::m_sTimerEvent  = 0;
 
-static float s_fClientSleepPreFrame = 0;
-BOOL         bRenderUI              = TRUE;
-static float g_SecondsPerCycle      = 0.0;
+BOOL         bRenderUI         = TRUE;
+static float g_SecondsPerCycle = 0.0;
 
 RT_IMPLEMENT_DYNCREATE(CGameClientFrame, CRtgAppFrame, NULL, "")
 
@@ -75,28 +74,32 @@ bool CGameClientFrame::OnDeviceInit() {
 
     GetDevice()->m_bEnableViewCheck = FALSE;
 
+    //注册纹理搜索路径
     GetDevice()->GetTextMgr()->AddTextSearchPath("creature/texture");
     GetDevice()->GetTextMgr()->AddTextSearchPath("scene/texture");
     GetDevice()->GetTextMgr()->AddTextSearchPath("ui/ui_texture");
     GetDevice()->GetTextMgr()->AddTextSearchPath("ui/x_textures");
     GetDevice()->GetTextMgr()->AddTextSearchPath("scene/texture/sm");
 
-    //GetDevice()->m_Texture.SetTexturePath("creature\\texture", 2);
-    //GetDevice()->m_Texture.SetTexturePath("scene\\texture", 1);
-    //GetDevice()->m_Texture.SetTexturePath("ui/ui_texture", 3);
-    //GetDevice()->m_Texture.SetTexturePath("scene\\texture\\sm", 5);
     GetDevice()->m_dwClearColor = 0xFF000000;
 
     return true;
     unguard;
 }
 
+bool CGameClientFrame::OnFramePreInit() {
+    UILayer::Initialize();
+    m_bUIInit = TRUE;
+    ShowWindow(GetDevice()->GetHWND(), SW_SHOW);
+    GetDevice()->RenderScene();
+    GameInitCursor();//游戏鼠标初始化
+    return true;
+}
+
 //lyymark 3.Frame.OnFrameInit 初始化 包括鼠标 UI初始化 应用Graph配置
 bool CGameClientFrame::OnFrameInit() {
-
-    GameInitCursor();
-
-    // RS Load
+    guard;
+    // RS Load csv表加载
     RS_Load();
     if (!SkillInit(R(RES_TABLE_SKILL), R(RES_TABLE_PASSIVE), R(RES_TABLE_EFFECT),
                    R(RES_TABLE_MUTEX)))
@@ -107,32 +110,6 @@ bool CGameClientFrame::OnFrameInit() {
         ERR("道具初始化失败\n");
         return false;
     }
-    UILayer::Initialize();
-    m_bUIInit = TRUE;
-
-    GetGameIni()->GetEntry("Graph", "Sleep", &s_fClientSleepPreFrame);
-    /*
-    long lFullScreen = FALSE, lFullScreenSizeX=800, lFullScreenSizeY=600, lColorDepth=32;
-    GetGameIni()->GetEntry("Graph", "FullScreenSizeX", &lFullScreenSizeX);
-    GetGameIni()->GetEntry("Graph", "FullScreenSizeY", &lFullScreenSizeY);
-    GetGameIni()->GetEntry("Graph", "ColorDepth", &lColorDepth);
-    GetGameIni()->GetEntry("Graph", "FullScreen", &lFullScreen);
-    GetDevice()->SetViewWindowInfo(RTGVWM_TOPWINDOW, lFullScreenSizeX, lFullScreenSizeY, lColorDepth, 0);
-    if (lFullScreen)
-    {
-        GetDevice()->SetViewMode(RTGVWM_TOPWINDOW, true);
-    }
-    */
-
-    // 注释 [3/25/2009 tooth.shi]
-    /*
-    if (!OnEnterLogin())
-    {
-        return false;
-    }
-
-    GetDevice()->RenderScene();
-*/
     return true;
     unguard;
 }
@@ -152,7 +129,8 @@ void CGameClientFrame::OnFrameClose() {
     SkillClean();
     RS_Clear();
     DEL_ONE(m_pItemManager);
-    m_bUIInit = FALSE;
+
+    m_bUIInit = false;
 
     UIFormTextMsg::Clear();
     UIFormMsg::Clear(true);
@@ -183,7 +161,7 @@ bool CGameClientFrame::OnEnterLogin() {
         m_pCurrentProcess = NULL;
         return false;
     }
-    // 设置GCLogin状态为正在加载
+    // 设置GCLogin状态为加载
     m_pLogin->SetLoginState(GcLogin::GLS_LOADING);
 
     // 设置当前场景的世界为空
@@ -191,7 +169,6 @@ bool CGameClientFrame::OnEnterLogin() {
 
     // 设置当前过程为 Login
     m_pCurrentProcess = m_pLogin;
-
     return true;
     unguard;
 }
@@ -547,7 +524,7 @@ void GameCaptureVideo() {
     G_MEMPROTECTOR(szVideoDir, 20)  //add by yz
 
     char szFilename[50];
-    rt2_sprintf(szFilename, "vedio/%s/v%05d.jpg", szVideoDir, iVideoFrameCount++);
+    rt2_sprintf(szFilename, "video/%s/v%05d.jpg", szVideoDir, iVideoFrameCount++);
     GetDevice()->SaveRenderTargetToFile(szFilename);
     unguard;
 }
@@ -658,9 +635,7 @@ void CGameClientFrame::OnBeginRender() {
     if (m_pCurrentProcess == NULL)
         return;
     m_pCurrentProcess->OnBeginRender();
-    if (s_fClientSleepPreFrame > 0.f) {
-        rtSleep(s_fClientSleepPreFrame);
-    }
+
     unguard;
 }
 
@@ -907,11 +882,6 @@ void CGameClientFrame::OnRender() {
 }
 
 void CGameClientFrame::OnRender2D() {
-    //extern double g_RenderUiUseTime;
-    if (g_LoadingMapRenderer.GetRenderFlag()) {
-        g_LoadingMapRenderer.Render();
-        return;
-    }
 
     if (bRenderUI) {
         RtGetPref()->Ui_Render = rtMilliseconds();
@@ -1318,7 +1288,7 @@ void CGameClientFrame::OnSetFocus() {
     }
 }
 
-CSceneMusicApp::CSceneMusicApp(){
+CSceneMusicApp::CSceneMusicApp() {
     if (!rtMusicInit()) {
         CHECKEX("初始化背景音乐失败");
     }

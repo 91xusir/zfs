@@ -1056,7 +1056,7 @@ CMD_FUNCTION(cmd_g2r_init_region)
         SAFE_READ2(ReadLong, regionID)
 
 		if(blockName[0] == '\0') continue;
-		RtsSceneBlockMap* bmap = g_region->m_defScene->FindBlockByFileName(blockName);
+		RtsSceneBlockRtb* bmap = g_region->m_defScene->FindBlockByFileName(blockName);
 
 		if (bmap == NULL)
 		{

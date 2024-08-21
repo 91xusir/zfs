@@ -53,9 +53,9 @@ public:
 	std::list<short>        m_matchList;					// 学会的配方列表
 
 protected:
-    virtual void OnBlockChanged(RtsSceneBlockMap* pNewBlock, RtsSceneBlockMap* pOldBlock);
-    virtual void OnAreaEnter(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock); // 当进入某个区域
-    virtual void OnAreaExit(RtsSceneBlockMap::SArea* pArea, RtsSceneBlockMap* pBlock);  // 当离开某个区域
+    virtual void OnBlockChanged(RtsSceneBlockRtb* pNewBlock, RtsSceneBlockRtb* pOldBlock);
+    virtual void OnAreaEnter(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock); // 当进入某个区域
+    virtual void OnAreaExit(RtsSceneBlockRtb::SArea* pArea, RtsSceneBlockRtb* pBlock);  // 当离开某个区域
 	virtual void UpdateAreaPKAttr();
 	virtual void DoCommand(SCmd* pCmd);
 

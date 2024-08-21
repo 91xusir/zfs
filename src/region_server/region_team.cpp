@@ -257,7 +257,7 @@ void CServerTeam::DateChangeAffectTeam()
 	string MapName = "";
 	if (mpMaster->m_scene)
 	{
-		RtsSceneBlockMap* pMap = mpMaster->m_scene->FindBlockByPos(mpMaster->m_pos);
+		RtsSceneBlockRtb* pMap = mpMaster->m_scene->FindBlockByPos(mpMaster->m_pos);
 		if (pMap)
 		{
 			MapName = pMap->m_szFileName;
@@ -647,7 +647,7 @@ int CServerTeam::ReceiveFromGameWorld(CG_CmdPacket *cmd)
 			string MapName = "";
 			if (mpMaster->m_scene)
 			{
-				RtsSceneBlockMap* pMap = mpMaster->m_scene->FindBlockByPos(mpMaster->m_pos);
+				RtsSceneBlockRtb* pMap = mpMaster->m_scene->FindBlockByPos(mpMaster->m_pos);
 				if (pMap)
 				{
 					MapName = pMap->m_szFileName;

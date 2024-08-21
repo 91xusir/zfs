@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="GBK"?>
 <Ui>
   <Loader Description="ui definition xml file">
-    <File Name="ui/global/loading.xml"/>
     <File Name="ui/global/setting.xml"/>
     <File Name="ui/global/confirmBox.xml"/>
 

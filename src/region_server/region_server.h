@@ -218,7 +218,7 @@ public:
     long                m_lCurRegionID;
 	EXT_SPACE::unordered_map<ULONG, SUnionData>		m_unionMap;
 	EXT_SPACE::unordered_map<ULONG, CRegionUser*>    m_userMap;      // login user
-	EXT_SPACE::unordered_map<ULONG, long>            m_regionMap;    // EXT_SPACE::unordered_map<RtsSceneBlockMap*, long>
+	EXT_SPACE::unordered_map<ULONG, long>            m_regionMap;    // EXT_SPACE::unordered_map<RtsSceneBlockRtb*, long>
 	float GetExpRate() { return m_expRate; }
 
 	int  m_yDay;

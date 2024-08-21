@@ -29,7 +29,7 @@ void RtsObjectManager::DelObject(objectId _objId)
    
     if (_it == m_mapObject.end())
     {
-        RtCoreLog().Error("delete object(id:%lu) fail~", _objId);
+        RtCoreLog().Error("delete object(id:%lu) fail~\n", _objId);
         return;
     }
 

@@ -1224,7 +1224,7 @@ void CRegionScene::ItemProcess()
 }
 
 
-RtsSceneBlockMap* CRegionScene::FindBlockByFileName(const char* filename)
+RtsSceneBlockRtb* CRegionScene::FindBlockByFileName(const char* filename)
 {
     if (filename==NULL || filename[0]==0) return NULL;
 
@@ -1235,7 +1235,7 @@ RtsSceneBlockMap* CRegionScene::FindBlockByFileName(const char* filename)
 	{
 		for (int x = 0; x < cx; x++)
 		{
-			RtsSceneBlockMap* bmap = m_pTerrain->GetBlockMap(x-m_pTerrain->GetCenterX(), y-m_pTerrain->GetCenterY());
+			RtsSceneBlockRtb* bmap = m_pTerrain->GetBlockMap(x-m_pTerrain->GetCenterX(), y-m_pTerrain->GetCenterY());
 
             if (bmap && (strcmp(bmap->m_szFileName, filename) == 0))
 				return bmap;
@@ -1245,7 +1245,7 @@ RtsSceneBlockMap* CRegionScene::FindBlockByFileName(const char* filename)
 	return NULL;
 }
 
-RtsSceneBlockMap* CRegionScene::FindBlockByPos(const long* pos)
+RtsSceneBlockRtb* CRegionScene::FindBlockByPos(const long* pos)
 {
 	int ibx, iby;
 

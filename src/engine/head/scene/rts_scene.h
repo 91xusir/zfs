@@ -30,7 +30,7 @@ class RtScene : public RtsSceneDoc, public RtsSceneUtil {
     bool Init();
     void Clear();
 
-    void OnBlockLoadFinish(RtsSceneBlockMap* _blockMap);
+    void OnBlockLoadFinish(RtsSceneBlockRtb* _blockMap);
 
     void BuildShadowMap();
     void BuildShadowMap_ForCurrBlock();
@@ -182,7 +182,7 @@ class RtScene : public RtsSceneDoc, public RtsSceneUtil {
         int _blockx = _girdx / g_iSceneGridCntX;
         int _blocky = _gridy / g_iSceneGridCntY;
 
-        RtsSceneBlockMap* _block = GetBlockMapbyIndex(_blockx, _blocky);
+        RtsSceneBlockRtb* _block = GetBlockMapbyIndex(_blockx, _blocky);
 
         if (!_block || !_block->ReourceReady())
             return NULL;
@@ -324,7 +324,7 @@ class RtScene : public RtsSceneDoc, public RtsSceneUtil {
     float m_fLastOnFrameMoveTime;
     //int                 m_iCurrentBlockX;
     //int                 m_iCurrentBlockY;
-    //std::list<RtsSceneBlockMap::SArea*> m_listArea;
+    //std::list<RtsSceneBlockRtb::SArea*> m_listArea;
 
     // ตฦนโ
     DWORD            m_lightSkyColor;

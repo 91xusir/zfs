@@ -476,7 +476,6 @@ void CRT_ActorInstance::Tick(float deltaMill, bool bUpdateChild /* = true */) {
             // 使用当前帧进行骨骼动画
             RealUseFrame(m_curFrame);
         }
-      
     }
     const DWORD ruSkin = rtMilliseconds();
     for (size_t i = 0; i < m_skinList.size(); ++i)
@@ -1166,11 +1165,9 @@ bool CRT_ActorInstance::UpdateBone(float frame) {
 //lyymark RealUseFrame
 void CRT_ActorInstance::RealUseFrame(float frame) {
     long _nframe = (long)frame;
-
     if (_nframe == m_lastFrame)
         return;
     m_lastFrame = _nframe;
-
     if (UpdateBone(_nframe)) {
         if (m_bDrawScale) {
             RtgMatrix16 mat;
@@ -1178,8 +1175,11 @@ void CRT_ActorInstance::RealUseFrame(float frame) {
             mat._00            = m_drawScale.x;
             mat._11            = m_drawScale.y;
             mat._22            = m_drawScale.z;
-            m_boundingBox.vExt = m_core->m_boundBoxList[frame].vExt * mat;
-            m_boundingBox.vPos = m_core->m_boundBoxList[frame].vPos * mat;
+           const auto& coreBBlist    = m_core->m_boundBoxList;
+            if (frame > coreBBlist.size())
+               frame= coreBBlist.size()-1;
+            m_boundingBox.vExt = coreBBlist.at(frame).vExt   * mat;
+            m_boundingBox.vPos = coreBBlist.at(frame).vPos * mat;
             if (m_boundingBox.vExt.x < BOUND_MIN)
                 m_boundingBox.vExt.x = BOUND_MIN;
             if (m_boundingBox.vExt.y < BOUND_MIN)
@@ -2532,8 +2532,13 @@ bool ActorInit() {
     RT_STATIC_REGISTRATION_CLASS(CRT_EffectRibbon);
     RT_STATIC_REGISTRATION_CLASS(CRT_EffectRibbon2);
     RT_STATIC_REGISTRATION_CLASS(CRT_Effect_Dynamic_Ribbon);
-
     RtcGetActorManager()->Init();
+    //注册act文件搜索路径
+    RtcGetActorManager()->AddSearchPath("creature/actor/");
+    RtcGetActorManager()->AddSearchPath("creature/material/");
+    RtcGetActorManager()->AddSearchPath("scene/actor/");
+    RtcGetActorManager()->AddSearchPath("scene/material/");
+    RtcGetActorManager()->AddSearchPath("scene/effect/");
 
     return true;
 }

@@ -188,7 +188,7 @@ void CWarZhulu::EndZhulu()
 bool CWarZhulu::IsInZhuluMap(CRegionUser *user)
 {
 	std::string map;
-	RtsSceneBlockMap* bmap = g_region->m_defScene->FindBlockByPos(user->m_dummy->m_pos);
+	RtsSceneBlockRtb* bmap = g_region->m_defScene->FindBlockByPos(user->m_dummy->m_pos);
 	if(bmap)
 	{
 		map = bmap->m_szFileName;

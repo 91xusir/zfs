@@ -984,7 +984,7 @@ class CRT_Actor : public CRT_PoolObject {
     bool m_bDynamicShadow;  // 是否启用动态阴影。布尔值，决定是否应用动态阴影效果。
     boneArray_t     m_bones;  // 骨骼数组。存储角色的骨骼数据。
     vector<RtgAABB> m_boundBoxList = {
-        RtgAABB(RtgVertex3(1.0f, 1.0f, 1.0f), RtgVertex3(2.0f, 2.0f, 2.0f))};
+        RtgAABB(RtgVertex3(10.0f, 7.0f, 20.0f), RtgVertex3(0.0f, 1.5f, 20.0f))};
     bool m_bUseVC;  // 是否使用 VC（可能是虚拟摄像机？）。布尔值，决定是否启用虚拟摄像机功能。
     bool m_bUseLight;  // 是否启用光照。布尔值，决定是否在渲染时应用光照。
     bool m_bZTest;  // 是否进行深度测试。布尔值，决定是否在渲染时进行深度测试。

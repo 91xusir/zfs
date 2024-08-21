@@ -4,9 +4,6 @@
     <Filter Include="game">
       <UniqueIdentifier>{331071b9-d1dc-4591-835b-44e54b0e39be}</UniqueIdentifier>
     </Filter>
-    <Filter Include="game\world">
-      <UniqueIdentifier>{81264c8f-c46d-450f-9314-f2378095f5ad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="game\assistant">
       <UniqueIdentifier>{7dbe0b8d-e6c1-4ad3-b720-e4d9d4360fd9}</UniqueIdentifier>
     </Filter>
@@ -232,8 +229,17 @@
     <Filter Include="refactor\utils">
       <UniqueIdentifier>{51a62569-c5d0-4dd0-8077-48f05ee95332}</UniqueIdentifier>
     </Filter>
-    <Filter Include="refactor\login">
+    <Filter Include="refactor\ui">
+      <UniqueIdentifier>{6f39875b-89f2-4e67-92c5-acf2a05bac88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor\ui\login">
       <UniqueIdentifier>{15604f31-eb3c-4b19-b468-4c51cda45bc4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor\ui\world">
+      <UniqueIdentifier>{81264c8f-c46d-450f-9314-f2378095f5ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="refactor\frame">
+      <UniqueIdentifier>{a28481af-0c25-4b26-a85b-262414a8d6ef}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -730,10 +736,10 @@
       <Filter>engine_sdk\file_pack\interface</Filter>
     </ClInclude>
     <ClInclude Include="game\gc_bulletin.h">
-      <Filter>game\world</Filter>
+      <Filter>refactor\ui\world</Filter>
     </ClInclude>
     <ClInclude Include="game\gc_world.h">
-      <Filter>game\world</Filter>
+      <Filter>refactor\ui\world</Filter>
     </ClInclude>
     <ClInclude Include="game\game_assistant.h">
       <Filter>game\assistant</Filter>
@@ -916,10 +922,10 @@
       <Filter>game\ui\ui_union</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_layer_login.h">
-      <Filter>refactor\login</Filter>
+      <Filter>refactor\ui\login</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_layer_select_char.h">
-      <Filter>refactor\login</Filter>
+      <Filter>refactor\ui\login</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_form_castlewar.h">
       <Filter>game\ui\ui_feod_castlewar</Filter>
@@ -979,9 +985,6 @@
       <Filter>game\ui\ui_other</Filter>
     </ClInclude>
     <ClInclude Include="ui\ui_form_timebar.h">
-      <Filter>game\ui\ui_other</Filter>
-    </ClInclude>
-    <ClInclude Include="ui\ui_layer.h">
       <Filter>game\ui\ui_other</Filter>
     </ClInclude>
     <ClInclude Include="..\shared\business.h">
@@ -1215,9 +1218,6 @@
     <ClInclude Include="frame\gc_camera.h">
       <Filter>frame\win_main</Filter>
     </ClInclude>
-    <ClInclude Include="frame\gc_frame.h">
-      <Filter>frame\win_main</Filter>
-    </ClInclude>
     <ClInclude Include="frame\gc_global.h">
       <Filter>frame\win_main</Filter>
     </ClInclude>
@@ -1369,10 +1369,16 @@
       <Filter>refactor\utils</Filter>
     </ClInclude>
     <ClInclude Include="game\gc_login.h">
-      <Filter>refactor\login</Filter>
+      <Filter>refactor\ui\login</Filter>
     </ClInclude>
     <ClInclude Include="HttpReq.h">
       <Filter>refactor\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\ui_layer.h">
+      <Filter>refactor\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="frame\gc_frame.h">
+      <Filter>refactor\frame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1418,10 +1424,10 @@
       <Filter>engine_sdk\scene\scene_include</Filter>
     </ClCompile>
     <ClCompile Include="game\gc_bulletin.cpp">
-      <Filter>game\world</Filter>
+      <Filter>refactor\ui\world</Filter>
     </ClCompile>
     <ClCompile Include="game\gc_world.cpp">
-      <Filter>game\world</Filter>
+      <Filter>refactor\ui\world</Filter>
     </ClCompile>
     <ClCompile Include="game\game_clipboard.cpp">
       <Filter>game\assistant</Filter>
@@ -1574,10 +1580,10 @@
       <Filter>game\ui\ui_union</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_layer_login.cpp">
-      <Filter>refactor\login</Filter>
+      <Filter>refactor\ui\login</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_layer_select_char.cpp">
-      <Filter>refactor\login</Filter>
+      <Filter>refactor\ui\login</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_castlewar.cpp">
       <Filter>game\ui\ui_feod_castlewar</Filter>
@@ -1637,9 +1643,6 @@
       <Filter>game\ui\ui_other</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_timebar.cpp">
-      <Filter>game\ui\ui_other</Filter>
-    </ClCompile>
-    <ClCompile Include="ui\ui_layer.cpp">
       <Filter>game\ui\ui_other</Filter>
     </ClCompile>
     <ClCompile Include="..\shared\business.cpp">
@@ -1828,9 +1831,6 @@
     <ClCompile Include="frame\gc_camera.cpp">
       <Filter>frame\win_main</Filter>
     </ClCompile>
-    <ClCompile Include="frame\gc_frame.cpp">
-      <Filter>frame\win_main</Filter>
-    </ClCompile>
     <ClCompile Include="frame\gc_global.cpp">
       <Filter>frame\win_main</Filter>
     </ClCompile>
@@ -1985,7 +1985,7 @@
       <Filter>frame\resource</Filter>
     </ClCompile>
     <ClCompile Include="ui\ui_form_server.cpp">
-      <Filter>refactor\login</Filter>
+      <Filter>refactor\ui\login</Filter>
     </ClCompile>
     <ClCompile Include="iob_func.cpp">
       <Filter>other</Filter>
@@ -2000,13 +2000,19 @@
       <Filter>refactor\utils</Filter>
     </ClCompile>
     <ClCompile Include="game\gc_login.cpp">
-      <Filter>refactor\login</Filter>
+      <Filter>refactor\ui\login</Filter>
     </ClCompile>
     <ClCompile Include="HttpReq.cpp">
       <Filter>refactor\utils</Filter>
     </ClCompile>
     <ClCompile Include="frame\gc_main.cpp">
       <Filter>refactor</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\ui_layer.cpp">
+      <Filter>refactor\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="frame\gc_frame.cpp">
+      <Filter>refactor\frame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

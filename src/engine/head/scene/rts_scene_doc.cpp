@@ -16,7 +16,7 @@
 #define _Scene_Block_Version_5 0x0105
 #define _Scene_Block_Version _Scene_Block_Version_5
 
-RtsSceneBlockMap& SceneBlockArray::operator[](size_t _index) {
+RtsSceneBlockRtb& SceneBlockArray::operator[](size_t _index) {
     RTASSERT(_index < _size);
     return _blockArray[_index];
 }
@@ -76,7 +76,7 @@ bool RtsSceneDoc::NewMap(const char* szMapFileName) {
 #ifndef REGION_SERVER
     m_blockMapArray = m_SceneBlockManager.CreateSceneBlockArray(1);
 #else
-    m_blockMapArray._blockArray = RT_NEW RtsSceneBlockMap[1];
+    m_blockMapArray._blockArray = RT_NEW RtsSceneBlockRtb[1];
     m_blockMapArray._size       = 1;
 #endif
     SetMapFileName(szMapFileName);
@@ -111,7 +111,7 @@ void RtsSceneDoc::SetMapFileName(const char* szMapFileName) {
     if (strcmp(szOldMapSet, m_szMapSetName) != 0) {
         int               il = (int)strlen(szOldMapSet);
         RtString          szName;
-        RtsSceneBlockMap* pBlockMap;
+        RtsSceneBlockRtb* pBlockMap;
         for (int iy = 0; iy < m_iBlockYCnt; iy++) {
             for (int ix = 0; ix < m_iBlockXCnt; ix++) {
                 pBlockMap = &m_blockMapArray[iy * m_iBlockXCnt + ix];
@@ -136,7 +136,7 @@ void RtsSceneDoc::SetMapFileName(const char* szMapFileName) {
     }
 }
 
-bool RtsSceneDoc::AddMapBlock(int iPosX, int iPosY, RtsSceneBlockMap* pMap) {
+bool RtsSceneDoc::AddMapBlock(int iPosX, int iPosY, RtsSceneBlockRtb* pMap) {
     int             x, y, xOffset, yOffset;
     SceneBlockArray _blockArray;
     if (iPosX < -1 || iPosY < -1 || iPosX > m_iBlockXCnt || iPosY > m_iBlockYCnt)
@@ -162,7 +162,7 @@ bool RtsSceneDoc::AddMapBlock(int iPosX, int iPosY, RtsSceneBlockMap* pMap) {
 #ifndef REGION_SERVER
         _blockArray = m_SceneBlockManager.CreateSceneBlockArray(iNewSizeX * iNewSizeY);
 #else
-        _blockArray._blockArray = RT_NEW RtsSceneBlockMap[iNewSizeX * iNewSizeY];
+        _blockArray._blockArray = RT_NEW RtsSceneBlockRtb[iNewSizeX * iNewSizeY];
         _blockArray._size       = iNewSizeX * iNewSizeY;
 #endif
         for (y = 0; y < iNewSizeY; y++) {
@@ -203,7 +203,7 @@ bool RtsSceneDoc::AddMapBlock(int iPosX, int iPosY, RtsSceneBlockMap* pMap) {
                                          m_szFilePath, iPosX - m_iCenterPosX, iPosY - m_iCenterPosY,
                                          true);
 #else
-    RtsSceneBlockMap* _block = &m_blockMapArray[iPosY * m_iBlockXCnt + iPosX];
+    RtsSceneBlockRtb* _block = &m_blockMapArray[iPosY * m_iBlockXCnt + iPosX];
     _block->SetLoadInfo(m_szFilePath, iPosX - m_iCenterPosX, iPosY - m_iCenterPosY);
     _block->Load(m_szFilePath, iPosX, m_iCenterPosX, iPosY, m_iCenterPosY);
 #endif
@@ -218,7 +218,7 @@ bool RtsSceneDoc::AddMapBlock(int iPosX, int iPosY, RtsSceneBlockMap* pMap) {
         iSameName = FALSE;
         for (y = 0; y < m_iBlockYCnt; y++) {
             for (x = 0; x < m_iBlockXCnt; x++) {
-                RtsSceneBlockMap* pBlock = &m_blockMapArray[y * m_iBlockXCnt + x];
+                RtsSceneBlockRtb* pBlock = &m_blockMapArray[y * m_iBlockXCnt + x];
                 if (pBlock->GetFileName()[0] != 0) {
                     if (strcmp(pBlock->GetFileName(), szName) == 0) {
                         iSameName = TRUE;
@@ -258,7 +258,7 @@ bool RtsSceneDoc::AddMapBlock(int iPosX, int iPosY) {
 #ifndef REGION_SERVER
         _blockArray = m_SceneBlockManager.CreateSceneBlockArray(iNewSizeX * iNewSizeY);
 #else
-        _blockArray._blockArray = RT_NEW RtsSceneBlockMap[iNewSizeX * iNewSizeY];
+        _blockArray._blockArray = RT_NEW RtsSceneBlockRtb[iNewSizeX * iNewSizeY];
         _blockArray._size       = iNewSizeX * iNewSizeY;
 #endif
         for (y = 0; y < iNewSizeY; y++) {
@@ -306,7 +306,7 @@ bool RtsSceneDoc::AddMapBlock(int iPosX, int iPosY) {
         iSameName = FALSE;
         for (y = 0; y < m_iBlockYCnt; y++) {
             for (x = 0; x < m_iBlockXCnt; x++) {
-                RtsSceneBlockMap* pBlock = &m_blockMapArray[y * m_iBlockXCnt + x];
+                RtsSceneBlockRtb* pBlock = &m_blockMapArray[y * m_iBlockXCnt + x];
                 if (pBlock->GetFileName()[0] != 0) {
                     if (strcmp(pBlock->GetFileName(), szName) == 0) {
                         iSameName = TRUE;
@@ -361,7 +361,7 @@ bool RtsSceneDoc::LoadMap(const char* szMapFileName, bool bLoadAll) {
 #ifndef REGION_SERVER
     m_blockMapArray = m_SceneBlockManager.CreateSceneBlockArray(j);
 #else
-    m_blockMapArray._blockArray = RT_NEW RtsSceneBlockMap[j];
+    m_blockMapArray._blockArray = RT_NEW RtsSceneBlockRtb[j];
     m_blockMapArray._size       = j;
 #endif
     for (i = 0; i < j; i++) {
@@ -402,7 +402,7 @@ bool RtsSceneDoc::LoadMap(const char* szMapFileName, bool bLoadAll) {
 void RtsSceneDoc::LoadAllBlock() {
     for (int y = 0; y < m_iBlockYCnt; ++y) {
         for (int x = 0; x < m_iBlockXCnt; ++x) {
-            RtsSceneBlockMap* _block = &m_blockMapArray[y * m_iBlockXCnt + x];
+            RtsSceneBlockRtb* _block = &m_blockMapArray[y * m_iBlockXCnt + x];
 
             if (_block->Check_CanLoad()) {
 #ifndef REGION_SERVER
@@ -419,7 +419,7 @@ void RtsSceneDoc::LoadAllBlock() {
 }
 
 short RtsSceneDoc::GetRegionIDByBlock(int bX, int bY) {
-    RtsSceneBlockMap* pBlock = &m_blockMapArray[bY * m_iBlockXCnt + bX];
+    RtsSceneBlockRtb* pBlock = &m_blockMapArray[bY * m_iBlockXCnt + bX];
     if (pBlock->m_pBlock == NULL)
         return 0;
     else
@@ -433,7 +433,7 @@ void RtsSceneDoc::RemapObject() {
 
     vector<objectId> newMap;
 
-    RtsSceneBlockMap* _blockMap    = NULL;
+    RtsSceneBlockRtb* _blockMap    = NULL;
     bool              bNeedRelease = false;
 
     for (int y = 0; y < m_iBlockYCnt; ++y) {
@@ -493,7 +493,7 @@ bool RtsSceneDoc::SaveMap(const char* szMapFileName) {
     (*pFile) << dwFileHeader;
     RtCoreFile().CloseFile(pFile);
 
-    RtsSceneBlockMap* pBlock = NULL;
+    RtsSceneBlockRtb* pBlock = NULL;
 
     for (int j = 0; j < m_iBlockYCnt; ++j) {
         for (int i = 0; i < m_iBlockXCnt; ++i) {
@@ -542,7 +542,7 @@ bool RtsSceneDoc::SaveAllMap(const char* szMapFileName) {
     (*pFile) << dwFileHeader;
     RtCoreFile().CloseFile(pFile);
 
-    RtsSceneBlockMap* pBlock = NULL;
+    RtsSceneBlockRtb* pBlock = NULL;
 
     for (int j = 0; j < m_iBlockYCnt; ++j) {
         for (int i = 0; i < m_iBlockXCnt; ++i) {
@@ -577,7 +577,7 @@ void RtsSceneDoc::InitMap() {
 // 清除地图
 void RtsSceneDoc::ClearMap() {
     int               i, j;
-    RtsSceneBlockMap* pBlock;
+    RtsSceneBlockRtb* pBlock;
 
     if (m_pAreaDoc) {
         m_pAreaDoc->m_iAreaRef--;
@@ -649,7 +649,7 @@ bool RtsSceneDoc::OnSerializeObjects(RtArchive* pFile) {
 
 bool RtsSceneDoc::OnSerializeBlockMapping(RtArchive* pFile) {
     int               i, j, c;
-    RtsSceneBlockMap* pBlock;
+    RtsSceneBlockRtb* pBlock;
 
     if (pFile->IsStoring()) {
         c = 0;
@@ -769,7 +769,7 @@ RtSceneBlockTerrain::STileAttr* RtsSceneDoc::GetTerrainPathAttr(int iTerrainX, i
     iBy = iTerrainY / g_iSceneTerrainCntY;
     if (iBx >= m_iBlockXCnt || iBy >= m_iBlockYCnt)
         return NULL;
-    RtsSceneBlockMap* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
+    RtsSceneBlockRtb* pBlockMap = &m_blockMapArray[iBy * m_iBlockXCnt + iBx];
     if (pBlockMap->m_pBlock == NULL)
         return NULL;
     return pBlockMap->m_pBlock->m_pTileAttr +
@@ -955,8 +955,8 @@ bool RtsSceneDoc::AddAreaInfo(const char* szAreaFileName) {
     }
 
     m_iAreaRef                     = 1;
-    RtsSceneBlockMap::SArea* pArea = RT_NEW RtsSceneBlockMap::SArea[iCount + m_iAreaCount];
-    memcpy(m_pAreas, pArea, sizeof(RtsSceneBlockMap::SArea) * m_iAreaCount);
+    RtsSceneBlockRtb::SArea* pArea = RT_NEW RtsSceneBlockRtb::SArea[iCount + m_iAreaCount];
+    memcpy(m_pAreas, pArea, sizeof(RtsSceneBlockRtb::SArea) * m_iAreaCount);
     DEL_ARRAY(m_pAreas);
     m_pAreas = pArea;
 
@@ -1005,7 +1005,7 @@ bool RtsSceneDoc::AddAreaInfo(const char* szAreaFileName) {
     // 更新各个场景块的范围选择
     int               x, y, z;
     long              fMinX, fMinY, fMaxX, fMaxY;
-    RtsSceneBlockMap* pMap;
+    RtsSceneBlockRtb* pMap;
     for (z = 0; z < 2; z++) {
         for (y = 0; y < m_iBlockYCnt; y++) {
             for (x = 0; x < m_iBlockXCnt; x++) {
@@ -1018,7 +1018,7 @@ bool RtsSceneDoc::AddAreaInfo(const char* szAreaFileName) {
                     if (z) {
                         if (pMap->m_iMapAreaCount) {
                             pMap->m_ppAreas =
-                                RT_NEW RtsSceneBlockMap::SArea * [pMap->m_iMapAreaCount];
+                                RT_NEW RtsSceneBlockRtb::SArea * [pMap->m_iMapAreaCount];
                             pMap->m_iMapAreaCount = 0;
                         } else {
                             pMap->m_ppAreas = NULL;
@@ -1049,7 +1049,7 @@ bool RtsSceneDoc::PointInArea(float fPosX, float fPosY, const char* szAreaName) 
     int x, y, i;
     GetBlockByPos(fPosX, fPosY, x, y);
     if (x >= 0 && x < m_iBlockXCnt && y >= 0 && y < m_iBlockYCnt) {
-        RtsSceneBlockMap* pBlockMap = &m_blockMapArray[y * m_iBlockXCnt + x];
+        RtsSceneBlockRtb* pBlockMap = &m_blockMapArray[y * m_iBlockXCnt + x];
         if (pBlockMap->m_szFileName[0] == 0)
             return false;
         for (i = 0; i < pBlockMap->m_iMapAreaCount; i++) {
@@ -1062,11 +1062,11 @@ bool RtsSceneDoc::PointInArea(float fPosX, float fPosY, const char* szAreaName) 
     return false;
 }
 
-RtsSceneBlockMap* s_pFindAreaBlockMap = NULL;
+RtsSceneBlockRtb* s_pFindAreaBlockMap = NULL;
 int               s_iFindAreaIndex    = 0;
 float             s_fFindAreaPosX, s_fFindAreaPosY;
 
-RtsSceneBlockMap::SArea* RtsSceneDoc::FindFirstArea(float fPosX, float fPosY) {
+RtsSceneBlockRtb::SArea* RtsSceneDoc::FindFirstArea(float fPosX, float fPosY) {
     int x, y;
     GetBlockByPos(fPosX, fPosY, x, y);
     if (x >= 0 && x < m_iBlockXCnt && y >= 0 && y < m_iBlockYCnt) {
@@ -1082,10 +1082,10 @@ RtsSceneBlockMap::SArea* RtsSceneDoc::FindFirstArea(float fPosX, float fPosY) {
     return NULL;
 }
 
-RtsSceneBlockMap::SArea* RtsSceneDoc::FindNextArea() {
+RtsSceneBlockRtb::SArea* RtsSceneDoc::FindNextArea() {
     if (s_pFindAreaBlockMap) {
         while (s_iFindAreaIndex < s_pFindAreaBlockMap->m_iMapAreaCount) {
-            RtsSceneBlockMap::SArea* pAreas = s_pFindAreaBlockMap->m_ppAreas[s_iFindAreaIndex++];
+            RtsSceneBlockRtb::SArea* pAreas = s_pFindAreaBlockMap->m_ppAreas[s_iFindAreaIndex++];
             if (s_fFindAreaPosX >= pAreas->lMinX && s_fFindAreaPosX < pAreas->lMaxX &&
                 s_fFindAreaPosY >= pAreas->lMinY && s_fFindAreaPosY < pAreas->lMaxY) {
                 if (pAreas->bActivation)
@@ -1097,15 +1097,15 @@ RtsSceneBlockMap::SArea* RtsSceneDoc::FindNextArea() {
     return NULL;
 }
 
-RtsSceneBlockMap* RtsSceneDoc::FindSceneBlockMapByAreaName(const char* sAreaName) {
+RtsSceneBlockRtb* RtsSceneDoc::FindSceneBlockMapByAreaName(const char* sAreaName) {
     if (!sAreaName || sAreaName[0] == 0)
         return NULL;
     for (int ii = 0; ii < m_iBlockXCnt * m_iBlockYCnt; ii++) {
-        RtsSceneBlockMap* pBlockMap = &m_blockMapArray[ii];
+        RtsSceneBlockRtb* pBlockMap = &m_blockMapArray[ii];
         if (!pBlockMap)
             continue;
         for (int jj = 0; jj < pBlockMap->m_iMapAreaCount; jj++) {
-            RtsSceneBlockMap::SArea* pAreas = pBlockMap->m_ppAreas[jj];
+            RtsSceneBlockRtb::SArea* pAreas = pBlockMap->m_ppAreas[jj];
             if (pAreas && strncmp(pAreas->szName, sAreaName, strlen(pAreas->szName)) == 0)
                 return pBlockMap;
         }
@@ -1113,7 +1113,7 @@ RtsSceneBlockMap* RtsSceneDoc::FindSceneBlockMapByAreaName(const char* sAreaName
     return NULL;
 }
 
-RtsSceneBlockMap::RtsSceneBlockMap()
+RtsSceneBlockRtb::RtsSceneBlockRtb()
     : m_pBlock(NULL), m_region_id(0), m_dwEnvironmentLighting(0), m_dwSunLighting(0),
       m_bPostProcessEffect(0), m_bPostProcessObjectHL(0), m_fPostProcessEffectContrast(0),
       m_fPostProcessEffectIntensity(0), m_fPostProcessObjectHLScale(0),
@@ -1139,25 +1139,19 @@ RtsSceneBlockMap::RtsSceneBlockMap()
     SetSunDir(0.f, 0.f);
 }
 
-RtsSceneBlockMap::~RtsSceneBlockMap() {
-    CM_MEMUNPROTECTOR(m_loadFileName)
-    CM_MEMUNPROTECTOR(m_szFileName)
-    CM_MEMUNPROTECTOR(m_szBlockName)
-    CM_MEMUNPROTECTOR(m_szBlockFlagTexture)
-    CM_MEMUNPROTECTOR(m_szBackMusic)
-    CM_MEMUNPROTECTOR2(m_szMiniMapFile, 4, 20)
-
-    /*delete m_pBlock;*/
-    //lyytodo 内存重复释放 泄露问题 暂时解决 后续观察 2024.8.13
-    if (m_state != Object_State_New)
-        Destroy();
-    //if (m_pBlock)
-    //    DEL_ONE(m_pBlock);
-    //if (m_ppAreas)
-    //    DEL_ARRAY(m_ppAreas);
+RtsSceneBlockRtb::~RtsSceneBlockRtb() {
+    //CM_MEMUNPROTECTOR(m_loadFileName)
+    //CM_MEMUNPROTECTOR(m_szFileName)
+    //CM_MEMUNPROTECTOR(m_szBlockName)
+    //CM_MEMUNPROTECTOR(m_szBlockFlagTexture)
+    //CM_MEMUNPROTECTOR(m_szBackMusic)
+    //CM_MEMUNPROTECTOR2(m_szMiniMapFile, 4, 20)
+    ////lyytodo 内存重复释放 泄露问题
+    //DEL_ONE(m_pBlock);
+    //DEL_ARRAY(m_ppAreas);
 }
 
-bool RtsSceneBlockMap::New(const char* szPath, int iOffsetX, int iOffsetY) {
+bool RtsSceneBlockRtb::New(const char* szPath, int iOffsetX, int iOffsetY) {
     CHECK(m_pBlock == NULL);
 #ifdef RT_SCENE_ONLY_LOAD_TERRAIN
     CHECKEX("Error");
@@ -1194,7 +1188,7 @@ bool RtsSceneBlockMap::New(const char* szPath, int iOffsetX, int iOffsetY) {
 #endif
 }
 
-bool RtsSceneBlockMap::Load(const char* szPath, int iOffsetX, int iOffsetY, int iCenterX,
+bool RtsSceneBlockRtb::Load(const char* szPath, int iOffsetX, int iOffsetY, int iCenterX,
                             int iCenterY) {
     CHECK(m_pBlock == NULL);
 #ifdef RT_SCENE_ONLY_LOAD_TERRAIN
@@ -1226,7 +1220,7 @@ bool RtsSceneBlockMap::Load(const char* szPath, int iOffsetX, int iOffsetY, int 
     return true;
 }
 
-bool RtsSceneBlockMap::Save(const char* szPath) {
+bool RtsSceneBlockRtb::Save(const char* szPath) {
     CHECK(m_pBlock != NULL);
 #ifdef RT_SCENE_ONLY_LOAD_TERRAIN
     return false;
@@ -1238,7 +1232,7 @@ bool RtsSceneBlockMap::Save(const char* szPath) {
 #endif
 }
 
-bool RtsSceneBlockMap::Destroy() {
+bool RtsSceneBlockRtb::Destroy() {
     SetState(Object_State_New);
     DEL_ONE(m_pBlock);
     DEL_ARRAY(m_ppAreas);
@@ -1247,7 +1241,7 @@ bool RtsSceneBlockMap::Destroy() {
     return true;
 }
 
-void RtsSceneBlockMap::SetSunDir(float inclination, float rotation) {
+void RtsSceneBlockRtb::SetSunDir(float inclination, float rotation) {
 #ifndef REGION_SERVER
     RtgMatrix16 _mat;
     RtgVertex3  _dir;
@@ -1262,7 +1256,7 @@ void RtsSceneBlockMap::SetSunDir(float inclination, float rotation) {
 #endif
 }
 
-void RtsSceneBlockMap::Serialize(DWORD dwMapVersion, RtArchive* ar) {
+void RtsSceneBlockRtb::Serialize(DWORD dwMapVersion, RtArchive* ar) {
     ar->Serialize(m_szBlockName, 20);
     ar->Serialize(m_szFileName, 20);
 
@@ -1308,12 +1302,12 @@ void RtsSceneBlockMap::Serialize(DWORD dwMapVersion, RtArchive* ar) {
     }
 }
 
-bool RtsSceneBlockMap::ActivationBlockArea(const char* sName, bool bAct) {
+bool RtsSceneBlockRtb::ActivationBlockArea(const char* sName, bool bAct) {
     if (!sName || sName[0] == 0 || !m_ppAreas)
         return false;
 
     for (int ii = 0; ii < m_iMapAreaCount; ii++) {
-        RtsSceneBlockMap::SArea* pAreas = m_ppAreas[ii];
+        RtsSceneBlockRtb::SArea* pAreas = m_ppAreas[ii];
         if (pAreas && strncmp(pAreas->szName, sName, strlen(pAreas->szName)) == 0) {
             pAreas->bActivation = bAct;
             return true;

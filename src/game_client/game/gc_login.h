@@ -228,7 +228,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
 
    public:  //Õº–Œœ‡πÿ
     void        Lyy_UpdateCameraPos();
-    void        OnRenderLoading();
+    void        OnLoginInit();
     void        OnRenderMask(RTGRenderMask mask, float fSecond);
     void        UpdateGraphConfig(const char* szName);
     static bool DetectIntersection(const int& x, const int& y, CRT_ActorInstance* actor);

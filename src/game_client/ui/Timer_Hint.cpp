@@ -22,7 +22,7 @@ CTimer_Hint::~CTimer_Hint(void)
 void CTimer_Hint::OnTimerEvent(DWORD vID)
 {
 	guard;
-	if(GetWorld()->GetHintWidget()->IsVisible() && m_eNowHintFor)
+    if (GetWorld() && GetWorld()->GetHintWidget()->IsVisible() && m_eNowHintFor)
 	{
 		switch(m_eNowHintFor)
 		{

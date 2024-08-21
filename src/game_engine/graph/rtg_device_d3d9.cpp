@@ -331,7 +331,6 @@ bool RtgDeviceD3D9::OnCreate3DDevice() {
 
     m_hRenderWnd = CD3DApplication::m_hWnd;
     m_hRenderFullWnd = CD3DApplication::m_hWndFocus;
-    ;
     m_ViewWnd[RTGVWM_WINDOWED].hWnd = m_hRenderWnd;
     m_ViewWnd[RTGVWM_TOPWINDOW].hWnd = m_hRenderWnd;
     m_ViewWnd[RTGVWM_FULLSCREEN].hWnd = m_hRenderFullWnd;

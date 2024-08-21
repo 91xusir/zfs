@@ -4,20 +4,13 @@
 #include "ui_form_textMsg.h"
 #include "ui_form_msg.h"
 #include <WinUser.h>
-
-static void Quit() {
-    PostMessage(GetDevice()->GetHWND(), WM_USER_QUIT, 0, 0);
-}
-
-void global_closeApp(void*, void*, void*) {
-    UIFormMsg* pConfirm = UIFormMsg::ShowStatic("确定退出游戏吗?", UIFormMsg::TYPE_OK_CANCEL);
-    pConfirm->EvOK += (UI_DELEGATE_F(Quit));
-}
+#include <thread>
+#include <atomic>
+#include <chrono>
 
 UILayerLogin*      g_layerLogin;
 UILayerSelectChar* g_layerSelectChar;
 UILayerMain*       g_layerMain;
-
 // UiSystem:
 CUiRenderDeviceImpl_Rt* g_pUiRenderer     = NULL;
 IUiImageFactory*        g_pUiImageFactory = NULL;
@@ -25,9 +18,41 @@ IUiFontManager*         g_pUiFont         = NULL;
 IUiSound*               g_pUiSound        = NULL;
 CClipboard*             g_pUiClipboard    = NULL;
 
+CUiLayer* g_loadingLayer = nullptr;
+
+namespace {
+static std::atomic<double> g_dLoadingValue(0.0);  // 用于线程安全地更新加载值
+
+static void UpdateLoadingBar(RtwProgressBar* pBar, double increment) {
+    const std::chrono::milliseconds updateInterval(50);  // 更新频率更高，时间间隔较短
+    while (g_dLoadingValue < 1.0) {
+        g_dLoadingValue = g_dLoadingValue + increment;  // 每次增加的值，可以根据需要调整插值速度
+        pBar->SetValue(g_dLoadingValue.load());       // 设置进度条值
+        std::this_thread::sleep_for(updateInterval);  // 控制更新频率
+    }
+    pBar->SetText("加载完成");
+    g_dLoadingValue = 1.0;
+    pBar->SetValue(g_dLoadingValue.load());
+    std::this_thread::sleep_for(updateInterval);
+    g_loadingLayer->Hide();
+}
+}  // namespace
+
+static void Quit() {
+    PostMessage(GetDevice()->GetHWND(), WM_USER_QUIT, 0, 0);
+}
+
+void global_closeApp(void*, void*, void*) {
+    if (g_dLoadingValue.load() != 1.0) {
+        Quit();
+        return;
+    }
+    UIFormMsg* pConfirm = UIFormMsg::ShowStatic("确定退出游戏吗?", UIFormMsg::TYPE_OK_CANCEL);
+    pConfirm->EvOK += (UI_DELEGATE_F(Quit));
+}
+
 void UILayer::Initialize() {
     guard;
-
     // 初始化UI
     g_pUiRenderer = RT_NEW CUiRenderDeviceImpl_Rt();
     g_pUiRenderer->Init(GetDevice());
@@ -41,71 +66,93 @@ void UILayer::Initialize() {
     g_workspace.SetSound(g_pUiSound);
     g_pUiClipboard = RT_NEW CUiClipboardImpl_Windows();
     g_workspace.SetClipboard(g_pUiClipboard);
-
-    EnterLoading();
+    EnterLoading(0.03);
     unguard;
 }
 
-void UILayer::EnterLoading() {
+//-----------------加载页面-----------------add by lyy
+
+void UILayer::EnterLoading(double increment /* = 0.01*/) {
     guard;
-    //重置UILayer
-    Reset();
+    auto iWndWidth  = GetDevice()->m_iWndWidth;
+    auto iWndHeight = GetDevice()->m_iWndHeight;
 
-    int   iIndex  = rtRandom() % 4;
-    float fScale  = GetDevice()->m_iWndWidth / 1024.0f;
-    float fHScale = GetDevice()->m_iWndHeight / 768.0f;
+    if (!g_loadingLayer) {
+        // 创建进度条及背景图像
+        RtwImage* progress_bk =
+            g_workspace.getImageFactory()->createImage("ui/loading_bg/progress_bk.dds");
+        RtwImage* progress_fk =
+            g_workspace.getImageFactory()->createImage("ui/loading_bg/progress_fk.dds");
+        progress_bk->SetBlend(true);
+        progress_fk->SetBlend(true);
+        progress_fk->SetSourceRect(RtwRect(113, 43, 1128, 54));
+        RtwProgressBar* pBar = static_cast<RtwProgressBar*>(
+            g_workspace.getWidgetFactory()->createWidget(wtProgressBar, "ldBar"));
+        RtwLabel* pBarBG = static_cast<RtwLabel*>(
+            g_workspace.getWidgetFactory()->createWidget(wtLabel, "ldBarBG"));
+        pBarBG->SetBackgroundImage(progress_bk);
+        pBar->SetBarImage(progress_fk);
+        pBarBG->MoveResize(0, iWndHeight - 100, iWndWidth, iWndHeight);
+        pBar->MoveResize(85, iWndHeight - 60, 950, iWndHeight - 35);
 
-    float fWidth  = 256 * fScale;
-    float fHeight = 256 * fHScale;
+        DROP_RTUI_OBJECT(progress_bk);
+        DROP_RTUI_OBJECT(progress_fk);
+        RtwForm* bgFrom =
+            (RtwForm*)g_workspace.getWidgetFactory()->createWidget(wtForm, "LdBGForm");
+        bgFrom->MoveResize(0, 0, iWndWidth, iWndHeight);
+        g_loadingLayer =
+            (CUiLayer*)g_workspace.getWidgetFactory()->createWidget(wtLayer, "ldLayer");
+        g_workspace.AddLayer(g_loadingLayer, false);
 
-    static string s_LoadingFiles1[] = {
-        "ui/ui_texture/loading/1",  "ui/ui_texture/loading/2",  "ui/ui_texture/loading/3",
-        "ui/ui_texture/loading/4",  "ui/ui_texture/loading/5",  "ui/ui_texture/loading/6",
-        "ui/ui_texture/loading/7",  "ui/ui_texture/loading/8",  "ui/ui_texture/loading/9",
-        "ui/ui_texture/loading/10", "ui/ui_texture/loading/11", "ui/ui_texture/loading/12"};
-    static string s_LoadingFiles2[] = {
-        "ui/ui_texture/loading/b01", "ui/ui_texture/loading/b02", "ui/ui_texture/loading/b03",
-        "ui/ui_texture/loading/b04", "ui/ui_texture/loading/b05", "ui/ui_texture/loading/b06",
-        "ui/ui_texture/loading/b07", "ui/ui_texture/loading/b08", "ui/ui_texture/loading/b09",
-        "ui/ui_texture/loading/b10", "ui/ui_texture/loading/b11", "ui/ui_texture/loading/b12"};
-    static string s_LoadingFiles3[] = {
-        "ui/ui_texture/loading/g01", "ui/ui_texture/loading/g02", "ui/ui_texture/loading/g03",
-        "ui/ui_texture/loading/g04", "ui/ui_texture/loading/g05", "ui/ui_texture/loading/g06",
-        "ui/ui_texture/loading/g07", "ui/ui_texture/loading/g08", "ui/ui_texture/loading/g09",
-        "ui/ui_texture/loading/g10", "ui/ui_texture/loading/g11", "ui/ui_texture/loading/g12"};
-    static string s_LoadingFiles4[] = {
-        "ui/ui_texture/loading/y01", "ui/ui_texture/loading/y02", "ui/ui_texture/loading/y03",
-        "ui/ui_texture/loading/y04", "ui/ui_texture/loading/y05", "ui/ui_texture/loading/y06",
-        "ui/ui_texture/loading/y07", "ui/ui_texture/loading/y08", "ui/ui_texture/loading/y09",
-        "ui/ui_texture/loading/y10", "ui/ui_texture/loading/y11", "ui/ui_texture/loading/y12"};
-
-    static string* s_LoadingFiles[] = {s_LoadingFiles1, s_LoadingFiles2, s_LoadingFiles3,
-                                       s_LoadingFiles4};
-    string*        arrFiles         = s_LoadingFiles[iIndex];
-
-    // 初始化图片序列
-    vector<SequenceImageItem> arrImages;
-    for (int i = 0; i < 12; ++i) {
-        float             x = (i % 4) * 256 * fScale;
-        float             y = (i / 4) * 256 * fHScale;
-        SequenceImageItem image(arrFiles[i].c_str(), x, y, fWidth, fHeight);
-        arrImages.push_back(image);
+        bgFrom->AddChild(pBarBG);
+        bgFrom->AddChild(pBar);
+        bgFrom->SetMovable(false);
+        g_loadingLayer->AddChild(bgFrom);
     }
 
-    g_LoadingMapRenderer.SetImages(arrImages);
-    g_LoadingMapRenderer.SetRenderFlag(true);
+    int   pcCount = 1;
+    RtIni lodeIni;
+    if (lodeIni.OpenFile("ui/loading_bg/loading.ini")) {
+        lodeIni.CloseFile();
+        lodeIni.GetEntry("main", "pc_count", &pcCount);
+    }
+    std::srand(std::time(0));
+    int iIndex = std::rand() % pcCount + 1;
 
+    std::string pcName = "ui/loading_bg/r/" + std::to_string(iIndex) + ".tga";
+    RtwImage*   pImage = g_workspace.getImageFactory()->createImage(pcName);
+    pImage->SetBlend(true);
 
+    RtwWidget* bgFrom = nullptr;
+    g_workspace.FindWidget("ldLayer.LdBGForm", &bgFrom);
+    if (bgFrom) {
+        ((RtwForm*)bgFrom)->SetBackgroundImage(pImage);
+    }
+    DROP_RTUI_OBJECT(pImage);
+
+    RtwWidget* pBar = nullptr;
+    g_dLoadingValue = 0.0;
+    g_workspace.FindWidget("ldLayer.LdBGForm.ldBar", &pBar);
+    if (pBar) {
+        ((RtwProgressBar*)pBar)->SetValue(0.0);
+        ((RtwProgressBar*)pBar)->SetText("正在加载中...");
+    }
+
+    std::thread loadingThread(UpdateLoadingBar, (RtwProgressBar*)pBar, increment);
+    loadingThread.detach();
+
+    g_loadingLayer->Show();
 
     unguard;
 }
+
+void UILayer::LeaveLoading() {}
 
 void UILayer::EnterLogin() {
     guard;
     Reset();
     g_layerLogin = RT_NEW UILayerLogin;
     g_workspace.AdjustLayer(GetDevice()->m_iWndWidth, GetDevice()->m_iWndHeight);
-    LeaveLoading();
     unguard;
 }
 
@@ -115,24 +162,20 @@ void UILayer::EnterSelectChar() {
     Reset();
     g_layerSelectChar = RT_NEW UILayerSelectChar;
     g_workspace.AdjustLayer(GetDevice()->m_iWndWidth, GetDevice()->m_iWndHeight);
-    LeaveLoading();
     unguard;
 }
 
 void UILayer::EnterMain() {
     guard;
-
     Reset();
-
     g_layerMain = RT_NEW UILayerMain;
-
     g_workspace.AdjustLayer(GetDevice()->m_iWndWidth, GetDevice()->m_iWndHeight);
-
     unguard;
 }
 
 void UILayer::Clear() {
     Reset();
+    DROP_RTUI_OBJECT(g_loadingLayer);
     //g_workspace.Destroy();
 
     //   SafeDelete(g_pUiRenderer);
@@ -175,10 +218,4 @@ void UILayer::OnSetCursor(void*, void*) {
         GameSetCursor();
 
     unguard;
-}
-
-void UILayer::LeaveLoading() {
-    g_LoadingMapRenderer.SetRenderFlag(false);
-    if (g_workspace.GetLayer(2))
-        g_workspace.CloseLayer(2);
 }

@@ -58,6 +58,9 @@ UILayerLogin::UILayerLogin() {
     //退出按钮
     LOAD_UI("btnExit")->EvLClick.ClearAndSetDelegate(UI_DELEGATE_F(global_closeApp));
 
+    //版本
+    LOAD_UI("banquan.lbversion")->SetText(GetGameVersion());
+
     //lyymark 2.GcLogin.XML 加载服务器列表UI
     mp_layerServer = RT_NEW UILayerServer;
 }

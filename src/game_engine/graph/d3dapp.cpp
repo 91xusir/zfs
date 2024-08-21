@@ -186,8 +186,8 @@ HRESULT CD3DApplication::Create(HINSTANCE hInstance) {
         RegisterClassEx(&wndClass);
 
         // 设置窗口样式 //alter by tim.yang  20080725  login对话框会缩小
-        m_dwWindowStyle = WS_OVERLAPPED | WS_CAPTION | WS_MINIMIZEBOX |
-                          WS_SYSMENU /*| WS_THICKFRAME */ | WS_VISIBLE;
+        m_dwWindowStyle = WS_OVERLAPPED | WS_CAPTION | WS_MINIMIZEBOX | WS_EX_LAYERED |
+                          WS_SYSMENU | WS_THICKFRAME;
 
         // 设置窗口大小
         /*	RECT rc;
@@ -535,7 +535,7 @@ LRESULT CD3DApplication::MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lPa
             break;
         case WM_KEYDOWN:
         case WM_SYSKEYDOWN:
-            bAltDown = ((lParam & (1 << 29)));
+            bAltDown                                    = ((lParam & (1 << 29)));
             m_pAppFrame->m_bKeys[(BYTE)(wParam & 0xFF)] = true;
             if (m_pAppFrame->GetEnableConsole()) {
                 if (wParam == VK_OEM_3 && m_pAppFrame->m_bKeys[VK_CONTROL]) {
@@ -1000,7 +1000,7 @@ HRESULT CD3DApplication::Initialize3DEnvironment() {
         if (m_bWindowed) {
             SetWindowPos(m_hWnd, HWND_NOTOPMOST, m_rcWindowBounds.left, m_rcWindowBounds.top,
                          (m_rcWindowBounds.right - m_rcWindowBounds.left),
-                         (m_rcWindowBounds.bottom - m_rcWindowBounds.top), SWP_SHOWWINDOW);
+                         (m_rcWindowBounds.bottom - m_rcWindowBounds.top), SWP_HIDEWINDOW);
         }
 
         // Store device Caps
