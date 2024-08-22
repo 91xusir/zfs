@@ -15,7 +15,7 @@
 #include <type_traits>
 #include <gc_frame.h>
 #include "PreConsole.h"
-
+#include <nlohmann/json.hpp>
 /*
 lyy  2024 8.1-8.4  重构 添加注释  删除约1500行垃圾代码
 */
@@ -24,7 +24,7 @@ std::string GcLogin::m_szAccountUsername = "";  //账户名
 std::string GcLogin::m_szAccountPassword = "";  //密码
 
 GcLogin::GcLogin(CGameClientFrame* pGameClientFrame) : m_ini(true) {
-    m_pGameClientFrame = pGameClientFrame; 
+    m_pGameClientFrame = pGameClientFrame;
 }
 
 GcLogin::~GcLogin() {}
@@ -338,11 +338,11 @@ void GcLogin::EnterLoading() {
 
 bool GcLogin::LeaveLoading() {
     guard;
-      // 打开背景音乐
-      const char* szMusicFileName = GetGameIni()->GetEntry("Audio", "LoginMusic");
-      if (szMusicFileName && g_pMusicThread) {
-          g_pMusicThread->Play(szMusicFileName, true);
-      }
+    // 打开背景音乐
+    const char* szMusicFileName = GetGameIni()->GetEntry("Audio", "LoginMusic");
+    if (szMusicFileName && g_pMusicThread) {
+        g_pMusicThread->Play(szMusicFileName, true);
+    }
     UILayer::LeaveLoading();
     return true;
     unguard;
@@ -365,23 +365,64 @@ bool GcLogin::LeaveSelectGameWorldServer() const {
 }
 
 void GcLogin::ReadAccountFromFile() {
-    RtIni config;  // 创建 先试用新配置类 对象
-    if (config.OpenFile(R(INI_USER))) {
-        const bool isSave = (bool)config["account"]["save"];
-        g_layerLogin->mp_ckSaveAcc->SetChecked(isSave);
-        if (isSave) {
-            m_szAccountUsername = (std::string)config["login"]["username"];
-            m_szAccountPassword = (std::string)config["login"]["password"];
-        }
-    }
+    LoadAccountConfig();
+    m_szAccountUsername = m_accountConfig.szAccount;
+    m_szAccountPassword = m_accountConfig.szPassword;
+    g_layerLogin->mp_ckSaveAcc->SetChecked(m_accountConfig.bSaveAccount);
+
     g_layerLogin->mp_txtAccout->Enable();
     g_layerLogin->mp_txtPwd->Enable();
+
+    if (!m_accountConfig.bSaveAccount)
+        return;
+
     g_layerLogin->mp_txtAccout->SetText(m_szAccountUsername);
     g_layerLogin->mp_txtPwd->SetText(m_szAccountPassword);
     if (m_szAccountUsername.empty()) {
         g_layerLogin->mp_txtAccout->SetFocus();
     } else {
         g_layerLogin->mp_txtPwd->SetFocus();
+    }
+}
+
+void GcLogin::SaveAccountConfig() {
+    nlohmann::json j;
+    j["bsave"]             = m_accountConfig.bSaveAccount;
+    j["account"]           = m_accountConfig.szAccount;
+    j["password"]          = m_accountConfig.szPassword;
+    std::string jsonString = j.dump();
+    for (char& c : jsonString) {
+        c ^= 'zfs';
+    }
+    std::filesystem::path dirPath("user_setting");
+    std::filesystem::path filePath = dirPath / "config.dat";
+    if (!std::filesystem::exists(dirPath)) {
+        std::filesystem::create_directories(dirPath);
+    }
+    std::ofstream file(filePath, std::ios::binary);
+    if (file) {
+        file.write(jsonString.c_str(), jsonString.size());
+    } else {
+        P_LOGWARN("Failed to open file for SaveAccountConfig");
+    }
+}
+
+void GcLogin::LoadAccountConfig() {
+    std::filesystem::path dirPath("user_setting");
+    std::filesystem::path filePath = dirPath / "config.dat";
+    std::ifstream         file(filePath, std::ios::binary);
+    if (file) {
+        std::string jsonString((std::istreambuf_iterator<char>(file)),
+                               std::istreambuf_iterator<char>());
+        for (char& c : jsonString) {
+            c ^= 'zfs';
+        }
+        nlohmann::json j             = nlohmann::json::parse(jsonString);
+        m_accountConfig.bSaveAccount = j["bsave"].get<bool>();
+        m_accountConfig.szAccount    = j["account"].get<std::string>();
+        m_accountConfig.szPassword   = j["password"].get<std::string>();
+    } else {
+        P_LOGWARN("Failed to open file for LoadAccountConfig");
     }
 }
 
@@ -975,7 +1016,7 @@ void GcLogin::OnRun(float fSecond) {
         }
     }
     if (m_eCurrentStatus == GLS_SELECT_GAMEWORLD_SERVER) {  //判断网络
-        OnGuideNetProcess(fSecond);  // 向导的网络
+        OnGuideNetProcess(fSecond);                         // 向导的网络
     } else {
         this->Process();  // 登陆的网络
     }
@@ -1660,8 +1701,9 @@ void GcLogin::OnUIUpdateGameWorldServerList() const {
                 szEvaluation = "满员";
                 break;
         }
-        g_layerLogin->mp_layerServer->OnInsertNewServer(tempConunt, szName, gwServer.ping,
-                                                        szEvaluation);
+        if (g_layerLogin)
+            g_layerLogin->mp_layerServer->OnInsertNewServer(tempConunt, szName, gwServer.ping,
+                                                            szEvaluation);
         tempConunt++;
     }
     unguard;

@@ -1581,7 +1581,7 @@ void CChat::SaveChatSet()
 	FILE* file;
 	int mask;
 	char name[100];
-	rt2_snprintf(name,99,"usersetting\\%s.chatset",GetPlayer()->m_core.Name.c_str());
+	rt2_snprintf(name,99,"user_setting\\%s.chatset",GetPlayer()->m_core.Name.c_str());
 	file = fopen( name, "wb+" );
 
 	for (int index = 0; index < MAX_CHANNEL_CHATBOX; index++)
@@ -1603,7 +1603,7 @@ void CChat::LoadChatSet()
 	FILE* file;
 	int mask;
 	char name[100];
-	rt2_snprintf(name,99,"usersetting\\%s.chatset",GetPlayer()->m_core.Name.c_str());
+	rt2_snprintf(name,99,"user_setting\\%s.chatset",GetPlayer()->m_core.Name.c_str());
 	file = fopen( name, "rb+" );
 	if(!file)
 		return;

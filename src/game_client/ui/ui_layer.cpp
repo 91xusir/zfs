@@ -24,8 +24,11 @@ namespace {
 static std::atomic<double> g_dLoadingValue(0.0);  // 用于线程安全地更新加载值
 
 static void UpdateLoadingBar(RtwProgressBar* pBar, double increment) {
+
     const std::chrono::milliseconds updateInterval(50);  // 更新频率更高，时间间隔较短
     while (g_dLoadingValue < 1.0) {
+        if (!pBar || !g_loadingLayer)
+            return;
         g_dLoadingValue = g_dLoadingValue + increment;  // 每次增加的值，可以根据需要调整插值速度
         pBar->SetValue(g_dLoadingValue.load());       // 设置进度条值
         std::this_thread::sleep_for(updateInterval);  // 控制更新频率
@@ -34,6 +37,7 @@ static void UpdateLoadingBar(RtwProgressBar* pBar, double increment) {
     g_dLoadingValue = 1.0;
     pBar->SetValue(g_dLoadingValue.load());
     std::this_thread::sleep_for(updateInterval);
+
     g_loadingLayer->Hide();
 }
 }  // namespace
@@ -119,7 +123,7 @@ void UILayer::EnterLoading(double increment /* = 0.01*/) {
     std::srand(std::time(0));
     int iIndex = std::rand() % pcCount + 1;
 
-    std::string pcName = "ui/loading_bg/r/" + std::to_string(iIndex) + ".tga";
+    std::string pcName = "ui/loading_bg/r/" + std::to_string(iIndex) + ".jpg";
     RtwImage*   pImage = g_workspace.getImageFactory()->createImage(pcName);
     pImage->SetBlend(true);
 
