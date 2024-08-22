@@ -1,0 +1,18 @@
+Memory leak:
+MUID=1815, size=320, File='D:\workspace\zfs\src\game_client\frame\gc_main.cpp':355
+MUID=1396, size=1120, File='D:\workspace\zfs\src\shared\rt1tort2.cpp':7
+MUID=1395, size=2144, File='D:\workspace\zfs\src\shared\rt1tort2.cpp':6
+MUID=112, size=100, File='':0
+MUID=111, size=100, File='':0
+MUID=110, size=100, File='':0
+MUID=109, size=100, File='':0
+MUID=108, size=100, File='':0
+MUID=107, size=100, File='':0
+MUID=106, size=100, File='':0
+MUID=105, size=100, File='':0
+MUID=104, size=100, File='':0
+MUID=103, size=100, File='':0
+MUID=102, size=100, File='':0
+MUID=101, size=100, File='':0
+MUID=100, size=100, File='':0
+MUID=99, size=100, File='':0

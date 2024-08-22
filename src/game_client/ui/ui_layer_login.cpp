@@ -116,20 +116,11 @@ void UILayerLogin::OnClicked_Login(void*, void*) {
 
     // 执行登录
     GetLogin()->Login(username, password);
-
-    // 保存帐号
-    RtIni iniUser;
-    if (iniUser.OpenFile(R(INI_USER), true)) {
-        if (mp_ckSaveAcc->GetChecked()) {
-            if (!iniUser.FindSection("login")) {
-                iniUser.AddSection("login");
-            }
-            iniUser["login"]["username"] = username.c_str();
-        } else {
-            iniUser.DelEntry("login", "username");
-        }
-        iniUser.CloseFile();
-    }
+    // 保存帐号信息
+    GetLogin()->m_accountConfig.bSaveAccount = mp_ckSaveAcc->GetChecked();
+    GetLogin()->m_accountConfig.szAccount    = username;
+    GetLogin()->m_accountConfig.szPassword   = password;
+    GetLogin()->SaveAccountConfig();
 }
 
 //强制登录按钮的响应事件

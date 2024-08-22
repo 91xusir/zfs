@@ -6,6 +6,7 @@
 #include <minwindef.h>
 
 // -------------------------全局变量------------------------------
+
 extern RtScene*      g_pScene;                // 全局场景指针
 static CRtgAppFrame* g_pGameClientFrame = 0;  // 游戏客户端框架指针
 static RtIni* g_iniConfig;  // 配置文件指针，指向 "game.ini"，此指针不会被删除
@@ -15,9 +16,8 @@ bool g_bLogEnable = false;  // release模式模式下cmd读取命令判断是否开启log，在这
 GcTimer*        g_pTimer       = 0;  // 计时器指针
 CSceneMusicApp* g_pMusicThread = 0;  // 音乐线程指针
 
-G_MEMDEF(g_szGuideServerHostIP, 40) // 向导服务器IP
-static int g_iGuideServerHostPort = 6620; 
-
+G_MEMDEF(g_szGuideServerHostIP, 40)  // 向导服务器IP
+static int g_iGuideServerHostPort = 6620;
 
 //-------------------------全局函数------------------------------
 //自动调整大小
@@ -63,7 +63,7 @@ RtgDeviceD3D9* GetDevice() {
 GcTimer* GetTimer() {
     if (g_pTimer == NULL)
         g_pTimer = RT_NEW GcTimer();
-    return g_pTimer;                 
+    return g_pTimer;
 }
 
 CRtgAppFrame* GetApp() {
@@ -181,9 +181,9 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
 
     auto start         = std::chrono::high_resolution_clock::now();
     auto printDuration = [start]() {
-        auto end = std::chrono::high_resolution_clock::now(); 
-        std::chrono::duration<double> duration = end - start; 
-        std::cout << "加载用时: " << duration.count() << " 秒" << std::endl; 
+        auto                          end      = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> duration = end - start;
+        std::cout << "加载用时: " << duration.count() << " 秒" << std::endl;
     };
 
     ParseCommandLine(std::string(lpCmdLine));  //解析命令行
@@ -214,10 +214,14 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
     // ------------------包管理和文件系统初始化---------------
     {
         CRtPackManager* pPackManager = RT_NEW CRtPackManager;
-        pPackManager->OpenPack("game_client.pak", false);
+        pPackManager->OpenPack("game_data/game_data01.pak", false);
+        pPackManager->OpenPack("game_data/game_data02.pak", false);
+        pPackManager->OpenPack("game_data/game_data03.pak", false);
+        pPackManager->OpenPack("game_data/game_data04.pak", false);
         CRtPackAndAnsiManager* pAllManager =
             RT_NEW             CRtPackAndAnsiManager(pPackManager, &RtCoreFile());
         RtCore::Instance().pFileManager = pAllManager;
+        //RtCore::Instance().pFileManager = pPackManager;
     }
     // -------------------配置文件加载------------------------
     rt_graph::RtgDevice::SUserConfig m_userConfig;
@@ -392,7 +396,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         }
 
         // 应用程序框架初始化
-       /* if (!g_pGameClientFrame->Init(GetDevice())) {
+        /* if (!g_pGameClientFrame->Init(GetDevice())) {
             ShowMessage(R(MSG_CANNOTINIT_GAME));
             return FALSE;
         }*/
@@ -416,7 +420,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
         }
         g_pBackMusic->SetMusicPath("music");
         g_pSoundMgr->SetAudioPath("audio");
-  
+
         // 人物系统初始化
         if (!ActorInit()) {
             CHECKEX(R(MSG_CANNOTINIT_ACTOR));
@@ -482,8 +486,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLi
             g_pSoundMgr->SetWholeVolume(0.f);
         g_pSoundMgr->SetUse3dAudio(lUse3DAudio != 0);
     }
-
-  
 
     {
         //设置场景为登录

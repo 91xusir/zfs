@@ -240,6 +240,7 @@ public:
     }
 
     RtArchive* CreateFileReader(const char* pFilename, DWORD dwFlags) {
+        std::cout << "CreateFileReaderByAnsi: " << pFilename << std::endl;
         // 检查文件名是否为 "stdin"，如果是，则创建一个 RtArchiveFileReader 对象读取标准输入
         if (stricmp(pFilename, "stdin") == 0) {
             // 创建 RtArchiveFileReader 对象读取标准输入，设置缓冲区大小为 1024
