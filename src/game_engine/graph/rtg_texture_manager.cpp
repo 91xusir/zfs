@@ -199,6 +199,7 @@ bool RtgTextureManager::GetTextFilePath(char textPath[], const char textName[]) 
     return false;
 }
 
+
 UINT RtgTextureManager::QueryFreeTextMemory() {
     return m_pDevice->GetAvailableTextureMem();
 }
@@ -990,24 +991,8 @@ void RtgTextureManager::CheckMipLevels(RtgTextItem* texItem) {
     if (texItem->mipLevels == 0 || texItem->mipLevels == D3DX_DEFAULT) {
         D3DXIMAGE_INFO info;
         if (texItem->textSrc == Text_Src_File) {
-            /* if (D3D_OK != D3DXGetImageInfoFromFile(texItem->fileName, &info))
-                return;*/
-            RtArchive* ar = RtCoreFile().CreateFileReader(texItem->fileName, 0);
-            if (!ar) {
+            if (D3D_OK != D3DXGetImageInfoFromFile(texItem->fileName, &info))
                 return;
-            }
-            // 读取文件数据
-            texItem->dataSize = ar->TotalSize();
-            char* pData       = RT_NEW char[texItem->dataSize];
-            ar->Serialize(pData, texItem->dataSize);
-            ar->Close();
-            DEL_ONE(ar);
-            // 使用 D3DXGetImageInfoFromFileInMemory 读取图像信息
-            if (D3D_OK != D3DXGetImageInfoFromFileInMemory(pData, texItem->dataSize, &info)) {
-                DEL_ARRAY(pData);
-                return;
-            }
-            DEL_ARRAY(pData);
         } else if (texItem->textSrc == Text_Src_File_Memery) {
             if (D3D_OK !=
                 D3DXGetImageInfoFromFileInMemory(texItem->pData, texItem->dataSize, &info))

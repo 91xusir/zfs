@@ -26,17 +26,17 @@ std::mutex    preConsole::mutex;
 std::ofstream preConsole::logFile;
 
 std::unordered_map<std::string, std::function<void()>> preConsole::commandMap = {
-    {"1",
+    {"fps",
      []() {
-         RtGetRender()->ChangeDrawPref();//fps
+         RtGetRender()->ChangeDrawPref();
      }},
-    {"2",
+    {"uiname",
      []() {
-         ui::RtwWidget::ChangeDrawUIName();//uiname
+         ui::RtwWidget::ChangeDrawUIName();
      }},
-    {"3",
+    {"mousexy",
      []() {
-         CGameClientFrame::ChangeDrawMouseXY();//mousexy
+         CGameClientFrame::ChangeDrawMouseXY();
      }},
 };
 

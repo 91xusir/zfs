@@ -2044,12 +2044,12 @@ void UILayerMain::SaveShortcut() {
     char name[100];
     //ldr123
     //目录不存在会崩
-    if (_access("user_setting", 0) != 0) {
-        CreateDirectory("user_setting", NULL);
+    if (_access("usersetting", 0) != 0) {
+        CreateDirectory("usersetting", NULL);
     }
     //end
 
-    rt2_sprintf(name, "user_setting\\%s.dat", GetPlayer()->m_core.Name.c_str());
+    rt2_sprintf(name, "usersetting\\%s.dat", GetPlayer()->m_core.Name.c_str());
     file = fopen(name, "wb+");
     num  = UI_HOT_KEY_COUNT;
     fwrite(&num, 1, sizeof(int), file);
@@ -2140,7 +2140,7 @@ void UILayerMain::LoadShortcut(CG_CmdPacket* pPacket) {
     char       name[100];
     RtwButton* button      = NULL;
     char       loadStr[30] = {0};
-    rt2_sprintf(name, "user_setting\\%s.dat", GetPlayer()->m_core.Name.c_str());
+    rt2_sprintf(name, "usersetting\\%s.dat", GetPlayer()->m_core.Name.c_str());
     file = fopen(name, "rb+");
     if (!file) {
         //add by yz

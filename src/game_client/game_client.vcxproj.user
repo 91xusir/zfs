@@ -11,6 +11,5 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
     <LocalDebuggerWorkingDirectory>$(TargetDir)</LocalDebuggerWorkingDirectory>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>tooth.updaterun;124.248.69.104;6620</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>

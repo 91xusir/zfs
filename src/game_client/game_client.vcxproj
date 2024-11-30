@@ -1088,7 +1088,7 @@
     <ResourceCompile Include="frame\game_client.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="frame\zfs.ico" />
+    <Image Include="frame\icon_main.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -12,7 +12,6 @@
 #include <region_client.h>
 #include <cstdint>
 #include <graph/rtg_vertex.h>
-
 /*
 lyy 2024.8.4 重构
 */
@@ -85,9 +84,7 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     virtual void OnMouseMove(int iButton, int x, int y, int increaseX, int increaseY);
     virtual void OnMouseWheel(int iButton, long vDelta);
     virtual void OnMouseLDown(int iButton, int x, int y);
-
     virtual void OnMouseUp(int iButton, int x, int y) {}
-
     virtual void OnMouseLDClick(int iButton, int x, int y);
     virtual void OnMouseRDown(int iButton, int x, int y);
     virtual void OnMouseRDrag(int iButton, int x, int y, int increaseX, int increaseY);
@@ -123,7 +120,6 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
 
     //是否保存帐号
     inline void SetSaveAccount(bool bSave) { bSaveAccount = bSave; }
-
     inline bool GetSaveAccount() const { return bSaveAccount; }
 
     // 人物角色左旋 废弃
@@ -179,9 +175,6 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     static int GetPing(char* zIP);
     // 更新游戏世界服务器列表的 UI 的函数
     void OnUIUpdateGameWorldServerList() const;
-
-    void SaveAccountConfig();//保存帐号
-    void LoadAccountConfig();
 
     // 游戏世界服务器列表结构体
     //lyymark 注意 如果使用c++标准库的vector容器的话
@@ -245,12 +238,11 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     virtual void       OnPoseEnd(SRT_Pose* pose);
     virtual void       OnPoseEvent(SRT_Pose* pose, SRT_PoseEvent* event);
     virtual void       OnPoseBreak(SRT_Pose* oldPose, SRT_Pose* newPose);
-
    private:
-    EStatus           m_eCurrentStatus     = GLS_NONE;  //当前状态
-    bool              m_bLoading           = false;     //判断是否初始化加载login.ini文件
-    CGameClientFrame* m_pGameClientFrame   = nullptr;   //游戏客户端指针
-    bool              m_bSelCharNetSucceed = false;     //判断选角服务器响应是否成功
+    EStatus           m_eCurrentStatus = GLS_NONE;   //当前状态
+    bool              m_bLoading = false;            //判断是否初始化加载login.ini文件
+    CGameClientFrame* m_pGameClientFrame = nullptr;  //游戏客户端指针
+    bool              m_bSelCharNetSucceed = false;  //判断选角服务器响应是否成功
     bool m_bCanInput = false;  //是否允许鼠标键盘输入 这里不包括输入框UI类 只是当前类
     //环境光特效之类的
     bool         m_bLight2;
@@ -258,48 +250,41 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
     RtgLightItem m_lightDirect2;
     long         m_lSkyFog;
     //ini文件读取
-    RtIni m_ini;
+    RtIni        m_ini;                             
     //网络相关
-    std::string m_szGameWorldServerName;               // 当前选择的游戏世界服务器
-    std::string m_szGameWorldServerIP;                 //IP
-    long        m_lGameWorldServerPort;                //端口
+    std::string  m_szGameWorldServerName;              // 当前选择的游戏世界服务器
+    std::string  m_szGameWorldServerIP;                //IP
+    long         m_lGameWorldServerPort;               //端口
     std::vector<CRT_ActorInstance*> m_creatActorList;  // 创人界面人物
     std::vector<short> m_selectUserCharIds;  // 可选的人物，这里保存数据表里的唯一id
-
+  
     //创建角色界面的人物装备模型
-    CRT_ActorInstance* m_pBody       = nullptr;
-    CRT_ActorInstance* m_pZsDao      = nullptr;  //战士武器1
-    CRT_ActorInstance* m_pZsDao2     = nullptr;  //战士武器2
-    CRT_ActorInstance* m_pSsJian     = nullptr;  //术士武器
+    CRT_ActorInstance* m_pBody = nullptr;
+    CRT_ActorInstance* m_pZsDao = nullptr;       //战士武器1
+    CRT_ActorInstance* m_pZsDao2 = nullptr;      //战士武器2
+    CRT_ActorInstance* m_pSsJian = nullptr;      //术士武器
     CRT_ActorInstance* m_pSsJianPath = nullptr;  //术士武器轨迹
-    CRT_ActorInstance* m_pMmGong     = nullptr;  //MM武器
-    CRT_ActorInstance* m_pDsLun      = nullptr;  //道士武器
-    CRT_ActorInstance* m_pDsLunPath  = nullptr;  //道士武器//iw0401huan_04  waiting_l1
+    CRT_ActorInstance* m_pMmGong = nullptr;      //MM武器
+    CRT_ActorInstance* m_pDsLun = nullptr;       //道士武器
+    CRT_ActorInstance* m_pDsLunPath = nullptr;   //道士武器//iw0401huan_04  waiting_l1
     //login.ini 场景动画物件加载保存在这里
-    std::unordered_map<std::string, CRT_ActorInstance*> m_mapLogin      = {};  //登入
+    std::unordered_map<std::string, CRT_ActorInstance*> m_mapLogin = {};       //登入
     std::unordered_map<std::string, CRT_ActorInstance*> m_mapSelectChar = {};  //选人
     std::unordered_map<std::string, CRT_ActorInstance*> m_mapCreateChar = {};  //创人
     //用于存入上面的场景 做替换
     std::unordered_map<std::string, CRT_ActorInstance*> m_mapActor = {};
 
-    std::string m_strCharPassword  = "";     //角色密码 无用但保留
-    long        m_iLastServer      = -1;     //记录上一个选中的服务器
+    std::string m_strCharPassword = "";    //角色密码 无用但保留
+    long        m_iLastServer = -1;          //记录上一个选中的服务器
     bool        bSelectUserWithPwd = false;  //密码登入游戏
     int         m_nDisconnectCause = 0;      //网络断开原因
-    bool        bSaveAccount       = false;  //是否保存账号
-
+    bool        bSaveAccount = false;        //是否保存账号
    public:
-    struct AccountConfig {
-        bool        bSaveAccount = false;
-        std::string szAccount    = "";
-        std::string szPassword   = "";
-    } m_accountConfig;
-
     //直接public了 原则上要封装 实际懒得  add by lyy
     //-------------------角色选择--------------------
-    std::unordered_map<uint32_t, int>      m_selRole_IDMapIndex   = {};
+    std::unordered_map<uint32_t, int>      m_selRole_IDMapIndex = {};
     std::unordered_map<uint32_t, GcActor*> m_selRole_IDMapGcActor = {};
-    int                                    m_curSelRoleIndex      = -1;
+    int                                    m_curSelRoleIndex = -1;
 
     //-------------------角色创建---------------------
     enum Faction { None = FACTION_UNKNOWN, Shang = FACTION_SHANG, Zhou = FACTION_ZHOU };
@@ -323,13 +308,13 @@ class GcLogin : public GcUserInput, public GcLoginSession, public CRT_PoseNotify
 
     int m_selectFaction = None;  //阵营  None代表没选  用于判断二阶段返回
 
-    std::unordered_map<int, CRT_ActorInstance*> m_crtRole_csvIdMapActIns = {};  //模型
-    std::unordered_map<int, vector<SHeadModel>> m_crtRole_csvIdMapHeads  = {};  //头
-    int                                         headIndex                = 0;   //头模型索引
+    std::unordered_map<int, CRT_ActorInstance*> m_crtRole_csvIdMapActIns = {};//模型
+    std::unordered_map<int, vector<SHeadModel>> m_crtRole_csvIdMapHeads = {};//头
+    int                                         headIndex = 0;  //头模型索引
 
-    int m_curCrtRoleCsvID = -1;  //模型表ID，注意不是模型ID
+    int              m_curCrtRoleCsvID = -1;                    //模型表ID，注意不是模型ID
     //人物创建页面托盘排序 这个不要动 写了好久才写好
-    std::vector<int> actSoltInTray = {3, 2, 1};
+    std::vector<int> actSoltInTray = {3, 2, 1};                 
 
    public:
     //由于模型骨骼矩阵是 4x3 矩阵（RtgMatrix12）,而相机矩阵是 4x4 矩阵（RtgMatrix16），需要一个转换函数

@@ -1919,7 +1919,7 @@ const char* WeaponPoseName[] = {
     "h",  // 4 À´ª∑
     "l",  // 5 ∑…¬÷
     "j",  // 6 Ω£
-    "wand",  // 7 ∂Ã’»
+    "z",  // 7 ∂Ã’»
     "q",  // 8 ∑®«Ú
 };
 
@@ -1974,11 +1974,8 @@ char* GcBaseActor::GetPoseByWeapon(EPoses Pose, SItemID& item) {
             weapon = WeaponPoseName[5];
         else if (ItemIsWeapon_Sword(item))
             weapon = WeaponPoseName[6];
-        else if (ItemIsWeapon_Wand(item)) {
-            if (Pose == POSE_WALK)
-                basic = "walk_";
+        else if (ItemIsWeapon_Wand(item))
             weapon = WeaponPoseName[7];
-        }
         else if (ItemIsWeapon_Ball(item))
             weapon = WeaponPoseName[8];
         else
@@ -2006,12 +2003,8 @@ char* GcBaseActor::GetPoseByWeapon(EPoses Pose, SItemID& item) {
             num = 2;
         }
     }
-    if (ItemIsWeapon_Wand(item)) {
-        rt2_sprintf(m_poseName, "%s%s", basic, weapon);
-    } else {
-        rt2_sprintf(m_poseName, "%s%s%d", basic, weapon, num);
-    }
 
+    rt2_sprintf(m_poseName, "%s%s%d", basic, weapon, num);
     return m_poseName;
 
     unguard;
@@ -2206,8 +2199,6 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                 break;
 
             case POSE_WALK:
-                pPoseName = GetPoseByWeapon(vPoseID, Item1);
-                break;
             case POSE_STAND:
             case POSE_IDLE:
             case POSE_DEAD:

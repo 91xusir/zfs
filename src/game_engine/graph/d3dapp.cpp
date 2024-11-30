@@ -67,6 +67,7 @@ CD3DApplication::CD3DApplication() {
     m_dwCreationHeight          = 300;
     m_bShowCursorWhenFullscreen = false;
     m_bStartFullscreen          = false;
+    m_isAdapter16               = false;
     m_deviceThread              = 0;
     m_uRenderFrame              = 0;
     m_bvsync                    = false;
@@ -127,6 +128,7 @@ HRESULT CD3DApplication::Create(HINSTANCE hInstance) {
     m_pD3D = ::Direct3DCreate9(D3D_SDK_VERSION);
     if (m_pD3D == NULL)  // 如果创建失败，显示错误消息并退出应用程序
         return DisplayErrorMsg(D3DAPPERR_NODIRECT3D, MSGERR_APPMUSTEXIT);
+
     // 设置 D3D 枚举并指定回调函数
     m_d3dEnumeration.SetD3D(m_pD3D);
     m_d3dEnumeration.ConfirmDeviceCallback = ConfirmDeviceHelper;
@@ -136,82 +138,109 @@ HRESULT CD3DApplication::Create(HINSTANCE hInstance) {
         SAFE_RELEASE(m_pD3D);
         return DisplayErrorMsg(hr, MSGERR_APPMUSTEXIT);
     }
-
+    //tim.yang  在显卡支持的情况下，如果显卡模式是16位的，弹出警告对话框
+    D3DDISPLAYMODE primaryDesktopDisplayMode;
+    m_pD3D->GetAdapterDisplayMode(0, &primaryDesktopDisplayMode);
+    if (primaryDesktopDisplayMode.Format == D3DFMT_R5G6B5 ||
+        primaryDesktopDisplayMode.Format == D3DFMT_A1R5G5B5 ||
+        primaryDesktopDisplayMode.Format == D3DFMT_X1R5G5B5) {
+        m_isAdapter16 = true;
+    } else
+        m_isAdapter16 = false;
+    if (m_isAdapter16) {
+        MessageBox(
+            NULL,
+            "客户端检测到您现在的桌面颜色配置是16位色的，这样进入游戏可能会造成客户端的异常\n"
+            "\n"
+            " 如果客户端发生异常， 请手动设置为32位色\n",
+            "错误", MB_OK | MB_ICONERROR);
+    }
     //除非已经指定了一个替代的窗口句柄（hWnd），否则创建一个窗口来渲染到其中
     if (m_hWnd == NULL) {
+        // Register the windows class
+        //WNDCLASSEX wndClass = { 0, WndProc, 0, 0, hInstance,
+        //                      LoadIcon( hInstance, MAKEINTRESOURCE(IDI_MAIN_ICON) ),
+        //                      NULL,/*LoadCursor( NULL, IDC_ARROW )*/
+        //                      (HBRUSH)GetStockObject(WHITE_BRUSH),
+        //                      NULL, _T("D3D Window"),LoadIcon( hInstance, MAKEINTRESOURCE(IDI_MAIN_ICON))};
         WNDCLASSEX wndClass = {
             sizeof(WNDCLASSEX),  // cbSize: 结构体的大小，用于确保版本兼容性
+            CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS,  // style: 窗口类的样式标志
             // CS_HREDRAW: 窗口宽度变化时重绘整个窗口
             // CS_VREDRAW: 窗口高度变化时重绘整个窗口
             // CS_DBLCLKS: 允许双击消息
-            CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS,  // style: 窗口类的样式标志
             (WNDPROC)WndProc,  // lpfnWndProc: 窗口过程函数的地址，处理窗口消息
             0,                 // cbClsExtra: 窗口类的额外字节数，通常设为 0
             0,                 // cbWndExtra: 窗口实例的额外字节数，通常设为 0
             hInstance,         // hInstance: 窗口类的应用程序实例句柄
             LoadIcon(hInstance,
-                     (LPCTSTR)IDI_MAIN_ICON),  // hIcon: 窗口的图标句柄（大图标）
+                     (LPCTSTR)IDI_MAIN_ICON),  // hIcon: 窗口的图标句柄（大图标），从资源中加载
             NULL,  // hCursor: 窗口的光标句柄，默认为 NULL 使用系统光标
             (HBRUSH)(COLOR_WINDOW + 1),  // hbrBackground: 窗口的背景画刷，使用系统窗口颜色
             NULL,                        // lpszMenuName: 窗口的菜单名称，默认为 NULL
             _T("D3D Window"),            // lpszClassName: 窗口类名，用于标识窗口类
             LoadIcon(hInstance,
-                     (LPCTSTR)IDI_SMALL_ICON)  // hIconSm: 窗口的小图标句柄
+                     (LPCTSTR)IDI_SMALL_ICON)  // hIconSm: 窗口的小图标句柄，通常用于任务栏
         };
-
         // 注册窗口类
         RegisterClassEx(&wndClass);
+
         // 设置窗口样式
         // WS_OVERLAPPED - 创建一个重叠窗口，通常有标题栏和边框
         // WS_CAPTION    - 添加标题栏到窗口
         // WS_MINIMIZEBOX - 在标题栏添加最小化按钮
         // WS_SYSMENU    - 在标题栏添加系统菜单图标（最小化、最大化、关闭等）
-        m_dwWindowStyle = WS_OVERLAPPED | WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU /*| WS_VISIBLE*/;
+        m_dwWindowStyle = WS_OVERLAPPED | WS_CAPTION | WS_MINIMIZEBOX | WS_SYSMENU;
 
-        //  设置窗口大小和居中 add by lyy
-        const int screenWidth  = (int)::GetSystemMetrics(SM_CXSCREEN);  // 获取屏幕宽度
-        const int screenHeight = (int)::GetSystemMetrics(SM_CYSCREEN);  // 获取屏幕高度
+        // 设置窗口大小
+        /*	RECT rc;
+			SetRect(&rc, 0, 0, m_dwCreationWidth, m_dwCreationHeight);
+			AdjustWindowRect(&rc, m_dwWindowStyle, false);*/
 
-        RECT windowRect;
-        SetRect(&windowRect, 0, 0, m_dwCreationWidth, m_dwCreationHeight);  // 设置窗口的初始大小
-        AdjustWindowRect(&windowRect, m_dwWindowStyle, false);  // 调整窗口大小以适应窗口样式
-        const int windowWidth = windowRect.right - windowRect.left;  // 计算调整后的窗口宽度
-        const int windowHeight = windowRect.bottom - windowRect.top;  // 计算调整后的窗口高度
-        const int x = (screenWidth - windowWidth) / 2;  // 计算窗口的 X 坐标，使其居中
-        constexpr int y = 1;
+        // lyymark 窗口居中
+        RECT screenRect;
+        GetWindowRect(GetDesktopWindow(), &screenRect);
+        const int screenWidth  = screenRect.right - screenRect.left;
+        const int screenHeight = screenRect.bottom - screenRect.top;
+        RECT      windowRect;
+        SetRect(&windowRect, 0, 0, m_dwCreationWidth, m_dwCreationHeight);
+        AdjustWindowRect(&windowRect, m_dwWindowStyle, false);
+        const int     windowWidth  = windowRect.right - windowRect.left;
+        const int     windowHeight = windowRect.bottom - windowRect.top;
+        const int     x            = (screenWidth - windowWidth) / 2;
+        constexpr int y            = 1;
 
         // lyymark 1.Device.CreateWindow 创建窗口
         m_hWnd = CreateWindow(
             _T("D3D Window"),  // lpClassName: 窗口类名，必须与 RegisterClassEx 中的 lpszClassName 匹配
             m_strWindowTitle,  // lpWindowName: 窗口标题字符串，显示在窗口的标题栏上
             m_dwWindowStyle,  // dwStyle: 窗口样式，定义窗口的外观和行为
-            x,                // x: 窗口左上角的 x 坐标
-            y,                // y: 窗口左上角的 y 坐标
-            windowWidth,      // nWidth: 窗口的宽度
-            windowHeight,     // nHeight: 窗口的高度
+            x,  // x: 窗口左上角的 x 坐标，CW_USEDEFAULT 表示使用系统默认值
+            y,  // y: 窗口左上角的 y 坐标，CW_USEDEFAULT 表示使用系统默认值
+            windowWidth,   // nWidth: 窗口的宽度，计算自 RECT 结构体中设置的大小
+            windowHeight,  // nHeight: 窗口的高度，计算自 RECT 结构体中设置的大小
             NULL,  // hWndParent: 父窗口的句柄，如果窗口是顶级窗口则为 NULL
             NULL,  // hMenu: 窗口的菜单句柄，默认为 NULL，或使用 LoadMenu 函数加载菜单
             hInstance,  // hInstance: 应用程序的实例句柄
             0L          // lpParam: 额外的创建参数，通常设为 0
         );
     }
-
-    // 启用暗色模式
     typedef HRESULT(WINAPI * DwmSetWindowAttributeProc)(HWND, DWORD, LPCVOID, DWORD);
     static DwmSetWindowAttributeProc DwmSetWindowAttribute =
         (DwmSetWindowAttributeProc)GetProcAddress(GetModuleHandle(TEXT("dwmapi.dll")),
                                                   "DwmSetWindowAttribute");
+
     if (DwmSetWindowAttribute) {
-        constexpr DWORD dwAttribute = 20;
-        constexpr BOOL  bValue      = TRUE;
-        DwmSetWindowAttribute(m_hWnd, dwAttribute, &bValue, sizeof(bValue));
+        constexpr DWORD dwAttribute = 20;    // 设置暗色模式属性
+        constexpr BOOL  bValue      = TRUE;  // 启用暗色模式
+        DwmSetWindowAttribute(m_hWnd, dwAttribute, &bValue, sizeof(bValue));  // 设置窗口属性
     }
 
     // 如果没有设置焦点窗口，则将主窗口设置为焦点窗口
     if (m_hWndFocus == NULL)
         m_hWndFocus = m_hWnd;
 
-    // 保存当前窗口的样式、边界和客户区大小
+    // 获取当前窗口的样式、边界和客户区大小
     m_dwWindowStyle = GetWindowLong(m_hWnd, GWL_STYLE);
     GetWindowRect(m_hWnd, &m_rcWindowBounds);
     GetClientRect(m_hWnd, &m_rcWindowClient);
