@@ -98,43 +98,42 @@ class CD3DApplication {
     virtual void    OnClose(){};
 
    protected:
-    // Main objects used for creating and rendering the 3D scene
-    D3DPRESENT_PARAMETERS m_d3dpp;        // Parameters for CreateDevice/Reset
-                                          //lyymark 主窗口句柄
-    HWND              m_hWnd;             // The main app window
-    HWND              m_hWndFocus;        // The D3D focus window (usually same as m_hWnd)
-    HMENU             m_hMenu;            // App menu bar (stored here when fullscreen)
-    LPDIRECT3D9       m_pD3D;             // The main D3D object
-    LPDIRECT3DDEVICE9 m_pd3dDevice;       // The D3D rendering device
-    D3DCAPS9          m_d3dCaps;          // Caps for the device
-    D3DSURFACE_DESC   m_d3dsdBackBuffer;  // Surface desc of the backbuffer
-    DWORD             m_dwCreateFlags;    // Indicate sw or hw vertex processing
-    DWORD             m_dwWindowStyle;    // Saved window style for mode switches
-    DWORD             m_dwFpsLocked;      //锁定帧率
-    RECT              m_rcWindowBounds;   // Saved window bounds for mode switches
-    RECT              m_rcWindowClient;   // Saved client area size for mode switches
+    // 用于创建和渲染3D场景的主要对象
+    D3DPRESENT_PARAMETERS m_d3dpp;  // Parameters for CreateDevice/Reset
 
-    // Variables for timing
-    FLOAT         m_fTime;         // Current time in seconds
-    FLOAT         m_fElapsedTime;  // Time elapsed since last frame
-    unsigned long m_dwElapsedMS;
-    FLOAT         m_fFPS;                // Instanteous frame rate
-    TCHAR         m_strDeviceStats[90];  // String to hold D3D device stats
+    HWND              m_hWnd;             // 应用程序的主窗口
+    HWND              m_hWndFocus;        // D3D 焦点窗口（通常与 m_hWnd 相同）
+    HMENU             m_hMenu;            // 应用程序菜单栏（全屏时保存在这里）
+    LPDIRECT3D9       m_pD3D;             // 主 D3D 对象
+    LPDIRECT3DDEVICE9 m_pd3dDevice;       // D3D 渲染设备
+    D3DCAPS9          m_d3dCaps;          // 设备的功能参数
+    D3DSURFACE_DESC   m_d3dsdBackBuffer;  // 后台缓冲区的表面描述
+    DWORD             m_dwCreateFlags;    // 指示软件或硬件顶点处理
+    DWORD             m_dwWindowStyle;    // 用于模式切换的已保存窗口样式
+    DWORD             m_dwFpsLocked;      // 锁定帧率
+    RECT              m_rcWindowBounds;   // 用于模式切换的已保存窗口边界
+    RECT              m_rcWindowClient;   // 用于模式切换的已保存客户区大小
+
+    // 与计时相关的变量
+    FLOAT         m_fTime;               // 当前时间（以秒为单位）
+    FLOAT         m_fElapsedTime;        // 自上一帧以来经过的时间
+    unsigned long m_dwElapsedMS;         // 自上一帧以来经过的毫秒数
+    FLOAT         m_fFPS;                // 瞬时帧率
+    TCHAR         m_strDeviceStats[90];  // 保存 D3D 设备状态的字符串
     //lyymark 帧信息
-    TCHAR m_strFrameStats[90];  // String to hold frame stats
+    TCHAR m_strFrameStats[90];  // 保存帧状态的字符串
 
-    // Overridable variables for the app
-    TCHAR* m_strWindowTitle;             // Title for the app's window
-    DWORD  m_dwCreationWidth;            // Width used to create window
-    DWORD  m_dwCreationHeight;           // Height used to create window
-    bool   m_bShowCursorWhenFullscreen;  // Whether to show cursor when fullscreen
-    bool   m_bClipCursorWhenFullscreen;  // Whether to limit cursor pos when fullscreen
-    bool   m_bStartFullscreen;           // Whether to start up the app in fullscreen mode
-    //tim.yang  检测当前显卡是否是16位色
-    bool  m_isAdapter16;
-    DWORD m_deviceThread;
-    UINT  m_uRenderFrame;
-    bool  m_bvsync;
+    // 应用程序的可重写变量
+    TCHAR* m_strWindowTitle;             // 应用程序窗口的标题
+    DWORD  m_dwCreationWidth;            // 用于创建窗口的宽度
+    DWORD  m_dwCreationHeight;           // 用于创建窗口的高度
+    bool   m_bShowCursorWhenFullscreen;  // 是否在全屏模式下显示光标
+    bool   m_bClipCursorWhenFullscreen;  // 是否在全屏模式下限制光标位置
+    bool   m_bStartFullscreen;           // 是否在启动时以全屏模式启动应用程序
+
+    DWORD m_deviceThread;  // 设备线程的标识符
+    UINT  m_uRenderFrame;  // 渲染帧的计数器
+    bool  m_bvsync;        // 是否启用垂直同步 (V-Sync)
 
     // Overridable functions for the 3D scene created by the app
     virtual HRESULT ConfirmDevice(D3DCAPS9*, DWORD, D3DFORMAT, D3DFORMAT) { return S_OK; }
@@ -162,6 +161,7 @@ class CD3DApplication {
    public:
     // Functions to create, run, pause, and clean up the application
     virtual HRESULT Create(HINSTANCE hInstance);
+ 
     virtual INT     Run();
     virtual LRESULT MsgProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
     virtual void    Pause(bool bPause);
@@ -178,7 +178,7 @@ class CD3DApplication {
 
     inline HWND& GetHWND() { return m_hWnd; }  // The main app window
 
-    inline LPDIRECT3DDEVICE9& GetD3dDevice() { return m_pd3dDevice; }
+
 
     void LockFpsPerFrame(DWORD dwMillisecondPerFrame) { m_dwFpsLocked = dwMillisecondPerFrame; }
 

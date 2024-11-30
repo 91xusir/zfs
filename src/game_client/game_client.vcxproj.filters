@@ -2021,7 +2021,7 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="frame\icon_main.ico">
+    <Image Include="frame\zfs.ico">
       <Filter>frame\resource</Filter>
     </Image>
   </ItemGroup>
