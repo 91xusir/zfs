@@ -174,7 +174,7 @@
       <BackgroundImage Blend="true" File="" Source="208,169,32,32"/>
       <Hint Text=""/>
     </Button>
-    <Button Inherit="" Location="" Name="btGameHelp" Show="true" Size="32,32">
+    <Button Inherit="" Location="" Name="btGameHelp" Show="false" Size="32,32">
       <NormalImage Blend="true" File=""/>
       <Hint Text=""/>
       <HighlightImage Blend="true" File=""/>
@@ -183,46 +183,47 @@
         <Anchor offset="0,-50" point="BOTTOM"/>
       </Anchors>
     </Button>
-    <Form EscapeHide="false" Inherit="" Location="1,0,289,90" Name="fmhp" Penetrate="true" Show="true">
+    <Form EscapeHide="false" Inherit="" Location="1,2,303,105" Name="fmhp" Penetrate="true" Show="true">
       <Label Inherit="" Location="0,0,32,32" Name="lbcaptain" Show="false">
-        <BackgroundImage Blend="true" File="ui\x_textures\4.tga" Source="70,426,32,32"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="710,771,32,39"/>
       </Label>
       <Label Location="293,10,6,76" Name="lbhpright" Show="false"/>
-      <Label Alignment="center" Location="63,8,25,15" Name="lblv" Text=""/>
-      <Label Alignment="center" Inherit="" Location="82,68,100,18" Name="lbname" Text=""/>
+      <Label Alignment="center" Location="34,78,25,15" Name="lblv" Text="100"/>
+      <Label Alignment="center" Inherit="" Location="110,8,110,18" Name="lbname" Text=""/>
       <Label Location="122,23,30,15" Name="lbhp" Text=""/>
       <Label Location="105,37,30,15" Name="lbmp" Text=""/>
-      <Label Alignment="center" Location="87,23,147,15" Name="lbhpcount" Text="30\40"/>
-      <Label Alignment="center" Location="88,36,141,14" Name="lbmpcount" Text="30\40"/>
-      <Label Alignment="center" Inherit="" Location="81,50,141,15" Name="lbnpcount" Show="true" Text="30\40"/>
-      <ProgressBar Inherit="" Location="83,26,160,11" Name="barhp">
-        <ProgressBarImage Blend="true" File="ui\x_textures\4.tga" Source="154,341,152,9"/>
+      <Label Alignment="center" Location="90,28,137,15" Name="lbhpcount" Text="30\40"/>
+      <Label Alignment="center" Location="93,40,137,14" Name="lbmpcount" Text="30\40"/>
+      <Label Alignment="center" Inherit="" Location="96,52,137,15" Name="lbnpcount" Show="true" Text="30\40"/>
+      <ProgressBar Inherit="" Location="90,32,137,7" Name="barhp">
+        <ProgressBarImage Blend="true" File="ui\x_textures\01.tga" Source="3,860,138,8"/>
       </ProgressBar>
-      <ProgressBar Inherit="" Location="86,39,145,11" Name="barmp">
-        <ProgressBarImage Blend="true" File="ui\x_textures\4.tga" Source="158,352,137,9"/>
+      <ProgressBar Inherit="" Location="93,44,137,7" Name="barmp">
+        <ProgressBarImage Blend="true" File="ui\x_textures\01.tga" Source="3,879,138,8"/>
       </ProgressBar>
-      <ProgressBar Inherit="" Location="82,53,137,11" Name="barnp" Show="true">
-        <ProgressBarImage Blend="true" File="ui\x_textures\4.tga" Source="154,363,129,9"/>
+      <ProgressBar Inherit="" Location="96,56,137,7" Name="barnp" Show="true">
+        <ProgressBarImage Blend="true" File="ui\x_textures\01.tga" Source="3,898,138,8"/>
       </ProgressBar>
       <Button Inherit="Border" Location="-270,43,62,61" Name="headhp" Show="false"/>
-      <Label Inherit="" Location="0,0,289,90" Name="lbrole" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="1,1,280,91"/>
+      <Label Inherit="" Location="0,0,280,100" Name="lbrole" Show="true">
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="372,762,280,101"/>
       </Label>
-      <Label Inherit="" Location="17,13,64,64" Name="lbpicrole" Show="true">
+      <Label Inherit="" Location="12,10,64,64" Name="lbpicrole" Show="true">
         <BackgroundImage Blend="true" File="" Source=""/>
       </Label>
       <Label Inherit="" Location="15,14,64,64" Name="lbpicrole1" Show="false">
         <BackgroundImage Blend="true" File="" Source=""/>
       </Label>
-      <Button Location="58,69,19,19" Name="btnPKmode" Sound="ui_normalbt.wav" Text="">
+      <Button Location="64,67,17,17" Name="btnPKmode" Sound="ui_normalbt.wav" Text="">
         <Hint Text="PK模式"/>
-        <BackgroundImage Blend="true" File="ui\x_textures\5.tga" Source="80,251,18,18"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="661,741,18,18"/>
       </Button>
-      <Form EscapeHide="false" Inherit="" Location="80,0,300,150" Name="fmPower" Penetrate="true" Show="true">
+      <Form EscapeHide="false" Inherit="" Location="80,0,300,150" Name="fmPower" Penetrate="true" Show="false">
         <Label Inherit="" Location="2,37,165,40" Name="lblPowerSequence" Penetrate="true" Show="true"/>
         <Label Inherit="" Location="120,-35,64,136" Name="lblPowerCucurbit" Penetrate="true" Show="true"/>
       </Form>
     </Form>
+    <!--  -->
     <Form EscapeHide="false" Inherit="" Location="12,91,295,56" Name="fmhpc" Penetrate="true" Show="true">
       <Label Alignment="center" Inherit="" Location="35,40,80,15" Name="lblvtc" Text=""/>
       <Label Alignment="center" Location="24,3,30,15" Name="lblvc" Text=""/>
@@ -562,60 +563,94 @@
     <Form Anchor="none" Inherit="TitleBarForm" Location="500,300,250,274" Name="fmtaskhelp" Show="false" StartPosition="centerParent">
       <Label Location="18,5,216,200" Multiline="true" Name="lbinfo" Text=""/>
     </Form>
-    <Form EscapeHide="false" Inherit="" Location="949,149,50,530" Name="fmsystem" Show="true" TitleSize="0">
-      <Button Inherit="" Location="4,10,42,42" Name="btnsyschar" Sound="ui_effectbt.wav">
-        <Hint Text="系统(Alt+A)"/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="176,163,42,42"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="122,444,38,40"/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="119,352,42,42"/>
+
+
+    <Form EscapeHide="false" Inherit="" Location="949,149,44,475" Name="fmsystem" Show="true" TitleSize="0">
+      <Button Inherit="" Location="2,5,37,37" Name="btnsyschar" Sound="ui_effectbt.wav">
+        <Hint Text="属性(C)"/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="892,313,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="775,469,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="892,469,38,38"/>
       </Button>
-      <Button Inherit="" Location="4,100,42,42" Name="btnsysitem" Sound="ui_effectbt.wav">
-        <Hint Text="(Alt+I)"/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="280,158,42,42"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="214,443,42,42"/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="214,354,42,42"/>
+
+      <Button Inherit="" Location="8,40,37,37" Name="btnpet" Show="true" Sound="ui_effectbt.wav">
+        <Hint Text="宠物(Z)"/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="892,352,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="775,508,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="892,508,38,38"/>
       </Button>
-      <Button Inherit="" Location="4,144,42,42" Name="btnsysskill" Sound="ui_effectbt.wav">
-        <Hint Text="(Alt+S)"/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="177,206,42,42"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="262,444,42,42"/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="262,355,42,42"/>
+
+      <Button Inherit="" Location="6,70,37,37" Name="btnsysitem" Sound="ui_effectbt.wav">
+        <Hint Text="道具(B)"/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="892,391,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="775,547,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="892,547,38,38"/>
       </Button>
-      <Button Inherit="" Location="4,415,42,42" Name="btnsyslist" Sound="ui_effectbt.wav">
-        <Hint Text="(Alt+H)"/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="177,304,42,42"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="405,396,42,42"/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="213,397,42,42"/>
+
+      <Button Inherit="" Location="6,100,37,37" Name="btnsysskill" Sound="ui_effectbt.wav">
+        <Hint Text="技能(R)"/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="892,430,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="775,586,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="892,586,38,38"/>
       </Button>
-      <Button Inherit="" Location="4,280,42,42" Name="btnsysfriend" Sound="ui_effectbt.wav">
-        <Hint Text="群(Alt+F)"/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="177,257,42,42"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="405,444,42,42"/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="404,355,42,42"/>
+
+      <Button Inherit="" Location="5,131,37,37" Name="btnsystask" Sound="ui_effectbt.wav">
+        <Hint Text="任务(Q)"/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="931,313,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="814,469,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="931,469,38,38"/>
       </Button>
-      <Button Inherit="" Location="4,370,42,42" Name="btnsysmail" Sound="ui_effectbt.wav">
-        <Hint Text="始(Alt+M)"/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="278,256,42,42"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="354,399,42,42"/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="164,399,42,42"/>
+
+      <Button Inherit="" Location="5,159,37,37" Name="btnteam" Show="true" Sound="ui_effectbt.wav">
+        <Hint Text="队伍(T)"/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="931,352,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="814,508,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="931,508,38,38"/>
       </Button>
-      <Button Inherit="" Location="4,460,42,42" Name="btnsystem" Sound="ui_effectbt.wav">
-        <Hint Text="系统(F10)"/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="229,304,42,42"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="450,444,42,42"/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="266,397,42,42"/>
+      <Button Inherit="" Location="5,193,37,37" Name="btnbangpai" Show="true" Sound="ui_effectbt.wav">
+        <Hint Text="帮派(G)"/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="931,430,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="814,586,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="931,586,38,38"/>
       </Button>
-      <Button Enable="true" Inherit="" Location="3,174,42,42" Name="btndupetask" Show="false">
+      <Button Inherit="" Location="6,226,37,37" Name="btnsysfriend" Sound="ui_effectbt.wav">
+        <Hint Text="好友(F)"/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="931,391,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="814,547,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="931,547,38,38"/>
+      </Button>
+
+      <Button Inherit="" Location="7,259,37,37" Name="btnsysmail" Sound="ui_effectbt.wav">
+        <Hint Text="邮件(M)"/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="970,313,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="853,469,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="970,469,38,38"/>
+      </Button>
+      <Button Inherit="" Location="5,292,37,37" Name="btnsyslist" Sound="ui_effectbt.wav">
+        <Hint Text="排行(L)"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="853,508,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="970,508,38,38"/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="970,352,38,38"/>
+      </Button>
+
+      <Button Inherit="" Location="8,325,37,37" Name="btnsystem" Sound="ui_effectbt.wav">
+        <Hint Text="系统(X)"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="853,547,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="970,547,38,38"/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="970,391,38,38"/>
+      </Button>
+
+      <Button Inherit="" Location="0,350,41,42" Name="btnfun" Show="true" Sound="ui_Activ.wav">
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="685,905,42,43"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="728,905,42,43"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="771,905,42,43"/>
+        <Hint Text="活动(H)"/>
+      </Button>
+      <Button Enable="true" Inherit="" Location="3,174,42,42" Name="btndupetask" Show="true">
         <Hint Text=""/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="116,467,40,40"/>
+        <!-- <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="116,467,40,40"/>
         <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="283,430,40,40"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="282,469,40,40"/>
-      </Button>
-      <Button Inherit="" Location="4,190,42,42" Name="btnsystask" Sound="ui_effectbt.wav">
-        <Hint Text="任务(Alt+Q)"/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="309,356,42,42"/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="228,207,42,42"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="309,445,42,42"/>
+        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="282,469,40,40"/> -->
       </Button>
       <Button Inherit="" Location="18,364,24,24" Name="btnsysbattle" Show="false">
         <Hint Text="自动战斗(Alt+Z)"/>
@@ -623,38 +658,58 @@
         <HighlightImage Blend="true" File="" Source="20,5,25,25"/>
         <PushedImage Blend="true" File="" Source="41,5,25,25"/>
       </Button>
-      <Label Inherit="" Location="18,1,30,10" Name="lbststemup" Show="true">
+      <!-- <Button Inherit="" Location="5,357,37,37" Name="btnproduce" Show="true" Sound="ui_effectbt.wav">
+        <Hint Text=""/>
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="775,352,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="775,391,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="814,391,38,38"/>
+      </Button> -->
+
+      <!-- <Label Inherit="" Location="18,1,30,10" Name="lbststemup" Show="true">
         <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="440,35,30,10"/>
+      </Label> -->
+
+      <!-- 背景竖着的条 -->
+      <Label Inherit="" Location="21,0,28,410" Name="lbstsemcenter" Show="true">
+        <Label Inherit="" Location="0,0,29,40" Name="3576" Show="true">
+          <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="995,588,29,40"/>
+        </Label>
+        <Label Inherit="" Location="0,41,29,340" Name="3603" Show="true">
+          <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="995,629,29,26"/>
+        </Label>
+        <Label Inherit="" Location="0,370,29,40" Name="3630" Show="true">
+          <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="995,657,29,40"/>
+        </Label>
       </Label>
-      <Label Inherit="" Location="18,12,30,484" Name="lbstsemcenter" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="440,46,30,5"/>
-      </Label>
-      <Label Inherit="" Location="18,497,30,10" Name="lbststemdown" Show="true">
+      <!-- <Label Inherit="" Location="18,497,30,10" Name="lbststemdown" Show="true">
         <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="440,53,30,10"/>
-      </Label>
-      <Button Inherit="" Location="4,55,42,42" Name="btnpet" Show="true" Sound="ui_effectbt.wav">
-        <Hint/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="229,160,42,42"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="167,445,42,42"/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="167,355,42,42"/>
-      </Button>
-      <Button Inherit="" Location="4,235,42,42" Name="btnteam" Show="true" Sound="ui_effectbt.wav">
-        <Hint/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="280,206,42,42"/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="357,355,42,42"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="356,445,42,42"/>
-      </Button>
-      <Button Inherit="" Location="4,325,42,42" Name="btnbangpai" Show="true" Sound="ui_effectbt.wav">
-        <Hint/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="230,257,42,42"/>
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="122,400,37,42"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="310,398,42,42"/>
-      </Button>
+      </Label> -->
       <Anchors>
-        <Anchor offset="0,80" point="CENTERH"/>
+        <Anchor offset="0,249" point="TOP"/>
         <Anchor offset="0,0" point="RIGHT"/>
       </Anchors>
     </Form>
+    <Form EscapeHide="false" Inherit="" Location="987,730,35,35" Name="fmclose" Show="false">
+      <Anchors>
+        <Anchor offset="-3,0" point="RIGHT"/>
+        <Anchor offset="0,-3" point="BOTTOM"/>
+      </Anchors>
+      <Button Inherit="" Location="11,12,38,38" Name="btnclose" Show="true" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="854,590,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="774,630,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="816,630,38,38"/>
+        <Hint Text="收起菜单"/>
+      </Button>
+      <Button Inherit="" Location="11,12,38,38" Name="btnopen" Show="false" Sound="ui_normalbt.wav">
+        <NormalImage Blend="true" File="ui\x_textures\01.tga" Source="854,590,38,38"/>
+        <HighlightImage Blend="true" File="ui\x_textures\01.tga" Source="774,630,38,38"/>
+        <PushedImage Blend="true" File="ui\x_textures\01.tga" Source="816,630,38,38"/>
+        <Hint Text="显示菜单"/>
+      </Button>
+      <Label Inherit="" Location="0,0,34,34" Name="lbclose" Show="true">
+      </Label>
+    </Form>
+
     <Form Anchor="bottom,right" EscapeHide="false" Inherit="" Location="313,704,382,57" Name="fmhotkey" NoMouseClip="true" Show="true" TitleSize="0">
       <Label Alignment="center" Location="0,38,382,18" Name="lbexpcount" Text="30\40"/>
       <ProgressBar Inherit="EXPBar" Location="0,43,382,6" Name="barexp" Show="true"/>
@@ -1335,27 +1390,7 @@
         <Anchor offset="0,190" point="TOP"/>
       </Anchors>
     </Label>
-    <Form EscapeHide="false" Inherit="" Location="987,730,35,35" Name="fmclose" Show="true">
-      <Anchors>
-        <Anchor offset="-3,0" point="RIGHT"/>
-        <Anchor offset="0,-3" point="BOTTOM"/>
-      </Anchors>
-      <Button Inherit="" Location="11,12,12,12" Name="btnclose" Show="true" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="362,93,12,12"/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="376,93,12,12"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="390,93,12,12"/>
-        <Hint Text="收起菜单"/>
-      </Button>
-      <Button Inherit="" Location="11,12,12,12" Name="btnopen" Show="false" Sound="ui_normalbt.wav">
-        <NormalImage Blend="true" File="ui\x_textures\1.tga" Source="216,96,12,12"/>
-        <HighlightImage Blend="true" File="ui\x_textures\1.tga" Source="230,96,12,12"/>
-        <PushedImage Blend="true" File="ui\x_textures\1.tga" Source="244,96,12,12"/>
-        <Hint Text="显示菜单"/>
-      </Button>
-      <Label Inherit="" Location="0,0,34,34" Name="lbclose" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="412,70,34,34"/>
-      </Label>
-    </Form>
+
     <Label Inherit="" Location="10,10,70,18" Name="lbDebugInfo" Show="true"/>
     <Form EscapeHide="false" Inherit="" Location="390,607,220,30" Name="fmprocess" Show="true">
       <Label Alignment="center" Inherit="" Location="5,5,208,19" Name="lbtitle" Show="true"/>
@@ -1704,34 +1739,34 @@
       <Label Alignment="center" Location="313,12,20,20" Name="text9" Show="true" Text=""/>
       <Label Alignment="center" Location="351,12,20,20" Name="text0" Show="true" Text=""/>
       <Label Inherit="" Location="2,2,35,35" Name="lbf1" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="40,2,35,35" Name="lbf2" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="77,2,35,35" Name="lbf3" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="115,2,35,35" Name="lbf4" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="153,2,35,35" Name="lbf5" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="191,2,35,35" Name="lbf6" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="229,2,35,35" Name="lbf7" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="267,2,35,35" Name="lbf8" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="305,2,35,35" Name="lbf9" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="343,2,35,35" Name="lbf10" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Anchors>
         <Anchor offset="-7,0" point="CENTERV"/>
@@ -1759,36 +1794,38 @@
       <Label Alignment="center" Inherit="" Location="276,12,20,20" Name="text8" Show="true" Text=""/>
       <Label Alignment="center" Inherit="" Location="313,12,20,20" Name="text9" Show="true" Text=""/>
       <Label Alignment="center" Inherit="" Location="351,12,20,20" Name="text0" Show="true" Text=""/>
+      <!-- 道具栏 -->
       <Label Inherit="" Location="2,2,35,35" Name="lbf1" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="40,2,35,35" Name="lbf2" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="77,2,35,35" Name="lbf3" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="115,2,35,35" Name="lbf4" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="153,2,35,35" Name="lbf5" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="191,2,35,35" Name="lbf6" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="229,2,35,35" Name="lbf7" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="267,2,35,35" Name="lbf8" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="305,2,35,35" Name="lbf9" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
       <Label Inherit="" Location="343,2,35,35" Name="lbf10" Show="true">
-        <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="473,3,36,36"/>
+        <BackgroundImage Blend="true" File="ui\x_textures\01.tga" Source="685,864,36,36"/>
       </Label>
+      <!--  -->
       <Anchors>
         <Anchor offset="-7,0" point="CENTERV"/>
         <Anchor offset="0,-102" point="BOTTOM"/>

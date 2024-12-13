@@ -1,4 +1,5 @@
 #include "ui/rtw_ui.h"
+#include "../../../game_client/preConsole.h"
 //********************************************************************
 //	created:	2010.04.07 10:00
 //	filename: 	rtw_widget.cpp
@@ -76,36 +77,36 @@ void RtwWidget::_ResetSelf() {
     m_Anchors.clear();
     m_AutoScrollOffset.Reset();
 
-    m_Flag = m_DefaultFlag;
-    m_Text = "";
-    m_Param1 = NULL;
-    m_Param2 = NULL;
-    m_BkColor = RtwPixel((DWORD)0x00000000);
-    m_Caption = "";
-    m_rcFrame = RtwRect(0, 0, 0, 0);
-    m_rcClient = RtwRect(0, 0, 0, 0);
-    m_HintText = "";
-    m_FontType = "";
-    m_FontSize = 12;
-    mbHighLight = false;
-    m_MaskColor = RtwPixel(0x66666666);
-    m_MaskValue = 0;
-    m_TextAlign = SUiTextAlignment(alignCenter, alignCenter);
-    m_TextColor = RtwPixel(0xffffffff);
-    m_MouseLeave = false;
-    m_WidgetSize = SSize(0, 0);
-    m_BorderSize = 0;
-    m_BorderColor = (DWORD)0x00000000;
-    m_bIsHintWidget = false;
-    m_bTextUnderline = false;
-    m_nBackGroundAlpha = 255;
-    m_bCalcAutoScrollFlag = true;
+    m_Flag                  = m_DefaultFlag;
+    m_Text                  = "";
+    m_Param1                = NULL;
+    m_Param2                = NULL;
+    m_BkColor               = RtwPixel((DWORD)0x00000000);
+    m_Caption               = "";
+    m_rcFrame               = RtwRect(0, 0, 0, 0);
+    m_rcClient              = RtwRect(0, 0, 0, 0);
+    m_HintText              = "";
+    m_FontType              = "";
+    m_FontSize              = 12;
+    mbHighLight             = false;
+    m_MaskColor             = RtwPixel(0x66666666);
+    m_MaskValue             = 0;
+    m_TextAlign             = SUiTextAlignment(alignCenter, alignCenter);
+    m_TextColor             = RtwPixel(0xffffffff);
+    m_MouseLeave            = false;
+    m_WidgetSize            = SSize(0, 0);
+    m_BorderSize            = 0;
+    m_BorderColor           = (DWORD)0x00000000;
+    m_bIsHintWidget         = false;
+    m_bTextUnderline        = false;
+    m_nBackGroundAlpha      = 255;
+    m_bCalcAutoScrollFlag   = true;
     m_bJoinParentAutoScroll = true;
-    m_bShowing = false;
-    m_bHiding = false;
-    m_bTrans = false;
-    m_bZoom = false;
-    m_pHoverBorderImage = NULL;
+    m_bShowing              = false;
+    m_bHiding               = false;
+    m_bTrans                = false;
+    m_bZoom                 = false;
+    m_pHoverBorderImage     = NULL;
 
     SetWidgetEffect();
 }
@@ -185,9 +186,9 @@ void RtwWidget::Run(DWORD dwDelta) {
 
     if (m_bShowing || m_bHiding) {
         //正在打开 or 正在关闭
-        float        fPos = 0.0;
+        float        fPos          = 0.0;
         static float fStartingTime = 0.0;
-        static float fHidingTime = 0.0;
+        static float fHidingTime   = 0.0;
 
         if (m_bShowing) {
             fStartingTime += ((float)dwDelta - fStartingTime / 20);
@@ -205,13 +206,13 @@ void RtwWidget::Run(DWORD dwDelta) {
 
         if (fStartingTime > m_nShowTime) {
             //显示结束
-            m_bShowing = false;
+            m_bShowing    = false;
             fStartingTime = 0.0;
         }
 
         if (fHidingTime > m_nShowTime) {
             //关闭结束
-            m_bHiding = false;
+            m_bHiding   = false;
             fHidingTime = 0.0;
 
             m_nHideEffectLst = esNormal;
@@ -223,7 +224,7 @@ void RtwWidget::Run(DWORD dwDelta) {
 
         if (!m_bShowing && !m_bHiding) {
             m_bTrans = false;
-            m_bZoom = false;
+            m_bZoom  = false;
         }
     }
 }
@@ -231,16 +232,16 @@ void RtwWidget::Run(DWORD dwDelta) {
 //缩放
 void RtwWidget::MoveResizeByPos(float fPos) {
     if (m_bZoom) {
-        RtwRect rc = m_backRc;
+        RtwRect rc             = m_backRc;
         float   HALFACTIVETIME = m_nShowTime / 2;
-        int     x = rc.left;
-        int     y = rc.top;
-        int     width = rc.getWidth();
-        int     height = rc.getHeight();
-        int     endX = width + x;
-        int     endY = height + y;
-        int     centerX = (x + endX) >> 1;
-        int     centerY = (y + endY) >> 1;
+        int     x              = rc.left;
+        int     y              = rc.top;
+        int     width          = rc.getWidth();
+        int     height         = rc.getHeight();
+        int     endX           = width + x;
+        int     endY           = height + y;
+        int     centerX        = (x + endX) >> 1;
+        int     centerY        = (y + endY) >> 1;
 
         float fStepX = (float)width / HALFACTIVETIME;
         float fStepY = (float)height / HALFACTIVETIME;
@@ -322,7 +323,7 @@ void RtwWidget::SetName(const std::string& name, const std::string& replacedName
             m_Name.replace(posDot + 1, _Replaced.size(), name);
         } else {
             _Replaced = m_Name;
-            m_Name = name;
+            m_Name    = name;
         }
     }
     OnNameChanged(OldName);
@@ -344,10 +345,10 @@ void RtwWidget::SetTextAlignment(SUiTextAlignment& align) {
 
 //设置组件大小
 void RtwWidget::SetWidgetSize(SSize& size) {
-    m_rcFrame.right = m_rcFrame.left + size.width;
+    m_rcFrame.right  = m_rcFrame.left + size.width;
     m_rcFrame.bottom = m_rcFrame.top + size.height;
 
-    m_rcClient.right = m_rcClient.left + size.width;
+    m_rcClient.right  = m_rcClient.left + size.width;
     m_rcClient.bottom = m_rcClient.top + size.height;
 
     m_WidgetSize = size;
@@ -549,11 +550,11 @@ RtwWidget* RtwWidget::GetChildWidget(const std::string& WidgetName) {
 
 //设置开关特效(显示,关闭)
 void RtwWidget::SetWidgetEffect(int nShowEffect, int nHideEffect, int nDelay) {
-    m_nShowEffectLst = nShowEffect;
-    m_nHideEffectLst = nHideEffect;
+    m_nShowEffectLst     = nShowEffect;
+    m_nHideEffectLst     = nHideEffect;
     m_nShowEffectLstBack = m_nShowEffectLst;
     m_nHideEffectLstBack = nHideEffect;
-    m_nShowTime = nDelay;
+    m_nShowTime          = nDelay;
 }
 
 //显示
@@ -732,7 +733,7 @@ void RtwWidget::Offset(const SSize& size, bool bTriggerEvent /* = true*/,
     // 抛出事件
     if (bTriggerEvent) {
         RtwEventDelegate e(etOffset);
-        e.offset.width = size.width;
+        e.offset.width  = size.width;
         e.offset.height = size.height;
 
         EvOffset(this, e);
@@ -794,9 +795,9 @@ void RtwWidget::Move(const RtwRect& rect, bool bAbs /* = false*/, bool bTriggerE
     // 抛出事件
     if (bTriggerEvent) {
         RtwEventDelegate e(etMove);
-        e.move.OrigFrame_Left = rcOrig.left;
-        e.move.OrigFrame_Right = rcOrig.right;
-        e.move.OrigFrame_Top = rcOrig.top;
+        e.move.OrigFrame_Left   = rcOrig.left;
+        e.move.OrigFrame_Right  = rcOrig.right;
+        e.move.OrigFrame_Top    = rcOrig.top;
         e.move.OrigFrame_Bottom = rcOrig.bottom;
         EvMove(this, e);
     }
@@ -862,6 +863,7 @@ void RtwWidget::SetHint(RtwWidget* pHint) {
         m_pHint->ModifyFlag(0, wfGrabMouse | wfMouseMove);
     }
 }
+
 //没有使用
 void RtwWidget::SetOwnHint(RtwWidget* pHint)  // add by chib 2006-11-14 pHint must be editbox point
 {
@@ -904,7 +906,7 @@ void RtwWidget::AutoHintPosition() {
         }
 
         rc.right = rc.left + rcHint.getWidth();
-        rc.top = m_rcFrame.top - 10 - rcHint.getHeight();
+        rc.top   = m_rcFrame.top - 10 - rcHint.getHeight();
 
         if (rc.top < 0) {
             rc.top = 0;
@@ -927,7 +929,7 @@ void RtwWidget::AutoHintSize() {
     //lyytodo
     return;  //Y直接return????
     if (m_pHint) {
-        int nLength = g_workspace.getFontManager()->GetStringWidth(m_pHint->getText());
+        int nLength    = g_workspace.getFontManager()->GetStringWidth(m_pHint->getText());
         int nLineCount = nLength / Max_Width + 1;
 
         if (m_bHint)  // add by chib
@@ -937,7 +939,7 @@ void RtwWidget::AutoHintSize() {
 
         RtwRect rc;
         rc.left = 0;
-        rc.top = 0;
+        rc.top  = 0;
         if (nLineCount > 1) {
             rc.right = Max_Width - 1;
         } else {
@@ -957,21 +959,21 @@ void RtwWidget::AutoHtmlHintSize() {
     int nLineCount = ((RtwTextBox*)m_pHint)->getLineCount();
 
     RtwRect rc;
-    rc.left = 0;
-    rc.right = 200;
-    rc.top = 0;
+    rc.left   = 0;
+    rc.right  = 200;
+    rc.top    = 0;
     rc.bottom = nLineCount * g_workspace.getFontManager()->getFontSize() + 20;
     m_pHint->Move(rc);
 }
 
 void RtwWidget::AutoSizeByFont() {
 
-    int nLength = g_workspace.getFontManager()->GetStringWidth(m_Text);
+    int nLength    = g_workspace.getFontManager()->GetStringWidth(m_Text);
     int nLineCount = nLength / Max_Width + 1;
 
     RtwRect rc;
     rc.left = 0;
-    rc.top = 0;
+    rc.top  = 0;
     if (nLineCount > 1) {
         rc.right = Max_Width - 1;
     } else {
@@ -991,7 +993,7 @@ void RtwWidget::AutoClampScreen() {
     if (rc.left < 0)
         rc.left = 0;
     rc.right = rc.left + m_rcFrame.getWidth() - 1;
-    rc.top = m_rcFrame.top - 10 - m_rcFrame.getHeight();
+    rc.top   = m_rcFrame.top - 10 - m_rcFrame.getHeight();
     if (rc.top < 0)
         rc.top = 0;
     rc.bottom = rc.top + m_rcFrame.getHeight() - 1;
@@ -1013,10 +1015,10 @@ bool RtwWidget::CloneFrom(const RtwWidget* pWidget) {
     if (m_pHint)
         m_pHint->grab();
 
-    m_Flag = pWidget->GetFlags();
-    m_Caption = pWidget->getCaption();
-    m_Text = pWidget->GetText();
-    m_FontType = pWidget->getFont();
+    m_Flag      = pWidget->GetFlags();
+    m_Caption   = pWidget->getCaption();
+    m_Text      = pWidget->GetText();
+    m_FontType  = pWidget->getFont();
     m_TextAlign = pWidget->getTextAlignment();
 
     m_pBackGround = pWidget->m_pBackGround;
@@ -1030,18 +1032,18 @@ bool RtwWidget::CloneFrom(const RtwWidget* pWidget) {
     if (m_pImageSequence)
         GRAB_TRUI_IMAGE(m_pImageSequence);
 
-    m_TextColor = pWidget->getTextColor();
-    m_BkColor = pWidget->getBackgroundColor();
-    m_rcClient = pWidget->getClientRect();
-    m_rcFrame = pWidget->GetFrameRect();
-    m_HintText = pWidget->getHintText();
-    m_BorderColor = pWidget->getBorderColor();
-    m_BorderSize = pWidget->getBorderSize();
+    m_TextColor        = pWidget->getTextColor();
+    m_BkColor          = pWidget->getBackgroundColor();
+    m_rcClient         = pWidget->getClientRect();
+    m_rcFrame          = pWidget->GetFrameRect();
+    m_HintText         = pWidget->getHintText();
+    m_BorderColor      = pWidget->getBorderColor();
+    m_BorderSize       = pWidget->getBorderSize();
     m_strSoundFilename = pWidget->getSoundFile();
-    m_WidgetSize = pWidget->getWidgetSize();
-    m_bAutoScrollV = pWidget->m_bAutoScrollV;
-    m_bAutoScrollH = pWidget->m_bAutoScrollH;
-    m_pAutoScrollV = pWidget->m_pAutoScrollV;
+    m_WidgetSize       = pWidget->getWidgetSize();
+    m_bAutoScrollV     = pWidget->m_bAutoScrollV;
+    m_bAutoScrollH     = pWidget->m_bAutoScrollH;
+    m_pAutoScrollV     = pWidget->m_pAutoScrollV;
 
     m_bJoinParentAutoScroll = pWidget->getJoinParentAutoScroll();
     if (m_pAutoScrollV)
@@ -1112,8 +1114,8 @@ void RtwWidget::Render(const RtwRect* pClipRect /* = NULL*/, bool bAlwaysRender 
     if (m_pChildren) {
         UiWidgetList::reverse_iterator iterChild = m_pChildren->Begin_Reverse();
         for (; iterChild != m_pChildren->End_Reverse(); ++iterChild) {
-            RtwWidget* pChild = *iterChild;
-            int        nRenderTarget = pChild->mnRenderTargetIndex;
+            RtwWidget* pChild           = *iterChild;
+            int        nRenderTarget    = pChild->mnRenderTargetIndex;
             pChild->mnRenderTargetIndex = INVALIDE_RENDERTARGET;
             if (pChild->mbNoClipRect) {
                 pChild->Render(&rcClip);
@@ -1140,13 +1142,15 @@ void RtwWidget::PrintToConsole(const std::string& prefix /* = ""*/) {
 
     if (m_pChildren) {
         std::string            prefixChild = prefix + "    ";
-        UiWidgetList::iterator iter = m_pChildren->m_Widgets.begin();
+        UiWidgetList::iterator iter        = m_pChildren->m_Widgets.begin();
         for (; iter != m_pChildren->m_Widgets.end(); ++iter) {
             RtwWidget* pWidget = *iter;
             pWidget->PrintToConsole(prefixChild);
         }
     }
 }
+
+static std::string nametemp = "";
 
 //前端显示
 void RtwWidget::DrawForeground(const RtwRect* pClipRect /* = NULL*/) {
@@ -1159,9 +1163,14 @@ void RtwWidget::DrawForeground(const RtwRect* pClipRect /* = NULL*/) {
         //temp.top = m_rcFrame.top -
         //           20;  // 将矩形的顶部位置设置为组件的顶部减去偏移量（20 是示例值，根据需要调整）
         //temp.bottom = m_rcFrame.top;  // 矩形的底部与顶部对齐
-        g_workspace.getFontManager()->DrawString(m_Name, m_rcFrame, 0xffff0000, true,
+        /* g_workspace.getFontManager()->DrawString(m_Name, m_rcFrame, 0xffff0000, true,
                                                  SUiTextAlignment(alignFar, alignFar), true,
-                                                 pClipRect, "", 12);
+                                                 pClipRect, "", 12);*/
+        if (nametemp != m_Name) {
+            nametemp = m_Name;
+            P_LOGINFO(m_Name + " : " + std::to_string(m_rcFrame.left) + ", " +
+                      std::to_string(m_rcFrame.top));
+        }
     }
 
     //
@@ -1171,9 +1180,9 @@ void RtwWidget::DrawForeground(const RtwRect* pClipRect /* = NULL*/) {
 
     RtwRect UltraRect;
     UltraRect.bottom = m_rcFrame.bottom;
-    UltraRect.left = m_rcFrame.left;
-    UltraRect.top = m_rcFrame.top;
-    UltraRect.right = m_rcFrame.right - 2;
+    UltraRect.left   = m_rcFrame.left;
+    UltraRect.top    = m_rcFrame.top;
+    UltraRect.right  = m_rcFrame.right - 2;
 
     //显示文本
     //begin
@@ -1215,9 +1224,9 @@ void RtwWidget::DrawForeground(const RtwRect* pClipRect /* = NULL*/) {
     //m_MaskValue > 0
     if (!REAL_EQUAL(m_MaskValue, 0) && m_MaskValue > 0) {
         SPoint p1, p2, p3;
-        p1 = m_rcFrame.getCenter();
-        int  Width = m_rcFrame.getWidth();
-        int  Height = m_rcFrame.getHeight();
+        p1           = m_rcFrame.getCenter();
+        int  Width   = m_rcFrame.getWidth();
+        int  Height  = m_rcFrame.getHeight();
         Real _Factor = atan2((Real)Width, (Real)Height) / 2 / UI_PI;
 
         if (m_MaskValue > 0 && m_MaskValue <= _Factor) {
@@ -1360,7 +1369,7 @@ void RtwWidget::DrawBackground(const RtwRect* pClipRect /* = NULL*/) {
         //背景图
         RtwImage* pBackgroundImg = m_pBackGround->getRenderImage();
         if (pBackgroundImg) {
-            RtwPixel kBackColor = pBackgroundImg->m_Color;
+            RtwPixel kBackColor       = pBackgroundImg->m_Color;
             pBackgroundImg->m_Color.a = m_nBackGroundAlpha;
             pBackgroundImg->m_Color.r = m_nBackGroundAlpha;
             pBackgroundImg->m_Color.g = m_nBackGroundAlpha;
@@ -1445,9 +1454,9 @@ void RtwWidget::OnNameChanged(const std::string& OldFullName) {}
 
 //组件矩形计算
 void RtwWidget::CalcClient() {
-    m_rcClient.left = m_rcFrame.left + (m_BorderSize + m_padding.left);
-    m_rcClient.right = m_rcFrame.right - (m_BorderSize + m_padding.right);
-    m_rcClient.top = m_rcFrame.top + (m_BorderSize + m_padding.top);
+    m_rcClient.left   = m_rcFrame.left + (m_BorderSize + m_padding.left);
+    m_rcClient.right  = m_rcFrame.right - (m_BorderSize + m_padding.right);
+    m_rcClient.top    = m_rcFrame.top + (m_BorderSize + m_padding.top);
     m_rcClient.bottom = m_rcFrame.bottom - (m_BorderSize + m_padding.bottom);
     CalcAutoScroll();
 }
@@ -1466,15 +1475,15 @@ void RtwWidget::CalcAutoScroll() {
         // 		bScrollV = bScrollH = false;
         if (rcChildren.top > m_rcFrame.top) {
             // 			bScrollV = true;
-            int nTmpHeight = rcChildren.getHeight();
-            rcChildren.top = m_rcFrame.top;
+            int nTmpHeight    = rcChildren.getHeight();
+            rcChildren.top    = m_rcFrame.top;
             rcChildren.bottom = rcChildren.top + nTmpHeight;
         }
 
         if (rcChildren.left > m_rcFrame.left) {
             // 			bScrollH = true;
-            int nTmpWidth = rcChildren.getWidth();
-            rcChildren.left = m_rcFrame.left;
+            int nTmpWidth    = rcChildren.getWidth();
+            rcChildren.left  = m_rcFrame.left;
             rcChildren.right = rcChildren.left + nTmpWidth + 1;
         }
 
@@ -1494,8 +1503,8 @@ void RtwWidget::CalcAutoScroll() {
                 _max = _min;
             }
 
-            int _value = m_pAutoScrollV->getValue();
-            int _minValue = m_pAutoScrollV->getMin();
+            int _value     = m_pAutoScrollV->getValue();
+            int _minValue  = m_pAutoScrollV->getMin();
             int _stepValue = _value - _minValue;
 
             if (_stepValue < 0) {
@@ -1545,8 +1554,8 @@ void RtwWidget::CalcAutoScroll() {
                 _max = _min;
             }
 
-            int _value = m_pAutoScrollH->getValue();
-            int _minValue = m_pAutoScrollV->getMin();
+            int _value     = m_pAutoScrollH->getValue();
+            int _minValue  = m_pAutoScrollV->getMin();
             int _stepValue = _value - _minValue;
             if (_stepValue < 0) {
                 _stepValue = 0;
@@ -1851,7 +1860,7 @@ void RtwWidget::OnMove_AnchorWidget(RtwWidget* pWidget, RtwEventDelegate* pEvent
     RtwRect rcFrame(0, 0, m_WidgetSize.width, m_WidgetSize.height);
 
     foreach (std::list<SUiAnchor>, iterAnchor, m_Anchors) {
-        SUiAnchor& Anchor = *iterAnchor;
+        SUiAnchor& Anchor          = *iterAnchor;
         RtwWidget* pRelativeWidget = NULL;
 
         bool bNeedDrop = false;
@@ -1898,7 +1907,7 @@ void RtwWidget::OnMove_AnchorWidget(RtwWidget* pWidget, RtwEventDelegate* pEvent
                 if (m_WidgetSize.width)
                     rcFrame.right = rcFrame.left + m_WidgetSize.width - 1;
                 if (pointAnchor.y != 0) {
-                    rcFrame.top = pointAnchor.y;
+                    rcFrame.top    = pointAnchor.y;
                     rcFrame.bottom = rcFrame.top + m_WidgetSize.height - 1;
                 }
                 break;
@@ -1907,7 +1916,7 @@ void RtwWidget::OnMove_AnchorWidget(RtwWidget* pWidget, RtwEventDelegate* pEvent
                 if (m_WidgetSize.width)
                     rcFrame.left = rcFrame.right - m_WidgetSize.width + 1;
                 if (pointAnchor.y != 0) {
-                    rcFrame.top = pointAnchor.y;
+                    rcFrame.top    = pointAnchor.y;
                     rcFrame.bottom = rcFrame.top + m_WidgetSize.height - 1;
                 }
                 break;
@@ -1916,7 +1925,7 @@ void RtwWidget::OnMove_AnchorWidget(RtwWidget* pWidget, RtwEventDelegate* pEvent
                 if (m_WidgetSize.height)
                     rcFrame.bottom = rcFrame.top + m_WidgetSize.height - 1;
                 if (pointAnchor.x != 0) {
-                    rcFrame.left = pointAnchor.x;
+                    rcFrame.left  = pointAnchor.x;
                     rcFrame.right = rcFrame.left + m_WidgetSize.width - 1;
                 }
                 break;
@@ -1925,7 +1934,7 @@ void RtwWidget::OnMove_AnchorWidget(RtwWidget* pWidget, RtwEventDelegate* pEvent
                 if (m_WidgetSize.height)
                     rcFrame.top = rcFrame.bottom - m_WidgetSize.height + 1;
                 if (pointAnchor.x != 0) {
-                    rcFrame.left = pointAnchor.x;
+                    rcFrame.left  = pointAnchor.x;
                     rcFrame.right = rcFrame.left + m_WidgetSize.width - 1;
                 }
                 break;
@@ -1934,7 +1943,7 @@ void RtwWidget::OnMove_AnchorWidget(RtwWidget* pWidget, RtwEventDelegate* pEvent
                 if (m_WidgetSize.width)
                     rcFrame.right = rcFrame.left + m_WidgetSize.width - 1;
                 if (pointAnchor.y != 0) {
-                    rcFrame.top = pointAnchor.y;
+                    rcFrame.top    = pointAnchor.y;
                     rcFrame.bottom = rcFrame.top + m_WidgetSize.height - 1;
                 }
                 break;
@@ -1943,7 +1952,7 @@ void RtwWidget::OnMove_AnchorWidget(RtwWidget* pWidget, RtwEventDelegate* pEvent
                 if (m_WidgetSize.height)
                     rcFrame.bottom = rcFrame.top + m_WidgetSize.height - 1;
                 if (pointAnchor.x != 0) {
-                    rcFrame.left = pointAnchor.x;
+                    rcFrame.left  = pointAnchor.x;
                     rcFrame.right = rcFrame.left + m_WidgetSize.width - 1;
                 }
                 break;
@@ -2024,9 +2033,9 @@ void RtwWidget::_RegisterEvent(RtwWidget* pWidget, RtwEventDispatcher* _pDispatc
     }
 
     SRegisteredEvent re;
-    re.WidgetId = WidgetId;
+    re.WidgetId    = WidgetId;
     re.pDispatcher = _pDispatcher;
-    re.Delegate_ = _Delegate;
+    re.Delegate_   = _Delegate;
     m_RegisteredEvents.push_back(re);
 }
 
@@ -2086,7 +2095,7 @@ bool RtwWidget::getFlag(int flag, bool bParentRelated /* = true*/) {
 
 //计算子组件矩形
 RtwRect RtwWidget::CalcChildrenRect() {
-    bool    bSet = false;
+    bool    bSet  = false;
     RtwRect rcMax = m_rcFrame;
 
     if (!m_pChildren || m_pChildren->getWidgetCount() == 0)
@@ -2160,20 +2169,20 @@ void RtwWidget::SetAutoScrollV(bool bAutoScrollV) {
             m_pAutoScrollV->SetWidgetSize(SSize(g_workspace.getDefaultScrollVWidth(), 0));
 
             SUiAnchor anchor;
-            anchor.Point = anchorTop;
-            anchor.RelativePoint = anchorTop;
+            anchor.Point              = anchorTop;
+            anchor.RelativePoint      = anchorTop;
             anchor.RelativeWidgetName = getName();
             m_pAutoScrollV->AddAnchor(anchor, this);
 
             anchor.Reset();
-            anchor.Point = anchorRight;
-            anchor.RelativePoint = anchorRight;
+            anchor.Point              = anchorRight;
+            anchor.RelativePoint      = anchorRight;
             anchor.RelativeWidgetName = getName();
             m_pAutoScrollV->AddAnchor(anchor, this);
 
             anchor.Reset();
-            anchor.Point = anchorBottom;
-            anchor.RelativePoint = anchorBottom;
+            anchor.Point              = anchorBottom;
+            anchor.RelativePoint      = anchorBottom;
             anchor.RelativeWidgetName = getName();
 
             if (m_pAutoScrollH) {
@@ -2215,14 +2224,14 @@ void RtwWidget::SetAutoScrollH(bool bAutoScrollH) {
             m_pAutoScrollH->SetWidgetSize(SSize(0, g_workspace.getDefaultScrollHHeight()));
 
             SUiAnchor anchor;
-            anchor.Point = anchorLeft;
-            anchor.RelativePoint = anchorLeft;
+            anchor.Point              = anchorLeft;
+            anchor.RelativePoint      = anchorLeft;
             anchor.RelativeWidgetName = getName();
             m_pAutoScrollH->AddAnchor(anchor, this);
 
             anchor.Reset();
-            anchor.Point = anchorRight;
-            anchor.RelativePoint = anchorRight;
+            anchor.Point              = anchorRight;
+            anchor.RelativePoint      = anchorRight;
             anchor.RelativeWidgetName = getName();
             if (m_pAutoScrollV) {
                 anchor.Offset.width = -m_pAutoScrollV->GetFrameRect().getWidth();
@@ -2230,8 +2239,8 @@ void RtwWidget::SetAutoScrollH(bool bAutoScrollH) {
             m_pAutoScrollH->AddAnchor(anchor, this);
 
             anchor.Reset();
-            anchor.Point = anchorBottom;
-            anchor.RelativePoint = anchorBottom;
+            anchor.Point              = anchorBottom;
+            anchor.RelativePoint      = anchorBottom;
             anchor.RelativeWidgetName = getName();
             m_pAutoScrollH->AddAnchor(anchor, this);
         }
@@ -2273,7 +2282,7 @@ void RtwWidget::_DoAutoScrollV(int OriginalValue) {
     _OffsetSize.height = OriginalValue - m_pAutoScrollV->getValue();
 
     // 要确保Offset过程中调用CalcAutoScroll无效
-    bool _bBak = m_bCalcAutoScrollFlag;
+    bool _bBak            = m_bCalcAutoScrollFlag;
     m_bCalcAutoScrollFlag = false;
 
     if (m_pChildren) {
@@ -2296,7 +2305,7 @@ void RtwWidget::_DoAutoScrollH(int OriginalValue) {
     _OffsetSize.width = OriginalValue - m_pAutoScrollH->getValue();
 
     // 要确保Offset过程中调用CalcAutoScroll无效
-    bool _bBak = m_bCalcAutoScrollFlag;
+    bool _bBak            = m_bCalcAutoScrollFlag;
     m_bCalcAutoScrollFlag = false;
 
     if (m_pChildren) {
@@ -2318,9 +2327,9 @@ void RtwWidget::SetUltraText1(const std::string& text /* = ""*/,
                               SUiTextAlignment&  align /* = SUiTextAlignment(alignFar, alignFar)*/,
                               int fontSize /* = 0*/, RtwPixel textColor /* = RtwPixel(0xffffffff)*/
 ) {
-    m_UltraText1.Text = text;
-    m_UltraText1.Align = align;
-    m_UltraText1.FontSize = fontSize;
+    m_UltraText1.Text      = text;
+    m_UltraText1.Align     = align;
+    m_UltraText1.FontSize  = fontSize;
     m_UltraText1.TextColor = textColor;
 }
 
@@ -2328,9 +2337,9 @@ void RtwWidget::SetUltraText2(const std::string& text /* = ""*/,
                               SUiTextAlignment& align /* = SUiTextAlignment(alignNear, alignNear)*/,
                               int fontSize /* = 0*/, RtwPixel textColor /* = RtwPixel(0xffffffff)*/
 ) {
-    m_UltraText2.Text = text;
-    m_UltraText2.Align = align;
-    m_UltraText2.FontSize = fontSize;
+    m_UltraText2.Text      = text;
+    m_UltraText2.Align     = align;
+    m_UltraText2.FontSize  = fontSize;
     m_UltraText2.TextColor = textColor;
 }
 
@@ -2340,6 +2349,7 @@ void RtwWidget::MoveResize(const RtwRect& rect, bool bAbs /* = false */) {
     Move(rect, bAbs);
     SetWidgetSize(SSize(rect.getWidth(), rect.getHeight()));
 }
+
 // 左上角和右下角坐标
 void RtwWidget::MoveResize(int x, int y, int height, int bottom, bool bAbs /* = false */) {
     Move(RtwRect(x, y, height, bottom), bAbs);
@@ -2469,7 +2479,7 @@ RtwWidget* CUiWidgetFactory::createWidget(EWidgetType type, const std::string& n
     }
 
     //创建成功
-    if (pWidget){
+    if (pWidget) {
         pWidget->grab();
     }
 
@@ -2793,7 +2803,7 @@ void CUiWidgetContainer::PrintToConsole(const std::string& name,
                                         const std::string& prefix /* = ""*/) {
     RtCoreLog().Info("[WidgetContainer %s]\n", name.c_str());
     std::string            prefixWidget = prefix + "    ";
-    UiWidgetList::iterator iter = Begin();
+    UiWidgetList::iterator iter         = Begin();
     for (; iter != End(); ++iter) {
         RtwWidget* pWidget = *iter;
         pWidget->PrintToConsole(prefixWidget);

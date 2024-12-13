@@ -60,6 +60,7 @@
 #include <set>
 #include <list>
 #include <queue>
+#include <algorithm>
 #include <vector>
 #include <stack>
 #include <string>

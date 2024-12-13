@@ -182,6 +182,8 @@ UILayerMain::UILayerMain()
 	LOAD_UI("btnteamoff")->SetText(string("¿ª"));
 	LOAD_UI("btnteamoff")->Hide();
 	LOAD_UI("btnteamoff")->EvLClick+=RTW_CALLBACK(this,UILayerMain,OnClicked_TeamOff);*/
+
+    //lyymark µÀ¾ßÀ¸
     char hotkey1[30];
     for (int i = 0; i < 10; ++i) {
         rt2_sprintf(hotkey1, "fmhotkey.lbhotkey%d", i + 1);

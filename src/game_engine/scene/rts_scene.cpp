@@ -1714,8 +1714,8 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock) {
                     } else {
                         obj->m_pObjectLink = NULL;
                     }
-
-                    RtgVertex3* pLookAt = inCamera.GetLookAtPlayerPos();
+                    //lyymark 遮挡透视效果 但是效果不好
+                    /*RtgVertex3* pLookAt = inCamera.GetLookAtPlayerPos();
 
                     if (pLookAt) {
                         RtgMatrix16 mat2obj = obj->GetMatrix().Inverse();
@@ -1736,7 +1736,7 @@ bool RtScene::PreRender(RtgCamera& inCamera, RtSceneBlock* pBlock) {
                                 act->SetVisible(0.35f);
                             }
                         }
-                    }
+                    }*/
                 }
 
                 m_ObjectRender.AddObject(obj);

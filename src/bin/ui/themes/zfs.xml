@@ -101,7 +101,7 @@
                 <PushedImage Blend="true" File="ui/zfs_texture/gw_b2.png" Source="0,0,128,30"/>
                 <DisabledImage Blend="true" File="ui/zfs_texture/gw_b3.png" Source="0,0,128,30"/>
             </Button>
-              <Button Name="NewButton1" Text="PushButton" Sound="ui_softb_bt.wav">
+            <Button Name="NewButton1" Text="PushButton" Sound="ui_softb_bt.wav">
                 <NormalImage Blend="true" File="ui/zfs_texture/gw_b1.png" Source="0,0,128,30"/>
                 <HighlightImage Blend="true" File="ui/zfs_texture/gw_b4.png" Source="0,0,128,30"/>
                 <PushedImage Blend="true" File="ui/zfs_texture/gw_b2.png" Source="0,0,128,30"/>
@@ -175,7 +175,7 @@
                 <BackgroundImage File="ui/zfs_texture/single.tga" Source="200,214,14,14" />
                 <CheckedImage File="ui/zfs_texture/single.tga" Source="200,200,14,14" CheckedColorKey="true" Style="check"/>
             </CheckButton>
-             <CheckButton Name="BigCheckButton" Text="PushButton" Sound="ui_softb_bt.wav">
+            <CheckButton Name="BigCheckButton" Text="PushButton" Sound="ui_softb_bt.wav">
                 <BackgroundImage Blend="true" File="ui/zfs_texture/gw_b1.png" Source="0,0,128,30"/>
                 <CheckedImage Blend="true" File="ui/zfs_texture/gw_b2.png" Source="0,0,128,30"/>
             </CheckButton>
@@ -440,7 +440,7 @@
                     <Label AlignCol="CENTER" Inherit="" Location="100,10,70,18" Name="$MessageName" Show="true" Text="TEST" TextColor="#FFFEF00"/>
                 </Form>
                 <EditBox Name="$DefaultHint" Show="false" Location="0,0,60,16" BackgroundColor="#40000000">
-                    
+
                 </EditBox>
             </Layer>
         </SystemWidgets>

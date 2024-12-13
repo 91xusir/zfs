@@ -562,7 +562,7 @@ public:
 	CTimer_Hint* m_TimerHint;
 	CUIFormPlayerShop* m_formPlayerShop;
 	CUIFormLookPlayerShop* m_formLookPlayerShop;
-	bool				m_bNeedSetTranForShotcut;
+	bool				m_bNeedSetTranForShotcut;//是否需要设置快捷键的透明度
 	/*****************************************************************/
 	UIFormSelectReward* m_formSelectReward;		// 任务奖励选择
 	UIFormCard* m_formCard;

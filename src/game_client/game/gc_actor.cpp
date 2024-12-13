@@ -5674,13 +5674,14 @@ void GcActor::ChangeCollectTool(bool totool) {
     }
 }
 
+//lyymark Õ∑œÒ…Ë÷√
 RtwImage* GcActor::GetHeadImage(char index) {
     //if ( index < 0 || index > 8)
     //	index = 0;
 
     char filename[32];
     rt2_sprintf(filename, "%d", (int)index);
-    return g_workspace.getImageFactory()->createImage("ui\\ui_texture\\pic_role_ss_m_01_f");
+    return g_workspace.getImageFactory()->createImage("ui\\x_textures\\pic_role_1");
 }
 
 void GcActor::DoTrumpSkill(SCmd cmd) {
