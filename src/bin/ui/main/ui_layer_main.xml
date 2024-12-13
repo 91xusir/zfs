@@ -1886,6 +1886,7 @@
         <Anchor offset="0,-5" point="CENTERH"/>
       </Anchors>
     </Form>
+    <!--  -->
     <Form Inherit="" Location="207,698,101,68" Name="fun01" Show="true">
       <Label Location="0,0,101,68" Name="lbjileft" Show="true">
         <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="295,2,101,68"/>
@@ -1900,6 +1901,7 @@
         <Anchor offset="0,0" point="BOTTOM"/>
       </Anchors>
     </Form>
+    <!--  -->
     <Form Inherit="" Location="700,682,125,83" Name="fmshop" Show="true">
       <Label Inherit="" Location="0,0,125,83" Name="lbjiright" Show="true">
         <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="44,261,125,83"/>
@@ -1914,6 +1916,7 @@
         <Anchor offset="0,0" point="BOTTOM"/>
       </Anchors>
     </Form>
+    <!--  -->
     <Label Inherit="" Location="319,744,26,16" Name="lbleft" Show="true">
       <BackgroundImage Blend="true" File="ui\x_textures\1.tga" Source="396,47,26,16"/>
       <Anchors>

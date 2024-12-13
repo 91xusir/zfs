@@ -80,23 +80,26 @@
 #include <strstream>
 #include <io.h>
 
+// 存储UI界面中各个按钮图标的路径
+// 包含交易、好友、公会、商店等社交功能按钮
+// 以及表情动作按钮如点头、摇头、微笑等
 const char* g_storedIcon[] = {
-    "fmcharall.tabcharall.fmsoc.btntrade",      // 0
-    "fmcharall.tabcharall.fmsoc.btnfriend",     // 1
-    "fmcharall.tabcharall.fmsoc.btnguild",      // 2
-    "fmcharall.tabcharall.fmsoc.btnshop",       // 3
-    "fmcharall.tabcharall.fmsoc.btninvite",     // 4
-    "fmcharall.tabcharall.fmsoc.btnleave",      // 5
-    "fmcharall.tabcharall.fmsoc.btndivid",      // 6
-    "fmcharall.tabcharall.fmsoc.btnteamclose",  // 7
+    "fmcharall.tabcharall.fmsoc.btntrade",      // 交易按钮
+    "fmcharall.tabcharall.fmsoc.btnfriend",     // 好友按钮
+    "fmcharall.tabcharall.fmsoc.btnguild",      // 公会按钮
+    "fmcharall.tabcharall.fmsoc.btnshop",       // 商店按钮
+    "fmcharall.tabcharall.fmsoc.btninvite",     // 邀请按钮
+    "fmcharall.tabcharall.fmsoc.btnleave",      // 离开按钮
+    "fmcharall.tabcharall.fmsoc.btndivid",      // 分配按钮
+    "fmcharall.tabcharall.fmsoc.btnteamclose",  // 关闭队伍按钮
 
-    "fmcharall.tabcharall.fmsoc.btnwell",   // 8
-    "fmcharall.tabcharall.fmsoc.btnsmile",  // 9
-    "fmcharall.tabcharall.fmsoc.btnnod",    // 10
-    "fmcharall.tabcharall.fmsoc.btnno",     // 11
-    "fmcharall.tabcharall.fmsoc.btncry",    // 12
-    "fmcharall.tabcharall.fmsoc.btncheer",  // 13
-    "fmcharall.tabcharall.fmsoc.btnwave",   // 14
+    "fmcharall.tabcharall.fmsoc.btnwell",   // 祝福表情
+    "fmcharall.tabcharall.fmsoc.btnsmile",  // 微笑表情
+    "fmcharall.tabcharall.fmsoc.btnnod",    // 点头动作
+    "fmcharall.tabcharall.fmsoc.btnno",     // 摇头动作
+    "fmcharall.tabcharall.fmsoc.btncry",    // 哭泣表情
+    "fmcharall.tabcharall.fmsoc.btncheer",  // 欢呼动作
+    "fmcharall.tabcharall.fmsoc.btnwave",   // 挥手动作
 };
 
 #define GRID_SIZE_X 32
@@ -211,6 +214,7 @@ UILayerMain::UILayerMain()
     LOAD_UI("fmsystem.btnsysskill")->EvLClick +=
         RTW_CALLBACK(this, UILayerMain, OnClicked_System_Skill);
     LOAD_UI("fmsystem.btnsyslist")->EvLClick += RTW_CALLBACK(this, UILayerMain, OnClicked_HeroList);
+    //lyymark 商城
     LOAD_UI("fmshop.btnsysshop")->EvLClick +=
         RTW_CALLBACK(this, UILayerMain, OnClicked_ShopCenter);  //heten
 
@@ -1798,11 +1802,11 @@ void UILayerMain::OnHtmlAction_HtmlHelpView(RtwWidget* sender, void* pParam) {
 				reward[i] = 0;
 			sscanf(&szHref[11],"%d,%d,%d,%d,%d,%d",taskId,reward[0],reward[1],reward[2],
 				reward[3],reward[4]);
-			
+
 			vector<DWORD> rw;
 			for(int i=0; i<5; ++i)
-				if(reward[i]!=0) rw.push_back(reward[i]); 
-			
+				if(reward[i]!=0) rw.push_back(reward[i]);
+
 			m_formSelectReward->ResetRewardIDs(true,taskId,rw);
 			m_formSelectReward->Show();
 		}
@@ -1896,7 +1900,7 @@ void UILayerMain::OnClicked_AutoFight(RtwWidget* sender, RtwEventDelegate* e) {
 
 void UILayerMain::OnClicked_ShopCenter(RtwWidget* sender, RtwEventDelegate* e) {
     guard;
-    return;
+    //return;
     if (m_formShopCenter->IsVisible()) {
         m_formShopCenter->Hide();
     } else {

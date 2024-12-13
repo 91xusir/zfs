@@ -3047,6 +3047,7 @@ bool CItemManager::LoadResource() {
         pItemBase->point                     = point;
         rt2_strncpy(pItemBase->icon, icon, PATH_STRING_LEN - 1);
         pItemBase->icon[PATH_STRING_LEN - 1] = 0;
+        //lyymark 物体盒子模型
         rt2_strncpy(pItemBase->szModel, "iii001.act", PATH_STRING_LEN - 1);
         pItemBase->szModel[PATH_STRING_LEN - 1] = 0;
         rt2_strncpy(pItemBase->szSound, sound, PATH_STRING_LEN - 1);

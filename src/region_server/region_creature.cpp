@@ -5974,9 +5974,9 @@ long CRegionCreature::OnDead(CRegionCreature* killer) {
             }
         }
 
+        // 改成道具直接掉在尸体上
         // 金钱道具归最大伤害者,金钱上面已经处理过了，接下来处理道具
-        //改成道具直接掉在尸体上
-        // 金钱道具归最大伤害者,金钱上面已经处理过了，接下来处理道具
+        //lyytodo 改回掉落到地上
         //if(maxDamageCre && maxDamageCre->IsUser() && m_npcInfo)
         //{
         //	bool bFirstDropItem = true;
@@ -8512,26 +8512,26 @@ bool CRegionCreature::AddItem(SItemID item) {
                                                        i, j, ITEM_REASON_PICK);
         RecvCmd(g_sendCmd);
         return true;
-    } else  // 丢在地上
+    } else  // lyymark 丢在地上
     {
-        //CRegionItem *rgItem = (CRegionItem*)g_factory->CreateObject(OBJECT_TYPE_ITEM);
-        //if (rgItem)
-        //{
-        //	rgItem->m_item = item;
-        //	rgItem->m_masterKeepTime = rtGetMilliseconds() + ITEM_MASTER_KEEP_TIME;
-        //	rgItem->m_masterId = m_oId;
-        //	if(!m_scene->AddItem(rgItem,m_pos,0))
-        //	{
-        //		ERR("道具丢到地上出错\n");
-        //		g_factory->DestroyObject(rgItem);
-        //		return false;
-        //	}
-        //	return true;
-        //}
-        //else
-        //{
-        //	return false;
-        //}
+        CRegionItem *rgItem = (CRegionItem*)g_factory->CreateObject(OBJECT_TYPE_ITEM);
+        if (rgItem)
+        {
+        	rgItem->m_item = item;
+        	rgItem->m_masterKeepTime = rtGetMilliseconds() + ITEM_MASTER_KEEP_TIME;
+        	rgItem->m_masterId = m_oId;
+        	if(!m_scene->AddItem(rgItem,m_pos,0))
+        	{
+        		ERR("道具丢到地上出错\n");
+        		g_factory->DestroyObject(rgItem);
+        		return false;
+        	}
+        	return true;
+        }
+        else
+        {
+        	return false;
+        }
         return false;
     }
 }

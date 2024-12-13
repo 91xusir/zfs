@@ -1,6 +1,6 @@
 //********************************************************************
 //	created:	2010.05.28 16:00
-//	filename: 	rtw_hud.cpp
+//	filename: 	rtw_hud.h
 //	author:		ldr123
 //	purpose:	hud
 //  other:		局部重构添加注释
@@ -9,7 +9,7 @@
 #ifndef _RTUI_HUD_H
 #define _RTUI_HUD_H
 
-namespace ui 
+namespace ui
 {
 	class RtwHUD : public RtwWidget
 	{
@@ -56,7 +56,7 @@ namespace ui
 			void SetSize(int x,int y)
 			{
 				width	= x;
-				height	= y;        
+				height	= y;
 			}
 
 			void Render(RtgDevice& inDevice)
@@ -82,7 +82,7 @@ namespace ui
 			siGuild		= 0x04,			// 帮派
 			siNick		= 0x08,			// 帮派昵称(只有帮派显示才会显示)
 			esiFaction	= 0x10,			// 门派
-			esiHPBar	= 0x20,			// HP条		
+			esiHPBar	= 0x20,			// HP条
 			siMsg		= 0x40,			// 信息
 			esiStall	= 0x80,			// 摆摊店名
 			esiLogo		= 0x100,		// 帮派LOGO
@@ -126,7 +126,7 @@ namespace ui
 		void    ShowHPBar(bool flag);    /*{ if (flag) m_cShowItem|=esiHPBar;   else m_cShowItem&=(~esiHPBar);   }*/
 		void    ShowMsg(bool flag)      { if (flag) m_cShowItem|=siMsg;     else m_cShowItem&=(~siMsg);	  }
 		void    ShowStall(bool flag);    /*{ if (flag) m_cShowItem|=esiStall;   else m_cShowItem&=(~esiStall);   }*/
-		void    ShowPetAbility(bool flag)      { if (flag) m_cShowItem|=siPetAbility;     else m_cShowItem&=(~siPetAbility);} 
+		void    ShowPetAbility(bool flag)      { if (flag) m_cShowItem|=siPetAbility;     else m_cShowItem&=(~siPetAbility);}
 		void    ShowPetFuseLev(bool flag)      { if (flag) m_cShowItem|=siPetFuseLev;     else m_cShowItem&=(~siPetFuseLev);}
 		void    ShowPetMaster(bool flag)      { if (flag) m_cShowItem|=siPetMaster;     else m_cShowItem&=(~siPetMaster);}
 		void    ShowLogo(bool flag){if (flag) m_partylogo->Show();     else m_partylogo->Hide();}
@@ -153,7 +153,7 @@ namespace ui
 
 		void SetPetFlag(bool flag,const string& szPetAbility ,DWORD dwColorAbility,
 			const string& szPetFuseLev,DWORD dwColorFuseLev ,const string& szPetMaster,DWORD dwColorMaster )
-		{ 
+		{
 			ShowPetAbility(flag);
 			ShowPetFuseLev(flag);
 			ShowPetMaster(flag);
@@ -184,8 +184,8 @@ namespace ui
 		bool            m_bshow;
 		bool			m_bShowName;
 		int				m_speakDuration;
-		int				m_speakTimeStamp;	
-		float			m_bloodValue;	
+		int				m_speakTimeStamp;
+		float			m_bloodValue;
 		RtwProgressBar*	m_pBloodBar;
 		RtwTextBox*		m_pSpeakUI;
 		RtwTextBox*		m_pNameUI;
@@ -209,5 +209,5 @@ namespace ui
 	public:
 		static long		s_cShowItem;
 	};
-} 
-#endif 
+}
+#endif

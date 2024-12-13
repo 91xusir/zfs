@@ -1,38 +1,70 @@
 #ifndef _INC_UI_LAYER_MAIN_H_
 #define _INC_UI_LAYER_MAIN_H_
-
+// 系统设置界面
 class UIFormSetting;
+// 玩家物品/背包界面
 class UIFormPlayerItems;
+// 角色属性界面
 class UIFormCharProp;
-class UIFormPetProp;//tim.yang  神兽系统
+// 宠物属性界面
+class UIFormPetProp; //tim.yang 神兽系统
+// 宠物简要信息界面
 class UIFormPetSimple;
+// 角色简要信息界面
 class UIFormCharSimple;
-class UIFormTask;         //--任务系统
-class UIFormMainTask;     //--主线任务
+// 任务系统界面
+class UIFormTask;
+// 主线任务界面
+class UIFormMainTask;
+// 交易界面
 class UIFormTrade;
+// NPC商店界面
 class UIFormShop;
+// 玩家商店界面
 class UIFormPShop;
+// 查看玩家商店界面
 class UIFormLookPShop;
+// 银行界面
 class UIFormBank;
+// 消息提示界面
 class UIFormMsg;
+// 文本消息界面
 class UIFormTextMsg;
+// 技能界面
 class UIFormSkill;
+// 技能学习界面
 class UIFormSkillStudy;
+// 小地图界面
 class UIFormMiniMap;
+// 公会界面
 class UIFormUnion;
+// 帮助界面
 class UIFormHelp;
+// 创建公会界面
 class UIFormUnionCreate;
+// 物品升级界面
 class UIFormItemUpdate;
+// 封地税收界面
 class UIFormFeodTax;
+// 封地银行界面
 class UIFormFeodBank;
+// 封地内容界面
 class UIFormFeodContent;
+// 英雄榜界面
 class UIFormHeroList;
+// GM工具界面
 class UIFormGm;
+// 法宝加魔界面
 class UIFormMagicWeaponAddMp;
+// 法宝加元素界面
 class UIFormMagicWeaponAddEle;
+// 宠物恢复界面
 class UIFormRecoverPet;
+// PK模式界面
 class UIFormPkMode;
+// 清除技能界面
 class UIFormClearSkill;
+// 转生界面
 class UIFormRebirth;
 //-------------------add start by tony 05.06.06------------------------------//
 class UIFormCastleWar;
@@ -43,99 +75,106 @@ class UIFormDupe;
 class UIFormItemsInfo;
 class UIFormCreInfo;
 /**********************************gao 2009.11.5*************************************/
-class UIFormMonInfo;//怪物血条UI
-class CUI_Form_Chant;//吟唱UI
-class CUIForm_System;
-class CUIForm_Speaker;
-class CUIForm_Char;
-class CUIForm_MiddleMap;
-class CUIForm_Gem;
-class CUIFormPlayerShop;
-class CUIFormLookPlayerShop;
-class CTimer_Hint;
+class UIFormMonInfo;    // 怪物血条界面
+class CUI_Form_Chant;   // 技能吟唱界面
+class CUIForm_System;   // 系统设置界面
+class CUIForm_Speaker;  // 喇叭发言界面
+class CUIForm_Char;     // 角色属性界面
+class CUIForm_MiddleMap;// 中型地图界面
+class CUIForm_Gem;      // 宝石界面
+class CUIFormPlayerShop;// 玩家商店界面
+class CUIFormLookPlayerShop; // 浏览玩家商店界面
+class CTimer_Hint;      // 提示计时器
 /***************************************************************************************/
-class UIFormSelectReward;
-class UIFormCard;
-class UIFormSellCard;
-class UIFormAnalyseImage;
-class UIFormBuyCard;
-class UIFormBankPass;
-class UIFormItemCompose;
-class UIFormTimeBar;
-class UIFormVendor;
-class UIFormBid;
-class UIFormSale;
-class UIFormItemFuse;
-class UIFormWarfield;
-class UIFormPetEat;
-class CUI_form_Team;
-class CUIForm_Trump;
-class CUIForm_Pickup;
-class CUIForm_Collect;
-class UIFormItemDecompound;
-class UIFromPetMain;
-class UIFromPetAptitude;
-class UIFromPetCtrl;
-class UIFormPetAbility;
-class UIFormPetMerge;
-class UIFormPetToBeads;
-class UIFormPetMergeBeads;
-class UIFormBankPet;
-class UIFormShopCenter;
+class UIFormSelectReward;      // 选择奖励界面
+class UIFormCard;              // 卡片界面
+class UIFormSellCard;          // 出售卡片界面
+class UIFormAnalyseImage;      // 图像分析界面
+class UIFormBuyCard;           // 购买卡片界面
+class UIFormBankPass;          // 银行密码界面
+class UIFormItemCompose;       // 物品合成界面
+class UIFormTimeBar;           // 时间条界面
+class UIFormVendor;            // 摆摊界面
+class UIFormBid;               // 竞拍界面
+class UIFormSale;              // 出售界面
+class UIFormItemFuse;          // 物品融合界面
+class UIFormWarfield;          // 战场界面
+class UIFormPetEat;            // 宠物喂养界面
+class CUI_form_Team;           // 组队界面
+class CUIForm_Trump;           // 法宝界面
+class CUIForm_Pickup;          // 拾取界面
+class CUIForm_Collect;         // 采集界面
+class UIFormItemDecompound;    // 物品分解界面
+class UIFromPetMain;           // 宠物主界面
+class UIFromPetAptitude;       // 宠物资质界面
+class UIFromPetCtrl;           // 宠物控制界面
+class UIFormPetAbility;        // 宠物能力界面
+class UIFormPetMerge;          // 宠物合成界面
+class UIFormPetToBeads;        // 宠物化珠界面
+class UIFormPetMergeBeads;     // 宠物珠子合成界面
+class UIFormBankPet;           // 宠物仓库界面
+class UIFormShopCenter;        // 商城中心界面
 
 //新手升级指引
-class CUIForm_NewPeopleHelp;
-#define UI_HOT_KEY_COUNT		30
-#define UI_BTN_REMIND_COUNT		3
-#define UI_REMIND_MAX_SIZE		10
+class CUIForm_NewPeopleHelp;   // 新手帮助界面
+#define UI_HOT_KEY_COUNT		30  // 快捷键总数量
+#define UI_BTN_REMIND_COUNT		3   // 提醒按钮数量
+#define UI_REMIND_MAX_SIZE		10  // 提醒最大数量
 
+// 快捷键类型枚举
 enum UIHotKeyType
 {
-	UIHotKey_Icon = 1,
-	UIHotKey_Item = 2,
-	UIHotKey_Skill = 3
+    UIHotKey_Icon = 1,  // 图标类型
+    UIHotKey_Item = 2,  // 物品类型
+    UIHotKey_Skill = 3  // 技能类型
 };
 
+// 提醒类型枚举
 enum UIRemindType
 {
-	UIRemind_NewMail = 1,
-	UIRemind_LevelUp = 2,
-	UIRemind_GmResponse = 3
+    UIRemind_NewMail = 1,     // 新邮件提醒
+    UIRemind_LevelUp = 2,     // 升级提醒
+    UIRemind_GmResponse = 3   // GM回复提醒
 };
+
+// 界面部件类型枚举
 enum HINT_WIDGET
 {
-	WIDGET_NULL = 0,
-	WIDGET_SKILL_TREE = 1,
-	WIDGET_SKILL_BUFF = 2,
-	WIDGET_SKILL_SHORTCUT = 3,
-	WIDGET_ITEAM_SHOW = 4
+    WIDGET_NULL = 0,           // 空部件
+    WIDGET_SKILL_TREE = 1,     // 技能树部件
+    WIDGET_SKILL_BUFF = 2,     // 技能BUFF部件
+    WIDGET_SKILL_SHORTCUT = 3, // 技能快捷键部件
+    WIDGET_ITEAM_SHOW = 4      // 物品展示部件
 };
 struct SETTING_ALL
 {
-	// setting
-	bool		m_bShowSelfName;
-	bool		m_bShowBlood;
-	bool		m_bShowDegree;
-	bool		m_bShowDamage;
-	bool		m_bShowUnionName;
-	bool		m_bShowEXP;
-	bool		m_bShowOtherName;
-	bool		m_bShowNPCName;
-	bool		m_bShowOtherSpeak;
-	bool		m_bShowTradeName;
-	bool		m_bShowSelfSpeak;
-	// refuse
-	bool		m_bRefuseTeam;
-	bool		m_bRefuseAction;
-	bool		m_bRefuseMail;
-	bool		m_bRefuseDuel;
-	bool		m_bRefuseFriend;
-	bool		m_bRefuseMonster;
-	// skillshotcut3 show or not
-	bool		m_bShowSkillShotcut;
-	// music slience or not
-	bool		m_bBackGroundMusicIsSlience;
-	bool		m_bSoundIsSlience;
+	// 显示设置
+	bool		m_bShowSelfName;			// 显示自己名字
+	bool		m_bShowBlood;			// 显示血条
+	bool		m_bShowDegree;			// 显示等级
+	bool		m_bShowDamage;			// 显示伤害
+	bool		m_bShowUnionName;		// 显示帮会名称
+	bool		m_bShowEXP;				// 显示经验
+	bool		m_bShowOtherName;		// 显示其他玩家名字
+	bool		m_bShowNPCName;			// 显示NPC名字
+	bool		m_bShowOtherSpeak;		// 显示其他人说话
+	bool		m_bShowTradeName;		// 显示交易名字
+	bool		m_bShowSelfSpeak;		// 显示自己说话
+
+	// 拒绝设置
+	bool		m_bRefuseTeam;			// 拒绝组队
+	bool		m_bRefuseAction;			// 拒绝动作
+	bool		m_bRefuseMail;			// 拒绝邮件
+	bool		m_bRefuseDuel;			// 拒绝决斗
+	bool		m_bRefuseFriend;			// 拒绝好友
+	bool		m_bRefuseMonster;		// 拒绝怪物
+
+	// 技能快捷栏设置
+	bool		m_bShowSkillShotcut;		// 是否显示技能快捷栏
+
+	// 音效设置
+	bool		m_bBackGroundMusicIsSlience;	// 背景音乐是否静音
+	bool		m_bSoundIsSlience;		// 音效是否静音
 };
 class UILayerMain
 {
@@ -149,7 +188,7 @@ public:
 
 	//void OnAutoScroll_Feedback(RtwWidget* sender, void*);
 
-	//void OnScroll_ManualScroll(RtwWidget* sender, void*);	
+	//void OnScroll_ManualScroll(RtwWidget* sender, void*);
 
 	void OnKeyChar(void*, void*);
 
@@ -339,7 +378,7 @@ public:
 	//RtwChatInputBox*	m_chatInput;
 	//RtwWidget*		m_char;
 	//RtwChatBox*		m_chatFeedback;
-	//RtwChatBox*		m_worldchatFeedback; 
+	//RtwChatBox*		m_worldchatFeedback;
 	//RtwChatBox*		m_systemFeedBack;
 	//RtwVScrollBar*	m_chatScroll;
 	//RtwButton*		m_hotKeyLeft;
@@ -457,7 +496,7 @@ public:
 	void ShowCountDownForm();
 	void SetCountDownFormVisable(bool bVisable = false);
 	//end
-	//2024.7.23  
+	//2024.7.23
 	/*typedef struct strWidthLine
 	{
 		strWidthLine() :m_strMsg(""), m_nLine(0) {}

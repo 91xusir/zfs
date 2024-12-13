@@ -393,20 +393,27 @@ bool GcActor::DestroyGraphData()  //销毁图形
     unguard;
 }
 
+// 更新角色头顶的HUD(血条、名字等信息)显示
 void GcActor::UpdateHUD() {
     guard;
     // HUD
     if (!m_pHUD.IsEmpty()) {
+        // 重置HUD上显示的名字
         ResetHudName();
         //if (GetWorld()->m_pPlayer == this)
         //	m_pHUD->ShowHPBar(false);
         //else if (GetWorld()->m_pPet == this)
         //	m_pHUD->ShowHPBar(true);
         //2010.3.28 gao
+
+        // 获取HUD在屏幕上的坐标
         int iX, iY;
         GetDevice()->GetScreenPos(GetHUDPos(), iX, iY);
+        // 设置HUD的位置
         m_pHUD->SetPosition(RtgVertex3(iX, iY, 0));
+
         // add by fancui for set bloodbar value @ 2005-04-21
+        // 设置血条的值,m_cHpRate为当前血量百分比
         m_pHUD->SetBloodValue((float)m_cHpRate /*/3*/);  //除以3 是为了让血条的最大长度为33
         // added by fancui for set bloodbar value @ 2005-04-21
     }
@@ -1510,7 +1517,7 @@ deadbug:
             // fabs 用于计算浮点数的绝对值
             // 比较当前位置和目标位置的 X 和 Y 坐标
             // 如果当前位置接近目标位置（误差小于 10），则跳过该命令
-          
+
             if (fabs(pPos[0] - cmd.f[0]) < 10.f && fabs(pPos[1] - cmd.f[1]) < 10.f) {
                 break;
             }
@@ -3709,7 +3716,7 @@ void GcActor::OnAttackArrive(SAttack* pAttack, bool bSucceed) {
                             // 处理技能攻击的伤害信息
                             SSkill* skill =
                                 pAttack->pSkill /*Skill()->FindSkill(m_pCurCmd->wSkillID)*/;
-                           
+
                             if (skill) {
                                 int total = 0;
                                 for (int i = 0; i <= skill->wHits; i++)
@@ -3872,22 +3879,36 @@ void GcActor::ShapeshiftAdd(long modelID) {
     AddCommand(ACMD_SHAPESHIFT);
 }
 
+// 添加开始触发器命令
+// @param close - 关闭标志
+// @param final - 最终标志
 void GcActor::StartTriggerAdd(char close, bool final) {
+    // 如果角色已死亡则返回
     if (m_bIsDead) {
         return;
     }
-    ClearCommand();
+    ClearCommand();//清除命令
     //RemoveCurCommand();
+
+    // 创建命令结构
     SCmd cmd;
+    // 根据final参数设置dw[0]值
     if (final)
         cmd.dw[0] = close;
     else
         cmd.dw[0] = !close;
+
+    // 设置命令类型为开始触发器
     cmd.eCmd = ACMD_START_TRIGGER;
+
+    // 设置命令执行时间
+    // 如果是玩家则设为-1,否则为0
     if (this == GetPlayer())
         cmd.fTime = -1.f;
     else
         cmd.fTime = 0;
+
+    // 添加命令到命令队列
     AddCommand(cmd);
 }
 
@@ -4616,30 +4637,43 @@ void GcActor::EquipTrump(bool Active, const char* Model, SItemID& item, STrump* 
     }
     unguard;
 }
-
+// 重置角色头顶显示的名字
 void GcActor::ResetHudName() {
+    // 获取角色名字
     const char* pName = GetName();
     if (pName && pName[0]) {
+        // 如果HUD为空且需要显示HUD,则创建新的HUD
         if (m_pHUD.IsEmpty() && m_bShowHUD) {
             //           m_pHUD = (RtwHUD*)g_workspace.getWidgetFactory()->CreateWidget(g_workspace.GetLayer(0), "", "HUD", RtwWidget::m_DefaultFlag);// 注释 [3/16/2009 tooth.shi]
+            // 创建HUD控件
             m_pHUD = (RtwHUD*)g_workspace.getWidgetFactory()->createWidget(wtHud);
+            // 添加到工作区
             g_workspace.AddWidget(m_pHUD);
         }
+
+        // 如果HUD存在,设置显示内容
         if (!m_pHUD.IsEmpty()) {
+            // 如果是玩家、宠物或召唤NPC
             if (m_eNpcType == ENT_USER || m_eNpcType == ENT_PET || NpcType() == ENT_CALLNPC) {
                 /****lxJian*09.12.03****/
+                // 如果是中立阵营,只显示名字
                 if (m_core.Faction == FACTION_NEUTRAL) {
                     rt2_sprintf(g_strStaticBuffer, "%s", pName);
                     //sprintf(g_strStaticBuffer, "%s", pName);
-                } else {
+                }
+                // 如果是周或商阵营,显示名字和阵营
+                else {
                     rt2_sprintf(g_strStaticBuffer, "%s[%s]", pName,
                                 (m_core.Faction == FACTION_ZHOU ? R(G_ZHOU) : R(G_SHANG)));
                     //sprintf(g_strStaticBuffer, "%s", pName);
                 }
 
-            } else {
+            }
+            // 其他类型NPC只显示名字
+            else {
                 rt2_sprintf(g_strStaticBuffer, "%s", pName);
             }
+            // 设置HUD显示的文本
             m_pHUD->SetNameText((char*)g_strStaticBuffer);
         }
     }
