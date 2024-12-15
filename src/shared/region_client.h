@@ -554,7 +554,7 @@ class CAttrValue {
 	friend bool operator==(const CAttrValue &old const CAttrValue &old)
 	{
 		return GetValue() == old.GetValue();
-		// return Base==old.Base && Temp==old.Temp && Rate==old.Base 
+		// return Base==old.Base && Temp==old.Temp && Rate==old.Base
 		//	&& ColorfulValue==old.ColorfulValue;
 	}
 	*/
@@ -646,16 +646,16 @@ struct SCreature {
     //float     AbsorbMpRate;		// 吸收百分比的mp
 
     //lmk 存盘数据 begin
-    std::string Name;        // 名字
-    char        Metier;      // 职业
-    char        MetierLev;   // 职业等级
+    std::string Name;       // 名字
+    char        Metier;     // 职业
+    char        MetierLev;  // 职业等级
     //BYTE        Lev;         // 等级
-    WORD        Lev;         // 等级
-    char        Faction;     // 阵营      !!!应该是帮会,country才是商周!!!
-    DWORD       Exp;         // 当前经验值
-    long        AttrPoint;   // 属性点
-    long        SkillPoint;  // 技能点
-    short SkillClearCnt;     // 技能洗点次数，不需要同步回client，因为有单独的UI
+    WORD  Lev;            // 等级
+    char  Faction;        // 阵营      !!!应该是帮会,country才是商周!!!
+    DWORD Exp;            // 当前经验值
+    long  AttrPoint;      // 属性点
+    long  SkillPoint;     // 技能点
+    short SkillClearCnt;  // 技能洗点次数，不需要同步回client，因为有单独的UI
 
     //----Tianh---2009.11.20---
     long Cul;            //修为总值
@@ -1257,28 +1257,32 @@ struct SCreModel {
 
     short       Id;
     std::string Act;
-    bool        bComplex;
-    std::string HeadSkin;
-    std::string BodySkin;
-    std::string HandSkin;
-    std::string FootSkin;
-    std::string CaestusSkin;
-    char        DeadType;
-    std::string DeadAct;
-    std::string BornAct;
-    std::string ReplaceMtl;
-    float       ModelScale[3];
-    float       ModelRadius;
+    bool        bComplex;       // 是否为复杂模型
+    std::string HeadSkin;       // 头部皮肤
+    std::string BodySkin;       // 身体皮肤
+    std::string HandSkin;       // 手部皮肤
+    std::string FootSkin;       // 脚部皮肤
+    std::string CaestusSkin;    // 护手皮肤
+    char        DeadType;       // 死亡类型
+    std::string DeadAct;        // 死亡动作
+    std::string BornAct;        // 出生动作
+    std::string ReplaceMtl;     // 替换材质
+    float       ModelScale[3];  // 模型缩放
+    float       ModelRadius;    // 模型半径
 
-    float AttackRange;
-    float MoveSpeed;
-    float AttackSpeed;
+    float AttackRange;  // 攻击范围
 
-    std::string LinkEffect;
-    std::string LinkPoint;
+    float MoveSpeed;  // 移动速度
 
-    std::string AddedSkin;
-    std::string RidePoseFix;
+    float AttackSpeed;  // 攻击速度
+
+    std::string LinkEffect;  // 连接特效
+
+    std::string LinkPoint;  // 连接点
+
+    std::string AddedSkin;  // 额外皮肤
+
+    std::string RidePoseFix;  // 骑乘姿势修正
 };
 
 class CRS_CreModel {
@@ -3225,7 +3229,7 @@ class CIniVariable {
         *vppOut = vpIni->GetEntry(vrSection.c_str(), vrEntry.c_str());
     }
 
-    ~CIniVariable(){};
+    ~CIniVariable() {};
 };
 
 const int c_nMaxData = 10;

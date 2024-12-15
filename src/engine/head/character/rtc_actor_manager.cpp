@@ -466,31 +466,37 @@ void RtcAcotrManager::Load_Thread(void* _ptMgr) {
 bool RtcAcotrManager::LoadActorObject(const RtcAcotrObject& _actobj) {
     switch (_actobj._type) {
         case Actor_Obj_Actor: {
+            // 加载Actor对象
             CRT_ActorInstance* _actor = (CRT_ActorInstance*)_actobj._obj;
             RTASSERT(_actor);
 
+            // 创建并加载Actor的核心对象 用于后端交互
             CRT_Actor* _core =
                 (CRT_Actor*)LoadObject(_actobj._filename.c_str(), RT_RUNTIME_CLASS(CRT_Actor));
 
             if (!_core)
                 return false;
 
+            // 设置核心对象并完成加载
             _actor->SetCoreObject(_core);
             _actor->OnLoadFinish();
 
         } break;
         case Actor_Obj_Skin: {
+            // 加载Skin对象
             CRT_SkinInstance*  _skin  = (CRT_SkinInstance*)_actobj._obj;
             CRT_ActorInstance* _actor = (CRT_ActorInstance*)_actobj._depend;
             RTASSERT(_skin);
             RTASSERT(_actor);
 
+            // 创建并加载Skin的核心对象
             CRT_Skin* core =
                 (CRT_Skin*)LoadObject(_actobj._filename.c_str(), RT_RUNTIME_CLASS(CRT_Skin));
 
             if (!core)
                 return false;
 
+            // 减少引用计数并关联Actor
             RTASSERT(core->m_poRef > 0);
             --core->m_poRef;
             _skin->AttachActor(_actor);
@@ -498,19 +504,23 @@ bool RtcAcotrManager::LoadActorObject(const RtcAcotrObject& _actobj) {
             _skin->OnLoadFinish();
         } break;
         case Actor_Obj_Effect: {
+            // 加载Effect对象
             CRT_Effect*        _eft   = (CRT_Effect*)_actobj._obj;
             CRT_ActorInstance* _actor = (CRT_ActorInstance*)_actobj._depend;
             RTASSERT(_eft);
             RTASSERT(_actor);
 
+            // 关联Actor并直接加载Effect
             _eft->LinkActor(_actor);
             LoadDirect(_eft, _eft->m_Name.c_str(), _actobj._filename.c_str(),
                        RT_RUNTIME_CLASS(CRT_Effect));
         } break;
         case Actor_Obj_Mtl: {
+            // 加载Material对象
             CRT_MaterialLib* _mtl = (CRT_MaterialLib*)_actobj._obj;
             RTASSERT(_mtl);
 
+            // 直接加载Material
             LoadDirect(_mtl, _mtl->m_Name.c_str(), _actobj._filename.c_str(),
                        RT_RUNTIME_CLASS(CRT_MaterialLib));
 

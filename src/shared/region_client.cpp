@@ -45,12 +45,14 @@ int rtRand() {
 
 // min is 1/1,000,000
 const int PROB_MIN = 1000000;
-
+// 根据给定的概率返回一个布尔值，表示是否满足该概率
 bool GetProb(double probability) {
+    // 如果概率小于最小概率，则返回false
     if (probability < 1.0 / PROB_MIN)
         return false;
-    // should find a better way
+    // 生成一个32位的随机数
     long ran = (rtRand() << 16) | rtRand();
+    // 根据生成的随机数和给定的概率，判断是否满足该概率
     return ran % PROB_MIN < probability * PROB_MIN;
 }
 
@@ -3885,7 +3887,7 @@ void MW_GetAddEleInfo(SItemID& item, int element, float& rate, long& time, long&
 		rate = 1.0;
 	}
 	else
-	{	
+	{
 	*/
 
     if (next <= limit / 2) {

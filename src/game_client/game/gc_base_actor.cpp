@@ -1815,6 +1815,7 @@ static const char* pDefaultPoseNameSimple[] = {
 };
 
 static const char* pShapeshiftPoseName[] = {
+    // 变身状态的动作
     "null_",     // 0 空
     "wait",      // 1 待机
     "wait",      // 2 警戒
@@ -1922,28 +1923,32 @@ const char* WeaponPoseName[] = {
     "z",  // 7 短杖
     "q",  // 8 法球
 };
-
+// 根据NPC获取姿势名称
 char* GcBaseActor::GetPoseByNPC(EPoses Pose) {
     guard;
 
-    // 动作基础名
+    // 获取动作基础名
     const char* basic = NULL;
     basic             = pDefaultPoseNameSimple[Pose];
+    // 检查基础名是否有效
     if (!basic || Pose <= POSE_NONE)
         return NULL;
 
-    // 动作标号
+    // 初始化动作标号
     int num = 0;
+    // 如果是闲置姿势，随机选择动作标号
     if (Pose == POSE_IDLE) {
         if (GetProb(0.5f)) {
             num = 1;
         } else {
             num = 2;
         }
+        // 根据基础名和标号生成完整的姿势名称
         rt2_sprintf(m_poseName, "%s0%d", basic, num);
         return m_poseName;
     }
 
+    // 如果不是闲置姿势，直接使用基础名作为姿势名称
     rt2_sprintf(m_poseName, "%s", basic);
     return m_poseName;
 
@@ -2079,82 +2084,112 @@ const char* GcBaseActor::GetPoseByWeapon(EPoses PoseId, SItemID& item1, SItemID&
     unguard;
 }
 
+// 播放指定的动作
+// @param vPoseID - 动作ID
+// @param vLoop - 是否循环播放
+// @param pSkill - 技能信息
+// @param fSpeed - 播放速度
+// @return 返回动作名称,失败返回NULL
 const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, float fSpeed) {
     guard;
     m_vPoseID = vPoseID;
+    // 检查动作ID是否有效
     if (vPoseID < POSE_NONE || vPoseID >= POSE_MAX) {
         return "";
     }
 
+    // 如果角色正在骑乘状态,则播放坐骑的动作
     if (m_pMaster->m_eRideState == GcActor::ERS_ACTOR) {
         return m_pMaster->m_pRidePet->mBaseActor.PlayPose(vPoseID, vLoop, pSkill, fSpeed);
     }
 
+    // 检查模型是否已创建
     if (mpModel == NULL) {
         LOG("GcBaseActor::PlayPose 试图播放一个模型信息还没有创建的人物动作.\n");
         return NULL;
     }
     const char* pPoseName = NULL;
+    // 根据模型类型选择动作名称
+    // 如果模型是复杂模型，选择默认的动作名称
     if (mpModel->bComplex)
         pPoseName = pDefaultPoseName[vPoseID];
+    // 如果模型是简单模型，选择简单的默认动作名称
     else
         pPoseName = pDefaultPoseNameSimple[vPoseID];
 
     SItemID  Item1, Item2;
     SWeapon *pWeaClass1, *pWeaClass2 = NULL;
+    // 获取主武器信息
     Item1 = m_pMaster->mItem.GetEquipItem(CItemContainer::WEAPON_1, true);
+    // 获取副武器信息(已注释)
     // Item2 = m_pMaster->mItem.GetEquipItem(CItemContainer::WEAPON_2, true);
     pWeaClass1 = (SWeapon*)(((CGameClientFrame*)GetApp())->m_pItemManager->GetItem(Item1.type));
+    // 获取副武器类型(已注释)
     // pWeaClass2 = (SWeapon*)(
     // ((CGameClientFrame*)GetApp())->m_pItemManager->GetItem(Item2.type) );
 
     int iSkillTime = 0;
+    // 检查模型是否为简单模型，如果是，则处理简单模型的动作
     if (!mpModel->bComplex) {
         if (vPoseID == POSE_IDLE) {
-            pPoseName = GetPoseByNPC(vPoseID);
+            pPoseName = GetPoseByNPC(vPoseID);  // 根据NPC获取闲置姿势
         } else if (vPoseID == POSE_ATTACK && pSkill) {
+            // 根据武器类型选择攻击动作
             if ((pWeaClass1 && pWeaClass1->bBothHands) ||
                 (pWeaClass1 && pWeaClass2 && !ItemIsShield(Item2) && !ItemIsShield(Item1)))
-                pPoseName = pSkill->szRAction2;
+                pPoseName = pSkill->szRAction2;  // 选择第二个攻击动作
             else
-                pPoseName = pSkill->szRAction1;
+                pPoseName = pSkill->szRAction1;  // 选择第一个攻击动作
 
-            iSkillTime                                   = pSkill->iRTime;
+            iSkillTime                                   = pSkill->iRTime;  // 设置技能时间
             CActorSkill::SActorPassive* pStrengthenSkill = NULL;
             ////Tianh 修改加强型技能
+            // 处理技能加强效果
             if (!(pSkill->wManyStrSkillSub.empty())) {
                 for (vector<int>::iterator it = pSkill->wManyStrSkillSub.begin();
                      it != pSkill->wManyStrSkillSub.end(); it++) {
-                    pStrengthenSkill = m_pMaster->m_Skill.FindPassiveSkillBySubID(*(it));
+                    pStrengthenSkill =
+                        m_pMaster->m_Skill.FindPassiveSkillBySubID(*(it));  // 根据子ID查找被动技能
 
                     if (pStrengthenSkill) {
+                        // 增加最小伤害(已注释)
                         // if (pStrengthenSkill->pAttr->iRMinDest)
                         //{
                         //	iMyRMinDest += pStrengthenSkill->pAttr->iRMinDest;
                         // }
+                        // 增加技能时间
                         if (pStrengthenSkill->pAttr->iRMaxDest) {
-                            iSkillTime += pStrengthenSkill->pAttr->iRTime;
+                            iSkillTime += pStrengthenSkill->pAttr->iRTime;  // 累加技能时间
                         }
                     }
                 }
             }
         }
-    } else if (m_pMaster->m_cShapeshift == 2) {
+    }
+    // 处理变身状态为2时的动作
+    else if (m_pMaster->m_cShapeshift == 2) {
+        // 根据姿势ID选择合适的姿势名称
         if (vPoseID == POSE_IDLE) {
             pPoseName = GetPoseByNPC(vPoseID);
         } else if (vPoseID == POSE_WALK) {
+            // 将步行姿势转换为跑步姿势
             vPoseID   = POSE_RUN;
             pPoseName = pShapeshiftPoseName[vPoseID];
         } else if (vPoseID == POSE_ATTACK && pSkill) {
+            // 如果是攻击姿势且有技能，则选择技能的第一攻击动作
             pPoseName = pSkill->szRAction1;
         } else {
+            // 对于其他姿势，直接使用变身姿势名称
             pPoseName = pShapeshiftPoseName[vPoseID];
         }
-    } else if (pWeaClass1)  // 有武器
+    }
+    // 处理有武器时的动作
+    else if (pWeaClass1)  // 有武器
     {
         switch (vPoseID) {
             case POSE_ATTACK:
                 if (pSkill) {
+                    // 根据武器类型选择攻击动作
                     if ((pWeaClass1 && pWeaClass1->bBothHands) ||
                         (pWeaClass1 && pWeaClass2 && !ItemIsShield(Item2) && !ItemIsShield(Item1)))
                         pPoseName = pSkill->szRAction2;
@@ -2162,6 +2197,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                         pPoseName = pSkill->szRAction1;
                     iSkillTime                                   = pSkill->iRTime;
                     CActorSkill::SActorPassive* pStrengthenSkill = NULL;
+                    // 处理单个加强技能(已注释)
                     // if(pSkill->wStrSkillSub)
                     //{
                     //	pStrengthenSkill =
@@ -2176,16 +2212,19 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                     // }
                     /*iMyRMaxDest = pSkill->iRMaxDest*/;
                     ////Tianh 修改加强型技能
+                    // 处理多个加强技能
                     if (!(pSkill->wManyStrSkillSub.empty())) {
                         for (vector<int>::iterator it = pSkill->wManyStrSkillSub.begin();
                              it != pSkill->wManyStrSkillSub.end(); it++) {
                             pStrengthenSkill = m_pMaster->m_Skill.FindPassiveSkillBySubID(*(it));
 
                             if (pStrengthenSkill) {
+                                // 增加最小伤害(已注释)
                                 // if (pStrengthenSkill->pAttr->iRMinDest)
                                 //{
                                 //	iMyRMinDest += pStrengthenSkill->pAttr->iRMinDest;
                                 // }
+                                // 增加技能时间
                                 if (pStrengthenSkill->pAttr->iRMaxDest) {
                                     iSkillTime += pStrengthenSkill->pAttr->iRTime;
                                 }
@@ -2193,6 +2232,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                         }
                     }
                 } else {
+                    // 获取武器动作(已注释)
                     // pPoseName = GetPoseByWeapon(vPoseID, Item1, Item2);
                     pPoseName = GetPoseByWeapon(vPoseID, Item1);
                 }
@@ -2205,11 +2245,13 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
             case POSE_HURT:
             case POSE_GUARD:
             default:
+                // 获取武器动作(已注释)
                 // pPoseName = GetPoseByWeapon(vPoseID, Item1, Item2);
                 pPoseName = GetPoseByWeapon(vPoseID, Item1);
                 break;
         }
     }
+    // 处理只有盾牌时的动作(已注释)
     // else if (!pWeaClass1 && pWeaClass2 && ItemIsShield(Item2.type))
     //{
     //	switch(vPoseID)
@@ -2224,8 +2266,10 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
     //		break;
     //	}
     // }
+    // 处理无武器时的动作
     else  // 没有武器
     {
+        // 获取技能动作(已注释)
         // if (vPoseID==POSE_ATTACK && pSkill) pPoseName = pSkill->szRAction;
 
         pPoseName = GetPoseByWeapon(vPoseID, Item1);
@@ -2234,36 +2278,47 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
         }
     }
 
+    // 如果是特殊动作
     if (vPoseID == POSE_FUNACTION) {
+        // 获取技能索引
         DWORD dwIdx = (DWORD)pSkill;
-        char  cDir;
-        cDir  = dwIdx & 0x0FF;
+        // 获取方向
+        char cDir;
+        cDir = dwIdx & 0x0FF;
+        // 获取技能索引
         dwIdx = (dwIdx >> 16) & 0x0FFFF;
+        // 如果技能索引小于1或大于7，设置为1
         if (dwIdx < 1 || dwIdx > 7) {
             dwIdx = 1;
         }
+        // 获取特殊动作名称
         pPoseName = pFunActionPoseName[dwIdx - 1];
-        vLoop     = false;
+        // 设置循环为false
+        vLoop = false;
     }
 
+    // 检查动作名称是否有效
     if (pPoseName == 0 || pPoseName[0] == 0) {
         ERR("播放动作失败,动作名字为空\n");
         return NULL;
     }
 
+    // 检查是否重复播放相同的循环动作
     if (m_bLastLoop == vLoop && m_bLastLoop == true && strcmp(m_szLastPoseName, pPoseName) == 0) {
         if (!mGraph.p()->IsPlayingPose())
             ERR("Last is a loop cmd, but GetCurrentPose()==NULL!\n");
         return m_szLastPoseName;
     }
 
+    // 保存当前动作信息
     m_bLastLoop = vLoop;
     rt2_strncpy(m_szLastPoseName, pPoseName, 40);
+    // 确保字符串结束(已注释)
     // m_szLastPoseName[39] = 0;
 
     SRT_Pose* tpose = mGraph.p()->GetPose(m_szLastPoseName);
 
-    // check normal attack speed
+    // 调整普通攻击速度
     if (!pSkill && GetWorld() && GetWorld()->m_pPlayer == m_pMaster &&
         (vPoseID == POSE_ATTACK || vPoseID == POSE_BASH)) {
         if (tpose) {
@@ -2272,13 +2327,16 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
         }
     }
 
+    // 根据技能时间调整播放速度
     if (iSkillTime) {
         if (tpose)
             fSpeed = ((tpose->EndFrm - tpose->StartFrm) * 1000.f / 30.f) / (float)iSkillTime;
     }
 
+    // 保存动作速度并播放动作
     m_fLastPoseSpeed = fSpeed;
     if (!mGraph.PlayPose(m_szLastPoseName, vLoop, fSpeed)) {
+        // 输出错误信息(已注释)
         // ERR2("播放动作失败,模型文件[%s] 动作[%s] \n", mGraph.FileName(),
         // m_szLastPoseName);
         P_LOGINFO("播放动作失败" + std::string(mGraph.FileName()) + "动作" +
@@ -2286,6 +2344,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
         const SRT_Pose* pActorPose = &mGraph.p()->GetCurrentPose();
         if (pActorPose && pActorPose->IsVaild()) {
             rt2_strncpy(m_szLastPoseName, pActorPose->Name.c_str(), 40);
+            // 确保字符串结束(已注释)
             // m_szLastPoseName[39] = 0;
         }
         return NULL;
@@ -2317,6 +2376,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                 Safe_ReleaseActor(m_pWeapon->m_skillEffect);
 
             } else {
+                // 播放技能路径动作(已注释)
                 // m_way->PlayPoseInTime(skill->szWayName,skill->iRTime,false);
                 if (!m_pWeapon->PlayPose(pSkill->szWayName, vLoop, fSpeed))
                     m_pWeapon->PlayPose(m_szLastPoseName, vLoop, fSpeed);

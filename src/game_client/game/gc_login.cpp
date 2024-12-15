@@ -171,7 +171,6 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
                 m_poseMap["attack_n1"].Name = "attack_n1";
                 m_poseMap["attack_n2"]      = m_poseMap["attack_non"];
                 m_poseMap["attack_n2"].Name = "attack_n2";
-
                 m_poseMap["attack_f0"]      = m_poseMap["attack_t"];
                 m_poseMap["attack_f0"].Name = "attack_f0";
                 m_poseMap["attack_f1"]      = m_poseMap["attack_t"];
@@ -185,13 +184,13 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
                 m_poseMap["hurt_n0"]     = m_poseMap["hurt_non"];
                 m_poseMap["critical_n0"] = m_poseMap["attack_non"];
             }
-            if (pActor->m_Name == "pn01.act") {
-                auto& m_poseMap = pActor->GetCore()->m_poseMap;
-                for (auto& [name, pose] : m_poseMap) {
-
-                    P_LOGINFO(name);
+           /* if (pActor->m_Name == "pn01.act") {
+                P_LOGINFO("pn01.act");
+                for (auto bone : pActor->m_bones) {
+                    P_LOGINFO(bone.Name);
                 }
             }
+           */
         } while (pIni->NextEntry(&szLink, &szName));
     }
     unguard;

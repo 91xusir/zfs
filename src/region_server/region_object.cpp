@@ -39,17 +39,17 @@ bool CRegionObject::ReloadScript()
 	if(m_scriptName.empty())
 		return false;
 
-	if(!m_pModule) 
+	if(!m_pModule)
 		return LoadScript(m_scriptName.c_str());
 
 	m_pModule = PyImport_ReloadModule(m_pModule);
-	if(!m_pModule) 
+	if(!m_pModule)
 		return false;
 
 	m_pDict = PyModule_GetDict(m_pModule);
 	if(!m_pDict)
 		return false;
-	
+
 	return true;
 }
 
@@ -57,14 +57,14 @@ bool CRegionObject::LoadScript(const char *name)
 {
 	// free old module
 	Py_XDECREF(m_pModule);
-	
+
 	PyObject *pName;
 	pName = PyString_FromString(name);
 	m_pModule = PyImport_ImportModule((char*)name);
-	if(!m_pModule) 
+	if(!m_pModule)
 	{
 		LOG1("CRegionObject: load script [%s] error,no module\n",name);
-		PyErr_Print(); 
+		PyErr_Print();
 		return false;
 	}
 
@@ -75,7 +75,7 @@ bool CRegionObject::LoadScript(const char *name)
 		return false;
 	}
 
-	// save scripts module name 
+	// save scripts module name
 	m_scriptName = name;
 	Py_XDECREF(pName);
 
@@ -86,15 +86,15 @@ bool CRegionObject::LoadScript(const char *name)
 
 PyObject* CRegionObject::FindFunc(char const*func, bool optional)
 {
-	if(!m_pDict) 
+	if(!m_pDict)
 		return 0;
 
 	PyObject* theFunction													= PyDict_GetItemString(m_pDict, func);
-	if(!theFunction || !PyCallable_Check(theFunction)) 
+	if(!theFunction || !PyCallable_Check(theFunction))
 	{
 		if(!optional)
 			LOG2("CRegionObject: can't find function [%s] in script [%s]\n",func,m_scriptName.c_str());
-		
+
 		return 0;
 	}
 
@@ -110,13 +110,13 @@ long CRegionObject::ExecFunc(char const* func, PyObject* object, PyObject* args)
 	if(!pRet)
 	{
 		LOG2("CRegionObject: call function [%s] in script [%s] failed",func,m_scriptName.c_str());
-		PyErr_Print(); 
+		PyErr_Print();
 		return 0;
 	}
 
 	long lRet = PyInt_AsLong(pRet);
 	Py_XDECREF(pRet);
-	
+
 	return lRet;
 }
 
@@ -151,7 +151,7 @@ void CRegionObject::DelFlag(bool tmp,const char *flag)
 */
 
 //
-// timer support 
+// timer support
 //
 void CRegionObject::OnTimer(ULONG id, DWORD dwParam[])
 {
@@ -224,7 +224,7 @@ STimer *CRegionObject::FindTimer(ULONG id)
 bool CRegionObject::StopTimer(ULONG id)
 {
 	STimer *timer = FindTimer(id);
-	if(!timer) 
+	if(!timer)
 		return false;
 	timer->valid = false;
 	return true;
@@ -236,31 +236,31 @@ int CRegionObject::UpdateTimer(ULONG now)
 	STimer *timer;
 	int valid = 0;
 
-	if(m_timerList.empty()) 
+	if(m_timerList.empty())
 	{
 		return 0;
 	}
 	for(it=m_timerList.begin();it!=m_timerList.end();)
 	{
-		timer = *it; 
-		if(!timer->active) 
+		timer = *it;
+		if(!timer->active)
 		{
 			it++;
 			continue;
 		}
-		if(!timer->valid) 
+		if(!timer->valid)
 		{
 			it = m_timerList.erase(it);
 			DEL_ONE(timer);
 			continue;
 		}
 		valid++;
-		if(now - timer->lastcall > timer->interval) 
+		if(now - timer->lastcall > timer->interval)
 		{
 			m_timerCalled++;
 			OnTimer(timer->id, timer->dwParam);
 			// some object will destory self in timer,so...
-			// fix me 
+			// fix me
 			// if(m_flag & OBJECT_FLAG_DESTROY) return -1;
 			timer->lastcall = now;
 		}
@@ -313,7 +313,7 @@ void CRegionObject::UpdateTimerObject()
 	CRegionObject *ob;
     TObjectList::iterator it;
 	ULONG now = rtGetMilliseconds();
-	
+
 	m_timerCalled = 0;
 	for(it = m_timerObjList.begin();it != m_timerObjList.end();)
 	{
@@ -358,20 +358,24 @@ CRegionFactory::~CRegionFactory()
 	// m_hashObject.clear();
 	// RealDestroyObject(true);
 }
-
 CRegionObject *CRegionFactory::CreateObject(unsigned char type,bool cheat)
 {
 	// use type instead of runtime class to save network bandwith
+	// 检查对象类型是否有效
 	if(type <= 0 || type >= OBJECT_TYPE_MAX) return NULL;
 
+	// 根据类型创建对象实例
 	CRegionObject *ob = CreateObjectByType(type);
 	if(!ob) return NULL;
 
+	// 如果不是作弊模式且下一个ID是作弊ID,则跳过该ID
 	if(!cheat && g_region->IsCheatId(PeekNextObjectId()))
 		GetNextObjectId();
-	
+
+	// 设置对象的类型和ID
 	ob->m_type  = type;
 	ob->m_oId   = GetNextObjectId();
+	// 将对象添加到哈希表中
 	m_hashObject[ob->m_oId] = ob;
 	return ob;
 }
@@ -402,7 +406,7 @@ CRegionObject *CRegionFactory::CreateObjectByType(unsigned char type)
 	return NULL;
 }
 
-// destroy a object,remove from object hash table 
+// destroy a object,remove from object hash table
 void CRegionFactory::DestroyObject(CRegionObject *object)
 {
 	if(!object)
@@ -414,7 +418,7 @@ void CRegionFactory::DestroyObject(CRegionObject *object)
 	// check if object already destroyed
 	if(object->m_flag & OBJECT_FLAG_DESTROY)
 		return;
-	
+
 	object->m_flag |= OBJECT_FLAG_DESTROY;
 	m_hashObject.erase(object->m_oId);
 	m_destroyList.push_back(object);
@@ -430,7 +434,7 @@ CRegionObject *CRegionFactory::FindObject(ULONG oid)
 		return (*it).second;
 }
 
-// real delete a object,free memory 
+// real delete a object,free memory
 void CRegionFactory::RealDestroyObject(bool bRemoveTimerObject /* = false*/)
 {
 	CRegionObject *ob;

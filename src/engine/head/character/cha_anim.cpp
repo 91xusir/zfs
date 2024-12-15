@@ -137,22 +137,26 @@ CRT_ActorInstance::CRT_ActorInstance()
 
 bool CRT_ActorInstance::CoreLinkParent(CRT_ActorInstance* parent,
                                        const char* slot) {  // 如果父实例为空，返回false
+    // 检查父实例是否有效
     if (!parent)
         return false;
+
     // 如果父实例的状态是就绪状态，直接调用具体的链接实现
+    // 这样可以立即完成链接而不需要创建命令
     if (parent->GetState() == Object_State_Ready)
         return CoreLinkParentImpl(parent, slot);
 
     // 创建一个用于链接的命令并添加到命令列表
+    // 当父实例还未就绪时,将链接操作加入命令队列延迟执行
     Rac_ActorLink* _cmd = CreateActorCommand<Rac_ActorLink>();
-    _cmd->ltype         = Rac_ActorLink::_link;
-    _cmd->_parent       = parent;
+    _cmd->ltype         = Rac_ActorLink::_link;  // 设置命令类型为链接
+    _cmd->_parent       = parent;                // 设置要链接的父实例
     if (slot)
-        _cmd->_slot = slot;
-    m_listCommand.push_back(_cmd);
-    ++m_linkCount;
+        _cmd->_slot = slot;         // 如果指定了槽位则保存槽位信息
+    m_listCommand.push_back(_cmd);  // 将命令添加到命令列表
+    ++m_linkCount;                  // 增加链接计数
 
-    return true;
+    return true;  // 返回成功
 }
 
 void CRT_ActorInstance::CoreUnlinkParent() {
@@ -166,9 +170,8 @@ void CRT_ActorInstance::CoreUnlinkParent() {
 }
 
 // 具体实现将当前实例链接到父实例，并指定一个槽位
-bool CRT_ActorInstance::CoreLinkParentImpl(
-    CRT_ActorInstance* parent,
-    const char* slot) {  // 如果父实例为空或当前实例已有父实例，则返回false
+bool CRT_ActorInstance::CoreLinkParentImpl(CRT_ActorInstance* parent, const char* slot) {
+    // 如果父实例为空或当前实例已有父实例，则返回false
     if (!parent || m_parent)
         return false;
     // 设置当前实例的父实例
@@ -1172,13 +1175,13 @@ void CRT_ActorInstance::RealUseFrame(float frame) {
         if (m_bDrawScale) {
             RtgMatrix16 mat;
             mat.Unit();
-            mat._00            = m_drawScale.x;
-            mat._11            = m_drawScale.y;
-            mat._22            = m_drawScale.z;
-           const auto& coreBBlist    = m_core->m_boundBoxList;
+            mat._00                = m_drawScale.x;
+            mat._11                = m_drawScale.y;
+            mat._22                = m_drawScale.z;
+            const auto& coreBBlist = m_core->m_boundBoxList;
             if (frame > coreBBlist.size())
-               frame= coreBBlist.size()-1;
-            m_boundingBox.vExt = coreBBlist.at(frame).vExt   * mat;
+                frame = coreBBlist.size() - 1;
+            m_boundingBox.vExt = coreBBlist.at(frame).vExt * mat;
             m_boundingBox.vPos = coreBBlist.at(frame).vPos * mat;
             if (m_boundingBox.vExt.x < BOUND_MIN)
                 m_boundingBox.vExt.x = BOUND_MIN;
@@ -2072,7 +2075,7 @@ void CRT_SkinInstance::RenderShadow() {
             _shader.dwTextureFactor = RtgVectorToColor(RtgVertex3(0.5f, 0.5f, 0.5f), 1.f);
             _shader.Shaders[0].SetTexture(mtl->GetBaseText());
             _shader.Shaders[0].eColorOp   = RTGTOP_MODULATE;
-            _shader.Shaders[0].eColorArg1 = RTGTA_TFACTOR; 
+            _shader.Shaders[0].eColorArg1 = RTGTA_TFACTOR;
             _shader.Shaders[0].eColorArg2 = RTGTA_TEXTURE;
             _shader.Shaders[0].eAlphaOp   = RTGTOP_DISABLE;
             _shader.bEnableBlendFunc = true;
@@ -2396,7 +2399,7 @@ void CRT_SkinInstance::Tick(float deltaMill) {
 
         if (m_fadeOut > m_visible)
             m_fadeOut = m_visible;
-        
+
         for (int i = 0; i < GetMaterialLib()->m_mtlList.size(); ++i)
             GetMaterialLib()->m_mtlList[i]->SetVisibleGlobal(m_fadeOut);
     }

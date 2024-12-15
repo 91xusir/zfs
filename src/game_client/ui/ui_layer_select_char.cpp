@@ -143,7 +143,8 @@ void UILayerSelectChar::OnReceivePasswordConfirm(char lRet) {
         const GcAccountInfo& info = gc_login->GetAccountInfo();
         int                  iSel = gc_login->m_curSelRoleIndex;
         if (info.users[iSel].attributes.level >= 30) {
-            UIFormMsg* pFrm = UIFormMsg::ShowStatic(R(LMSG_CONFIRM_DELETE_CHAR_THIRTY),
+            //lyymark 等级大于30的角色要提示 这里先硬编码
+            UIFormMsg* pFrm = UIFormMsg::ShowStatic("角色等级较高,确定删除吗?",
                                                     UIFormMsg::TYPE_OK_CANCEL);
             pFrm->EvOK = RTW_CALLBACK_1(this, UILayerSelectChar, OnConfirm_Delete, pFrm);
         } else {
