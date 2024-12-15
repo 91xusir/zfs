@@ -181,6 +181,7 @@ class GcBaseActor : public CRT_PoseNotify {
                          float fSpeed = 1.f);
     const char* GetPoseByWeapon(EPoses Pose, SItemID& item1, SItemID& item2);
     char*       GetPoseByWeapon(EPoses Pose, SItemID& item);
+    char*       OldGetPoseByWeapon(EPoses Pose, SItemID& item);
     char*       GetPoseByNPC(EPoses Pose);
 
     void FaceTo(float vX, float vY);  //面朝向
@@ -299,7 +300,7 @@ class GcBaseActor : public CRT_PoseNotify {
     bool IsLastPose(const char* posename);
     void StartMove();
 
-    SCreModel* mpModel;  //当前模型的指针
+    SCreModel* mpModel;  //前后端公用数据模型的指针
     float      m_Time;   //移动要的时间
 
     int m_LastTileX;
@@ -319,6 +320,8 @@ class GcBaseActor : public CRT_PoseNotify {
     float            m_fLastPoseSpeed;
     EPoses           m_vPoseID;
     CM_MEMDEF(m_poseName, 50)
+    CM_MEMDEF(m_szLastPoseName, 40)
+
     CRT_ActorInstance* m_pItemEffect;
     bool               m_bRender;
 
@@ -327,7 +330,6 @@ class GcBaseActor : public CRT_PoseNotify {
 #endif
 
    private:
-    CM_MEMDEF(m_szLastPoseName, 40)
     bool                     m_bLastLoop;
     BYTE                     m_bPutOnPathFinder;
     list<CRT_ActorInstance*> m_eftList;

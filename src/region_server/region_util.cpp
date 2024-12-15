@@ -71,7 +71,7 @@ bool RunScriptFunction(CRegionCreature *cmdGiver, char* szSendCmd, const char se
 	return true;
 }
 
-// lmk gm命令执行客户端上传的命令字符串, 如果被解释就返回true, 否则返回false
+// lmk gm命令 执行客户端上传的命令字符串, 如果被解释就返回true, 否则返回false
 const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, bool bPyGMOP, long pyGmAccount)
 {
     //static char szCmdCopy[512];
@@ -185,7 +185,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
                         {
                             rt2_sprintf(szSendCmd, "%d %s[%d] (%d,%d)",
                                 pFindUser->m_oId,
-                                pFindUser->m_core.Name.c_str(), 
+                                pFindUser->m_core.Name.c_str(),
                                 pFindUser->m_npcId,
                                 pFindUser->m_pos[0], pFindUser->m_pos[1]);
 
@@ -301,7 +301,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 
 			return R(MSG_CLIENT_COMMAND_MOVING);
 		}
-		
+
 		else if (stricmp(token, "gmnotice1")==0)
 		{
 			CHECK_PRIVILEGES(EUP_GM_Mask, R(MSG_CLIENT_NORIGHTGMMSG), bPyGMOP);
@@ -376,7 +376,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 		//}
 		else if (stricmp(token, "enterline")==0)
 		{
-			
+
 			DWORD dwGroupID = 0;
 			long pos[3];
 			memset(pos, 0, sizeof(pos));
@@ -411,7 +411,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 		{
 
 			DWORD dwGroupID, dwLineID;
-			string strmap; 
+			string strmap;
 			long pos[3];
 			memset(pos, 0, sizeof(pos));
 
@@ -682,7 +682,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 						if ((cmdGiver->m_core.MaxEnP.GetValue()) < 10000)
 						{
 							(cmdGiver->m_core.MaxEnP.Base) += num;
-						}					
+						}
 						return R(MSG_CLIENT_COMMAND_ADD_EXPLOIT);
 					}
 					//return "格式: add sp 点数";
@@ -727,7 +727,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 						int count = atoi(token);
 						if (count>0)
 							cmdGiver->m_pItemContainer->AddMoney(count);
-						else 
+						else
 							cmdGiver->m_pItemContainer->RemoveMoney(abs(count));
 						CItemCmdBuilder_Svr::Build_r2c_bag_addmoney(count, ITEM_CONTAINER_PLAYER_COMMON_BAG, ITEM_REASON_NULL);
 						cmdGiver->RecvCmd(g_sendCmd);
@@ -800,7 +800,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 								{
 									pCon = RegionUser->m_dummy->m_pItemContainer;
 								}
-								
+
 								cmdGiver = RegionUser->m_dummy;
 							}
 
@@ -810,7 +810,6 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 						if (token)
 						{
 							id = atoi(token);
-
 							token = strtok(NULL, seps);
 							if (token)
 							{
@@ -828,7 +827,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 											itemColor = ItemColor_Blue;
 										else if (stricmp(token, "golden")==0)
 											itemColor = ItemColor_Golden;
-										else 
+										else
 											itemColor = ItemColor_White;
 
 										token = strtok(NULL, seps);
@@ -840,7 +839,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 												itemBind = IB_BindWhenEquip;
 											else if (stricmp(token, "bind_pick")==0)
 												itemBind = IB_BindWhenPick;
-											else 
+											else
 												itemBind = IB_NotBind;
 
 											token = strtok(NULL, seps);
@@ -903,17 +902,21 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 										}
 										else
 										{
+											// 检查是否成功将物品添加到背包中
 											if(!pCon->m_Bag.AddItem(item, &page, &i, &j))
 											{
+												// 如果背包已满，则返回相应的错误信息
 												rt2_sprintf(szCmdCopy, R(MSG_CLIENT_COMMAND_BIG_FULL));
 												return szCmdCopy;
+												// 如果成功添加，则构建并发送添加物品的命令
 											}
 											else
 											{
 												CItemCmdBuilder_Svr::Build_r2c_bag_additem(item, ITEM_CONTAINER_PLAYER_COMMON_BAG, page, i, j, ITEM_REASON_PICK);
 												cmdGiver->RecvCmd(g_sendCmd);
+												// 返回添加物品的成功信息
 												rt2_sprintf(szCmdCopy, R(MSG_CLIENT_COMMAND_ADD_ITEM), id);
-												//										return szCmdCopy;
+												//return szCmdCopy;
 											}
 										}
 									}
@@ -928,7 +931,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 							return szCmdCopy;
 						}
 					}
-					//return "格式: add item [ItemTypeID] [count] [level] [green|blue|golden]";
+					//return "格式: -add item [ItemTypeID] [count] [level] [green|blue|golden]";
 					return s_ErrString.c_str();
 				}
 				else if (stricmp(token, "skill")==0)
@@ -963,7 +966,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
                 }
 				else if (stricmp(token, "exp")==0)
                 {/*Tianh 09.12.04*GM命令增加经验**/
-									
+
                     CHECK_PRIVILEGES(EUP_ModifyAttrib,R(MSG_CLIENT_COMMAND_NOT_MODIFY) , bPyGMOP);
 					const char* Name;
 					token = strtok(NULL,seps);
@@ -992,11 +995,11 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 							cmdGiver->SendBattleInfoMessage(g_strStaticBuffer);
 							cmdGiver->AddExp(atoi(token),0);
 							return R(MSG_CLIENT_COMMAND_SUPPORT_EXP);
-						} 
+						}
 					}
 					else
 						return R(MSG_CLIENT_COMMAND_NOT_SUPPORT_EXP);
-					
+
                 }
 				else if (stricmp(token, "cul")==0)
 				{/*Tianh *GM命令增加修为**/
@@ -1010,7 +1013,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 						cmdGiver->SendBattleInfoMessage(g_strStaticBuffer);
 						cmdGiver->AddCulExp(atoi(token));
 						return R(MSG_CLIENT_COMMAND_SUPPORT_CUL);
-					} 
+					}
 					else
 						return R(MSG_CLIENT_COMMAND_NOT_SUPPORT_CUL);
 
@@ -1071,7 +1074,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
         }
 		else if (stricmp(token, "ride")==0)
 		{
-			if(!cmdGiver->IsRidePet()) 
+			if(!cmdGiver->IsRidePet())
 			{
 				if(!cmdGiver->m_pet) return "ride error";
 				cmdGiver->RidePet();
@@ -1084,7 +1087,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 				g_sendCmd->WriteLong(cmdGiver->m_pet->m_oId);
 				cmdGiver->RecvCmd(g_sendCmd);
                 */
-			}else 
+			}else
 			{
 				// CmdGiver->m_bRidePet = false;
 				if(!cmdGiver->m_pet) return "ride error";
@@ -1361,7 +1364,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			{
 				SFuBen *pDungeonInfo = g_TableFB.Find(cmdGiver->m_dungeonTID);
 				long pos[3];
-				pos[0] = pFB->m_lExitPos[0];//pDungeonInfo->exitPos[0]; 
+				pos[0] = pFB->m_lExitPos[0];//pDungeonInfo->exitPos[0];
 				pos[1] = pFB->m_lExitPos[1];//pDungeonInfo->exitPos[1];
 				pos[2] = pDungeonInfo->exitPos[2];
 				cmdGiver->m_scene->RemoveCreature(cmdGiver->m_oId);
@@ -1424,6 +1427,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			}
 			return "set level finish";
 		}
+        //升级到指定等级
 		else if (stricmp(token, "levelup")==0 || stricmp(token, "updatelev")==0)
 		{
 			CHECK_PRIVILEGES(EUP_ModifyAttrib, R(MSG_CLIENT_COMMAND_NOT_MODIFY), bPyGMOP);
@@ -1503,7 +1507,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			return R(MSG_CLIENT_COMMAND_SET_OPTION);
 		}
 		else if(stricmp(token, "mlev")==0)
-		{ 
+		{
 				CHECK_PRIVILEGES(EUP_ModifyAttrib, R(MSG_CLIENT_COMMAND_NOT_MODIFY), bPyGMOP);
 			    cmdGiver->m_core.MetierLev++;
 			    cmdGiver->m_core.MetierLev %= 4;
@@ -1521,14 +1525,14 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 		{
 			CHECK_PRIVILEGES(EUP_ModifyAttrib, R(MSG_CLIENT_COMMAND_NOT_MODIFY), bPyGMOP);
 
-            std::string	feod_name;	
+            std::string	feod_name;
 
 			token = strtok( NULL, seps );
 			if(token)
 			{
 				if(stricmp(token, "xiqi")==0)
 				{
-					feod_name = "XiQi";					
+					feod_name = "XiQi";
 				}else if(stricmp(token, "zhaoge")==0)
 				{
 					feod_name = "ZhaoGe";
@@ -1579,24 +1583,24 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 						//{
 						//	p_war_info->state = WAR_PREPARE_STATE;
 						//}
-						
+
 						return "set start time finish";
 					}
-				}			
+				}
 			}
 		}
 		else if(stricmp(token, "resetwar") == 0)
 		{
 			CHECK_PRIVILEGES(EUP_ModifyAttrib, R(MSG_CLIENT_COMMAND_NOT_MODIFY), bPyGMOP);
 
-			std::string	feod_name;	
+			std::string	feod_name;
 
 			token = strtok( NULL, seps );
 			if(token)
 			{
 				if(stricmp(token, "xiqi")==0)
 				{
-					feod_name = "XiQi";					
+					feod_name = "XiQi";
 				}else if(stricmp(token, "zhaoge")==0)
 				{
 					feod_name = "ZhaoGe";
@@ -1622,14 +1626,14 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 		{
 			CHECK_PRIVILEGES(EUP_ModifyAttrib, R(MSG_CLIENT_COMMAND_NOT_MODIFY), bPyGMOP);
 
-			std::string	feod_name;	
+			std::string	feod_name;
 
 			token = strtok( NULL, seps );
 			if(token)
 			{
 				if(stricmp(token, "xiqi")==0)
 				{
-					feod_name = "XiQi";					
+					feod_name = "XiQi";
 				}else if(stricmp(token, "zhaoge")==0)
 				{
 					feod_name = "ZhaoGe";
@@ -1642,7 +1646,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 				}
 
 				STWarInfo* p_war_info = g_RegionCastleWarMgr.FindByName(feod_name);
-				
+
 				if(p_war_info)
 				{
 					//std::string str_pos = "";
@@ -1748,21 +1752,21 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			CG_CmdPacket &cmd = g_region->m_gws.BeginSend();
 			cmd.WriteShort(r2g_warfield_stop);
 			g_region->m_gws.EndSend();
-			
+
 			return R(MSG_CLIENT_COMMAND_WAIT_WAR_FIELD_CLOSE);
 		}
 		else if(stricmp(token, "reloadwar")==0)
 		{
 			CHECK_PRIVILEGES(EUP_ModifyAttrib, R(MSG_CLIENT_COMMAND_NOT_MODIFY), bPyGMOP);
 
-			std::string	feod_name;	
+			std::string	feod_name;
 
 			token = strtok( NULL, seps );
 			if(token)
 			{
 				if(stricmp(token, "xiqi")==0)
 				{
-					feod_name = "XiQi";					
+					feod_name = "XiQi";
 				}else if(stricmp(token, "zhaoge")==0)
 				{
 					feod_name = "ZhaoGe";
@@ -1802,7 +1806,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			{
 				npc_id = atol(token);
 			}
-			else 
+			else
 			{
 				return s_ErrString.c_str();
 			}
@@ -1811,13 +1815,13 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			//{
 			//	npc_name = token;
 			//}
-			//else 
+			//else
 			//{
 			//	return s_ErrString.c_str();
 			//}
 
 			CRegionCreature *cre = g_region->CreateNpc(npc_id);
-			if(!cre/* || (cre->m_core.Name!=npc_name)*/) 
+			if(!cre/* || (cre->m_core.Name!=npc_name)*/)
 			{
 				return s_ErrString.c_str();
 			}
@@ -1854,13 +1858,13 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			{
 				npc_id = atol(token);
 			}
-			else 
+			else
 			{
 				return s_ErrString.c_str();
 			}
 
 			CRegionCreature *cre = g_region->CreateSpirit(npc_id);
-			if(!cre) 
+			if(!cre)
 			{
 				return s_ErrString.c_str();
 			}
@@ -1897,7 +1901,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			{
 				id = atol(token);
 			}
-			else 
+			else
 			{
 				return s_ErrString.c_str();
 			}
@@ -2026,7 +2030,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 
 					return R(MSG_CLIENT_COMMAND_NAT_SAME_AREA);
 				}
-				else 
+				else
 				{
 					SCreatureInfo info;
 					pUser->m_dummy->ToCreatureInfo(&info);
@@ -2038,7 +2042,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 					return "";
 				}
 			}
-			else 
+			else
 			{
 				//return "格式: see [username]";
 				return s_ErrString.c_str();
@@ -2095,11 +2099,11 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 					forbidType = CreState_CanPShop;
 				else if (stricmp(token, "move")==0)
 					forbidType = CreState_CanMove;
-				else 
+				else
 					//return "格式: forbid [speak|pshop|move] [user] [time(minutes)]";
 					return s_ErrString.c_str();
 			}
-			else 
+			else
 			{
 				//return "格式: forbid [speak|pshop|move] [user] [time(minutes)]";
 				return s_ErrString.c_str();
@@ -2114,7 +2118,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			token = strtok(NULL, seps);
 			if (token)
 				forbidTime = atoi(token);
-			else 
+			else
 				forbidTime = 240; // 默认4小时
 
 			if (forbidTime<1)
@@ -2158,11 +2162,11 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 					forbidType = CreState_CanPShop;
 				else if (stricmp(token, "move")==0)
 					forbidType = CreState_CanMove;
-				else 
+				else
 					//return "格式: forbid [speak|pshop|move] [user] [time(minutes)]";
 					return s_ErrString.c_str();
 			}
-			else 
+			else
 			{
 				//return "格式: forbid [speak|pshop|move] [user] [time(minutes)]";
 				return s_ErrString.c_str();
@@ -2341,7 +2345,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 					m_mc->zhaoge->m_bfinish = false;
 					m_mc->xiqi->m_bfinish = false;
 					return "update mc ini succeed!";
-				}			
+				}
 			}
 			return "update mc ini unsucceed!";
 		}
@@ -2351,7 +2355,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			int   monsterDeadNumMax = 0;
 			byte  easterDay = 0;
 			int   startTimeHour = 0;
-			int   endTimeHour = 0;	
+			int   endTimeHour = 0;
 			int   startTimeMin = 0;
 			int   endTimeMin = 0;
 			if (token)
@@ -2415,7 +2419,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 				if (stricmp(token, "all")==0)
 				{
 					CHECK_PRIVILEGES(EUP_ModifyAttrib, R(MSG_CLIENT_COMMAND_NOT_MODIFY), bPyGMOP);
-					
+
 					for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
 					{
 						CRegionUser *user;
@@ -2427,7 +2431,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 							g_region->KickFunUser(user);
 						}
 					}
-					return R(MSG_CLIENT_COMMAND_KICK_FUN_USER_ALL);		
+					return R(MSG_CLIENT_COMMAND_KICK_FUN_USER_ALL);
 				}else
 				{
 					for(it=g_region->m_userMap.begin(); it!=g_region->m_userMap.end(); it++)
@@ -2443,7 +2447,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 							{
 								g_region->KickFunUser(user);
 							}
-							return R(MSG_CLIENT_COMMAND_KICK_FUN_USER_USERNAME);	
+							return R(MSG_CLIENT_COMMAND_KICK_FUN_USER_USERNAME);
 						}
 					}//for
 				}//else
@@ -2501,7 +2505,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 
 			return "EUP_Developer";
 		}
-		else 
+		else
         {
 			bool bP = false;
 			const char* pRet = CRSLogicExt::GetRSLogicExt().DoClientCommand(cmdGiver, szCommand, bPyGMOP, pyGmAccount, bP);
@@ -2513,7 +2517,7 @@ const char* DoClientCommand(CRegionCreature *cmdGiver,const char* szCommand, boo
 			return s_ErrString.c_str();
         }
     }
-	
+
     //return "命令列表: ?|help|add|ride|spawn_map|terrain_map|reload_script|setlev|updatelev|levelup|gm|startwar";
 	return "";
 }

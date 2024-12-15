@@ -876,10 +876,6 @@ bool CRegionCreature::WriteSnapshot(CG_CmdPacket* cmd, CRegionCreature* target) 
         flag |= SYNC_FLAG_USER;
         if (m_core.Metier == METIER_TAOIST)
             flag |= SYNC_FLAG_METIER_TAOIST;
-        //const char METIER_WARRIOR = 1;  //战士 -> 明王 ->武台
-        //const char METIER_HUNTER  = 2;  //风舞者 -> 花间
-        //const char METIER_WIZARD  = 3;  //邪恶SS -> 蜀山
-        //const char METIER_TAOIST  = 4;  //道士 -> 圣巫 ->苗疆
     } else if (IsUserPet()) {
         flag |= SYNC_FLAG_PET;
     } else if (IsCallNpc()) {
@@ -12248,14 +12244,14 @@ void CRegionCreature::EquipCuff() {
             m_cuffAttRange  = 40;
             break;
 
-        case METIER_WIZARD:  //圣巫
+        case METIER_WIZARD:  //术士
             m_cuffDamageMin = 0;
             m_cuffDamageMax = 0;
             m_cuffAttSpeed  = 0.8 * ATT_SPEED_SCALE;
             m_cuffAttRange  = 40;
             break;
 
-        case METIER_TAOIST:  //蜀山
+        case METIER_TAOIST:  //道士
             m_cuffDamageMin = 0;
             m_cuffDamageMax = 0;
             m_cuffAttSpeed  = 0.8 * ATT_SPEED_SCALE;

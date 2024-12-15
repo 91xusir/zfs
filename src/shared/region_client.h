@@ -410,10 +410,10 @@ const int MAX_CREATE_ITEM_NUM  = 8;
 const int MAX_CREATE_BODY_NUM  = 8;
 
 const char METIER_ALL     = 0;
-const char METIER_WARRIOR = 1;  //战士 -> 明王 ->武台
-const char METIER_HUNTER  = 2;  //风舞者 -> 花间
-const char METIER_WIZARD  = 3;  //SS -> 蜀山
-const char METIER_TAOIST  = 4;  //道士 -> 圣巫 ->苗疆
+const char METIER_WARRIOR = 1;  //战士
+const char METIER_HUNTER  = 2;  //风舞者 
+const char METIER_WIZARD  = 3;  //术士
+const char METIER_TAOIST  = 4;  //道士 
 
 const char PART_HEAD   = 1;  //头
 const char PART_BODY   = 2;  //身体

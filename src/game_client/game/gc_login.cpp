@@ -154,7 +154,7 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
                 pActor->LinkParent(pBody, szLink.c_str());  // 链接pBody
             }
 
-            if (pActor->m_Name == "pn01.act" || pActor->m_Name == "pt01.act" ||
+          /*  if (pActor->m_Name == "pn01.act" || pActor->m_Name == "pt01.act" ||
                 pActor->m_Name == "ph01.act" || pActor->m_Name == "pf01.act") {
                 auto& m_poseMap             = pActor->GetCore()->m_poseMap;
                 m_poseMap["waiting_n0"]     = m_poseMap["waiting_non"];
@@ -183,11 +183,33 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
                 m_poseMap["attack_l2"]   = m_poseMap["attack_non_flysword"];
                 m_poseMap["hurt_n0"]     = m_poseMap["hurt_non"];
                 m_poseMap["critical_n0"] = m_poseMap["attack_non"];
-            }
+            }*/
            /* if (pActor->m_Name == "pn01.act") {
-                P_LOGINFO("pn01.act");
-                for (auto bone : pActor->m_bones) {
-                    P_LOGINFO(bone.Name);
+                P_LOGINFO("术士");
+                auto& m_poseMap = pActor->GetCore()->m_poseMap;
+                for (auto& [name, pose] : m_poseMap) {
+                    P_LOGINFO(name);
+                }
+            }
+            if (pActor->m_Name == "ph01.act") {
+                P_LOGINFO("妹妹");
+                auto& m_poseMap = pActor->GetCore()->m_poseMap;
+                for (auto& [name, pose] : m_poseMap) {
+                    P_LOGINFO(name);
+                }
+            }
+            if (pActor->m_Name == "pf01.act") {
+                P_LOGINFO("战士");
+                auto& m_poseMap = pActor->GetCore()->m_poseMap;
+                for (auto& [name, pose] : m_poseMap) {
+                    P_LOGINFO(name);
+                }
+            }
+            if (pActor->m_Name == "pt01.act") {
+                P_LOGINFO("道士");
+                auto& m_poseMap = pActor->GetCore()->m_poseMap;
+                for (auto& [name, pose] : m_poseMap) {
+                    P_LOGINFO(name);
                 }
             }
            */
@@ -1025,7 +1047,7 @@ void GcLogin::OnRun(float fSecond) {
                 if (!GcActor)
                     continue;
                 if (!GcActor->GetGraph()->p()->IsPlayingPose()) {
-                    GcActor->mBaseActor.PlayPose(GcBaseActor::POSE_STAND);
+                    GcActor->mBaseActor.PlayPose(GcBaseActor::POSE_STAND,true);
                 }
                 GcActor->Run(fSecond);
             }

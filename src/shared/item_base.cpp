@@ -3958,8 +3958,8 @@ bool CBag::FindTypeWithParams(DWORD typeID, std::vector<DWORD>& paramsIndices,
                             //	count += item.count;
                             //}
                         }  // check params
-                    }      // check color
-                }          // check type
+                    }  // check color
+                }  // check type
             }
 
     if (pOutCount)
@@ -4421,8 +4421,8 @@ bool CBag::RemoveItemWithParams(DWORD typeID, std::vector<DWORD>& paramsIndices,
                             if (count == 0)
                                 return true;
                         }  // params
-                    }      // color
-                }          // type
+                    }  // color
+                }  // type
             }
     return false;
 
@@ -5560,11 +5560,11 @@ bool CItemContainerBase::CheckEquip(EEquipParts vPart, SItemID& item, SCreature&
                 if ((pReq[ItemRequirement_Career] & 0x02) == 0)
                     return false;
                 break;
-            case METIER_TAOIST:
+            case METIER_WIZARD:
                 if ((pReq[ItemRequirement_Career] & 0x04) == 0)
                     return false;
                 break;
-            case METIER_WIZARD:
+            case METIER_TAOIST:
                 if ((pReq[ItemRequirement_Career] & 0x08) == 0)
                     return false;
                 break;
@@ -5617,11 +5617,11 @@ bool CItemContainerBase::CheckUse(SItemID& item, SCreature& cre) const {
                 if ((pReq[ItemRequirement_Career] & 0x02) == 0)
                     return false;
                 break;
-            case METIER_TAOIST:
+            case METIER_WIZARD:
                 if ((pReq[ItemRequirement_Career] & 0x04) == 0)
                     return false;
                 break;
-            case METIER_WIZARD:
+            case METIER_TAOIST:
                 if ((pReq[ItemRequirement_Career] & 0x08) == 0)
                     return false;
                 break;
@@ -6797,10 +6797,10 @@ void ItemUpdate_GetExtraRequirement(SItemID& item, CItemManager* pItemMgr, float
             metier = METIER_HUNTER;
         }  //"女猎手";
         else if ((cTmp & 0x04) != 0x0) {
-            metier = METIER_TAOIST;
+            metier = METIER_WIZARD;
         }  //"道士";
         else if ((cTmp & 0x08) != 0x0) {
-            metier = METIER_WIZARD;
+            metier = METIER_TAOIST;
         }  //"术士";
 
         if ((ItemIsWeapon(item.type) && !ItemIsShield(item.type)) || ItemIsTrump(item.type)) {
@@ -7575,7 +7575,7 @@ void CBag::ItemUpdateQuickSort(std::vector<SItemID>& item, int left,
             --j;
         }
     } while (i <= j);  //如果两边扫描的下标交错，就停止（完成一次）
-    if (left < j)      //当左边部分有值(left<j)，递归左半边
+    if (left < j)  //当左边部分有值(left<j)，递归左半边
     {
         ItemUpdateQuickSort(item, left, j);
     }

@@ -440,12 +440,29 @@ bool GcBaseActor::CreateGraphData(SCreModel* vpModel, short HeadModelID) {
     unguard;
 }
 
+/**
+ * @brief 设置图形
+ *
+ * @param HeadModelID 头模型ID
+ * @param vpActorName 模型文件名称
+ * @return true
+ * @return false
+ */
 bool GcBaseActor::SetGraph(short HeadModelID, const char* vpActorName) {
     guard;
     return SetGraph(mpModel, HeadModelID, vpActorName);
     unguard;
 }
 
+/**
+ * @brief 设置图形
+ *
+ * @param vpModel 与后端通用的模型数据
+ * @param HeadModelID 头模型ID
+ * @param vpActorName 模型文件名称
+ * @return true
+ * @return false
+ */
 bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vpActorName) {
     mGraph.ReplaceActor(vpActorName);
 
@@ -558,7 +575,7 @@ bool GcBaseActor::SetGraph(SCreModel* vpModel, short HeadModelID, const char* vp
 #endif
     }
 
-    mGraph.RegisterActorNotify(this);
+    mGraph.RegisterActorNotify(this);  // 注册通知
     Update();
 
     return true;
@@ -1646,7 +1663,7 @@ bool GcBaseActor::IsPlayer() {
     return (&(GetWorld()->m_pPlayer->mBaseActor) == this);
 }
 
-const char* BowPoseName[] = {
+static const char* BowPoseName[] = {
     "wait_bow",    // 0 默认站立动作
     "attack_bow",  // 1 默认攻击动作
     "walk_bow",    // 2 默认移动动作
@@ -1656,7 +1673,7 @@ const char* BowPoseName[] = {
     "waiting_bow"  // 6
 };
 
-const char* CrossBowPoseName[] = {
+static const char* CrossBowPoseName[] = {
     "wait_crossbow",    // 0 默认站立动作
     "attack_crossbow",  // 1 默认攻击动作
     "walk_crossbow",    // 2 默认移动动作
@@ -1667,7 +1684,7 @@ const char* CrossBowPoseName[] = {
 };
 
 // 鞭双手
-const char* BianDoublePoseName[] = {
+static const char* BianDoublePoseName[] = {
     "wait_t_sin",             // 0 默认站立动作
     "attack_t_sin",           // 1 默认攻击动作
     "walk_t_sin",             // 2 默认移动动作
@@ -1679,7 +1696,7 @@ const char* BianDoublePoseName[] = {
 };
 
 // 鞭单手（无盾牌）
-const char* BianPoseWithoutShield[] = {
+static const char* BianPoseWithoutShield[] = {
     "wait_sin",             // 0 默认站立动作
     "attack_sin",           // 1 默认攻击动作
     "walk_sin_r",           //"walk_t_sin",               // 2 默认移动动作
@@ -1691,7 +1708,7 @@ const char* BianPoseWithoutShield[] = {
 };
 
 // 鞭单手（有盾牌）
-const char* BianPoseWithShield[] = {
+static const char* BianPoseWithShield[] = {
     "wait_sin",             // 0 默认站立动作
     "attack_sin",           // 1 默认攻击动作
     "walk_sin",             // 2 默认移动动作
@@ -1703,7 +1720,7 @@ const char* BianPoseWithShield[] = {
 };
 
 // 只有盾牌
-const char* PoseShieldOnly[] = {
+static const char* PoseShieldOnly[] = {
     "wait_non",     // 0 默认站立动作
     "attack_non",   // 1 默认攻击动作
     "walk_shield",  // 2 默认移动动作
@@ -1715,7 +1732,7 @@ const char* PoseShieldOnly[] = {
 };
 
 // 法宝动作
-const char* FPoseName[] = {
+static const char* FPoseName[] = {
     "wait_non",          // 0 默认站立动作
     "attack_non_magic",  // 1 默认攻击动作
     "walk_non",          // 2 默认移动动作
@@ -1726,7 +1743,7 @@ const char* FPoseName[] = {
 };
 
 // 持软鞭时人物播放的动作
-const char* WhipPoseName[] = {
+static const char* WhipPoseName[] = {
     "wait_whip",             // 0 持软鞭等待
     "attack_whip",           // 1 持软鞭攻击
     "walk_whip",             // 2 持软鞭移动
@@ -1738,12 +1755,12 @@ const char* WhipPoseName[] = {
 };
 
 // 持软鞭时武器播放的动作
-const char* WhipWeaponPoseName[] = {"wait", "attack",  "walk",
-                                    "wait",  // 3 默认死亡动作
-                                    "hurt", "skill11", "waiting", "attack_critical"};
+static const char* WhipWeaponPoseName[] = {"wait", "attack",  "walk",
+                                           "wait",  // 3 默认死亡动作
+                                           "hurt", "skill11", "waiting", "attack_critical"};
 
 // 斧头
-const char* AxePoseName[] = {
+static const char* AxePoseName[] = {
     "wait_t",            // 0 双手持斧等待动作
     "attack_t",          // 1 双手持斧攻击动作
     "walk_t",            // 2 双手持斧移动动作
@@ -1755,7 +1772,7 @@ const char* AxePoseName[] = {
 };
 
 // 道士用的魔杖
-const char* WandPoseName[] = {
+static const char* WandPoseName[] = {
     "wait_wand",    // 0 持仗等待动作
     "attack_wand",  // 1 持仗攻击动作
     "walk_wand",    // 2 持仗移动动作
@@ -1765,7 +1782,7 @@ const char* WandPoseName[] = {
     "waiting_wand"  // 6 持仗耍酷动作
 };
 
-const char* DefaultPoseName[] = {
+static const char* DefaultPoseName[] = {
     "wait_non",          // 0 默认站立动作
     "attack_non_magic",  // 1 默认攻击动作
     "walk_non",          // 2 默认移动动作
@@ -1788,6 +1805,7 @@ static const char* pDefaultPoseName[] = {
     "waiting_non",  // POSE_BORN
     ""              // POSE_MAX
 };
+//tooth0708
 static const char* pDefaultPoseNameSimple[] = {
     "null_",    // 0 空
     "wait",     // 1 待机
@@ -1813,7 +1831,31 @@ static const char* pDefaultPoseNameSimple[] = {
     "wait",     // 21 复活动作
     "skill01",  // 22 默认技能动作
 };
-
+static const char* OldDefaultPoseNameSimple[] = {
+    "null_",    // 0 空
+    "wait",     // 1 待机
+    "wait",     // 2 警戒
+    "wait",     // 3 插播待机		2种
+    "talk",     // 4 对话
+    "walk",     // 5 跑步
+    "walk",     // 6 追击
+    "attack",   // 7 攻击动作
+    "attack",   // 8 持械攻击暴击
+    "hurt",     // 9 受击动作
+    "wait",     // 10 吟唱
+    "wait",     // 11 炼制法宝
+    "wait",     // 12 制作物品
+    "wait",     // 13 打坐
+    "wait",     // 14 挖掘
+    "wait",     // 15 采药
+    "wait",     // 16 扒皮
+    "wait",     // 17 抽出武器
+    "wait",     // 18 收回武器
+    "die",      // 19 死亡动作
+    "",         // 20 死亡尸体动作
+    "wait",     // 21 复活动作
+    "skill01",  // 22 默认技能动作
+};
 static const char* pShapeshiftPoseName[] = {
     // 变身状态的动作
     "null_",     // 0 空
@@ -1852,7 +1894,7 @@ static const char* pFunActionPoseName[] = {
 };
 
 // 锄头
-const char* ChuTouPoseName[] = {
+static const char* ChuTouPoseName[] = {
     "wait_mine",         // 0 等待动作
     "attack_t",          // 1 攻击动作
     "walk_mine",         // 2 移动动作
@@ -1864,7 +1906,7 @@ const char* ChuTouPoseName[] = {
 };
 
 // 十字镐
-const char* ShiZiGaoPoseName[] = {
+static const char* ShiZiGaoPoseName[] = {
     "wait_mine",         // 0 等待动作
     "attack_t",          // 1 攻击动作
     "walk_mine",         // 2 移动动作
@@ -1876,7 +1918,8 @@ const char* ShiZiGaoPoseName[] = {
 };
 
 // 人物动作基础名
-const char* BasicPoseName[] = {
+//tooth0708
+static const char* BasicPoseName[] = {
     "null_",      // 0 空
     "wait_",      // 1 待机
     "wait_a_",    // 2 警戒
@@ -1901,9 +1944,35 @@ const char* BasicPoseName[] = {
     "relive_",    // 21 复活动作
     "skill_",     // 22 默认技能动作
 };
+static const char* OldBasicPoseName[] = {
+    "wait_",     // 0 空
+    "wait_",     // 1 待机
+    "wait_",     // 2 警戒
+    "waiting_",  // 3 插播待机		2种
+    "waiting_",  // 4 对话
+    "walk_",     // 5 跑步
+    "walk_",     // 6 追击
+    "attack_",   // 7 攻击动作			3种
+    "attack_",   // 8 持械攻击暴击
+    "hurt_",     // 9 受击动作
+    "chant_",    // 10 吟唱				2种
+    "magic_",    // 11 炼制法宝
+    "make_",     // 12 制作物品
+    "siting_",   // 13 打坐
+    "dig_",      // 14 挖掘
+    "gather_",   // 15 采药
+    "scalp_",    // 16 扒皮
+    "pull_",     // 17 抽出武器
+    "down_",     // 18 收回武器
+    "die",       // 19 死亡动作
+    "body_",     // 20 死亡尸体动作
+    "relive_",   // 21 复活动作
+    "skill_",    // 22 默认技能动作
+};
 
 // 人物动作武器连接名
-const char* WeaponPoseName[] = {
+//tooth0708
+static const char* WeaponPoseName[] = {
     // 空手-n
     // （蜀山派）飞轮-l
     // （蜀山派）剑-j
@@ -1923,7 +1992,54 @@ const char* WeaponPoseName[] = {
     "z",  // 7 短杖
     "q",  // 8 法球
 };
-// 根据NPC获取姿势名称
+
+// 旧人物动作武器连接名
+static const char* OldWeaponPoseName[] = {"non",           // 0 空手
+                                          "sin",           // 1 单刀
+                                          "t",             // 2 斧
+                                          "t_sin",         // 3 双刀
+                                          "wand",          // 4 ds法杖
+                                          "non_flysword",  // 5 ss火球
+                                          "non_magic",     // 6 飞剑飞轮
+                                          "whip",
+                                          "bow",
+                                          "ride"};
+
+// zfs旧动作
+char* GcBaseActor::OldGetPoseByWeapon(EPoses Pose, SItemID& item) {
+
+    const char* basic  = nullptr;
+    basic              = OldBasicPoseName[Pose];
+    const char* weapon = nullptr;
+    if (ItemID_IsValid(item)) {
+        if (ItemIsWeapon_Pestle(item))  //刀
+            weapon = OldWeaponPoseName[1];
+        else if (ItemIsWeapon_Axe(item))  //斧
+            weapon = OldWeaponPoseName[2];
+        else if (ItemIsWeapon_Riband(item))
+            weapon = WeaponPoseName[3];
+        else if (ItemIsWeapon_Hoop(item))
+            weapon = WeaponPoseName[4];
+        else if (ItemIsWeapon_Wheel(item)) {  //轮
+            weapon = OldWeaponPoseName[6];
+        } else if (ItemIsWeapon_Sword(item))  //飞剑
+            weapon = OldWeaponPoseName[6];
+        else if (ItemIsWeapon_Wand(item))  //杖
+            weapon = OldWeaponPoseName[4];
+        else if (ItemIsWeapon_Ball(item))  //球
+            weapon = OldWeaponPoseName[5];
+        else
+            return NULL;
+    } else {
+        weapon = OldWeaponPoseName[0];
+    }
+    if (!weapon)
+        return NULL;
+    rt2_sprintf(m_poseName, "%s%s", basic, weapon);
+    return m_poseName;
+}
+
+// tooth0708 根据NPC获取姿势名称
 char* GcBaseActor::GetPoseByNPC(EPoses Pose) {
     guard;
 
@@ -1955,15 +2071,14 @@ char* GcBaseActor::GetPoseByNPC(EPoses Pose) {
     unguard;
 }
 
+//tooth0708
 char* GcBaseActor::GetPoseByWeapon(EPoses Pose, SItemID& item) {
     guard;
-
     // 动作基础名
     const char* basic = NULL;
     basic             = BasicPoseName[Pose];
     if (!basic || Pose <= POSE_NONE)
         return NULL;
-
     // 武器名
     const char* weapon = NULL;
     if (ItemID_IsValid(item)) {
@@ -2011,51 +2126,53 @@ char* GcBaseActor::GetPoseByWeapon(EPoses Pose, SItemID& item) {
 
     rt2_sprintf(m_poseName, "%s%s%d", basic, weapon, num);
     return m_poseName;
-
     unguard;
 }
 
+//tooth0708
 const char* GcBaseActor::GetPoseByWeapon(EPoses PoseId, SItemID& item1, SItemID& item2) {
     guard;
-    const char** pose = NULL;
+    const char** pose = NULL;  // 初始化姿势数组指针为NULL
 
-    SWeapon *pWeaClass1, *pWeaClass2;
-    pWeaClass1 = (SWeapon*)(((CGameClientFrame*)GetApp())->m_pItemManager->GetItem(item1.type));
-    pWeaClass2 = (SWeapon*)(((CGameClientFrame*)GetApp())->m_pItemManager->GetItem(item2.type));
-    if (pWeaClass1 && (ItemIsWeapon_Pestle(item1))) {
-        if (pWeaClass1->bBothHands || (pWeaClass2 && !ItemIsShield(item2.type))) {
-            pose = BianDoublePoseName;
-        } else if (pWeaClass2 && ItemIsShield(item2.type)) {
-            pose = BianPoseWithShield;
+    SWeapon *pWeaClass1, *pWeaClass2;  // 定义两个武器类指针
+    pWeaClass1 = (SWeapon*)(((CGameClientFrame*)GetApp())
+                                ->m_pItemManager->GetItem(item1.type));  // 获取第一个物品的武器类
+    pWeaClass2 = (SWeapon*)(((CGameClientFrame*)GetApp())
+                                ->m_pItemManager->GetItem(item2.type));  // 获取第二个物品的武器类
+    if (pWeaClass1 && (ItemIsWeapon_Pestle(item1))) {  // 如果第一个物品是锄头
+        if (pWeaClass1->bBothHands ||
+            (pWeaClass2 && !ItemIsShield(item2.type))) {  // 如果锄头是双手持用或第二个物品不是盾牌
+            pose = BianDoublePoseName;                    // 设置姿势为双持锄头姿势
+        } else if (pWeaClass2 && ItemIsShield(item2.type)) {  // 如果第二个物品是盾牌
+            pose = BianPoseWithShield;                        // 设置姿势为持盾锄头姿势
         } else {
-            pose = BianPoseWithoutShield;
+            pose = BianPoseWithoutShield;  // 设置姿势为不持盾锄头姿势
         }
-    } else if (ItemIsWeapon_Riband(item1.type))
+    } else if (ItemIsWeapon_Riband(item1.type))  // 弓
         pose = BowPoseName;
-    else if (ItemIsWeapon_Axe(item1.type))
+    else if (ItemIsWeapon_Axe(item1.type))  // 斧头
         pose = AxePoseName;
-    else if (ItemIsWeapon_Wheel(item1.type))
+    else if (ItemIsWeapon_Wheel(item1.type))  // 轮
         pose = FPoseName;
-    else if (ItemIsWeapon_Wand(item1.type))
+    else if (ItemIsWeapon_Wand(item1.type))  // 杖
         pose = WandPoseName;
-    else if (ItemIsWeapon_Hoop(item1.type))
-        pose = WhipPoseName;
-    else if (ItemIsMineEquip(item1.type))
+    else if (ItemIsWeapon_Hoop(item1.type))  // 鞭
+        pose = WhipPoseName;                 //
+    else if (ItemIsMineEquip(item1.type))    // 矿
         pose = ShiZiGaoPoseName;
-    else if (ItemIsHerbalEquip(item1.type))
+    else if (ItemIsHerbalEquip(item1.type))  // 草药
         pose = ChuTouPoseName;
     else
-        pose = DefaultPoseName;
+        pose = DefaultPoseName;  // 默认
 
     if (!pose)
-        return NULL;
-    const char* ret = NULL;
-
+        return NULL;         // 如果pose为NULL，则返回NULL
+    const char* ret = NULL;  // 初始化返回值为NULL
     switch (PoseId) {
         case POSE_ATTACK:
             if (ItemIsWeapon_Pestle(item1.type) || ItemIsWeapon_Axe(item1.type) ||
                 ItemIsWeapon_Hoop(item1.type)) {
-                // check heavy hit
+                // 检查重击
                 if (rand() % 100 > 30)
                     ret = pose[1];
                 else
@@ -2090,14 +2207,20 @@ const char* GcBaseActor::GetPoseByWeapon(EPoses PoseId, SItemID& item1, SItemID&
 // @param pSkill - 技能信息
 // @param fSpeed - 播放速度
 // @return 返回动作名称,失败返回NULL
+//lyymark 播放动作
 const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, float fSpeed) {
     guard;
+    //判断是否是旧版本
+    auto m_coreVersion = GetGraph()->GetActorInstance()->GetCore()->m_szVersion;
+    if (!m_coreVersion)
+        m_coreVersion = "";
+    auto isOldAct = std::string(m_coreVersion) != "tooth0708";
+
     m_vPoseID = vPoseID;
     // 检查动作ID是否有效
     if (vPoseID < POSE_NONE || vPoseID >= POSE_MAX) {
         return "";
     }
-
     // 如果角色正在骑乘状态,则播放坐骑的动作
     if (m_pMaster->m_eRideState == GcActor::ERS_ACTOR) {
         return m_pMaster->m_pRidePet->mBaseActor.PlayPose(vPoseID, vLoop, pSkill, fSpeed);
@@ -2109,13 +2232,12 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
         return NULL;
     }
     const char* pPoseName = NULL;
-    // 根据模型类型选择动作名称
-    // 如果模型是复杂模型，选择默认的动作名称
+    // 如果模型是复杂模型
     if (mpModel->bComplex)
         pPoseName = pDefaultPoseName[vPoseID];
     // 如果模型是简单模型，选择简单的默认动作名称
     else
-        pPoseName = pDefaultPoseNameSimple[vPoseID];
+        pPoseName = isOldAct ? OldDefaultPoseNameSimple[vPoseID] : pDefaultPoseNameSimple[vPoseID];
 
     SItemID  Item1, Item2;
     SWeapon *pWeaClass1, *pWeaClass2 = NULL;
@@ -2132,7 +2254,8 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
     // 检查模型是否为简单模型，如果是，则处理简单模型的动作
     if (!mpModel->bComplex) {
         if (vPoseID == POSE_IDLE) {
-            pPoseName = GetPoseByNPC(vPoseID);  // 根据NPC获取闲置姿势
+            if (!isOldAct)
+                pPoseName = GetPoseByNPC(vPoseID);  // 根据NPC获取闲置姿势
         } else if (vPoseID == POSE_ATTACK && pSkill) {
             // 根据武器类型选择攻击动作
             if ((pWeaClass1 && pWeaClass1->bBothHands) ||
@@ -2234,20 +2357,34 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                 } else {
                     // 获取武器动作(已注释)
                     // pPoseName = GetPoseByWeapon(vPoseID, Item1, Item2);
-                    pPoseName = GetPoseByWeapon(vPoseID, Item1);
+                    pPoseName = OldGetPoseByWeapon(vPoseID, Item1);
                 }
                 break;
 
             case POSE_WALK:
+                pPoseName = "walk_non";
+                break;
+
             case POSE_STAND:
+                pPoseName = "wait_non";
+                break;
             case POSE_IDLE:
+                pPoseName = "waiting_non";
+                break;
             case POSE_DEAD:
+                pPoseName = "die";
+                break;
             case POSE_HURT:
+                pPoseName = "hurt_non";
+                break;
             case POSE_GUARD:
+                pPoseName = "waiting_non";
+                break;
             default:
                 // 获取武器动作(已注释)
                 // pPoseName = GetPoseByWeapon(vPoseID, Item1, Item2);
-                pPoseName = GetPoseByWeapon(vPoseID, Item1);
+                //pPoseName = OldGetPoseByWeapon(vPoseID, Item1);
+                pPoseName = "wait_non";
                 break;
         }
     }
@@ -2271,8 +2408,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
     {
         // 获取技能动作(已注释)
         // if (vPoseID==POSE_ATTACK && pSkill) pPoseName = pSkill->szRAction;
-
-        pPoseName = GetPoseByWeapon(vPoseID, Item1);
+        pPoseName = OldGetPoseByWeapon(vPoseID, Item1);
         if (vPoseID == POSE_ATTACK && pSkill) {
             pPoseName = pSkill->szRAction1;
         }
@@ -2302,6 +2438,13 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
         ERR("播放动作失败,动作名字为空\n");
         return NULL;
     }
+
+    /* if (m_pWeapon) {
+        m_pWeapon->m_poseName = GetPoseByWeapon(vPoseID, Item1);
+        if (m_pWeapon->m_poseName == m_pWeapon->m_szLastPoseName) {
+
+        }
+    }*/
 
     // 检查是否重复播放相同的循环动作
     if (m_bLastLoop == vLoop && m_bLastLoop == true && strcmp(m_szLastPoseName, pPoseName) == 0) {
@@ -2349,35 +2492,46 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
         }
         return NULL;
     }
-    // 如果是绫，还要播武器动作
+  
+
+    // 检查是否需要播放武器动作
     if (pWeaClass1 && !m_pMaster->m_cShapeshiftNet) {
+        // 如果是普通攻击且不是技能攻击
         if (vPoseID == POSE_ATTACK && !pSkill) {
+            // 找到攻击目标
             GcActor* p = FindActor(m_pMaster->m_pCurCmd->dw[0], true);
             if (!p)
                 return false;
+            // 如果有武器，则执行攻击动作
             if (m_pWeapon) {
                 m_pWeapon->DoAttack(p->ID(), m_szLastPoseName, vLoop, fSpeed);
             }
         } else if (m_pWeapon) {
+            // 如果不是技能攻击
             if (!pSkill) {
+                // 设置武器状态为闲置
                 m_pWeapon->SetWeaponState(CWeaponShow::STATE_IDLE);
+                // 检查武器是否需要链接其他动作
                 if (ItemIsWeapon_NeedLink(Item1)) {
+                    // 如果武器是带绳索的，则播放特定的武器动作
                     if (ItemIsWeapon_Riband(Item1)) {
                         GcActorGraph* pWeaponGraph;
                         pWeaponGraph = m_pMaster->GetGraph()->GetLinkActor("Box03");
-                        if (pWeaponGraph) {
-                            pWeaponGraph->PlayPose(m_szLastPoseName, vLoop, fSpeed);
-                        }
+                        pWeaponGraph->PlayPose(m_szLastPoseName, vLoop, fSpeed);
                     }
                 } else {
+                    // 如果不是带绳索的武器，则直接播放武器动作
+                    //if (!m_pWeapon->m_way->IsPlayingPose())
                     m_pWeapon->PlayPose(m_szLastPoseName, vLoop, fSpeed);
                 }
-
+                // 释放武器技能效果
                 Safe_ReleaseActor(m_pWeapon->m_skillEffect);
 
             } else {
+                // 如果是技能攻击
                 // 播放技能路径动作(已注释)
                 // m_way->PlayPoseInTime(skill->szWayName,skill->iRTime,false);
+                // 尝试播放技能指定的武器动作，如果失败，则播放默认武器动作
                 if (!m_pWeapon->PlayPose(pSkill->szWayName, vLoop, fSpeed))
                     m_pWeapon->PlayPose(m_szLastPoseName, vLoop, fSpeed);
             }

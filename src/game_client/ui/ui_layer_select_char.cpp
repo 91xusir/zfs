@@ -144,8 +144,8 @@ void UILayerSelectChar::OnReceivePasswordConfirm(char lRet) {
         int                  iSel = gc_login->m_curSelRoleIndex;
         if (info.users[iSel].attributes.level >= 30) {
             //lyymark 等级大于30的角色要提示 这里先硬编码
-            UIFormMsg* pFrm = UIFormMsg::ShowStatic("角色等级较高,确定删除吗?",
-                                                    UIFormMsg::TYPE_OK_CANCEL);
+            UIFormMsg* pFrm =
+                UIFormMsg::ShowStatic("角色等级较高,确定删除吗?", UIFormMsg::TYPE_OK_CANCEL);
             pFrm->EvOK = RTW_CALLBACK_1(this, UILayerSelectChar, OnConfirm_Delete, pFrm);
         } else {
             UIFormMsg* pFrm =
@@ -256,12 +256,12 @@ void UILayerSelectChar::OnClicked_ChangeHide(RtwWidget* sender, RtwEventDelegate
     if (!gc_login || gc_login->GetStatus() != GcLogin::GLS_CREATE_CHAR)
         return;
     const auto& curRoleCsvId = gc_login->m_curCrtRoleCsvID;
-    auto&       headMap = gc_login->m_crtRole_csvIdMapHeads;
+    auto&       headMap      = gc_login->m_crtRole_csvIdMapHeads;
     if (!headMap[curRoleCsvId].size())
         return;
-    const bool  left = (int)e->param1 == 0;
+    const bool  left   = (int)e->param1 == 0;
     const auto& ActIns = gc_login->m_crtRole_csvIdMapActIns[curRoleCsvId];
-    const auto& head = headMap[curRoleCsvId][0];
+    const auto& head   = headMap[curRoleCsvId][0];
     ActIns->UnloadSkin(head.skin.c_str());
     if (left)
         moveToLeft(gc_login->m_crtRole_csvIdMapHeads[gc_login->m_curCrtRoleCsvID]);
