@@ -6797,11 +6797,10 @@ void ItemUpdate_GetExtraRequirement(SItemID& item, CItemManager* pItemMgr, float
             metier = METIER_HUNTER;
         }  //"女猎手";
         else if ((cTmp & 0x04) != 0x0) {
-            metier = METIER_WIZARD;
-        }  //"道士";
-        else if ((cTmp & 0x08) != 0x0) {
-            metier = METIER_TAOIST;
-        }  //"术士";
+            metier = METIER_WIZARD;  //"术士";
+        } else if ((cTmp & 0x08) != 0x0) {
+            metier = METIER_TAOIST;  //"道士";
+        }
 
         if ((ItemIsWeapon(item.type) && !ItemIsShield(item.type)) || ItemIsTrump(item.type)) {
             float fAddtion[4] = {1.0f, 1.5f, 2.0f, 2.5f};
@@ -7150,50 +7149,51 @@ void CItemSelectionTable::Explain_ItemSelectionType(EItemSelectionType ist, int&
             outType    = 1;
             outSubType = 0;
             metier     = METIER_WARRIOR;
-            str        = "武台武器";
+            str        = "战士武器";
             break;
         case IST_WEAPON_HUNTER:
             outType    = 1;
             outSubType = 0;
             metier     = METIER_HUNTER;
-            str        = "花间武器";
+            str        = "凤舞武器";
             break;
         case IST_WEAPON_TAOLIST:
             outType    = 1;
             outSubType = 0;
             metier     = METIER_TAOIST;
-            str        = "苗疆武器";
+            str        = "道士武器";
             break;
         case IST_WEAPON_WIZARD:
             outType    = 1;
             outSubType = 0;
             metier     = METIER_WIZARD;
-            str        = "蜀山武器";
+            str        = "术士武器";
             break;
         case IST_ARMOR_WARRIOR:
             outType    = 2;
             outSubType = 0;
             metier     = METIER_WARRIOR;
-            str        = "武台防具";
+            str        = "战士防具";
             break;
         case IST_ARMOR_HUNTER:
             outType    = 2;
             outSubType = 0;
             metier     = METIER_HUNTER;
-            str        = "花间防具";
-            break;
-        case IST_ARMOR_TAOLIST:
-            outType    = 2;
-            outSubType = 0;
-            metier     = METIER_TAOIST;
-            str        = "苗疆防具";
+            str        = "凤舞防具";
             break;
         case IST_ARMOR_WIZARD:
             outType    = 2;
             outSubType = 0;
             metier     = METIER_WIZARD;
-            str        = "蜀山防具";
+            str        = "术士防具";
             break;
+        case IST_ARMOR_TAOLIST:
+            outType    = 2;
+            outSubType = 0;
+            metier     = METIER_TAOIST;
+            str        = "道士防具";
+            break;
+
         case IST_SHIPIN:
             outType    = 3;
             outSubType = 0;

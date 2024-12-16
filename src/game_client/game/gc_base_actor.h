@@ -313,12 +313,12 @@ class GcBaseActor : public CRT_PoseNotify {
 
    public:
     GcActor*         m_pMaster;  //该基本角色的宿主
-    CTrumpShow*      m_pTrump;
-    CWeaponShow*     m_pWeapon;
-    GcStateOverHead* m_pStateOverHead;
+    CTrumpShow*      m_pTrump;   //特效展示
+    CWeaponShow*     m_pWeapon;   //武器展示
+    GcStateOverHead* m_pStateOverHead;  //状态头顶展示
     GcActorOverHead* m_pActorOverHead;  //NPC头顶动态提示
-    float            m_fLastPoseSpeed;
-    EPoses           m_vPoseID;
+    float            m_fLastPoseSpeed;  //最后一个姿势的速度
+    EPoses           m_vPoseID;  //姿势ID
     CM_MEMDEF(m_poseName, 50)
     CM_MEMDEF(m_szLastPoseName, 40)
 

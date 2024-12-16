@@ -28,11 +28,10 @@ int GetItemClass(CAuctionItem* item) {
         klass = AUCTION_METIER_WARRIOR;
     } else if ((cTmp & 0x02) != 0x0)  //"女猎手和";
     {
-        klass = AUCTION_METIER_HUNTER;
-    } else if ((cTmp & 0x04) != 0x0)  //"道士和";
-    {
+        klass = AUCTION_METIER_HUNTER;  //"术士和";
+    } else if ((cTmp & 0x04) != 0x0) {
         klass = AUCTION_METIER_WIZARD;
-    } else if ((cTmp & 0x08) != 0x0)  //"术士和";
+    } else if ((cTmp & 0x08) != 0x0)  //"道士和";
     {
         klass = AUCTION_METIER_TAOIST;
     }

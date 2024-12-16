@@ -2210,11 +2210,14 @@ const char* GcBaseActor::GetPoseByWeapon(EPoses PoseId, SItemID& item1, SItemID&
 //lyymark 播放动作
 const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, float fSpeed) {
     guard;
-    //判断是否是旧版本
-    auto m_coreVersion = GetGraph()->GetActorInstance()->GetCore()->m_szVersion;
-    if (!m_coreVersion)
-        m_coreVersion = "";
-    auto isOldAct = std::string(m_coreVersion) != "tooth0708";
+    GcActorGraph*      graph    = GetGraph();
+    CRT_ActorInstance* instance = graph->GetActorInstance();
+    CRT_Actor*         core     = instance->GetCore();
+    if (!core) {
+        return "";
+    }
+    const char* m_coreVersion = core->m_szVersion;
+    bool        isOldAct      = std::strcmp(m_coreVersion, "tooth0708") != 0;
 
     m_vPoseID = vPoseID;
     // 检查动作ID是否有效
@@ -2366,10 +2369,10 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                 break;
 
             case POSE_STAND:
-                pPoseName = "wait_non";
+                pPoseName = OldGetPoseByWeapon(vPoseID, Item1);
                 break;
             case POSE_IDLE:
-                pPoseName = "waiting_non";
+                pPoseName = OldGetPoseByWeapon(vPoseID, Item1);
                 break;
             case POSE_DEAD:
                 pPoseName = "die";
@@ -2378,13 +2381,13 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
                 pPoseName = "hurt_non";
                 break;
             case POSE_GUARD:
-                pPoseName = "waiting_non";
+                pPoseName = OldGetPoseByWeapon(vPoseID, Item1);
                 break;
             default:
                 // 获取武器动作(已注释)
                 // pPoseName = GetPoseByWeapon(vPoseID, Item1, Item2);
-                //pPoseName = OldGetPoseByWeapon(vPoseID, Item1);
-                pPoseName = "wait_non";
+                pPoseName = OldGetPoseByWeapon(vPoseID, Item1);
+               // pPoseName = "wait_non";
                 break;
         }
     }
@@ -2439,13 +2442,6 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
         return NULL;
     }
 
-    /* if (m_pWeapon) {
-        m_pWeapon->m_poseName = GetPoseByWeapon(vPoseID, Item1);
-        if (m_pWeapon->m_poseName == m_pWeapon->m_szLastPoseName) {
-
-        }
-    }*/
-
     // 检查是否重复播放相同的循环动作
     if (m_bLastLoop == vLoop && m_bLastLoop == true && strcmp(m_szLastPoseName, pPoseName) == 0) {
         if (!mGraph.p()->IsPlayingPose())
@@ -2479,7 +2475,6 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
     // 保存动作速度并播放动作
     m_fLastPoseSpeed = fSpeed;
     if (!mGraph.PlayPose(m_szLastPoseName, vLoop, fSpeed)) {
-        // 输出错误信息(已注释)
         // ERR2("播放动作失败,模型文件[%s] 动作[%s] \n", mGraph.FileName(),
         // m_szLastPoseName);
         P_LOGINFO("播放动作失败" + std::string(mGraph.FileName()) + "动作" +
@@ -2492,7 +2487,6 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
         }
         return NULL;
     }
-  
 
     // 检查是否需要播放武器动作
     if (pWeaClass1 && !m_pMaster->m_cShapeshiftNet) {

@@ -995,7 +995,7 @@ class CRT_Actor : public CRT_PoolObject {
     vector<CRT_Skin*>   m_skinList;  // 皮肤列表。存储角色的皮肤对象。
     // 边界盒列表。存储角色的边界盒信息。
 
-    CM_MEMDEF(m_szVersion, 10)
+    char m_szVersion[10];
 };
 
 template <class T>

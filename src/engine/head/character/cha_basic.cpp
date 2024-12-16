@@ -501,7 +501,8 @@ long CRT_SkelSkin::PushVertex(const SRT_DynamicVtx& v) {
 
 CRT_Actor::CRT_Actor()
     : m_bUseLight(true), m_bUseVC(true), m_bZTest(true), m_animSpeed(1.f), m_bDynamicShadow(true) {
-    CM_MEMPROTECTOR(m_szVersion, 10)
+    std::strncpy(m_szVersion, "default", sizeof(m_szVersion));
+    m_szVersion[sizeof(m_szVersion) - 1] = '\0';  // 确保以 '\0' 结尾
     SetState(Object_State_New);
 }
 
@@ -518,7 +519,8 @@ CRT_Actor::CRT_Actor(const CRT_Actor& _actor) {
     m_skinList       = _actor.m_skinList;
     m_eftList        = _actor.m_eftList;
     m_boundBoxList   = _actor.m_boundBoxList;
-    CM_MEMPROTECTOR(m_szVersion, 10);
+    std::strncpy(m_szVersion, "default", sizeof(m_szVersion));
+    m_szVersion[sizeof(m_szVersion) - 1] = '\0';  // 确保以 '\0' 结尾
     SetState(Object_State_New);
 }
 

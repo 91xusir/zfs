@@ -58,7 +58,7 @@ void CWeaponShow::Init(GcBaseActor *Host,const char *Model, SWeapon *weapon, SIt
 				m_body = Host->m_pMaster->GetGraph()->GetLinkActor("Bip01 R Hand")->p();
 			else
 				//m_body = Host->m_pMaster->GetGraph()->GetLinkActor("Box01")->p();
-                //lmk 战士 link点
+                //lmk սʿ link��
 				m_body = Host->m_pMaster->GetGraph()->GetLinkActor("Bip01 R Hand")->p();
 			if(!m_body) return;
 		}else
