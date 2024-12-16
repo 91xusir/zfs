@@ -133,8 +133,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..\shared;$(ProjectDir)..\login_server\wsdl;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include;$(ProjectDir)..\sdk\include\python25;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_PREVIEW;WIN32;NDEBUG;_CONSOLE;RT_SCENE_ONLY_LOAD_TERRAIN;REGION_SERVER;CREATE_ITEM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <BrowseInformation>
       </BrowseInformation>
       <BrowseInformationFile>
@@ -143,6 +142,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
+      <ForcedUsingFiles>stdafx.h</ForcedUsingFiles>
     </ClCompile>
     <Link>
       <AdditionalDependencies>core_mt.lib;filepack_mt.lib;net_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -202,6 +202,14 @@
     <ClCompile Include="cmd_union.cpp" />
     <ClCompile Include="jhwg_session.cpp" />
     <ClCompile Include="nes.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClInclude Include="stdafx.h">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </PrecompiledHeader>
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClCompile Include="PlayerLogic.cpp" />
     <ClCompile Include="region.cpp" />
     <ClCompile Include="RegionActManager.cpp" />

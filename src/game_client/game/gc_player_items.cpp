@@ -1240,22 +1240,23 @@ static void _ItemHint_Requirement(RtString& str, int& outLineCount, SItemID &ite
 				strTmp += R(G_AND);
 			}
 		}
-		if ( (cTmp & 0x04) != 0x0) //"术士和";
+		if ( (cTmp & 0x04) != 0x0) //"道士和";
 		{
-            SUserActor* pActor = g_TableUserActor.FindUserActor(METIER_WIZARD, MetierLevReq);
-            if (pActor) {
-                strTmp += pActor->MetierName.c_str();
-                strTmp += R(G_AND);
-            }
+			SUserActor* pActor = g_TableUserActor.FindUserActor(METIER_TAOIST, MetierLevReq);
+			if (pActor)
+			{
+				strTmp += pActor->MetierName.c_str();
+				strTmp += R(G_AND);
+			}
 		}
-		if ( (cTmp & 0x08) != 0x0) //"道士和";
-        {
-            SUserActor* pActor = g_TableUserActor.FindUserActor(METIER_TAOIST, MetierLevReq);
-            if (pActor) {
-                strTmp += pActor->MetierName.c_str();
-                strTmp += R(G_AND);
-            }
-			
+		if ( (cTmp & 0x08) != 0x0) //"术士和";
+		{
+			SUserActor* pActor = g_TableUserActor.FindUserActor(METIER_WIZARD, MetierLevReq);
+			if (pActor)
+			{
+				strTmp += pActor->MetierName.c_str();
+				strTmp += R(G_AND);
+			}
 		}
 		strTmp.TrimRight(R(G_AND));
 

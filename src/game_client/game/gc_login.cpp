@@ -163,6 +163,9 @@ void GcLogin::LoadLoginSection(RtIni* pIni, const std::string& szSectionName,
                 m_poseMap["run_f0"]         = m_poseMap["walk_non"];
                 m_poseMap["wait_n0"]        = m_poseMap["wait_non"];
                 m_poseMap["wait_f0"]        = m_poseMap["wait_non"];
+
+                m_poseMap["wait_z0"]        = m_poseMap["wait_non"];
+
                 m_poseMap["wait_a_f0"]      = m_poseMap["wait_non"];
                 m_poseMap["wait_a_n0"]      = m_poseMap["wait_non"];
                 m_poseMap["attack_n0"]      = m_poseMap["attack_non"];

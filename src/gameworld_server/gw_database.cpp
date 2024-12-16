@@ -673,7 +673,6 @@ bool GWDatabase::QueryActorList(GWLoginClient& account) {
                  ",Exploit"
                  ",EnP"
                  ",HeadImageID"
-
                  //PZH
                  ",HasPassword"
                  ",deleted"

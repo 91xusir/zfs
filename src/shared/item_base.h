@@ -194,8 +194,8 @@ enum EItemRequirement {
 
 #define CAREER_REQUIREMENT_1 0x01  // 战士
 #define CAREER_REQUIREMENT_2 0x02  // 女猎手
-#define CAREER_REQUIREMENT_3 0x04  // 术士
-#define CAREER_REQUIREMENT_4 0x08  // 道士
+#define CAREER_REQUIREMENT_3 0x04  // 道士
+#define CAREER_REQUIREMENT_4 0x08  // 术士
 #define CAREER_REQUIREMENT_COUNT 4
 
 /// 属性类别(用于蓝色装备、黄金装备和套装的选择属性)

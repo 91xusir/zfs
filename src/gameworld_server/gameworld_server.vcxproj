@@ -128,11 +128,11 @@
       <PreprocessorDefinitions>_PREVIEW;WIN32;NDEBUG;_CONSOLE;CREATE_ITEM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <AdditionalDependencies>libmysql.lib;net_mt.lib;core_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -149,6 +149,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\login_server\iob_func.cpp" />
+    <ClCompile Include="..\region_server\stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="..\shared\auction_base.cpp" />
     <ClCompile Include="..\shared\business.cpp" />
     <ClCompile Include="..\shared\castlewar_base.cpp" />
@@ -228,6 +233,15 @@
     <ClInclude Include="..\engine\head\net\g_tcpsession.h" />
     <ClInclude Include="..\engine\head\net\g_udpsession.h" />
     <ClInclude Include="..\engine\head\net\rt_net.h" />
+    <ClInclude Include="..\region_server\stdafx.h">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <FileType>CppCode</FileType>
+    </ClInclude>
     <ClInclude Include="..\shared\ActivityInfo.h" />
     <ClInclude Include="..\shared\auction_base.h" />
     <ClInclude Include="..\shared\auction_common.h" />
