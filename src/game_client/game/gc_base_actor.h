@@ -135,32 +135,32 @@ class GcBaseActor : public CRT_PoseNotify {
     };
 
     enum EPoses {
-        POSE_NONE = 0,   // 无姿势，默认状态
-        POSE_STAND,      // 站立姿势
-        POSE_GUARD,      // 战斗待机动作
-        POSE_IDLE,       // 空闲状态
-        POSE_TALK,       // 对话姿势
-        POSE_WALK,       // 行走
-        POSE_RUN,        // 奔跑，追击
-        POSE_ATTACK,     // 攻击
-        POSE_BASH,       // 暴击动作
-        POSE_HURT,       // 受伤状态
-        POSE_CHANT,      // 吟唱动作
-        POSE_REFINE,     // 修炼法宝
-        POSE_MAKE,       // 制作物品
-        POSE_ZAZEN,      // 打坐
-        POSE_DIG,        // 挖掘动作
-        POSE_GATHER,     // 采药动作
-        POSE_SCALP,      // 扒皮动作
-        POSE_PULL,       // 抽出武器
-        POSE_DOWN,       // 收回武器
-        POSE_DEAD,       // 死亡
-        POSE_BODY,       // 死亡尸体
-        POSE_RELIVE,     // 复活
-        POSE_RIDE,       // 骑乘
-        POSE_BORN,       // 出生状态
-        POSE_FUNACTION,  // 特殊功能动作
-        POSE_MAX,        // 最大值，通常用于确定姿势的数量
+        POSE_NONE = 0,   // 0无姿势，默认状态
+        POSE_STAND,      // 1站立姿势
+        POSE_GUARD,      // 2战斗待机动作
+        POSE_IDLE,       // 3空闲状态
+        POSE_TALK,       // 4对话姿势
+        POSE_WALK,       // 5行走
+        POSE_RUN,        // 6奔跑，追击
+        POSE_ATTACK,     // 7攻击
+        POSE_BASH,       // 8暴击动作
+        POSE_HURT,       // 9受伤状态
+        POSE_CHANT,      // 10吟唱动作
+        POSE_REFINE,     // 11修炼法宝
+        POSE_MAKE,       // 12制作物品
+        POSE_ZAZEN,      // 13打坐
+        POSE_DIG,        // 14挖掘动作
+        POSE_GATHER,     // 15采药动作
+        POSE_SCALP,      // 16扒皮动作
+        POSE_PULL,       // 17抽出武器
+        POSE_DOWN,       // 18收回武器
+        POSE_DEAD,       // 19死亡
+        POSE_BODY,       // 20死亡尸体
+        POSE_RELIVE,     // 21复活
+        POSE_RIDE,       // 22骑乘
+        POSE_BORN,       // 23出生状态
+        POSE_FUNACTION,  // 24特殊功能动作
+        POSE_MAX,        // 25最大值，通常用于确定姿势的数量
     };
 
     GcBaseActor(GcActor* vpMaster);
@@ -179,9 +179,9 @@ class GcBaseActor : public CRT_PoseNotify {
     bool        PlayPose(char vpPoseName[], bool vLoop = false);
     const char* PlayPose(EPoses vPose, bool vLoop = false, SSkill* pSkill = NULL,
                          float fSpeed = 1.f);
+    const char* OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, float fSpeed);
     const char* GetPoseByWeapon(EPoses Pose, SItemID& item1, SItemID& item2);
     char*       GetPoseByWeapon(EPoses Pose, SItemID& item);
-    char*       OldGetPoseByWeapon(EPoses Pose, SItemID& item);
     char*       GetPoseByNPC(EPoses Pose);
 
     void FaceTo(float vX, float vY);  //面朝向
