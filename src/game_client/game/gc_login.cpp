@@ -1054,10 +1054,10 @@ void GcLogin::OnRun(float fSecond) {
         }
         if (m_crtRole_csvIdMapActIns.size() != 0) {
             if (!m_pSsJianPath->IsPlayingPose()) {
-                m_pSsJianPath->PlayPose("wait_j0", false, 0.5f);
+                m_pSsJianPath->PlayPose("waiting_j0", false, 0.5f);
             }
             if (!m_pDsLunPath->IsPlayingPose()) {
-                m_pDsLunPath->PlayPose("waiting_l1", false, 0.5f);
+                m_pDsLunPath->PlayPose("waiting_l0", false, 0.5f);
             }
 
             for (auto& [csvID, actIns] : m_crtRole_csvIdMapActIns) {
