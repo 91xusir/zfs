@@ -1,0 +1,1094 @@
+WORD,int,char[20],BYTE,BYTE,RtString,char[50],struct,char[20],char[20],BYTE,DWORD,BYTE,WORD,struct,BYTE,BYTE,struct,int,int,struct,struct,bool
+#编号,"效果
+分类",名字,等级,"伤害
+程度",说明,图标,作用条件,特效,特效Link,"作用
+目标","攻击
+目标","最大目
+标个数","最大作
+用范围",临是叠加,"是否
+有害","同级
+覆盖",作用效果,"作用
+次数","作用
+周期","周期
+效果",关闭效果,死亡时是否被清空
+wIdx,cClass,szName,cLevel,cDamLev,szDescription,szIcon,filter,szEffect,szEffLink,cTarget,dwATarget,cMaxObj,wRange,actTemp,cAType,cOverlay,actOpen,iDTimes,iCycle,actCycle,actClose,isCleared
+1,1,冰心清神,1,0,免疫技能封禁状态,pic_skill_ssj_04,        ,skill_buf0,Bone99,0,3,,,,1,1,,1,10000,,,1
+2,1,冰心清神,2,0,免疫技能封禁状态,pic_skill_ssj_04,,skill_buf0,Bone99,0,3,,,,1,1,,1,15000,,,1
+3,1,冰心清神,3,0,免疫技能封禁状态,pic_skill_ssj_04,,skill_buf0,Bone99,0,3,,,,1,1,,1,20000,,,1
+4,1,冰心清神,4,0,免疫技能封禁状态,pic_skill_ssj_04,,skill_buf0,Bone99,0,3,,,,1,1,,1,25000,,,1
+5,1,冰心清神,5,0,免疫技能封禁状态,pic_skill_ssj_04,,skill_buf0,Bone99,0,3,,,,1,1,,1,30000,,,1
+6,2,二元重水,1,0,增加水伤害+5%水防御+5%,pic_skill_ssj_05,,skill_buf1,Bip01 R Hand,0,3,,,WaterDmR+0.05;WaterArR+0.05,1,1,,1,1800000,,,1
+7,2,二元重水,2,0,增加水伤害+10%水防御+10%,pic_skill_ssj_05,,skill_buf1,Bip01 R Hand,0,3,,,WaterDmR+0.10;WaterArR+0.10,1,1,,1,1800000,,,1
+8,2,二元重水,3,0,增加水伤害+15%水防御+15%,pic_skill_ssj_05,,skill_buf1,Bip01 R Hand,0,3,,,WaterDmR+0.15;WaterArR+0.15,1,1,,1,1800000,,,1
+9,2,二元重水,4,0,增加水伤害+20%水防御+20%,pic_skill_ssj_05,,skill_buf1,Bip01 R Hand,0,3,,,WaterDmR+0.20;WaterArR+0.20,1,1,,1,1800000,,,1
+10,2,二元重水,5,0,增加水伤害+25%水防御+25%,pic_skill_ssj_05,,skill_buf1,Bip01 R Hand,0,3,,,WaterDmR+0.25;WaterArR+0.25,1,1,,1,1800000,,,1
+11,3,守心诀,1,0,每秒恢复法力30,pic_skill_ssj_06,,skill_buf2,root,0,3,,,,1,1,,15,1000,MP+30,,1
+12,3,守心诀,2,0,每秒恢复法力43,pic_skill_ssj_06,,skill_buf2,root,0,3,,,,1,1,,15,1000,MP+43,,1
+13,3,守心诀,3,0,每秒恢复法力56,pic_skill_ssj_06,,skill_buf2,root,0,3,,,,1,1,,15,1000,MP+56,,1
+14,3,守心诀,4,0,每秒恢复法力70,pic_skill_ssj_06,,skill_buf2,root,0,3,,,,1,1,,15,1000,MP+70,,1
+15,3,守心诀,5,0,每秒恢复法力83,pic_skill_ssj_06,,skill_buf2,root,0,3,,,,1,1,,15,1000,MP+83,,1
+16,4,冻结,1,0,使敌人冻结,pic_skill_dbf_02,,skill_debuf0,root,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;PhyArR+2,2,1,,1,3000,,,1
+17,4,冻结,2,0,使敌人冻结,pic_skill_dbf_02,,skill_debuf0,root,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;PhyArR+2,2,1,,1,4000,,,1
+18,4,冻结,3,0,使敌人冻结,pic_skill_dbf_02,,skill_debuf0,root,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;PhyArR+2,2,1,,1,5000,,,1
+19,4,冻结,4,0,使敌人冻结,pic_skill_dbf_02,,skill_debuf0,root,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;PhyArR+2,2,1,,1,6000,,,1
+20,4,冻结,5,0,使敌人冻结,pic_skill_dbf_02,,skill_debuf0,root,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;PhyArR+2,2,1,,1,7000,,,1
+21,5,弱水,1,0,减少水防御230,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterAr-234,2,1,,1,3000,,,1
+22,5,弱水,2,0,减少水防御280,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterAr-286,2,1,,1,3000,,,1
+23,5,弱水,3,0,减少水防御340,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterAr-343,2,1,,1,3000,,,1
+24,5,弱水,4,0,减少水防御400,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterAr-405,2,1,,1,3000,,,1
+25,5,弱水,5,0,减少水防御480,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterAr-472,2,1,,1,3000,,,1
+26,6,凝神决,1,0,"增加法力上限2%,追加法力上限150",pic_skill_ssl_04,,,,0,16,,,MaxMPR+0.02;MaxMP+150,1,1,,1,300000,,,1
+27,6,凝神决,2,0,"增加法力上限4%,追加法力上限200",pic_skill_ssl_04,,,,0,16,,,MaxMPR+0.04;MaxMP+200,1,1,,1,300000,,,1
+28,6,凝神决,3,0,"增加法力上限6%,追加法力上限250",pic_skill_ssl_04,,,,0,16,,,MaxMPR+0.06;MaxMP+250,1,1,,1,300000,,,1
+29,6,凝神决,4,0,"增加法力上限8%,追加法力上限300",pic_skill_ssl_04,,,,0,16,,,MaxMPR+0.08;MaxMP+300,1,1,,1,300000,,,1
+30,6,凝神决,5,0,"增加法力上限10%,追加法力上限350",pic_skill_ssl_04,,,,0,16,,,MaxMPR+0.1;MaxMP+350,1,1,,1,300000,,,1
+31,7,兜率紫炎,1,0,增加火伤害+5%火防御+5%,pic_skill_ssl_06,,skill_buf3,Bip01 R Hand,0,3,,,FireDmR+0.05;FireArR+0.05,1,1,,1,1800000,,,1
+32,7,兜率紫炎,2,0,增加火伤害+10%火防御+10%,pic_skill_ssl_06,,skill_buf3,Bip01 R Hand,0,3,,,FireDmR+0.10;FireArR+0.10,1,1,,1,1800000,,,1
+33,7,兜率紫炎,3,0,增加火伤害+15%火防御+15%,pic_skill_ssl_06,,skill_buf3,Bip01 R Hand,0,3,,,FireDmR+0.15;FireArR+0.15,1,1,,1,1800000,,,1
+34,7,兜率紫炎,4,0,增加火伤害+20%火防御+20%,pic_skill_ssl_06,,skill_buf3,Bip01 R Hand,0,3,,,FireDmR+0.20;FireArR+0.20,1,1,,1,1800000,,,1
+35,7,兜率紫炎,5,0,增加火伤害+25%火防御+25%,pic_skill_ssl_06,,skill_buf3,Bip01 R Hand,0,3,,,FireDmR+0.25;FireArR+0.25,1,1,,1,1800000,,,1
+36,8,束缚,1,0,束缚无法移动5秒,pic_skill_dbf_05,,skill_debuf2,root,0,11,,,StateMove 1;StateDodge 1,2,1,,1,5000,,,1
+37,8,束缚,2,0,束缚无法移动6秒,pic_skill_dbf_05,,skill_debuf2,root,0,11,,,StateMove 1;StateDodge 1,2,1,,1,6000,,,1
+38,8,束缚,3,0,束缚无法移动7秒,pic_skill_dbf_05,,skill_debuf2,root,0,11,,,StateMove 1;StateDodge 1,2,1,,1,7000,,,1
+39,8,束缚,4,0,束缚无法移动8秒,pic_skill_dbf_05,,skill_debuf2,root,0,11,,,StateMove 1;StateDodge 1,2,1,,1,8000,,,1
+40,8,束缚,5,0,束缚无法移动10秒,pic_skill_dbf_05,,skill_debuf2,root,0,11,,,StateMove 1;StateDodge 1,2,1,,1,10000,,,1
+41,9,减速,1,0,降低移动速度40%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.4,2,1,,1,10000,,,1
+42,9,减速,2,0,降低移动速度40%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.4,2,1,,1,15000,,,1
+43,9,减速,3,0,降低移动速度40%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.4,2,1,,1,20000,,,1
+44,9,减速,4,0,降低移动速度40%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.4,2,1,,1,25000,,,1
+45,9,减速,5,0,降低移动速度40%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.4,2,1,,1,30000,,,1
+46,10,致盲,1,0,命中率降低30%,pic_skill_dbf_07,,skill_debuf4,Bone99,0,11,,,AttackRateR-0.3,2,1,,1,30000,,,1
+47,10,致盲,2,0,命中率降低40%,pic_skill_dbf_07,,skill_debuf4,Bone99,0,11,,,AttackRateR-0.4,2,1,,1,30000,,,1
+48,10,致盲,3,0,命中率降低50%,pic_skill_dbf_07,,skill_debuf4,Bone99,0,11,,,AttackRateR-0.5,2,1,,1,30000,,,1
+49,10,致盲,4,0,命中率降低60%,pic_skill_dbf_07,,skill_debuf4,Bone99,0,11,,,AttackRateR-0.6,2,1,,1,30000,,,1
+50,10,致盲,5,0,命中率降低70%,pic_skill_dbf_07,,skill_debuf4,Bone99,0,11,,,AttackRateR-0.7,2,1,,1,30000,,,1
+51,11,花弄影,1,0,增加移动速度20%,pic_skill_hjl_04,,skill_buf4,root,0,3,,,SpeedMoveR+0.2;Hiding+2;Immuno+1,1,1,,1,15000,,,1
+52,11,花弄影,2,0,增加移动速度25%,pic_skill_hjl_04,,skill_buf4,root,0,3,,,SpeedMoveR+0.25;Hiding+2;Immuno+1,1,1,,1,15000,,,1
+53,11,花弄影,3,0,增加移动速度30%,pic_skill_hjl_04,,skill_buf4,root,0,3,,,SpeedMoveR+0.3;Hiding+2;Immuno+1,1,1,,1,15000,,,1
+54,11,花弄影,4,0,增加移动速度35%,pic_skill_hjl_04,,skill_buf4,root,0,3,,,SpeedMoveR+0.35;Hiding+2;Immuno+1,1,1,,1,15000,,,1
+55,11,花弄影,5,0,增加移动速度50%,pic_skill_hjl_04,,skill_buf4,root,0,3,,,SpeedMoveR+0.5;Hiding+2;Immuno+1,1,1,,1,15000,,,1
+56,12,百花缭绕,1,0,加持保护罩吸收伤害700,pic_skill_hjl_05,,skill_buf5,root,0,16,,,AbsorptionDamage+700,1,1,,1,180000,,,1
+57,12,百花缭绕,2,0,加持保护罩吸收伤害800,pic_skill_hjl_05,,skill_buf5,root,0,16,,,AbsorptionDamage+800,1,1,,1,180000,,,1
+58,12,百花缭绕,3,0,加持保护罩吸收伤害1000,pic_skill_hjl_05,,skill_buf5,root,0,16,,,AbsorptionDamage+1000,1,1,,1,180000,,,1
+59,12,百花缭绕,4,0,加持保护罩吸收伤害1200,pic_skill_hjl_05,,skill_buf5,root,0,16,,,AbsorptionDamage+1200,1,1,,1,180000,,,1
+60,12,百花缭绕,5,0,加持保护罩吸收伤害1600,pic_skill_hjl_05,,skill_buf5,root,0,16,,,AbsorptionDamage+1600,1,1,,1,180000,,,1
+61,12,百花缭绕,6,0,加持保护罩吸收伤害1800,pic_skill_hjl_05,,skill_buf5,root,0,16,,,AbsorptionDamage+1800,1,1,,1,180000,,,1
+62,12,百花缭绕,7,0,加持保护罩吸收伤害2000,pic_skill_hjl_05,,skill_buf5,root,0,16,,,AbsorptionDamage+2000,1,1,,1,180000,,,1
+63,12,百花缭绕,8,0,加持保护罩吸收伤害2500,pic_skill_hjl_05,,skill_buf5,root,0,16,,,AbsorptionDamage+2500,1,1,,1,180000,,,1
+64,12,百花缭绕,9,0,加持保护罩吸收伤害3000,pic_skill_hjl_05,,skill_buf5,root,0,16,,,AbsorptionDamage+3000,1,1,,1,180000,,,1
+65,12,百花缭绕,10,0,加持保护罩吸收伤害3500,pic_skill_hjl_05,,skill_buf5,root,0,16,,,AbsorptionDamage+3500,1,1,,1,180000,,,1
+66,13,眩晕,1,0,无法移动和攻击,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,3000,,,1
+67,13,眩晕,2,0,无法移动和攻击,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,4000,,,1
+68,13,眩晕,3,0,无法移动和攻击,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,5000,,,1
+69,13,眩晕,4,0,无法移动和攻击,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,6000,,,1
+70,13,眩晕,5,0,无法移动和攻击,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,7000,,,1
+71,14,隐匿,1,0,减少移动速度40%，伤害+50%,pic_skill_hjh_05,,,,0,3,,,DamageMaxR+0.5;DamageMinR+0.5;Hiding+1;SpeedMoveR-0.40,1,1,,1,30000,,,1
+72,14,隐匿,2,0,减少移动速度40%，伤害+75%,pic_skill_hjh_05,,,,0,3,,,DamageMaxR+0.75;DamageMinR+0.75;Hiding+1;SpeedMoveR-0.40,1,1,,1,30000,,,1
+73,14,隐匿,3,0,减少移动速度40%，伤害+100%,pic_skill_hjh_05,,,,0,3,,,DamageMaxR+1.0;DamageMinR+1.0;Hiding+1;SpeedMoveR-0.40,1,1,,1,30000,,,1
+74,14,隐匿,4,0,减少移动速度40%，伤害+125%,pic_skill_hjh_05,,,,0,3,,,DamageMaxR+1.25;DamageMinR+1.25;Hiding+1;SpeedMoveR-0.40,1,1,,1,30000,,,1
+75,14,隐匿,5,0,减少移动速度40%，伤害+150%,pic_skill_hjh_05,,,,0,3,,,DamageMaxR+1.5;DamageMinR+1.5;Hiding+1;SpeedMoveR-0.40,1,1,,1,30000,,,1
+76,15,荼毒,1,0,毒伤害+80，毒防御+30,pic_skill_hjh_06,,skill_buf6,Bip01 R Hand,0,3,,,PoisonDm+80;PoisonAr+30,1,1,,1,60000,,,1
+77,15,荼毒,2,0,毒伤害+95，毒防御+35,pic_skill_hjh_06,,skill_buf6,Bip01 R Hand,0,3,,,PoisonDm+95;PoisonAr+35,1,1,,1,60000,,,1
+78,15,荼毒,3,0,毒伤害+105，毒防御+40,pic_skill_hjh_06,,skill_buf6,Bip01 R Hand,0,3,,,PoisonDm+105;PoisonAr+40,1,1,,1,60000,,,1
+79,15,荼毒,4,0,毒伤害+120，毒防御+45,pic_skill_hjh_06,,skill_buf6,Bip01 R Hand,0,3,,,PoisonDm+120;PoisonAr+45,1,1,,1,60000,,,1
+80,15,荼毒,5,0,毒伤害+135，毒防御+50,pic_skill_hjh_06,,skill_buf6,Bip01 R Hand,0,3,,,PoisonDm+135;PoisonAr+50,1,1,,1,60000,,,1
+81,15,荼毒,6,0,毒伤害+150，毒防御+55,pic_skill_hjh_06,,skill_buf6,Bip01 R Hand,0,3,,,PoisonDm+150;PoisonAr+55,1,1,,1,60000,,,1
+82,15,荼毒,7,0,毒伤害+165，毒防御+60,pic_skill_hjh_06,,skill_buf6,Bip01 R Hand,0,3,,,PoisonDm+165;PoisonAr+60,1,1,,1,60000,,,1
+83,15,荼毒,8,0,毒伤害+175，毒防御+65,pic_skill_hjh_06,,skill_buf6,Bip01 R Hand,0,3,,,PoisonDm+175;PoisonAr+65,1,1,,1,60000,,,1
+84,15,荼毒,9,0,毒伤害+185，毒防御+70,pic_skill_hjh_06,,skill_buf6,Bip01 R Hand,0,3,,,PoisonDm+185;PoisonAr+70,1,1,,1,60000,,,1
+85,15,荼毒,10,0,毒伤害+200，毒防御+75,pic_skill_hjh_06,,skill_buf6,Bip01 R Hand,0,3,,,PoisonDm+200;PoisonAr+75,1,1,,1,60000,,,1
+86,16,迟缓,1,0,减少攻击速度20%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.20,2,1,,1,5000,,,1
+87,16,迟缓,2,0,减少攻击速度25%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.25,2,1,,1,5000,,,1
+88,16,迟缓,3,0,减少攻击速度30%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.30,2,1,,1,5000,,,1
+89,16,迟缓,4,0,减少攻击速度35%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.35,2,1,,1,5000,,,1
+90,16,迟缓,5,0,减少攻击速度40%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.40,2,1,,1,5000,,,1
+91,17,技能封禁,1,0,无法使用技能攻击，无法与虚无同时存在，潜伏15秒后咒杀150/2秒,pic_skill_mjz_04,,skill_debuf7,Bone99,0,11,,,StateUseSkill 1,2,1,,1,15000,,AddEff 121,1
+92,17,技能封禁,2,0,无法使用技能攻击，无法与虚无同时存在，潜伏15秒后咒杀300/2秒,pic_skill_mjz_04,,skill_debuf7,Bone99,0,11,,,StateUseSkill 1,2,1,,1,15000,,AddEff 122,1
+93,17,技能封禁,3,0,无法使用技能攻击，无法与虚无同时存在，潜伏15秒后咒杀450/2秒,pic_skill_mjz_04,,skill_debuf7,Bone99,0,11,,,StateUseSkill 1,2,1,,1,15000,,AddEff 123,1
+94,17,技能封禁,4,0,无法使用技能攻击，无法与虚无同时存在，潜伏15秒后咒杀600/2秒,pic_skill_mjz_04,,skill_debuf7,Bone99,0,11,,,StateUseSkill 1,2,1,,1,15000,,AddEff 124,1
+95,17,技能封禁,5,0,无法使用技能攻击，无法与虚无同时存在，潜伏15秒后咒杀750/2秒,pic_skill_mjz_04,,skill_debuf7,Bone99,0,11,,,StateUseSkill 1,2,1,,1,15000,,AddEff 125,1
+96,18,混沌晶壁,1,0,以法力抵挡伤害,pic_skill_mjz_06,,skill_buf21,root,0,3,,,,1,1,ShieldMpR+350,0,1000,,,1
+97,18,混沌晶壁,2,0,以法力抵挡伤害,pic_skill_mjz_06,,skill_buf21,root,0,3,,,,1,1,ShieldMpR+320,0,1000,,,1
+98,18,混沌晶壁,3,0,以法力抵挡伤害,pic_skill_mjz_06,,skill_buf21,root,0,3,,,,1,1,ShieldMpR+290,0,1000,,,1
+99,18,混沌晶壁,4,0,以法力抵挡伤害,pic_skill_mjz_06,,skill_buf21,root,0,3,,,,1,1,ShieldMpR+260,0,1000,,,1
+100,18,混沌晶壁,5,0,以法力抵挡伤害,pic_skill_mjz_06,,skill_buf21,root,0,3,,,,1,1,ShieldMpR+230,0,1000,,,1
+116,18,混沌晶壁,6,0,以法力抵挡伤害,pic_skill_mjz_06,,skill_buf21,root,0,3,,,,1,1,ShieldMpR+200,0,1000,,,1
+117,18,混沌晶壁,7,0,以法力抵挡伤害,pic_skill_mjz_06,,skill_buf21,root,0,3,,,,1,1,ShieldMpR+170,0,1000,,,1
+118,18,混沌晶壁,8,0,以法力抵挡伤害,pic_skill_mjz_06,,skill_buf21,root,0,3,,,,1,1,ShieldMpR+140,0,1000,,,1
+119,18,混沌晶壁,9,0,以法力抵挡伤害,pic_skill_mjz_06,,skill_buf21,root,0,3,,,,1,1,ShieldMpR+110,0,1000,,,1
+120,18,混沌晶壁,10,0,以法力抵挡伤害,pic_skill_mjz_06,,skill_buf21,root,0,3,,,,1,1,ShieldMpR+80,0,1000,,,1
+101,19,中毒,1,0,生命减少50/2秒,pic_skill_fb_10,,skill_debuf9,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+50,,1
+102,19,中毒,2,0,生命减少100/2秒,pic_skill_fb_10,,skill_debuf9,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+100,,1
+103,19,中毒,3,0,生命减少150/2秒,pic_skill_fb_10,,skill_debuf9,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+150,,1
+104,19,中毒,4,0,生命减少200/2秒,pic_skill_fb_10,,skill_debuf9,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+200,,1
+105,19,中毒,5,0,生命减少250/2秒,pic_skill_fb_10,,skill_debuf9,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+250,,1
+106,20,匿踪潜行,1,0,增加移动速度5%,pic_skill_hjh_11,,,,0,3,,,SpeedMoveR+0.5,1,1,,1,30000,,,1
+107,20,匿踪潜行,2,0,增加移动速度10%,pic_skill_hjh_11,,,,0,3,,,SpeedMoveR+0.10,1,1,,1,30000,,,1
+108,20,匿踪潜行,3,0,增加移动速度15%,pic_skill_hjh_11,,,,0,3,,,SpeedMoveR+0.15,1,1,,1,30000,,,1
+109,20,匿踪潜行,4,0,增加移动速度20%,pic_skill_hjh_11,,,,0,3,,,SpeedMoveR+0.20,1,1,,1,30000,,,1
+110,20,匿踪潜行,5,0,增加移动速度30%,pic_skill_hjh_11,,,,0,3,,,SpeedMoveR+0.30,1,1,,1,30000,,,1
+111,21,灼烧,1,0,生命减少30/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+30,,1
+112,21,灼烧,2,0,生命减少70/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+70,,1
+113,21,灼烧,3,0,生命减少110/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+110,,1
+114,21,灼烧,4,0,生命减少160/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+160,,1
+115,21,灼烧,5,0,生命减少210/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+210,,1
+121,22,咒杀,1,0,生命减少150/2秒,pic_skill_dbf_08,,skill_debuf9,Bone100,0,11,,,,2,1,,3,2000,DeBufPoison+150,,1
+122,22,咒杀,2,0,生命减少300/2秒,pic_skill_dbf_08,,skill_debuf9,Bone100,0,11,,,,2,1,,3,2000,DeBufPoison+300,,1
+123,22,咒杀,3,0,生命减少450/2秒,pic_skill_dbf_08,,skill_debuf9,Bone100,0,11,,,,2,1,,3,2000,DeBufPoison+450,,1
+124,22,咒杀,4,0,生命减少600/2秒,pic_skill_dbf_08,,skill_debuf9,Bone100,0,11,,,,2,1,,3,2000,DeBufPoison+600,,1
+125,22,咒杀,5,0,生命减少750/2秒,pic_skill_dbf_08,,skill_debuf9,Bone100,0,11,,,,2,1,,3,2000,DeBufPoison+750,,1
+126,23,冻裂,1,0,生命减少50/3秒,pic_skill_ssj_17,,skill_buf2,root,0,11,,,,2,1,,5,3000,DeBufWater+50,,1
+127,23,冻裂,2,0,生命减少100/3秒,pic_skill_ssj_17,,skill_buf2,root,0,11,,,,2,1,,5,3000,DeBufWater+100,,1
+128,23,冻裂,3,0,生命减少150/3秒,pic_skill_ssj_17,,skill_buf2,root,0,11,,,,2,1,,5,3000,DeBufWater+150,,1
+129,23,冻裂,4,0,生命减少200/3秒,pic_skill_ssj_17,,skill_buf2,root,0,11,,,,2,1,,5,3000,DeBufWater+200,,1
+130,23,冻裂,5,0,生命减少300/3秒,pic_skill_ssj_17,,skill_buf2,root,0,11,,,,2,1,,5,3000,DeBufWater+300,,1
+131,24,虚无,1,0,无法使用普通攻击，无法与技能封禁同时存在，潜伏15秒后咒杀150/2秒,pic_skill_dbf_10,,skill_debuf19,Bone99,0,11,,,StateNAttack 1,2,1,,1,15000,,AddEff 121,1
+132,24,虚无,2,0,无法使用普通攻击，无法与技能封禁同时存在，潜伏15秒后咒杀300/2秒,pic_skill_dbf_10,,skill_debuf19,Bone99,0,11,,,StateNAttack 1,2,1,,1,15000,,AddEff 122,1
+133,24,虚无,3,0,无法使用普通攻击，无法与技能封禁同时存在，潜伏15秒后咒杀450/2秒,pic_skill_dbf_10,,skill_debuf19,Bone99,0,11,,,StateNAttack 1,2,1,,1,15000,,AddEff 123,1
+134,24,虚无,4,0,无法使用普通攻击，无法与技能封禁同时存在，潜伏15秒后咒杀600/2秒,pic_skill_dbf_10,,skill_debuf19,Bone99,0,11,,,StateNAttack 1,2,1,,1,15000,,AddEff 124,1
+135,24,虚无,5,0,无法使用普通攻击，无法与技能封禁同时存在，潜伏15秒后咒杀750/2秒,pic_skill_dbf_10,,skill_debuf19,Bone99,0,11,,,StateNAttack 1,2,1,,1,15000,,AddEff 125,1
+201,201,命中提高,1,0,提高命中50%,pic_skill_ssj_04,,,,0,3,,,AttackRateR+0.50,1,1,,1,30000,,,1
+202,202,速度提高,1,0,提高移动速度50%,pic_skill_fb_11,,,,0,3,,,SpeedMoveR+0.50,1,1,,1,15000,,,1
+203,203,攻击加强,1,0,提高物理伤10%,pic_skill_ts_18,,,,0,3,,,DamageMaxR+0.1;DamageMinR+0.1,1,1,,1,1800000,,,1
+204,204,防御加强,1,0,提高物理防御20%,pic_skill_ts_14,,,,0,3,,,PhyArR+0.2,1,1,,1,1800000,,,1
+205,205,水防御加强,1,0,提高水防御20%,pic_skill_ts_14,,,,0,3,,,WaterArR+0.2,1,1,,1,1800000,,,1
+206,206,火防御加强,1,0,提高火防御20%,pic_skill_ts_14,,,,0,3,,,FireArR+0.2,1,1,,1,1800000,,,1
+207,207,毒防御加强,1,0,提高毒防御20%,pic_skill_ts_14,,,,0,3,,,PoisonArR+0.2,1,1,,1,1800000,,,1
+208,208,水攻击加强,1,0,提高水伤害10%,pic_skill_ts_13,,,,0,3,,,WaterDmR+0.1,1,1,,1,1800000,,,1
+209,209,火攻击加强,1,0,提高火伤害10%,pic_skill_ts_13,,,,0,3,,,FireDmR+0.1,1,1,,1,1800000,,,1
+210,210,毒攻击加强,1,0,提高毒伤害10%,pic_skill_hjh_06,,,,0,3,,,PoisonDmR+0.1,1,1,,1,1800000,,,1
+211,211,血量上限上升,1,0,提高生命上限20%,pic_skill_ts_15,,,,0,3,,,MaxHPR+0.2,1,1,,1,3600000,,,1
+212,212,持续恢复血量,1,0,持续恢复生命10%,pic_skill_fb_02,,,,0,3,,,,1,1,,10,1000,HPR+0.01,AddEff 301,1
+213,213,持续恢复法力,1,0,持续恢复法力10%,pic_skill_ssj_06,,,,0,3,,,,1,1,,10,1000,MPR+0.01,AddEff 302,1
+214,214,大量强化伤害和防御,1,0,强化伤害20%和防御20%,pic_skill_ts_19,,,,0,3,,,DamageMaxR+0.2;DamageMinR+0.2;PhyArR+0.2,1,1,,1,30000,,AddEff 303,1
+215,215,2倍经验,1,0,2倍经验,pic_exp_02,,,,0,3,,,RateExpR+1,1,1,,1,3600000,,,0
+216,215,3倍经验,1,0,3倍经验,pic_exp_03,,,,0,3,,,RateExpR+2,1,1,,1,3600000,,,0
+217,216,2倍金钱,1,0,2倍金钱,pic_gold_02,,,,0,3,,,RateGoldR+2,1,1,,1,180000,,,0
+218,217,2倍灵力,1,0,2倍灵力,pic_soul_02,,,,0,3,,,,1,1,,1,180000,,,0
+219,219,回命丹,1,0,生命恢复增加6点/1秒。,pic_skill_fb_02,,,,0,3,,,,1,1,,1800,1000,HP 6 2,,1
+220,220,回魔丹,1,0,法力恢复增加8点/1秒。,pic_skill_ssj_06,,,,0,3,,,,1,1,,1800,1000,MP+8,,1
+221,221,玄甲丹,1,0,物理防御增加20%。,pic_skill_ts_14,,,,0,3,,,PhyArR+0.2,1,1,,1,1800000,,,1
+222,222,灵影丹,1,0,闪避增加20%。,pic_skill_fb_09,,,,0,3,,,DodgeR+0.2,1,1,,1,1800000,,,1
+223,223,龙力丹,1,0,物理伤害增加15%。,pic_skill_ts_18,,,,0,3,,,DamageMaxR+0.15;DamageMinR+0.15,1,1,,1,1800000,,,1
+224,224,神眼丹,1,0,命中增加30%。,pic_skill_ssj_04,,,,0,3,,,AttackRateR+0.3,1,1,,1,1800000,,,1
+225,225,火魂丹,1,0,火防御增加20%。,pic_skill_ts_14,,,,0,3,,,FireArR+0.2,1,1,,1,1800000,,,1
+226,226,水魂丹,1,0,水防御增加20%。,pic_skill_ts_14,,,,0,3,,,WaterArR+0.2,1,1,,1,1800000,,,1
+227,227,毒魂丹,1,0,毒防御增加20%。,pic_skill_ts_14,,,,0,3,,,PoisonArR+0.2,1,1,,1,1800000,,,1
+228,228,火灵丹,1,0,火伤增加15%。,pic_skill_ts_13,,,,0,3,,,FireDmR+0.15,1,1,,1,1800000,,,1
+229,229,水灵丹,1,0,水伤增加15%。,pic_skill_ts_13,,,,0,3,,,WaterDmR+0.15,1,1,,1,1800000,,,1
+230,230,毒灵丹,1,0,毒伤增加15%。,pic_skill_hjh_06,,,,0,3,,,PoisonDmR+0.15,1,1,,1,1800000,,,1
+231,231,风神,1,0,移动速度增加80%。,pic_skill_fb_11,,,,0,3,,,SpeedMoveR+0.8,1,1,,1,30000,,,1
+232,232,战神,1,0,物理伤、火伤、水伤、毒伤增加10%。,pic_skill_ts_18,,,,0,3,,,DamageMaxR+0.1;DamageMinR+0.1;FireDmR+0.1;WaterDmR+0.1;PoisonDmR+0.1,1,1,,1,1800000,,,1
+233,233,金刚,1,0,伤害吸收增加30%。,pic_skill_hjl_05,,,,0,3,,,PhyAbR+0.3;FireAbR+0.3;WaterAbR+0.3;PoisonAbR+0.3,1,1,,1,1800000,,,1
+234,234,暗影,1,0,遁地10秒。,pic_skill_hjl_04,,,,0,3,,,SpeedMoveR+0.15;StateUseSkill 1;Hiding+2,1,1,,1,10000,,,1
+235,235,癫狂,1,0,"技能暴击增加30%,生命上限-0.2。",pic_skill_ts_20,,,,0,3,,,SkillCriRate+1;MaxHPR-0.2,1,1,,1,120000,,,1
+236,236,无敌金身,1,0,无敌。,pic_skill_ts_14,,,,0,3,,,StateDodge 1,1,1,,1,15000,,,1
+237,237,固本培元,1,0,生命上限增加50%。,pic_skill_ts_15,,,,0,3,,,MaxHPR+0.5,1,1,,1,1800000,,,1
+238,238,百窍升神,1,0,吸血能力提高8%。,pic_skill_ts_02,,,,0,3,,,AbsorbHP+100,1,1,,1,120000,,,1
+239,239,天神,1,0,未知,,,,,0,3,,,SkillCriRate+1,1,1,,1,1800000,,,1
+240,240,天魔,1,0,未知,,,,,0,3,,,SkillCriDamage+100,1,1,,1,1800000,,,1
+241,241,狼啸,1,0,增加攻击,skill83,,,,0,3,,,,0,1,,1,1800000,,,1
+301,301,法力凋零,1,0,中毒减少法力,pic_skill_hjl_14,,,,0,3,,,,2,,,5,3000,MPR-0.05,,1
+302,302,生命凋零,1,0,中毒减少生命,pic_skill_mjz_22,,,,0,3,,,,2,,,5,3000,HPR-0.05,,1
+303,303,雷劈定身,1,0,无法移动和攻击,pic_skill_dbf_06,,,,0,3,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,,,1,5000,,,1
+304,304,心灵的创伤,1,0,掉血50%,pic_skill_mjz_22,,,,0,3,,,,2,,,1,3000,HPR-0.5,,1
+401,401,眩晕,1,0,无法移动和攻击,pic_skill_dbf_06,,,,0,3,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,,,1,3000,,,1
+402,402,撕心,1,0,持续掉血6秒，心灵的创伤会在持续掉血结束后爆发,skill06,,,,0,3,,,,2,,,8,1000,HPR-0.02,AddEff 304,1
+403,403,狼嚎（小怪）,1,0,"30秒内物理伤害增加20%,火伤害增加20，物防御减少50%",skill06,,,,0,3,,,DamageMaxR+0.2;DamageMinR+0.2;PhyArR-0.5;FireDm+20,2,1,,1,30000,,,1
+404,404,狼嚎（大怪）,1,0,"10秒内,移动速度降低50%",pic_skill_dbf_03,,,,0,11,,,SpeedMoveR-0.50,2,1,,1,10000,,,1
+405,405,回血,1,0,持续恢复生命+4/秒,pic_skill_ts_02,,,,0,0,,100,,0,,,0,2000,AddEff 406,,1
+406,406,回血,1,0,持续恢复生命+4/秒,,,eff_ss01_01.act,root,0,,,,,0,1,,1,3000,HP 12 0,,1
+407,407,回魔,1,0,持续恢复法力+6/秒,pic_skill_ts_04,,,,0,0,,100,,0,,,0,2000,AddEff 408,,1
+408,408,回魔,1,0,持续恢复法力+6/秒,,,,,0,,,,,0,1,,1,3000,MP+18,,1
+409,409,回血,1,0,持续恢复生命+4/秒,pic_skill_ts_02,,,,0,0,,100,,0,,,0,2000,AddEff 410,,1
+410,410,回血,1,0,持续恢复生命+4/秒,,,eff_ss02_01.act,root,0,,,,,0,1,,1,3000,HP 12 0,,1
+411,411,回魔,1,0,持续恢复法力+6/秒,pic_skill_ts_04,,,,0,0,,100,,0,,,0,2000,AddEff 412,,1
+412,412,回魔,1,0,持续恢复法力+6/秒,,,,,0,,,,,0,1,,1,3000,MP+18,,1
+413,413,回血,1,0,持续恢复生命+4/秒,pic_skill_ts_02,,,,0,0,,100,,0,,,0,2000,AddEff 414,,1
+414,414,回血,1,0,持续恢复生命+4/秒,,,eff_hj02_01.act,root,0,,,,,0,1,,1,3000,HP 12 0,,1
+415,415,回魔,1,0,持续恢复法力+6/秒,pic_skill_ts_04,,,,0,0,,100,,0,,,0,2000,AddEff 416,,1
+416,416,回魔,1,0,持续恢复法力+6/秒,,,,,0,,,,,0,1,,1,3000,MP+18,,1
+417,417,回血,1,0,持续恢复生命+4/秒,pic_skill_ts_02,,,,0,0,,100,,0,,,0,2000,AddEff 418,,1
+418,418,回血,1,0,持续恢复生命+4/秒,,,eff_hj01_01.act,root,0,,,,,0,1,,1,3000,HP 12 0,,1
+419,419,回魔,1,0,持续恢复法力+6/秒,pic_skill_ts_04,,,,0,0,,100,,0,,,0,2000,AddEff 420,,1
+420,420,回魔,1,0,持续恢复法力+6/秒,,,,,0,,,,,0,1,,1,3000,MP+18,,1
+421,421,回血,1,0,持续恢复生命+4/秒,pic_skill_ts_02,,,,0,0,,100,,0,,,0,2000,AddEff 406,,1
+422,422,回血,1,0,持续恢复生命+4/秒,,,eff_ss01_01.act,root,0,,,,,0,1,,1,3000,HP 12 0,,1
+423,423,回魔,1,0,持续恢复法力+6/秒,pic_skill_ts_04,,,,0,0,,100,,0,,,0,2000,AddEff 408,,1
+424,424,回魔,1,0,持续恢复法力+6/秒,,,,,0,,,,,0,1,,1,3000,MP+18,,1
+425,425,回血,1,0,持续恢复生命+4/秒,pic_skill_ts_02,,,,0,0,,100,,0,,,0,2000,AddEff 410,,1
+426,426,回血,1,0,持续恢复生命+4/秒,,,eff_ss02_01.act,root,0,,,,,0,1,,1,3000,HP 12 0,,1
+427,427,回魔,1,0,持续恢复法力+6/秒,pic_skill_ts_04,,,,0,0,,100,,0,,,0,2000,AddEff 412,,1
+428,428,回魔,1,0,持续恢复法力+6/秒,,,,,0,,,,,0,1,,1,3000,MP+18,,1
+429,429,回血,1,0,持续恢复生命+4/秒,pic_skill_ts_02,,,,0,0,,100,,0,,,0,2000,AddEff 414,,1
+430,430,回血,1,0,持续恢复生命+4/秒,,,eff_hj02_01.act,root,0,,,,,0,1,,1,3000,HP 12 0,,1
+431,431,回魔,1,0,持续恢复法力+6/秒,pic_skill_ts_04,,,,0,0,,100,,0,,,0,2000,AddEff 416,,1
+432,432,回魔,1,0,持续恢复法力+6/秒,,,,,0,,,,,0,1,,1,3000,MP+18,,1
+433,433,回血,1,0,持续恢复生命+4/秒,pic_skill_ts_02,,,,0,0,,100,,0,,,0,2000,AddEff 418,,1
+434,434,回血,1,0,持续恢复生命+4/秒,,,eff_hj01_01.act,root,0,,,,,0,1,,1,3000,HP 12 0,,1
+435,435,回魔,1,0,持续恢复法力+6/秒,pic_skill_ts_04,,,,0,0,,100,,0,,,0,2000,AddEff 420,,1
+436,436,回魔,1,0,持续恢复法力+6/秒,,,,,0,,,,,0,1,,1,3000,MP+18,,1
+437,25,流血,1,,流血200/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+200,,1
+438,13,眩晕,1,,眩晕5秒,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,0,,1,5000,,,1
+439,16,迟钝,1,,移动速度-40%，攻击速度-40%,pic_skill_dbf_12,,skill_debuf6,root,0,11,,,SpeedMoveR-0.40;SpeedAttackR-0.40,2,0,,1,10000,,,1
+440,26,弱化,1,,物理攻击-30%，元素攻击-30%,pic_skill_dbf_19,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.3;DamageMinR-0.3;WaterDmR-0.3;FireDmR-0.3;PoisonDmR-0.3;,2,0,,1,10000,,,1
+441,27,破甲,1,,物理防御-50%，毒防御-50%,pic_skill_dbf_13,,skill_debuf10,Bone99,0,11,,,PhyArR-0.50;PoisonArR-0.50;,2,0,,1,10000,,,1
+442,19,中毒,1,,中毒200/2秒,pic_skill_fb_10,,skill_debuf9,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+200,,1
+443,443,水伤加倍,1,,受水伤害加倍,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,ReceiveDamageSkillR+2.0;WaterArR-0.5,2,0,,1,20000,,,1
+444,444,猛男威慑,1,,生命-2%/秒,pic_skill_mjz_22,,skill_debuf9,Bone100,0,11,,,,2,0,,20,1000,AddCutMaxHP-0.02,,1
+445,445,猛男恐吓,1,,生命-90%,pic_skill_dbf_08,,,,0,11,,,,2,0,,1,1000,AddCutMaxHP-0.9,,1
+446,446,修罗毒环,1,,靠近自己的队友每秒减少生命5%,pic_skill_mjz_02,,ewar_009,root,3,16,,100,,2,0,,10,1000,AddEff 447,,1
+447,447,修罗毒,1,,每秒减少生命5%,pic_skill_mjz_22,,skill_debuf9,Bone100,0,,,,,2,0,,1,1000,AddCutMaxHP-0.05,,1
+448,448,蛛丝束缚,1,,移动速度-50%,pic_skill_dbf_05,,skill_debuf3,root,0,11,,,SpeedMoveR-0.50,2,1,,1,5000,,AddEff 449,1
+449,449,定身,1,,无法移动,pic_skill_dbf_06,,skill_debuf2,root,0,11,,,StateMove 1,2,1,,1,5000,,,1
+450,450,吸血风暴,1,,攻击伤害的50%转化为生命,pic_skill_wtf_20,,skill_buf23,root,0,3,,,AbsorbHP+50,1,1,,1,60000,,,1
+451,451,苟延残喘,1,,受击伤害的100%转化为生命,pic_skill_wtc_21,,skill_ty_04,root,0,3,,,AbsorptionHpR+100,1,1,,1,10000,,,1
+452,452,法力衰减,1,,每秒生命增加1%、法力减少5%，持续30分钟,pic_skill_hjl_14,,skill_buf1,root,0,11,,,,1,1,,1800,1000,AddCutMaxHP+0.01;AddCutMaxMP-0.05;,,1
+453,453,生命衰减,1,,每秒生命减少5%、法力增加1%，持续10分钟,pic_skill_hjl_12,,skill_debuf9,Bone100,0,11,,,,0,1,,600,1000,AddCutMaxHP-0.05;AddCutMaxMP+0.01;,,1
+501,13,眩晕,1,0,无法移动和攻击,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,2000,,,1
+502,13,眩晕,1,0,无法移动和攻击,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,3000,,,1
+503,503,缓速,1,0,降低移动速度40%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.4,2,1,,1,10000,,,1
+504,504,狂热,1,0,攻击速度增加50%,pic_skill_fb_12,,ts1,root,0,0,,,SpeedAttackR+0.5,1,1,,1,10000,,,1
+505,505,碎体,1,0,降低50%防御,pic_skill_dbf_17,,skill_debuf3,root,0,11,,,PhyArR-0.5,2,1,,1,10000,,,1
+506,506,生命凋零,1,0,生命减少1%/秒,pic_skill_mjz_22,,skill_debuf9,Bip01,0,11,,,,2,1,,5,1000,HPR-0.01,,1
+507,507,虚弱,1,0,"降低移动速度20%,攻击速度20%",pic_skill_dbf_12,,skill_debuf6,root,0,11,,,SpeedMoveR-0.2;SpeedAttackR-0.2,2,1,,1,10000,,,1
+508,508,障目,1,0,降低命中50%,pic_skill_dbf_07,,skill_debuf4,Bone99,0,11,,,AttackRateR-0.5,2,1,,1,10000,,,1
+509,509,迟钝,1,0,降低攻击速度40%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.4,2,1,,1,10000,,,1
+510,510,笨拙,1,0,降低躲避50%,pic_skill_hjh_16,,,,0,11,,,DodgeR-0.5,2,1,,1,10000,,,1
+511,511,禁魔,1,0,无法使用技能5秒,pic_skill_mjz_04,,skill_debuf7,,0,11,,,StateUseSkill 1,2,1,,1,5000,,,1
+512,512,生命凋零,1,0,生命减少1%/2秒,pic_skill_mjz_22,,skill_debuf9,Bip01,0,11,,,,2,1,,5,2000,HPR-0.01,,1
+513,513,迟缓,1,0,降低攻击速度30%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.3,2,1,,1,10000,,,1
+514,13,眩晕,1,0,无法移动和攻击,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;Hate+1000,2,1,,1,20000,,,1
+515,13,眩晕,1,0,无法移动和攻击,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;Hate+2000,2,1,,1,20000,,,1
+516,13,眩晕,1,0,无法移动和攻击,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;Hate+10000,2,1,,1,40000,,,1
+517,5,冻结,1,0,无法移动和攻击,pic_skill_dbf_02,,skill_debuf0,root,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;Hate+10000,2,1,,1,30000,,,1
+518,518,生命衰竭,1,0,生命上限降低20%,pic_skill_dbf_22,,,,0,11,,,MaxHPR-0.2,2,1,,1,15000,,,1
+519,519,弱火,1,0,火防降低-30%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.3,2,1,,1,15000,,,1
+520,520,弱水,1,0,水防降低-30%,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterArR-0.3,2,1,,1,15000,,,1
+521,521,弱毒,1,0,毒防降低-30%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.3,2,1,,1,15000,,,1
+522,522,火种,1,0,火种灭后会带来巨大火伤,pic_skill_dbf_01,,,,0,11,,,,2,1,,1,30000,,AddEff 523,1
+523,523,火种,1,0,当前生命减少4%/秒,pic_skill_dbf_09,,skill_debuf8,Bone100,0,11,,,,2,1,,5,1000,HPR-0.04,,1
+524,522,火种,1,0,火种灭后会带来巨大火伤,pic_skill_dbf_01,,,,0,11,,,,2,1,,1,15000,,AddEff 525,1
+525,523,火种,1,0,当前生命减少4%/秒,pic_skill_dbf_09,,skill_debuf8,Bone100,0,11,,,,2,1,,5,1000,HPR-0.04,,1
+526,8,束缚,1,0,束缚无法移动,pic_skill_dbf_05,,skill_debuf2,root,0,11,,,StateMove 1;StateDodge 1,2,1,,1,4000,,,1
+527,8,束缚,1,0,束缚无法移动,pic_skill_dbf_05,,skill_debuf2,root,0,11,,,StateMove 1;StateDodge 1,2,1,,1,6000,,,1
+528,21,生命凋零,1,0,生命减少1%/2秒,pic_skill_mjz_22,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,HPR-0.01,,1
+529,529,法力凋零,1,0,法力减少4%/2秒,pic_skill_hjl_14,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,HPR-0.04,,1
+530,503,缓速,1,0,降低移动速度30%,pic_skill_dbf_04,,skill_debuf6,root,0,11,,,SpeedMoveR-0.3,2,1,,1,15000,,,1
+531,531,愈合,1,0,恢复生命1%/3秒,pic_skill_pet_19c,,skill_buf7,root,0,28,,,,1,1,,7,3000,AddCutMaxHP+0.01,,1
+532,531,愈合,1,0,恢复生命1%/2秒,pic_skill_pet_19b,,skill_buf7,root,0,28,,,,1,1,,10,2000,AddCutMaxHP+0.01,,1
+533,531,愈合,1,0,恢复生命1%/1秒,pic_skill_pet_19a,,skill_buf7,root,0,28,,,,1,1,,20,1000,AddCutMaxHP+0.01,,1
+534,531,愈合,1,0,恢复生命1%/1秒,pic_skill_pet_19s,,skill_buf7,root,0,28,,,,1,1,,20,1000,AddCutMaxHP+0.01,,1
+535,535,通灵,1,0,恢复法力2%/3秒,pic_skill_pet_20c,,skill_buf2,root,0,28,,,,1,1,,7,3000,AddCutMaxMP+0.02,,1
+536,535,通灵,1,0,恢复法力2%/2秒,pic_skill_pet_20b,,skill_buf2,root,0,28,,,,1,1,,10,2000,AddCutMaxMP+0.02,,1
+537,535,通灵,1,0,恢复法力2%/1秒,pic_skill_pet_20a,,skill_buf2,root,0,28,,,,1,1,,20,1000,AddCutMaxMP+0.02,,1
+538,535,通灵,1,0,恢复法力2%/1秒,pic_skill_pet_20s,,skill_buf2,root,0,28,,,,1,1,,20,1000,AddCutMaxMP+0.02,,1
+539,539,杀神,1,0,物伤增加15%,pic_skill_pet_21c,,,,0,28,,,DamageMaxR+0.15;DamageMinR+0.15,1,1,,1,120000,,,1
+540,539,杀神,1,0,物伤增加20%,pic_skill_pet_21b,,,,0,28,,,DamageMaxR+0.2;DamageMinR+0.2,1,1,,1,120000,,,1
+541,539,杀神,1,0,物伤增加25%,pic_skill_pet_21a,,,,0,28,,,DamageMaxR+0.25;DamageMinR+0.25,1,1,,1,120000,,,1
+542,539,杀神,1,0,物伤增加25%,pic_skill_pet_21s,,,,0,29,,,DamageMaxR+0.25;DamageMinR+0.25,1,1,,1,120000,,,1
+543,543,火神,1,0,火伤增加15%,pic_skill_pet_22c,,,,0,28,,,FireDmR+0.15,1,1,,1,120000,,,1
+544,543,火神,1,0,火伤增加20%,pic_skill_pet_22b,,,,0,28,,,FireDmR+0.2,1,1,,1,120000,,,1
+545,543,火神,1,0,火伤增加25%,pic_skill_pet_22a,,,,0,28,,,FireDmR+0.25,1,1,,1,120000,,,1
+546,543,火神,1,0,火伤增加25%,pic_skill_pet_22s,,,,0,29,,,FireDmR+0.25,1,1,,1,120000,,,1
+547,547,水神,1,0,水伤增加15%,pic_skill_pet_23c,,,,0,28,,,WaterDmR+0.15,1,1,,1,120000,,,1
+548,547,水神,1,0,水伤增加20%,pic_skill_pet_23b,,,,0,28,,,WaterDmR+0.2,1,1,,1,120000,,,1
+549,547,水神,1,0,水伤增加25%,pic_skill_pet_23a,,,,0,28,,,WaterDmR+0.25,1,1,,1,120000,,,1
+550,547,水神,1,0,水伤增加25%,pic_skill_pet_23s,,,,0,29,,,WaterDmR+0.25,1,1,,1,120000,,,1
+551,551,毒神,1,0,毒伤增加15%,pic_skill_pet_24c,,,,0,28,,,PoisonDmR+0.15,1,1,,1,120000,,,1
+552,551,毒神,1,0,毒伤增加20%,pic_skill_pet_24b,,,,0,28,,,PoisonDmR+0.2,1,1,,1,120000,,,1
+553,551,毒神,1,0,毒伤增加25%,pic_skill_pet_24a,,,,0,28,,,PoisonDmR+0.25,1,1,,1,120000,,,1
+554,551,毒神,1,0,毒伤增加25%,pic_skill_pet_24s,,,,0,29,,,PoisonDmR+0.25,1,1,,1,120000,,,1
+555,555,龟甲,1,0,物防增加20%,pic_skill_pet_25c,,,,0,28,,,PhyArR+0.2,1,1,,1,120000,,,1
+556,555,龟甲,1,0,物防增加25%,pic_skill_pet_25b,,,,0,28,,,PhyArR+0.25,1,1,,1,120000,,,1
+557,555,龟甲,1,0,物防增加30%,pic_skill_pet_25a,,,,0,28,,,PhyArR+0.3,1,1,,1,120000,,,1
+558,555,龟甲,1,0,物防增加30%,pic_skill_pet_25s,,,,0,29,,,PhyArR+0.3,1,1,,1,120000,,,1
+559,559,火盾,1,0,火防增加20%,pic_skill_pet_26c,,,,0,28,,,FireArR+0.2,1,1,,1,120000,,,1
+560,559,火盾,1,0,火防增加25%,pic_skill_pet_26b,,,,0,28,,,FireArR+0.25,1,1,,1,120000,,,1
+561,559,火盾,1,0,火防增加30%,pic_skill_pet_26a,,,,0,28,,,FireArR+0.3,1,1,,1,120000,,,1
+562,559,火盾,1,0,火防增加30%,pic_skill_pet_26s,,,,0,29,,,FireArR+0.3,1,1,,1,120000,,,1
+563,563,水镜,1,0,水防增加20%,pic_skill_pet_27c,,,,0,28,,,WaterArR+0.2,1,1,,1,120000,,,1
+564,563,水镜,1,0,水防增加25%,pic_skill_pet_27b,,,,0,28,,,WaterArR+0.25,1,1,,1,120000,,,1
+565,563,水镜,1,0,水防增加30%,pic_skill_pet_27a,,,,0,28,,,WaterArR+0.3,1,1,,1,120000,,,1
+566,563,水镜,1,0,水防增加30%,pic_skill_pet_27s,,,,0,29,,,WaterArR+0.3,1,1,,1,120000,,,1
+567,567,毒体,1,0,毒防增加20%,pic_skill_pet_28c,,,,0,28,,,PoisonArR+0.2,1,1,,1,120000,,,1
+568,567,毒体,1,0,毒防增加25%,pic_skill_pet_28b,,,,0,28,,,PoisonArR+0.25,1,1,,1,120000,,,1
+569,567,毒体,1,0,毒防增加30%,pic_skill_pet_28a,,,,0,28,,,PoisonArR+0.3,1,1,,1,120000,,,1
+570,567,毒体,1,0,毒防增加30%,pic_skill_pet_28s,,,,0,29,,,PoisonArR+0.3,1,1,,1,120000,,,1
+571,571,疯狂,1,0,物伤增加30%,pic_skill_pet_29c,,,,0,28,,,DamageMaxR+0.3;DamageMinR+0.3,1,1,,1,15000,,,1
+572,571,疯狂,1,0,物伤增加40%,pic_skill_pet_29b,,,,0,28,,,DamageMaxR+0.4;DamageMinR+0.4,1,1,,1,15000,,,1
+573,571,疯狂,1,0,物伤增加50%,pic_skill_pet_29a,,,,0,28,,,DamageMaxR+0.5;DamageMinR+0.5,1,1,,1,15000,,,1
+574,571,疯狂,1,0,生命减少2%/秒，物伤增加50%,pic_skill_pet_29s,,,,0,28,,,DamageMaxR+0.5;DamageMinR+0.5,1,1,,15,1000,HPR-0.02,,1
+575,575,逆转乾坤,1,0,20%伤害反弹给对方,pic_skill_pet_30c,,,,0,28,,,ReboundHurtR 20 1,1,1,,1,30000,,,1
+576,575,逆转乾坤,1,0,25%伤害反弹给对方,pic_skill_pet_30b,,,,0,28,,,ReboundHurtR 25 1,1,1,,1,30000,,,1
+577,575,逆转乾坤,1,0,30%伤害反弹给对方,pic_skill_pet_30a,,,,0,28,,,ReboundHurtR 30 1,1,1,,1,30000,,,1
+578,575,逆转乾坤,1,0,45%伤害反弹给对方,pic_skill_pet_30s,,,,0,28,,,ReboundHurtR 45 1,1,1,,1,30000,,,1
+579,579,初级舍身救主,1,0,5秒内恢复主人30%生命。,pic_skill_pet_31c,,,,0,26,,,,1,1,,5,1000,AddCutMaxHP+0.06,,1
+580,579,中级舍身救主,1,0,5秒内恢复主人40%生命。,pic_skill_pet_31b,,,,0,26,,,,1,1,,5,1000,AddCutMaxHP+0.08,,1
+581,579,高级舍身救主,1,0,5秒内恢复主人50%生命。,pic_skill_pet_31a,,,,0,26,,,,1,1,,5,1000,AddCutMaxHP+0.1,,1
+582,579,超级舍身救主,1,0,5秒内恢复主人50%生命并额外瞬间恢复10%。,pic_skill_pet_31s,,,,0,26,,,,1,1,,5,1000,AddCutMaxHP+0.1,,1
+583,583,初级精神燃烧,1,0,5秒内恢复主人30%法力。,pic_skill_pet_32c,,,,0,26,,,,1,1,,5,1000,AddCutMaxMP+0.06,,1
+584,583,中级精神燃烧,1,0,5秒内恢复主人40%法力。,pic_skill_pet_32b,,,,0,26,,,,1,1,,5,1000,AddCutMaxMP+0.08,,1
+585,583,高级精神燃烧,1,0,5秒内恢复主人50%法力。,pic_skill_pet_32a,,,,0,26,,,,1,1,,5,1000,AddCutMaxMP+0.1,,1
+586,583,超级精神燃烧,1,0,5秒内恢复主人50%法力并额外瞬间恢复10%。,pic_skill_pet_32s,,,,0,26,,,,1,1,,5,1000,AddCutMaxMP+0.1,,1
+587,587,初级衰老种子,1,0,命中后20秒爆发，所有属性减少10%持续15秒,pic_skill_pet_33c,,,,0,11,,,,2,1,,1,20000,,AddEff 588,1
+588,588,虚弱,1,0,所有属性减少10%,pic_skill_dbf_23,,,,0,,,,DamageMaxR-0.1;DamageMinR-0.1;FireDmR-0.1;WaterDmR-0.1;PoisonDmR-0.1;PhyAbR-0.1;FireAbR-0.1;WaterAbR-0.1;PoisonAbR-0.1;MaxHPR-0.1;MaxMPR-0.1;AttackRateR-0.1;DodgeR-0.1,2,1,,1,15000,,,1
+589,587,中级衰老种子,1,0,命中后20秒爆发，所有属性减少15%持续15秒,pic_skill_pet_33b,,,,0,11,,,,2,1,,1,20000,,AddEff 590,1
+590,588,虚弱,1,0,所有属性减少15%,pic_skill_dbf_23,,,,0,,,,DamageMaxR-0.15;DamageMinR-0.15;FireDmR-0.15;WaterDmR-0.15;PoisonDmR-0.15;PhyAbR-0.15;FireAbR-0.15;WaterAbR-0.15;PoisonAbR-0.15;MaxHPR-0.15;MaxMPR-0.15;AttackRateR-0.15;DodgeR-0.15,2,1,,1,15000,,,1
+591,587,高级衰老种子,1,0,命中后20秒爆发，所有属性减少20%持续15秒,pic_skill_pet_33a,,,,0,11,,,,2,1,,1,20000,,AddEff 592,1
+592,588,虚弱,1,0,所有属性减少20%,pic_skill_dbf_23,,,,0,,,,DamageMaxR-0.2;DamageMinR-0.2;FireDmR-0.2;WaterDmR-0.2;PoisonDmR-0.2;PhyAbR-0.2;FireAbR-0.2;WaterAbR-0.2;PoisonAbR-0.2;MaxHPR-0.2;MaxMPR-0.2;AttackRateR-0.2;DodgeR-0.2,2,1,,1,15000,,,1
+593,587,超级衰老种子,1,0,命中后10秒爆发，所有属性减少20%持续15秒,pic_skill_pet_33s,,,,0,11,,,,2,1,,1,10000,,AddEff 594,1
+594,588,虚弱,1,0,所有属性减少20%,pic_skill_dbf_23,,,,0,,,,DamageMaxR-0.2;DamageMinR-0.2;FireDmR-0.2;WaterDmR-0.2;PoisonDmR-0.2;PhyAbR-0.2;FireAbR-0.2;WaterAbR-0.2;PoisonAbR-0.2;MaxHPR-0.2;MaxMPR-0.2;AttackRateR-0.2;DodgeR-0.2,2,1,,1,15000,,,1
+595,595,初级破坏种子,1,0,命中后20秒爆发，每2秒减少生命1%持续20秒,pic_skill_pet_34c,,,,0,11,,,,2,1,,1,20000,,AddEff 596,1
+596,596,生命凋零,1,0,每2秒减少生命1%,pic_skill_mjz_22,,,,0,,,,,2,1,,10,2000,HPR-0.01,,1
+597,595,中级破坏种子,1,0,命中后20秒爆发，每2秒减少生命2%持续20秒,pic_skill_pet_34b,,,,0,11,,,,2,1,,1,20000,,AddEff 598,1
+598,596,生命凋零,1,0,每2秒减少生命2%,pic_skill_mjz_22,,,,0,,,,,2,1,,10,2000,HPR-0.02,,1
+599,595,高级破坏种子,1,0,命中后20秒爆发，每2秒减少生命3%持续20秒,pic_skill_pet_34a,,,,0,11,,,,2,1,,1,20000,,AddEff 600,1
+600,596,生命凋零,1,0,每2秒减少生命3%,pic_skill_mjz_22,,,,0,,,,,2,1,,10,2000,HPR-0.03,,1
+601,595,超级破坏种子,1,0,命中后10秒爆发，每2秒减少生命3%持续20秒,pic_skill_pet_34s,,,,0,11,,,,2,1,,1,10000,,AddEff 602,1
+602,596,生命凋零,1,0,每2秒减少生命3%,pic_skill_mjz_22,,,,0,,,,,2,1,,10,2000,HPR-0.03,,1
+603,603,初级迟钝种子,1,0,命中后20秒爆发，减少移动和攻击速度15%持续15秒。,pic_skill_pet_35c,,,,0,11,,,,2,1,,1,20000,,AddEff 604,1
+604,16,迟钝,1,0,减少移动和攻击速度15%,pic_skill_dbf_12,,,,0,,,,SpeedMoveR-0.15;SpeedAttackR-0.15,2,1,,1,15000,,,1
+605,603,中级迟钝种子,1,0,命中后20秒爆发，减少移动和攻击速度20%持续15秒。,pic_skill_pet_35b,,,,0,11,,,,2,1,,1,20000,,AddEff 606,1
+606,16,迟钝,1,0,减少移动和攻击速度20%,pic_skill_dbf_12,,,,0,,,,SpeedMoveR-0.2;SpeedAttackR-0.2,2,1,,1,15000,,,1
+607,603,高级迟钝种子,1,0,命中后20秒爆发，减少移动和攻击速度25%持续15秒。,pic_skill_pet_35a,,,,0,11,,,,2,1,,1,20000,,AddEff 608,1
+608,16,迟钝,1,0,减少移动和攻击速度25%,pic_skill_dbf_12,,,,0,,,,SpeedMoveR-0.25;SpeedAttackR-0.25,2,1,,1,15000,,,1
+609,603,超级迟钝种子,1,0,命中后20秒爆发，减少移动和攻击速度25%持续15秒。,pic_skill_pet_35s,,,,0,11,,,,2,1,,1,10000,,AddEff 610,1
+610,16,迟钝,1,0,减少移动和攻击速度25%,pic_skill_dbf_12,,,,0,,,,SpeedMoveR-0.25;SpeedAttackR-0.25,2,1,,1,15000,,,1
+611,611,初级昏睡种子,1,0,命中后20秒爆发，昏睡5秒。,pic_skill_pet_36c,,,,0,11,,,,2,1,,1,20000,,AddEff 612,1
+612,29,昏睡,1,0,"无法移动和攻击,被攻击状态消失",pic_skill_dbf_21,,,,0,,,,,2,1,,1,5000,,,1
+613,611,中级昏睡种子,1,0,命中后20秒爆发，昏睡7秒。,pic_skill_pet_36b,,,,0,11,,,,2,1,,1,20000,,AddEff 614,1
+614,29,昏睡,1,0,"无法移动和攻击,被攻击状态消失",pic_skill_dbf_21,,,,0,,,,,2,1,,1,7000,,,1
+615,611,高级昏睡种子,1,0,命中后20秒爆发，昏睡10秒。,pic_skill_pet_36a,,,,0,11,,,,2,1,,1,20000,,AddEff 616,1
+616,29,昏睡,1,0,"无法移动和攻击,被攻击状态消失",pic_skill_dbf_21,,,,0,,,,,2,1,,1,10000,,,1
+617,611,超级昏睡种子,1,0,命中后10秒爆发，昏睡10秒。,pic_skill_pet_36s,,,,0,11,,,,2,1,,1,10000,,AddEff 618,1
+618,29,昏睡,1,0,"无法移动和攻击,被攻击状态消失",pic_skill_dbf_21,,,,0,,,,,2,1,,1,10000,,,1
+619,619,初级潜能种子,1,0,命中后30秒爆发，所有属性增加10%持续15秒,pic_skill_pet_37c,,,,0,28,,,,2,1,,1,30000,,AddEff 620,1
+620,620,强化,1,0,所有属性增加10%，免疫衰老,pic_skill_wtf_15,,,,0,,,,DamageMaxR+0.1;DamageMinR+0.1;FireDmR+0.1;WaterDmR+0.1;PoisonDmR+0.1;PhyAbR+0.1;FireAbR+0.1;WaterAbR+0.1;PoisonAbR+0.1;MaxHPR+0.1;MaxMPR+0.1;AttackRateR+0.1;DodgeR+0.1,2,1,,1,15000,,,1
+621,619,中级潜能种子,1,0,命中后30秒爆发，所有属性增加15%持续15秒,pic_skill_pet_37b,,,,0,28,,,,2,1,,1,30000,,AddEff 622,1
+622,620,强化,1,0,所有属性增加15%，免疫衰老,pic_skill_wtf_15,,,,0,,,,DamageMaxR+0.15;DamageMinR+0.15;FireDmR+0.15;WaterDmR+0.15;PoisonDmR+0.15;PhyAbR+0.15;FireAbR+0.15;WaterAbR+0.15;PoisonAbR+0.15;MaxHPR+0.15;MaxMPR+0.15;AttackRateR+0.15;DodgeR+0.15,2,1,,1,15000,,,1
+623,619,高级潜能种子,1,0,命中后30秒爆发，所有属性增加20%持续15秒,pic_skill_pet_37a,,,,0,28,,,,2,1,,1,30000,,AddEff 624,1
+624,620,强化,1,0,所有属性增加20%，免疫衰老,pic_skill_wtf_15,,,,0,,,,DamageMaxR+0.2;DamageMinR+0.2;FireDmR+0.2;WaterDmR+0.2;PoisonDmR+0.2;PhyAbR+0.2;FireAbR+0.2;WaterAbR+0.2;PoisonAbR+0.2;MaxHPR+0.2;MaxMPR+0.2;AttackRateR+0.2;DodgeR+0.2,2,1,,1,15000,,,1
+625,619,超级潜能种子,1,0,命中后20秒爆发，所有属性增加20%持续15秒,pic_skill_pet_37s,,,,0,29,,,,2,1,,1,20000,,AddEff 626,1
+626,620,强化,1,0,所有属性增加20%，免疫衰老,pic_skill_wtf_15,,,,0,,,,DamageMaxR+0.2;DamageMinR+0.2;FireDmR+0.2;WaterDmR+0.2;PoisonDmR+0.2;PhyAbR+0.2;FireAbR+0.2;WaterAbR+0.2;PoisonAbR+0.2;MaxHPR+0.2;MaxMPR+0.2;AttackRateR+0.2;DodgeR+0.2,2,1,,1,15000,,,1
+627,627,初级恢复种子,1,0,命中后30秒爆发，每2秒恢复生命1%持续20秒,pic_skill_pet_38c,,,,0,28,,,,2,1,,1,30000,,AddEff 628,1
+628,628,恢复,1,0,每2秒恢复生命1%，免疫破坏,pic_skill_mjq_13,,,,0,,,,,2,1,,10,2000,AddCutMaxHP+0.01,,1
+629,627,中级恢复种子,1,0,命中后30秒爆发，每2秒恢复生命2%持续20秒,pic_skill_pet_38b,,,,0,28,,,,2,1,,1,30000,,AddEff 630,1
+630,628,恢复,1,0,每2秒恢复生命2%，免疫破坏,pic_skill_mjq_13,,,,0,,,,,2,1,,10,2000,AddCutMaxHP+0.02,,1
+631,627,高级恢复种子,1,0,命中后30秒爆发，每2秒恢复生命3%持续20秒,pic_skill_pet_38a,,,,0,28,,,,2,1,,1,30000,,AddEff 632,1
+632,628,恢复,1,0,每2秒恢复生命3%，免疫破坏,pic_skill_mjq_13,,,,0,,,,,2,1,,10,2000,AddCutMaxHP+0.03,,1
+633,627,超级恢复种子,1,0,命中后20秒爆发，每2秒恢复生命3%持续20秒,pic_skill_pet_38s,,,,0,29,,,,2,1,,1,20000,,AddEff 634,1
+634,628,恢复,1,0,每2秒恢复生命3%，免疫破坏,pic_skill_mjq_13,,,,0,,,,,2,1,,10,2000,AddCutMaxHP+0.03,,1
+635,635,初级迅捷种子,1,0,命中后30秒爆发，移动和攻击速度增加15%，持续15秒,pic_skill_pet_39c,,,,0,28,,,,2,1,,1,30000,,AddEff 636,1
+636,636,迅捷,1,0,移动和攻击速度增加15%，免疫迟钝,pic_skill_hjh_16,,,,0,,,,SpeedMoveR+0.15;SpeedAttackR+0.15,2,1,,1,15000,,,1
+637,635,中级迅捷种子,1,0,命中后30秒爆发，移动和攻击速度增加20%，持续15秒,pic_skill_pet_39b,,,,0,28,,,,2,1,,1,30000,,AddEff 638,1
+638,636,迅捷,1,0,移动和攻击速度增加15%，免疫迟钝,pic_skill_hjh_16,,,,0,,,,SpeedMoveR+0.2;SpeedAttackR+0.2,2,1,,1,15000,,,1
+639,635,高级迅捷种子,1,0,命中后30秒爆发，移动和攻击速度增加25%，持续15秒,pic_skill_pet_39a,,,,0,28,,,,2,1,,1,30000,,AddEff 640,1
+640,636,迅捷,1,0,移动和攻击速度增加15%，免疫迟钝,pic_skill_hjh_16,,,,0,,,,SpeedMoveR+0.25;SpeedAttackR+0.25,2,1,,1,15000,,,1
+641,635,超级迅捷种子,1,0,命中后20秒爆发，移动和攻击速度增加25%，持续15秒,pic_skill_pet_39s,,,,0,29,,,,2,1,,1,20000,,AddEff 642,1
+642,636,迅捷,1,0,移动和攻击速度增加15%，免疫迟钝,pic_skill_hjh_16,,,,0,,,,SpeedMoveR+0.25;SpeedAttackR+0.25,2,1,,1,15000,,,1
+643,643,初级清醒种子,1,0,命中后30秒爆发，清醒5秒,pic_skill_pet_40c,,,,0,28,,,,2,1,,1,30000,,AddEff 644,1
+644,644,清醒,1,0,清醒，免疫昏睡,pic_skill_ssj_04,,,,0,,,,,2,1,,1,5000,,,1
+645,643,中级清醒种子,1,0,命中后30秒爆发，清醒5秒,pic_skill_pet_40b,,,,0,28,,,,2,1,,1,30000,,AddEff 646,1
+646,644,清醒,1,0,清醒，免疫昏睡,pic_skill_ssj_04,,,,0,,,,,2,1,,1,5000,,,1
+647,643,高级清醒种子,1,0,命中后30秒爆发，清醒5秒,pic_skill_pet_40a,,,,0,28,,,,2,1,,1,30000,,AddEff 648,1
+648,644,清醒,1,0,清醒，免疫昏睡,pic_skill_ssj_04,,,,0,,,,,2,1,,1,5000,,,1
+649,643,超级清醒种子,1,0,命中后20秒爆发，清醒5秒,pic_skill_pet_40s,,,,0,29,,,,2,1,,1,20000,,AddEff 650,1
+650,644,清醒,1,0,清醒，免疫昏睡,pic_skill_ssj_04,,,,0,,,,,2,1,,1,5000,,,1
+651,26,弱化,1,0,物伤降低15%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.15;DamageMinR-0.15,2,1,,1,5000,,,1
+652,26,弱化,1,0,物伤降低20%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.2;DamageMinR-0.2,2,1,,1,5000,,,1
+653,26,弱化,1,0,物伤降低25%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.25;DamageMinR-0.25,2,1,,1,5000,,,1
+654,24,虚无,1,0,无法使用普通攻击，无法与技能封禁同时存在,pic_skill_dbf_10,,skill_debuf19,Bone99,0,11,,,StateNAttack 1,2,1,,1,15000,,,1
+655,655,慑魂,1,0,火、水、毒伤降低15%,pic_skill_dbf_15,,skill_debuf16,Bone99,0,11,,,FireDmR-0.15;WaterDmR-0.15;PoisonDmR-0.15,2,1,,1,5000,,,1
+656,655,慑魂,1,0,火、水、毒伤降低20%,pic_skill_dbf_15,,skill_debuf16,Bone99,0,11,,,FireDmR-0.2;WaterDmR-0.2;PoisonDmR-0.2,2,1,,1,5000,,,1
+657,655,慑魂,1,0,火、水、毒伤降低25%,pic_skill_dbf_15,,skill_debuf16,Bone99,0,11,,,FireDmR-0.25;WaterDmR-0.25;PoisonDmR-0.25,2,1,,1,5000,,,1
+658,17,技能封禁,1,0,无法使用技能攻击，无法与虚无同时存在,pic_skill_mjz_04,,skill_debuf7,Bone99,0,11,,,StateUseSkill 1,2,1,,1,15000,,,1
+659,659,影子,1,0,物理免伤50%,pic_skill_pet_43c,,,,0,28,,,PhyAb+0.5,2,1,,1,10000,,,1
+660,659,影子,1,0,物理免伤70%,pic_skill_pet_43b,,,,0,28,,,PhyAb+0.7,2,1,,1,10000,,,1
+661,659,影子,1,0,物理免伤100%,pic_skill_pet_43a,,,,0,28,,,PhyAb+1,2,1,,1,10000,,,1
+662,659,影子,1,0,物理免伤100%,pic_skill_pet_43s,,,,0,29,,,PhyAb+1,2,1,,1,10000,,,1
+667,26,弱化,1,0,物伤降低15%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.15;DamageMinR-0.15,2,1,,1,10000,,,1
+668,26,弱化,1,0,物伤降低20%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.2;DamageMinR-0.2,2,1,,1,10000,,,1
+669,26,弱化,1,0,物伤降低25%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.25;DamageMinR-0.25,2,1,,1,10000,,,1
+670,26,弱化,1,0,物伤降低25%;火、水、毒伤降低25%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.25;DamageMinR-0.25;FireDmR-0.25;WaterDmR-0.25;PoisonDmR-0.25,2,1,,1,10000,,,1
+671,671,生命凋零,1,0,生命减少1%/秒,pic_skill_mjz_22,,,,0,11,,,,2,1,,5,1000,HPR-0.01,,1
+672,671,生命凋零,1,0,生命减少2%/秒,pic_skill_mjz_22,,,,0,11,,,,2,1,,5,1000,HPR-0.02,,1
+673,671,生命凋零,1,0,生命减少3%/秒,pic_skill_mjz_22,,,,0,11,,,,2,1,,5,1000,HPR-0.03,,1
+674,671,生命凋零,1,0,生命减少3%/秒,pic_skill_mjz_22,,,,0,11,,,,2,1,,5,1000,HPR-0.03,,1
+675,675,恐惧,1,0,无法攻击和使用技能,pic_skill_dbf_08,,,,0,11,,,StateUseSkill 1;StateNAttack 1,2,1,,1,5000,,,1
+676,676,战魂,1,0,主人生命上限、物伤、物防增加5%,pic_skill_wtf_15,,,,0,12,,,MaxHPR+0.05;DamageMaxR+0.05;DamageMinR+0.05;PhyAbR+0.05,1,1,,1,30000,,,1
+677,676,战魂,1,0,主人生命上限、物伤、物防增加10%,pic_skill_wtf_15,,,,0,12,,,MaxHPR+0.1;DamageMaxR+0.1;DamageMinR+0.1;PhyAbR+0.1,1,1,,1,30000,,,1
+678,676,战魂,1,0,主人生命上限、物伤、物防增加15%,pic_skill_wtf_15,,,,0,12,,,MaxHPR+0.15;DamageMaxR+0.15;DamageMinR+0.15;PhyAbR+0.15,1,1,,1,30000,,,1
+679,676,战魂,1,0,主人生命上限、物伤、物防增加15%、免疫晕眩,pic_skill_wtf_15,,,,0,12,,,MaxHPR+0.15;DamageMaxR+0.15;DamageMinR+0.15;PhyAbR+0.15,1,1,,1,30000,,,1
+680,680,刀魂,1,0,主人生命上限、火伤、火防增加5%,pic_skill_ssl_06,,,,0,12,,,MaxHPR+0.05;FireDmR+0.05;FireArR+0.05,1,1,,1,30000,,,1
+681,680,刀魂,1,0,主人生命上限、火伤、火防增加10%,pic_skill_ssl_06,,,,0,12,,,MaxHPR+0.1;FireDmR+0.1;FireArR+0.1,1,1,,1,30000,,,1
+682,680,刀魂,1,0,主人生命上限、火伤、火防增加15%,pic_skill_ssl_06,,,,0,12,,,MaxHPR+0.15;FireDmR+0.15;FireArR+0.15,1,1,,1,30000,,,1
+683,680,刀魂,1,0,主人生命上限、火伤、火防增加15%、免疫暴烈一击,pic_skill_ssl_06,,,,0,12,,,MaxHPR+0.15;FireDmR+0.15;FireArR+0.15;ResistZXC 100,1,1,,1,30000,,,1
+684,603,迟钝,1,0,移动速度降低30%,pic_skill_dbf_04,,,,0,11,,,SpeedMoveR-0.3,2,1,,1,5000,,,1
+685,603,迟钝,1,0,移动速度降低30%,pic_skill_dbf_04,,,,0,11,,,SpeedMoveR-0.3,2,1,,1,10000,,,1
+686,686,剑灵,1,0,主人生命上限、水伤、水防增加5%,pic_skill_ssj_16,,,,0,12,,,MaxHPR+0.05;WaterDmR+0.05;WaterArR+0.05,1,1,,1,30000,,,1
+687,686,剑灵,1,0,主人生命上限、水伤、水防增加10%,pic_skill_ssj_16,,,,0,12,,,MaxHPR+0.1;WaterDmR+0.1;WaterArR+0.1,1,1,,1,30000,,,1
+688,686,剑灵,1,0,主人生命上限、水伤、水防增加15%,pic_skill_ssj_16,,,,0,12,,,MaxHPR+0.15;WaterDmR+0.15;WaterArR+0.15,1,1,,1,30000,,,1
+689,686,剑灵,1,0,主人生命上限、水伤、水防增加15%、免疫迟钝,pic_skill_ssj_16,,,,0,12,,,MaxHPR+0.15;WaterDmR+0.15;WaterArR+0.15,1,1,,1,30000,,,1
+690,595,生命凋零,1,0,生命减少1%/秒持续5秒,pic_skill_mjz_22,,,,0,11,,,SpeedMoveR-0.3,2,1,,5,1000,HPR-0.01,,1
+691,595,生命凋零,1,0,生命减少1%/秒持续10秒,pic_skill_mjz_22,,,,0,11,,,SpeedMoveR-0.3,2,1,,10,1000,HPR-0.01,,1
+692,692,毒枪,1,0,主人生命上限、毒伤、毒防增加5%,pic_skill_hjh_17,,,,0,12,,,MaxHPR+0.05;PoisonDmR+0.05;PoisonArR+0.05,1,1,,1,30000,,,1
+693,692,毒枪,1,0,主人生命上限、毒伤、毒防增加10%,pic_skill_hjh_17,,,,0,12,,,MaxHPR+0.1;PoisonDmR+0.1;PoisonArR+0.1,1,1,,1,30000,,,1
+694,692,毒枪,1,0,主人生命上限、毒伤、毒防增加15%,pic_skill_hjh_17,,,,0,12,,,MaxHPR+0.15;PoisonDmR+0.15;PoisonArR+0.15,1,1,,1,30000,,,1
+695,692,毒枪,1,0,主人生命上限、毒伤、毒防增加15%、免疫流血,pic_skill_hjh_17,,,,0,12,,,MaxHPR+0.15;PoisonDmR+0.15;PoisonArR+0.15,1,1,,1,30000,,,1
+701,701,冰之守护,1,0,九尾妖狐的护体寒光,,,,,1,11,,160,,2,,,0,2000,AddEff 702,,1
+702,702,爆炸光波,1,0,疯狂的爆炸,,,binglingbeiji,Bip01 L Foot,0,,,,,2,,,1,2000,HP -50 1,,1
+703,703,眩晕,1,0,眩晕3秒,pic_skill_dbf_06,,skill_debuf5,Bone99,0,3,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,,,1,5000,,,1
+704,704,命中提高,1,0,提高命中50%,pic_skill_ssj_04,,,,0,4,,,,1,,,1,30000,,,1
+710,710,宠物食物,1,0,恢复生命10点/秒,pic_skill_ts_02,,,,0,4,,,,1,,,20,1000,HP 10 1,,1
+711,711,宠物食物,1,0,恢复生命20点/秒,pic_skill_ts_02,,,,0,4,,,,1,,,20,1000,HP 20 1,,1
+712,712,宠物食物,1,0,恢复生命40点/秒,pic_skill_ts_02,,,,0,4,,,,1,,,20,1000,HP 40 1,,1
+713,713,宠物食物,1,0,恢复生命80点/秒,pic_skill_ts_02,,,,0,4,,,,1,,,20,1000,HP 80 1,,1
+714,714,宠物食物,1,0,恢复法力15点/秒,pic_skill_ts_04,,,,0,4,,,,1,,,20,1000,MP+15,,1
+715,715,宠物食物,1,0,恢复法力30点/秒,pic_skill_ts_04,,,,0,4,,,,1,,,20,1000,MP+30,,1
+716,716,宠物食物,1,0,恢复法力60点/秒,pic_skill_ts_04,,,,0,4,,,,1,,,20,1000,MP+60,,1
+717,717,宠物食物,1,0,恢复法力120点/秒,pic_skill_ts_04,,,,0,4,,,,1,,,20,1000,MP+120,,1
+801,801,肉包子的美味,1,0,快速恢复生命,,,,,1,14,,150,,0,,,0,2000,AddEff 802,,1
+802,802,肉包子的美味,1,0,快速恢复生命和法力,,,eff_addhp,root,0,,,,,0,1,,1,3000,HP 100 1;MP+100,,1
+1001,101,回生诀,1,0,增加生命恢复速度5/3秒,pic_skill_ts_02,,ts2,root,0,3,,,,1,,,0,3000,HP 5 0,,1
+1002,101,回生诀,2,0,增加生命恢复速度8/3秒,pic_skill_ts_02,,ts2,root,0,3,,,,1,,,0,3000,HP 8 0,,1
+1003,101,回生诀,3,0,增加生命恢复速度12/3秒,pic_skill_ts_02,,ts2,root,0,3,,,,1,,,0,3000,HP 12 0,,1
+1004,101,回生诀,4,0,增加生命恢复速度15/3秒,pic_skill_ts_02,,ts2,root,0,3,,,,1,,,0,3000,HP 15 0,,1
+1005,101,回生诀,5,0,增加生命恢复速度20/3秒,pic_skill_ts_02,,ts2,root,0,3,,,,1,,,0,3000,HP 20 0,,1
+1006,102,回气诀,1,0,增加法力恢复速度8/3秒,pic_skill_ts_04,,ts2,root,0,3,,,,1,,,0,3000,MP+8,,1
+1007,102,回气诀,2,0,增加法力恢复速度12/3秒,pic_skill_ts_04,,ts2,root,0,3,,,,1,,,0,3000,MP+12,,1
+1008,102,回气诀,3,0,增加法力恢复速度16/3秒,pic_skill_ts_04,,ts2,root,0,3,,,,1,,,0,3000,MP+16,,1
+1009,102,回气诀,4,0,增加法力恢复速度20/3秒,pic_skill_ts_04,,ts2,root,0,3,,,,1,,,0,3000,MP+20,,1
+1010,102,回气诀,5,0,增加法力恢复速度24/3秒,pic_skill_ts_04,,ts2,root,0,3,,,,1,,,0,3000,MP+24,,1
+1011,103,炼体,1,0,增加生命上限5%,pic_skill_ts_01,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1012,103,炼体,2,0,增加生命上限7%,pic_skill_ts_01,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1013,103,炼体,3,0,增加生命上限9%,pic_skill_ts_01,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1014,103,炼体,4,0,增加生命上限12%,pic_skill_ts_01,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1015,103,炼体,5,0,增加生命上限15%,pic_skill_ts_01,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1016,104,炼神,1,0,增加法力上限5%,pic_skill_ts_03,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1017,104,炼神,2,0,增加法力上限7%,pic_skill_ts_03,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1018,104,炼神,3,0,增加法力上限9%,pic_skill_ts_03,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1019,104,炼神,4,0,增加法力上限12%,pic_skill_ts_03,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1020,104,炼神,5,0,增加法力上限15%,pic_skill_ts_03,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1021,105,铁壁,1,0,增加物理防御5%,pic_skill_ts_11,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1022,105,铁壁,2,0,增加物理防御7%,pic_skill_ts_11,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1023,105,铁壁,3,0,增加物理防御9%,pic_skill_ts_11,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1024,105,铁壁,4,0,增加物理防御12%,pic_skill_ts_11,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1025,105,铁壁,5,0,增加物理防御15%,pic_skill_ts_11,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1026,106,魂体替身,1,0,增加暴击抵抗率3%,pic_skill_ts_06,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1027,106,魂体替身,2,0,增加暴击抵抗率5%,pic_skill_ts_06,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1028,106,魂体替身,3,0,增加暴击抵抗率7%,pic_skill_ts_06,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1029,106,魂体替身,4,0,增加暴击抵抗率9%,pic_skill_ts_06,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1030,106,魂体替身,5,0,增加暴击抵抗率12%,pic_skill_ts_06,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1031,107,强攻,1,0,增加物理伤害3%,pic_skill_ts_12,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1032,107,强攻,2,0,增加物理伤害5%,pic_skill_ts_12,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1033,107,强攻,3,0,增加物理伤害7%,pic_skill_ts_12,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1034,107,强攻,4,0,增加物理伤害9%,pic_skill_ts_12,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1035,107,强攻,5,0,增加物理伤害12%,pic_skill_ts_12,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1036,108,会心一击,1,0,增加会心一击率3%,pic_skill_ts_18,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1037,108,会心一击,2,0,增加会心一击率5%,pic_skill_ts_18,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1038,108,会心一击,3,0,增加会心一击率7%,pic_skill_ts_18,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1039,108,会心一击,4,0,增加会心一击率10%,pic_skill_ts_18,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1040,108,会心一击,5,0,增加会心一击率12%,pic_skill_ts_18,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1041,109,三元杀,1,0,增加元素攻击3%,pic_skill_ts_13,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1042,109,三元杀,2,0,增加元素攻击5%,pic_skill_ts_13,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1043,109,三元杀,3,0,增加元素攻击7%,pic_skill_ts_13,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1044,109,三元杀,4,0,增加元素攻击9%,pic_skill_ts_13,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1045,109,三元杀,5,0,增加元素攻击12%,pic_skill_ts_13,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1046,110,心剑梵天,1,0,增加技能暴击率2%,pic_skill_ts_20,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1047,110,心剑梵天,2,0,增加技能暴击率3%,pic_skill_ts_20,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1048,110,心剑梵天,3,0,增加技能暴击率5%,pic_skill_ts_20,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1049,110,心剑梵天,4,0,增加技能暴击率7%,pic_skill_ts_20,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1050,110,心剑梵天,5,0,增加技能暴击率10%,pic_skill_ts_20,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1051,111,三元御,1,0,增加元素防御5%,pic_skill_ts_14,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1052,111,三元御,2,0,增加元素防御7%,pic_skill_ts_14,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1053,111,三元御,3,0,增加元素防御9%,pic_skill_ts_14,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1054,111,三元御,4,0,增加元素防御12%,pic_skill_ts_14,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1055,111,三元御,5,0,增加元素防御15%,pic_skill_ts_14,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1056,112,心魔壁障,1,0,增加异常状态抵抗率5%,pic_skill_ts_05,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1057,112,心魔壁障,2,0,增加异常状态抵抗率7%,pic_skill_ts_05,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1058,112,心魔壁障,3,0,增加异常状态抵抗率9%,pic_skill_ts_05,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1059,112,心魔壁障,4,0,增加异常状态抵抗率12%,pic_skill_ts_05,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1060,112,心魔壁障,5,0,增加异常状态抵抗率15%,pic_skill_ts_05,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1061,113,劈星斩月,1,0,增加攻击速度3%,pic_skill_ts_07,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1062,113,劈星斩月,2,0,增加攻击速度5%,pic_skill_ts_07,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1063,113,劈星斩月,3,0,增加攻击速度7%,pic_skill_ts_07,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1064,113,劈星斩月,4,0,增加攻击速度9%,pic_skill_ts_07,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1065,113,劈星斩月,5,0,增加攻击速度12%,pic_skill_ts_07,,ts1,root,0,3,,,,1,,,0,1000,,,1
+1066,114,仙风云体,1,0,增加移动速度2%,pic_skill_ts_08,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1067,114,仙风云体,2,0,增加移动速度3%,pic_skill_ts_08,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1068,114,仙风云体,3,0,增加移动速度5%,pic_skill_ts_08,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1069,114,仙风云体,4,0,增加移动速度7%,pic_skill_ts_08,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1070,114,仙风云体,5,0,增加移动速度10%,pic_skill_ts_08,,ts2,root,0,3,,,,1,,,0,1000,,,1
+1071,115,不灭神体,1,0,大幅度增加生命上限10%,pic_skill_ts_15,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1072,115,不灭神体,2,0,大幅度增加生命上限15%,pic_skill_ts_15,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1073,115,不灭神体,3,0,大幅度增加生命上限20%,pic_skill_ts_15,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1074,115,不灭神体,4,0,大幅度增加生命上限25%,pic_skill_ts_15,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1075,115,不灭神体,5,0,大幅度增加生命上限30%,pic_skill_ts_15,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1076,116,紫蕴神灵,1,0,大幅度增加法力上限10%,pic_skill_ts_16,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1077,116,紫蕴神灵,2,0,大幅度增加法力上限15%,pic_skill_ts_16,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1078,116,紫蕴神灵,3,0,大幅度增加法力上限20%,pic_skill_ts_16,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1079,116,紫蕴神灵,4,0,大幅度增加法力上限25%,pic_skill_ts_16,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1080,116,紫蕴神灵,5,0,大幅度增加法力上限30%,pic_skill_ts_16,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1081,117,玄武降世,1,0,大幅度增加物理防御10%,pic_skill_ts_17,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1082,117,玄武降世,2,0,大幅度增加物理防御15%,pic_skill_ts_17,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1083,117,玄武降世,3,0,大幅度增加物理防御20%,pic_skill_ts_17,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1084,117,玄武降世,4,0,大幅度增加物理防御25%,pic_skill_ts_17,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1085,117,玄武降世,5,0,大幅度增加物理防御30%,pic_skill_ts_17,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1086,118,元极摩诃,1,0,大幅度增加物理攻击10%,pic_skill_ts_19,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1087,118,元极摩诃,2,0,大幅度增加物理攻击12%,pic_skill_ts_19,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1088,118,元极摩诃,3,0,大幅度增加物理攻击15%,pic_skill_ts_19,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1089,118,元极摩诃,4,0,大幅度增加物理攻击17%,pic_skill_ts_19,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1090,118,元极摩诃,5,0,大幅度增加物理攻击20%,pic_skill_ts_19,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1091,119,天元绝杀,1,0,大幅度增加元素攻击10%,pic_skill_ts_21,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1092,119,天元绝杀,2,0,大幅度增加元素攻击12%,pic_skill_ts_21,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1093,119,天元绝杀,3,0,大幅度增加元素攻击15%,pic_skill_ts_21,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1094,119,天元绝杀,4,0,大幅度增加元素攻击17%,pic_skill_ts_21,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1095,119,天元绝杀,5,0,大幅度增加元素攻击20%,pic_skill_ts_21,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1096,120,天元规避,1,0,大幅度增加元素防御10%,pic_skill_ts_22,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1097,120,天元规避,2,0,大幅度增加元素防御15%,pic_skill_ts_22,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1098,120,天元规避,3,0,大幅度增加元素防御20%,pic_skill_ts_22,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1099,120,天元规避,4,0,大幅度增加元素防御25%,pic_skill_ts_22,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1100,120,天元规避,5,0,大幅度增加元素防御30%,pic_skill_ts_22,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1101,121,神影凌风,1,0,大幅度增加攻击速度5%，命中率5%，闪避率5%,pic_skill_ts_23,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1102,121,神影凌风,2,0,大幅度增加攻击速度8%，命中率10%，闪避率10%,pic_skill_ts_23,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1103,121,神影凌风,3,0,大幅度增加攻击速度12%，命中率15%，闪避率15%,pic_skill_ts_23,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1104,121,神影凌风,4,0,大幅度增加攻击速度16%，命中率20%，闪避率20%,pic_skill_ts_23,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1105,121,神影凌风,5,0,大幅度增加攻击速度20%，命中率25%，闪避率25%,pic_skill_ts_23,,ts3,root,0,3,,,,1,,,0,1000,,,1
+1501,30,破防,1,0,物理防御-5%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.05,2,0,,1,15000,,,
+1502,30,破防,2,0,物理防御-10%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.10,2,0,,1,15000,,,
+1503,30,破防,3,0,物理防御-15%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.15,2,0,,1,15000,,,
+1504,30,破防,4,0,物理防御-20%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.20,2,0,,1,15000,,,
+1505,30,破防,5,0,物理防御-30%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.30,2,0,,1,15000,,,
+1506,30,破防,6,0,物理防御-40%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.40,2,0,,1,15000,,,
+1507,30,破防,7,0,物理防御-50%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.50,2,0,,1,15000,,,
+1508,5,弱水,1,0,水防御-5%,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterArR-0.05,2,0,,1,15000,,,
+1509,5,弱水,2,0,水防御-10%,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterArR-0.10,2,0,,1,15000,,,
+1510,5,弱水,3,0,水防御-15%,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterArR-0.15,2,0,,1,15000,,,
+1511,5,弱水,4,0,水防御-20%,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterArR-0.20,2,0,,1,15000,,,
+1512,5,弱水,5,0,水防御-30%,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterArR-0.30,2,0,,1,15000,,,
+1513,5,弱水,6,0,水防御-40%,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterArR-0.40,2,0,,1,15000,,,
+1514,5,弱水,7,0,水防御-50%,pic_skill_dbf_19,,skill_debuf1,Bone99,0,11,,,WaterArR-0.50,2,0,,1,15000,,,
+1515,28,弱火,1,0,火防御-5%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.05,2,0,,1,15000,,,
+1516,28,弱火,2,0,火防御-10%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.10,2,0,,1,15000,,,
+1517,28,弱火,3,0,火防御-15%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.15,2,0,,1,15000,,,
+1518,28,弱火,4,0,火防御-20%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.20,2,0,,1,15000,,,
+1519,28,弱火,5,0,火防御-30%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.30,2,0,,1,15000,,,
+1520,28,弱火,6,0,火防御-40%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.40,2,0,,1,15000,,,
+1521,28,弱火,7,0,火防御-50%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.50,2,0,,1,15000,,,
+1522,33,弱毒,1,0,毒防御-5%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.05,2,0,,1,15000,,,
+1523,33,弱毒,2,0,毒防御-10%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.10,2,0,,1,15000,,,
+1524,33,弱毒,3,0,毒防御-15%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.15,2,0,,1,15000,,,
+1525,33,弱毒,4,0,毒防御-20%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.20,2,0,,1,15000,,,
+1526,33,弱毒,5,0,毒防御-30%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.30,2,0,,1,15000,,,
+1527,33,弱毒,6,0,毒防御-40%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.40,2,0,,1,15000,,,
+1528,33,弱毒,7,0,毒防御-50%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.50,2,0,,1,15000,,,
+1529,13,眩晕,1,0,眩晕,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,0,,1,3000,,,
+1530,13,眩晕,2,0,眩晕,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,0,,1,4000,,,
+1531,13,眩晕,3,0,眩晕,pic_skill_dbf_06,,skill_debuf5,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,0,,1,5000,,,
+1532,4,冻结,1,0,冻结,pic_skill_dbf_02,,skill_debuf0,root,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;PhyArR+2,2,0,,1,4000,,,
+1533,4,冻结,2,0,冻结,pic_skill_dbf_02,,skill_debuf0,root,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;PhyArR+2,2,0,,1,5000,,,
+1534,4,冻结,3,0,冻结,pic_skill_dbf_02,,skill_debuf0,root,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;PhyArR+2,2,0,,1,6000,,,
+1535,17,技能封禁,1,0,无法使用技能,pic_skill_mjz_04,,skill_debuf7,root,0,11,,,StateUseSkill 1,2,0,,1,5000,,,
+1536,17,技能封禁,2,0,无法使用技能,pic_skill_mjz_04,,skill_debuf7,root,0,11,,,StateUseSkill 1,2,0,,1,6000,,,
+1537,17,技能封禁,3,0,无法使用技能,pic_skill_mjz_04,,skill_debuf7,root,0,11,,,StateUseSkill 1,2,0,,1,8000,,,
+1538,24,攻击封禁,1,0,无法使用攻击,pic_skill_dbf_10,,skill_debuf19,root,0,11,,,StateNAttack 1,2,0,,1,8000,,,
+1539,24,攻击封禁,2,0,无法使用攻击,pic_skill_dbf_10,,skill_debuf19,root,0,11,,,StateNAttack 1,2,0,,1,10000,,,
+1540,24,攻击封禁,3,0,无法使用攻击,pic_skill_dbf_10,,skill_debuf19,root,0,11,,,StateNAttack 1,2,0,,1,12000,,,
+1541,25,白虎诅咒,1,0,流血50/2秒,pic_skill_dbf_11,,,,0,11,,,,2,0,,3,2000,DeBufPoison+50,,
+1542,25,白虎诅咒,2,0,流血100/2秒,pic_skill_dbf_11,,,,0,11,,,,2,0,,3,2000,DeBufPoison+100,,
+1543,25,白虎诅咒,3,0,流血150/2秒,pic_skill_dbf_11,,,,0,11,,,,2,0,,3,2000,DeBufPoison+150,,
+1544,25,白虎诅咒,4,0,流血200/2秒，眩晕种子1秒,pic_skill_dbf_11,,,,0,11,,,,2,0,,3,2000,DeBufPoison+200,AddEff 1529,
+1545,25,白虎诅咒,5,0,流血250/2秒，眩晕种子1秒,pic_skill_dbf_11,,,,0,11,,,,2,0,,3,2000,DeBufPoison+250,AddEff 1529,
+1546,25,白虎诅咒,6,0,流血300/2秒，眩晕种子2秒,pic_skill_dbf_11,,,,0,11,,,,2,0,,3,2000,DeBufPoison+300,AddEff 1529,
+1547,25,白虎诅咒,7,0,流血300/2秒，眩晕种子3秒,pic_skill_dbf_11,,,,0,11,,,,2,0,,3,2000,DeBufPoison+350,AddEff 1531,
+1548,16,青龙诅咒,1,0,迟钝移动和攻击速度-20%,pic_skill_dbf_12,,,,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,0,,1,10000,,,
+1549,16,青龙诅咒,2,0,迟钝移动和攻击速度-20%,pic_skill_dbf_12,,,,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,0,,1,10000,,,
+1550,16,青龙诅咒,3,0,迟钝移动和攻击速度-20%,pic_skill_dbf_12,,,,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,0,,1,10000,,,
+1551,16,青龙诅咒,4,0,迟钝移动和攻击速度-20%，冻结种子2秒,pic_skill_dbf_12,,,,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,0,,1,10000,,AddEff 1532,
+1552,16,青龙诅咒,5,0,迟钝移动和攻击速度-20%，冻结种子2秒,pic_skill_dbf_12,,,,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,0,,1,10000,,AddEff 1532,
+1553,16,青龙诅咒,6,0,迟钝移动和攻击速度-20%，冻结种子3秒,pic_skill_dbf_12,,,,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,0,,1,10000,,AddEff 1532,
+1554,16,青龙诅咒,7,0,迟钝移动和攻击速度-20%，冻结种子4秒,pic_skill_dbf_12,,,,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,0,,1,10000,,AddEff 1534,
+1555,21,朱雀诅咒,1,0,灼烧50/2秒,pic_skill_dbf_01,,,,0,11,,,,2,0,,3,2000,DeBufFire+50,,
+1556,21,朱雀诅咒,2,0,灼烧100/2秒,pic_skill_dbf_01,,,,0,11,,,,2,0,,3,2000,DeBufFire+100,,
+1557,21,朱雀诅咒,3,0,灼烧150/2秒,pic_skill_dbf_01,,,,0,11,,,,2,0,,3,2000,DeBufFire+150,,
+1558,21,朱雀诅咒,4,0,灼烧200/2秒，衰亡种子伤害2%生命,pic_skill_dbf_01,,,,0,11,,,,2,0,,3,2000,DeBufFire+200,AddEff 1569,
+1559,21,朱雀诅咒,5,0,灼烧250/2秒，衰亡种子伤害4%生命,pic_skill_dbf_01,,,,0,11,,,,2,0,,3,2000,DeBufFire+250,AddEff 1570,
+1560,21,朱雀诅咒,6,0,灼烧300/2秒，衰亡种子伤害7%生命,pic_skill_dbf_01,,,,0,11,,,,2,0,,3,2000,DeBufFire+300,AddEff 1571,
+1561,21,朱雀诅咒,7,0,灼烧350/2秒，衰亡种子伤害10%生命,pic_skill_dbf_01,,,,0,11,,,,2,0,,3,2000,DeBufFire+350,AddEff 1572,
+1562,19,玄武诅咒,1,0,中毒50/2秒,pic_skill_fb_10,,,,0,11,,,,2,0,,3,2000,DeBufPoison+50,,
+1563,19,玄武诅咒,2,0,中毒100/2秒,pic_skill_fb_10,,,,0,11,,,,2,0,,3,2000,DeBufPoison+100,,
+1564,19,玄武诅咒,3,0,中毒150/2秒,pic_skill_fb_10,,,,0,11,,,,2,0,,3,2000,DeBufPoison+150,,
+1565,19,玄武诅咒,4,0,中毒200/2秒，昏睡种子4秒,pic_skill_fb_10,,,,0,11,,,,2,0,,3,2000,DeBufPoison+200,AddEff 3176,
+1566,19,玄武诅咒,5,0,中毒250/2秒，昏睡种子6秒,pic_skill_fb_10,,,,0,11,,,,2,0,,3,2000,DeBufPoison+250,AddEff 3177,
+1567,19,玄武诅咒,6,0,中毒300/2秒，昏睡种子8秒,pic_skill_fb_10,,,,0,11,,,,2,0,,3,2000,DeBufPoison+300,AddEff 3178,
+1568,19,玄武诅咒,7,0,中毒350/2秒，昏睡种子10秒,pic_skill_fb_10,,,,0,11,,,,2,0,,3,2000,DeBufPoison+350,AddEff 3178,
+1569,100,衰亡,1,0,生命伤害2%,pic_skill_mjz_22,,skill_debuf8,Bone100,0,11,,,,2,0,,1,1000,AddCutMaxHP+0.02,,
+1570,100,衰亡,2,0,生命伤害4%,pic_skill_mjz_22,,skill_debuf8,Bone100,0,11,,,,2,0,,1,1000,AddCutMaxHP+0.04,,
+1571,100,衰亡,3,0,生命伤害7%,pic_skill_mjz_22,,skill_debuf8,Bone100,0,11,,,,2,0,,1,1000,AddCutMaxHP+0.07,,
+1572,100,衰亡,4,0,生命伤害10%,pic_skill_mjz_22,,skill_debuf8,Bone100,0,11,,,,2,0,,1,1000,AddCutMaxHP+0.10,,
+2000,901,灵兽御天印,1,0,物理防御+5%,pic_skill_ty_01,,,,1,4,,500,,1,1,,0,1000,AddEff 2080,,1
+2001,901,灵兽御天印,2,0,物理防御+10%,pic_skill_ty_01,,,,1,4,,500,,1,1,,0,1000,AddEff 2081,,1
+2002,901,灵兽御天印,3,0,物理防御+15%,pic_skill_ty_01,,,,1,4,,500,,1,1,,0,1000,AddEff 2082,,1
+2003,901,灵兽御天印,4,0,物理防御+20%,pic_skill_ty_01,,,,1,4,,500,,1,1,,0,1000,AddEff 2083,,1
+2004,901,灵兽御天印,5,0,物理防御+25%,pic_skill_ty_01,,,,1,4,,500,,1,1,,0,1000,AddEff 2084,,1
+2005,901,灵兽御天印,6,0,物理防御+30%,pic_skill_ty_01,,,,1,4,,500,,1,1,,0,1000,AddEff 2085,,1
+2006,901,灵兽御天印,7,0,物理防御+35%,pic_skill_ty_01,,,,1,4,,500,,1,1,,0,1000,AddEff 2086,,1
+2007,901,灵兽御天印,8,0,物理防御+40%,pic_skill_ty_01,,,,1,4,,500,,1,1,,0,1000,AddEff 2087,,1
+2008,901,灵兽御天印,9,0,物理防御+45%,pic_skill_ty_01,,,,1,4,,500,,1,1,,0,1000,AddEff 2088,,1
+2009,901,灵兽御天印,10,0,物理防御+50%,pic_skill_ty_01,,,,1,4,,500,,1,1,,0,1000,AddEff 2089,,1
+2010,902,灵兽破军印,1,0,物理攻击+5%,pic_skill_ty_02,,,,1,4,,500,,1,1,,0,1000,AddEff 2090,,1
+2011,902,灵兽破军印,2,0,物理攻击+10%,pic_skill_ty_02,,,,1,4,,500,,1,1,,0,1000,AddEff 2091,,1
+2012,902,灵兽破军印,3,0,物理攻击+15%,pic_skill_ty_02,,,,1,4,,500,,1,1,,0,1000,AddEff 2092,,1
+2013,902,灵兽破军印,4,0,物理攻击+20%,pic_skill_ty_02,,,,1,4,,500,,1,1,,0,1000,AddEff 2093,,1
+2014,902,灵兽破军印,5,0,物理攻击+25%,pic_skill_ty_02,,,,1,4,,500,,1,1,,0,1000,AddEff 2094,,1
+2015,902,灵兽破军印,6,0,物理攻击+30%,pic_skill_ty_02,,,,1,4,,500,,1,1,,0,1000,AddEff 2095,,1
+2016,902,灵兽破军印,7,0,物理攻击+35%,pic_skill_ty_02,,,,1,4,,500,,1,1,,0,1000,AddEff 2096,,1
+2017,902,灵兽破军印,8,0,物理攻击+40%,pic_skill_ty_02,,,,1,4,,500,,1,1,,0,1000,AddEff 2097,,1
+2018,902,灵兽破军印,9,0,物理攻击+45%,pic_skill_ty_02,,,,1,4,,500,,1,1,,0,1000,AddEff 2098,,1
+2019,902,灵兽破军印,10,0,物理攻击+50%,pic_skill_ty_02,,,,1,4,,500,,1,1,,0,1000,AddEff 2099,,1
+2020,903,灵兽往生印,1,0,最大生命值+5%,pic_skill_ty_03,,,,1,4,,500,,1,1,,0,1000,AddEff 2100,,1
+2021,903,灵兽往生印,2,0,最大生命值+10%,pic_skill_ty_03,,,,1,4,,500,,1,1,,0,1000,AddEff 2101,,1
+2022,903,灵兽往生印,3,0,最大生命值+15%,pic_skill_ty_03,,,,1,4,,500,,1,1,,0,1000,AddEff 2102,,1
+2023,903,灵兽往生印,4,0,最大生命值+20%,pic_skill_ty_03,,,,1,4,,500,,1,1,,0,1000,AddEff 2103,,1
+2024,903,灵兽往生印,5,0,最大生命值+25%,pic_skill_ty_03,,,,1,4,,500,,1,1,,0,1000,AddEff 2104,,1
+2025,903,灵兽往生印,6,0,最大生命值+30%,pic_skill_ty_03,,,,1,4,,500,,1,1,,0,1000,AddEff 2105,,1
+2026,903,灵兽往生印,7,0,最大生命值+35%,pic_skill_ty_03,,,,1,4,,500,,1,1,,0,1000,AddEff 2106,,1
+2027,903,灵兽往生印,8,0,最大生命值+40%,pic_skill_ty_03,,,,1,4,,500,,1,1,,0,1000,AddEff 2107,,1
+2028,903,灵兽往生印,9,0,最大生命值+45%,pic_skill_ty_03,,,,1,4,,500,,1,1,,0,1000,AddEff 2108,,1
+2029,903,灵兽往生印,10,0,最大生命值+50%,pic_skill_ty_03,,,,1,4,,500,,1,1,,0,1000,AddEff 2109,,1
+2040,905,灵兽御法印,1,0,元素防御+5%,pic_skill_ty_05,,,,1,4,,500,,1,1,,0,1000,AddEff 2120,,1
+2041,905,灵兽御法印,2,0,元素防御+10%,pic_skill_ty_05,,,,1,4,,500,,1,1,,0,1000,AddEff 2121,,1
+2042,905,灵兽御法印,3,0,元素防御+15%,pic_skill_ty_05,,,,1,4,,500,,1,1,,0,1000,AddEff 2122,,1
+2043,905,灵兽御法印,4,0,元素防御+20%,pic_skill_ty_05,,,,1,4,,500,,1,1,,0,1000,AddEff 2123,,1
+2044,905,灵兽御法印,5,0,元素防御+25%,pic_skill_ty_05,,,,1,4,,500,,1,1,,0,1000,AddEff 2124,,1
+2045,905,灵兽御法印,6,0,元素防御+30%,pic_skill_ty_05,,,,1,4,,500,,1,1,,0,1000,AddEff 2125,,1
+2046,905,灵兽御法印,7,0,元素防御+35%,pic_skill_ty_05,,,,1,4,,500,,1,1,,0,1000,AddEff 2126,,1
+2047,905,灵兽御法印,8,0,元素防御+40%,pic_skill_ty_05,,,,1,4,,500,,1,1,,0,1000,AddEff 2127,,1
+2048,905,灵兽御法印,9,0,元素防御+45%,pic_skill_ty_05,,,,1,4,,500,,1,1,,0,1000,AddEff 2128,,1
+2049,905,灵兽御法印,10,0,元素防御+50%,pic_skill_ty_05,,,,1,4,,500,,1,1,,0,1000,AddEff 2129,,1
+2050,906,灵兽破劫印,1,0,元素攻击+2%,pic_skill_ty_06,,,,1,4,,500,,1,1,,0,1000,AddEff 2130,,1
+2051,906,灵兽破劫印,2,0,元素攻击+4%,pic_skill_ty_06,,,,1,4,,500,,1,1,,0,1000,AddEff 2131,,1
+2052,906,灵兽破劫印,3,0,元素攻击+6%,pic_skill_ty_06,,,,1,4,,500,,1,1,,0,1000,AddEff 2132,,1
+2053,906,灵兽破劫印,4,0,元素攻击+8%,pic_skill_ty_06,,,,1,4,,500,,1,1,,0,1000,AddEff 2133,,1
+2054,906,灵兽破劫印,5,0,元素攻击+10%,pic_skill_ty_06,,,,1,4,,500,,1,1,,0,1000,AddEff 2134,,1
+2055,906,灵兽破劫印,6,0,元素攻击+12%,pic_skill_ty_06,,,,1,4,,500,,1,1,,0,1000,AddEff 2135,,1
+2056,906,灵兽破劫印,7,0,元素攻击+14%,pic_skill_ty_06,,,,1,4,,500,,1,1,,0,1000,AddEff 2136,,1
+2057,906,灵兽破劫印,8,0,元素攻击+16%,pic_skill_ty_06,,,,1,4,,500,,1,1,,0,1000,AddEff 2137,,1
+2058,906,灵兽破劫印,9,0,元素攻击+18%,pic_skill_ty_06,,,,1,4,,500,,1,1,,0,1000,AddEff 2138,,1
+2059,906,灵兽破劫印,10,0,元素攻击+20%,pic_skill_ty_06,,,,1,4,,500,,1,1,,0,1000,AddEff 2139,,1
+2060,907,灵兽灵觉印,1,0,最大法力值+3%,pic_skill_ty_07,,,,1,4,,500,,1,1,,0,1000,AddEff 2140,,1
+2061,907,灵兽灵觉印,2,0,最大法力值+6%,pic_skill_ty_07,,,,1,4,,500,,1,1,,0,1000,AddEff 2141,,1
+2062,907,灵兽灵觉印,3,0,最大法力值+9%,pic_skill_ty_07,,,,1,4,,500,,1,1,,0,1000,AddEff 2142,,1
+2063,907,灵兽灵觉印,4,0,最大法力值+12%,pic_skill_ty_07,,,,1,4,,500,,1,1,,0,1000,AddEff 2143,,1
+2064,907,灵兽灵觉印,5,0,最大法力值+15%,pic_skill_ty_07,,,,1,4,,500,,1,1,,0,1000,AddEff 2144,,1
+2065,907,灵兽灵觉印,6,0,最大法力值+18%,pic_skill_ty_07,,,,1,4,,500,,1,1,,0,1000,AddEff 2145,,1
+2066,907,灵兽灵觉印,7,0,最大法力值+21%,pic_skill_ty_07,,,,1,4,,500,,1,1,,0,1000,AddEff 2146,,1
+2067,907,灵兽灵觉印,8,0,最大法力值+24%,pic_skill_ty_07,,,,1,4,,500,,1,1,,0,1000,AddEff 2147,,1
+2068,907,灵兽灵觉印,9,0,最大法力值+27%,pic_skill_ty_07,,,,1,4,,500,,1,1,,0,1000,AddEff 2148,,1
+2069,907,灵兽灵觉印,10,0,最大法力值+30%,pic_skill_ty_07,,,,1,4,,500,,1,1,,0,1000,AddEff 2149,,1
+2080,909,灵兽御天印,1,0,物理防御+5%,pic_skill_ty_01,,skill_ty_01,root,0,,,,PhyArR+0.05,1,1,,0,2000,,,1
+2081,909,灵兽御天印,2,0,物理防御+10%,pic_skill_ty_01,,skill_ty_01,root,0,,,,PhyArR+0.1,1,1,,0,2000,,,1
+2082,909,灵兽御天印,3,0,物理防御+15%,pic_skill_ty_01,,skill_ty_01,root,0,,,,PhyArR+0.15,1,1,,0,2000,,,1
+2083,909,灵兽御天印,4,0,物理防御+20%,pic_skill_ty_01,,skill_ty_01,root,0,,,,PhyArR+0.2,1,1,,0,2000,,,1
+2084,909,灵兽御天印,5,0,物理防御+25%,pic_skill_ty_01,,skill_ty_01,root,0,,,,PhyArR+0.25,1,1,,0,2000,,,1
+2085,909,灵兽御天印,6,0,物理防御+30%,pic_skill_ty_01,,skill_ty_01,root,0,,,,PhyArR+0.3,1,1,,0,2000,,,1
+2086,909,灵兽御天印,7,0,物理防御+35%,pic_skill_ty_01,,skill_ty_01,root,0,,,,PhyArR+0.35,1,1,,0,2000,,,1
+2087,909,灵兽御天印,8,0,物理防御+40%,pic_skill_ty_01,,skill_ty_01,root,0,,,,PhyArR+0.4,1,1,,0,2000,,,1
+2088,909,灵兽御天印,9,0,物理防御+45%,pic_skill_ty_01,,skill_ty_01,root,0,,,,PhyArR+0.45,1,1,,0,2000,,,1
+2089,909,灵兽御天印,10,0,物理防御+50%,pic_skill_ty_01,,skill_ty_01,root,0,,,,PhyArR+0.5,1,1,,0,2000,,,1
+2090,910,灵兽破军印,1,0,物理攻击+2%,pic_skill_ty_02,,skill_ty_02,root,0,,,,DamageMaxR+0.02;DamageMinR+0.02,1,1,,0,2000,,,1
+2091,910,灵兽破军印,2,0,物理攻击+4%,pic_skill_ty_02,,skill_ty_02,root,0,,,,DamageMaxR+0.04;DamageMinR+0.04,1,1,,0,2000,,,1
+2092,910,灵兽破军印,3,0,物理攻击+6%,pic_skill_ty_02,,skill_ty_02,root,0,,,,DamageMaxR+0.06;DamageMinR+0.06,1,1,,0,2000,,,1
+2093,910,灵兽破军印,4,0,物理攻击+8%,pic_skill_ty_02,,skill_ty_02,root,0,,,,DamageMaxR+0.08;DamageMinR+0.08,1,1,,0,2000,,,1
+2094,910,灵兽破军印,5,0,物理攻击+10%,pic_skill_ty_02,,skill_ty_02,root,0,,,,DamageMaxR+0.10;DamageMinR+0.10,1,1,,0,2000,,,1
+2095,910,灵兽破军印,6,0,物理攻击+12%,pic_skill_ty_02,,skill_ty_02,root,0,,,,DamageMaxR+0.12;DamageMinR+0.12,1,1,,0,2000,,,1
+2096,910,灵兽破军印,7,0,物理攻击+14%,pic_skill_ty_02,,skill_ty_02,root,0,,,,DamageMaxR+0.14;DamageMinR+0.14,1,1,,0,2000,,,1
+2097,910,灵兽破军印,8,0,物理攻击+16%,pic_skill_ty_02,,skill_ty_02,root,0,,,,DamageMaxR+0.16;DamageMinR+0.16,1,1,,0,2000,,,1
+2098,910,灵兽破军印,9,0,物理攻击+18%,pic_skill_ty_02,,skill_ty_02,root,0,,,,DamageMaxR+0.18;DamageMinR+0.18,1,1,,0,2000,,,1
+2099,910,灵兽破军印,10,0,物理攻击+20%,pic_skill_ty_02,,skill_ty_02,root,0,,,,DamageMaxR+0.20;DamageMinR+0.20,1,1,,0,2000,,,1
+2100,911,灵兽往生印,1,0,最大生命值+3%,pic_skill_ty_03,,skill_ty_03,root,0,,,,MaxHPR+0.03,1,1,,0,2000,,,1
+2101,911,灵兽往生印,2,0,最大生命值+6%,pic_skill_ty_03,,skill_ty_03,root,0,,,,MaxHPR+0.06,1,1,,0,2000,,,1
+2102,911,灵兽往生印,3,0,最大生命值+9%,pic_skill_ty_03,,skill_ty_03,root,0,,,,MaxHPR+0.09,1,1,,0,2000,,,1
+2103,911,灵兽往生印,4,0,最大生命值+12%,pic_skill_ty_03,,skill_ty_03,root,0,,,,MaxHPR+0.12,1,1,,0,2000,,,1
+2104,911,灵兽往生印,5,0,最大生命值+15%,pic_skill_ty_03,,skill_ty_03,root,0,,,,MaxHPR+0.15,1,1,,0,2000,,,1
+2105,911,灵兽往生印,6,0,最大生命值+18%,pic_skill_ty_03,,skill_ty_03,root,0,,,,MaxHPR+0.18,1,1,,0,2000,,,1
+2106,911,灵兽往生印,7,0,最大生命值+21%,pic_skill_ty_03,,skill_ty_03,root,0,,,,MaxHPR+0.21,1,1,,0,2000,,,1
+2107,911,灵兽往生印,8,0,最大生命值+24%,pic_skill_ty_03,,skill_ty_03,root,0,,,,MaxHPR+0.24,1,1,,0,2000,,,1
+2108,911,灵兽往生印,9,0,最大生命值+27%,pic_skill_ty_03,,skill_ty_03,root,0,,,,MaxHPR+0.27,1,1,,0,2000,,,1
+2109,911,灵兽往生印,10,0,最大生命值+30%,pic_skill_ty_03,,skill_ty_03,root,0,,,,MaxHPR+0.30,1,1,,0,2000,,,1
+2121,913,灵兽御法印,2,0,元素防御+10%,pic_skill_ty_05,,skill_ty_01,root,0,,,,WaterArR+0.1;FireArR+0.1;PoisonArR+0.1,1,1,,0,2000,,,1
+2122,913,灵兽御法印,3,0,元素防御+15%,pic_skill_ty_05,,skill_ty_01,root,0,,,,WaterArR+0.15;FireArR+0.15;PoisonArR+0.15,1,1,,0,2000,,,1
+2123,913,灵兽御法印,4,0,元素防御+20%,pic_skill_ty_05,,skill_ty_01,root,0,,,,WaterArR+0.2;FireArR+0.2;PoisonArR+0.2,1,1,,0,2000,,,1
+2124,913,灵兽御法印,5,0,元素防御+25%,pic_skill_ty_05,,skill_ty_01,root,0,,,,WaterArR+0.25;FireArR+0.25;PoisonArR+0.25,1,1,,0,2000,,,1
+2125,913,灵兽御法印,6,0,元素防御+30%,pic_skill_ty_05,,skill_ty_01,root,0,,,,WaterArR+0.3;FireArR+0.3;PoisonArR+0.3,1,1,,0,2000,,,1
+2126,913,灵兽御法印,7,0,元素防御+35%,pic_skill_ty_05,,skill_ty_01,root,0,,,,WaterArR+0.35;FireArR+0.35;PoisonArR+0.35,1,1,,0,2000,,,1
+2127,913,灵兽御法印,8,0,元素防御+40%,pic_skill_ty_05,,skill_ty_01,root,0,,,,WaterArR+0.4;FireArR+0.4;PoisonArR+0.4,1,1,,0,2000,,,1
+2128,913,灵兽御法印,9,0,元素防御+45%,pic_skill_ty_05,,skill_ty_01,root,0,,,,WaterArR+0.45;FireArR+0.45;PoisonArR+0.45,1,1,,0,2000,,,1
+2129,913,灵兽御法印,10,0,元素防御+50%,pic_skill_ty_05,,skill_ty_01,root,0,,,,WaterArR+0.5;FireArR+0.5;PoisonArR+0.5,1,1,,0,2000,,,1
+2130,914,灵兽破劫印,1,0,元素攻击+2%,pic_skill_ty_06,,skill_ty_02,root,0,,,,WaterDmR+0.05;FireDmR+0.05;PoisonDmR+0.05,1,1,,0,2000,,,1
+2131,914,灵兽破劫印,2,0,元素攻击+4%,pic_skill_ty_06,,skill_ty_02,root,0,,,,WaterDmR+0.1;FireDmR+0.1;PoisonDmR+0.1,1,1,,0,2000,,,1
+2132,914,灵兽破劫印,3,0,元素攻击+6%,pic_skill_ty_06,,skill_ty_02,root,0,,,,WaterDmR+0.15;FireDmR+0.15;PoisonDmR+0.15,1,1,,0,2000,,,1
+2133,914,灵兽破劫印,4,0,元素攻击+8%,pic_skill_ty_06,,skill_ty_02,root,0,,,,WaterDmR+0.2;FireDmR+0.2;PoisonDmR+0.2,1,1,,0,2000,,,1
+2134,914,灵兽破劫印,5,0,元素攻击+10%,pic_skill_ty_06,,skill_ty_02,root,0,,,,WaterDmR+0.25;FireDmR+0.25;PoisonDmR+0.25,1,1,,0,2000,,,1
+2135,914,灵兽破劫印,6,0,元素攻击+12%,pic_skill_ty_06,,skill_ty_02,root,0,,,,WaterDmR+0.3;FireDmR+0.3;PoisonDmR+0.3,1,1,,0,2000,,,1
+2136,914,灵兽破劫印,7,0,元素攻击+14%,pic_skill_ty_06,,skill_ty_02,root,0,,,,WaterDmR+0.35;FireDmR+0.35;PoisonDmR+0.35,1,1,,0,2000,,,1
+2137,914,灵兽破劫印,8,0,元素攻击+16%,pic_skill_ty_06,,skill_ty_02,root,0,,,,WaterDmR+0.4;FireDmR+0.4;PoisonDmR+0.4,1,1,,0,2000,,,1
+2138,914,灵兽破劫印,9,0,元素攻击+18%,pic_skill_ty_06,,skill_ty_02,root,0,,,,WaterDmR+0.45;FireDmR+0.45;PoisonDmR+0.45,1,1,,0,2000,,,1
+2139,914,灵兽破劫印,10,0,元素攻击+20%,pic_skill_ty_06,,skill_ty_02,root,0,,,,WaterDmR+0.5;FireDmR+0.5;PoisonDmR+0.5,1,1,,0,2000,,,1
+2140,915,灵兽灵觉印,1,0,最大法力值+3%,pic_skill_ty_07,,skill_ty_03,root,0,,,,MaxMPR+0.05,1,1,,0,2000,,,1
+2141,915,灵兽灵觉印,2,0,最大法力值+6%,pic_skill_ty_07,,skill_ty_03,root,0,,,,MaxMPR+0.10,1,1,,0,2000,,,1
+2142,915,灵兽灵觉印,3,0,最大法力值+9%,pic_skill_ty_07,,skill_ty_03,root,0,,,,MaxMPR+0.15,1,1,,0,2000,,,1
+2143,915,灵兽灵觉印,4,0,最大法力值+12%,pic_skill_ty_07,,skill_ty_03,root,0,,,,MaxMPR+0.20,1,1,,0,2000,,,1
+2144,915,灵兽灵觉印,5,0,最大法力值+15%,pic_skill_ty_07,,skill_ty_03,root,0,,,,MaxMPR+0.25,1,1,,0,2000,,,1
+2145,915,灵兽灵觉印,6,0,最大法力值+18%,pic_skill_ty_07,,skill_ty_03,root,0,,,,MaxMPR+0.30,1,1,,0,2000,,,1
+2146,915,灵兽灵觉印,7,0,最大法力值+21%,pic_skill_ty_07,,skill_ty_03,root,0,,,,MaxMPR+0.35,1,1,,0,2000,,,1
+2147,915,灵兽灵觉印,8,0,最大法力值+24%,pic_skill_ty_07,,skill_ty_03,root,0,,,,MaxMPR+0.40,1,1,,0,2000,,,1
+2148,915,灵兽灵觉印,9,0,最大法力值+27%,pic_skill_ty_07,,skill_ty_03,root,0,,,,MaxMPR+0.45,1,1,,0,2000,,,1
+2149,915,灵兽灵觉印,10,0,最大法力值+30%,pic_skill_ty_07,,skill_ty_03,root,0,,,,MaxMPR+0.50,1,1,,0,2000,,,1
+3000,1500,群魔恸,1,0,物理攻击+5%,pic_skill_wtf_05,,,,0,16,,,DamageMaxR+0.05;DamageMinR+0.05,1,1,,1,300000,,,1
+3001,1500,群魔恸,2,0,物理攻击+6%,pic_skill_wtf_05,,,,0,16,,,DamageMaxR+0.06;DamageMinR+0.06,1,1,,1,300000,,,1
+3002,1500,群魔恸,3,0,物理攻击+7%,pic_skill_wtf_05,,,,0,16,,,DamageMaxR+0.07;DamageMinR+0.07,1,1,,1,300000,,,1
+3003,1500,群魔恸,4,0,物理攻击+8%,pic_skill_wtf_05,,,,0,16,,,DamageMaxR+0.08;DamageMinR+0.08,1,1,,1,300000,,,1
+3004,1500,群魔恸,5,0,物理攻击+9%,pic_skill_wtf_05,,,,0,16,,,DamageMaxR+0.09;DamageMinR+0.09,1,1,,1,300000,,,1
+3005,1500,群魔恸,6,0,物理攻击+10%,pic_skill_wtf_05,,,,0,16,,,DamageMaxR+0.10;DamageMinR+0.10,1,1,,1,300000,,,1
+3006,1500,群魔恸,7,0,物理攻击+11%,pic_skill_wtf_05,,,,0,16,,,DamageMaxR+0.11;DamageMinR+0.11,1,1,,1,300000,,,1
+3007,1500,群魔恸,8,0,物理攻击+12%,pic_skill_wtf_05,,,,0,16,,,DamageMaxR+0.12;DamageMinR+0.12,1,1,,1,300000,,,1
+3008,1500,群魔恸,9,0,物理攻击+13%,pic_skill_wtf_05,,,,0,16,,,DamageMaxR+0.13;DamageMinR+0.13,1,1,,1,300000,,,1
+3009,1500,群魔恸,10,0,物理攻击+15%,pic_skill_wtf_05,,,,0,16,,,DamageMaxR+0.15;DamageMinR+0.15,1,1,,1,300000,,,1
+3010,1501,鬼炼狂魔,1,0,"使物理防御-50%,物理攻击+20%,技能爆裂一击率+5%，攻击速度+10%",pic_skill_wtf_06,,skill_buf20,root,0,3,,,PhyArR-0.5;DamageMaxR+0.2;DamageMinR+0.2;SpeedAttackR+0.1;SkillCriRate+5,1,1,,1,60000,,,1
+3011,1501,鬼炼狂魔,2,0,"使物理防御-50%,物理攻击+25%,技能爆裂一击率+5%，攻击速度+10%",pic_skill_wtf_06,,skill_buf20,root,0,3,,,PhyArR-0.5;DamageMaxR+0.25;DamageMinR+0.25;SpeedAttackR+0.1;SkillCriRate+5,1,1,,1,60000,,,1
+3012,1501,鬼炼狂魔,3,0,"使物理防御-50%,物理攻击+30%,技能爆裂一击率+5%，攻击速度+15%",pic_skill_wtf_06,,skill_buf20,root,0,3,,,PhyArR-0.5;DamageMaxR+0.3;DamageMinR+0.3;SpeedAttackR+0.15;SkillCriRate+5,1,1,,1,60000,,,1
+3013,1501,鬼炼狂魔,4,0,"使物理防御-50%,物理攻击+30%,技能爆裂一击率+10%，攻击速度+20%",pic_skill_wtf_06,,skill_buf20,root,0,3,,,PhyArR-0.5;DamageMaxR+0.3;DamageMinR+0.3;SpeedAttackR+0.2;SkillCriRate+10,1,1,,1,60000,,,1
+3014,1501,鬼炼狂魔,5,0,"使物理防御-50%,物理攻击+30%,技能爆裂一击率+15%，攻击速度+25%",pic_skill_wtf_06,,skill_buf20,root,0,3,,,PhyArR-0.5;DamageMaxR+0.3;DamageMinR+0.3;SpeedAttackR+0.25;SkillCriRate+15,1,1,,1,60000,,,1
+3015,25,流血,1,0,持续流血50/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+50,,1
+3016,25,流血,2,0,持续流血100/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+100,,1
+3017,25,流血,3,0,持续流血150/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+150,,1
+3018,25,流血,4,0,持续流血200/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+200,,1
+3019,25,流血,5,0,持续流血250/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+250,,1
+3020,1503,黄龙浩气,1,0,恢复生命15/秒,pic_skill_wtc_03,,skill_buf7,root,0,3,,,,1,1,,30,1000,HP 15 1,,1
+3021,1503,黄龙浩气,2,0,恢复生命20/秒,pic_skill_wtc_03,,skill_buf7,root,0,3,,,,1,1,,30,1000,HP 20 1,,1
+3022,1503,黄龙浩气,3,0,恢复生命25/秒,pic_skill_wtc_03,,skill_buf7,root,0,3,,,,1,1,,30,1000,HP 25 1,,1
+3023,1503,黄龙浩气,4,0,恢复生命30/秒,pic_skill_wtc_03,,skill_buf7,root,0,3,,,,1,1,,30,1000,HP 30 1,,1
+3024,1503,黄龙浩气,5,0,恢复生命35/秒,pic_skill_wtc_03,,skill_buf7,root,0,3,,,,1,1,,30,1000,HP 35 1,,1
+3025,1503,黄龙浩气,6,0,恢复生命40/秒,pic_skill_wtc_03,,skill_buf7,root,0,3,,,,1,1,,30,1000,HP 40 1,,1
+3026,1503,黄龙浩气,7,0,恢复生命45/秒,pic_skill_wtc_03,,skill_buf7,root,0,3,,,,1,1,,30,1000,HP 45 1,,1
+3027,1503,黄龙浩气,8,0,恢复生命50/秒,pic_skill_wtc_03,,skill_buf7,root,0,3,,,,1,1,,30,1000,HP 50 1,,1
+3028,1503,黄龙浩气,9,0,恢复生命55/秒,pic_skill_wtc_03,,skill_buf7,root,0,3,,,,1,1,,30,1000,HP 55 1,,1
+3029,1503,黄龙浩气,10,0,恢复生命60/秒,pic_skill_wtc_03,,skill_buf7,root,0,3,,,,1,1,,30,1000,HP 60 1,,1
+3030,1504,龙龟甲,1,0,移动速度-60%，物理防御+10%，元素防御+200，生命上限+20%,pic_skill_wtc_05,,skill_buf17,Bip01,0,3,,,SpeedMoveR-0.6;PhyArR+0.1;FireAr+200;WaterAr+200;PoisonAr+200;MaxHPR+0.20;Hate+500,1,1,,1,60000,,,1
+3031,1504,龙龟甲,2,0,移动速度-60%，物理防御+15%，元素防御+250，生命上限+25%,pic_skill_wtc_05,,skill_buf17,Bip01,0,3,,,SpeedMoveR-0.6;PhyArR+0.15;FireAr+250;WaterAr+250;PoisonAr+250;MaxHPR+0.25;Hate+1000,1,1,,1,60000,,,1
+3032,1504,龙龟甲,3,0,移动速度-60%，物理防御+20%，元素防御+300，生命上限+30%,pic_skill_wtc_05,,skill_buf17,Bip01,0,3,,,SpeedMoveR-0.6;PhyArR+0.2;FireAr+300;WaterAr+300;PoisonAr+300;MaxHPR+0.30;Hate+1500,1,1,,1,60000,,,1
+3033,1504,龙龟甲,4,0,移动速度-60%，物理防御+25%，元素防御+350，生命上限+35%,pic_skill_wtc_05,,skill_buf17,Bip01,0,3,,,SpeedMoveR-0.6;PhyArR+0.25;FireAr+350;WaterAr+350;PoisonAr+350;MaxHPR+0.35;Hate+2000,1,1,,1,60000,,,1
+3034,1504,龙龟甲,5,0,移动速度-60%，物理防御+30%，元素防御+400，生命上限+40%,pic_skill_wtc_05,,skill_buf17,Bip01,0,3,,,SpeedMoveR-0.6;PhyArR+0.3;FireAr+400;WaterAr+400;PoisonAr+400;MaxHPR+0.40;Hate+2500,1,1,,1,60000,,,1
+3035,1504,龙龟甲,6,0,移动速度-60%，物理防御+30%，元素防御+500，生命上限+45%,pic_skill_wtc_05,,skill_buf17,Bip01,0,3,,,SpeedMoveR-0.6;PhyArR+0.3;FireAr+500;WaterAr+500;PoisonAr+500;MaxHPR+0.45;Hate+3000,1,1,,1,60000,,,1
+3036,1504,龙龟甲,7,0,移动速度-60%，物理防御+30%，元素防御+600，生命上限+50%,pic_skill_wtc_05,,skill_buf17,Bip01,0,3,,,SpeedMoveR-0.6;PhyArR+0.3;FireAr+600;WaterAr+600;PoisonAr+600;MaxHPR+0.50;Hate+3500,1,1,,1,60000,,,1
+3037,1504,龙龟甲,8,0,移动速度-60%，物理防御+30%，元素防御+800，生命上限+55%,pic_skill_wtc_05,,skill_buf17,Bip01,0,3,,,SpeedMoveR-0.6;PhyArR+0.3;FireAr+800;WaterAr+800;PoisonAr+800;MaxHPR+0.55;Hate+4000,1,1,,1,60000,,,1
+3038,1504,龙龟甲,9,0,移动速度-60%，物理防御+30%，元素防御+1000，生命上限+60%,pic_skill_wtc_05,,skill_buf17,Bip01,0,3,,,SpeedMoveR-0.6;PhyArR+0.3;FireAr+1000;WaterAr+1000;PoisonAr+1000;MaxHPR+0.60;Hate+4500,1,1,,1,60000,,,1
+3039,1504,龙龟甲,10,0,移动速度-60%，物理防御+30%，元素防御+1200，生命上限+65%,pic_skill_wtc_05,,skill_buf17,Bip01,0,3,,,SpeedMoveR-0.6;PhyArR+0.3;FireAr+1200;WaterAr+1200;PoisonAr+1200;MaxHPR+0.65;Hate+5000,1,1,,1,60000,,,1
+3040,26,弱化,1,0,使惊鬼邪附加弱化效果，物理攻击-10%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.1;DamageMinR-0.1,2,1,,1,60000,,,1
+3041,26,弱化,2,0,使惊鬼邪附加弱化效果，物理攻击-12%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.12;DamageMinR-0.12,2,1,,1,60000,,,1
+3042,26,弱化,3,0,使惊鬼邪附加弱化效果，物理攻击-15%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.15;DamageMinR-0.15,2,1,,1,60000,,,1
+3043,26,弱化,4,0,使惊鬼邪附加弱化效果，物理攻击-17%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.17;DamageMinR-0.17,2,1,,1,60000,,,1
+3044,26,弱化,5,0,使惊鬼邪附加弱化效果，物理攻击-20%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.2;DamageMinR-0.2,2,1,,1,60000,,,1
+3045,1506,云龙渡,1,0,使龙龟甲状态下移动速度+10%,pic_skill_wtc_11,,,,0,3,,,SpeedMoveR+0.1,1,1,,1,60000,,,1
+3046,1506,云龙渡,2,0,使龙龟甲状态下移动速度+15%,pic_skill_wtc_11,,,,0,3,,,SpeedMoveR+0.15,1,1,,1,60000,,,1
+3047,1506,云龙渡,3,0,使龙龟甲状态下移动速度+20%,pic_skill_wtc_11,,,,0,3,,,SpeedMoveR+0.2,1,1,,1,60000,,,1
+3048,1506,云龙渡,4,0,使龙龟甲状态下移动速度+25%,pic_skill_wtc_11,,,,0,3,,,SpeedMoveR+0.25,1,1,,1,60000,,,1
+3049,1506,云龙渡,5,0,使龙龟甲状态下移动速度+30%,pic_skill_wtc_11,,,,0,3,,,SpeedMoveR+0.3,1,1,,1,60000,,,1
+3050,1507,返命龙涎,1,0,每3秒恢复生命2%,pic_skill_mjq_05,,skill_buf19,Bip01,0,14,,,,1,1,,10,2000,AddCutMaxHP+0.02,,1
+3051,1507,返命龙涎,2,0,每3秒恢复生命4%,pic_skill_mjq_05,,skill_buf19,Bip01,0,14,,,,1,1,,10,2000,AddCutMaxHP+0.04,,1
+3052,1507,返命龙涎,3,0,每3秒恢复生命6%,pic_skill_mjq_05,,skill_buf19,Bip01,0,14,,,,1,1,,10,2000,AddCutMaxHP+0.06,,1
+3053,1507,返命龙涎,4,0,每3秒恢复生命8%,pic_skill_mjq_05,,skill_buf19,Bip01,0,14,,,,1,1,,10,2000,AddCutMaxHP+0.08,,1
+3054,1507,返命龙涎,5,0,每3秒恢复生命10%,pic_skill_mjq_05,,skill_buf19,Bip01,0,14,,,,1,1,,10,2000,AddCutMaxHP+0.10,,1
+3055,1507,返命龙涎,6,0,每3秒恢复生命12%,pic_skill_mjq_05,,skill_buf19,Bip01,0,14,,,,1,1,,10,2000,AddCutMaxHP+0.12,,1
+3056,1507,返命龙涎,7,0,每3秒恢复生命14%,pic_skill_mjq_05,,skill_buf19,Bip01,0,14,,,,1,1,,10,2000,AddCutMaxHP+0.14,,1
+3057,1507,返命龙涎,8,0,每3秒恢复生命16%,pic_skill_mjq_05,,skill_buf19,Bip01,0,14,,,,1,1,,10,2000,AddCutMaxHP+0.16,,1
+3058,1507,返命龙涎,9,0,每3秒恢复生命18%,pic_skill_mjq_05,,skill_buf19,Bip01,0,14,,,,1,1,,10,2000,AddCutMaxHP+0.18,,1
+3059,1507,返命龙涎,10,0,每3秒恢复生命20%,pic_skill_mjq_05,,skill_buf19,Bip01,0,14,,,,1,1,,10,2000,AddCutMaxHP+0.20,,1
+3070,25,流血,1,0,持续减血-20/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+20,,1
+3071,25,流血,2,0,持续减血-30/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+30,,1
+3072,25,流血,3,0,持续减血-40/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+40,,1
+3073,25,流血,4,0,持续减血-50/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+50,,1
+3074,25,流血,5,0,持续减血-60/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+60,,1
+3075,25,流血,6,0,持续减血-70/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+70,,1
+3076,25,流血,7,0,持续减血-80/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+80,,1
+3077,25,流血,8,0,持续减血-90/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+90,,1
+3078,25,流血,9,0,持续减血-100/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+100,,1
+3079,25,流血,10,0,持续减血-120/2秒,pic_skill_dbf_11,,skill_debuf12,Bone100,0,11,,,,2,0,,5,2000,DeBufPoison+120,,1
+3080,1510,灵蕴潮汐,1,0,每秒恢复法力2%,pic_skill_mjq_03,,skill_buf2,root,0,3,,,,1,1,,10,1000,AddCutMaxMP+0.02,,1
+3081,1510,灵蕴潮汐,2,0,每秒恢复法力3%,pic_skill_mjq_03,,skill_buf2,root,0,3,,,,1,1,,10,1000,AddCutMaxMP+0.03,,1
+3082,1510,灵蕴潮汐,3,0,每秒恢复法力4%,pic_skill_mjq_03,,skill_buf2,root,0,3,,,,1,1,,10,1000,AddCutMaxMP+0.04,,1
+3083,1510,灵蕴潮汐,4,0,每秒恢复法力5%,pic_skill_mjq_03,,skill_buf2,root,0,3,,,,1,1,,10,1000,AddCutMaxMP+0.05,,1
+3084,1510,灵蕴潮汐,5,0,每秒恢复法力6%,pic_skill_mjq_03,,skill_buf2,root,0,3,,,,1,1,,10,1000,AddCutMaxMP+0.06,,1
+3085,1511,天蚕甲,1,0,物理防御+10%，元素防御+10%,pic_skill_mjq_06,,,,0,16,,,PhyArR+0.1;FireArR+0.1;WaterArR+0.1;PoisonArR+0.1;,1,1,,1,60000,,,1
+3086,1511,天蚕甲,2,0,物理防御+12%，元素防御+12%,pic_skill_mjq_06,,,,0,16,,,PhyArR+0.12;FireArR+0.12;WaterArR+0.12;PoisonArR+0.12;,1,1,,1,60000,,,1
+3087,1511,天蚕甲,3,0,物理防御+15%，元素防御+15%,pic_skill_mjq_06,,,,0,16,,,PhyArR+0.15;FireArR+0.15;WaterArR+0.15;PoisonArR+0.15;,1,1,,1,60000,,,1
+3088,1511,天蚕甲,4,0,物理防御+18%，元素防御+18%,pic_skill_mjq_06,,,,0,16,,,PhyArR+0.18;FireArR+0.18;WaterArR+0.18;PoisonArR+0.18;,1,1,,1,60000,,,1
+3089,1511,天蚕甲,5,0,物理防御+20%，元素防御+20%,pic_skill_mjq_06,,,,0,16,,,PhyArR+0.2;FireArR+0.2;WaterArR+0.2;PoisonArR+0.2;,1,1,,1,60000,,,1
+3090,26,弱化,1,0,削弱敌人物理攻击-10%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.1;DamageMinR-0.1,2,0,,1,15000,,,1
+3091,26,弱化,2,0,削弱敌人物理攻击-15%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.15;DamageMinR-0.15,2,0,,1,15000,,,1
+3092,26,弱化,3,0,削弱敌人物理攻击-20%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.2;DamageMinR-0.2,2,0,,1,15000,,,1
+3093,26,弱化,4,0,削弱敌人物理攻击-25%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.25;DamageMinR-0.25,2,0,,1,15000,,,1
+3094,26,弱化,5,0,削弱敌人物理攻击-30%,pic_skill_dbf_14,,skill_debuf13,Bone99,0,11,,,DamageMaxR-0.3;DamageMinR-0.3,2,0,,1,15000,,,1
+3095,27,破甲,1,0,削弱敌人物防-450，毒防-300,pic_skill_dbf_13,,,,0,11,,,PhyAr-450;PoisonAr-300,2,0,,1,15000,,,1
+3096,27,破甲,2,0,削弱敌人物防-600，毒防-400,pic_skill_dbf_13,,,,0,11,,,PhyAr-600;PoisonAr-400,2,0,,1,15000,,,1
+3097,27,破甲,3,0,削弱敌人物防-800，毒防-550,pic_skill_dbf_13,,,,0,11,,,PhyAr-800;PoisonAr-550,2,0,,1,15000,,,1
+3098,27,破甲,4,0,削弱敌人物防-800，毒防-550，物防-25%毒防-25%,pic_skill_dbf_13,,,,0,11,,,PhyAr-800;PoisonAr-550;PhyArR-0.25;PoisonArR-0.25,2,0,,1,15000,,,1
+3099,27,破甲,5,0,削弱敌人物防-800，毒防-550，物防-40%毒防-40%,pic_skill_dbf_13,,,,0,11,,,PhyAr-800;PoisonAr-550;PhyArR-0.4;PoisonArR-0.4,2,0,,1,15000,,,1
+3100,9,减速,1,0,移动速度-30%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.3,2,1,,1,5000,,,1
+3101,9,减速,2,0,移动速度-30%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.3,2,1,,1,6000,,,1
+3102,9,减速,3,0,移动速度-40%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.4,2,1,,1,7000,,,1
+3103,9,减速,4,0,移动速度-40%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.4,2,1,,1,8000,,,1
+3104,9,减速,5,0,移动速度-50%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.5,2,1,,1,8000,,,1
+3105,1515,生命共享,1,0,将所受伤害的15%平均分担给其他队友,pic_skill_mjq_18,,skill_buf26,root,0,16,,,TeamShareDamage+15,1,1,,1,60000,,,1
+3106,1515,生命共享,2,0,将所受伤害的30%平均分担给其他队友,pic_skill_mjq_18,,skill_buf26,root,0,16,,,TeamShareDamage+30,1,1,,1,60000,,,1
+3107,1515,生命共享,3,0,将所受伤害的45%平均分担给其他队友,pic_skill_mjq_18,,skill_buf26,root,0,16,,,TeamShareDamage+45,1,1,,1,60000,,,1
+3108,1515,生命共享,4,0,将所受伤害的60%平均分担给其他队友,pic_skill_mjq_18,,skill_buf26,root,0,16,,,TeamShareDamage+60,1,1,,1,60000,,,1
+3109,1515,生命共享,5,0,将所受伤害的75%平均分担给其他队友,pic_skill_mjq_18,,skill_buf26,root,0,16,,,TeamShareDamage+75,1,1,,1,60000,,,1
+3120,1518,无方冰甲,1,0,增加物理防御+10%，5%伤害无效,pic_skill_ssj_13,,skill_buf30,root,0,3,,,PhyArR+0.1;FireAb+0.05;WaterAb+0.05;PoisonAb+0.05;PhyAb+0.05,1,1,,1,60000,,,1
+3121,1518,无方冰甲,2,0,增加物理防御+20%，10%伤害无效,pic_skill_ssj_13,,skill_buf30,root,0,3,,,PhyArR+0.2;FireAb+0.10;WaterAb+0.10;PoisonAb+0.10;PhyAb+0.10,1,1,,1,60000,,,1
+3122,1518,无方冰甲,3,0,增加物理防御+30%，15%伤害无效,pic_skill_ssj_13,,skill_buf30,root,0,3,,,PhyArR+0.3;FireAb+0.15;WaterAb+0.15;PoisonAb+0.15;PhyAb+0.15,1,1,,1,60000,,,1
+3123,1518,无方冰甲,4,0,增加物理防御+40%，20%伤害无效,pic_skill_ssj_13,,skill_buf30,root,0,3,,,PhyArR+0.4;FireAb+0.20;WaterAb+0.20;PoisonAb+0.20;PhyAb+0.20,1,1,,1,60000,,,1
+3124,1518,无方冰甲,5,0,增加物理防御+50%，25%伤害无效,pic_skill_ssj_13,,skill_buf30,root,0,3,,,PhyArR+0.5;FireAb+0.25;WaterAb+0.25;PoisonAb+0.25;PhyAb+0.25,1,1,,1,60000,,,1
+3125,1519,化相真如剑,1,0,召唤出1个剑灵帮助战斗,,,,,0,3,,,Conjure 18000 1,1,1,,1,60000,,,1
+3126,1519,化相真如剑,2,0,召唤出1个剑灵帮助战斗,,,,,0,3,,,Conjure 18001 1,1,1,,1,60000,,,1
+3127,1519,化相真如剑,3,0,召唤出1个剑灵帮助战斗,,,,,0,3,,,Conjure 18002 1,1,1,,1,60000,,,1
+3128,1519,化相真如剑,4,0,召唤出2个剑灵帮助战斗,,,,,0,3,,,Conjure 18003 2,1,1,,1,60000,,,1
+3129,1519,化相真如剑,5,0,召唤出2个剑灵帮助战斗,,,,,0,3,,,Conjure 18004 2,1,1,,1,60000,,,1
+3130,9,减速,1,0,移动速度-10%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.10,2,1,,1,5000,,,1
+3131,9,减速,2,0,移动速度-12%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.12,2,1,,1,5000,,,1
+3132,9,减速,3,0,移动速度-15%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.15,2,1,,1,5000,,,1
+3133,9,减速,4,0,移动速度-17%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.17,2,1,,1,5000,,,1
+3134,9,减速,5,0,移动速度-20%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.20,2,1,,1,5000,,,1
+3135,1521,天霜雪环,1,0,使靠近自己的敌人移动速度-5%,pic_skill_ssj_21,,skill_debuf3,root,1,11,,100,,2,1,,30,2000,AddEff 3340,,1
+3136,1521,天霜雪环,2,0,使靠近自己的敌人移动速度-10%,pic_skill_ssj_21,,skill_debuf3,root,1,11,,100,,2,1,,30,2000,AddEff 3131,,1
+3137,1521,天霜雪环,3,0,使靠近自己的敌人移动速度-15%,pic_skill_ssj_21,,skill_debuf3,root,1,11,,100,,2,1,,30,2000,AddEff 3132,,1
+3138,1521,天霜雪环,4,0,使靠近自己的敌人移动速度-20%,pic_skill_ssj_21,,skill_debuf3,root,1,11,,100,,2,1,,30,2000,AddEff 3133,,1
+3139,1521,天霜雪环,5,0,使靠近自己的敌人移动速度-25%,pic_skill_ssj_21,,skill_debuf3,root,1,11,,100,,2,1,,30,2000,AddEff 3134,,1
+3140,1522,浩然天罡,1,0,增加物理防御+5%，5%伤害反弹,pic_skill_ssl_12,,skill_buf29,root,0,3,,,PhyArR+0.05;ReboundHurtR 5 1,1,1,,1,60000,,,1
+3141,1522,浩然天罡,2,0,增加物理防御+10%，10%伤害反弹,pic_skill_ssl_12,,skill_buf29,root,0,3,,,PhyArR+0.10;ReboundHurtR 10 1,1,1,,1,60000,,,1
+3142,1522,浩然天罡,3,0,增加物理防御+15%，15%伤害反弹,pic_skill_ssl_12,,skill_buf29,root,0,3,,,PhyArR+0.15;ReboundHurtR 15 1,1,1,,1,60000,,,1
+3143,1522,浩然天罡,4,0,增加物理防御+20%，20%伤害反弹,pic_skill_ssl_12,,skill_buf29,root,0,3,,,PhyArR+0.20;ReboundHurtR 20 1,1,1,,1,60000,,,1
+3144,1522,浩然天罡,5,0,增加物理防御+25%，25%伤害反弹,pic_skill_ssl_12,,skill_buf29,root,0,3,,,PhyArR+0.25;ReboundHurtR 25 1,1,1,,1,60000,,,1
+3145,1523,祝融焚天,1,0,增加火系技能威力20%，20%火伤害无效，免疫灼烧,pic_skill_ssl_13,,skill_buf32,root,0,3,,,SeriesDamage 11 20;FireAb+0.20;,1,1,,1,20000,,,1
+3146,1523,祝融焚天,2,0,增加火系技能威力20%，25%火伤害无效，免疫灼烧,pic_skill_ssl_13,,skill_buf32,root,0,3,,,SeriesDamage 11 20;FireAb+0.25;,1,1,,1,20000,,,1
+3147,1523,祝融焚天,3,0,增加火系技能威力20%，30%火伤害无效，免疫灼烧,pic_skill_ssl_13,,skill_buf32,root,0,3,,,SeriesDamage 11 20;FireAb+0.30;,1,1,,1,20000,,,1
+3148,1523,祝融焚天,4,0,增加火系技能威力20%，35%火伤害无效，免疫灼烧,pic_skill_ssl_13,,skill_buf32,root,0,3,,,SeriesDamage 11 20;FireAb+0.35;,1,1,,1,20000,,,1
+3149,1523,祝融焚天,5,0,增加火系技能威力20%，40%火伤害无效，免疫灼烧,pic_skill_ssl_13,,skill_buf32,root,0,3,,,SeriesDamage 11 20;FireAb+0.40;,1,1,,1,20000,,,1
+3150,16,迟缓,1,0,攻击速度-10%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.10,2,1,,1,5000,,,1
+3151,16,迟缓,2,0,攻击速度-12%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.12,2,1,,1,5000,,,1
+3152,16,迟缓,3,0,攻击速度-15%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.15,2,1,,1,5000,,,1
+3153,16,迟缓,4,0,攻击速度-17%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.17,2,1,,1,5000,,,1
+3154,16,迟缓,5,0,攻击速度-20%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedAttackR-0.20,2,1,,1,5000,,,1
+3155,28,弱火,1,0,火防御-10%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.10,2,1,,1,10000,,,1
+3156,28,弱火,2,0,火防御-15%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.15,2,1,,1,10000,,,1
+3157,28,弱火,3,0,火防御-20%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.20,2,1,,1,10000,,,1
+3158,28,弱火,4,0,火防御-25%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.25,2,1,,1,10000,,,1
+3159,28,弱火,5,0,火防御-30%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.30,2,1,,1,10000,,,1
+3160,21,灼烧,1,0,灼烧生命-50/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+50,,1
+3161,21,灼烧,2,0,灼烧生命-100/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+100,,1
+3162,21,灼烧,3,0,灼烧生命-150/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+150,,1
+3163,21,灼烧,4,0,灼烧生命-200/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+200,,1
+3164,21,灼烧,5,0,灼烧生命-250/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,5,2000,DeBufFire+250,,1
+3165,1527,真阳火环,1,0,使靠近自己的敌人灼烧生命-50/2秒,pic_skill_ssl_20,,,,1,11,,100,,2,1,,30,2000,AddEff 3345,,1
+3166,1527,真阳火环,2,0,使靠近自己的敌人灼烧生命-100/2秒,pic_skill_ssl_20,,,,1,11,,100,,2,1,,30,2000,AddEff 3346,,1
+3167,1527,真阳火环,3,0,使靠近自己的敌人灼烧生命-150/2秒,pic_skill_ssl_20,,,,1,11,,100,,2,1,,30,2000,AddEff 3347,,1
+3168,1527,真阳火环,4,0,使靠近自己的敌人灼烧生命-200/2秒,pic_skill_ssl_20,,,,1,11,,100,,2,1,,30,2000,AddEff 3348,,1
+3169,1527,真阳火环,5,0,使靠近自己的敌人灼烧生命-250/2秒,pic_skill_ssl_20,,,,1,11,,100,,2,1,,30,2000,AddEff 3349,,1
+3170,1528,跗骨蚀魂,1,0,使靠近自己的敌人火防御-10%,pic_skill_ssl_22,,,,1,11,,100,,2,1,,30,2000,AddEff 3350,,1
+3171,1528,跗骨蚀魂,2,0,使靠近自己的敌人火防御-15%,pic_skill_ssl_22,,,,1,11,,100,,2,1,,30,2000,AddEff 3351,,1
+3172,1528,跗骨蚀魂,3,0,使靠近自己的敌人火防御-20%,pic_skill_ssl_22,,,,1,11,,100,,2,1,,30,2000,AddEff 3352,,1
+3173,1528,跗骨蚀魂,4,0,使靠近自己的敌人火防御-25%,pic_skill_ssl_22,,,,1,11,,100,,2,1,,30,2000,AddEff 3353,,1
+3174,1528,跗骨蚀魂,5,0,使靠近自己的敌人火防御-30%,pic_skill_ssl_22,,,,1,11,,100,,2,1,,30,2000,AddEff 3354,,1
+3175,29,昏睡,1,0,昏睡3秒，被攻击时解除,pic_skill_dbf_21,,skill_debuf11,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,3000,,,1
+3176,29,昏睡,2,0,昏睡5秒，被攻击时解除,pic_skill_dbf_21,,skill_debuf11,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,5000,,,1
+3177,29,昏睡,3,0,昏睡7秒，被攻击时解除,pic_skill_dbf_21,,skill_debuf11,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,7000,,,1
+3178,29,昏睡,4,0,昏睡10秒，被攻击时解除,pic_skill_dbf_21,,skill_debuf11,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,10000,,,1
+3179,29,昏睡,5,0,昏睡15秒，被攻击时解除,pic_skill_dbf_21,,skill_debuf11,Bone99,0,11,,,StateMove 1;StateDodge 1;StateUseSkill 1;StateNAttack 1;,2,1,,1,15000,,,1
+3180,1530,修罗浴火,1,0,自己无法闪避，攻击速度+15%，移动速度+15%，会心一击率+15%;命中+15%,pic_skill_hjh_13,,skill_buf23,root,0,3,,,DodgeR-1;SpeedAttackR+0.15;SpeedMoveR+0.15;CriticalR+0.15;AttackRateR+0.15,1,1,,1,30000,,,1
+3181,1530,修罗浴火,2,0,自己无法闪避，攻击速度+30%，移动速度+30%，会心一击率+15%;命中+30%,pic_skill_hjh_13,,skill_buf23,root,0,3,,,DodgeR-1;SpeedAttackR+0.30;SpeedMoveR+0.30;CriticalR+0.15;AttackRateR+0.30,1,1,,1,30000,,,1
+3182,1530,修罗浴火,3,0,自己无法闪避，攻击速度+45%，移动速度+45%，会心一击率+15%;命中+45%,pic_skill_hjh_13,,skill_buf23,root,0,3,,,DodgeR-1;SpeedAttackR+0.45;SpeedMoveR+0.45;CriticalR+0.15;AttackRateR+0.45,1,1,,1,30000,,,1
+3183,1530,修罗浴火,4,0,自己无法闪避，攻击速度+60%，移动速度+60%，会心一击率+15%;命中+60%,pic_skill_hjh_13,,skill_buf23,root,0,3,,,DodgeR-1;SpeedAttackR+0.60;SpeedMoveR+0.60;CriticalR+0.15;AttackRateR+0.60,1,1,,1,30000,,,1
+3184,1530,修罗浴火,5,0,自己无法闪避，攻击速度+75%，移动速度+75%，会心一击率+15%;命中+75%,pic_skill_hjh_13,,skill_buf23,root,0,3,,,DodgeR-1;SpeedAttackR+0.75;SpeedMoveR+0.75;CriticalR+0.15;AttackRateR+0.75,1,1,,1,30000,,,1
+3185,1531,五毒归元,1,0,普通攻击30%概率附加中毒，生命-50/2秒，持续10秒,pic_skill_hjh_17,,,,0,3,,,OrdinaryAddEffect 30 101,1,1,,1,60000,,,1
+3186,1531,五毒归元,2,0,普通攻击30%概率附加中毒，生命-100/2秒，持续10秒,pic_skill_hjh_17,,,,0,3,,,OrdinaryAddEffect 30 102,1,1,,1,60000,,,1
+3187,1531,五毒归元,3,0,普通攻击30%概率附加中毒，生命-150/2秒，持续10秒,pic_skill_hjh_17,,,,0,3,,,OrdinaryAddEffect 30 103,1,1,,1,60000,,,1
+3188,1531,五毒归元,4,0,普通攻击30%概率附加中毒，生命-200/2秒，持续10秒,pic_skill_hjh_17,,,,0,3,,,OrdinaryAddEffect 30 104,1,1,,1,60000,,,1
+3189,1531,五毒归元,5,0,普通攻击30%概率附加中毒，生命-250/2秒，持续10秒,pic_skill_hjh_17,,,,0,3,,,OrdinaryAddEffect 30 105,1,1,,1,60000,,,1
+3190,1532,烟云毒瘴,1,0,使靠近自己的敌人毒防御-30%，中毒抵抗率-10%,pic_skill_hjh_19,,,,1,11,,100,,1,1,,30,2000,AddEff 3195,,1
+3191,1532,烟云毒瘴,2,0,使靠近自己的敌人毒防御-35%，中毒抵抗率-15%,pic_skill_hjh_19,,,,1,11,,100,,1,1,,30,2000,AddEff 3196,,1
+3192,1532,烟云毒瘴,3,0,使靠近自己的敌人毒防御-40%，中毒抵抗率-20%,pic_skill_hjh_19,,,,1,11,,100,,1,1,,30,2000,AddEff 3197,,1
+3193,1532,烟云毒瘴,4,0,使靠近自己的敌人毒防御-45%，中毒抵抗率-25%,pic_skill_hjh_19,,,,1,11,,100,,1,1,,30,2000,AddEff 3198,,1
+3194,1532,烟云毒瘴,5,0,使靠近自己的敌人毒防御-50%，中毒抵抗率-30%,pic_skill_hjh_19,,,,1,11,,100,,1,1,,30,2000,AddEff 3199,,1
+3195,33,弱毒,1,0,使靠近自己的敌人毒防御-30%，中毒抵抗率-10%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.30;ResistBleed-10,2,1,,1,3000,,,1
+3196,33,弱毒,2,0,使靠近自己的敌人毒防御-35%，中毒抵抗率-15%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.35;ResistBleed-15,2,1,,1,3000,,,1
+3197,33,弱毒,3,0,使靠近自己的敌人毒防御-40%，中毒抵抗率-20%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.40;ResistBleed-20,2,1,,1,3000,,,1
+3198,33,弱毒,4,0,使靠近自己的敌人毒防御-45%，中毒抵抗率-25%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.45;ResistBleed-25,2,1,,1,3000,,,1
+3199,33,弱毒,5,0,使靠近自己的敌人毒防御-50%，中毒抵抗率-30%,pic_skill_dbf_20,,skill_debuf14,Bone99,0,11,,,PoisonArR-0.50;ResistBleed-30,2,1,,1,3000,,,1
+3200,1534,无我灭境,1,0,有害状态抵抗率+30%,pic_skill_hjh_22,,,,0,3,,,StateResist+30,1,1,,1,60000,,,1
+3201,1534,无我灭境,2,0,有害状态抵抗率+40%,pic_skill_hjh_22,,,,0,3,,,StateResist+40,1,1,,1,60000,,,1
+3202,1534,无我灭境,3,0,有害状态抵抗率+50%,pic_skill_hjh_22,,,,0,3,,,StateResist+50,1,1,,1,60000,,,1
+3203,1534,无我灭境,4,0,有害状态抵抗率+60%,pic_skill_hjh_22,,,,0,3,,,StateResist+60,1,1,,1,60000,,,1
+3204,1534,无我灭境,5,0,有害状态免疫,pic_skill_hjh_22,,,,0,3,,,Immuno+2,1,1,,1,60000,,,1
+3205,1535,狱火焚神,1,0,攻击附加火伤害+100,pic_skill_wtf_11,,skill_buf31,root,0,3,,,FireDm+100,1,1,,1,60000,,,1
+3206,1535,狱火焚神,2,0,攻击附加火伤害+200,pic_skill_wtf_11,,skill_buf31,root,0,3,,,FireDm+150,1,1,,1,60000,,,1
+3207,1535,狱火焚神,3,0,攻击附加火伤害+300,pic_skill_wtf_11,,skill_buf31,root,0,3,,,FireDm+200,1,1,,1,60000,,,1
+3208,1535,狱火焚神,4,0,攻击附加火伤害+400,pic_skill_wtf_11,,skill_buf31,root,0,3,,,FireDm+250,1,1,,1,60000,,,1
+3209,1535,狱火焚神,5,0,攻击附加火伤害+500,pic_skill_wtf_11,,skill_buf31,root,0,3,,,FireDm+300,1,1,,1,60000,,,1
+3210,1536,杀神乱世,1,0,物理攻击+20%，攻击速度+10%，会心一击率+20%，会心一击伤害+20%,pic_skill_wtf_13,,,,0,3,,,DamageMaxR+0.2;DamageMinR+0.2;SpeedAttackR+0.10;CriticalR+0.2;calDamageR+20,1,1,,1,90000,AddCutMaxHP-0.5,,1
+3211,1536,杀神乱世,2,0,物理攻击+25%，攻击速度+15%，会心一击率+20%，会心一击伤害+20%,pic_skill_wtf_13,,,,0,3,,,DamageMaxR+0.25;DamageMinR+0.25;SpeedAttackR+0.15;CriticalR+0.2;calDamageR+20,1,1,,1,90000,AddCutMaxHP-0.5,,1
+3212,1536,杀神乱世,3,0,物理攻击+30%，攻击速度+20%，会心一击率+20%，会心一击伤害+20%,pic_skill_wtf_13,,,,0,3,,,DamageMaxR+0.3;DamageMinR+0.3;SpeedAttackR+0.20;CriticalR+0.2;calDamageR+20,1,1,,1,90000,AddCutMaxHP-0.5,,1
+3213,1536,杀神乱世,4,0,物理攻击+35%，攻击速度+25%，会心一击率+20%，会心一击伤害+20%,pic_skill_wtf_13,,,,0,3,,,DamageMaxR+0.35;DamageMinR+0.35;SpeedAttackR+0.25;CriticalR+0.2;calDamageR+20,1,1,,1,90000,AddCutMaxHP-0.5,,1
+3214,1536,杀神乱世,5,0,物理攻击+40%，攻击速度+30%，会心一击率+20%，会心一击伤害+20%,pic_skill_wtf_13,,,,0,3,,,DamageMaxR+0.4;DamageMinR+0.4;SpeedAttackR+0.30;CriticalR+0.2;calDamageR+20,1,1,,1,90000,AddCutMaxHP-0.5,,1
+3215,1537,八方宿黄泉,1,0,全能力增加30%,pic_skill_wtf_15,,skill_buf25,root,0,3,,,DamageMaxR+0.3;DamageMinR+0.3;PhyArR+0.3;SpeedAttackR+0.3;AttackRateR+0.30;DodgeR+0.30,1,1,,1,15000,,,1
+3216,1537,八方宿黄泉,2,0,全能力增加35%,pic_skill_wtf_15,,skill_buf25,root,0,3,,,DamageMaxR+0.35;DamageMinR+0.35;PhyArR+0.35;SpeedAttackR+0.35;AttackRateR+0.35;DodgeR+0.35,1,1,,1,15000,,,1
+3217,1537,八方宿黄泉,3,0,全能力增加40%,pic_skill_wtf_15,,skill_buf25,root,0,3,,,DamageMaxR+0.4;DamageMinR+0.4;PhyArR+0.4;SpeedAttackR+0.4;AttackRateR+0.4;DodgeR+0.4,1,1,,1,15000,,,1
+3218,1537,八方宿黄泉,4,0,全能力增加45%,pic_skill_wtf_15,,skill_buf25,root,0,3,,,DamageMaxR+0.45;DamageMinR+0.45;PhyArR+0.45;SpeedAttackR+0.45;AttackRateR+0.45;DodgeR+0.45,1,1,,1,15000,,,1
+3219,1537,八方宿黄泉,5,0,全能力增加50%,pic_skill_wtf_15,,skill_buf25,root,0,3,,,DamageMaxR+0.5;DamageMinR+0.5;PhyArR+0.5;SpeedAttackR+0.5;AttackRateR+0.5;DodgeR+0.5,1,1,,1,15000,,,1
+3220,30,破防,1,0,物理防御-10%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.1,2,1,,1,10000,,,1
+3221,30,破防,2,0,物理防御-20%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.2,2,1,,1,10000,,,1
+3222,30,破防,3,0,物理防御-30%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.3,2,1,,1,10000,,,1
+3223,30,破防,4,0,物理防御-40%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.4,2,1,,1,10000,,,1
+3224,30,破防,5,0,物理防御-50%,pic_skill_dbf_17,,skill_debuf17,Bone99,0,11,,,PhyArR-0.5,2,1,,1,10000,,,1
+3225,1539,明王爆炎,1,0,普通攻击时目标周围敌人将受到20%伤害,pic_skill_wtf_19,,,,0,3,,,MonomersCgroup+20,1,1,,1,60000,,,1
+3226,1539,明王爆炎,2,0,普通攻击时目标周围敌人将受到40%伤害,pic_skill_wtf_19,,,,0,3,,,MonomersCgroup+40,1,1,,1,60000,,,1
+3227,1539,明王爆炎,3,0,普通攻击时目标周围敌人将受到60%伤害,pic_skill_wtf_19,,,,0,3,,,MonomersCgroup+60,1,1,,1,60000,,,1
+3228,1539,明王爆炎,4,0,普通攻击时目标周围敌人将受到80%伤害,pic_skill_wtf_19,,,,0,3,,,MonomersCgroup+80,1,1,,1,60000,,,1
+3229,1539,明王爆炎,5,0,普通攻击时目标周围敌人将受到100%伤害,pic_skill_wtf_19,,,,0,3,,,MonomersCgroup+100,1,1,,1,60000,,,1
+3230,1540,血神经,1,0,对敌人伤害的1%将转化为自己的生命,pic_skill_wtf_20,,,,0,3,,,AbsorbHP+1,1,1,,1,30000,,,1
+3231,1540,血神经,2,0,对敌人伤害的2%将转化为自己的生命,pic_skill_wtf_20,,,,0,3,,,AbsorbHP+2,1,1,,1,30000,,,1
+3232,1540,血神经,3,0,对敌人伤害的3%将转化为自己的生命,pic_skill_wtf_20,,,,0,3,,,AbsorbHP+3,1,1,,1,30000,,,1
+3233,1540,血神经,4,0,对敌人伤害的4%将转化为自己的生命,pic_skill_wtf_20,,,,0,3,,,AbsorbHP+4,1,1,,1,30000,,,1
+3234,1540,血神经,5,0,对敌人伤害的5%将转化为自己的生命,pic_skill_wtf_20,,,,0,3,,,AbsorbHP+5,1,1,,1,30000,,,1
+3235,32,戮魂,1,0,生命上限-5%，受到技能伤害1.1倍,pic_skill_dbf_24,,,,0,11,,,MaxHPR-0.05;ReceiveDamageSkillR+1.1,2,1,,1,10000,,,1
+3236,32,戮魂,2,0,生命上限-7%，受到技能伤害1.2倍,pic_skill_dbf_24,,,,0,11,,,MaxHPR-0.07;ReceiveDamageSkillR+1.2,2,1,,1,10000,,,1
+3237,32,戮魂,3,0,生命上限-10%，受到技能伤害1.3倍,pic_skill_dbf_24,,,,0,11,,,MaxHPR-0.10;ReceiveDamageSkillR+1.3,2,1,,1,10000,,,1
+3238,32,戮魂,4,0,生命上限-12%，受到技能伤害1.4倍,pic_skill_dbf_24,,,,0,11,,,MaxHPR-0.12;ReceiveDamageSkillR+1.4,2,1,,1,10000,,,1
+3239,32,戮魂,5,0,生命上限-15%，受到技能伤害1.5倍,pic_skill_dbf_24,,,,0,11,,,MaxHPR-0.15;ReceiveDamageSkillR+1.5,2,1,,1,10000,,,1
+3240,1542,太初玄黄倒,1,0,生命上限+5%,pic_skill_wtc_12,,,,0,16,,,MaxHPR+0.05,1,1,,1,600000,,,1
+3241,1542,太初玄黄倒,2,0,生命上限+6%,pic_skill_wtc_12,,,,0,16,,,MaxHPR+0.06,1,1,,1,600000,,,1
+3242,1542,太初玄黄倒,3,0,生命上限+7%,pic_skill_wtc_12,,,,0,16,,,MaxHPR+0.07,1,1,,1,600000,,,1
+3243,1542,太初玄黄倒,4,0,生命上限+8%,pic_skill_wtc_12,,,,0,16,,,MaxHPR+0.08,1,1,,1,600000,,,1
+3244,1542,太初玄黄倒,5,0,生命上限+9%,pic_skill_wtc_12,,,,0,16,,,MaxHPR+0.09,1,1,,1,600000,,,1
+3245,1542,太初玄黄倒,6,0,生命上限+10%,pic_skill_wtc_12,,,,0,16,,,MaxHPR+0.10,1,1,,1,600000,,,1
+3246,1542,太初玄黄倒,7,0,生命上限+11%,pic_skill_wtc_12,,,,0,16,,,MaxHPR+0.11,1,1,,1,600000,,,1
+3247,1542,太初玄黄倒,8,0,生命上限+12%,pic_skill_wtc_12,,,,0,16,,,MaxHPR+0.12,1,1,,1,600000,,,1
+3248,1542,太初玄黄倒,9,0,生命上限+13%,pic_skill_wtc_12,,,,0,16,,,MaxHPR+0.13,1,1,,1,600000,,,1
+3249,1542,太初玄黄倒,10,0,生命上限+15%,pic_skill_wtc_12,,,,0,16,,,MaxHPR+0.15,1,1,,1,600000,,,1
+3250,1543,巨灵神,1,0,增加物理攻击100，免疫有害状态,pic_skill_wtc_14,,,,0,3,,,UltimateChange+100;Hate+2000,1,1,,1,60000,,,1
+3251,1543,巨灵神,2,0,增加物理攻击150，免疫有害状态,pic_skill_wtc_14,,,,0,3,,,UltimateChange+150;Hate+3000,1,1,,1,60000,,,1
+3252,1543,巨灵神,3,0,增加物理攻击200，免疫有害状态,pic_skill_wtc_14,,,,0,3,,,UltimateChange+200;Hate+4000,1,1,,1,60000,,,1
+3253,1543,巨灵神,4,0,增加物理攻击250，免疫有害状态,pic_skill_wtc_14,,,,0,3,,,UltimateChange+250;Hate+5000,1,1,,1,60000,,,1
+3254,1543,巨灵神,5,0,增加物理攻击300，免疫有害状态,pic_skill_wtc_14,,,,0,3,,,UltimateChange+300;Hate+6000,1,1,,1,60000,,,1
+3255,1543,巨灵神,6,0,增加物理攻击350，免疫有害状态,pic_skill_wtc_14,,,,0,3,,,UltimateChange+350;Hate+7000,1,1,,1,60000,,,1
+3256,1543,巨灵神,7,0,增加物理攻击400，免疫有害状态,pic_skill_wtc_14,,,,0,3,,,UltimateChange+400;Hate+8000,1,1,,1,60000,,,1
+3257,1543,巨灵神,8,0,增加物理攻击450，免疫有害状态,pic_skill_wtc_14,,,,0,3,,,UltimateChange+450;Hate+9000,1,1,,1,60000,,,1
+3258,1543,巨灵神,9,0,增加物理攻击500，免疫有害状态,pic_skill_wtc_14,,,,0,3,,,UltimateChange+500;Hate+10000,1,1,,1,60000,,,1
+3259,1543,巨灵神,10,0,增加物理攻击600，免疫有害状态,pic_skill_wtc_14,,,,0,3,,,UltimateChange+600;Hate+11000,1,1,,1,60000,,,1
+3260,1544,东皇绝壁,1,0,伤害5%无效化,pic_skill_wtc_15,,skill_buf22,root,0,3,,,FireAb+0.05;WaterAb+0.05;PoisonAb+0.05;PhyAb+0.05,1,1,,1,10000,,,1
+3261,1544,东皇绝壁,2,0,伤害10%无效化,pic_skill_wtc_15,,skill_buf22,root,0,3,,,FireAb+0.1;WaterAb+0.1;PoisonAb+0.1;PhyAb+0.1,1,1,,1,10000,,,1
+3262,1544,东皇绝壁,3,0,伤害15%无效化,pic_skill_wtc_15,,skill_buf22,root,0,3,,,FireAb+0.15;WaterAb+0.15;PoisonAb+0.15;PhyAb+0.15,1,1,,1,10000,,,1
+3263,1544,东皇绝壁,4,0,伤害20%无效化,pic_skill_wtc_15,,skill_buf22,root,0,3,,,FireAb+0.2;WaterAb+0.2;PoisonAb+0.2;PhyAb+0.2,1,1,,1,10000,,,1
+3264,1544,东皇绝壁,5,0,伤害25%无效化,pic_skill_wtc_15,,skill_buf22,root,0,3,,,FireAb+0.25;WaterAb+0.25;PoisonAb+0.25;PhyAb+0.25,1,1,,1,10000,,,1
+3265,1544,东皇绝壁,6,0,伤害30%无效化,pic_skill_wtc_15,,skill_buf22,root,0,3,,,FireAb+0.3;WaterAb+0.3;PoisonAb+0.3;PhyAb+0.3,1,1,,1,10000,,,1
+3266,1544,东皇绝壁,7,0,伤害35%无效化,pic_skill_wtc_15,,skill_buf22,root,0,3,,,FireAb+0.35;WaterAb+0.35;PoisonAb+0.35;PhyAb+0.35,1,1,,1,10000,,,1
+3267,1544,东皇绝壁,8,0,伤害40%无效化,pic_skill_wtc_15,,skill_buf22,root,0,3,,,FireAb+0.4;WaterAb+0.4;PoisonAb+0.4;PhyAb+0.4,1,1,,1,10000,,,1
+3268,1544,东皇绝壁,9,0,伤害45%无效化,pic_skill_wtc_15,,skill_buf22,root,0,3,,,FireAb+0.45;WaterAb+0.45;PoisonAb+0.45;PhyAb+0.45,1,1,,1,10000,,,1
+3269,1544,东皇绝壁,10,0,伤害50%无效化,pic_skill_wtc_15,,skill_buf22,root,0,3,,,FireAb+0.5;WaterAb+0.5;PoisonAb+0.5;PhyAb+0.5,1,1,,1,10000,,,1
+3270,1545,崩龙逆鳞,1,0,伤害5%反弹给对方,pic_skill_wtc_19,,,,0,3,,,ReboundHurtR 5 1,1,1,,1,60000,,,1
+3271,1545,崩龙逆鳞,2,0,伤害10%反弹给对方,pic_skill_wtc_19,,,,0,3,,,ReboundHurtR 10 1,1,1,,1,60000,,,1
+3272,1545,崩龙逆鳞,3,0,伤害15%反弹给对方,pic_skill_wtc_19,,,,0,3,,,ReboundHurtR 15 1,1,1,,1,60000,,,1
+3273,1545,崩龙逆鳞,4,0,伤害20%反弹给对方,pic_skill_wtc_19,,,,0,3,,,ReboundHurtR 20 1,1,1,,1,60000,,,1
+3274,1545,崩龙逆鳞,5,0,伤害25%反弹给对方,pic_skill_wtc_19,,,,0,3,,,ReboundHurtR 25 1,1,1,,1,60000,,,1
+3275,9,减速,1,0,移动速度-5%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,1,,1,5000,,,1
+3276,9,减速,2,0,移动速度-10%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,1,,1,5000,,,1
+3277,9,减速,3,0,移动速度-15%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,1,,1,5000,,,1
+3278,9,减速,4,0,移动速度-20%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,1,,1,5000,,,1
+3279,9,减速,5,0,移动速度-25%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,1,,1,5000,,,1
+3280,1547,气吞寰宇,1,0,伤害1%转化为生命,pic_skill_wtc_21,,,,0,3,,,AbsorptionHpR+1,1,1,,1,60000,,,1
+3281,1547,气吞寰宇,2,0,伤害2%转化为生命,pic_skill_wtc_21,,,,0,3,,,AbsorptionHpR+2,1,1,,1,60000,,,1
+3282,1547,气吞寰宇,3,0,伤害3%转化为生命,pic_skill_wtc_21,,,,0,3,,,AbsorptionHpR+3,1,1,,1,60000,,,1
+3283,1547,气吞寰宇,4,0,伤害4%转化为生命,pic_skill_wtc_21,,,,0,3,,,AbsorptionHpR+4,1,1,,1,60000,,,1
+3284,1547,气吞寰宇,5,0,伤害5%转化为生命,pic_skill_wtc_21,,,,0,3,,,AbsorptionHpR+5,1,1,,1,60000,,,1
+3285,1548,天佑拂照,1,0,使靠近自己的队友伤害5%无效化,pic_skill_wtc_22,,,,1,16,,200,,1,1,,1,15000,AddEff 3260,,1
+3286,1548,天佑拂照,2,0,使靠近自己的队友伤害10%无效化,pic_skill_wtc_22,,,,1,16,,200,,1,1,,1,15000,AddEff 3261,,1
+3287,1548,天佑拂照,3,0,使靠近自己的队友伤害15%无效化,pic_skill_wtc_22,,,,1,16,,200,,1,1,,1,15000,AddEff 3262,,1
+3288,1548,天佑拂照,4,0,使靠近自己的队友伤害20%无效化,pic_skill_wtc_22,,,,1,16,,200,,1,1,,1,15000,AddEff 3263,,1
+3289,1548,天佑拂照,5,0,使靠近自己的队友伤害25%无效化,pic_skill_wtc_22,,,,1,16,,200,,1,1,,1,15000,AddEff 3264,,1
+3290,1549,熏檀净灵,1,0,驱散并免疫有害状态,pic_skill_mjq_15,,,,0,14,,,Immuno+2,0,1,,1,5000,,,1
+3291,1549,熏檀净灵,2,0,驱散并免疫有害状态,pic_skill_mjq_15,,,,0,14,,,Immuno+2,0,1,,1,7000,,,1
+3292,1549,熏檀净灵,3,0,驱散并免疫有害状态,pic_skill_mjq_15,,,,0,14,,,Immuno+2,0,1,,1,10000,,,1
+3293,1549,熏檀净灵,4,0,驱散并免疫有害状态,pic_skill_mjq_15,,,,0,14,,,Immuno+2,0,1,,1,12000,,,1
+3294,1549,熏檀净灵,5,0,驱散并免疫有害状态,pic_skill_mjq_15,,,,0,14,,,Immuno+2,0,1,,1,15000,,,1
+3295,1550,百无禁忌,1,0,增加有害状态抵抗率10%,pic_skill_mjq_16,,skill_buf27,root,0,16,,,StateResist+10,1,1,,1,300000,,,1
+3296,1550,百无禁忌,2,0,增加有害状态抵抗率12%,pic_skill_mjq_16,,skill_buf27,root,0,16,,,StateResist+12,1,1,,1,300000,,,1
+3297,1550,百无禁忌,3,0,增加有害状态抵抗率15%,pic_skill_mjq_16,,skill_buf27,root,0,16,,,StateResist+15,1,1,,1,300000,,,1
+3298,1550,百无禁忌,4,0,增加有害状态抵抗率17%,pic_skill_mjq_16,,skill_buf27,root,0,16,,,StateResist+17,1,1,,1,300000,,,1
+3299,1550,百无禁忌,5,0,增加有害状态抵抗率20%,pic_skill_mjq_16,,skill_buf27,root,0,16,,,StateResist+20,1,1,,1,300000,,,1
+3300,1551,祖灵诛天怒,1,0,生命上限+20%、生命恢复每2秒1%、物理攻击+20%、攻击速度+10%、会心一击+30%、闪避+5%，,pic_skill_mjq_17,,skill_buf28,root,0,3,,,MaxHPR+0.2;DamageMaxR+0.2;DamageMinR+0.2;SpeedAttackR+0.1;CriticalR+0.3;DodgeR+0.05,1,1,,15,2000,AddCutMaxHP+0.01,,1
+3301,1551,祖灵诛天怒,2,0,生命上限+20%、生命恢复每2秒1%、物理攻击+25%、攻击速度+15%、会心一击+30%、闪避+10%，,pic_skill_mjq_17,,skill_buf28,root,0,3,,,MaxHPR+0.2;DamageMaxR+0.25;DamageMinR+0.25;SpeedAttackR+0.15;CriticalR+0.3;DodgeR+0.10,1,1,,15,2000,AddCutMaxHP+0.01,,1
+3302,1551,祖灵诛天怒,3,0,生命上限+20%、生命恢复每2秒2%、物理攻击+30%、攻击速度+20%、会心一击+30%、闪避+15%，,pic_skill_mjq_17,,skill_buf28,root,0,3,,,MaxHPR+0.2;DamageMaxR+0.3;DamageMinR+0.3;SpeedAttackR+0.2;CriticalR+0.3;DodgeR+0.15,1,1,,15,2000,AddCutMaxHP+0.02,,1
+3303,1551,祖灵诛天怒,4,0,生命上限+20%、生命恢复每2秒2%、物理攻击+35%、攻击速度+25%、会心一击+30%、闪避+20%，,pic_skill_mjq_17,,skill_buf28,root,0,3,,,MaxHPR+0.2;DamageMaxR+0.35;DamageMinR+0.35;SpeedAttackR+0.25;CriticalR+0.3;DodgeR+0.2,1,1,,15,2000,AddCutMaxHP+0.02,,1
+3304,1551,祖灵诛天怒,5,0,生命上限+20%、生命恢复每2秒3%、物理攻击+40%、攻击速度+30%、会心一击+30%、闪避+25%，,pic_skill_mjq_17,,skill_buf28,root,0,3,,,MaxHPR+0.2;DamageMaxR+0.4;DamageMinR+0.4;SpeedAttackR+0.3;CriticalR+0.3;DodgeR+0.25,1,1,,15,2000,AddCutMaxHP+0.03,,1
+3305,1552,血咒种子,1,0,血咒伤害200潜伏10秒后爆发,pic_skill_mjq_19,,,,0,11,,,,2,1,,1,10000,,AddEff 3355,1
+3306,1552,血咒种子,2,0,血咒伤害350潜伏10秒后爆发,pic_skill_mjq_19,,,,0,11,,,,2,1,,1,10000,,AddEff 3356,1
+3307,1552,血咒种子,3,0,血咒伤害500潜伏10秒后爆发,pic_skill_mjq_19,,,,0,11,,,,2,1,,1,10000,,AddEff 3357,1
+3308,1552,血咒种子,4,0,血咒伤害650潜伏10秒后爆发,pic_skill_mjq_19,,,,0,11,,,,2,1,,1,10000,,AddEff 3358,1
+3309,1552,血咒种子,5,0,血咒伤害800潜伏10秒后爆发,pic_skill_mjq_19,,,,0,11,,,,2,1,,1,10000,,AddEff 3359,1
+3315,1554,庇佑,1,0,伤害减免10%,pic_skill_mjq_22,,,,0,16,,,FireAb+0.10;WaterAb+0.10;PoisonAb+0.10;PhyAb+0.10,1,1,,1,5000,,,1
+3316,1554,庇佑,2,0,伤害减免15%,pic_skill_mjq_22,,,,0,16,,,FireAb+0.15;WaterAb+0.15;PoisonAb+0.15;PhyAb+0.15,1,1,,1,5000,,,1
+3317,1554,庇佑,3,0,伤害减免20%,pic_skill_mjq_22,,,,0,16,,,FireAb+0.20;WaterAb+0.20;PoisonAb+0.20;PhyAb+0.20,1,1,,1,5000,,,1
+3318,1554,庇佑,4,0,伤害减免25%,pic_skill_mjq_22,,,,0,16,,,FireAb+0.25;WaterAb+0.25;PoisonAb+0.25;PhyAb+0.25,1,1,,1,5000,,,1
+3319,1554,庇佑,5,0,伤害减免30%,pic_skill_mjq_22,,,,0,16,,,FireAb+0.30;WaterAb+0.30;PoisonAb+0.30;PhyAb+0.30,1,1,,1,5000,,,1
+3320,1555,精魂夺舍,1,0,减少有害状态抵抗率15%,pic_skill_mjz_13,,,,0,11,,,StateResist-15,2,1,,1,60000,,,1
+3321,1555,精魂夺舍,2,0,减少有害状态抵抗率17%,pic_skill_mjz_13,,,,0,11,,,StateResist-17,2,1,,1,60000,,,1
+3322,1555,精魂夺舍,3,0,减少有害状态抵抗率20%,pic_skill_mjz_13,,,,0,11,,,StateResist-20,2,1,,1,60000,,,1
+3323,1555,精魂夺舍,4,0,减少有害状态抵抗率22%,pic_skill_mjz_13,,,,0,11,,,StateResist-22,2,1,,1,60000,,,1
+3324,1555,精魂夺舍,5,0,减少有害状态抵抗率25%,pic_skill_mjz_13,,,,0,11,,,StateResist-25,2,1,,1,60000,,,1
+3325,1556,紫华吞日,1,0,驱散并免疫有益状态,pic_skill_mjz_14,,,,0,11,,,Immuno+1,0,1,,1,3000,,,1
+3326,1556,紫华吞日,2,0,驱散并免疫有益状态,pic_skill_mjz_14,,,,0,11,,,Immuno+1,0,1,,1,5000,,,1
+3327,1556,紫华吞日,3,0,驱散并免疫有益状态,pic_skill_mjz_14,,,,0,11,,,Immuno+1,0,1,,1,7000,,,1
+3328,1556,紫华吞日,4,0,驱散并免疫有益状态,pic_skill_mjz_14,,,,0,11,,,Immuno+1,0,1,,1,10000,,,1
+3329,1556,紫华吞日,5,0,驱散并免疫有益状态,pic_skill_mjz_14,,,,0,11,,,Immuno+1,0,1,,1,15000,,,1
+3330,31,残废,1,0,物理攻击和元素攻击-5%、攻击速度-5%、命中率-5%,pic_skill_dbf_23,,,,0,11,,,DamageMaxR-0.05;DamageMinR-0.05;WaterDmR-0.05;FireDmR-0.05;PoisonDmR-0.05;SpeedAttackR-0.05;AttackRateR-0.05,2,1,,1,15000,,,1
+3331,31,残废,2,0,物理攻击和元素攻击-10%、攻击速度-10%、命中率-10%,pic_skill_dbf_23,,,,0,11,,,DamageMaxR-0.1;DamageMinR-0.1;WaterDmR-0.1;FireDmR-0.1;PoisonDmR-0.1;SpeedAttackR-0.1;AttackRateR-0.1,2,1,,1,15000,,,1
+3332,31,残废,3,0,物理攻击和元素攻击-15%、攻击速度-15%、命中率-15%,pic_skill_dbf_23,,,,0,11,,,DamageMaxR-0.15;DamageMinR-0.15;WaterDmR-0.15;FireDmR-0.15;PoisonDmR-0.15;SpeedAttackR-0.15;AttackRateR-0.15,2,1,,1,15000,,,1
+3333,31,残废,4,0,物理攻击和元素攻击-20%、攻击速度-20%、命中率-20%,pic_skill_dbf_23,,,,0,11,,,DamageMaxR-0.2;DamageMinR-0.2;WaterDmR-0.2;FireDmR-0.2;PoisonDmR-0.2;SpeedAttackR-0.2;AttackRateR-0.2,2,1,,1,15000,,,1
+3334,31,残废,5,0,物理攻击和元素攻击-25%、攻击速度-25%、命中率-25%,pic_skill_dbf_23,,,,0,11,,,DamageMaxR-0.25;DamageMinR-0.25;WaterDmR-0.25;FireDmR-0.25;PoisonDmR-0.25;SpeedAttackR-0.25;AttackRateR-0.25,2,1,,1,15000,,,1
+3335,32,戮魂,1,0,受到技能伤害1.2倍,pic_skill_mjz_18,,,,0,11,,,ReceiveDamageSkillR+1.2,2,1,,1,15000,,,1
+3336,32,戮魂,2,0,受到技能伤害1.4倍,pic_skill_mjz_18,,,,0,11,,,ReceiveDamageSkillR+1.4,2,1,,1,15000,,,1
+3337,32,戮魂,3,0,受到技能伤害1.6倍,pic_skill_mjz_18,,,,0,11,,,ReceiveDamageSkillR+1.6,2,1,,1,15000,,,1
+3338,32,戮魂,4,0,受到技能伤害1.8倍,pic_skill_mjz_18,,,,0,11,,,ReceiveDamageSkillR+1.8,2,1,,1,15000,,,1
+3339,32,戮魂,5,0,受到技能伤害2.0倍,pic_skill_mjz_18,,,,0,11,,,ReceiveDamageSkillR+2.0,2,1,,1,15000,,,1
+3340,9,减速,1,0,使靠近自己的敌人移动速度-5%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.10,2,1,,1,1000,,,1
+3341,9,减速,2,0,使靠近自己的敌人移动速度-10%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.12,2,1,,1,1000,,,1
+3342,9,减速,3,0,使靠近自己的敌人移动速度-15%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.15,2,1,,1,1000,,,1
+3343,9,减速,4,0,使靠近自己的敌人移动速度-20%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.17,2,1,,1,1000,,,1
+3344,9,减速,5,0,使靠近自己的敌人移动速度-25%,pic_skill_dbf_04,,skill_debuf3,root,0,11,,,SpeedMoveR-0.20,2,1,,1,1000,,,1
+3345,21,灼烧,1,0,灼烧生命-50/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,1,1000,DeBufFire+50,,1
+3346,21,灼烧,2,0,灼烧生命-100/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,1,1000,DeBufFire+100,,1
+3347,21,灼烧,3,0,灼烧生命-150/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,1,1000,DeBufFire+150,,1
+3348,21,灼烧,4,0,灼烧生命-200/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,1,1000,DeBufFire+200,,1
+3349,21,灼烧,5,0,灼烧生命-250/2秒,pic_skill_dbf_01,,skill_debuf8,Bone100,0,11,,,,2,1,,1,1000,DeBufFire+250,,1
+3350,28,弱火,1,0,火防御-10%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.10,2,1,,1,1000,,,1
+3351,28,弱火,2,0,火防御-15%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.15,2,1,,1,1000,,,1
+3352,28,弱火,3,0,火防御-20%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.20,2,1,,1,1000,,,1
+3353,28,弱火,4,0,火防御-25%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.25,2,1,,1,1000,,,1
+3354,28,弱火,5,0,火防御-30%,pic_skill_dbf_18,,,,0,11,,,FireArR-0.30,2,1,,1,1000,,,1
+3355,1557,血咒伤害,1,0,血咒伤害200,pic_skill_dbf_08,,skill_debuf12,Bone100,0,11,,,,2,1,,1,1000,HP -200 1,,1
+3356,1557,血咒伤害,2,0,血咒伤害350,pic_skill_dbf_08,,skill_debuf12,Bone100,0,11,,,,2,1,,1,1000,HP -350 1,,1
+3357,1557,血咒伤害,3,0,血咒伤害500,pic_skill_dbf_08,,skill_debuf12,Bone100,0,11,,,,2,1,,1,1000,HP -500 1,,1
+3358,1557,血咒伤害,4,0,血咒伤害650,pic_skill_dbf_08,,skill_debuf12,Bone100,0,11,,,,2,1,,1,1000,HP -600 1,,1
+3359,1557,血咒伤害,5,0,血咒伤害800,pic_skill_dbf_08,,skill_debuf12,Bone100,0,11,,,,2,1,,1,1000,HP -800 1,,1
+3360,16,迟钝,1,0,迟钝移动和攻击速度-5%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedMoveR-0.05;SpeedAttackR-0.50,2,0,,1,10000,,,1
+3361,16,迟钝,1,0,迟钝移动和攻击速度-10%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedMoveR-0.10;SpeedAttackR-0.10,2,0,,1,10000,,,1
+3362,16,迟钝,1,0,迟钝移动和攻击速度-15%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedMoveR-0.15;SpeedAttackR-0.15,2,0,,1,10000,,,1
+3363,16,迟钝,1,0,迟钝移动和攻击速度-20%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedMoveR-0.20;SpeedAttackR-0.20,2,0,,1,10000,,,1
+3364,16,迟钝,1,0,迟钝移动和攻击速度-25%,pic_skill_dbf_03,,skill_debuf6,root,0,11,,,SpeedMoveR-0.25;SpeedAttackR-0.25,2,0,,1,10000,,,1
+10000,10000,区域减速,1,0,使靠近自己的敌人移动速度-30%,pic_skill_dbf_04,,skill_debuf6,root,0,27,,,SpeedMoveR-0.30,2,1,,1,86400000,,,1
+10001,10001,区域减血,1,0,使靠近自己的敌人生命-1%/5秒,pic_skill_mjz_22,,skill_debuf8,Bone100,0,27,,,,2,1,,720,5000,AddCutMaxHP-0.01,,1
+10002,10002,天眼术光环,1,0,破除靠近自己范围内的隐身和遁地效果,pic_skill_ty_02,,,,1,27,,500,,0,1,,0,2000,AddEff 10003,,1
+10003,10003,天眼术,1,0,破除隐身和遁地,pic_skill_dbf_25,,,,0,,,,,0,1,,1,3000,,,1
+10004,10004,保护时间,1,0,在时间内处于PK保护，无法互相PK,pic_nopk,,,,0,3,,,,0,1,,1,1000,,,1
+10101,1700,幽鬼附体,1,0,根据融阴等级大幅度提升人物所有能力,pic_skill_pet_3,,skill_buf24,root,0,26,,,,1,1,,0,600000,,,1

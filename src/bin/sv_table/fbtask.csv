@@ -1,0 +1,296 @@
+ID,名字,所属副本,出现难度,任务难度,描述1,完成要求1,奖励1,描述2,完成要求2,奖励2,描述3,完成要求3,奖励3,描述4,完成要求4,奖励4,描述5,完成要求5,奖励5
+1,缉拿方相,1,0,2,task/shang_fb001/shang_fb001_07.html,"fbitem 687 1
+ifree 1","lvlexpsm 20 0.6
+item 431 1",task/shang_fb001/shang_fb001_07.html,"fbitem 687 1
+ifree 1
+sreward 7 8 9","lvlexpsm 25 0.25
+sreward 7 8 9",task/shang_fb001/shang_fb001_07.html,"fbitem 687 1
+ifree 1","lvlexpsm 30 0.2
+item 433 1",task/shang_fb001/shang_fb001_07.html,fbitem 687 1,lvlexpsm 40 0.1,task/shang_fb001/shang_fb001_07.html,fbitem 687 1,lvlexpsm 50 0.06
+2,缉拿方弼,1,0,2,task/shang_fb001/shang_fb001_06.html,"fbitem 686 1
+ifree 1","lvlexpsm 20 0.6
+item 430 1",task/shang_fb001/shang_fb001_06.html,"fbitem 686 1
+ifree 1
+sreward 10 11 12 13","lvlexpsm 25 0.25
+sreward 10 11 12 13",task/shang_fb001/shang_fb001_06.html,"fbitem 686 1
+ifree 1","lvlexpsm 30 0.2
+item 432 1",task/shang_fb001/shang_fb001_06.html,fbitem 686 1,lvlexpsm 40 0.1,task/shang_fb001/shang_fb001_06.html,fbitem 686 1,lvlexpsm 50 0.06
+3,夺取冀州大印,1,0,2,task/shang_fb001/shang_fb001_04.html,"fbitem 678 1
+ifree 1
+sreward 1 2 3","lvlexpsm 20 0.7
+sreward 1 2 3",task/shang_fb001/shang_fb001_04.html,"fbitem 678 1
+ifree 1
+sreward 14 15 16","lvlexpsm 25 0.3
+sreward 14 15 16",task/shang_fb001/shang_fb001_04.html,"fbitem 678 1
+ifree 1
+sreward 17 18 19","lvlexpsm 30 0.25
+sreward 17 18 19",task/shang_fb001/shang_fb001_04.html,"fbitem 678 1
+ifree 1
+sreward 20 21 22","lvlexpsm 40 0.125
+sreward 20 21 22",task/shang_fb001/shang_fb001_04.html,"fbitem 678 1
+ifree 1
+sreward 23 24 25","lvlexpsm 50 0.07
+sreward 23 24 25"
+4,突袭冀州大营,1,0,1,task/shang_fb001/shang_fb001_03.html,fbitem 679 1,"lvlexpsm 20 0.5
+gold 20000",task/shang_fb001/shang_fb001_03.html,"fbitem 679 1
+ifree 1
+sreward 4 5 6","lvlexpsm 25 0.2
+sreward 4 5 6",task/shang_fb001/shang_fb001_03.html,fbitem 679 1,lvlexpsm 30 0.15,task/shang_fb001/shang_fb001_03.html,fbitem 679 1,lvlexpsm 40 0.075,task/shang_fb001/shang_fb001_03.html,fbitem 679 1,lvlexpsm 50 0.05
+5,刺探冀州军情,1,0,0,task/shang_fb001/shang_fb001_02.html,"fbitem 688 1
+fbitem 689 1
+fbitem 690 1","lvlexpsm 20 0.3
+gold 10000",task/shang_fb001/shang_fb001_02.html,"fbitem 688 1
+fbitem 689 1
+fbitem 690 1",lvlexpsm 25 0.1,task/shang_fb001/shang_fb001_02.html,"fbitem 688 1
+fbitem 689 1
+fbitem 690 1","lvlexpsm 30 0.1
+",task/shang_fb001/shang_fb001_02.html,"fbitem 688 1
+fbitem 689 1
+fbitem 690 1",lvlexpsm 40 0.05,task/shang_fb001/shang_fb001_02.html,"fbitem 688 1
+fbitem 689 1
+fbitem 690 1",lvlexpsm 50 0.03
+6,督造炮烙,1,0,0,task/shang_fb001/shang_fb001_05.html,fbitem 682 10,"lvlexpsm 20 0.3
+gold 10000",task/shang_fb001/shang_fb001_05.html,fbitem 682 10,lvlexpsm 25 0.1,task/shang_fb001/shang_fb001_05.html,fbitem 682 10,lvlexpsm 30 0.1,task/shang_fb001/shang_fb001_05.html,fbitem 682 10,lvlexpsm 40 0.05,task/shang_fb001/shang_fb001_05.html,fbitem 682 10,lvlexpsm 50 0.03
+7,缉拿晁雷,2,0,2,task/zhou_fb001/zhou_fb001_07.html,"fbitem 685 1
+ifree 1","lvlexpsm 20 0.6
+item 431 1",task/zhou_fb001/zhou_fb001_07.html,"fbitem 685 1
+ifree 1
+sreward 32 33 34","lvlexpsm 25 0.25
+sreward 32 33 34",task/zhou_fb001/zhou_fb001_07.html,"fbitem 685 1
+ifree 1","lvlexpsm 30 0.2
+item 433 1",task/zhou_fb001/zhou_fb001_07.html,fbitem 685 1,lvlexpsm 40 0.1,task/zhou_fb001/zhou_fb001_07.html,fbitem 685 1,lvlexpsm 50 0.06
+8,缉拿晁田,2,0,2,task/zhou_fb001/zhou_fb001_06.html,"fbitem 684 1
+ifree 1","lvlexpsm 20 0.6
+item 430 1",task/zhou_fb001/zhou_fb001_06.html,"fbitem 684 1
+ifree 1
+sreward 35 36 37 38","lvlexpsm 25 0.25
+sreward 35 36 37 38",task/zhou_fb001/zhou_fb001_06.html,"fbitem 684 1
+ifree 1","lvlexpsm 30 0.2
+item 432 1",task/zhou_fb001/zhou_fb001_06.html,fbitem 684 1,lvlexpsm 40 0.1,task/zhou_fb001/zhou_fb001_06.html,fbitem 684 1,lvlexpsm 50 0.06
+9,夺取崇城大印,2,0,2,task/zhou_fb001/zhou_fb001_04.html,"fbitem 680 1
+ifree 1
+sreward 26 27 28","lvlexpsm 20 0.7
+sreward 26 27 28",task/zhou_fb001/zhou_fb001_04.html,"fbitem 680 1
+ifree 1
+sreward 39 40 41","lvlexpsm 25 0.3
+sreward 39 40 41",task/zhou_fb001/zhou_fb001_04.html,"fbitem 680 1
+ifree 1
+sreward 42 43 44","lvlexpsm 30 0.25
+sreward 42 43 44",task/zhou_fb001/zhou_fb001_04.html,"fbitem 680 1
+ifree 1
+sreward 45 46 47","lvlexpsm 40 0.125
+sreward 45 46 47",task/zhou_fb001/zhou_fb001_04.html,"fbitem 680 1
+ifree 1
+sreward 48 49 50","lvlexpsm 50 0.07
+sreward 48 49 50"
+10,突袭崇城大营,2,0,1,task/zhou_fb001/zhou_fb001_03.html,fbitem 681 1,"lvlexpsm 20 0.5
+gold 20000",task/zhou_fb001/zhou_fb001_03.html,"fbitem 681 1
+ifree 1
+sreward 29 30 31","lvlexpsm 25 0.2
+sreward 29 30 31",task/zhou_fb001/zhou_fb001_03.html,fbitem 681 1,lvlexpsm 30 0.15,task/zhou_fb001/zhou_fb001_03.html,fbitem 681 1,lvlexpsm 40 0.075,task/zhou_fb001/zhou_fb001_03.html,fbitem 681 1,lvlexpsm 50 0.05
+11,刺探崇城军情,2,0,0,task/zhou_fb001/zhou_fb001_02.html,"fbitem 688 1
+fbitem 689 1
+fbitem 690 1","lvlexpsm 20 0.3
+gold 10000",task/zhou_fb001/zhou_fb001_02.html,"fbitem 688 1
+fbitem 689 1
+fbitem 690 1",lvlexpsm 25 0.1,task/zhou_fb001/zhou_fb001_02.html,"fbitem 688 1
+fbitem 689 1
+fbitem 690 1","lvlexpsm 30 0.1
+",task/zhou_fb001/zhou_fb001_02.html,"fbitem 688 1
+fbitem 689 1
+fbitem 690 1",lvlexpsm 40 0.05,task/zhou_fb001/zhou_fb001_02.html,"fbitem 688 1
+fbitem 689 1
+fbitem 690 1",lvlexpsm 50 0.03
+12,修建灵台,2,0,0,task/zhou_fb001/zhou_fb001_05.html,fbitem 683 10,"lvlexpsm 20 0.3
+gold 10000",task/zhou_fb001/zhou_fb001_05.html,fbitem 683 10,lvlexpsm 25 0.1,task/zhou_fb001/zhou_fb001_05.html,fbitem 683 10,lvlexpsm 30 0.1,task/zhou_fb001/zhou_fb001_05.html,fbitem 683 10,lvlexpsm 40 0.05,task/zhou_fb001/zhou_fb001_05.html,fbitem 683 10,lvlexpsm 50 0.03
+13,报仇雪恨,3,0,2,task/shang_fb002/shang_fb002_08.html,"fbitem 1023 1
+ifree 1","lvlexpsm 30 0.4
+item 431 1",task/shang_fb002/shang_fb002_08.html,"fbitem 1023 1
+ifree 1","lvlexpsm 40 0.20
+item 432 1",task/shang_fb002/shang_fb002_08.html,"fbitem 1023 1
+ifree 1","lvlexpsm 50 0.12
+item 422 1",task/shang_fb002/shang_fb002_08.html,"fbitem 1023 1
+ifree 1
+sreward 54 55 56","lvlexpsm 60 0.08
+sreward 54 55 56",task/shang_fb002/shang_fb002_08.html,"fbitem 1023 1
+ifree 1
+sreward 63 64 65","lvlexpsm 70 0.056
+sreward 63 64 65"
+14,丧友之痛,3,0,2,task/shang_fb002/shang_fb002_07.html,"fbitem 1022 1
+ifree 1","lvlexpsm 30 0.4
+item 430 1",task/shang_fb002/shang_fb002_07.html,"fbitem 1022 1
+ifree 1","lvlexpsm 40 0.20
+item 433 1",task/shang_fb002/shang_fb002_07.html,"fbitem 1022 1
+ifree 1","lvlexpsm 50 0.12
+item 423 1",task/shang_fb002/shang_fb002_07.html,"fbitem 1022 1
+ifree 1
+sreward 57 58 59","lvlexpsm 60 0.08
+sreward 57 58 59",task/shang_fb002/shang_fb002_07.html,"fbitem 1022 1
+ifree 1
+sreward 66 67 68","lvlexpsm 70 0.056
+sreward 66 67 68"
+15,暗取箭书,3,0,1,task/shang_fb002/shang_fb002_06.html,"fbitem 1019 1
+fbitem 1020 1",lvlexpsm 30 0.1,task/shang_fb002/shang_fb002_06.html,"fbitem 1019 1
+fbitem 1020 1",lvlexpsm 40 0.05,task/shang_fb002/shang_fb002_06.html,"fbitem 1019 1
+fbitem 1020 1",lvlexpsm 50 0.03,task/shang_fb002/shang_fb002_06.html,"fbitem 1019 1
+fbitem 1020 1",lvlexpsm 60 0.02,task/shang_fb002/shang_fb002_06.html,"fbitem 1019 1
+fbitem 1020 1",lvlexpsm 70 0.014
+16,阵心大战,3,0,2,task/shang_fb002/shang_fb002_05.html,"fbitem 1024 1
+fbitem 1025 1
+fbitem 1026 1
+ifree 1","lvlexpsm 30 0.9
+item 703 1",task/shang_fb002/shang_fb002_05.html,"fbitem 1024 1
+fbitem 1025 1
+fbitem 1026 1
+ifree 1
+sreward 51 52 53","lvlexpsm 40 0.45
+sreward 51 52 53",task/shang_fb002/shang_fb002_05.html,"fbitem 1024 1
+fbitem 1025 1
+fbitem 1026 1
+ifree 1","lvlexpsm 50 0.27
+item 730 1",task/shang_fb002/shang_fb002_05.html,"fbitem 1024 1
+fbitem 1025 1
+fbitem 1026 1
+ifree 1
+sreward 60 61 62","lvlexpsm 60 0.18
+sreward 60 61 62",task/shang_fb002/shang_fb002_05.html,"fbitem 1024 1
+fbitem 1025 1
+fbitem 1026 1
+ifree 1
+sreward 69 70 71","lvlexpsm 70 0.126
+sreward 69 70 71"
+17,再次封印,3,0,0,task/shang_fb002/shang_fb002_04.html,fbitem 1016 12,lvlexpsm 30 0.05,task/shang_fb002/shang_fb002_04.html,fbitem 1016 12,lvlexpsm 40 0.025,task/shang_fb002/shang_fb002_04.html,fbitem 1016 12,lvlexpsm 50 0.015,task/shang_fb002/shang_fb002_04.html,fbitem 1016 12,lvlexpsm 60 0.01,task/shang_fb002/shang_fb002_04.html,fbitem 1016 12,lvlexpsm 70 0.007
+18,解除禁制,3,0,0,task/shang_fb002/shang_fb002_03.html,"fbitem 1004 1
+fbitem 1028 1
+fbitem 1029 1
+fbitem 1030 1
+fbitem 1031 1",lvlexpsm 30 0.05,task/shang_fb002/shang_fb002_03.html,"fbitem 1004 1
+fbitem 1028 1
+fbitem 1029 1
+fbitem 1030 1
+fbitem 1031 1",lvlexpsm 40 0.025,task/shang_fb002/shang_fb002_03.html,"fbitem 1004 1
+fbitem 1028 1
+fbitem 1029 1
+fbitem 1030 1
+fbitem 1031 1",lvlexpsm 50 0.015,task/shang_fb002/shang_fb002_03.html,"fbitem 1004 1
+fbitem 1028 1
+fbitem 1029 1
+fbitem 1030 1
+fbitem 1031 1",lvlexpsm 60 0.01,task/shang_fb002/shang_fb002_03.html,"fbitem 1004 1
+fbitem 1028 1
+fbitem 1029 1
+fbitem 1030 1
+fbitem 1031 1",lvlexpsm 70 0.007
+19,夺回阵门,3,0,1,task/shang_fb002/shang_fb002_02.html,"fbitem 1017 1
+fbitem 1018 1
+fbitem 1021 1
+fbitem 1027 1",lvlexpsm 30 0.3,task/shang_fb002/shang_fb002_02.html,"fbitem 1017 1
+fbitem 1018 1
+fbitem 1021 1
+fbitem 1027 1",lvlexpsm 40 0.15,task/shang_fb002/shang_fb002_02.html,"fbitem 1017 1
+fbitem 1018 1
+fbitem 1021 1
+fbitem 1027 1",lvlexpsm 50 0.09,task/shang_fb002/shang_fb002_02.html,"fbitem 1017 1
+fbitem 1018 1
+fbitem 1021 1
+fbitem 1027 1",lvlexpsm 60 0.06,task/shang_fb002/shang_fb002_02.html,"fbitem 1017 1
+fbitem 1018 1
+fbitem 1021 1
+fbitem 1027 1",lvlexpsm 70 0.042
+20,咎由自取,4,0,2,task/zhou_fb002/zhou_fb002_08.html,"fbitem 1013 1
+fbitem 1014 1
+fbitem 1015 1
+ifree 1","lvlexpsm 30 0.9
+item 703 1",task/zhou_fb002/zhou_fb002_08.html,"fbitem 1013 1
+fbitem 1014 1
+fbitem 1015 1
+ifree 1
+sreward 72 73 74","lvlexpsm 40 0.45
+sreward 72 73 74",task/zhou_fb002/zhou_fb002_08.html,"fbitem 1013 1
+fbitem 1014 1
+fbitem 1015 1
+ifree 1","lvlexpsm 50 0.27
+item 730 1",task/zhou_fb002/zhou_fb002_08.html,"fbitem 1013 1
+fbitem 1014 1
+fbitem 1015 1
+ifree 1
+sreward 81 82 83","lvlexpsm 60 0.18
+sreward 81 82 83",task/zhou_fb002/zhou_fb002_08.html,"fbitem 1013 1
+fbitem 1014 1
+fbitem 1015 1
+ifree 1
+sreward 90 91 92","lvlexpsm 70 0.126
+sreward 90 91 92"
+21,顺天取义,4,0,2,task/zhou_fb002/zhou_fb002_07.html,"fbitem 1011 1
+ifree 1","lvlexpsm 30 0.4
+item 430 1",task/zhou_fb002/zhou_fb002_07.html,"fbitem 1011 1
+ifree 1","lvlexpsm 40 0.20
+item 433 1",task/zhou_fb002/zhou_fb002_07.html,"fbitem 1011 1
+ifree 1","lvlexpsm 50 0.12
+item 423 1",task/zhou_fb002/zhou_fb002_07.html,"fbitem 1011 1
+ifree 1
+sreward 78 79 80","lvlexpsm 60 0.08
+sreward 78 79 80",task/zhou_fb002/zhou_fb002_07.html,"fbitem 1011 1
+ifree 1
+sreward 84 85 86","lvlexpsm 70 0.056
+sreward 84 85 86"
+22,难逃劫数,4,0,0,task/zhou_fb002/zhou_fb002_06.html,fbitem 1003 12,lvlexpsm 30 0.05,task/zhou_fb002/zhou_fb002_06.html,fbitem 1003 12,lvlexpsm 40 0.025,task/zhou_fb002/zhou_fb002_06.html,fbitem 1003 12,lvlexpsm 50 0.015,task/zhou_fb002/zhou_fb002_06.html,fbitem 1003 12,lvlexpsm 60 0.01,task/zhou_fb002/zhou_fb002_06.html,fbitem 1003 12,lvlexpsm 70 0.007
+23,夜劫商营,4,0,2,task/zhou_fb002/zhou_fb002_05.html,"fbitem 1012 1
+ifree 1","lvlexpsm 30 0.4
+item 431 1",task/zhou_fb002/zhou_fb002_05.html,"fbitem 1012 1
+ifree 1","lvlexpsm 40 0.20
+item 432 1",task/zhou_fb002/zhou_fb002_05.html,"fbitem 1012 1
+ifree 1","lvlexpsm 50 0.12
+item 422 1",task/zhou_fb002/zhou_fb002_05.html,"fbitem 1012 1
+ifree 1
+sreward 75 76 77","lvlexpsm 60 0.08
+sreward 75 76 77",task/zhou_fb002/zhou_fb002_05.html,"fbitem 1012 1
+ifree 1
+sreward 87 88 89","lvlexpsm 70 0.056
+sreward 87 88 89"
+24,保护箭书,4,0,1,task/zhou_fb002/zhou_fb002_04.html,"fbitem 1009 1
+fbitem 1010 1",lvlexpsm 30 0.1,task/zhou_fb002/zhou_fb002_04.html,"fbitem 1009 1
+fbitem 1010 1",lvlexpsm 40 0.05,task/zhou_fb002/zhou_fb002_04.html,"fbitem 1009 1
+fbitem 1010 1",lvlexpsm 50 0.03,task/zhou_fb002/zhou_fb002_04.html,"fbitem 1009 1
+fbitem 1010 1",lvlexpsm 60 0.02,task/zhou_fb002/zhou_fb002_04.html,"fbitem 1009 1
+fbitem 1010 1",lvlexpsm 70 0.014
+25,解除禁制,4,0,0,task/zhou_fb002/zhou_fb002_03.html,"fbitem 1004 1
+fbitem 1028 1
+fbitem 1029 1
+fbitem 1030 1
+fbitem 1031 1",lvlexpsm 30 0.05,task/zhou_fb002/zhou_fb002_03.html,"fbitem 1004 1
+fbitem 1028 1
+fbitem 1029 1
+fbitem 1030 1
+fbitem 1031 1",lvlexpsm 40 0.025,task/zhou_fb002/zhou_fb002_03.html,"fbitem 1004 1
+fbitem 1028 1
+fbitem 1029 1
+fbitem 1030 1
+fbitem 1031 1",lvlexpsm 50 0.015,task/zhou_fb002/zhou_fb002_03.html,"fbitem 1004 1
+fbitem 1028 1
+fbitem 1029 1
+fbitem 1030 1
+fbitem 1031 1",lvlexpsm 60 0.01,task/zhou_fb002/zhou_fb002_03.html,"fbitem 1004 1
+fbitem 1028 1
+fbitem 1029 1
+fbitem 1030 1
+fbitem 1031 1",lvlexpsm 70 0.007
+26,攻破阵门,4,0,1,task/zhou_fb002/zhou_fb002_02.html,"fbitem 1005 1
+fbitem 1006 1
+fbitem 1007 1
+fbitem 1008 1",lvlexpsm 30 0.3,task/zhou_fb002/zhou_fb002_02.html,"fbitem 1005 1
+fbitem 1006 1
+fbitem 1007 1
+fbitem 1008 1",lvlexpsm 40 0.15,task/zhou_fb002/zhou_fb002_02.html,"fbitem 1005 1
+fbitem 1006 1
+fbitem 1007 1
+fbitem 1008 1",lvlexpsm 50 0.09,task/zhou_fb002/zhou_fb002_02.html,"fbitem 1005 1
+fbitem 1006 1
+fbitem 1007 1
+fbitem 1008 1",lvlexpsm 60 0.06,task/zhou_fb002/zhou_fb002_02.html,"fbitem 1005 1
+fbitem 1006 1
+fbitem 1007 1
+fbitem 1008 1",lvlexpsm 70 0.042
+
+
+,,,,,,,,,,,,,,,,,,,

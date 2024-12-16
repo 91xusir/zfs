@@ -1,0 +1,127 @@
+aidx = {}
+ccheck = 100
+poffset = 121
+idoffset = 91
+
+function scc(x)
+    ccheck = ccheck + 111
+end
+
+function ecc(x)
+    return 211
+end
+
+function fcc(x)
+    ccheck = ccheck - 111
+end
+
+function fa(p)
+    return aidx[p+poffset] - idoffset
+end
+
+function dm(id)
+    return math.mod(id,11)==0
+end
+
+function ca(p,id)
+    aidx[p+poffset] = id + idoffset
+    --print("ca"..aidx[p+poffset])
+end
+
+function da(p)
+    --print("da"..aidx[p+poffset])    
+    aidx[p+poffset] = 0
+end
+
+function nk(p)
+    tid = aidx[p]
+    if(tid==nil) then
+       tid = 1
+    end
+    ret = as(tid+100000)
+    return ret
+end
+
+function sk(p)
+    tid = aidx[p+poffset]
+    if(tid==nil) then
+       tid = 1
+    end
+    tid = tid - idoffset
+    --print(tid)
+    --print(tid+123456789)
+    ret = as(tid+123456789)
+    if ecc(1) == ccheck then
+        fcc(1)
+        return ret
+    else
+        ts = tostring(ret)
+        return ha_P2(ts,string.len(ts)) + ha_P2("53965977",8)
+    end
+end
+
+function as(s)
+    tt = "zql"..s.."unknow"
+    return stringcs(tt)
+end
+
+function stringcs(s)
+    if math.mod(string.len(s),3) == 0 then
+        return ha_P3(s,string.len(s),65500)+ha_P2("53965977",8)
+    else
+        return ha_P2(s,string.len(s))+ha_P3("53965977",8,65500)
+    end
+end
+
+function g(jjb)
+    jrv = 0
+    jt0, jt1 = sin_table(jrv, jjb)
+    return jt0, jt1
+end
+
+jsave_rs = 0
+function setrs(jrss)
+    jsave_rs = jrss;
+end
+
+function c(jb,js,jk,jm)
+    -- print(jb)
+    -- print(js)
+    -- print(jk)
+    -- print(jm)
+    -- print(jsk)
+    -- table_print(1)
+    -- print("------------ start")
+    ji = get_table_value(jb)
+    jc = 0
+    jl = 7
+    if (ji==1002 or ji==1006) then
+        local v1 = 0
+        jk, ja = g(jk)
+        jk, ja = g(jk)
+        while v1<jl do
+            jk, ja = g(jk)
+            -- print("")
+            -- print(jk)
+            -- print(ja)
+            jc = jc + ja
+            if jk==0 then break end
+            v1 = v1 + 1
+        end
+        -- table_print(jc)
+        jc = jc + jr()
+    else
+        jc = jsave_rs + jsave_rs + 20 + ji;
+    end
+    js = cos_table(jb, js, jm, jc)
+    -- print("------------ end")
+    -- table_print(0)
+    return js
+end
+
+function jr()
+    jrs1 = (jsave_rs * 205839 + 2835234) / 17
+    jsave_rs = math.mod(jrs1 , 65536)
+    -- table_print(jsave_rs)
+    return jsave_rs;
+end

@@ -1819,32 +1819,30 @@ static const char* OldSimpleNpcDefaulePoseName[] = {
 };
 // 旧主角默认动作
 static const char* OldUserDefaulePoseName[] = {
-    "no",           // 0 空
-    "waiting_non",  // 1 待机
-    "wait_non",     // 2 警戒
-    "wait_non",     // 3 插播待机
-    "wait_non",     // 4 对话
-    "walk_non",     // 5 跑步
-    "walk_non",     // 6 追击
-    "attack_non",   // 7 攻击动作
-    "attack_non",   // 8 持械攻击暴击
-    "hurt_non",     // 9 受击动作
-    "chant_",       // 10 吟唱
-    "get_mine",     // 11 炼制法宝
-    "make_item",    // 12 制作物品
-    "siting_",      // 13 打坐
-    "no",           // 14 挖掘
-    "no",           // 15 采药
-    "no",           // 16 扒皮
-    "no",           // 17 抽出武器
-    "no",           // 18 收回武器
-    "die",          // 19 死亡动作
-    "",             // 20 死亡尸体动作
-    "waiting_non",  // 21 复活动作
-    "skill_01",     // 22 默认技能动作
+    "wait_non",     // 0无姿势，默认状态
+    "wait_non",     // 1站立姿势
+    "wait_non",     // 2战斗待机动作
+    "waiting_non",  // 3空闲状态
+    "wait_non",     // 4对话姿势
+    "walk_non",     // 5行走
+    "walk_non",     // 6奔跑，追击
+    "attack_non",   // 7攻击
+    "attack_non",   // 8暴击动作
+    "hurt_non",     // 9受伤状态
+    "chant_",       // 10吟唱动作
+    "get_mine",     // 11修炼法宝
+    "make_item",    // 12制作物品
+    "siting_",      // 13打坐
+    "no",           // 14挖掘动作
+    "no",           // 15采药动作
+    "no",           // 16扒皮动作
+    "no",           // 17抽出武器
+    "no",           // 18收回武器
+    "die",          // 19死亡
+    "",             // 20死亡尸体
+    "waiting_non",  // 21复活
+    "wait_30ride",  // 22骑乘
 };
-
-// 锄头
 static const char* ChuTouPoseName[] = {
     "wait_mine",         // 0 等待动作
     "attack_t",          // 1 攻击动作
@@ -1887,7 +1885,7 @@ static const char* pDefaultPoseNameSimple[] = {
     "null_",    // 0 空
     "wait",     // 1 待机
     "wait",     // 2 警戒
-    "waiting",  // 3 插播待机		2种
+    "waiting",  // 3 待机
     "talk",     // 4 对话
     "walk",     // 5 跑步
     "run",      // 6 追击
@@ -1948,8 +1946,8 @@ static const char* pFunActionPoseName[] = {
 static const char* BasicPoseName[] = {
     "null_",      // 0 空
     "wait_",      // 1 待机
-    "wait_a_",    // 2 警戒
-    "waiting_",   // 3 插播待机		2种
+    "wait_a_",    // 2 战斗待机
+    "waiting_",   // 3 待机		2种
     "waiting_",   // 4 对话
     "run_",       // 5 跑步
     "run_",       // 6 追击
@@ -1982,7 +1980,8 @@ static const char* WeaponPoseName[] = {
     "z",  // 7 短杖
     "q",  // 8 法球
 };
-// 新 飞剑和飞轮 
+
+// 新 飞剑和飞轮
 char* GcBaseActor::GetNewWeaponPose(EPoses Pose, SItemID& item) {
     guard;
     // 动作基础名
@@ -2171,7 +2170,7 @@ const char* GcBaseActor::GetPoseByWeapon(EPoses PoseId, SItemID& item1, SItemID&
             ret = pose[0];
             break;
         case POSE_GUARD:
-            ret = pose[6];
+            ret = pose[0];
             break;
         case POSE_IDLE:
             ret = pose[6];
@@ -2533,7 +2532,7 @@ const char* GcBaseActor::OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill,
         }
     } else  // 没有武器
     {
-        pPoseName = OldUserDefaulePoseName[vPoseID];
+        pPoseName = OldUserDefaulePoseName[vPoseID];  // 获取默认动作
         if (vPoseID == POSE_ATTACK && pSkill) {
             pPoseName = pSkill->szRAction1;
         }
@@ -2596,7 +2595,7 @@ const char* GcBaseActor::OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill,
         }
         return NULL;
     }
-
+    
     // 武器动作
     if (pWeaClass1 && !m_pMaster->m_cShapeshiftNet) {
         if (vPoseID == POSE_ATTACK && !pSkill) {                        // 如果是普通攻击
@@ -2615,10 +2614,16 @@ const char* GcBaseActor::OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill,
                         pWeaponGraph = m_pMaster->GetGraph()->GetLinkActor("Box03");
                         pWeaponGraph->PlayPose(m_szLastPoseName, vLoop, fSpeed);
                     }
-                } else {
-                    // 如果不是带绳索的武器，则直接播放武器动作
-                    //m_pWeapon->PlayPose(m_szLastPoseName, vLoop, fSpeed);
-                    m_pWeapon->PlayPose(GetNewWeaponPose(vPoseID,Item1), vLoop, fSpeed);
+                } else {  // 如果不是带绳索的武器，则直接播放武器动作
+                    const char* poseName = GetNewWeaponPose(vPoseID, Item1);
+                    if (poseName != nullptr) {
+                        m_pWeapon->m_poseName = poseName;  // 正常赋值
+                    } else {
+                        m_pWeapon->m_poseName = "";  // 处理空指针，赋值为空字符串
+                    }
+                    if (m_pWeapon->m_poseName != m_pWeapon->m_szLastPoseName)
+                        m_pWeapon->PlayPose(m_pWeapon->m_poseName.c_str(), true, fSpeed);
+                    m_pWeapon->m_szLastPoseName = m_pWeapon->m_poseName;
                 }
                 // 释放武器技能效果
                 Safe_ReleaseActor(m_pWeapon->m_skillEffect);
