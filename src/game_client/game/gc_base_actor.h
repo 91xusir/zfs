@@ -182,6 +182,7 @@ class GcBaseActor : public CRT_PoseNotify {
     const char* OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, float fSpeed);
     const char* GetPoseByWeapon(EPoses Pose, SItemID& item1, SItemID& item2);
     char*       GetPoseByWeapon(EPoses Pose, SItemID& item);
+    char*       GetNewWeaponPose(EPoses Pose, SItemID& item);
     char*       GetPoseByNPC(EPoses Pose);
 
     void FaceTo(float vX, float vY);  //Ãæ³¯Ïò
