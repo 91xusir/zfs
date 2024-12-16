@@ -220,6 +220,9 @@
       <Filter>Activity</Filter>
     </ClCompile>
     <ClCompile Include="..\login_server\iob_func.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gw_chattransmittal.h">
@@ -470,6 +473,9 @@
     </ClInclude>
     <ClInclude Include="GW_ActivityManager.h">
       <Filter>Activity</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

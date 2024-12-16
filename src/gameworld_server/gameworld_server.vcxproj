@@ -128,11 +128,11 @@
       <PreprocessorDefinitions>_PREVIEW;WIN32;NDEBUG;_CONSOLE;CREATE_ITEM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <AdditionalDependencies>libmysql.lib;net_mt.lib;core_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -208,6 +208,9 @@
     <ClCompile Include="gw_union.cpp" />
     <ClCompile Include="gw_unionlist.cpp" />
     <ClCompile Include="LogicExt.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\engine\head\filepack\ansi_file.h" />
@@ -293,6 +296,7 @@
     <ClInclude Include="gw_unionlist.h" />
     <ClInclude Include="LogicExt.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="gw_thread.inl" />

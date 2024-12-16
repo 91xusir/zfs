@@ -133,8 +133,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir)..\shared;$(ProjectDir)..\login_server\wsdl;$(ProjectDir)..\engine\head;$(ProjectDir)..\sdk\include;$(ProjectDir)..\sdk\include\python25;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_PREVIEW;WIN32;NDEBUG;_CONSOLE;RT_SCENE_ONLY_LOAD_TERRAIN;REGION_SERVER;CREATE_ITEM;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <BrowseInformation>
       </BrowseInformation>
       <BrowseInformationFile>
@@ -143,6 +142,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Disabled</Optimization>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <AdditionalDependencies>core_mt.lib;filepack_mt.lib;net_mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -247,6 +247,9 @@
     <ClCompile Include="rs_war_zhulu.cpp" />
     <ClCompile Include="rt_randomimage.cpp" />
     <ClCompile Include="script_engine_py.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Preview|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\engine\head\core\rt2_core.h" />
@@ -401,6 +404,7 @@
     <ClInclude Include="rs_war_zhulu.h" />
     <ClInclude Include="rt_randomimage.h" />
     <ClInclude Include="script_engine_py.h" />
+    <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\engine\head\core\rtc2_thread.inl" />
