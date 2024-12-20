@@ -1,21 +1,6 @@
 
 
- <h1 align="center">真封神复活计划</h1>
-
-三界大乱单机网
-
-<br />
-
-<p align="center">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">仙魔改真封神计划！</h3>
-  <p align="center">
-    一个很疯狂也持续了很久的计划！！
-    <br />
-</p>
-
+ <h1 align="center">ZFS开发指南</h1>
 
 - [1.上手指南](#1上手指南)
   - [1.1 Clone](#11-clone)
