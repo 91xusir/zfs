@@ -3020,7 +3020,7 @@ void UIFormPlayerItems::UseBagItem(int page, int gridI, int gridJ,
 }
 
 //end yz
-
+//使用背包物品
 void UIFormPlayerItems::DoUseCommonBagItem(int page, int gridI, int gridJ) {
     if (!m_pPlayer)
         m_pPlayer = GetWorld()->m_pPlayer;

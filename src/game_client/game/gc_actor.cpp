@@ -419,6 +419,7 @@ void GcActor::UpdateHUD() {
     }
     unguard;
 }
+
 //lmk GcActor::Run 逻辑循环
 void GcActor::Run(float fSecond)  //逻辑循环
 {  // 如果角色正在吟唱且不是当前玩家，则播放吟唱动画
@@ -3887,7 +3888,7 @@ void GcActor::StartTriggerAdd(char close, bool final) {
     if (m_bIsDead) {
         return;
     }
-    ClearCommand();//清除命令
+    ClearCommand();  //清除命令
     //RemoveCurCommand();
 
     // 创建命令结构
@@ -4219,7 +4220,7 @@ void GcActor::ShowDamageNumber(int ret, short sDamage, short eleDmg[MAX_ELEMENT_
                                char eleSpe) {
     guard;
 
-   /* P_LOGINFO(std::string("调用 ShowDamageNumber 函数: ") + "\n返回值: " + std::to_string(ret) +
+    /* P_LOGINFO(std::string("调用 ShowDamageNumber 函数: ") + "\n返回值: " + std::to_string(ret) +
               "\n伤害值: " + std::to_string(sDamage) + "\n元素伤害: (" + std::to_string(eleDmg[0]) +
               ", " + std::to_string(eleDmg[1]) + ", " + std::to_string(eleDmg[2]) + ")" +
               "\n暴击命中: " + std::to_string(criHit) + "\n元素特性: " + std::to_string(eleSpe));*/
@@ -4419,7 +4420,6 @@ void GcActor::UpdateFromServerDelta(CG_CmdPacket* cmd) {
     unguard;  // 退出保护区
 }
 
-
 const char* GcActor::GetCmdName(GcActor::ECommands eCmd) {
     switch (eCmd) {
         case ACMD_NONE:
@@ -4582,6 +4582,8 @@ void GcActor::EquipWeapon(bool Active, const char* Model, SWeapon* weapon, SItem
                 } else if (ItemIsWeapon_Hoop(mBaseActor.m_pWeapon->m_item)) {
                     GetGraph()->UnLink("Bip01 R Hand");
                     GetGraph()->UnLink("Bip01 L Hand");
+                } else if (ItemIsWeapon_Pestle(item)) {
+                    GetGraph()->UnLink("Box02");  //战士右手单刀
                 } else {
                     GetGraph()->UnLink("Bip01 R Hand");
 
@@ -4601,9 +4603,10 @@ void GcActor::EquipWeapon(bool Active, const char* Model, SWeapon* weapon, SItem
             } else if (ItemIsWeapon_Hoop(item)) {
                 GetGraph()->Link("Bip01 R Hand", Model);
                 GetGraph()->Link("Bip01 L Hand", Model);
+            } else if (ItemIsWeapon_Pestle(item)) {
+                GetGraph()->Link("Box02", Model);
             } else {
                 GetGraph()->Link("Bip01 R Hand", Model);
-
                 //GetGraph()->Link("Box01", Model);
             }
         }
@@ -4637,6 +4640,7 @@ void GcActor::EquipTrump(bool Active, const char* Model, SItemID& item, STrump* 
     }
     unguard;
 }
+
 // 重置角色头顶显示的名字
 void GcActor::ResetHudName() {
     // 获取角色名字

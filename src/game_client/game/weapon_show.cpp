@@ -35,7 +35,7 @@ CWeaponShow::~CWeaponShow(void)
 	RtcGetActorManager()->ReleaseActor(m_FlySwordRib);
 	unguard;
 }
-
+//初始化武器显示
 void CWeaponShow::Init(GcBaseActor *Host,const char *Model, SWeapon *weapon, SItemID &item)
 {
 	guard;
@@ -56,6 +56,8 @@ void CWeaponShow::Init(GcBaseActor *Host,const char *Model, SWeapon *weapon, SIt
 				m_body = Host->m_pMaster->GetGraph()->GetLinkActor("Box03")->p();
 			else if (ItemIsWeapon_Hoop(item))
 				m_body = Host->m_pMaster->GetGraph()->GetLinkActor("Bip01 R Hand")->p();
+            else if (ItemIsWeapon_Pestle(item))
+				m_body = Host->m_pMaster->GetGraph()->GetLinkActor("Box02")->p();
 			else
 				//m_body = Host->m_pMaster->GetGraph()->GetLinkActor("Box01")->p();
                 //lmk 战士 link点

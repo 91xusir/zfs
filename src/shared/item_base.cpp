@@ -2660,29 +2660,42 @@ bool CItemManager::LoadResource() {
 
             pChar = (char*)csv[i]["UpdateModel"].Str();
             if (pChar && pChar[0] != '\0') {
-                char       arrTmp[ITEM_MAX_ITEM_LEVEL + 1][PATH_STRING_LEN];
-                int        counter = 0;
-                const char sep1[]  = ";";
-                const char sep2[]  = "&";
-                char*      k       = strtok(pChar, sep1);
-                while (k && counter <= ITEM_MAX_ITEM_LEVEL) {
-                    rt2_strncpy(arrTmp[counter], k, PATH_STRING_LEN - 1);
-                    arrTmp[counter][PATH_STRING_LEN - 1] = 0;
-                    counter++;
-                    k = strtok(NULL, sep1);
+                std::string updateModel(pChar);   // 将 C 字符串转为 C++ 的 std::string
+                std::vector<std::string> levels;  // 存储以 ";" 分割的各级别字符串
+
+                // 按 ";" 分割字符串
+                size_t start = 0, end;
+                while ((end = updateModel.find(';', start)) != std::string::npos) {
+                    if (end > start) {
+                        levels.emplace_back(updateModel.substr(start, end - start));
+                    }
+                    start = end + 1;
+                }
+                if (start < updateModel.size()) {
+                    levels.emplace_back(updateModel.substr(start));
                 }
 
-                for (int i = 0; i < counter; i++) {
-                    char* cTmp1;
-                    cTmp1 = strtok(arrTmp[i], sep2);
-                    if (cTmp1)
-                        pWeapon->Models1Num[i] = atoi(cTmp1);
-                    cTmp1 = strtok(NULL, sep2);
-                    if (cTmp1)
-                        rt2_strncpy(pWeapon->Models1[i], cTmp1, PATH_STRING_LEN);  // 女模型
-                    cTmp1 = strtok(NULL, sep2);
-                    if (cTmp1)
-                        rt2_strncpy(pWeapon->Models2[i], cTmp1, PATH_STRING_LEN);  // 男模型
+                // 遍历每个级别，解析编号和路径
+                for (size_t i = 0; i < levels.size() && i <= ITEM_MAX_ITEM_LEVEL; ++i) {
+                    std::vector<std::string> parts;  // 存储以 "&" 分割的模型信息
+                    std::stringstream        ss(levels[i]);
+                    std::string              part;
+
+                    // 按 "&" 分割
+                    while (std::getline(ss, part, '&')) {
+                        parts.push_back(part);
+                    }
+
+                    // 处理模型编号和路径
+                    if (parts.size() == 3) {
+                        pWeapon->Models1Num[i] = std::stoi(parts[0]);
+                        rt2_strncpy(pWeapon->Models1[i], parts[1].c_str(), PATH_STRING_LEN);
+                        rt2_strncpy(pWeapon->Models2[i], parts[2].c_str(), PATH_STRING_LEN);
+                    } else {
+                        pWeapon->Models1Num[i] = 1;
+                        rt2_strncpy(pWeapon->Models1[i], parts[0].c_str(), PATH_STRING_LEN);
+                        rt2_strncpy(pWeapon->Models2[i], parts[0].c_str(), PATH_STRING_LEN);
+                    }
                 }
             }
 
@@ -5666,13 +5679,21 @@ void CItemContainerBase::_Equip(SItemID& id, EEquipParts vPart) {
     unguard;
 }
 
+// 参数注释:
+// id: 要装备的物品ID
+// vPart: 要装备的部位，默认为EQUIP_DEFAULT_PART
+// bRemoveFromBag: 是否从背包中移除，默认为false
+// pItemUnEquip1: 要卸下的物品ID，默认为NULL
+// pPartUnEquip1: 要卸下的部位，默认为NULL
+// pItemUnEquip2: 要卸下的物品ID，默认为NULL
+// pPartUnEquip2: 要卸下的部位，默认为NULL
 bool CItemContainerBase::Equip(SItemID& id, EEquipParts vPart /* = EQUIP_DEFAULT_PART*/,
                                bool bRemoveFromBag /* = false*/, SItemID* pItemUnEquip1 /* = NULL*/,
                                EEquipParts* pPartUnEquip1 /* = NULL*/,
                                SItemID*     pItemUnEquip2 /* = NULL*/,
                                EEquipParts* pPartUnEquip2 /* = NULL*/) {
-    guard;
 
+    guard;
     BOOL_ENSURE(ItemID_IsValid(id) && (_IsValidPart(vPart) || vPart == EQUIP_DEFAULT_PART))
     SItemBase* pItemBase = m_pItemManager->GetItem(id.type);
 
@@ -5685,13 +5706,12 @@ bool CItemContainerBase::Equip(SItemID& id, EEquipParts vPart /* = EQUIP_DEFAULT
     if (pPartUnEquip2)
         *pPartUnEquip2 = CItemContainerBase::EQUIP_DEFAULT_PART;
 
-    // 确定装备部位
     if (vPart == EQUIP_DEFAULT_PART) {
         vPart = GetDefaultEquipPart(id);
     }
     BOOL_ENSURE(ItemCanBeEquiped(id, vPart))
 
-    if (vPart == WEAPON_1 || vPart == WEAPON_2) {  // 双手武器、弓箭要特殊处理
+    if (vPart == WEAPON_1 || vPart == WEAPON_2) {
         if (ItemIsShield(id)) {
             bool bFlag = false;
             if (ItemID_IsValid(m_nItemID[WEAPON_1])) {
@@ -5717,6 +5737,7 @@ bool CItemContainerBase::Equip(SItemID& id, EEquipParts vPart /* = EQUIP_DEFAULT
                     if (pPartUnEquip1)
                         *pPartUnEquip1 = WEAPON_2;
                 }
+                // 确保卸下装备成功
                 BOOL_ENSURE(_UnEquip(WEAPON_2))
             }
             _Equip(id, WEAPON_2);
@@ -5730,7 +5751,7 @@ bool CItemContainerBase::Equip(SItemID& id, EEquipParts vPart /* = EQUIP_DEFAULT
                     BOOL_ENSURE(_UnEquip(vPart))
                 }
                 _Equip(id, vPart);
-            } else {  // 双手武器
+            } else {
                 bool bFlag = false;
                 if (ItemID_IsValid(m_nItemID[WEAPON_1])) {
                     bFlag = true;
@@ -5758,13 +5779,13 @@ bool CItemContainerBase::Equip(SItemID& id, EEquipParts vPart /* = EQUIP_DEFAULT
             }
         }
 
-    } else  // 非武器
-    {
+    } else {
         if (ItemID_IsValid(m_nItemID[vPart])) {
             if (pItemUnEquip1)
                 *pItemUnEquip1 = m_nItemID[vPart];
             if (pPartUnEquip1)
                 *pPartUnEquip1 = vPart;
+            // 确保卸下装备成功
             BOOL_ENSURE(_UnEquip(vPart))
         }
         _Equip(id, vPart);
