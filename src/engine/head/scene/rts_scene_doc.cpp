@@ -472,25 +472,28 @@ bool RtsSceneDoc::SaveMap(const char* szMapFileName) {
 
     if (!pFile)
         return false;
+   
+    (*pFile)<<dwFileHeader;
 
-    (*pFile) << dwFileHeader;
-
-    if (!OnSerializeMapInfo(pFile)) {
+    if (!OnSerializeMapInfo(pFile))
+    {
         RtCoreFile().CloseFile(pFile);
         return false;
     }
 
-    if (!OnSerializeObjects(pFile)) {
+    if (!OnSerializeObjects(pFile))
+    {
         RtCoreFile().CloseFile(pFile);
         return false;
     }
 
-    if (!OnSerializeBlockMapping(pFile)) {
+    if (!OnSerializeBlockMapping(pFile))
+    {
         RtCoreFile().CloseFile(pFile);
         return false;
     }
 
-    (*pFile) << dwFileHeader;
+	(*pFile)<<dwFileHeader; 
     RtCoreFile().CloseFile(pFile);
 
     RtsSceneBlockRtb* pBlock = NULL;
@@ -522,24 +525,27 @@ bool RtsSceneDoc::SaveAllMap(const char* szMapFileName) {
     if (!pFile)
         return false;
 
-    (*pFile) << dwFileHeader;
+    (*pFile)<<dwFileHeader;
 
-    if (!OnSerializeMapInfo(pFile)) {
+    if (!OnSerializeMapInfo(pFile))
+    {
         RtCoreFile().CloseFile(pFile);
         return false;
     }
 
-    if (!OnSerializeObjects(pFile)) {
+    if (!OnSerializeObjects(pFile))
+    {
         RtCoreFile().CloseFile(pFile);
         return false;
     }
 
-    if (!OnSerializeBlockMapping(pFile)) {
+    if (!OnSerializeBlockMapping(pFile))
+    {
         RtCoreFile().CloseFile(pFile);
         return false;
     }
 
-    (*pFile) << dwFileHeader;
+    (*pFile)<<dwFileHeader; 
     RtCoreFile().CloseFile(pFile);
 
     RtsSceneBlockRtb* pBlock = NULL;
@@ -653,10 +659,13 @@ bool RtsSceneDoc::OnSerializeBlockMapping(RtArchive* pFile) {
 
     if (pFile->IsStoring()) {
         c = 0;
-        for (j = 0; j < m_iBlockYCnt; j++) {
-            for (i = 0; i < m_iBlockXCnt; i++) {
-                pBlock = &m_blockMapArray[j * m_iBlockXCnt + i];
-                if (pBlock->m_szFileName[0]) {
+        for (j=0; j<m_iBlockYCnt; j++)
+        {
+            for (i=0; i<m_iBlockXCnt; i++)
+            {
+                pBlock = &m_blockMapArray[j*m_iBlockXCnt+i];
+                if (pBlock->m_szFileName[0])
+                {
                     *pFile << i;
                     *pFile << j;
                     pBlock->Serialize(m_dwMapVersion, pFile);
