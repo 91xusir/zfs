@@ -1646,7 +1646,7 @@ void GcWorld::CheckSkill() {
 }
 
 const int TIME_RATE = 60 * 10;
-
+//lmk gc_world游戏主世界主循环
 void GcWorld::OnRun(float fSecond) {
     RtPerformance* _Pref = RtGetPref();
 
@@ -3242,7 +3242,7 @@ void GcWorld::OnNetDownloadCreateChar(CG_CmdPacket* pPacket)  //主角的初始化
     m_pPlayer->MoveToNow((float)ObjectX, (float)ObjectY);
 
     if (!cSwitchRegion) {
-        // m_pPlayer->mBaseActor.PlayEffect("eborn.act",true,NULL,RtgVertex3(0,0,0));
+         m_pPlayer->mBaseActor.PlayEffect("eborn.act",true,NULL,RtgVertex3(0,0,0));
     }
 
     m_pPlayer->OnInit();
@@ -3250,7 +3250,7 @@ void GcWorld::OnNetDownloadCreateChar(CG_CmdPacket* pPacket)  //主角的初始化
     if (cPosFlag != 0) {
         cPosFlag = 1;
     }
-    m_pPlayer->mBaseActor.PlayPose(GcBaseActor::POSE_STAND, false);
+   // m_pPlayer->mBaseActor.PlayPose(GcBaseActor::POSE_STAND, false);
     g_layerMain->Createheadimage(m_pPlayer);
     //////////////////////////////////////////////////////////////////////////
     // 创建人物结束，现在对其他一些变量初始化

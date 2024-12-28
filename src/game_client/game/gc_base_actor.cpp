@@ -1743,17 +1743,6 @@ static const char* PoseShieldOnly[] = {
     "attack_non",   // 7 暴击
 };
 
-// 人物法宝动作
-static const char* FPoseName[] = {
-    "wait_non",          // 0 站立
-    "attack_non_magic",  // 1 攻击
-    "walk_non",          // 2 移动
-    "die",               // 3 死亡
-    "hurt_non",          // 4 受击
-    "skill",             // 5 技能
-    "waiting_non"        // 6 耍酷
-};
-
 // 人物软鞭动作
 static const char* WhipPoseName[] = {
     "wait_whip",             // 0 等待
@@ -1770,6 +1759,18 @@ static const char* WhipPoseName[] = {
 static const char* WhipWeaponPoseName[] = {"wait", "attack",  "walk",
                                            "wait",  // 3 默认死亡动作
                                            "hurt", "skill11", "waiting", "attack_critical"};
+
+// 人物法宝动作
+static const char* FPoseName[] = {
+    "wait_non",          // 0 站立
+    "attack_non_magic",  // 1 攻击
+    "walk_non",          // 2 移动
+    "die",               // 3 死亡
+    "hurt_non",          // 4 受击
+    "skill",             // 5 技能
+    "waiting_non"        // 6 耍酷
+};
+
 // 杖
 static const char* WandPoseName[] = {
     "wait_wand",    // 0 持仗等待动作
@@ -2135,7 +2136,8 @@ const char* GcBaseActor::GetPoseByWeapon(EPoses PoseId, SItemID& item1, SItemID&
         pose = BowPoseName;
     else if (ItemIsWeapon_Axe(item1.type))  // 斧头
         pose = AxePoseName;
-    else if (ItemIsWeapon_Wheel(item1.type))  // 轮
+    else if (ItemIsWeapon_Wheel(item1.type) || ItemIsWeapon_Sword(item1.type) ||
+             ItemIsWeapon_Ball(item1.type))  // 轮 剑 球
         pose = FPoseName;
     else if (ItemIsWeapon_Wand(item1.type))  // 杖
         pose = WandPoseName;
@@ -2369,7 +2371,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
     }
 
     if (pPoseName == 0 || pPoseName[0] == 0) {
-        ERR("播放动作失败,动作名字为空\n");
+        //ERR("播放动作失败,动作名字为空\n");
         return NULL;
     }
 
@@ -2516,7 +2518,7 @@ const char* GcBaseActor::OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill,
                         }
                     }
                 } else {
-                    // 获取武器动作(已注释)
+                    // 获取武器动作
                     pPoseName = GetPoseByWeapon(vPoseID, Item1, Item2);
                 }
                 break;
@@ -2553,14 +2555,14 @@ const char* GcBaseActor::OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill,
 
     // 检查动作名称是否有效
     if (pPoseName == 0 || pPoseName[0] == 0) {
-        ERR("播放动作失败,动作名字为空\n");
+        //ERR("播放动作失败,动作名字为空\n");
         return NULL;
     }
 
     // 检查是否重复播放相同的循环动作
     if (m_bLastLoop == vLoop && m_bLastLoop == true && strcmp(m_szLastPoseName, pPoseName) == 0) {
         if (!mGraph.p()->IsPlayingPose())
-            ERR("Last is a loop cmd, but GetCurrentPose()==NULL!\n");
+            P_LOGINFO("Last is a loop cmd, but GetCurrentPose()==NULL!\n");
         return m_szLastPoseName;
     }
 
@@ -2595,15 +2597,22 @@ const char* GcBaseActor::OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill,
         }
         return NULL;
     }
-    
+
     // 武器动作
-    if (pWeaClass1 && !m_pMaster->m_cShapeshiftNet) {
+    if (pWeaClass1 && !m_pMaster->m_cShapeshiftNet &&
+        (ItemIsWeapon_Wheel(Item1.type) || ItemIsWeapon_Sword(Item1.type) ||
+         ItemIsWeapon_Ball(Item1.type))) {
         if (vPoseID == POSE_ATTACK && !pSkill) {                        // 如果是普通攻击
             GcActor* p = FindActor(m_pMaster->m_pCurCmd->dw[0], true);  // 找攻击目标
             if (!p)
                 return false;
             if (m_pWeapon) {
-                m_pWeapon->DoAttack(p->ID(), GetNewWeaponPose(vPoseID, Item1), vLoop, fSpeed);
+                const char* n = GetNewWeaponPose(vPoseID, Item1);
+                if (n) {
+                    const std::string a = n;
+                    P_LOGINFO(a);
+                    m_pWeapon->DoAttack(p->ID(), n, vLoop, fSpeed);
+                }
             }
         } else if (m_pWeapon) {
             if (!pSkill) {
@@ -2612,7 +2621,8 @@ const char* GcBaseActor::OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill,
                     if (ItemIsWeapon_Riband(Item1)) {
                         GcActorGraph* pWeaponGraph;
                         pWeaponGraph = m_pMaster->GetGraph()->GetLinkActor("Box03");
-                        pWeaponGraph->PlayPose(m_szLastPoseName, vLoop, fSpeed);
+                        if (pWeaponGraph)
+                            pWeaponGraph->PlayPose(m_szLastPoseName, vLoop, fSpeed);
                     }
                 } else {  // 如果不是带绳索的武器，则直接播放武器动作
                     const char* poseName = GetNewWeaponPose(vPoseID, Item1);

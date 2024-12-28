@@ -1,5 +1,6 @@
 #include "core/rt2_core.h"
 #include "rt1tort2.h"
+#include <sstream>
 
 #ifdef GMSERVER
 #include "../../../gm_tool/gm_server/gmserver.h"

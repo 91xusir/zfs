@@ -525,7 +525,7 @@ CRT_Actor::CRT_Actor(const CRT_Actor& _actor) {
 }
 
 CRT_Actor::~CRT_Actor() {
-    CM_MEMUNPROTECTOR(m_szVersion)
+    //CM_MEMUNPROTECTOR(m_szVersion)
 
     RtcAcotrManager* pMgr = RtcGetActorManager();
 

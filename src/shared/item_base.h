@@ -325,7 +325,7 @@ struct SItemID {
     union {
         struct {
             WORD color : 3;  // 道具的颜色(白色装备，蓝色装备和黄金装备)
-            WORD level : 4;  // 锻造等级(最多10级,index从0开始)
+            WORD level : 4;  // 锻造等级(最多15级,index从0开始)
             WORD cBind : 3;  // 绑定
             WORD cLock : 1;  // 交易时是否需要密码
 
@@ -418,7 +418,7 @@ enum EItemUseLimit {
 // 物品基类
 struct SItemBase {
    public:
-    DWORD type;  // 一级分类和二级分类，还有index
+    DWORD    type;  // 一级分类和二级分类，还有index
     //char	name[PATH_STRING_LEN];					// 最终类别的名字，如“天涯明月刀”...
     CM_MEMDEF(name, PATH_STRING_LEN)
     int           value;            // 物品的价值，与价格成正比

@@ -4582,7 +4582,7 @@ void GcActor::EquipWeapon(bool Active, const char* Model, SWeapon* weapon, SItem
                 } else if (ItemIsWeapon_Hoop(mBaseActor.m_pWeapon->m_item)) {
                     GetGraph()->UnLink("Bip01 R Hand");
                     GetGraph()->UnLink("Bip01 L Hand");
-                } else if (ItemIsWeapon_Pestle(item)) {
+                } else if (ItemIsWeapon_Pestle(mBaseActor.m_pWeapon->m_item)) {
                     GetGraph()->UnLink("Box02");  //战士右手单刀
                 } else {
                     GetGraph()->UnLink("Bip01 R Hand");

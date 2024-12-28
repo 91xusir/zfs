@@ -181,7 +181,6 @@ void UILayer::Clear() {
     Reset();
     DROP_RTUI_OBJECT(g_loadingLayer);
     //g_workspace.Destroy();
-
     //   SafeDelete(g_pUiRenderer);
     //   SafeDelete(g_pUiImageFactory);
     //   SafeDelete(g_pUiFont);

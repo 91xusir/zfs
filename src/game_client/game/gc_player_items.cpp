@@ -440,7 +440,7 @@ bool CItemContainer::CheckEquip(EEquipParts vPart, SItemID& item, SCreature& cre
     unguard;
 }
 
-void CItemContainer::_Equip(SItemID& id, EEquipParts vPart) {
+void CItemContainer::_Equip(SItemID& id, EEquipParts vPart) {//×°±¸
     guard;
 
     if (m_pMaster)

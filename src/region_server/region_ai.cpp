@@ -3380,24 +3380,25 @@ void CRegionGuarderAI::DoPatrol()
 	//已到达目标节点
 	if(m_Arrived)
 	{		
-		//判断是否到达巡逻终点		
-		if((++ m_IterNode) == m_PatrolPath.end())
-		{
-			//若到终点，返回
-			m_PatrolPath.reverse();
-			m_IterNode = m_PatrolPath.begin();
-			m_IterNode ++;
-		}
+		   // 判断是否到达巡逻路径的终点
+        if (m_IterNode != m_PatrolPath.end() && (++m_IterNode) == m_PatrolPath.end()) {
+            // 如果到终点，反转路径并重新开始巡逻
+            m_PatrolPath.reverse();
+            m_IterNode = m_PatrolPath.begin();
+            m_IterNode++;  // 跳过第一个节点
+        }
 	}
 
-	//重新设定巡逻目标
-	m_TargetNode[0] = (*m_IterNode).x;
-	m_TargetNode[1] = (*m_IterNode).y;
+	   // 重新设定目标节点
+    if (m_IterNode != m_PatrolPath.end()) {
+        m_TargetNode[0] = (*m_IterNode).x;
+        m_TargetNode[1] = (*m_IterNode).y;
 
-	if (!UpdateMovePath(m_TargetNode[0], m_TargetNode[1]))
-	{
-		//do nothing
-	}		
+        // 更新移动路径
+        if (!UpdateMovePath(m_TargetNode[0], m_TargetNode[1])) {
+            // do nothing if update failed
+        }
+    }
 }
 
 bool CRegionGuarderAI::DoScanTarget()
