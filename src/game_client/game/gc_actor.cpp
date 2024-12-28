@@ -640,6 +640,12 @@ bool GcActor::RunCommand(float fSecond) {
                     CommandFinished();
                 }
             } break;
+            case ACMD_ATTACK: {
+                //lmk 临时解决攻击卡住问题
+                if (m_pCurCmd->fRunTime > 1.f)
+                    CommandFinished();
+                break;
+            }
         }
         return true;
     } else {
@@ -723,7 +729,8 @@ void GcActor::RunBody(float fSecond) {
         }
     } else if (mBaseActor.m_vPoseID != GcBaseActor::POSE_DEAD &&
                mBaseActor.m_vPoseID != GcBaseActor::POSE_BODY) {
-        mBaseActor.PlayPose(GcBaseActor::POSE_BODY, false);
+        //lmk 取消播放尸体动画
+        //mBaseActor.PlayPose(GcBaseActor::POSE_BODY, false);
     }
 
     if (this == GetPlayer()) {

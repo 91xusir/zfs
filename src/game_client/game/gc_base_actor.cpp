@@ -1785,7 +1785,7 @@ static const char* WandPoseName[] = {
 // 默认动作
 static const char* DefaultPoseName[] = {
     "wait_non",          // 0 默认站立动作
-    "attack_non_magic",  // 1 默认攻击动作
+    "attack_non",        // 1 默认攻击动作
     "walk_non",          // 2 默认移动动作
     "die",               // 3 默认死亡动作
     "hurt_non",          // 4 默认受击动作
@@ -2600,8 +2600,8 @@ const char* GcBaseActor::OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill,
 
     // 武器动作
     if (pWeaClass1 && !m_pMaster->m_cShapeshiftNet &&
-        (ItemIsWeapon_Wheel(Item1.type) || ItemIsWeapon_Sword(Item1.type) ||
-         ItemIsWeapon_Ball(Item1.type))) {
+        (ItemIsWeapon_Wheel(Item1.type) || ItemIsWeapon_Sword(Item1.type)/* ||
+         ItemIsWeapon_Ball(Item1.type) || ItemIsWeapon_Wand(Item1.type)*/)) {
         if (vPoseID == POSE_ATTACK && !pSkill) {                        // 如果是普通攻击
             GcActor* p = FindActor(m_pMaster->m_pCurCmd->dw[0], true);  // 找攻击目标
             if (!p)
