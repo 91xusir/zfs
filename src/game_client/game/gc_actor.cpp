@@ -642,7 +642,7 @@ bool GcActor::RunCommand(float fSecond) {
             } break;
             case ACMD_ATTACK: {
                 //lmk 临时解决攻击卡住问题
-                if (m_pCurCmd->fRunTime > 1.f)
+                if (m_pCurCmd->fRunTime > 5.f)
                     CommandFinished();
                 break;
             }

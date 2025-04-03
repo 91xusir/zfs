@@ -1784,13 +1784,13 @@ static const char* WandPoseName[] = {
 
 // 默认动作
 static const char* DefaultPoseName[] = {
-    "wait_non",          // 0 默认站立动作
-    "attack_non",        // 1 默认攻击动作
-    "walk_non",          // 2 默认移动动作
-    "die",               // 3 默认死亡动作
-    "hurt_non",          // 4 默认受击动作
-    "skill",             // 5 默认技能动作
-    "waiting_non"        // 6
+    "wait_non",    // 0 默认站立动作
+    "attack_non",  // 1 默认攻击动作
+    "walk_non",    // 2 默认移动动作
+    "die",         // 3 默认死亡动作
+    "hurt_non",    // 4 默认受击动作
+    "skill",       // 5 默认技能动作
+    "waiting_non"  // 6
 };
 // 简单NPC默认动作
 static const char* OldSimpleNpcDefaulePoseName[] = {
@@ -2447,6 +2447,7 @@ const char* GcBaseActor::PlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, fl
     unguard;
 }
 
+//lmk 动作播放
 const char* GcBaseActor::OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill, float fSpeed) {
 
     const char* pPoseName = NULL;
@@ -2600,20 +2601,15 @@ const char* GcBaseActor::OldPlayPose(EPoses vPoseID, bool vLoop, SSkill* pSkill,
 
     // 武器动作
     if (pWeaClass1 && !m_pMaster->m_cShapeshiftNet &&
-        (ItemIsWeapon_Wheel(Item1.type) || ItemIsWeapon_Sword(Item1.type)/* ||
-         ItemIsWeapon_Ball(Item1.type) || ItemIsWeapon_Wand(Item1.type)*/)) {
+        (ItemIsWeapon_Wheel(Item1.type) || ItemIsWeapon_Sword(Item1.type) ||
+         ItemIsWeapon_Ball(Item1.type) || ItemIsWeapon_Wand(Item1.type))) {
         if (vPoseID == POSE_ATTACK && !pSkill) {                        // 如果是普通攻击
             GcActor* p = FindActor(m_pMaster->m_pCurCmd->dw[0], true);  // 找攻击目标
             if (!p)
                 return false;
-            if (m_pWeapon) {
-                const char* n = GetNewWeaponPose(vPoseID, Item1);
-                if (n) {
-                    const std::string a = n;
-                    P_LOGINFO(a);
-                    m_pWeapon->DoAttack(p->ID(), n, vLoop, fSpeed);
-                }
-            }
+            if (m_pWeapon)
+                m_pWeapon->DoAttack(p->ID(), GetNewWeaponPose(vPoseID, Item1), vLoop, fSpeed);
+
         } else if (m_pWeapon) {
             if (!pSkill) {
                 m_pWeapon->SetWeaponState(CWeaponShow::STATE_IDLE);  // 设置武器状态为闲置

@@ -37,8 +37,8 @@ static void UpdateLoadingBar(RtwProgressBar* pBar, double increment) {
     g_dLoadingValue = 1.0;
     pBar->SetValue(g_dLoadingValue.load());
     std::this_thread::sleep_for(updateInterval);
-
-    g_loadingLayer->Hide();
+    if (g_loadingLayer)
+        g_loadingLayer->Hide();
 }
 }  // namespace
 
