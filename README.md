@@ -177,4 +177,4 @@ sdl
 
 ### 4.编码规范
 
-详见[goole c++ 项目风格指南](https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents.html)
+详见[google c++ 项目风格指南](https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/contents.html)
